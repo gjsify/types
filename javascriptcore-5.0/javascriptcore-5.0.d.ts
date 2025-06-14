@@ -419,6 +419,9 @@ export namespace JavaScriptCore {
         WRITABLE,
     }
     namespace Class {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -437,6 +440,7 @@ export namespace JavaScriptCore {
      */
     class Class extends GObject.Object {
         static $gtype: GObject.GType<Class>;
+        declare static readonly __signalSignatures: Class.SignalSignatures;
 
         // Properties
 
@@ -590,6 +594,9 @@ export namespace JavaScriptCore {
     }
 
     namespace Context {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -609,6 +616,7 @@ export namespace JavaScriptCore {
      */
     class Context extends GObject.Object {
         static $gtype: GObject.GType<Context>;
+        declare static readonly __signalSignatures: Context.SignalSignatures;
 
         // Properties
 
@@ -789,6 +797,9 @@ export namespace JavaScriptCore {
     }
 
     namespace Exception {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -799,6 +810,7 @@ export namespace JavaScriptCore {
      */
     class Exception extends GObject.Object {
         static $gtype: GObject.GType<Exception>;
+        declare static readonly __signalSignatures: Exception.SignalSignatures;
 
         // Constructors
 
@@ -856,6 +868,9 @@ export namespace JavaScriptCore {
     }
 
     namespace Value {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -869,6 +884,7 @@ export namespace JavaScriptCore {
      */
     class Value extends GObject.Object {
         static $gtype: GObject.GType<Value>;
+        declare static readonly __signalSignatures: Value.SignalSignatures;
 
         // Properties
 
@@ -1253,6 +1269,9 @@ export namespace JavaScriptCore {
     }
 
     namespace VirtualMachine {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1268,6 +1287,7 @@ export namespace JavaScriptCore {
      */
     class VirtualMachine extends GObject.Object {
         static $gtype: GObject.GType<VirtualMachine>;
+        declare static readonly __signalSignatures: VirtualMachine.SignalSignatures;
 
         // Constructors
 
@@ -1285,6 +1305,11 @@ export namespace JavaScriptCore {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            cleared: Cleared;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1299,6 +1324,7 @@ export namespace JavaScriptCore {
      */
     class WeakValue extends GObject.Object {
         static $gtype: GObject.GType<WeakValue>;
+        declare static readonly __signalSignatures: WeakValue.SignalSignatures;
 
         // Properties
 
@@ -1317,6 +1343,15 @@ export namespace JavaScriptCore {
 
         // Signals
 
+        connect<K extends keyof WeakValue.SignalSignatures>(signal: K, callback: WeakValue.SignalSignatures[K]): number;
+        connect_after<K extends keyof WeakValue.SignalSignatures>(
+            signal: K,
+            callback: WeakValue.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WeakValue.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WeakValue.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

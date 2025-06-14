@@ -117,6 +117,11 @@ export namespace Avahi {
             (object: ClientState): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'state-changed': StateChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -127,6 +132,7 @@ export namespace Avahi {
 
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
+        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Properties
 
@@ -143,6 +149,9 @@ export namespace Avahi {
 
         // Signals
 
+        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -163,6 +172,11 @@ export namespace Avahi {
             (object: EntryGroupState): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'state-changed': StateChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -172,6 +186,7 @@ export namespace Avahi {
 
     class EntryGroup extends GObject.Object {
         static $gtype: GObject.GType<EntryGroup>;
+        declare static readonly __signalSignatures: EntryGroup.SignalSignatures;
 
         // Properties
 
@@ -187,6 +202,18 @@ export namespace Avahi {
 
         // Signals
 
+        connect<K extends keyof EntryGroup.SignalSignatures>(
+            signal: K,
+            callback: EntryGroup.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof EntryGroup.SignalSignatures>(
+            signal: K,
+            callback: EntryGroup.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EntryGroup.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EntryGroup.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -261,6 +288,15 @@ export namespace Avahi {
             ): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'all-for-now': AllForNow;
+            'cache-exhausted': CacheExhausted;
+            failure: Failure;
+            'new-record': NewRecord;
+            'removed-record': RemovedRecord;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -275,6 +311,7 @@ export namespace Avahi {
 
     class RecordBrowser extends GObject.Object {
         static $gtype: GObject.GType<RecordBrowser>;
+        declare static readonly __signalSignatures: RecordBrowser.SignalSignatures;
 
         // Properties
 
@@ -310,6 +347,18 @@ export namespace Avahi {
 
         // Signals
 
+        connect<K extends keyof RecordBrowser.SignalSignatures>(
+            signal: K,
+            callback: RecordBrowser.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RecordBrowser.SignalSignatures>(
+            signal: K,
+            callback: RecordBrowser.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RecordBrowser.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RecordBrowser.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -429,6 +478,15 @@ export namespace Avahi {
             (object: number, p0: Protocol, p1: string, p2: string, p3: string, p4: LookupResultFlags): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'all-for-now': AllForNow;
+            'cache-exhausted': CacheExhausted;
+            failure: Failure;
+            'new-service': NewService;
+            'removed-service': RemovedService;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -442,6 +500,7 @@ export namespace Avahi {
 
     class ServiceBrowser extends GObject.Object {
         static $gtype: GObject.GType<ServiceBrowser>;
+        declare static readonly __signalSignatures: ServiceBrowser.SignalSignatures;
 
         // Properties
 
@@ -474,6 +533,18 @@ export namespace Avahi {
 
         // Signals
 
+        connect<K extends keyof ServiceBrowser.SignalSignatures>(
+            signal: K,
+            callback: ServiceBrowser.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ServiceBrowser.SignalSignatures>(
+            signal: K,
+            callback: ServiceBrowser.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ServiceBrowser.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ServiceBrowser.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -580,6 +651,12 @@ export namespace Avahi {
             ): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            failure: Failure;
+            found: Found;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -595,6 +672,7 @@ export namespace Avahi {
 
     class ServiceResolver extends GObject.Object {
         static $gtype: GObject.GType<ServiceResolver>;
+        declare static readonly __signalSignatures: ServiceResolver.SignalSignatures;
 
         // Properties
 
@@ -631,6 +709,18 @@ export namespace Avahi {
 
         // Signals
 
+        connect<K extends keyof ServiceResolver.SignalSignatures>(
+            signal: K,
+            callback: ServiceResolver.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ServiceResolver.SignalSignatures>(
+            signal: K,
+            callback: ServiceResolver.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ServiceResolver.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ServiceResolver.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

@@ -1441,6 +1441,9 @@ export namespace GData {
         (entry: Entry, entry_key: number, entry_count: number): void;
     }
     namespace APPCategories {
+        // Signal signatures
+        interface SignalSignatures extends Parsable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps {
@@ -1454,6 +1457,7 @@ export namespace GData {
      */
     class APPCategories extends Parsable {
         static $gtype: GObject.GType<APPCategories>;
+        declare static readonly __signalSignatures: APPCategories.SignalSignatures;
 
         // Properties
 
@@ -1486,6 +1490,9 @@ export namespace GData {
     }
 
     namespace AccessRule {
+        // Signal signatures
+        interface SignalSignatures extends Entry.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Entry.ConstructorProps {
@@ -1504,6 +1511,7 @@ export namespace GData {
      */
     class AccessRule extends Entry {
         static $gtype: GObject.GType<AccessRule>;
+        declare static readonly __signalSignatures: AccessRule.SignalSignatures;
 
         // Properties
 
@@ -1609,6 +1617,9 @@ export namespace GData {
     }
 
     namespace Author {
+        // Signal signatures
+        interface SignalSignatures extends Parsable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps, Comparable.ConstructorProps {
@@ -1624,6 +1635,7 @@ export namespace GData {
      */
     class Author extends Parsable implements Comparable {
         static $gtype: GObject.GType<Author>;
+        declare static readonly __signalSignatures: Author.SignalSignatures;
 
         // Properties
 
@@ -2161,6 +2173,9 @@ export namespace GData {
     }
 
     namespace AuthorizationDomain {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2175,6 +2190,7 @@ export namespace GData {
      */
     class AuthorizationDomain extends GObject.Object {
         static $gtype: GObject.GType<AuthorizationDomain>;
+        declare static readonly __signalSignatures: AuthorizationDomain.SignalSignatures;
 
         // Properties
 
@@ -2215,6 +2231,9 @@ export namespace GData {
     }
 
     namespace BatchOperation {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2231,6 +2250,7 @@ export namespace GData {
      */
     class BatchOperation extends GObject.Object {
         static $gtype: GObject.GType<BatchOperation>;
+        declare static readonly __signalSignatures: BatchOperation.SignalSignatures;
 
         // Properties
 
@@ -2412,6 +2432,9 @@ export namespace GData {
     }
 
     namespace CalendarAccessRule {
+        // Signal signatures
+        interface SignalSignatures extends AccessRule.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends AccessRule.ConstructorProps {}
@@ -2423,6 +2446,7 @@ export namespace GData {
      */
     class CalendarAccessRule extends AccessRule {
         static $gtype: GObject.GType<CalendarAccessRule>;
+        declare static readonly __signalSignatures: CalendarAccessRule.SignalSignatures;
 
         // Constructors
 
@@ -2437,6 +2461,9 @@ export namespace GData {
     }
 
     namespace CalendarCalendar {
+        // Signal signatures
+        interface SignalSignatures extends Entry.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Entry.ConstructorProps, AccessHandler.ConstructorProps {
@@ -2456,6 +2483,7 @@ export namespace GData {
      */
     class CalendarCalendar extends Entry implements AccessHandler {
         static $gtype: GObject.GType<CalendarCalendar>;
+        declare static readonly __signalSignatures: CalendarCalendar.SignalSignatures;
 
         // Properties
 
@@ -2842,6 +2870,9 @@ export namespace GData {
     }
 
     namespace CalendarEvent {
+        // Signal signatures
+        interface SignalSignatures extends Entry.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Entry.ConstructorProps {
@@ -2872,6 +2903,7 @@ export namespace GData {
      */
     class CalendarEvent extends Entry {
         static $gtype: GObject.GType<CalendarEvent>;
+        declare static readonly __signalSignatures: CalendarEvent.SignalSignatures;
 
         // Properties
 
@@ -3213,6 +3245,9 @@ export namespace GData {
     }
 
     namespace CalendarFeed {
+        // Signal signatures
+        interface SignalSignatures extends Feed.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Feed.ConstructorProps {}
@@ -3223,6 +3258,7 @@ export namespace GData {
      */
     class CalendarFeed extends Feed {
         static $gtype: GObject.GType<CalendarFeed>;
+        declare static readonly __signalSignatures: CalendarFeed.SignalSignatures;
 
         // Constructors
 
@@ -3232,6 +3268,9 @@ export namespace GData {
     }
 
     namespace CalendarQuery {
+        // Signal signatures
+        interface SignalSignatures extends Query.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Query.ConstructorProps {
@@ -3258,6 +3297,7 @@ export namespace GData {
      */
     class CalendarQuery extends Query {
         static $gtype: GObject.GType<CalendarQuery>;
+        declare static readonly __signalSignatures: CalendarQuery.SignalSignatures;
 
         // Properties
 
@@ -3467,6 +3507,9 @@ export namespace GData {
     }
 
     namespace CalendarService {
+        // Signal signatures
+        interface SignalSignatures extends Service.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Service.ConstructorProps, Batchable.ConstructorProps {}
@@ -3477,6 +3520,7 @@ export namespace GData {
      */
     class CalendarService extends Service implements Batchable {
         static $gtype: GObject.GType<CalendarService>;
+        declare static readonly __signalSignatures: CalendarService.SignalSignatures;
 
         // Constructors
 
@@ -4256,6 +4300,9 @@ export namespace GData {
     }
 
     namespace Category {
+        // Signal signatures
+        interface SignalSignatures extends Parsable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps, Comparable.ConstructorProps {
@@ -4270,6 +4317,7 @@ export namespace GData {
      */
     class Category extends Parsable implements Comparable {
         static $gtype: GObject.GType<Category>;
+        declare static readonly __signalSignatures: Category.SignalSignatures;
 
         // Properties
 
@@ -4802,6 +4850,9 @@ export namespace GData {
     }
 
     namespace Comment {
+        // Signal signatures
+        interface SignalSignatures extends Entry.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Entry.ConstructorProps {}
@@ -4812,6 +4863,7 @@ export namespace GData {
      */
     abstract class Comment extends Entry {
         static $gtype: GObject.GType<Comment>;
+        declare static readonly __signalSignatures: Comment.SignalSignatures;
 
         // Constructors
 
@@ -4821,6 +4873,9 @@ export namespace GData {
     }
 
     namespace DocumentsAccessRule {
+        // Signal signatures
+        interface SignalSignatures extends AccessRule.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends AccessRule.ConstructorProps {}
@@ -4832,6 +4887,7 @@ export namespace GData {
      */
     class DocumentsAccessRule extends AccessRule {
         static $gtype: GObject.GType<DocumentsAccessRule>;
+        declare static readonly __signalSignatures: DocumentsAccessRule.SignalSignatures;
 
         // Constructors
 
@@ -4846,6 +4902,9 @@ export namespace GData {
     }
 
     namespace DocumentsDocument {
+        // Signal signatures
+        interface SignalSignatures extends DocumentsEntry.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DocumentsEntry.ConstructorProps, AccessHandler.ConstructorProps {}
@@ -4856,6 +4915,7 @@ export namespace GData {
      */
     class DocumentsDocument extends DocumentsEntry implements AccessHandler {
         static $gtype: GObject.GType<DocumentsDocument>;
+        declare static readonly __signalSignatures: DocumentsDocument.SignalSignatures;
 
         // Constructors
 
@@ -5246,6 +5306,9 @@ export namespace GData {
     }
 
     namespace DocumentsDrawing {
+        // Signal signatures
+        interface SignalSignatures extends DocumentsDocument.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DocumentsDocument.ConstructorProps, AccessHandler.ConstructorProps {}
@@ -5256,6 +5319,7 @@ export namespace GData {
      */
     class DocumentsDrawing extends DocumentsDocument implements AccessHandler {
         static $gtype: GObject.GType<DocumentsDrawing>;
+        declare static readonly __signalSignatures: DocumentsDrawing.SignalSignatures;
 
         // Constructors
 
@@ -5492,6 +5556,9 @@ export namespace GData {
     }
 
     namespace DocumentsDrive {
+        // Signal signatures
+        interface SignalSignatures extends Entry.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Entry.ConstructorProps {
@@ -5501,6 +5568,7 @@ export namespace GData {
 
     class DocumentsDrive extends Entry {
         static $gtype: GObject.GType<DocumentsDrive>;
+        declare static readonly __signalSignatures: DocumentsDrive.SignalSignatures;
 
         // Properties
 
@@ -5525,6 +5593,9 @@ export namespace GData {
     }
 
     namespace DocumentsDriveQuery {
+        // Signal signatures
+        interface SignalSignatures extends Query.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Query.ConstructorProps {}
@@ -5532,6 +5603,7 @@ export namespace GData {
 
     class DocumentsDriveQuery extends Query {
         static $gtype: GObject.GType<DocumentsDriveQuery>;
+        declare static readonly __signalSignatures: DocumentsDriveQuery.SignalSignatures;
 
         // Constructors
 
@@ -5543,6 +5615,9 @@ export namespace GData {
     }
 
     namespace DocumentsEntry {
+        // Signal signatures
+        interface SignalSignatures extends Entry.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Entry.ConstructorProps, AccessHandler.ConstructorProps {
@@ -5572,6 +5647,7 @@ export namespace GData {
      */
     abstract class DocumentsEntry extends Entry implements AccessHandler {
         static $gtype: GObject.GType<DocumentsEntry>;
+        declare static readonly __signalSignatures: DocumentsEntry.SignalSignatures;
 
         // Properties
 
@@ -6056,6 +6132,9 @@ export namespace GData {
     }
 
     namespace DocumentsFeed {
+        // Signal signatures
+        interface SignalSignatures extends Feed.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Feed.ConstructorProps {}
@@ -6066,6 +6145,7 @@ export namespace GData {
      */
     class DocumentsFeed extends Feed {
         static $gtype: GObject.GType<DocumentsFeed>;
+        declare static readonly __signalSignatures: DocumentsFeed.SignalSignatures;
 
         // Constructors
 
@@ -6075,6 +6155,9 @@ export namespace GData {
     }
 
     namespace DocumentsFolder {
+        // Signal signatures
+        interface SignalSignatures extends DocumentsEntry.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DocumentsEntry.ConstructorProps, AccessHandler.ConstructorProps {}
@@ -6085,6 +6168,7 @@ export namespace GData {
      */
     class DocumentsFolder extends DocumentsEntry implements AccessHandler {
         static $gtype: GObject.GType<DocumentsFolder>;
+        declare static readonly __signalSignatures: DocumentsFolder.SignalSignatures;
 
         // Constructors
 
@@ -6384,6 +6468,9 @@ export namespace GData {
     }
 
     namespace DocumentsMetadata {
+        // Signal signatures
+        interface SignalSignatures extends Parsable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps {
@@ -6399,6 +6486,7 @@ export namespace GData {
      */
     class DocumentsMetadata extends Parsable {
         static $gtype: GObject.GType<DocumentsMetadata>;
+        declare static readonly __signalSignatures: DocumentsMetadata.SignalSignatures;
 
         // Properties
 
@@ -6440,6 +6528,9 @@ export namespace GData {
     }
 
     namespace DocumentsPdf {
+        // Signal signatures
+        interface SignalSignatures extends DocumentsDocument.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DocumentsDocument.ConstructorProps, AccessHandler.ConstructorProps {}
@@ -6450,6 +6541,7 @@ export namespace GData {
      */
     class DocumentsPdf extends DocumentsDocument implements AccessHandler {
         static $gtype: GObject.GType<DocumentsPdf>;
+        declare static readonly __signalSignatures: DocumentsPdf.SignalSignatures;
 
         // Constructors
 
@@ -6686,6 +6778,9 @@ export namespace GData {
     }
 
     namespace DocumentsPresentation {
+        // Signal signatures
+        interface SignalSignatures extends DocumentsDocument.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DocumentsDocument.ConstructorProps, AccessHandler.ConstructorProps {}
@@ -6696,6 +6791,7 @@ export namespace GData {
      */
     class DocumentsPresentation extends DocumentsDocument implements AccessHandler {
         static $gtype: GObject.GType<DocumentsPresentation>;
+        declare static readonly __signalSignatures: DocumentsPresentation.SignalSignatures;
 
         // Constructors
 
@@ -6932,6 +7028,9 @@ export namespace GData {
     }
 
     namespace DocumentsProperty {
+        // Signal signatures
+        interface SignalSignatures extends Parsable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps, Comparable.ConstructorProps {
@@ -6947,6 +7046,7 @@ export namespace GData {
      */
     class DocumentsProperty extends Parsable implements Comparable {
         static $gtype: GObject.GType<DocumentsProperty>;
+        declare static readonly __signalSignatures: DocumentsProperty.SignalSignatures;
 
         // Properties
 
@@ -7484,6 +7584,9 @@ export namespace GData {
     }
 
     namespace DocumentsQuery {
+        // Signal signatures
+        interface SignalSignatures extends Query.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Query.ConstructorProps {
@@ -7504,6 +7607,7 @@ export namespace GData {
      */
     class DocumentsQuery extends Query {
         static $gtype: GObject.GType<DocumentsQuery>;
+        declare static readonly __signalSignatures: DocumentsQuery.SignalSignatures;
 
         // Properties
 
@@ -7629,6 +7733,9 @@ export namespace GData {
     }
 
     namespace DocumentsService {
+        // Signal signatures
+        interface SignalSignatures extends Service.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Service.ConstructorProps, Batchable.ConstructorProps {}
@@ -7639,6 +7746,7 @@ export namespace GData {
      */
     class DocumentsService extends Service implements Batchable {
         static $gtype: GObject.GType<DocumentsService>;
+        declare static readonly __signalSignatures: DocumentsService.SignalSignatures;
 
         // Constructors
 
@@ -8778,6 +8886,9 @@ export namespace GData {
     }
 
     namespace DocumentsSpreadsheet {
+        // Signal signatures
+        interface SignalSignatures extends DocumentsDocument.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DocumentsDocument.ConstructorProps, AccessHandler.ConstructorProps {}
@@ -8788,6 +8899,7 @@ export namespace GData {
      */
     class DocumentsSpreadsheet extends DocumentsDocument implements AccessHandler {
         static $gtype: GObject.GType<DocumentsSpreadsheet>;
+        declare static readonly __signalSignatures: DocumentsSpreadsheet.SignalSignatures;
 
         // Constructors
 
@@ -9043,6 +9155,9 @@ export namespace GData {
     }
 
     namespace DocumentsText {
+        // Signal signatures
+        interface SignalSignatures extends DocumentsDocument.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DocumentsDocument.ConstructorProps, AccessHandler.ConstructorProps {}
@@ -9053,6 +9168,7 @@ export namespace GData {
      */
     class DocumentsText extends DocumentsDocument implements AccessHandler {
         static $gtype: GObject.GType<DocumentsText>;
+        declare static readonly __signalSignatures: DocumentsText.SignalSignatures;
 
         // Constructors
 
@@ -9289,6 +9405,9 @@ export namespace GData {
     }
 
     namespace DocumentsUploadQuery {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9302,6 +9421,7 @@ export namespace GData {
      */
     class DocumentsUploadQuery extends GObject.Object {
         static $gtype: GObject.GType<DocumentsUploadQuery>;
+        declare static readonly __signalSignatures: DocumentsUploadQuery.SignalSignatures;
 
         // Properties
 
@@ -9366,6 +9486,9 @@ export namespace GData {
     }
 
     namespace DownloadStream {
+        // Signal signatures
+        interface SignalSignatures extends Gio.InputStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gio.InputStream.ConstructorProps, Gio.Seekable.ConstructorProps {
@@ -9387,6 +9510,7 @@ export namespace GData {
      */
     class DownloadStream extends Gio.InputStream implements Gio.Seekable {
         static $gtype: GObject.GType<DownloadStream>;
+        declare static readonly __signalSignatures: DownloadStream.SignalSignatures;
 
         // Properties
 
@@ -10052,6 +10176,9 @@ export namespace GData {
     }
 
     namespace Entry {
+        // Signal signatures
+        interface SignalSignatures extends Parsable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps {
@@ -10075,6 +10202,7 @@ export namespace GData {
      */
     class Entry extends Parsable {
         static $gtype: GObject.GType<Entry>;
+        declare static readonly __signalSignatures: Entry.SignalSignatures;
 
         // Properties
 
@@ -10313,6 +10441,9 @@ export namespace GData {
     }
 
     namespace Feed {
+        // Signal signatures
+        interface SignalSignatures extends Parsable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps {
@@ -10341,6 +10472,7 @@ export namespace GData {
      */
     class Feed extends Parsable {
         static $gtype: GObject.GType<Feed>;
+        declare static readonly __signalSignatures: Feed.SignalSignatures;
 
         // Properties
 
@@ -10589,6 +10721,9 @@ export namespace GData {
     }
 
     namespace GContactCalendar {
+        // Signal signatures
+        interface SignalSignatures extends Parsable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps, Comparable.ConstructorProps {
@@ -10606,6 +10741,7 @@ export namespace GData {
      */
     class GContactCalendar extends Parsable implements Comparable {
         static $gtype: GObject.GType<GContactCalendar>;
+        declare static readonly __signalSignatures: GContactCalendar.SignalSignatures;
 
         // Properties
 
@@ -11174,6 +11310,9 @@ export namespace GData {
     }
 
     namespace GContactEvent {
+        // Signal signatures
+        interface SignalSignatures extends Parsable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps {
@@ -11189,6 +11328,7 @@ export namespace GData {
      */
     class GContactEvent extends Parsable {
         static $gtype: GObject.GType<GContactEvent>;
+        declare static readonly __signalSignatures: GContactEvent.SignalSignatures;
 
         // Properties
 
@@ -11277,6 +11417,9 @@ export namespace GData {
     }
 
     namespace GContactExternalID {
+        // Signal signatures
+        interface SignalSignatures extends Parsable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps, Comparable.ConstructorProps {
@@ -11292,6 +11435,7 @@ export namespace GData {
      */
     class GContactExternalID extends Parsable implements Comparable {
         static $gtype: GObject.GType<GContactExternalID>;
+        declare static readonly __signalSignatures: GContactExternalID.SignalSignatures;
 
         // Properties
 
@@ -11834,6 +11978,9 @@ export namespace GData {
     }
 
     namespace GContactJot {
+        // Signal signatures
+        interface SignalSignatures extends Parsable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps {
@@ -11848,6 +11995,7 @@ export namespace GData {
      */
     class GContactJot extends Parsable {
         static $gtype: GObject.GType<GContactJot>;
+        declare static readonly __signalSignatures: GContactJot.SignalSignatures;
 
         // Properties
 
@@ -11910,6 +12058,9 @@ export namespace GData {
     }
 
     namespace GContactLanguage {
+        // Signal signatures
+        interface SignalSignatures extends Parsable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps, Comparable.ConstructorProps {
@@ -11923,6 +12074,7 @@ export namespace GData {
      */
     class GContactLanguage extends Parsable implements Comparable {
         static $gtype: GObject.GType<GContactLanguage>;
+        declare static readonly __signalSignatures: GContactLanguage.SignalSignatures;
 
         // Properties
 
@@ -12436,6 +12588,9 @@ export namespace GData {
     }
 
     namespace GContactRelation {
+        // Signal signatures
+        interface SignalSignatures extends Parsable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps {
@@ -12451,6 +12606,7 @@ export namespace GData {
      */
     class GContactRelation extends Parsable {
         static $gtype: GObject.GType<GContactRelation>;
+        declare static readonly __signalSignatures: GContactRelation.SignalSignatures;
 
         // Properties
 
@@ -12539,6 +12695,9 @@ export namespace GData {
     }
 
     namespace GContactWebsite {
+        // Signal signatures
+        interface SignalSignatures extends Parsable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps, Comparable.ConstructorProps {
@@ -12556,6 +12715,7 @@ export namespace GData {
      */
     class GContactWebsite extends Parsable implements Comparable {
         static $gtype: GObject.GType<GContactWebsite>;
+        declare static readonly __signalSignatures: GContactWebsite.SignalSignatures;
 
         // Properties
 
@@ -13120,6 +13280,9 @@ export namespace GData {
     }
 
     namespace GDEmailAddress {
+        // Signal signatures
+        interface SignalSignatures extends Parsable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps, Comparable.ConstructorProps {
@@ -13139,6 +13302,7 @@ export namespace GData {
      */
     class GDEmailAddress extends Parsable implements Comparable {
         static $gtype: GObject.GType<GDEmailAddress>;
+        declare static readonly __signalSignatures: GDEmailAddress.SignalSignatures;
 
         // Properties
 
@@ -13730,6 +13894,9 @@ export namespace GData {
     }
 
     namespace GDIMAddress {
+        // Signal signatures
+        interface SignalSignatures extends Parsable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps, Comparable.ConstructorProps {
@@ -13748,6 +13915,7 @@ export namespace GData {
      */
     class GDIMAddress extends Parsable implements Comparable {
         static $gtype: GObject.GType<GDIMAddress>;
+        declare static readonly __signalSignatures: GDIMAddress.SignalSignatures;
 
         // Properties
 
@@ -14330,6 +14498,9 @@ export namespace GData {
     }
 
     namespace GDName {
+        // Signal signatures
+        interface SignalSignatures extends Parsable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps, Comparable.ConstructorProps {
@@ -14351,6 +14522,7 @@ export namespace GData {
      */
     class GDName extends Parsable implements Comparable {
         static $gtype: GObject.GType<GDName>;
+        declare static readonly __signalSignatures: GDName.SignalSignatures;
 
         // Properties
 
@@ -14964,6 +15136,9 @@ export namespace GData {
     }
 
     namespace GDOrganization {
+        // Signal signatures
+        interface SignalSignatures extends Parsable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps, Comparable.ConstructorProps {
@@ -14987,6 +15162,7 @@ export namespace GData {
      */
     class GDOrganization extends Parsable implements Comparable {
         static $gtype: GObject.GType<GDOrganization>;
+        declare static readonly __signalSignatures: GDOrganization.SignalSignatures;
 
         // Properties
 
@@ -15662,6 +15838,9 @@ export namespace GData {
     }
 
     namespace GDPhoneNumber {
+        // Signal signatures
+        interface SignalSignatures extends Parsable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps, Comparable.ConstructorProps {
@@ -15680,6 +15859,7 @@ export namespace GData {
      */
     class GDPhoneNumber extends Parsable implements Comparable {
         static $gtype: GObject.GType<GDPhoneNumber>;
+        declare static readonly __signalSignatures: GDPhoneNumber.SignalSignatures;
 
         // Properties
 
@@ -16264,6 +16444,9 @@ export namespace GData {
     }
 
     namespace GDPostalAddress {
+        // Signal signatures
+        interface SignalSignatures extends Parsable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps, Comparable.ConstructorProps {
@@ -16298,6 +16481,7 @@ export namespace GData {
      */
     class GDPostalAddress extends Parsable implements Comparable {
         static $gtype: GObject.GType<GDPostalAddress>;
+        declare static readonly __signalSignatures: GDPostalAddress.SignalSignatures;
 
         // Properties
 
@@ -17149,6 +17333,9 @@ export namespace GData {
     }
 
     namespace GDReminder {
+        // Signal signatures
+        interface SignalSignatures extends Parsable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps, Comparable.ConstructorProps {
@@ -17167,6 +17354,7 @@ export namespace GData {
      */
     class GDReminder extends Parsable implements Comparable {
         static $gtype: GObject.GType<GDReminder>;
+        declare static readonly __signalSignatures: GDReminder.SignalSignatures;
 
         // Properties
 
@@ -17728,6 +17916,9 @@ export namespace GData {
     }
 
     namespace GDWhen {
+        // Signal signatures
+        interface SignalSignatures extends Parsable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps, Comparable.ConstructorProps {
@@ -17747,6 +17938,7 @@ export namespace GData {
      */
     class GDWhen extends Parsable implements Comparable {
         static $gtype: GObject.GType<GDWhen>;
+        declare static readonly __signalSignatures: GDWhen.SignalSignatures;
 
         // Properties
 
@@ -18337,6 +18529,9 @@ export namespace GData {
     }
 
     namespace GDWhere {
+        // Signal signatures
+        interface SignalSignatures extends Parsable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps, Comparable.ConstructorProps {
@@ -18353,6 +18548,7 @@ export namespace GData {
      */
     class GDWhere extends Parsable implements Comparable {
         static $gtype: GObject.GType<GDWhere>;
+        declare static readonly __signalSignatures: GDWhere.SignalSignatures;
 
         // Properties
 
@@ -18902,6 +19098,9 @@ export namespace GData {
     }
 
     namespace GDWho {
+        // Signal signatures
+        interface SignalSignatures extends Parsable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps, Comparable.ConstructorProps {
@@ -18919,6 +19118,7 @@ export namespace GData {
      */
     class GDWho extends Parsable implements Comparable {
         static $gtype: GObject.GType<GDWho>;
+        declare static readonly __signalSignatures: GDWho.SignalSignatures;
 
         // Properties
 
@@ -19480,6 +19680,9 @@ export namespace GData {
     }
 
     namespace Generator {
+        // Signal signatures
+        interface SignalSignatures extends Parsable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps, Comparable.ConstructorProps {
@@ -19494,6 +19697,7 @@ export namespace GData {
      */
     class Generator extends Parsable implements Comparable {
         static $gtype: GObject.GType<Generator>;
+        declare static readonly __signalSignatures: Generator.SignalSignatures;
 
         // Properties
 
@@ -20002,6 +20206,9 @@ export namespace GData {
     }
 
     namespace GoaAuthorizer {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Authorizer.ConstructorProps {
@@ -20015,6 +20222,7 @@ export namespace GData {
      */
     class GoaAuthorizer extends GObject.Object implements Authorizer {
         static $gtype: GObject.GType<GoaAuthorizer>;
+        declare static readonly __signalSignatures: GoaAuthorizer.SignalSignatures;
 
         // Properties
 
@@ -20691,6 +20899,9 @@ export namespace GData {
     }
 
     namespace Link {
+        // Signal signatures
+        interface SignalSignatures extends Parsable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps, Comparable.ConstructorProps {
@@ -20710,6 +20921,7 @@ export namespace GData {
      */
     class Link extends Parsable implements Comparable {
         static $gtype: GObject.GType<Link>;
+        declare static readonly __signalSignatures: Link.SignalSignatures;
 
         // Properties
 
@@ -21325,6 +21537,9 @@ export namespace GData {
     }
 
     namespace MediaCategory {
+        // Signal signatures
+        interface SignalSignatures extends Parsable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps {
@@ -21339,6 +21554,7 @@ export namespace GData {
      */
     class MediaCategory extends Parsable {
         static $gtype: GObject.GType<MediaCategory>;
+        declare static readonly __signalSignatures: MediaCategory.SignalSignatures;
 
         // Properties
 
@@ -21411,6 +21627,9 @@ export namespace GData {
     }
 
     namespace MediaContent {
+        // Signal signatures
+        interface SignalSignatures extends Parsable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps {
@@ -21433,6 +21652,7 @@ export namespace GData {
      */
     class MediaContent extends Parsable {
         static $gtype: GObject.GType<MediaContent>;
+        declare static readonly __signalSignatures: MediaContent.SignalSignatures;
 
         // Properties
 
@@ -21570,6 +21790,9 @@ export namespace GData {
     }
 
     namespace MediaCredit {
+        // Signal signatures
+        interface SignalSignatures extends Parsable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps {
@@ -21584,6 +21807,7 @@ export namespace GData {
      */
     class MediaCredit extends Parsable {
         static $gtype: GObject.GType<MediaCredit>;
+        declare static readonly __signalSignatures: MediaCredit.SignalSignatures;
 
         // Properties
 
@@ -21632,6 +21856,9 @@ export namespace GData {
     }
 
     namespace MediaThumbnail {
+        // Signal signatures
+        interface SignalSignatures extends Parsable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps {
@@ -21647,6 +21874,7 @@ export namespace GData {
      */
     class MediaThumbnail extends Parsable {
         static $gtype: GObject.GType<MediaThumbnail>;
+        declare static readonly __signalSignatures: MediaThumbnail.SignalSignatures;
 
         // Properties
 
@@ -21721,6 +21949,9 @@ export namespace GData {
     }
 
     namespace OAuth2Authorizer {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Authorizer.ConstructorProps {
@@ -21744,6 +21975,7 @@ export namespace GData {
      */
     class OAuth2Authorizer extends GObject.Object implements Authorizer {
         static $gtype: GObject.GType<OAuth2Authorizer>;
+        declare static readonly __signalSignatures: OAuth2Authorizer.SignalSignatures;
 
         // Properties
 
@@ -22730,6 +22962,9 @@ export namespace GData {
     }
 
     namespace Parsable {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -22743,6 +22978,7 @@ export namespace GData {
      */
     abstract class Parsable extends GObject.Object {
         static $gtype: GObject.GType<Parsable>;
+        declare static readonly __signalSignatures: Parsable.SignalSignatures;
 
         // Properties
 
@@ -22799,6 +23035,9 @@ export namespace GData {
     }
 
     namespace PicasaWebAlbum {
+        // Signal signatures
+        interface SignalSignatures extends Entry.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Entry.ConstructorProps {
@@ -22831,6 +23070,7 @@ export namespace GData {
      */
     class PicasaWebAlbum extends Entry {
         static $gtype: GObject.GType<PicasaWebAlbum>;
+        declare static readonly __signalSignatures: PicasaWebAlbum.SignalSignatures;
 
         // Properties
 
@@ -23120,6 +23360,9 @@ export namespace GData {
     }
 
     namespace PicasaWebComment {
+        // Signal signatures
+        interface SignalSignatures extends Comment.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Comment.ConstructorProps {}
@@ -23130,6 +23373,7 @@ export namespace GData {
      */
     class PicasaWebComment extends Comment {
         static $gtype: GObject.GType<PicasaWebComment>;
+        declare static readonly __signalSignatures: PicasaWebComment.SignalSignatures;
 
         // Constructors
 
@@ -23144,6 +23388,9 @@ export namespace GData {
     }
 
     namespace PicasaWebFeed {
+        // Signal signatures
+        interface SignalSignatures extends Feed.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Feed.ConstructorProps {}
@@ -23154,6 +23401,7 @@ export namespace GData {
      */
     class PicasaWebFeed extends Feed {
         static $gtype: GObject.GType<PicasaWebFeed>;
+        declare static readonly __signalSignatures: PicasaWebFeed.SignalSignatures;
 
         // Constructors
 
@@ -23163,6 +23411,9 @@ export namespace GData {
     }
 
     namespace PicasaWebFile {
+        // Signal signatures
+        interface SignalSignatures extends Entry.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Entry.ConstructorProps, Commentable.ConstructorProps {
@@ -23208,6 +23459,7 @@ export namespace GData {
      */
     class PicasaWebFile extends Entry implements Commentable {
         static $gtype: GObject.GType<PicasaWebFile>;
+        declare static readonly __signalSignatures: PicasaWebFile.SignalSignatures;
 
         // Properties
 
@@ -24124,6 +24376,9 @@ export namespace GData {
     }
 
     namespace PicasaWebQuery {
+        // Signal signatures
+        interface SignalSignatures extends Query.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Query.ConstructorProps {
@@ -24142,6 +24397,7 @@ export namespace GData {
      */
     class PicasaWebQuery extends Query {
         static $gtype: GObject.GType<PicasaWebQuery>;
+        declare static readonly __signalSignatures: PicasaWebQuery.SignalSignatures;
 
         // Properties
 
@@ -24284,6 +24540,9 @@ export namespace GData {
     }
 
     namespace PicasaWebService {
+        // Signal signatures
+        interface SignalSignatures extends Service.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Service.ConstructorProps {}
@@ -24294,6 +24553,7 @@ export namespace GData {
      */
     class PicasaWebService extends Service {
         static $gtype: GObject.GType<PicasaWebService>;
+        declare static readonly __signalSignatures: PicasaWebService.SignalSignatures;
 
         // Constructors
 
@@ -24525,6 +24785,9 @@ export namespace GData {
     }
 
     namespace PicasaWebUser {
+        // Signal signatures
+        interface SignalSignatures extends Entry.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Entry.ConstructorProps {
@@ -24546,6 +24809,7 @@ export namespace GData {
      */
     class PicasaWebUser extends Entry {
         static $gtype: GObject.GType<PicasaWebUser>;
+        declare static readonly __signalSignatures: PicasaWebUser.SignalSignatures;
 
         // Properties
 
@@ -24659,6 +24923,9 @@ export namespace GData {
     }
 
     namespace Query {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -24688,6 +24955,7 @@ export namespace GData {
      */
     class Query extends GObject.Object {
         static $gtype: GObject.GType<Query>;
+        declare static readonly __signalSignatures: Query.SignalSignatures;
 
         // Properties
 
@@ -25004,6 +25272,9 @@ export namespace GData {
     }
 
     namespace Service {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -25020,6 +25291,7 @@ export namespace GData {
      */
     class Service extends GObject.Object {
         static $gtype: GObject.GType<Service>;
+        declare static readonly __signalSignatures: Service.SignalSignatures;
 
         // Properties
 
@@ -25641,6 +25913,9 @@ export namespace GData {
     }
 
     namespace TasksQuery {
+        // Signal signatures
+        interface SignalSignatures extends Query.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Query.ConstructorProps {
@@ -25666,6 +25941,7 @@ export namespace GData {
      */
     class TasksQuery extends Query {
         static $gtype: GObject.GType<TasksQuery>;
+        declare static readonly __signalSignatures: TasksQuery.SignalSignatures;
 
         // Properties
 
@@ -25843,6 +26119,9 @@ export namespace GData {
     }
 
     namespace TasksService {
+        // Signal signatures
+        interface SignalSignatures extends Service.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Service.ConstructorProps {}
@@ -25853,6 +26132,7 @@ export namespace GData {
      */
     class TasksService extends Service {
         static $gtype: GObject.GType<TasksService>;
+        declare static readonly __signalSignatures: TasksService.SignalSignatures;
 
         // Constructors
 
@@ -26117,6 +26397,9 @@ export namespace GData {
     }
 
     namespace TasksTask {
+        // Signal signatures
+        interface SignalSignatures extends Entry.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Entry.ConstructorProps {
@@ -26138,6 +26421,7 @@ export namespace GData {
      */
     class TasksTask extends Entry {
         static $gtype: GObject.GType<TasksTask>;
+        declare static readonly __signalSignatures: TasksTask.SignalSignatures;
 
         // Properties
 
@@ -26296,6 +26580,9 @@ export namespace GData {
     }
 
     namespace TasksTasklist {
+        // Signal signatures
+        interface SignalSignatures extends Entry.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Entry.ConstructorProps {}
@@ -26306,6 +26593,7 @@ export namespace GData {
      */
     class TasksTasklist extends Entry {
         static $gtype: GObject.GType<TasksTasklist>;
+        declare static readonly __signalSignatures: TasksTasklist.SignalSignatures;
 
         // Constructors
 
@@ -26317,6 +26605,9 @@ export namespace GData {
     }
 
     namespace UploadStream {
+        // Signal signatures
+        interface SignalSignatures extends Gio.OutputStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gio.OutputStream.ConstructorProps {
@@ -26341,6 +26632,7 @@ export namespace GData {
      */
     class UploadStream extends Gio.OutputStream {
         static $gtype: GObject.GType<UploadStream>;
+        declare static readonly __signalSignatures: UploadStream.SignalSignatures;
 
         // Properties
 
@@ -26510,6 +26802,9 @@ export namespace GData {
     }
 
     namespace YouTubeCategory {
+        // Signal signatures
+        interface SignalSignatures extends Category.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Category.ConstructorProps, Comparable.ConstructorProps {
@@ -26525,6 +26820,7 @@ export namespace GData {
      */
     class YouTubeCategory extends Category implements Comparable {
         static $gtype: GObject.GType<YouTubeCategory>;
+        declare static readonly __signalSignatures: YouTubeCategory.SignalSignatures;
 
         // Properties
 
@@ -27017,6 +27313,9 @@ export namespace GData {
     }
 
     namespace YouTubeComment {
+        // Signal signatures
+        interface SignalSignatures extends Comment.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Comment.ConstructorProps {
@@ -27030,6 +27329,7 @@ export namespace GData {
      */
     class YouTubeComment extends Comment {
         static $gtype: GObject.GType<YouTubeComment>;
+        declare static readonly __signalSignatures: YouTubeComment.SignalSignatures;
 
         // Properties
 
@@ -27080,6 +27380,9 @@ export namespace GData {
     }
 
     namespace YouTubeFeed {
+        // Signal signatures
+        interface SignalSignatures extends Feed.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Feed.ConstructorProps {}
@@ -27091,6 +27394,7 @@ export namespace GData {
      */
     class YouTubeFeed extends Feed {
         static $gtype: GObject.GType<YouTubeFeed>;
+        declare static readonly __signalSignatures: YouTubeFeed.SignalSignatures;
 
         // Constructors
 
@@ -27100,6 +27404,9 @@ export namespace GData {
     }
 
     namespace YouTubeQuery {
+        // Signal signatures
+        interface SignalSignatures extends Query.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Query.ConstructorProps {
@@ -27122,6 +27429,7 @@ export namespace GData {
      */
     class YouTubeQuery extends Query {
         static $gtype: GObject.GType<YouTubeQuery>;
+        declare static readonly __signalSignatures: YouTubeQuery.SignalSignatures;
 
         // Properties
 
@@ -27323,6 +27631,9 @@ export namespace GData {
     }
 
     namespace YouTubeService {
+        // Signal signatures
+        interface SignalSignatures extends Service.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Service.ConstructorProps, Batchable.ConstructorProps {
@@ -27336,6 +27647,7 @@ export namespace GData {
      */
     class YouTubeService extends Service implements Batchable {
         static $gtype: GObject.GType<YouTubeService>;
+        declare static readonly __signalSignatures: YouTubeService.SignalSignatures;
 
         // Properties
 
@@ -28201,6 +28513,9 @@ export namespace GData {
     }
 
     namespace YouTubeState {
+        // Signal signatures
+        interface SignalSignatures extends Parsable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Parsable.ConstructorProps {
@@ -28218,6 +28533,7 @@ export namespace GData {
      */
     class YouTubeState extends Parsable {
         static $gtype: GObject.GType<YouTubeState>;
+        declare static readonly __signalSignatures: YouTubeState.SignalSignatures;
 
         // Properties
 
@@ -28297,6 +28613,9 @@ export namespace GData {
     }
 
     namespace YouTubeVideo {
+        // Signal signatures
+        interface SignalSignatures extends Entry.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Entry.ConstructorProps, Commentable.ConstructorProps {
@@ -28336,6 +28655,7 @@ export namespace GData {
      */
     class YouTubeVideo extends Entry implements Commentable {
         static $gtype: GObject.GType<YouTubeVideo>;
+        declare static readonly __signalSignatures: YouTubeVideo.SignalSignatures;
 
         // Properties
 

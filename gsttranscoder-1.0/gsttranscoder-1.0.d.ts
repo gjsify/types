@@ -160,6 +160,9 @@ export namespace GstTranscoder {
      */
     function transcoder_state_get_name(state: TranscoderState | null): string;
     namespace Transcoder {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {
@@ -180,6 +183,7 @@ export namespace GstTranscoder {
 
     class Transcoder extends Gst.Object {
         static $gtype: GObject.GType<Transcoder>;
+        declare static readonly __signalSignatures: Transcoder.SignalSignatures;
 
         // Properties
 
@@ -329,6 +333,16 @@ export namespace GstTranscoder {
             (object: GLib.Error, p0: Gst.Structure): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            done: Done;
+            'duration-changed': DurationChanged;
+            error: Error;
+            'position-updated': PositionUpdated;
+            'state-changed': StateChanged;
+            warning: Warning;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -341,6 +355,7 @@ export namespace GstTranscoder {
      */
     class TranscoderSignalAdapter extends GObject.Object {
         static $gtype: GObject.GType<TranscoderSignalAdapter>;
+        declare static readonly __signalSignatures: TranscoderSignalAdapter.SignalSignatures;
 
         // Properties
 
@@ -357,6 +372,18 @@ export namespace GstTranscoder {
 
         // Signals
 
+        connect<K extends keyof TranscoderSignalAdapter.SignalSignatures>(
+            signal: K,
+            callback: TranscoderSignalAdapter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TranscoderSignalAdapter.SignalSignatures>(
+            signal: K,
+            callback: TranscoderSignalAdapter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TranscoderSignalAdapter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TranscoderSignalAdapter.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

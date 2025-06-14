@@ -1380,6 +1380,9 @@ export namespace Ggit {
         WD_UNTRACKED,
     }
     namespace Blame {
+        // Signal signatures
+        interface SignalSignatures extends Native.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Native.ConstructorProps {}
@@ -1390,6 +1393,7 @@ export namespace Ggit {
      */
     class Blame extends Native {
         static $gtype: GObject.GType<Blame>;
+        declare static readonly __signalSignatures: Blame.SignalSignatures;
 
         // Constructors
 
@@ -1431,6 +1435,9 @@ export namespace Ggit {
     }
 
     namespace Blob {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -1441,6 +1448,7 @@ export namespace Ggit {
      */
     class Blob extends Object {
         static $gtype: GObject.GType<Blob>;
+        declare static readonly __signalSignatures: Blob.SignalSignatures;
 
         // Constructors
 
@@ -1468,6 +1476,9 @@ export namespace Ggit {
     }
 
     namespace BlobOutputStream {
+        // Signal signatures
+        interface SignalSignatures extends Gio.OutputStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gio.OutputStream.ConstructorProps {
@@ -1480,6 +1491,7 @@ export namespace Ggit {
      */
     class BlobOutputStream extends Gio.OutputStream {
         static $gtype: GObject.GType<BlobOutputStream>;
+        declare static readonly __signalSignatures: BlobOutputStream.SignalSignatures;
 
         // Properties
 
@@ -1503,6 +1515,9 @@ export namespace Ggit {
     }
 
     namespace Branch {
+        // Signal signatures
+        interface SignalSignatures extends Ref.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Ref.ConstructorProps {}
@@ -1513,6 +1528,7 @@ export namespace Ggit {
      */
     class Branch extends Ref {
         static $gtype: GObject.GType<Branch>;
+        declare static readonly __signalSignatures: Branch.SignalSignatures;
 
         // Constructors
 
@@ -1560,6 +1576,9 @@ export namespace Ggit {
     }
 
     namespace CheckoutOptions {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1591,6 +1610,7 @@ export namespace Ggit {
      */
     class CheckoutOptions extends GObject.Object {
         static $gtype: GObject.GType<CheckoutOptions>;
+        declare static readonly __signalSignatures: CheckoutOptions.SignalSignatures;
 
         // Properties
 
@@ -1791,6 +1811,9 @@ export namespace Ggit {
     }
 
     namespace CherryPickOptions {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1807,6 +1830,7 @@ export namespace Ggit {
      */
     class CherryPickOptions extends GObject.Object {
         static $gtype: GObject.GType<CherryPickOptions>;
+        declare static readonly __signalSignatures: CherryPickOptions.SignalSignatures;
 
         // Properties
 
@@ -1864,6 +1888,9 @@ export namespace Ggit {
     }
 
     namespace CloneOptions {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1874,6 +1901,7 @@ export namespace Ggit {
      */
     class CloneOptions extends GObject.Object {
         static $gtype: GObject.GType<CloneOptions>;
+        declare static readonly __signalSignatures: CloneOptions.SignalSignatures;
 
         // Constructors
 
@@ -1938,6 +1966,9 @@ export namespace Ggit {
     }
 
     namespace Commit {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -1948,6 +1979,7 @@ export namespace Ggit {
      */
     class Commit extends Object {
         static $gtype: GObject.GType<Commit>;
+        declare static readonly __signalSignatures: Commit.SignalSignatures;
 
         // Constructors
 
@@ -2043,6 +2075,9 @@ export namespace Ggit {
     }
 
     namespace CommitParents {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2056,6 +2091,7 @@ export namespace Ggit {
      */
     class CommitParents extends GObject.Object {
         static $gtype: GObject.GType<CommitParents>;
+        declare static readonly __signalSignatures: CommitParents.SignalSignatures;
 
         // Properties
 
@@ -2092,6 +2128,9 @@ export namespace Ggit {
     }
 
     namespace Config {
+        // Signal signatures
+        interface SignalSignatures extends Native.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Native.ConstructorProps {}
@@ -2102,6 +2141,7 @@ export namespace Ggit {
      */
     class Config extends Native {
         static $gtype: GObject.GType<Config>;
+        declare static readonly __signalSignatures: Config.SignalSignatures;
 
         // Constructors
 
@@ -2253,6 +2293,9 @@ export namespace Ggit {
     }
 
     namespace Cred {
+        // Signal signatures
+        interface SignalSignatures extends Native.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Native.ConstructorProps {}
@@ -2263,6 +2306,7 @@ export namespace Ggit {
      */
     class Cred extends Native {
         static $gtype: GObject.GType<Cred>;
+        declare static readonly __signalSignatures: Cred.SignalSignatures;
 
         // Constructors
 
@@ -2272,6 +2316,9 @@ export namespace Ggit {
     }
 
     namespace CredPlaintext {
+        // Signal signatures
+        interface SignalSignatures extends Cred.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Cred.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -2285,6 +2332,7 @@ export namespace Ggit {
      */
     class CredPlaintext extends Cred implements Gio.Initable {
         static $gtype: GObject.GType<CredPlaintext>;
+        declare static readonly __signalSignatures: CredPlaintext.SignalSignatures;
 
         // Properties
 
@@ -2832,6 +2880,9 @@ export namespace Ggit {
     }
 
     namespace CredSshInteractive {
+        // Signal signatures
+        interface SignalSignatures extends Cred.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Cred.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -2844,6 +2895,7 @@ export namespace Ggit {
      */
     class CredSshInteractive extends Cred implements Gio.Initable {
         static $gtype: GObject.GType<CredSshInteractive>;
+        declare static readonly __signalSignatures: CredSshInteractive.SignalSignatures;
 
         // Properties
 
@@ -3393,6 +3445,9 @@ export namespace Ggit {
     }
 
     namespace CredSshKeyFromAgent {
+        // Signal signatures
+        interface SignalSignatures extends Cred.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Cred.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -3405,6 +3460,7 @@ export namespace Ggit {
      */
     class CredSshKeyFromAgent extends Cred implements Gio.Initable {
         static $gtype: GObject.GType<CredSshKeyFromAgent>;
+        declare static readonly __signalSignatures: CredSshKeyFromAgent.SignalSignatures;
 
         // Properties
 
@@ -3954,6 +4010,9 @@ export namespace Ggit {
     }
 
     namespace Diff {
+        // Signal signatures
+        interface SignalSignatures extends Native.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Native.ConstructorProps {
@@ -3966,6 +4025,7 @@ export namespace Ggit {
      */
     class Diff extends Native {
         static $gtype: GObject.GType<Diff>;
+        declare static readonly __signalSignatures: Diff.SignalSignatures;
 
         // Properties
 
@@ -4119,6 +4179,9 @@ export namespace Ggit {
     }
 
     namespace DiffFindOptions {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4140,6 +4203,7 @@ export namespace Ggit {
      */
     class DiffFindOptions extends GObject.Object {
         static $gtype: GObject.GType<DiffFindOptions>;
+        declare static readonly __signalSignatures: DiffFindOptions.SignalSignatures;
 
         // Properties
 
@@ -4240,6 +4304,9 @@ export namespace Ggit {
     }
 
     namespace DiffFormatEmailOptions {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4257,6 +4324,7 @@ export namespace Ggit {
 
     class DiffFormatEmailOptions extends GObject.Object {
         static $gtype: GObject.GType<DiffFormatEmailOptions>;
+        declare static readonly __signalSignatures: DiffFormatEmailOptions.SignalSignatures;
 
         // Properties
 
@@ -4362,6 +4430,9 @@ export namespace Ggit {
     }
 
     namespace DiffOptions {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4383,6 +4454,7 @@ export namespace Ggit {
      */
     class DiffOptions extends GObject.Object {
         static $gtype: GObject.GType<DiffOptions>;
+        declare static readonly __signalSignatures: DiffOptions.SignalSignatures;
 
         // Properties
 
@@ -4483,6 +4555,9 @@ export namespace Ggit {
     }
 
     namespace Index {
+        // Signal signatures
+        interface SignalSignatures extends Native.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Native.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -4495,6 +4570,7 @@ export namespace Ggit {
      */
     class Index extends Native implements Gio.Initable {
         static $gtype: GObject.GType<Index>;
+        declare static readonly __signalSignatures: Index.SignalSignatures;
 
         // Properties
 
@@ -5133,6 +5209,9 @@ export namespace Ggit {
     }
 
     namespace Mailmap {
+        // Signal signatures
+        interface SignalSignatures extends Native.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Native.ConstructorProps {}
@@ -5143,6 +5222,7 @@ export namespace Ggit {
      */
     class Mailmap extends Native {
         static $gtype: GObject.GType<Mailmap>;
+        declare static readonly __signalSignatures: Mailmap.SignalSignatures;
 
         // Constructors
 
@@ -5190,6 +5270,9 @@ export namespace Ggit {
     }
 
     namespace Native {
+        // Signal signatures
+        interface SignalSignatures extends ObjectFactoryBase.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ObjectFactoryBase.ConstructorProps {
@@ -5202,6 +5285,7 @@ export namespace Ggit {
      */
     abstract class Native extends ObjectFactoryBase {
         static $gtype: GObject.GType<Native>;
+        declare static readonly __signalSignatures: Native.SignalSignatures;
 
         // Properties
 
@@ -5215,6 +5299,9 @@ export namespace Ggit {
     }
 
     namespace Object {
+        // Signal signatures
+        interface SignalSignatures extends Native.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Native.ConstructorProps {}
@@ -5225,6 +5312,7 @@ export namespace Ggit {
      */
     abstract class Object extends Native {
         static $gtype: GObject.GType<Object>;
+        declare static readonly __signalSignatures: Object.SignalSignatures;
 
         // Constructors
 
@@ -5247,6 +5335,9 @@ export namespace Ggit {
     }
 
     namespace ObjectFactory {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5257,6 +5348,7 @@ export namespace Ggit {
      */
     class ObjectFactory extends GObject.Object {
         static $gtype: GObject.GType<ObjectFactory>;
+        declare static readonly __signalSignatures: ObjectFactory.SignalSignatures;
 
         // Constructors
 
@@ -5302,6 +5394,9 @@ export namespace Ggit {
     }
 
     namespace ObjectFactoryBase {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5312,6 +5407,7 @@ export namespace Ggit {
      */
     abstract class ObjectFactoryBase extends GObject.Object {
         static $gtype: GObject.GType<ObjectFactoryBase>;
+        declare static readonly __signalSignatures: ObjectFactoryBase.SignalSignatures;
 
         // Constructors
 
@@ -5321,6 +5417,9 @@ export namespace Ggit {
     }
 
     namespace ProxyOptions {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5331,6 +5430,7 @@ export namespace Ggit {
      */
     class ProxyOptions extends GObject.Object {
         static $gtype: GObject.GType<ProxyOptions>;
+        declare static readonly __signalSignatures: ProxyOptions.SignalSignatures;
 
         // Constructors
 
@@ -5342,6 +5442,9 @@ export namespace Ggit {
     }
 
     namespace PushOptions {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5355,6 +5458,7 @@ export namespace Ggit {
      */
     class PushOptions extends GObject.Object {
         static $gtype: GObject.GType<PushOptions>;
+        declare static readonly __signalSignatures: PushOptions.SignalSignatures;
 
         // Properties
 
@@ -5400,6 +5504,9 @@ export namespace Ggit {
     }
 
     namespace Rebase {
+        // Signal signatures
+        interface SignalSignatures extends Native.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Native.ConstructorProps {}
@@ -5410,6 +5517,7 @@ export namespace Ggit {
      */
     class Rebase extends Native {
         static $gtype: GObject.GType<Rebase>;
+        declare static readonly __signalSignatures: Rebase.SignalSignatures;
 
         // Constructors
 
@@ -5471,6 +5579,9 @@ export namespace Ggit {
     }
 
     namespace Ref {
+        // Signal signatures
+        interface SignalSignatures extends Native.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Native.ConstructorProps {}
@@ -5481,6 +5592,7 @@ export namespace Ggit {
      */
     class Ref extends Native {
         static $gtype: GObject.GType<Ref>;
+        declare static readonly __signalSignatures: Ref.SignalSignatures;
 
         // Constructors
 
@@ -5658,6 +5770,9 @@ export namespace Ggit {
     }
 
     namespace Remote {
+        // Signal signatures
+        interface SignalSignatures extends Native.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Native.ConstructorProps {}
@@ -5668,6 +5783,7 @@ export namespace Ggit {
      */
     class Remote extends Native {
         static $gtype: GObject.GType<Remote>;
+        declare static readonly __signalSignatures: Remote.SignalSignatures;
 
         // Constructors
 
@@ -5803,6 +5919,14 @@ export namespace Ggit {
             (object: string, p0: OId, p1: OId): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            completion: Completion;
+            progress: Progress;
+            'transfer-progress': TransferProgress;
+            'update-tips': UpdateTips;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5813,6 +5937,7 @@ export namespace Ggit {
      */
     class RemoteCallbacks extends GObject.Object {
         static $gtype: GObject.GType<RemoteCallbacks>;
+        declare static readonly __signalSignatures: RemoteCallbacks.SignalSignatures;
 
         // Constructors
 
@@ -5822,6 +5947,18 @@ export namespace Ggit {
 
         // Signals
 
+        connect<K extends keyof RemoteCallbacks.SignalSignatures>(
+            signal: K,
+            callback: RemoteCallbacks.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RemoteCallbacks.SignalSignatures>(
+            signal: K,
+            callback: RemoteCallbacks.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RemoteCallbacks.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RemoteCallbacks.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -5851,6 +5988,9 @@ export namespace Ggit {
     }
 
     namespace Repository {
+        // Signal signatures
+        interface SignalSignatures extends Native.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Native.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -5872,6 +6012,7 @@ export namespace Ggit {
      */
     class Repository extends Native implements Gio.Initable {
         static $gtype: GObject.GType<Repository>;
+        declare static readonly __signalSignatures: Repository.SignalSignatures;
 
         // Properties
 
@@ -7234,6 +7375,9 @@ export namespace Ggit {
     }
 
     namespace RevisionWalker {
+        // Signal signatures
+        interface SignalSignatures extends Native.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Native.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -7246,6 +7390,7 @@ export namespace Ggit {
      */
     class RevisionWalker extends Native implements Gio.Initable {
         static $gtype: GObject.GType<RevisionWalker>;
+        declare static readonly __signalSignatures: RevisionWalker.SignalSignatures;
 
         // Properties
 
@@ -7895,6 +8040,9 @@ export namespace Ggit {
     }
 
     namespace Signature {
+        // Signal signatures
+        interface SignalSignatures extends Native.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Native.ConstructorProps {
@@ -7907,6 +8055,7 @@ export namespace Ggit {
      */
     class Signature extends Native {
         static $gtype: GObject.GType<Signature>;
+        declare static readonly __signalSignatures: Signature.SignalSignatures;
 
         // Properties
 
@@ -7953,6 +8102,9 @@ export namespace Ggit {
     }
 
     namespace SubmoduleUpdateOptions {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7968,6 +8120,7 @@ export namespace Ggit {
      */
     class SubmoduleUpdateOptions extends GObject.Object {
         static $gtype: GObject.GType<SubmoduleUpdateOptions>;
+        declare static readonly __signalSignatures: SubmoduleUpdateOptions.SignalSignatures;
 
         // Properties
 
@@ -8009,6 +8162,9 @@ export namespace Ggit {
     }
 
     namespace Tag {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -8019,6 +8175,7 @@ export namespace Ggit {
      */
     class Tag extends Object {
         static $gtype: GObject.GType<Tag>;
+        declare static readonly __signalSignatures: Tag.SignalSignatures;
 
         // Constructors
 
@@ -8070,6 +8227,9 @@ export namespace Ggit {
     }
 
     namespace Tree {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -8080,6 +8240,7 @@ export namespace Ggit {
      */
     class Tree extends Object {
         static $gtype: GObject.GType<Tree>;
+        declare static readonly __signalSignatures: Tree.SignalSignatures;
 
         // Constructors
 
@@ -8129,6 +8290,9 @@ export namespace Ggit {
     }
 
     namespace TreeBuilder {
+        // Signal signatures
+        interface SignalSignatures extends Native.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Native.ConstructorProps {}
@@ -8139,6 +8303,7 @@ export namespace Ggit {
      */
     class TreeBuilder extends Native {
         static $gtype: GObject.GType<TreeBuilder>;
+        declare static readonly __signalSignatures: TreeBuilder.SignalSignatures;
 
         // Constructors
 

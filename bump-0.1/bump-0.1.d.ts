@@ -31,6 +31,11 @@ export namespace Bump {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gee.PriorityQueue.SignalSignatures {
+            'consumer-shortage': ConsumerShortage;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gee.PriorityQueue.ConstructorProps {
@@ -47,6 +52,7 @@ export namespace Bump {
 
     class AsyncPriorityQueue extends Gee.PriorityQueue {
         static $gtype: GObject.GType<AsyncPriorityQueue>;
+        declare static readonly __signalSignatures: AsyncPriorityQueue.SignalSignatures;
 
         // Properties
 
@@ -78,6 +84,18 @@ export namespace Bump {
 
         // Signals
 
+        connect<K extends keyof AsyncPriorityQueue.SignalSignatures>(
+            signal: K,
+            callback: AsyncPriorityQueue.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AsyncPriorityQueue.SignalSignatures>(
+            signal: K,
+            callback: AsyncPriorityQueue.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AsyncPriorityQueue.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AsyncPriorityQueue.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -94,6 +112,9 @@ export namespace Bump {
     }
 
     namespace Claim {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -112,6 +133,7 @@ export namespace Bump {
 
     class Claim extends GObject.Object implements Gio.Initable, Gio.AsyncInitable<Claim> {
         static $gtype: GObject.GType<Claim>;
+        declare static readonly __signalSignatures: Claim.SignalSignatures;
 
         // Properties
 
@@ -621,6 +643,9 @@ export namespace Bump {
     }
 
     namespace Event {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         interface Callback {
             (
                 a_type: GObject.GType,
@@ -652,6 +677,7 @@ export namespace Bump {
 
     class Event extends GObject.Object {
         static $gtype: GObject.GType<Event>;
+        declare static readonly __signalSignatures: Event.SignalSignatures;
 
         // Properties
 
@@ -745,6 +771,9 @@ export namespace Bump {
     }
 
     namespace Factory {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -759,6 +788,7 @@ export namespace Bump {
 
     abstract class Factory extends GObject.Object {
         static $gtype: GObject.GType<Factory>;
+        declare static readonly __signalSignatures: Factory.SignalSignatures;
 
         // Properties
 
@@ -853,6 +883,9 @@ export namespace Bump {
     }
 
     namespace Lazy {
+        // Signal signatures
+        interface SignalSignatures extends Factory.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Factory.ConstructorProps {
@@ -871,6 +904,7 @@ export namespace Bump {
 
     class Lazy extends Factory {
         static $gtype: GObject.GType<Lazy>;
+        declare static readonly __signalSignatures: Lazy.SignalSignatures;
 
         // Properties
 
@@ -901,6 +935,9 @@ export namespace Bump {
     }
 
     namespace ResourceClaim {
+        // Signal signatures
+        interface SignalSignatures extends Claim.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Claim.ConstructorProps {
@@ -917,6 +954,7 @@ export namespace Bump {
 
     class ResourceClaim extends Claim {
         static $gtype: GObject.GType<ResourceClaim>;
+        declare static readonly __signalSignatures: ResourceClaim.SignalSignatures;
 
         // Properties
 
@@ -947,6 +985,9 @@ export namespace Bump {
     }
 
     namespace ResourcePool {
+        // Signal signatures
+        interface SignalSignatures extends Factory.SignalSignatures {}
+
         interface Callback {
             (
                 t_type: GObject.GType,
@@ -982,6 +1023,7 @@ export namespace Bump {
 
     class ResourcePool extends Factory {
         static $gtype: GObject.GType<ResourcePool>;
+        declare static readonly __signalSignatures: ResourcePool.SignalSignatures;
 
         // Properties
 
@@ -1100,6 +1142,9 @@ export namespace Bump {
     }
 
     namespace Semaphore {
+        // Signal signatures
+        interface SignalSignatures extends TaskQueue.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends TaskQueue.ConstructorProps {
@@ -1112,6 +1157,7 @@ export namespace Bump {
 
     class Semaphore extends TaskQueue {
         static $gtype: GObject.GType<Semaphore>;
+        declare static readonly __signalSignatures: Semaphore.SignalSignatures;
 
         // Properties
 
@@ -1169,6 +1215,9 @@ export namespace Bump {
     }
 
     namespace SemaphoreClaim {
+        // Signal signatures
+        interface SignalSignatures extends Claim.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Claim.ConstructorProps {
@@ -1178,6 +1227,7 @@ export namespace Bump {
 
     class SemaphoreClaim extends Claim {
         static $gtype: GObject.GType<SemaphoreClaim>;
+        declare static readonly __signalSignatures: SemaphoreClaim.SignalSignatures;
 
         // Properties
 
@@ -1195,6 +1245,9 @@ export namespace Bump {
     }
 
     namespace TaskQueue {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1205,6 +1258,7 @@ export namespace Bump {
 
     class TaskQueue extends GObject.Object implements Queue, Threading {
         static $gtype: GObject.GType<TaskQueue>;
+        declare static readonly __signalSignatures: TaskQueue.SignalSignatures;
 
         // Constructors
 

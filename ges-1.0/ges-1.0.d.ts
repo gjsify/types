@@ -1231,6 +1231,9 @@ export namespace GES {
         CUSTOM,
     }
     namespace Asset {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1346,6 +1349,7 @@ export namespace GES {
      */
     class Asset extends GObject.Object implements MetaContainer, Gio.AsyncInitable<Asset>, Gio.Initable {
         static $gtype: GObject.GType<Asset>;
+        declare static readonly __signalSignatures: Asset.SignalSignatures;
 
         // Properties
 
@@ -2737,6 +2741,9 @@ export namespace GES {
     }
 
     namespace AudioSource {
+        // Signal signatures
+        interface SignalSignatures extends Source.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2756,6 +2763,7 @@ export namespace GES {
      */
     abstract class AudioSource extends Source implements Extractable, MetaContainer {
         static $gtype: GObject.GType<AudioSource>;
+        declare static readonly __signalSignatures: AudioSource.SignalSignatures;
 
         // Constructors
 
@@ -3206,6 +3214,9 @@ export namespace GES {
     }
 
     namespace AudioTestSource {
+        // Signal signatures
+        interface SignalSignatures extends AudioSource.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3221,6 +3232,7 @@ export namespace GES {
      */
     class AudioTestSource extends AudioSource implements Extractable, MetaContainer {
         static $gtype: GObject.GType<AudioTestSource>;
+        declare static readonly __signalSignatures: AudioTestSource.SignalSignatures;
 
         // Constructors
 
@@ -3694,6 +3706,9 @@ export namespace GES {
     }
 
     namespace AudioTrack {
+        // Signal signatures
+        interface SignalSignatures extends Track.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3724,6 +3739,7 @@ export namespace GES {
      */
     class AudioTrack extends Track implements MetaContainer, Gst.ChildProxy {
         static $gtype: GObject.GType<AudioTrack>;
+        declare static readonly __signalSignatures: AudioTrack.SignalSignatures;
 
         // Constructors
 
@@ -4551,6 +4567,9 @@ export namespace GES {
     }
 
     namespace AudioTransition {
+        // Signal signatures
+        interface SignalSignatures extends Transition.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4561,6 +4580,7 @@ export namespace GES {
 
     class AudioTransition extends Transition implements Extractable, MetaContainer {
         static $gtype: GObject.GType<AudioTransition>;
+        declare static readonly __signalSignatures: AudioTransition.SignalSignatures;
 
         // Constructors
 
@@ -5013,6 +5033,9 @@ export namespace GES {
     }
 
     namespace AudioUriSource {
+        // Signal signatures
+        interface SignalSignatures extends AudioSource.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5030,6 +5053,7 @@ export namespace GES {
      */
     class AudioUriSource extends AudioSource implements Extractable, MetaContainer {
         static $gtype: GObject.GType<AudioUriSource>;
+        declare static readonly __signalSignatures: AudioUriSource.SignalSignatures;
 
         // Properties
 
@@ -5487,6 +5511,9 @@ export namespace GES {
     }
 
     namespace BaseEffect {
+        // Signal signatures
+        interface SignalSignatures extends Operation.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5548,6 +5575,7 @@ export namespace GES {
      */
     abstract class BaseEffect extends Operation implements Extractable, MetaContainer {
         static $gtype: GObject.GType<BaseEffect>;
+        declare static readonly __signalSignatures: BaseEffect.SignalSignatures;
 
         // Constructors
 
@@ -6052,6 +6080,9 @@ export namespace GES {
     }
 
     namespace BaseEffectClip {
+        // Signal signatures
+        interface SignalSignatures extends OperationClip.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6076,6 +6107,7 @@ export namespace GES {
      */
     abstract class BaseEffectClip extends OperationClip implements Extractable, MetaContainer {
         static $gtype: GObject.GType<BaseEffectClip>;
+        declare static readonly __signalSignatures: BaseEffectClip.SignalSignatures;
 
         // Constructors
 
@@ -6526,6 +6558,9 @@ export namespace GES {
     }
 
     namespace BaseTransitionClip {
+        // Signal signatures
+        interface SignalSignatures extends OperationClip.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6536,6 +6571,7 @@ export namespace GES {
 
     abstract class BaseTransitionClip extends OperationClip implements Extractable, MetaContainer {
         static $gtype: GObject.GType<BaseTransitionClip>;
+        declare static readonly __signalSignatures: BaseTransitionClip.SignalSignatures;
 
         // Constructors
 
@@ -6986,6 +7022,9 @@ export namespace GES {
     }
 
     namespace BaseXmlFormatter {
+        // Signal signatures
+        interface SignalSignatures extends Formatter.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Formatter.ConstructorProps, Extractable.ConstructorProps {}
@@ -6993,6 +7032,7 @@ export namespace GES {
 
     abstract class BaseXmlFormatter extends Formatter implements Extractable {
         static $gtype: GObject.GType<BaseXmlFormatter>;
+        declare static readonly __signalSignatures: BaseXmlFormatter.SignalSignatures;
 
         // Constructors
 
@@ -7062,6 +7102,9 @@ export namespace GES {
     }
 
     namespace Clip {
+        // Signal signatures
+        interface SignalSignatures extends Container.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7257,6 +7300,7 @@ export namespace GES {
      */
     abstract class Clip extends Container implements Extractable, MetaContainer {
         static $gtype: GObject.GType<Clip>;
+        declare static readonly __signalSignatures: Clip.SignalSignatures;
 
         // Properties
 
@@ -8115,6 +8159,9 @@ export namespace GES {
     }
 
     namespace ClipAsset {
+        // Signal signatures
+        interface SignalSignatures extends Asset.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -8134,6 +8181,7 @@ export namespace GES {
      */
     class ClipAsset extends Asset implements MetaContainer, Gio.AsyncInitable<ClipAsset>, Gio.Initable {
         static $gtype: GObject.GType<ClipAsset>;
+        declare static readonly __signalSignatures: ClipAsset.SignalSignatures;
 
         // Properties
 
@@ -9286,6 +9334,9 @@ export namespace GES {
     }
 
     namespace CommandLineFormatter {
+        // Signal signatures
+        interface SignalSignatures extends Formatter.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Formatter.ConstructorProps, Extractable.ConstructorProps {}
@@ -9293,6 +9344,7 @@ export namespace GES {
 
     class CommandLineFormatter extends Formatter implements Extractable {
         static $gtype: GObject.GType<CommandLineFormatter>;
+        declare static readonly __signalSignatures: CommandLineFormatter.SignalSignatures;
 
         // Constructors
 
@@ -9383,6 +9435,12 @@ export namespace GES {
             (element: TimelineElement): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends TimelineElement.SignalSignatures {
+            'child-added': ChildAdded;
+            'child-removed': ChildRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9405,6 +9463,7 @@ export namespace GES {
      */
     abstract class Container extends TimelineElement implements Extractable, MetaContainer {
         static $gtype: GObject.GType<Container>;
+        declare static readonly __signalSignatures: Container.SignalSignatures;
 
         // Properties
 
@@ -9430,6 +9489,15 @@ export namespace GES {
 
         // Signals
 
+        connect<K extends keyof Container.SignalSignatures>(signal: K, callback: Container.SignalSignatures[K]): number;
+        connect_after<K extends keyof Container.SignalSignatures>(
+            signal: K,
+            callback: Container.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Container.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Container.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -10462,6 +10530,13 @@ export namespace GES {
             (source: Gst.Element): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            discovered: Discovered;
+            'load-serialized-info': LoadSerializedInfo;
+            'source-setup': SourceSetup;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -10473,6 +10548,7 @@ export namespace GES {
 
     class DiscovererManager extends GObject.Object {
         static $gtype: GObject.GType<DiscovererManager>;
+        declare static readonly __signalSignatures: DiscovererManager.SignalSignatures;
 
         // Properties
 
@@ -10494,6 +10570,18 @@ export namespace GES {
 
         // Signals
 
+        connect<K extends keyof DiscovererManager.SignalSignatures>(
+            signal: K,
+            callback: DiscovererManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DiscovererManager.SignalSignatures>(
+            signal: K,
+            callback: DiscovererManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DiscovererManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DiscovererManager.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -10540,6 +10628,9 @@ export namespace GES {
     }
 
     namespace Effect {
+        // Signal signatures
+        interface SignalSignatures extends BaseEffect.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -10576,6 +10667,7 @@ export namespace GES {
      */
     class Effect extends BaseEffect implements Extractable, MetaContainer {
         static $gtype: GObject.GType<Effect>;
+        declare static readonly __signalSignatures: Effect.SignalSignatures;
 
         // Properties
 
@@ -11049,6 +11141,9 @@ export namespace GES {
     }
 
     namespace EffectAsset {
+        // Signal signatures
+        interface SignalSignatures extends TrackElementAsset.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -11064,6 +11159,7 @@ export namespace GES {
      */
     class EffectAsset extends TrackElementAsset implements MetaContainer, Gio.AsyncInitable<EffectAsset>, Gio.Initable {
         static $gtype: GObject.GType<EffectAsset>;
+        declare static readonly __signalSignatures: EffectAsset.SignalSignatures;
 
         // Constructors
 
@@ -11713,6 +11809,9 @@ export namespace GES {
     }
 
     namespace EffectClip {
+        // Signal signatures
+        interface SignalSignatures extends BaseEffectClip.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -11738,6 +11837,7 @@ export namespace GES {
      */
     class EffectClip extends BaseEffectClip implements Extractable, MetaContainer {
         static $gtype: GObject.GType<EffectClip>;
+        declare static readonly __signalSignatures: EffectClip.SignalSignatures;
 
         // Properties
 
@@ -12221,6 +12321,9 @@ export namespace GES {
     }
 
     namespace Formatter {
+        // Signal signatures
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps, Extractable.ConstructorProps {}
@@ -12231,6 +12334,7 @@ export namespace GES {
      */
     abstract class Formatter extends GObject.InitiallyUnowned implements Extractable {
         static $gtype: GObject.GType<Formatter>;
+        declare static readonly __signalSignatures: Formatter.SignalSignatures;
 
         // Constructors
 
@@ -12367,6 +12471,9 @@ export namespace GES {
     }
 
     namespace Group {
+        // Signal signatures
+        interface SignalSignatures extends Container.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -12421,6 +12528,7 @@ export namespace GES {
      */
     class Group extends Container implements Extractable, MetaContainer {
         static $gtype: GObject.GType<Group>;
+        declare static readonly __signalSignatures: Group.SignalSignatures;
 
         // Properties
 
@@ -12923,6 +13031,9 @@ export namespace GES {
     }
 
     namespace ImageSource {
+        // Signal signatures
+        interface SignalSignatures extends VideoSource.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -12940,6 +13051,7 @@ export namespace GES {
      */
     class ImageSource extends VideoSource implements Extractable, MetaContainer {
         static $gtype: GObject.GType<ImageSource>;
+        declare static readonly __signalSignatures: ImageSource.SignalSignatures;
 
         // Properties
 
@@ -13411,6 +13523,13 @@ export namespace GES {
             (clip: Clip): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
+            'active-changed': ActiveChanged;
+            'clip-added': ClipAdded;
+            'clip-removed': ClipRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -13445,6 +13564,7 @@ export namespace GES {
      */
     class Layer extends GObject.InitiallyUnowned implements Extractable, MetaContainer {
         static $gtype: GObject.GType<Layer>;
+        declare static readonly __signalSignatures: Layer.SignalSignatures;
 
         // Properties
 
@@ -13498,6 +13618,9 @@ export namespace GES {
 
         // Signals
 
+        connect<K extends keyof Layer.SignalSignatures>(signal: K, callback: Layer.SignalSignatures[K]): number;
+        connect_after<K extends keyof Layer.SignalSignatures>(signal: K, callback: Layer.SignalSignatures[K]): number;
+        emit<K extends keyof Layer.SignalSignatures>(signal: K, ...args: Parameters<Layer.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -14530,6 +14653,9 @@ export namespace GES {
     }
 
     namespace Marker {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, MetaContainer.ConstructorProps {
@@ -14542,6 +14668,7 @@ export namespace GES {
      */
     class Marker extends GObject.Object implements MetaContainer {
         static $gtype: GObject.GType<Marker>;
+        declare static readonly __signalSignatures: Marker.SignalSignatures;
 
         // Properties
 
@@ -15384,6 +15511,13 @@ export namespace GES {
             (marker: Marker): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'marker-added': MarkerAdded;
+            'marker-moved': MarkerMoved;
+            'marker-removed': MarkerRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -15396,6 +15530,7 @@ export namespace GES {
      */
     class MarkerList extends GObject.Object {
         static $gtype: GObject.GType<MarkerList>;
+        declare static readonly __signalSignatures: MarkerList.SignalSignatures;
 
         // Properties
 
@@ -15415,6 +15550,18 @@ export namespace GES {
 
         // Signals
 
+        connect<K extends keyof MarkerList.SignalSignatures>(
+            signal: K,
+            callback: MarkerList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MarkerList.SignalSignatures>(
+            signal: K,
+            callback: MarkerList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MarkerList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MarkerList.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -15459,6 +15606,9 @@ export namespace GES {
     }
 
     namespace MultiFileSource {
+        // Signal signatures
+        interface SignalSignatures extends VideoSource.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -15479,6 +15629,7 @@ export namespace GES {
      */
     class MultiFileSource extends VideoSource implements Extractable, MetaContainer {
         static $gtype: GObject.GType<MultiFileSource>;
+        declare static readonly __signalSignatures: MultiFileSource.SignalSignatures;
 
         // Properties
 
@@ -15947,6 +16098,9 @@ export namespace GES {
     }
 
     namespace Operation {
+        // Signal signatures
+        interface SignalSignatures extends TrackElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -15960,6 +16114,7 @@ export namespace GES {
      */
     abstract class Operation extends TrackElement implements Extractable, MetaContainer {
         static $gtype: GObject.GType<Operation>;
+        declare static readonly __signalSignatures: Operation.SignalSignatures;
 
         // Constructors
 
@@ -16410,6 +16565,9 @@ export namespace GES {
     }
 
     namespace OperationClip {
+        // Signal signatures
+        interface SignalSignatures extends Clip.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -16423,6 +16581,7 @@ export namespace GES {
      */
     abstract class OperationClip extends Clip implements Extractable, MetaContainer {
         static $gtype: GObject.GType<OperationClip>;
+        declare static readonly __signalSignatures: OperationClip.SignalSignatures;
 
         // Constructors
 
@@ -16873,6 +17032,9 @@ export namespace GES {
     }
 
     namespace OverlayClip {
+        // Signal signatures
+        interface SignalSignatures extends OperationClip.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -16891,6 +17053,7 @@ export namespace GES {
      */
     abstract class OverlayClip extends OperationClip implements Extractable, MetaContainer {
         static $gtype: GObject.GType<OverlayClip>;
+        declare static readonly __signalSignatures: OverlayClip.SignalSignatures;
 
         // Constructors
 
@@ -17341,6 +17504,9 @@ export namespace GES {
     }
 
     namespace Pipeline {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Pipeline.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -17375,6 +17541,7 @@ export namespace GES {
      */
     class Pipeline extends Gst.Pipeline implements Gst.ChildProxy, GstVideo.VideoOverlay {
         static $gtype: GObject.GType<Pipeline>;
+        declare static readonly __signalSignatures: Pipeline.SignalSignatures;
 
         // Properties
 
@@ -18086,6 +18253,9 @@ export namespace GES {
     }
 
     namespace PitiviFormatter {
+        // Signal signatures
+        interface SignalSignatures extends Formatter.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Formatter.ConstructorProps, Extractable.ConstructorProps {}
@@ -18097,6 +18267,7 @@ export namespace GES {
      */
     class PitiviFormatter extends Formatter implements Extractable {
         static $gtype: GObject.GType<PitiviFormatter>;
+        declare static readonly __signalSignatures: PitiviFormatter.SignalSignatures;
 
         // Constructors
 
@@ -18202,6 +18373,18 @@ export namespace GES {
             (error: GLib.Error, wrong_asset: Asset): string | null;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Asset.SignalSignatures {
+            'asset-added': AssetAdded;
+            'asset-loading': AssetLoading;
+            'asset-removed': AssetRemoved;
+            'error-loading': ErrorLoading;
+            'error-loading-asset': ErrorLoadingAsset;
+            loaded: Loaded;
+            loading: Loading;
+            'missing-uri': MissingUri;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -18256,6 +18439,7 @@ export namespace GES {
      */
     class Project extends Asset implements MetaContainer, Gio.AsyncInitable<Project>, Gio.Initable {
         static $gtype: GObject.GType<Project>;
+        declare static readonly __signalSignatures: Project.SignalSignatures;
 
         // Properties
 
@@ -18271,6 +18455,15 @@ export namespace GES {
 
         // Signals
 
+        connect<K extends keyof Project.SignalSignatures>(signal: K, callback: Project.SignalSignatures[K]): number;
+        connect_after<K extends keyof Project.SignalSignatures>(
+            signal: K,
+            callback: Project.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Project.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Project.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -19514,6 +19707,9 @@ export namespace GES {
     }
 
     namespace Source {
+        // Signal signatures
+        interface SignalSignatures extends TrackElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -19527,6 +19723,7 @@ export namespace GES {
      */
     class Source extends TrackElement implements Extractable, MetaContainer {
         static $gtype: GObject.GType<Source>;
+        declare static readonly __signalSignatures: Source.SignalSignatures;
 
         // Constructors
 
@@ -19991,6 +20188,9 @@ export namespace GES {
     }
 
     namespace SourceClip {
+        // Signal signatures
+        interface SignalSignatures extends Clip.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -20011,6 +20211,7 @@ export namespace GES {
      */
     class SourceClip extends Clip implements Extractable, MetaContainer {
         static $gtype: GObject.GType<SourceClip>;
+        declare static readonly __signalSignatures: SourceClip.SignalSignatures;
 
         // Constructors
 
@@ -20463,6 +20664,9 @@ export namespace GES {
     }
 
     namespace SourceClipAsset {
+        // Signal signatures
+        interface SignalSignatures extends ClipAsset.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -20477,6 +20681,7 @@ export namespace GES {
      */
     class SourceClipAsset extends ClipAsset implements MetaContainer, Gio.AsyncInitable<SourceClipAsset>, Gio.Initable {
         static $gtype: GObject.GType<SourceClipAsset>;
+        declare static readonly __signalSignatures: SourceClipAsset.SignalSignatures;
 
         // Constructors
 
@@ -21126,6 +21331,9 @@ export namespace GES {
     }
 
     namespace TestClip {
+        // Signal signatures
+        interface SignalSignatures extends SourceClip.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -21155,6 +21363,7 @@ export namespace GES {
      */
     class TestClip extends SourceClip implements Extractable, MetaContainer {
         static $gtype: GObject.GType<TestClip>;
+        declare static readonly __signalSignatures: TestClip.SignalSignatures;
 
         // Properties
 
@@ -21675,6 +21884,9 @@ export namespace GES {
     }
 
     namespace TextOverlay {
+        // Signal signatures
+        interface SignalSignatures extends Operation.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -21685,6 +21897,7 @@ export namespace GES {
 
     class TextOverlay extends Operation implements Extractable, MetaContainer {
         static $gtype: GObject.GType<TextOverlay>;
+        declare static readonly __signalSignatures: TextOverlay.SignalSignatures;
 
         // Constructors
 
@@ -22211,6 +22424,9 @@ export namespace GES {
     }
 
     namespace TextOverlayClip {
+        // Signal signatures
+        interface SignalSignatures extends OverlayClip.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -22233,6 +22449,7 @@ export namespace GES {
      */
     class TextOverlayClip extends OverlayClip implements Extractable, MetaContainer {
         static $gtype: GObject.GType<TextOverlayClip>;
+        declare static readonly __signalSignatures: TextOverlayClip.SignalSignatures;
 
         // Properties
 
@@ -22847,6 +23064,21 @@ export namespace GES {
             (track: Track): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gst.Bin.SignalSignatures {
+            commited: Commited;
+            'group-added': GroupAdded;
+            'group-removed': GroupRemoved;
+            'layer-added': LayerAdded;
+            'layer-removed': LayerRemoved;
+            'select-element-track': SelectElementTrack;
+            'select-tracks-for-object': SelectTracksForObject;
+            'snapping-ended': SnappingEnded;
+            'snapping-started': SnappingStarted;
+            'track-added': TrackAdded;
+            'track-removed': TrackRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -22971,6 +23203,7 @@ export namespace GES {
      */
     class Timeline extends Gst.Bin implements Extractable, MetaContainer, Gst.ChildProxy {
         static $gtype: GObject.GType<Timeline>;
+        declare static readonly __signalSignatures: Timeline.SignalSignatures;
 
         // Properties
 
@@ -23032,6 +23265,15 @@ export namespace GES {
 
         // Signals
 
+        connect<K extends keyof Timeline.SignalSignatures>(signal: K, callback: Timeline.SignalSignatures[K]): number;
+        connect_after<K extends keyof Timeline.SignalSignatures>(
+            signal: K,
+            callback: Timeline.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Timeline.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Timeline.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -24330,6 +24572,13 @@ export namespace GES {
             (prop_object: GObject.Object, prop: GObject.ParamSpec): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
+            'child-property-added': ChildPropertyAdded;
+            'child-property-removed': ChildPropertyRemoved;
+            'deep-notify': DeepNotify;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -24435,6 +24684,7 @@ export namespace GES {
      */
     abstract class TimelineElement extends GObject.InitiallyUnowned implements Extractable, MetaContainer {
         static $gtype: GObject.GType<TimelineElement>;
+        declare static readonly __signalSignatures: TimelineElement.SignalSignatures;
 
         // Properties
 
@@ -24568,6 +24818,18 @@ export namespace GES {
 
         // Signals
 
+        connect<K extends keyof TimelineElement.SignalSignatures>(
+            signal: K,
+            callback: TimelineElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TimelineElement.SignalSignatures>(
+            signal: K,
+            callback: TimelineElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TimelineElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TimelineElement.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -26067,6 +26329,9 @@ export namespace GES {
     }
 
     namespace TitleClip {
+        // Signal signatures
+        interface SignalSignatures extends SourceClip.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -26091,6 +26356,7 @@ export namespace GES {
      */
     class TitleClip extends SourceClip implements Extractable, MetaContainer {
         static $gtype: GObject.GType<TitleClip>;
+        declare static readonly __signalSignatures: TitleClip.SignalSignatures;
 
         // Properties
 
@@ -26674,6 +26940,9 @@ export namespace GES {
     }
 
     namespace TitleSource {
+        // Signal signatures
+        interface SignalSignatures extends VideoSource.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -26688,6 +26957,7 @@ export namespace GES {
      */
     class TitleSource extends VideoSource implements Extractable, MetaContainer {
         static $gtype: GObject.GType<TitleSource>;
+        declare static readonly __signalSignatures: TitleSource.SignalSignatures;
 
         // Constructors
 
@@ -27236,6 +27506,13 @@ export namespace GES {
             (effect: TrackElement): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gst.Bin.SignalSignatures {
+            commited: Commited;
+            'track-element-added': TrackElementAdded;
+            'track-element-removed': TrackElementRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -27276,6 +27553,7 @@ export namespace GES {
      */
     class Track extends Gst.Bin implements MetaContainer, Gst.ChildProxy {
         static $gtype: GObject.GType<Track>;
+        declare static readonly __signalSignatures: Track.SignalSignatures;
 
         // Properties
 
@@ -27381,6 +27659,9 @@ export namespace GES {
 
         // Signals
 
+        connect<K extends keyof Track.SignalSignatures>(signal: K, callback: Track.SignalSignatures[K]): number;
+        connect_after<K extends keyof Track.SignalSignatures>(signal: K, callback: Track.SignalSignatures[K]): number;
+        emit<K extends keyof Track.SignalSignatures>(signal: K, ...args: Parameters<Track.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -28415,6 +28696,12 @@ export namespace GES {
             (control_binding: Gst.ControlBinding): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends TimelineElement.SignalSignatures {
+            'control-binding-added': ControlBindingAdded;
+            'control-binding-removed': ControlBindingRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -28463,6 +28750,7 @@ export namespace GES {
      */
     abstract class TrackElement extends TimelineElement implements Extractable, MetaContainer {
         static $gtype: GObject.GType<TrackElement>;
+        declare static readonly __signalSignatures: TrackElement.SignalSignatures;
 
         // Properties
 
@@ -28605,6 +28893,18 @@ export namespace GES {
 
         // Signals
 
+        connect<K extends keyof TrackElement.SignalSignatures>(
+            signal: K,
+            callback: TrackElement.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TrackElement.SignalSignatures>(
+            signal: K,
+            callback: TrackElement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TrackElement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TrackElement.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -29708,6 +30008,9 @@ export namespace GES {
     }
 
     namespace TrackElementAsset {
+        // Signal signatures
+        interface SignalSignatures extends Asset.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -29722,6 +30025,7 @@ export namespace GES {
 
     class TrackElementAsset extends Asset implements MetaContainer, Gio.AsyncInitable<TrackElementAsset>, Gio.Initable {
         static $gtype: GObject.GType<TrackElementAsset>;
+        declare static readonly __signalSignatures: TrackElementAsset.SignalSignatures;
 
         // Properties
 
@@ -30860,6 +31164,9 @@ export namespace GES {
     }
 
     namespace Transition {
+        // Signal signatures
+        interface SignalSignatures extends Operation.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -30873,6 +31180,7 @@ export namespace GES {
      */
     abstract class Transition extends Operation implements Extractable, MetaContainer {
         static $gtype: GObject.GType<Transition>;
+        declare static readonly __signalSignatures: Transition.SignalSignatures;
 
         // Constructors
 
@@ -31323,6 +31631,9 @@ export namespace GES {
     }
 
     namespace TransitionClip {
+        // Signal signatures
+        interface SignalSignatures extends BaseTransitionClip.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -31349,6 +31660,7 @@ export namespace GES {
      */
     class TransitionClip extends BaseTransitionClip implements Extractable, MetaContainer {
         static $gtype: GObject.GType<TransitionClip>;
+        declare static readonly __signalSignatures: TransitionClip.SignalSignatures;
 
         // Properties
 
@@ -31811,6 +32123,9 @@ export namespace GES {
     }
 
     namespace UriClip {
+        // Signal signatures
+        interface SignalSignatures extends SourceClip.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -31832,6 +32147,7 @@ export namespace GES {
      */
     class UriClip extends SourceClip implements Extractable, MetaContainer {
         static $gtype: GObject.GType<UriClip>;
+        declare static readonly __signalSignatures: UriClip.SignalSignatures;
 
         // Properties
 
@@ -32335,6 +32651,9 @@ export namespace GES {
     }
 
     namespace UriClipAsset {
+        // Signal signatures
+        interface SignalSignatures extends SourceClipAsset.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -32350,6 +32669,7 @@ export namespace GES {
 
     class UriClipAsset extends SourceClipAsset implements MetaContainer, Gio.AsyncInitable<UriClipAsset>, Gio.Initable {
         static $gtype: GObject.GType<UriClipAsset>;
+        declare static readonly __signalSignatures: UriClipAsset.SignalSignatures;
 
         // Properties
 
@@ -33101,6 +33421,9 @@ export namespace GES {
     }
 
     namespace UriSourceAsset {
+        // Signal signatures
+        interface SignalSignatures extends TrackElementAsset.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -33121,6 +33444,7 @@ export namespace GES {
         implements MetaContainer, Gio.AsyncInitable<UriSourceAsset>, Gio.Initable
     {
         static $gtype: GObject.GType<UriSourceAsset>;
+        declare static readonly __signalSignatures: UriSourceAsset.SignalSignatures;
 
         // Constructors
 
@@ -33789,6 +34113,9 @@ export namespace GES {
     }
 
     namespace VideoSource {
+        // Signal signatures
+        interface SignalSignatures extends Source.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -33802,6 +34129,7 @@ export namespace GES {
      */
     abstract class VideoSource extends Source implements Extractable, MetaContainer {
         static $gtype: GObject.GType<VideoSource>;
+        declare static readonly __signalSignatures: VideoSource.SignalSignatures;
 
         // Constructors
 
@@ -34266,6 +34594,9 @@ export namespace GES {
     }
 
     namespace VideoTestSource {
+        // Signal signatures
+        interface SignalSignatures extends VideoSource.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -34281,6 +34612,7 @@ export namespace GES {
      */
     class VideoTestSource extends VideoSource implements Extractable, MetaContainer {
         static $gtype: GObject.GType<VideoTestSource>;
+        declare static readonly __signalSignatures: VideoTestSource.SignalSignatures;
 
         // Constructors
 
@@ -34744,6 +35076,9 @@ export namespace GES {
     }
 
     namespace VideoTrack {
+        // Signal signatures
+        interface SignalSignatures extends Track.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -34773,6 +35108,7 @@ export namespace GES {
      */
     class VideoTrack extends Track implements MetaContainer, Gst.ChildProxy {
         static $gtype: GObject.GType<VideoTrack>;
+        declare static readonly __signalSignatures: VideoTrack.SignalSignatures;
 
         // Constructors
 
@@ -35600,6 +35936,9 @@ export namespace GES {
     }
 
     namespace VideoTransition {
+        // Signal signatures
+        interface SignalSignatures extends Transition.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -35615,6 +35954,7 @@ export namespace GES {
 
     class VideoTransition extends Transition implements Extractable, MetaContainer {
         static $gtype: GObject.GType<VideoTransition>;
+        declare static readonly __signalSignatures: VideoTransition.SignalSignatures;
 
         // Properties
 
@@ -36126,6 +36466,9 @@ export namespace GES {
     }
 
     namespace VideoUriSource {
+        // Signal signatures
+        interface SignalSignatures extends VideoSource.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -36143,6 +36486,7 @@ export namespace GES {
      */
     class VideoUriSource extends VideoSource implements Extractable, MetaContainer {
         static $gtype: GObject.GType<VideoUriSource>;
+        declare static readonly __signalSignatures: VideoUriSource.SignalSignatures;
 
         // Properties
 
@@ -36600,6 +36944,9 @@ export namespace GES {
     }
 
     namespace XmlFormatter {
+        // Signal signatures
+        interface SignalSignatures extends BaseXmlFormatter.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends BaseXmlFormatter.ConstructorProps, Extractable.ConstructorProps {}
@@ -36607,6 +36954,7 @@ export namespace GES {
 
     class XmlFormatter extends BaseXmlFormatter implements Extractable {
         static $gtype: GObject.GType<XmlFormatter>;
+        declare static readonly __signalSignatures: XmlFormatter.SignalSignatures;
 
         // Constructors
 

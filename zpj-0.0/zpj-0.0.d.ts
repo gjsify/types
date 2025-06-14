@@ -147,6 +147,9 @@ export namespace Zpj {
     const SKYDRIVE_FOLDER_SKYDRIVE: string;
     function error_quark(): GLib.Quark;
     namespace AuthorizationDomain {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -158,6 +161,7 @@ export namespace Zpj {
 
     class AuthorizationDomain extends GObject.Object {
         static $gtype: GObject.GType<AuthorizationDomain>;
+        declare static readonly __signalSignatures: AuthorizationDomain.SignalSignatures;
 
         // Properties
 
@@ -178,6 +182,9 @@ export namespace Zpj {
     }
 
     namespace GoaAuthorizer {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Authorizer.ConstructorProps {}
@@ -189,6 +196,7 @@ export namespace Zpj {
      */
     class GoaAuthorizer extends GObject.Object implements Authorizer {
         static $gtype: GObject.GType<GoaAuthorizer>;
+        declare static readonly __signalSignatures: GoaAuthorizer.SignalSignatures;
 
         // Constructors
 
@@ -763,6 +771,9 @@ export namespace Zpj {
     }
 
     namespace Skydrive {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -776,6 +787,7 @@ export namespace Zpj {
      */
     class Skydrive extends GObject.Object {
         static $gtype: GObject.GType<Skydrive>;
+        declare static readonly __signalSignatures: Skydrive.SignalSignatures;
 
         // Properties
 
@@ -1177,6 +1189,9 @@ export namespace Zpj {
     }
 
     namespace SkydriveEntry {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1204,6 +1219,7 @@ export namespace Zpj {
      */
     abstract class SkydriveEntry extends GObject.Object {
         static $gtype: GObject.GType<SkydriveEntry>;
+        declare static readonly __signalSignatures: SkydriveEntry.SignalSignatures;
 
         // Properties
 
@@ -1303,6 +1319,9 @@ export namespace Zpj {
     }
 
     namespace SkydriveFile {
+        // Signal signatures
+        interface SignalSignatures extends SkydriveEntry.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SkydriveEntry.ConstructorProps {
@@ -1316,6 +1335,7 @@ export namespace Zpj {
      */
     class SkydriveFile extends SkydriveEntry {
         static $gtype: GObject.GType<SkydriveFile>;
+        declare static readonly __signalSignatures: SkydriveFile.SignalSignatures;
 
         // Properties
 
@@ -1341,6 +1361,9 @@ export namespace Zpj {
     }
 
     namespace SkydriveFolder {
+        // Signal signatures
+        interface SignalSignatures extends SkydriveEntry.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SkydriveEntry.ConstructorProps {}
@@ -1352,6 +1375,7 @@ export namespace Zpj {
      */
     class SkydriveFolder extends SkydriveEntry {
         static $gtype: GObject.GType<SkydriveFolder>;
+        declare static readonly __signalSignatures: SkydriveFolder.SignalSignatures;
 
         // Constructors
 
@@ -1363,6 +1387,9 @@ export namespace Zpj {
     }
 
     namespace SkydrivePhoto {
+        // Signal signatures
+        interface SignalSignatures extends SkydriveFile.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SkydriveFile.ConstructorProps {}
@@ -1374,6 +1401,7 @@ export namespace Zpj {
      */
     class SkydrivePhoto extends SkydriveFile {
         static $gtype: GObject.GType<SkydrivePhoto>;
+        declare static readonly __signalSignatures: SkydrivePhoto.SignalSignatures;
 
         // Constructors
 
@@ -1385,6 +1413,9 @@ export namespace Zpj {
     }
 
     namespace SkydriveVideo {
+        // Signal signatures
+        interface SignalSignatures extends SkydriveFile.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SkydriveFile.ConstructorProps {
@@ -1401,6 +1432,7 @@ export namespace Zpj {
      */
     class SkydriveVideo extends SkydriveFile {
         static $gtype: GObject.GType<SkydriveVideo>;
+        declare static readonly __signalSignatures: SkydriveVideo.SignalSignatures;
 
         // Properties
 

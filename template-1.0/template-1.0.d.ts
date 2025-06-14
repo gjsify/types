@@ -157,6 +157,9 @@ export namespace Template {
         (scope: Scope, name: string, symbol: Symbol): boolean;
     }
     namespace Template {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -166,6 +169,7 @@ export namespace Template {
 
     class Template extends GObject.Object {
         static $gtype: GObject.GType<Template>;
+        declare static readonly __signalSignatures: Template.SignalSignatures;
 
         // Properties
 
@@ -217,6 +221,9 @@ export namespace Template {
     }
 
     namespace TemplateLocator {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -233,6 +240,7 @@ export namespace Template {
      */
     class TemplateLocator extends GObject.Object {
         static $gtype: GObject.GType<TemplateLocator>;
+        declare static readonly __signalSignatures: TemplateLocator.SignalSignatures;
 
         // Constructors
 

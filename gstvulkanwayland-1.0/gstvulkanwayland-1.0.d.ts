@@ -25,6 +25,9 @@ export namespace GstVulkanWayland {
      */
 
     namespace VulkanDisplayWayland {
+        // Signal signatures
+        interface SignalSignatures extends GstVulkan.VulkanDisplay.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GstVulkan.VulkanDisplay.ConstructorProps {}
@@ -36,6 +39,7 @@ export namespace GstVulkanWayland {
      */
     class VulkanDisplayWayland extends GstVulkan.VulkanDisplay {
         static $gtype: GObject.GType<VulkanDisplayWayland>;
+        declare static readonly __signalSignatures: VulkanDisplayWayland.SignalSignatures;
 
         // Fields
 

@@ -352,6 +352,9 @@ export namespace GXml {
         IMPLEMENTATION_SPECIFIC,
     }
     namespace CssSelectorData {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -364,6 +367,7 @@ export namespace GXml {
 
     class CssSelectorData extends GObject.Object {
         static $gtype: GObject.GType<CssSelectorData>;
+        declare static readonly __signalSignatures: CssSelectorData.SignalSignatures;
 
         // Properties
 
@@ -399,6 +403,9 @@ export namespace GXml {
     }
 
     namespace CssSelectorParser {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -408,6 +415,7 @@ export namespace GXml {
 
     class CssSelectorParser extends GObject.Object {
         static $gtype: GObject.GType<CssSelectorParser>;
+        declare static readonly __signalSignatures: CssSelectorParser.SignalSignatures;
 
         // Properties
 
@@ -429,6 +437,9 @@ export namespace GXml {
     }
 
     namespace DomNodeFilter {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         interface AcceptNode {
             (node: Node): number;
         }
@@ -440,6 +451,7 @@ export namespace GXml {
 
     class DomNodeFilter extends GObject.Object {
         static $gtype: GObject.GType<DomNodeFilter>;
+        declare static readonly __signalSignatures: DomNodeFilter.SignalSignatures;
 
         // Constructors
 
@@ -451,6 +463,9 @@ export namespace GXml {
     }
 
     namespace DomElementList {
+        // Signal signatures
+        interface SignalSignatures extends Gee.ArrayList.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gee.ArrayList.ConstructorProps, DomHTMLCollection.ConstructorProps {}
@@ -458,6 +473,7 @@ export namespace GXml {
 
     class DomElementList extends Gee.ArrayList implements DomHTMLCollection {
         static $gtype: GObject.GType<DomElementList>;
+        declare static readonly __signalSignatures: DomElementList.SignalSignatures;
 
         // Constructors
 
@@ -929,6 +945,9 @@ export namespace GXml {
     }
 
     namespace DomEventInit {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -939,6 +958,7 @@ export namespace GXml {
 
     class DomEventInit extends GObject.Object {
         static $gtype: GObject.GType<DomEventInit>;
+        declare static readonly __signalSignatures: DomEventInit.SignalSignatures;
 
         // Properties
 
@@ -964,6 +984,9 @@ export namespace GXml {
     }
 
     namespace DomCustomEventInit {
+        // Signal signatures
+        interface SignalSignatures extends DomEventInit.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DomEventInit.ConstructorProps {
@@ -973,6 +996,7 @@ export namespace GXml {
 
     class DomCustomEventInit extends DomEventInit {
         static $gtype: GObject.GType<DomCustomEventInit>;
+        declare static readonly __signalSignatures: DomCustomEventInit.SignalSignatures;
 
         // Properties
 
@@ -994,6 +1018,9 @@ export namespace GXml {
     }
 
     namespace DomTimeStamp {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1003,6 +1030,7 @@ export namespace GXml {
 
     class DomTimeStamp extends GObject.Object {
         static $gtype: GObject.GType<DomTimeStamp>;
+        declare static readonly __signalSignatures: DomTimeStamp.SignalSignatures;
 
         // Properties
 
@@ -1025,6 +1053,9 @@ export namespace GXml {
     }
 
     namespace DomMutationObserverInit {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1045,6 +1076,7 @@ export namespace GXml {
 
     class DomMutationObserverInit extends GObject.Object {
         static $gtype: GObject.GType<DomMutationObserverInit>;
+        declare static readonly __signalSignatures: DomMutationObserverInit.SignalSignatures;
 
         // Properties
 
@@ -1100,6 +1132,9 @@ export namespace GXml {
     }
 
     namespace DomErrorName {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1107,6 +1142,7 @@ export namespace GXml {
 
     class DomErrorName extends GObject.Object {
         static $gtype: GObject.GType<DomErrorName>;
+        declare static readonly __signalSignatures: DomErrorName.SignalSignatures;
 
         // Constructors
 
@@ -1123,6 +1159,9 @@ export namespace GXml {
     }
 
     namespace ElementList {
+        // Signal signatures
+        interface SignalSignatures extends Gee.ArrayList.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gee.ArrayList.ConstructorProps, DomHTMLCollection.ConstructorProps {}
@@ -1130,6 +1169,7 @@ export namespace GXml {
 
     class ElementList extends Gee.ArrayList implements DomHTMLCollection {
         static $gtype: GObject.GType<ElementList>;
+        declare static readonly __signalSignatures: ElementList.SignalSignatures;
 
         // Constructors
 
@@ -1601,6 +1641,9 @@ export namespace GXml {
     }
 
     namespace GHtmlDocument {
+        // Signal signatures
+        interface SignalSignatures extends GDocument.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GDocument.ConstructorProps, DomHtmlDocument.ConstructorProps {
@@ -1611,6 +1654,7 @@ export namespace GXml {
 
     class GHtmlDocument extends GDocument implements DomHtmlDocument {
         static $gtype: GObject.GType<GHtmlDocument>;
+        declare static readonly __signalSignatures: GHtmlDocument.SignalSignatures;
 
         // Properties
 
@@ -2090,6 +2134,9 @@ export namespace GXml {
     }
 
     namespace GomAttr {
+        // Signal signatures
+        interface SignalSignatures extends GomNode.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomNode.ConstructorProps, DomAttr.ConstructorProps {}
@@ -2097,6 +2144,7 @@ export namespace GXml {
 
     class GomAttr extends GomNode implements DomAttr {
         static $gtype: GObject.GType<GomAttr>;
+        declare static readonly __signalSignatures: GomAttr.SignalSignatures;
 
         // Constructors
 
@@ -2585,6 +2633,9 @@ export namespace GXml {
     }
 
     namespace BaseCollection {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2596,6 +2647,7 @@ export namespace GXml {
 
     abstract class BaseCollection extends GObject.Object implements Gee.Traversable, Gee.Iterable, Collection {
         static $gtype: GObject.GType<BaseCollection>;
+        declare static readonly __signalSignatures: BaseCollection.SignalSignatures;
 
         // Constructors
 
@@ -3128,6 +3180,9 @@ export namespace GXml {
     }
 
     namespace GomArrayList {
+        // Signal signatures
+        interface SignalSignatures extends BaseCollection.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends BaseCollection.ConstructorProps, List.ConstructorProps {}
@@ -3135,6 +3190,7 @@ export namespace GXml {
 
     class GomArrayList extends BaseCollection implements List {
         static $gtype: GObject.GType<GomArrayList>;
+        declare static readonly __signalSignatures: GomArrayList.SignalSignatures;
 
         // Constructors
 
@@ -3587,6 +3643,9 @@ export namespace GXml {
     }
 
     namespace GomHashMap {
+        // Signal signatures
+        interface SignalSignatures extends BaseCollection.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends BaseCollection.ConstructorProps, Map.ConstructorProps {}
@@ -3594,6 +3653,7 @@ export namespace GXml {
 
     class GomHashMap extends BaseCollection implements Map {
         static $gtype: GObject.GType<GomHashMap>;
+        declare static readonly __signalSignatures: GomHashMap.SignalSignatures;
 
         // Constructors
 
@@ -4071,6 +4131,9 @@ export namespace GXml {
     }
 
     namespace GomHashPairedMap {
+        // Signal signatures
+        interface SignalSignatures extends BaseCollection.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends BaseCollection.ConstructorProps, PairedMap.ConstructorProps {}
@@ -4078,6 +4141,7 @@ export namespace GXml {
 
     class GomHashPairedMap extends BaseCollection implements PairedMap {
         static $gtype: GObject.GType<GomHashPairedMap>;
+        declare static readonly __signalSignatures: GomHashPairedMap.SignalSignatures;
 
         // Constructors
 
@@ -4577,6 +4641,9 @@ export namespace GXml {
     }
 
     namespace GomHashThreeMap {
+        // Signal signatures
+        interface SignalSignatures extends BaseCollection.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends BaseCollection.ConstructorProps, ThreeMap.ConstructorProps {}
@@ -4584,6 +4651,7 @@ export namespace GXml {
 
     class GomHashThreeMap extends BaseCollection implements ThreeMap {
         static $gtype: GObject.GType<GomHashThreeMap>;
+        declare static readonly __signalSignatures: GomHashThreeMap.SignalSignatures;
 
         // Constructors
 
@@ -5098,6 +5166,9 @@ export namespace GXml {
     }
 
     namespace GomDocument {
+        // Signal signatures
+        interface SignalSignatures extends GomNode.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5110,6 +5181,7 @@ export namespace GXml {
 
     class GomDocument extends GomNode implements DomParentNode, DomNonElementParentNode, DomDocument, DomXMLDocument {
         static $gtype: GObject.GType<GomDocument>;
+        declare static readonly __signalSignatures: GomDocument.SignalSignatures;
 
         // Constructors
 
@@ -5692,6 +5764,9 @@ export namespace GXml {
     }
 
     namespace GomImplementation {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DomImplementation.ConstructorProps {}
@@ -5699,6 +5774,7 @@ export namespace GXml {
 
     class GomImplementation extends GObject.Object implements DomImplementation {
         static $gtype: GObject.GType<GomImplementation>;
+        declare static readonly __signalSignatures: GomImplementation.SignalSignatures;
 
         // Constructors
 
@@ -6159,6 +6235,9 @@ export namespace GXml {
     }
 
     namespace GomDocumentType {
+        // Signal signatures
+        interface SignalSignatures extends GomNode.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6169,6 +6248,7 @@ export namespace GXml {
 
     class GomDocumentType extends GomNode implements DomChildNode, DomDocumentType {
         static $gtype: GObject.GType<GomDocumentType>;
+        declare static readonly __signalSignatures: GomDocumentType.SignalSignatures;
 
         // Constructors
 
@@ -6643,6 +6723,9 @@ export namespace GXml {
     }
 
     namespace GomDocumentFragment {
+        // Signal signatures
+        interface SignalSignatures extends GomNode.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6654,6 +6737,7 @@ export namespace GXml {
 
     class GomDocumentFragment extends GomNode implements DomParentNode, DomNonElementParentNode, DomDocumentFragment {
         static $gtype: GObject.GType<GomDocumentFragment>;
+        declare static readonly __signalSignatures: GomDocumentFragment.SignalSignatures;
 
         // Constructors
 
@@ -7134,6 +7218,9 @@ export namespace GXml {
     }
 
     namespace GomElement {
+        // Signal signatures
+        interface SignalSignatures extends GomNode.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7154,6 +7241,7 @@ export namespace GXml {
         implements DomChildNode, DomNonDocumentTypeChildNode, DomParentNode, DomElement, GomObject
     {
         static $gtype: GObject.GType<GomElement>;
+        declare static readonly __signalSignatures: GomElement.SignalSignatures;
 
         // Properties
 
@@ -7803,6 +7891,9 @@ export namespace GXml {
     }
 
     namespace GomElementAttributes {
+        // Signal signatures
+        interface SignalSignatures extends Gee.HashMap.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gee.HashMap.ConstructorProps, DomNamedNodeMap.ConstructorProps {}
@@ -7810,6 +7901,7 @@ export namespace GXml {
 
     class GomElementAttributes extends Gee.HashMap implements DomNamedNodeMap {
         static $gtype: GObject.GType<GomElementAttributes>;
+        declare static readonly __signalSignatures: GomElementAttributes.SignalSignatures;
 
         // Constructors
 
@@ -8286,6 +8378,9 @@ export namespace GXml {
     }
 
     namespace GomNode {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -8296,6 +8391,7 @@ export namespace GXml {
 
     class GomNode extends GObject.Object implements DomEventTarget, DomNode {
         static $gtype: GObject.GType<GomNode>;
+        declare static readonly __signalSignatures: GomNode.SignalSignatures;
 
         // Constructors
 
@@ -8846,6 +8942,9 @@ export namespace GXml {
     }
 
     namespace GomNodeList {
+        // Signal signatures
+        interface SignalSignatures extends Gee.ArrayList.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gee.ArrayList.ConstructorProps, DomNodeList.ConstructorProps {}
@@ -8853,6 +8952,7 @@ export namespace GXml {
 
     class GomNodeList extends Gee.ArrayList implements DomNodeList {
         static $gtype: GObject.GType<GomNodeList>;
+        declare static readonly __signalSignatures: GomNodeList.SignalSignatures;
 
         // Constructors
 
@@ -9314,6 +9414,9 @@ export namespace GXml {
     }
 
     namespace GomBaseProperty {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, GomProperty.ConstructorProps {
@@ -9323,6 +9426,7 @@ export namespace GXml {
 
     abstract class GomBaseProperty extends GObject.Object implements GomProperty {
         static $gtype: GObject.GType<GomBaseProperty>;
+        declare static readonly __signalSignatures: GomBaseProperty.SignalSignatures;
 
         // Properties
 
@@ -9790,6 +9894,9 @@ export namespace GXml {
     }
 
     namespace GomString {
+        // Signal signatures
+        interface SignalSignatures extends GomBaseProperty.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomBaseProperty.ConstructorProps {}
@@ -9797,6 +9904,7 @@ export namespace GXml {
 
     class GomString extends GomBaseProperty {
         static $gtype: GObject.GType<GomString>;
+        declare static readonly __signalSignatures: GomString.SignalSignatures;
 
         // Constructors
 
@@ -9808,6 +9916,9 @@ export namespace GXml {
     }
 
     namespace GomArrayString {
+        // Signal signatures
+        interface SignalSignatures extends GomBaseProperty.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomBaseProperty.ConstructorProps {}
@@ -9815,6 +9926,7 @@ export namespace GXml {
 
     class GomArrayString extends GomBaseProperty {
         static $gtype: GObject.GType<GomArrayString>;
+        declare static readonly __signalSignatures: GomArrayString.SignalSignatures;
 
         // Constructors
 
@@ -9834,6 +9946,9 @@ export namespace GXml {
     }
 
     namespace GomXsdArrayString {
+        // Signal signatures
+        interface SignalSignatures extends GomArrayString.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomArrayString.ConstructorProps {
@@ -9845,6 +9960,7 @@ export namespace GXml {
 
     class GomXsdArrayString extends GomArrayString {
         static $gtype: GObject.GType<GomXsdArrayString>;
+        declare static readonly __signalSignatures: GomXsdArrayString.SignalSignatures;
 
         // Properties
 
@@ -9873,6 +9989,9 @@ export namespace GXml {
     }
 
     namespace GomDouble {
+        // Signal signatures
+        interface SignalSignatures extends GomBaseProperty.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomBaseProperty.ConstructorProps {
@@ -9882,6 +10001,7 @@ export namespace GXml {
 
     class GomDouble extends GomBaseProperty {
         static $gtype: GObject.GType<GomDouble>;
+        declare static readonly __signalSignatures: GomDouble.SignalSignatures;
 
         // Properties
 
@@ -9905,6 +10025,9 @@ export namespace GXml {
     }
 
     namespace GomFloat {
+        // Signal signatures
+        interface SignalSignatures extends GomDouble.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomDouble.ConstructorProps {}
@@ -9912,6 +10035,7 @@ export namespace GXml {
 
     class GomFloat extends GomDouble {
         static $gtype: GObject.GType<GomFloat>;
+        declare static readonly __signalSignatures: GomFloat.SignalSignatures;
 
         // Constructors
 
@@ -9928,6 +10052,9 @@ export namespace GXml {
     }
 
     namespace GomInt {
+        // Signal signatures
+        interface SignalSignatures extends GomBaseProperty.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomBaseProperty.ConstructorProps {}
@@ -9935,6 +10062,7 @@ export namespace GXml {
 
     class GomInt extends GomBaseProperty {
         static $gtype: GObject.GType<GomInt>;
+        declare static readonly __signalSignatures: GomInt.SignalSignatures;
 
         // Constructors
 
@@ -9951,6 +10079,9 @@ export namespace GXml {
     }
 
     namespace GomBoolean {
+        // Signal signatures
+        interface SignalSignatures extends GomBaseProperty.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomBaseProperty.ConstructorProps {}
@@ -9958,6 +10089,7 @@ export namespace GXml {
 
     class GomBoolean extends GomBaseProperty {
         static $gtype: GObject.GType<GomBoolean>;
+        declare static readonly __signalSignatures: GomBoolean.SignalSignatures;
 
         // Constructors
 
@@ -9974,6 +10106,9 @@ export namespace GXml {
     }
 
     namespace GomEnum {
+        // Signal signatures
+        interface SignalSignatures extends GomBaseProperty.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomBaseProperty.ConstructorProps {
@@ -9984,6 +10119,7 @@ export namespace GXml {
 
     class GomEnum extends GomBaseProperty {
         static $gtype: GObject.GType<GomEnum>;
+        declare static readonly __signalSignatures: GomEnum.SignalSignatures;
 
         // Properties
 
@@ -10010,6 +10146,9 @@ export namespace GXml {
     }
 
     namespace GomDate {
+        // Signal signatures
+        interface SignalSignatures extends GomBaseProperty.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomBaseProperty.ConstructorProps {}
@@ -10017,6 +10156,7 @@ export namespace GXml {
 
     class GomDate extends GomBaseProperty {
         static $gtype: GObject.GType<GomDate>;
+        declare static readonly __signalSignatures: GomDate.SignalSignatures;
 
         // Constructors
 
@@ -10033,6 +10173,9 @@ export namespace GXml {
     }
 
     namespace GomDateTime {
+        // Signal signatures
+        interface SignalSignatures extends GomBaseProperty.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomBaseProperty.ConstructorProps {
@@ -10042,6 +10185,7 @@ export namespace GXml {
 
     class GomDateTime extends GomBaseProperty {
         static $gtype: GObject.GType<GomDateTime>;
+        declare static readonly __signalSignatures: GomDateTime.SignalSignatures;
 
         // Properties
 
@@ -10065,6 +10209,9 @@ export namespace GXml {
     }
 
     namespace GomXsdSchema {
+        // Signal signatures
+        interface SignalSignatures extends GomElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomElement.ConstructorProps {
@@ -10079,6 +10226,7 @@ export namespace GXml {
 
     class GomXsdSchema extends GomElement {
         static $gtype: GObject.GType<GomXsdSchema>;
+        declare static readonly __signalSignatures: GomXsdSchema.SignalSignatures;
 
         // Properties
 
@@ -10114,6 +10262,9 @@ export namespace GXml {
     }
 
     namespace GomXsdSimpleType {
+        // Signal signatures
+        interface SignalSignatures extends GomElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomElement.ConstructorProps {
@@ -10128,6 +10279,7 @@ export namespace GXml {
 
     class GomXsdSimpleType extends GomElement {
         static $gtype: GObject.GType<GomXsdSimpleType>;
+        declare static readonly __signalSignatures: GomXsdSimpleType.SignalSignatures;
 
         // Properties
 
@@ -10169,6 +10321,9 @@ export namespace GXml {
     }
 
     namespace GomXsdTypeDefinition {
+        // Signal signatures
+        interface SignalSignatures extends GomElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomElement.ConstructorProps {
@@ -10178,6 +10333,7 @@ export namespace GXml {
 
     class GomXsdTypeDefinition extends GomElement {
         static $gtype: GObject.GType<GomXsdTypeDefinition>;
+        declare static readonly __signalSignatures: GomXsdTypeDefinition.SignalSignatures;
 
         // Properties
 
@@ -10199,6 +10355,9 @@ export namespace GXml {
     }
 
     namespace GomXsdTypeList {
+        // Signal signatures
+        interface SignalSignatures extends GomXsdTypeDefinition.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdTypeDefinition.ConstructorProps {}
@@ -10206,6 +10365,7 @@ export namespace GXml {
 
     class GomXsdTypeList extends GomXsdTypeDefinition {
         static $gtype: GObject.GType<GomXsdTypeList>;
+        declare static readonly __signalSignatures: GomXsdTypeList.SignalSignatures;
 
         // Constructors
 
@@ -10217,6 +10377,9 @@ export namespace GXml {
     }
 
     namespace GomXsdTypeUnion {
+        // Signal signatures
+        interface SignalSignatures extends GomXsdTypeDefinition.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdTypeDefinition.ConstructorProps {}
@@ -10224,6 +10387,7 @@ export namespace GXml {
 
     class GomXsdTypeUnion extends GomXsdTypeDefinition {
         static $gtype: GObject.GType<GomXsdTypeUnion>;
+        declare static readonly __signalSignatures: GomXsdTypeUnion.SignalSignatures;
 
         // Constructors
 
@@ -10235,6 +10399,9 @@ export namespace GXml {
     }
 
     namespace GomXsdTypeRestriction {
+        // Signal signatures
+        interface SignalSignatures extends GomXsdTypeDefinition.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdTypeDefinition.ConstructorProps {
@@ -10249,6 +10416,7 @@ export namespace GXml {
 
     class GomXsdTypeRestriction extends GomXsdTypeDefinition {
         static $gtype: GObject.GType<GomXsdTypeRestriction>;
+        declare static readonly __signalSignatures: GomXsdTypeRestriction.SignalSignatures;
 
         // Properties
 
@@ -10286,6 +10454,9 @@ export namespace GXml {
     }
 
     namespace GomXsdTypeRestrictionDef {
+        // Signal signatures
+        interface SignalSignatures extends GomElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomElement.ConstructorProps {
@@ -10295,6 +10466,7 @@ export namespace GXml {
 
     class GomXsdTypeRestrictionDef extends GomElement {
         static $gtype: GObject.GType<GomXsdTypeRestrictionDef>;
+        declare static readonly __signalSignatures: GomXsdTypeRestrictionDef.SignalSignatures;
 
         // Properties
 
@@ -10316,6 +10488,9 @@ export namespace GXml {
     }
 
     namespace GomXsdTypeRestrictionMinExclusive {
+        // Signal signatures
+        interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {}
@@ -10323,6 +10498,7 @@ export namespace GXml {
 
     class GomXsdTypeRestrictionMinExclusive extends GomXsdTypeRestrictionDef {
         static $gtype: GObject.GType<GomXsdTypeRestrictionMinExclusive>;
+        declare static readonly __signalSignatures: GomXsdTypeRestrictionMinExclusive.SignalSignatures;
 
         // Constructors
 
@@ -10334,6 +10510,9 @@ export namespace GXml {
     }
 
     namespace GomXsdTypeRestrictionMinInclusive {
+        // Signal signatures
+        interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {}
@@ -10341,6 +10520,7 @@ export namespace GXml {
 
     class GomXsdTypeRestrictionMinInclusive extends GomXsdTypeRestrictionDef {
         static $gtype: GObject.GType<GomXsdTypeRestrictionMinInclusive>;
+        declare static readonly __signalSignatures: GomXsdTypeRestrictionMinInclusive.SignalSignatures;
 
         // Constructors
 
@@ -10352,6 +10532,9 @@ export namespace GXml {
     }
 
     namespace GomXsdTypeRestrictionMaxExclusive {
+        // Signal signatures
+        interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {}
@@ -10359,6 +10542,7 @@ export namespace GXml {
 
     class GomXsdTypeRestrictionMaxExclusive extends GomXsdTypeRestrictionDef {
         static $gtype: GObject.GType<GomXsdTypeRestrictionMaxExclusive>;
+        declare static readonly __signalSignatures: GomXsdTypeRestrictionMaxExclusive.SignalSignatures;
 
         // Constructors
 
@@ -10370,6 +10554,9 @@ export namespace GXml {
     }
 
     namespace GomXsdTypeRestrictionMaxInclusive {
+        // Signal signatures
+        interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {}
@@ -10377,6 +10564,7 @@ export namespace GXml {
 
     class GomXsdTypeRestrictionMaxInclusive extends GomXsdTypeRestrictionDef {
         static $gtype: GObject.GType<GomXsdTypeRestrictionMaxInclusive>;
+        declare static readonly __signalSignatures: GomXsdTypeRestrictionMaxInclusive.SignalSignatures;
 
         // Constructors
 
@@ -10388,6 +10576,9 @@ export namespace GXml {
     }
 
     namespace GomXsdTypeRestrictionTotalDigits {
+        // Signal signatures
+        interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {}
@@ -10395,6 +10586,7 @@ export namespace GXml {
 
     class GomXsdTypeRestrictionTotalDigits extends GomXsdTypeRestrictionDef {
         static $gtype: GObject.GType<GomXsdTypeRestrictionTotalDigits>;
+        declare static readonly __signalSignatures: GomXsdTypeRestrictionTotalDigits.SignalSignatures;
 
         // Constructors
 
@@ -10406,6 +10598,9 @@ export namespace GXml {
     }
 
     namespace GomXsdTypeRestrictionFractionDigits {
+        // Signal signatures
+        interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {}
@@ -10413,6 +10608,7 @@ export namespace GXml {
 
     class GomXsdTypeRestrictionFractionDigits extends GomXsdTypeRestrictionDef {
         static $gtype: GObject.GType<GomXsdTypeRestrictionFractionDigits>;
+        declare static readonly __signalSignatures: GomXsdTypeRestrictionFractionDigits.SignalSignatures;
 
         // Constructors
 
@@ -10424,6 +10620,9 @@ export namespace GXml {
     }
 
     namespace GomXsdTypeRestrictionLength {
+        // Signal signatures
+        interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {}
@@ -10431,6 +10630,7 @@ export namespace GXml {
 
     class GomXsdTypeRestrictionLength extends GomXsdTypeRestrictionDef {
         static $gtype: GObject.GType<GomXsdTypeRestrictionLength>;
+        declare static readonly __signalSignatures: GomXsdTypeRestrictionLength.SignalSignatures;
 
         // Constructors
 
@@ -10442,6 +10642,9 @@ export namespace GXml {
     }
 
     namespace GomXsdTypeRestrictionMinLength {
+        // Signal signatures
+        interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {}
@@ -10449,6 +10652,7 @@ export namespace GXml {
 
     class GomXsdTypeRestrictionMinLength extends GomXsdTypeRestrictionDef {
         static $gtype: GObject.GType<GomXsdTypeRestrictionMinLength>;
+        declare static readonly __signalSignatures: GomXsdTypeRestrictionMinLength.SignalSignatures;
 
         // Constructors
 
@@ -10460,6 +10664,9 @@ export namespace GXml {
     }
 
     namespace GomXsdTypeRestrictionMaxLength {
+        // Signal signatures
+        interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {}
@@ -10467,6 +10674,7 @@ export namespace GXml {
 
     class GomXsdTypeRestrictionMaxLength extends GomXsdTypeRestrictionDef {
         static $gtype: GObject.GType<GomXsdTypeRestrictionMaxLength>;
+        declare static readonly __signalSignatures: GomXsdTypeRestrictionMaxLength.SignalSignatures;
 
         // Constructors
 
@@ -10478,6 +10686,9 @@ export namespace GXml {
     }
 
     namespace GomXsdTypeRestrictionEnumeration {
+        // Signal signatures
+        interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {
@@ -10487,6 +10698,7 @@ export namespace GXml {
 
     class GomXsdTypeRestrictionEnumeration extends GomXsdTypeRestrictionDef {
         static $gtype: GObject.GType<GomXsdTypeRestrictionEnumeration>;
+        declare static readonly __signalSignatures: GomXsdTypeRestrictionEnumeration.SignalSignatures;
 
         // Properties
 
@@ -10508,6 +10720,9 @@ export namespace GXml {
     }
 
     namespace GomXsdTypeRestrictionWhiteSpace {
+        // Signal signatures
+        interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {
@@ -10518,6 +10733,7 @@ export namespace GXml {
 
     class GomXsdTypeRestrictionWhiteSpace extends GomXsdTypeRestrictionDef {
         static $gtype: GObject.GType<GomXsdTypeRestrictionWhiteSpace>;
+        declare static readonly __signalSignatures: GomXsdTypeRestrictionWhiteSpace.SignalSignatures;
 
         // Properties
 
@@ -10543,6 +10759,9 @@ export namespace GXml {
     }
 
     namespace GomXsdTypeRestrictionWhiteSpaceFixed {
+        // Signal signatures
+        interface SignalSignatures extends GomBoolean.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomBoolean.ConstructorProps {}
@@ -10550,6 +10769,7 @@ export namespace GXml {
 
     class GomXsdTypeRestrictionWhiteSpaceFixed extends GomBoolean {
         static $gtype: GObject.GType<GomXsdTypeRestrictionWhiteSpaceFixed>;
+        declare static readonly __signalSignatures: GomXsdTypeRestrictionWhiteSpaceFixed.SignalSignatures;
 
         // Constructors
 
@@ -10561,6 +10781,9 @@ export namespace GXml {
     }
 
     namespace GomXsdTypeRestrictionPattern {
+        // Signal signatures
+        interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {}
@@ -10568,6 +10791,7 @@ export namespace GXml {
 
     class GomXsdTypeRestrictionPattern extends GomXsdTypeRestrictionDef {
         static $gtype: GObject.GType<GomXsdTypeRestrictionPattern>;
+        declare static readonly __signalSignatures: GomXsdTypeRestrictionPattern.SignalSignatures;
 
         // Constructors
 
@@ -10579,6 +10803,9 @@ export namespace GXml {
     }
 
     namespace GomXsdTypeRestrictionAssertion {
+        // Signal signatures
+        interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {}
@@ -10586,6 +10813,7 @@ export namespace GXml {
 
     class GomXsdTypeRestrictionAssertion extends GomXsdTypeRestrictionDef {
         static $gtype: GObject.GType<GomXsdTypeRestrictionAssertion>;
+        declare static readonly __signalSignatures: GomXsdTypeRestrictionAssertion.SignalSignatures;
 
         // Constructors
 
@@ -10597,6 +10825,9 @@ export namespace GXml {
     }
 
     namespace GomXsdTypeRestrictionExplicitTimezone {
+        // Signal signatures
+        interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdTypeRestrictionDef.ConstructorProps {}
@@ -10604,6 +10835,7 @@ export namespace GXml {
 
     class GomXsdTypeRestrictionExplicitTimezone extends GomXsdTypeRestrictionDef {
         static $gtype: GObject.GType<GomXsdTypeRestrictionExplicitTimezone>;
+        declare static readonly __signalSignatures: GomXsdTypeRestrictionExplicitTimezone.SignalSignatures;
 
         // Constructors
 
@@ -10615,6 +10847,9 @@ export namespace GXml {
     }
 
     namespace GomXsdComplexType {
+        // Signal signatures
+        interface SignalSignatures extends GomXsdBaseType.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdBaseType.ConstructorProps {
@@ -10636,6 +10871,7 @@ export namespace GXml {
 
     class GomXsdComplexType extends GomXsdBaseType {
         static $gtype: GObject.GType<GomXsdComplexType>;
+        declare static readonly __signalSignatures: GomXsdComplexType.SignalSignatures;
 
         // Properties
 
@@ -10691,6 +10927,9 @@ export namespace GXml {
     }
 
     namespace GomXsdExtension {
+        // Signal signatures
+        interface SignalSignatures extends GomElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomElement.ConstructorProps {
@@ -10700,6 +10939,7 @@ export namespace GXml {
 
     class GomXsdExtension extends GomElement {
         static $gtype: GObject.GType<GomXsdExtension>;
+        declare static readonly __signalSignatures: GomXsdExtension.SignalSignatures;
 
         // Properties
 
@@ -10721,6 +10961,9 @@ export namespace GXml {
     }
 
     namespace GomXsdElement {
+        // Signal signatures
+        interface SignalSignatures extends GomElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomElement.ConstructorProps {
@@ -10753,6 +10996,7 @@ export namespace GXml {
 
     class GomXsdElement extends GomElement {
         static $gtype: GObject.GType<GomXsdElement>;
+        declare static readonly __signalSignatures: GomXsdElement.SignalSignatures;
 
         // Properties
 
@@ -10852,6 +11096,9 @@ export namespace GXml {
     }
 
     namespace GomXsdAnnotation {
+        // Signal signatures
+        interface SignalSignatures extends GomElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomElement.ConstructorProps {}
@@ -10859,6 +11106,7 @@ export namespace GXml {
 
     class GomXsdAnnotation extends GomElement {
         static $gtype: GObject.GType<GomXsdAnnotation>;
+        declare static readonly __signalSignatures: GomXsdAnnotation.SignalSignatures;
 
         // Constructors
 
@@ -10870,6 +11118,9 @@ export namespace GXml {
     }
 
     namespace GomXsdBaseType {
+        // Signal signatures
+        interface SignalSignatures extends GomElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomElement.ConstructorProps {
@@ -10879,6 +11130,7 @@ export namespace GXml {
 
     class GomXsdBaseType extends GomElement {
         static $gtype: GObject.GType<GomXsdBaseType>;
+        declare static readonly __signalSignatures: GomXsdBaseType.SignalSignatures;
 
         // Properties
 
@@ -10900,6 +11152,9 @@ export namespace GXml {
     }
 
     namespace GomXsdBaseContent {
+        // Signal signatures
+        interface SignalSignatures extends GomElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomElement.ConstructorProps {
@@ -10909,6 +11164,7 @@ export namespace GXml {
 
     class GomXsdBaseContent extends GomElement {
         static $gtype: GObject.GType<GomXsdBaseContent>;
+        declare static readonly __signalSignatures: GomXsdBaseContent.SignalSignatures;
 
         // Properties
 
@@ -10930,6 +11186,9 @@ export namespace GXml {
     }
 
     namespace GomXsdSimpleContent {
+        // Signal signatures
+        interface SignalSignatures extends GomXsdBaseContent.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdBaseContent.ConstructorProps {}
@@ -10937,6 +11196,7 @@ export namespace GXml {
 
     class GomXsdSimpleContent extends GomXsdBaseContent {
         static $gtype: GObject.GType<GomXsdSimpleContent>;
+        declare static readonly __signalSignatures: GomXsdSimpleContent.SignalSignatures;
 
         // Constructors
 
@@ -10948,6 +11208,9 @@ export namespace GXml {
     }
 
     namespace GomXsdComplexContent {
+        // Signal signatures
+        interface SignalSignatures extends GomXsdBaseContent.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdBaseContent.ConstructorProps {}
@@ -10955,6 +11218,7 @@ export namespace GXml {
 
     class GomXsdComplexContent extends GomXsdBaseContent {
         static $gtype: GObject.GType<GomXsdComplexContent>;
+        declare static readonly __signalSignatures: GomXsdComplexContent.SignalSignatures;
 
         // Constructors
 
@@ -10966,6 +11230,9 @@ export namespace GXml {
     }
 
     namespace GomXsdOpenContent {
+        // Signal signatures
+        interface SignalSignatures extends GomXsdBaseContent.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdBaseContent.ConstructorProps {}
@@ -10973,6 +11240,7 @@ export namespace GXml {
 
     class GomXsdOpenContent extends GomXsdBaseContent {
         static $gtype: GObject.GType<GomXsdOpenContent>;
+        declare static readonly __signalSignatures: GomXsdOpenContent.SignalSignatures;
 
         // Constructors
 
@@ -10984,6 +11252,9 @@ export namespace GXml {
     }
 
     namespace GomXsdBaseAttribute {
+        // Signal signatures
+        interface SignalSignatures extends GomElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomElement.ConstructorProps {
@@ -10993,6 +11264,7 @@ export namespace GXml {
 
     class GomXsdBaseAttribute extends GomElement {
         static $gtype: GObject.GType<GomXsdBaseAttribute>;
+        declare static readonly __signalSignatures: GomXsdBaseAttribute.SignalSignatures;
 
         // Properties
 
@@ -11014,6 +11286,9 @@ export namespace GXml {
     }
 
     namespace GomXsdAttribute {
+        // Signal signatures
+        interface SignalSignatures extends GomXsdBaseAttribute.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdBaseAttribute.ConstructorProps {}
@@ -11021,6 +11296,7 @@ export namespace GXml {
 
     class GomXsdAttribute extends GomXsdBaseAttribute {
         static $gtype: GObject.GType<GomXsdAttribute>;
+        declare static readonly __signalSignatures: GomXsdAttribute.SignalSignatures;
 
         // Constructors
 
@@ -11032,6 +11308,9 @@ export namespace GXml {
     }
 
     namespace GomXsdAttributeGroup {
+        // Signal signatures
+        interface SignalSignatures extends GomXsdBaseAttribute.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdBaseAttribute.ConstructorProps {}
@@ -11039,6 +11318,7 @@ export namespace GXml {
 
     class GomXsdAttributeGroup extends GomXsdBaseAttribute {
         static $gtype: GObject.GType<GomXsdAttributeGroup>;
+        declare static readonly __signalSignatures: GomXsdAttributeGroup.SignalSignatures;
 
         // Constructors
 
@@ -11050,6 +11330,9 @@ export namespace GXml {
     }
 
     namespace GomXsdList {
+        // Signal signatures
+        interface SignalSignatures extends GomArrayList.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomArrayList.ConstructorProps {
@@ -11059,6 +11342,7 @@ export namespace GXml {
 
     class GomXsdList extends GomArrayList {
         static $gtype: GObject.GType<GomXsdList>;
+        declare static readonly __signalSignatures: GomXsdList.SignalSignatures;
 
         // Properties
 
@@ -11080,6 +11364,9 @@ export namespace GXml {
     }
 
     namespace GomXsdListElements {
+        // Signal signatures
+        interface SignalSignatures extends GomXsdList.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdList.ConstructorProps {}
@@ -11087,6 +11374,7 @@ export namespace GXml {
 
     class GomXsdListElements extends GomXsdList {
         static $gtype: GObject.GType<GomXsdListElements>;
+        declare static readonly __signalSignatures: GomXsdListElements.SignalSignatures;
 
         // Constructors
 
@@ -11098,6 +11386,9 @@ export namespace GXml {
     }
 
     namespace GomXsdListSimpleTypes {
+        // Signal signatures
+        interface SignalSignatures extends GomXsdList.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdList.ConstructorProps {}
@@ -11105,6 +11396,7 @@ export namespace GXml {
 
     class GomXsdListSimpleTypes extends GomXsdList {
         static $gtype: GObject.GType<GomXsdListSimpleTypes>;
+        declare static readonly __signalSignatures: GomXsdListSimpleTypes.SignalSignatures;
 
         // Constructors
 
@@ -11116,6 +11408,9 @@ export namespace GXml {
     }
 
     namespace GomXsdListComplexTypes {
+        // Signal signatures
+        interface SignalSignatures extends GomXsdList.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdList.ConstructorProps {}
@@ -11123,6 +11418,7 @@ export namespace GXml {
 
     class GomXsdListComplexTypes extends GomXsdList {
         static $gtype: GObject.GType<GomXsdListComplexTypes>;
+        declare static readonly __signalSignatures: GomXsdListComplexTypes.SignalSignatures;
 
         // Constructors
 
@@ -11134,6 +11430,9 @@ export namespace GXml {
     }
 
     namespace GomXsdListTypeRestrictionEnumerations {
+        // Signal signatures
+        interface SignalSignatures extends GomXsdList.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdList.ConstructorProps {}
@@ -11141,6 +11440,7 @@ export namespace GXml {
 
     class GomXsdListTypeRestrictionEnumerations extends GomXsdList {
         static $gtype: GObject.GType<GomXsdListTypeRestrictionEnumerations>;
+        declare static readonly __signalSignatures: GomXsdListTypeRestrictionEnumerations.SignalSignatures;
 
         // Constructors
 
@@ -11152,6 +11452,9 @@ export namespace GXml {
     }
 
     namespace GomXsdListTypeRestrictionWhiteSpaces {
+        // Signal signatures
+        interface SignalSignatures extends GomXsdList.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomXsdList.ConstructorProps {}
@@ -11159,6 +11462,7 @@ export namespace GXml {
 
     class GomXsdListTypeRestrictionWhiteSpaces extends GomXsdList {
         static $gtype: GObject.GType<GomXsdListTypeRestrictionWhiteSpaces>;
+        declare static readonly __signalSignatures: GomXsdListTypeRestrictionWhiteSpaces.SignalSignatures;
 
         // Constructors
 
@@ -11170,6 +11474,9 @@ export namespace GXml {
     }
 
     namespace GomCharacterData {
+        // Signal signatures
+        interface SignalSignatures extends GomNode.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -11181,6 +11488,7 @@ export namespace GXml {
 
     class GomCharacterData extends GomNode implements DomNonDocumentTypeChildNode, DomChildNode, DomCharacterData {
         static $gtype: GObject.GType<GomCharacterData>;
+        declare static readonly __signalSignatures: GomCharacterData.SignalSignatures;
 
         // Constructors
 
@@ -11645,6 +11953,9 @@ export namespace GXml {
     }
 
     namespace GomText {
+        // Signal signatures
+        interface SignalSignatures extends GomCharacterData.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomCharacterData.ConstructorProps, DomText.ConstructorProps {}
@@ -11652,6 +11963,7 @@ export namespace GXml {
 
     class GomText extends GomCharacterData implements DomText {
         static $gtype: GObject.GType<GomText>;
+        declare static readonly __signalSignatures: GomText.SignalSignatures;
 
         // Constructors
 
@@ -11697,6 +12009,9 @@ export namespace GXml {
     }
 
     namespace GomProcessingInstruction {
+        // Signal signatures
+        interface SignalSignatures extends GomCharacterData.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -11706,6 +12021,7 @@ export namespace GXml {
 
     class GomProcessingInstruction extends GomCharacterData implements DomProcessingInstruction {
         static $gtype: GObject.GType<GomProcessingInstruction>;
+        declare static readonly __signalSignatures: GomProcessingInstruction.SignalSignatures;
 
         // Constructors
 
@@ -11748,6 +12064,9 @@ export namespace GXml {
     }
 
     namespace GomComment {
+        // Signal signatures
+        interface SignalSignatures extends GomCharacterData.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GomCharacterData.ConstructorProps, DomComment.ConstructorProps {}
@@ -11755,6 +12074,7 @@ export namespace GXml {
 
     class GomComment extends GomCharacterData implements DomComment {
         static $gtype: GObject.GType<GomComment>;
+        declare static readonly __signalSignatures: GomComment.SignalSignatures;
 
         // Constructors
 
@@ -11794,6 +12114,9 @@ export namespace GXml {
     }
 
     namespace GAttribute {
+        // Signal signatures
+        interface SignalSignatures extends GNode.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -11804,6 +12127,7 @@ export namespace GXml {
 
     class GAttribute extends GNode implements Attribute, DomAttr {
         static $gtype: GObject.GType<GAttribute>;
+        declare static readonly __signalSignatures: GAttribute.SignalSignatures;
 
         // Constructors
 
@@ -12291,6 +12615,9 @@ export namespace GXml {
     }
 
     namespace GCDATA {
+        // Signal signatures
+        interface SignalSignatures extends GNode.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GNode.ConstructorProps, CDATA.ConstructorProps {}
@@ -12298,6 +12625,7 @@ export namespace GXml {
 
     class GCDATA extends GNode implements CDATA {
         static $gtype: GObject.GType<GCDATA>;
+        declare static readonly __signalSignatures: GCDATA.SignalSignatures;
 
         // Constructors
 
@@ -12755,6 +13083,9 @@ export namespace GXml {
     }
 
     namespace GCharacterData {
+        // Signal signatures
+        interface SignalSignatures extends GNonDocumentChildNode.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -12765,6 +13096,7 @@ export namespace GXml {
 
     class GCharacterData extends GNonDocumentChildNode implements Character, DomCharacterData {
         static $gtype: GObject.GType<GCharacterData>;
+        declare static readonly __signalSignatures: GCharacterData.SignalSignatures;
 
         // Constructors
 
@@ -13225,6 +13557,9 @@ export namespace GXml {
     }
 
     namespace GChildNode {
+        // Signal signatures
+        interface SignalSignatures extends GNode.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GNode.ConstructorProps, DomChildNode.ConstructorProps {}
@@ -13232,6 +13567,7 @@ export namespace GXml {
 
     class GChildNode extends GNode implements DomChildNode {
         static $gtype: GObject.GType<GChildNode>;
+        declare static readonly __signalSignatures: GChildNode.SignalSignatures;
 
         // Constructors
 
@@ -13686,6 +14022,9 @@ export namespace GXml {
     }
 
     namespace GNonDocumentChildNode {
+        // Signal signatures
+        interface SignalSignatures extends GChildNode.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GChildNode.ConstructorProps, DomNonDocumentTypeChildNode.ConstructorProps {}
@@ -13693,6 +14032,7 @@ export namespace GXml {
 
     class GNonDocumentChildNode extends GChildNode implements DomNonDocumentTypeChildNode {
         static $gtype: GObject.GType<GNonDocumentChildNode>;
+        declare static readonly __signalSignatures: GNonDocumentChildNode.SignalSignatures;
 
         // Constructors
 
@@ -14155,6 +14495,9 @@ export namespace GXml {
     }
 
     namespace GComment {
+        // Signal signatures
+        interface SignalSignatures extends GCharacterData.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -14165,6 +14508,7 @@ export namespace GXml {
 
     class GComment extends GCharacterData implements Comment, DomComment {
         static $gtype: GObject.GType<GComment>;
+        declare static readonly __signalSignatures: GComment.SignalSignatures;
 
         // Constructors
 
@@ -14628,6 +14972,9 @@ export namespace GXml {
     }
 
     namespace GDocument {
+        // Signal signatures
+        interface SignalSignatures extends GNode.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -14645,6 +14992,7 @@ export namespace GXml {
         implements Document, DomParentNode, DomNonElementParentNode, DomDocument, DomXMLDocument, XPathContext
     {
         static $gtype: GObject.GType<GDocument>;
+        declare static readonly __signalSignatures: GDocument.SignalSignatures;
 
         // Fields
 
@@ -15268,6 +15616,9 @@ export namespace GXml {
     }
 
     namespace GImplementation {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DomImplementation.ConstructorProps {}
@@ -15275,6 +15626,7 @@ export namespace GXml {
 
     class GImplementation extends GObject.Object implements DomImplementation {
         static $gtype: GObject.GType<GImplementation>;
+        declare static readonly __signalSignatures: GImplementation.SignalSignatures;
 
         // Constructors
 
@@ -15735,6 +16087,9 @@ export namespace GXml {
     }
 
     namespace GDocumentType {
+        // Signal signatures
+        interface SignalSignatures extends GChildNode.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -15746,6 +16101,7 @@ export namespace GXml {
 
     class GDocumentType extends GChildNode implements DomNode, DomChildNode, DomDocumentType {
         static $gtype: GObject.GType<GDocumentType>;
+        declare static readonly __signalSignatures: GDocumentType.SignalSignatures;
 
         // Constructors
 
@@ -16217,6 +16573,9 @@ export namespace GXml {
     }
 
     namespace GDocumentFragment {
+        // Signal signatures
+        interface SignalSignatures extends GDocument.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GDocument.ConstructorProps, DomDocumentFragment.ConstructorProps {}
@@ -16224,6 +16583,7 @@ export namespace GXml {
 
     class GDocumentFragment extends GDocument implements DomDocumentFragment {
         static $gtype: GObject.GType<GDocumentFragment>;
+        declare static readonly __signalSignatures: GDocumentFragment.SignalSignatures;
 
         // Constructors
 
@@ -16679,6 +17039,9 @@ export namespace GXml {
     }
 
     namespace GDomNodeIterator {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DomNodeIterator.ConstructorProps {}
@@ -16686,6 +17049,7 @@ export namespace GXml {
 
     class GDomNodeIterator extends GObject.Object implements DomNodeIterator {
         static $gtype: GObject.GType<GDomNodeIterator>;
+        declare static readonly __signalSignatures: GDomNodeIterator.SignalSignatures;
 
         // Constructors
 
@@ -17164,6 +17528,9 @@ export namespace GXml {
     }
 
     namespace GDomTreeWalker {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DomTreeWalker.ConstructorProps {}
@@ -17171,6 +17538,7 @@ export namespace GXml {
 
     class GDomTreeWalker extends GObject.Object implements DomTreeWalker {
         static $gtype: GObject.GType<GDomTreeWalker>;
+        declare static readonly __signalSignatures: GDomTreeWalker.SignalSignatures;
 
         // Constructors
 
@@ -17653,6 +18021,9 @@ export namespace GXml {
     }
 
     namespace GDomTokenList {
+        // Signal signatures
+        interface SignalSignatures extends Gee.ArrayList.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gee.ArrayList.ConstructorProps, DomTokenList.ConstructorProps {}
@@ -17660,6 +18031,7 @@ export namespace GXml {
 
     class GDomTokenList extends Gee.ArrayList implements DomTokenList {
         static $gtype: GObject.GType<GDomTokenList>;
+        declare static readonly __signalSignatures: GDomTokenList.SignalSignatures;
 
         // Constructors
 
@@ -18150,6 +18522,9 @@ export namespace GXml {
     }
 
     namespace GDomSettableTokenList {
+        // Signal signatures
+        interface SignalSignatures extends GDomTokenList.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GDomTokenList.ConstructorProps, DomSettableTokenList.ConstructorProps {}
@@ -18157,6 +18532,7 @@ export namespace GXml {
 
     class GDomSettableTokenList extends GDomTokenList implements DomSettableTokenList {
         static $gtype: GObject.GType<GDomSettableTokenList>;
+        declare static readonly __signalSignatures: GDomSettableTokenList.SignalSignatures;
 
         // Constructors
 
@@ -18208,6 +18584,9 @@ export namespace GXml {
     }
 
     namespace GDomHTMLCollection {
+        // Signal signatures
+        interface SignalSignatures extends Gee.ArrayList.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gee.ArrayList.ConstructorProps, DomHTMLCollection.ConstructorProps {}
@@ -18215,6 +18594,7 @@ export namespace GXml {
 
     class GDomHTMLCollection extends Gee.ArrayList implements DomHTMLCollection {
         static $gtype: GObject.GType<GDomHTMLCollection>;
+        declare static readonly __signalSignatures: GDomHTMLCollection.SignalSignatures;
 
         // Constructors
 
@@ -18686,6 +19066,9 @@ export namespace GXml {
     }
 
     namespace GDomEvent {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DomEvent.ConstructorProps {}
@@ -18693,6 +19076,7 @@ export namespace GXml {
 
     class GDomEvent extends GObject.Object implements DomEvent {
         static $gtype: GObject.GType<GDomEvent>;
+        declare static readonly __signalSignatures: GDomEvent.SignalSignatures;
 
         // Constructors
 
@@ -19188,6 +19572,9 @@ export namespace GXml {
     }
 
     namespace GDomCustomEvent {
+        // Signal signatures
+        interface SignalSignatures extends GDomEvent.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GDomEvent.ConstructorProps {
@@ -19197,6 +19584,7 @@ export namespace GXml {
 
     class GDomCustomEvent extends GDomEvent {
         static $gtype: GObject.GType<GDomCustomEvent>;
+        declare static readonly __signalSignatures: GDomCustomEvent.SignalSignatures;
 
         // Properties
 
@@ -19217,6 +19605,9 @@ export namespace GXml {
     }
 
     namespace GDomRange {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DomRange.ConstructorProps {}
@@ -19224,6 +19615,7 @@ export namespace GXml {
 
     class GDomRange extends GObject.Object implements DomRange {
         static $gtype: GObject.GType<GDomRange>;
+        declare static readonly __signalSignatures: GDomRange.SignalSignatures;
 
         // Constructors
 
@@ -19743,6 +20135,9 @@ export namespace GXml {
     }
 
     namespace GElement {
+        // Signal signatures
+        interface SignalSignatures extends GNonDocumentChildNode.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -19755,6 +20150,7 @@ export namespace GXml {
 
     class GElement extends GNonDocumentChildNode implements DomParentNode, DomElement, Element, XPathContext {
         static $gtype: GObject.GType<GElement>;
+        declare static readonly __signalSignatures: GElement.SignalSignatures;
 
         // Constructors
 
@@ -20317,6 +20713,9 @@ export namespace GXml {
     }
 
     namespace GHashMapAttr {
+        // Signal signatures
+        interface SignalSignatures extends Gee.AbstractMap.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gee.AbstractMap.ConstructorProps, DomNamedNodeMap.ConstructorProps {}
@@ -20324,6 +20723,7 @@ export namespace GXml {
 
     class GHashMapAttr extends Gee.AbstractMap implements DomNamedNodeMap {
         static $gtype: GObject.GType<GHashMapAttr>;
+        declare static readonly __signalSignatures: GHashMapAttr.SignalSignatures;
 
         // Constructors
 
@@ -20797,6 +21197,9 @@ export namespace GXml {
     }
 
     namespace GHashMapAttrEntry {
+        // Signal signatures
+        interface SignalSignatures extends Gee.MapEntry.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gee.MapEntry.ConstructorProps {}
@@ -20804,6 +21207,7 @@ export namespace GXml {
 
     class GHashMapAttrEntry extends Gee.MapEntry {
         static $gtype: GObject.GType<GHashMapAttrEntry>;
+        declare static readonly __signalSignatures: GHashMapAttrEntry.SignalSignatures;
 
         // Constructors
 
@@ -20815,6 +21219,9 @@ export namespace GXml {
     }
 
     namespace GHashMapAttrIterator {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gee.MapIterator.ConstructorProps {}
@@ -20822,6 +21229,7 @@ export namespace GXml {
 
     class GHashMapAttrIterator extends GObject.Object implements Gee.MapIterator {
         static $gtype: GObject.GType<GHashMapAttrIterator>;
+        declare static readonly __signalSignatures: GHashMapAttrIterator.SignalSignatures;
 
         // Constructors
 
@@ -21302,6 +21710,9 @@ export namespace GXml {
     }
 
     namespace GListChildren {
+        // Signal signatures
+        interface SignalSignatures extends Gee.AbstractBidirList.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -21312,6 +21723,7 @@ export namespace GXml {
 
     class GListChildren extends Gee.AbstractBidirList implements DomNodeList, DomHTMLCollection {
         static $gtype: GObject.GType<GListChildren>;
+        declare static readonly __signalSignatures: GListChildren.SignalSignatures;
 
         // Constructors
 
@@ -21787,6 +22199,9 @@ export namespace GXml {
     }
 
     namespace GListChildrenIterator {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -21803,6 +22218,7 @@ export namespace GXml {
         implements Gee.Traversable, Gee.Iterator, Gee.BidirIterator, Gee.ListIterator, Gee.BidirListIterator
     {
         static $gtype: GObject.GType<GListChildrenIterator>;
+        declare static readonly __signalSignatures: GListChildrenIterator.SignalSignatures;
 
         // Constructors
 
@@ -22317,6 +22733,9 @@ export namespace GXml {
     }
 
     namespace GListNamespaces {
+        // Signal signatures
+        interface SignalSignatures extends Gee.AbstractList.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gee.AbstractList.ConstructorProps {}
@@ -22324,6 +22743,7 @@ export namespace GXml {
 
     class GListNamespaces extends Gee.AbstractList {
         static $gtype: GObject.GType<GListNamespaces>;
+        declare static readonly __signalSignatures: GListNamespaces.SignalSignatures;
 
         // Constructors
 
@@ -22335,6 +22755,9 @@ export namespace GXml {
     }
 
     namespace GListNamespacesIterator {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -22346,6 +22769,7 @@ export namespace GXml {
 
     class GListNamespacesIterator extends GObject.Object implements Gee.Traversable, Gee.Iterator, Gee.ListIterator {
         static $gtype: GObject.GType<GListNamespacesIterator>;
+        declare static readonly __signalSignatures: GListNamespacesIterator.SignalSignatures;
 
         // Constructors
 
@@ -22850,6 +23274,9 @@ export namespace GXml {
     }
 
     namespace GNamespace {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Namespace.ConstructorProps {}
@@ -22857,6 +23284,7 @@ export namespace GXml {
 
     class GNamespace extends GObject.Object implements Namespace {
         static $gtype: GObject.GType<GNamespace>;
+        declare static readonly __signalSignatures: GNamespace.SignalSignatures;
 
         // Constructors
 
@@ -23321,6 +23749,9 @@ export namespace GXml {
     }
 
     namespace GNode {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -23343,6 +23774,7 @@ export namespace GXml {
 
     abstract class GNode extends GObject.Object implements DomEventTarget, DomNode, Node {
         static $gtype: GObject.GType<GNode>;
+        declare static readonly __signalSignatures: GNode.SignalSignatures;
 
         // Properties
 
@@ -23950,6 +24382,9 @@ export namespace GXml {
     }
 
     namespace GProcessingInstruction {
+        // Signal signatures
+        interface SignalSignatures extends GCharacterData.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -23960,6 +24395,7 @@ export namespace GXml {
 
     class GProcessingInstruction extends GCharacterData implements ProcessingInstruction, DomProcessingInstruction {
         static $gtype: GObject.GType<GProcessingInstruction>;
+        declare static readonly __signalSignatures: GProcessingInstruction.SignalSignatures;
 
         // Constructors
 
@@ -24420,6 +24856,9 @@ export namespace GXml {
     }
 
     namespace GText {
+        // Signal signatures
+        interface SignalSignatures extends GCharacterData.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -24430,6 +24869,7 @@ export namespace GXml {
 
     class GText extends GCharacterData implements Text, DomText {
         static $gtype: GObject.GType<GText>;
+        declare static readonly __signalSignatures: GText.SignalSignatures;
 
         // Constructors
 
@@ -24899,6 +25339,9 @@ export namespace GXml {
     }
 
     namespace GXPathObject {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, XPathObject.ConstructorProps {}
@@ -24906,6 +25349,7 @@ export namespace GXml {
 
     class GXPathObject extends GObject.Object implements XPathObject {
         static $gtype: GObject.GType<GXPathObject>;
+        declare static readonly __signalSignatures: GXPathObject.SignalSignatures;
 
         // Constructors
 
@@ -25379,6 +25823,9 @@ export namespace GXml {
     }
 
     namespace NodeList {
+        // Signal signatures
+        interface SignalSignatures extends Gee.ArrayList.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gee.ArrayList.ConstructorProps {}
@@ -25386,6 +25833,7 @@ export namespace GXml {
 
     class NodeList extends Gee.ArrayList {
         static $gtype: GObject.GType<NodeList>;
+        declare static readonly __signalSignatures: NodeList.SignalSignatures;
 
         // Constructors
 
@@ -25406,6 +25854,9 @@ export namespace GXml {
     }
 
     namespace SerializableBool {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, SerializableProperty.ConstructorProps {}
@@ -25413,6 +25864,7 @@ export namespace GXml {
 
     class SerializableBool extends GObject.Object implements SerializableProperty {
         static $gtype: GObject.GType<SerializableBool>;
+        declare static readonly __signalSignatures: SerializableBool.SignalSignatures;
 
         // Constructors
 
@@ -25885,6 +26337,9 @@ export namespace GXml {
     }
 
     namespace SerializableContainer {
+        // Signal signatures
+        interface SignalSignatures extends SerializableObjectModel.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SerializableObjectModel.ConstructorProps {}
@@ -25892,6 +26347,7 @@ export namespace GXml {
 
     abstract class SerializableContainer extends SerializableObjectModel {
         static $gtype: GObject.GType<SerializableContainer>;
+        declare static readonly __signalSignatures: SerializableContainer.SignalSignatures;
 
         // Constructors
 
@@ -25909,6 +26365,9 @@ export namespace GXml {
     }
 
     namespace SerializableDouble {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, SerializableProperty.ConstructorProps {}
@@ -25916,6 +26375,7 @@ export namespace GXml {
 
     class SerializableDouble extends GObject.Object implements SerializableProperty {
         static $gtype: GObject.GType<SerializableDouble>;
+        declare static readonly __signalSignatures: SerializableDouble.SignalSignatures;
 
         // Constructors
 
@@ -26391,6 +26851,9 @@ export namespace GXml {
     }
 
     namespace SerializableEnum {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, SerializableProperty.ConstructorProps {}
@@ -26398,6 +26861,7 @@ export namespace GXml {
 
     class SerializableEnum extends GObject.Object implements SerializableProperty {
         static $gtype: GObject.GType<SerializableEnum>;
+        declare static readonly __signalSignatures: SerializableEnum.SignalSignatures;
 
         // Constructors
 
@@ -26875,6 +27339,9 @@ export namespace GXml {
     }
 
     namespace SerializableFloat {
+        // Signal signatures
+        interface SignalSignatures extends SerializableDouble.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SerializableDouble.ConstructorProps {}
@@ -26882,6 +27349,7 @@ export namespace GXml {
 
     class SerializableFloat extends SerializableDouble {
         static $gtype: GObject.GType<SerializableFloat>;
+        declare static readonly __signalSignatures: SerializableFloat.SignalSignatures;
 
         // Constructors
 
@@ -26898,6 +27366,9 @@ export namespace GXml {
     }
 
     namespace SerializableArrayList {
+        // Signal signatures
+        interface SignalSignatures extends Gee.ArrayList.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -26911,6 +27382,7 @@ export namespace GXml {
 
     class SerializableArrayList extends Gee.ArrayList implements Serializable, SerializableCollection {
         static $gtype: GObject.GType<SerializableArrayList>;
+        declare static readonly __signalSignatures: SerializableArrayList.SignalSignatures;
 
         // Properties
 
@@ -27440,6 +27912,9 @@ export namespace GXml {
     }
 
     namespace SerializableDualKeyMap {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -27466,6 +27941,7 @@ export namespace GXml {
         implements Gee.Traversable, Serializable, SerializableCollection
     {
         static $gtype: GObject.GType<SerializableDualKeyMap>;
+        declare static readonly __signalSignatures: SerializableDualKeyMap.SignalSignatures;
 
         // Properties
 
@@ -28045,6 +28521,9 @@ export namespace GXml {
     }
 
     namespace SerializableHashMap {
+        // Signal signatures
+        interface SignalSignatures extends Gee.HashMap.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -28058,6 +28537,7 @@ export namespace GXml {
 
     class SerializableHashMap extends Gee.HashMap implements Serializable, SerializableCollection {
         static $gtype: GObject.GType<SerializableHashMap>;
+        declare static readonly __signalSignatures: SerializableHashMap.SignalSignatures;
 
         // Properties
 
@@ -28587,6 +29067,9 @@ export namespace GXml {
     }
 
     namespace SerializableTreeMap {
+        // Signal signatures
+        interface SignalSignatures extends Gee.TreeMap.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -28600,6 +29083,7 @@ export namespace GXml {
 
     class SerializableTreeMap extends Gee.TreeMap implements Serializable, SerializableCollection {
         static $gtype: GObject.GType<SerializableTreeMap>;
+        declare static readonly __signalSignatures: SerializableTreeMap.SignalSignatures;
 
         // Properties
 
@@ -29129,6 +29613,9 @@ export namespace GXml {
     }
 
     namespace SerializableInt {
+        // Signal signatures
+        interface SignalSignatures extends SerializableDouble.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SerializableDouble.ConstructorProps {}
@@ -29136,6 +29623,7 @@ export namespace GXml {
 
     class SerializableInt extends SerializableDouble {
         static $gtype: GObject.GType<SerializableInt>;
+        declare static readonly __signalSignatures: SerializableInt.SignalSignatures;
 
         // Constructors
 
@@ -29152,6 +29640,9 @@ export namespace GXml {
     }
 
     namespace SerializableObjectModel {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Serializable.ConstructorProps {
@@ -29162,6 +29653,7 @@ export namespace GXml {
 
     abstract class SerializableObjectModel extends GObject.Object implements Serializable {
         static $gtype: GObject.GType<SerializableObjectModel>;
+        declare static readonly __signalSignatures: SerializableObjectModel.SignalSignatures;
 
         // Properties
 
@@ -29680,6 +30172,9 @@ export namespace GXml {
     }
 
     namespace SerializableValueList {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, SerializableProperty.ConstructorProps {}
@@ -29687,6 +30182,7 @@ export namespace GXml {
 
     class SerializableValueList extends GObject.Object implements SerializableProperty {
         static $gtype: GObject.GType<SerializableValueList>;
+        declare static readonly __signalSignatures: SerializableValueList.SignalSignatures;
 
         // Fields
 
@@ -30176,6 +30672,9 @@ export namespace GXml {
     }
 
     namespace TAttribute {
+        // Signal signatures
+        interface SignalSignatures extends TNode.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends TNode.ConstructorProps, Attribute.ConstructorProps {}
@@ -30183,6 +30682,7 @@ export namespace GXml {
 
     class TAttribute extends TNode implements Attribute {
         static $gtype: GObject.GType<TAttribute>;
+        declare static readonly __signalSignatures: TAttribute.SignalSignatures;
 
         // Constructors
 
@@ -30650,6 +31150,9 @@ export namespace GXml {
     }
 
     namespace TCDATA {
+        // Signal signatures
+        interface SignalSignatures extends TNode.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends TNode.ConstructorProps, CDATA.ConstructorProps {}
@@ -30657,6 +31160,7 @@ export namespace GXml {
 
     class TCDATA extends TNode implements CDATA {
         static $gtype: GObject.GType<TCDATA>;
+        declare static readonly __signalSignatures: TCDATA.SignalSignatures;
 
         // Constructors
 
@@ -31114,6 +31618,9 @@ export namespace GXml {
     }
 
     namespace TComment {
+        // Signal signatures
+        interface SignalSignatures extends TNode.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends TNode.ConstructorProps, Comment.ConstructorProps {}
@@ -31121,6 +31628,7 @@ export namespace GXml {
 
     class TComment extends TNode implements Comment {
         static $gtype: GObject.GType<TComment>;
+        declare static readonly __signalSignatures: TComment.SignalSignatures;
 
         // Constructors
 
@@ -31581,6 +32089,9 @@ export namespace GXml {
     }
 
     namespace TDocument {
+        // Signal signatures
+        interface SignalSignatures extends TNode.SignalSignatures {}
+
         interface ReadTypeFunc {
             (node: Node, tr: libxml2.TextReader): TDocumentReadType;
         }
@@ -31592,6 +32103,7 @@ export namespace GXml {
 
     class TDocument extends TNode implements Document {
         static $gtype: GObject.GType<TDocument>;
+        declare static readonly __signalSignatures: TDocument.SignalSignatures;
 
         // Constructors
 
@@ -32136,6 +32648,9 @@ export namespace GXml {
     }
 
     namespace TElement {
+        // Signal signatures
+        interface SignalSignatures extends TNode.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends TNode.ConstructorProps, Element.ConstructorProps {}
@@ -32143,6 +32658,7 @@ export namespace GXml {
 
     class TElement extends TNode implements Element {
         static $gtype: GObject.GType<TElement>;
+        declare static readonly __signalSignatures: TElement.SignalSignatures;
 
         // Constructors
 
@@ -32621,6 +33137,9 @@ export namespace GXml {
     }
 
     namespace TNamespace {
+        // Signal signatures
+        interface SignalSignatures extends TNode.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends TNode.ConstructorProps, Namespace.ConstructorProps {}
@@ -32628,6 +33147,7 @@ export namespace GXml {
 
     class TNamespace extends TNode implements Namespace {
         static $gtype: GObject.GType<TNamespace>;
+        declare static readonly __signalSignatures: TNamespace.SignalSignatures;
 
         // Constructors
 
@@ -33088,6 +33608,9 @@ export namespace GXml {
     }
 
     namespace TNode {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Node.ConstructorProps {
@@ -33106,6 +33629,7 @@ export namespace GXml {
 
     abstract class TNode extends GObject.Object implements Node {
         static $gtype: GObject.GType<TNode>;
+        declare static readonly __signalSignatures: TNode.SignalSignatures;
 
         // Properties
 
@@ -33612,6 +34136,9 @@ export namespace GXml {
     }
 
     namespace TNodeTChildrenList {
+        // Signal signatures
+        interface SignalSignatures extends Gee.AbstractBidirList.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gee.AbstractBidirList.ConstructorProps {}
@@ -33619,6 +34146,7 @@ export namespace GXml {
 
     class TNodeTChildrenList extends Gee.AbstractBidirList {
         static $gtype: GObject.GType<TNodeTChildrenList>;
+        declare static readonly __signalSignatures: TNodeTChildrenList.SignalSignatures;
 
         // Constructors
 
@@ -33630,6 +34158,9 @@ export namespace GXml {
     }
 
     namespace TProcessingInstruction {
+        // Signal signatures
+        interface SignalSignatures extends TNode.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends TNode.ConstructorProps, ProcessingInstruction.ConstructorProps {}
@@ -33637,6 +34168,7 @@ export namespace GXml {
 
     class TProcessingInstruction extends TNode implements ProcessingInstruction {
         static $gtype: GObject.GType<TProcessingInstruction>;
+        declare static readonly __signalSignatures: TProcessingInstruction.SignalSignatures;
 
         // Constructors
 
@@ -34081,6 +34613,9 @@ export namespace GXml {
     }
 
     namespace TText {
+        // Signal signatures
+        interface SignalSignatures extends TNode.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends TNode.ConstructorProps, Text.ConstructorProps {}
@@ -34088,6 +34623,7 @@ export namespace GXml {
 
     class TText extends TNode implements Text {
         static $gtype: GObject.GType<TText>;
+        declare static readonly __signalSignatures: TText.SignalSignatures;
 
         // Constructors
 
@@ -34548,6 +35084,9 @@ export namespace GXml {
     }
 
     namespace XParser {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Parser.ConstructorProps {}
@@ -34555,6 +35094,7 @@ export namespace GXml {
 
     class XParser extends GObject.Object implements Parser {
         static $gtype: GObject.GType<XParser>;
+        declare static readonly __signalSignatures: XParser.SignalSignatures;
 
         // Constructors
 

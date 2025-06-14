@@ -799,6 +799,12 @@ export namespace Libxfce4ui {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {
+            'text-invalid': TextInvalid;
+            'text-valid': TextValid;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -818,6 +824,7 @@ export namespace Libxfce4ui {
      */
     class FilenameInput extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<FilenameInput>;
+        declare static readonly __signalSignatures: FilenameInput.SignalSignatures;
 
         // Properties
 
@@ -852,6 +859,18 @@ export namespace Libxfce4ui {
 
         // Signals
 
+        connect<K extends keyof FilenameInput.SignalSignatures>(
+            signal: K,
+            callback: FilenameInput.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FilenameInput.SignalSignatures>(
+            signal: K,
+            callback: FilenameInput.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FilenameInput.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FilenameInput.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1382,6 +1401,15 @@ export namespace Libxfce4ui {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            quit: Quit;
+            'quit-cancelled': QuitCancelled;
+            'quit-requested': QuitRequested;
+            'save-state': SaveState;
+            'save-state-extended': SaveStateExtended;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1407,6 +1435,7 @@ export namespace Libxfce4ui {
      */
     class SMClient extends GObject.Object {
         static $gtype: GObject.GType<SMClient>;
+        declare static readonly __signalSignatures: SMClient.SignalSignatures;
 
         // Properties
 
@@ -1460,6 +1489,14 @@ export namespace Libxfce4ui {
 
         // Signals
 
+        connect_after<K extends keyof SMClient.SignalSignatures>(
+            signal: K,
+            callback: SMClient.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SMClient.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SMClient.SignalSignatures[K]>
+        ): void;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
         connect_after(signal: 'quit', callback: (_source: this) => void): number;
@@ -1656,6 +1693,9 @@ export namespace Libxfce4ui {
     }
 
     namespace Screensaver {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1670,6 +1710,7 @@ export namespace Libxfce4ui {
 
     class Screensaver extends GObject.Object {
         static $gtype: GObject.GType<Screensaver>;
+        declare static readonly __signalSignatures: Screensaver.SignalSignatures;
 
         // Properties
 
@@ -1716,6 +1757,9 @@ export namespace Libxfce4ui {
     }
 
     namespace TitledDialog {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Dialog.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1731,6 +1775,7 @@ export namespace Libxfce4ui {
      */
     class TitledDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<TitledDialog>;
+        declare static readonly __signalSignatures: TitledDialog.SignalSignatures;
 
         // Properties
 

@@ -39,6 +39,9 @@ export namespace GstDxva {
     }
     function dxva_codec_to_string(codec: DxvaCodec | null): string;
     namespace DxvaAV1Decoder {
+        // Signal signatures
+        interface SignalSignatures extends GstCodecs.AV1Decoder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GstCodecs.AV1Decoder.ConstructorProps {}
@@ -46,6 +49,7 @@ export namespace GstDxva {
 
     abstract class DxvaAV1Decoder extends GstCodecs.AV1Decoder {
         static $gtype: GObject.GType<DxvaAV1Decoder>;
+        declare static readonly __signalSignatures: DxvaAV1Decoder.SignalSignatures;
 
         // Constructors
 
@@ -86,6 +90,9 @@ export namespace GstDxva {
     }
 
     namespace DxvaH264Decoder {
+        // Signal signatures
+        interface SignalSignatures extends GstCodecs.H264Decoder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GstCodecs.H264Decoder.ConstructorProps {}
@@ -93,6 +100,7 @@ export namespace GstDxva {
 
     abstract class DxvaH264Decoder extends GstCodecs.H264Decoder {
         static $gtype: GObject.GType<DxvaH264Decoder>;
+        declare static readonly __signalSignatures: DxvaH264Decoder.SignalSignatures;
 
         // Constructors
 
@@ -131,6 +139,9 @@ export namespace GstDxva {
     }
 
     namespace DxvaH265Decoder {
+        // Signal signatures
+        interface SignalSignatures extends GstCodecs.H265Decoder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GstCodecs.H265Decoder.ConstructorProps {}
@@ -138,6 +149,7 @@ export namespace GstDxva {
 
     abstract class DxvaH265Decoder extends GstCodecs.H265Decoder {
         static $gtype: GObject.GType<DxvaH265Decoder>;
+        declare static readonly __signalSignatures: DxvaH265Decoder.SignalSignatures;
 
         // Constructors
 
@@ -175,6 +187,9 @@ export namespace GstDxva {
     }
 
     namespace DxvaMpeg2Decoder {
+        // Signal signatures
+        interface SignalSignatures extends GstCodecs.Mpeg2Decoder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GstCodecs.Mpeg2Decoder.ConstructorProps {}
@@ -182,6 +197,7 @@ export namespace GstDxva {
 
     abstract class DxvaMpeg2Decoder extends GstCodecs.Mpeg2Decoder {
         static $gtype: GObject.GType<DxvaMpeg2Decoder>;
+        declare static readonly __signalSignatures: DxvaMpeg2Decoder.SignalSignatures;
 
         // Constructors
 
@@ -224,6 +240,9 @@ export namespace GstDxva {
     }
 
     namespace DxvaVp8Decoder {
+        // Signal signatures
+        interface SignalSignatures extends GstCodecs.Vp8Decoder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GstCodecs.Vp8Decoder.ConstructorProps {}
@@ -231,6 +250,7 @@ export namespace GstDxva {
 
     abstract class DxvaVp8Decoder extends GstCodecs.Vp8Decoder {
         static $gtype: GObject.GType<DxvaVp8Decoder>;
+        declare static readonly __signalSignatures: DxvaVp8Decoder.SignalSignatures;
 
         // Constructors
 
@@ -268,6 +288,9 @@ export namespace GstDxva {
     }
 
     namespace DxvaVp9Decoder {
+        // Signal signatures
+        interface SignalSignatures extends GstCodecs.Vp9Decoder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GstCodecs.Vp9Decoder.ConstructorProps {}
@@ -275,6 +298,7 @@ export namespace GstDxva {
 
     abstract class DxvaVp9Decoder extends GstCodecs.Vp9Decoder {
         static $gtype: GObject.GType<DxvaVp9Decoder>;
+        declare static readonly __signalSignatures: DxvaVp9Decoder.SignalSignatures;
 
         // Constructors
 

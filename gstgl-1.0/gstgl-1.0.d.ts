@@ -1042,6 +1042,9 @@ export namespace GstGL {
         ANY,
     }
     namespace GLBaseFilter {
+        // Signal signatures
+        interface SignalSignatures extends GstBase.BaseTransform.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GstBase.BaseTransform.ConstructorProps {
@@ -1057,6 +1060,7 @@ export namespace GstGL {
      */
     class GLBaseFilter extends GstBase.BaseTransform {
         static $gtype: GObject.GType<GLBaseFilter>;
+        declare static readonly __signalSignatures: GLBaseFilter.SignalSignatures;
 
         // Properties
 
@@ -1085,6 +1089,9 @@ export namespace GstGL {
     }
 
     namespace GLBaseMemoryAllocator {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Allocator.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Allocator.ConstructorProps {}
@@ -1095,6 +1102,7 @@ export namespace GstGL {
      */
     abstract class GLBaseMemoryAllocator extends Gst.Allocator {
         static $gtype: GObject.GType<GLBaseMemoryAllocator>;
+        declare static readonly __signalSignatures: GLBaseMemoryAllocator.SignalSignatures;
 
         // Constructors
 
@@ -1110,6 +1118,9 @@ export namespace GstGL {
     }
 
     namespace GLBaseMixer {
+        // Signal signatures
+        interface SignalSignatures extends GstVideo.VideoAggregator.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GstVideo.VideoAggregator.ConstructorProps {
@@ -1124,6 +1135,7 @@ export namespace GstGL {
      */
     abstract class GLBaseMixer extends GstVideo.VideoAggregator {
         static $gtype: GObject.GType<GLBaseMixer>;
+        declare static readonly __signalSignatures: GLBaseMixer.SignalSignatures;
 
         // Properties
 
@@ -1159,6 +1171,9 @@ export namespace GstGL {
     }
 
     namespace GLBaseMixerPad {
+        // Signal signatures
+        interface SignalSignatures extends GstVideo.VideoAggregatorPad.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GstVideo.VideoAggregatorPad.ConstructorProps {}
@@ -1166,6 +1181,7 @@ export namespace GstGL {
 
     class GLBaseMixerPad extends GstVideo.VideoAggregatorPad {
         static $gtype: GObject.GType<GLBaseMixerPad>;
+        declare static readonly __signalSignatures: GLBaseMixerPad.SignalSignatures;
 
         // Constructors
 
@@ -1175,6 +1191,9 @@ export namespace GstGL {
     }
 
     namespace GLBaseSrc {
+        // Signal signatures
+        interface SignalSignatures extends GstBase.PushSrc.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GstBase.PushSrc.ConstructorProps {
@@ -1191,6 +1210,7 @@ export namespace GstGL {
      */
     abstract class GLBaseSrc extends GstBase.PushSrc {
         static $gtype: GObject.GType<GLBaseSrc>;
+        declare static readonly __signalSignatures: GLBaseSrc.SignalSignatures;
 
         // Properties
 
@@ -1219,6 +1239,9 @@ export namespace GstGL {
     }
 
     namespace GLBufferAllocator {
+        // Signal signatures
+        interface SignalSignatures extends GLBaseMemoryAllocator.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GLBaseMemoryAllocator.ConstructorProps {}
@@ -1229,6 +1252,7 @@ export namespace GstGL {
      */
     class GLBufferAllocator extends GLBaseMemoryAllocator {
         static $gtype: GObject.GType<GLBufferAllocator>;
+        declare static readonly __signalSignatures: GLBufferAllocator.SignalSignatures;
 
         // Constructors
 
@@ -1238,6 +1262,9 @@ export namespace GstGL {
     }
 
     namespace GLBufferPool {
+        // Signal signatures
+        interface SignalSignatures extends Gst.BufferPool.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.BufferPool.ConstructorProps {}
@@ -1255,6 +1282,7 @@ export namespace GstGL {
      */
     class GLBufferPool extends Gst.BufferPool {
         static $gtype: GObject.GType<GLBufferPool>;
+        declare static readonly __signalSignatures: GLBufferPool.SignalSignatures;
 
         // Fields
 
@@ -1285,6 +1313,9 @@ export namespace GstGL {
     }
 
     namespace GLColorConvert {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {}
@@ -1303,6 +1334,7 @@ export namespace GstGL {
      */
     class GLColorConvert extends Gst.Object {
         static $gtype: GObject.GType<GLColorConvert>;
+        declare static readonly __signalSignatures: GLColorConvert.SignalSignatures;
 
         // Constructors
 
@@ -1360,6 +1392,9 @@ export namespace GstGL {
     }
 
     namespace GLContext {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {}
@@ -1388,6 +1423,7 @@ export namespace GstGL {
      */
     abstract class GLContext extends Gst.Object {
         static $gtype: GObject.GType<GLContext>;
+        declare static readonly __signalSignatures: GLContext.SignalSignatures;
 
         // Constructors
 
@@ -1712,6 +1748,11 @@ export namespace GstGL {
             (context: GLContext): GLContext | null;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            'create-context': CreateContext;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {}
@@ -1741,6 +1782,7 @@ export namespace GstGL {
      */
     class GLDisplay extends Gst.Object {
         static $gtype: GObject.GType<GLDisplay>;
+        declare static readonly __signalSignatures: GLDisplay.SignalSignatures;
 
         // Constructors
 
@@ -1754,6 +1796,15 @@ export namespace GstGL {
 
         // Signals
 
+        connect<K extends keyof GLDisplay.SignalSignatures>(signal: K, callback: GLDisplay.SignalSignatures[K]): number;
+        connect_after<K extends keyof GLDisplay.SignalSignatures>(
+            signal: K,
+            callback: GLDisplay.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GLDisplay.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GLDisplay.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1831,6 +1882,9 @@ export namespace GstGL {
     }
 
     namespace GLFilter {
+        // Signal signatures
+        interface SignalSignatures extends GLBaseFilter.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GLBaseFilter.ConstructorProps {}
@@ -1842,6 +1896,7 @@ export namespace GstGL {
      */
     class GLFilter extends GLBaseFilter {
         static $gtype: GObject.GType<GLFilter>;
+        declare static readonly __signalSignatures: GLFilter.SignalSignatures;
 
         // Fields
 
@@ -1908,6 +1963,9 @@ export namespace GstGL {
     }
 
     namespace GLFramebuffer {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {}
@@ -1927,6 +1985,7 @@ export namespace GstGL {
      */
     class GLFramebuffer extends Gst.Object {
         static $gtype: GObject.GType<GLFramebuffer>;
+        declare static readonly __signalSignatures: GLFramebuffer.SignalSignatures;
 
         // Constructors
 
@@ -1980,6 +2039,9 @@ export namespace GstGL {
     }
 
     namespace GLMemoryAllocator {
+        // Signal signatures
+        interface SignalSignatures extends GLBaseMemoryAllocator.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GLBaseMemoryAllocator.ConstructorProps {}
@@ -1990,6 +2052,7 @@ export namespace GstGL {
      */
     class GLMemoryAllocator extends GLBaseMemoryAllocator {
         static $gtype: GObject.GType<GLMemoryAllocator>;
+        declare static readonly __signalSignatures: GLMemoryAllocator.SignalSignatures;
 
         // Constructors
 
@@ -2003,6 +2066,9 @@ export namespace GstGL {
     }
 
     namespace GLMemoryPBOAllocator {
+        // Signal signatures
+        interface SignalSignatures extends GLMemoryAllocator.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GLMemoryAllocator.ConstructorProps {}
@@ -2013,6 +2079,7 @@ export namespace GstGL {
      */
     class GLMemoryPBOAllocator extends GLMemoryAllocator {
         static $gtype: GObject.GType<GLMemoryPBOAllocator>;
+        declare static readonly __signalSignatures: GLMemoryPBOAllocator.SignalSignatures;
 
         // Constructors
 
@@ -2022,6 +2089,9 @@ export namespace GstGL {
     }
 
     namespace GLMixer {
+        // Signal signatures
+        interface SignalSignatures extends GLBaseMixer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GLBaseMixer.ConstructorProps {}
@@ -2032,6 +2102,7 @@ export namespace GstGL {
      */
     abstract class GLMixer extends GLBaseMixer {
         static $gtype: GObject.GType<GLMixer>;
+        declare static readonly __signalSignatures: GLMixer.SignalSignatures;
 
         // Constructors
 
@@ -2073,6 +2144,9 @@ export namespace GstGL {
     }
 
     namespace GLMixerPad {
+        // Signal signatures
+        interface SignalSignatures extends GLBaseMixerPad.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GLBaseMixerPad.ConstructorProps {}
@@ -2080,6 +2154,7 @@ export namespace GstGL {
 
     class GLMixerPad extends GLBaseMixerPad {
         static $gtype: GObject.GType<GLMixerPad>;
+        declare static readonly __signalSignatures: GLMixerPad.SignalSignatures;
 
         // Fields
 
@@ -2093,6 +2168,9 @@ export namespace GstGL {
     }
 
     namespace GLOverlayCompositor {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {
@@ -2105,6 +2183,7 @@ export namespace GstGL {
      */
     class GLOverlayCompositor extends Gst.Object {
         static $gtype: GObject.GType<GLOverlayCompositor>;
+        declare static readonly __signalSignatures: GLOverlayCompositor.SignalSignatures;
 
         // Properties
 
@@ -2131,6 +2210,9 @@ export namespace GstGL {
     }
 
     namespace GLRenderbufferAllocator {
+        // Signal signatures
+        interface SignalSignatures extends GLBaseMemoryAllocator.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GLBaseMemoryAllocator.ConstructorProps {}
@@ -2141,6 +2223,7 @@ export namespace GstGL {
      */
     class GLRenderbufferAllocator extends GLBaseMemoryAllocator {
         static $gtype: GObject.GType<GLRenderbufferAllocator>;
+        declare static readonly __signalSignatures: GLRenderbufferAllocator.SignalSignatures;
 
         // Constructors
 
@@ -2150,6 +2233,9 @@ export namespace GstGL {
     }
 
     namespace GLSLStage {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {}
@@ -2160,6 +2246,7 @@ export namespace GstGL {
      */
     class GLSLStage extends Gst.Object {
         static $gtype: GObject.GType<GLSLStage>;
+        declare static readonly __signalSignatures: GLSLStage.SignalSignatures;
 
         // Constructors
 
@@ -2206,6 +2293,9 @@ export namespace GstGL {
     }
 
     namespace GLShader {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {
@@ -2215,6 +2305,7 @@ export namespace GstGL {
 
     class GLShader extends Gst.Object {
         static $gtype: GObject.GType<GLShader>;
+        declare static readonly __signalSignatures: GLShader.SignalSignatures;
 
         // Properties
 
@@ -2529,6 +2620,9 @@ export namespace GstGL {
     }
 
     namespace GLUpload {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {}
@@ -2541,6 +2635,7 @@ export namespace GstGL {
      */
     class GLUpload extends Gst.Object {
         static $gtype: GObject.GType<GLUpload>;
+        declare static readonly __signalSignatures: GLUpload.SignalSignatures;
 
         // Fields
 
@@ -2591,6 +2686,9 @@ export namespace GstGL {
     }
 
     namespace GLViewConvert {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {
@@ -2612,6 +2710,7 @@ export namespace GstGL {
      */
     class GLViewConvert extends Gst.Object {
         static $gtype: GObject.GType<GLViewConvert>;
+        declare static readonly __signalSignatures: GLViewConvert.SignalSignatures;
 
         // Properties
 
@@ -2730,6 +2829,14 @@ export namespace GstGL {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            'key-event': KeyEvent;
+            'mouse-event': MouseEvent;
+            'scroll-event': ScrollEvent;
+            'window-handle-changed': WindowHandleChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {}
@@ -2741,6 +2848,7 @@ export namespace GstGL {
      */
     abstract class GLWindow extends Gst.Object {
         static $gtype: GObject.GType<GLWindow>;
+        declare static readonly __signalSignatures: GLWindow.SignalSignatures;
 
         // Constructors
 
@@ -2752,6 +2860,15 @@ export namespace GstGL {
 
         // Signals
 
+        connect<K extends keyof GLWindow.SignalSignatures>(signal: K, callback: GLWindow.SignalSignatures[K]): number;
+        connect_after<K extends keyof GLWindow.SignalSignatures>(
+            signal: K,
+            callback: GLWindow.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GLWindow.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GLWindow.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

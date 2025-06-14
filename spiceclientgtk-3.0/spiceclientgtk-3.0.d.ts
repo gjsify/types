@@ -72,6 +72,13 @@ export namespace SpiceClientGtk {
             (status: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.EventBox.SignalSignatures {
+            'grab-keys-pressed': GrabKeysPressed;
+            'keyboard-grab': KeyboardGrab;
+            'mouse-grab': MouseGrab;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -107,6 +114,7 @@ export namespace SpiceClientGtk {
      */
     class Display extends Gtk.EventBox implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Display>;
+        declare static readonly __signalSignatures: Display.SignalSignatures;
 
         // Properties
 
@@ -224,6 +232,15 @@ export namespace SpiceClientGtk {
 
         // Signals
 
+        connect<K extends keyof Display.SignalSignatures>(signal: K, callback: Display.SignalSignatures[K]): number;
+        connect_after<K extends keyof Display.SignalSignatures>(
+            signal: K,
+            callback: Display.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Display.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Display.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -709,6 +726,9 @@ export namespace SpiceClientGtk {
     }
 
     namespace GtkSession {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -729,6 +749,7 @@ export namespace SpiceClientGtk {
      */
     class GtkSession extends GObject.Object {
         static $gtype: GObject.GType<GtkSession>;
+        declare static readonly __signalSignatures: GtkSession.SignalSignatures;
 
         // Properties
 
@@ -823,6 +844,11 @@ export namespace SpiceClientGtk {
             (device: SpiceClientGLib.UsbDevice, error: GLib.Error): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {
+            'connect-failed': ConnectFailed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -841,6 +867,7 @@ export namespace SpiceClientGtk {
      */
     class UsbDeviceWidget extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<UsbDeviceWidget>;
+        declare static readonly __signalSignatures: UsbDeviceWidget.SignalSignatures;
 
         // Properties
 
@@ -872,6 +899,18 @@ export namespace SpiceClientGtk {
 
         // Signals
 
+        connect<K extends keyof UsbDeviceWidget.SignalSignatures>(
+            signal: K,
+            callback: UsbDeviceWidget.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UsbDeviceWidget.SignalSignatures>(
+            signal: K,
+            callback: UsbDeviceWidget.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UsbDeviceWidget.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UsbDeviceWidget.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

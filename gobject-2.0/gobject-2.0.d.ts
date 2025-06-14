@@ -2948,6 +2948,9 @@ export namespace GObject {
         DEEP_DERIVABLE,
     }
     namespace Binding {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -3040,6 +3043,7 @@ export namespace GObject {
      */
     class Binding extends Object {
         static $gtype: GType<Binding>;
+        declare static readonly __signalSignatures: Binding.SignalSignatures;
 
         // Properties
 
@@ -3174,6 +3178,9 @@ export namespace GObject {
     }
 
     namespace BindingGroup {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -3192,6 +3199,7 @@ export namespace GObject {
      */
     class BindingGroup extends Object {
         static $gtype: GType<BindingGroup>;
+        declare static readonly __signalSignatures: BindingGroup.SignalSignatures;
 
         // Properties
 
@@ -3289,6 +3297,9 @@ export namespace GObject {
     }
 
     namespace InitiallyUnowned {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -3302,6 +3313,7 @@ export namespace GObject {
      */
     class InitiallyUnowned extends Object {
         static $gtype: GType<InitiallyUnowned>;
+        declare static readonly __signalSignatures: InitiallyUnowned.SignalSignatures;
 
         // Constructors
 
@@ -3890,12 +3902,18 @@ export namespace GObject {
         stop_emission_by_name(detailedName: string): void;
     }
 
+    namespace ParamSpec {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+    }
+
     /**
      * A GObject parameter specification that defines property characteristics.
      * See https://gjs.guide/guides/gobject/basics.html#properties for more details.
      */
     abstract class ParamSpec<A = unknown> {
         static $gtype: GType<ParamSpec>;
+        declare static readonly __signalSignatures: ParamSpec.SignalSignatures;
 
         // Fields
 
@@ -4510,6 +4528,9 @@ export namespace GObject {
     }
 
     namespace TypeModule {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps, TypePlugin.ConstructorProps {}
@@ -4550,6 +4571,7 @@ export namespace GObject {
      */
     abstract class TypeModule extends Object implements TypePlugin {
         static $gtype: GType<TypeModule>;
+        declare static readonly __signalSignatures: TypeModule.SignalSignatures;
 
         // Fields
 

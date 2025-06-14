@@ -19,6 +19,9 @@ export namespace Gamerzilla {
      */
 
     namespace GamerzillaGobj {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -30,6 +33,7 @@ export namespace Gamerzilla {
 
     class GamerzillaGobj extends GObject.Object {
         static $gtype: GObject.GType<GamerzillaGobj>;
+        declare static readonly __signalSignatures: GamerzillaGobj.SignalSignatures;
 
         // Properties
 

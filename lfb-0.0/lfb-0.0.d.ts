@@ -147,6 +147,11 @@ export namespace Lfb {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'feedback-ended': FeedbackEnded;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -225,6 +230,7 @@ export namespace Lfb {
      */
     class Event extends GObject.Object {
         static $gtype: GObject.GType<Event>;
+        declare static readonly __signalSignatures: Event.SignalSignatures;
 
         // Properties
 
@@ -283,6 +289,9 @@ export namespace Lfb {
 
         // Signals
 
+        connect<K extends keyof Event.SignalSignatures>(signal: K, callback: Event.SignalSignatures[K]): number;
+        connect_after<K extends keyof Event.SignalSignatures>(signal: K, callback: Event.SignalSignatures[K]): number;
+        emit<K extends keyof Event.SignalSignatures>(signal: K, ...args: Parameters<Event.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -458,6 +467,9 @@ export namespace Lfb {
     }
 
     namespace GdbusFeedbackProxy {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -476,6 +488,7 @@ export namespace Lfb {
         implements Gio.AsyncInitable<GdbusFeedbackProxy>, Gio.DBusInterface, Gio.Initable, GdbusFeedback
     {
         static $gtype: GObject.GType<GdbusFeedbackProxy>;
+        declare static readonly __signalSignatures: GdbusFeedbackProxy.SignalSignatures;
 
         // Constructors
 
@@ -1523,6 +1536,9 @@ export namespace Lfb {
     }
 
     namespace GdbusFeedbackSkeleton {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1536,6 +1552,7 @@ export namespace Lfb {
      */
     class GdbusFeedbackSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, GdbusFeedback {
         static $gtype: GObject.GType<GdbusFeedbackSkeleton>;
+        declare static readonly __signalSignatures: GdbusFeedbackSkeleton.SignalSignatures;
 
         // Constructors
 

@@ -82,6 +82,13 @@ export namespace AyatanaIdo3 {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.MenuItem.SignalSignatures {
+            'day-selected': DaySelected;
+            'day-selected-double-click': DaySelectedDoubleClick;
+            'month-changed': MonthChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -97,6 +104,7 @@ export namespace AyatanaIdo3 {
         implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<CalendarMenuItem>;
+        declare static readonly __signalSignatures: CalendarMenuItem.SignalSignatures;
 
         // Constructors
 
@@ -110,6 +118,18 @@ export namespace AyatanaIdo3 {
 
         // Signals
 
+        connect<K extends keyof CalendarMenuItem.SignalSignatures>(
+            signal: K,
+            callback: CalendarMenuItem.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CalendarMenuItem.SignalSignatures>(
+            signal: K,
+            callback: CalendarMenuItem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CalendarMenuItem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CalendarMenuItem.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -4695,6 +4715,9 @@ export namespace AyatanaIdo3 {
     }
 
     namespace EntryMenuItem {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.MenuItem.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4710,6 +4733,7 @@ export namespace AyatanaIdo3 {
         implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<EntryMenuItem>;
+        declare static readonly __signalSignatures: EntryMenuItem.SignalSignatures;
 
         // Constructors
 
@@ -9253,6 +9277,9 @@ export namespace AyatanaIdo3 {
     }
 
     namespace Range {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Scale.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9264,6 +9291,7 @@ export namespace AyatanaIdo3 {
 
     class Range extends Gtk.Scale implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Range>;
+        declare static readonly __signalSignatures: Range.SignalSignatures;
 
         // Constructors
 
@@ -9741,6 +9769,15 @@ export namespace AyatanaIdo3 {
             (value: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.MenuItem.SignalSignatures {
+            'primary-clicked': PrimaryClicked;
+            'secondary-clicked': SecondaryClicked;
+            'slider-grabbed': SliderGrabbed;
+            'slider-released': SliderReleased;
+            'value-changed': ValueChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9760,6 +9797,7 @@ export namespace AyatanaIdo3 {
         implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<ScaleMenuItem>;
+        declare static readonly __signalSignatures: ScaleMenuItem.SignalSignatures;
 
         // Properties
 
@@ -9794,6 +9832,18 @@ export namespace AyatanaIdo3 {
 
         // Signals
 
+        connect<K extends keyof ScaleMenuItem.SignalSignatures>(
+            signal: K,
+            callback: ScaleMenuItem.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ScaleMenuItem.SignalSignatures>(
+            signal: K,
+            callback: ScaleMenuItem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ScaleMenuItem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ScaleMenuItem.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -14425,6 +14475,9 @@ export namespace AyatanaIdo3 {
     }
 
     namespace SwitchMenuItem {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.CheckMenuItem.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -14440,6 +14493,7 @@ export namespace AyatanaIdo3 {
         implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<SwitchMenuItem>;
+        declare static readonly __signalSignatures: SwitchMenuItem.SignalSignatures;
 
         // Constructors
 
@@ -18770,6 +18824,14 @@ export namespace AyatanaIdo3 {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            finished: Finished;
+            frame: Frame;
+            paused: Paused;
+            started: Started;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -18782,6 +18844,7 @@ export namespace AyatanaIdo3 {
 
     class Timeline extends GObject.Object {
         static $gtype: GObject.GType<Timeline>;
+        declare static readonly __signalSignatures: Timeline.SignalSignatures;
 
         // Properties
 
@@ -18806,6 +18869,15 @@ export namespace AyatanaIdo3 {
 
         // Signals
 
+        connect<K extends keyof Timeline.SignalSignatures>(signal: K, callback: Timeline.SignalSignatures[K]): number;
+        connect_after<K extends keyof Timeline.SignalSignatures>(
+            signal: K,
+            callback: Timeline.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Timeline.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Timeline.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

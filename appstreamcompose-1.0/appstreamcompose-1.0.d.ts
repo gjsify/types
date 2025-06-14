@@ -411,6 +411,9 @@ export namespace AppStreamCompose {
         BLUR,
     }
     namespace Canvas {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -418,6 +421,7 @@ export namespace AppStreamCompose {
 
     class Canvas extends GObject.Object {
         static $gtype: GObject.GType<Canvas>;
+        declare static readonly __signalSignatures: Canvas.SignalSignatures;
 
         // Constructors
 
@@ -450,6 +454,9 @@ export namespace AppStreamCompose {
     }
 
     namespace Compose {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -457,6 +464,7 @@ export namespace AppStreamCompose {
 
     class Compose extends GObject.Object {
         static $gtype: GObject.GType<Compose>;
+        declare static readonly __signalSignatures: Compose.SignalSignatures;
 
         // Constructors
 
@@ -685,6 +693,9 @@ export namespace AppStreamCompose {
     }
 
     namespace DirectoryUnit {
+        // Signal signatures
+        interface SignalSignatures extends Unit.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Unit.ConstructorProps {}
@@ -692,6 +703,7 @@ export namespace AppStreamCompose {
 
     class DirectoryUnit extends Unit {
         static $gtype: GObject.GType<DirectoryUnit>;
+        declare static readonly __signalSignatures: DirectoryUnit.SignalSignatures;
 
         // Constructors
 
@@ -718,6 +730,9 @@ export namespace AppStreamCompose {
     }
 
     namespace Hint {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -725,6 +740,7 @@ export namespace AppStreamCompose {
 
     class Hint extends GObject.Object {
         static $gtype: GObject.GType<Hint>;
+        declare static readonly __signalSignatures: Hint.SignalSignatures;
 
         // Constructors
 
@@ -793,6 +809,9 @@ export namespace AppStreamCompose {
     }
 
     namespace IconPolicy {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -800,6 +819,7 @@ export namespace AppStreamCompose {
 
     class IconPolicy extends GObject.Object {
         static $gtype: GObject.GType<IconPolicy>;
+        declare static readonly __signalSignatures: IconPolicy.SignalSignatures;
 
         // Constructors
 
@@ -831,6 +851,9 @@ export namespace AppStreamCompose {
     }
 
     namespace Image {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -838,6 +861,7 @@ export namespace AppStreamCompose {
 
     class Image extends GObject.Object {
         static $gtype: GObject.GType<Image>;
+        declare static readonly __signalSignatures: Image.SignalSignatures;
 
         // Constructors
 
@@ -938,6 +962,9 @@ export namespace AppStreamCompose {
     }
 
     namespace Result {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -945,6 +972,7 @@ export namespace AppStreamCompose {
 
     class Result extends GObject.Object {
         static $gtype: GObject.GType<Result>;
+        declare static readonly __signalSignatures: Result.SignalSignatures;
 
         // Constructors
 
@@ -1104,6 +1132,9 @@ export namespace AppStreamCompose {
     }
 
     namespace Unit {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1111,6 +1142,7 @@ export namespace AppStreamCompose {
 
     class Unit extends GObject.Object {
         static $gtype: GObject.GType<Unit>;
+        declare static readonly __signalSignatures: Unit.SignalSignatures;
 
         // Constructors
 

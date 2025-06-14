@@ -1047,6 +1047,9 @@ export namespace Gcr {
         SORTABLE,
     }
     namespace CertificateChain {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1087,6 +1090,7 @@ export namespace Gcr {
      */
     class CertificateChain extends GObject.Object {
         static $gtype: GObject.GType<CertificateChain>;
+        declare static readonly __signalSignatures: CertificateChain.SignalSignatures;
 
         // Properties
 
@@ -1336,6 +1340,9 @@ export namespace Gcr {
     }
 
     namespace CertificateRequest {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1355,6 +1362,7 @@ export namespace Gcr {
      */
     class CertificateRequest extends GObject.Object {
         static $gtype: GObject.GType<CertificateRequest>;
+        declare static readonly __signalSignatures: CertificateRequest.SignalSignatures;
 
         // Properties
 
@@ -1485,6 +1493,9 @@ export namespace Gcr {
     }
 
     namespace FilterCollection {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Collection.ConstructorProps {
@@ -1504,6 +1515,7 @@ export namespace Gcr {
      */
     class FilterCollection extends GObject.Object implements Collection {
         static $gtype: GObject.GType<FilterCollection>;
+        declare static readonly __signalSignatures: FilterCollection.SignalSignatures;
 
         // Properties
 
@@ -2038,6 +2050,12 @@ export namespace Gcr {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            authenticate: Authenticate;
+            parsed: Parsed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2068,6 +2086,7 @@ export namespace Gcr {
      */
     class Parser extends GObject.Object {
         static $gtype: GObject.GType<Parser>;
+        declare static readonly __signalSignatures: Parser.SignalSignatures;
 
         // Properties
 
@@ -2112,6 +2131,9 @@ export namespace Gcr {
 
         // Signals
 
+        connect<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
+        connect_after<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
+        emit<K extends keyof Parser.SignalSignatures>(signal: K, ...args: Parameters<Parser.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2281,6 +2303,9 @@ export namespace Gcr {
     }
 
     namespace Pkcs11Certificate {
+        // Signal signatures
+        interface SignalSignatures extends Gck.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2303,6 +2328,7 @@ export namespace Gcr {
      */
     class Pkcs11Certificate extends Gck.Object implements Certificate, Comparable {
         static $gtype: GObject.GType<Pkcs11Certificate>;
+        declare static readonly __signalSignatures: Pkcs11Certificate.SignalSignatures;
 
         // Properties
 
@@ -3041,6 +3067,9 @@ export namespace Gcr {
     }
 
     namespace SecretExchange {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3074,6 +3103,7 @@ export namespace Gcr {
      */
     class SecretExchange extends GObject.Object {
         static $gtype: GObject.GType<SecretExchange>;
+        declare static readonly __signalSignatures: SecretExchange.SignalSignatures;
 
         // Properties
 
@@ -3154,6 +3184,9 @@ export namespace Gcr {
     }
 
     namespace SimpleCertificate {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3171,6 +3204,7 @@ export namespace Gcr {
      */
     class SimpleCertificate extends GObject.Object implements Certificate, Comparable {
         static $gtype: GObject.GType<SimpleCertificate>;
+        declare static readonly __signalSignatures: SimpleCertificate.SignalSignatures;
 
         // Constructors
 
@@ -3849,6 +3883,9 @@ export namespace Gcr {
     }
 
     namespace SimpleCollection {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Collection.ConstructorProps {}
@@ -3863,6 +3900,7 @@ export namespace Gcr {
      */
     class SimpleCollection extends GObject.Object implements Collection {
         static $gtype: GObject.GType<SimpleCollection>;
+        declare static readonly __signalSignatures: SimpleCollection.SignalSignatures;
 
         // Constructors
 
@@ -4371,6 +4409,9 @@ export namespace Gcr {
     }
 
     namespace SshAskpass {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4384,6 +4425,7 @@ export namespace Gcr {
      */
     class SshAskpass extends GObject.Object {
         static $gtype: GObject.GType<SshAskpass>;
+        declare static readonly __signalSignatures: SshAskpass.SignalSignatures;
 
         // Properties
 
@@ -4419,6 +4461,9 @@ export namespace Gcr {
     }
 
     namespace SystemPrompt {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4450,6 +4495,7 @@ export namespace Gcr {
      */
     class SystemPrompt extends GObject.Object implements Prompt, Gio.AsyncInitable<SystemPrompt>, Gio.Initable {
         static $gtype: GObject.GType<SystemPrompt>;
+        declare static readonly __signalSignatures: SystemPrompt.SignalSignatures;
 
         // Properties
 
@@ -5900,6 +5946,11 @@ export namespace Gcr {
             (): Prompt;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'new-prompt': NewPrompt;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5923,6 +5974,7 @@ export namespace Gcr {
      */
     class SystemPrompter extends GObject.Object {
         static $gtype: GObject.GType<SystemPrompter>;
+        declare static readonly __signalSignatures: SystemPrompter.SignalSignatures;
 
         // Properties
 
@@ -5951,6 +6003,18 @@ export namespace Gcr {
 
         // Signals
 
+        connect<K extends keyof SystemPrompter.SignalSignatures>(
+            signal: K,
+            callback: SystemPrompter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SystemPrompter.SignalSignatures>(
+            signal: K,
+            callback: SystemPrompter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SystemPrompter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SystemPrompter.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -6002,6 +6066,9 @@ export namespace Gcr {
     }
 
     namespace UnionCollection {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Collection.ConstructorProps {}
@@ -6014,6 +6081,7 @@ export namespace Gcr {
      */
     class UnionCollection extends GObject.Object implements Collection {
         static $gtype: GObject.GType<UnionCollection>;
+        declare static readonly __signalSignatures: UnionCollection.SignalSignatures;
 
         // Constructors
 

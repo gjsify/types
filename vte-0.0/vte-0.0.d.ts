@@ -225,6 +225,9 @@ export namespace Vte {
         DEFAULT,
     }
     namespace Pty {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -236,6 +239,7 @@ export namespace Vte {
 
     class Pty extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Pty>;
+        declare static readonly __signalSignatures: Pty.SignalSignatures;
 
         // Properties
 
@@ -962,6 +966,41 @@ export namespace Vte {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {
+            beep: Beep;
+            'char-size-changed': CharSizeChanged;
+            'child-exited': ChildExited;
+            commit: Commit;
+            'contents-changed': ContentsChanged;
+            'copy-clipboard': CopyClipboard;
+            'cursor-moved': CursorMoved;
+            'decrease-font-size': DecreaseFontSize;
+            'deiconify-window': DeiconifyWindow;
+            'emulation-changed': EmulationChanged;
+            'encoding-changed': EncodingChanged;
+            eof: Eof;
+            'icon-title-changed': IconTitleChanged;
+            'iconify-window': IconifyWindow;
+            'increase-font-size': IncreaseFontSize;
+            'lower-window': LowerWindow;
+            'maximize-window': MaximizeWindow;
+            'move-window': MoveWindow;
+            'paste-clipboard': PasteClipboard;
+            'raise-window': RaiseWindow;
+            'refresh-window': RefreshWindow;
+            'resize-window': ResizeWindow;
+            'restore-window': RestoreWindow;
+            'selection-changed': SelectionChanged;
+            'set-scroll-adjustments': SetScrollAdjustments;
+            'status-line-changed': StatusLineChanged;
+            'text-deleted': TextDeleted;
+            'text-inserted': TextInserted;
+            'text-modified': TextModified;
+            'text-scrolled': TextScrolled;
+            'window-title-changed': WindowTitleChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1025,6 +1064,7 @@ export namespace Vte {
      */
     class Terminal extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Terminal>;
+        declare static readonly __signalSignatures: Terminal.SignalSignatures;
 
         // Properties
 
@@ -1397,6 +1437,15 @@ export namespace Vte {
 
         // Signals
 
+        connect<K extends keyof Terminal.SignalSignatures>(signal: K, callback: Terminal.SignalSignatures[K]): number;
+        connect_after<K extends keyof Terminal.SignalSignatures>(
+            signal: K,
+            callback: Terminal.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Terminal.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Terminal.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

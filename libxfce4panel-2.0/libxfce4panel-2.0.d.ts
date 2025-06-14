@@ -325,6 +325,11 @@ export namespace Libxfce4panel {
             (type: Gtk.ArrowType): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.ToggleButton.SignalSignatures {
+            'arrow-type-changed': ArrowTypeChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -347,6 +352,7 @@ export namespace Libxfce4panel {
         implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<ArrowButton>;
+        declare static readonly __signalSignatures: ArrowButton.SignalSignatures;
 
         // Properties
 
@@ -376,6 +382,18 @@ export namespace Libxfce4panel {
 
         // Signals
 
+        connect<K extends keyof ArrowButton.SignalSignatures>(
+            signal: K,
+            callback: ArrowButton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ArrowButton.SignalSignatures>(
+            signal: K,
+            callback: ArrowButton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ArrowButton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ArrowButton.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -4688,6 +4706,9 @@ export namespace Libxfce4panel {
     }
 
     namespace PanelImage {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4706,6 +4727,7 @@ export namespace Libxfce4panel {
      */
     class PanelImage extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<PanelImage>;
+        declare static readonly __signalSignatures: PanelImage.SignalSignatures;
 
         // Properties
 
@@ -5423,6 +5445,21 @@ export namespace Libxfce4panel {
             (size: number): boolean;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.EventBox.SignalSignatures {
+            about: About;
+            'configure-plugin': ConfigurePlugin;
+            'free-data': FreeData;
+            'mode-changed': ModeChanged;
+            'nrows-changed': NrowsChanged;
+            'orientation-changed': OrientationChanged;
+            'remote-event': RemoteEvent;
+            removed: Removed;
+            save: Save;
+            'screen-position-changed': ScreenPositionChanged;
+            'size-changed': SizeChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5459,6 +5496,7 @@ export namespace Libxfce4panel {
      */
     class PanelPlugin extends Gtk.EventBox implements Atk.ImplementorIface, Gtk.Buildable, PanelPluginProvider {
         static $gtype: GObject.GType<PanelPlugin>;
+        declare static readonly __signalSignatures: PanelPlugin.SignalSignatures;
 
         // Properties
 
@@ -5581,6 +5619,18 @@ export namespace Libxfce4panel {
 
         // Signals
 
+        connect<K extends keyof PanelPlugin.SignalSignatures>(
+            signal: K,
+            callback: PanelPlugin.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PanelPlugin.SignalSignatures>(
+            signal: K,
+            callback: PanelPlugin.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PanelPlugin.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PanelPlugin.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

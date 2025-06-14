@@ -343,6 +343,9 @@ export namespace GstCodecs {
      */
     function vp9_seg_feature_active(params: Vp9SegmentationParams, segment_id: number, feature: number): boolean;
     namespace AV1Decoder {
+        // Signal signatures
+        interface SignalSignatures extends GstVideo.VideoDecoder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GstVideo.VideoDecoder.ConstructorProps {}
@@ -353,6 +356,7 @@ export namespace GstCodecs {
      */
     abstract class AV1Decoder extends GstVideo.VideoDecoder {
         static $gtype: GObject.GType<AV1Decoder>;
+        declare static readonly __signalSignatures: AV1Decoder.SignalSignatures;
 
         // Constructors
 
@@ -414,6 +418,9 @@ export namespace GstCodecs {
     }
 
     namespace H264Decoder {
+        // Signal signatures
+        interface SignalSignatures extends GstVideo.VideoDecoder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GstVideo.VideoDecoder.ConstructorProps {
@@ -426,6 +433,7 @@ export namespace GstCodecs {
      */
     abstract class H264Decoder extends GstVideo.VideoDecoder {
         static $gtype: GObject.GType<H264Decoder>;
+        declare static readonly __signalSignatures: H264Decoder.SignalSignatures;
 
         // Properties
 
@@ -528,6 +536,9 @@ export namespace GstCodecs {
     }
 
     namespace H265Decoder {
+        // Signal signatures
+        interface SignalSignatures extends GstVideo.VideoDecoder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GstVideo.VideoDecoder.ConstructorProps {}
@@ -538,6 +549,7 @@ export namespace GstCodecs {
      */
     abstract class H265Decoder extends GstVideo.VideoDecoder {
         static $gtype: GObject.GType<H265Decoder>;
+        declare static readonly __signalSignatures: H265Decoder.SignalSignatures;
 
         // Constructors
 
@@ -610,6 +622,9 @@ export namespace GstCodecs {
     }
 
     namespace Mpeg2Decoder {
+        // Signal signatures
+        interface SignalSignatures extends GstVideo.VideoDecoder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GstVideo.VideoDecoder.ConstructorProps {}
@@ -620,6 +635,7 @@ export namespace GstCodecs {
      */
     abstract class Mpeg2Decoder extends GstVideo.VideoDecoder {
         static $gtype: GObject.GType<Mpeg2Decoder>;
+        declare static readonly __signalSignatures: Mpeg2Decoder.SignalSignatures;
 
         // Constructors
 
@@ -688,6 +704,9 @@ export namespace GstCodecs {
     }
 
     namespace Vp8Decoder {
+        // Signal signatures
+        interface SignalSignatures extends GstVideo.VideoDecoder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GstVideo.VideoDecoder.ConstructorProps {}
@@ -698,6 +717,7 @@ export namespace GstCodecs {
      */
     abstract class Vp8Decoder extends GstVideo.VideoDecoder {
         static $gtype: GObject.GType<Vp8Decoder>;
+        declare static readonly __signalSignatures: Vp8Decoder.SignalSignatures;
 
         // Constructors
 
@@ -720,6 +740,9 @@ export namespace GstCodecs {
     }
 
     namespace Vp9Decoder {
+        // Signal signatures
+        interface SignalSignatures extends GstVideo.VideoDecoder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GstVideo.VideoDecoder.ConstructorProps {}
@@ -730,6 +753,7 @@ export namespace GstCodecs {
      */
     abstract class Vp9Decoder extends GstVideo.VideoDecoder {
         static $gtype: GObject.GType<Vp9Decoder>;
+        declare static readonly __signalSignatures: Vp9Decoder.SignalSignatures;
 
         // Constructors
 

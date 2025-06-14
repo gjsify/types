@@ -152,6 +152,9 @@ export namespace GstGLEGL {
         (image: EGLImage, data?: any | null): void;
     }
     namespace GLDisplayEGL {
+        // Signal signatures
+        interface SignalSignatures extends GstGL.GLDisplay.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GstGL.GLDisplay.ConstructorProps {}
@@ -163,6 +166,7 @@ export namespace GstGLEGL {
      */
     class GLDisplayEGL extends GstGL.GLDisplay {
         static $gtype: GObject.GType<GLDisplayEGL>;
+        declare static readonly __signalSignatures: GLDisplayEGL.SignalSignatures;
 
         // Constructors
 
@@ -195,6 +199,9 @@ export namespace GstGLEGL {
     }
 
     namespace GLDisplayEGLDevice {
+        // Signal signatures
+        interface SignalSignatures extends GstGL.GLDisplay.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GstGL.GLDisplay.ConstructorProps {}
@@ -206,6 +213,7 @@ export namespace GstGLEGL {
      */
     class GLDisplayEGLDevice extends GstGL.GLDisplay {
         static $gtype: GObject.GType<GLDisplayEGLDevice>;
+        declare static readonly __signalSignatures: GLDisplayEGLDevice.SignalSignatures;
 
         // Fields
 
@@ -226,6 +234,9 @@ export namespace GstGLEGL {
     }
 
     namespace GLMemoryEGLAllocator {
+        // Signal signatures
+        interface SignalSignatures extends GstGL.GLMemoryAllocator.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GstGL.GLMemoryAllocator.ConstructorProps {}
@@ -236,6 +247,7 @@ export namespace GstGLEGL {
      */
     class GLMemoryEGLAllocator extends GstGL.GLMemoryAllocator {
         static $gtype: GObject.GType<GLMemoryEGLAllocator>;
+        declare static readonly __signalSignatures: GLMemoryEGLAllocator.SignalSignatures;
 
         // Constructors
 

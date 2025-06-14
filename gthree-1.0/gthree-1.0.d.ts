@@ -321,6 +321,9 @@ export namespace Gthree {
         (object: Object): boolean;
     }
     namespace AmbientLight {
+        // Signal signatures
+        interface SignalSignatures extends Light.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Light.ConstructorProps {}
@@ -328,6 +331,7 @@ export namespace Gthree {
 
     class AmbientLight extends Light {
         static $gtype: GObject.GType<AmbientLight>;
+        declare static readonly __signalSignatures: AmbientLight.SignalSignatures;
 
         // Constructors
 
@@ -342,6 +346,9 @@ export namespace Gthree {
     }
 
     namespace AnimationAction {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -349,6 +356,7 @@ export namespace Gthree {
 
     class AnimationAction extends GObject.Object {
         static $gtype: GObject.GType<AnimationAction>;
+        declare static readonly __signalSignatures: AnimationAction.SignalSignatures;
 
         // Constructors
 
@@ -392,6 +400,9 @@ export namespace Gthree {
     }
 
     namespace AnimationClip {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -399,6 +410,7 @@ export namespace Gthree {
 
     class AnimationClip extends GObject.Object {
         static $gtype: GObject.GType<AnimationClip>;
+        declare static readonly __signalSignatures: AnimationClip.SignalSignatures;
 
         // Constructors
 
@@ -430,6 +442,12 @@ export namespace Gthree {
             (object: AnimationAction, p0: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            finished: Finished;
+            loop: Loop;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -437,6 +455,7 @@ export namespace Gthree {
 
     class AnimationMixer extends GObject.Object {
         static $gtype: GObject.GType<AnimationMixer>;
+        declare static readonly __signalSignatures: AnimationMixer.SignalSignatures;
 
         // Constructors
 
@@ -448,6 +467,18 @@ export namespace Gthree {
 
         // Signals
 
+        connect<K extends keyof AnimationMixer.SignalSignatures>(
+            signal: K,
+            callback: AnimationMixer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AnimationMixer.SignalSignatures>(
+            signal: K,
+            callback: AnimationMixer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AnimationMixer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AnimationMixer.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -475,6 +506,9 @@ export namespace Gthree {
     }
 
     namespace Attribute {
+        // Signal signatures
+        interface SignalSignatures extends Resource.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Resource.ConstructorProps {}
@@ -482,6 +516,7 @@ export namespace Gthree {
 
     class Attribute extends Resource {
         static $gtype: GObject.GType<Attribute>;
+        declare static readonly __signalSignatures: Attribute.SignalSignatures;
 
         // Constructors
 
@@ -580,6 +615,9 @@ export namespace Gthree {
     }
 
     namespace BloomPass {
+        // Signal signatures
+        interface SignalSignatures extends Pass.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Pass.ConstructorProps {}
@@ -587,6 +625,7 @@ export namespace Gthree {
 
     class BloomPass extends Pass {
         static $gtype: GObject.GType<BloomPass>;
+        declare static readonly __signalSignatures: BloomPass.SignalSignatures;
 
         // Constructors
 
@@ -598,6 +637,9 @@ export namespace Gthree {
     }
 
     namespace Bone {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -605,6 +647,7 @@ export namespace Gthree {
 
     class Bone extends Object {
         static $gtype: GObject.GType<Bone>;
+        declare static readonly __signalSignatures: Bone.SignalSignatures;
 
         // Constructors
 
@@ -616,6 +659,9 @@ export namespace Gthree {
     }
 
     namespace Camera {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -626,6 +672,7 @@ export namespace Gthree {
 
     class Camera extends Object {
         static $gtype: GObject.GType<Camera>;
+        declare static readonly __signalSignatures: Camera.SignalSignatures;
 
         // Properties
 
@@ -669,6 +716,9 @@ export namespace Gthree {
     }
 
     namespace ClearPass {
+        // Signal signatures
+        interface SignalSignatures extends Pass.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Pass.ConstructorProps {}
@@ -676,6 +726,7 @@ export namespace Gthree {
 
     class ClearPass extends Pass {
         static $gtype: GObject.GType<ClearPass>;
+        declare static readonly __signalSignatures: ClearPass.SignalSignatures;
 
         // Constructors
 
@@ -691,6 +742,9 @@ export namespace Gthree {
     }
 
     namespace ColorKeyframeTrack {
+        // Signal signatures
+        interface SignalSignatures extends KeyframeTrack.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends KeyframeTrack.ConstructorProps {}
@@ -698,6 +752,7 @@ export namespace Gthree {
 
     class ColorKeyframeTrack extends KeyframeTrack {
         static $gtype: GObject.GType<ColorKeyframeTrack>;
+        declare static readonly __signalSignatures: ColorKeyframeTrack.SignalSignatures;
 
         // Constructors
 
@@ -709,6 +764,9 @@ export namespace Gthree {
     }
 
     namespace CubeTexture {
+        // Signal signatures
+        interface SignalSignatures extends Texture.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Texture.ConstructorProps {}
@@ -716,6 +774,7 @@ export namespace Gthree {
 
     class CubeTexture extends Texture {
         static $gtype: GObject.GType<CubeTexture>;
+        declare static readonly __signalSignatures: CubeTexture.SignalSignatures;
 
         // Constructors
 
@@ -739,6 +798,9 @@ export namespace Gthree {
     }
 
     namespace CubicInterpolant {
+        // Signal signatures
+        interface SignalSignatures extends Interpolant.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Interpolant.ConstructorProps {}
@@ -746,6 +808,7 @@ export namespace Gthree {
 
     class CubicInterpolant extends Interpolant {
         static $gtype: GObject.GType<CubicInterpolant>;
+        declare static readonly __signalSignatures: CubicInterpolant.SignalSignatures;
 
         // Constructors
 
@@ -757,6 +820,9 @@ export namespace Gthree {
     }
 
     namespace DirectionalLight {
+        // Signal signatures
+        interface SignalSignatures extends Light.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Light.ConstructorProps {
@@ -766,6 +832,7 @@ export namespace Gthree {
 
     class DirectionalLight extends Light {
         static $gtype: GObject.GType<DirectionalLight>;
+        declare static readonly __signalSignatures: DirectionalLight.SignalSignatures;
 
         // Properties
 
@@ -789,6 +856,9 @@ export namespace Gthree {
     }
 
     namespace DirectionalLightShadow {
+        // Signal signatures
+        interface SignalSignatures extends LightShadow.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends LightShadow.ConstructorProps {}
@@ -796,6 +866,7 @@ export namespace Gthree {
 
     class DirectionalLightShadow extends LightShadow {
         static $gtype: GObject.GType<DirectionalLightShadow>;
+        declare static readonly __signalSignatures: DirectionalLightShadow.SignalSignatures;
 
         // Constructors
 
@@ -805,6 +876,9 @@ export namespace Gthree {
     }
 
     namespace DiscreteInterpolant {
+        // Signal signatures
+        interface SignalSignatures extends Interpolant.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Interpolant.ConstructorProps {}
@@ -812,6 +886,7 @@ export namespace Gthree {
 
     class DiscreteInterpolant extends Interpolant {
         static $gtype: GObject.GType<DiscreteInterpolant>;
+        declare static readonly __signalSignatures: DiscreteInterpolant.SignalSignatures;
 
         // Constructors
 
@@ -823,6 +898,9 @@ export namespace Gthree {
     }
 
     namespace EffectComposer {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -830,6 +908,7 @@ export namespace Gthree {
 
     class EffectComposer extends GObject.Object {
         static $gtype: GObject.GType<EffectComposer>;
+        declare static readonly __signalSignatures: EffectComposer.SignalSignatures;
 
         // Constructors
 
@@ -848,6 +927,9 @@ export namespace Gthree {
     }
 
     namespace Fog {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -855,6 +937,7 @@ export namespace Gthree {
 
     class Fog extends GObject.Object {
         static $gtype: GObject.GType<Fog>;
+        declare static readonly __signalSignatures: Fog.SignalSignatures;
 
         // Constructors
 
@@ -881,6 +964,9 @@ export namespace Gthree {
     }
 
     namespace FullscreenQuadPass {
+        // Signal signatures
+        interface SignalSignatures extends Pass.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Pass.ConstructorProps {}
@@ -888,6 +974,7 @@ export namespace Gthree {
 
     class FullscreenQuadPass extends Pass {
         static $gtype: GObject.GType<FullscreenQuadPass>;
+        declare static readonly __signalSignatures: FullscreenQuadPass.SignalSignatures;
 
         // Constructors
 
@@ -903,6 +990,9 @@ export namespace Gthree {
     }
 
     namespace Geometry {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -910,6 +1000,7 @@ export namespace Gthree {
 
     class Geometry extends GObject.Object {
         static $gtype: GObject.GType<Geometry>;
+        declare static readonly __signalSignatures: Geometry.SignalSignatures;
 
         // Fields
 
@@ -1023,6 +1114,9 @@ export namespace Gthree {
     }
 
     namespace Group {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -1030,6 +1124,7 @@ export namespace Gthree {
 
     class Group extends Object {
         static $gtype: GObject.GType<Group>;
+        declare static readonly __signalSignatures: Group.SignalSignatures;
 
         // Constructors
 
@@ -1041,6 +1136,9 @@ export namespace Gthree {
     }
 
     namespace HemisphereLight {
+        // Signal signatures
+        interface SignalSignatures extends Light.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Light.ConstructorProps {
@@ -1051,6 +1149,7 @@ export namespace Gthree {
 
     class HemisphereLight extends Light {
         static $gtype: GObject.GType<HemisphereLight>;
+        declare static readonly __signalSignatures: HemisphereLight.SignalSignatures;
 
         // Properties
 
@@ -1072,6 +1171,9 @@ export namespace Gthree {
     }
 
     namespace Interpolant {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1079,6 +1181,7 @@ export namespace Gthree {
 
     class Interpolant extends GObject.Object {
         static $gtype: GObject.GType<Interpolant>;
+        declare static readonly __signalSignatures: Interpolant.SignalSignatures;
 
         // Constructors
 
@@ -1102,6 +1205,9 @@ export namespace Gthree {
     }
 
     namespace InterpolantSettings {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1109,6 +1215,7 @@ export namespace Gthree {
 
     class InterpolantSettings extends GObject.Object {
         static $gtype: GObject.GType<InterpolantSettings>;
+        declare static readonly __signalSignatures: InterpolantSettings.SignalSignatures;
 
         // Constructors
 
@@ -1127,6 +1234,9 @@ export namespace Gthree {
     }
 
     namespace KeyframeTrack {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1134,6 +1244,7 @@ export namespace Gthree {
 
     class KeyframeTrack extends GObject.Object {
         static $gtype: GObject.GType<KeyframeTrack>;
+        declare static readonly __signalSignatures: KeyframeTrack.SignalSignatures;
 
         // Constructors
 
@@ -1154,6 +1265,9 @@ export namespace Gthree {
     }
 
     namespace Light {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -1164,6 +1278,7 @@ export namespace Gthree {
 
     class Light extends Object {
         static $gtype: GObject.GType<Light>;
+        declare static readonly __signalSignatures: Light.SignalSignatures;
 
         // Properties
 
@@ -1193,6 +1308,9 @@ export namespace Gthree {
     }
 
     namespace LightShadow {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1200,6 +1318,7 @@ export namespace Gthree {
 
     class LightShadow extends GObject.Object {
         static $gtype: GObject.GType<LightShadow>;
+        declare static readonly __signalSignatures: LightShadow.SignalSignatures;
 
         // Constructors
 
@@ -1219,6 +1338,9 @@ export namespace Gthree {
     }
 
     namespace Line {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -1229,6 +1351,7 @@ export namespace Gthree {
 
     class Line extends Object {
         static $gtype: GObject.GType<Line>;
+        declare static readonly __signalSignatures: Line.SignalSignatures;
 
         // Properties
 
@@ -1248,6 +1371,9 @@ export namespace Gthree {
     }
 
     namespace LineBasicMaterial {
+        // Signal signatures
+        interface SignalSignatures extends Material.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Material.ConstructorProps {
@@ -1259,6 +1385,7 @@ export namespace Gthree {
 
     class LineBasicMaterial extends Material {
         static $gtype: GObject.GType<LineBasicMaterial>;
+        declare static readonly __signalSignatures: LineBasicMaterial.SignalSignatures;
 
         // Properties
 
@@ -1286,6 +1413,9 @@ export namespace Gthree {
     }
 
     namespace LineSegments {
+        // Signal signatures
+        interface SignalSignatures extends Line.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Line.ConstructorProps {}
@@ -1293,6 +1423,7 @@ export namespace Gthree {
 
     class LineSegments extends Line {
         static $gtype: GObject.GType<LineSegments>;
+        declare static readonly __signalSignatures: LineSegments.SignalSignatures;
 
         // Constructors
 
@@ -1307,6 +1438,9 @@ export namespace Gthree {
     }
 
     namespace LinearInterpolant {
+        // Signal signatures
+        interface SignalSignatures extends Interpolant.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Interpolant.ConstructorProps {}
@@ -1314,6 +1448,7 @@ export namespace Gthree {
 
     class LinearInterpolant extends Interpolant {
         static $gtype: GObject.GType<LinearInterpolant>;
+        declare static readonly __signalSignatures: LinearInterpolant.SignalSignatures;
 
         // Constructors
 
@@ -1325,6 +1460,9 @@ export namespace Gthree {
     }
 
     namespace Loader {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1332,6 +1470,7 @@ export namespace Gthree {
 
     class Loader extends GObject.Object {
         static $gtype: GObject.GType<Loader>;
+        declare static readonly __signalSignatures: Loader.SignalSignatures;
 
         // Constructors
 
@@ -1351,6 +1490,9 @@ export namespace Gthree {
     }
 
     namespace Material {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1368,6 +1510,7 @@ export namespace Gthree {
 
     class Material extends GObject.Object {
         static $gtype: GObject.GType<Material>;
+        declare static readonly __signalSignatures: Material.SignalSignatures;
 
         // Properties
 
@@ -1446,6 +1589,9 @@ export namespace Gthree {
     }
 
     namespace Mesh {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -1456,6 +1602,7 @@ export namespace Gthree {
 
     class Mesh extends Object {
         static $gtype: GObject.GType<Mesh>;
+        declare static readonly __signalSignatures: Mesh.SignalSignatures;
 
         // Properties
 
@@ -1486,6 +1633,9 @@ export namespace Gthree {
     }
 
     namespace MeshBasicMaterial {
+        // Signal signatures
+        interface SignalSignatures extends MeshMaterial.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MeshMaterial.ConstructorProps {
@@ -1501,6 +1651,7 @@ export namespace Gthree {
 
     class MeshBasicMaterial extends MeshMaterial {
         static $gtype: GObject.GType<MeshBasicMaterial>;
+        declare static readonly __signalSignatures: MeshBasicMaterial.SignalSignatures;
 
         // Properties
 
@@ -1542,6 +1693,9 @@ export namespace Gthree {
     }
 
     namespace MeshDepthMaterial {
+        // Signal signatures
+        interface SignalSignatures extends MeshMaterial.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MeshMaterial.ConstructorProps {}
@@ -1549,6 +1703,7 @@ export namespace Gthree {
 
     class MeshDepthMaterial extends MeshMaterial {
         static $gtype: GObject.GType<MeshDepthMaterial>;
+        declare static readonly __signalSignatures: MeshDepthMaterial.SignalSignatures;
 
         // Constructors
 
@@ -1565,6 +1720,9 @@ export namespace Gthree {
     }
 
     namespace MeshDistanceMaterial {
+        // Signal signatures
+        interface SignalSignatures extends MeshMaterial.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MeshMaterial.ConstructorProps {}
@@ -1572,6 +1730,7 @@ export namespace Gthree {
 
     class MeshDistanceMaterial extends MeshMaterial {
         static $gtype: GObject.GType<MeshDistanceMaterial>;
+        declare static readonly __signalSignatures: MeshDistanceMaterial.SignalSignatures;
 
         // Constructors
 
@@ -1592,6 +1751,9 @@ export namespace Gthree {
     }
 
     namespace MeshLambertMaterial {
+        // Signal signatures
+        interface SignalSignatures extends MeshMaterial.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MeshMaterial.ConstructorProps {
@@ -1609,6 +1771,7 @@ export namespace Gthree {
 
     class MeshLambertMaterial extends MeshMaterial {
         static $gtype: GObject.GType<MeshLambertMaterial>;
+        declare static readonly __signalSignatures: MeshLambertMaterial.SignalSignatures;
 
         // Properties
 
@@ -1656,6 +1819,9 @@ export namespace Gthree {
     }
 
     namespace MeshMaterial {
+        // Signal signatures
+        interface SignalSignatures extends Material.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Material.ConstructorProps {
@@ -1672,6 +1838,7 @@ export namespace Gthree {
 
     class MeshMaterial extends Material {
         static $gtype: GObject.GType<MeshMaterial>;
+        declare static readonly __signalSignatures: MeshMaterial.SignalSignatures;
 
         // Properties
 
@@ -1713,6 +1880,9 @@ export namespace Gthree {
     }
 
     namespace MeshNormalMaterial {
+        // Signal signatures
+        interface SignalSignatures extends MeshMaterial.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MeshMaterial.ConstructorProps {}
@@ -1720,6 +1890,7 @@ export namespace Gthree {
 
     class MeshNormalMaterial extends MeshMaterial {
         static $gtype: GObject.GType<MeshNormalMaterial>;
+        declare static readonly __signalSignatures: MeshNormalMaterial.SignalSignatures;
 
         // Constructors
 
@@ -1736,6 +1907,9 @@ export namespace Gthree {
     }
 
     namespace MeshPhongMaterial {
+        // Signal signatures
+        interface SignalSignatures extends MeshMaterial.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MeshMaterial.ConstructorProps {
@@ -1764,6 +1938,7 @@ export namespace Gthree {
 
     class MeshPhongMaterial extends MeshMaterial {
         static $gtype: GObject.GType<MeshPhongMaterial>;
+        declare static readonly __signalSignatures: MeshPhongMaterial.SignalSignatures;
 
         // Properties
 
@@ -1845,6 +2020,9 @@ export namespace Gthree {
     }
 
     namespace MeshSpecglosMaterial {
+        // Signal signatures
+        interface SignalSignatures extends MeshMaterial.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MeshMaterial.ConstructorProps {
@@ -1898,6 +2076,7 @@ export namespace Gthree {
 
     class MeshSpecglosMaterial extends MeshMaterial {
         static $gtype: GObject.GType<MeshSpecglosMaterial>;
+        declare static readonly __signalSignatures: MeshSpecglosMaterial.SignalSignatures;
 
         // Properties
 
@@ -2044,6 +2223,9 @@ export namespace Gthree {
     }
 
     namespace MeshStandardMaterial {
+        // Signal signatures
+        interface SignalSignatures extends MeshMaterial.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MeshMaterial.ConstructorProps {
@@ -2096,6 +2278,7 @@ export namespace Gthree {
 
     class MeshStandardMaterial extends MeshMaterial {
         static $gtype: GObject.GType<MeshStandardMaterial>;
+        declare static readonly __signalSignatures: MeshStandardMaterial.SignalSignatures;
 
         // Properties
 
@@ -2240,6 +2423,9 @@ export namespace Gthree {
     }
 
     namespace MeshToonMaterial {
+        // Signal signatures
+        interface SignalSignatures extends MeshMaterial.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MeshMaterial.ConstructorProps {
@@ -2282,6 +2468,7 @@ export namespace Gthree {
 
     class MeshToonMaterial extends MeshMaterial {
         static $gtype: GObject.GType<MeshToonMaterial>;
+        declare static readonly __signalSignatures: MeshToonMaterial.SignalSignatures;
 
         // Properties
 
@@ -2396,6 +2583,9 @@ export namespace Gthree {
     }
 
     namespace NumberKeyframeTrack {
+        // Signal signatures
+        interface SignalSignatures extends KeyframeTrack.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends KeyframeTrack.ConstructorProps {}
@@ -2403,6 +2593,7 @@ export namespace Gthree {
 
     class NumberKeyframeTrack extends KeyframeTrack {
         static $gtype: GObject.GType<NumberKeyframeTrack>;
+        declare static readonly __signalSignatures: NumberKeyframeTrack.SignalSignatures;
 
         // Constructors
 
@@ -2424,6 +2615,12 @@ export namespace Gthree {
             (object: Object): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            destroy: Destroy;
+            'parent-set': ParentSet;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2442,6 +2639,7 @@ export namespace Gthree {
 
     class Object extends GObject.Object {
         static $gtype: GObject.GType<Object>;
+        declare static readonly __signalSignatures: Object.SignalSignatures;
 
         // Properties
 
@@ -2467,6 +2665,9 @@ export namespace Gthree {
 
         // Signals
 
+        connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2555,6 +2756,9 @@ export namespace Gthree {
     }
 
     namespace OrthographicCamera {
+        // Signal signatures
+        interface SignalSignatures extends Camera.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Camera.ConstructorProps {
@@ -2567,6 +2771,7 @@ export namespace Gthree {
 
     class OrthographicCamera extends Camera {
         static $gtype: GObject.GType<OrthographicCamera>;
+        declare static readonly __signalSignatures: OrthographicCamera.SignalSignatures;
 
         // Properties
 
@@ -2610,6 +2815,9 @@ export namespace Gthree {
     }
 
     namespace Pass {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2617,6 +2825,7 @@ export namespace Gthree {
 
     class Pass extends GObject.Object {
         static $gtype: GObject.GType<Pass>;
+        declare static readonly __signalSignatures: Pass.SignalSignatures;
 
         // Fields
 
@@ -2661,6 +2870,9 @@ export namespace Gthree {
     }
 
     namespace PerspectiveCamera {
+        // Signal signatures
+        interface SignalSignatures extends Camera.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Camera.ConstructorProps {
@@ -2671,6 +2883,7 @@ export namespace Gthree {
 
     class PerspectiveCamera extends Camera {
         static $gtype: GObject.GType<PerspectiveCamera>;
+        declare static readonly __signalSignatures: PerspectiveCamera.SignalSignatures;
 
         // Properties
 
@@ -2699,6 +2912,9 @@ export namespace Gthree {
     }
 
     namespace PlaneHelper {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -2710,6 +2926,7 @@ export namespace Gthree {
 
     class PlaneHelper extends Object {
         static $gtype: GObject.GType<PlaneHelper>;
+        declare static readonly __signalSignatures: PlaneHelper.SignalSignatures;
 
         // Properties
 
@@ -2742,6 +2959,9 @@ export namespace Gthree {
     }
 
     namespace PointLight {
+        // Signal signatures
+        interface SignalSignatures extends Light.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Light.ConstructorProps {
@@ -2752,6 +2972,7 @@ export namespace Gthree {
 
     class PointLight extends Light {
         static $gtype: GObject.GType<PointLight>;
+        declare static readonly __signalSignatures: PointLight.SignalSignatures;
 
         // Properties
 
@@ -2780,6 +3001,9 @@ export namespace Gthree {
     }
 
     namespace Points {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -2790,6 +3014,7 @@ export namespace Gthree {
 
     class Points extends Object {
         static $gtype: GObject.GType<Points>;
+        declare static readonly __signalSignatures: Points.SignalSignatures;
 
         // Properties
 
@@ -2814,6 +3039,9 @@ export namespace Gthree {
     }
 
     namespace PointsMaterial {
+        // Signal signatures
+        interface SignalSignatures extends Material.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Material.ConstructorProps {
@@ -2827,6 +3055,7 @@ export namespace Gthree {
 
     class PointsMaterial extends Material {
         static $gtype: GObject.GType<PointsMaterial>;
+        declare static readonly __signalSignatures: PointsMaterial.SignalSignatures;
 
         // Properties
 
@@ -2861,6 +3090,9 @@ export namespace Gthree {
     }
 
     namespace Program {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2868,6 +3100,7 @@ export namespace Gthree {
 
     class Program extends GObject.Object {
         static $gtype: GObject.GType<Program>;
+        declare static readonly __signalSignatures: Program.SignalSignatures;
 
         // Constructors
 
@@ -2887,6 +3120,9 @@ export namespace Gthree {
     }
 
     namespace QuaternionInterpolant {
+        // Signal signatures
+        interface SignalSignatures extends Interpolant.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Interpolant.ConstructorProps {}
@@ -2894,6 +3130,7 @@ export namespace Gthree {
 
     class QuaternionInterpolant extends Interpolant {
         static $gtype: GObject.GType<QuaternionInterpolant>;
+        declare static readonly __signalSignatures: QuaternionInterpolant.SignalSignatures;
 
         // Constructors
 
@@ -2905,6 +3142,9 @@ export namespace Gthree {
     }
 
     namespace QuaternionKeyframeTrack {
+        // Signal signatures
+        interface SignalSignatures extends KeyframeTrack.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends KeyframeTrack.ConstructorProps {}
@@ -2912,6 +3152,7 @@ export namespace Gthree {
 
     class QuaternionKeyframeTrack extends KeyframeTrack {
         static $gtype: GObject.GType<QuaternionKeyframeTrack>;
+        declare static readonly __signalSignatures: QuaternionKeyframeTrack.SignalSignatures;
 
         // Constructors
 
@@ -2923,6 +3164,9 @@ export namespace Gthree {
     }
 
     namespace Raycaster {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2930,6 +3174,7 @@ export namespace Gthree {
 
     class Raycaster extends GObject.Object {
         static $gtype: GObject.GType<Raycaster>;
+        declare static readonly __signalSignatures: Raycaster.SignalSignatures;
 
         // Constructors
 
@@ -2951,6 +3196,9 @@ export namespace Gthree {
     }
 
     namespace RenderPass {
+        // Signal signatures
+        interface SignalSignatures extends Pass.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Pass.ConstructorProps {}
@@ -2958,6 +3206,7 @@ export namespace Gthree {
 
     class RenderPass extends Pass {
         static $gtype: GObject.GType<RenderPass>;
+        declare static readonly __signalSignatures: RenderPass.SignalSignatures;
 
         // Constructors
 
@@ -2973,6 +3222,9 @@ export namespace Gthree {
     }
 
     namespace RenderTarget {
+        // Signal signatures
+        interface SignalSignatures extends Resource.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Resource.ConstructorProps {}
@@ -2980,6 +3232,7 @@ export namespace Gthree {
 
     class RenderTarget extends Resource {
         static $gtype: GObject.GType<RenderTarget>;
+        declare static readonly __signalSignatures: RenderTarget.SignalSignatures;
 
         // Constructors
 
@@ -3005,6 +3258,9 @@ export namespace Gthree {
     }
 
     namespace Renderer {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3012,6 +3268,7 @@ export namespace Gthree {
 
     class Renderer extends GObject.Object {
         static $gtype: GObject.GType<Renderer>;
+        declare static readonly __signalSignatures: Renderer.SignalSignatures;
 
         // Constructors
 
@@ -3066,6 +3323,9 @@ export namespace Gthree {
     }
 
     namespace Resource {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3073,6 +3333,7 @@ export namespace Gthree {
 
     class Resource extends GObject.Object {
         static $gtype: GObject.GType<Resource>;
+        declare static readonly __signalSignatures: Resource.SignalSignatures;
 
         // Constructors
 
@@ -3096,6 +3357,9 @@ export namespace Gthree {
     }
 
     namespace Scene {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -3103,6 +3367,7 @@ export namespace Gthree {
 
     class Scene extends Object {
         static $gtype: GObject.GType<Scene>;
+        declare static readonly __signalSignatures: Scene.SignalSignatures;
 
         // Constructors
 
@@ -3124,6 +3389,9 @@ export namespace Gthree {
     }
 
     namespace Shader {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3131,6 +3399,7 @@ export namespace Gthree {
 
     class Shader extends GObject.Object {
         static $gtype: GObject.GType<Shader>;
+        declare static readonly __signalSignatures: Shader.SignalSignatures;
 
         // Constructors
 
@@ -3150,6 +3419,9 @@ export namespace Gthree {
     }
 
     namespace ShaderMaterial {
+        // Signal signatures
+        interface SignalSignatures extends MeshMaterial.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MeshMaterial.ConstructorProps {
@@ -3163,6 +3435,7 @@ export namespace Gthree {
 
     class ShaderMaterial extends MeshMaterial {
         static $gtype: GObject.GType<ShaderMaterial>;
+        declare static readonly __signalSignatures: ShaderMaterial.SignalSignatures;
 
         // Properties
 
@@ -3195,6 +3468,9 @@ export namespace Gthree {
     }
 
     namespace ShaderPass {
+        // Signal signatures
+        interface SignalSignatures extends Pass.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Pass.ConstructorProps {}
@@ -3202,6 +3478,7 @@ export namespace Gthree {
 
     class ShaderPass extends Pass {
         static $gtype: GObject.GType<ShaderPass>;
+        declare static readonly __signalSignatures: ShaderPass.SignalSignatures;
 
         // Constructors
 
@@ -3213,6 +3490,9 @@ export namespace Gthree {
     }
 
     namespace Skeleton {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3220,6 +3500,7 @@ export namespace Gthree {
 
     class Skeleton extends GObject.Object {
         static $gtype: GObject.GType<Skeleton>;
+        declare static readonly __signalSignatures: Skeleton.SignalSignatures;
 
         // Constructors
 
@@ -3237,6 +3518,9 @@ export namespace Gthree {
     }
 
     namespace SkeletonHelper {
+        // Signal signatures
+        interface SignalSignatures extends LineSegments.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends LineSegments.ConstructorProps {
@@ -3246,6 +3530,7 @@ export namespace Gthree {
 
     class SkeletonHelper extends LineSegments {
         static $gtype: GObject.GType<SkeletonHelper>;
+        declare static readonly __signalSignatures: SkeletonHelper.SignalSignatures;
 
         // Properties
 
@@ -3264,6 +3549,9 @@ export namespace Gthree {
     }
 
     namespace SkinnedMesh {
+        // Signal signatures
+        interface SignalSignatures extends Mesh.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Mesh.ConstructorProps {}
@@ -3271,6 +3559,7 @@ export namespace Gthree {
 
     class SkinnedMesh extends Mesh {
         static $gtype: GObject.GType<SkinnedMesh>;
+        declare static readonly __signalSignatures: SkinnedMesh.SignalSignatures;
 
         // Constructors
 
@@ -3294,6 +3583,9 @@ export namespace Gthree {
     }
 
     namespace SpotLight {
+        // Signal signatures
+        interface SignalSignatures extends Light.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Light.ConstructorProps {
@@ -3307,6 +3599,7 @@ export namespace Gthree {
 
     class SpotLight extends Light {
         static $gtype: GObject.GType<SpotLight>;
+        declare static readonly __signalSignatures: SpotLight.SignalSignatures;
 
         // Properties
 
@@ -3352,6 +3645,9 @@ export namespace Gthree {
     }
 
     namespace SpotLightShadow {
+        // Signal signatures
+        interface SignalSignatures extends LightShadow.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends LightShadow.ConstructorProps {}
@@ -3359,6 +3655,7 @@ export namespace Gthree {
 
     class SpotLightShadow extends LightShadow {
         static $gtype: GObject.GType<SpotLightShadow>;
+        declare static readonly __signalSignatures: SpotLightShadow.SignalSignatures;
 
         // Constructors
 
@@ -3368,6 +3665,9 @@ export namespace Gthree {
     }
 
     namespace Sprite {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -3377,6 +3677,7 @@ export namespace Gthree {
 
     class Sprite extends Object {
         static $gtype: GObject.GType<Sprite>;
+        declare static readonly __signalSignatures: Sprite.SignalSignatures;
 
         // Properties
 
@@ -3402,6 +3703,9 @@ export namespace Gthree {
     }
 
     namespace SpriteMaterial {
+        // Signal signatures
+        interface SignalSignatures extends Material.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Material.ConstructorProps {
@@ -3415,6 +3719,7 @@ export namespace Gthree {
 
     class SpriteMaterial extends Material {
         static $gtype: GObject.GType<SpriteMaterial>;
+        declare static readonly __signalSignatures: SpriteMaterial.SignalSignatures;
 
         // Properties
 
@@ -3449,6 +3754,9 @@ export namespace Gthree {
     }
 
     namespace Texture {
+        // Signal signatures
+        interface SignalSignatures extends Resource.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Resource.ConstructorProps {
@@ -3459,6 +3767,7 @@ export namespace Gthree {
 
     class Texture extends Resource {
         static $gtype: GObject.GType<Texture>;
+        declare static readonly __signalSignatures: Texture.SignalSignatures;
 
         // Properties
 
@@ -3518,6 +3827,9 @@ export namespace Gthree {
     }
 
     namespace Uniforms {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3525,6 +3837,7 @@ export namespace Gthree {
 
     class Uniforms extends GObject.Object {
         static $gtype: GObject.GType<Uniforms>;
+        declare static readonly __signalSignatures: Uniforms.SignalSignatures;
 
         // Constructors
 
@@ -3551,6 +3864,9 @@ export namespace Gthree {
     }
 
     namespace VectorKeyframeTrack {
+        // Signal signatures
+        interface SignalSignatures extends KeyframeTrack.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends KeyframeTrack.ConstructorProps {}
@@ -3558,6 +3874,7 @@ export namespace Gthree {
 
     class VectorKeyframeTrack extends KeyframeTrack {
         static $gtype: GObject.GType<VectorKeyframeTrack>;
+        declare static readonly __signalSignatures: VectorKeyframeTrack.SignalSignatures;
 
         // Constructors
 

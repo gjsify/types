@@ -68,6 +68,15 @@ export namespace TrackerControl {
             (miner: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'miner-activated': MinerActivated;
+            'miner-deactivated': MinerDeactivated;
+            'miner-paused': MinerPaused;
+            'miner-progress': MinerProgress;
+            'miner-resumed': MinerResumed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -83,6 +92,7 @@ export namespace TrackerControl {
      */
     class MinerManager extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<MinerManager>;
+        declare static readonly __signalSignatures: MinerManager.SignalSignatures;
 
         // Properties
 
@@ -103,6 +113,18 @@ export namespace TrackerControl {
 
         // Signals
 
+        connect<K extends keyof MinerManager.SignalSignatures>(
+            signal: K,
+            callback: MinerManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MinerManager.SignalSignatures>(
+            signal: K,
+            callback: MinerManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MinerManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MinerManager.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

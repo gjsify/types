@@ -1036,6 +1036,20 @@ export namespace Colord {
             (sensor: Sensor): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            changed: Changed;
+            'device-added': DeviceAdded;
+            'device-changed': DeviceChanged;
+            'device-removed': DeviceRemoved;
+            'profile-added': ProfileAdded;
+            'profile-changed': ProfileChanged;
+            'profile-removed': ProfileRemoved;
+            'sensor-added': SensorAdded;
+            'sensor-changed': SensorChanged;
+            'sensor-removed': SensorRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1051,6 +1065,7 @@ export namespace Colord {
 
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
+        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Properties
 
@@ -1093,6 +1108,8 @@ export namespace Colord {
 
         // Signals
 
+        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
         connect_after(signal: 'changed', callback: (_source: this) => void): number;
@@ -2016,6 +2033,11 @@ export namespace Colord {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            changed: Changed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2044,6 +2066,7 @@ export namespace Colord {
 
     class Device extends GObject.Object {
         static $gtype: GObject.GType<Device>;
+        declare static readonly __signalSignatures: Device.SignalSignatures;
 
         // Properties
 
@@ -2136,6 +2159,8 @@ export namespace Colord {
 
         // Signals
 
+        connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
         connect_after(signal: 'changed', callback: (_source: this) => void): number;
@@ -2816,6 +2841,9 @@ export namespace Colord {
     }
 
     namespace Edid {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2823,6 +2851,7 @@ export namespace Colord {
 
     class Edid extends GObject.Object {
         static $gtype: GObject.GType<Edid>;
+        declare static readonly __signalSignatures: Edid.SignalSignatures;
 
         // Constructors
 
@@ -2919,6 +2948,9 @@ export namespace Colord {
     }
 
     namespace Icc {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2940,6 +2972,7 @@ export namespace Colord {
 
     class Icc extends GObject.Object {
         static $gtype: GObject.GType<Icc>;
+        declare static readonly __signalSignatures: Icc.SignalSignatures;
 
         // Properties
 
@@ -3350,6 +3383,9 @@ export namespace Colord {
     }
 
     namespace It8 {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3365,6 +3401,7 @@ export namespace Colord {
 
     class It8 extends GObject.Object {
         static $gtype: GObject.GType<It8>;
+        declare static readonly __signalSignatures: It8.SignalSignatures;
 
         // Properties
 
@@ -3602,6 +3639,11 @@ export namespace Colord {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            changed: Changed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3628,6 +3670,7 @@ export namespace Colord {
 
     class Profile extends GObject.Object {
         static $gtype: GObject.GType<Profile>;
+        declare static readonly __signalSignatures: Profile.SignalSignatures;
 
         // Properties
 
@@ -3718,6 +3761,14 @@ export namespace Colord {
 
         // Signals
 
+        connect_after<K extends keyof Profile.SignalSignatures>(
+            signal: K,
+            callback: Profile.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Profile.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Profile.SignalSignatures[K]>
+        ): void;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
         connect_after(signal: 'changed', callback: (_source: this) => void): number;
@@ -4017,6 +4068,11 @@ export namespace Colord {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'button-pressed': ButtonPressed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4038,6 +4094,7 @@ export namespace Colord {
 
     class Sensor extends GObject.Object {
         static $gtype: GObject.GType<Sensor>;
+        declare static readonly __signalSignatures: Sensor.SignalSignatures;
 
         // Properties
 
@@ -4108,6 +4165,8 @@ export namespace Colord {
 
         // Signals
 
+        connect_after<K extends keyof Sensor.SignalSignatures>(signal: K, callback: Sensor.SignalSignatures[K]): number;
+        emit<K extends keyof Sensor.SignalSignatures>(signal: K, ...args: Parameters<Sensor.SignalSignatures[K]>): void;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
         connect_after(signal: 'button-pressed', callback: (_source: this) => void): number;

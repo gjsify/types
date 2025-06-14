@@ -69,6 +69,9 @@ export namespace Caja {
         (provider: InfoProvider, handle: OperationHandle, result: OperationResult): void;
     }
     namespace Column {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -84,6 +87,7 @@ export namespace Caja {
 
     class Column extends GObject.Object {
         static $gtype: GObject.GType<Column>;
+        declare static readonly __signalSignatures: Column.SignalSignatures;
 
         // Properties
 
@@ -109,6 +113,9 @@ export namespace Caja {
     }
 
     namespace Menu {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -116,6 +123,7 @@ export namespace Caja {
 
     class Menu extends GObject.Object {
         static $gtype: GObject.GType<Menu>;
+        declare static readonly __signalSignatures: Menu.SignalSignatures;
 
         // Constructors
 
@@ -138,6 +146,11 @@ export namespace Caja {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            activate: Activate;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -153,6 +166,7 @@ export namespace Caja {
 
     class MenuItem extends GObject.Object {
         static $gtype: GObject.GType<MenuItem>;
+        declare static readonly __signalSignatures: MenuItem.SignalSignatures;
 
         // Properties
 
@@ -180,6 +194,15 @@ export namespace Caja {
 
         // Signals
 
+        connect<K extends keyof MenuItem.SignalSignatures>(signal: K, callback: MenuItem.SignalSignatures[K]): number;
+        connect_after<K extends keyof MenuItem.SignalSignatures>(
+            signal: K,
+            callback: MenuItem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MenuItem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MenuItem.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -212,6 +235,9 @@ export namespace Caja {
     }
 
     namespace PropertyPage {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -223,6 +249,7 @@ export namespace Caja {
 
     class PropertyPage extends GObject.Object {
         static $gtype: GObject.GType<PropertyPage>;
+        declare static readonly __signalSignatures: PropertyPage.SignalSignatures;
 
         // Properties
 

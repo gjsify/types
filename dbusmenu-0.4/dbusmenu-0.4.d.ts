@@ -401,6 +401,16 @@ export namespace Dbusmenu {
             (arg1: GObject.Object): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'event-result': EventResult;
+            'icon-theme-dirs-changed': IconThemeDirsChanged;
+            'item-activate': ItemActivate;
+            'layout-updated': LayoutUpdated;
+            'new-menuitem': NewMenuitem;
+            'root-changed': RootChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -419,6 +429,7 @@ export namespace Dbusmenu {
      */
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
+        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Properties
 
@@ -441,6 +452,9 @@ export namespace Dbusmenu {
 
         // Signals
 
+        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -602,6 +616,19 @@ export namespace Dbusmenu {
             (arg1: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'about-to-show': AboutToShow;
+            'child-added': ChildAdded;
+            'child-moved': ChildMoved;
+            'child-removed': ChildRemoved;
+            event: Event;
+            'item-activated': ItemActivated;
+            'property-changed': PropertyChanged;
+            realized: Realized;
+            'show-to-user': ShowToUser;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -619,6 +646,7 @@ export namespace Dbusmenu {
      */
     class Menuitem extends GObject.Object {
         static $gtype: GObject.GType<Menuitem>;
+        declare static readonly __signalSignatures: Menuitem.SignalSignatures;
 
         // Properties
 
@@ -636,6 +664,15 @@ export namespace Dbusmenu {
 
         // Signals
 
+        connect<K extends keyof Menuitem.SignalSignatures>(signal: K, callback: Menuitem.SignalSignatures[K]): number;
+        connect_after<K extends keyof Menuitem.SignalSignatures>(
+            signal: K,
+            callback: Menuitem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Menuitem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Menuitem.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1031,6 +1068,9 @@ export namespace Dbusmenu {
     }
 
     namespace MenuitemProxy {
+        // Signal signatures
+        interface SignalSignatures extends Menuitem.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Menuitem.ConstructorProps {
@@ -1044,6 +1084,7 @@ export namespace Dbusmenu {
      */
     class MenuitemProxy extends Menuitem {
         static $gtype: GObject.GType<MenuitemProxy>;
+        declare static readonly __signalSignatures: MenuitemProxy.SignalSignatures;
 
         // Properties
 
@@ -1090,6 +1131,14 @@ export namespace Dbusmenu {
             (arg1: number, arg2: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'item-activation-requested': ItemActivationRequested;
+            'item-property-updated': ItemPropertyUpdated;
+            'item-updated': ItemUpdated;
+            'layout-updated': LayoutUpdated;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1107,6 +1156,7 @@ export namespace Dbusmenu {
      */
     class Server extends GObject.Object {
         static $gtype: GObject.GType<Server>;
+        declare static readonly __signalSignatures: Server.SignalSignatures;
 
         // Properties
 
@@ -1128,6 +1178,9 @@ export namespace Dbusmenu {
 
         // Signals
 
+        connect<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
+        connect_after<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
+        emit<K extends keyof Server.SignalSignatures>(signal: K, ...args: Parameters<Server.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

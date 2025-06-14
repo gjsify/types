@@ -63,6 +63,9 @@ export namespace GnomeMaps {
         (contact: Contact): void;
     }
     namespace Contact {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -76,6 +79,7 @@ export namespace GnomeMaps {
 
     class Contact extends GObject.Object {
         static $gtype: GObject.GType<Contact>;
+        declare static readonly __signalSignatures: Contact.SignalSignatures;
 
         // Properties
 
@@ -119,6 +123,9 @@ export namespace GnomeMaps {
     }
 
     namespace ContactStore {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -128,6 +135,7 @@ export namespace GnomeMaps {
 
     class ContactStore extends GObject.Object {
         static $gtype: GObject.GType<ContactStore>;
+        declare static readonly __signalSignatures: ContactStore.SignalSignatures;
 
         // Properties
 
@@ -155,6 +163,9 @@ export namespace GnomeMaps {
     }
 
     namespace FileTileSource {
+        // Signal signatures
+        interface SignalSignatures extends Champlain.TileSource.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Champlain.TileSource.ConstructorProps {
@@ -173,6 +184,7 @@ export namespace GnomeMaps {
      */
     class FileTileSource extends Champlain.TileSource {
         static $gtype: GObject.GType<FileTileSource>;
+        declare static readonly __signalSignatures: FileTileSource.SignalSignatures;
 
         // Properties
 
@@ -216,6 +228,9 @@ export namespace GnomeMaps {
     }
 
     namespace OSMChangeset {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -227,6 +242,7 @@ export namespace GnomeMaps {
 
     class OSMChangeset extends GObject.Object {
         static $gtype: GObject.GType<OSMChangeset>;
+        declare static readonly __signalSignatures: OSMChangeset.SignalSignatures;
 
         // Properties
 
@@ -254,6 +270,9 @@ export namespace GnomeMaps {
     }
 
     namespace OSMNode {
+        // Signal signatures
+        interface SignalSignatures extends OSMObject.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends OSMObject.ConstructorProps {
@@ -264,6 +283,7 @@ export namespace GnomeMaps {
 
     class OSMNode extends OSMObject {
         static $gtype: GObject.GType<OSMNode>;
+        declare static readonly __signalSignatures: OSMNode.SignalSignatures;
 
         // Properties
 
@@ -288,6 +308,9 @@ export namespace GnomeMaps {
     }
 
     namespace OSMOAuthProxyCall {
+        // Signal signatures
+        interface SignalSignatures extends Rest.OAuthProxyCall.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Rest.OAuthProxyCall.ConstructorProps {}
@@ -295,6 +318,7 @@ export namespace GnomeMaps {
 
     class OSMOAuthProxyCall extends Rest.OAuthProxyCall {
         static $gtype: GObject.GType<OSMOAuthProxyCall>;
+        declare static readonly __signalSignatures: OSMOAuthProxyCall.SignalSignatures;
 
         // Constructors
 
@@ -306,6 +330,9 @@ export namespace GnomeMaps {
     }
 
     namespace OSMObject {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -317,6 +344,7 @@ export namespace GnomeMaps {
 
     abstract class OSMObject extends GObject.Object {
         static $gtype: GObject.GType<OSMObject>;
+        declare static readonly __signalSignatures: OSMObject.SignalSignatures;
 
         // Properties
 
@@ -351,6 +379,9 @@ export namespace GnomeMaps {
     }
 
     namespace OSMRelation {
+        // Signal signatures
+        interface SignalSignatures extends OSMObject.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends OSMObject.ConstructorProps {}
@@ -358,6 +389,7 @@ export namespace GnomeMaps {
 
     class OSMRelation extends OSMObject {
         static $gtype: GObject.GType<OSMRelation>;
+        declare static readonly __signalSignatures: OSMRelation.SignalSignatures;
 
         // Constructors
 
@@ -373,6 +405,9 @@ export namespace GnomeMaps {
     }
 
     namespace OSMWay {
+        // Signal signatures
+        interface SignalSignatures extends OSMObject.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends OSMObject.ConstructorProps {}
@@ -380,6 +415,7 @@ export namespace GnomeMaps {
 
     class OSMWay extends OSMObject {
         static $gtype: GObject.GType<OSMWay>;
+        declare static readonly __signalSignatures: OSMWay.SignalSignatures;
 
         // Constructors
 

@@ -315,6 +315,9 @@ export namespace Gtef {
         END,
     }
     namespace ActionInfoCentralStore {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -322,6 +325,7 @@ export namespace Gtef {
 
     class ActionInfoCentralStore extends GObject.Object {
         static $gtype: GObject.GType<ActionInfoCentralStore>;
+        declare static readonly __signalSignatures: ActionInfoCentralStore.SignalSignatures;
 
         // Constructors
 
@@ -339,6 +343,9 @@ export namespace Gtef {
     }
 
     namespace ActionInfoStore {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -348,6 +355,7 @@ export namespace Gtef {
 
     class ActionInfoStore extends GObject.Object {
         static $gtype: GObject.GType<ActionInfoStore>;
+        declare static readonly __signalSignatures: ActionInfoStore.SignalSignatures;
 
         // Properties
 
@@ -419,6 +427,9 @@ export namespace Gtef {
     }
 
     namespace Application {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -428,6 +439,7 @@ export namespace Gtef {
 
     class Application extends GObject.Object {
         static $gtype: GObject.GType<Application>;
+        declare static readonly __signalSignatures: Application.SignalSignatures;
 
         // Properties
 
@@ -476,6 +488,9 @@ export namespace Gtef {
     }
 
     namespace ApplicationWindow {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -487,6 +502,7 @@ export namespace Gtef {
 
     class ApplicationWindow extends GObject.Object {
         static $gtype: GObject.GType<ApplicationWindow>;
+        declare static readonly __signalSignatures: ApplicationWindow.SignalSignatures;
 
         // Properties
 
@@ -579,6 +595,11 @@ export namespace Gtef {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GtkSource.Buffer.SignalSignatures {
+            'gtef-cursor-moved': GtefCursorMoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GtkSource.Buffer.ConstructorProps {
@@ -591,6 +612,7 @@ export namespace Gtef {
 
     class Buffer extends GtkSource.Buffer {
         static $gtype: GObject.GType<Buffer>;
+        declare static readonly __signalSignatures: Buffer.SignalSignatures;
 
         // Properties
 
@@ -631,6 +653,9 @@ export namespace Gtef {
 
         // Signals
 
+        connect<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
+        connect_after<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
+        emit<K extends keyof Buffer.SignalSignatures>(signal: K, ...args: Parameters<Buffer.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -685,6 +710,9 @@ export namespace Gtef {
     }
 
     namespace File {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -703,6 +731,7 @@ export namespace Gtef {
 
     class File extends GObject.Object {
         static $gtype: GObject.GType<File>;
+        declare static readonly __signalSignatures: File.SignalSignatures;
 
         // Properties
 
@@ -833,6 +862,9 @@ export namespace Gtef {
     }
 
     namespace FileLoader {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -848,6 +880,7 @@ export namespace Gtef {
 
     class FileLoader extends GObject.Object {
         static $gtype: GObject.GType<FileLoader>;
+        declare static readonly __signalSignatures: FileLoader.SignalSignatures;
 
         // Properties
 
@@ -982,6 +1015,9 @@ export namespace Gtef {
     }
 
     namespace FileMetadata {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -991,6 +1027,7 @@ export namespace Gtef {
 
     class FileMetadata extends GObject.Object {
         static $gtype: GObject.GType<FileMetadata>;
+        declare static readonly __signalSignatures: FileMetadata.SignalSignatures;
 
         // Properties
 
@@ -1158,6 +1195,9 @@ export namespace Gtef {
     }
 
     namespace FileSaver {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1175,6 +1215,7 @@ export namespace Gtef {
 
     class FileSaver extends GObject.Object {
         static $gtype: GObject.GType<FileSaver>;
+        declare static readonly __signalSignatures: FileSaver.SignalSignatures;
 
         // Properties
 
@@ -1328,6 +1369,9 @@ export namespace Gtef {
     }
 
     namespace FoldRegion {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1338,6 +1382,7 @@ export namespace Gtef {
 
     class FoldRegion extends GObject.Object {
         static $gtype: GObject.GType<FoldRegion>;
+        declare static readonly __signalSignatures: FoldRegion.SignalSignatures;
 
         // Properties
 
@@ -1383,6 +1428,9 @@ export namespace Gtef {
     }
 
     namespace GutterRendererFolds {
+        // Signal signatures
+        interface SignalSignatures extends GtkSource.GutterRenderer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GtkSource.GutterRenderer.ConstructorProps {}
@@ -1390,6 +1438,7 @@ export namespace Gtef {
 
     class GutterRendererFolds extends GtkSource.GutterRenderer {
         static $gtype: GObject.GType<GutterRendererFolds>;
+        declare static readonly __signalSignatures: GutterRendererFolds.SignalSignatures;
 
         // Constructors
 
@@ -1412,6 +1461,9 @@ export namespace Gtef {
     }
 
     namespace InfoBar {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.InfoBar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1423,6 +1475,7 @@ export namespace Gtef {
 
     class InfoBar extends Gtk.InfoBar implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<InfoBar>;
+        declare static readonly __signalSignatures: InfoBar.SignalSignatures;
 
         // Constructors
 
@@ -1934,6 +1987,12 @@ export namespace Gtef {
             (menu_item: Gtk.MenuItem): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'menu-item-deselected': MenuItemDeselected;
+            'menu-item-selected': MenuItemSelected;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1944,6 +2003,7 @@ export namespace Gtef {
 
     class MenuShell extends GObject.Object {
         static $gtype: GObject.GType<MenuShell>;
+        declare static readonly __signalSignatures: MenuShell.SignalSignatures;
 
         // Properties
 
@@ -1964,6 +2024,15 @@ export namespace Gtef {
 
         // Signals
 
+        connect<K extends keyof MenuShell.SignalSignatures>(signal: K, callback: MenuShell.SignalSignatures[K]): number;
+        connect_after<K extends keyof MenuShell.SignalSignatures>(
+            signal: K,
+            callback: MenuShell.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MenuShell.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MenuShell.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1997,6 +2066,9 @@ export namespace Gtef {
     }
 
     namespace Tab {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Grid.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2008,6 +2080,7 @@ export namespace Gtef {
 
     class Tab extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Tab>;
+        declare static readonly __signalSignatures: Tab.SignalSignatures;
 
         // Constructors
 
@@ -2492,6 +2565,9 @@ export namespace Gtef {
     }
 
     namespace View {
+        // Signal signatures
+        interface SignalSignatures extends GtkSource.View.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2503,6 +2579,7 @@ export namespace Gtef {
 
     class View extends GtkSource.View implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<View>;
+        declare static readonly __signalSignatures: View.SignalSignatures;
 
         // Constructors
 

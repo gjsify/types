@@ -66,6 +66,9 @@ export namespace Gandiva {
      */
     const VERSION_TAG: string;
     namespace AndNode {
+        // Signal signatures
+        interface SignalSignatures extends BooleanNode.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends BooleanNode.ConstructorProps {}
@@ -73,6 +76,7 @@ export namespace Gandiva {
 
     class AndNode extends BooleanNode {
         static $gtype: GObject.GType<AndNode>;
+        declare static readonly __signalSignatures: AndNode.SignalSignatures;
 
         // Constructors
 
@@ -84,6 +88,9 @@ export namespace Gandiva {
     }
 
     namespace BinaryLiteralNode {
+        // Signal signatures
+        interface SignalSignatures extends LiteralNode.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends LiteralNode.ConstructorProps {}
@@ -91,6 +98,7 @@ export namespace Gandiva {
 
     class BinaryLiteralNode extends LiteralNode {
         static $gtype: GObject.GType<BinaryLiteralNode>;
+        declare static readonly __signalSignatures: BinaryLiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -108,6 +116,9 @@ export namespace Gandiva {
     }
 
     namespace BooleanLiteralNode {
+        // Signal signatures
+        interface SignalSignatures extends LiteralNode.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends LiteralNode.ConstructorProps {}
@@ -115,6 +126,7 @@ export namespace Gandiva {
 
     class BooleanLiteralNode extends LiteralNode {
         static $gtype: GObject.GType<BooleanLiteralNode>;
+        declare static readonly __signalSignatures: BooleanLiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -130,6 +142,9 @@ export namespace Gandiva {
     }
 
     namespace BooleanNode {
+        // Signal signatures
+        interface SignalSignatures extends Node.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Node.ConstructorProps {}
@@ -137,6 +152,7 @@ export namespace Gandiva {
 
     class BooleanNode extends Node {
         static $gtype: GObject.GType<BooleanNode>;
+        declare static readonly __signalSignatures: BooleanNode.SignalSignatures;
 
         // Constructors
 
@@ -150,6 +166,9 @@ export namespace Gandiva {
     }
 
     namespace DoubleLiteralNode {
+        // Signal signatures
+        interface SignalSignatures extends LiteralNode.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends LiteralNode.ConstructorProps {}
@@ -157,6 +176,7 @@ export namespace Gandiva {
 
     class DoubleLiteralNode extends LiteralNode {
         static $gtype: GObject.GType<DoubleLiteralNode>;
+        declare static readonly __signalSignatures: DoubleLiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -172,6 +192,9 @@ export namespace Gandiva {
     }
 
     namespace Expression {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -185,6 +208,7 @@ export namespace Gandiva {
 
     class Expression extends GObject.Object {
         static $gtype: GObject.GType<Expression>;
+        declare static readonly __signalSignatures: Expression.SignalSignatures;
 
         // Properties
 
@@ -208,6 +232,9 @@ export namespace Gandiva {
     }
 
     namespace FieldNode {
+        // Signal signatures
+        interface SignalSignatures extends Node.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Node.ConstructorProps {
@@ -217,6 +244,7 @@ export namespace Gandiva {
 
     class FieldNode extends Node {
         static $gtype: GObject.GType<FieldNode>;
+        declare static readonly __signalSignatures: FieldNode.SignalSignatures;
 
         // Properties
 
@@ -232,6 +260,9 @@ export namespace Gandiva {
     }
 
     namespace FloatLiteralNode {
+        // Signal signatures
+        interface SignalSignatures extends LiteralNode.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends LiteralNode.ConstructorProps {}
@@ -239,6 +270,7 @@ export namespace Gandiva {
 
     class FloatLiteralNode extends LiteralNode {
         static $gtype: GObject.GType<FloatLiteralNode>;
+        declare static readonly __signalSignatures: FloatLiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -254,6 +286,9 @@ export namespace Gandiva {
     }
 
     namespace FunctionNode {
+        // Signal signatures
+        interface SignalSignatures extends Node.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Node.ConstructorProps {
@@ -263,6 +298,7 @@ export namespace Gandiva {
 
     class FunctionNode extends Node {
         static $gtype: GObject.GType<FunctionNode>;
+        declare static readonly __signalSignatures: FunctionNode.SignalSignatures;
 
         // Properties
 
@@ -282,6 +318,9 @@ export namespace Gandiva {
     }
 
     namespace FunctionRegistry {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -289,6 +328,7 @@ export namespace Gandiva {
 
     class FunctionRegistry extends GObject.Object {
         static $gtype: GObject.GType<FunctionRegistry>;
+        declare static readonly __signalSignatures: FunctionRegistry.SignalSignatures;
 
         // Constructors
 
@@ -305,6 +345,9 @@ export namespace Gandiva {
     }
 
     namespace FunctionSignature {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -315,6 +358,7 @@ export namespace Gandiva {
 
     class FunctionSignature extends GObject.Object {
         static $gtype: GObject.GType<FunctionSignature>;
+        declare static readonly __signalSignatures: FunctionSignature.SignalSignatures;
 
         // Properties
 
@@ -343,6 +387,9 @@ export namespace Gandiva {
     }
 
     namespace IfNode {
+        // Signal signatures
+        interface SignalSignatures extends Node.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Node.ConstructorProps {
@@ -357,6 +404,7 @@ export namespace Gandiva {
 
     class IfNode extends Node {
         static $gtype: GObject.GType<IfNode>;
+        declare static readonly __signalSignatures: IfNode.SignalSignatures;
 
         // Properties
 
@@ -377,6 +425,9 @@ export namespace Gandiva {
     }
 
     namespace Int16LiteralNode {
+        // Signal signatures
+        interface SignalSignatures extends LiteralNode.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends LiteralNode.ConstructorProps {}
@@ -384,6 +435,7 @@ export namespace Gandiva {
 
     class Int16LiteralNode extends LiteralNode {
         static $gtype: GObject.GType<Int16LiteralNode>;
+        declare static readonly __signalSignatures: Int16LiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -399,6 +451,9 @@ export namespace Gandiva {
     }
 
     namespace Int32LiteralNode {
+        // Signal signatures
+        interface SignalSignatures extends LiteralNode.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends LiteralNode.ConstructorProps {}
@@ -406,6 +461,7 @@ export namespace Gandiva {
 
     class Int32LiteralNode extends LiteralNode {
         static $gtype: GObject.GType<Int32LiteralNode>;
+        declare static readonly __signalSignatures: Int32LiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -421,6 +477,9 @@ export namespace Gandiva {
     }
 
     namespace Int64LiteralNode {
+        // Signal signatures
+        interface SignalSignatures extends LiteralNode.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends LiteralNode.ConstructorProps {}
@@ -428,6 +487,7 @@ export namespace Gandiva {
 
     class Int64LiteralNode extends LiteralNode {
         static $gtype: GObject.GType<Int64LiteralNode>;
+        declare static readonly __signalSignatures: Int64LiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -443,6 +503,9 @@ export namespace Gandiva {
     }
 
     namespace Int8LiteralNode {
+        // Signal signatures
+        interface SignalSignatures extends LiteralNode.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends LiteralNode.ConstructorProps {}
@@ -450,6 +513,7 @@ export namespace Gandiva {
 
     class Int8LiteralNode extends LiteralNode {
         static $gtype: GObject.GType<Int8LiteralNode>;
+        declare static readonly __signalSignatures: Int8LiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -465,6 +529,9 @@ export namespace Gandiva {
     }
 
     namespace LiteralNode {
+        // Signal signatures
+        interface SignalSignatures extends Node.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Node.ConstructorProps {}
@@ -472,6 +539,7 @@ export namespace Gandiva {
 
     class LiteralNode extends Node {
         static $gtype: GObject.GType<LiteralNode>;
+        declare static readonly __signalSignatures: LiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -481,6 +549,9 @@ export namespace Gandiva {
     }
 
     namespace NativeFunction {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -491,6 +562,7 @@ export namespace Gandiva {
 
     class NativeFunction extends GObject.Object {
         static $gtype: GObject.GType<NativeFunction>;
+        declare static readonly __signalSignatures: NativeFunction.SignalSignatures;
 
         // Properties
 
@@ -515,6 +587,9 @@ export namespace Gandiva {
     }
 
     namespace Node {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -526,6 +601,7 @@ export namespace Gandiva {
 
     class Node extends GObject.Object {
         static $gtype: GObject.GType<Node>;
+        declare static readonly __signalSignatures: Node.SignalSignatures;
 
         // Properties
 
@@ -545,6 +621,9 @@ export namespace Gandiva {
     }
 
     namespace NullLiteralNode {
+        // Signal signatures
+        interface SignalSignatures extends LiteralNode.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends LiteralNode.ConstructorProps {}
@@ -552,6 +631,7 @@ export namespace Gandiva {
 
     class NullLiteralNode extends LiteralNode {
         static $gtype: GObject.GType<NullLiteralNode>;
+        declare static readonly __signalSignatures: NullLiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -563,6 +643,9 @@ export namespace Gandiva {
     }
 
     namespace OrNode {
+        // Signal signatures
+        interface SignalSignatures extends BooleanNode.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends BooleanNode.ConstructorProps {}
@@ -570,6 +653,7 @@ export namespace Gandiva {
 
     class OrNode extends BooleanNode {
         static $gtype: GObject.GType<OrNode>;
+        declare static readonly __signalSignatures: OrNode.SignalSignatures;
 
         // Constructors
 
@@ -581,6 +665,9 @@ export namespace Gandiva {
     }
 
     namespace Projector {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -590,6 +677,7 @@ export namespace Gandiva {
 
     class Projector extends GObject.Object {
         static $gtype: GObject.GType<Projector>;
+        declare static readonly __signalSignatures: Projector.SignalSignatures;
 
         // Properties
 
@@ -609,6 +697,9 @@ export namespace Gandiva {
     }
 
     namespace StringLiteralNode {
+        // Signal signatures
+        interface SignalSignatures extends LiteralNode.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends LiteralNode.ConstructorProps {}
@@ -616,6 +707,7 @@ export namespace Gandiva {
 
     class StringLiteralNode extends LiteralNode {
         static $gtype: GObject.GType<StringLiteralNode>;
+        declare static readonly __signalSignatures: StringLiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -631,6 +723,9 @@ export namespace Gandiva {
     }
 
     namespace UInt16LiteralNode {
+        // Signal signatures
+        interface SignalSignatures extends LiteralNode.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends LiteralNode.ConstructorProps {}
@@ -638,6 +733,7 @@ export namespace Gandiva {
 
     class UInt16LiteralNode extends LiteralNode {
         static $gtype: GObject.GType<UInt16LiteralNode>;
+        declare static readonly __signalSignatures: UInt16LiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -653,6 +749,9 @@ export namespace Gandiva {
     }
 
     namespace UInt32LiteralNode {
+        // Signal signatures
+        interface SignalSignatures extends LiteralNode.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends LiteralNode.ConstructorProps {}
@@ -660,6 +759,7 @@ export namespace Gandiva {
 
     class UInt32LiteralNode extends LiteralNode {
         static $gtype: GObject.GType<UInt32LiteralNode>;
+        declare static readonly __signalSignatures: UInt32LiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -675,6 +775,9 @@ export namespace Gandiva {
     }
 
     namespace UInt64LiteralNode {
+        // Signal signatures
+        interface SignalSignatures extends LiteralNode.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends LiteralNode.ConstructorProps {}
@@ -682,6 +785,7 @@ export namespace Gandiva {
 
     class UInt64LiteralNode extends LiteralNode {
         static $gtype: GObject.GType<UInt64LiteralNode>;
+        declare static readonly __signalSignatures: UInt64LiteralNode.SignalSignatures;
 
         // Constructors
 
@@ -697,6 +801,9 @@ export namespace Gandiva {
     }
 
     namespace UInt8LiteralNode {
+        // Signal signatures
+        interface SignalSignatures extends LiteralNode.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends LiteralNode.ConstructorProps {}
@@ -704,6 +811,7 @@ export namespace Gandiva {
 
     class UInt8LiteralNode extends LiteralNode {
         static $gtype: GObject.GType<UInt8LiteralNode>;
+        declare static readonly __signalSignatures: UInt8LiteralNode.SignalSignatures;
 
         // Constructors
 

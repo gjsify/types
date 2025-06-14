@@ -258,6 +258,9 @@ export namespace GstPlay {
      */
     function play_state_get_name(state: PlayState | null): string;
     namespace Play {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {
@@ -292,6 +295,7 @@ export namespace GstPlay {
 
     class Play extends Gst.Object {
         static $gtype: GObject.GType<Play>;
+        declare static readonly __signalSignatures: Play.SignalSignatures;
 
         // Properties
 
@@ -624,6 +628,9 @@ export namespace GstPlay {
     }
 
     namespace PlayAudioInfo {
+        // Signal signatures
+        interface SignalSignatures extends PlayStreamInfo.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends PlayStreamInfo.ConstructorProps {}
@@ -634,6 +641,7 @@ export namespace GstPlay {
      */
     class PlayAudioInfo extends PlayStreamInfo {
         static $gtype: GObject.GType<PlayAudioInfo>;
+        declare static readonly __signalSignatures: PlayAudioInfo.SignalSignatures;
 
         // Constructors
 
@@ -651,6 +659,9 @@ export namespace GstPlay {
     }
 
     namespace PlayMediaInfo {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -661,6 +672,7 @@ export namespace GstPlay {
      */
     class PlayMediaInfo extends GObject.Object {
         static $gtype: GObject.GType<PlayMediaInfo>;
+        declare static readonly __signalSignatures: PlayMediaInfo.SignalSignatures;
 
         // Constructors
 
@@ -748,6 +760,23 @@ export namespace GstPlay {
             (error: GLib.Error, details?: Gst.Structure | null): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            buffering: Buffering;
+            'duration-changed': DurationChanged;
+            'end-of-stream': EndOfStream;
+            error: Error;
+            'media-info-updated': MediaInfoUpdated;
+            'mute-changed': MuteChanged;
+            'position-updated': PositionUpdated;
+            'seek-done': SeekDone;
+            'state-changed': StateChanged;
+            'uri-loaded': UriLoaded;
+            'video-dimensions-changed': VideoDimensionsChanged;
+            'volume-changed': VolumeChanged;
+            warning: Warning;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -757,6 +786,7 @@ export namespace GstPlay {
 
     class PlaySignalAdapter extends GObject.Object {
         static $gtype: GObject.GType<PlaySignalAdapter>;
+        declare static readonly __signalSignatures: PlaySignalAdapter.SignalSignatures;
 
         // Properties
 
@@ -776,6 +806,18 @@ export namespace GstPlay {
 
         // Signals
 
+        connect<K extends keyof PlaySignalAdapter.SignalSignatures>(
+            signal: K,
+            callback: PlaySignalAdapter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PlaySignalAdapter.SignalSignatures>(
+            signal: K,
+            callback: PlaySignalAdapter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PlaySignalAdapter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PlaySignalAdapter.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -843,6 +885,9 @@ export namespace GstPlay {
     }
 
     namespace PlayStreamInfo {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -855,6 +900,7 @@ export namespace GstPlay {
      */
     abstract class PlayStreamInfo extends GObject.Object {
         static $gtype: GObject.GType<PlayStreamInfo>;
+        declare static readonly __signalSignatures: PlayStreamInfo.SignalSignatures;
 
         // Constructors
 
@@ -886,6 +932,9 @@ export namespace GstPlay {
     }
 
     namespace PlaySubtitleInfo {
+        // Signal signatures
+        interface SignalSignatures extends PlayStreamInfo.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends PlayStreamInfo.ConstructorProps {}
@@ -896,6 +945,7 @@ export namespace GstPlay {
      */
     class PlaySubtitleInfo extends PlayStreamInfo {
         static $gtype: GObject.GType<PlaySubtitleInfo>;
+        declare static readonly __signalSignatures: PlaySubtitleInfo.SignalSignatures;
 
         // Constructors
 
@@ -909,6 +959,9 @@ export namespace GstPlay {
     }
 
     namespace PlayVideoInfo {
+        // Signal signatures
+        interface SignalSignatures extends PlayStreamInfo.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends PlayStreamInfo.ConstructorProps {}
@@ -919,6 +972,7 @@ export namespace GstPlay {
      */
     class PlayVideoInfo extends PlayStreamInfo {
         static $gtype: GObject.GType<PlayVideoInfo>;
+        declare static readonly __signalSignatures: PlayVideoInfo.SignalSignatures;
 
         // Constructors
 
@@ -940,6 +994,9 @@ export namespace GstPlay {
     }
 
     namespace PlayVideoOverlayVideoRenderer {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, PlayVideoRenderer.ConstructorProps {
@@ -952,6 +1009,7 @@ export namespace GstPlay {
 
     class PlayVideoOverlayVideoRenderer extends GObject.Object implements PlayVideoRenderer {
         static $gtype: GObject.GType<PlayVideoOverlayVideoRenderer>;
+        declare static readonly __signalSignatures: PlayVideoOverlayVideoRenderer.SignalSignatures;
 
         // Properties
 

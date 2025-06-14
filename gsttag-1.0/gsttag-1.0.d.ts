@@ -852,6 +852,9 @@ export namespace GstTag {
         FREE_SOFTWARE_FOUNDATION_LICENSE,
     }
     namespace TagDemux {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Element.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Element.ConstructorProps {}
@@ -890,6 +893,7 @@ export namespace GstTag {
      */
     abstract class TagDemux extends Gst.Element {
         static $gtype: GObject.GType<TagDemux>;
+        declare static readonly __signalSignatures: TagDemux.SignalSignatures;
 
         // Fields
 
@@ -909,6 +913,9 @@ export namespace GstTag {
     }
 
     namespace TagMux {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Element.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Element.ConstructorProps, Gst.TagSetter.ConstructorProps {}
@@ -932,6 +939,7 @@ export namespace GstTag {
      */
     abstract class TagMux extends Gst.Element implements Gst.TagSetter {
         static $gtype: GObject.GType<TagMux>;
+        declare static readonly __signalSignatures: TagMux.SignalSignatures;
 
         // Fields
 

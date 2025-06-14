@@ -140,6 +140,9 @@ export namespace Xkl {
         DEVICE_DISCOVERY,
     }
     namespace ConfigItem {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -147,6 +150,7 @@ export namespace Xkl {
 
     class ConfigItem extends GObject.Object {
         static $gtype: GObject.GType<ConfigItem>;
+        declare static readonly __signalSignatures: ConfigItem.SignalSignatures;
 
         // Fields
 
@@ -188,6 +192,9 @@ export namespace Xkl {
     }
 
     namespace ConfigRec {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -195,6 +202,7 @@ export namespace Xkl {
 
     class ConfigRec extends GObject.Object {
         static $gtype: GObject.GType<ConfigRec>;
+        declare static readonly __signalSignatures: ConfigRec.SignalSignatures;
 
         // Fields
 
@@ -304,6 +312,9 @@ export namespace Xkl {
     }
 
     namespace ConfigRegistry {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -313,6 +324,7 @@ export namespace Xkl {
 
     class ConfigRegistry extends GObject.Object {
         static $gtype: GObject.GType<ConfigRegistry>;
+        declare static readonly __signalSignatures: ConfigRegistry.SignalSignatures;
 
         // Properties
 
@@ -460,6 +472,14 @@ export namespace Xkl {
             (object: number, p0: number): number;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'X-config-changed': XConfigChanged;
+            'X-new-device': XNewDevice;
+            'X-state-changed': XStateChanged;
+            'new-toplevel-window': NewToplevelWindow;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -481,6 +501,7 @@ export namespace Xkl {
 
     class Engine extends GObject.Object {
         static $gtype: GObject.GType<Engine>;
+        declare static readonly __signalSignatures: Engine.SignalSignatures;
 
         // Properties
 
@@ -506,6 +527,9 @@ export namespace Xkl {
 
         // Signals
 
+        connect<K extends keyof Engine.SignalSignatures>(signal: K, callback: Engine.SignalSignatures[K]): number;
+        connect_after<K extends keyof Engine.SignalSignatures>(signal: K, callback: Engine.SignalSignatures[K]): number;
+        emit<K extends keyof Engine.SignalSignatures>(signal: K, ...args: Parameters<Engine.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

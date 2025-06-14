@@ -338,6 +338,15 @@ export namespace DMAP {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            authenticate: Authenticate;
+            connected: Connected;
+            connecting: Connecting;
+            disconnected: Disconnected;
+            'operation-done': OperationDone;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -363,6 +372,7 @@ export namespace DMAP {
 
     class Connection extends GObject.Object {
         static $gtype: GObject.GType<Connection>;
+        declare static readonly __signalSignatures: Connection.SignalSignatures;
 
         // Properties
 
@@ -402,6 +412,18 @@ export namespace DMAP {
 
         // Signals
 
+        connect<K extends keyof Connection.SignalSignatures>(
+            signal: K,
+            callback: Connection.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Connection.SignalSignatures>(
+            signal: K,
+            callback: Connection.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Connection.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Connection.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -478,6 +500,9 @@ export namespace DMAP {
     }
 
     namespace GstInputStream {
+        // Signal signatures
+        interface SignalSignatures extends Gio.InputStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gio.InputStream.ConstructorProps, Gio.Seekable.ConstructorProps {}
@@ -485,6 +510,7 @@ export namespace DMAP {
 
     class GstInputStream extends Gio.InputStream implements Gio.Seekable {
         static $gtype: GObject.GType<GstInputStream>;
+        declare static readonly __signalSignatures: GstInputStream.SignalSignatures;
 
         // Constructors
 
@@ -1050,6 +1076,12 @@ export namespace DMAP {
             (object: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'service-added': ServiceAdded;
+            'service-removed': ServiceRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1057,6 +1089,7 @@ export namespace DMAP {
 
     class MdnsBrowser extends GObject.Object {
         static $gtype: GObject.GType<MdnsBrowser>;
+        declare static readonly __signalSignatures: MdnsBrowser.SignalSignatures;
 
         // Fields
 
@@ -1072,6 +1105,18 @@ export namespace DMAP {
 
         // Signals
 
+        connect<K extends keyof MdnsBrowser.SignalSignatures>(
+            signal: K,
+            callback: MdnsBrowser.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MdnsBrowser.SignalSignatures>(
+            signal: K,
+            callback: MdnsBrowser.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MdnsBrowser.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MdnsBrowser.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1113,6 +1158,12 @@ export namespace DMAP {
             (object: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'name-collision': NameCollision;
+            published: Published;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1120,6 +1171,7 @@ export namespace DMAP {
 
     class MdnsPublisher extends GObject.Object {
         static $gtype: GObject.GType<MdnsPublisher>;
+        declare static readonly __signalSignatures: MdnsPublisher.SignalSignatures;
 
         // Fields
 
@@ -1135,6 +1187,18 @@ export namespace DMAP {
 
         // Signals
 
+        connect<K extends keyof MdnsPublisher.SignalSignatures>(
+            signal: K,
+            callback: MdnsPublisher.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MdnsPublisher.SignalSignatures>(
+            signal: K,
+            callback: MdnsPublisher.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MdnsPublisher.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MdnsPublisher.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1164,6 +1228,9 @@ export namespace DMAP {
     }
 
     namespace Share {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1189,6 +1256,7 @@ export namespace DMAP {
 
     abstract class Share extends GObject.Object {
         static $gtype: GObject.GType<Share>;
+        declare static readonly __signalSignatures: Share.SignalSignatures;
 
         // Properties
 

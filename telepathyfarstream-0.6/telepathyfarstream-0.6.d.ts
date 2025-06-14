@@ -46,6 +46,15 @@ export namespace TelepathyFarstream {
             (conf: Farstream.Conference): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            closed: Closed;
+            'content-added': ContentAdded;
+            'content-removed': ContentRemoved;
+            'fs-conference-added': FsConferenceAdded;
+            'fs-conference-removed': FsConferenceRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps {
@@ -62,6 +71,7 @@ export namespace TelepathyFarstream {
      */
     class Channel extends GObject.Object implements Gio.AsyncInitable<Channel> {
         static $gtype: GObject.GType<Channel>;
+        declare static readonly __signalSignatures: Channel.SignalSignatures;
 
         // Properties
 
@@ -84,6 +94,15 @@ export namespace TelepathyFarstream {
 
         // Signals
 
+        connect<K extends keyof Channel.SignalSignatures>(signal: K, callback: Channel.SignalSignatures[K]): number;
+        connect_after<K extends keyof Channel.SignalSignatures>(
+            signal: K,
+            callback: Channel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Channel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Channel.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -800,6 +819,16 @@ export namespace TelepathyFarstream {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'restart-source': RestartSource;
+            'src-pad-added': SrcPadAdded;
+            'start-receiving': StartReceiving;
+            'start-sending': StartSending;
+            'stop-receiving': StopReceiving;
+            'stop-sending': StopSending;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -823,6 +852,7 @@ export namespace TelepathyFarstream {
      */
     abstract class Content extends GObject.Object {
         static $gtype: GObject.GType<Content>;
+        declare static readonly __signalSignatures: Content.SignalSignatures;
 
         // Properties
 
@@ -847,6 +877,15 @@ export namespace TelepathyFarstream {
 
         // Signals
 
+        connect<K extends keyof Content.SignalSignatures>(signal: K, callback: Content.SignalSignatures[K]): number;
+        connect_after<K extends keyof Content.SignalSignatures>(
+            signal: K,
+            callback: Content.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Content.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Content.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

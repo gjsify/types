@@ -208,6 +208,9 @@ export namespace Folks {
         SEPARATED,
     }
     namespace AbstractFieldDetails {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -227,6 +230,7 @@ export namespace Folks {
 
     abstract class AbstractFieldDetails extends GObject.Object {
         static $gtype: GObject.GType<AbstractFieldDetails>;
+        declare static readonly __signalSignatures: AbstractFieldDetails.SignalSignatures;
 
         // Properties
 
@@ -290,6 +294,9 @@ export namespace Folks {
     }
 
     namespace AvatarCache {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -297,6 +304,7 @@ export namespace Folks {
 
     class AvatarCache extends GObject.Object {
         static $gtype: GObject.GType<AvatarCache>;
+        declare static readonly __signalSignatures: AvatarCache.SignalSignatures;
 
         // Constructors
 
@@ -336,6 +344,11 @@ export namespace Folks {
             (backend: Backend): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'backend-available': BackendAvailable;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -348,6 +361,7 @@ export namespace Folks {
 
     class BackendStore extends GObject.Object {
         static $gtype: GObject.GType<BackendStore>;
+        declare static readonly __signalSignatures: BackendStore.SignalSignatures;
 
         // Properties
 
@@ -372,6 +386,18 @@ export namespace Folks {
 
         // Signals
 
+        connect<K extends keyof BackendStore.SignalSignatures>(
+            signal: K,
+            callback: BackendStore.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BackendStore.SignalSignatures>(
+            signal: K,
+            callback: BackendStore.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BackendStore.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BackendStore.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -419,6 +445,12 @@ export namespace Folks {
             (store: PersonaStore): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'persona-store-added': PersonaStoreAdded;
+            'persona-store-removed': PersonaStoreRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -434,6 +466,7 @@ export namespace Folks {
 
     abstract class Backend extends GObject.Object {
         static $gtype: GObject.GType<Backend>;
+        declare static readonly __signalSignatures: Backend.SignalSignatures;
 
         // Properties
 
@@ -453,6 +486,15 @@ export namespace Folks {
 
         // Signals
 
+        connect<K extends keyof Backend.SignalSignatures>(signal: K, callback: Backend.SignalSignatures[K]): number;
+        connect_after<K extends keyof Backend.SignalSignatures>(
+            signal: K,
+            callback: Backend.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Backend.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Backend.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -503,6 +545,11 @@ export namespace Folks {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'print-status': PrintStatus;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -515,6 +562,7 @@ export namespace Folks {
 
     class Debug extends GObject.Object {
         static $gtype: GObject.GType<Debug>;
+        declare static readonly __signalSignatures: Debug.SignalSignatures;
 
         // Properties
 
@@ -535,6 +583,9 @@ export namespace Folks {
 
         // Signals
 
+        connect<K extends keyof Debug.SignalSignatures>(signal: K, callback: Debug.SignalSignatures[K]): number;
+        connect_after<K extends keyof Debug.SignalSignatures>(signal: K, callback: Debug.SignalSignatures[K]): number;
+        emit<K extends keyof Debug.SignalSignatures>(signal: K, ...args: Parameters<Debug.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -559,6 +610,9 @@ export namespace Folks {
     }
 
     namespace EmailFieldDetails {
+        // Signal signatures
+        interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractFieldDetails.ConstructorProps {}
@@ -566,6 +620,7 @@ export namespace Folks {
 
     class EmailFieldDetails extends AbstractFieldDetails {
         static $gtype: GObject.GType<EmailFieldDetails>;
+        declare static readonly __signalSignatures: EmailFieldDetails.SignalSignatures;
 
         // Constructors
 
@@ -577,6 +632,9 @@ export namespace Folks {
     }
 
     namespace ExtendedFieldDetails {
+        // Signal signatures
+        interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractFieldDetails.ConstructorProps {}
@@ -584,6 +642,7 @@ export namespace Folks {
 
     class ExtendedFieldDetails extends AbstractFieldDetails {
         static $gtype: GObject.GType<ExtendedFieldDetails>;
+        declare static readonly __signalSignatures: ExtendedFieldDetails.SignalSignatures;
 
         // Constructors
 
@@ -595,6 +654,9 @@ export namespace Folks {
     }
 
     namespace ImFieldDetails {
+        // Signal signatures
+        interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractFieldDetails.ConstructorProps {}
@@ -602,6 +664,7 @@ export namespace Folks {
 
     class ImFieldDetails extends AbstractFieldDetails {
         static $gtype: GObject.GType<ImFieldDetails>;
+        declare static readonly __signalSignatures: ImFieldDetails.SignalSignatures;
 
         // Constructors
 
@@ -623,6 +686,12 @@ export namespace Folks {
             (changes: Gee.MultiMap): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'individuals-changed': IndividualsChanged;
+            'individuals-changed-detailed': IndividualsChangedDetailed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -641,6 +710,7 @@ export namespace Folks {
 
     class IndividualAggregator extends GObject.Object {
         static $gtype: GObject.GType<IndividualAggregator>;
+        declare static readonly __signalSignatures: IndividualAggregator.SignalSignatures;
 
         // Properties
 
@@ -669,6 +739,18 @@ export namespace Folks {
 
         // Signals
 
+        connect<K extends keyof IndividualAggregator.SignalSignatures>(
+            signal: K,
+            callback: IndividualAggregator.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof IndividualAggregator.SignalSignatures>(
+            signal: K,
+            callback: IndividualAggregator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof IndividualAggregator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<IndividualAggregator.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -798,6 +880,12 @@ export namespace Folks {
             (added: Gee.Set, removed: Gee.Set): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            removed: Removed;
+            'personas-changed': PersonasChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -858,6 +946,7 @@ export namespace Folks {
             WebServiceDetails
     {
         static $gtype: GObject.GType<Individual>;
+        declare static readonly __signalSignatures: Individual.SignalSignatures;
 
         // Properties
 
@@ -886,6 +975,18 @@ export namespace Folks {
 
         // Signals
 
+        connect<K extends keyof Individual.SignalSignatures>(
+            signal: K,
+            callback: Individual.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Individual.SignalSignatures>(
+            signal: K,
+            callback: Individual.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Individual.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Individual.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1721,6 +1822,9 @@ export namespace Folks {
     }
 
     namespace Location {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1728,6 +1832,7 @@ export namespace Folks {
 
     class Location extends GObject.Object {
         static $gtype: GObject.GType<Location>;
+        declare static readonly __signalSignatures: Location.SignalSignatures;
 
         // Fields
 
@@ -1749,6 +1854,9 @@ export namespace Folks {
     }
 
     namespace StructuredName {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1765,6 +1873,7 @@ export namespace Folks {
 
     class StructuredName extends GObject.Object {
         static $gtype: GObject.GType<StructuredName>;
+        declare static readonly __signalSignatures: StructuredName.SignalSignatures;
 
         // Properties
 
@@ -1820,6 +1929,9 @@ export namespace Folks {
     }
 
     namespace NoteFieldDetails {
+        // Signal signatures
+        interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractFieldDetails.ConstructorProps {
@@ -1829,6 +1941,7 @@ export namespace Folks {
 
     class NoteFieldDetails extends AbstractFieldDetails {
         static $gtype: GObject.GType<NoteFieldDetails>;
+        declare static readonly __signalSignatures: NoteFieldDetails.SignalSignatures;
 
         // Properties
 
@@ -1850,6 +1963,9 @@ export namespace Folks {
     }
 
     namespace ObjectCache {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1867,6 +1983,7 @@ export namespace Folks {
 
     abstract class ObjectCache extends GObject.Object {
         static $gtype: GObject.GType<ObjectCache>;
+        declare static readonly __signalSignatures: ObjectCache.SignalSignatures;
 
         // Properties
 
@@ -1930,6 +2047,12 @@ export namespace Folks {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'personas-changed': PersonasChanged;
+            removed: Removed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1966,6 +2089,7 @@ export namespace Folks {
 
     abstract class PersonaStore extends GObject.Object {
         static $gtype: GObject.GType<PersonaStore>;
+        declare static readonly __signalSignatures: PersonaStore.SignalSignatures;
 
         // Properties
 
@@ -2014,6 +2138,18 @@ export namespace Folks {
 
         // Signals
 
+        connect<K extends keyof PersonaStore.SignalSignatures>(
+            signal: K,
+            callback: PersonaStore.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PersonaStore.SignalSignatures>(
+            signal: K,
+            callback: PersonaStore.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PersonaStore.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PersonaStore.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2131,6 +2267,9 @@ export namespace Folks {
     }
 
     namespace Persona {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         interface LinkablePropertyCallback {
             (link: string): void;
         }
@@ -2155,6 +2294,7 @@ export namespace Folks {
 
     abstract class Persona extends GObject.Object {
         static $gtype: GObject.GType<Persona>;
+        declare static readonly __signalSignatures: Persona.SignalSignatures;
 
         // Properties
 
@@ -2203,6 +2343,9 @@ export namespace Folks {
     }
 
     namespace PhoneFieldDetails {
+        // Signal signatures
+        interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractFieldDetails.ConstructorProps {}
@@ -2210,6 +2353,7 @@ export namespace Folks {
 
     class PhoneFieldDetails extends AbstractFieldDetails {
         static $gtype: GObject.GType<PhoneFieldDetails>;
+        declare static readonly __signalSignatures: PhoneFieldDetails.SignalSignatures;
 
         // Constructors
 
@@ -2225,6 +2369,9 @@ export namespace Folks {
     }
 
     namespace PostalAddress {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2245,6 +2392,7 @@ export namespace Folks {
 
     class PostalAddress extends GObject.Object {
         static $gtype: GObject.GType<PostalAddress>;
+        declare static readonly __signalSignatures: PostalAddress.SignalSignatures;
 
         // Properties
 
@@ -2317,6 +2465,9 @@ export namespace Folks {
     }
 
     namespace PostalAddressFieldDetails {
+        // Signal signatures
+        interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractFieldDetails.ConstructorProps {}
@@ -2324,6 +2475,7 @@ export namespace Folks {
 
     class PostalAddressFieldDetails extends AbstractFieldDetails {
         static $gtype: GObject.GType<PostalAddressFieldDetails>;
+        declare static readonly __signalSignatures: PostalAddressFieldDetails.SignalSignatures;
 
         // Constructors
 
@@ -2335,6 +2487,9 @@ export namespace Folks {
     }
 
     namespace PotentialMatch {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2342,6 +2497,7 @@ export namespace Folks {
 
     class PotentialMatch extends GObject.Object {
         static $gtype: GObject.GType<PotentialMatch>;
+        declare static readonly __signalSignatures: PotentialMatch.SignalSignatures;
 
         // Fields
 
@@ -2361,6 +2517,9 @@ export namespace Folks {
     }
 
     namespace Query {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2371,6 +2530,7 @@ export namespace Folks {
 
     abstract class Query extends GObject.Object {
         static $gtype: GObject.GType<Query>;
+        declare static readonly __signalSignatures: Query.SignalSignatures;
 
         // Properties
 
@@ -2395,6 +2555,9 @@ export namespace Folks {
     }
 
     namespace Role {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2408,6 +2571,7 @@ export namespace Folks {
 
     class Role extends GObject.Object {
         static $gtype: GObject.GType<Role>;
+        declare static readonly __signalSignatures: Role.SignalSignatures;
 
         // Properties
 
@@ -2450,6 +2614,9 @@ export namespace Folks {
     }
 
     namespace RoleFieldDetails {
+        // Signal signatures
+        interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractFieldDetails.ConstructorProps {}
@@ -2457,6 +2624,7 @@ export namespace Folks {
 
     class RoleFieldDetails extends AbstractFieldDetails {
         static $gtype: GObject.GType<RoleFieldDetails>;
+        declare static readonly __signalSignatures: RoleFieldDetails.SignalSignatures;
 
         // Constructors
 
@@ -2474,6 +2642,11 @@ export namespace Folks {
             (added: Gee.SortedSet, removed: Gee.SortedSet): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'individuals-changed-detailed': IndividualsChangedDetailed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2489,6 +2662,7 @@ export namespace Folks {
 
     class SearchView extends GObject.Object {
         static $gtype: GObject.GType<SearchView>;
+        declare static readonly __signalSignatures: SearchView.SignalSignatures;
 
         // Properties
 
@@ -2511,6 +2685,18 @@ export namespace Folks {
 
         // Signals
 
+        connect<K extends keyof SearchView.SignalSignatures>(
+            signal: K,
+            callback: SearchView.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SearchView.SignalSignatures>(
+            signal: K,
+            callback: SearchView.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SearchView.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SearchView.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2547,6 +2733,9 @@ export namespace Folks {
     }
 
     namespace SimpleQuery {
+        // Signal signatures
+        interface SignalSignatures extends Query.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Query.ConstructorProps {
@@ -2559,6 +2748,7 @@ export namespace Folks {
 
     class SimpleQuery extends Query {
         static $gtype: GObject.GType<SimpleQuery>;
+        declare static readonly __signalSignatures: SimpleQuery.SignalSignatures;
 
         // Properties
 
@@ -2588,6 +2778,9 @@ export namespace Folks {
     }
 
     namespace UrlFieldDetails {
+        // Signal signatures
+        interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractFieldDetails.ConstructorProps {}
@@ -2595,6 +2788,7 @@ export namespace Folks {
 
     class UrlFieldDetails extends AbstractFieldDetails {
         static $gtype: GObject.GType<UrlFieldDetails>;
+        declare static readonly __signalSignatures: UrlFieldDetails.SignalSignatures;
 
         // Constructors
 
@@ -2606,6 +2800,9 @@ export namespace Folks {
     }
 
     namespace Utils {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2613,6 +2810,7 @@ export namespace Folks {
 
     class Utils extends GObject.Object {
         static $gtype: GObject.GType<Utils>;
+        declare static readonly __signalSignatures: Utils.SignalSignatures;
 
         // Constructors
 
@@ -2631,6 +2829,9 @@ export namespace Folks {
     }
 
     namespace WebServiceFieldDetails {
+        // Signal signatures
+        interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractFieldDetails.ConstructorProps {}
@@ -2638,6 +2839,7 @@ export namespace Folks {
 
     class WebServiceFieldDetails extends AbstractFieldDetails {
         static $gtype: GObject.GType<WebServiceFieldDetails>;
+        declare static readonly __signalSignatures: WebServiceFieldDetails.SignalSignatures;
 
         // Constructors
 

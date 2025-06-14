@@ -378,6 +378,11 @@ export namespace Handy {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends PreferencesRow.SignalSignatures {
+            activated: Activated;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -432,6 +437,7 @@ export namespace Handy {
      */
     class ActionRow extends PreferencesRow implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildable {
         static $gtype: GObject.GType<ActionRow>;
+        declare static readonly __signalSignatures: ActionRow.SignalSignatures;
 
         // Properties
 
@@ -531,6 +537,15 @@ export namespace Handy {
 
         // Signals
 
+        connect<K extends keyof ActionRow.SignalSignatures>(signal: K, callback: ActionRow.SignalSignatures[K]): number;
+        connect_after<K extends keyof ActionRow.SignalSignatures>(
+            signal: K,
+            callback: ActionRow.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ActionRow.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ActionRow.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -4902,6 +4917,9 @@ export namespace Handy {
     }
 
     namespace ApplicationWindow {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.ApplicationWindow.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4929,6 +4947,7 @@ export namespace Handy {
         implements Atk.ImplementorIface, Gio.ActionGroup, Gio.ActionMap, Gtk.Buildable
     {
         static $gtype: GObject.GType<ApplicationWindow>;
+        declare static readonly __signalSignatures: ApplicationWindow.SignalSignatures;
 
         // Constructors
 
@@ -5900,6 +5919,9 @@ export namespace Handy {
     }
 
     namespace Avatar {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.DrawingArea.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5940,6 +5962,7 @@ export namespace Handy {
      */
     class Avatar extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Avatar>;
+        declare static readonly __signalSignatures: Avatar.SignalSignatures;
 
         // Properties
 
@@ -6585,6 +6608,11 @@ export namespace Handy {
             (index: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.EventBox.SignalSignatures {
+            'page-changed': PageChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6626,6 +6654,7 @@ export namespace Handy {
      */
     class Carousel extends Gtk.EventBox implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, Swipeable {
         static $gtype: GObject.GType<Carousel>;
+        declare static readonly __signalSignatures: Carousel.SignalSignatures;
 
         // Properties
 
@@ -6729,6 +6758,15 @@ export namespace Handy {
 
         // Signals
 
+        connect<K extends keyof Carousel.SignalSignatures>(signal: K, callback: Carousel.SignalSignatures[K]): number;
+        connect_after<K extends keyof Carousel.SignalSignatures>(
+            signal: K,
+            callback: Carousel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Carousel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Carousel.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -11270,6 +11308,9 @@ export namespace Handy {
     }
 
     namespace CarouselIndicatorDots {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.DrawingArea.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -11298,6 +11339,7 @@ export namespace Handy {
      */
     class CarouselIndicatorDots extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<CarouselIndicatorDots>;
+        declare static readonly __signalSignatures: CarouselIndicatorDots.SignalSignatures;
 
         // Properties
 
@@ -11788,6 +11830,9 @@ export namespace Handy {
     }
 
     namespace CarouselIndicatorLines {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.DrawingArea.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -11818,6 +11863,7 @@ export namespace Handy {
         implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable
     {
         static $gtype: GObject.GType<CarouselIndicatorLines>;
+        declare static readonly __signalSignatures: CarouselIndicatorLines.SignalSignatures;
 
         // Properties
 
@@ -12308,6 +12354,9 @@ export namespace Handy {
     }
 
     namespace Clamp {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Bin.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -12343,6 +12392,7 @@ export namespace Handy {
      */
     class Clamp extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Clamp>;
+        declare static readonly __signalSignatures: Clamp.SignalSignatures;
 
         // Properties
 
@@ -12890,6 +12940,9 @@ export namespace Handy {
     }
 
     namespace ComboRow {
+        // Signal signatures
+        interface SignalSignatures extends ActionRow.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -12931,6 +12984,7 @@ export namespace Handy {
      */
     class ComboRow extends ActionRow implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildable {
         static $gtype: GObject.GType<ComboRow>;
+        declare static readonly __signalSignatures: ComboRow.SignalSignatures;
 
         // Properties
 
@@ -17340,6 +17394,9 @@ export namespace Handy {
     }
 
     namespace Deck {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Container.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -17394,6 +17451,7 @@ export namespace Handy {
      */
     class Deck extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, Swipeable {
         static $gtype: GObject.GType<Deck>;
+        declare static readonly __signalSignatures: Deck.SignalSignatures;
 
         // Properties
 
@@ -22072,6 +22130,9 @@ export namespace Handy {
     }
 
     namespace EnumValueObject {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -22085,6 +22146,7 @@ export namespace Handy {
      */
     class EnumValueObject extends GObject.Object {
         static $gtype: GObject.GType<EnumValueObject>;
+        declare static readonly __signalSignatures: EnumValueObject.SignalSignatures;
 
         // Constructors
 
@@ -22114,6 +22176,9 @@ export namespace Handy {
     }
 
     namespace ExpanderRow {
+        // Signal signatures
+        interface SignalSignatures extends PreferencesRow.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -22165,6 +22230,7 @@ export namespace Handy {
      */
     class ExpanderRow extends PreferencesRow implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildable {
         static $gtype: GObject.GType<ExpanderRow>;
+        declare static readonly __signalSignatures: ExpanderRow.SignalSignatures;
 
         // Properties
 
@@ -26573,6 +26639,9 @@ export namespace Handy {
     }
 
     namespace Flap {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Container.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -26659,6 +26728,7 @@ export namespace Handy {
      */
     class Flap extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, Swipeable {
         static $gtype: GObject.GType<Flap>;
+        declare static readonly __signalSignatures: Flap.SignalSignatures;
 
         // Properties
 
@@ -31408,6 +31478,9 @@ export namespace Handy {
     }
 
     namespace HeaderBar {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Container.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -31464,6 +31537,7 @@ export namespace Handy {
      */
     class HeaderBar extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<HeaderBar>;
+        declare static readonly __signalSignatures: HeaderBar.SignalSignatures;
 
         // Properties
 
@@ -32207,6 +32281,11 @@ export namespace Handy {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'update-decoration-layouts': UpdateDecorationLayouts;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gtk.Buildable.ConstructorProps {
@@ -32250,6 +32329,7 @@ export namespace Handy {
      */
     class HeaderGroup extends GObject.Object implements Gtk.Buildable {
         static $gtype: GObject.GType<HeaderGroup>;
+        declare static readonly __signalSignatures: HeaderGroup.SignalSignatures;
 
         // Properties
 
@@ -32282,6 +32362,18 @@ export namespace Handy {
 
         // Signals
 
+        connect<K extends keyof HeaderGroup.SignalSignatures>(
+            signal: K,
+            callback: HeaderGroup.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof HeaderGroup.SignalSignatures>(
+            signal: K,
+            callback: HeaderGroup.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HeaderGroup.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HeaderGroup.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -32972,6 +33064,9 @@ export namespace Handy {
     }
 
     namespace HeaderGroupChild {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -32982,6 +33077,7 @@ export namespace Handy {
      */
     class HeaderGroupChild extends GObject.Object {
         static $gtype: GObject.GType<HeaderGroupChild>;
+        declare static readonly __signalSignatures: HeaderGroupChild.SignalSignatures;
 
         // Constructors
 
@@ -33020,6 +33116,9 @@ export namespace Handy {
     }
 
     namespace Keypad {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Bin.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -33054,6 +33153,7 @@ export namespace Handy {
      */
     class Keypad extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Keypad>;
+        declare static readonly __signalSignatures: Keypad.SignalSignatures;
 
         // Properties
 
@@ -33657,6 +33757,9 @@ export namespace Handy {
     }
 
     namespace Leaflet {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Container.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -33733,6 +33836,7 @@ export namespace Handy {
      */
     class Leaflet extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, Swipeable {
         static $gtype: GObject.GType<Leaflet>;
+        declare static readonly __signalSignatures: Leaflet.SignalSignatures;
 
         // Properties
 
@@ -38480,6 +38584,9 @@ export namespace Handy {
     }
 
     namespace PreferencesGroup {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Bin.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -38509,6 +38616,7 @@ export namespace Handy {
      */
     class PreferencesGroup extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<PreferencesGroup>;
+        declare static readonly __signalSignatures: PreferencesGroup.SignalSignatures;
 
         // Properties
 
@@ -39013,6 +39121,9 @@ export namespace Handy {
     }
 
     namespace PreferencesPage {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Bin.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -39037,6 +39148,7 @@ export namespace Handy {
      */
     class PreferencesPage extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<PreferencesPage>;
+        declare static readonly __signalSignatures: PreferencesPage.SignalSignatures;
 
         // Properties
 
@@ -39530,6 +39642,9 @@ export namespace Handy {
     }
 
     namespace PreferencesRow {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.ListBoxRow.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -39556,6 +39671,7 @@ export namespace Handy {
      */
     class PreferencesRow extends Gtk.ListBoxRow implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildable {
         static $gtype: GObject.GType<PreferencesRow>;
+        declare static readonly __signalSignatures: PreferencesRow.SignalSignatures;
 
         // Properties
 
@@ -44008,6 +44124,9 @@ export namespace Handy {
     }
 
     namespace PreferencesWindow {
+        // Signal signatures
+        interface SignalSignatures extends Window.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -44034,6 +44153,7 @@ export namespace Handy {
      */
     class PreferencesWindow extends Window implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<PreferencesWindow>;
+        declare static readonly __signalSignatures: PreferencesWindow.SignalSignatures;
 
         // Properties
 
@@ -44548,6 +44668,9 @@ export namespace Handy {
     }
 
     namespace SearchBar {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Bin.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -44589,6 +44712,7 @@ export namespace Handy {
      */
     class SearchBar extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<SearchBar>;
+        declare static readonly __signalSignatures: SearchBar.SignalSignatures;
 
         // Properties
 
@@ -45143,6 +45267,9 @@ export namespace Handy {
     }
 
     namespace Squeezer {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Container.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -45183,6 +45310,7 @@ export namespace Handy {
      */
     class Squeezer extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Squeezer>;
+        declare static readonly __signalSignatures: Squeezer.SignalSignatures;
 
         // Properties
 
@@ -45852,6 +45980,9 @@ export namespace Handy {
     }
 
     namespace StatusPage {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Bin.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -45877,6 +46008,7 @@ export namespace Handy {
      */
     class StatusPage extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<StatusPage>;
+        declare static readonly __signalSignatures: StatusPage.SignalSignatures;
 
         // Properties
 
@@ -46385,6 +46517,9 @@ export namespace Handy {
     }
 
     namespace StyleManager {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -46415,6 +46550,7 @@ export namespace Handy {
      */
     class StyleManager extends GObject.Object {
         static $gtype: GObject.GType<StyleManager>;
+        declare static readonly __signalSignatures: StyleManager.SignalSignatures;
 
         // Properties
 
@@ -46610,6 +46746,9 @@ export namespace Handy {
     }
 
     namespace SwipeGroup {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gtk.Buildable.ConstructorProps {}
@@ -46647,6 +46786,7 @@ export namespace Handy {
      */
     class SwipeGroup extends GObject.Object implements Gtk.Buildable {
         static $gtype: GObject.GType<SwipeGroup>;
+        declare static readonly __signalSignatures: SwipeGroup.SignalSignatures;
 
         // Constructors
 
@@ -47310,6 +47450,13 @@ export namespace Handy {
             (progress: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'begin-swipe': BeginSwipe;
+            'end-swipe': EndSwipe;
+            'update-swipe': UpdateSwipe;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gtk.Orientable.ConstructorProps {
@@ -47337,6 +47484,7 @@ export namespace Handy {
      */
     class SwipeTracker extends GObject.Object implements Gtk.Orientable {
         static $gtype: GObject.GType<SwipeTracker>;
+        declare static readonly __signalSignatures: SwipeTracker.SignalSignatures;
 
         // Properties
 
@@ -47401,6 +47549,18 @@ export namespace Handy {
 
         // Signals
 
+        connect<K extends keyof SwipeTracker.SignalSignatures>(
+            signal: K,
+            callback: SwipeTracker.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SwipeTracker.SignalSignatures>(
+            signal: K,
+            callback: SwipeTracker.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SwipeTracker.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SwipeTracker.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -47952,6 +48112,11 @@ export namespace Handy {
             (page: TabPage, context: Gdk.DragContext, data: Gtk.SelectionData, info: number, time: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Bin.SignalSignatures {
+            'extra-drag-data-received': ExtraDragDataReceived;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -47995,6 +48160,7 @@ export namespace Handy {
      */
     class TabBar extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<TabBar>;
+        declare static readonly __signalSignatures: TabBar.SignalSignatures;
 
         // Properties
 
@@ -48123,6 +48289,9 @@ export namespace Handy {
 
         // Signals
 
+        connect<K extends keyof TabBar.SignalSignatures>(signal: K, callback: TabBar.SignalSignatures[K]): number;
+        connect_after<K extends keyof TabBar.SignalSignatures>(signal: K, callback: TabBar.SignalSignatures[K]): number;
+        emit<K extends keyof TabBar.SignalSignatures>(signal: K, ...args: Parameters<TabBar.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -48709,6 +48878,9 @@ export namespace Handy {
     }
 
     namespace TabPage {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -48734,6 +48906,7 @@ export namespace Handy {
      */
     class TabPage extends GObject.Object {
         static $gtype: GObject.GType<TabPage>;
+        declare static readonly __signalSignatures: TabPage.SignalSignatures;
 
         // Properties
 
@@ -48997,6 +49170,17 @@ export namespace Handy {
             (page: TabPage): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Bin.SignalSignatures {
+            'close-page': ClosePage;
+            'create-window': CreateWindow;
+            'indicator-activated': IndicatorActivated;
+            'page-attached': PageAttached;
+            'page-detached': PageDetached;
+            'page-reordered': PageReordered;
+            'setup-menu': SetupMenu;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -49058,6 +49242,7 @@ export namespace Handy {
      */
     class TabView extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<TabView>;
+        declare static readonly __signalSignatures: TabView.SignalSignatures;
 
         // Properties
 
@@ -49220,6 +49405,15 @@ export namespace Handy {
 
         // Signals
 
+        connect<K extends keyof TabView.SignalSignatures>(signal: K, callback: TabView.SignalSignatures[K]): number;
+        connect_after<K extends keyof TabView.SignalSignatures>(
+            signal: K,
+            callback: TabView.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TabView.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TabView.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -49996,6 +50190,9 @@ export namespace Handy {
     }
 
     namespace TitleBar {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Bin.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -50027,6 +50224,7 @@ export namespace Handy {
      */
     class TitleBar extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<TitleBar>;
+        declare static readonly __signalSignatures: TitleBar.SignalSignatures;
 
         // Properties
 
@@ -50505,6 +50703,9 @@ export namespace Handy {
     }
 
     namespace ValueObject {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -50520,6 +50721,7 @@ export namespace Handy {
      */
     class ValueObject extends GObject.Object {
         static $gtype: GObject.GType<ValueObject>;
+        declare static readonly __signalSignatures: ValueObject.SignalSignatures;
 
         // Properties
 
@@ -50561,6 +50763,9 @@ export namespace Handy {
     }
 
     namespace ViewSwitcher {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Bin.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -50596,6 +50801,7 @@ export namespace Handy {
      */
     class ViewSwitcher extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ViewSwitcher>;
+        declare static readonly __signalSignatures: ViewSwitcher.SignalSignatures;
 
         // Properties
 
@@ -51118,6 +51324,9 @@ export namespace Handy {
     }
 
     namespace ViewSwitcherBar {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Bin.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -51184,6 +51393,7 @@ export namespace Handy {
      */
     class ViewSwitcherBar extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ViewSwitcherBar>;
+        declare static readonly __signalSignatures: ViewSwitcherBar.SignalSignatures;
 
         // Properties
 
@@ -51687,6 +51897,9 @@ export namespace Handy {
     }
 
     namespace ViewSwitcherTitle {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Bin.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -51760,6 +51973,7 @@ export namespace Handy {
      */
     class ViewSwitcherTitle extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ViewSwitcherTitle>;
+        declare static readonly __signalSignatures: ViewSwitcherTitle.SignalSignatures;
 
         // Properties
 
@@ -52330,6 +52544,9 @@ export namespace Handy {
     }
 
     namespace Window {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Window.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -52397,6 +52614,7 @@ export namespace Handy {
      */
     class Window extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Window>;
+        declare static readonly __signalSignatures: Window.SignalSignatures;
 
         // Constructors
 
@@ -52849,6 +53067,9 @@ export namespace Handy {
     }
 
     namespace WindowHandle {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.EventBox.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -52875,6 +53096,7 @@ export namespace Handy {
      */
     class WindowHandle extends Gtk.EventBox implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<WindowHandle>;
+        declare static readonly __signalSignatures: WindowHandle.SignalSignatures;
 
         // Constructors
 

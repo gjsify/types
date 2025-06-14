@@ -123,6 +123,9 @@ export namespace GstAllocators {
         DONT_CLOSE,
     }
     namespace DRMDumbAllocator {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Allocator.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Allocator.ConstructorProps {
@@ -138,6 +141,7 @@ export namespace GstAllocators {
      */
     class DRMDumbAllocator extends Gst.Allocator {
         static $gtype: GObject.GType<DRMDumbAllocator>;
+        declare static readonly __signalSignatures: DRMDumbAllocator.SignalSignatures;
 
         // Properties
 
@@ -179,6 +183,9 @@ export namespace GstAllocators {
     }
 
     namespace DmaBufAllocator {
+        // Signal signatures
+        interface SignalSignatures extends FdAllocator.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FdAllocator.ConstructorProps {}
@@ -189,6 +196,7 @@ export namespace GstAllocators {
      */
     class DmaBufAllocator extends FdAllocator {
         static $gtype: GObject.GType<DmaBufAllocator>;
+        declare static readonly __signalSignatures: DmaBufAllocator.SignalSignatures;
 
         // Constructors
 
@@ -223,6 +231,9 @@ export namespace GstAllocators {
     }
 
     namespace FdAllocator {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Allocator.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Allocator.ConstructorProps {}
@@ -233,6 +244,7 @@ export namespace GstAllocators {
      */
     class FdAllocator extends Gst.Allocator {
         static $gtype: GObject.GType<FdAllocator>;
+        declare static readonly __signalSignatures: FdAllocator.SignalSignatures;
 
         // Constructors
 

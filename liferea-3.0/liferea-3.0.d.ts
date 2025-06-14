@@ -261,6 +261,9 @@ export namespace Liferea {
         LOGIN,
     }
     namespace Application {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Application.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -271,6 +274,7 @@ export namespace Liferea {
 
     class Application extends Gtk.Application implements Gio.ActionGroup, Gio.ActionMap {
         static $gtype: GObject.GType<Application>;
+        declare static readonly __signalSignatures: Application.SignalSignatures;
 
         // Constructors
 
@@ -743,6 +747,13 @@ export namespace Liferea {
             (object: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'location-changed': LocationChanged;
+            'statusbar-changed': StatusbarChanged;
+            'title-changed': TitleChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -752,6 +763,7 @@ export namespace Liferea {
 
     class Browser extends GObject.Object {
         static $gtype: GObject.GType<Browser>;
+        declare static readonly __signalSignatures: Browser.SignalSignatures;
 
         // Properties
 
@@ -765,6 +777,15 @@ export namespace Liferea {
 
         // Signals
 
+        connect<K extends keyof Browser.SignalSignatures>(signal: K, callback: Browser.SignalSignatures[K]): number;
+        connect_after<K extends keyof Browser.SignalSignatures>(
+            signal: K,
+            callback: Browser.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Browser.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Browser.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -844,6 +865,9 @@ export namespace Liferea {
     }
 
     namespace BrowserTabs {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -855,6 +879,7 @@ export namespace Liferea {
 
     class BrowserTabs extends GObject.Object {
         static $gtype: GObject.GType<BrowserTabs>;
+        declare static readonly __signalSignatures: BrowserTabs.SignalSignatures;
 
         // Properties
 
@@ -904,6 +929,13 @@ export namespace Liferea {
             (object: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'items-updated': ItemsUpdated;
+            'new-items': NewItems;
+            'node-updated': NodeUpdated;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -911,6 +943,7 @@ export namespace Liferea {
 
     class FeedList extends GObject.Object {
         static $gtype: GObject.GType<FeedList>;
+        declare static readonly __signalSignatures: FeedList.SignalSignatures;
 
         // Constructors
 
@@ -920,6 +953,15 @@ export namespace Liferea {
 
         // Signals
 
+        connect<K extends keyof FeedList.SignalSignatures>(signal: K, callback: FeedList.SignalSignatures[K]): number;
+        connect_after<K extends keyof FeedList.SignalSignatures>(
+            signal: K,
+            callback: FeedList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FeedList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FeedList.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -961,6 +1003,9 @@ export namespace Liferea {
     }
 
     namespace Item {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -968,6 +1013,7 @@ export namespace Liferea {
 
     class Item extends GObject.Object {
         static $gtype: GObject.GType<Item>;
+        declare static readonly __signalSignatures: Item.SignalSignatures;
 
         // Fields
 
@@ -1016,6 +1062,11 @@ export namespace Liferea {
             (object: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'item-updated': ItemUpdated;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1023,6 +1074,7 @@ export namespace Liferea {
 
     class ItemList extends GObject.Object {
         static $gtype: GObject.GType<ItemList>;
+        declare static readonly __signalSignatures: ItemList.SignalSignatures;
 
         // Constructors
 
@@ -1032,6 +1084,15 @@ export namespace Liferea {
 
         // Signals
 
+        connect<K extends keyof ItemList.SignalSignatures>(signal: K, callback: ItemList.SignalSignatures[K]): number;
+        connect_after<K extends keyof ItemList.SignalSignatures>(
+            signal: K,
+            callback: ItemList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ItemList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ItemList.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1054,6 +1115,9 @@ export namespace Liferea {
     }
 
     namespace ItemListView {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1061,6 +1125,7 @@ export namespace Liferea {
 
     class ItemListView extends GObject.Object {
         static $gtype: GObject.GType<ItemListView>;
+        declare static readonly __signalSignatures: ItemListView.SignalSignatures;
 
         // Constructors
 
@@ -1101,6 +1166,9 @@ export namespace Liferea {
     }
 
     namespace ItemView {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1113,6 +1181,7 @@ export namespace Liferea {
 
     class ItemView extends GObject.Object {
         static $gtype: GObject.GType<ItemView>;
+        declare static readonly __signalSignatures: ItemView.SignalSignatures;
 
         // Properties
 
@@ -1202,6 +1271,12 @@ export namespace Liferea {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'online-status-changed': OnlineStatusChanged;
+            'proxy-changed': ProxyChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1209,6 +1284,7 @@ export namespace Liferea {
 
     class NetworkMonitor extends GObject.Object {
         static $gtype: GObject.GType<NetworkMonitor>;
+        declare static readonly __signalSignatures: NetworkMonitor.SignalSignatures;
 
         // Constructors
 
@@ -1218,6 +1294,18 @@ export namespace Liferea {
 
         // Signals
 
+        connect<K extends keyof NetworkMonitor.SignalSignatures>(
+            signal: K,
+            callback: NetworkMonitor.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof NetworkMonitor.SignalSignatures>(
+            signal: K,
+            callback: NetworkMonitor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof NetworkMonitor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<NetworkMonitor.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1246,6 +1334,9 @@ export namespace Liferea {
     }
 
     namespace Shell {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1263,6 +1354,7 @@ export namespace Liferea {
 
     class Shell extends GObject.Object {
         static $gtype: GObject.GType<Shell>;
+        declare static readonly __signalSignatures: Shell.SignalSignatures;
 
         // Properties
 

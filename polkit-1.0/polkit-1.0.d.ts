@@ -162,6 +162,9 @@ export namespace Polkit {
         ALLOW_USER_INTERACTION,
     }
     namespace ActionDescription {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -172,6 +175,7 @@ export namespace Polkit {
      */
     class ActionDescription extends GObject.Object {
         static $gtype: GObject.GType<ActionDescription>;
+        declare static readonly __signalSignatures: ActionDescription.SignalSignatures;
 
         // Constructors
 
@@ -249,6 +253,11 @@ export namespace Polkit {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            changed: Changed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -279,6 +288,7 @@ export namespace Polkit {
      */
     class Authority extends GObject.Object implements Gio.AsyncInitable<Authority>, Gio.Initable {
         static $gtype: GObject.GType<Authority>;
+        declare static readonly __signalSignatures: Authority.SignalSignatures;
 
         // Properties
 
@@ -315,6 +325,15 @@ export namespace Polkit {
 
         // Signals
 
+        connect<K extends keyof Authority.SignalSignatures>(signal: K, callback: Authority.SignalSignatures[K]): number;
+        connect_after<K extends keyof Authority.SignalSignatures>(
+            signal: K,
+            callback: Authority.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Authority.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Authority.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1919,6 +1938,9 @@ export namespace Polkit {
     }
 
     namespace AuthorizationResult {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1929,6 +1951,7 @@ export namespace Polkit {
      */
     class AuthorizationResult extends GObject.Object {
         static $gtype: GObject.GType<AuthorizationResult>;
+        declare static readonly __signalSignatures: AuthorizationResult.SignalSignatures;
 
         // Constructors
 
@@ -2001,6 +2024,9 @@ export namespace Polkit {
     }
 
     namespace Details {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2011,6 +2037,7 @@ export namespace Polkit {
      */
     class Details extends GObject.Object {
         static $gtype: GObject.GType<Details>;
+        declare static readonly __signalSignatures: Details.SignalSignatures;
 
         // Constructors
 
@@ -2044,6 +2071,9 @@ export namespace Polkit {
     }
 
     namespace Permission {
+        // Signal signatures
+        interface SignalSignatures extends Gio.Permission.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2063,6 +2093,7 @@ export namespace Polkit {
      */
     class Permission extends Gio.Permission implements Gio.AsyncInitable<Permission>, Gio.Initable {
         static $gtype: GObject.GType<Permission>;
+        declare static readonly __signalSignatures: Permission.SignalSignatures;
 
         // Properties
 
@@ -2857,6 +2888,9 @@ export namespace Polkit {
     }
 
     namespace SystemBusName {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Subject.ConstructorProps {
@@ -2869,6 +2903,7 @@ export namespace Polkit {
      */
     class SystemBusName extends GObject.Object implements Subject {
         static $gtype: GObject.GType<SystemBusName>;
+        declare static readonly __signalSignatures: SystemBusName.SignalSignatures;
 
         // Properties
 
@@ -3481,6 +3516,9 @@ export namespace Polkit {
     }
 
     namespace TemporaryAuthorization {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3491,6 +3529,7 @@ export namespace Polkit {
      */
     class TemporaryAuthorization extends GObject.Object {
         static $gtype: GObject.GType<TemporaryAuthorization>;
+        declare static readonly __signalSignatures: TemporaryAuthorization.SignalSignatures;
 
         // Constructors
 
@@ -3534,6 +3573,9 @@ export namespace Polkit {
     }
 
     namespace UnixGroup {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Identity.ConstructorProps {
@@ -3546,6 +3588,7 @@ export namespace Polkit {
      */
     class UnixGroup extends GObject.Object implements Identity {
         static $gtype: GObject.GType<UnixGroup>;
+        declare static readonly __signalSignatures: UnixGroup.SignalSignatures;
 
         // Properties
 
@@ -4066,6 +4109,9 @@ export namespace Polkit {
     }
 
     namespace UnixNetgroup {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Identity.ConstructorProps {
@@ -4078,6 +4124,7 @@ export namespace Polkit {
      */
     class UnixNetgroup extends GObject.Object implements Identity {
         static $gtype: GObject.GType<UnixNetgroup>;
+        declare static readonly __signalSignatures: UnixNetgroup.SignalSignatures;
 
         // Properties
 
@@ -4592,6 +4639,9 @@ export namespace Polkit {
     }
 
     namespace UnixProcess {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Subject.ConstructorProps {
@@ -4622,6 +4672,7 @@ export namespace Polkit {
      */
     class UnixProcess extends GObject.Object implements Subject {
         static $gtype: GObject.GType<UnixProcess>;
+        declare static readonly __signalSignatures: UnixProcess.SignalSignatures;
 
         // Properties
 
@@ -5289,6 +5340,9 @@ export namespace Polkit {
     }
 
     namespace UnixSession {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5309,6 +5363,7 @@ export namespace Polkit {
      */
     class UnixSession extends GObject.Object implements Gio.AsyncInitable<UnixSession>, Gio.Initable, Subject {
         static $gtype: GObject.GType<UnixSession>;
+        declare static readonly __signalSignatures: UnixSession.SignalSignatures;
 
         // Properties
 
@@ -6237,6 +6292,9 @@ export namespace Polkit {
     }
 
     namespace UnixUser {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Identity.ConstructorProps {
@@ -6249,6 +6307,7 @@ export namespace Polkit {
      */
     class UnixUser extends GObject.Object implements Identity {
         static $gtype: GObject.GType<UnixUser>;
+        declare static readonly __signalSignatures: UnixUser.SignalSignatures;
 
         // Properties
 

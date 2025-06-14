@@ -3758,6 +3758,9 @@ export namespace Vips {
         REVALIDATE,
     }
     namespace Foreign {
+        // Signal signatures
+        interface SignalSignatures extends Operation.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Operation.ConstructorProps {}
@@ -3765,6 +3768,7 @@ export namespace Vips {
 
     abstract class Foreign extends Operation {
         static $gtype: GObject.GType<Foreign>;
+        declare static readonly __signalSignatures: Foreign.SignalSignatures;
 
         // Fields
 
@@ -3880,6 +3884,9 @@ export namespace Vips {
     }
 
     namespace ForeignLoad {
+        // Signal signatures
+        interface SignalSignatures extends Foreign.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Foreign.ConstructorProps {
@@ -3898,6 +3905,7 @@ export namespace Vips {
 
     abstract class ForeignLoad extends Foreign {
         static $gtype: GObject.GType<ForeignLoad>;
+        declare static readonly __signalSignatures: ForeignLoad.SignalSignatures;
 
         // Properties
 
@@ -3945,6 +3953,9 @@ export namespace Vips {
     }
 
     namespace ForeignSave {
+        // Signal signatures
+        interface SignalSignatures extends Foreign.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Foreign.ConstructorProps {
@@ -3960,6 +3971,7 @@ export namespace Vips {
 
     abstract class ForeignSave extends Foreign {
         static $gtype: GObject.GType<ForeignSave>;
+        declare static readonly __signalSignatures: ForeignSave.SignalSignatures;
 
         // Properties
 
@@ -4017,6 +4029,16 @@ export namespace Vips {
             (result: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {
+            eval: Eval;
+            invalidate: Invalidate;
+            minimise: Minimise;
+            posteval: Posteval;
+            preeval: Preeval;
+            written: Written;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -4048,6 +4070,7 @@ export namespace Vips {
      */
     class Image extends Object {
         static $gtype: GObject.GType<Image>;
+        declare static readonly __signalSignatures: Image.SignalSignatures;
 
         // Properties
 
@@ -4130,6 +4153,9 @@ export namespace Vips {
 
         // Signals
 
+        connect<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
+        connect_after<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
+        emit<K extends keyof Image.SignalSignatures>(signal: K, ...args: Parameters<Image.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -4911,6 +4937,9 @@ export namespace Vips {
     }
 
     namespace Interpolate {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -4918,6 +4947,7 @@ export namespace Vips {
 
     abstract class Interpolate extends Object {
         static $gtype: GObject.GType<Interpolate>;
+        declare static readonly __signalSignatures: Interpolate.SignalSignatures;
 
         // Fields
 
@@ -4996,6 +5026,14 @@ export namespace Vips {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            close: Close;
+            postbuild: Postbuild;
+            postclose: Postclose;
+            preclose: Preclose;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5006,6 +5044,7 @@ export namespace Vips {
 
     abstract class Object extends GObject.Object {
         static $gtype: GObject.GType<Object>;
+        declare static readonly __signalSignatures: Object.SignalSignatures;
 
         // Properties
 
@@ -5033,6 +5072,9 @@ export namespace Vips {
 
         // Signals
 
+        connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -5166,6 +5208,11 @@ export namespace Vips {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {
+            invalidate: Invalidate;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -5173,6 +5220,7 @@ export namespace Vips {
 
     abstract class Operation extends Object {
         static $gtype: GObject.GType<Operation>;
+        declare static readonly __signalSignatures: Operation.SignalSignatures;
 
         // Fields
 
@@ -5190,6 +5238,15 @@ export namespace Vips {
 
         // Signals
 
+        connect<K extends keyof Operation.SignalSignatures>(signal: K, callback: Operation.SignalSignatures[K]): number;
+        connect_after<K extends keyof Operation.SignalSignatures>(
+            signal: K,
+            callback: Operation.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Operation.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Operation.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -5243,6 +5300,9 @@ export namespace Vips {
     }
 
     namespace Region {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -5256,6 +5316,7 @@ export namespace Vips {
      */
     class Region extends Object {
         static $gtype: GObject.GType<Region>;
+        declare static readonly __signalSignatures: Region.SignalSignatures;
 
         // Fields
 

@@ -320,6 +320,9 @@ export namespace GstCheck {
         (h: Harness, data?: any | null): Gst.Event;
     }
     namespace TestClock {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Clock.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Clock.ConstructorProps {
@@ -482,6 +485,7 @@ export namespace GstCheck {
      */
     class TestClock extends Gst.Clock {
         static $gtype: GObject.GType<TestClock>;
+        declare static readonly __signalSignatures: TestClock.SignalSignatures;
 
         // Properties
 

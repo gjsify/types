@@ -22,6 +22,9 @@ export namespace ArrowCUDA {
      */
 
     namespace Buffer {
+        // Signal signatures
+        interface SignalSignatures extends Arrow.Buffer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Arrow.Buffer.ConstructorProps {}
@@ -29,6 +32,7 @@ export namespace ArrowCUDA {
 
     class Buffer extends Arrow.Buffer {
         static $gtype: GObject.GType<Buffer>;
+        declare static readonly __signalSignatures: Buffer.SignalSignatures;
 
         // Constructors
 
@@ -55,6 +59,9 @@ export namespace ArrowCUDA {
     }
 
     namespace BufferInputStream {
+        // Signal signatures
+        interface SignalSignatures extends Arrow.BufferInputStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -65,6 +72,7 @@ export namespace ArrowCUDA {
 
     class BufferInputStream extends Arrow.BufferInputStream implements Arrow.File, Arrow.Readable {
         static $gtype: GObject.GType<BufferInputStream>;
+        declare static readonly __signalSignatures: BufferInputStream.SignalSignatures;
 
         // Constructors
 
@@ -517,6 +525,9 @@ export namespace ArrowCUDA {
     }
 
     namespace BufferOutputStream {
+        // Signal signatures
+        interface SignalSignatures extends Arrow.OutputStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -527,6 +538,7 @@ export namespace ArrowCUDA {
 
     class BufferOutputStream extends Arrow.OutputStream implements Arrow.File, Arrow.Writable {
         static $gtype: GObject.GType<BufferOutputStream>;
+        declare static readonly __signalSignatures: BufferOutputStream.SignalSignatures;
 
         // Constructors
 
@@ -995,6 +1007,9 @@ export namespace ArrowCUDA {
     }
 
     namespace Context {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1004,6 +1019,7 @@ export namespace ArrowCUDA {
 
     class Context extends GObject.Object {
         static $gtype: GObject.GType<Context>;
+        declare static readonly __signalSignatures: Context.SignalSignatures;
 
         // Properties
 
@@ -1021,6 +1037,9 @@ export namespace ArrowCUDA {
     }
 
     namespace DeviceManager {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1028,6 +1047,7 @@ export namespace ArrowCUDA {
 
     class DeviceManager extends GObject.Object {
         static $gtype: GObject.GType<DeviceManager>;
+        declare static readonly __signalSignatures: DeviceManager.SignalSignatures;
 
         // Constructors
 
@@ -1044,6 +1064,9 @@ export namespace ArrowCUDA {
     }
 
     namespace HostBuffer {
+        // Signal signatures
+        interface SignalSignatures extends Arrow.MutableBuffer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Arrow.MutableBuffer.ConstructorProps {}
@@ -1051,6 +1074,7 @@ export namespace ArrowCUDA {
 
     class HostBuffer extends Arrow.MutableBuffer {
         static $gtype: GObject.GType<HostBuffer>;
+        declare static readonly __signalSignatures: HostBuffer.SignalSignatures;
 
         // Constructors
 
@@ -1065,6 +1089,9 @@ export namespace ArrowCUDA {
     }
 
     namespace IPCMemoryHandle {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1075,6 +1102,7 @@ export namespace ArrowCUDA {
 
     class IPCMemoryHandle extends GObject.Object {
         static $gtype: GObject.GType<IPCMemoryHandle>;
+        declare static readonly __signalSignatures: IPCMemoryHandle.SignalSignatures;
 
         // Properties
 

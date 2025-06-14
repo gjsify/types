@@ -663,6 +663,9 @@ export namespace SpiceClientGLib {
         SUBJECT,
     }
     namespace Audio {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -677,6 +680,7 @@ export namespace SpiceClientGLib {
      */
     abstract class Audio extends GObject.Object {
         static $gtype: GObject.GType<Audio>;
+        declare static readonly __signalSignatures: Audio.SignalSignatures;
 
         // Properties
 
@@ -747,6 +751,12 @@ export namespace SpiceClientGLib {
             (with_tls: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'channel-event': ChannelEvent;
+            'open-fd': OpenFd;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -767,6 +777,7 @@ export namespace SpiceClientGLib {
      */
     class Channel extends GObject.Object {
         static $gtype: GObject.GType<Channel>;
+        declare static readonly __signalSignatures: Channel.SignalSignatures;
 
         // Properties
 
@@ -796,6 +807,14 @@ export namespace SpiceClientGLib {
 
         // Signals
 
+        connect_after<K extends keyof Channel.SignalSignatures>(
+            signal: K,
+            callback: Channel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Channel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Channel.SignalSignatures[K]>
+        ): void;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
         connect_after(signal: 'channel-event', callback: (_source: this, event: ChannelEvent) => void): number;
@@ -942,6 +961,14 @@ export namespace SpiceClientGLib {
             (width: number, height: number, hot_x: number, hot_y: number, rgba?: any | null): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Channel.SignalSignatures {
+            'cursor-hide': CursorHide;
+            'cursor-move': CursorMove;
+            'cursor-reset': CursorReset;
+            'cursor-set': CursorSet;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Channel.ConstructorProps {
@@ -954,6 +981,7 @@ export namespace SpiceClientGLib {
      */
     class CursorChannel extends Channel {
         static $gtype: GObject.GType<CursorChannel>;
+        declare static readonly __signalSignatures: CursorChannel.SignalSignatures;
 
         // Properties
 
@@ -970,6 +998,14 @@ export namespace SpiceClientGLib {
 
         // Signals
 
+        connect_after<K extends keyof CursorChannel.SignalSignatures>(
+            signal: K,
+            callback: CursorChannel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CursorChannel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CursorChannel.SignalSignatures[K]>
+        ): void;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
         connect_after(signal: 'cursor-hide', callback: (_source: this) => void): number;
@@ -1037,6 +1073,17 @@ export namespace SpiceClientGLib {
             (streaming_mode: boolean): any | null;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Channel.SignalSignatures {
+            'display-invalidate': DisplayInvalidate;
+            'display-mark': DisplayMark;
+            'display-primary-create': DisplayPrimaryCreate;
+            'display-primary-destroy': DisplayPrimaryDestroy;
+            'gl-draw': GlDraw;
+            'gst-video-overlay': GstVideoOverlay;
+            'streaming-mode': StreamingMode;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Channel.ConstructorProps {
@@ -1055,6 +1102,7 @@ export namespace SpiceClientGLib {
      */
     class DisplayChannel extends Channel {
         static $gtype: GObject.GType<DisplayChannel>;
+        declare static readonly __signalSignatures: DisplayChannel.SignalSignatures;
 
         // Properties
 
@@ -1093,6 +1141,14 @@ export namespace SpiceClientGLib {
 
         // Signals
 
+        connect_after<K extends keyof DisplayChannel.SignalSignatures>(
+            signal: K,
+            callback: DisplayChannel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DisplayChannel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DisplayChannel.SignalSignatures[K]>
+        ): void;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
         connect_after(
@@ -1189,6 +1245,11 @@ export namespace SpiceClientGLib {
             (object: GLib.Error): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            finished: Finished;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1206,6 +1267,7 @@ export namespace SpiceClientGLib {
 
     class FileTransferTask extends GObject.Object {
         static $gtype: GObject.GType<FileTransferTask>;
+        declare static readonly __signalSignatures: FileTransferTask.SignalSignatures;
 
         // Properties
 
@@ -1227,6 +1289,18 @@ export namespace SpiceClientGLib {
 
         // Signals
 
+        connect<K extends keyof FileTransferTask.SignalSignatures>(
+            signal: K,
+            callback: FileTransferTask.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FileTransferTask.SignalSignatures>(
+            signal: K,
+            callback: FileTransferTask.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FileTransferTask.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FileTransferTask.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1250,6 +1324,11 @@ export namespace SpiceClientGLib {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Channel.SignalSignatures {
+            'inputs-modifiers': InputsModifiers;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Channel.ConstructorProps {
@@ -1263,6 +1342,7 @@ export namespace SpiceClientGLib {
      */
     class InputsChannel extends Channel {
         static $gtype: GObject.GType<InputsChannel>;
+        declare static readonly __signalSignatures: InputsChannel.SignalSignatures;
 
         // Properties
 
@@ -1277,6 +1357,14 @@ export namespace SpiceClientGLib {
 
         // Signals
 
+        connect_after<K extends keyof InputsChannel.SignalSignatures>(
+            signal: K,
+            callback: InputsChannel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InputsChannel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InputsChannel.SignalSignatures[K]>
+        ): void;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
         connect_after(signal: 'inputs-modifiers', callback: (_source: this) => void): number;
@@ -1384,6 +1472,22 @@ export namespace SpiceClientGLib {
             (task: GObject.Object): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Channel.SignalSignatures {
+            'main-agent-update': MainAgentUpdate;
+            'main-clipboard': MainClipboard;
+            'main-clipboard-grab': MainClipboardGrab;
+            'main-clipboard-release': MainClipboardRelease;
+            'main-clipboard-request': MainClipboardRequest;
+            'main-clipboard-selection': MainClipboardSelection;
+            'main-clipboard-selection-grab': MainClipboardSelectionGrab;
+            'main-clipboard-selection-release': MainClipboardSelectionRelease;
+            'main-clipboard-selection-request': MainClipboardSelectionRequest;
+            'main-mouse-update': MainMouseUpdate;
+            'migration-started': MigrationStarted;
+            'new-file-transfer': NewFileTransfer;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Channel.ConstructorProps {
@@ -1415,6 +1519,7 @@ export namespace SpiceClientGLib {
      */
     class MainChannel extends Channel {
         static $gtype: GObject.GType<MainChannel>;
+        declare static readonly __signalSignatures: MainChannel.SignalSignatures;
 
         // Properties
 
@@ -1493,6 +1598,14 @@ export namespace SpiceClientGLib {
 
         // Signals
 
+        connect_after<K extends keyof MainChannel.SignalSignatures>(
+            signal: K,
+            callback: MainChannel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MainChannel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MainChannel.SignalSignatures[K]>
+        ): void;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
         connect_after(signal: 'main-agent-update', callback: (_source: this) => void): number;
@@ -1753,6 +1866,14 @@ export namespace SpiceClientGLib {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Channel.SignalSignatures {
+            'playback-data': PlaybackData;
+            'playback-get-delay': PlaybackGetDelay;
+            'playback-start': PlaybackStart;
+            'playback-stop': PlaybackStop;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Channel.ConstructorProps {
@@ -1769,6 +1890,7 @@ export namespace SpiceClientGLib {
      */
     class PlaybackChannel extends Channel {
         static $gtype: GObject.GType<PlaybackChannel>;
+        declare static readonly __signalSignatures: PlaybackChannel.SignalSignatures;
 
         // Properties
 
@@ -1791,6 +1913,14 @@ export namespace SpiceClientGLib {
 
         // Signals
 
+        connect_after<K extends keyof PlaybackChannel.SignalSignatures>(
+            signal: K,
+            callback: PlaybackChannel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PlaybackChannel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PlaybackChannel.SignalSignatures[K]>
+        ): void;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
         connect_after(
@@ -1834,6 +1964,12 @@ export namespace SpiceClientGLib {
             (event: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Channel.SignalSignatures {
+            'port-data': PortData;
+            'port-event': PortEvent;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Channel.ConstructorProps {
@@ -1849,6 +1985,7 @@ export namespace SpiceClientGLib {
      */
     class PortChannel extends Channel {
         static $gtype: GObject.GType<PortChannel>;
+        declare static readonly __signalSignatures: PortChannel.SignalSignatures;
 
         // Properties
 
@@ -1865,6 +2002,14 @@ export namespace SpiceClientGLib {
 
         // Signals
 
+        connect_after<K extends keyof PortChannel.SignalSignatures>(
+            signal: K,
+            callback: PortChannel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PortChannel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PortChannel.SignalSignatures[K]>
+        ): void;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
         connect_after(signal: 'port-data', callback: (_source: this, data: any | null, size: number) => void): number;
@@ -1935,6 +2080,11 @@ export namespace SpiceClientGLib {
             (name: string, node?: any | null): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            event: Event;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1948,6 +2098,7 @@ export namespace SpiceClientGLib {
      */
     class QmpPort extends GObject.Object {
         static $gtype: GObject.GType<QmpPort>;
+        declare static readonly __signalSignatures: QmpPort.SignalSignatures;
 
         // Properties
 
@@ -1962,6 +2113,15 @@ export namespace SpiceClientGLib {
 
         // Signals
 
+        connect<K extends keyof QmpPort.SignalSignatures>(signal: K, callback: QmpPort.SignalSignatures[K]): number;
+        connect_after<K extends keyof QmpPort.SignalSignatures>(
+            signal: K,
+            callback: QmpPort.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof QmpPort.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<QmpPort.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2052,6 +2212,12 @@ export namespace SpiceClientGLib {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Channel.SignalSignatures {
+            'record-start': RecordStart;
+            'record-stop': RecordStop;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Channel.ConstructorProps {
@@ -2066,6 +2232,7 @@ export namespace SpiceClientGLib {
      */
     class RecordChannel extends Channel {
         static $gtype: GObject.GType<RecordChannel>;
+        declare static readonly __signalSignatures: RecordChannel.SignalSignatures;
 
         // Properties
 
@@ -2084,6 +2251,14 @@ export namespace SpiceClientGLib {
 
         // Signals
 
+        connect_after<K extends keyof RecordChannel.SignalSignatures>(
+            signal: K,
+            callback: RecordChannel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RecordChannel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RecordChannel.SignalSignatures[K]>
+        ): void;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
         connect_after(
@@ -2128,6 +2303,14 @@ export namespace SpiceClientGLib {
 
         interface MmTimeReset {
             (): void;
+        }
+
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'channel-destroy': ChannelDestroy;
+            'channel-new': ChannelNew;
+            disconnected: Disconnected;
+            'mm-time-reset': MmTimeReset;
         }
 
         // Constructor properties interface
@@ -2196,6 +2379,7 @@ export namespace SpiceClientGLib {
      */
     class Session extends GObject.Object {
         static $gtype: GObject.GType<Session>;
+        declare static readonly __signalSignatures: Session.SignalSignatures;
 
         // Properties
 
@@ -2495,6 +2679,14 @@ export namespace SpiceClientGLib {
 
         // Signals
 
+        connect_after<K extends keyof Session.SignalSignatures>(
+            signal: K,
+            callback: Session.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Session.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Session.SignalSignatures[K]>
+        ): void;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
         connect_after(signal: 'channel-destroy', callback: (_source: this, channel: Channel) => void): number;
@@ -2576,6 +2768,9 @@ export namespace SpiceClientGLib {
     }
 
     namespace SmartcardChannel {
+        // Signal signatures
+        interface SignalSignatures extends Channel.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Channel.ConstructorProps {}
@@ -2586,6 +2781,7 @@ export namespace SpiceClientGLib {
      */
     class SmartcardChannel extends Channel {
         static $gtype: GObject.GType<SmartcardChannel>;
+        declare static readonly __signalSignatures: SmartcardChannel.SignalSignatures;
 
         // Constructors
 
@@ -2613,6 +2809,14 @@ export namespace SpiceClientGLib {
             (vreader: VReader): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'card-inserted': CardInserted;
+            'card-removed': CardRemoved;
+            'reader-added': ReaderAdded;
+            'reader-removed': ReaderRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2623,6 +2827,7 @@ export namespace SpiceClientGLib {
      */
     class SmartcardManager extends GObject.Object {
         static $gtype: GObject.GType<SmartcardManager>;
+        declare static readonly __signalSignatures: SmartcardManager.SignalSignatures;
 
         // Constructors
 
@@ -2632,6 +2837,18 @@ export namespace SpiceClientGLib {
 
         // Signals
 
+        connect<K extends keyof SmartcardManager.SignalSignatures>(
+            signal: K,
+            callback: SmartcardManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SmartcardManager.SignalSignatures>(
+            signal: K,
+            callback: SmartcardManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SmartcardManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SmartcardManager.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2691,6 +2908,9 @@ export namespace SpiceClientGLib {
     }
 
     namespace URI {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2707,6 +2927,7 @@ export namespace SpiceClientGLib {
      */
     class URI extends GObject.Object {
         static $gtype: GObject.GType<URI>;
+        declare static readonly __signalSignatures: URI.SignalSignatures;
 
         // Properties
 
@@ -2761,6 +2982,14 @@ export namespace SpiceClientGLib {
             (device: UsbDevice): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'auto-connect-failed': AutoConnectFailed;
+            'device-added': DeviceAdded;
+            'device-error': DeviceError;
+            'device-removed': DeviceRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -2781,6 +3010,7 @@ export namespace SpiceClientGLib {
      */
     class UsbDeviceManager extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<UsbDeviceManager>;
+        declare static readonly __signalSignatures: UsbDeviceManager.SignalSignatures;
 
         // Properties
 
@@ -2885,6 +3115,18 @@ export namespace SpiceClientGLib {
 
         // Signals
 
+        connect<K extends keyof UsbDeviceManager.SignalSignatures>(
+            signal: K,
+            callback: UsbDeviceManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UsbDeviceManager.SignalSignatures>(
+            signal: K,
+            callback: UsbDeviceManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UsbDeviceManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UsbDeviceManager.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3577,6 +3819,9 @@ export namespace SpiceClientGLib {
     }
 
     namespace UsbredirChannel {
+        // Signal signatures
+        interface SignalSignatures extends Channel.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Channel.ConstructorProps {}
@@ -3587,6 +3832,7 @@ export namespace SpiceClientGLib {
      */
     class UsbredirChannel extends Channel {
         static $gtype: GObject.GType<UsbredirChannel>;
+        declare static readonly __signalSignatures: UsbredirChannel.SignalSignatures;
 
         // Constructors
 
@@ -3596,6 +3842,9 @@ export namespace SpiceClientGLib {
     }
 
     namespace WebdavChannel {
+        // Signal signatures
+        interface SignalSignatures extends PortChannel.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends PortChannel.ConstructorProps {}
@@ -3606,6 +3855,7 @@ export namespace SpiceClientGLib {
      */
     class WebdavChannel extends PortChannel {
         static $gtype: GObject.GType<WebdavChannel>;
+        declare static readonly __signalSignatures: WebdavChannel.SignalSignatures;
 
         // Constructors
 

@@ -24,6 +24,9 @@ export namespace SoupGNOME {
     const COOKIE_JAR_SQLITE_FILENAME: string;
     function gnome_features_2_26_get_type(): GObject.GType;
     namespace CookieJarSqlite {
+        // Signal signatures
+        interface SignalSignatures extends Soup.CookieJarDB.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Soup.CookieJarDB.ConstructorProps, Soup.SessionFeature.ConstructorProps {}
@@ -31,6 +34,7 @@ export namespace SoupGNOME {
 
     class CookieJarSqlite extends Soup.CookieJarDB implements Soup.SessionFeature {
         static $gtype: GObject.GType<CookieJarSqlite>;
+        declare static readonly __signalSignatures: CookieJarSqlite.SignalSignatures;
 
         // Constructors
 
@@ -486,6 +490,9 @@ export namespace SoupGNOME {
     }
 
     namespace PasswordManagerGNOME {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Soup.SessionFeature.ConstructorProps {}
@@ -493,6 +500,7 @@ export namespace SoupGNOME {
 
     class PasswordManagerGNOME extends GObject.Object implements Soup.SessionFeature {
         static $gtype: GObject.GType<PasswordManagerGNOME>;
+        declare static readonly __signalSignatures: PasswordManagerGNOME.SignalSignatures;
 
         // Constructors
 
@@ -1017,6 +1025,9 @@ export namespace SoupGNOME {
     }
 
     namespace ProxyResolverGNOME {
+        // Signal signatures
+        interface SignalSignatures extends Soup.ProxyResolverDefault.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1027,6 +1038,7 @@ export namespace SoupGNOME {
 
     class ProxyResolverGNOME extends Soup.ProxyResolverDefault implements Soup.ProxyURIResolver, Soup.SessionFeature {
         static $gtype: GObject.GType<ProxyResolverGNOME>;
+        declare static readonly __signalSignatures: ProxyResolverGNOME.SignalSignatures;
 
         // Constructors
 

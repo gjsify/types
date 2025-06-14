@@ -127,6 +127,9 @@ export namespace Entangle {
         metadata?: GExiv2.Metadata | null,
     ): GdkPixbuf.Pixbuf;
     namespace Application {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Application.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -143,6 +146,7 @@ export namespace Entangle {
 
     class Application extends Gtk.Application implements Gio.ActionGroup, Gio.ActionMap {
         static $gtype: GObject.GType<Application>;
+        declare static readonly __signalSignatures: Application.SignalSignatures;
 
         // Properties
 
@@ -660,6 +664,18 @@ export namespace Entangle {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'camera-closed': CameraClosed;
+            'camera-controls-changed': CameraControlsChanged;
+            'camera-file-added': CameraFileAdded;
+            'camera-file-captured': CameraFileCaptured;
+            'camera-file-deleted': CameraFileDeleted;
+            'camera-file-downloaded': CameraFileDownloaded;
+            'camera-file-previewed': CameraFilePreviewed;
+            'camera-opened': CameraOpened;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -683,6 +699,7 @@ export namespace Entangle {
 
     class Camera extends GObject.Object {
         static $gtype: GObject.GType<Camera>;
+        declare static readonly __signalSignatures: Camera.SignalSignatures;
 
         // Properties
 
@@ -720,6 +737,9 @@ export namespace Entangle {
 
         // Signals
 
+        connect<K extends keyof Camera.SignalSignatures>(signal: K, callback: Camera.SignalSignatures[K]): number;
+        connect_after<K extends keyof Camera.SignalSignatures>(signal: K, callback: Camera.SignalSignatures[K]): number;
+        emit<K extends keyof Camera.SignalSignatures>(signal: K, ...args: Parameters<Camera.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1766,6 +1786,12 @@ export namespace Entangle {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'camera-capture-begin': CameraCaptureBegin;
+            'camera-capture-end': CameraCaptureEnd;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1778,6 +1804,7 @@ export namespace Entangle {
 
     class CameraAutomata extends GObject.Object {
         static $gtype: GObject.GType<CameraAutomata>;
+        declare static readonly __signalSignatures: CameraAutomata.SignalSignatures;
 
         // Properties
 
@@ -1800,6 +1827,18 @@ export namespace Entangle {
 
         // Signals
 
+        connect<K extends keyof CameraAutomata.SignalSignatures>(
+            signal: K,
+            callback: CameraAutomata.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CameraAutomata.SignalSignatures>(
+            signal: K,
+            callback: CameraAutomata.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CameraAutomata.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CameraAutomata.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1848,6 +1887,9 @@ export namespace Entangle {
     }
 
     namespace CameraFile {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1860,6 +1902,7 @@ export namespace Entangle {
 
     class CameraFile extends GObject.Object {
         static $gtype: GObject.GType<CameraFile>;
+        declare static readonly __signalSignatures: CameraFile.SignalSignatures;
 
         // Properties
 
@@ -1948,6 +1991,12 @@ export namespace Entangle {
             (object: Camera): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'camera-added': CameraAdded;
+            'camera-removed': CameraRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1959,6 +2008,7 @@ export namespace Entangle {
 
     class CameraList extends GObject.Object {
         static $gtype: GObject.GType<CameraList>;
+        declare static readonly __signalSignatures: CameraList.SignalSignatures;
 
         // Properties
 
@@ -1978,6 +2028,18 @@ export namespace Entangle {
 
         // Signals
 
+        connect<K extends keyof CameraList.SignalSignatures>(
+            signal: K,
+            callback: CameraList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CameraList.SignalSignatures>(
+            signal: K,
+            callback: CameraList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CameraList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CameraList.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2036,6 +2098,11 @@ export namespace Entangle {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.ApplicationWindow.SignalSignatures {
+            closed: Closed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2054,6 +2121,7 @@ export namespace Entangle {
         implements Atk.ImplementorIface, Progress, Gio.ActionGroup, Gio.ActionMap, Gtk.Buildable
     {
         static $gtype: GObject.GType<CameraManager>;
+        declare static readonly __signalSignatures: CameraManager.SignalSignatures;
 
         // Properties
 
@@ -2073,6 +2141,18 @@ export namespace Entangle {
 
         // Signals
 
+        connect<K extends keyof CameraManager.SignalSignatures>(
+            signal: K,
+            callback: CameraManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CameraManager.SignalSignatures>(
+            signal: K,
+            callback: CameraManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CameraManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CameraManager.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3074,6 +3154,12 @@ export namespace Entangle {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Dialog.SignalSignatures {
+            'picker-connect': PickerConnect;
+            'picker-refresh': PickerRefresh;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3086,6 +3172,7 @@ export namespace Entangle {
 
     class CameraPicker extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<CameraPicker>;
+        declare static readonly __signalSignatures: CameraPicker.SignalSignatures;
 
         // Properties
 
@@ -3102,6 +3189,18 @@ export namespace Entangle {
 
         // Signals
 
+        connect<K extends keyof CameraPicker.SignalSignatures>(
+            signal: K,
+            callback: CameraPicker.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CameraPicker.SignalSignatures>(
+            signal: K,
+            callback: CameraPicker.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CameraPicker.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CameraPicker.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3559,6 +3658,9 @@ export namespace Entangle {
     }
 
     namespace CameraPreferences {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3568,6 +3670,7 @@ export namespace Entangle {
 
     class CameraPreferences extends GObject.Object {
         static $gtype: GObject.GType<CameraPreferences>;
+        declare static readonly __signalSignatures: CameraPreferences.SignalSignatures;
 
         // Properties
 
@@ -3599,6 +3702,9 @@ export namespace Entangle {
     }
 
     namespace CameraSupport {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Dialog.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3612,6 +3718,7 @@ export namespace Entangle {
 
     class CameraSupport extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<CameraSupport>;
+        declare static readonly __signalSignatures: CameraSupport.SignalSignatures;
 
         // Properties
 
@@ -4084,6 +4191,9 @@ export namespace Entangle {
     }
 
     namespace ColourProfile {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4094,6 +4204,7 @@ export namespace Entangle {
 
     class ColourProfile extends GObject.Object {
         static $gtype: GObject.GType<ColourProfile>;
+        declare static readonly __signalSignatures: ColourProfile.SignalSignatures;
 
         // Properties
 
@@ -4135,6 +4246,9 @@ export namespace Entangle {
     }
 
     namespace ColourProfileTransform {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4147,6 +4261,7 @@ export namespace Entangle {
 
     class ColourProfileTransform extends GObject.Object {
         static $gtype: GObject.GType<ColourProfileTransform>;
+        declare static readonly __signalSignatures: ColourProfileTransform.SignalSignatures;
 
         // Properties
 
@@ -4177,6 +4292,9 @@ export namespace Entangle {
     }
 
     namespace Control {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4191,6 +4309,7 @@ export namespace Entangle {
 
     abstract class Control extends GObject.Object {
         static $gtype: GObject.GType<Control>;
+        declare static readonly __signalSignatures: Control.SignalSignatures;
 
         // Properties
 
@@ -4222,6 +4341,9 @@ export namespace Entangle {
     }
 
     namespace ControlButton {
+        // Signal signatures
+        interface SignalSignatures extends Control.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Control.ConstructorProps {}
@@ -4229,6 +4351,7 @@ export namespace Entangle {
 
     class ControlButton extends Control {
         static $gtype: GObject.GType<ControlButton>;
+        declare static readonly __signalSignatures: ControlButton.SignalSignatures;
 
         // Constructors
 
@@ -4240,6 +4363,9 @@ export namespace Entangle {
     }
 
     namespace ControlChoice {
+        // Signal signatures
+        interface SignalSignatures extends Control.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Control.ConstructorProps {
@@ -4249,6 +4375,7 @@ export namespace Entangle {
 
     class ControlChoice extends Control {
         static $gtype: GObject.GType<ControlChoice>;
+        declare static readonly __signalSignatures: ControlChoice.SignalSignatures;
 
         // Properties
 
@@ -4272,6 +4399,9 @@ export namespace Entangle {
     }
 
     namespace ControlDate {
+        // Signal signatures
+        interface SignalSignatures extends Control.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Control.ConstructorProps {
@@ -4281,6 +4411,7 @@ export namespace Entangle {
 
     class ControlDate extends Control {
         static $gtype: GObject.GType<ControlDate>;
+        declare static readonly __signalSignatures: ControlDate.SignalSignatures;
 
         // Properties
 
@@ -4297,6 +4428,9 @@ export namespace Entangle {
     }
 
     namespace ControlGroup {
+        // Signal signatures
+        interface SignalSignatures extends Control.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Control.ConstructorProps {}
@@ -4304,6 +4438,7 @@ export namespace Entangle {
 
     class ControlGroup extends Control {
         static $gtype: GObject.GType<ControlGroup>;
+        declare static readonly __signalSignatures: ControlGroup.SignalSignatures;
 
         // Constructors
 
@@ -4336,6 +4471,9 @@ export namespace Entangle {
     }
 
     namespace ControlPanel {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Expander.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4352,6 +4490,7 @@ export namespace Entangle {
 
     class ControlPanel extends Gtk.Expander implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ControlPanel>;
+        declare static readonly __signalSignatures: ControlPanel.SignalSignatures;
 
         // Properties
 
@@ -4824,6 +4963,9 @@ export namespace Entangle {
     }
 
     namespace ControlRange {
+        // Signal signatures
+        interface SignalSignatures extends Control.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Control.ConstructorProps {
@@ -4839,6 +4981,7 @@ export namespace Entangle {
 
     class ControlRange extends Control {
         static $gtype: GObject.GType<ControlRange>;
+        declare static readonly __signalSignatures: ControlRange.SignalSignatures;
 
         // Properties
 
@@ -4879,6 +5022,9 @@ export namespace Entangle {
     }
 
     namespace ControlText {
+        // Signal signatures
+        interface SignalSignatures extends Control.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Control.ConstructorProps {
@@ -4888,6 +5034,7 @@ export namespace Entangle {
 
     class ControlText extends Control {
         static $gtype: GObject.GType<ControlText>;
+        declare static readonly __signalSignatures: ControlText.SignalSignatures;
 
         // Properties
 
@@ -4904,6 +5051,9 @@ export namespace Entangle {
     }
 
     namespace ControlToggle {
+        // Signal signatures
+        interface SignalSignatures extends Control.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Control.ConstructorProps {
@@ -4913,6 +5063,7 @@ export namespace Entangle {
 
     class ControlToggle extends Control {
         static $gtype: GObject.GType<ControlToggle>;
+        declare static readonly __signalSignatures: ControlToggle.SignalSignatures;
 
         // Properties
 
@@ -4939,6 +5090,12 @@ export namespace Entangle {
             (object: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'device-added': DeviceAdded;
+            'device-removed': DeviceRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4946,6 +5103,7 @@ export namespace Entangle {
 
     class DeviceManager extends GObject.Object {
         static $gtype: GObject.GType<DeviceManager>;
+        declare static readonly __signalSignatures: DeviceManager.SignalSignatures;
 
         // Constructors
 
@@ -4957,6 +5115,18 @@ export namespace Entangle {
 
         // Signals
 
+        connect<K extends keyof DeviceManager.SignalSignatures>(
+            signal: K,
+            callback: DeviceManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DeviceManager.SignalSignatures>(
+            signal: K,
+            callback: DeviceManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DeviceManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DeviceManager.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -4973,6 +5143,9 @@ export namespace Entangle {
     }
 
     namespace HelpAbout {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.AboutDialog.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4983,6 +5156,7 @@ export namespace Entangle {
 
     class HelpAbout extends Gtk.AboutDialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<HelpAbout>;
+        declare static readonly __signalSignatures: HelpAbout.SignalSignatures;
 
         // Constructors
 
@@ -5435,6 +5609,9 @@ export namespace Entangle {
     }
 
     namespace Image {
+        // Signal signatures
+        interface SignalSignatures extends Media.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Media.ConstructorProps {
@@ -5444,6 +5621,7 @@ export namespace Entangle {
 
     class Image extends Media {
         static $gtype: GObject.GType<Image>;
+        declare static readonly __signalSignatures: Image.SignalSignatures;
 
         // Properties
 
@@ -5475,6 +5653,9 @@ export namespace Entangle {
     }
 
     namespace ImageDisplay {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.DrawingArea.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5503,6 +5684,7 @@ export namespace Entangle {
 
     class ImageDisplay extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ImageDisplay>;
+        declare static readonly __signalSignatures: ImageDisplay.SignalSignatures;
 
         // Properties
 
@@ -6047,6 +6229,9 @@ export namespace Entangle {
     }
 
     namespace ImageHistogram {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.DrawingArea.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6059,6 +6244,7 @@ export namespace Entangle {
 
     class ImageHistogram extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ImageHistogram>;
+        declare static readonly __signalSignatures: ImageHistogram.SignalSignatures;
 
         // Properties
 
@@ -6531,6 +6717,9 @@ export namespace Entangle {
     }
 
     namespace ImageLoader {
+        // Signal signatures
+        interface SignalSignatures extends PixbufLoader.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends PixbufLoader.ConstructorProps {
@@ -6541,6 +6730,7 @@ export namespace Entangle {
 
     class ImageLoader extends PixbufLoader {
         static $gtype: GObject.GType<ImageLoader>;
+        declare static readonly __signalSignatures: ImageLoader.SignalSignatures;
 
         // Properties
 
@@ -6564,6 +6754,9 @@ export namespace Entangle {
     }
 
     namespace Media {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6574,6 +6767,7 @@ export namespace Entangle {
 
     class Media extends GObject.Object {
         static $gtype: GObject.GType<Media>;
+        declare static readonly __signalSignatures: Media.SignalSignatures;
 
         // Properties
 
@@ -6626,6 +6820,11 @@ export namespace Entangle {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Window.SignalSignatures {
+            'popup-close': PopupClose;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6638,6 +6837,7 @@ export namespace Entangle {
 
     class MediaPopup extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<MediaPopup>;
+        declare static readonly __signalSignatures: MediaPopup.SignalSignatures;
 
         // Properties
 
@@ -6654,6 +6854,18 @@ export namespace Entangle {
 
         // Signals
 
+        connect<K extends keyof MediaPopup.SignalSignatures>(
+            signal: K,
+            callback: MediaPopup.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MediaPopup.SignalSignatures>(
+            signal: K,
+            callback: MediaPopup.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MediaPopup.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MediaPopup.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -7124,6 +7336,9 @@ export namespace Entangle {
     }
 
     namespace MediaStatusbar {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7137,6 +7352,7 @@ export namespace Entangle {
 
     class MediaStatusbar extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<MediaStatusbar>;
+        declare static readonly __signalSignatures: MediaStatusbar.SignalSignatures;
 
         // Properties
 
@@ -7642,6 +7858,14 @@ export namespace Entangle {
             (object: Image): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'metadata-loaded': MetadataLoaded;
+            'metadata-unloaded': MetadataUnloaded;
+            'pixbuf-loaded': PixbufLoaded;
+            'pixbuf-unloaded': PixbufUnloaded;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7655,6 +7879,7 @@ export namespace Entangle {
 
     abstract class PixbufLoader extends GObject.Object {
         static $gtype: GObject.GType<PixbufLoader>;
+        declare static readonly __signalSignatures: PixbufLoader.SignalSignatures;
 
         // Properties
 
@@ -7674,6 +7899,18 @@ export namespace Entangle {
 
         // Signals
 
+        connect<K extends keyof PixbufLoader.SignalSignatures>(
+            signal: K,
+            callback: PixbufLoader.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PixbufLoader.SignalSignatures>(
+            signal: K,
+            callback: PixbufLoader.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PixbufLoader.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PixbufLoader.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -7767,6 +8004,9 @@ export namespace Entangle {
     }
 
     namespace Preferences {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7827,6 +8067,7 @@ export namespace Entangle {
 
     class Preferences extends GObject.Object {
         static $gtype: GObject.GType<Preferences>;
+        declare static readonly __signalSignatures: Preferences.SignalSignatures;
 
         // Properties
 
@@ -8274,6 +8515,9 @@ export namespace Entangle {
     }
 
     namespace PreferencesDisplay {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Dialog.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -8284,6 +8528,7 @@ export namespace Entangle {
 
     class PreferencesDisplay extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<PreferencesDisplay>;
+        declare static readonly __signalSignatures: PreferencesDisplay.SignalSignatures;
 
         // Constructors
 
@@ -8736,6 +8981,9 @@ export namespace Entangle {
     }
 
     namespace Script {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -8745,6 +8993,7 @@ export namespace Entangle {
 
     abstract class Script extends GObject.Object {
         static $gtype: GObject.GType<Script>;
+        declare static readonly __signalSignatures: Script.SignalSignatures;
 
         // Properties
 
@@ -8797,6 +9046,9 @@ export namespace Entangle {
     }
 
     namespace ScriptConfig {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -8808,6 +9060,7 @@ export namespace Entangle {
 
     class ScriptConfig extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<ScriptConfig>;
+        declare static readonly __signalSignatures: ScriptConfig.SignalSignatures;
 
         // Constructors
 
@@ -9288,6 +9541,9 @@ export namespace Entangle {
     }
 
     namespace ScriptSimple {
+        // Signal signatures
+        interface SignalSignatures extends Script.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Script.ConstructorProps {}
@@ -9295,6 +9551,7 @@ export namespace Entangle {
 
     class ScriptSimple extends Script {
         static $gtype: GObject.GType<ScriptSimple>;
+        declare static readonly __signalSignatures: ScriptSimple.SignalSignatures;
 
         // Constructors
 
@@ -9339,6 +9596,12 @@ export namespace Entangle {
             (object: Media): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'session-media-added': SessionMediaAdded;
+            'session-media-removed': SessionMediaRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9350,6 +9613,7 @@ export namespace Entangle {
 
     class Session extends GObject.Object {
         static $gtype: GObject.GType<Session>;
+        declare static readonly __signalSignatures: Session.SignalSignatures;
 
         // Properties
 
@@ -9367,6 +9631,15 @@ export namespace Entangle {
 
         // Signals
 
+        connect<K extends keyof Session.SignalSignatures>(signal: K, callback: Session.SignalSignatures[K]): number;
+        connect_after<K extends keyof Session.SignalSignatures>(
+            signal: K,
+            callback: Session.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Session.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Session.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -9423,6 +9696,11 @@ export namespace Entangle {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.DrawingArea.SignalSignatures {
+            'selection-changed': SelectionChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9438,6 +9716,7 @@ export namespace Entangle {
 
     class SessionBrowser extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<SessionBrowser>;
+        declare static readonly __signalSignatures: SessionBrowser.SignalSignatures;
 
         // Properties
 
@@ -9458,6 +9737,18 @@ export namespace Entangle {
 
         // Signals
 
+        connect<K extends keyof SessionBrowser.SignalSignatures>(
+            signal: K,
+            callback: SessionBrowser.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SessionBrowser.SignalSignatures>(
+            signal: K,
+            callback: SessionBrowser.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SessionBrowser.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SessionBrowser.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -10052,6 +10343,9 @@ export namespace Entangle {
     }
 
     namespace ThumbnailLoader {
+        // Signal signatures
+        interface SignalSignatures extends PixbufLoader.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends PixbufLoader.ConstructorProps {
@@ -10062,6 +10356,7 @@ export namespace Entangle {
 
     class ThumbnailLoader extends PixbufLoader {
         static $gtype: GObject.GType<ThumbnailLoader>;
+        declare static readonly __signalSignatures: ThumbnailLoader.SignalSignatures;
 
         // Properties
 
@@ -10078,6 +10373,9 @@ export namespace Entangle {
     }
 
     namespace Video {
+        // Signal signatures
+        interface SignalSignatures extends Media.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Media.ConstructorProps {
@@ -10087,6 +10385,7 @@ export namespace Entangle {
 
     class Video extends Media {
         static $gtype: GObject.GType<Video>;
+        declare static readonly __signalSignatures: Video.SignalSignatures;
 
         // Properties
 

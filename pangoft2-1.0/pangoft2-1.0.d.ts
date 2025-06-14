@@ -143,6 +143,9 @@ export namespace PangoFT2 {
         (pattern: fontconfig.Pattern, data?: any | null): void;
     }
     namespace FontMap {
+        // Signal signatures
+        interface SignalSignatures extends PangoFc.FontMap.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -155,6 +158,7 @@ export namespace PangoFT2 {
      */
     class FontMap<A extends GObject.Object = GObject.Object> extends PangoFc.FontMap<A> implements Gio.ListModel<A> {
         static $gtype: GObject.GType<FontMap>;
+        declare static readonly __signalSignatures: FontMap.SignalSignatures;
 
         // Constructors
 

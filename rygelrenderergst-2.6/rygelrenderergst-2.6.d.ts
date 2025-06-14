@@ -43,6 +43,9 @@ export namespace RygelRendererGst {
     }
 
     namespace PlaybinPlayer {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, RygelRenderer.MediaPlayer.ConstructorProps {
@@ -54,6 +57,7 @@ export namespace RygelRendererGst {
 
     class PlaybinPlayer extends GObject.Object implements RygelRenderer.MediaPlayer {
         static $gtype: GObject.GType<PlaybinPlayer>;
+        declare static readonly __signalSignatures: PlaybinPlayer.SignalSignatures;
 
         // Properties
 
@@ -617,6 +621,9 @@ export namespace RygelRendererGst {
     }
 
     namespace PlaybinRenderer {
+        // Signal signatures
+        interface SignalSignatures extends RygelRenderer.MediaRenderer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends RygelRenderer.MediaRenderer.ConstructorProps {}
@@ -624,6 +631,7 @@ export namespace RygelRendererGst {
 
     class PlaybinRenderer extends RygelRenderer.MediaRenderer {
         static $gtype: GObject.GType<PlaybinRenderer>;
+        declare static readonly __signalSignatures: PlaybinRenderer.SignalSignatures;
 
         // Constructors
 

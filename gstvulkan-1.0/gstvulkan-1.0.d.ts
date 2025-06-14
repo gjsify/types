@@ -397,6 +397,9 @@ export namespace GstVulkan {
         COMPLEX,
     }
     namespace VulkanBufferMemoryAllocator {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Allocator.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Allocator.ConstructorProps {}
@@ -407,6 +410,7 @@ export namespace GstVulkan {
      */
     class VulkanBufferMemoryAllocator extends Gst.Allocator {
         static $gtype: GObject.GType<VulkanBufferMemoryAllocator>;
+        declare static readonly __signalSignatures: VulkanBufferMemoryAllocator.SignalSignatures;
 
         // Constructors
 
@@ -416,6 +420,9 @@ export namespace GstVulkan {
     }
 
     namespace VulkanBufferPool {
+        // Signal signatures
+        interface SignalSignatures extends Gst.BufferPool.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.BufferPool.ConstructorProps {}
@@ -426,6 +433,7 @@ export namespace GstVulkan {
      */
     class VulkanBufferPool extends Gst.BufferPool {
         static $gtype: GObject.GType<VulkanBufferPool>;
+        declare static readonly __signalSignatures: VulkanBufferPool.SignalSignatures;
 
         // Fields
 
@@ -445,6 +453,9 @@ export namespace GstVulkan {
     }
 
     namespace VulkanCommandPool {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {}
@@ -452,6 +463,7 @@ export namespace GstVulkan {
 
     class VulkanCommandPool extends Gst.Object {
         static $gtype: GObject.GType<VulkanCommandPool>;
+        declare static readonly __signalSignatures: VulkanCommandPool.SignalSignatures;
 
         // Fields
 
@@ -484,6 +496,9 @@ export namespace GstVulkan {
     }
 
     namespace VulkanDescriptorCache {
+        // Signal signatures
+        interface SignalSignatures extends VulkanHandlePool.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends VulkanHandlePool.ConstructorProps {}
@@ -491,6 +506,7 @@ export namespace GstVulkan {
 
     class VulkanDescriptorCache extends VulkanHandlePool {
         static $gtype: GObject.GType<VulkanDescriptorCache>;
+        declare static readonly __signalSignatures: VulkanDescriptorCache.SignalSignatures;
 
         // Fields
 
@@ -512,6 +528,9 @@ export namespace GstVulkan {
     }
 
     namespace VulkanDescriptorPool {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {}
@@ -519,6 +538,7 @@ export namespace GstVulkan {
 
     class VulkanDescriptorPool extends Gst.Object {
         static $gtype: GObject.GType<VulkanDescriptorPool>;
+        declare static readonly __signalSignatures: VulkanDescriptorPool.SignalSignatures;
 
         // Fields
 
@@ -540,6 +560,9 @@ export namespace GstVulkan {
     }
 
     namespace VulkanDevice {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {
@@ -551,6 +574,7 @@ export namespace GstVulkan {
 
     class VulkanDevice extends Gst.Object {
         static $gtype: GObject.GType<VulkanDevice>;
+        declare static readonly __signalSignatures: VulkanDevice.SignalSignatures;
 
         // Properties
 
@@ -611,6 +635,9 @@ export namespace GstVulkan {
     }
 
     namespace VulkanDisplay {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {}
@@ -622,6 +649,7 @@ export namespace GstVulkan {
      */
     class VulkanDisplay extends Gst.Object {
         static $gtype: GObject.GType<VulkanDisplay>;
+        declare static readonly __signalSignatures: VulkanDisplay.SignalSignatures;
 
         // Constructors
 
@@ -682,6 +710,9 @@ export namespace GstVulkan {
     }
 
     namespace VulkanFenceCache {
+        // Signal signatures
+        interface SignalSignatures extends VulkanHandlePool.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends VulkanHandlePool.ConstructorProps {}
@@ -689,6 +720,7 @@ export namespace GstVulkan {
 
     class VulkanFenceCache extends VulkanHandlePool {
         static $gtype: GObject.GType<VulkanFenceCache>;
+        declare static readonly __signalSignatures: VulkanFenceCache.SignalSignatures;
 
         // Constructors
 
@@ -700,6 +732,9 @@ export namespace GstVulkan {
     }
 
     namespace VulkanFullScreenQuad {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {}
@@ -707,6 +742,7 @@ export namespace GstVulkan {
 
     class VulkanFullScreenQuad extends Gst.Object {
         static $gtype: GObject.GType<VulkanFullScreenQuad>;
+        declare static readonly __signalSignatures: VulkanFullScreenQuad.SignalSignatures;
 
         // Fields
 
@@ -740,6 +776,9 @@ export namespace GstVulkan {
     }
 
     namespace VulkanHandlePool {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {}
@@ -747,6 +786,7 @@ export namespace GstVulkan {
 
     abstract class VulkanHandlePool extends Gst.Object {
         static $gtype: GObject.GType<VulkanHandlePool>;
+        declare static readonly __signalSignatures: VulkanHandlePool.SignalSignatures;
 
         // Fields
 
@@ -775,6 +815,9 @@ export namespace GstVulkan {
     }
 
     namespace VulkanImageBufferPool {
+        // Signal signatures
+        interface SignalSignatures extends Gst.BufferPool.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.BufferPool.ConstructorProps {}
@@ -785,6 +828,7 @@ export namespace GstVulkan {
      */
     class VulkanImageBufferPool extends Gst.BufferPool {
         static $gtype: GObject.GType<VulkanImageBufferPool>;
+        declare static readonly __signalSignatures: VulkanImageBufferPool.SignalSignatures;
 
         // Fields
 
@@ -804,6 +848,9 @@ export namespace GstVulkan {
     }
 
     namespace VulkanImageMemoryAllocator {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Allocator.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Allocator.ConstructorProps {}
@@ -814,6 +861,7 @@ export namespace GstVulkan {
      */
     class VulkanImageMemoryAllocator extends Gst.Allocator {
         static $gtype: GObject.GType<VulkanImageMemoryAllocator>;
+        declare static readonly __signalSignatures: VulkanImageMemoryAllocator.SignalSignatures;
 
         // Constructors
 
@@ -829,6 +877,11 @@ export namespace GstVulkan {
             (): VulkanDevice;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            'create-device': CreateDevice;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {}
@@ -836,6 +889,7 @@ export namespace GstVulkan {
 
     class VulkanInstance extends Gst.Object {
         static $gtype: GObject.GType<VulkanInstance>;
+        declare static readonly __signalSignatures: VulkanInstance.SignalSignatures;
 
         // Fields
 
@@ -851,6 +905,18 @@ export namespace GstVulkan {
 
         // Signals
 
+        connect<K extends keyof VulkanInstance.SignalSignatures>(
+            signal: K,
+            callback: VulkanInstance.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VulkanInstance.SignalSignatures>(
+            signal: K,
+            callback: VulkanInstance.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VulkanInstance.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VulkanInstance.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -891,6 +957,9 @@ export namespace GstVulkan {
     }
 
     namespace VulkanMemoryAllocator {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Allocator.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Allocator.ConstructorProps {}
@@ -901,6 +970,7 @@ export namespace GstVulkan {
      */
     class VulkanMemoryAllocator extends Gst.Allocator {
         static $gtype: GObject.GType<VulkanMemoryAllocator>;
+        declare static readonly __signalSignatures: VulkanMemoryAllocator.SignalSignatures;
 
         // Constructors
 
@@ -910,6 +980,9 @@ export namespace GstVulkan {
     }
 
     namespace VulkanPhysicalDevice {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {
@@ -922,6 +995,7 @@ export namespace GstVulkan {
 
     class VulkanPhysicalDevice extends Gst.Object {
         static $gtype: GObject.GType<VulkanPhysicalDevice>;
+        declare static readonly __signalSignatures: VulkanPhysicalDevice.SignalSignatures;
 
         // Properties
 
@@ -954,6 +1028,9 @@ export namespace GstVulkan {
     }
 
     namespace VulkanQueue {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {}
@@ -961,6 +1038,7 @@ export namespace GstVulkan {
 
     class VulkanQueue extends Gst.Object {
         static $gtype: GObject.GType<VulkanQueue>;
+        declare static readonly __signalSignatures: VulkanQueue.SignalSignatures;
 
         // Fields
 
@@ -1013,6 +1091,9 @@ export namespace GstVulkan {
     }
 
     namespace VulkanSwapper {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {
@@ -1025,6 +1106,7 @@ export namespace GstVulkan {
 
     class VulkanSwapper extends Gst.Object {
         static $gtype: GObject.GType<VulkanSwapper>;
+        declare static readonly __signalSignatures: VulkanSwapper.SignalSignatures;
 
         // Properties
 
@@ -1066,6 +1148,9 @@ export namespace GstVulkan {
     }
 
     namespace VulkanTrashFenceList {
+        // Signal signatures
+        interface SignalSignatures extends VulkanTrashList.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends VulkanTrashList.ConstructorProps {}
@@ -1073,6 +1158,7 @@ export namespace GstVulkan {
 
     class VulkanTrashFenceList extends VulkanTrashList {
         static $gtype: GObject.GType<VulkanTrashFenceList>;
+        declare static readonly __signalSignatures: VulkanTrashFenceList.SignalSignatures;
 
         // Constructors
 
@@ -1084,6 +1170,9 @@ export namespace GstVulkan {
     }
 
     namespace VulkanTrashList {
+        // Signal signatures
+        interface SignalSignatures extends VulkanHandlePool.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends VulkanHandlePool.ConstructorProps {}
@@ -1091,6 +1180,7 @@ export namespace GstVulkan {
 
     class VulkanTrashList extends VulkanHandlePool {
         static $gtype: GObject.GType<VulkanTrashList>;
+        declare static readonly __signalSignatures: VulkanTrashList.SignalSignatures;
 
         // Constructors
 
@@ -1115,6 +1205,9 @@ export namespace GstVulkan {
     }
 
     namespace VulkanVideoFilter {
+        // Signal signatures
+        interface SignalSignatures extends GstBase.BaseTransform.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GstBase.BaseTransform.ConstructorProps {}
@@ -1122,6 +1215,7 @@ export namespace GstVulkan {
 
     class VulkanVideoFilter extends GstBase.BaseTransform {
         static $gtype: GObject.GType<VulkanVideoFilter>;
+        declare static readonly __signalSignatures: VulkanVideoFilter.SignalSignatures;
 
         // Fields
 
@@ -1159,6 +1253,15 @@ export namespace GstVulkan {
             (object: number, p0: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            close: Close;
+            draw: Draw;
+            'key-event': KeyEvent;
+            'mouse-event': MouseEvent;
+            resize: Resize;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {
@@ -1172,6 +1275,7 @@ export namespace GstVulkan {
      */
     abstract class VulkanWindow extends Gst.Object {
         static $gtype: GObject.GType<VulkanWindow>;
+        declare static readonly __signalSignatures: VulkanWindow.SignalSignatures;
 
         // Properties
 
@@ -1187,6 +1291,18 @@ export namespace GstVulkan {
 
         // Signals
 
+        connect<K extends keyof VulkanWindow.SignalSignatures>(
+            signal: K,
+            callback: VulkanWindow.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VulkanWindow.SignalSignatures>(
+            signal: K,
+            callback: VulkanWindow.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VulkanWindow.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VulkanWindow.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

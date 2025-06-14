@@ -298,6 +298,9 @@ export namespace Xed {
         SAVING_SESSION,
     }
     namespace App {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Application.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -308,6 +311,7 @@ export namespace Xed {
 
     class App extends Gtk.Application implements Gio.ActionGroup, Gio.ActionMap {
         static $gtype: GObject.GType<App>;
+        declare static readonly __signalSignatures: App.SignalSignatures;
 
         // Constructors
 
@@ -814,6 +818,15 @@ export namespace Xed {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GtkSource.Buffer.SignalSignatures {
+            'cursor-moved': CursorMoved;
+            load: Load;
+            loaded: Loaded;
+            save: Save;
+            saved: Saved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GtkSource.Buffer.ConstructorProps {
@@ -831,6 +844,7 @@ export namespace Xed {
 
     class Document extends GtkSource.Buffer {
         static $gtype: GObject.GType<Document>;
+        declare static readonly __signalSignatures: Document.SignalSignatures;
 
         // Properties
 
@@ -892,6 +906,15 @@ export namespace Xed {
 
         // Signals
 
+        connect<K extends keyof Document.SignalSignatures>(signal: K, callback: Document.SignalSignatures[K]): number;
+        connect_after<K extends keyof Document.SignalSignatures>(
+            signal: K,
+            callback: Document.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Document.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Document.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -978,6 +1001,9 @@ export namespace Xed {
     }
 
     namespace EncodingsComboBox {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.ComboBox.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -996,6 +1022,7 @@ export namespace Xed {
         implements Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, Gtk.CellLayout
     {
         static $gtype: GObject.GType<EncodingsComboBox>;
+        declare static readonly __signalSignatures: EncodingsComboBox.SignalSignatures;
 
         // Properties
 
@@ -5505,6 +5532,9 @@ export namespace Xed {
     }
 
     namespace FileChooserDialog {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.FileChooserDialog.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5519,6 +5549,7 @@ export namespace Xed {
         implements Atk.ImplementorIface, Gtk.Buildable, Gtk.FileChooser
     {
         static $gtype: GObject.GType<FileChooserDialog>;
+        declare static readonly __signalSignatures: FileChooserDialog.SignalSignatures;
 
         // Constructors
 
@@ -6638,6 +6669,9 @@ export namespace Xed {
     }
 
     namespace Message {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6650,6 +6684,7 @@ export namespace Xed {
 
     class Message extends GObject.Object {
         static $gtype: GObject.GType<Message>;
+        declare static readonly __signalSignatures: Message.SignalSignatures;
 
         // Properties
 
@@ -6731,6 +6766,13 @@ export namespace Xed {
             (message_type: MessageType): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            dispatch: Dispatch;
+            registered: Registered;
+            unregistered: Unregistered;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6738,6 +6780,7 @@ export namespace Xed {
 
     class MessageBus extends GObject.Object {
         static $gtype: GObject.GType<MessageBus>;
+        declare static readonly __signalSignatures: MessageBus.SignalSignatures;
 
         // Constructors
 
@@ -6749,6 +6792,14 @@ export namespace Xed {
 
         // Signals
 
+        connect_after<K extends keyof MessageBus.SignalSignatures>(
+            signal: K,
+            callback: MessageBus.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MessageBus.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MessageBus.SignalSignatures[K]>
+        ): void;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
         connect_after(signal: 'dispatch', callback: (_source: this, message: Message) => void): number;
@@ -6902,6 +6953,15 @@ export namespace Xed {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Notebook.SignalSignatures {
+            'tab-added': TabAdded;
+            'tab-close-request': TabCloseRequest;
+            'tab-detached': TabDetached;
+            'tab-removed': TabRemoved;
+            'tabs-reordered': TabsReordered;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6912,6 +6972,7 @@ export namespace Xed {
 
     class Notebook extends Gtk.Notebook implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Notebook>;
+        declare static readonly __signalSignatures: Notebook.SignalSignatures;
 
         // Fields
 
@@ -6927,6 +6988,15 @@ export namespace Xed {
 
         // Signals
 
+        connect<K extends keyof Notebook.SignalSignatures>(signal: K, callback: Notebook.SignalSignatures[K]): number;
+        connect_after<K extends keyof Notebook.SignalSignatures>(
+            signal: K,
+            callback: Notebook.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Notebook.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Notebook.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -7488,6 +7558,14 @@ export namespace Xed {
             (object: Gtk.Widget): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Bin.SignalSignatures {
+            close: Close;
+            'focus-document': FocusDocument;
+            'item-added': ItemAdded;
+            'item-removed': ItemRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7500,6 +7578,7 @@ export namespace Xed {
 
     class Panel extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Panel>;
+        declare static readonly __signalSignatures: Panel.SignalSignatures;
 
         // Properties
 
@@ -7515,6 +7594,9 @@ export namespace Xed {
 
         // Signals
 
+        connect<K extends keyof Panel.SignalSignatures>(signal: K, callback: Panel.SignalSignatures[K]): number;
+        connect_after<K extends keyof Panel.SignalSignatures>(signal: K, callback: Panel.SignalSignatures[K]): number;
+        emit<K extends keyof Panel.SignalSignatures>(signal: K, ...args: Parameters<Panel.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -8020,6 +8102,9 @@ export namespace Xed {
     }
 
     namespace ProgressInfoBar {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.InfoBar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -8034,6 +8119,7 @@ export namespace Xed {
 
     class ProgressInfoBar extends Gtk.InfoBar implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<ProgressInfoBar>;
+        declare static readonly __signalSignatures: ProgressInfoBar.SignalSignatures;
 
         // Properties
 
@@ -8502,6 +8588,9 @@ export namespace Xed {
     }
 
     namespace Searchbar {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -8513,6 +8602,7 @@ export namespace Xed {
 
     class Searchbar extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Searchbar>;
+        declare static readonly __signalSignatures: Searchbar.SignalSignatures;
 
         // Fields
 
@@ -9013,6 +9103,9 @@ export namespace Xed {
     }
 
     namespace Statusbar {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Statusbar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9024,6 +9117,7 @@ export namespace Xed {
 
     class Statusbar extends Gtk.Statusbar implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Statusbar>;
+        declare static readonly __signalSignatures: Statusbar.SignalSignatures;
 
         // Constructors
 
@@ -9487,6 +9581,9 @@ export namespace Xed {
     }
 
     namespace Tab {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9506,6 +9603,7 @@ export namespace Xed {
 
     class Tab extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Tab>;
+        declare static readonly __signalSignatures: Tab.SignalSignatures;
 
         // Properties
 
@@ -10046,6 +10144,11 @@ export namespace Xed {
             (object: string[]): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GtkSource.View.SignalSignatures {
+            'drop-uris': DropUris;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -10057,6 +10160,7 @@ export namespace Xed {
 
     class View extends GtkSource.View implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<View>;
+        declare static readonly __signalSignatures: View.SignalSignatures;
 
         // Fields
 
@@ -10075,6 +10179,9 @@ export namespace Xed {
 
         // Signals
 
+        connect<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
+        connect_after<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
+        emit<K extends keyof View.SignalSignatures>(signal: K, ...args: Parameters<View.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -10594,6 +10701,15 @@ export namespace Xed {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.ApplicationWindow.SignalSignatures {
+            'active-tab-changed': ActiveTabChanged;
+            'active-tab-state-changed': ActiveTabStateChanged;
+            'tab-added': TabAdded;
+            'tab-removed': TabRemoved;
+            'tabs-reordered': TabsReordered;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -10611,6 +10727,7 @@ export namespace Xed {
         implements Atk.ImplementorIface, Gio.ActionGroup, Gio.ActionMap, Gtk.Buildable
     {
         static $gtype: GObject.GType<Window>;
+        declare static readonly __signalSignatures: Window.SignalSignatures;
 
         // Properties
 
@@ -10629,6 +10746,9 @@ export namespace Xed {
 
         // Signals
 
+        connect<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
+        connect_after<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
+        emit<K extends keyof Window.SignalSignatures>(signal: K, ...args: Parameters<Window.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

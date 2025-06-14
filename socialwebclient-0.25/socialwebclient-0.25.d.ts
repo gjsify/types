@@ -45,6 +45,11 @@ export namespace SocialWebClient {
             (object: boolean): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'online-changed': OnlineChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -52,6 +57,7 @@ export namespace SocialWebClient {
 
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
+        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Constructors
 
@@ -63,6 +69,9 @@ export namespace SocialWebClient {
 
         // Signals
 
+        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -92,6 +101,13 @@ export namespace SocialWebClient {
             (contacts: Contact[]): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'contacts-added': ContactsAdded;
+            'contacts-changed': ContactsChanged;
+            'contacts-removed': ContactsRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -102,6 +118,7 @@ export namespace SocialWebClient {
 
     class ClientContactView extends GObject.Object {
         static $gtype: GObject.GType<ClientContactView>;
+        declare static readonly __signalSignatures: ClientContactView.SignalSignatures;
 
         // Properties
 
@@ -116,6 +133,18 @@ export namespace SocialWebClient {
 
         // Signals
 
+        connect<K extends keyof ClientContactView.SignalSignatures>(
+            signal: K,
+            callback: ClientContactView.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ClientContactView.SignalSignatures>(
+            signal: K,
+            callback: ClientContactView.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ClientContactView.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ClientContactView.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -152,6 +181,13 @@ export namespace SocialWebClient {
             (items: Item[]): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'items-added': ItemsAdded;
+            'items-changed': ItemsChanged;
+            'items-removed': ItemsRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -162,6 +198,7 @@ export namespace SocialWebClient {
 
     class ClientItemView extends GObject.Object {
         static $gtype: GObject.GType<ClientItemView>;
+        declare static readonly __signalSignatures: ClientItemView.SignalSignatures;
 
         // Properties
 
@@ -176,6 +213,18 @@ export namespace SocialWebClient {
 
         // Signals
 
+        connect<K extends keyof ClientItemView.SignalSignatures>(
+            signal: K,
+            callback: ClientItemView.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ClientItemView.SignalSignatures>(
+            signal: K,
+            callback: ClientItemView.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ClientItemView.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ClientItemView.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -198,6 +247,9 @@ export namespace SocialWebClient {
     }
 
     namespace ClientLastfm {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -205,6 +257,7 @@ export namespace SocialWebClient {
 
     class ClientLastfm extends GObject.Object {
         static $gtype: GObject.GType<ClientLastfm>;
+        declare static readonly __signalSignatures: ClientLastfm.SignalSignatures;
 
         // Constructors
 
@@ -256,6 +309,14 @@ export namespace SocialWebClient {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'avatar-retrieved': AvatarRetrieved;
+            'capabilities-changed': CapabilitiesChanged;
+            'status-updated': StatusUpdated;
+            'user-changed': UserChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -263,6 +324,7 @@ export namespace SocialWebClient {
 
     class ClientService extends GObject.Object {
         static $gtype: GObject.GType<ClientService>;
+        declare static readonly __signalSignatures: ClientService.SignalSignatures;
 
         // Constructors
 
@@ -272,6 +334,18 @@ export namespace SocialWebClient {
 
         // Signals
 
+        connect<K extends keyof ClientService.SignalSignatures>(
+            signal: K,
+            callback: ClientService.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ClientService.SignalSignatures>(
+            signal: K,
+            callback: ClientService.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ClientService.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ClientService.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

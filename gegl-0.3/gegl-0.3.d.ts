@@ -594,6 +594,9 @@ export namespace Gegl {
         INDENT,
     }
     namespace AudioFragment {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -603,6 +606,7 @@ export namespace Gegl {
 
     class AudioFragment extends GObject.Object {
         static $gtype: GObject.GType<AudioFragment>;
+        declare static readonly __signalSignatures: AudioFragment.SignalSignatures;
 
         // Properties
 
@@ -649,6 +653,11 @@ export namespace Gegl {
             (object: Rectangle): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends TileHandler.SignalSignatures {
+            changed: Changed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends TileHandler.ConstructorProps {
@@ -683,6 +692,7 @@ export namespace Gegl {
 
     class Buffer extends TileHandler {
         static $gtype: GObject.GType<Buffer>;
+        declare static readonly __signalSignatures: Buffer.SignalSignatures;
 
         // Properties
 
@@ -730,6 +740,9 @@ export namespace Gegl {
 
         // Signals
 
+        connect<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
+        connect_after<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
+        emit<K extends keyof Buffer.SignalSignatures>(signal: K, ...args: Parameters<Buffer.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -899,6 +912,9 @@ export namespace Gegl {
     }
 
     namespace Color {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -908,6 +924,7 @@ export namespace Gegl {
 
     class Color extends GObject.Object {
         static $gtype: GObject.GType<Color>;
+        declare static readonly __signalSignatures: Color.SignalSignatures;
 
         // Properties
 
@@ -957,6 +974,9 @@ export namespace Gegl {
     }
 
     namespace Config {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -982,6 +1002,7 @@ export namespace Gegl {
 
     class Config extends GObject.Object {
         static $gtype: GObject.GType<Config>;
+        declare static readonly __signalSignatures: Config.SignalSignatures;
 
         // Properties
 
@@ -1028,6 +1049,9 @@ export namespace Gegl {
     }
 
     namespace Curve {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1035,6 +1059,7 @@ export namespace Gegl {
 
     class Curve extends GObject.Object {
         static $gtype: GObject.GType<Curve>;
+        declare static readonly __signalSignatures: Curve.SignalSignatures;
 
         // Constructors
 
@@ -1107,6 +1132,13 @@ export namespace Gegl {
             (object: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            computed: Computed;
+            invalidated: Invalidated;
+            progress: Progress;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1124,6 +1156,7 @@ export namespace Gegl {
 
     class Node extends GObject.Object {
         static $gtype: GObject.GType<Node>;
+        declare static readonly __signalSignatures: Node.SignalSignatures;
 
         // Properties
 
@@ -1162,6 +1195,9 @@ export namespace Gegl {
 
         // Signals
 
+        connect<K extends keyof Node.SignalSignatures>(signal: K, callback: Node.SignalSignatures[K]): number;
+        connect_after<K extends keyof Node.SignalSignatures>(signal: K, callback: Node.SignalSignatures[K]): number;
+        emit<K extends keyof Node.SignalSignatures>(signal: K, ...args: Parameters<Node.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1385,6 +1421,9 @@ export namespace Gegl {
     }
 
     namespace Operation {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1392,6 +1431,7 @@ export namespace Gegl {
 
     class Operation extends GObject.Object {
         static $gtype: GObject.GType<Operation>;
+        declare static readonly __signalSignatures: Operation.SignalSignatures;
 
         // Constructors
 
@@ -1421,6 +1461,11 @@ export namespace Gegl {
             (object?: any | null): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            changed: Changed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1428,6 +1473,7 @@ export namespace Gegl {
 
     class Path extends GObject.Object {
         static $gtype: GObject.GType<Path>;
+        declare static readonly __signalSignatures: Path.SignalSignatures;
 
         // Constructors
 
@@ -1441,6 +1487,9 @@ export namespace Gegl {
 
         // Signals
 
+        connect<K extends keyof Path.SignalSignatures>(signal: K, callback: Path.SignalSignatures[K]): number;
+        connect_after<K extends keyof Path.SignalSignatures>(signal: K, callback: Path.SignalSignatures[K]): number;
+        emit<K extends keyof Path.SignalSignatures>(signal: K, ...args: Parameters<Path.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1579,6 +1628,9 @@ export namespace Gegl {
     }
 
     namespace Processor {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1591,6 +1643,7 @@ export namespace Gegl {
 
     class Processor extends GObject.Object {
         static $gtype: GObject.GType<Processor>;
+        declare static readonly __signalSignatures: Processor.SignalSignatures;
 
         // Properties
 
@@ -1633,6 +1686,9 @@ export namespace Gegl {
     }
 
     namespace Stats {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1659,6 +1715,7 @@ export namespace Gegl {
 
     class Stats extends GObject.Object {
         static $gtype: GObject.GType<Stats>;
+        declare static readonly __signalSignatures: Stats.SignalSignatures;
 
         // Properties
 
@@ -1689,6 +1746,9 @@ export namespace Gegl {
     }
 
     namespace TileBackend {
+        // Signal signatures
+        interface SignalSignatures extends TileSource.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends TileSource.ConstructorProps {
@@ -1708,6 +1768,7 @@ export namespace Gegl {
 
     class TileBackend extends TileSource {
         static $gtype: GObject.GType<TileBackend>;
+        declare static readonly __signalSignatures: TileBackend.SignalSignatures;
 
         // Properties
 
@@ -1771,6 +1832,9 @@ export namespace Gegl {
     }
 
     namespace TileHandler {
+        // Signal signatures
+        interface SignalSignatures extends TileSource.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends TileSource.ConstructorProps {
@@ -1780,6 +1844,7 @@ export namespace Gegl {
 
     class TileHandler extends TileSource {
         static $gtype: GObject.GType<TileHandler>;
+        declare static readonly __signalSignatures: TileHandler.SignalSignatures;
 
         // Properties
 
@@ -1799,6 +1864,9 @@ export namespace Gegl {
     }
 
     namespace TileSource {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1806,6 +1874,7 @@ export namespace Gegl {
 
     class TileSource extends GObject.Object {
         static $gtype: GObject.GType<TileSource>;
+        declare static readonly __signalSignatures: TileSource.SignalSignatures;
 
         // Fields
 

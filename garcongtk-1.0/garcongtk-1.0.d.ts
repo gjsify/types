@@ -33,6 +33,9 @@ export namespace GarconGtk {
      */
 
     namespace Menu {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Menu.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -55,6 +58,7 @@ export namespace GarconGtk {
 
     class Menu extends Gtk.Menu implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Menu>;
+        declare static readonly __signalSignatures: Menu.SignalSignatures;
 
         // Properties
 

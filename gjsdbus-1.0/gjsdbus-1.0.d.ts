@@ -35,6 +35,13 @@ export namespace GjsDBus {
             (object: string, p0: GLib.Variant): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+            'handle-method-call': HandleMethodCall;
+            'handle-property-get': HandlePropertyGet;
+            'handle-property-set': HandlePropertySet;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -47,6 +54,7 @@ export namespace GjsDBus {
 
     class Implementation extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface {
         static $gtype: GObject.GType<Implementation>;
+        declare static readonly __signalSignatures: Implementation.SignalSignatures;
 
         // Properties
 
@@ -61,6 +69,18 @@ export namespace GjsDBus {
 
         // Signals
 
+        connect<K extends keyof Implementation.SignalSignatures>(
+            signal: K,
+            callback: Implementation.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Implementation.SignalSignatures>(
+            signal: K,
+            callback: Implementation.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Implementation.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Implementation.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

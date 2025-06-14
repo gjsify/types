@@ -32,6 +32,11 @@ export namespace GUPnPDLNA {
             (dlna: Information, err: GLib.Error): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GstPbutils.Discoverer.SignalSignatures {
+            done: Done;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GstPbutils.Discoverer.ConstructorProps {
@@ -47,6 +52,7 @@ export namespace GUPnPDLNA {
      */
     class Discoverer extends GstPbutils.Discoverer {
         static $gtype: GObject.GType<Discoverer>;
+        declare static readonly __signalSignatures: Discoverer.SignalSignatures;
 
         // Properties
 
@@ -68,6 +74,18 @@ export namespace GUPnPDLNA {
 
         // Signals
 
+        connect<K extends keyof Discoverer.SignalSignatures>(
+            signal: K,
+            callback: Discoverer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Discoverer.SignalSignatures>(
+            signal: K,
+            callback: Discoverer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Discoverer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Discoverer.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -113,6 +131,9 @@ export namespace GUPnPDLNA {
     }
 
     namespace Information {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -124,6 +145,7 @@ export namespace GUPnPDLNA {
 
     class Information extends GObject.Object {
         static $gtype: GObject.GType<Information>;
+        declare static readonly __signalSignatures: Information.SignalSignatures;
 
         // Properties
 
@@ -147,6 +169,9 @@ export namespace GUPnPDLNA {
     }
 
     namespace Profile {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -164,6 +189,7 @@ export namespace GUPnPDLNA {
      */
     class Profile extends GObject.Object {
         static $gtype: GObject.GType<Profile>;
+        declare static readonly __signalSignatures: Profile.SignalSignatures;
 
         // Properties
 

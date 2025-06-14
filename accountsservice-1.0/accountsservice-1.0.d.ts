@@ -117,6 +117,12 @@ export namespace AccountsService {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            changed: Changed;
+            'sessions-changed': SessionsChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -165,6 +171,7 @@ export namespace AccountsService {
      */
     class User extends GObject.Object {
         static $gtype: GObject.GType<User>;
+        declare static readonly __signalSignatures: User.SignalSignatures;
 
         // Properties
 
@@ -227,6 +234,9 @@ export namespace AccountsService {
 
         // Signals
 
+        connect<K extends keyof User.SignalSignatures>(signal: K, callback: User.SignalSignatures[K]): number;
+        connect_after<K extends keyof User.SignalSignatures>(signal: K, callback: User.SignalSignatures[K]): number;
+        emit<K extends keyof User.SignalSignatures>(signal: K, ...args: Parameters<User.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -579,6 +589,14 @@ export namespace AccountsService {
             (user: User): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'user-added': UserAdded;
+            'user-changed': UserChanged;
+            'user-is-logged-in-changed': UserIsLoggedInChanged;
+            'user-removed': UserRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -598,6 +616,7 @@ export namespace AccountsService {
      */
     class UserManager extends GObject.Object {
         static $gtype: GObject.GType<UserManager>;
+        declare static readonly __signalSignatures: UserManager.SignalSignatures;
 
         // Properties
 
@@ -624,6 +643,18 @@ export namespace AccountsService {
 
         // Signals
 
+        connect<K extends keyof UserManager.SignalSignatures>(
+            signal: K,
+            callback: UserManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UserManager.SignalSignatures>(
+            signal: K,
+            callback: UserManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UserManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UserManager.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

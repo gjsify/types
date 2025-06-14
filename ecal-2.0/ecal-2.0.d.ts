@@ -1554,6 +1554,11 @@ export namespace ECal {
             (free_busy_ecalcomps: Component[]): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends EDataServer.Client.SignalSignatures {
+            'free-busy-data': FreeBusyData;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1574,6 +1579,7 @@ export namespace ECal {
      */
     class Client extends EDataServer.Client implements TimezoneCache, Gio.AsyncInitable<Client>, Gio.Initable {
         static $gtype: GObject.GType<Client>;
+        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Properties
 
@@ -1592,6 +1598,8 @@ export namespace ECal {
 
         // Signals
 
+        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
         connect_after(
@@ -4010,6 +4018,15 @@ export namespace ECal {
             (object: number, p0: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            complete: Complete;
+            'objects-added': ObjectsAdded;
+            'objects-modified': ObjectsModified;
+            'objects-removed': ObjectsRemoved;
+            progress: Progress;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -4026,6 +4043,7 @@ export namespace ECal {
      */
     class ClientView extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<ClientView>;
+        declare static readonly __signalSignatures: ClientView.SignalSignatures;
 
         // Properties
 
@@ -4054,6 +4072,18 @@ export namespace ECal {
 
         // Signals
 
+        connect<K extends keyof ClientView.SignalSignatures>(
+            signal: K,
+            callback: ClientView.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ClientView.SignalSignatures>(
+            signal: K,
+            callback: ClientView.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ClientView.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ClientView.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -4665,6 +4695,9 @@ export namespace ECal {
     }
 
     namespace Component {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4672,6 +4705,7 @@ export namespace ECal {
 
     class Component extends GObject.Object {
         static $gtype: GObject.GType<Component>;
+        declare static readonly __signalSignatures: Component.SignalSignatures;
 
         // Constructors
 
@@ -5354,6 +5388,13 @@ export namespace ECal {
             (reminders: ReminderData[], snoozed: boolean): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            changed: Changed;
+            'format-time': FormatTime;
+            triggered: Triggered;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5371,6 +5412,7 @@ export namespace ECal {
      */
     class ReminderWatcher extends GObject.Object {
         static $gtype: GObject.GType<ReminderWatcher>;
+        declare static readonly __signalSignatures: ReminderWatcher.SignalSignatures;
 
         // Properties
 
@@ -5417,6 +5459,18 @@ export namespace ECal {
 
         // Signals
 
+        connect<K extends keyof ReminderWatcher.SignalSignatures>(
+            signal: K,
+            callback: ReminderWatcher.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ReminderWatcher.SignalSignatures>(
+            signal: K,
+            callback: ReminderWatcher.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ReminderWatcher.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ReminderWatcher.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

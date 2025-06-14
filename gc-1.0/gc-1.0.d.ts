@@ -78,6 +78,9 @@ export namespace Gc {
         WORD,
     }
     namespace SearchContext {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -88,6 +91,7 @@ export namespace Gc {
 
     class SearchContext extends GObject.Object {
         static $gtype: GObject.GType<SearchContext>;
+        declare static readonly __signalSignatures: SearchContext.SignalSignatures;
 
         // Properties
 

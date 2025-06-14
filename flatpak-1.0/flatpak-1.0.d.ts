@@ -558,6 +558,9 @@ export namespace Flatpak {
         NO_TRIGGERS,
     }
     namespace BundleRef {
+        // Signal signatures
+        interface SignalSignatures extends Ref.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Ref.ConstructorProps {
@@ -567,6 +570,7 @@ export namespace Flatpak {
 
     class BundleRef extends Ref {
         static $gtype: GObject.GType<BundleRef>;
+        declare static readonly __signalSignatures: BundleRef.SignalSignatures;
 
         // Properties
 
@@ -624,6 +628,9 @@ export namespace Flatpak {
     }
 
     namespace Installation {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -631,6 +638,7 @@ export namespace Flatpak {
 
     class Installation extends GObject.Object {
         static $gtype: GObject.GType<Installation>;
+        declare static readonly __signalSignatures: Installation.SignalSignatures;
 
         // Constructors
 
@@ -1445,6 +1453,9 @@ export namespace Flatpak {
     }
 
     namespace InstalledRef {
+        // Signal signatures
+        interface SignalSignatures extends Ref.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Ref.ConstructorProps {
@@ -1479,6 +1490,7 @@ export namespace Flatpak {
 
     class InstalledRef extends Ref {
         static $gtype: GObject.GType<InstalledRef>;
+        declare static readonly __signalSignatures: InstalledRef.SignalSignatures;
 
         // Properties
 
@@ -1622,6 +1634,9 @@ export namespace Flatpak {
     }
 
     namespace Instance {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1629,6 +1644,7 @@ export namespace Flatpak {
 
     class Instance extends GObject.Object {
         static $gtype: GObject.GType<Instance>;
+        declare static readonly __signalSignatures: Instance.SignalSignatures;
 
         // Constructors
 
@@ -1719,6 +1735,9 @@ export namespace Flatpak {
     }
 
     namespace Ref {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1734,6 +1753,7 @@ export namespace Flatpak {
 
     class Ref extends GObject.Object {
         static $gtype: GObject.GType<Ref>;
+        declare static readonly __signalSignatures: Ref.SignalSignatures;
 
         // Properties
 
@@ -1807,6 +1827,9 @@ export namespace Flatpak {
     }
 
     namespace RelatedRef {
+        // Signal signatures
+        interface SignalSignatures extends Ref.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Ref.ConstructorProps {
@@ -1822,6 +1845,7 @@ export namespace Flatpak {
 
     class RelatedRef extends Ref {
         static $gtype: GObject.GType<RelatedRef>;
+        declare static readonly __signalSignatures: RelatedRef.SignalSignatures;
 
         // Properties
 
@@ -1850,6 +1874,9 @@ export namespace Flatpak {
     }
 
     namespace Remote {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1860,6 +1887,7 @@ export namespace Flatpak {
 
     class Remote extends GObject.Object {
         static $gtype: GObject.GType<Remote>;
+        declare static readonly __signalSignatures: Remote.SignalSignatures;
 
         // Properties
 
@@ -2140,6 +2168,9 @@ export namespace Flatpak {
     }
 
     namespace RemoteRef {
+        // Signal signatures
+        interface SignalSignatures extends Ref.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Ref.ConstructorProps {
@@ -2159,6 +2190,7 @@ export namespace Flatpak {
 
     class RemoteRef extends Ref {
         static $gtype: GObject.GType<RemoteRef>;
+        declare static readonly __signalSignatures: RemoteRef.SignalSignatures;
 
         // Properties
 
@@ -2271,6 +2303,23 @@ export namespace Flatpak {
             (remote: string, url: string, options: GLib.Variant, id: number): boolean;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'add-new-remote': AddNewRemote;
+            'basic-auth-start': BasicAuthStart;
+            'choose-remote-for-ref': ChooseRemoteForRef;
+            'end-of-lifed': EndOfLifed;
+            'end-of-lifed-with-rebase': EndOfLifedWithRebase;
+            'install-authenticator': InstallAuthenticator;
+            'new-operation': NewOperation;
+            'operation-done': OperationDone;
+            'operation-error': OperationError;
+            ready: Ready;
+            'ready-pre-auth': ReadyPreAuth;
+            'webflow-done': WebflowDone;
+            'webflow-start': WebflowStart;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -2282,6 +2331,7 @@ export namespace Flatpak {
 
     class Transaction extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Transaction>;
+        declare static readonly __signalSignatures: Transaction.SignalSignatures;
 
         // Properties
 
@@ -2314,6 +2364,18 @@ export namespace Flatpak {
 
         // Signals
 
+        connect<K extends keyof Transaction.SignalSignatures>(
+            signal: K,
+            callback: Transaction.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Transaction.SignalSignatures>(
+            signal: K,
+            callback: Transaction.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Transaction.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Transaction.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3401,6 +3463,9 @@ export namespace Flatpak {
     }
 
     namespace TransactionOperation {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3408,6 +3473,7 @@ export namespace Flatpak {
 
     class TransactionOperation extends GObject.Object {
         static $gtype: GObject.GType<TransactionOperation>;
+        declare static readonly __signalSignatures: TransactionOperation.SignalSignatures;
 
         // Constructors
 
@@ -3558,6 +3624,11 @@ export namespace Flatpak {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            changed: Changed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3565,6 +3636,7 @@ export namespace Flatpak {
 
     class TransactionProgress extends GObject.Object {
         static $gtype: GObject.GType<TransactionProgress>;
+        declare static readonly __signalSignatures: TransactionProgress.SignalSignatures;
 
         // Constructors
 
@@ -3574,6 +3646,18 @@ export namespace Flatpak {
 
         // Signals
 
+        connect<K extends keyof TransactionProgress.SignalSignatures>(
+            signal: K,
+            callback: TransactionProgress.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TransactionProgress.SignalSignatures>(
+            signal: K,
+            callback: TransactionProgress.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TransactionProgress.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TransactionProgress.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

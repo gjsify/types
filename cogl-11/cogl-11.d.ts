@@ -2133,8 +2133,14 @@ export namespace Cogl {
          */
         READ_PIXELS_COLOR_BUFFER,
     }
+    namespace Bitmap {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+    }
+
     class Bitmap extends Object {
         static $gtype: GObject.GType<Bitmap>;
+        declare static readonly __signalSignatures: Bitmap.SignalSignatures;
 
         // Constructors
 
@@ -2160,8 +2166,14 @@ export namespace Cogl {
         get_width(): number;
     }
 
+    namespace Context {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+    }
+
     class Context extends Object {
         static $gtype: GObject.GType<Context>;
+        declare static readonly __signalSignatures: Context.SignalSignatures;
 
         // Constructors
 
@@ -2190,11 +2202,17 @@ export namespace Cogl {
         timestamp_query_get_time_ns(query: TimestampQuery): number;
     }
 
+    namespace FrameInfo {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+    }
+
     /**
      * Frame information.
      */
     class FrameInfo extends Object {
         static $gtype: GObject.GType<FrameInfo>;
+        declare static readonly __signalSignatures: FrameInfo.SignalSignatures;
 
         // Constructors
 
@@ -2248,6 +2266,11 @@ export namespace Cogl {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            destroy: Destroy;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2260,6 +2283,7 @@ export namespace Cogl {
 
     abstract class Framebuffer extends GObject.Object {
         static $gtype: GObject.GType<Framebuffer>;
+        declare static readonly __signalSignatures: Framebuffer.SignalSignatures;
 
         // Properties
 
@@ -2278,6 +2302,18 @@ export namespace Cogl {
 
         // Signals
 
+        connect<K extends keyof Framebuffer.SignalSignatures>(
+            signal: K,
+            callback: Framebuffer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Framebuffer.SignalSignatures>(
+            signal: K,
+            callback: Framebuffer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Framebuffer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Framebuffer.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3032,8 +3068,14 @@ export namespace Cogl {
         translate(x: number, y: number, z: number): void;
     }
 
+    namespace Object {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+    }
+
     abstract class Object {
         static $gtype: GObject.GType<Object>;
+        declare static readonly __signalSignatures: Object.SignalSignatures;
 
         // Constructors
 
@@ -3041,6 +3083,9 @@ export namespace Cogl {
     }
 
     namespace Offscreen {
+        // Signal signatures
+        interface SignalSignatures extends Framebuffer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Framebuffer.ConstructorProps {}
@@ -3048,6 +3093,7 @@ export namespace Cogl {
 
     class Offscreen extends Framebuffer {
         static $gtype: GObject.GType<Offscreen>;
+        declare static readonly __signalSignatures: Offscreen.SignalSignatures;
 
         // Constructors
 
@@ -3059,6 +3105,9 @@ export namespace Cogl {
     }
 
     namespace Onscreen {
+        // Signal signatures
+        interface SignalSignatures extends Framebuffer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Framebuffer.ConstructorProps {}
@@ -3066,6 +3115,7 @@ export namespace Cogl {
 
     class Onscreen extends Framebuffer {
         static $gtype: GObject.GType<Onscreen>;
+        declare static readonly __signalSignatures: Onscreen.SignalSignatures;
 
         // Constructors
 
@@ -3445,8 +3495,14 @@ export namespace Cogl {
         swap_region(rectangles: number, n_rectangles: number, info: FrameInfo, user_data?: any | null): void;
     }
 
+    namespace Pipeline {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+    }
+
     class Pipeline extends Object {
         static $gtype: GObject.GType<Pipeline>;
+        declare static readonly __signalSignatures: Pipeline.SignalSignatures;
 
         // Constructors
 
@@ -4072,8 +4128,14 @@ export namespace Cogl {
         set_user_program(program: Handle): void;
     }
 
+    namespace Snippet {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+    }
+
     class Snippet extends Object {
         static $gtype: GObject.GType<Snippet>;
+        declare static readonly __signalSignatures: Snippet.SignalSignatures;
 
         // Constructors
 
@@ -4138,8 +4200,14 @@ export namespace Cogl {
         set_replace(replace: string): void;
     }
 
+    namespace Texture2D {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+    }
+
     class Texture2D extends Object implements Texture {
         static $gtype: GObject.GType<Texture2D>;
+        declare static readonly __signalSignatures: Texture2D.SignalSignatures;
 
         // Constructors
 
@@ -4382,8 +4450,14 @@ export namespace Cogl {
         ): boolean;
     }
 
+    namespace Texture2DSliced {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+    }
+
     class Texture2DSliced extends Object implements Texture {
         static $gtype: GObject.GType<Texture2DSliced>;
+        declare static readonly __signalSignatures: Texture2DSliced.SignalSignatures;
 
         // Constructors
 

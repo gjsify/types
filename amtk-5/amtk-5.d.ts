@@ -268,6 +268,9 @@ export namespace Amtk {
         IGNORE_ACCELS_FOR_APP,
     }
     namespace ActionInfoCentralStore {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -275,6 +278,7 @@ export namespace Amtk {
 
     class ActionInfoCentralStore extends GObject.Object {
         static $gtype: GObject.GType<ActionInfoCentralStore>;
+        declare static readonly __signalSignatures: ActionInfoCentralStore.SignalSignatures;
 
         // Constructors
 
@@ -292,6 +296,9 @@ export namespace Amtk {
     }
 
     namespace ActionInfoStore {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -299,6 +306,7 @@ export namespace Amtk {
 
     class ActionInfoStore extends GObject.Object {
         static $gtype: GObject.GType<ActionInfoStore>;
+        declare static readonly __signalSignatures: ActionInfoStore.SignalSignatures;
 
         // Constructors
 
@@ -369,6 +377,9 @@ export namespace Amtk {
     }
 
     namespace ApplicationWindow {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -380,6 +391,7 @@ export namespace Amtk {
 
     class ApplicationWindow extends GObject.Object {
         static $gtype: GObject.GType<ApplicationWindow>;
+        declare static readonly __signalSignatures: ApplicationWindow.SignalSignatures;
 
         // Properties
 
@@ -476,6 +488,9 @@ export namespace Amtk {
     }
 
     namespace Factory {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -487,6 +502,7 @@ export namespace Amtk {
 
     class Factory extends GObject.Object {
         static $gtype: GObject.GType<Factory>;
+        declare static readonly __signalSignatures: Factory.SignalSignatures;
 
         // Properties
 
@@ -690,6 +706,12 @@ export namespace Amtk {
             (menu_item: Gtk.MenuItem): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'menu-item-deselected': MenuItemDeselected;
+            'menu-item-selected': MenuItemSelected;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -700,6 +722,7 @@ export namespace Amtk {
 
     class MenuShell extends GObject.Object {
         static $gtype: GObject.GType<MenuShell>;
+        declare static readonly __signalSignatures: MenuShell.SignalSignatures;
 
         // Properties
 
@@ -720,6 +743,15 @@ export namespace Amtk {
 
         // Signals
 
+        connect<K extends keyof MenuShell.SignalSignatures>(signal: K, callback: MenuShell.SignalSignatures[K]): number;
+        connect_after<K extends keyof MenuShell.SignalSignatures>(
+            signal: K,
+            callback: MenuShell.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MenuShell.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MenuShell.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

@@ -70,6 +70,9 @@ export namespace Gd {
      */
     function ensure_types(): void;
     namespace HeaderBar {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Container.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -88,6 +91,7 @@ export namespace Gd {
 
     class HeaderBar extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<HeaderBar>;
+        declare static readonly __signalSignatures: HeaderBar.SignalSignatures;
 
         // Properties
 
@@ -603,6 +607,9 @@ export namespace Gd {
     }
 
     namespace HeaderMenuButton {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.MenuButton.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -619,6 +626,7 @@ export namespace Gd {
         implements Atk.ImplementorIface, HeaderButton, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<HeaderMenuButton>;
+        declare static readonly __signalSignatures: HeaderMenuButton.SignalSignatures;
 
         // Constructors
 
@@ -5141,6 +5149,9 @@ export namespace Gd {
     }
 
     namespace HeaderRadioButton {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.RadioButton.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5157,6 +5168,7 @@ export namespace Gd {
         implements Atk.ImplementorIface, HeaderButton, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<HeaderRadioButton>;
+        declare static readonly __signalSignatures: HeaderRadioButton.SignalSignatures;
 
         // Constructors
 
@@ -9675,6 +9687,9 @@ export namespace Gd {
     }
 
     namespace HeaderSimpleButton {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Button.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9691,6 +9706,7 @@ export namespace Gd {
         implements Atk.ImplementorIface, HeaderButton, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<HeaderSimpleButton>;
+        declare static readonly __signalSignatures: HeaderSimpleButton.SignalSignatures;
 
         // Constructors
 
@@ -14454,6 +14470,9 @@ export namespace Gd {
     }
 
     namespace HeaderToggleButton {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.ToggleButton.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -14470,6 +14489,7 @@ export namespace Gd {
         implements Atk.ImplementorIface, HeaderButton, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<HeaderToggleButton>;
+        declare static readonly __signalSignatures: HeaderToggleButton.SignalSignatures;
 
         // Constructors
 
@@ -18988,6 +19008,9 @@ export namespace Gd {
     }
 
     namespace MainIconView {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.IconView.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -19004,6 +19027,7 @@ export namespace Gd {
         implements Atk.ImplementorIface, MainViewGeneric, Gtk.Buildable, Gtk.CellLayout, Gtk.Scrollable
     {
         static $gtype: GObject.GType<MainIconView>;
+        declare static readonly __signalSignatures: MainIconView.SignalSignatures;
 
         // Constructors
 
@@ -23556,6 +23580,9 @@ export namespace Gd {
     }
 
     namespace MainListView {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.TreeView.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -23571,6 +23598,7 @@ export namespace Gd {
         implements Atk.ImplementorIface, MainViewGeneric, Gtk.Buildable, Gtk.Scrollable
     {
         static $gtype: GObject.GType<MainListView>;
+        declare static readonly __signalSignatures: MainListView.SignalSignatures;
 
         // Constructors
 
@@ -27975,6 +28003,9 @@ export namespace Gd {
     }
 
     namespace MainToolbar {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Toolbar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -27993,6 +28024,7 @@ export namespace Gd {
         implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, Gtk.ToolShell
     {
         static $gtype: GObject.GType<MainToolbar>;
+        declare static readonly __signalSignatures: MainToolbar.SignalSignatures;
 
         // Properties
 
@@ -32439,6 +32471,13 @@ export namespace Gd {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.ScrolledWindow.SignalSignatures {
+            'item-activated': ItemActivated;
+            'selection-mode-request': SelectionModeRequest;
+            'view-selection-changed': ViewSelectionChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -32455,6 +32494,7 @@ export namespace Gd {
 
     class MainView extends Gtk.ScrolledWindow implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<MainView>;
+        declare static readonly __signalSignatures: MainView.SignalSignatures;
 
         // Properties
 
@@ -32482,6 +32522,15 @@ export namespace Gd {
 
         // Signals
 
+        connect<K extends keyof MainView.SignalSignatures>(signal: K, callback: MainView.SignalSignatures[K]): number;
+        connect_after<K extends keyof MainView.SignalSignatures>(
+            signal: K,
+            callback: MainView.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MainView.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MainView.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -32954,6 +33003,9 @@ export namespace Gd {
     }
 
     namespace Revealer {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Bin.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -32972,6 +33024,7 @@ export namespace Gd {
 
     class Revealer extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Revealer>;
+        declare static readonly __signalSignatures: Revealer.SignalSignatures;
 
         // Properties
 
@@ -33449,6 +33502,9 @@ export namespace Gd {
     }
 
     namespace Stack {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Container.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -33469,6 +33525,7 @@ export namespace Gd {
 
     class Stack extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Stack>;
+        declare static readonly __signalSignatures: Stack.SignalSignatures;
 
         // Properties
 
@@ -33963,6 +34020,9 @@ export namespace Gd {
     }
 
     namespace StackSwitcher {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -33976,6 +34036,7 @@ export namespace Gd {
 
     class StackSwitcher extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<StackSwitcher>;
+        declare static readonly __signalSignatures: StackSwitcher.SignalSignatures;
 
         // Properties
 
@@ -34468,6 +34529,9 @@ export namespace Gd {
     }
 
     namespace StyledTextRenderer {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.CellRendererText.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.CellRendererText.ConstructorProps {}
@@ -34475,6 +34539,7 @@ export namespace Gd {
 
     class StyledTextRenderer extends Gtk.CellRendererText {
         static $gtype: GObject.GType<StyledTextRenderer>;
+        declare static readonly __signalSignatures: StyledTextRenderer.SignalSignatures;
 
         // Constructors
 
@@ -34501,6 +34566,12 @@ export namespace Gd {
             (object: TaggedEntryTag): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.SearchEntry.SignalSignatures {
+            'tag-button-clicked': TagButtonClicked;
+            'tag-clicked': TagClicked;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -34519,6 +34590,7 @@ export namespace Gd {
         implements Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, Gtk.Editable
     {
         static $gtype: GObject.GType<TaggedEntry>;
+        declare static readonly __signalSignatures: TaggedEntry.SignalSignatures;
 
         // Properties
 
@@ -34535,6 +34607,18 @@ export namespace Gd {
 
         // Signals
 
+        connect<K extends keyof TaggedEntry.SignalSignatures>(
+            signal: K,
+            callback: TaggedEntry.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TaggedEntry.SignalSignatures>(
+            signal: K,
+            callback: TaggedEntry.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TaggedEntry.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TaggedEntry.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -38828,6 +38912,9 @@ export namespace Gd {
     }
 
     namespace TaggedEntryTag {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -38840,6 +38927,7 @@ export namespace Gd {
 
     class TaggedEntryTag extends GObject.Object {
         static $gtype: GObject.GType<TaggedEntryTag>;
+        declare static readonly __signalSignatures: TaggedEntryTag.SignalSignatures;
 
         // Properties
 
@@ -38872,6 +38960,9 @@ export namespace Gd {
     }
 
     namespace TogglePixbufRenderer {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.CellRendererPixbuf.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.CellRendererPixbuf.ConstructorProps {
@@ -38884,6 +38975,7 @@ export namespace Gd {
 
     class TogglePixbufRenderer extends Gtk.CellRendererPixbuf {
         static $gtype: GObject.GType<TogglePixbufRenderer>;
+        declare static readonly __signalSignatures: TogglePixbufRenderer.SignalSignatures;
 
         // Properties
 
@@ -38906,6 +38998,9 @@ export namespace Gd {
     }
 
     namespace TwoLinesRenderer {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.CellRendererText.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.CellRendererText.ConstructorProps {
@@ -38918,6 +39013,7 @@ export namespace Gd {
 
     class TwoLinesRenderer extends Gtk.CellRendererText {
         static $gtype: GObject.GType<TwoLinesRenderer>;
+        declare static readonly __signalSignatures: TwoLinesRenderer.SignalSignatures;
 
         // Properties
 

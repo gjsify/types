@@ -522,6 +522,9 @@ export namespace Libxfce4util {
         (signal: number): void;
     }
     namespace Kiosk {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -529,6 +532,7 @@ export namespace Libxfce4util {
 
     class Kiosk extends GObject.Object {
         static $gtype: GObject.GType<Kiosk>;
+        declare static readonly __signalSignatures: Kiosk.SignalSignatures;
 
         // Constructors
 

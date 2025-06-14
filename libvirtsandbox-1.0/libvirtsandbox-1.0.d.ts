@@ -29,6 +29,9 @@ export namespace LibvirtSandbox {
     function util_disk_format_from_str(value: string): number;
     function util_guess_image_format(path: string): number;
     namespace Builder {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -38,6 +41,7 @@ export namespace LibvirtSandbox {
 
     abstract class Builder extends GObject.Object {
         static $gtype: GObject.GType<Builder>;
+        declare static readonly __signalSignatures: Builder.SignalSignatures;
 
         // Properties
 
@@ -116,6 +120,9 @@ export namespace LibvirtSandbox {
     }
 
     namespace BuilderContainer {
+        // Signal signatures
+        interface SignalSignatures extends Builder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Builder.ConstructorProps {}
@@ -123,6 +130,7 @@ export namespace LibvirtSandbox {
 
     class BuilderContainer extends Builder {
         static $gtype: GObject.GType<BuilderContainer>;
+        declare static readonly __signalSignatures: BuilderContainer.SignalSignatures;
 
         // Constructors
 
@@ -134,6 +142,9 @@ export namespace LibvirtSandbox {
     }
 
     namespace BuilderInitrd {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -141,6 +152,7 @@ export namespace LibvirtSandbox {
 
     class BuilderInitrd extends GObject.Object {
         static $gtype: GObject.GType<BuilderInitrd>;
+        declare static readonly __signalSignatures: BuilderInitrd.SignalSignatures;
 
         // Constructors
 
@@ -156,6 +168,9 @@ export namespace LibvirtSandbox {
     }
 
     namespace BuilderMachine {
+        // Signal signatures
+        interface SignalSignatures extends Builder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Builder.ConstructorProps {}
@@ -163,6 +178,7 @@ export namespace LibvirtSandbox {
 
     class BuilderMachine extends Builder {
         static $gtype: GObject.GType<BuilderMachine>;
+        declare static readonly __signalSignatures: BuilderMachine.SignalSignatures;
 
         // Constructors
 
@@ -174,6 +190,9 @@ export namespace LibvirtSandbox {
     }
 
     namespace Config {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -198,6 +217,7 @@ export namespace LibvirtSandbox {
 
     abstract class Config extends GObject.Object {
         static $gtype: GObject.GType<Config>;
+        declare static readonly __signalSignatures: Config.SignalSignatures;
 
         // Properties
 
@@ -583,6 +603,9 @@ export namespace LibvirtSandbox {
     }
 
     namespace ConfigDisk {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -595,6 +618,7 @@ export namespace LibvirtSandbox {
 
     class ConfigDisk extends GObject.Object {
         static $gtype: GObject.GType<ConfigDisk>;
+        declare static readonly __signalSignatures: ConfigDisk.SignalSignatures;
 
         // Properties
 
@@ -634,6 +658,9 @@ export namespace LibvirtSandbox {
     }
 
     namespace ConfigInitrd {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -645,6 +672,7 @@ export namespace LibvirtSandbox {
 
     class ConfigInitrd extends GObject.Object {
         static $gtype: GObject.GType<ConfigInitrd>;
+        declare static readonly __signalSignatures: ConfigInitrd.SignalSignatures;
 
         // Properties
 
@@ -711,6 +739,9 @@ export namespace LibvirtSandbox {
     }
 
     namespace ConfigInteractive {
+        // Signal signatures
+        interface SignalSignatures extends Config.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Config.ConstructorProps {
@@ -720,6 +751,7 @@ export namespace LibvirtSandbox {
 
     class ConfigInteractive extends Config {
         static $gtype: GObject.GType<ConfigInteractive>;
+        declare static readonly __signalSignatures: ConfigInteractive.SignalSignatures;
 
         // Properties
 
@@ -755,6 +787,9 @@ export namespace LibvirtSandbox {
     }
 
     namespace ConfigMount {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -764,6 +799,7 @@ export namespace LibvirtSandbox {
 
     abstract class ConfigMount extends GObject.Object {
         static $gtype: GObject.GType<ConfigMount>;
+        declare static readonly __signalSignatures: ConfigMount.SignalSignatures;
 
         // Properties
 
@@ -797,6 +833,9 @@ export namespace LibvirtSandbox {
     }
 
     namespace ConfigMountFile {
+        // Signal signatures
+        interface SignalSignatures extends ConfigMount.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ConfigMount.ConstructorProps {
@@ -806,6 +845,7 @@ export namespace LibvirtSandbox {
 
     abstract class ConfigMountFile extends ConfigMount {
         static $gtype: GObject.GType<ConfigMountFile>;
+        declare static readonly __signalSignatures: ConfigMountFile.SignalSignatures;
 
         // Properties
 
@@ -835,6 +875,9 @@ export namespace LibvirtSandbox {
     }
 
     namespace ConfigMountGuestBind {
+        // Signal signatures
+        interface SignalSignatures extends ConfigMountFile.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ConfigMountFile.ConstructorProps {}
@@ -842,6 +885,7 @@ export namespace LibvirtSandbox {
 
     class ConfigMountGuestBind extends ConfigMountFile {
         static $gtype: GObject.GType<ConfigMountGuestBind>;
+        declare static readonly __signalSignatures: ConfigMountGuestBind.SignalSignatures;
 
         // Constructors
 
@@ -853,6 +897,9 @@ export namespace LibvirtSandbox {
     }
 
     namespace ConfigMountHostBind {
+        // Signal signatures
+        interface SignalSignatures extends ConfigMountFile.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ConfigMountFile.ConstructorProps {}
@@ -860,6 +907,7 @@ export namespace LibvirtSandbox {
 
     class ConfigMountHostBind extends ConfigMountFile {
         static $gtype: GObject.GType<ConfigMountHostBind>;
+        declare static readonly __signalSignatures: ConfigMountHostBind.SignalSignatures;
 
         // Constructors
 
@@ -871,6 +919,9 @@ export namespace LibvirtSandbox {
     }
 
     namespace ConfigMountHostImage {
+        // Signal signatures
+        interface SignalSignatures extends ConfigMountFile.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ConfigMountFile.ConstructorProps {
@@ -880,6 +931,7 @@ export namespace LibvirtSandbox {
 
     class ConfigMountHostImage extends ConfigMountFile {
         static $gtype: GObject.GType<ConfigMountHostImage>;
+        declare static readonly __signalSignatures: ConfigMountHostImage.SignalSignatures;
 
         // Properties
 
@@ -907,6 +959,9 @@ export namespace LibvirtSandbox {
     }
 
     namespace ConfigMountRam {
+        // Signal signatures
+        interface SignalSignatures extends ConfigMount.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ConfigMount.ConstructorProps {
@@ -916,6 +971,7 @@ export namespace LibvirtSandbox {
 
     class ConfigMountRam extends ConfigMount {
         static $gtype: GObject.GType<ConfigMountRam>;
+        declare static readonly __signalSignatures: ConfigMountRam.SignalSignatures;
 
         // Properties
 
@@ -944,6 +1000,9 @@ export namespace LibvirtSandbox {
     }
 
     namespace ConfigNetwork {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -955,6 +1014,7 @@ export namespace LibvirtSandbox {
 
     class ConfigNetwork extends GObject.Object {
         static $gtype: GObject.GType<ConfigNetwork>;
+        declare static readonly __signalSignatures: ConfigNetwork.SignalSignatures;
 
         // Properties
 
@@ -1016,6 +1076,9 @@ export namespace LibvirtSandbox {
     }
 
     namespace ConfigNetworkAddress {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1027,6 +1090,7 @@ export namespace LibvirtSandbox {
 
     class ConfigNetworkAddress extends GObject.Object {
         static $gtype: GObject.GType<ConfigNetworkAddress>;
+        declare static readonly __signalSignatures: ConfigNetworkAddress.SignalSignatures;
 
         // Properties
 
@@ -1077,6 +1141,9 @@ export namespace LibvirtSandbox {
     }
 
     namespace ConfigNetworkFilterref {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1086,6 +1153,7 @@ export namespace LibvirtSandbox {
 
     class ConfigNetworkFilterref extends GObject.Object {
         static $gtype: GObject.GType<ConfigNetworkFilterref>;
+        declare static readonly __signalSignatures: ConfigNetworkFilterref.SignalSignatures;
 
         // Properties
 
@@ -1121,6 +1189,9 @@ export namespace LibvirtSandbox {
     }
 
     namespace ConfigNetworkFilterrefParameter {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1131,6 +1202,7 @@ export namespace LibvirtSandbox {
 
     class ConfigNetworkFilterrefParameter extends GObject.Object {
         static $gtype: GObject.GType<ConfigNetworkFilterrefParameter>;
+        declare static readonly __signalSignatures: ConfigNetworkFilterrefParameter.SignalSignatures;
 
         // Properties
 
@@ -1156,6 +1228,9 @@ export namespace LibvirtSandbox {
     }
 
     namespace ConfigNetworkRoute {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1167,6 +1242,7 @@ export namespace LibvirtSandbox {
 
     class ConfigNetworkRoute extends GObject.Object {
         static $gtype: GObject.GType<ConfigNetworkRoute>;
+        declare static readonly __signalSignatures: ConfigNetworkRoute.SignalSignatures;
 
         // Properties
 
@@ -1217,6 +1293,9 @@ export namespace LibvirtSandbox {
     }
 
     namespace ConfigService {
+        // Signal signatures
+        interface SignalSignatures extends Config.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Config.ConstructorProps {}
@@ -1224,6 +1303,7 @@ export namespace LibvirtSandbox {
 
     abstract class ConfigService extends Config {
         static $gtype: GObject.GType<ConfigService>;
+        declare static readonly __signalSignatures: ConfigService.SignalSignatures;
 
         // Constructors
 
@@ -1233,6 +1313,9 @@ export namespace LibvirtSandbox {
     }
 
     namespace ConfigServiceGeneric {
+        // Signal signatures
+        interface SignalSignatures extends ConfigService.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ConfigService.ConstructorProps {}
@@ -1240,6 +1323,7 @@ export namespace LibvirtSandbox {
 
     class ConfigServiceGeneric extends ConfigService {
         static $gtype: GObject.GType<ConfigServiceGeneric>;
+        declare static readonly __signalSignatures: ConfigServiceGeneric.SignalSignatures;
 
         // Constructors
 
@@ -1260,6 +1344,9 @@ export namespace LibvirtSandbox {
     }
 
     namespace ConfigServiceSystemd {
+        // Signal signatures
+        interface SignalSignatures extends ConfigService.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ConfigService.ConstructorProps {}
@@ -1267,6 +1354,7 @@ export namespace LibvirtSandbox {
 
     class ConfigServiceSystemd extends ConfigService {
         static $gtype: GObject.GType<ConfigServiceSystemd>;
+        declare static readonly __signalSignatures: ConfigServiceSystemd.SignalSignatures;
 
         // Constructors
 
@@ -1289,6 +1377,11 @@ export namespace LibvirtSandbox {
             (object: boolean): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            closed: Closed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1302,6 +1395,7 @@ export namespace LibvirtSandbox {
 
     abstract class Console extends GObject.Object {
         static $gtype: GObject.GType<Console>;
+        declare static readonly __signalSignatures: Console.SignalSignatures;
 
         // Properties
 
@@ -1319,6 +1413,15 @@ export namespace LibvirtSandbox {
 
         // Signals
 
+        connect<K extends keyof Console.SignalSignatures>(signal: K, callback: Console.SignalSignatures[K]): number;
+        connect_after<K extends keyof Console.SignalSignatures>(
+            signal: K,
+            callback: Console.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Console.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Console.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1354,6 +1457,9 @@ export namespace LibvirtSandbox {
     }
 
     namespace ConsoleRaw {
+        // Signal signatures
+        interface SignalSignatures extends Console.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Console.ConstructorProps {}
@@ -1361,6 +1467,7 @@ export namespace LibvirtSandbox {
 
     class ConsoleRaw extends Console {
         static $gtype: GObject.GType<ConsoleRaw>;
+        declare static readonly __signalSignatures: ConsoleRaw.SignalSignatures;
 
         // Constructors
 
@@ -1386,6 +1493,11 @@ export namespace LibvirtSandbox {
             (object: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Console.SignalSignatures {
+            exited: Exited;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Console.ConstructorProps {}
@@ -1393,6 +1505,7 @@ export namespace LibvirtSandbox {
 
     class ConsoleRpc extends Console {
         static $gtype: GObject.GType<ConsoleRpc>;
+        declare static readonly __signalSignatures: ConsoleRpc.SignalSignatures;
 
         // Constructors
 
@@ -1408,6 +1521,18 @@ export namespace LibvirtSandbox {
 
         // Signals
 
+        connect<K extends keyof ConsoleRpc.SignalSignatures>(
+            signal: K,
+            callback: ConsoleRpc.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ConsoleRpc.SignalSignatures>(
+            signal: K,
+            callback: ConsoleRpc.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ConsoleRpc.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ConsoleRpc.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1422,6 +1547,9 @@ export namespace LibvirtSandbox {
     }
 
     namespace Context {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1433,6 +1561,7 @@ export namespace LibvirtSandbox {
 
     abstract class Context extends GObject.Object {
         static $gtype: GObject.GType<Context>;
+        declare static readonly __signalSignatures: Context.SignalSignatures;
 
         // Properties
 
@@ -1481,6 +1610,9 @@ export namespace LibvirtSandbox {
     }
 
     namespace ContextInteractive {
+        // Signal signatures
+        interface SignalSignatures extends Context.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Context.ConstructorProps {}
@@ -1488,6 +1620,7 @@ export namespace LibvirtSandbox {
 
     class ContextInteractive extends Context {
         static $gtype: GObject.GType<ContextInteractive>;
+        declare static readonly __signalSignatures: ContextInteractive.SignalSignatures;
 
         // Constructors
 
@@ -1503,6 +1636,9 @@ export namespace LibvirtSandbox {
     }
 
     namespace ContextService {
+        // Signal signatures
+        interface SignalSignatures extends Context.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Context.ConstructorProps {}
@@ -1510,6 +1646,7 @@ export namespace LibvirtSandbox {
 
     class ContextService extends Context {
         static $gtype: GObject.GType<ContextService>;
+        declare static readonly __signalSignatures: ContextService.SignalSignatures;
 
         // Constructors
 

@@ -136,6 +136,11 @@ export namespace InputPad {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Application.SignalSignatures {
+            activated: Activated;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -146,6 +151,7 @@ export namespace InputPad {
 
     class GtkApplication extends Gtk.Application implements Gio.ActionGroup, Gio.ActionMap {
         static $gtype: GObject.GType<GtkApplication>;
+        declare static readonly __signalSignatures: GtkApplication.SignalSignatures;
 
         // Constructors
 
@@ -157,6 +163,18 @@ export namespace InputPad {
 
         // Signals
 
+        connect<K extends keyof GtkApplication.SignalSignatures>(
+            signal: K,
+            callback: GtkApplication.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GtkApplication.SignalSignatures>(
+            signal: K,
+            callback: GtkApplication.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GtkApplication.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GtkApplication.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -617,6 +635,11 @@ export namespace InputPad {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Button.SignalSignatures {
+            'pressed-repeat': PressedRepeat;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -629,6 +652,7 @@ export namespace InputPad {
 
     class GtkButton extends Gtk.Button implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable {
         static $gtype: GObject.GType<GtkButton>;
+        declare static readonly __signalSignatures: GtkButton.SignalSignatures;
 
         // Constructors
 
@@ -644,6 +668,15 @@ export namespace InputPad {
 
         // Signals
 
+        connect<K extends keyof GtkButton.SignalSignatures>(signal: K, callback: GtkButton.SignalSignatures[K]): number;
+        connect_after<K extends keyof GtkButton.SignalSignatures>(
+            signal: K,
+            callback: GtkButton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GtkButton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GtkButton.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -5191,6 +5224,9 @@ export namespace InputPad {
     }
 
     namespace GtkComboBox {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.ComboBox.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5206,6 +5242,7 @@ export namespace InputPad {
         implements Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, Gtk.CellLayout
     {
         static $gtype: GObject.GType<GtkComboBox>;
+        declare static readonly __signalSignatures: GtkComboBox.SignalSignatures;
 
         // Constructors
 
@@ -9711,6 +9748,12 @@ export namespace InputPad {
             (object: Gtk.Widget, p0: GtkWindow): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'create-keyboard-layout': CreateKeyboardLayout;
+            'destroy-keyboard-layout': DestroyKeyboardLayout;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -9718,6 +9761,7 @@ export namespace InputPad {
 
     abstract class GtkKbdui extends GObject.Object {
         static $gtype: GObject.GType<GtkKbdui>;
+        declare static readonly __signalSignatures: GtkKbdui.SignalSignatures;
 
         // Constructors
 
@@ -9727,6 +9771,15 @@ export namespace InputPad {
 
         // Signals
 
+        connect<K extends keyof GtkKbdui.SignalSignatures>(signal: K, callback: GtkKbdui.SignalSignatures[K]): number;
+        connect_after<K extends keyof GtkKbdui.SignalSignatures>(
+            signal: K,
+            callback: GtkKbdui.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GtkKbdui.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GtkKbdui.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -9756,6 +9809,9 @@ export namespace InputPad {
     }
 
     namespace GtkViewport {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Bin.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9767,6 +9823,7 @@ export namespace InputPad {
 
     class GtkViewport extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<GtkViewport>;
+        declare static readonly __signalSignatures: GtkViewport.SignalSignatures;
 
         // Fields
 
@@ -10352,6 +10409,16 @@ export namespace InputPad {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.ApplicationWindow.SignalSignatures {
+            'button-pressed': ButtonPressed;
+            'char-button-sensitive': CharButtonSensitive;
+            'group-appended': GroupAppended;
+            'group-changed': GroupChanged;
+            'keyboard-changed': KeyboardChanged;
+            'reorder-button-pressed': ReorderButtonPressed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -10367,6 +10434,7 @@ export namespace InputPad {
         implements Atk.ImplementorIface, Gio.ActionGroup, Gio.ActionMap, Gtk.Buildable
     {
         static $gtype: GObject.GType<GtkWindow>;
+        declare static readonly __signalSignatures: GtkWindow.SignalSignatures;
 
         // Fields
 
@@ -10388,6 +10456,15 @@ export namespace InputPad {
 
         // Signals
 
+        connect<K extends keyof GtkWindow.SignalSignatures>(signal: K, callback: GtkWindow.SignalSignatures[K]): number;
+        connect_after<K extends keyof GtkWindow.SignalSignatures>(
+            signal: K,
+            callback: GtkWindow.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GtkWindow.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GtkWindow.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

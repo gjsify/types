@@ -526,6 +526,9 @@ export namespace Tepl {
         END,
     }
     namespace AbstractFactory {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -533,6 +536,7 @@ export namespace Tepl {
 
     class AbstractFactory extends GObject.Object {
         static $gtype: GObject.GType<AbstractFactory>;
+        declare static readonly __signalSignatures: AbstractFactory.SignalSignatures;
 
         // Constructors
 
@@ -611,6 +615,9 @@ export namespace Tepl {
     }
 
     namespace Application {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -620,6 +627,7 @@ export namespace Tepl {
 
     class Application extends GObject.Object {
         static $gtype: GObject.GType<Application>;
+        declare static readonly __signalSignatures: Application.SignalSignatures;
 
         // Properties
 
@@ -711,6 +719,9 @@ export namespace Tepl {
     }
 
     namespace ApplicationWindow {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, TabGroup.ConstructorProps {
@@ -723,6 +734,7 @@ export namespace Tepl {
 
     class ApplicationWindow extends GObject.Object implements TabGroup {
         static $gtype: GObject.GType<ApplicationWindow>;
+        declare static readonly __signalSignatures: ApplicationWindow.SignalSignatures;
 
         // Properties
 
@@ -1366,6 +1378,11 @@ export namespace Tepl {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GtkSource.Buffer.SignalSignatures {
+            'tepl-cursor-moved': TeplCursorMoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GtkSource.Buffer.ConstructorProps {
@@ -1380,6 +1397,7 @@ export namespace Tepl {
 
     class Buffer extends GtkSource.Buffer {
         static $gtype: GObject.GType<Buffer>;
+        declare static readonly __signalSignatures: Buffer.SignalSignatures;
 
         // Properties
 
@@ -1428,6 +1446,9 @@ export namespace Tepl {
 
         // Signals
 
+        connect<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
+        connect_after<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
+        emit<K extends keyof Buffer.SignalSignatures>(signal: K, ...args: Parameters<Buffer.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1506,6 +1527,9 @@ export namespace Tepl {
     }
 
     namespace File {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1519,6 +1543,7 @@ export namespace Tepl {
 
     class File extends GObject.Object {
         static $gtype: GObject.GType<File>;
+        declare static readonly __signalSignatures: File.SignalSignatures;
 
         // Properties
 
@@ -1627,6 +1652,9 @@ export namespace Tepl {
     }
 
     namespace FileLoader {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1638,6 +1666,7 @@ export namespace Tepl {
 
     class FileLoader extends GObject.Object {
         static $gtype: GObject.GType<FileLoader>;
+        declare static readonly __signalSignatures: FileLoader.SignalSignatures;
 
         // Properties
 
@@ -1713,6 +1742,9 @@ export namespace Tepl {
     }
 
     namespace FileSaver {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1727,6 +1759,7 @@ export namespace Tepl {
 
     class FileSaver extends GObject.Object {
         static $gtype: GObject.GType<FileSaver>;
+        declare static readonly __signalSignatures: FileSaver.SignalSignatures;
 
         // Properties
 
@@ -1835,6 +1868,9 @@ export namespace Tepl {
     }
 
     namespace FoldRegion {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1845,6 +1881,7 @@ export namespace Tepl {
 
     class FoldRegion extends GObject.Object {
         static $gtype: GObject.GType<FoldRegion>;
+        declare static readonly __signalSignatures: FoldRegion.SignalSignatures;
 
         // Properties
 
@@ -1890,6 +1927,9 @@ export namespace Tepl {
     }
 
     namespace GotoLineBar {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Grid.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1901,6 +1941,7 @@ export namespace Tepl {
 
     class GotoLineBar extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<GotoLineBar>;
+        declare static readonly __signalSignatures: GotoLineBar.SignalSignatures;
 
         // Constructors
 
@@ -2385,6 +2426,9 @@ export namespace Tepl {
     }
 
     namespace GutterRendererFolds {
+        // Signal signatures
+        interface SignalSignatures extends GtkSource.GutterRenderer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GtkSource.GutterRenderer.ConstructorProps {}
@@ -2392,6 +2436,7 @@ export namespace Tepl {
 
     class GutterRendererFolds extends GtkSource.GutterRenderer {
         static $gtype: GObject.GType<GutterRendererFolds>;
+        declare static readonly __signalSignatures: GutterRendererFolds.SignalSignatures;
 
         // Constructors
 
@@ -2414,6 +2459,9 @@ export namespace Tepl {
     }
 
     namespace InfoBar {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.InfoBar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2432,6 +2480,7 @@ export namespace Tepl {
 
     class InfoBar extends Gtk.InfoBar implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<InfoBar>;
+        declare static readonly __signalSignatures: InfoBar.SignalSignatures;
 
         // Properties
 
@@ -3020,6 +3069,9 @@ export namespace Tepl {
     }
 
     namespace LanguageChooserDialog {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Dialog.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3031,6 +3083,7 @@ export namespace Tepl {
 
     class LanguageChooserDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable, LanguageChooser {
         static $gtype: GObject.GType<LanguageChooserDialog>;
+        declare static readonly __signalSignatures: LanguageChooserDialog.SignalSignatures;
 
         // Constructors
 
@@ -3497,6 +3550,9 @@ export namespace Tepl {
     }
 
     namespace LanguageChooserWidget {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Grid.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3512,6 +3568,7 @@ export namespace Tepl {
         implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, LanguageChooser
     {
         static $gtype: GObject.GType<LanguageChooserWidget>;
+        declare static readonly __signalSignatures: LanguageChooserWidget.SignalSignatures;
 
         // Constructors
 
@@ -3992,6 +4049,9 @@ export namespace Tepl {
     }
 
     namespace Metadata {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3999,6 +4059,7 @@ export namespace Tepl {
 
     class Metadata extends GObject.Object {
         static $gtype: GObject.GType<Metadata>;
+        declare static readonly __signalSignatures: Metadata.SignalSignatures;
 
         // Constructors
 
@@ -4034,6 +4095,9 @@ export namespace Tepl {
     }
 
     namespace MetadataManager {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4041,6 +4105,7 @@ export namespace Tepl {
 
     class MetadataManager extends GObject.Object {
         static $gtype: GObject.GType<MetadataManager>;
+        declare static readonly __signalSignatures: MetadataManager.SignalSignatures;
 
         // Constructors
 
@@ -4117,6 +4182,9 @@ export namespace Tepl {
     }
 
     namespace Notebook {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Notebook.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4128,6 +4196,7 @@ export namespace Tepl {
 
     class Notebook extends Gtk.Notebook implements Atk.ImplementorIface, Gtk.Buildable, TabGroup {
         static $gtype: GObject.GType<Notebook>;
+        declare static readonly __signalSignatures: Notebook.SignalSignatures;
 
         // Constructors
 
@@ -4666,6 +4735,9 @@ export namespace Tepl {
     }
 
     namespace Panel {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Grid.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4677,6 +4749,7 @@ export namespace Tepl {
 
     class Panel extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Panel>;
+        declare static readonly __signalSignatures: Panel.SignalSignatures;
 
         // Constructors
 
@@ -5187,6 +5260,9 @@ export namespace Tepl {
     }
 
     namespace ProgressInfoBar {
+        // Signal signatures
+        interface SignalSignatures extends InfoBar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5201,6 +5277,7 @@ export namespace Tepl {
 
     class ProgressInfoBar extends InfoBar implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<ProgressInfoBar>;
+        declare static readonly __signalSignatures: ProgressInfoBar.SignalSignatures;
 
         // Properties
 
@@ -5693,6 +5770,9 @@ export namespace Tepl {
     }
 
     namespace SpaceDrawerPrefs {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Grid.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5704,6 +5784,7 @@ export namespace Tepl {
 
     class SpaceDrawerPrefs extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<SpaceDrawerPrefs>;
+        declare static readonly __signalSignatures: SpaceDrawerPrefs.SignalSignatures;
 
         // Constructors
 
@@ -6183,6 +6264,9 @@ export namespace Tepl {
     }
 
     namespace Statusbar {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Statusbar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6194,6 +6278,7 @@ export namespace Tepl {
 
     class Statusbar extends Gtk.Statusbar implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Statusbar>;
+        declare static readonly __signalSignatures: Statusbar.SignalSignatures;
 
         // Constructors
 
@@ -6677,6 +6762,9 @@ export namespace Tepl {
     }
 
     namespace StyleSchemeChooserWidget {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Bin.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6694,6 +6782,7 @@ export namespace Tepl {
         implements Atk.ImplementorIface, Gtk.Buildable, GtkSource.StyleSchemeChooser
     {
         static $gtype: GObject.GType<StyleSchemeChooserWidget>;
+        declare static readonly __signalSignatures: StyleSchemeChooserWidget.SignalSignatures;
 
         // Properties
 
@@ -7221,6 +7310,11 @@ export namespace Tepl {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Grid.SignalSignatures {
+            'close-request': CloseRequest;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7235,6 +7329,7 @@ export namespace Tepl {
 
     class Tab extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, TabGroup {
         static $gtype: GObject.GType<Tab>;
+        declare static readonly __signalSignatures: Tab.SignalSignatures;
 
         // Properties
 
@@ -7256,6 +7351,9 @@ export namespace Tepl {
 
         // Signals
 
+        connect<K extends keyof Tab.SignalSignatures>(signal: K, callback: Tab.SignalSignatures[K]): number;
+        connect_after<K extends keyof Tab.SignalSignatures>(signal: K, callback: Tab.SignalSignatures[K]): number;
+        emit<K extends keyof Tab.SignalSignatures>(signal: K, ...args: Parameters<Tab.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -7921,6 +8019,9 @@ export namespace Tepl {
     }
 
     namespace TabLabel {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Grid.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7934,6 +8035,7 @@ export namespace Tepl {
 
     class TabLabel extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<TabLabel>;
+        declare static readonly __signalSignatures: TabLabel.SignalSignatures;
 
         // Properties
 
@@ -8428,6 +8530,9 @@ export namespace Tepl {
     }
 
     namespace View {
+        // Signal signatures
+        interface SignalSignatures extends GtkSource.View.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -8439,6 +8544,7 @@ export namespace Tepl {
 
     class View extends GtkSource.View implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<View>;
+        declare static readonly __signalSignatures: View.SignalSignatures;
 
         // Constructors
 

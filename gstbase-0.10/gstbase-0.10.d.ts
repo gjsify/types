@@ -86,6 +86,9 @@ export namespace GstBase {
         FLAG_LAST,
     }
     namespace GstAdapter {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -96,6 +99,7 @@ export namespace GstBase {
      */
     class GstAdapter extends GObject.Object {
         static $gtype: GObject.GType<GstAdapter>;
+        declare static readonly __signalSignatures: GstAdapter.SignalSignatures;
 
         // Fields
 
@@ -133,6 +137,9 @@ export namespace GstBase {
     }
 
     namespace GstCollectPads {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {}
@@ -145,6 +152,7 @@ export namespace GstBase {
      */
     class GstCollectPads extends Gst.Object {
         static $gtype: GObject.GType<GstCollectPads>;
+        declare static readonly __signalSignatures: GstCollectPads.SignalSignatures;
 
         // Fields
 
@@ -199,6 +207,12 @@ export namespace GstBase {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            empty: Empty;
+            full: Full;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -216,6 +230,7 @@ export namespace GstBase {
      */
     class GstDataQueue extends GObject.Object {
         static $gtype: GObject.GType<GstDataQueue>;
+        declare static readonly __signalSignatures: GstDataQueue.SignalSignatures;
 
         // Properties
 
@@ -253,6 +268,18 @@ export namespace GstBase {
 
         // Signals
 
+        connect<K extends keyof GstDataQueue.SignalSignatures>(
+            signal: K,
+            callback: GstDataQueue.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GstDataQueue.SignalSignatures>(
+            signal: K,
+            callback: GstDataQueue.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GstDataQueue.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GstDataQueue.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -277,6 +304,9 @@ export namespace GstBase {
     }
 
     namespace GstPushSrc {
+        // Signal signatures
+        interface SignalSignatures extends Src.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Src.ConstructorProps {}
@@ -287,6 +317,7 @@ export namespace GstBase {
      */
     class GstPushSrc extends Src {
         static $gtype: GObject.GType<GstPushSrc>;
+        declare static readonly __signalSignatures: GstPushSrc.SignalSignatures;
 
         // Constructors
 
@@ -296,6 +327,9 @@ export namespace GstBase {
     }
 
     namespace Sink {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Element.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Element.ConstructorProps {
@@ -323,6 +357,7 @@ export namespace GstBase {
      */
     abstract class Sink extends Gst.Element {
         static $gtype: GObject.GType<Sink>;
+        declare static readonly __signalSignatures: Sink.SignalSignatures;
 
         // Properties
 
@@ -414,6 +449,9 @@ export namespace GstBase {
     }
 
     namespace Src {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Element.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Element.ConstructorProps {
@@ -431,6 +469,7 @@ export namespace GstBase {
      */
     abstract class Src extends Gst.Element {
         static $gtype: GObject.GType<Src>;
+        declare static readonly __signalSignatures: Src.SignalSignatures;
 
         // Properties
 
@@ -484,6 +523,9 @@ export namespace GstBase {
     }
 
     namespace Transform {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Element.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Element.ConstructorProps {
@@ -496,6 +538,7 @@ export namespace GstBase {
      */
     abstract class Transform extends Gst.Element {
         static $gtype: GObject.GType<Transform>;
+        declare static readonly __signalSignatures: Transform.SignalSignatures;
 
         // Properties
 

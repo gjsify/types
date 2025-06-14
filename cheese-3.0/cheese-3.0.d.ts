@@ -115,6 +115,14 @@ export namespace Cheese {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'photo-saved': PhotoSaved;
+            'photo-taken': PhotoTaken;
+            'state-flags-changed': StateFlagsChanged;
+            'video-saved': VideoSaved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -132,6 +140,7 @@ export namespace Cheese {
      */
     class Camera extends GObject.Object {
         static $gtype: GObject.GType<Camera>;
+        declare static readonly __signalSignatures: Camera.SignalSignatures;
 
         // Properties
 
@@ -179,6 +188,9 @@ export namespace Cheese {
 
         // Signals
 
+        connect<K extends keyof Camera.SignalSignatures>(signal: K, callback: Camera.SignalSignatures[K]): number;
+        connect_after<K extends keyof Camera.SignalSignatures>(signal: K, callback: Camera.SignalSignatures[K]): number;
+        emit<K extends keyof Camera.SignalSignatures>(signal: K, ...args: Parameters<Camera.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -315,6 +327,9 @@ export namespace Cheese {
     }
 
     namespace CameraDevice {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -329,6 +344,7 @@ export namespace Cheese {
      */
     class CameraDevice extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<CameraDevice>;
+        declare static readonly __signalSignatures: CameraDevice.SignalSignatures;
 
         // Properties
 
@@ -935,6 +951,12 @@ export namespace Cheese {
             (device: CameraDevice): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            added: Added;
+            removed: Removed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -948,6 +970,7 @@ export namespace Cheese {
      */
     class CameraDeviceMonitor extends GObject.Object implements Gio.AsyncInitable<CameraDeviceMonitor>, Gio.Initable {
         static $gtype: GObject.GType<CameraDeviceMonitor>;
+        declare static readonly __signalSignatures: CameraDeviceMonitor.SignalSignatures;
 
         // Constructors
 
@@ -964,6 +987,18 @@ export namespace Cheese {
 
         // Signals
 
+        connect<K extends keyof CameraDeviceMonitor.SignalSignatures>(
+            signal: K,
+            callback: CameraDeviceMonitor.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CameraDeviceMonitor.SignalSignatures>(
+            signal: K,
+            callback: CameraDeviceMonitor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CameraDeviceMonitor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CameraDeviceMonitor.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1731,6 +1766,9 @@ export namespace Cheese {
     }
 
     namespace Effect {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1747,6 +1785,7 @@ export namespace Cheese {
      */
     class Effect extends GObject.Object {
         static $gtype: GObject.GType<Effect>;
+        declare static readonly __signalSignatures: Effect.SignalSignatures;
 
         // Properties
 
@@ -1823,6 +1862,9 @@ export namespace Cheese {
     }
 
     namespace FileUtil {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1833,6 +1875,7 @@ export namespace Cheese {
      */
     class FileUtil extends GObject.Object {
         static $gtype: GObject.GType<FileUtil>;
+        declare static readonly __signalSignatures: FileUtil.SignalSignatures;
 
         // Constructors
 

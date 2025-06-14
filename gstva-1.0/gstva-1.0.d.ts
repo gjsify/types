@@ -200,6 +200,9 @@ export namespace GstVa {
     ): [boolean, VaDisplay];
     function va_memory_peek_display(mem: Gst.Memory): VaDisplay;
     namespace VaAllocator {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Allocator.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Allocator.ConstructorProps {}
@@ -213,6 +216,7 @@ export namespace GstVa {
      */
     class VaAllocator extends Gst.Allocator {
         static $gtype: GObject.GType<VaAllocator>;
+        declare static readonly __signalSignatures: VaAllocator.SignalSignatures;
 
         // Constructors
 
@@ -275,6 +279,9 @@ export namespace GstVa {
     }
 
     namespace VaDisplay {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {
@@ -297,6 +304,7 @@ export namespace GstVa {
      */
     class VaDisplay extends Gst.Object {
         static $gtype: GObject.GType<VaDisplay>;
+        declare static readonly __signalSignatures: VaDisplay.SignalSignatures;
 
         // Properties
 
@@ -346,6 +354,9 @@ export namespace GstVa {
     }
 
     namespace VaDisplayDrm {
+        // Signal signatures
+        interface SignalSignatures extends VaDisplay.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends VaDisplay.ConstructorProps {
@@ -358,6 +369,7 @@ export namespace GstVa {
      */
     class VaDisplayDrm extends VaDisplay {
         static $gtype: GObject.GType<VaDisplayDrm>;
+        declare static readonly __signalSignatures: VaDisplayDrm.SignalSignatures;
 
         // Properties
 
@@ -373,6 +385,9 @@ export namespace GstVa {
     }
 
     namespace VaDisplayWrapped {
+        // Signal signatures
+        interface SignalSignatures extends VaDisplay.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends VaDisplay.ConstructorProps {}
@@ -384,6 +399,7 @@ export namespace GstVa {
      */
     class VaDisplayWrapped extends VaDisplay {
         static $gtype: GObject.GType<VaDisplayWrapped>;
+        declare static readonly __signalSignatures: VaDisplayWrapped.SignalSignatures;
 
         // Constructors
 
@@ -395,6 +411,9 @@ export namespace GstVa {
     }
 
     namespace VaDmabufAllocator {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Allocator.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Allocator.ConstructorProps {}
@@ -407,6 +426,7 @@ export namespace GstVa {
      */
     class VaDmabufAllocator extends Gst.Allocator {
         static $gtype: GObject.GType<VaDmabufAllocator>;
+        declare static readonly __signalSignatures: VaDmabufAllocator.SignalSignatures;
 
         // Constructors
 
@@ -457,6 +477,9 @@ export namespace GstVa {
     }
 
     namespace VaPool {
+        // Signal signatures
+        interface SignalSignatures extends Gst.BufferPool.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.BufferPool.ConstructorProps {}
@@ -467,6 +490,7 @@ export namespace GstVa {
      */
     class VaPool extends Gst.BufferPool {
         static $gtype: GObject.GType<VaPool>;
+        declare static readonly __signalSignatures: VaPool.SignalSignatures;
 
         // Constructors
 

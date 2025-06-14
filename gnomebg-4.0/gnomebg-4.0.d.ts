@@ -40,6 +40,12 @@ export namespace GnomeBG {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            changed: Changed;
+            transitioned: Transitioned;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -47,6 +53,7 @@ export namespace GnomeBG {
 
     class BG extends GObject.Object {
         static $gtype: GObject.GType<BG>;
+        declare static readonly __signalSignatures: BG.SignalSignatures;
 
         // Constructors
 
@@ -58,6 +65,9 @@ export namespace GnomeBG {
 
         // Signals
 
+        connect<K extends keyof BG.SignalSignatures>(signal: K, callback: BG.SignalSignatures[K]): number;
+        connect_after<K extends keyof BG.SignalSignatures>(signal: K, callback: BG.SignalSignatures[K]): number;
+        emit<K extends keyof BG.SignalSignatures>(signal: K, ...args: Parameters<BG.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -124,6 +134,9 @@ export namespace GnomeBG {
     }
 
     namespace BGSlideShow {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -139,6 +152,7 @@ export namespace GnomeBG {
 
     class BGSlideShow extends GObject.Object {
         static $gtype: GObject.GType<BGSlideShow>;
+        declare static readonly __signalSignatures: BGSlideShow.SignalSignatures;
 
         // Properties
 

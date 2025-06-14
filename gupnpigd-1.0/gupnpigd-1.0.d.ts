@@ -66,6 +66,13 @@ export namespace GUPnPIgd {
             ): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'context-available': ContextAvailable;
+            'error-mapping-port': ErrorMappingPort;
+            'mapped-external-port': MappedExternalPort;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -79,6 +86,7 @@ export namespace GUPnPIgd {
      */
     class SimpleIgd extends GObject.Object {
         static $gtype: GObject.GType<SimpleIgd>;
+        declare static readonly __signalSignatures: SimpleIgd.SignalSignatures;
 
         // Properties
 
@@ -95,6 +103,15 @@ export namespace GUPnPIgd {
 
         // Signals
 
+        connect<K extends keyof SimpleIgd.SignalSignatures>(signal: K, callback: SimpleIgd.SignalSignatures[K]): number;
+        connect_after<K extends keyof SimpleIgd.SignalSignatures>(
+            signal: K,
+            callback: SimpleIgd.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SimpleIgd.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SimpleIgd.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -233,6 +250,9 @@ export namespace GUPnPIgd {
     }
 
     namespace SimpleIgdThread {
+        // Signal signatures
+        interface SignalSignatures extends SimpleIgd.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SimpleIgd.ConstructorProps {}
@@ -243,6 +263,7 @@ export namespace GUPnPIgd {
      */
     class SimpleIgdThread extends SimpleIgd {
         static $gtype: GObject.GType<SimpleIgdThread>;
+        declare static readonly __signalSignatures: SimpleIgdThread.SignalSignatures;
 
         // Constructors
 

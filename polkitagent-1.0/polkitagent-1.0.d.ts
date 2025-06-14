@@ -50,6 +50,9 @@ export namespace PolkitAgent {
         RUN_IN_THREAD,
     }
     namespace Listener {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -70,6 +73,7 @@ export namespace PolkitAgent {
      */
     abstract class Listener extends GObject.Object {
         static $gtype: GObject.GType<Listener>;
+        declare static readonly __signalSignatures: Listener.SignalSignatures;
 
         // Constructors
 
@@ -316,6 +320,14 @@ export namespace PolkitAgent {
             (text: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            completed: Completed;
+            request: Request;
+            'show-error': ShowError;
+            'show-info': ShowInfo;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -350,6 +362,7 @@ export namespace PolkitAgent {
      */
     class Session extends GObject.Object {
         static $gtype: GObject.GType<Session>;
+        declare static readonly __signalSignatures: Session.SignalSignatures;
 
         // Properties
 
@@ -372,6 +385,15 @@ export namespace PolkitAgent {
 
         // Signals
 
+        connect<K extends keyof Session.SignalSignatures>(signal: K, callback: Session.SignalSignatures[K]): number;
+        connect_after<K extends keyof Session.SignalSignatures>(
+            signal: K,
+            callback: Session.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Session.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Session.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -414,6 +436,9 @@ export namespace PolkitAgent {
     }
 
     namespace TextListener {
+        // Signal signatures
+        interface SignalSignatures extends Listener.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Listener.ConstructorProps, Gio.Initable.ConstructorProps {}
@@ -425,6 +450,7 @@ export namespace PolkitAgent {
      */
     class TextListener extends Listener implements Gio.Initable {
         static $gtype: GObject.GType<TextListener>;
+        declare static readonly __signalSignatures: TextListener.SignalSignatures;
 
         // Constructors
 

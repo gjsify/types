@@ -93,6 +93,11 @@ export namespace GPluginGtk4 {
             (enabled: boolean): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {
+            'plugin-state-set': PluginStateSet;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -113,6 +118,7 @@ export namespace GPluginGtk4 {
      */
     class PluginPage extends Gtk.Box implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<PluginPage>;
+        declare static readonly __signalSignatures: PluginPage.SignalSignatures;
 
         // Properties
 
@@ -142,6 +148,18 @@ export namespace GPluginGtk4 {
 
         // Signals
 
+        connect<K extends keyof PluginPage.SignalSignatures>(
+            signal: K,
+            callback: PluginPage.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PluginPage.SignalSignatures>(
+            signal: K,
+            callback: PluginPage.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PluginPage.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PluginPage.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -649,6 +667,11 @@ export namespace GPluginGtk4 {
             (enabled: boolean): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.ListBoxRow.SignalSignatures {
+            'plugin-state-set': PluginStateSet;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -670,6 +693,7 @@ export namespace GPluginGtk4 {
         implements Gtk.Accessible, Gtk.Actionable, Gtk.Buildable, Gtk.ConstraintTarget
     {
         static $gtype: GObject.GType<PluginRow>;
+        declare static readonly __signalSignatures: PluginRow.SignalSignatures;
 
         // Properties
 
@@ -689,6 +713,15 @@ export namespace GPluginGtk4 {
 
         // Signals
 
+        connect<K extends keyof PluginRow.SignalSignatures>(signal: K, callback: PluginRow.SignalSignatures[K]): number;
+        connect_after<K extends keyof PluginRow.SignalSignatures>(
+            signal: K,
+            callback: PluginRow.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PluginRow.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PluginRow.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3769,6 +3802,9 @@ export namespace GPluginGtk4 {
     }
 
     namespace PluginSettingsList {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3789,6 +3825,7 @@ export namespace GPluginGtk4 {
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable
     {
         static $gtype: GObject.GType<PluginSettingsList>;
+        declare static readonly __signalSignatures: PluginSettingsList.SignalSignatures;
 
         // Properties
 
@@ -4281,6 +4318,9 @@ export namespace GPluginGtk4 {
     }
 
     namespace View {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4303,6 +4343,7 @@ export namespace GPluginGtk4 {
      */
     class View extends Gtk.Box implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<View>;
+        declare static readonly __signalSignatures: View.SignalSignatures;
 
         // Properties
 

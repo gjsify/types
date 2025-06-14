@@ -323,6 +323,16 @@ export namespace Totem {
             (artist: string, title: string, album: string, track_number: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Application.SignalSignatures {
+            'file-closed': FileClosed;
+            'file-has-played': FileHasPlayed;
+            'file-opened': FileOpened;
+            'get-text-subtitle': GetTextSubtitle;
+            'get-user-agent': GetUserAgent;
+            'metadata-updated': MetadataUpdated;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -352,6 +362,7 @@ export namespace Totem {
      */
     class Object extends Gtk.Application implements Gio.ActionGroup, Gio.ActionMap {
         static $gtype: GObject.GType<Object>;
+        declare static readonly __signalSignatures: Object.SignalSignatures;
 
         // Properties
 
@@ -424,6 +435,9 @@ export namespace Totem {
 
         // Signals
 
+        connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

@@ -337,6 +337,9 @@ export namespace GSound {
     const ATTR_WINDOW_Y: string;
     function error_quark(): GLib.Quark;
     namespace Context {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {}
@@ -348,6 +351,7 @@ export namespace GSound {
      */
     class Context extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Context>;
+        declare static readonly __signalSignatures: Context.SignalSignatures;
 
         // Constructors
 

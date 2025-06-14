@@ -460,6 +460,9 @@ export namespace Libosinfo {
         BOOTABLE,
     }
     namespace AvatarFormat {
+        // Signal signatures
+        interface SignalSignatures extends Entity.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Entity.ConstructorProps {
@@ -473,6 +476,7 @@ export namespace Libosinfo {
 
     class AvatarFormat extends Entity {
         static $gtype: GObject.GType<AvatarFormat>;
+        declare static readonly __signalSignatures: AvatarFormat.SignalSignatures;
 
         // Properties
 
@@ -514,6 +518,9 @@ export namespace Libosinfo {
     }
 
     namespace Datamap {
+        // Signal signatures
+        interface SignalSignatures extends Entity.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Entity.ConstructorProps {}
@@ -521,6 +528,7 @@ export namespace Libosinfo {
 
     class Datamap extends Entity {
         static $gtype: GObject.GType<Datamap>;
+        declare static readonly __signalSignatures: Datamap.SignalSignatures;
 
         // Constructors
 
@@ -552,6 +560,9 @@ export namespace Libosinfo {
     }
 
     namespace DatamapList {
+        // Signal signatures
+        interface SignalSignatures extends List.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends List.ConstructorProps {}
@@ -559,6 +570,7 @@ export namespace Libosinfo {
 
     class DatamapList extends List {
         static $gtype: GObject.GType<DatamapList>;
+        declare static readonly __signalSignatures: DatamapList.SignalSignatures;
 
         // Constructors
 
@@ -570,6 +582,9 @@ export namespace Libosinfo {
     }
 
     namespace Db {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -577,6 +592,7 @@ export namespace Libosinfo {
 
     class Db extends GObject.Object {
         static $gtype: GObject.GType<Db>;
+        declare static readonly __signalSignatures: Db.SignalSignatures;
 
         // Constructors
 
@@ -726,6 +742,9 @@ export namespace Libosinfo {
     }
 
     namespace Deployment {
+        // Signal signatures
+        interface SignalSignatures extends Entity.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Entity.ConstructorProps {
@@ -736,6 +755,7 @@ export namespace Libosinfo {
 
     class Deployment extends Entity {
         static $gtype: GObject.GType<Deployment>;
+        declare static readonly __signalSignatures: Deployment.SignalSignatures;
 
         // Properties
 
@@ -805,6 +825,9 @@ export namespace Libosinfo {
     }
 
     namespace DeploymentList {
+        // Signal signatures
+        interface SignalSignatures extends List.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends List.ConstructorProps {}
@@ -812,6 +835,7 @@ export namespace Libosinfo {
 
     class DeploymentList extends List {
         static $gtype: GObject.GType<DeploymentList>;
+        declare static readonly __signalSignatures: DeploymentList.SignalSignatures;
 
         // Constructors
 
@@ -853,6 +877,9 @@ export namespace Libosinfo {
     }
 
     namespace Device {
+        // Signal signatures
+        interface SignalSignatures extends Entity.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Entity.ConstructorProps {}
@@ -860,6 +887,7 @@ export namespace Libosinfo {
 
     class Device extends Entity {
         static $gtype: GObject.GType<Device>;
+        declare static readonly __signalSignatures: Device.SignalSignatures;
 
         // Constructors
 
@@ -882,6 +910,9 @@ export namespace Libosinfo {
     }
 
     namespace DeviceDriver {
+        // Signal signatures
+        interface SignalSignatures extends Entity.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Entity.ConstructorProps {}
@@ -889,6 +920,7 @@ export namespace Libosinfo {
 
     class DeviceDriver extends Entity {
         static $gtype: GObject.GType<DeviceDriver>;
+        declare static readonly __signalSignatures: DeviceDriver.SignalSignatures;
 
         // Constructors
 
@@ -931,6 +963,9 @@ export namespace Libosinfo {
     }
 
     namespace DeviceDriverList {
+        // Signal signatures
+        interface SignalSignatures extends List.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends List.ConstructorProps {}
@@ -938,6 +973,7 @@ export namespace Libosinfo {
 
     class DeviceDriverList extends List {
         static $gtype: GObject.GType<DeviceDriverList>;
+        declare static readonly __signalSignatures: DeviceDriverList.SignalSignatures;
 
         // Constructors
 
@@ -949,6 +985,9 @@ export namespace Libosinfo {
     }
 
     namespace DeviceLink {
+        // Signal signatures
+        interface SignalSignatures extends Entity.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Entity.ConstructorProps {
@@ -958,6 +997,7 @@ export namespace Libosinfo {
 
     class DeviceLink extends Entity {
         static $gtype: GObject.GType<DeviceLink>;
+        declare static readonly __signalSignatures: DeviceLink.SignalSignatures;
 
         // Properties
 
@@ -985,6 +1025,9 @@ export namespace Libosinfo {
     }
 
     namespace DeviceLinkFilter {
+        // Signal signatures
+        interface SignalSignatures extends Filter.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Filter.ConstructorProps {
@@ -995,6 +1038,7 @@ export namespace Libosinfo {
 
     class DeviceLinkFilter extends Filter {
         static $gtype: GObject.GType<DeviceLinkFilter>;
+        declare static readonly __signalSignatures: DeviceLinkFilter.SignalSignatures;
 
         // Properties
 
@@ -1029,6 +1073,9 @@ export namespace Libosinfo {
     }
 
     namespace DeviceLinkList {
+        // Signal signatures
+        interface SignalSignatures extends List.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends List.ConstructorProps {}
@@ -1036,6 +1083,7 @@ export namespace Libosinfo {
 
     class DeviceLinkList extends List {
         static $gtype: GObject.GType<DeviceLinkList>;
+        declare static readonly __signalSignatures: DeviceLinkList.SignalSignatures;
 
         // Constructors
 
@@ -1083,6 +1131,9 @@ export namespace Libosinfo {
     }
 
     namespace DeviceList {
+        // Signal signatures
+        interface SignalSignatures extends List.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends List.ConstructorProps {}
@@ -1090,6 +1141,7 @@ export namespace Libosinfo {
 
     class DeviceList extends List {
         static $gtype: GObject.GType<DeviceList>;
+        declare static readonly __signalSignatures: DeviceList.SignalSignatures;
 
         // Constructors
 
@@ -1131,6 +1183,9 @@ export namespace Libosinfo {
     }
 
     namespace Entity {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1140,6 +1195,7 @@ export namespace Libosinfo {
 
     abstract class Entity extends GObject.Object {
         static $gtype: GObject.GType<Entity>;
+        declare static readonly __signalSignatures: Entity.SignalSignatures;
 
         // Properties
 
@@ -1283,6 +1339,9 @@ export namespace Libosinfo {
     }
 
     namespace Filter {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1290,6 +1349,7 @@ export namespace Libosinfo {
 
     class Filter extends GObject.Object {
         static $gtype: GObject.GType<Filter>;
+        declare static readonly __signalSignatures: Filter.SignalSignatures;
 
         // Constructors
 
@@ -1349,6 +1409,9 @@ export namespace Libosinfo {
     }
 
     namespace Firmware {
+        // Signal signatures
+        interface SignalSignatures extends Entity.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Entity.ConstructorProps {
@@ -1359,6 +1422,7 @@ export namespace Libosinfo {
 
     class Firmware extends Entity {
         static $gtype: GObject.GType<Firmware>;
+        declare static readonly __signalSignatures: Firmware.SignalSignatures;
 
         // Properties
 
@@ -1398,6 +1462,9 @@ export namespace Libosinfo {
     }
 
     namespace FirmwareList {
+        // Signal signatures
+        interface SignalSignatures extends List.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends List.ConstructorProps {}
@@ -1405,6 +1472,7 @@ export namespace Libosinfo {
 
     class FirmwareList extends List {
         static $gtype: GObject.GType<FirmwareList>;
+        declare static readonly __signalSignatures: FirmwareList.SignalSignatures;
 
         // Constructors
 
@@ -1416,6 +1484,9 @@ export namespace Libosinfo {
     }
 
     namespace Image {
+        // Signal signatures
+        interface SignalSignatures extends Entity.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Entity.ConstructorProps {
@@ -1429,6 +1500,7 @@ export namespace Libosinfo {
 
     class Image extends Entity {
         static $gtype: GObject.GType<Image>;
+        declare static readonly __signalSignatures: Image.SignalSignatures;
 
         // Properties
 
@@ -1502,6 +1574,9 @@ export namespace Libosinfo {
     }
 
     namespace ImageList {
+        // Signal signatures
+        interface SignalSignatures extends List.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends List.ConstructorProps {}
@@ -1509,6 +1584,7 @@ export namespace Libosinfo {
 
     class ImageList extends List {
         static $gtype: GObject.GType<ImageList>;
+        declare static readonly __signalSignatures: ImageList.SignalSignatures;
 
         // Constructors
 
@@ -1520,6 +1596,9 @@ export namespace Libosinfo {
     }
 
     namespace InstallConfig {
+        // Signal signatures
+        interface SignalSignatures extends Entity.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Entity.ConstructorProps {}
@@ -1527,6 +1606,7 @@ export namespace Libosinfo {
 
     class InstallConfig extends Entity {
         static $gtype: GObject.GType<InstallConfig>;
+        declare static readonly __signalSignatures: InstallConfig.SignalSignatures;
 
         // Constructors
 
@@ -1765,6 +1845,9 @@ export namespace Libosinfo {
     }
 
     namespace InstallConfigParam {
+        // Signal signatures
+        interface SignalSignatures extends Entity.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Entity.ConstructorProps {
@@ -1777,6 +1860,7 @@ export namespace Libosinfo {
 
     class InstallConfigParam extends Entity {
         static $gtype: GObject.GType<InstallConfigParam>;
+        declare static readonly __signalSignatures: InstallConfigParam.SignalSignatures;
 
         // Properties
 
@@ -1826,6 +1910,9 @@ export namespace Libosinfo {
     }
 
     namespace InstallConfigParamList {
+        // Signal signatures
+        interface SignalSignatures extends List.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends List.ConstructorProps {}
@@ -1833,6 +1920,7 @@ export namespace Libosinfo {
 
     class InstallConfigParamList extends List {
         static $gtype: GObject.GType<InstallConfigParamList>;
+        declare static readonly __signalSignatures: InstallConfigParamList.SignalSignatures;
 
         // Constructors
 
@@ -1844,6 +1932,9 @@ export namespace Libosinfo {
     }
 
     namespace InstallScript {
+        // Signal signatures
+        interface SignalSignatures extends Entity.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Entity.ConstructorProps {
@@ -1867,6 +1958,7 @@ export namespace Libosinfo {
 
     class InstallScript extends Entity {
         static $gtype: GObject.GType<InstallScript>;
+        declare static readonly __signalSignatures: InstallScript.SignalSignatures;
 
         // Properties
 
@@ -2467,6 +2559,9 @@ export namespace Libosinfo {
     }
 
     namespace InstallScriptList {
+        // Signal signatures
+        interface SignalSignatures extends List.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends List.ConstructorProps {}
@@ -2474,6 +2569,7 @@ export namespace Libosinfo {
 
     class InstallScriptList extends List {
         static $gtype: GObject.GType<InstallScriptList>;
+        declare static readonly __signalSignatures: InstallScriptList.SignalSignatures;
 
         // Constructors
 
@@ -2515,6 +2611,9 @@ export namespace Libosinfo {
     }
 
     namespace List {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2525,6 +2624,7 @@ export namespace Libosinfo {
 
     abstract class List extends GObject.Object {
         static $gtype: GObject.GType<List>;
+        declare static readonly __signalSignatures: List.SignalSignatures;
 
         // Properties
 
@@ -2649,6 +2749,9 @@ export namespace Libosinfo {
     }
 
     namespace Loader {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2656,6 +2759,7 @@ export namespace Libosinfo {
 
     class Loader extends GObject.Object {
         static $gtype: GObject.GType<Loader>;
+        declare static readonly __signalSignatures: Loader.SignalSignatures;
 
         // Constructors
 
@@ -2704,6 +2808,9 @@ export namespace Libosinfo {
     }
 
     namespace Media {
+        // Signal signatures
+        interface SignalSignatures extends Entity.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Entity.ConstructorProps {
@@ -2738,6 +2845,7 @@ export namespace Libosinfo {
 
     class Media extends Entity {
         static $gtype: GObject.GType<Media>;
+        declare static readonly __signalSignatures: Media.SignalSignatures;
 
         // Properties
 
@@ -3125,6 +3233,9 @@ export namespace Libosinfo {
     }
 
     namespace MediaList {
+        // Signal signatures
+        interface SignalSignatures extends List.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends List.ConstructorProps {}
@@ -3132,6 +3243,7 @@ export namespace Libosinfo {
 
     class MediaList extends List {
         static $gtype: GObject.GType<MediaList>;
+        declare static readonly __signalSignatures: MediaList.SignalSignatures;
 
         // Constructors
 
@@ -3173,6 +3285,9 @@ export namespace Libosinfo {
     }
 
     namespace Os {
+        // Signal signatures
+        interface SignalSignatures extends Product.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Product.ConstructorProps {
@@ -3187,6 +3302,7 @@ export namespace Libosinfo {
 
     class Os extends Product {
         static $gtype: GObject.GType<Os>;
+        declare static readonly __signalSignatures: Os.SignalSignatures;
 
         // Properties
 
@@ -3428,6 +3544,9 @@ export namespace Libosinfo {
     }
 
     namespace OsList {
+        // Signal signatures
+        interface SignalSignatures extends ProductList.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ProductList.ConstructorProps {}
@@ -3435,6 +3554,7 @@ export namespace Libosinfo {
 
     class OsList extends ProductList {
         static $gtype: GObject.GType<OsList>;
+        declare static readonly __signalSignatures: OsList.SignalSignatures;
 
         // Constructors
 
@@ -3476,6 +3596,9 @@ export namespace Libosinfo {
     }
 
     namespace OsVariant {
+        // Signal signatures
+        interface SignalSignatures extends Entity.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Entity.ConstructorProps {
@@ -3485,6 +3608,7 @@ export namespace Libosinfo {
 
     class OsVariant extends Entity {
         static $gtype: GObject.GType<OsVariant>;
+        declare static readonly __signalSignatures: OsVariant.SignalSignatures;
 
         // Properties
 
@@ -3512,6 +3636,9 @@ export namespace Libosinfo {
     }
 
     namespace OsVariantList {
+        // Signal signatures
+        interface SignalSignatures extends List.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends List.ConstructorProps {}
@@ -3519,6 +3646,7 @@ export namespace Libosinfo {
 
     class OsVariantList extends List {
         static $gtype: GObject.GType<OsVariantList>;
+        declare static readonly __signalSignatures: OsVariantList.SignalSignatures;
 
         // Constructors
 
@@ -3530,6 +3658,9 @@ export namespace Libosinfo {
     }
 
     namespace Platform {
+        // Signal signatures
+        interface SignalSignatures extends Product.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Product.ConstructorProps {}
@@ -3537,6 +3668,7 @@ export namespace Libosinfo {
 
     class Platform extends Product {
         static $gtype: GObject.GType<Platform>;
+        declare static readonly __signalSignatures: Platform.SignalSignatures;
 
         // Constructors
 
@@ -3580,6 +3712,9 @@ export namespace Libosinfo {
     }
 
     namespace PlatformList {
+        // Signal signatures
+        interface SignalSignatures extends ProductList.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ProductList.ConstructorProps {}
@@ -3587,6 +3722,7 @@ export namespace Libosinfo {
 
     class PlatformList extends ProductList {
         static $gtype: GObject.GType<PlatformList>;
+        declare static readonly __signalSignatures: PlatformList.SignalSignatures;
 
         // Constructors
 
@@ -3628,6 +3764,9 @@ export namespace Libosinfo {
     }
 
     namespace Product {
+        // Signal signatures
+        interface SignalSignatures extends Entity.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Entity.ConstructorProps {
@@ -3643,6 +3782,7 @@ export namespace Libosinfo {
 
     abstract class Product extends Entity {
         static $gtype: GObject.GType<Product>;
+        declare static readonly __signalSignatures: Product.SignalSignatures;
 
         // Properties
 
@@ -3714,6 +3854,9 @@ export namespace Libosinfo {
     }
 
     namespace ProductFilter {
+        // Signal signatures
+        interface SignalSignatures extends Filter.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Filter.ConstructorProps {}
@@ -3721,6 +3864,7 @@ export namespace Libosinfo {
 
     class ProductFilter extends Filter {
         static $gtype: GObject.GType<ProductFilter>;
+        declare static readonly __signalSignatures: ProductFilter.SignalSignatures;
 
         // Constructors
 
@@ -3762,6 +3906,9 @@ export namespace Libosinfo {
     }
 
     namespace ProductList {
+        // Signal signatures
+        interface SignalSignatures extends List.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends List.ConstructorProps {}
@@ -3769,6 +3916,7 @@ export namespace Libosinfo {
 
     class ProductList extends List {
         static $gtype: GObject.GType<ProductList>;
+        declare static readonly __signalSignatures: ProductList.SignalSignatures;
 
         // Constructors
 
@@ -3810,6 +3958,9 @@ export namespace Libosinfo {
     }
 
     namespace Resources {
+        // Signal signatures
+        interface SignalSignatures extends Entity.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Entity.ConstructorProps {
@@ -3824,6 +3975,7 @@ export namespace Libosinfo {
 
     class Resources extends Entity {
         static $gtype: GObject.GType<Resources>;
+        declare static readonly __signalSignatures: Resources.SignalSignatures;
 
         // Properties
 
@@ -3921,6 +4073,9 @@ export namespace Libosinfo {
     }
 
     namespace ResourcesList {
+        // Signal signatures
+        interface SignalSignatures extends List.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends List.ConstructorProps {}
@@ -3928,6 +4083,7 @@ export namespace Libosinfo {
 
     class ResourcesList extends List {
         static $gtype: GObject.GType<ResourcesList>;
+        declare static readonly __signalSignatures: ResourcesList.SignalSignatures;
 
         // Constructors
 
@@ -3969,6 +4125,9 @@ export namespace Libosinfo {
     }
 
     namespace Tree {
+        // Signal signatures
+        interface SignalSignatures extends Entity.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Entity.ConstructorProps {
@@ -3996,6 +4155,7 @@ export namespace Libosinfo {
 
     class Tree extends Entity {
         static $gtype: GObject.GType<Tree>;
+        declare static readonly __signalSignatures: Tree.SignalSignatures;
 
         // Properties
 
@@ -4230,6 +4390,9 @@ export namespace Libosinfo {
     }
 
     namespace TreeList {
+        // Signal signatures
+        interface SignalSignatures extends List.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends List.ConstructorProps {}
@@ -4237,6 +4400,7 @@ export namespace Libosinfo {
 
     class TreeList extends List {
         static $gtype: GObject.GType<TreeList>;
+        declare static readonly __signalSignatures: TreeList.SignalSignatures;
 
         // Constructors
 

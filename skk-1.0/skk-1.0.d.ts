@@ -2192,6 +2192,9 @@ export namespace Skk {
         RELEASE_MASK,
     }
     namespace RomKanaConverter {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2206,6 +2209,7 @@ export namespace Skk {
 
     class RomKanaConverter extends GObject.Object {
         static $gtype: GObject.GType<RomKanaConverter>;
+        declare static readonly __signalSignatures: RomKanaConverter.SignalSignatures;
 
         // Properties
 
@@ -2247,6 +2251,9 @@ export namespace Skk {
     }
 
     namespace Dict {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2257,6 +2264,7 @@ export namespace Skk {
 
     abstract class Dict extends GObject.Object {
         static $gtype: GObject.GType<Dict>;
+        declare static readonly __signalSignatures: Dict.SignalSignatures;
 
         // Properties
 
@@ -2293,6 +2301,9 @@ export namespace Skk {
     }
 
     namespace EmptyDict {
+        // Signal signatures
+        interface SignalSignatures extends Dict.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Dict.ConstructorProps {}
@@ -2300,6 +2311,7 @@ export namespace Skk {
 
     class EmptyDict extends Dict {
         static $gtype: GObject.GType<EmptyDict>;
+        declare static readonly __signalSignatures: EmptyDict.SignalSignatures;
 
         // Constructors
 
@@ -2311,6 +2323,9 @@ export namespace Skk {
     }
 
     namespace FileDict {
+        // Signal signatures
+        interface SignalSignatures extends Dict.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Dict.ConstructorProps {}
@@ -2318,6 +2333,7 @@ export namespace Skk {
 
     class FileDict extends Dict {
         static $gtype: GObject.GType<FileDict>;
+        declare static readonly __signalSignatures: FileDict.SignalSignatures;
 
         // Constructors
 
@@ -2329,6 +2345,9 @@ export namespace Skk {
     }
 
     namespace CdbDict {
+        // Signal signatures
+        interface SignalSignatures extends Dict.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Dict.ConstructorProps {}
@@ -2336,6 +2355,7 @@ export namespace Skk {
 
     class CdbDict extends Dict {
         static $gtype: GObject.GType<CdbDict>;
+        declare static readonly __signalSignatures: CdbDict.SignalSignatures;
 
         // Constructors
 
@@ -2347,6 +2367,9 @@ export namespace Skk {
     }
 
     namespace UserDict {
+        // Signal signatures
+        interface SignalSignatures extends Dict.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Dict.ConstructorProps {}
@@ -2354,6 +2377,7 @@ export namespace Skk {
 
     class UserDict extends Dict {
         static $gtype: GObject.GType<UserDict>;
+        declare static readonly __signalSignatures: UserDict.SignalSignatures;
 
         // Constructors
 
@@ -2365,6 +2389,9 @@ export namespace Skk {
     }
 
     namespace SkkServ {
+        // Signal signatures
+        interface SignalSignatures extends Dict.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Dict.ConstructorProps {}
@@ -2372,6 +2399,7 @@ export namespace Skk {
 
     class SkkServ extends Dict {
         static $gtype: GObject.GType<SkkServ>;
+        declare static readonly __signalSignatures: SkkServ.SignalSignatures;
 
         // Constructors
 
@@ -2383,6 +2411,9 @@ export namespace Skk {
     }
 
     namespace KeyEvent {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2394,6 +2425,7 @@ export namespace Skk {
 
     class KeyEvent extends GObject.Object {
         static $gtype: GObject.GType<KeyEvent>;
+        declare static readonly __signalSignatures: KeyEvent.SignalSignatures;
 
         // Properties
 
@@ -2434,6 +2466,11 @@ export namespace Skk {
             (key: KeyEvent): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            forwarded: Forwarded;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2441,6 +2478,7 @@ export namespace Skk {
 
     abstract class KeyEventFilter extends GObject.Object {
         static $gtype: GObject.GType<KeyEventFilter>;
+        declare static readonly __signalSignatures: KeyEventFilter.SignalSignatures;
 
         // Constructors
 
@@ -2450,6 +2488,18 @@ export namespace Skk {
 
         // Signals
 
+        connect<K extends keyof KeyEventFilter.SignalSignatures>(
+            signal: K,
+            callback: KeyEventFilter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof KeyEventFilter.SignalSignatures>(
+            signal: K,
+            callback: KeyEventFilter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof KeyEventFilter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<KeyEventFilter.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2469,6 +2519,9 @@ export namespace Skk {
     }
 
     namespace Rule {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2478,6 +2531,7 @@ export namespace Skk {
 
     class Rule extends GObject.Object {
         static $gtype: GObject.GType<Rule>;
+        declare static readonly __signalSignatures: Rule.SignalSignatures;
 
         // Properties
 
@@ -2519,6 +2573,12 @@ export namespace Skk {
             (offset: number, nchars: number): boolean;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'retrieve-surrounding-text': RetrieveSurroundingText;
+            'delete-surrounding-text': DeleteSurroundingText;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2541,6 +2601,7 @@ export namespace Skk {
 
     class Context extends GObject.Object {
         static $gtype: GObject.GType<Context>;
+        declare static readonly __signalSignatures: Context.SignalSignatures;
 
         // Properties
 
@@ -2580,6 +2641,15 @@ export namespace Skk {
 
         // Signals
 
+        connect<K extends keyof Context.SignalSignatures>(signal: K, callback: Context.SignalSignatures[K]): number;
+        connect_after<K extends keyof Context.SignalSignatures>(
+            signal: K,
+            callback: Context.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Context.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Context.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2633,6 +2703,9 @@ export namespace Skk {
     }
 
     namespace Candidate {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2646,6 +2719,7 @@ export namespace Skk {
 
     class Candidate extends GObject.Object {
         static $gtype: GObject.GType<Candidate>;
+        declare static readonly __signalSignatures: Candidate.SignalSignatures;
 
         // Properties
 
@@ -2698,6 +2772,12 @@ export namespace Skk {
             (candidate: Candidate): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            populated: Populated;
+            selected: Selected;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2715,6 +2795,7 @@ export namespace Skk {
 
     abstract class CandidateList extends GObject.Object {
         static $gtype: GObject.GType<CandidateList>;
+        declare static readonly __signalSignatures: CandidateList.SignalSignatures;
 
         // Properties
 
@@ -2740,6 +2821,18 @@ export namespace Skk {
 
         // Signals
 
+        connect<K extends keyof CandidateList.SignalSignatures>(
+            signal: K,
+            callback: CandidateList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CandidateList.SignalSignatures>(
+            signal: K,
+            callback: CandidateList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CandidateList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CandidateList.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2797,6 +2890,9 @@ export namespace Skk {
     }
 
     namespace NicolaKeyEventFilter {
+        // Signal signatures
+        interface SignalSignatures extends KeyEventFilter.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends KeyEventFilter.ConstructorProps {}
@@ -2804,6 +2900,7 @@ export namespace Skk {
 
     class NicolaKeyEventFilter extends KeyEventFilter {
         static $gtype: GObject.GType<NicolaKeyEventFilter>;
+        declare static readonly __signalSignatures: NicolaKeyEventFilter.SignalSignatures;
 
         // Fields
 

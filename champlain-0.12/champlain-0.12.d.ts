@@ -211,6 +211,11 @@ export namespace Champlain {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            changed: Changed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -229,6 +234,7 @@ export namespace Champlain {
      */
     class Adjustment extends GObject.Object {
         static $gtype: GObject.GType<Adjustment>;
+        declare static readonly __signalSignatures: Adjustment.SignalSignatures;
 
         // Properties
 
@@ -253,6 +259,18 @@ export namespace Champlain {
 
         // Signals
 
+        connect<K extends keyof Adjustment.SignalSignatures>(
+            signal: K,
+            callback: Adjustment.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Adjustment.SignalSignatures>(
+            signal: K,
+            callback: Adjustment.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Adjustment.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Adjustment.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -276,6 +294,9 @@ export namespace Champlain {
     }
 
     namespace Coordinate {
+        // Signal signatures
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps, Location.ConstructorProps {}
@@ -287,6 +308,7 @@ export namespace Champlain {
      */
     class Coordinate extends GObject.InitiallyUnowned implements Location {
         static $gtype: GObject.GType<Coordinate>;
+        declare static readonly __signalSignatures: Coordinate.SignalSignatures;
 
         // Constructors
 
@@ -783,6 +805,9 @@ export namespace Champlain {
     }
 
     namespace CustomMarker {
+        // Signal signatures
+        interface SignalSignatures extends Marker.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -803,6 +828,7 @@ export namespace Champlain {
         implements Atk.ImplementorIface, Location, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
         static $gtype: GObject.GType<CustomMarker>;
+        declare static readonly __signalSignatures: CustomMarker.SignalSignatures;
 
         // Constructors
 
@@ -1297,6 +1323,9 @@ export namespace Champlain {
     }
 
     namespace ErrorTileRenderer {
+        // Signal signatures
+        interface SignalSignatures extends Renderer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Renderer.ConstructorProps {
@@ -1311,6 +1340,7 @@ export namespace Champlain {
      */
     class ErrorTileRenderer extends Renderer {
         static $gtype: GObject.GType<ErrorTileRenderer>;
+        declare static readonly __signalSignatures: ErrorTileRenderer.SignalSignatures;
 
         // Properties
 
@@ -1348,6 +1378,9 @@ export namespace Champlain {
     }
 
     namespace FileCache {
+        // Signal signatures
+        interface SignalSignatures extends TileCache.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends TileCache.ConstructorProps {
@@ -1364,6 +1397,7 @@ export namespace Champlain {
      */
     class FileCache extends TileCache {
         static $gtype: GObject.GType<FileCache>;
+        declare static readonly __signalSignatures: FileCache.SignalSignatures;
 
         // Properties
 
@@ -1427,6 +1461,9 @@ export namespace Champlain {
     }
 
     namespace FileTileSource {
+        // Signal signatures
+        interface SignalSignatures extends TileSource.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends TileSource.ConstructorProps {}
@@ -1438,6 +1475,7 @@ export namespace Champlain {
      */
     class FileTileSource extends TileSource {
         static $gtype: GObject.GType<FileTileSource>;
+        declare static readonly __signalSignatures: FileTileSource.SignalSignatures;
 
         // Constructors
 
@@ -1467,6 +1505,9 @@ export namespace Champlain {
     }
 
     namespace ImageRenderer {
+        // Signal signatures
+        interface SignalSignatures extends Renderer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Renderer.ConstructorProps {}
@@ -1478,6 +1519,7 @@ export namespace Champlain {
      */
     class ImageRenderer extends Renderer {
         static $gtype: GObject.GType<ImageRenderer>;
+        declare static readonly __signalSignatures: ImageRenderer.SignalSignatures;
 
         // Constructors
 
@@ -1493,6 +1535,11 @@ export namespace Champlain {
 
         interface PanningCompleted {
             (): void;
+        }
+
+        // Signal signatures
+        interface SignalSignatures extends Clutter.Actor.SignalSignatures {
+            'panning-completed': PanningCompleted;
         }
 
         // Constructor properties interface
@@ -1516,6 +1563,7 @@ export namespace Champlain {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
         static $gtype: GObject.GType<KineticScrollView>;
+        declare static readonly __signalSignatures: KineticScrollView.SignalSignatures;
 
         // Properties
 
@@ -1543,6 +1591,18 @@ export namespace Champlain {
 
         // Signals
 
+        connect<K extends keyof KineticScrollView.SignalSignatures>(
+            signal: K,
+            callback: KineticScrollView.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof KineticScrollView.SignalSignatures>(
+            signal: K,
+            callback: KineticScrollView.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof KineticScrollView.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<KineticScrollView.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2438,6 +2498,9 @@ export namespace Champlain {
     }
 
     namespace Label {
+        // Signal signatures
+        interface SignalSignatures extends Marker.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2479,6 +2542,7 @@ export namespace Champlain {
         implements Atk.ImplementorIface, Location, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
         static $gtype: GObject.GType<Label>;
+        declare static readonly __signalSignatures: Label.SignalSignatures;
 
         // Properties
 
@@ -3232,6 +3296,9 @@ export namespace Champlain {
     }
 
     namespace Layer {
+        // Signal signatures
+        interface SignalSignatures extends Clutter.Actor.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3251,6 +3318,7 @@ export namespace Champlain {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
         static $gtype: GObject.GType<Layer>;
+        declare static readonly __signalSignatures: Layer.SignalSignatures;
 
         // Constructors
 
@@ -4175,6 +4243,9 @@ export namespace Champlain {
     }
 
     namespace License {
+        // Signal signatures
+        interface SignalSignatures extends Clutter.Actor.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4198,6 +4269,7 @@ export namespace Champlain {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
         static $gtype: GObject.GType<License>;
+        declare static readonly __signalSignatures: License.SignalSignatures;
 
         // Properties
 
@@ -5147,6 +5219,9 @@ export namespace Champlain {
     }
 
     namespace MapSource {
+        // Signal signatures
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
@@ -5162,6 +5237,7 @@ export namespace Champlain {
      */
     abstract class MapSource extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<MapSource>;
+        declare static readonly __signalSignatures: MapSource.SignalSignatures;
 
         // Properties
 
@@ -5352,6 +5428,9 @@ export namespace Champlain {
     }
 
     namespace MapSourceChain {
+        // Signal signatures
+        interface SignalSignatures extends MapSource.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MapSource.ConstructorProps {}
@@ -5363,6 +5442,7 @@ export namespace Champlain {
      */
     class MapSourceChain extends MapSource {
         static $gtype: GObject.GType<MapSourceChain>;
+        declare static readonly __signalSignatures: MapSourceChain.SignalSignatures;
 
         // Constructors
 
@@ -5386,6 +5466,9 @@ export namespace Champlain {
     }
 
     namespace MapSourceDesc {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5413,6 +5496,7 @@ export namespace Champlain {
      */
     class MapSourceDesc extends GObject.Object {
         static $gtype: GObject.GType<MapSourceDesc>;
+        declare static readonly __signalSignatures: MapSourceDesc.SignalSignatures;
 
         // Properties
 
@@ -5538,6 +5622,9 @@ export namespace Champlain {
     }
 
     namespace MapSourceFactory {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5549,6 +5636,7 @@ export namespace Champlain {
      */
     class MapSourceFactory extends GObject.Object {
         static $gtype: GObject.GType<MapSourceFactory>;
+        declare static readonly __signalSignatures: MapSourceFactory.SignalSignatures;
 
         // Constructors
 
@@ -5625,6 +5713,14 @@ export namespace Champlain {
             (dx: number, dy: number, event: Clutter.Event): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Clutter.Actor.SignalSignatures {
+            'button-press': ButtonPress;
+            'button-release': ButtonRelease;
+            'drag-finish': DragFinish;
+            'drag-motion': DragMotion;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5649,6 +5745,7 @@ export namespace Champlain {
         implements Atk.ImplementorIface, Location, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
         static $gtype: GObject.GType<Marker>;
+        declare static readonly __signalSignatures: Marker.SignalSignatures;
 
         // Properties
 
@@ -5678,6 +5775,9 @@ export namespace Champlain {
 
         // Signals
 
+        connect<K extends keyof Marker.SignalSignatures>(signal: K, callback: Marker.SignalSignatures[K]): number;
+        connect_after<K extends keyof Marker.SignalSignatures>(signal: K, callback: Marker.SignalSignatures[K]): number;
+        emit<K extends keyof Marker.SignalSignatures>(signal: K, ...args: Parameters<Marker.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -6703,6 +6803,9 @@ export namespace Champlain {
     }
 
     namespace MarkerLayer {
+        // Signal signatures
+        interface SignalSignatures extends Layer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6726,6 +6829,7 @@ export namespace Champlain {
         implements Atk.ImplementorIface, Exportable, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
         static $gtype: GObject.GType<MarkerLayer>;
+        declare static readonly __signalSignatures: MarkerLayer.SignalSignatures;
 
         // Properties
 
@@ -7292,6 +7396,9 @@ export namespace Champlain {
     }
 
     namespace MemoryCache {
+        // Signal signatures
+        interface SignalSignatures extends TileCache.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends TileCache.ConstructorProps {
@@ -7306,6 +7413,7 @@ export namespace Champlain {
      */
     class MemoryCache extends TileCache {
         static $gtype: GObject.GType<MemoryCache>;
+        declare static readonly __signalSignatures: MemoryCache.SignalSignatures;
 
         // Properties
 
@@ -7347,6 +7455,9 @@ export namespace Champlain {
     }
 
     namespace NetworkBboxTileSource {
+        // Signal signatures
+        interface SignalSignatures extends TileSource.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends TileSource.ConstructorProps {
@@ -7366,6 +7477,7 @@ export namespace Champlain {
      */
     class NetworkBboxTileSource extends TileSource {
         static $gtype: GObject.GType<NetworkBboxTileSource>;
+        declare static readonly __signalSignatures: NetworkBboxTileSource.SignalSignatures;
 
         // Properties
 
@@ -7453,6 +7565,9 @@ export namespace Champlain {
     }
 
     namespace NetworkTileSource {
+        // Signal signatures
+        interface SignalSignatures extends TileSource.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends TileSource.ConstructorProps {
@@ -7474,6 +7589,7 @@ export namespace Champlain {
      */
     class NetworkTileSource extends TileSource {
         static $gtype: GObject.GType<NetworkTileSource>;
+        declare static readonly __signalSignatures: NetworkTileSource.SignalSignatures;
 
         // Properties
 
@@ -7609,6 +7725,9 @@ export namespace Champlain {
     }
 
     namespace NullTileSource {
+        // Signal signatures
+        interface SignalSignatures extends TileSource.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends TileSource.ConstructorProps {}
@@ -7620,6 +7739,7 @@ export namespace Champlain {
      */
     class NullTileSource extends TileSource {
         static $gtype: GObject.GType<NullTileSource>;
+        declare static readonly __signalSignatures: NullTileSource.SignalSignatures;
 
         // Constructors
 
@@ -7631,6 +7751,9 @@ export namespace Champlain {
     }
 
     namespace PathLayer {
+        // Signal signatures
+        interface SignalSignatures extends Layer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7662,6 +7785,7 @@ export namespace Champlain {
         implements Atk.ImplementorIface, Exportable, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
         static $gtype: GObject.GType<PathLayer>;
+        declare static readonly __signalSignatures: PathLayer.SignalSignatures;
 
         // Properties
 
@@ -8307,6 +8431,9 @@ export namespace Champlain {
     }
 
     namespace Point {
+        // Signal signatures
+        interface SignalSignatures extends Marker.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -8331,6 +8458,7 @@ export namespace Champlain {
         implements Atk.ImplementorIface, Exportable, Location, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
         static $gtype: GObject.GType<Point>;
+        declare static readonly __signalSignatures: Point.SignalSignatures;
 
         // Properties
 
@@ -8885,6 +9013,9 @@ export namespace Champlain {
     }
 
     namespace Renderer {
+        // Signal signatures
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {}
@@ -8896,6 +9027,7 @@ export namespace Champlain {
      */
     class Renderer extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<Renderer>;
+        declare static readonly __signalSignatures: Renderer.SignalSignatures;
 
         // Constructors
 
@@ -8939,6 +9071,9 @@ export namespace Champlain {
     }
 
     namespace Scale {
+        // Signal signatures
+        interface SignalSignatures extends Clutter.Actor.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -8962,6 +9097,7 @@ export namespace Champlain {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
         static $gtype: GObject.GType<Scale>;
+        declare static readonly __signalSignatures: Scale.SignalSignatures;
 
         // Properties
 
@@ -9912,6 +10048,11 @@ export namespace Champlain {
             (data: any | null, size: number, error: boolean): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Clutter.Actor.SignalSignatures {
+            'render-complete': RenderComplete;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9943,6 +10084,7 @@ export namespace Champlain {
         implements Atk.ImplementorIface, Exportable, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
         static $gtype: GObject.GType<Tile>;
+        declare static readonly __signalSignatures: Tile.SignalSignatures;
 
         // Properties
 
@@ -10016,6 +10158,9 @@ export namespace Champlain {
 
         // Signals
 
+        connect<K extends keyof Tile.SignalSignatures>(signal: K, callback: Tile.SignalSignatures[K]): number;
+        connect_after<K extends keyof Tile.SignalSignatures>(signal: K, callback: Tile.SignalSignatures[K]): number;
+        emit<K extends keyof Tile.SignalSignatures>(signal: K, ...args: Parameters<Tile.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -11043,6 +11188,9 @@ export namespace Champlain {
     }
 
     namespace TileCache {
+        // Signal signatures
+        interface SignalSignatures extends MapSource.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MapSource.ConstructorProps {}
@@ -11054,6 +11202,7 @@ export namespace Champlain {
      */
     abstract class TileCache extends MapSource {
         static $gtype: GObject.GType<TileCache>;
+        declare static readonly __signalSignatures: TileCache.SignalSignatures;
 
         // Constructors
 
@@ -11115,6 +11264,9 @@ export namespace Champlain {
     }
 
     namespace TileSource {
+        // Signal signatures
+        interface SignalSignatures extends MapSource.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MapSource.ConstructorProps {
@@ -11140,6 +11292,7 @@ export namespace Champlain {
      */
     abstract class TileSource extends MapSource {
         static $gtype: GObject.GType<TileSource>;
+        declare static readonly __signalSignatures: TileSource.SignalSignatures;
 
         // Properties
 
@@ -11280,6 +11433,12 @@ export namespace Champlain {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Clutter.Actor.SignalSignatures {
+            'animation-completed': AnimationCompleted;
+            'layer-relocated': LayerRelocated;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -11329,6 +11488,7 @@ export namespace Champlain {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
         static $gtype: GObject.GType<View>;
+        declare static readonly __signalSignatures: View.SignalSignatures;
 
         // Properties
 
@@ -11506,6 +11666,9 @@ export namespace Champlain {
 
         // Signals
 
+        connect<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
+        connect_after<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
+        emit<K extends keyof View.SignalSignatures>(signal: K, ...args: Parameters<View.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -12698,6 +12861,11 @@ export namespace Champlain {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Clutter.Actor.SignalSignatures {
+            relocated: Relocated;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -12720,6 +12888,7 @@ export namespace Champlain {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
         static $gtype: GObject.GType<Viewport>;
+        declare static readonly __signalSignatures: Viewport.SignalSignatures;
 
         // Properties
 
@@ -12746,6 +12915,15 @@ export namespace Champlain {
 
         // Signals
 
+        connect<K extends keyof Viewport.SignalSignatures>(signal: K, callback: Viewport.SignalSignatures[K]): number;
+        connect_after<K extends keyof Viewport.SignalSignatures>(
+            signal: K,
+            callback: Viewport.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Viewport.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Viewport.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

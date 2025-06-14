@@ -86,6 +86,9 @@ export namespace TelepathyLogger {
         ANY,
     }
     namespace CallEvent {
+        // Signal signatures
+        interface SignalSignatures extends Event.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Event.ConstructorProps {
@@ -104,6 +107,7 @@ export namespace TelepathyLogger {
      */
     class CallEvent extends Event {
         static $gtype: GObject.GType<CallEvent>;
+        declare static readonly __signalSignatures: CallEvent.SignalSignatures;
 
         // Properties
 
@@ -130,6 +134,9 @@ export namespace TelepathyLogger {
     }
 
     namespace Entity {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -146,6 +153,7 @@ export namespace TelepathyLogger {
      */
     class Entity extends GObject.Object {
         static $gtype: GObject.GType<Entity>;
+        declare static readonly __signalSignatures: Entity.SignalSignatures;
 
         // Properties
 
@@ -191,6 +199,9 @@ export namespace TelepathyLogger {
     }
 
     namespace Event {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -210,6 +221,7 @@ export namespace TelepathyLogger {
      */
     abstract class Event extends GObject.Object {
         static $gtype: GObject.GType<Event>;
+        declare static readonly __signalSignatures: Event.SignalSignatures;
 
         // Properties
 
@@ -252,6 +264,9 @@ export namespace TelepathyLogger {
     }
 
     namespace LogManager {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -262,6 +277,7 @@ export namespace TelepathyLogger {
      */
     class LogManager extends GObject.Object {
         static $gtype: GObject.GType<LogManager>;
+        declare static readonly __signalSignatures: LogManager.SignalSignatures;
 
         // Fields
 
@@ -517,6 +533,9 @@ export namespace TelepathyLogger {
     }
 
     namespace LogWalker {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -531,6 +550,7 @@ export namespace TelepathyLogger {
      */
     class LogWalker extends GObject.Object {
         static $gtype: GObject.GType<LogWalker>;
+        declare static readonly __signalSignatures: LogWalker.SignalSignatures;
 
         // Properties
 
@@ -601,6 +621,9 @@ export namespace TelepathyLogger {
     }
 
     namespace TextEvent {
+        // Signal signatures
+        interface SignalSignatures extends Event.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Event.ConstructorProps {
@@ -621,6 +644,7 @@ export namespace TelepathyLogger {
      */
     class TextEvent extends Event {
         static $gtype: GObject.GType<TextEvent>;
+        declare static readonly __signalSignatures: TextEvent.SignalSignatures;
 
         // Properties
 

@@ -31,6 +31,9 @@ export namespace EpcUi {
      */
 
     namespace PasswordDialog {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Dialog.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -51,6 +54,7 @@ export namespace EpcUi {
      */
     class PasswordDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<PasswordDialog>;
+        declare static readonly __signalSignatures: PasswordDialog.SignalSignatures;
 
         // Properties
 
@@ -530,6 +534,9 @@ export namespace EpcUi {
     }
 
     namespace ProgressWindow {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Window.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -547,6 +554,7 @@ export namespace EpcUi {
      */
     class ProgressWindow extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ProgressWindow>;
+        declare static readonly __signalSignatures: ProgressWindow.SignalSignatures;
 
         // Properties
 

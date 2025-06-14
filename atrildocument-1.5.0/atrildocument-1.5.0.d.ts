@@ -407,6 +407,9 @@ export namespace AtrilDocument {
         NUMBER_UP,
     }
     namespace Annotation {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -421,6 +424,7 @@ export namespace AtrilDocument {
 
     abstract class Annotation extends GObject.Object {
         static $gtype: GObject.GType<Annotation>;
+        declare static readonly __signalSignatures: Annotation.SignalSignatures;
 
         // Properties
 
@@ -547,6 +551,9 @@ export namespace AtrilDocument {
     }
 
     namespace AnnotationAttachment {
+        // Signal signatures
+        interface SignalSignatures extends Annotation.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Annotation.ConstructorProps, AnnotationMarkup.ConstructorProps {
@@ -556,6 +563,7 @@ export namespace AtrilDocument {
 
     class AnnotationAttachment extends Annotation implements AnnotationMarkup {
         static $gtype: GObject.GType<AnnotationAttachment>;
+        declare static readonly __signalSignatures: AnnotationAttachment.SignalSignatures;
 
         // Properties
 
@@ -715,6 +723,9 @@ export namespace AtrilDocument {
     }
 
     namespace AnnotationText {
+        // Signal signatures
+        interface SignalSignatures extends Annotation.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Annotation.ConstructorProps, AnnotationMarkup.ConstructorProps {
@@ -726,6 +737,7 @@ export namespace AtrilDocument {
 
     class AnnotationText extends Annotation implements AnnotationMarkup {
         static $gtype: GObject.GType<AnnotationText>;
+        declare static readonly __signalSignatures: AnnotationText.SignalSignatures;
 
         // Properties
 
@@ -891,6 +903,9 @@ export namespace AtrilDocument {
     }
 
     namespace Attachment {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -905,6 +920,7 @@ export namespace AtrilDocument {
 
     class Attachment extends GObject.Object {
         static $gtype: GObject.GType<Attachment>;
+        declare static readonly __signalSignatures: Attachment.SignalSignatures;
 
         // Properties
 
@@ -950,6 +966,9 @@ export namespace AtrilDocument {
     }
 
     namespace Document {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -957,6 +976,7 @@ export namespace AtrilDocument {
 
     abstract class Document extends GObject.Object {
         static $gtype: GObject.GType<Document>;
+        declare static readonly __signalSignatures: Document.SignalSignatures;
 
         // Fields
 
@@ -1110,6 +1130,9 @@ export namespace AtrilDocument {
     }
 
     namespace FormField {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1117,6 +1140,7 @@ export namespace AtrilDocument {
 
     abstract class FormField extends GObject.Object {
         static $gtype: GObject.GType<FormField>;
+        declare static readonly __signalSignatures: FormField.SignalSignatures;
 
         // Fields
 
@@ -1135,6 +1159,9 @@ export namespace AtrilDocument {
     }
 
     namespace FormFieldButton {
+        // Signal signatures
+        interface SignalSignatures extends FormField.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FormField.ConstructorProps {}
@@ -1142,6 +1169,7 @@ export namespace AtrilDocument {
 
     class FormFieldButton extends FormField {
         static $gtype: GObject.GType<FormFieldButton>;
+        declare static readonly __signalSignatures: FormFieldButton.SignalSignatures;
 
         // Fields
 
@@ -1159,6 +1187,9 @@ export namespace AtrilDocument {
     }
 
     namespace FormFieldChoice {
+        // Signal signatures
+        interface SignalSignatures extends FormField.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FormField.ConstructorProps {}
@@ -1166,6 +1197,7 @@ export namespace AtrilDocument {
 
     class FormFieldChoice extends FormField {
         static $gtype: GObject.GType<FormFieldChoice>;
+        declare static readonly __signalSignatures: FormFieldChoice.SignalSignatures;
 
         // Fields
 
@@ -1188,6 +1220,9 @@ export namespace AtrilDocument {
     }
 
     namespace FormFieldSignature {
+        // Signal signatures
+        interface SignalSignatures extends FormField.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FormField.ConstructorProps {}
@@ -1195,6 +1230,7 @@ export namespace AtrilDocument {
 
     class FormFieldSignature extends FormField {
         static $gtype: GObject.GType<FormFieldSignature>;
+        declare static readonly __signalSignatures: FormFieldSignature.SignalSignatures;
 
         // Fields
 
@@ -1210,6 +1246,9 @@ export namespace AtrilDocument {
     }
 
     namespace FormFieldText {
+        // Signal signatures
+        interface SignalSignatures extends FormField.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FormField.ConstructorProps {}
@@ -1217,6 +1256,7 @@ export namespace AtrilDocument {
 
     class FormFieldText extends FormField {
         static $gtype: GObject.GType<FormFieldText>;
+        declare static readonly __signalSignatures: FormFieldText.SignalSignatures;
 
         // Fields
 
@@ -1240,6 +1280,9 @@ export namespace AtrilDocument {
     }
 
     namespace Image {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1247,6 +1290,7 @@ export namespace AtrilDocument {
 
     class Image extends GObject.Object {
         static $gtype: GObject.GType<Image>;
+        declare static readonly __signalSignatures: Image.SignalSignatures;
 
         // Fields
 
@@ -1271,6 +1315,9 @@ export namespace AtrilDocument {
     }
 
     namespace Layer {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1278,6 +1325,7 @@ export namespace AtrilDocument {
 
     class Layer extends GObject.Object {
         static $gtype: GObject.GType<Layer>;
+        declare static readonly __signalSignatures: Layer.SignalSignatures;
 
         // Fields
 
@@ -1298,6 +1346,9 @@ export namespace AtrilDocument {
     }
 
     namespace Link {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1308,6 +1359,7 @@ export namespace AtrilDocument {
 
     class Link extends GObject.Object {
         static $gtype: GObject.GType<Link>;
+        declare static readonly __signalSignatures: Link.SignalSignatures;
 
         // Properties
 
@@ -1328,6 +1380,9 @@ export namespace AtrilDocument {
     }
 
     namespace LinkAction {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1348,6 +1403,7 @@ export namespace AtrilDocument {
 
     class LinkAction extends GObject.Object {
         static $gtype: GObject.GType<LinkAction>;
+        declare static readonly __signalSignatures: LinkAction.SignalSignatures;
 
         // Properties
 
@@ -1390,6 +1446,9 @@ export namespace AtrilDocument {
     }
 
     namespace LinkDest {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1409,6 +1468,7 @@ export namespace AtrilDocument {
 
     class LinkDest extends GObject.Object {
         static $gtype: GObject.GType<LinkDest>;
+        declare static readonly __signalSignatures: LinkDest.SignalSignatures;
 
         // Properties
 
@@ -1470,6 +1530,9 @@ export namespace AtrilDocument {
     }
 
     namespace Page {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1477,6 +1540,7 @@ export namespace AtrilDocument {
 
     class Page extends GObject.Object {
         static $gtype: GObject.GType<Page>;
+        declare static readonly __signalSignatures: Page.SignalSignatures;
 
         // Fields
 
@@ -1495,6 +1559,9 @@ export namespace AtrilDocument {
     }
 
     namespace RenderContext {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1502,6 +1569,7 @@ export namespace AtrilDocument {
 
     class RenderContext extends GObject.Object {
         static $gtype: GObject.GType<RenderContext>;
+        declare static readonly __signalSignatures: RenderContext.SignalSignatures;
 
         // Fields
 
@@ -1525,6 +1593,9 @@ export namespace AtrilDocument {
     }
 
     namespace TransitionEffect {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1540,6 +1611,7 @@ export namespace AtrilDocument {
 
     class TransitionEffect extends GObject.Object {
         static $gtype: GObject.GType<TransitionEffect>;
+        declare static readonly __signalSignatures: TransitionEffect.SignalSignatures;
 
         // Properties
 

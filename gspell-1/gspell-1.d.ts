@@ -80,6 +80,13 @@ export namespace Gspell {
             (word: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'session-cleared': SessionCleared;
+            'word-added-to-personal': WordAddedToPersonal;
+            'word-added-to-session': WordAddedToSession;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -89,6 +96,7 @@ export namespace Gspell {
 
     class Checker extends GObject.Object {
         static $gtype: GObject.GType<Checker>;
+        declare static readonly __signalSignatures: Checker.SignalSignatures;
 
         // Properties
 
@@ -108,6 +116,15 @@ export namespace Gspell {
 
         // Signals
 
+        connect<K extends keyof Checker.SignalSignatures>(signal: K, callback: Checker.SignalSignatures[K]): number;
+        connect_after<K extends keyof Checker.SignalSignatures>(
+            signal: K,
+            callback: Checker.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Checker.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Checker.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -185,6 +202,9 @@ export namespace Gspell {
     }
 
     namespace CheckerDialog {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Dialog.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -198,6 +218,7 @@ export namespace Gspell {
 
     class CheckerDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<CheckerDialog>;
+        declare static readonly __signalSignatures: CheckerDialog.SignalSignatures;
 
         // Properties
 
@@ -668,6 +689,9 @@ export namespace Gspell {
     }
 
     namespace Entry {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -679,6 +703,7 @@ export namespace Gspell {
 
     class Entry extends GObject.Object {
         static $gtype: GObject.GType<Entry>;
+        declare static readonly __signalSignatures: Entry.SignalSignatures;
 
         // Properties
 
@@ -770,6 +795,9 @@ export namespace Gspell {
     }
 
     namespace EntryBuffer {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -781,6 +809,7 @@ export namespace Gspell {
 
     class EntryBuffer extends GObject.Object {
         static $gtype: GObject.GType<EntryBuffer>;
+        declare static readonly __signalSignatures: EntryBuffer.SignalSignatures;
 
         // Properties
 
@@ -828,6 +857,9 @@ export namespace Gspell {
     }
 
     namespace LanguageChooserButton {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Button.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -844,6 +876,7 @@ export namespace Gspell {
         implements Atk.ImplementorIface, LanguageChooser, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<LanguageChooserButton>;
+        declare static readonly __signalSignatures: LanguageChooserButton.SignalSignatures;
 
         // Constructors
 
@@ -5411,6 +5444,9 @@ export namespace Gspell {
     }
 
     namespace LanguageChooserDialog {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Dialog.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5422,6 +5458,7 @@ export namespace Gspell {
 
     class LanguageChooserDialog extends Gtk.Dialog implements Atk.ImplementorIface, LanguageChooser, Gtk.Buildable {
         static $gtype: GObject.GType<LanguageChooserDialog>;
+        declare static readonly __signalSignatures: LanguageChooserDialog.SignalSignatures;
 
         // Constructors
 
@@ -5916,6 +5953,9 @@ export namespace Gspell {
     }
 
     namespace NavigatorTextView {
+        // Signal signatures
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps, Navigator.ConstructorProps {
@@ -5925,6 +5965,7 @@ export namespace Gspell {
 
     class NavigatorTextView extends GObject.InitiallyUnowned implements Navigator {
         static $gtype: GObject.GType<NavigatorTextView>;
+        declare static readonly __signalSignatures: NavigatorTextView.SignalSignatures;
 
         // Properties
 
@@ -6005,6 +6046,9 @@ export namespace Gspell {
     }
 
     namespace TextBuffer {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6016,6 +6060,7 @@ export namespace Gspell {
 
     class TextBuffer extends GObject.Object {
         static $gtype: GObject.GType<TextBuffer>;
+        declare static readonly __signalSignatures: TextBuffer.SignalSignatures;
 
         // Properties
 
@@ -6063,6 +6108,9 @@ export namespace Gspell {
     }
 
     namespace TextView {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6076,6 +6124,7 @@ export namespace Gspell {
 
     class TextView extends GObject.Object {
         static $gtype: GObject.GType<TextView>;
+        declare static readonly __signalSignatures: TextView.SignalSignatures;
 
         // Properties
 

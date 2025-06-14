@@ -153,6 +153,9 @@ export namespace AppStreamBuilder {
         ADD_DEFAULT_ICONS,
     }
     namespace App {
+        // Signal signatures
+        interface SignalSignatures extends AppStreamGlib.App.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends AppStreamGlib.App.ConstructorProps {}
@@ -160,6 +163,7 @@ export namespace AppStreamBuilder {
 
     class App extends AppStreamGlib.App {
         static $gtype: GObject.GType<App>;
+        declare static readonly __signalSignatures: App.SignalSignatures;
 
         // Constructors
 
@@ -198,6 +202,9 @@ export namespace AppStreamBuilder {
     }
 
     namespace Context {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -205,6 +212,7 @@ export namespace AppStreamBuilder {
 
     class Context extends GObject.Object {
         static $gtype: GObject.GType<Context>;
+        declare static readonly __signalSignatures: Context.SignalSignatures;
 
         // Constructors
 
@@ -357,6 +365,9 @@ export namespace AppStreamBuilder {
     }
 
     namespace Package {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -364,6 +375,7 @@ export namespace AppStreamBuilder {
 
     class Package extends GObject.Object {
         static $gtype: GObject.GType<Package>;
+        declare static readonly __signalSignatures: Package.SignalSignatures;
 
         // Constructors
 
@@ -655,6 +667,9 @@ export namespace AppStreamBuilder {
     }
 
     namespace Task {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -662,6 +677,7 @@ export namespace AppStreamBuilder {
 
     class Task extends GObject.Object {
         static $gtype: GObject.GType<Task>;
+        declare static readonly __signalSignatures: Task.SignalSignatures;
 
         // Constructors
 

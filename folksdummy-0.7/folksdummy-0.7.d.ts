@@ -23,6 +23,9 @@ export namespace FolksDummy {
      */
 
     namespace Backend {
+        // Signal signatures
+        interface SignalSignatures extends Folks.Backend.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Folks.Backend.ConstructorProps {}
@@ -30,6 +33,7 @@ export namespace FolksDummy {
 
     class Backend extends Folks.Backend {
         static $gtype: GObject.GType<Backend>;
+        declare static readonly __signalSignatures: Backend.SignalSignatures;
 
         // Constructors
 
@@ -46,6 +50,9 @@ export namespace FolksDummy {
     }
 
     namespace FullPersona {
+        // Signal signatures
+        interface SignalSignatures extends Persona.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -89,6 +96,7 @@ export namespace FolksDummy {
             Folks.WebServiceDetails
     {
         static $gtype: GObject.GType<FullPersona>;
+        declare static readonly __signalSignatures: FullPersona.SignalSignatures;
 
         // Constructors
 
@@ -927,6 +935,9 @@ export namespace FolksDummy {
     }
 
     namespace PersonaStore {
+        // Signal signatures
+        interface SignalSignatures extends Folks.PersonaStore.SignalSignatures {}
+
         interface AddPersonaFromDetailsMock {
             (persona: Persona): number;
         }
@@ -947,6 +958,7 @@ export namespace FolksDummy {
 
     class PersonaStore extends Folks.PersonaStore {
         static $gtype: GObject.GType<PersonaStore>;
+        declare static readonly __signalSignatures: PersonaStore.SignalSignatures;
 
         // Properties
 
@@ -985,6 +997,9 @@ export namespace FolksDummy {
     }
 
     namespace Persona {
+        // Signal signatures
+        interface SignalSignatures extends Folks.Persona.SignalSignatures {}
+
         interface ChangePropertyCallback {
             (): void;
         }
@@ -999,6 +1014,7 @@ export namespace FolksDummy {
 
     class Persona extends Folks.Persona {
         static $gtype: GObject.GType<Persona>;
+        declare static readonly __signalSignatures: Persona.SignalSignatures;
 
         // Properties
 

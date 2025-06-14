@@ -470,6 +470,9 @@ export namespace Xmlb {
         OPTIMIZER,
     }
     namespace Builder {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -477,6 +480,7 @@ export namespace Xmlb {
 
     class Builder extends GObject.Object {
         static $gtype: GObject.GType<Builder>;
+        declare static readonly __signalSignatures: Builder.SignalSignatures;
 
         // Constructors
 
@@ -555,6 +559,9 @@ export namespace Xmlb {
     }
 
     namespace BuilderFixup {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -562,6 +569,7 @@ export namespace Xmlb {
 
     class BuilderFixup extends GObject.Object {
         static $gtype: GObject.GType<BuilderFixup>;
+        declare static readonly __signalSignatures: BuilderFixup.SignalSignatures;
 
         // Constructors
 
@@ -590,6 +598,9 @@ export namespace Xmlb {
     }
 
     namespace BuilderNode {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -597,6 +608,7 @@ export namespace Xmlb {
 
     class BuilderNode extends GObject.Object {
         static $gtype: GObject.GType<BuilderNode>;
+        declare static readonly __signalSignatures: BuilderNode.SignalSignatures;
 
         // Constructors
 
@@ -786,6 +798,9 @@ export namespace Xmlb {
     }
 
     namespace BuilderSource {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -793,6 +808,7 @@ export namespace Xmlb {
 
     class BuilderSource extends GObject.Object {
         static $gtype: GObject.GType<BuilderSource>;
+        declare static readonly __signalSignatures: BuilderSource.SignalSignatures;
 
         // Constructors
 
@@ -846,6 +862,9 @@ export namespace Xmlb {
     }
 
     namespace BuilderSourceCtx {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -853,6 +872,7 @@ export namespace Xmlb {
 
     class BuilderSourceCtx extends GObject.Object {
         static $gtype: GObject.GType<BuilderSourceCtx>;
+        declare static readonly __signalSignatures: BuilderSourceCtx.SignalSignatures;
 
         // Constructors
 
@@ -885,6 +905,9 @@ export namespace Xmlb {
     }
 
     namespace Machine {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -892,6 +915,7 @@ export namespace Xmlb {
 
     class Machine extends GObject.Object {
         static $gtype: GObject.GType<Machine>;
+        declare static readonly __signalSignatures: Machine.SignalSignatures;
 
         // Constructors
 
@@ -1064,6 +1088,9 @@ export namespace Xmlb {
     }
 
     namespace Node {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1071,6 +1098,7 @@ export namespace Xmlb {
 
     class Node extends GObject.Object {
         static $gtype: GObject.GType<Node>;
+        declare static readonly __signalSignatures: Node.SignalSignatures;
 
         // Constructors
 
@@ -1322,6 +1350,9 @@ export namespace Xmlb {
     }
 
     namespace Query {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1329,6 +1360,7 @@ export namespace Xmlb {
 
     class Query extends GObject.Object {
         static $gtype: GObject.GType<Query>;
+        declare static readonly __signalSignatures: Query.SignalSignatures;
 
         // Constructors
 
@@ -1384,6 +1416,9 @@ export namespace Xmlb {
     }
 
     namespace Silo {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1396,6 +1431,7 @@ export namespace Xmlb {
 
     class Silo extends GObject.Object {
         static $gtype: GObject.GType<Silo>;
+        declare static readonly __signalSignatures: Silo.SignalSignatures;
 
         // Properties
 

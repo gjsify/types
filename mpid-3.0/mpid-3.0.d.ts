@@ -82,6 +82,9 @@ export namespace MPID {
      */
     function enable_debug(debug: boolean): void;
     namespace Device {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -124,6 +127,7 @@ export namespace MPID {
      */
     class Device extends GObject.Object {
         static $gtype: GObject.GType<Device>;
+        declare static readonly __signalSignatures: Device.SignalSignatures;
 
         // Properties
 

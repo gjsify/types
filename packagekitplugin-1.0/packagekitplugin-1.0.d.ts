@@ -167,6 +167,9 @@ export namespace PackageKitPlugin {
         (plugin: Plugin, transaction: Transaction): void;
     }
     namespace Backend {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -174,6 +177,7 @@ export namespace PackageKitPlugin {
 
     class Backend extends GObject.Object {
         static $gtype: GObject.GType<Backend>;
+        declare static readonly __signalSignatures: Backend.SignalSignatures;
 
         // Constructors
 
@@ -318,6 +322,9 @@ export namespace PackageKitPlugin {
     }
 
     namespace BackendJob {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -325,6 +332,7 @@ export namespace PackageKitPlugin {
 
     class BackendJob extends GObject.Object {
         static $gtype: GObject.GType<BackendJob>;
+        declare static readonly __signalSignatures: BackendJob.SignalSignatures;
 
         // Constructors
 
@@ -475,6 +483,11 @@ export namespace PackageKitPlugin {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            finished: Finished;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -482,6 +495,7 @@ export namespace PackageKitPlugin {
 
     class Transaction extends GObject.Object {
         static $gtype: GObject.GType<Transaction>;
+        declare static readonly __signalSignatures: Transaction.SignalSignatures;
 
         // Constructors
 
@@ -493,6 +507,18 @@ export namespace PackageKitPlugin {
 
         // Signals
 
+        connect<K extends keyof Transaction.SignalSignatures>(
+            signal: K,
+            callback: Transaction.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Transaction.SignalSignatures>(
+            signal: K,
+            callback: Transaction.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Transaction.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Transaction.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

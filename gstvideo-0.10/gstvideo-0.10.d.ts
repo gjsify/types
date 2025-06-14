@@ -153,6 +153,9 @@ export namespace GstVideo {
     function parse_caps_framerate(caps: Gst.Caps): [boolean, number, number];
     function parse_caps_pixel_aspect_ratio(caps: Gst.Caps): [boolean, number, number];
     namespace Filter {
+        // Signal signatures
+        interface SignalSignatures extends GstBase.Transform.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GstBase.Transform.ConstructorProps {}
@@ -160,6 +163,7 @@ export namespace GstVideo {
 
     abstract class Filter extends GstBase.Transform {
         static $gtype: GObject.GType<Filter>;
+        declare static readonly __signalSignatures: Filter.SignalSignatures;
 
         // Fields
 
@@ -174,6 +178,9 @@ export namespace GstVideo {
     }
 
     namespace Sink {
+        // Signal signatures
+        interface SignalSignatures extends GstBase.Sink.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GstBase.Sink.ConstructorProps {
@@ -187,6 +194,7 @@ export namespace GstVideo {
      */
     class Sink extends GstBase.Sink {
         static $gtype: GObject.GType<Sink>;
+        declare static readonly __signalSignatures: Sink.SignalSignatures;
 
         // Properties
 

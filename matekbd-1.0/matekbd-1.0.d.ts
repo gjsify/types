@@ -82,6 +82,11 @@ export namespace Matekbd {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Notebook.SignalSignatures {
+            'reinit-ui': ReinitUi;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -92,6 +97,7 @@ export namespace Matekbd {
 
     class Indicator extends Gtk.Notebook implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Indicator>;
+        declare static readonly __signalSignatures: Indicator.SignalSignatures;
 
         // Constructors
 
@@ -103,6 +109,15 @@ export namespace Matekbd {
 
         // Signals
 
+        connect<K extends keyof Indicator.SignalSignatures>(signal: K, callback: Indicator.SignalSignatures[K]): number;
+        connect_after<K extends keyof Indicator.SignalSignatures>(
+            signal: K,
+            callback: Indicator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Indicator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Indicator.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -577,6 +592,11 @@ export namespace Matekbd {
             (object: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.DrawingArea.SignalSignatures {
+            'bad-keycode': BadKeycode;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -587,6 +607,7 @@ export namespace Matekbd {
 
     class KeyboardDrawing extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<KeyboardDrawing>;
+        declare static readonly __signalSignatures: KeyboardDrawing.SignalSignatures;
 
         // Constructors
 
@@ -600,6 +621,18 @@ export namespace Matekbd {
 
         // Signals
 
+        connect<K extends keyof KeyboardDrawing.SignalSignatures>(
+            signal: K,
+            callback: KeyboardDrawing.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof KeyboardDrawing.SignalSignatures>(
+            signal: K,
+            callback: KeyboardDrawing.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof KeyboardDrawing.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<KeyboardDrawing.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1090,6 +1123,9 @@ export namespace Matekbd {
     }
 
     namespace Status {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.StatusIcon.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.StatusIcon.ConstructorProps {}
@@ -1097,6 +1133,7 @@ export namespace Matekbd {
 
     class Status extends Gtk.StatusIcon {
         static $gtype: GObject.GType<Status>;
+        declare static readonly __signalSignatures: Status.SignalSignatures;
 
         // Constructors
 

@@ -37,6 +37,9 @@ export namespace GtkChamplain {
      */
 
     namespace Embed {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Alignment.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -54,6 +57,7 @@ export namespace GtkChamplain {
      */
     class Embed extends Gtk.Alignment implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Embed>;
+        declare static readonly __signalSignatures: Embed.SignalSignatures;
 
         // Properties
 

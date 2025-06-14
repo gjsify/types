@@ -139,6 +139,9 @@ export namespace ClutterGst {
         ACCURATE,
     }
     namespace Aspectratio {
+        // Signal signatures
+        interface SignalSignatures extends Content.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Content.ConstructorProps, Clutter.Content.ConstructorProps {
@@ -158,6 +161,7 @@ export namespace ClutterGst {
      */
     class Aspectratio extends Content implements Clutter.Content {
         static $gtype: GObject.GType<Aspectratio>;
+        declare static readonly __signalSignatures: Aspectratio.SignalSignatures;
 
         // Properties
 
@@ -691,6 +695,14 @@ export namespace ClutterGst {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'photo-saved': PhotoSaved;
+            'photo-taken': PhotoTaken;
+            'ready-for-capture': ReadyForCapture;
+            'video-saved': VideoSaved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Player.ConstructorProps {
@@ -707,6 +719,7 @@ export namespace ClutterGst {
      */
     class Camera extends GObject.Object implements Player {
         static $gtype: GObject.GType<Camera>;
+        declare static readonly __signalSignatures: Camera.SignalSignatures;
 
         // Properties
 
@@ -723,6 +736,9 @@ export namespace ClutterGst {
 
         // Signals
 
+        connect<K extends keyof Camera.SignalSignatures>(signal: K, callback: Camera.SignalSignatures[K]): number;
+        connect_after<K extends keyof Camera.SignalSignatures>(signal: K, callback: Camera.SignalSignatures[K]): number;
+        emit<K extends keyof Camera.SignalSignatures>(signal: K, ...args: Parameters<Camera.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1491,6 +1507,11 @@ export namespace ClutterGst {
             (width: number, height: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'capture-resolution-changed': CaptureResolutionChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1509,6 +1530,7 @@ export namespace ClutterGst {
      */
     class CameraDevice extends GObject.Object {
         static $gtype: GObject.GType<CameraDevice>;
+        declare static readonly __signalSignatures: CameraDevice.SignalSignatures;
 
         // Properties
 
@@ -1537,6 +1559,18 @@ export namespace ClutterGst {
 
         // Signals
 
+        connect<K extends keyof CameraDevice.SignalSignatures>(
+            signal: K,
+            callback: CameraDevice.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CameraDevice.SignalSignatures>(
+            signal: K,
+            callback: CameraDevice.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CameraDevice.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CameraDevice.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1594,6 +1628,12 @@ export namespace ClutterGst {
             (camera_device: CameraDevice): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'camera-added': CameraAdded;
+            'camera-removed': CameraRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1607,6 +1647,7 @@ export namespace ClutterGst {
      */
     class CameraManager extends GObject.Object {
         static $gtype: GObject.GType<CameraManager>;
+        declare static readonly __signalSignatures: CameraManager.SignalSignatures;
 
         // Constructors
 
@@ -1616,6 +1657,18 @@ export namespace ClutterGst {
 
         // Signals
 
+        connect<K extends keyof CameraManager.SignalSignatures>(
+            signal: K,
+            callback: CameraManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CameraManager.SignalSignatures>(
+            signal: K,
+            callback: CameraManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CameraManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CameraManager.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1652,6 +1705,11 @@ export namespace ClutterGst {
             (width: number, height: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'size-change': SizeChange;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Clutter.Content.ConstructorProps {
@@ -1671,6 +1729,7 @@ export namespace ClutterGst {
      */
     class Content extends GObject.Object implements Clutter.Content {
         static $gtype: GObject.GType<Content>;
+        declare static readonly __signalSignatures: Content.SignalSignatures;
 
         // Properties
 
@@ -1697,6 +1756,15 @@ export namespace ClutterGst {
 
         // Signals
 
+        connect<K extends keyof Content.SignalSignatures>(signal: K, callback: Content.SignalSignatures[K]): number;
+        connect_after<K extends keyof Content.SignalSignatures>(
+            signal: K,
+            callback: Content.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Content.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Content.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2206,6 +2274,9 @@ export namespace ClutterGst {
     }
 
     namespace Crop {
+        // Signal signatures
+        interface SignalSignatures extends Content.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Content.ConstructorProps, Clutter.Content.ConstructorProps {
@@ -2229,6 +2300,7 @@ export namespace ClutterGst {
      */
     class Crop extends Content implements Clutter.Content {
         static $gtype: GObject.GType<Crop>;
+        declare static readonly __signalSignatures: Crop.SignalSignatures;
 
         // Properties
 
@@ -2769,6 +2841,11 @@ export namespace ClutterGst {
             (query: Gst.Query): boolean;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'should-buffer': ShouldBuffer;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Player.ConstructorProps {
@@ -2809,6 +2886,7 @@ export namespace ClutterGst {
      */
     class Playback extends GObject.Object implements Player {
         static $gtype: GObject.GType<Playback>;
+        declare static readonly __signalSignatures: Playback.SignalSignatures;
 
         // Properties
 
@@ -2944,6 +3022,15 @@ export namespace ClutterGst {
 
         // Signals
 
+        connect<K extends keyof Playback.SignalSignatures>(signal: K, callback: Playback.SignalSignatures[K]): number;
+        connect_after<K extends keyof Playback.SignalSignatures>(
+            signal: K,
+            callback: Playback.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Playback.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Playback.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3696,6 +3783,13 @@ export namespace ClutterGst {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GstVideo.VideoSink.SignalSignatures {
+            'new-frame': NewFrame;
+            'new-overlays': NewOverlays;
+            'pipeline-ready': PipelineReady;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3713,6 +3807,7 @@ export namespace ClutterGst {
      */
     class VideoSink extends GstVideo.VideoSink implements GstVideo.ColorBalance, GstVideo.Navigation {
         static $gtype: GObject.GType<VideoSink>;
+        declare static readonly __signalSignatures: VideoSink.SignalSignatures;
 
         // Properties
 
@@ -3731,6 +3826,15 @@ export namespace ClutterGst {
 
         // Signals
 
+        connect<K extends keyof VideoSink.SignalSignatures>(signal: K, callback: VideoSink.SignalSignatures[K]): number;
+        connect_after<K extends keyof VideoSink.SignalSignatures>(
+            signal: K,
+            callback: VideoSink.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VideoSink.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VideoSink.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

@@ -31,6 +31,9 @@ export namespace GCi {
      */
 
     namespace EntryController {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -40,6 +43,7 @@ export namespace GCi {
 
     class EntryController extends GObject.Object {
         static $gtype: GObject.GType<EntryController>;
+        declare static readonly __signalSignatures: EntryController.SignalSignatures;
 
         // Properties
 

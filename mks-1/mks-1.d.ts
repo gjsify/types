@@ -186,6 +186,9 @@ export namespace Mks {
         CAPS_LOCK,
     }
     namespace Device {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -198,6 +201,7 @@ export namespace Mks {
      */
     class Device extends GObject.Object {
         static $gtype: GObject.GType<Device>;
+        declare static readonly __signalSignatures: Device.SignalSignatures;
 
         // Properties
 
@@ -221,6 +225,9 @@ export namespace Mks {
     }
 
     namespace Display {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -238,6 +245,7 @@ export namespace Mks {
 
     class Display extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Display>;
+        declare static readonly __signalSignatures: Display.SignalSignatures;
 
         // Properties
 
@@ -1021,6 +1029,9 @@ export namespace Mks {
     }
 
     namespace Keyboard {
+        // Signal signatures
+        interface SignalSignatures extends Device.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Device.ConstructorProps {
@@ -1033,6 +1044,7 @@ export namespace Mks {
      */
     class Keyboard extends Device {
         static $gtype: GObject.GType<Keyboard>;
+        declare static readonly __signalSignatures: Keyboard.SignalSignatures;
 
         // Properties
 
@@ -1147,6 +1159,9 @@ export namespace Mks {
     }
 
     namespace Mouse {
+        // Signal signatures
+        interface SignalSignatures extends Device.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Device.ConstructorProps {
@@ -1160,6 +1175,7 @@ export namespace Mks {
      */
     class Mouse extends Device {
         static $gtype: GObject.GType<Mouse>;
+        declare static readonly __signalSignatures: Mouse.SignalSignatures;
 
         // Properties
 
@@ -1363,6 +1379,9 @@ export namespace Mks {
     }
 
     namespace Screen {
+        // Signal signatures
+        interface SignalSignatures extends Device.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Device.ConstructorProps {
@@ -1379,6 +1398,7 @@ export namespace Mks {
 
     class Screen extends Device {
         static $gtype: GObject.GType<Screen>;
+        declare static readonly __signalSignatures: Screen.SignalSignatures;
 
         // Properties
 
@@ -1520,6 +1540,9 @@ export namespace Mks {
     }
 
     namespace Session {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1561,6 +1584,7 @@ export namespace Mks {
      */
     class Session extends GObject.Object implements Gio.AsyncInitable<Session>, Gio.Initable {
         static $gtype: GObject.GType<Session>;
+        declare static readonly __signalSignatures: Session.SignalSignatures;
 
         // Properties
 
@@ -2372,6 +2396,9 @@ export namespace Mks {
     }
 
     namespace Touchable {
+        // Signal signatures
+        interface SignalSignatures extends Device.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Device.ConstructorProps {
@@ -2385,6 +2412,7 @@ export namespace Mks {
      */
     class Touchable extends Device {
         static $gtype: GObject.GType<Touchable>;
+        declare static readonly __signalSignatures: Touchable.SignalSignatures;
 
         // Properties
 

@@ -38,6 +38,9 @@ export namespace TimezoneMap {
     const TIMEZONE_COMPLETION_NAME: number;
     const TIMEZONE_COMPLETION_ZONE: number;
     namespace TimezoneCompletion {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.EntryCompletion.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -48,6 +51,7 @@ export namespace TimezoneMap {
 
     class TimezoneCompletion extends Gtk.EntryCompletion implements Gtk.Buildable, Gtk.CellLayout {
         static $gtype: GObject.GType<TimezoneCompletion>;
+        declare static readonly __signalSignatures: TimezoneCompletion.SignalSignatures;
 
         // Constructors
 
@@ -830,6 +834,9 @@ export namespace TimezoneMap {
     }
 
     namespace TimezoneLocation {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -844,6 +851,7 @@ export namespace TimezoneMap {
 
     class TimezoneLocation extends GObject.Object {
         static $gtype: GObject.GType<TimezoneLocation>;
+        declare static readonly __signalSignatures: TimezoneLocation.SignalSignatures;
 
         // Properties
 
@@ -876,6 +884,11 @@ export namespace TimezoneMap {
             (object: TimezoneLocation): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {
+            'location-changed': LocationChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -886,6 +899,7 @@ export namespace TimezoneMap {
 
     class TimezoneMap extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<TimezoneMap>;
+        declare static readonly __signalSignatures: TimezoneMap.SignalSignatures;
 
         // Constructors
 
@@ -897,6 +911,18 @@ export namespace TimezoneMap {
 
         // Signals
 
+        connect<K extends keyof TimezoneMap.SignalSignatures>(
+            signal: K,
+            callback: TimezoneMap.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TimezoneMap.SignalSignatures>(
+            signal: K,
+            callback: TimezoneMap.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TimezoneMap.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TimezoneMap.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

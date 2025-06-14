@@ -106,6 +106,17 @@ export namespace GtkFrdp {
             (object: string, p0: number, p1: string, p2: string, p3: string, p4: string, p5: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.DrawingArea.SignalSignatures {
+            'rdp-auth-failure': RdpAuthFailure;
+            'rdp-connected': RdpConnected;
+            'rdp-disconnected': RdpDisconnected;
+            'rdp-error': RdpError;
+            'rdp-needs-authentication': RdpNeedsAuthentication;
+            'rdp-needs-certificate-change-verification': RdpNeedsCertificateChangeVerification;
+            'rdp-needs-certificate-verification': RdpNeedsCertificateVerification;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -125,6 +136,7 @@ export namespace GtkFrdp {
 
     class Display extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Display>;
+        declare static readonly __signalSignatures: Display.SignalSignatures;
 
         // Properties
 
@@ -155,6 +167,15 @@ export namespace GtkFrdp {
 
         // Signals
 
+        connect<K extends keyof Display.SignalSignatures>(signal: K, callback: Display.SignalSignatures[K]): number;
+        connect_after<K extends keyof Display.SignalSignatures>(
+            signal: K,
+            callback: Display.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Display.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Display.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -776,6 +797,14 @@ export namespace GtkFrdp {
             (object: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'rdp-auth-failure': RdpAuthFailure;
+            'rdp-connected': RdpConnected;
+            'rdp-disconnected': RdpDisconnected;
+            'rdp-error': RdpError;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -793,6 +822,7 @@ export namespace GtkFrdp {
 
     class Session extends GObject.Object {
         static $gtype: GObject.GType<Session>;
+        declare static readonly __signalSignatures: Session.SignalSignatures;
 
         // Properties
 
@@ -825,6 +855,14 @@ export namespace GtkFrdp {
 
         // Signals
 
+        connect_after<K extends keyof Session.SignalSignatures>(
+            signal: K,
+            callback: Session.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Session.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Session.SignalSignatures[K]>
+        ): void;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
         connect_after(signal: 'rdp-auth-failure', callback: (_source: this, object: string) => void): number;

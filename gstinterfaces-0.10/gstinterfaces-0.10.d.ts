@@ -487,6 +487,11 @@ export namespace GstInterfaces {
             (object: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'value-changed': ValueChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -494,6 +499,7 @@ export namespace GstInterfaces {
 
     class ColorBalanceChannel extends GObject.Object {
         static $gtype: GObject.GType<ColorBalanceChannel>;
+        declare static readonly __signalSignatures: ColorBalanceChannel.SignalSignatures;
 
         // Fields
 
@@ -509,6 +515,18 @@ export namespace GstInterfaces {
 
         // Signals
 
+        connect<K extends keyof ColorBalanceChannel.SignalSignatures>(
+            signal: K,
+            callback: ColorBalanceChannel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ColorBalanceChannel.SignalSignatures>(
+            signal: K,
+            callback: ColorBalanceChannel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ColorBalanceChannel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ColorBalanceChannel.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -518,6 +536,9 @@ export namespace GstInterfaces {
     }
 
     namespace MixerOptions {
+        // Signal signatures
+        interface SignalSignatures extends MixerTrack.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MixerTrack.ConstructorProps {}
@@ -525,6 +546,7 @@ export namespace GstInterfaces {
 
     class MixerOptions extends MixerTrack {
         static $gtype: GObject.GType<MixerOptions>;
+        declare static readonly __signalSignatures: MixerOptions.SignalSignatures;
 
         // Fields
 
@@ -538,6 +560,9 @@ export namespace GstInterfaces {
     }
 
     namespace MixerTrack {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -557,6 +582,7 @@ export namespace GstInterfaces {
 
     class MixerTrack extends GObject.Object {
         static $gtype: GObject.GType<MixerTrack>;
+        declare static readonly __signalSignatures: MixerTrack.SignalSignatures;
 
         // Properties
 
@@ -590,6 +616,12 @@ export namespace GstInterfaces {
             (object: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'frequency-changed': FrequencyChanged;
+            'signal-changed': SignalChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -597,6 +629,7 @@ export namespace GstInterfaces {
 
     class TunerChannel extends GObject.Object {
         static $gtype: GObject.GType<TunerChannel>;
+        declare static readonly __signalSignatures: TunerChannel.SignalSignatures;
 
         // Fields
 
@@ -616,6 +649,18 @@ export namespace GstInterfaces {
 
         // Signals
 
+        connect<K extends keyof TunerChannel.SignalSignatures>(
+            signal: K,
+            callback: TunerChannel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TunerChannel.SignalSignatures>(
+            signal: K,
+            callback: TunerChannel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TunerChannel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TunerChannel.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -628,6 +673,9 @@ export namespace GstInterfaces {
     }
 
     namespace TunerNorm {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -635,6 +683,7 @@ export namespace GstInterfaces {
 
     class TunerNorm extends GObject.Object {
         static $gtype: GObject.GType<TunerNorm>;
+        declare static readonly __signalSignatures: TunerNorm.SignalSignatures;
 
         // Fields
 

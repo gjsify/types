@@ -273,6 +273,9 @@ export namespace Vda {
         PRIVILEGES,
     }
     namespace AffectedRows {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -283,6 +286,7 @@ export namespace Vda {
 
     class AffectedRows extends GObject.Object implements Result, SqlAffectedRows {
         static $gtype: GObject.GType<AffectedRows>;
+        declare static readonly __signalSignatures: AffectedRows.SignalSignatures;
 
         // Constructors
 
@@ -740,6 +744,9 @@ export namespace Vda {
     }
 
     namespace CommandDelete {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -763,6 +770,7 @@ export namespace Vda {
             SqlCommandDelete
     {
         static $gtype: GObject.GType<CommandDelete>;
+        declare static readonly __signalSignatures: CommandDelete.SignalSignatures;
 
         // Constructors
 
@@ -1246,6 +1254,9 @@ export namespace Vda {
     }
 
     namespace CommandInsert {
+        // Signal signatures
+        interface SignalSignatures extends CommandModification.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1256,6 +1267,7 @@ export namespace Vda {
 
     class CommandInsert extends CommandModification implements Stringifiable, SqlCommandInsert {
         static $gtype: GObject.GType<CommandInsert>;
+        declare static readonly __signalSignatures: CommandInsert.SignalSignatures;
 
         // Constructors
 
@@ -1716,6 +1728,9 @@ export namespace Vda {
     }
 
     namespace CommandModification {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1731,6 +1746,7 @@ export namespace Vda {
         implements SqlCommand, SqlCommandTableRelated, SqlCommandModification, SqlCommandParametrized
     {
         static $gtype: GObject.GType<CommandModification>;
+        declare static readonly __signalSignatures: CommandModification.SignalSignatures;
 
         // Constructors
 
@@ -2219,6 +2235,9 @@ export namespace Vda {
     }
 
     namespace CommandSelect {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2235,6 +2254,7 @@ export namespace Vda {
         implements SqlCommand, SqlCommandConditional, Stringifiable, SqlCommandParametrized, SqlCommandSelect
     {
         static $gtype: GObject.GType<CommandSelect>;
+        declare static readonly __signalSignatures: CommandSelect.SignalSignatures;
 
         // Constructors
 
@@ -2720,6 +2740,9 @@ export namespace Vda {
     }
 
     namespace CommandUpdate {
+        // Signal signatures
+        interface SignalSignatures extends CommandModification.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2731,6 +2754,7 @@ export namespace Vda {
 
     class CommandUpdate extends CommandModification implements SqlCommandConditional, Stringifiable, SqlCommandUpdate {
         static $gtype: GObject.GType<CommandUpdate>;
+        declare static readonly __signalSignatures: CommandUpdate.SignalSignatures;
 
         // Constructors
 
@@ -3196,6 +3220,9 @@ export namespace Vda {
     }
 
     namespace ConnectionParameter {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3206,6 +3233,7 @@ export namespace Vda {
 
     class ConnectionParameter extends GObject.Object {
         static $gtype: GObject.GType<ConnectionParameter>;
+        declare static readonly __signalSignatures: ConnectionParameter.SignalSignatures;
 
         // Properties
 
@@ -3231,6 +3259,9 @@ export namespace Vda {
     }
 
     namespace ConnectionParameterDbName {
+        // Signal signatures
+        interface SignalSignatures extends ConnectionParameter.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ConnectionParameter.ConstructorProps {}
@@ -3238,6 +3269,7 @@ export namespace Vda {
 
     class ConnectionParameterDbName extends ConnectionParameter {
         static $gtype: GObject.GType<ConnectionParameterDbName>;
+        declare static readonly __signalSignatures: ConnectionParameterDbName.SignalSignatures;
 
         // Constructors
 
@@ -3249,6 +3281,9 @@ export namespace Vda {
     }
 
     namespace ConnectionParameterHost {
+        // Signal signatures
+        interface SignalSignatures extends ConnectionParameter.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ConnectionParameter.ConstructorProps {}
@@ -3256,6 +3291,7 @@ export namespace Vda {
 
     class ConnectionParameterHost extends ConnectionParameter {
         static $gtype: GObject.GType<ConnectionParameterHost>;
+        declare static readonly __signalSignatures: ConnectionParameterHost.SignalSignatures;
 
         // Constructors
 
@@ -3267,6 +3303,9 @@ export namespace Vda {
     }
 
     namespace ConnectionParameterPort {
+        // Signal signatures
+        interface SignalSignatures extends ConnectionParameter.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ConnectionParameter.ConstructorProps {}
@@ -3274,6 +3313,7 @@ export namespace Vda {
 
     class ConnectionParameterPort extends ConnectionParameter {
         static $gtype: GObject.GType<ConnectionParameterPort>;
+        declare static readonly __signalSignatures: ConnectionParameterPort.SignalSignatures;
 
         // Constructors
 
@@ -3285,6 +3325,9 @@ export namespace Vda {
     }
 
     namespace ConnectionParameterUserName {
+        // Signal signatures
+        interface SignalSignatures extends ConnectionParameter.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ConnectionParameter.ConstructorProps {}
@@ -3292,6 +3335,7 @@ export namespace Vda {
 
     class ConnectionParameterUserName extends ConnectionParameter {
         static $gtype: GObject.GType<ConnectionParameterUserName>;
+        declare static readonly __signalSignatures: ConnectionParameterUserName.SignalSignatures;
 
         // Constructors
 
@@ -3303,6 +3347,9 @@ export namespace Vda {
     }
 
     namespace ConnectionParameterPassword {
+        // Signal signatures
+        interface SignalSignatures extends ConnectionParameter.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ConnectionParameter.ConstructorProps {}
@@ -3310,6 +3357,7 @@ export namespace Vda {
 
     class ConnectionParameterPassword extends ConnectionParameter {
         static $gtype: GObject.GType<ConnectionParameterPassword>;
+        declare static readonly __signalSignatures: ConnectionParameterPassword.SignalSignatures;
 
         // Constructors
 
@@ -3321,6 +3369,9 @@ export namespace Vda {
     }
 
     namespace ConnectionParameters {
+        // Signal signatures
+        interface SignalSignatures extends Gee.HashMap.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gee.HashMap.ConstructorProps {}
@@ -3328,6 +3379,7 @@ export namespace Vda {
 
     class ConnectionParameters extends Gee.HashMap {
         static $gtype: GObject.GType<ConnectionParameters>;
+        declare static readonly __signalSignatures: ConnectionParameters.SignalSignatures;
 
         // Constructors
 
@@ -3352,6 +3404,9 @@ export namespace Vda {
     }
 
     namespace Expression {
+        // Signal signatures
+        interface SignalSignatures extends Gee.ArrayList.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -3365,6 +3420,7 @@ export namespace Vda {
         implements Gio.ListModel<A>, SqlExpression
     {
         static $gtype: GObject.GType<Expression>;
+        declare static readonly __signalSignatures: Expression.SignalSignatures;
 
         // Constructors
 
@@ -3927,6 +3983,9 @@ export namespace Vda {
     }
 
     namespace ExpressionField {
+        // Signal signatures
+        interface SignalSignatures extends Expression.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -3939,6 +3998,7 @@ export namespace Vda {
         implements SqlExpressionField
     {
         static $gtype: GObject.GType<ExpressionField>;
+        declare static readonly __signalSignatures: ExpressionField.SignalSignatures;
 
         // Constructors
 
@@ -4415,6 +4475,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperator {
+        // Signal signatures
+        interface SignalSignatures extends Expression.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -4427,6 +4490,7 @@ export namespace Vda {
         implements SqlExpressionOperator
     {
         static $gtype: GObject.GType<ExpressionOperator>;
+        declare static readonly __signalSignatures: ExpressionOperator.SignalSignatures;
 
         // Constructors
 
@@ -4981,6 +5045,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorGroup {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperator.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -4993,6 +5060,7 @@ export namespace Vda {
         implements SqlExpressionOperatorGroup
     {
         static $gtype: GObject.GType<ExpressionOperatorGroup>;
+        declare static readonly __signalSignatures: ExpressionOperatorGroup.SignalSignatures;
 
         // Constructors
 
@@ -5447,6 +5515,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorMultiterm {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperator.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -5459,6 +5530,7 @@ export namespace Vda {
         implements SqlExpressionOperatorMultiterm
     {
         static $gtype: GObject.GType<ExpressionOperatorMultiterm>;
+        declare static readonly __signalSignatures: ExpressionOperatorMultiterm.SignalSignatures;
 
         // Constructors
 
@@ -5913,6 +5985,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorAnd {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperatorMultiterm.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -5925,6 +6000,7 @@ export namespace Vda {
         implements SqlExpressionOperatorAnd
     {
         static $gtype: GObject.GType<ExpressionOperatorAnd>;
+        declare static readonly __signalSignatures: ExpressionOperatorAnd.SignalSignatures;
 
         // Constructors
 
@@ -6379,6 +6455,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorOr {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperatorMultiterm.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -6391,6 +6470,7 @@ export namespace Vda {
         implements SqlExpressionOperatorOr
     {
         static $gtype: GObject.GType<ExpressionOperatorOr>;
+        declare static readonly __signalSignatures: ExpressionOperatorOr.SignalSignatures;
 
         // Constructors
 
@@ -6845,6 +6925,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorBinaryterm {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperator.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -6857,6 +6940,7 @@ export namespace Vda {
         implements SqlExpressionOperatorBinaryterm
     {
         static $gtype: GObject.GType<ExpressionOperatorBinaryterm>;
+        declare static readonly __signalSignatures: ExpressionOperatorBinaryterm.SignalSignatures;
 
         // Constructors
 
@@ -7311,6 +7395,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorEq {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -7323,6 +7410,7 @@ export namespace Vda {
         implements SqlExpressionOperatorEq
     {
         static $gtype: GObject.GType<ExpressionOperatorEq>;
+        declare static readonly __signalSignatures: ExpressionOperatorEq.SignalSignatures;
 
         // Constructors
 
@@ -7777,6 +7865,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorNotEq {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -7789,6 +7880,7 @@ export namespace Vda {
         implements SqlExpressionOperatorNotEq
     {
         static $gtype: GObject.GType<ExpressionOperatorNotEq>;
+        declare static readonly __signalSignatures: ExpressionOperatorNotEq.SignalSignatures;
 
         // Constructors
 
@@ -8243,6 +8335,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorDiff {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -8255,6 +8350,7 @@ export namespace Vda {
         implements SqlExpressionOperatorDiff
     {
         static $gtype: GObject.GType<ExpressionOperatorDiff>;
+        declare static readonly __signalSignatures: ExpressionOperatorDiff.SignalSignatures;
 
         // Constructors
 
@@ -8709,6 +8805,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorGt {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -8721,6 +8820,7 @@ export namespace Vda {
         implements SqlExpressionOperatorGt
     {
         static $gtype: GObject.GType<ExpressionOperatorGt>;
+        declare static readonly __signalSignatures: ExpressionOperatorGt.SignalSignatures;
 
         // Constructors
 
@@ -9175,6 +9275,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorLt {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -9187,6 +9290,7 @@ export namespace Vda {
         implements SqlExpressionOperatorLt
     {
         static $gtype: GObject.GType<ExpressionOperatorLt>;
+        declare static readonly __signalSignatures: ExpressionOperatorLt.SignalSignatures;
 
         // Constructors
 
@@ -9641,6 +9745,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorGeq {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -9653,6 +9760,7 @@ export namespace Vda {
         implements SqlExpressionOperatorGeq
     {
         static $gtype: GObject.GType<ExpressionOperatorGeq>;
+        declare static readonly __signalSignatures: ExpressionOperatorGeq.SignalSignatures;
 
         // Constructors
 
@@ -10107,6 +10215,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorLeq {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -10119,6 +10230,7 @@ export namespace Vda {
         implements SqlExpressionOperatorLeq
     {
         static $gtype: GObject.GType<ExpressionOperatorLeq>;
+        declare static readonly __signalSignatures: ExpressionOperatorLeq.SignalSignatures;
 
         // Constructors
 
@@ -10573,6 +10685,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorRegexp {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -10585,6 +10700,7 @@ export namespace Vda {
         implements SqlExpressionOperatorRegexp
     {
         static $gtype: GObject.GType<ExpressionOperatorRegexp>;
+        declare static readonly __signalSignatures: ExpressionOperatorRegexp.SignalSignatures;
 
         // Constructors
 
@@ -11039,6 +11155,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorStar {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -11051,6 +11170,7 @@ export namespace Vda {
         implements SqlExpressionOperatorStar
     {
         static $gtype: GObject.GType<ExpressionOperatorStar>;
+        declare static readonly __signalSignatures: ExpressionOperatorStar.SignalSignatures;
 
         // Constructors
 
@@ -11505,6 +11625,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorDiv {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -11517,6 +11640,7 @@ export namespace Vda {
         implements SqlExpressionOperatorDiv
     {
         static $gtype: GObject.GType<ExpressionOperatorDiv>;
+        declare static readonly __signalSignatures: ExpressionOperatorDiv.SignalSignatures;
 
         // Constructors
 
@@ -11971,6 +12095,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorIn {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -11983,6 +12110,7 @@ export namespace Vda {
         implements SqlExpressionOperatorIn
     {
         static $gtype: GObject.GType<ExpressionOperatorIn>;
+        declare static readonly __signalSignatures: ExpressionOperatorIn.SignalSignatures;
 
         // Constructors
 
@@ -12437,6 +12565,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorNotIn {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -12449,6 +12580,7 @@ export namespace Vda {
         implements SqlExpressionOperatorNotIn
     {
         static $gtype: GObject.GType<ExpressionOperatorNotIn>;
+        declare static readonly __signalSignatures: ExpressionOperatorNotIn.SignalSignatures;
 
         // Constructors
 
@@ -12903,6 +13035,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorConcatenate {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -12915,6 +13050,7 @@ export namespace Vda {
         implements SqlExpressionOperatorConcatenate
     {
         static $gtype: GObject.GType<ExpressionOperatorConcatenate>;
+        declare static readonly __signalSignatures: ExpressionOperatorConcatenate.SignalSignatures;
 
         // Constructors
 
@@ -13369,6 +13505,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorSimilarTo {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -13381,6 +13520,7 @@ export namespace Vda {
         implements SqlExpressionOperatorSimilarTo
     {
         static $gtype: GObject.GType<ExpressionOperatorSimilarTo>;
+        declare static readonly __signalSignatures: ExpressionOperatorSimilarTo.SignalSignatures;
 
         // Constructors
 
@@ -13835,6 +13975,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorLike {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -13847,6 +13990,7 @@ export namespace Vda {
         implements SqlExpressionOperatorLike
     {
         static $gtype: GObject.GType<ExpressionOperatorLike>;
+        declare static readonly __signalSignatures: ExpressionOperatorLike.SignalSignatures;
 
         // Constructors
 
@@ -14301,6 +14445,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorNotLike {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -14313,6 +14460,7 @@ export namespace Vda {
         implements SqlExpressionOperatorNotLike
     {
         static $gtype: GObject.GType<ExpressionOperatorNotLike>;
+        declare static readonly __signalSignatures: ExpressionOperatorNotLike.SignalSignatures;
 
         // Constructors
 
@@ -14767,6 +14915,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorIlike {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -14779,6 +14930,7 @@ export namespace Vda {
         implements SqlExpressionOperatorIlike
     {
         static $gtype: GObject.GType<ExpressionOperatorIlike>;
+        declare static readonly __signalSignatures: ExpressionOperatorIlike.SignalSignatures;
 
         // Constructors
 
@@ -15233,6 +15385,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorNotIlike {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -15245,6 +15400,7 @@ export namespace Vda {
         implements SqlExpressionOperatorNotIlike
     {
         static $gtype: GObject.GType<ExpressionOperatorNotIlike>;
+        declare static readonly __signalSignatures: ExpressionOperatorNotIlike.SignalSignatures;
 
         // Constructors
 
@@ -15699,6 +15855,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorBinaryUnaryterm {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperator.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -15711,6 +15870,7 @@ export namespace Vda {
         implements SqlExpressionOperatorBinaryUnaryterm
     {
         static $gtype: GObject.GType<ExpressionOperatorBinaryUnaryterm>;
+        declare static readonly __signalSignatures: ExpressionOperatorBinaryUnaryterm.SignalSignatures;
 
         // Constructors
 
@@ -16165,6 +16325,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorMinus {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperatorBinaryUnaryterm.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -16177,6 +16340,7 @@ export namespace Vda {
         implements SqlExpressionOperatorMinus
     {
         static $gtype: GObject.GType<ExpressionOperatorMinus>;
+        declare static readonly __signalSignatures: ExpressionOperatorMinus.SignalSignatures;
 
         // Constructors
 
@@ -16631,6 +16795,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorPlus {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperatorBinaryUnaryterm.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -16643,6 +16810,7 @@ export namespace Vda {
         implements SqlExpressionOperatorPlus
     {
         static $gtype: GObject.GType<ExpressionOperatorPlus>;
+        declare static readonly __signalSignatures: ExpressionOperatorPlus.SignalSignatures;
 
         // Constructors
 
@@ -17097,6 +17265,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorInitialUnaryterm {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperator.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -17109,6 +17280,7 @@ export namespace Vda {
         implements SqlExpressionOperatorInitialUnaryterm
     {
         static $gtype: GObject.GType<ExpressionOperatorInitialUnaryterm>;
+        declare static readonly __signalSignatures: ExpressionOperatorInitialUnaryterm.SignalSignatures;
 
         // Constructors
 
@@ -17563,6 +17735,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorNot {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperatorInitialUnaryterm.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -17575,6 +17750,7 @@ export namespace Vda {
         implements SqlExpressionOperatorNot
     {
         static $gtype: GObject.GType<ExpressionOperatorNot>;
+        declare static readonly __signalSignatures: ExpressionOperatorNot.SignalSignatures;
 
         // Constructors
 
@@ -18029,6 +18205,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorFinalUnaryterm {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperator.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -18041,6 +18220,7 @@ export namespace Vda {
         implements SqlExpressionOperatorFinalUnaryterm
     {
         static $gtype: GObject.GType<ExpressionOperatorFinalUnaryterm>;
+        declare static readonly __signalSignatures: ExpressionOperatorFinalUnaryterm.SignalSignatures;
 
         // Constructors
 
@@ -18495,6 +18675,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorIs {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperatorFinalUnaryterm.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -18507,6 +18690,7 @@ export namespace Vda {
         implements SqlExpressionOperatorIs
     {
         static $gtype: GObject.GType<ExpressionOperatorIs>;
+        declare static readonly __signalSignatures: ExpressionOperatorIs.SignalSignatures;
 
         // Constructors
 
@@ -18961,6 +19145,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorIsNot {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperatorIs.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -18973,6 +19160,7 @@ export namespace Vda {
         implements SqlExpressionOperatorIsNot
     {
         static $gtype: GObject.GType<ExpressionOperatorIsNot>;
+        declare static readonly __signalSignatures: ExpressionOperatorIsNot.SignalSignatures;
 
         // Constructors
 
@@ -19427,6 +19615,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorIsNull {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperatorIs.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -19439,6 +19630,7 @@ export namespace Vda {
         implements SqlExpressionOperatorIsNull
     {
         static $gtype: GObject.GType<ExpressionOperatorIsNull>;
+        declare static readonly __signalSignatures: ExpressionOperatorIsNull.SignalSignatures;
 
         // Constructors
 
@@ -19893,6 +20085,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorIsNotNull {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperatorIsNot.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -19905,6 +20100,7 @@ export namespace Vda {
         implements SqlExpressionOperatorIsNotNull
     {
         static $gtype: GObject.GType<ExpressionOperatorIsNotNull>;
+        declare static readonly __signalSignatures: ExpressionOperatorIsNotNull.SignalSignatures;
 
         // Constructors
 
@@ -20359,6 +20555,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorIsTrue {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperatorIs.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -20371,6 +20570,7 @@ export namespace Vda {
         implements SqlExpressionOperatorIsTrue
     {
         static $gtype: GObject.GType<ExpressionOperatorIsTrue>;
+        declare static readonly __signalSignatures: ExpressionOperatorIsTrue.SignalSignatures;
 
         // Constructors
 
@@ -20825,6 +21025,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorIsNotTrue {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperatorIsNot.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -20837,6 +21040,7 @@ export namespace Vda {
         implements SqlExpressionOperatorIsNotTrue
     {
         static $gtype: GObject.GType<ExpressionOperatorIsNotTrue>;
+        declare static readonly __signalSignatures: ExpressionOperatorIsNotTrue.SignalSignatures;
 
         // Constructors
 
@@ -21291,6 +21495,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorIsFalse {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperatorIs.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -21303,6 +21510,7 @@ export namespace Vda {
         implements SqlExpressionOperatorIsFalse
     {
         static $gtype: GObject.GType<ExpressionOperatorIsFalse>;
+        declare static readonly __signalSignatures: ExpressionOperatorIsFalse.SignalSignatures;
 
         // Constructors
 
@@ -21757,6 +21965,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorIsNotFalse {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperatorIsNot.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -21769,6 +21980,7 @@ export namespace Vda {
         implements SqlExpressionOperatorIsNotFalse
     {
         static $gtype: GObject.GType<ExpressionOperatorIsNotFalse>;
+        declare static readonly __signalSignatures: ExpressionOperatorIsNotFalse.SignalSignatures;
 
         // Constructors
 
@@ -22223,6 +22435,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorIsNotUnknown {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperatorIsNot.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -22235,6 +22450,7 @@ export namespace Vda {
         implements SqlExpressionOperatorIsNotUnknown
     {
         static $gtype: GObject.GType<ExpressionOperatorIsNotUnknown>;
+        declare static readonly __signalSignatures: ExpressionOperatorIsNotUnknown.SignalSignatures;
 
         // Constructors
 
@@ -22689,6 +22905,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorIsUnknown {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperatorIs.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -22701,6 +22920,7 @@ export namespace Vda {
         implements SqlExpressionOperatorIsUnknown
     {
         static $gtype: GObject.GType<ExpressionOperatorIsUnknown>;
+        declare static readonly __signalSignatures: ExpressionOperatorIsUnknown.SignalSignatures;
 
         // Constructors
 
@@ -23155,6 +23375,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorIsDistinct {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -23167,6 +23390,7 @@ export namespace Vda {
         implements SqlExpressionOperatorIsDistinct
     {
         static $gtype: GObject.GType<ExpressionOperatorIsDistinct>;
+        declare static readonly __signalSignatures: ExpressionOperatorIsDistinct.SignalSignatures;
 
         // Constructors
 
@@ -23621,6 +23845,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorIsNotDistinct {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperatorIsDistinct.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -23633,6 +23860,7 @@ export namespace Vda {
         implements SqlExpressionOperatorIsNotDistinct
     {
         static $gtype: GObject.GType<ExpressionOperatorIsNotDistinct>;
+        declare static readonly __signalSignatures: ExpressionOperatorIsNotDistinct.SignalSignatures;
 
         // Constructors
 
@@ -24087,6 +24315,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorIsDistinctFrom {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperatorIsDistinct.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -24099,6 +24330,7 @@ export namespace Vda {
         implements SqlExpressionOperatorIsDistinctFrom
     {
         static $gtype: GObject.GType<ExpressionOperatorIsDistinctFrom>;
+        declare static readonly __signalSignatures: ExpressionOperatorIsDistinctFrom.SignalSignatures;
 
         // Constructors
 
@@ -24553,6 +24785,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorIsNotDistinctFrom {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperatorIsNotDistinct.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -24565,6 +24800,7 @@ export namespace Vda {
         implements SqlExpressionOperatorIsNotDistinctFrom
     {
         static $gtype: GObject.GType<ExpressionOperatorIsNotDistinctFrom>;
+        declare static readonly __signalSignatures: ExpressionOperatorIsNotDistinctFrom.SignalSignatures;
 
         // Constructors
 
@@ -25019,6 +25255,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorThreeterm {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperator.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -25031,6 +25270,7 @@ export namespace Vda {
         implements SqlExpressionOperatorThreeterm
     {
         static $gtype: GObject.GType<ExpressionOperatorThreeterm>;
+        declare static readonly __signalSignatures: ExpressionOperatorThreeterm.SignalSignatures;
 
         // Constructors
 
@@ -25485,6 +25725,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorBetween {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperatorThreeterm.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -25497,6 +25740,7 @@ export namespace Vda {
         implements SqlExpressionOperatorBetween
     {
         static $gtype: GObject.GType<ExpressionOperatorBetween>;
+        declare static readonly __signalSignatures: ExpressionOperatorBetween.SignalSignatures;
 
         // Constructors
 
@@ -25951,6 +26195,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorBetweenAnd {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperatorBetween.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -25963,6 +26210,7 @@ export namespace Vda {
         implements SqlExpressionOperatorBetweenAnd
     {
         static $gtype: GObject.GType<ExpressionOperatorBetweenAnd>;
+        declare static readonly __signalSignatures: ExpressionOperatorBetweenAnd.SignalSignatures;
 
         // Constructors
 
@@ -26417,6 +26665,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorNotBetween {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperatorBetween.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -26429,6 +26680,7 @@ export namespace Vda {
         implements SqlExpressionOperatorNotBetween
     {
         static $gtype: GObject.GType<ExpressionOperatorNotBetween>;
+        declare static readonly __signalSignatures: ExpressionOperatorNotBetween.SignalSignatures;
 
         // Constructors
 
@@ -26883,6 +27135,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorNotBetweenAnd {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperatorNotBetween.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -26895,6 +27150,7 @@ export namespace Vda {
         implements SqlExpressionOperatorNotBetweenAnd
     {
         static $gtype: GObject.GType<ExpressionOperatorNotBetweenAnd>;
+        declare static readonly __signalSignatures: ExpressionOperatorNotBetweenAnd.SignalSignatures;
 
         // Constructors
 
@@ -27349,6 +27605,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorBetweenSymmetric {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperatorBetween.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -27361,6 +27620,7 @@ export namespace Vda {
         implements SqlExpressionOperatorBetweenSymmetric
     {
         static $gtype: GObject.GType<ExpressionOperatorBetweenSymmetric>;
+        declare static readonly __signalSignatures: ExpressionOperatorBetweenSymmetric.SignalSignatures;
 
         // Constructors
 
@@ -27815,6 +28075,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorBetweenSymmetricAnd {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperatorBetweenSymmetric.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -27827,6 +28090,7 @@ export namespace Vda {
         implements SqlExpressionOperatorBetweenSymmetricAnd
     {
         static $gtype: GObject.GType<ExpressionOperatorBetweenSymmetricAnd>;
+        declare static readonly __signalSignatures: ExpressionOperatorBetweenSymmetricAnd.SignalSignatures;
 
         // Constructors
 
@@ -28281,6 +28545,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorNotBetweenSymmetric {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperatorBetweenSymmetric.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -28293,6 +28560,7 @@ export namespace Vda {
         implements SqlExpressionOperatorNotBetweenSymmetric
     {
         static $gtype: GObject.GType<ExpressionOperatorNotBetweenSymmetric>;
+        declare static readonly __signalSignatures: ExpressionOperatorNotBetweenSymmetric.SignalSignatures;
 
         // Constructors
 
@@ -28747,6 +29015,9 @@ export namespace Vda {
     }
 
     namespace ExpressionOperatorNotBetweenSymmetricAnd {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionOperatorNotBetweenSymmetric.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -28759,6 +29030,7 @@ export namespace Vda {
         implements SqlExpressionOperatorNotBetweenSymmetricAnd
     {
         static $gtype: GObject.GType<ExpressionOperatorNotBetweenSymmetricAnd>;
+        declare static readonly __signalSignatures: ExpressionOperatorNotBetweenSymmetricAnd.SignalSignatures;
 
         // Constructors
 
@@ -29213,6 +29485,9 @@ export namespace Vda {
     }
 
     namespace ExpressionValue {
+        // Signal signatures
+        interface SignalSignatures extends Expression.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -29225,6 +29500,7 @@ export namespace Vda {
         implements SqlExpressionValue
     {
         static $gtype: GObject.GType<ExpressionValue>;
+        declare static readonly __signalSignatures: ExpressionValue.SignalSignatures;
 
         // Constructors
 
@@ -29695,6 +29971,9 @@ export namespace Vda {
     }
 
     namespace ExpressionValueParameter {
+        // Signal signatures
+        interface SignalSignatures extends ExpressionValue.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -29707,6 +29986,7 @@ export namespace Vda {
         implements SqlExpressionValueParameter
     {
         static $gtype: GObject.GType<ExpressionValueParameter>;
+        declare static readonly __signalSignatures: ExpressionValueParameter.SignalSignatures;
 
         // Constructors
 
@@ -30183,6 +30463,9 @@ export namespace Vda {
     }
 
     namespace HashList {
+        // Signal signatures
+        interface SignalSignatures extends Gee.ArrayList.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -30196,6 +30479,7 @@ export namespace Vda {
         implements Gio.ListModel<A>, HashModel
     {
         static $gtype: GObject.GType<HashList>;
+        declare static readonly __signalSignatures: HashList.SignalSignatures;
 
         // Constructors
 
@@ -30758,6 +31042,9 @@ export namespace Vda {
     }
 
     namespace InvalidQuery {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Query.ConstructorProps {
@@ -30767,6 +31054,7 @@ export namespace Vda {
 
     class InvalidQuery extends GObject.Object implements Query {
         static $gtype: GObject.GType<InvalidQuery>;
+        declare static readonly __signalSignatures: InvalidQuery.SignalSignatures;
 
         // Properties
 
@@ -31251,6 +31539,9 @@ export namespace Vda {
     }
 
     namespace InvalidPreparedQuery {
+        // Signal signatures
+        interface SignalSignatures extends InvalidQuery.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends InvalidQuery.ConstructorProps, PreparedQuery.ConstructorProps {}
@@ -31258,6 +31549,7 @@ export namespace Vda {
 
     class InvalidPreparedQuery extends InvalidQuery implements PreparedQuery {
         static $gtype: GObject.GType<InvalidPreparedQuery>;
+        declare static readonly __signalSignatures: InvalidPreparedQuery.SignalSignatures;
 
         // Constructors
 
@@ -31718,6 +32010,9 @@ export namespace Vda {
     }
 
     namespace InvalidResult {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Result.ConstructorProps {
@@ -31727,6 +32022,7 @@ export namespace Vda {
 
     class InvalidResult extends GObject.Object implements Result {
         static $gtype: GObject.GType<InvalidResult>;
+        declare static readonly __signalSignatures: InvalidResult.SignalSignatures;
 
         // Properties
 
@@ -32189,6 +32485,9 @@ export namespace Vda {
     }
 
     namespace Parameters {
+        // Signal signatures
+        interface SignalSignatures extends Gee.HashMap.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gee.HashMap.ConstructorProps, SqlParameters.ConstructorProps {}
@@ -32196,6 +32495,7 @@ export namespace Vda {
 
     class Parameters extends Gee.HashMap implements SqlParameters {
         static $gtype: GObject.GType<Parameters>;
+        declare static readonly __signalSignatures: Parameters.SignalSignatures;
 
         // Constructors
 
@@ -32660,6 +32960,9 @@ export namespace Vda {
     }
 
     namespace Parser {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, SqlParser.ConstructorProps {}
@@ -32667,6 +32970,7 @@ export namespace Vda {
 
     class Parser extends GObject.Object implements SqlParser {
         static $gtype: GObject.GType<Parser>;
+        declare static readonly __signalSignatures: Parser.SignalSignatures;
 
         // Constructors
 
@@ -33121,6 +33425,9 @@ export namespace Vda {
     }
 
     namespace TableReference {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, SqlTableReference.ConstructorProps {}
@@ -33128,6 +33435,7 @@ export namespace Vda {
 
     class TableReference extends GObject.Object implements SqlTableReference {
         static $gtype: GObject.GType<TableReference>;
+        declare static readonly __signalSignatures: TableReference.SignalSignatures;
 
         // Constructors
 
@@ -33594,6 +33902,9 @@ export namespace Vda {
     }
 
     namespace Value {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -33604,6 +33915,7 @@ export namespace Vda {
 
     class Value extends GObject.Object implements Stringifiable, SqlValue {
         static $gtype: GObject.GType<Value>;
+        declare static readonly __signalSignatures: Value.SignalSignatures;
 
         // Constructors
 
@@ -34085,6 +34397,9 @@ export namespace Vda {
     }
 
     namespace ValueNull {
+        // Signal signatures
+        interface SignalSignatures extends Value.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Value.ConstructorProps, SqlValueNull.ConstructorProps {}
@@ -34092,6 +34407,7 @@ export namespace Vda {
 
     class ValueNull extends Value implements SqlValueNull {
         static $gtype: GObject.GType<ValueNull>;
+        declare static readonly __signalSignatures: ValueNull.SignalSignatures;
 
         // Constructors
 
@@ -34544,6 +34860,9 @@ export namespace Vda {
     }
 
     namespace ValueString {
+        // Signal signatures
+        interface SignalSignatures extends Value.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Value.ConstructorProps, SqlValueString.ConstructorProps {}
@@ -34551,6 +34870,7 @@ export namespace Vda {
 
     class ValueString extends Value implements SqlValueString {
         static $gtype: GObject.GType<ValueString>;
+        declare static readonly __signalSignatures: ValueString.SignalSignatures;
 
         // Constructors
 
@@ -35003,6 +35323,9 @@ export namespace Vda {
     }
 
     namespace ValueXml {
+        // Signal signatures
+        interface SignalSignatures extends ValueString.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ValueString.ConstructorProps, SqlValueXml.ConstructorProps {}
@@ -35010,6 +35333,7 @@ export namespace Vda {
 
     class ValueXml extends ValueString implements SqlValueXml {
         static $gtype: GObject.GType<ValueXml>;
+        declare static readonly __signalSignatures: ValueXml.SignalSignatures;
 
         // Constructors
 
@@ -35467,6 +35791,9 @@ export namespace Vda {
     }
 
     namespace ValueJson {
+        // Signal signatures
+        interface SignalSignatures extends ValueString.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ValueString.ConstructorProps, SqlValueJson.ConstructorProps {}
@@ -35474,6 +35801,7 @@ export namespace Vda {
 
     class ValueJson extends ValueString implements SqlValueJson {
         static $gtype: GObject.GType<ValueJson>;
+        declare static readonly __signalSignatures: ValueJson.SignalSignatures;
 
         // Constructors
 
@@ -35931,6 +36259,9 @@ export namespace Vda {
     }
 
     namespace ValueText {
+        // Signal signatures
+        interface SignalSignatures extends ValueString.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ValueString.ConstructorProps, SqlValueText.ConstructorProps {}
@@ -35938,6 +36269,7 @@ export namespace Vda {
 
     class ValueText extends ValueString implements SqlValueText {
         static $gtype: GObject.GType<ValueText>;
+        declare static readonly __signalSignatures: ValueText.SignalSignatures;
 
         // Constructors
 
@@ -36390,6 +36722,9 @@ export namespace Vda {
     }
 
     namespace ValueName {
+        // Signal signatures
+        interface SignalSignatures extends ValueString.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ValueString.ConstructorProps, SqlValueName.ConstructorProps {}
@@ -36397,6 +36732,7 @@ export namespace Vda {
 
     class ValueName extends ValueString implements SqlValueName {
         static $gtype: GObject.GType<ValueName>;
+        declare static readonly __signalSignatures: ValueName.SignalSignatures;
 
         // Constructors
 
@@ -36849,6 +37185,9 @@ export namespace Vda {
     }
 
     namespace ValueBool {
+        // Signal signatures
+        interface SignalSignatures extends Value.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Value.ConstructorProps, SqlValueBool.ConstructorProps {}
@@ -36856,6 +37195,7 @@ export namespace Vda {
 
     class ValueBool extends Value implements SqlValueBool {
         static $gtype: GObject.GType<ValueBool>;
+        declare static readonly __signalSignatures: ValueBool.SignalSignatures;
 
         // Constructors
 
@@ -37308,6 +37648,9 @@ export namespace Vda {
     }
 
     namespace ValueBit {
+        // Signal signatures
+        interface SignalSignatures extends ValueBool.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ValueBool.ConstructorProps, SqlValueBit.ConstructorProps {}
@@ -37315,6 +37658,7 @@ export namespace Vda {
 
     class ValueBit extends ValueBool implements SqlValueBit {
         static $gtype: GObject.GType<ValueBit>;
+        declare static readonly __signalSignatures: ValueBit.SignalSignatures;
 
         // Constructors
 
@@ -37767,6 +38111,9 @@ export namespace Vda {
     }
 
     namespace ValueInteger {
+        // Signal signatures
+        interface SignalSignatures extends Value.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -37777,6 +38124,7 @@ export namespace Vda {
 
     class ValueInteger extends Value implements SqlValue, SqlValueInteger {
         static $gtype: GObject.GType<ValueInteger>;
+        declare static readonly __signalSignatures: ValueInteger.SignalSignatures;
 
         // Constructors
 
@@ -38248,6 +38596,9 @@ export namespace Vda {
     }
 
     namespace ValueByte {
+        // Signal signatures
+        interface SignalSignatures extends ValueInteger.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ValueInteger.ConstructorProps, SqlValueByte.ConstructorProps {}
@@ -38255,6 +38606,7 @@ export namespace Vda {
 
     class ValueByte extends ValueInteger implements SqlValueByte {
         static $gtype: GObject.GType<ValueByte>;
+        declare static readonly __signalSignatures: ValueByte.SignalSignatures;
 
         // Constructors
 
@@ -38707,6 +39059,9 @@ export namespace Vda {
     }
 
     namespace ValueInt2 {
+        // Signal signatures
+        interface SignalSignatures extends ValueInteger.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ValueInteger.ConstructorProps, SqlValueInt2.ConstructorProps {}
@@ -38714,6 +39069,7 @@ export namespace Vda {
 
     class ValueInt2 extends ValueInteger implements SqlValueInt2 {
         static $gtype: GObject.GType<ValueInt2>;
+        declare static readonly __signalSignatures: ValueInt2.SignalSignatures;
 
         // Constructors
 
@@ -39166,6 +39522,9 @@ export namespace Vda {
     }
 
     namespace ValueInt4 {
+        // Signal signatures
+        interface SignalSignatures extends ValueInteger.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ValueInteger.ConstructorProps, SqlValueInt4.ConstructorProps {}
@@ -39173,6 +39532,7 @@ export namespace Vda {
 
     class ValueInt4 extends ValueInteger implements SqlValueInt4 {
         static $gtype: GObject.GType<ValueInt4>;
+        declare static readonly __signalSignatures: ValueInt4.SignalSignatures;
 
         // Constructors
 
@@ -39625,6 +39985,9 @@ export namespace Vda {
     }
 
     namespace ValueInt8 {
+        // Signal signatures
+        interface SignalSignatures extends ValueInteger.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ValueInteger.ConstructorProps, SqlValueInt8.ConstructorProps {}
@@ -39632,6 +39995,7 @@ export namespace Vda {
 
     class ValueInt8 extends ValueInteger implements SqlValueInt8 {
         static $gtype: GObject.GType<ValueInt8>;
+        declare static readonly __signalSignatures: ValueInt8.SignalSignatures;
 
         // Constructors
 
@@ -40084,6 +40448,9 @@ export namespace Vda {
     }
 
     namespace ValueUnsignedInteger {
+        // Signal signatures
+        interface SignalSignatures extends Value.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -40094,6 +40461,7 @@ export namespace Vda {
 
     class ValueUnsignedInteger extends Value implements SqlValue, SqlValueUnsignedInteger {
         static $gtype: GObject.GType<ValueUnsignedInteger>;
+        declare static readonly __signalSignatures: ValueUnsignedInteger.SignalSignatures;
 
         // Constructors
 
@@ -40565,6 +40933,9 @@ export namespace Vda {
     }
 
     namespace ValueUnsignedByte {
+        // Signal signatures
+        interface SignalSignatures extends ValueUnsignedInteger.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -40574,6 +40945,7 @@ export namespace Vda {
 
     class ValueUnsignedByte extends ValueUnsignedInteger implements SqlValueUnsignedByte {
         static $gtype: GObject.GType<ValueUnsignedByte>;
+        declare static readonly __signalSignatures: ValueUnsignedByte.SignalSignatures;
 
         // Constructors
 
@@ -41026,6 +41398,9 @@ export namespace Vda {
     }
 
     namespace ValueUnsignedInt2 {
+        // Signal signatures
+        interface SignalSignatures extends ValueUnsignedInteger.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -41035,6 +41410,7 @@ export namespace Vda {
 
     class ValueUnsignedInt2 extends ValueUnsignedInteger implements SqlValueUnsignedInt2 {
         static $gtype: GObject.GType<ValueUnsignedInt2>;
+        declare static readonly __signalSignatures: ValueUnsignedInt2.SignalSignatures;
 
         // Constructors
 
@@ -41487,6 +41863,9 @@ export namespace Vda {
     }
 
     namespace ValueUnsignedInt4 {
+        // Signal signatures
+        interface SignalSignatures extends ValueUnsignedInteger.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -41496,6 +41875,7 @@ export namespace Vda {
 
     class ValueUnsignedInt4 extends ValueUnsignedInteger implements SqlValueUnsignedInt4 {
         static $gtype: GObject.GType<ValueUnsignedInt4>;
+        declare static readonly __signalSignatures: ValueUnsignedInt4.SignalSignatures;
 
         // Constructors
 
@@ -41948,6 +42328,9 @@ export namespace Vda {
     }
 
     namespace ValueUnsignedInt8 {
+        // Signal signatures
+        interface SignalSignatures extends ValueUnsignedInteger.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -41957,6 +42340,7 @@ export namespace Vda {
 
     class ValueUnsignedInt8 extends ValueUnsignedInteger implements SqlValueUnsignedInt8 {
         static $gtype: GObject.GType<ValueUnsignedInt8>;
+        declare static readonly __signalSignatures: ValueUnsignedInt8.SignalSignatures;
 
         // Constructors
 
@@ -42409,6 +42793,9 @@ export namespace Vda {
     }
 
     namespace ValueOid {
+        // Signal signatures
+        interface SignalSignatures extends ValueInteger.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ValueInteger.ConstructorProps, SqlValueOid.ConstructorProps {}
@@ -42416,6 +42803,7 @@ export namespace Vda {
 
     class ValueOid extends ValueInteger implements SqlValueOid {
         static $gtype: GObject.GType<ValueOid>;
+        declare static readonly __signalSignatures: ValueOid.SignalSignatures;
 
         // Constructors
 
@@ -42868,6 +43256,9 @@ export namespace Vda {
     }
 
     namespace ValueNumeric {
+        // Signal signatures
+        interface SignalSignatures extends Value.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Value.ConstructorProps, SqlValueNumeric.ConstructorProps {}
@@ -42875,6 +43266,7 @@ export namespace Vda {
 
     class ValueNumeric extends Value implements SqlValueNumeric {
         static $gtype: GObject.GType<ValueNumeric>;
+        declare static readonly __signalSignatures: ValueNumeric.SignalSignatures;
 
         // Constructors
 
@@ -43351,6 +43743,9 @@ export namespace Vda {
     }
 
     namespace ValueFloat {
+        // Signal signatures
+        interface SignalSignatures extends ValueNumeric.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ValueNumeric.ConstructorProps, SqlValueFloat.ConstructorProps {}
@@ -43358,6 +43753,7 @@ export namespace Vda {
 
     class ValueFloat extends ValueNumeric implements SqlValueFloat {
         static $gtype: GObject.GType<ValueFloat>;
+        declare static readonly __signalSignatures: ValueFloat.SignalSignatures;
 
         // Constructors
 
@@ -43812,6 +44208,9 @@ export namespace Vda {
     }
 
     namespace ValueDouble {
+        // Signal signatures
+        interface SignalSignatures extends ValueNumeric.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ValueNumeric.ConstructorProps, SqlValueDouble.ConstructorProps {}
@@ -43819,6 +44218,7 @@ export namespace Vda {
 
     class ValueDouble extends ValueNumeric implements SqlValueDouble {
         static $gtype: GObject.GType<ValueDouble>;
+        declare static readonly __signalSignatures: ValueDouble.SignalSignatures;
 
         // Constructors
 
@@ -44271,6 +44671,9 @@ export namespace Vda {
     }
 
     namespace ValueMoney {
+        // Signal signatures
+        interface SignalSignatures extends ValueNumeric.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ValueNumeric.ConstructorProps, SqlValueMoney.ConstructorProps {}
@@ -44278,6 +44681,7 @@ export namespace Vda {
 
     class ValueMoney extends ValueNumeric implements SqlValueMoney {
         static $gtype: GObject.GType<ValueMoney>;
+        declare static readonly __signalSignatures: ValueMoney.SignalSignatures;
 
         // Constructors
 
@@ -44738,6 +45142,9 @@ export namespace Vda {
     }
 
     namespace ValueTimestamp {
+        // Signal signatures
+        interface SignalSignatures extends Value.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Value.ConstructorProps, SqlValueTimestamp.ConstructorProps {}
@@ -44745,6 +45152,7 @@ export namespace Vda {
 
     class ValueTimestamp extends Value implements SqlValueTimestamp {
         static $gtype: GObject.GType<ValueTimestamp>;
+        declare static readonly __signalSignatures: ValueTimestamp.SignalSignatures;
 
         // Constructors
 
@@ -45223,6 +45631,9 @@ export namespace Vda {
     }
 
     namespace ValueTimestampNtz {
+        // Signal signatures
+        interface SignalSignatures extends ValueTimestamp.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ValueTimestamp.ConstructorProps, SqlValueTimestampNtz.ConstructorProps {}
@@ -45230,6 +45641,7 @@ export namespace Vda {
 
     class ValueTimestampNtz extends ValueTimestamp implements SqlValueTimestampNtz {
         static $gtype: GObject.GType<ValueTimestampNtz>;
+        declare static readonly __signalSignatures: ValueTimestampNtz.SignalSignatures;
 
         // Constructors
 
@@ -45682,6 +46094,9 @@ export namespace Vda {
     }
 
     namespace ValueTime {
+        // Signal signatures
+        interface SignalSignatures extends ValueTimestamp.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ValueTimestamp.ConstructorProps, SqlValueTime.ConstructorProps {}
@@ -45689,6 +46104,7 @@ export namespace Vda {
 
     class ValueTime extends ValueTimestamp implements SqlValueTime {
         static $gtype: GObject.GType<ValueTime>;
+        declare static readonly __signalSignatures: ValueTime.SignalSignatures;
 
         // Constructors
 
@@ -46141,6 +46557,9 @@ export namespace Vda {
     }
 
     namespace ValueTimeNtz {
+        // Signal signatures
+        interface SignalSignatures extends ValueTimestampNtz.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ValueTimestampNtz.ConstructorProps, SqlValueTimeNtz.ConstructorProps {}
@@ -46148,6 +46567,7 @@ export namespace Vda {
 
     class ValueTimeNtz extends ValueTimestampNtz implements SqlValueTimeNtz {
         static $gtype: GObject.GType<ValueTimeNtz>;
+        declare static readonly __signalSignatures: ValueTimeNtz.SignalSignatures;
 
         // Constructors
 
@@ -46600,6 +47020,9 @@ export namespace Vda {
     }
 
     namespace ValueDate {
+        // Signal signatures
+        interface SignalSignatures extends Value.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Value.ConstructorProps, SqlValueDate.ConstructorProps {}
@@ -46607,6 +47030,7 @@ export namespace Vda {
 
     class ValueDate extends Value implements SqlValueDate {
         static $gtype: GObject.GType<ValueDate>;
+        declare static readonly __signalSignatures: ValueDate.SignalSignatures;
 
         // Fields
 
@@ -47067,6 +47491,9 @@ export namespace Vda {
     }
 
     namespace ValueBinary {
+        // Signal signatures
+        interface SignalSignatures extends Value.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Value.ConstructorProps, SqlValueBinary.ConstructorProps {}
@@ -47074,6 +47501,7 @@ export namespace Vda {
 
     class ValueBinary extends Value implements SqlValueBinary {
         static $gtype: GObject.GType<ValueBinary>;
+        declare static readonly __signalSignatures: ValueBinary.SignalSignatures;
 
         // Constructors
 
@@ -47541,6 +47969,9 @@ export namespace Vda {
     }
 
     namespace ValueMathExp {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -47554,6 +47985,7 @@ export namespace Vda {
 
     class ValueMathExp extends GObject.Object implements Stringifiable, SqlValue, SqlValueMathExp {
         static $gtype: GObject.GType<ValueMathExp>;
+        declare static readonly __signalSignatures: ValueMathExp.SignalSignatures;
 
         // Properties
 

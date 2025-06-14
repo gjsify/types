@@ -1233,6 +1233,9 @@ export namespace NMClient {
         USER_REQUESTED,
     }
     namespace AccessPoint {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1260,6 +1263,7 @@ export namespace NMClient {
 
     class AccessPoint extends Object implements Gio.AsyncInitable<AccessPoint>, Gio.Initable {
         static $gtype: GObject.GType<AccessPoint>;
+        declare static readonly __signalSignatures: AccessPoint.SignalSignatures;
 
         // Properties
 
@@ -2153,6 +2157,9 @@ export namespace NMClient {
     }
 
     namespace ActiveConnection {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2184,6 +2191,7 @@ export namespace NMClient {
 
     class ActiveConnection extends Object implements Gio.AsyncInitable<ActiveConnection>, Gio.Initable {
         static $gtype: GObject.GType<ActiveConnection>;
+        declare static readonly __signalSignatures: ActiveConnection.SignalSignatures;
 
         // Properties
 
@@ -3108,6 +3116,15 @@ export namespace NMClient {
             (permission: number, result: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {
+            'any-device-added': AnyDeviceAdded;
+            'any-device-removed': AnyDeviceRemoved;
+            'device-added': DeviceAdded;
+            'device-removed': DeviceRemoved;
+            'permission-changed': PermissionChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3148,6 +3165,7 @@ export namespace NMClient {
 
     class Client extends Object implements Gio.AsyncInitable<Client>, Gio.Initable {
         static $gtype: GObject.GType<Client>;
+        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Properties
 
@@ -3295,6 +3313,9 @@ export namespace NMClient {
 
         // Signals
 
+        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -4347,6 +4368,9 @@ export namespace NMClient {
     }
 
     namespace DHCP4Config {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4359,6 +4383,7 @@ export namespace NMClient {
 
     class DHCP4Config extends Object implements Gio.AsyncInitable<DHCP4Config>, Gio.Initable {
         static $gtype: GObject.GType<DHCP4Config>;
+        declare static readonly __signalSignatures: DHCP4Config.SignalSignatures;
 
         // Properties
 
@@ -5116,6 +5141,9 @@ export namespace NMClient {
     }
 
     namespace DHCP6Config {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5128,6 +5156,7 @@ export namespace NMClient {
 
     class DHCP6Config extends Object implements Gio.AsyncInitable<DHCP6Config>, Gio.Initable {
         static $gtype: GObject.GType<DHCP6Config>;
+        declare static readonly __signalSignatures: DHCP6Config.SignalSignatures;
 
         // Properties
 
@@ -5891,6 +5920,11 @@ export namespace NMClient {
             (new_state: number, old_state: number, reason: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {
+            'state-changed': StateChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5937,6 +5971,7 @@ export namespace NMClient {
 
     class Device extends Object implements Gio.AsyncInitable<Device>, Gio.Initable {
         static $gtype: GObject.GType<Device>;
+        declare static readonly __signalSignatures: Device.SignalSignatures;
 
         // Properties
 
@@ -6105,6 +6140,9 @@ export namespace NMClient {
 
         // Signals
 
+        connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -7120,6 +7158,9 @@ export namespace NMClient {
     }
 
     namespace DeviceAdsl {
+        // Signal signatures
+        interface SignalSignatures extends Device.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7132,6 +7173,7 @@ export namespace NMClient {
 
     class DeviceAdsl extends Device implements Gio.AsyncInitable<DeviceAdsl>, Gio.Initable {
         static $gtype: GObject.GType<DeviceAdsl>;
+        declare static readonly __signalSignatures: DeviceAdsl.SignalSignatures;
 
         // Properties
 
@@ -7800,6 +7842,9 @@ export namespace NMClient {
     }
 
     namespace DeviceBond {
+        // Signal signatures
+        interface SignalSignatures extends Device.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7815,6 +7860,7 @@ export namespace NMClient {
 
     class DeviceBond extends Device implements Gio.AsyncInitable<DeviceBond>, Gio.Initable {
         static $gtype: GObject.GType<DeviceBond>;
+        declare static readonly __signalSignatures: DeviceBond.SignalSignatures;
 
         // Properties
 
@@ -8505,6 +8551,9 @@ export namespace NMClient {
     }
 
     namespace DeviceBridge {
+        // Signal signatures
+        interface SignalSignatures extends Device.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -8520,6 +8569,7 @@ export namespace NMClient {
 
     class DeviceBridge extends Device implements Gio.AsyncInitable<DeviceBridge>, Gio.Initable {
         static $gtype: GObject.GType<DeviceBridge>;
+        declare static readonly __signalSignatures: DeviceBridge.SignalSignatures;
 
         // Properties
 
@@ -9210,6 +9260,9 @@ export namespace NMClient {
     }
 
     namespace DeviceBt {
+        // Signal signatures
+        interface SignalSignatures extends Device.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9226,6 +9279,7 @@ export namespace NMClient {
 
     class DeviceBt extends Device implements Gio.AsyncInitable<DeviceBt>, Gio.Initable {
         static $gtype: GObject.GType<DeviceBt>;
+        declare static readonly __signalSignatures: DeviceBt.SignalSignatures;
 
         // Properties
 
@@ -9922,6 +9976,9 @@ export namespace NMClient {
     }
 
     namespace DeviceEthernet {
+        // Signal signatures
+        interface SignalSignatures extends Device.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9939,6 +9996,7 @@ export namespace NMClient {
 
     class DeviceEthernet extends Device implements Gio.AsyncInitable<DeviceEthernet>, Gio.Initable {
         static $gtype: GObject.GType<DeviceEthernet>;
+        declare static readonly __signalSignatures: DeviceEthernet.SignalSignatures;
 
         // Properties
 
@@ -10642,6 +10700,9 @@ export namespace NMClient {
     }
 
     namespace DeviceGeneric {
+        // Signal signatures
+        interface SignalSignatures extends Device.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -10657,6 +10718,7 @@ export namespace NMClient {
 
     class DeviceGeneric extends Device implements Gio.AsyncInitable<DeviceGeneric>, Gio.Initable {
         static $gtype: GObject.GType<DeviceGeneric>;
+        declare static readonly __signalSignatures: DeviceGeneric.SignalSignatures;
 
         // Properties
 
@@ -11339,6 +11401,9 @@ export namespace NMClient {
     }
 
     namespace DeviceInfiniband {
+        // Signal signatures
+        interface SignalSignatures extends Device.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -11353,6 +11418,7 @@ export namespace NMClient {
 
     class DeviceInfiniband extends Device implements Gio.AsyncInitable<DeviceInfiniband>, Gio.Initable {
         static $gtype: GObject.GType<DeviceInfiniband>;
+        declare static readonly __signalSignatures: DeviceInfiniband.SignalSignatures;
 
         // Properties
 
@@ -12034,6 +12100,9 @@ export namespace NMClient {
     }
 
     namespace DeviceModem {
+        // Signal signatures
+        interface SignalSignatures extends Device.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -12049,6 +12118,7 @@ export namespace NMClient {
 
     class DeviceModem extends Device implements Gio.AsyncInitable<DeviceModem>, Gio.Initable {
         static $gtype: GObject.GType<DeviceModem>;
+        declare static readonly __signalSignatures: DeviceModem.SignalSignatures;
 
         // Properties
 
@@ -12744,6 +12814,9 @@ export namespace NMClient {
     }
 
     namespace DeviceOlpcMesh {
+        // Signal signatures
+        interface SignalSignatures extends Device.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -12760,6 +12833,7 @@ export namespace NMClient {
 
     class DeviceOlpcMesh extends Device implements Gio.AsyncInitable<DeviceOlpcMesh>, Gio.Initable {
         static $gtype: GObject.GType<DeviceOlpcMesh>;
+        declare static readonly __signalSignatures: DeviceOlpcMesh.SignalSignatures;
 
         // Properties
 
@@ -13454,6 +13528,9 @@ export namespace NMClient {
     }
 
     namespace DeviceTeam {
+        // Signal signatures
+        interface SignalSignatures extends Device.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -13469,6 +13546,7 @@ export namespace NMClient {
 
     class DeviceTeam extends Device implements Gio.AsyncInitable<DeviceTeam>, Gio.Initable {
         static $gtype: GObject.GType<DeviceTeam>;
+        declare static readonly __signalSignatures: DeviceTeam.SignalSignatures;
 
         // Properties
 
@@ -14159,6 +14237,9 @@ export namespace NMClient {
     }
 
     namespace DeviceVlan {
+        // Signal signatures
+        interface SignalSignatures extends Device.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -14176,6 +14257,7 @@ export namespace NMClient {
 
     class DeviceVlan extends Device implements Gio.AsyncInitable<DeviceVlan>, Gio.Initable {
         static $gtype: GObject.GType<DeviceVlan>;
+        declare static readonly __signalSignatures: DeviceVlan.SignalSignatures;
 
         // Properties
 
@@ -14881,6 +14963,12 @@ export namespace NMClient {
             (ap: GObject.Object): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Device.SignalSignatures {
+            'access-point-added': AccessPointAdded;
+            'access-point-removed': AccessPointRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -14904,6 +14992,7 @@ export namespace NMClient {
 
     class DeviceWifi extends Device implements Gio.AsyncInitable<DeviceWifi>, Gio.Initable {
         static $gtype: GObject.GType<DeviceWifi>;
+        declare static readonly __signalSignatures: DeviceWifi.SignalSignatures;
 
         // Properties
 
@@ -14966,6 +15055,18 @@ export namespace NMClient {
 
         // Signals
 
+        connect<K extends keyof DeviceWifi.SignalSignatures>(
+            signal: K,
+            callback: DeviceWifi.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DeviceWifi.SignalSignatures>(
+            signal: K,
+            callback: DeviceWifi.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DeviceWifi.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DeviceWifi.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -15688,6 +15789,12 @@ export namespace NMClient {
             (nsp: GObject.Object): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Device.SignalSignatures {
+            'nsp-added': NspAdded;
+            'nsp-removed': NspRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -15711,6 +15818,7 @@ export namespace NMClient {
 
     class DeviceWimax extends Device implements Gio.AsyncInitable<DeviceWimax>, Gio.Initable {
         static $gtype: GObject.GType<DeviceWimax>;
+        declare static readonly __signalSignatures: DeviceWimax.SignalSignatures;
 
         // Properties
 
@@ -15787,6 +15895,18 @@ export namespace NMClient {
 
         // Signals
 
+        connect<K extends keyof DeviceWimax.SignalSignatures>(
+            signal: K,
+            callback: DeviceWimax.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DeviceWimax.SignalSignatures>(
+            signal: K,
+            callback: DeviceWimax.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DeviceWimax.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DeviceWimax.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -16504,6 +16624,9 @@ export namespace NMClient {
     }
 
     namespace IP4Config {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -16523,6 +16646,7 @@ export namespace NMClient {
 
     class IP4Config extends Object implements Gio.AsyncInitable<IP4Config>, Gio.Initable {
         static $gtype: GObject.GType<IP4Config>;
+        declare static readonly __signalSignatures: IP4Config.SignalSignatures;
 
         // Properties
 
@@ -17332,6 +17456,9 @@ export namespace NMClient {
     }
 
     namespace IP6Config {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -17349,6 +17476,7 @@ export namespace NMClient {
 
     class IP6Config extends Object implements Gio.AsyncInitable<IP6Config>, Gio.Initable {
         static $gtype: GObject.GType<IP6Config>;
+        declare static readonly __signalSignatures: IP6Config.SignalSignatures;
 
         // Properties
 
@@ -18162,6 +18290,11 @@ export namespace NMClient {
             (error?: any | null, failed_path?: any | null): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'object-creation-failed': ObjectCreationFailed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -18175,6 +18308,7 @@ export namespace NMClient {
 
     abstract class Object extends GObject.Object implements Gio.AsyncInitable<Object>, Gio.Initable {
         static $gtype: GObject.GType<Object>;
+        declare static readonly __signalSignatures: Object.SignalSignatures;
 
         // Properties
 
@@ -18189,6 +18323,9 @@ export namespace NMClient {
 
         // Signals
 
+        connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -18960,6 +19097,13 @@ export namespace NMClient {
             (object: boolean): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends NetworkManager.Connection.SignalSignatures {
+            removed: Removed;
+            updated: Updated;
+            visible: Visible;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -18977,6 +19121,7 @@ export namespace NMClient {
         implements Gio.AsyncInitable<RemoteConnection>, Gio.Initable
     {
         static $gtype: GObject.GType<RemoteConnection>;
+        declare static readonly __signalSignatures: RemoteConnection.SignalSignatures;
 
         // Properties
 
@@ -19001,6 +19146,18 @@ export namespace NMClient {
 
         // Signals
 
+        connect<K extends keyof RemoteConnection.SignalSignatures>(
+            signal: K,
+            callback: RemoteConnection.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RemoteConnection.SignalSignatures>(
+            signal: K,
+            callback: RemoteConnection.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RemoteConnection.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RemoteConnection.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -19791,6 +19948,12 @@ export namespace NMClient {
             (object: GObject.Object): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'connections-read': ConnectionsRead;
+            'new-connection': NewConnection;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -19807,6 +19970,7 @@ export namespace NMClient {
 
     class RemoteSettings extends GObject.Object implements Gio.AsyncInitable<RemoteSettings>, Gio.Initable {
         static $gtype: GObject.GType<RemoteSettings>;
+        declare static readonly __signalSignatures: RemoteSettings.SignalSignatures;
 
         // Properties
 
@@ -19847,6 +20011,18 @@ export namespace NMClient {
 
         // Signals
 
+        connect<K extends keyof RemoteSettings.SignalSignatures>(
+            signal: K,
+            callback: RemoteSettings.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RemoteSettings.SignalSignatures>(
+            signal: K,
+            callback: RemoteSettings.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RemoteSettings.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RemoteSettings.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -20693,6 +20869,11 @@ export namespace NMClient {
             (error?: any | null): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'registration-result': RegistrationResult;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -20706,6 +20887,7 @@ export namespace NMClient {
 
     abstract class SecretAgent extends GObject.Object {
         static $gtype: GObject.GType<SecretAgent>;
+        declare static readonly __signalSignatures: SecretAgent.SignalSignatures;
 
         // Properties
 
@@ -20759,6 +20941,18 @@ export namespace NMClient {
 
         // Signals
 
+        connect<K extends keyof SecretAgent.SignalSignatures>(
+            signal: K,
+            callback: SecretAgent.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SecretAgent.SignalSignatures>(
+            signal: K,
+            callback: SecretAgent.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SecretAgent.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SecretAgent.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -20877,6 +21071,11 @@ export namespace NMClient {
             (object: number, p0: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends ActiveConnection.SignalSignatures {
+            'vpn-state-changed': VpnStateChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -20891,6 +21090,7 @@ export namespace NMClient {
 
     class VPNConnection extends ActiveConnection implements Gio.AsyncInitable<VPNConnection>, Gio.Initable {
         static $gtype: GObject.GType<VPNConnection>;
+        declare static readonly __signalSignatures: VPNConnection.SignalSignatures;
 
         // Properties
 
@@ -20917,6 +21117,18 @@ export namespace NMClient {
 
         // Signals
 
+        connect<K extends keyof VPNConnection.SignalSignatures>(
+            signal: K,
+            callback: VPNConnection.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof VPNConnection.SignalSignatures>(
+            signal: K,
+            callback: VPNConnection.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VPNConnection.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VPNConnection.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -21589,6 +21801,9 @@ export namespace NMClient {
     }
 
     namespace WimaxNsp {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -21605,6 +21820,7 @@ export namespace NMClient {
 
     class WimaxNsp extends Object implements Gio.AsyncInitable<WimaxNsp>, Gio.Initable {
         static $gtype: GObject.GType<WimaxNsp>;
+        declare static readonly __signalSignatures: WimaxNsp.SignalSignatures;
 
         // Properties
 

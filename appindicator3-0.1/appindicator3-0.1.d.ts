@@ -154,6 +154,17 @@ export namespace AppIndicator3 {
             (arg1: number, arg2: Gdk.ScrollDirection): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'connection-changed': ConnectionChanged;
+            'new-attention-icon': NewAttentionIcon;
+            'new-icon': NewIcon;
+            'new-icon-theme-path': NewIconThemePath;
+            'new-label': NewLabel;
+            'new-status': NewStatus;
+            'scroll-event': ScrollEvent;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -190,6 +201,7 @@ export namespace AppIndicator3 {
      */
     class Indicator extends GObject.Object {
         static $gtype: GObject.GType<Indicator>;
+        declare static readonly __signalSignatures: Indicator.SignalSignatures;
 
         // Properties
 
@@ -352,6 +364,15 @@ export namespace AppIndicator3 {
 
         // Signals
 
+        connect<K extends keyof Indicator.SignalSignatures>(signal: K, callback: Indicator.SignalSignatures[K]): number;
+        connect_after<K extends keyof Indicator.SignalSignatures>(
+            signal: K,
+            callback: Indicator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Indicator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Indicator.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

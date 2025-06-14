@@ -191,6 +191,9 @@ export namespace GPlugin {
         LOG_PLUGIN_STATE_CHANGES,
     }
     namespace FileSource {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Source.ConstructorProps {
@@ -203,6 +206,7 @@ export namespace GPlugin {
      */
     class FileSource extends GObject.Object implements Source {
         static $gtype: GObject.GType<FileSource>;
+        declare static readonly __signalSignatures: FileSource.SignalSignatures;
 
         // Properties
 
@@ -688,6 +692,9 @@ export namespace GPlugin {
     }
 
     namespace Loader {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -700,6 +707,7 @@ export namespace GPlugin {
      */
     abstract class Loader extends GObject.Object {
         static $gtype: GObject.GType<Loader>;
+        declare static readonly __signalSignatures: Loader.SignalSignatures;
 
         // Properties
 
@@ -803,6 +811,18 @@ export namespace GPlugin {
             (plugin: GObject.Object, error?: any | null): boolean;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'load-plugin-failed': LoadPluginFailed;
+            'loaded-plugin': LoadedPlugin;
+            'loader-registered': LoaderRegistered;
+            'loader-unregistered': LoaderUnregistered;
+            'loading-plugin': LoadingPlugin;
+            'unload-plugin-failed': UnloadPluginFailed;
+            'unloaded-plugin': UnloadedPlugin;
+            'unloading-plugin': UnloadingPlugin;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -815,6 +835,7 @@ export namespace GPlugin {
      */
     class Manager extends GObject.Object {
         static $gtype: GObject.GType<Manager>;
+        declare static readonly __signalSignatures: Manager.SignalSignatures;
 
         // Constructors
 
@@ -824,6 +845,15 @@ export namespace GPlugin {
 
         // Signals
 
+        connect<K extends keyof Manager.SignalSignatures>(signal: K, callback: Manager.SignalSignatures[K]): number;
+        connect_after<K extends keyof Manager.SignalSignatures>(
+            signal: K,
+            callback: Manager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Manager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Manager.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1045,6 +1075,9 @@ export namespace GPlugin {
     }
 
     namespace PluginInfo {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1089,6 +1122,7 @@ export namespace GPlugin {
      */
     class PluginInfo extends GObject.Object {
         static $gtype: GObject.GType<PluginInfo>;
+        declare static readonly __signalSignatures: PluginInfo.SignalSignatures;
 
         // Properties
 

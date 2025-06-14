@@ -359,6 +359,16 @@ export namespace GPaste {
             (action: UpdateAction, target: UpdateTarget, index: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+            'delete-history': DeleteHistory;
+            'empty-history': EmptyHistory;
+            'show-history': ShowHistory;
+            'switch-history': SwitchHistory;
+            tracking: Tracking;
+            update: Update;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -370,6 +380,7 @@ export namespace GPaste {
 
     class Client extends Gio.DBusProxy implements Gio.AsyncInitable<Client>, Gio.DBusInterface, Gio.Initable {
         static $gtype: GObject.GType<Client>;
+        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Constructors
 
@@ -386,6 +397,9 @@ export namespace GPaste {
 
         // Signals
 
+        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2096,6 +2110,9 @@ export namespace GPaste {
     }
 
     namespace ClientItem {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2103,6 +2120,7 @@ export namespace GPaste {
 
     class ClientItem extends GObject.Object {
         static $gtype: GObject.GType<ClientItem>;
+        declare static readonly __signalSignatures: ClientItem.SignalSignatures;
 
         // Constructors
 
@@ -2131,6 +2149,11 @@ export namespace GPaste {
             (id: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+            'accelerator-activated': AcceleratorActivated;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2145,6 +2168,7 @@ export namespace GPaste {
         implements Gio.AsyncInitable<GnomeShellClient>, Gio.DBusInterface, Gio.Initable
     {
         static $gtype: GObject.GType<GnomeShellClient>;
+        declare static readonly __signalSignatures: GnomeShellClient.SignalSignatures;
 
         // Constructors
 
@@ -2161,6 +2185,18 @@ export namespace GPaste {
 
         // Signals
 
+        connect<K extends keyof GnomeShellClient.SignalSignatures>(
+            signal: K,
+            callback: GnomeShellClient.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GnomeShellClient.SignalSignatures>(
+            signal: K,
+            callback: GnomeShellClient.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GnomeShellClient.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GnomeShellClient.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3043,6 +3079,11 @@ export namespace GPaste {
             (active: boolean): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+            'active-changed': ActiveChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3057,6 +3098,7 @@ export namespace GPaste {
         implements Gio.AsyncInitable<ScreensaverClient>, Gio.DBusInterface, Gio.Initable
     {
         static $gtype: GObject.GType<ScreensaverClient>;
+        declare static readonly __signalSignatures: ScreensaverClient.SignalSignatures;
 
         // Constructors
 
@@ -3073,6 +3115,18 @@ export namespace GPaste {
 
         // Signals
 
+        connect<K extends keyof ScreensaverClient.SignalSignatures>(
+            signal: K,
+            callback: ScreensaverClient.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ScreensaverClient.SignalSignatures>(
+            signal: K,
+            callback: ScreensaverClient.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ScreensaverClient.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ScreensaverClient.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3867,6 +3921,13 @@ export namespace GPaste {
             (tracking_state: boolean): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            changed: Changed;
+            rebind: Rebind;
+            track: Track;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3874,6 +3935,7 @@ export namespace GPaste {
 
     class Settings extends GObject.Object {
         static $gtype: GObject.GType<Settings>;
+        declare static readonly __signalSignatures: Settings.SignalSignatures;
 
         // Constructors
 
@@ -3885,6 +3947,15 @@ export namespace GPaste {
 
         // Signals
 
+        connect<K extends keyof Settings.SignalSignatures>(signal: K, callback: Settings.SignalSignatures[K]): number;
+        connect_after<K extends keyof Settings.SignalSignatures>(
+            signal: K,
+            callback: Settings.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Settings.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Settings.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

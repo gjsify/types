@@ -206,6 +206,14 @@ export namespace Gdaui {
             (menu: Gtk.Menu): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {
+            activated: Activated;
+            'holder-changed': HolderChanged;
+            'layout-changed': LayoutChanged;
+            'populate-popup': PopulatePopup;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -229,6 +237,7 @@ export namespace Gdaui {
 
     class BasicForm extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<BasicForm>;
+        declare static readonly __signalSignatures: BasicForm.SignalSignatures;
 
         // Properties
 
@@ -281,6 +290,15 @@ export namespace Gdaui {
 
         // Signals
 
+        connect<K extends keyof BasicForm.SignalSignatures>(signal: K, callback: BasicForm.SignalSignatures[K]): number;
+        connect_after<K extends keyof BasicForm.SignalSignatures>(
+            signal: K,
+            callback: BasicForm.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BasicForm.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BasicForm.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -881,6 +899,11 @@ export namespace Gdaui {
             (object: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {
+            activate: Activate;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -903,6 +926,7 @@ export namespace Gdaui {
 
     class Cloud extends Gtk.Box implements Atk.ImplementorIface, DataSelector, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Cloud>;
+        declare static readonly __signalSignatures: Cloud.SignalSignatures;
 
         // Properties
 
@@ -942,6 +966,9 @@ export namespace Gdaui {
 
         // Signals
 
+        connect<K extends keyof Cloud.SignalSignatures>(signal: K, callback: Cloud.SignalSignatures[K]): number;
+        connect_after<K extends keyof Cloud.SignalSignatures>(signal: K, callback: Cloud.SignalSignatures[K]): number;
+        emit<K extends keyof Cloud.SignalSignatures>(signal: K, ...args: Parameters<Cloud.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1547,6 +1574,9 @@ export namespace Gdaui {
     }
 
     namespace Combo {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.ComboBox.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1567,6 +1597,7 @@ export namespace Gdaui {
         implements Atk.ImplementorIface, DataSelector, Gtk.Buildable, Gtk.CellEditable, Gtk.CellLayout
     {
         static $gtype: GObject.GType<Combo>;
+        declare static readonly __signalSignatures: Combo.SignalSignatures;
 
         // Properties
 
@@ -6210,6 +6241,11 @@ export namespace Gdaui {
             (object: string, p0: GObject.Value | any): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.CellRendererPixbuf.SignalSignatures {
+            changed: Changed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.CellRendererPixbuf.ConstructorProps {
@@ -6225,6 +6261,7 @@ export namespace Gdaui {
 
     class DataCellRendererBin extends Gtk.CellRendererPixbuf {
         static $gtype: GObject.GType<DataCellRendererBin>;
+        declare static readonly __signalSignatures: DataCellRendererBin.SignalSignatures;
 
         // Properties
 
@@ -6251,6 +6288,18 @@ export namespace Gdaui {
 
         // Signals
 
+        connect<K extends keyof DataCellRendererBin.SignalSignatures>(
+            signal: K,
+            callback: DataCellRendererBin.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DataCellRendererBin.SignalSignatures>(
+            signal: K,
+            callback: DataCellRendererBin.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DataCellRendererBin.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DataCellRendererBin.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -6270,6 +6319,11 @@ export namespace Gdaui {
             (object: string, p0: GObject.Value | any): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.CellRendererToggle.SignalSignatures {
+            changed: Changed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.CellRendererToggle.ConstructorProps {
@@ -6285,6 +6339,7 @@ export namespace Gdaui {
 
     class DataCellRendererBoolean extends Gtk.CellRendererToggle {
         static $gtype: GObject.GType<DataCellRendererBoolean>;
+        declare static readonly __signalSignatures: DataCellRendererBoolean.SignalSignatures;
 
         // Properties
 
@@ -6311,6 +6366,18 @@ export namespace Gdaui {
 
         // Signals
 
+        connect<K extends keyof DataCellRendererBoolean.SignalSignatures>(
+            signal: K,
+            callback: DataCellRendererBoolean.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DataCellRendererBoolean.SignalSignatures>(
+            signal: K,
+            callback: DataCellRendererBoolean.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DataCellRendererBoolean.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DataCellRendererBoolean.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -6328,6 +6395,11 @@ export namespace Gdaui {
 
         interface Changed {
             (object: string, p0?: any | null, p1?: any | null): void;
+        }
+
+        // Signal signatures
+        interface SignalSignatures extends Gtk.CellRendererText.SignalSignatures {
+            changed: Changed;
         }
 
         // Constructor properties interface
@@ -6351,6 +6423,7 @@ export namespace Gdaui {
 
     class DataCellRendererCombo extends Gtk.CellRendererText {
         static $gtype: GObject.GType<DataCellRendererCombo>;
+        declare static readonly __signalSignatures: DataCellRendererCombo.SignalSignatures;
 
         // Properties
 
@@ -6383,6 +6456,18 @@ export namespace Gdaui {
 
         // Signals
 
+        connect<K extends keyof DataCellRendererCombo.SignalSignatures>(
+            signal: K,
+            callback: DataCellRendererCombo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DataCellRendererCombo.SignalSignatures>(
+            signal: K,
+            callback: DataCellRendererCombo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DataCellRendererCombo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DataCellRendererCombo.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -6404,6 +6489,11 @@ export namespace Gdaui {
             (object: string, p0: unknown): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.CellRenderer.SignalSignatures {
+            'status-changed': StatusChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.CellRenderer.ConstructorProps {
@@ -6418,6 +6508,7 @@ export namespace Gdaui {
 
     class DataCellRendererInfo extends Gtk.CellRenderer {
         static $gtype: GObject.GType<DataCellRendererInfo>;
+        declare static readonly __signalSignatures: DataCellRendererInfo.SignalSignatures;
 
         // Properties
 
@@ -6439,6 +6530,18 @@ export namespace Gdaui {
 
         // Signals
 
+        connect<K extends keyof DataCellRendererInfo.SignalSignatures>(
+            signal: K,
+            callback: DataCellRendererInfo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DataCellRendererInfo.SignalSignatures>(
+            signal: K,
+            callback: DataCellRendererInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DataCellRendererInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DataCellRendererInfo.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -6458,6 +6561,11 @@ export namespace Gdaui {
             (object: string, p0: GObject.Value | any): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.CellRendererText.SignalSignatures {
+            changed: Changed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.CellRendererText.ConstructorProps {
@@ -6473,6 +6581,7 @@ export namespace Gdaui {
 
     class DataCellRendererTextual extends Gtk.CellRendererText {
         static $gtype: GObject.GType<DataCellRendererTextual>;
+        declare static readonly __signalSignatures: DataCellRendererTextual.SignalSignatures;
 
         // Properties
 
@@ -6497,6 +6606,18 @@ export namespace Gdaui {
 
         // Signals
 
+        connect<K extends keyof DataCellRendererTextual.SignalSignatures>(
+            signal: K,
+            callback: DataCellRendererTextual.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DataCellRendererTextual.SignalSignatures>(
+            signal: K,
+            callback: DataCellRendererTextual.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DataCellRendererTextual.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DataCellRendererTextual.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -6510,6 +6631,9 @@ export namespace Gdaui {
     }
 
     namespace DataFilter {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6524,6 +6648,7 @@ export namespace Gdaui {
 
     class DataFilter extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<DataFilter>;
+        declare static readonly __signalSignatures: DataFilter.SignalSignatures;
 
         // Properties
 
@@ -7007,6 +7132,9 @@ export namespace Gdaui {
     }
 
     namespace DataProxyInfo {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7023,6 +7151,7 @@ export namespace Gdaui {
 
     class DataProxyInfo extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<DataProxyInfo>;
+        declare static readonly __signalSignatures: DataProxyInfo.SignalSignatures;
 
         // Properties
 
@@ -7516,6 +7645,9 @@ export namespace Gdaui {
     }
 
     namespace DataStore {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gtk.TreeModel.ConstructorProps {
@@ -7528,6 +7660,7 @@ export namespace Gdaui {
 
     class DataStore extends GObject.Object implements Gtk.TreeModel {
         static $gtype: GObject.GType<DataStore>;
+        declare static readonly __signalSignatures: DataStore.SignalSignatures;
 
         // Properties
 
@@ -8444,6 +8577,9 @@ export namespace Gdaui {
     }
 
     namespace Entry {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Entry.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -8459,6 +8595,7 @@ export namespace Gdaui {
 
     class Entry extends Gtk.Entry implements Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, Gtk.Editable {
         static $gtype: GObject.GType<Entry>;
+        declare static readonly __signalSignatures: Entry.SignalSignatures;
 
         // Properties
 
@@ -13090,6 +13227,9 @@ export namespace Gdaui {
     }
 
     namespace EntryBin {
+        // Signal signatures
+        interface SignalSignatures extends EntryWrapper.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -13102,6 +13242,7 @@ export namespace Gdaui {
 
     class EntryBin extends EntryWrapper implements Atk.ImplementorIface, DataEntry, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<EntryBin>;
+        declare static readonly __signalSignatures: EntryBin.SignalSignatures;
 
         // Fields
 
@@ -17564,6 +17705,9 @@ export namespace Gdaui {
     }
 
     namespace EntryBoolean {
+        // Signal signatures
+        interface SignalSignatures extends EntryWrapper.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -17576,6 +17720,7 @@ export namespace Gdaui {
 
     class EntryBoolean extends EntryWrapper implements Atk.ImplementorIface, DataEntry, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<EntryBoolean>;
+        declare static readonly __signalSignatures: EntryBoolean.SignalSignatures;
 
         // Fields
 
@@ -22038,6 +22183,9 @@ export namespace Gdaui {
     }
 
     namespace EntryCombo {
+        // Signal signatures
+        interface SignalSignatures extends EntryShell.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -22053,6 +22201,7 @@ export namespace Gdaui {
 
     class EntryCombo extends EntryShell implements Atk.ImplementorIface, DataEntry, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<EntryCombo>;
+        declare static readonly __signalSignatures: EntryCombo.SignalSignatures;
 
         // Properties
 
@@ -26571,6 +26720,9 @@ export namespace Gdaui {
     }
 
     namespace EntryCommonTime {
+        // Signal signatures
+        interface SignalSignatures extends EntryWrapper.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -26591,6 +26743,7 @@ export namespace Gdaui {
         implements Atk.ImplementorIface, DataEntry, Gtk.Buildable, Gtk.CellEditable, Gtk.Scrollable
     {
         static $gtype: GObject.GType<EntryCommonTime>;
+        declare static readonly __signalSignatures: EntryCommonTime.SignalSignatures;
 
         // Properties
 
@@ -31101,6 +31254,9 @@ export namespace Gdaui {
     }
 
     namespace EntryDate {
+        // Signal signatures
+        interface SignalSignatures extends EntryCommonTime.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -31117,6 +31273,7 @@ export namespace Gdaui {
         implements Atk.ImplementorIface, DataEntry, Gtk.Buildable, Gtk.CellEditable, Gtk.Scrollable
     {
         static $gtype: GObject.GType<EntryDate>;
+        declare static readonly __signalSignatures: EntryDate.SignalSignatures;
 
         // Fields
 
@@ -35464,6 +35621,9 @@ export namespace Gdaui {
     }
 
     namespace EntryNone {
+        // Signal signatures
+        interface SignalSignatures extends EntryWrapper.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -35476,6 +35636,7 @@ export namespace Gdaui {
 
     class EntryNone extends EntryWrapper implements Atk.ImplementorIface, DataEntry, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<EntryNone>;
+        declare static readonly __signalSignatures: EntryNone.SignalSignatures;
 
         // Fields
 
@@ -39938,6 +40099,9 @@ export namespace Gdaui {
     }
 
     namespace EntryNumber {
+        // Signal signatures
+        interface SignalSignatures extends EntryWrapper.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -39958,6 +40122,7 @@ export namespace Gdaui {
         implements Atk.ImplementorIface, DataEntry, Gtk.Buildable, Gtk.CellEditable, Gtk.Scrollable
     {
         static $gtype: GObject.GType<EntryNumber>;
+        declare static readonly __signalSignatures: EntryNumber.SignalSignatures;
 
         // Properties
 
@@ -44476,6 +44641,9 @@ export namespace Gdaui {
     }
 
     namespace EntryShell {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Viewport.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -44492,6 +44660,7 @@ export namespace Gdaui {
 
     class EntryShell extends Gtk.Viewport implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<EntryShell>;
+        declare static readonly __signalSignatures: EntryShell.SignalSignatures;
 
         // Properties
 
@@ -45083,6 +45252,9 @@ export namespace Gdaui {
     }
 
     namespace EntryString {
+        // Signal signatures
+        interface SignalSignatures extends EntryWrapper.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -45104,6 +45276,7 @@ export namespace Gdaui {
         implements Atk.ImplementorIface, DataEntry, Gtk.Buildable, Gtk.CellEditable, Gtk.Scrollable
     {
         static $gtype: GObject.GType<EntryString>;
+        declare static readonly __signalSignatures: EntryString.SignalSignatures;
 
         // Properties
 
@@ -49620,6 +49793,9 @@ export namespace Gdaui {
     }
 
     namespace EntryTime {
+        // Signal signatures
+        interface SignalSignatures extends EntryCommonTime.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -49636,6 +49812,7 @@ export namespace Gdaui {
         implements Atk.ImplementorIface, DataEntry, Gtk.Buildable, Gtk.CellEditable, Gtk.Scrollable
     {
         static $gtype: GObject.GType<EntryTime>;
+        declare static readonly __signalSignatures: EntryTime.SignalSignatures;
 
         // Fields
 
@@ -53983,6 +54160,9 @@ export namespace Gdaui {
     }
 
     namespace EntryTimestamp {
+        // Signal signatures
+        interface SignalSignatures extends EntryCommonTime.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -53999,6 +54179,7 @@ export namespace Gdaui {
         implements Atk.ImplementorIface, DataEntry, Gtk.Buildable, Gtk.CellEditable, Gtk.Scrollable
     {
         static $gtype: GObject.GType<EntryTimestamp>;
+        declare static readonly __signalSignatures: EntryTimestamp.SignalSignatures;
 
         // Fields
 
@@ -58346,6 +58527,9 @@ export namespace Gdaui {
     }
 
     namespace EntryWrapper {
+        // Signal signatures
+        interface SignalSignatures extends EntryShell.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -58361,6 +58545,7 @@ export namespace Gdaui {
 
     class EntryWrapper extends EntryShell implements Atk.ImplementorIface, DataEntry, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<EntryWrapper>;
+        declare static readonly __signalSignatures: EntryWrapper.SignalSignatures;
 
         // Properties
 
@@ -62833,6 +63018,9 @@ export namespace Gdaui {
     }
 
     namespace Form {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -62851,6 +63039,7 @@ export namespace Gdaui {
 
     class Form extends Gtk.Box implements Atk.ImplementorIface, DataProxy, DataSelector, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Form>;
+        declare static readonly __signalSignatures: Form.SignalSignatures;
 
         // Properties
 
@@ -63536,6 +63725,9 @@ export namespace Gdaui {
     }
 
     namespace FormattedEntry {
+        // Signal signatures
+        interface SignalSignatures extends Entry.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -63551,6 +63743,7 @@ export namespace Gdaui {
 
     class FormattedEntry extends Entry implements Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, Gtk.Editable {
         static $gtype: GObject.GType<FormattedEntry>;
+        declare static readonly __signalSignatures: FormattedEntry.SignalSignatures;
 
         // Properties
 
@@ -67865,6 +68058,9 @@ export namespace Gdaui {
     }
 
     namespace Grid {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -67883,6 +68079,7 @@ export namespace Gdaui {
 
     class Grid extends Gtk.Box implements Atk.ImplementorIface, DataProxy, DataSelector, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Grid>;
+        declare static readonly __signalSignatures: Grid.SignalSignatures;
 
         // Properties
 
@@ -68584,6 +68781,11 @@ export namespace Gdaui {
             (object: boolean): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {
+            changed: Changed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -68598,6 +68800,7 @@ export namespace Gdaui {
 
     class Login extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Login>;
+        declare static readonly __signalSignatures: Login.SignalSignatures;
 
         // Properties
 
@@ -68618,6 +68821,9 @@ export namespace Gdaui {
 
         // Signals
 
+        connect<K extends keyof Login.SignalSignatures>(signal: K, callback: Login.SignalSignatures[K]): number;
+        connect_after<K extends keyof Login.SignalSignatures>(signal: K, callback: Login.SignalSignatures[K]): number;
+        emit<K extends keyof Login.SignalSignatures>(signal: K, ...args: Parameters<Login.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -69127,6 +69333,9 @@ export namespace Gdaui {
     }
 
     namespace NumericEntry {
+        // Signal signatures
+        interface SignalSignatures extends Entry.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -69147,6 +69356,7 @@ export namespace Gdaui {
 
     class NumericEntry extends Entry implements Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, Gtk.Editable {
         static $gtype: GObject.GType<NumericEntry>;
+        declare static readonly __signalSignatures: NumericEntry.SignalSignatures;
 
         // Properties
 
@@ -73459,6 +73669,9 @@ export namespace Gdaui {
     }
 
     namespace ProviderSelector {
+        // Signal signatures
+        interface SignalSignatures extends Combo.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -73475,6 +73688,7 @@ export namespace Gdaui {
         implements Atk.ImplementorIface, DataSelector, Gtk.Buildable, Gtk.CellEditable, Gtk.CellLayout
     {
         static $gtype: GObject.GType<ProviderSelector>;
+        declare static readonly __signalSignatures: ProviderSelector.SignalSignatures;
 
         // Constructors
 
@@ -77897,6 +78111,9 @@ export namespace Gdaui {
     }
 
     namespace RawForm {
+        // Signal signatures
+        interface SignalSignatures extends BasicForm.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -77915,6 +78132,7 @@ export namespace Gdaui {
         implements Atk.ImplementorIface, DataProxy, DataSelector, Gtk.Buildable, Gtk.Orientable
     {
         static $gtype: GObject.GType<RawForm>;
+        declare static readonly __signalSignatures: RawForm.SignalSignatures;
 
         // Properties
 
@@ -78591,6 +78809,12 @@ export namespace Gdaui {
             (menu: Gtk.Menu): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.TreeView.SignalSignatures {
+            'double-clicked': DoubleClicked;
+            'populate-popup': PopulatePopup;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -78615,6 +78839,7 @@ export namespace Gdaui {
         implements Atk.ImplementorIface, DataProxy, DataSelector, Gtk.Buildable, Gtk.Scrollable
     {
         static $gtype: GObject.GType<RawGrid>;
+        declare static readonly __signalSignatures: RawGrid.SignalSignatures;
 
         // Properties
 
@@ -78650,6 +78875,15 @@ export namespace Gdaui {
 
         // Signals
 
+        connect<K extends keyof RawGrid.SignalSignatures>(signal: K, callback: RawGrid.SignalSignatures[K]): number;
+        connect_after<K extends keyof RawGrid.SignalSignatures>(
+            signal: K,
+            callback: RawGrid.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RawGrid.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RawGrid.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -79449,6 +79683,11 @@ export namespace Gdaui {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {
+            changed: Changed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -79468,6 +79707,7 @@ export namespace Gdaui {
 
     class RtEditor extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<RtEditor>;
+        declare static readonly __signalSignatures: RtEditor.SignalSignatures;
 
         // Properties
 
@@ -79528,6 +79768,15 @@ export namespace Gdaui {
 
         // Signals
 
+        connect<K extends keyof RtEditor.SignalSignatures>(signal: K, callback: RtEditor.SignalSignatures[K]): number;
+        connect_after<K extends keyof RtEditor.SignalSignatures>(
+            signal: K,
+            callback: RtEditor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RtEditor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RtEditor.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -80018,6 +80267,9 @@ export namespace Gdaui {
     }
 
     namespace ServerOperation {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -80034,6 +80286,7 @@ export namespace Gdaui {
 
     class ServerOperation extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<ServerOperation>;
+        declare static readonly __signalSignatures: ServerOperation.SignalSignatures;
 
         // Properties
 
@@ -80536,6 +80789,12 @@ export namespace Gdaui {
             (object?: any | null): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'public-data-changed': PublicDataChanged;
+            'source-model-changed': SourceModelChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -80545,6 +80804,7 @@ export namespace Gdaui {
 
     class Set extends GObject.Object {
         static $gtype: GObject.GType<Set>;
+        declare static readonly __signalSignatures: Set.SignalSignatures;
 
         // Properties
 
@@ -80565,6 +80825,9 @@ export namespace Gdaui {
 
         // Signals
 
+        connect<K extends keyof Set.SignalSignatures>(signal: K, callback: Set.SignalSignatures[K]): number;
+        connect_after<K extends keyof Set.SignalSignatures>(signal: K, callback: Set.SignalSignatures[K]): number;
+        emit<K extends keyof Set.SignalSignatures>(signal: K, ...args: Parameters<Set.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -80608,6 +80871,15 @@ export namespace Gdaui {
             (object: string, p0?: any | null): boolean;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'drag-can-drag': DragCanDrag;
+            'drag-can-drop': DragCanDrop;
+            'drag-delete': DragDelete;
+            'drag-drop': DragDrop;
+            'drag-get': DragGet;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -80621,6 +80893,7 @@ export namespace Gdaui {
 
     class TreeStore extends GObject.Object implements Gtk.TreeDragDest, Gtk.TreeDragSource, Gtk.TreeModel {
         static $gtype: GObject.GType<TreeStore>;
+        declare static readonly __signalSignatures: TreeStore.SignalSignatures;
 
         // Properties
 
@@ -80638,6 +80911,15 @@ export namespace Gdaui {
 
         // Signals
 
+        connect<K extends keyof TreeStore.SignalSignatures>(signal: K, callback: TreeStore.SignalSignatures[K]): number;
+        connect_after<K extends keyof TreeStore.SignalSignatures>(
+            signal: K,
+            callback: TreeStore.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TreeStore.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TreeStore.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

@@ -131,6 +131,12 @@ export namespace Epc {
             (object: Protocol, p0: string, p1: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            authenticate: Authenticate;
+            'publisher-resolved': PublisherResolved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -151,6 +157,7 @@ export namespace Epc {
      */
     class Consumer extends GObject.Object {
         static $gtype: GObject.GType<Consumer>;
+        declare static readonly __signalSignatures: Consumer.SignalSignatures;
 
         // Properties
 
@@ -181,6 +188,15 @@ export namespace Epc {
 
         // Signals
 
+        connect<K extends keyof Consumer.SignalSignatures>(signal: K, callback: Consumer.SignalSignatures[K]): number;
+        connect_after<K extends keyof Consumer.SignalSignatures>(
+            signal: K,
+            callback: Consumer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Consumer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Consumer.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -215,6 +231,9 @@ export namespace Epc {
     }
 
     namespace Dispatcher {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -230,6 +249,7 @@ export namespace Epc {
      */
     class Dispatcher extends GObject.Object {
         static $gtype: GObject.GType<Dispatcher>;
+        declare static readonly __signalSignatures: Dispatcher.SignalSignatures;
 
         // Properties
 
@@ -264,6 +284,9 @@ export namespace Epc {
     }
 
     namespace Publisher {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -293,6 +316,7 @@ export namespace Epc {
      */
     class Publisher extends GObject.Object {
         static $gtype: GObject.GType<Publisher>;
+        declare static readonly __signalSignatures: Publisher.SignalSignatures;
 
         // Properties
 
@@ -392,6 +416,13 @@ export namespace Epc {
             (object: string, p0: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'scanning-done': ScanningDone;
+            'service-found': ServiceFound;
+            'service-removed': ServiceRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -409,6 +440,7 @@ export namespace Epc {
      */
     class ServiceMonitor extends GObject.Object {
         static $gtype: GObject.GType<ServiceMonitor>;
+        declare static readonly __signalSignatures: ServiceMonitor.SignalSignatures;
 
         // Properties
 
@@ -431,6 +463,18 @@ export namespace Epc {
 
         // Signals
 
+        connect<K extends keyof ServiceMonitor.SignalSignatures>(
+            signal: K,
+            callback: ServiceMonitor.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ServiceMonitor.SignalSignatures>(
+            signal: K,
+            callback: ServiceMonitor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ServiceMonitor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ServiceMonitor.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

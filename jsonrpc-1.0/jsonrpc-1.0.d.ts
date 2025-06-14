@@ -66,6 +66,13 @@ export namespace Jsonrpc {
             (method: string, params?: GLib.Variant | null): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            failed: Failed;
+            'handle-call': HandleCall;
+            notification: Notification;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -106,6 +113,7 @@ export namespace Jsonrpc {
      */
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
+        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Properties
 
@@ -154,6 +162,9 @@ export namespace Jsonrpc {
 
         // Signals
 
+        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -534,6 +545,9 @@ export namespace Jsonrpc {
     }
 
     namespace InputStream {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DataInputStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gio.DataInputStream.ConstructorProps, Gio.Seekable.ConstructorProps {}
@@ -541,6 +555,7 @@ export namespace Jsonrpc {
 
     class InputStream extends Gio.DataInputStream implements Gio.Seekable {
         static $gtype: GObject.GType<InputStream>;
+        declare static readonly __signalSignatures: InputStream.SignalSignatures;
 
         // Constructors
 
@@ -1004,6 +1019,9 @@ export namespace Jsonrpc {
     }
 
     namespace OutputStream {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DataOutputStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gio.DataOutputStream.ConstructorProps, Gio.Seekable.ConstructorProps {
@@ -1014,6 +1032,7 @@ export namespace Jsonrpc {
 
     class OutputStream extends Gio.DataOutputStream implements Gio.Seekable {
         static $gtype: GObject.GType<OutputStream>;
+        declare static readonly __signalSignatures: OutputStream.SignalSignatures;
 
         // Properties
 
@@ -1642,6 +1661,14 @@ export namespace Jsonrpc {
             (client: Client, method: string, id: GLib.Variant): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'client-accepted': ClientAccepted;
+            'client-closed': ClientClosed;
+            'handle-call': HandleCall;
+            notification: Notification;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1656,6 +1683,7 @@ export namespace Jsonrpc {
      */
     class Server extends GObject.Object {
         static $gtype: GObject.GType<Server>;
+        declare static readonly __signalSignatures: Server.SignalSignatures;
 
         // Constructors
 
@@ -1667,6 +1695,9 @@ export namespace Jsonrpc {
 
         // Signals
 
+        connect<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
+        connect_after<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
+        emit<K extends keyof Server.SignalSignatures>(signal: K, ...args: Parameters<Server.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

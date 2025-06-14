@@ -1806,6 +1806,12 @@ export namespace WebKit2 {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            authenticated: Authenticated;
+            cancelled: Cancelled;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1829,6 +1835,7 @@ export namespace WebKit2 {
      */
     class AuthenticationRequest extends GObject.Object {
         static $gtype: GObject.GType<AuthenticationRequest>;
+        declare static readonly __signalSignatures: AuthenticationRequest.SignalSignatures;
 
         // Constructors
 
@@ -1838,6 +1845,18 @@ export namespace WebKit2 {
 
         // Signals
 
+        connect<K extends keyof AuthenticationRequest.SignalSignatures>(
+            signal: K,
+            callback: AuthenticationRequest.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AuthenticationRequest.SignalSignatures>(
+            signal: K,
+            callback: AuthenticationRequest.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AuthenticationRequest.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AuthenticationRequest.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1963,6 +1982,11 @@ export namespace WebKit2 {
             (): WebView;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'create-web-view': CreateWebView;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1982,6 +2006,7 @@ export namespace WebKit2 {
      */
     class AutomationSession extends GObject.Object {
         static $gtype: GObject.GType<AutomationSession>;
+        declare static readonly __signalSignatures: AutomationSession.SignalSignatures;
 
         // Properties
 
@@ -1998,6 +2023,18 @@ export namespace WebKit2 {
 
         // Signals
 
+        connect<K extends keyof AutomationSession.SignalSignatures>(
+            signal: K,
+            callback: AutomationSession.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AutomationSession.SignalSignatures>(
+            signal: K,
+            callback: AutomationSession.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AutomationSession.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AutomationSession.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2040,6 +2077,11 @@ export namespace WebKit2 {
             (item_added?: BackForwardListItem | null, items_removed?: any | null): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            changed: Changed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2064,6 +2106,7 @@ export namespace WebKit2 {
      */
     class BackForwardList extends GObject.Object {
         static $gtype: GObject.GType<BackForwardList>;
+        declare static readonly __signalSignatures: BackForwardList.SignalSignatures;
 
         // Constructors
 
@@ -2073,6 +2116,18 @@ export namespace WebKit2 {
 
         // Signals
 
+        connect<K extends keyof BackForwardList.SignalSignatures>(
+            signal: K,
+            callback: BackForwardList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BackForwardList.SignalSignatures>(
+            signal: K,
+            callback: BackForwardList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BackForwardList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BackForwardList.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2139,6 +2194,9 @@ export namespace WebKit2 {
     }
 
     namespace BackForwardListItem {
+        // Signal signatures
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {}
@@ -2152,6 +2210,7 @@ export namespace WebKit2 {
      */
     class BackForwardListItem extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<BackForwardListItem>;
+        declare static readonly __signalSignatures: BackForwardListItem.SignalSignatures;
 
         // Constructors
 
@@ -2191,6 +2250,11 @@ export namespace WebKit2 {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            finished: Finished;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2217,6 +2281,7 @@ export namespace WebKit2 {
      */
     class ColorChooserRequest extends GObject.Object {
         static $gtype: GObject.GType<ColorChooserRequest>;
+        declare static readonly __signalSignatures: ColorChooserRequest.SignalSignatures;
 
         // Properties
 
@@ -2234,6 +2299,18 @@ export namespace WebKit2 {
 
         // Signals
 
+        connect<K extends keyof ColorChooserRequest.SignalSignatures>(
+            signal: K,
+            callback: ColorChooserRequest.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ColorChooserRequest.SignalSignatures>(
+            signal: K,
+            callback: ColorChooserRequest.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ColorChooserRequest.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ColorChooserRequest.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2278,6 +2355,9 @@ export namespace WebKit2 {
     }
 
     namespace ContextMenu {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2300,6 +2380,7 @@ export namespace WebKit2 {
      */
     class ContextMenu extends GObject.Object {
         static $gtype: GObject.GType<ContextMenu>;
+        declare static readonly __signalSignatures: ContextMenu.SignalSignatures;
 
         // Constructors
 
@@ -2401,6 +2482,9 @@ export namespace WebKit2 {
     }
 
     namespace ContextMenuItem {
+        // Signal signatures
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {}
@@ -2417,6 +2501,7 @@ export namespace WebKit2 {
      */
     class ContextMenuItem extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<ContextMenuItem>;
+        declare static readonly __signalSignatures: ContextMenuItem.SignalSignatures;
 
         // Constructors
 
@@ -2478,6 +2563,11 @@ export namespace WebKit2 {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            changed: Changed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2494,6 +2584,7 @@ export namespace WebKit2 {
      */
     class CookieManager extends GObject.Object {
         static $gtype: GObject.GType<CookieManager>;
+        declare static readonly __signalSignatures: CookieManager.SignalSignatures;
 
         // Constructors
 
@@ -2503,6 +2594,18 @@ export namespace WebKit2 {
 
         // Signals
 
+        connect<K extends keyof CookieManager.SignalSignatures>(
+            signal: K,
+            callback: CookieManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CookieManager.SignalSignatures>(
+            signal: K,
+            callback: CookieManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CookieManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CookieManager.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2779,6 +2882,9 @@ export namespace WebKit2 {
     }
 
     namespace DeviceInfoPermissionRequest {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, PermissionRequest.ConstructorProps {}
@@ -2796,6 +2902,7 @@ export namespace WebKit2 {
      */
     class DeviceInfoPermissionRequest extends GObject.Object implements PermissionRequest {
         static $gtype: GObject.GType<DeviceInfoPermissionRequest>;
+        declare static readonly __signalSignatures: DeviceInfoPermissionRequest.SignalSignatures;
 
         // Constructors
 
@@ -3284,6 +3391,15 @@ export namespace WebKit2 {
             (data_length: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'created-destination': CreatedDestination;
+            'decide-destination': DecideDestination;
+            failed: Failed;
+            finished: Finished;
+            'received-data': ReceivedData;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3307,6 +3423,7 @@ export namespace WebKit2 {
      */
     class Download extends GObject.Object {
         static $gtype: GObject.GType<Download>;
+        declare static readonly __signalSignatures: Download.SignalSignatures;
 
         // Properties
 
@@ -3359,6 +3476,15 @@ export namespace WebKit2 {
 
         // Signals
 
+        connect<K extends keyof Download.SignalSignatures>(signal: K, callback: Download.SignalSignatures[K]): number;
+        connect_after<K extends keyof Download.SignalSignatures>(
+            signal: K,
+            callback: Download.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Download.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Download.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3489,6 +3615,9 @@ export namespace WebKit2 {
     }
 
     namespace EditorState {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3506,6 +3635,7 @@ export namespace WebKit2 {
      */
     class EditorState extends GObject.Object {
         static $gtype: GObject.GType<EditorState>;
+        declare static readonly __signalSignatures: EditorState.SignalSignatures;
 
         // Properties
 
@@ -3572,6 +3702,11 @@ export namespace WebKit2 {
             (page_uri: string, favicon_uri: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'favicon-changed': FaviconChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3592,6 +3727,7 @@ export namespace WebKit2 {
      */
     class FaviconDatabase extends GObject.Object {
         static $gtype: GObject.GType<FaviconDatabase>;
+        declare static readonly __signalSignatures: FaviconDatabase.SignalSignatures;
 
         // Constructors
 
@@ -3601,6 +3737,18 @@ export namespace WebKit2 {
 
         // Signals
 
+        connect<K extends keyof FaviconDatabase.SignalSignatures>(
+            signal: K,
+            callback: FaviconDatabase.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FaviconDatabase.SignalSignatures>(
+            signal: K,
+            callback: FaviconDatabase.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FaviconDatabase.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FaviconDatabase.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3705,6 +3853,9 @@ export namespace WebKit2 {
     }
 
     namespace FileChooserRequest {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3740,6 +3891,7 @@ export namespace WebKit2 {
      */
     class FileChooserRequest extends GObject.Object {
         static $gtype: GObject.GType<FileChooserRequest>;
+        declare static readonly __signalSignatures: FileChooserRequest.SignalSignatures;
 
         // Properties
 
@@ -3879,6 +4031,13 @@ export namespace WebKit2 {
             (match_count: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'counted-matches': CountedMatches;
+            'failed-to-find-text': FailedToFindText;
+            'found-text': FoundText;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3906,6 +4065,7 @@ export namespace WebKit2 {
      */
     class FindController extends GObject.Object {
         static $gtype: GObject.GType<FindController>;
+        declare static readonly __signalSignatures: FindController.SignalSignatures;
 
         // Properties
 
@@ -3942,6 +4102,18 @@ export namespace WebKit2 {
 
         // Signals
 
+        connect<K extends keyof FindController.SignalSignatures>(
+            signal: K,
+            callback: FindController.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FindController.SignalSignatures>(
+            signal: K,
+            callback: FindController.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FindController.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FindController.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -4061,6 +4233,9 @@ export namespace WebKit2 {
     }
 
     namespace FormSubmissionRequest {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4078,6 +4253,7 @@ export namespace WebKit2 {
      */
     class FormSubmissionRequest extends GObject.Object {
         static $gtype: GObject.GType<FormSubmissionRequest>;
+        declare static readonly __signalSignatures: FormSubmissionRequest.SignalSignatures;
 
         // Constructors
 
@@ -4126,6 +4302,12 @@ export namespace WebKit2 {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            start: Start;
+            stop: Stop;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4146,6 +4328,7 @@ export namespace WebKit2 {
      */
     class GeolocationManager extends GObject.Object {
         static $gtype: GObject.GType<GeolocationManager>;
+        declare static readonly __signalSignatures: GeolocationManager.SignalSignatures;
 
         // Properties
 
@@ -4170,6 +4353,18 @@ export namespace WebKit2 {
 
         // Signals
 
+        connect<K extends keyof GeolocationManager.SignalSignatures>(
+            signal: K,
+            callback: GeolocationManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GeolocationManager.SignalSignatures>(
+            signal: K,
+            callback: GeolocationManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GeolocationManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GeolocationManager.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -4200,6 +4395,9 @@ export namespace WebKit2 {
     }
 
     namespace GeolocationPermissionRequest {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, PermissionRequest.ConstructorProps {}
@@ -4233,6 +4431,7 @@ export namespace WebKit2 {
      */
     class GeolocationPermissionRequest extends GObject.Object implements PermissionRequest {
         static $gtype: GObject.GType<GeolocationPermissionRequest>;
+        declare static readonly __signalSignatures: GeolocationPermissionRequest.SignalSignatures;
 
         // Constructors
 
@@ -4699,6 +4898,9 @@ export namespace WebKit2 {
     }
 
     namespace HitTestResult {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4740,6 +4942,7 @@ export namespace WebKit2 {
      */
     class HitTestResult extends GObject.Object {
         static $gtype: GObject.GType<HitTestResult>;
+        declare static readonly __signalSignatures: HitTestResult.SignalSignatures;
 
         // Properties
 
@@ -4898,6 +5101,15 @@ export namespace WebKit2 {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            committed: Committed;
+            'delete-surrounding': DeleteSurrounding;
+            'preedit-changed': PreeditChanged;
+            'preedit-finished': PreeditFinished;
+            'preedit-started': PreeditStarted;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4922,6 +5134,7 @@ export namespace WebKit2 {
      */
     abstract class InputMethodContext extends GObject.Object {
         static $gtype: GObject.GType<InputMethodContext>;
+        declare static readonly __signalSignatures: InputMethodContext.SignalSignatures;
 
         // Properties
 
@@ -4954,6 +5167,18 @@ export namespace WebKit2 {
 
         // Signals
 
+        connect<K extends keyof InputMethodContext.SignalSignatures>(
+            signal: K,
+            callback: InputMethodContext.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof InputMethodContext.SignalSignatures>(
+            signal: K,
+            callback: InputMethodContext.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InputMethodContext.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InputMethodContext.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -5117,6 +5342,9 @@ export namespace WebKit2 {
     }
 
     namespace InstallMissingMediaPluginsPermissionRequest {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, PermissionRequest.ConstructorProps {}
@@ -5135,6 +5363,7 @@ export namespace WebKit2 {
      */
     class InstallMissingMediaPluginsPermissionRequest extends GObject.Object implements PermissionRequest {
         static $gtype: GObject.GType<InstallMissingMediaPluginsPermissionRequest>;
+        declare static readonly __signalSignatures: InstallMissingMediaPluginsPermissionRequest.SignalSignatures;
 
         // Constructors
 
@@ -5611,6 +5840,9 @@ export namespace WebKit2 {
     }
 
     namespace MediaKeySystemPermissionRequest {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, PermissionRequest.ConstructorProps {}
@@ -5631,6 +5863,7 @@ export namespace WebKit2 {
      */
     class MediaKeySystemPermissionRequest extends GObject.Object implements PermissionRequest {
         static $gtype: GObject.GType<MediaKeySystemPermissionRequest>;
+        declare static readonly __signalSignatures: MediaKeySystemPermissionRequest.SignalSignatures;
 
         // Constructors
 
@@ -6097,6 +6330,9 @@ export namespace WebKit2 {
     }
 
     namespace NavigationPolicyDecision {
+        // Signal signatures
+        interface SignalSignatures extends PolicyDecision.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends PolicyDecision.ConstructorProps {
@@ -6122,6 +6358,7 @@ export namespace WebKit2 {
      */
     class NavigationPolicyDecision extends PolicyDecision {
         static $gtype: GObject.GType<NavigationPolicyDecision>;
+        declare static readonly __signalSignatures: NavigationPolicyDecision.SignalSignatures;
 
         // Properties
 
@@ -6240,6 +6477,12 @@ export namespace WebKit2 {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            clicked: Clicked;
+            closed: Closed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6255,6 +6498,7 @@ export namespace WebKit2 {
      */
     class Notification extends GObject.Object {
         static $gtype: GObject.GType<Notification>;
+        declare static readonly __signalSignatures: Notification.SignalSignatures;
 
         // Properties
 
@@ -6283,6 +6527,18 @@ export namespace WebKit2 {
 
         // Signals
 
+        connect<K extends keyof Notification.SignalSignatures>(
+            signal: K,
+            callback: Notification.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Notification.SignalSignatures>(
+            signal: K,
+            callback: Notification.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Notification.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Notification.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -6329,6 +6585,9 @@ export namespace WebKit2 {
     }
 
     namespace NotificationPermissionRequest {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, PermissionRequest.ConstructorProps {}
@@ -6346,6 +6605,7 @@ export namespace WebKit2 {
      */
     class NotificationPermissionRequest extends GObject.Object implements PermissionRequest {
         static $gtype: GObject.GType<NotificationPermissionRequest>;
+        declare static readonly __signalSignatures: NotificationPermissionRequest.SignalSignatures;
 
         // Constructors
 
@@ -6818,6 +7078,11 @@ export namespace WebKit2 {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            close: Close;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6832,6 +7097,7 @@ export namespace WebKit2 {
      */
     class OptionMenu extends GObject.Object {
         static $gtype: GObject.GType<OptionMenu>;
+        declare static readonly __signalSignatures: OptionMenu.SignalSignatures;
 
         // Constructors
 
@@ -6841,6 +7107,18 @@ export namespace WebKit2 {
 
         // Signals
 
+        connect<K extends keyof OptionMenu.SignalSignatures>(
+            signal: K,
+            callback: OptionMenu.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OptionMenu.SignalSignatures>(
+            signal: K,
+            callback: OptionMenu.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OptionMenu.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OptionMenu.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -6894,6 +7172,9 @@ export namespace WebKit2 {
     }
 
     namespace Plugin {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6911,6 +7192,7 @@ export namespace WebKit2 {
      */
     class Plugin extends GObject.Object {
         static $gtype: GObject.GType<Plugin>;
+        declare static readonly __signalSignatures: Plugin.SignalSignatures;
 
         // Constructors
 
@@ -6946,6 +7228,9 @@ export namespace WebKit2 {
     }
 
     namespace PointerLockPermissionRequest {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, PermissionRequest.ConstructorProps {}
@@ -6963,6 +7248,7 @@ export namespace WebKit2 {
      */
     class PointerLockPermissionRequest extends GObject.Object implements PermissionRequest {
         static $gtype: GObject.GType<PointerLockPermissionRequest>;
+        declare static readonly __signalSignatures: PointerLockPermissionRequest.SignalSignatures;
 
         // Constructors
 
@@ -7429,6 +7715,9 @@ export namespace WebKit2 {
     }
 
     namespace PolicyDecision {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -7449,6 +7738,7 @@ export namespace WebKit2 {
      */
     abstract class PolicyDecision extends GObject.Object {
         static $gtype: GObject.GType<PolicyDecision>;
+        declare static readonly __signalSignatures: PolicyDecision.SignalSignatures;
 
         // Constructors
 
@@ -7499,6 +7789,12 @@ export namespace WebKit2 {
             (page_setup: Gtk.PageSetup, print_settings: Gtk.PrintSettings): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            apply: Apply;
+            update: Update;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7518,6 +7814,7 @@ export namespace WebKit2 {
      */
     class PrintCustomWidget extends GObject.Object {
         static $gtype: GObject.GType<PrintCustomWidget>;
+        declare static readonly __signalSignatures: PrintCustomWidget.SignalSignatures;
 
         // Properties
 
@@ -7540,6 +7837,18 @@ export namespace WebKit2 {
 
         // Signals
 
+        connect<K extends keyof PrintCustomWidget.SignalSignatures>(
+            signal: K,
+            callback: PrintCustomWidget.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PrintCustomWidget.SignalSignatures>(
+            signal: K,
+            callback: PrintCustomWidget.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PrintCustomWidget.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PrintCustomWidget.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -7599,6 +7908,13 @@ export namespace WebKit2 {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'create-custom-widget': CreateCustomWidget;
+            failed: Failed;
+            finished: Finished;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7621,6 +7937,7 @@ export namespace WebKit2 {
      */
     class PrintOperation extends GObject.Object {
         static $gtype: GObject.GType<PrintOperation>;
+        declare static readonly __signalSignatures: PrintOperation.SignalSignatures;
 
         // Properties
 
@@ -7663,6 +7980,18 @@ export namespace WebKit2 {
 
         // Signals
 
+        connect<K extends keyof PrintOperation.SignalSignatures>(
+            signal: K,
+            callback: PrintOperation.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PrintOperation.SignalSignatures>(
+            signal: K,
+            callback: PrintOperation.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PrintOperation.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PrintOperation.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -7747,6 +8076,9 @@ export namespace WebKit2 {
     }
 
     namespace ResponsePolicyDecision {
+        // Signal signatures
+        interface SignalSignatures extends PolicyDecision.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends PolicyDecision.ConstructorProps {
@@ -7766,6 +8098,7 @@ export namespace WebKit2 {
      */
     class ResponsePolicyDecision extends PolicyDecision {
         static $gtype: GObject.GType<ResponsePolicyDecision>;
+        declare static readonly __signalSignatures: ResponsePolicyDecision.SignalSignatures;
 
         // Properties
 
@@ -7815,6 +8148,9 @@ export namespace WebKit2 {
     }
 
     namespace SecurityManager {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -7831,6 +8167,7 @@ export namespace WebKit2 {
      */
     class SecurityManager extends GObject.Object {
         static $gtype: GObject.GType<SecurityManager>;
+        declare static readonly __signalSignatures: SecurityManager.SignalSignatures;
 
         // Constructors
 
@@ -7940,6 +8277,9 @@ export namespace WebKit2 {
     }
 
     namespace Settings {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -8082,6 +8422,7 @@ export namespace WebKit2 {
      */
     class Settings extends GObject.Object {
         static $gtype: GObject.GType<Settings>;
+        declare static readonly __signalSignatures: Settings.SignalSignatures;
 
         // Properties
 
@@ -9609,6 +9950,9 @@ export namespace WebKit2 {
     }
 
     namespace URIRequest {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9625,6 +9969,7 @@ export namespace WebKit2 {
      */
     class URIRequest extends GObject.Object {
         static $gtype: GObject.GType<URIRequest>;
+        declare static readonly __signalSignatures: URIRequest.SignalSignatures;
 
         // Properties
 
@@ -9667,6 +10012,9 @@ export namespace WebKit2 {
     }
 
     namespace URIResponse {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9693,6 +10041,7 @@ export namespace WebKit2 {
      */
     class URIResponse extends GObject.Object {
         static $gtype: GObject.GType<URIResponse>;
+        declare static readonly __signalSignatures: URIResponse.SignalSignatures;
 
         // Properties
 
@@ -9793,6 +10142,9 @@ export namespace WebKit2 {
     }
 
     namespace URISchemeRequest {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -9812,6 +10164,7 @@ export namespace WebKit2 {
      */
     class URISchemeRequest extends GObject.Object {
         static $gtype: GObject.GType<URISchemeRequest>;
+        declare static readonly __signalSignatures: URISchemeRequest.SignalSignatures;
 
         // Constructors
 
@@ -9871,6 +10224,9 @@ export namespace WebKit2 {
     }
 
     namespace URISchemeResponse {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9896,6 +10252,7 @@ export namespace WebKit2 {
      */
     class URISchemeResponse extends GObject.Object {
         static $gtype: GObject.GType<URISchemeResponse>;
+        declare static readonly __signalSignatures: URISchemeResponse.SignalSignatures;
 
         // Properties
 
@@ -9946,6 +10303,9 @@ export namespace WebKit2 {
     }
 
     namespace UserContentFilterStore {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9971,6 +10331,7 @@ export namespace WebKit2 {
      */
     class UserContentFilterStore extends GObject.Object {
         static $gtype: GObject.GType<UserContentFilterStore>;
+        declare static readonly __signalSignatures: UserContentFilterStore.SignalSignatures;
 
         // Properties
 
@@ -10287,6 +10648,11 @@ export namespace WebKit2 {
             (js_result: JavascriptResult): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'script-message-received': ScriptMessageReceived;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -10309,6 +10675,7 @@ export namespace WebKit2 {
      */
     class UserContentManager extends GObject.Object {
         static $gtype: GObject.GType<UserContentManager>;
+        declare static readonly __signalSignatures: UserContentManager.SignalSignatures;
 
         // Constructors
 
@@ -10320,6 +10687,18 @@ export namespace WebKit2 {
 
         // Signals
 
+        connect<K extends keyof UserContentManager.SignalSignatures>(
+            signal: K,
+            callback: UserContentManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof UserContentManager.SignalSignatures>(
+            signal: K,
+            callback: UserContentManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UserContentManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UserContentManager.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -10472,6 +10851,9 @@ export namespace WebKit2 {
     }
 
     namespace UserMediaPermissionRequest {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, PermissionRequest.ConstructorProps {
@@ -10494,6 +10876,7 @@ export namespace WebKit2 {
      */
     class UserMediaPermissionRequest extends GObject.Object implements PermissionRequest {
         static $gtype: GObject.GType<UserMediaPermissionRequest>;
+        declare static readonly __signalSignatures: UserMediaPermissionRequest.SignalSignatures;
 
         // Properties
 
@@ -10979,6 +11362,9 @@ export namespace WebKit2 {
     }
 
     namespace UserMessage {
+        // Signal signatures
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
@@ -11001,6 +11387,7 @@ export namespace WebKit2 {
      */
     class UserMessage extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<UserMessage>;
+        declare static readonly __signalSignatures: UserMessage.SignalSignatures;
 
         // Properties
 
@@ -11088,6 +11475,15 @@ export namespace WebKit2 {
             (message: UserMessage): boolean;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'automation-started': AutomationStarted;
+            'download-started': DownloadStarted;
+            'initialize-notification-permissions': InitializeNotificationPermissions;
+            'initialize-web-extensions': InitializeWebExtensions;
+            'user-message-received': UserMessageReceived;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -11134,6 +11530,7 @@ export namespace WebKit2 {
      */
     class WebContext extends GObject.Object {
         static $gtype: GObject.GType<WebContext>;
+        declare static readonly __signalSignatures: WebContext.SignalSignatures;
 
         // Properties
 
@@ -11218,6 +11615,18 @@ export namespace WebKit2 {
 
         // Signals
 
+        connect<K extends keyof WebContext.SignalSignatures>(
+            signal: K,
+            callback: WebContext.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WebContext.SignalSignatures>(
+            signal: K,
+            callback: WebContext.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WebContext.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WebContext.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -11747,6 +12156,15 @@ export namespace WebKit2 {
             (): boolean;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            attach: Attach;
+            'bring-to-front': BringToFront;
+            closed: Closed;
+            detach: Detach;
+            'open-window': OpenWindow;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -11786,6 +12204,7 @@ export namespace WebKit2 {
      */
     class WebInspector extends GObject.Object {
         static $gtype: GObject.GType<WebInspector>;
+        declare static readonly __signalSignatures: WebInspector.SignalSignatures;
 
         // Properties
 
@@ -11824,6 +12243,18 @@ export namespace WebKit2 {
 
         // Signals
 
+        connect<K extends keyof WebInspector.SignalSignatures>(
+            signal: K,
+            callback: WebInspector.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WebInspector.SignalSignatures>(
+            signal: K,
+            callback: WebInspector.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WebInspector.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WebInspector.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -11931,6 +12362,15 @@ export namespace WebKit2 {
             (request: URIRequest, redirected_response: URIResponse): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            failed: Failed;
+            'failed-with-tls-errors': FailedWithTlsErrors;
+            finished: Finished;
+            'received-data': ReceivedData;
+            'sent-request': SentRequest;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -11954,6 +12394,7 @@ export namespace WebKit2 {
      */
     class WebResource extends GObject.Object {
         static $gtype: GObject.GType<WebResource>;
+        declare static readonly __signalSignatures: WebResource.SignalSignatures;
 
         // Properties
 
@@ -11975,6 +12416,18 @@ export namespace WebKit2 {
 
         // Signals
 
+        connect<K extends keyof WebResource.SignalSignatures>(
+            signal: K,
+            callback: WebResource.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WebResource.SignalSignatures>(
+            signal: K,
+            callback: WebResource.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WebResource.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WebResource.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -12198,6 +12651,37 @@ export namespace WebKit2 {
             (reason: WebProcessTerminationReason): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends WebViewBase.SignalSignatures {
+            authenticate: Authenticate;
+            close: Close;
+            'context-menu': ContextMenu;
+            'context-menu-dismissed': ContextMenuDismissed;
+            create: Create;
+            'decide-policy': DecidePolicy;
+            'enter-fullscreen': EnterFullscreen;
+            'insecure-content-detected': InsecureContentDetected;
+            'leave-fullscreen': LeaveFullscreen;
+            'load-changed': LoadChanged;
+            'load-failed': LoadFailed;
+            'load-failed-with-tls-errors': LoadFailedWithTlsErrors;
+            'mouse-target-changed': MouseTargetChanged;
+            'permission-request': PermissionRequest;
+            print: Print;
+            'ready-to-show': ReadyToShow;
+            'resource-load-started': ResourceLoadStarted;
+            'run-as-modal': RunAsModal;
+            'run-color-chooser': RunColorChooser;
+            'run-file-chooser': RunFileChooser;
+            'script-dialog': ScriptDialog;
+            'show-notification': ShowNotification;
+            'show-option-menu': ShowOptionMenu;
+            'submit-form': SubmitForm;
+            'user-message-received': UserMessageReceived;
+            'web-process-crashed': WebProcessCrashed;
+            'web-process-terminated': WebProcessTerminated;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -12265,6 +12749,7 @@ export namespace WebKit2 {
      */
     class WebView extends WebViewBase implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<WebView>;
+        declare static readonly __signalSignatures: WebView.SignalSignatures;
 
         // Properties
 
@@ -12632,6 +13117,15 @@ export namespace WebKit2 {
 
         // Signals
 
+        connect<K extends keyof WebView.SignalSignatures>(signal: K, callback: WebView.SignalSignatures[K]): number;
+        connect_after<K extends keyof WebView.SignalSignatures>(
+            signal: K,
+            callback: WebView.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WebView.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WebView.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -14386,6 +14880,9 @@ export namespace WebKit2 {
     }
 
     namespace WebViewBase {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -14400,6 +14897,7 @@ export namespace WebKit2 {
      */
     class WebViewBase extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<WebViewBase>;
+        declare static readonly __signalSignatures: WebViewBase.SignalSignatures;
 
         // Fields
 
@@ -15137,6 +15635,9 @@ export namespace WebKit2 {
     }
 
     namespace WebsiteDataAccessPermissionRequest {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, PermissionRequest.ConstructorProps {}
@@ -15153,6 +15654,7 @@ export namespace WebKit2 {
      */
     class WebsiteDataAccessPermissionRequest extends GObject.Object implements PermissionRequest {
         static $gtype: GObject.GType<WebsiteDataAccessPermissionRequest>;
+        declare static readonly __signalSignatures: WebsiteDataAccessPermissionRequest.SignalSignatures;
 
         // Constructors
 
@@ -15632,6 +16134,9 @@ export namespace WebKit2 {
     }
 
     namespace WebsiteDataManager {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -15697,6 +16202,7 @@ export namespace WebKit2 {
      */
     class WebsiteDataManager extends GObject.Object {
         static $gtype: GObject.GType<WebsiteDataManager>;
+        declare static readonly __signalSignatures: WebsiteDataManager.SignalSignatures;
 
         // Properties
 
@@ -16176,6 +16682,9 @@ export namespace WebKit2 {
     }
 
     namespace WebsitePolicies {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -16191,6 +16700,7 @@ export namespace WebKit2 {
      */
     class WebsitePolicies extends GObject.Object {
         static $gtype: GObject.GType<WebsitePolicies>;
+        declare static readonly __signalSignatures: WebsitePolicies.SignalSignatures;
 
         // Properties
 
@@ -16217,6 +16727,9 @@ export namespace WebKit2 {
     }
 
     namespace WindowProperties {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -16294,6 +16807,7 @@ export namespace WebKit2 {
      */
     class WindowProperties extends GObject.Object {
         static $gtype: GObject.GType<WindowProperties>;
+        declare static readonly __signalSignatures: WindowProperties.SignalSignatures;
 
         // Properties
 

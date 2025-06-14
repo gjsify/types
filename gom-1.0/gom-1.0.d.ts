@@ -83,6 +83,9 @@ export namespace Gom {
         (value: GObject.Value | any): GLib.Bytes;
     }
     namespace Adapter {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -90,6 +93,7 @@ export namespace Gom {
 
     class Adapter extends GObject.Object {
         static $gtype: GObject.GType<Adapter>;
+        declare static readonly __signalSignatures: Adapter.SignalSignatures;
 
         // Constructors
 
@@ -161,6 +165,9 @@ export namespace Gom {
     }
 
     namespace Command {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -171,6 +178,7 @@ export namespace Gom {
 
     class Command extends GObject.Object {
         static $gtype: GObject.GType<Command>;
+        declare static readonly __signalSignatures: Command.SignalSignatures;
 
         // Properties
 
@@ -201,6 +209,9 @@ export namespace Gom {
     }
 
     namespace CommandBuilder {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -220,6 +231,7 @@ export namespace Gom {
 
     class CommandBuilder extends GObject.Object {
         static $gtype: GObject.GType<CommandBuilder>;
+        declare static readonly __signalSignatures: CommandBuilder.SignalSignatures;
 
         // Properties
 
@@ -291,6 +303,9 @@ export namespace Gom {
     }
 
     namespace Cursor {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -300,6 +315,7 @@ export namespace Gom {
 
     class Cursor extends GObject.Object {
         static $gtype: GObject.GType<Cursor>;
+        declare static readonly __signalSignatures: Cursor.SignalSignatures;
 
         // Properties
 
@@ -328,6 +344,9 @@ export namespace Gom {
     }
 
     namespace Filter {
+        // Signal signatures
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
@@ -338,6 +357,7 @@ export namespace Gom {
 
     class Filter extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<Filter>;
+        declare static readonly __signalSignatures: Filter.SignalSignatures;
 
         // Properties
 
@@ -392,6 +412,9 @@ export namespace Gom {
     }
 
     namespace Repository {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -401,6 +424,7 @@ export namespace Gom {
 
     class Repository extends GObject.Object {
         static $gtype: GObject.GType<Repository>;
+        declare static readonly __signalSignatures: Repository.SignalSignatures;
 
         // Properties
 
@@ -587,6 +611,9 @@ export namespace Gom {
     }
 
     namespace Resource {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -596,6 +623,7 @@ export namespace Gom {
 
     abstract class Resource extends GObject.Object {
         static $gtype: GObject.GType<Resource>;
+        declare static readonly __signalSignatures: Resource.SignalSignatures;
 
         // Properties
 
@@ -668,6 +696,9 @@ export namespace Gom {
     }
 
     namespace ResourceGroup {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -688,6 +719,7 @@ export namespace Gom {
 
     class ResourceGroup extends GObject.Object {
         static $gtype: GObject.GType<ResourceGroup>;
+        declare static readonly __signalSignatures: ResourceGroup.SignalSignatures;
 
         // Properties
 
@@ -754,6 +786,9 @@ export namespace Gom {
     }
 
     namespace Sorting {
+        // Signal signatures
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {}
@@ -761,6 +796,7 @@ export namespace Gom {
 
     class Sorting extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<Sorting>;
+        declare static readonly __signalSignatures: Sorting.SignalSignatures;
 
         // Constructors
 

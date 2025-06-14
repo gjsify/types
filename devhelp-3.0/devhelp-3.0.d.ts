@@ -144,6 +144,11 @@ export namespace Devhelp {
             (uri: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends WebKit2.WebView.SignalSignatures {
+            'open-uri': OpenUri;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -154,6 +159,7 @@ export namespace Devhelp {
 
     class AssistantView extends WebKit2.WebView implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<AssistantView>;
+        declare static readonly __signalSignatures: AssistantView.SignalSignatures;
 
         // Constructors
 
@@ -165,6 +171,18 @@ export namespace Devhelp {
 
         // Signals
 
+        connect<K extends keyof AssistantView.SignalSignatures>(
+            signal: K,
+            callback: AssistantView.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AssistantView.SignalSignatures>(
+            signal: K,
+            callback: AssistantView.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AssistantView.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AssistantView.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -640,6 +658,12 @@ export namespace Devhelp {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            deleted: Deleted;
+            updated: Updated;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -647,6 +671,7 @@ export namespace Devhelp {
 
     class Book extends GObject.Object {
         static $gtype: GObject.GType<Book>;
+        declare static readonly __signalSignatures: Book.SignalSignatures;
 
         // Constructors
 
@@ -658,6 +683,9 @@ export namespace Devhelp {
 
         // Signals
 
+        connect<K extends keyof Book.SignalSignatures>(signal: K, callback: Book.SignalSignatures[K]): number;
+        connect_after<K extends keyof Book.SignalSignatures>(signal: K, callback: Book.SignalSignatures[K]): number;
+        emit<K extends keyof Book.SignalSignatures>(signal: K, ...args: Parameters<Book.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -716,6 +744,12 @@ export namespace Devhelp {
             (book: Book): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'add-book': AddBook;
+            'remove-book': RemoveBook;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -723,6 +757,7 @@ export namespace Devhelp {
 
     class BookList extends GObject.Object {
         static $gtype: GObject.GType<BookList>;
+        declare static readonly __signalSignatures: BookList.SignalSignatures;
 
         // Constructors
 
@@ -734,6 +769,15 @@ export namespace Devhelp {
 
         // Signals
 
+        connect<K extends keyof BookList.SignalSignatures>(signal: K, callback: BookList.SignalSignatures[K]): number;
+        connect_after<K extends keyof BookList.SignalSignatures>(
+            signal: K,
+            callback: BookList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BookList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BookList.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -805,6 +849,9 @@ export namespace Devhelp {
     }
 
     namespace BookListBuilder {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -812,6 +859,7 @@ export namespace Devhelp {
 
     class BookListBuilder extends GObject.Object {
         static $gtype: GObject.GType<BookListBuilder>;
+        declare static readonly __signalSignatures: BookListBuilder.SignalSignatures;
 
         // Constructors
 
@@ -885,6 +933,9 @@ export namespace Devhelp {
     }
 
     namespace BookListDirectory {
+        // Signal signatures
+        interface SignalSignatures extends BookList.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends BookList.ConstructorProps {
@@ -894,6 +945,7 @@ export namespace Devhelp {
 
     class BookListDirectory extends BookList {
         static $gtype: GObject.GType<BookListDirectory>;
+        declare static readonly __signalSignatures: BookListDirectory.SignalSignatures;
 
         // Properties
 
@@ -919,6 +971,9 @@ export namespace Devhelp {
     }
 
     namespace BookManager {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -926,6 +981,7 @@ export namespace Devhelp {
 
     class BookManager extends GObject.Object {
         static $gtype: GObject.GType<BookManager>;
+        declare static readonly __signalSignatures: BookManager.SignalSignatures;
 
         // Constructors
 
@@ -947,6 +1003,11 @@ export namespace Devhelp {
             (link: Link): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.TreeView.SignalSignatures {
+            'link-selected': LinkSelected;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -960,6 +1021,7 @@ export namespace Devhelp {
 
     class BookTree extends Gtk.TreeView implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<BookTree>;
+        declare static readonly __signalSignatures: BookTree.SignalSignatures;
 
         // Properties
 
@@ -982,6 +1044,15 @@ export namespace Devhelp {
 
         // Signals
 
+        connect<K extends keyof BookTree.SignalSignatures>(signal: K, callback: BookTree.SignalSignatures[K]): number;
+        connect_after<K extends keyof BookTree.SignalSignatures>(
+            signal: K,
+            callback: BookTree.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BookTree.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BookTree.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1543,6 +1614,9 @@ export namespace Devhelp {
     }
 
     namespace Completion {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1550,6 +1624,7 @@ export namespace Devhelp {
 
     class Completion extends GObject.Object {
         static $gtype: GObject.GType<Completion>;
+        declare static readonly __signalSignatures: Completion.SignalSignatures;
 
         // Constructors
 
@@ -1600,6 +1675,9 @@ export namespace Devhelp {
     }
 
     namespace KeywordModel {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gtk.TreeModel.ConstructorProps {}
@@ -1607,6 +1685,7 @@ export namespace Devhelp {
 
     class KeywordModel extends GObject.Object implements Gtk.TreeModel {
         static $gtype: GObject.GType<KeywordModel>;
+        declare static readonly __signalSignatures: KeywordModel.SignalSignatures;
 
         // Constructors
 
@@ -2485,6 +2564,9 @@ export namespace Devhelp {
     }
 
     namespace Notebook {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Notebook.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2497,6 +2579,7 @@ export namespace Devhelp {
 
     class Notebook extends Gtk.Notebook implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Notebook>;
+        declare static readonly __signalSignatures: Notebook.SignalSignatures;
 
         // Properties
 
@@ -2975,6 +3058,9 @@ export namespace Devhelp {
     }
 
     namespace Profile {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2982,6 +3068,7 @@ export namespace Devhelp {
 
     class Profile extends GObject.Object {
         static $gtype: GObject.GType<Profile>;
+        declare static readonly __signalSignatures: Profile.SignalSignatures;
 
         // Constructors
 
@@ -3015,6 +3102,9 @@ export namespace Devhelp {
     }
 
     namespace ProfileBuilder {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3022,6 +3112,7 @@ export namespace Devhelp {
 
     class ProfileBuilder extends GObject.Object {
         static $gtype: GObject.GType<ProfileBuilder>;
+        declare static readonly __signalSignatures: ProfileBuilder.SignalSignatures;
 
         // Constructors
 
@@ -3053,6 +3144,9 @@ export namespace Devhelp {
     }
 
     namespace SearchBar {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.SearchBar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3065,6 +3159,7 @@ export namespace Devhelp {
 
     class SearchBar extends Gtk.SearchBar implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<SearchBar>;
+        declare static readonly __signalSignatures: SearchBar.SignalSignatures;
 
         // Properties
 
@@ -3546,6 +3641,12 @@ export namespace Devhelp {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'books-disabled-changed': BooksDisabledChanged;
+            'fonts-changed': FontsChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3562,6 +3663,7 @@ export namespace Devhelp {
 
     class Settings extends GObject.Object {
         static $gtype: GObject.GType<Settings>;
+        declare static readonly __signalSignatures: Settings.SignalSignatures;
 
         // Properties
 
@@ -3622,6 +3724,15 @@ export namespace Devhelp {
 
         // Signals
 
+        connect<K extends keyof Settings.SignalSignatures>(signal: K, callback: Settings.SignalSignatures[K]): number;
+        connect_after<K extends keyof Settings.SignalSignatures>(
+            signal: K,
+            callback: Settings.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Settings.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Settings.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3738,6 +3849,9 @@ export namespace Devhelp {
     }
 
     namespace SettingsBuilder {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3745,6 +3859,7 @@ export namespace Devhelp {
 
     class SettingsBuilder extends GObject.Object {
         static $gtype: GObject.GType<SettingsBuilder>;
+        declare static readonly __signalSignatures: SettingsBuilder.SignalSignatures;
 
         // Constructors
 
@@ -3782,6 +3897,11 @@ export namespace Devhelp {
             (link: Link): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Grid.SignalSignatures {
+            'link-selected': LinkSelected;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3795,6 +3915,7 @@ export namespace Devhelp {
 
     class Sidebar extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Sidebar>;
+        declare static readonly __signalSignatures: Sidebar.SignalSignatures;
 
         // Properties
 
@@ -3817,6 +3938,15 @@ export namespace Devhelp {
 
         // Signals
 
+        connect<K extends keyof Sidebar.SignalSignatures>(signal: K, callback: Sidebar.SignalSignatures[K]): number;
+        connect_after<K extends keyof Sidebar.SignalSignatures>(
+            signal: K,
+            callback: Sidebar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Sidebar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Sidebar.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -4313,6 +4443,9 @@ export namespace Devhelp {
     }
 
     namespace Tab {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Grid.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4327,6 +4460,7 @@ export namespace Devhelp {
 
     class Tab extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Tab>;
+        declare static readonly __signalSignatures: Tab.SignalSignatures;
 
         // Properties
 
@@ -4816,6 +4950,9 @@ export namespace Devhelp {
     }
 
     namespace TabLabel {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Grid.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4829,6 +4966,7 @@ export namespace Devhelp {
 
     class TabLabel extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<TabLabel>;
+        declare static readonly __signalSignatures: TabLabel.SignalSignatures;
 
         // Properties
 
@@ -5319,6 +5457,11 @@ export namespace Devhelp {
             (uri: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends WebKit2.WebView.SignalSignatures {
+            'open-new-tab': OpenNewTab;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5331,6 +5474,7 @@ export namespace Devhelp {
 
     class WebView extends WebKit2.WebView implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<WebView>;
+        declare static readonly __signalSignatures: WebView.SignalSignatures;
 
         // Properties
 
@@ -5353,6 +5497,15 @@ export namespace Devhelp {
 
         // Signals
 
+        connect<K extends keyof WebView.SignalSignatures>(signal: K, callback: WebView.SignalSignatures[K]): number;
+        connect_after<K extends keyof WebView.SignalSignatures>(
+            signal: K,
+            callback: WebView.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WebView.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WebView.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

@@ -32,6 +32,9 @@ export namespace GcrGtk3 {
      */
 
     namespace CertificateWidget {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -45,6 +48,7 @@ export namespace GcrGtk3 {
 
     class CertificateWidget extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<CertificateWidget>;
+        declare static readonly __signalSignatures: CertificateWidget.SignalSignatures;
 
         // Properties
 
@@ -535,6 +539,9 @@ export namespace GcrGtk3 {
     }
 
     namespace SecureEntryBuffer {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.EntryBuffer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.EntryBuffer.ConstructorProps {}
@@ -557,6 +564,7 @@ export namespace GcrGtk3 {
      */
     class SecureEntryBuffer extends Gtk.EntryBuffer {
         static $gtype: GObject.GType<SecureEntryBuffer>;
+        declare static readonly __signalSignatures: SecureEntryBuffer.SignalSignatures;
 
         // Constructors
 

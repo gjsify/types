@@ -136,6 +136,9 @@ export namespace ClutterGst {
         ACCURATE,
     }
     namespace VideoSink {
+        // Signal signatures
+        interface SignalSignatures extends GstBase.BaseSink.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GstBase.BaseSink.ConstructorProps, GstVideo.Navigation.ConstructorProps {
@@ -153,6 +156,7 @@ export namespace ClutterGst {
      */
     class VideoSink extends GstBase.BaseSink implements GstVideo.Navigation {
         static $gtype: GObject.GType<VideoSink>;
+        declare static readonly __signalSignatures: VideoSink.SignalSignatures;
 
         // Properties
 
@@ -684,6 +688,9 @@ export namespace ClutterGst {
     }
 
     namespace VideoTexture {
+        // Signal signatures
+        interface SignalSignatures extends Clutter.Texture.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -716,6 +723,7 @@ export namespace ClutterGst {
             Player
     {
         static $gtype: GObject.GType<VideoTexture>;
+        declare static readonly __signalSignatures: VideoTexture.SignalSignatures;
 
         // Properties
 

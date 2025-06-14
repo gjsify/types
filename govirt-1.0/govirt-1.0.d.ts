@@ -79,6 +79,9 @@ export namespace GoVirt {
     function proxy_error_quark(): GLib.Quark;
     function rest_call_error_quark(): GLib.Quark;
     namespace Proxy {
+        // Signal signatures
+        interface SignalSignatures extends Rest.Proxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Rest.Proxy.ConstructorProps {
@@ -90,6 +93,7 @@ export namespace GoVirt {
 
     class Proxy extends Rest.Proxy {
         static $gtype: GObject.GType<Proxy>;
+        declare static readonly __signalSignatures: Proxy.SignalSignatures;
 
         // Properties
 
@@ -143,6 +147,9 @@ export namespace GoVirt {
     }
 
     namespace Vm {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -156,6 +163,7 @@ export namespace GoVirt {
 
     class Vm extends GObject.Object {
         static $gtype: GObject.GType<Vm>;
+        declare static readonly __signalSignatures: Vm.SignalSignatures;
 
         // Properties
 
@@ -210,6 +218,9 @@ export namespace GoVirt {
     }
 
     namespace VmDisplay {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -227,6 +238,7 @@ export namespace GoVirt {
 
     class VmDisplay extends GObject.Object {
         static $gtype: GObject.GType<VmDisplay>;
+        declare static readonly __signalSignatures: VmDisplay.SignalSignatures;
 
         // Properties
 

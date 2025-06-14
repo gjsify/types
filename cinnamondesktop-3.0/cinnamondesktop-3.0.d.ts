@@ -297,6 +297,12 @@ export namespace CinnamonDesktop {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            changed: Changed;
+            transitioned: Transitioned;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -304,6 +310,7 @@ export namespace CinnamonDesktop {
 
     class BG extends GObject.Object {
         static $gtype: GObject.GType<BG>;
+        declare static readonly __signalSignatures: BG.SignalSignatures;
 
         // Constructors
 
@@ -315,6 +322,9 @@ export namespace CinnamonDesktop {
 
         // Signals
 
+        connect<K extends keyof BG.SignalSignatures>(signal: K, callback: BG.SignalSignatures[K]): number;
+        connect_after<K extends keyof BG.SignalSignatures>(signal: K, callback: BG.SignalSignatures[K]): number;
+        emit<K extends keyof BG.SignalSignatures>(signal: K, ...args: Parameters<BG.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -426,6 +436,11 @@ export namespace CinnamonDesktop {
             (window: GObject.Object): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            finished: Finished;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -436,6 +451,7 @@ export namespace CinnamonDesktop {
 
     class BGCrossfade extends GObject.Object {
         static $gtype: GObject.GType<BGCrossfade>;
+        declare static readonly __signalSignatures: BGCrossfade.SignalSignatures;
 
         // Properties
 
@@ -464,6 +480,18 @@ export namespace CinnamonDesktop {
 
         // Signals
 
+        connect<K extends keyof BGCrossfade.SignalSignatures>(
+            signal: K,
+            callback: BGCrossfade.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BGCrossfade.SignalSignatures>(
+            signal: K,
+            callback: BGCrossfade.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BGCrossfade.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BGCrossfade.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -518,6 +546,9 @@ export namespace CinnamonDesktop {
     }
 
     namespace DesktopThumbnailFactory {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -525,6 +556,7 @@ export namespace CinnamonDesktop {
 
     class DesktopThumbnailFactory extends GObject.Object {
         static $gtype: GObject.GType<DesktopThumbnailFactory>;
+        declare static readonly __signalSignatures: DesktopThumbnailFactory.SignalSignatures;
 
         // Constructors
 
@@ -599,6 +631,9 @@ export namespace CinnamonDesktop {
     }
 
     namespace IdleMonitor {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {}
@@ -606,6 +641,7 @@ export namespace CinnamonDesktop {
 
     class IdleMonitor extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<IdleMonitor>;
+        declare static readonly __signalSignatures: IdleMonitor.SignalSignatures;
 
         // Constructors
 
@@ -1156,6 +1192,9 @@ export namespace CinnamonDesktop {
     }
 
     namespace PnpIds {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1163,6 +1202,7 @@ export namespace CinnamonDesktop {
 
     class PnpIds extends GObject.Object {
         static $gtype: GObject.GType<PnpIds>;
+        declare static readonly __signalSignatures: PnpIds.SignalSignatures;
 
         // Constructors
 
@@ -1183,6 +1223,9 @@ export namespace CinnamonDesktop {
     }
 
     namespace RRConfig {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1192,6 +1235,7 @@ export namespace CinnamonDesktop {
 
     class RRConfig extends GObject.Object {
         static $gtype: GObject.GType<RRConfig>;
+        declare static readonly __signalSignatures: RRConfig.SignalSignatures;
 
         // Properties
 
@@ -1235,6 +1279,9 @@ export namespace CinnamonDesktop {
     }
 
     namespace RRLabeler {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1244,6 +1291,7 @@ export namespace CinnamonDesktop {
 
     class RRLabeler extends GObject.Object {
         static $gtype: GObject.GType<RRLabeler>;
+        declare static readonly __signalSignatures: RRLabeler.SignalSignatures;
 
         // Properties
 
@@ -1275,6 +1323,9 @@ export namespace CinnamonDesktop {
     }
 
     namespace RROutputInfo {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1282,6 +1333,7 @@ export namespace CinnamonDesktop {
 
     class RROutputInfo extends GObject.Object {
         static $gtype: GObject.GType<RROutputInfo>;
+        declare static readonly __signalSignatures: RROutputInfo.SignalSignatures;
 
         // Constructors
 
@@ -1333,6 +1385,13 @@ export namespace CinnamonDesktop {
             (output?: any | null): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            changed: Changed;
+            'output-connected': OutputConnected;
+            'output-disconnected': OutputDisconnected;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -1343,6 +1402,7 @@ export namespace CinnamonDesktop {
 
     class RRScreen extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<RRScreen>;
+        declare static readonly __signalSignatures: RRScreen.SignalSignatures;
 
         // Properties
 
@@ -1359,6 +1419,15 @@ export namespace CinnamonDesktop {
 
         // Signals
 
+        connect<K extends keyof RRScreen.SignalSignatures>(signal: K, callback: RRScreen.SignalSignatures[K]): number;
+        connect_after<K extends keyof RRScreen.SignalSignatures>(
+            signal: K,
+            callback: RRScreen.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RRScreen.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RRScreen.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1955,6 +2024,9 @@ export namespace CinnamonDesktop {
     }
 
     namespace WallClock {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1966,6 +2038,7 @@ export namespace CinnamonDesktop {
 
     class WallClock extends GObject.Object {
         static $gtype: GObject.GType<WallClock>;
+        declare static readonly __signalSignatures: WallClock.SignalSignatures;
 
         // Properties
 
@@ -2053,6 +2126,9 @@ export namespace CinnamonDesktop {
     }
 
     namespace XkbInfo {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2060,6 +2136,7 @@ export namespace CinnamonDesktop {
 
     class XkbInfo extends GObject.Object {
         static $gtype: GObject.GType<XkbInfo>;
+        declare static readonly __signalSignatures: XkbInfo.SignalSignatures;
 
         // Fields
 

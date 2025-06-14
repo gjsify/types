@@ -88,6 +88,12 @@ export namespace Qrtr {
             (node: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'node-added': NodeAdded;
+            'node-removed': NodeRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps {
@@ -102,6 +108,7 @@ export namespace Qrtr {
      */
     class Bus extends GObject.Object implements Gio.AsyncInitable<Bus> {
         static $gtype: GObject.GType<Bus>;
+        declare static readonly __signalSignatures: Bus.SignalSignatures;
 
         // Properties
 
@@ -121,6 +128,9 @@ export namespace Qrtr {
 
         // Signals
 
+        connect<K extends keyof Bus.SignalSignatures>(signal: K, callback: Bus.SignalSignatures[K]): number;
+        connect_after<K extends keyof Bus.SignalSignatures>(signal: K, callback: Bus.SignalSignatures[K]): number;
+        emit<K extends keyof Bus.SignalSignatures>(signal: K, ...args: Parameters<Bus.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -886,6 +896,11 @@ export namespace Qrtr {
             (message: Uint8Array | string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'client-message': ClientMessage;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -902,6 +917,7 @@ export namespace Qrtr {
      */
     class Client extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Client>;
+        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Properties
 
@@ -920,6 +936,9 @@ export namespace Qrtr {
 
         // Signals
 
+        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1495,6 +1514,13 @@ export namespace Qrtr {
             (service: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'node-removed': NodeRemoved;
+            'service-added': ServiceAdded;
+            'service-removed': ServiceRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1510,6 +1536,7 @@ export namespace Qrtr {
      */
     class Node extends GObject.Object {
         static $gtype: GObject.GType<Node>;
+        declare static readonly __signalSignatures: Node.SignalSignatures;
 
         // Properties
 
@@ -1525,6 +1552,9 @@ export namespace Qrtr {
 
         // Signals
 
+        connect<K extends keyof Node.SignalSignatures>(signal: K, callback: Node.SignalSignatures[K]): number;
+        connect_after<K extends keyof Node.SignalSignatures>(signal: K, callback: Node.SignalSignatures[K]): number;
+        emit<K extends keyof Node.SignalSignatures>(signal: K, ...args: Parameters<Node.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

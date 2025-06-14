@@ -48,6 +48,9 @@ export namespace CMenu {
         INCLUDE_UNALLOCATED,
     }
     namespace DesktopAppInfo {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.AppInfo.ConstructorProps {}
@@ -55,6 +58,7 @@ export namespace CMenu {
 
     class DesktopAppInfo extends GObject.Object implements Gio.AppInfo {
         static $gtype: GObject.GType<DesktopAppInfo>;
+        declare static readonly __signalSignatures: DesktopAppInfo.SignalSignatures;
 
         // Constructors
 
@@ -1129,6 +1133,11 @@ export namespace CMenu {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            changed: Changed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1142,6 +1151,7 @@ export namespace CMenu {
 
     class Tree extends GObject.Object {
         static $gtype: GObject.GType<Tree>;
+        declare static readonly __signalSignatures: Tree.SignalSignatures;
 
         // Properties
 
@@ -1184,6 +1194,9 @@ export namespace CMenu {
 
         // Signals
 
+        connect<K extends keyof Tree.SignalSignatures>(signal: K, callback: Tree.SignalSignatures[K]): number;
+        connect_after<K extends keyof Tree.SignalSignatures>(signal: K, callback: Tree.SignalSignatures[K]): number;
+        emit<K extends keyof Tree.SignalSignatures>(signal: K, ...args: Parameters<Tree.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

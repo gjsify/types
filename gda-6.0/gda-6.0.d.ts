@@ -2711,6 +2711,11 @@ export namespace Gda {
             (changed_stmt: GObject.Object): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            changed: Changed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2718,6 +2723,7 @@ export namespace Gda {
 
     class Batch extends GObject.Object {
         static $gtype: GObject.GType<Batch>;
+        declare static readonly __signalSignatures: Batch.SignalSignatures;
 
         // Constructors
 
@@ -2729,6 +2735,9 @@ export namespace Gda {
 
         // Signals
 
+        connect<K extends keyof Batch.SignalSignatures>(signal: K, callback: Batch.SignalSignatures[K]): number;
+        connect_after<K extends keyof Batch.SignalSignatures>(signal: K, callback: Batch.SignalSignatures[K]): number;
+        emit<K extends keyof Batch.SignalSignatures>(signal: K, ...args: Parameters<Batch.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2786,6 +2795,9 @@ export namespace Gda {
     }
 
     namespace BlobOp {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2795,6 +2807,7 @@ export namespace Gda {
 
     class BlobOp extends GObject.Object {
         static $gtype: GObject.GType<BlobOp>;
+        declare static readonly __signalSignatures: BlobOp.SignalSignatures;
 
         // Properties
 
@@ -2854,6 +2867,12 @@ export namespace Gda {
             (old_name: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'g-type-changed': GTypeChanged;
+            'name-changed': NameChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2865,6 +2884,7 @@ export namespace Gda {
 
     class Column extends GObject.Object {
         static $gtype: GObject.GType<Column>;
+        declare static readonly __signalSignatures: Column.SignalSignatures;
 
         // Properties
 
@@ -2885,6 +2905,9 @@ export namespace Gda {
 
         // Signals
 
+        connect<K extends keyof Column.SignalSignatures>(signal: K, callback: Column.SignalSignatures[K]): number;
+        connect_after<K extends keyof Column.SignalSignatures>(signal: K, callback: Column.SignalSignatures[K]): number;
+        emit<K extends keyof Column.SignalSignatures>(signal: K, ...args: Parameters<Column.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2987,6 +3010,14 @@ export namespace Gda {
             (old_dsn?: any | null): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'dsn-added': DsnAdded;
+            'dsn-changed': DsnChanged;
+            'dsn-removed': DsnRemoved;
+            'dsn-to-be-removed': DsnToBeRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2999,6 +3030,7 @@ export namespace Gda {
 
     class Config extends GObject.Object {
         static $gtype: GObject.GType<Config>;
+        declare static readonly __signalSignatures: Config.SignalSignatures;
 
         // Properties
 
@@ -3031,6 +3063,9 @@ export namespace Gda {
 
         // Signals
 
+        connect<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
+        connect_after<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
+        emit<K extends keyof Config.SignalSignatures>(signal: K, ...args: Parameters<Config.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3180,6 +3215,16 @@ export namespace Gda {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            closed: Closed;
+            'dsn-changed': DsnChanged;
+            error: Error;
+            opened: Opened;
+            'status-changed': StatusChanged;
+            'transaction-status-changed': TransactionStatusChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Lockable.ConstructorProps {
@@ -3202,6 +3247,7 @@ export namespace Gda {
 
     class Connection extends GObject.Object implements Lockable {
         static $gtype: GObject.GType<Connection>;
+        declare static readonly __signalSignatures: Connection.SignalSignatures;
 
         // Properties
 
@@ -3281,6 +3327,18 @@ export namespace Gda {
 
         // Signals
 
+        connect<K extends keyof Connection.SignalSignatures>(
+            signal: K,
+            callback: Connection.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Connection.SignalSignatures>(
+            signal: K,
+            callback: Connection.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Connection.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Connection.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -4654,6 +4712,9 @@ export namespace Gda {
     }
 
     namespace ConnectionEvent {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4663,6 +4724,7 @@ export namespace Gda {
 
     class ConnectionEvent extends GObject.Object {
         static $gtype: GObject.GType<ConnectionEvent>;
+        declare static readonly __signalSignatures: ConnectionEvent.SignalSignatures;
 
         // Properties
 
@@ -4746,6 +4808,9 @@ export namespace Gda {
     }
 
     namespace ConnectionModelParams {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4758,6 +4823,7 @@ export namespace Gda {
 
     class ConnectionModelParams extends GObject.Object {
         static $gtype: GObject.GType<ConnectionModelParams>;
+        declare static readonly __signalSignatures: ConnectionModelParams.SignalSignatures;
 
         // Properties
 
@@ -4789,6 +4855,9 @@ export namespace Gda {
     }
 
     namespace DataAccessWrapper {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DataModel.ConstructorProps {
@@ -4798,6 +4867,7 @@ export namespace Gda {
 
     class DataAccessWrapper extends GObject.Object implements DataModel {
         static $gtype: GObject.GType<DataAccessWrapper>;
+        declare static readonly __signalSignatures: DataAccessWrapper.SignalSignatures;
 
         // Properties
 
@@ -5735,6 +5805,11 @@ export namespace Gda {
             (object?: any | null): boolean;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'diff-computed': DiffComputed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5747,6 +5822,7 @@ export namespace Gda {
 
     class DataComparator extends GObject.Object {
         static $gtype: GObject.GType<DataComparator>;
+        declare static readonly __signalSignatures: DataComparator.SignalSignatures;
 
         // Properties
 
@@ -5769,6 +5845,18 @@ export namespace Gda {
 
         // Signals
 
+        connect<K extends keyof DataComparator.SignalSignatures>(
+            signal: K,
+            callback: DataComparator.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DataComparator.SignalSignatures>(
+            signal: K,
+            callback: DataComparator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DataComparator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DataComparator.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -5815,6 +5903,9 @@ export namespace Gda {
     }
 
     namespace DataModelArray {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DataModel.ConstructorProps {
@@ -5827,6 +5918,7 @@ export namespace Gda {
 
     class DataModelArray extends GObject.Object implements DataModel {
         static $gtype: GObject.GType<DataModelArray>;
+        declare static readonly __signalSignatures: DataModelArray.SignalSignatures;
 
         // Properties
 
@@ -6769,6 +6861,9 @@ export namespace Gda {
     }
 
     namespace DataModelDir {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DataModel.ConstructorProps {
@@ -6778,6 +6873,7 @@ export namespace Gda {
 
     class DataModelDir extends GObject.Object implements DataModel {
         static $gtype: GObject.GType<DataModelDir>;
+        declare static readonly __signalSignatures: DataModelDir.SignalSignatures;
 
         // Properties
 
@@ -7696,6 +7792,9 @@ export namespace Gda {
     }
 
     namespace DataModelImport {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DataModel.ConstructorProps {
@@ -7713,6 +7812,7 @@ export namespace Gda {
 
     class DataModelImport extends GObject.Object implements DataModel {
         static $gtype: GObject.GType<DataModelImport>;
+        declare static readonly __signalSignatures: DataModelImport.SignalSignatures;
 
         // Properties
 
@@ -8706,6 +8806,9 @@ export namespace Gda {
     }
 
     namespace DataModelImportIter {
+        // Signal signatures
+        interface SignalSignatures extends DataModelIter.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DataModelIter.ConstructorProps {}
@@ -8713,6 +8816,7 @@ export namespace Gda {
 
     class DataModelImportIter extends DataModelIter {
         static $gtype: GObject.GType<DataModelImportIter>;
+        declare static readonly __signalSignatures: DataModelImportIter.SignalSignatures;
 
         // Constructors
 
@@ -8732,6 +8836,12 @@ export namespace Gda {
             (row: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Set.SignalSignatures {
+            'end-of-data': EndOfData;
+            'row-changed': RowChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Set.ConstructorProps {
@@ -8746,6 +8856,7 @@ export namespace Gda {
 
     class DataModelIter extends Set {
         static $gtype: GObject.GType<DataModelIter>;
+        declare static readonly __signalSignatures: DataModelIter.SignalSignatures;
 
         // Properties
 
@@ -8770,6 +8881,18 @@ export namespace Gda {
 
         // Signals
 
+        connect<K extends keyof DataModelIter.SignalSignatures>(
+            signal: K,
+            callback: DataModelIter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DataModelIter.SignalSignatures>(
+            signal: K,
+            callback: DataModelIter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DataModelIter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DataModelIter.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -8954,6 +9077,11 @@ export namespace Gda {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            updated: Updated;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DataModel.ConstructorProps {
@@ -8963,6 +9091,7 @@ export namespace Gda {
 
     class DataModelSelect extends GObject.Object implements DataModel {
         static $gtype: GObject.GType<DataModelSelect>;
+        declare static readonly __signalSignatures: DataModelSelect.SignalSignatures;
 
         // Properties
 
@@ -8980,6 +9109,18 @@ export namespace Gda {
 
         // Signals
 
+        connect<K extends keyof DataModelSelect.SignalSignatures>(
+            signal: K,
+            callback: DataModelSelect.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DataModelSelect.SignalSignatures>(
+            signal: K,
+            callback: DataModelSelect.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DataModelSelect.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DataModelSelect.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -9889,6 +10030,9 @@ export namespace Gda {
     }
 
     namespace DataPivot {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DataModel.ConstructorProps {
@@ -9898,6 +10042,7 @@ export namespace Gda {
 
     class DataPivot extends GObject.Object implements DataModel {
         static $gtype: GObject.GType<DataPivot>;
+        declare static readonly __signalSignatures: DataPivot.SignalSignatures;
 
         // Properties
 
@@ -10882,6 +11027,16 @@ export namespace Gda {
             (row: number, proxied_row: number): GLib.Error;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'filter-changed': FilterChanged;
+            'row-changes-applied': RowChangesApplied;
+            'row-delete-changed': RowDeleteChanged;
+            'sample-changed': SampleChanged;
+            'sample-size-changed': SampleSizeChanged;
+            'validate-row-changes': ValidateRowChanges;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DataModel.ConstructorProps {
@@ -10899,6 +11054,7 @@ export namespace Gda {
 
     class DataProxy extends GObject.Object implements DataModel {
         static $gtype: GObject.GType<DataProxy>;
+        declare static readonly __signalSignatures: DataProxy.SignalSignatures;
 
         // Properties
 
@@ -10957,6 +11113,15 @@ export namespace Gda {
 
         // Signals
 
+        connect<K extends keyof DataProxy.SignalSignatures>(signal: K, callback: DataProxy.SignalSignatures[K]): number;
+        connect_after<K extends keyof DataProxy.SignalSignatures>(
+            signal: K,
+            callback: DataProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DataProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DataProxy.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -12098,6 +12263,9 @@ export namespace Gda {
     }
 
     namespace DataSelect {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DataModel.ConstructorProps {
@@ -12125,6 +12293,7 @@ export namespace Gda {
 
     class DataSelect extends GObject.Object implements DataModel {
         static $gtype: GObject.GType<DataSelect>;
+        declare static readonly __signalSignatures: DataSelect.SignalSignatures;
 
         // Properties
 
@@ -13221,6 +13390,9 @@ export namespace Gda {
     }
 
     namespace DataSelectIter {
+        // Signal signatures
+        interface SignalSignatures extends DataModelIter.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DataModelIter.ConstructorProps {}
@@ -13228,6 +13400,7 @@ export namespace Gda {
 
     class DataSelectIter extends DataModelIter {
         static $gtype: GObject.GType<DataSelectIter>;
+        declare static readonly __signalSignatures: DataSelectIter.SignalSignatures;
 
         // Constructors
 
@@ -13237,6 +13410,9 @@ export namespace Gda {
     }
 
     namespace DbBase {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -13244,6 +13420,7 @@ export namespace Gda {
 
     class DbBase extends GObject.Object {
         static $gtype: GObject.GType<DbBase>;
+        declare static readonly __signalSignatures: DbBase.SignalSignatures;
 
         // Constructors
 
@@ -13312,6 +13489,9 @@ export namespace Gda {
     }
 
     namespace DbCatalog {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -13323,6 +13503,7 @@ export namespace Gda {
 
     class DbCatalog extends GObject.Object {
         static $gtype: GObject.GType<DbCatalog>;
+        declare static readonly __signalSignatures: DbCatalog.SignalSignatures;
 
         // Properties
 
@@ -13476,6 +13657,9 @@ export namespace Gda {
     }
 
     namespace DbColumn {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -13498,6 +13682,7 @@ export namespace Gda {
 
     class DbColumn extends GObject.Object implements DbBuildable, DdlModifiable {
         static $gtype: GObject.GType<DbColumn>;
+        declare static readonly __signalSignatures: DbColumn.SignalSignatures;
 
         // Properties
 
@@ -14163,6 +14348,9 @@ export namespace Gda {
     }
 
     namespace DbFkey {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DbBuildable.ConstructorProps {}
@@ -14170,6 +14358,7 @@ export namespace Gda {
 
     class DbFkey extends GObject.Object implements DbBuildable {
         static $gtype: GObject.GType<DbFkey>;
+        declare static readonly __signalSignatures: DbFkey.SignalSignatures;
 
         // Constructors
 
@@ -14686,6 +14875,9 @@ export namespace Gda {
     }
 
     namespace DbIndex {
+        // Signal signatures
+        interface SignalSignatures extends DbBase.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DbBase.ConstructorProps, DdlModifiable.ConstructorProps {
@@ -14695,6 +14887,7 @@ export namespace Gda {
 
     class DbIndex extends DbBase implements DdlModifiable {
         static $gtype: GObject.GType<DbIndex>;
+        declare static readonly __signalSignatures: DbIndex.SignalSignatures;
 
         // Properties
 
@@ -15218,6 +15411,9 @@ export namespace Gda {
     }
 
     namespace DbIndexField {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -15225,6 +15421,7 @@ export namespace Gda {
 
     class DbIndexField extends GObject.Object {
         static $gtype: GObject.GType<DbIndexField>;
+        declare static readonly __signalSignatures: DbIndexField.SignalSignatures;
 
         // Constructors
 
@@ -15263,6 +15460,9 @@ export namespace Gda {
     }
 
     namespace DbTable {
+        // Signal signatures
+        interface SignalSignatures extends DbBase.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -15276,6 +15476,7 @@ export namespace Gda {
 
     class DbTable extends DbBase implements DbBuildable, DdlModifiable {
         static $gtype: GObject.GType<DbTable>;
+        declare static readonly __signalSignatures: DbTable.SignalSignatures;
 
         // Properties
 
@@ -15861,6 +16062,9 @@ export namespace Gda {
     }
 
     namespace DbView {
+        // Signal signatures
+        interface SignalSignatures extends DbBase.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -15876,6 +16080,7 @@ export namespace Gda {
 
     class DbView extends DbBase implements DbBuildable, DdlModifiable {
         static $gtype: GObject.GType<DbView>;
+        declare static readonly __signalSignatures: DbView.SignalSignatures;
 
         // Properties
 
@@ -16418,6 +16623,9 @@ export namespace Gda {
     }
 
     namespace HandlerBin {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DataHandler.ConstructorProps {}
@@ -16425,6 +16633,7 @@ export namespace Gda {
 
     class HandlerBin extends GObject.Object implements DataHandler {
         static $gtype: GObject.GType<HandlerBin>;
+        declare static readonly __signalSignatures: HandlerBin.SignalSignatures;
 
         // Constructors
 
@@ -17008,6 +17217,9 @@ export namespace Gda {
     }
 
     namespace HandlerBoolean {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DataHandler.ConstructorProps {}
@@ -17015,6 +17227,7 @@ export namespace Gda {
 
     class HandlerBoolean extends GObject.Object implements DataHandler {
         static $gtype: GObject.GType<HandlerBoolean>;
+        declare static readonly __signalSignatures: HandlerBoolean.SignalSignatures;
 
         // Constructors
 
@@ -17598,6 +17811,9 @@ export namespace Gda {
     }
 
     namespace HandlerNumerical {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DataHandler.ConstructorProps {}
@@ -17605,6 +17821,7 @@ export namespace Gda {
 
     class HandlerNumerical extends GObject.Object implements DataHandler {
         static $gtype: GObject.GType<HandlerNumerical>;
+        declare static readonly __signalSignatures: HandlerNumerical.SignalSignatures;
 
         // Constructors
 
@@ -18188,6 +18405,9 @@ export namespace Gda {
     }
 
     namespace HandlerString {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DataHandler.ConstructorProps {}
@@ -18195,6 +18415,7 @@ export namespace Gda {
 
     class HandlerString extends GObject.Object implements DataHandler {
         static $gtype: GObject.GType<HandlerString>;
+        declare static readonly __signalSignatures: HandlerString.SignalSignatures;
 
         // Constructors
 
@@ -18780,6 +19001,9 @@ export namespace Gda {
     }
 
     namespace HandlerText {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DataHandler.ConstructorProps {}
@@ -18787,6 +19011,7 @@ export namespace Gda {
 
     class HandlerText extends GObject.Object implements DataHandler {
         static $gtype: GObject.GType<HandlerText>;
+        declare static readonly __signalSignatures: HandlerText.SignalSignatures;
 
         // Constructors
 
@@ -19377,6 +19602,9 @@ export namespace Gda {
     }
 
     namespace HandlerTime {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DataHandler.ConstructorProps {}
@@ -19384,6 +19612,7 @@ export namespace Gda {
 
     class HandlerTime extends GObject.Object implements DataHandler {
         static $gtype: GObject.GType<HandlerTime>;
+        declare static readonly __signalSignatures: HandlerTime.SignalSignatures;
 
         // Constructors
 
@@ -20027,6 +20256,9 @@ export namespace Gda {
     }
 
     namespace HandlerType {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DataHandler.ConstructorProps {}
@@ -20034,6 +20266,7 @@ export namespace Gda {
 
     class HandlerType extends GObject.Object implements DataHandler {
         static $gtype: GObject.GType<HandlerType>;
+        declare static readonly __signalSignatures: HandlerType.SignalSignatures;
 
         // Constructors
 
@@ -20635,6 +20868,14 @@ export namespace Gda {
             (new_value: GObject.Value | any): GLib.Error;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            changed: Changed;
+            'source-changed': SourceChanged;
+            'to-default': ToDefault;
+            'validate-change': ValidateChange;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Lockable.ConstructorProps {
@@ -20661,6 +20902,7 @@ export namespace Gda {
 
     class Holder extends GObject.Object implements Lockable {
         static $gtype: GObject.GType<Holder>;
+        declare static readonly __signalSignatures: Holder.SignalSignatures;
 
         // Properties
 
@@ -20719,6 +20961,9 @@ export namespace Gda {
 
         // Signals
 
+        connect<K extends keyof Holder.SignalSignatures>(signal: K, callback: Holder.SignalSignatures[K]): number;
+        connect_after<K extends keyof Holder.SignalSignatures>(signal: K, callback: Holder.SignalSignatures[K]): number;
+        emit<K extends keyof Holder.SignalSignatures>(signal: K, ...args: Parameters<Holder.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -21478,6 +21723,13 @@ export namespace Gda {
             (suggest: MetaContext): GLib.Error;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'meta-changed': MetaChanged;
+            'meta-reset': MetaReset;
+            'suggest-update': SuggestUpdate;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -21491,6 +21743,7 @@ export namespace Gda {
 
     class MetaStore extends GObject.Object {
         static $gtype: GObject.GType<MetaStore>;
+        declare static readonly __signalSignatures: MetaStore.SignalSignatures;
 
         // Properties
 
@@ -21512,6 +21765,15 @@ export namespace Gda {
 
         // Signals
 
+        connect<K extends keyof MetaStore.SignalSignatures>(signal: K, callback: MetaStore.SignalSignatures[K]): number;
+        connect_after<K extends keyof MetaStore.SignalSignatures>(
+            signal: K,
+            callback: MetaStore.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MetaStore.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MetaStore.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -21803,6 +22065,9 @@ export namespace Gda {
     }
 
     namespace MetaStruct {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -21814,6 +22079,7 @@ export namespace Gda {
 
     class MetaStruct extends GObject.Object {
         static $gtype: GObject.GType<MetaStruct>;
+        declare static readonly __signalSignatures: MetaStruct.SignalSignatures;
 
         // Properties
 
@@ -21957,6 +22223,9 @@ export namespace Gda {
     }
 
     namespace PStmt {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -21964,6 +22233,7 @@ export namespace Gda {
 
     class PStmt extends GObject.Object {
         static $gtype: GObject.GType<PStmt>;
+        declare static readonly __signalSignatures: PStmt.SignalSignatures;
 
         // Constructors
 
@@ -22040,6 +22310,9 @@ export namespace Gda {
     }
 
     namespace RepetitiveStatement {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -22049,6 +22322,7 @@ export namespace Gda {
 
     class RepetitiveStatement extends GObject.Object {
         static $gtype: GObject.GType<RepetitiveStatement>;
+        declare static readonly __signalSignatures: RepetitiveStatement.SignalSignatures;
 
         // Properties
 
@@ -22091,6 +22365,9 @@ export namespace Gda {
     }
 
     namespace Row {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -22104,6 +22381,7 @@ export namespace Gda {
 
     class Row extends GObject.Object {
         static $gtype: GObject.GType<Row>;
+        declare static readonly __signalSignatures: Row.SignalSignatures;
 
         // Properties
 
@@ -22177,6 +22455,12 @@ export namespace Gda {
             (seq_path: string, item_index: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'sequence-item-added': SequenceItemAdded;
+            'sequence-item-remove': SequenceItemRemove;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -22193,6 +22477,7 @@ export namespace Gda {
 
     class ServerOperation extends GObject.Object {
         static $gtype: GObject.GType<ServerOperation>;
+        declare static readonly __signalSignatures: ServerOperation.SignalSignatures;
 
         // Properties
 
@@ -22215,6 +22500,18 @@ export namespace Gda {
 
         // Signals
 
+        connect<K extends keyof ServerOperation.SignalSignatures>(
+            signal: K,
+            callback: ServerOperation.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ServerOperation.SignalSignatures>(
+            signal: K,
+            callback: ServerOperation.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ServerOperation.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ServerOperation.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -22416,6 +22713,9 @@ export namespace Gda {
     }
 
     namespace ServerProvider {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Lockable.ConstructorProps {}
@@ -22423,6 +22723,7 @@ export namespace Gda {
 
     abstract class ServerProvider extends GObject.Object implements Lockable {
         static $gtype: GObject.GType<ServerProvider>;
+        declare static readonly __signalSignatures: ServerProvider.SignalSignatures;
 
         // Constructors
 
@@ -23174,6 +23475,17 @@ export namespace Gda {
             (): GLib.Error;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'holder-attr-changed': HolderAttrChanged;
+            'holder-changed': HolderChanged;
+            'holder-type-set': HolderTypeSet;
+            'public-data-changed': PublicDataChanged;
+            'source-model-changed': SourceModelChanged;
+            'validate-holder-change': ValidateHolderChange;
+            'validate-set': ValidateSet;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -23188,6 +23500,7 @@ export namespace Gda {
 
     class Set extends GObject.Object {
         static $gtype: GObject.GType<Set>;
+        declare static readonly __signalSignatures: Set.SignalSignatures;
 
         // Properties
 
@@ -23229,6 +23542,9 @@ export namespace Gda {
 
         // Signals
 
+        connect<K extends keyof Set.SignalSignatures>(signal: K, callback: Set.SignalSignatures[K]): number;
+        connect_after<K extends keyof Set.SignalSignatures>(signal: K, callback: Set.SignalSignatures[K]): number;
+        emit<K extends keyof Set.SignalSignatures>(signal: K, ...args: Parameters<Set.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -23380,8 +23696,14 @@ export namespace Gda {
         replace_source_model(source: SetSource, model: DataModel): void;
     }
 
+    namespace Short {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+    }
+
     class Short {
         static $gtype: GObject.GType<Short>;
+        declare static readonly __signalSignatures: Short.SignalSignatures;
 
         // Constructors
 
@@ -23389,6 +23711,9 @@ export namespace Gda {
     }
 
     namespace SqlBuilder {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -23396,6 +23721,7 @@ export namespace Gda {
 
     class SqlBuilder extends GObject.Object {
         static $gtype: GObject.GType<SqlBuilder>;
+        declare static readonly __signalSignatures: SqlBuilder.SignalSignatures;
 
         // Constructors
 
@@ -23723,6 +24049,9 @@ export namespace Gda {
     }
 
     namespace SqlParser {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Lockable.ConstructorProps {
@@ -23738,6 +24067,7 @@ export namespace Gda {
 
     class SqlParser extends GObject.Object implements Lockable {
         static $gtype: GObject.GType<SqlParser>;
+        declare static readonly __signalSignatures: SqlParser.SignalSignatures;
 
         // Properties
 
@@ -24304,6 +24634,12 @@ export namespace Gda {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            checked: Checked;
+            reset: Reset;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -24313,6 +24649,7 @@ export namespace Gda {
 
     class Statement extends GObject.Object {
         static $gtype: GObject.GType<Statement>;
+        declare static readonly __signalSignatures: Statement.SignalSignatures;
 
         // Properties
 
@@ -24329,6 +24666,15 @@ export namespace Gda {
 
         // Signals
 
+        connect<K extends keyof Statement.SignalSignatures>(signal: K, callback: Statement.SignalSignatures[K]): number;
+        connect_after<K extends keyof Statement.SignalSignatures>(
+            signal: K,
+            callback: Statement.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Statement.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Statement.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -24440,6 +24786,9 @@ export namespace Gda {
     }
 
     namespace TransactionStatus {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -24447,6 +24796,7 @@ export namespace Gda {
 
     class TransactionStatus extends GObject.Object {
         static $gtype: GObject.GType<TransactionStatus>;
+        declare static readonly __signalSignatures: TransactionStatus.SignalSignatures;
 
         // Constructors
 
@@ -24495,6 +24845,14 @@ export namespace Gda {
             (node: TreeNode): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'node-changed': NodeChanged;
+            'node-deleted': NodeDeleted;
+            'node-has-child-toggled': NodeHasChildToggled;
+            'node-inserted': NodeInserted;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -24505,6 +24863,7 @@ export namespace Gda {
 
     class Tree extends GObject.Object {
         static $gtype: GObject.GType<Tree>;
+        declare static readonly __signalSignatures: Tree.SignalSignatures;
 
         // Properties
 
@@ -24527,6 +24886,9 @@ export namespace Gda {
 
         // Signals
 
+        connect<K extends keyof Tree.SignalSignatures>(signal: K, callback: Tree.SignalSignatures[K]): number;
+        connect_after<K extends keyof Tree.SignalSignatures>(signal: K, callback: Tree.SignalSignatures[K]): number;
+        emit<K extends keyof Tree.SignalSignatures>(signal: K, ...args: Parameters<Tree.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -24628,6 +24990,9 @@ export namespace Gda {
     }
 
     namespace TreeManager {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -24638,6 +25003,7 @@ export namespace Gda {
 
     class TreeManager extends GObject.Object {
         static $gtype: GObject.GType<TreeManager>;
+        declare static readonly __signalSignatures: TreeManager.SignalSignatures;
 
         // Properties
 
@@ -24720,6 +25086,9 @@ export namespace Gda {
     }
 
     namespace TreeMgrColumns {
+        // Signal signatures
+        interface SignalSignatures extends TreeManager.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends TreeManager.ConstructorProps {
@@ -24734,6 +25103,7 @@ export namespace Gda {
 
     class TreeMgrColumns extends TreeManager {
         static $gtype: GObject.GType<TreeMgrColumns>;
+        declare static readonly __signalSignatures: TreeMgrColumns.SignalSignatures;
 
         // Properties
 
@@ -24777,6 +25147,9 @@ export namespace Gda {
     }
 
     namespace TreeMgrLabel {
+        // Signal signatures
+        interface SignalSignatures extends TreeManager.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends TreeManager.ConstructorProps {
@@ -24786,6 +25159,7 @@ export namespace Gda {
 
     class TreeMgrLabel extends TreeManager {
         static $gtype: GObject.GType<TreeMgrLabel>;
+        declare static readonly __signalSignatures: TreeMgrLabel.SignalSignatures;
 
         // Properties
 
@@ -24801,6 +25175,9 @@ export namespace Gda {
     }
 
     namespace TreeMgrSchemas {
+        // Signal signatures
+        interface SignalSignatures extends TreeManager.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends TreeManager.ConstructorProps {
@@ -24812,6 +25189,7 @@ export namespace Gda {
 
     class TreeMgrSchemas extends TreeManager {
         static $gtype: GObject.GType<TreeMgrSchemas>;
+        declare static readonly __signalSignatures: TreeMgrSchemas.SignalSignatures;
 
         // Properties
 
@@ -24843,6 +25221,9 @@ export namespace Gda {
     }
 
     namespace TreeMgrSelect {
+        // Signal signatures
+        interface SignalSignatures extends TreeManager.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends TreeManager.ConstructorProps {
@@ -24854,6 +25235,7 @@ export namespace Gda {
 
     class TreeMgrSelect extends TreeManager {
         static $gtype: GObject.GType<TreeMgrSelect>;
+        declare static readonly __signalSignatures: TreeMgrSelect.SignalSignatures;
 
         // Properties
 
@@ -24871,6 +25253,9 @@ export namespace Gda {
     }
 
     namespace TreeMgrTables {
+        // Signal signatures
+        interface SignalSignatures extends TreeManager.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends TreeManager.ConstructorProps {
@@ -24883,6 +25268,7 @@ export namespace Gda {
 
     class TreeMgrTables extends TreeManager {
         static $gtype: GObject.GType<TreeMgrTables>;
+        declare static readonly __signalSignatures: TreeMgrTables.SignalSignatures;
 
         // Properties
 
@@ -24938,6 +25324,14 @@ export namespace Gda {
             (node: TreeNode): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'node-changed': NodeChanged;
+            'node-deleted': NodeDeleted;
+            'node-has-child-toggled': NodeHasChildToggled;
+            'node-inserted': NodeInserted;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -24947,6 +25341,7 @@ export namespace Gda {
 
     class TreeNode extends GObject.Object {
         static $gtype: GObject.GType<TreeNode>;
+        declare static readonly __signalSignatures: TreeNode.SignalSignatures;
 
         // Properties
 
@@ -24963,6 +25358,15 @@ export namespace Gda {
 
         // Signals
 
+        connect<K extends keyof TreeNode.SignalSignatures>(signal: K, callback: TreeNode.SignalSignatures[K]): number;
+        connect_after<K extends keyof TreeNode.SignalSignatures>(
+            signal: K,
+            callback: TreeNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TreeNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TreeNode.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -25062,8 +25466,14 @@ export namespace Gda {
         set_node_attribute(attribute: string, value?: GObject.Value | null): void;
     }
 
+    namespace UShort {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+    }
+
     class UShort {
         static $gtype: GObject.GType<UShort>;
+        declare static readonly __signalSignatures: UShort.SignalSignatures;
 
         // Constructors
 
@@ -25071,6 +25481,9 @@ export namespace Gda {
     }
 
     namespace XaTransaction {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -25083,6 +25496,7 @@ export namespace Gda {
 
     class XaTransaction extends GObject.Object {
         static $gtype: GObject.GType<XaTransaction>;
+        declare static readonly __signalSignatures: XaTransaction.SignalSignatures;
 
         // Properties
 

@@ -3088,6 +3088,9 @@ export namespace Pango {
         IGNORABLES,
     }
     namespace Context {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3105,6 +3108,7 @@ export namespace Pango {
      */
     class Context extends GObject.Object {
         static $gtype: GObject.GType<Context>;
+        declare static readonly __signalSignatures: Context.SignalSignatures;
 
         // Constructors
 
@@ -3317,6 +3321,9 @@ export namespace Pango {
     }
 
     namespace Coverage {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3334,6 +3341,7 @@ export namespace Pango {
      */
     class Coverage extends GObject.Object {
         static $gtype: GObject.GType<Coverage>;
+        declare static readonly __signalSignatures: Coverage.SignalSignatures;
 
         // Constructors
 
@@ -3398,6 +3406,9 @@ export namespace Pango {
     }
 
     namespace Font {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3409,6 +3420,7 @@ export namespace Pango {
      */
     abstract class Font extends GObject.Object {
         static $gtype: GObject.GType<Font>;
+        declare static readonly __signalSignatures: Font.SignalSignatures;
 
         // Constructors
 
@@ -3622,6 +3634,9 @@ export namespace Pango {
     }
 
     namespace FontFace {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3633,6 +3648,7 @@ export namespace Pango {
      */
     abstract class FontFace extends GObject.Object {
         static $gtype: GObject.GType<FontFace>;
+        declare static readonly __signalSignatures: FontFace.SignalSignatures;
 
         // Constructors
 
@@ -3726,6 +3742,9 @@ export namespace Pango {
     }
 
     namespace FontFamily {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -3755,6 +3774,7 @@ export namespace Pango {
         implements Gio.ListModel<A>
     {
         static $gtype: GObject.GType<FontFamily>;
+        declare static readonly __signalSignatures: FontFamily.SignalSignatures;
 
         // Properties
 
@@ -4423,6 +4443,9 @@ export namespace Pango {
     }
 
     namespace FontMap {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -4447,6 +4470,7 @@ export namespace Pango {
         implements Gio.ListModel<A>
     {
         static $gtype: GObject.GType<FontMap>;
+        declare static readonly __signalSignatures: FontMap.SignalSignatures;
 
         // Properties
 
@@ -5164,6 +5188,9 @@ export namespace Pango {
     }
 
     namespace Fontset {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5179,6 +5206,7 @@ export namespace Pango {
      */
     abstract class Fontset extends GObject.Object {
         static $gtype: GObject.GType<Fontset>;
+        declare static readonly __signalSignatures: Fontset.SignalSignatures;
 
         // Constructors
 
@@ -5236,6 +5264,9 @@ export namespace Pango {
     }
 
     namespace FontsetSimple {
+        // Signal signatures
+        interface SignalSignatures extends Fontset.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Fontset.ConstructorProps {}
@@ -5250,6 +5281,7 @@ export namespace Pango {
      */
     class FontsetSimple extends Fontset {
         static $gtype: GObject.GType<FontsetSimple>;
+        declare static readonly __signalSignatures: FontsetSimple.SignalSignatures;
 
         // Constructors
 
@@ -5276,6 +5308,9 @@ export namespace Pango {
     }
 
     namespace Layout {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5323,6 +5358,7 @@ export namespace Pango {
      */
     class Layout extends GObject.Object {
         static $gtype: GObject.GType<Layout>;
+        declare static readonly __signalSignatures: Layout.SignalSignatures;
 
         // Constructors
 
@@ -6059,6 +6095,9 @@ export namespace Pango {
     }
 
     namespace Renderer {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6074,6 +6113,7 @@ export namespace Pango {
      */
     abstract class Renderer extends GObject.Object {
         static $gtype: GObject.GType<Renderer>;
+        declare static readonly __signalSignatures: Renderer.SignalSignatures;
 
         // Fields
 

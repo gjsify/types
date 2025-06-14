@@ -48,6 +48,9 @@ export namespace Cally {
         (cally_actor: Actor): void;
     }
     namespace Actor {
+        // Signal signatures
+        interface SignalSignatures extends Atk.GObjectAccessible.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -62,6 +65,7 @@ export namespace Cally {
      */
     class Actor extends Atk.GObjectAccessible implements Atk.Action, Atk.Component {
         static $gtype: GObject.GType<Actor>;
+        declare static readonly __signalSignatures: Actor.SignalSignatures;
 
         // Constructors
 
@@ -939,6 +943,9 @@ export namespace Cally {
     }
 
     namespace Clone {
+        // Signal signatures
+        interface SignalSignatures extends Actor.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -953,6 +960,7 @@ export namespace Cally {
      */
     class Clone extends Actor implements Atk.Action, Atk.Component {
         static $gtype: GObject.GType<Clone>;
+        declare static readonly __signalSignatures: Clone.SignalSignatures;
 
         // Constructors
 
@@ -1800,6 +1808,9 @@ export namespace Cally {
     }
 
     namespace Group {
+        // Signal signatures
+        interface SignalSignatures extends Actor.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1814,6 +1825,7 @@ export namespace Cally {
      */
     class Group extends Actor implements Atk.Action, Atk.Component {
         static $gtype: GObject.GType<Group>;
+        declare static readonly __signalSignatures: Group.SignalSignatures;
 
         // Constructors
 
@@ -2661,6 +2673,9 @@ export namespace Cally {
     }
 
     namespace Rectangle {
+        // Signal signatures
+        interface SignalSignatures extends Actor.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2675,6 +2690,7 @@ export namespace Cally {
      */
     class Rectangle extends Actor implements Atk.Action, Atk.Component {
         static $gtype: GObject.GType<Rectangle>;
+        declare static readonly __signalSignatures: Rectangle.SignalSignatures;
 
         // Constructors
 
@@ -3522,6 +3538,9 @@ export namespace Cally {
     }
 
     namespace Root {
+        // Signal signatures
+        interface SignalSignatures extends Atk.GObjectAccessible.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Atk.GObjectAccessible.ConstructorProps {}
@@ -3533,6 +3552,7 @@ export namespace Cally {
      */
     class Root extends Atk.GObjectAccessible {
         static $gtype: GObject.GType<Root>;
+        declare static readonly __signalSignatures: Root.SignalSignatures;
 
         // Constructors
 
@@ -3544,6 +3564,9 @@ export namespace Cally {
     }
 
     namespace Stage {
+        // Signal signatures
+        interface SignalSignatures extends Group.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3559,6 +3582,7 @@ export namespace Cally {
      */
     class Stage extends Group implements Atk.Action, Atk.Component, Atk.Window {
         static $gtype: GObject.GType<Stage>;
+        declare static readonly __signalSignatures: Stage.SignalSignatures;
 
         // Constructors
 
@@ -4417,6 +4441,9 @@ export namespace Cally {
     }
 
     namespace Text {
+        // Signal signatures
+        interface SignalSignatures extends Actor.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4433,6 +4460,7 @@ export namespace Cally {
      */
     class Text extends Actor implements Atk.Action, Atk.Component, Atk.EditableText, Atk.Text {
         static $gtype: GObject.GType<Text>;
+        declare static readonly __signalSignatures: Text.SignalSignatures;
 
         // Constructors
 
@@ -5862,6 +5890,9 @@ export namespace Cally {
     }
 
     namespace Texture {
+        // Signal signatures
+        interface SignalSignatures extends Actor.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5876,6 +5907,7 @@ export namespace Cally {
      */
     class Texture extends Actor implements Atk.Action, Atk.Component {
         static $gtype: GObject.GType<Texture>;
+        declare static readonly __signalSignatures: Texture.SignalSignatures;
 
         // Constructors
 
@@ -6723,6 +6755,9 @@ export namespace Cally {
     }
 
     namespace Util {
+        // Signal signatures
+        interface SignalSignatures extends Atk.Util.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Atk.Util.ConstructorProps {}
@@ -6734,6 +6769,7 @@ export namespace Cally {
      */
     class Util extends Atk.Util {
         static $gtype: GObject.GType<Util>;
+        declare static readonly __signalSignatures: Util.SignalSignatures;
 
         // Constructors
 

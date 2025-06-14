@@ -787,6 +787,11 @@ export namespace OSTree {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            changed: Changed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -794,6 +799,7 @@ export namespace OSTree {
 
     class AsyncProgress extends GObject.Object {
         static $gtype: GObject.GType<AsyncProgress>;
+        declare static readonly __signalSignatures: AsyncProgress.SignalSignatures;
 
         // Constructors
 
@@ -807,6 +813,18 @@ export namespace OSTree {
 
         // Signals
 
+        connect<K extends keyof AsyncProgress.SignalSignatures>(
+            signal: K,
+            callback: AsyncProgress.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AsyncProgress.SignalSignatures>(
+            signal: K,
+            callback: AsyncProgress.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AsyncProgress.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AsyncProgress.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -835,6 +853,9 @@ export namespace OSTree {
     }
 
     namespace BootconfigParser {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -842,6 +863,7 @@ export namespace OSTree {
 
     class BootconfigParser extends GObject.Object {
         static $gtype: GObject.GType<BootconfigParser>;
+        declare static readonly __signalSignatures: BootconfigParser.SignalSignatures;
 
         // Constructors
 
@@ -871,6 +893,9 @@ export namespace OSTree {
     }
 
     namespace ChecksumInputStream {
+        // Signal signatures
+        interface SignalSignatures extends Gio.FilterInputStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gio.FilterInputStream.ConstructorProps {
@@ -880,6 +905,7 @@ export namespace OSTree {
 
     class ChecksumInputStream extends Gio.FilterInputStream {
         static $gtype: GObject.GType<ChecksumInputStream>;
+        declare static readonly __signalSignatures: ChecksumInputStream.SignalSignatures;
 
         // Properties
 
@@ -895,6 +921,9 @@ export namespace OSTree {
     }
 
     namespace Deployment {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -902,6 +931,7 @@ export namespace OSTree {
 
     class Deployment extends GObject.Object {
         static $gtype: GObject.GType<Deployment>;
+        declare static readonly __signalSignatures: Deployment.SignalSignatures;
 
         // Constructors
 
@@ -950,6 +980,9 @@ export namespace OSTree {
     }
 
     namespace GpgVerifyResult {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {}
@@ -957,6 +990,7 @@ export namespace OSTree {
 
     class GpgVerifyResult extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<GpgVerifyResult>;
+        declare static readonly __signalSignatures: GpgVerifyResult.SignalSignatures;
 
         // Constructors
 
@@ -1608,6 +1642,9 @@ export namespace OSTree {
     }
 
     namespace MutableTree {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1618,6 +1655,7 @@ export namespace OSTree {
      */
     class MutableTree extends GObject.Object {
         static $gtype: GObject.GType<MutableTree>;
+        declare static readonly __signalSignatures: MutableTree.SignalSignatures;
 
         // Constructors
 
@@ -1661,6 +1699,11 @@ export namespace OSTree {
             (checksum: string, result: GpgVerifyResult): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'gpg-verify-result': GpgVerifyResult;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1674,6 +1717,7 @@ export namespace OSTree {
 
     class Repo extends GObject.Object {
         static $gtype: GObject.GType<Repo>;
+        declare static readonly __signalSignatures: Repo.SignalSignatures;
 
         // Properties
 
@@ -1697,6 +1741,9 @@ export namespace OSTree {
 
         // Signals
 
+        connect<K extends keyof Repo.SignalSignatures>(signal: K, callback: Repo.SignalSignatures[K]): number;
+        connect_after<K extends keyof Repo.SignalSignatures>(signal: K, callback: Repo.SignalSignatures[K]): number;
+        emit<K extends keyof Repo.SignalSignatures>(signal: K, ...args: Parameters<Repo.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2892,6 +2939,9 @@ export namespace OSTree {
     }
 
     namespace RepoFile {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.File.ConstructorProps {}
@@ -2899,6 +2949,7 @@ export namespace OSTree {
 
     class RepoFile extends GObject.Object implements Gio.File {
         static $gtype: GObject.GType<RepoFile>;
+        declare static readonly __signalSignatures: RepoFile.SignalSignatures;
 
         // Constructors
 
@@ -8241,6 +8292,9 @@ export namespace OSTree {
     }
 
     namespace SePolicy {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -8250,6 +8304,7 @@ export namespace OSTree {
 
     class SePolicy extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<SePolicy>;
+        declare static readonly __signalSignatures: SePolicy.SignalSignatures;
 
         // Properties
 
@@ -8830,6 +8885,9 @@ export namespace OSTree {
     }
 
     namespace Sysroot {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -8839,6 +8897,7 @@ export namespace OSTree {
 
     class Sysroot extends GObject.Object {
         static $gtype: GObject.GType<Sysroot>;
+        declare static readonly __signalSignatures: Sysroot.SignalSignatures;
 
         // Properties
 
@@ -9093,6 +9152,9 @@ export namespace OSTree {
     }
 
     namespace SysrootUpgrader {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -9104,6 +9166,7 @@ export namespace OSTree {
 
     class SysrootUpgrader extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<SysrootUpgrader>;
+        declare static readonly __signalSignatures: SysrootUpgrader.SignalSignatures;
 
         // Properties
 

@@ -796,6 +796,9 @@ export namespace Arrow {
     function s3_initialize(options?: S3GlobalOptions | null): boolean;
     function s3_is_enabled(): boolean;
     namespace AggregateNodeOptions {
+        // Signal signatures
+        interface SignalSignatures extends ExecuteNodeOptions.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ExecuteNodeOptions.ConstructorProps {}
@@ -803,6 +806,7 @@ export namespace Arrow {
 
     class AggregateNodeOptions extends ExecuteNodeOptions {
         static $gtype: GObject.GType<AggregateNodeOptions>;
+        declare static readonly __signalSignatures: AggregateNodeOptions.SignalSignatures;
 
         // Constructors
 
@@ -814,6 +818,9 @@ export namespace Arrow {
     }
 
     namespace Aggregation {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -826,6 +833,7 @@ export namespace Arrow {
 
     class Aggregation extends GObject.Object {
         static $gtype: GObject.GType<Aggregation>;
+        declare static readonly __signalSignatures: Aggregation.SignalSignatures;
 
         // Properties
 
@@ -856,6 +864,9 @@ export namespace Arrow {
     }
 
     namespace Array {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -872,6 +883,7 @@ export namespace Arrow {
 
     abstract class Array extends GObject.Object {
         static $gtype: GObject.GType<Array>;
+        declare static readonly __signalSignatures: Array.SignalSignatures;
 
         // Properties
 
@@ -936,6 +948,9 @@ export namespace Arrow {
     }
 
     namespace ArrayBuilder {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -946,6 +961,7 @@ export namespace Arrow {
 
     abstract class ArrayBuilder extends GObject.Object {
         static $gtype: GObject.GType<ArrayBuilder>;
+        declare static readonly __signalSignatures: ArrayBuilder.SignalSignatures;
 
         // Properties
 
@@ -990,6 +1006,9 @@ export namespace Arrow {
     }
 
     namespace ArrayDatum {
+        // Signal signatures
+        interface SignalSignatures extends Datum.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Datum.ConstructorProps {
@@ -999,6 +1018,7 @@ export namespace Arrow {
 
     class ArrayDatum extends Datum {
         static $gtype: GObject.GType<ArrayDatum>;
+        declare static readonly __signalSignatures: ArrayDatum.SignalSignatures;
 
         // Properties
 
@@ -1014,6 +1034,9 @@ export namespace Arrow {
     }
 
     namespace ArraySortOptions {
+        // Signal signatures
+        interface SignalSignatures extends FunctionOptions.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
@@ -1023,6 +1046,7 @@ export namespace Arrow {
 
     class ArraySortOptions extends FunctionOptions {
         static $gtype: GObject.GType<ArraySortOptions>;
+        declare static readonly __signalSignatures: ArraySortOptions.SignalSignatures;
 
         // Properties
 
@@ -1048,6 +1072,9 @@ export namespace Arrow {
     }
 
     namespace BaseBinaryScalar {
+        // Signal signatures
+        interface SignalSignatures extends Scalar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {
@@ -1057,6 +1084,7 @@ export namespace Arrow {
 
     abstract class BaseBinaryScalar extends Scalar {
         static $gtype: GObject.GType<BaseBinaryScalar>;
+        declare static readonly __signalSignatures: BaseBinaryScalar.SignalSignatures;
 
         // Properties
 
@@ -1077,6 +1105,9 @@ export namespace Arrow {
     }
 
     namespace BaseListScalar {
+        // Signal signatures
+        interface SignalSignatures extends Scalar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {
@@ -1086,6 +1117,7 @@ export namespace Arrow {
 
     abstract class BaseListScalar extends Scalar {
         static $gtype: GObject.GType<BaseListScalar>;
+        declare static readonly __signalSignatures: BaseListScalar.SignalSignatures;
 
         // Properties
 
@@ -1106,6 +1138,9 @@ export namespace Arrow {
     }
 
     namespace BinaryArray {
+        // Signal signatures
+        interface SignalSignatures extends Array.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Array.ConstructorProps {}
@@ -1113,6 +1148,7 @@ export namespace Arrow {
 
     class BinaryArray extends Array {
         static $gtype: GObject.GType<BinaryArray>;
+        declare static readonly __signalSignatures: BinaryArray.SignalSignatures;
 
         // Constructors
 
@@ -1137,6 +1173,9 @@ export namespace Arrow {
     }
 
     namespace BinaryArrayBuilder {
+        // Signal signatures
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -1144,6 +1183,7 @@ export namespace Arrow {
 
     class BinaryArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<BinaryArrayBuilder>;
+        declare static readonly __signalSignatures: BinaryArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -1169,6 +1209,9 @@ export namespace Arrow {
     }
 
     namespace BinaryDataType {
+        // Signal signatures
+        interface SignalSignatures extends DataType.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DataType.ConstructorProps {}
@@ -1176,6 +1219,7 @@ export namespace Arrow {
 
     class BinaryDataType extends DataType {
         static $gtype: GObject.GType<BinaryDataType>;
+        declare static readonly __signalSignatures: BinaryDataType.SignalSignatures;
 
         // Constructors
 
@@ -1187,6 +1231,9 @@ export namespace Arrow {
     }
 
     namespace BinaryDictionaryArrayBuilder {
+        // Signal signatures
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -1194,6 +1241,7 @@ export namespace Arrow {
 
     class BinaryDictionaryArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<BinaryDictionaryArrayBuilder>;
+        declare static readonly __signalSignatures: BinaryDictionaryArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -1225,6 +1273,9 @@ export namespace Arrow {
     }
 
     namespace BinaryScalar {
+        // Signal signatures
+        interface SignalSignatures extends BaseBinaryScalar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends BaseBinaryScalar.ConstructorProps {}
@@ -1232,6 +1283,7 @@ export namespace Arrow {
 
     class BinaryScalar extends BaseBinaryScalar {
         static $gtype: GObject.GType<BinaryScalar>;
+        declare static readonly __signalSignatures: BinaryScalar.SignalSignatures;
 
         // Constructors
 
@@ -1243,6 +1295,9 @@ export namespace Arrow {
     }
 
     namespace BooleanArray {
+        // Signal signatures
+        interface SignalSignatures extends PrimitiveArray.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends PrimitiveArray.ConstructorProps {}
@@ -1250,6 +1305,7 @@ export namespace Arrow {
 
     class BooleanArray extends PrimitiveArray {
         static $gtype: GObject.GType<BooleanArray>;
+        declare static readonly __signalSignatures: BooleanArray.SignalSignatures;
 
         // Constructors
 
@@ -1270,6 +1326,9 @@ export namespace Arrow {
     }
 
     namespace BooleanArrayBuilder {
+        // Signal signatures
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -1277,6 +1336,7 @@ export namespace Arrow {
 
     class BooleanArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<BooleanArrayBuilder>;
+        declare static readonly __signalSignatures: BooleanArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -1301,6 +1361,9 @@ export namespace Arrow {
     }
 
     namespace BooleanDataType {
+        // Signal signatures
+        interface SignalSignatures extends FixedWidthDataType.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FixedWidthDataType.ConstructorProps {}
@@ -1308,6 +1371,7 @@ export namespace Arrow {
 
     class BooleanDataType extends FixedWidthDataType {
         static $gtype: GObject.GType<BooleanDataType>;
+        declare static readonly __signalSignatures: BooleanDataType.SignalSignatures;
 
         // Constructors
 
@@ -1319,6 +1383,9 @@ export namespace Arrow {
     }
 
     namespace BooleanScalar {
+        // Signal signatures
+        interface SignalSignatures extends Scalar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {}
@@ -1326,6 +1393,7 @@ export namespace Arrow {
 
     class BooleanScalar extends Scalar {
         static $gtype: GObject.GType<BooleanScalar>;
+        declare static readonly __signalSignatures: BooleanScalar.SignalSignatures;
 
         // Constructors
 
@@ -1341,6 +1409,9 @@ export namespace Arrow {
     }
 
     namespace Buffer {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1352,6 +1423,7 @@ export namespace Arrow {
 
     class Buffer extends GObject.Object {
         static $gtype: GObject.GType<Buffer>;
+        declare static readonly __signalSignatures: Buffer.SignalSignatures;
 
         // Properties
 
@@ -1386,6 +1458,9 @@ export namespace Arrow {
     }
 
     namespace BufferInputStream {
+        // Signal signatures
+        interface SignalSignatures extends SeekableInputStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1398,6 +1473,7 @@ export namespace Arrow {
 
     class BufferInputStream extends SeekableInputStream implements File, Readable {
         static $gtype: GObject.GType<BufferInputStream>;
+        declare static readonly __signalSignatures: BufferInputStream.SignalSignatures;
 
         // Properties
 
@@ -1858,6 +1934,9 @@ export namespace Arrow {
     }
 
     namespace BufferOutputStream {
+        // Signal signatures
+        interface SignalSignatures extends OutputStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1868,6 +1947,7 @@ export namespace Arrow {
 
     class BufferOutputStream extends OutputStream implements File, Writable {
         static $gtype: GObject.GType<BufferOutputStream>;
+        declare static readonly __signalSignatures: BufferOutputStream.SignalSignatures;
 
         // Constructors
 
@@ -2330,6 +2410,9 @@ export namespace Arrow {
     }
 
     namespace CSVReadOptions {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2365,6 +2448,7 @@ export namespace Arrow {
 
     class CSVReadOptions extends GObject.Object {
         static $gtype: GObject.GType<CSVReadOptions>;
+        declare static readonly __signalSignatures: CSVReadOptions.SignalSignatures;
 
         // Properties
 
@@ -2552,6 +2636,9 @@ export namespace Arrow {
     }
 
     namespace CSVReader {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2563,6 +2650,7 @@ export namespace Arrow {
 
     class CSVReader extends GObject.Object {
         static $gtype: GObject.GType<CSVReader>;
+        declare static readonly __signalSignatures: CSVReader.SignalSignatures;
 
         // Properties
 
@@ -2584,6 +2672,9 @@ export namespace Arrow {
     }
 
     namespace CallExpression {
+        // Signal signatures
+        interface SignalSignatures extends Expression.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Expression.ConstructorProps {}
@@ -2591,6 +2682,7 @@ export namespace Arrow {
 
     class CallExpression extends Expression {
         static $gtype: GObject.GType<CallExpression>;
+        declare static readonly __signalSignatures: CallExpression.SignalSignatures;
 
         // Constructors
 
@@ -2602,6 +2694,9 @@ export namespace Arrow {
     }
 
     namespace CastOptions {
+        // Signal signatures
+        interface SignalSignatures extends FunctionOptions.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
@@ -2624,6 +2719,7 @@ export namespace Arrow {
 
     class CastOptions extends FunctionOptions {
         static $gtype: GObject.GType<CastOptions>;
+        declare static readonly __signalSignatures: CastOptions.SignalSignatures;
 
         // Properties
 
@@ -2708,6 +2804,9 @@ export namespace Arrow {
     }
 
     namespace ChunkedArray {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2720,6 +2819,7 @@ export namespace Arrow {
 
     class ChunkedArray extends GObject.Object {
         static $gtype: GObject.GType<ChunkedArray>;
+        declare static readonly __signalSignatures: ChunkedArray.SignalSignatures;
 
         // Properties
 
@@ -2760,6 +2860,9 @@ export namespace Arrow {
     }
 
     namespace ChunkedArrayDatum {
+        // Signal signatures
+        interface SignalSignatures extends Datum.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Datum.ConstructorProps {
@@ -2769,6 +2872,7 @@ export namespace Arrow {
 
     class ChunkedArrayDatum extends Datum {
         static $gtype: GObject.GType<ChunkedArrayDatum>;
+        declare static readonly __signalSignatures: ChunkedArrayDatum.SignalSignatures;
 
         // Properties
 
@@ -2784,6 +2888,9 @@ export namespace Arrow {
     }
 
     namespace Codec {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2793,6 +2900,7 @@ export namespace Arrow {
 
     class Codec extends GObject.Object {
         static $gtype: GObject.GType<Codec>;
+        declare static readonly __signalSignatures: Codec.SignalSignatures;
 
         // Properties
 
@@ -2814,6 +2922,9 @@ export namespace Arrow {
     }
 
     namespace CompressedInputStream {
+        // Signal signatures
+        interface SignalSignatures extends InputStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2827,6 +2938,7 @@ export namespace Arrow {
 
     class CompressedInputStream extends InputStream implements File, Readable {
         static $gtype: GObject.GType<CompressedInputStream>;
+        declare static readonly __signalSignatures: CompressedInputStream.SignalSignatures;
 
         // Properties
 
@@ -3294,6 +3406,9 @@ export namespace Arrow {
     }
 
     namespace CompressedOutputStream {
+        // Signal signatures
+        interface SignalSignatures extends OutputStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3307,6 +3422,7 @@ export namespace Arrow {
 
     class CompressedOutputStream extends OutputStream implements File, Writable {
         static $gtype: GObject.GType<CompressedOutputStream>;
+        declare static readonly __signalSignatures: CompressedOutputStream.SignalSignatures;
 
         // Properties
 
@@ -3774,6 +3890,9 @@ export namespace Arrow {
     }
 
     namespace CountOptions {
+        // Signal signatures
+        interface SignalSignatures extends FunctionOptions.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
@@ -3783,6 +3902,7 @@ export namespace Arrow {
 
     class CountOptions extends FunctionOptions {
         static $gtype: GObject.GType<CountOptions>;
+        declare static readonly __signalSignatures: CountOptions.SignalSignatures;
 
         // Properties
 
@@ -3799,6 +3919,9 @@ export namespace Arrow {
     }
 
     namespace DataType {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3809,6 +3932,7 @@ export namespace Arrow {
 
     abstract class DataType extends GObject.Object {
         static $gtype: GObject.GType<DataType>;
+        declare static readonly __signalSignatures: DataType.SignalSignatures;
 
         // Properties
 
@@ -3835,6 +3959,9 @@ export namespace Arrow {
     }
 
     namespace Date32Array {
+        // Signal signatures
+        interface SignalSignatures extends NumericArray.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends NumericArray.ConstructorProps {}
@@ -3842,6 +3969,7 @@ export namespace Arrow {
 
     class Date32Array extends NumericArray {
         static $gtype: GObject.GType<Date32Array>;
+        declare static readonly __signalSignatures: Date32Array.SignalSignatures;
 
         // Constructors
 
@@ -3858,6 +3986,9 @@ export namespace Arrow {
     }
 
     namespace Date32ArrayBuilder {
+        // Signal signatures
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -3865,6 +3996,7 @@ export namespace Arrow {
 
     class Date32ArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<Date32ArrayBuilder>;
+        declare static readonly __signalSignatures: Date32ArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -3889,6 +4021,9 @@ export namespace Arrow {
     }
 
     namespace Date32DataType {
+        // Signal signatures
+        interface SignalSignatures extends TemporalDataType.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends TemporalDataType.ConstructorProps {}
@@ -3896,6 +4031,7 @@ export namespace Arrow {
 
     class Date32DataType extends TemporalDataType {
         static $gtype: GObject.GType<Date32DataType>;
+        declare static readonly __signalSignatures: Date32DataType.SignalSignatures;
 
         // Constructors
 
@@ -3907,6 +4043,9 @@ export namespace Arrow {
     }
 
     namespace Date32Scalar {
+        // Signal signatures
+        interface SignalSignatures extends Scalar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {}
@@ -3914,6 +4053,7 @@ export namespace Arrow {
 
     class Date32Scalar extends Scalar {
         static $gtype: GObject.GType<Date32Scalar>;
+        declare static readonly __signalSignatures: Date32Scalar.SignalSignatures;
 
         // Constructors
 
@@ -3929,6 +4069,9 @@ export namespace Arrow {
     }
 
     namespace Date64Array {
+        // Signal signatures
+        interface SignalSignatures extends NumericArray.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends NumericArray.ConstructorProps {}
@@ -3936,6 +4079,7 @@ export namespace Arrow {
 
     class Date64Array extends NumericArray {
         static $gtype: GObject.GType<Date64Array>;
+        declare static readonly __signalSignatures: Date64Array.SignalSignatures;
 
         // Constructors
 
@@ -3952,6 +4096,9 @@ export namespace Arrow {
     }
 
     namespace Date64ArrayBuilder {
+        // Signal signatures
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -3959,6 +4106,7 @@ export namespace Arrow {
 
     class Date64ArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<Date64ArrayBuilder>;
+        declare static readonly __signalSignatures: Date64ArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -3983,6 +4131,9 @@ export namespace Arrow {
     }
 
     namespace Date64DataType {
+        // Signal signatures
+        interface SignalSignatures extends TemporalDataType.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends TemporalDataType.ConstructorProps {}
@@ -3990,6 +4141,7 @@ export namespace Arrow {
 
     class Date64DataType extends TemporalDataType {
         static $gtype: GObject.GType<Date64DataType>;
+        declare static readonly __signalSignatures: Date64DataType.SignalSignatures;
 
         // Constructors
 
@@ -4001,6 +4153,9 @@ export namespace Arrow {
     }
 
     namespace Date64Scalar {
+        // Signal signatures
+        interface SignalSignatures extends Scalar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {}
@@ -4008,6 +4163,7 @@ export namespace Arrow {
 
     class Date64Scalar extends Scalar {
         static $gtype: GObject.GType<Date64Scalar>;
+        declare static readonly __signalSignatures: Date64Scalar.SignalSignatures;
 
         // Constructors
 
@@ -4023,6 +4179,9 @@ export namespace Arrow {
     }
 
     namespace Datum {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4032,6 +4191,7 @@ export namespace Arrow {
 
     abstract class Datum extends GObject.Object {
         static $gtype: GObject.GType<Datum>;
+        declare static readonly __signalSignatures: Datum.SignalSignatures;
 
         // Properties
 
@@ -4054,6 +4214,9 @@ export namespace Arrow {
     }
 
     namespace DayMillisecond {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4064,6 +4227,7 @@ export namespace Arrow {
 
     class DayMillisecond extends GObject.Object {
         static $gtype: GObject.GType<DayMillisecond>;
+        declare static readonly __signalSignatures: DayMillisecond.SignalSignatures;
 
         // Properties
 
@@ -4093,6 +4257,9 @@ export namespace Arrow {
     }
 
     namespace DayTimeIntervalArray {
+        // Signal signatures
+        interface SignalSignatures extends PrimitiveArray.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends PrimitiveArray.ConstructorProps {}
@@ -4100,6 +4267,7 @@ export namespace Arrow {
 
     class DayTimeIntervalArray extends PrimitiveArray {
         static $gtype: GObject.GType<DayTimeIntervalArray>;
+        declare static readonly __signalSignatures: DayTimeIntervalArray.SignalSignatures;
 
         // Constructors
 
@@ -4116,6 +4284,9 @@ export namespace Arrow {
     }
 
     namespace DayTimeIntervalArrayBuilder {
+        // Signal signatures
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -4123,6 +4294,7 @@ export namespace Arrow {
 
     class DayTimeIntervalArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<DayTimeIntervalArrayBuilder>;
+        declare static readonly __signalSignatures: DayTimeIntervalArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -4146,6 +4318,9 @@ export namespace Arrow {
     }
 
     namespace DayTimeIntervalDataType {
+        // Signal signatures
+        interface SignalSignatures extends IntervalDataType.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends IntervalDataType.ConstructorProps {}
@@ -4153,6 +4328,7 @@ export namespace Arrow {
 
     class DayTimeIntervalDataType extends IntervalDataType {
         static $gtype: GObject.GType<DayTimeIntervalDataType>;
+        declare static readonly __signalSignatures: DayTimeIntervalDataType.SignalSignatures;
 
         // Constructors
 
@@ -4164,6 +4340,9 @@ export namespace Arrow {
     }
 
     namespace DayTimeIntervalScalar {
+        // Signal signatures
+        interface SignalSignatures extends Scalar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {}
@@ -4171,6 +4350,7 @@ export namespace Arrow {
 
     class DayTimeIntervalScalar extends Scalar {
         static $gtype: GObject.GType<DayTimeIntervalScalar>;
+        declare static readonly __signalSignatures: DayTimeIntervalScalar.SignalSignatures;
 
         // Constructors
 
@@ -4186,6 +4366,9 @@ export namespace Arrow {
     }
 
     namespace Decimal128 {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4195,6 +4378,7 @@ export namespace Arrow {
 
     class Decimal128 extends GObject.Object {
         static $gtype: GObject.GType<Decimal128>;
+        declare static readonly __signalSignatures: Decimal128.SignalSignatures;
 
         // Properties
 
@@ -4239,6 +4423,9 @@ export namespace Arrow {
     }
 
     namespace Decimal128Array {
+        // Signal signatures
+        interface SignalSignatures extends FixedSizeBinaryArray.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FixedSizeBinaryArray.ConstructorProps {}
@@ -4246,6 +4433,7 @@ export namespace Arrow {
 
     class Decimal128Array extends FixedSizeBinaryArray {
         static $gtype: GObject.GType<Decimal128Array>;
+        declare static readonly __signalSignatures: Decimal128Array.SignalSignatures;
 
         // Constructors
 
@@ -4262,6 +4450,9 @@ export namespace Arrow {
     }
 
     namespace Decimal128ArrayBuilder {
+        // Signal signatures
+        interface SignalSignatures extends FixedSizeBinaryArrayBuilder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FixedSizeBinaryArrayBuilder.ConstructorProps {}
@@ -4269,6 +4460,7 @@ export namespace Arrow {
 
     class Decimal128ArrayBuilder extends FixedSizeBinaryArrayBuilder {
         static $gtype: GObject.GType<Decimal128ArrayBuilder>;
+        declare static readonly __signalSignatures: Decimal128ArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -4297,6 +4489,9 @@ export namespace Arrow {
     }
 
     namespace Decimal128DataType {
+        // Signal signatures
+        interface SignalSignatures extends DecimalDataType.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DecimalDataType.ConstructorProps {}
@@ -4304,6 +4499,7 @@ export namespace Arrow {
 
     class Decimal128DataType extends DecimalDataType {
         static $gtype: GObject.GType<Decimal128DataType>;
+        declare static readonly __signalSignatures: Decimal128DataType.SignalSignatures;
 
         // Constructors
 
@@ -4322,6 +4518,9 @@ export namespace Arrow {
     }
 
     namespace Decimal128Scalar {
+        // Signal signatures
+        interface SignalSignatures extends Scalar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {
@@ -4331,6 +4530,7 @@ export namespace Arrow {
 
     class Decimal128Scalar extends Scalar {
         static $gtype: GObject.GType<Decimal128Scalar>;
+        declare static readonly __signalSignatures: Decimal128Scalar.SignalSignatures;
 
         // Properties
 
@@ -4353,6 +4553,9 @@ export namespace Arrow {
     }
 
     namespace Decimal256 {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4362,6 +4565,7 @@ export namespace Arrow {
 
     class Decimal256 extends GObject.Object {
         static $gtype: GObject.GType<Decimal256>;
+        declare static readonly __signalSignatures: Decimal256.SignalSignatures;
 
         // Properties
 
@@ -4404,6 +4608,9 @@ export namespace Arrow {
     }
 
     namespace Decimal256Array {
+        // Signal signatures
+        interface SignalSignatures extends FixedSizeBinaryArray.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FixedSizeBinaryArray.ConstructorProps {}
@@ -4411,6 +4618,7 @@ export namespace Arrow {
 
     class Decimal256Array extends FixedSizeBinaryArray {
         static $gtype: GObject.GType<Decimal256Array>;
+        declare static readonly __signalSignatures: Decimal256Array.SignalSignatures;
 
         // Constructors
 
@@ -4427,6 +4635,9 @@ export namespace Arrow {
     }
 
     namespace Decimal256ArrayBuilder {
+        // Signal signatures
+        interface SignalSignatures extends FixedSizeBinaryArrayBuilder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FixedSizeBinaryArrayBuilder.ConstructorProps {}
@@ -4434,6 +4645,7 @@ export namespace Arrow {
 
     class Decimal256ArrayBuilder extends FixedSizeBinaryArrayBuilder {
         static $gtype: GObject.GType<Decimal256ArrayBuilder>;
+        declare static readonly __signalSignatures: Decimal256ArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -4461,6 +4673,9 @@ export namespace Arrow {
     }
 
     namespace Decimal256DataType {
+        // Signal signatures
+        interface SignalSignatures extends DecimalDataType.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DecimalDataType.ConstructorProps {}
@@ -4468,6 +4683,7 @@ export namespace Arrow {
 
     class Decimal256DataType extends DecimalDataType {
         static $gtype: GObject.GType<Decimal256DataType>;
+        declare static readonly __signalSignatures: Decimal256DataType.SignalSignatures;
 
         // Constructors
 
@@ -4486,6 +4702,9 @@ export namespace Arrow {
     }
 
     namespace Decimal256Scalar {
+        // Signal signatures
+        interface SignalSignatures extends Scalar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {
@@ -4495,6 +4714,7 @@ export namespace Arrow {
 
     class Decimal256Scalar extends Scalar {
         static $gtype: GObject.GType<Decimal256Scalar>;
+        declare static readonly __signalSignatures: Decimal256Scalar.SignalSignatures;
 
         // Properties
 
@@ -4517,6 +4737,9 @@ export namespace Arrow {
     }
 
     namespace DecimalDataType {
+        // Signal signatures
+        interface SignalSignatures extends FixedSizeBinaryDataType.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FixedSizeBinaryDataType.ConstructorProps {}
@@ -4524,6 +4747,7 @@ export namespace Arrow {
 
     abstract class DecimalDataType extends FixedSizeBinaryDataType {
         static $gtype: GObject.GType<DecimalDataType>;
+        declare static readonly __signalSignatures: DecimalDataType.SignalSignatures;
 
         // Constructors
 
@@ -4543,6 +4767,9 @@ export namespace Arrow {
     }
 
     namespace DenseUnionArray {
+        // Signal signatures
+        interface SignalSignatures extends UnionArray.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends UnionArray.ConstructorProps {
@@ -4553,6 +4780,7 @@ export namespace Arrow {
 
     class DenseUnionArray extends UnionArray {
         static $gtype: GObject.GType<DenseUnionArray>;
+        declare static readonly __signalSignatures: DenseUnionArray.SignalSignatures;
 
         // Properties
 
@@ -4580,6 +4808,9 @@ export namespace Arrow {
     }
 
     namespace DenseUnionArrayBuilder {
+        // Signal signatures
+        interface SignalSignatures extends UnionArrayBuilder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends UnionArrayBuilder.ConstructorProps {}
@@ -4587,6 +4818,7 @@ export namespace Arrow {
 
     class DenseUnionArrayBuilder extends UnionArrayBuilder {
         static $gtype: GObject.GType<DenseUnionArrayBuilder>;
+        declare static readonly __signalSignatures: DenseUnionArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -4598,6 +4830,9 @@ export namespace Arrow {
     }
 
     namespace DenseUnionDataType {
+        // Signal signatures
+        interface SignalSignatures extends UnionDataType.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends UnionDataType.ConstructorProps {}
@@ -4605,6 +4840,7 @@ export namespace Arrow {
 
     class DenseUnionDataType extends UnionDataType {
         static $gtype: GObject.GType<DenseUnionDataType>;
+        declare static readonly __signalSignatures: DenseUnionDataType.SignalSignatures;
 
         // Constructors
 
@@ -4616,6 +4852,9 @@ export namespace Arrow {
     }
 
     namespace DenseUnionScalar {
+        // Signal signatures
+        interface SignalSignatures extends UnionScalar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends UnionScalar.ConstructorProps {}
@@ -4623,6 +4862,7 @@ export namespace Arrow {
 
     class DenseUnionScalar extends UnionScalar {
         static $gtype: GObject.GType<DenseUnionScalar>;
+        declare static readonly __signalSignatures: DenseUnionScalar.SignalSignatures;
 
         // Constructors
 
@@ -4634,6 +4874,9 @@ export namespace Arrow {
     }
 
     namespace DictionaryArray {
+        // Signal signatures
+        interface SignalSignatures extends Array.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Array.ConstructorProps {
@@ -4644,6 +4887,7 @@ export namespace Arrow {
 
     class DictionaryArray extends Array {
         static $gtype: GObject.GType<DictionaryArray>;
+        declare static readonly __signalSignatures: DictionaryArray.SignalSignatures;
 
         // Properties
 
@@ -4666,6 +4910,9 @@ export namespace Arrow {
     }
 
     namespace DictionaryDataType {
+        // Signal signatures
+        interface SignalSignatures extends FixedWidthDataType.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FixedWidthDataType.ConstructorProps {}
@@ -4673,6 +4920,7 @@ export namespace Arrow {
 
     class DictionaryDataType extends FixedWidthDataType {
         static $gtype: GObject.GType<DictionaryDataType>;
+        declare static readonly __signalSignatures: DictionaryDataType.SignalSignatures;
 
         // Constructors
 
@@ -4690,6 +4938,9 @@ export namespace Arrow {
     }
 
     namespace DoubleArray {
+        // Signal signatures
+        interface SignalSignatures extends NumericArray.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends NumericArray.ConstructorProps {}
@@ -4697,6 +4948,7 @@ export namespace Arrow {
 
     class DoubleArray extends NumericArray {
         static $gtype: GObject.GType<DoubleArray>;
+        declare static readonly __signalSignatures: DoubleArray.SignalSignatures;
 
         // Constructors
 
@@ -4714,6 +4966,9 @@ export namespace Arrow {
     }
 
     namespace DoubleArrayBuilder {
+        // Signal signatures
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -4721,6 +4976,7 @@ export namespace Arrow {
 
     class DoubleArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<DoubleArrayBuilder>;
+        declare static readonly __signalSignatures: DoubleArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -4745,6 +5001,9 @@ export namespace Arrow {
     }
 
     namespace DoubleDataType {
+        // Signal signatures
+        interface SignalSignatures extends FloatingPointDataType.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FloatingPointDataType.ConstructorProps {}
@@ -4752,6 +5011,7 @@ export namespace Arrow {
 
     class DoubleDataType extends FloatingPointDataType {
         static $gtype: GObject.GType<DoubleDataType>;
+        declare static readonly __signalSignatures: DoubleDataType.SignalSignatures;
 
         // Constructors
 
@@ -4763,6 +5023,9 @@ export namespace Arrow {
     }
 
     namespace DoubleScalar {
+        // Signal signatures
+        interface SignalSignatures extends Scalar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {}
@@ -4770,6 +5033,7 @@ export namespace Arrow {
 
     class DoubleScalar extends Scalar {
         static $gtype: GObject.GType<DoubleScalar>;
+        declare static readonly __signalSignatures: DoubleScalar.SignalSignatures;
 
         // Constructors
 
@@ -4785,6 +5049,9 @@ export namespace Arrow {
     }
 
     namespace EqualOptions {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4798,6 +5065,7 @@ export namespace Arrow {
 
     class EqualOptions extends GObject.Object {
         static $gtype: GObject.GType<EqualOptions>;
+        declare static readonly __signalSignatures: EqualOptions.SignalSignatures;
 
         // Properties
 
@@ -4843,6 +5111,9 @@ export namespace Arrow {
     }
 
     namespace ExecuteContext {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4850,6 +5121,7 @@ export namespace Arrow {
 
     class ExecuteContext extends GObject.Object {
         static $gtype: GObject.GType<ExecuteContext>;
+        declare static readonly __signalSignatures: ExecuteContext.SignalSignatures;
 
         // Constructors
 
@@ -4861,6 +5133,9 @@ export namespace Arrow {
     }
 
     namespace ExecuteNode {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4871,6 +5146,7 @@ export namespace Arrow {
 
     class ExecuteNode extends GObject.Object {
         static $gtype: GObject.GType<ExecuteNode>;
+        declare static readonly __signalSignatures: ExecuteNode.SignalSignatures;
 
         // Properties
 
@@ -4890,6 +5166,9 @@ export namespace Arrow {
     }
 
     namespace ExecuteNodeOptions {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4899,6 +5178,7 @@ export namespace Arrow {
 
     class ExecuteNodeOptions extends GObject.Object {
         static $gtype: GObject.GType<ExecuteNodeOptions>;
+        declare static readonly __signalSignatures: ExecuteNodeOptions.SignalSignatures;
 
         // Properties
 
@@ -4912,6 +5192,9 @@ export namespace Arrow {
     }
 
     namespace ExecutePlan {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4921,6 +5204,7 @@ export namespace Arrow {
 
     class ExecutePlan extends GObject.Object {
         static $gtype: GObject.GType<ExecutePlan>;
+        declare static readonly __signalSignatures: ExecutePlan.SignalSignatures;
 
         // Properties
 
@@ -5003,6 +5287,9 @@ export namespace Arrow {
     }
 
     namespace Expression {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5010,6 +5297,7 @@ export namespace Arrow {
 
     abstract class Expression extends GObject.Object {
         static $gtype: GObject.GType<Expression>;
+        declare static readonly __signalSignatures: Expression.SignalSignatures;
 
         // Constructors
 
@@ -5024,6 +5312,9 @@ export namespace Arrow {
     }
 
     namespace ExtensionArray {
+        // Signal signatures
+        interface SignalSignatures extends Array.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Array.ConstructorProps {
@@ -5033,6 +5324,7 @@ export namespace Arrow {
 
     class ExtensionArray extends Array {
         static $gtype: GObject.GType<ExtensionArray>;
+        declare static readonly __signalSignatures: ExtensionArray.SignalSignatures;
 
         // Properties
 
@@ -5050,6 +5342,9 @@ export namespace Arrow {
     }
 
     namespace ExtensionDataType {
+        // Signal signatures
+        interface SignalSignatures extends DataType.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DataType.ConstructorProps {
@@ -5060,6 +5355,7 @@ export namespace Arrow {
 
     class ExtensionDataType extends DataType {
         static $gtype: GObject.GType<ExtensionDataType>;
+        declare static readonly __signalSignatures: ExtensionDataType.SignalSignatures;
 
         // Properties
 
@@ -5103,6 +5399,9 @@ export namespace Arrow {
     }
 
     namespace ExtensionDataTypeRegistry {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5112,6 +5411,7 @@ export namespace Arrow {
 
     class ExtensionDataTypeRegistry extends GObject.Object {
         static $gtype: GObject.GType<ExtensionDataTypeRegistry>;
+        declare static readonly __signalSignatures: ExtensionDataTypeRegistry.SignalSignatures;
 
         // Properties
 
@@ -5146,6 +5446,9 @@ export namespace Arrow {
     }
 
     namespace ExtensionScalar {
+        // Signal signatures
+        interface SignalSignatures extends Scalar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {}
@@ -5153,6 +5456,7 @@ export namespace Arrow {
 
     class ExtensionScalar extends Scalar {
         static $gtype: GObject.GType<ExtensionScalar>;
+        declare static readonly __signalSignatures: ExtensionScalar.SignalSignatures;
 
         // Constructors
 
@@ -5162,6 +5466,9 @@ export namespace Arrow {
     }
 
     namespace FeatherFileReader {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5172,6 +5479,7 @@ export namespace Arrow {
 
     class FeatherFileReader extends GObject.Object {
         static $gtype: GObject.GType<FeatherFileReader>;
+        declare static readonly __signalSignatures: FeatherFileReader.SignalSignatures;
 
         // Properties
 
@@ -5195,6 +5503,9 @@ export namespace Arrow {
     }
 
     namespace FeatherWriteProperties {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5204,6 +5515,7 @@ export namespace Arrow {
 
     class FeatherWriteProperties extends GObject.Object {
         static $gtype: GObject.GType<FeatherWriteProperties>;
+        declare static readonly __signalSignatures: FeatherWriteProperties.SignalSignatures;
 
         // Properties
 
@@ -5230,6 +5542,9 @@ export namespace Arrow {
     }
 
     namespace Field {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5241,6 +5556,7 @@ export namespace Arrow {
 
     class Field extends GObject.Object {
         static $gtype: GObject.GType<Field>;
+        declare static readonly __signalSignatures: Field.SignalSignatures;
 
         // Properties
 
@@ -5279,6 +5595,9 @@ export namespace Arrow {
     }
 
     namespace FieldExpression {
+        // Signal signatures
+        interface SignalSignatures extends Expression.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Expression.ConstructorProps {}
@@ -5286,6 +5605,7 @@ export namespace Arrow {
 
     class FieldExpression extends Expression {
         static $gtype: GObject.GType<FieldExpression>;
+        declare static readonly __signalSignatures: FieldExpression.SignalSignatures;
 
         // Constructors
 
@@ -5297,6 +5617,9 @@ export namespace Arrow {
     }
 
     namespace FileInfo {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5314,6 +5637,7 @@ export namespace Arrow {
 
     class FileInfo extends GObject.Object {
         static $gtype: GObject.GType<FileInfo>;
+        declare static readonly __signalSignatures: FileInfo.SignalSignatures;
 
         // Properties
 
@@ -5376,6 +5700,9 @@ export namespace Arrow {
     }
 
     namespace FileInputStream {
+        // Signal signatures
+        interface SignalSignatures extends SeekableInputStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5386,6 +5713,7 @@ export namespace Arrow {
 
     class FileInputStream extends SeekableInputStream implements File, Readable {
         static $gtype: GObject.GType<FileInputStream>;
+        declare static readonly __signalSignatures: FileInputStream.SignalSignatures;
 
         // Constructors
 
@@ -5844,6 +6172,9 @@ export namespace Arrow {
     }
 
     namespace FileOutputStream {
+        // Signal signatures
+        interface SignalSignatures extends OutputStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5854,6 +6185,7 @@ export namespace Arrow {
 
     class FileOutputStream extends OutputStream implements File, Writable {
         static $gtype: GObject.GType<FileOutputStream>;
+        declare static readonly __signalSignatures: FileOutputStream.SignalSignatures;
 
         // Constructors
 
@@ -6316,6 +6648,9 @@ export namespace Arrow {
     }
 
     namespace FileSelector {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6331,6 +6666,7 @@ export namespace Arrow {
 
     class FileSelector extends GObject.Object {
         static $gtype: GObject.GType<FileSelector>;
+        declare static readonly __signalSignatures: FileSelector.SignalSignatures;
 
         // Properties
 
@@ -6384,6 +6720,9 @@ export namespace Arrow {
     }
 
     namespace FileSystem {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6394,6 +6733,7 @@ export namespace Arrow {
 
     abstract class FileSystem extends GObject.Object {
         static $gtype: GObject.GType<FileSystem>;
+        declare static readonly __signalSignatures: FileSystem.SignalSignatures;
 
         // Properties
 
@@ -6531,6 +6871,9 @@ export namespace Arrow {
     }
 
     namespace FilterNodeOptions {
+        // Signal signatures
+        interface SignalSignatures extends ExecuteNodeOptions.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ExecuteNodeOptions.ConstructorProps {}
@@ -6538,6 +6881,7 @@ export namespace Arrow {
 
     class FilterNodeOptions extends ExecuteNodeOptions {
         static $gtype: GObject.GType<FilterNodeOptions>;
+        declare static readonly __signalSignatures: FilterNodeOptions.SignalSignatures;
 
         // Constructors
 
@@ -6549,6 +6893,9 @@ export namespace Arrow {
     }
 
     namespace FilterOptions {
+        // Signal signatures
+        interface SignalSignatures extends FunctionOptions.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
@@ -6559,6 +6906,7 @@ export namespace Arrow {
 
     class FilterOptions extends FunctionOptions {
         static $gtype: GObject.GType<FilterOptions>;
+        declare static readonly __signalSignatures: FilterOptions.SignalSignatures;
 
         // Properties
 
@@ -6583,6 +6931,9 @@ export namespace Arrow {
     }
 
     namespace FixedSizeBinaryArray {
+        // Signal signatures
+        interface SignalSignatures extends PrimitiveArray.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends PrimitiveArray.ConstructorProps {}
@@ -6590,6 +6941,7 @@ export namespace Arrow {
 
     class FixedSizeBinaryArray extends PrimitiveArray {
         static $gtype: GObject.GType<FixedSizeBinaryArray>;
+        declare static readonly __signalSignatures: FixedSizeBinaryArray.SignalSignatures;
 
         // Constructors
 
@@ -6613,6 +6965,9 @@ export namespace Arrow {
     }
 
     namespace FixedSizeBinaryArrayBuilder {
+        // Signal signatures
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -6620,6 +6975,7 @@ export namespace Arrow {
 
     class FixedSizeBinaryArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<FixedSizeBinaryArrayBuilder>;
+        declare static readonly __signalSignatures: FixedSizeBinaryArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -6655,6 +7011,9 @@ export namespace Arrow {
     }
 
     namespace FixedSizeBinaryDataType {
+        // Signal signatures
+        interface SignalSignatures extends FixedWidthDataType.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FixedWidthDataType.ConstructorProps {}
@@ -6662,6 +7021,7 @@ export namespace Arrow {
 
     class FixedSizeBinaryDataType extends FixedWidthDataType {
         static $gtype: GObject.GType<FixedSizeBinaryDataType>;
+        declare static readonly __signalSignatures: FixedSizeBinaryDataType.SignalSignatures;
 
         // Constructors
 
@@ -6677,6 +7037,9 @@ export namespace Arrow {
     }
 
     namespace FixedSizeBinaryScalar {
+        // Signal signatures
+        interface SignalSignatures extends BaseBinaryScalar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends BaseBinaryScalar.ConstructorProps {}
@@ -6684,6 +7047,7 @@ export namespace Arrow {
 
     class FixedSizeBinaryScalar extends BaseBinaryScalar {
         static $gtype: GObject.GType<FixedSizeBinaryScalar>;
+        declare static readonly __signalSignatures: FixedSizeBinaryScalar.SignalSignatures;
 
         // Constructors
 
@@ -6695,6 +7059,9 @@ export namespace Arrow {
     }
 
     namespace FixedWidthDataType {
+        // Signal signatures
+        interface SignalSignatures extends DataType.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DataType.ConstructorProps {}
@@ -6702,6 +7069,7 @@ export namespace Arrow {
 
     abstract class FixedWidthDataType extends DataType {
         static $gtype: GObject.GType<FixedWidthDataType>;
+        declare static readonly __signalSignatures: FixedWidthDataType.SignalSignatures;
 
         // Constructors
 
@@ -6715,6 +7083,9 @@ export namespace Arrow {
     }
 
     namespace FloatArray {
+        // Signal signatures
+        interface SignalSignatures extends NumericArray.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends NumericArray.ConstructorProps {}
@@ -6722,6 +7093,7 @@ export namespace Arrow {
 
     class FloatArray extends NumericArray {
         static $gtype: GObject.GType<FloatArray>;
+        declare static readonly __signalSignatures: FloatArray.SignalSignatures;
 
         // Constructors
 
@@ -6739,6 +7111,9 @@ export namespace Arrow {
     }
 
     namespace FloatArrayBuilder {
+        // Signal signatures
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -6746,6 +7121,7 @@ export namespace Arrow {
 
     class FloatArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<FloatArrayBuilder>;
+        declare static readonly __signalSignatures: FloatArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -6770,6 +7146,9 @@ export namespace Arrow {
     }
 
     namespace FloatDataType {
+        // Signal signatures
+        interface SignalSignatures extends FloatingPointDataType.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FloatingPointDataType.ConstructorProps {}
@@ -6777,6 +7156,7 @@ export namespace Arrow {
 
     class FloatDataType extends FloatingPointDataType {
         static $gtype: GObject.GType<FloatDataType>;
+        declare static readonly __signalSignatures: FloatDataType.SignalSignatures;
 
         // Constructors
 
@@ -6788,6 +7168,9 @@ export namespace Arrow {
     }
 
     namespace FloatScalar {
+        // Signal signatures
+        interface SignalSignatures extends Scalar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {}
@@ -6795,6 +7178,7 @@ export namespace Arrow {
 
     class FloatScalar extends Scalar {
         static $gtype: GObject.GType<FloatScalar>;
+        declare static readonly __signalSignatures: FloatScalar.SignalSignatures;
 
         // Constructors
 
@@ -6810,6 +7194,9 @@ export namespace Arrow {
     }
 
     namespace FloatingPointDataType {
+        // Signal signatures
+        interface SignalSignatures extends NumericDataType.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends NumericDataType.ConstructorProps {}
@@ -6817,6 +7204,7 @@ export namespace Arrow {
 
     abstract class FloatingPointDataType extends NumericDataType {
         static $gtype: GObject.GType<FloatingPointDataType>;
+        declare static readonly __signalSignatures: FloatingPointDataType.SignalSignatures;
 
         // Constructors
 
@@ -6826,6 +7214,9 @@ export namespace Arrow {
     }
 
     namespace Function {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6835,6 +7226,7 @@ export namespace Arrow {
 
     class Function extends GObject.Object {
         static $gtype: GObject.GType<Function>;
+        declare static readonly __signalSignatures: Function.SignalSignatures;
 
         // Properties
 
@@ -6863,6 +7255,9 @@ export namespace Arrow {
     }
 
     namespace FunctionDoc {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6872,6 +7267,7 @@ export namespace Arrow {
 
     class FunctionDoc extends GObject.Object {
         static $gtype: GObject.GType<FunctionDoc>;
+        declare static readonly __signalSignatures: FunctionDoc.SignalSignatures;
 
         // Properties
 
@@ -6892,6 +7288,9 @@ export namespace Arrow {
     }
 
     namespace FunctionOptions {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6899,6 +7298,7 @@ export namespace Arrow {
 
     class FunctionOptions extends GObject.Object {
         static $gtype: GObject.GType<FunctionOptions>;
+        declare static readonly __signalSignatures: FunctionOptions.SignalSignatures;
 
         // Constructors
 
@@ -6913,6 +7313,9 @@ export namespace Arrow {
     }
 
     namespace GCSFileSystem {
+        // Signal signatures
+        interface SignalSignatures extends FileSystem.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FileSystem.ConstructorProps {}
@@ -6920,6 +7323,7 @@ export namespace Arrow {
 
     class GCSFileSystem extends FileSystem {
         static $gtype: GObject.GType<GCSFileSystem>;
+        declare static readonly __signalSignatures: GCSFileSystem.SignalSignatures;
 
         // Constructors
 
@@ -6929,6 +7333,9 @@ export namespace Arrow {
     }
 
     namespace GIOInputStream {
+        // Signal signatures
+        interface SignalSignatures extends SeekableInputStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6941,6 +7348,7 @@ export namespace Arrow {
 
     class GIOInputStream extends SeekableInputStream implements File, Readable {
         static $gtype: GObject.GType<GIOInputStream>;
+        declare static readonly __signalSignatures: GIOInputStream.SignalSignatures;
 
         // Properties
 
@@ -7401,6 +7809,9 @@ export namespace Arrow {
     }
 
     namespace GIOOutputStream {
+        // Signal signatures
+        interface SignalSignatures extends OutputStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7413,6 +7824,7 @@ export namespace Arrow {
 
     class GIOOutputStream extends OutputStream implements File, Writable {
         static $gtype: GObject.GType<GIOOutputStream>;
+        declare static readonly __signalSignatures: GIOOutputStream.SignalSignatures;
 
         // Properties
 
@@ -7883,6 +8295,9 @@ export namespace Arrow {
     }
 
     namespace HDFSFileSystem {
+        // Signal signatures
+        interface SignalSignatures extends FileSystem.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FileSystem.ConstructorProps {}
@@ -7890,6 +8305,7 @@ export namespace Arrow {
 
     class HDFSFileSystem extends FileSystem {
         static $gtype: GObject.GType<HDFSFileSystem>;
+        declare static readonly __signalSignatures: HDFSFileSystem.SignalSignatures;
 
         // Constructors
 
@@ -7899,6 +8315,9 @@ export namespace Arrow {
     }
 
     namespace HalfFloatArray {
+        // Signal signatures
+        interface SignalSignatures extends NumericArray.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends NumericArray.ConstructorProps {}
@@ -7906,6 +8325,7 @@ export namespace Arrow {
 
     class HalfFloatArray extends NumericArray {
         static $gtype: GObject.GType<HalfFloatArray>;
+        declare static readonly __signalSignatures: HalfFloatArray.SignalSignatures;
 
         // Constructors
 
@@ -7922,6 +8342,9 @@ export namespace Arrow {
     }
 
     namespace HalfFloatArrayBuilder {
+        // Signal signatures
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -7929,6 +8352,7 @@ export namespace Arrow {
 
     class HalfFloatArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<HalfFloatArrayBuilder>;
+        declare static readonly __signalSignatures: HalfFloatArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -7952,6 +8376,9 @@ export namespace Arrow {
     }
 
     namespace HalfFloatDataType {
+        // Signal signatures
+        interface SignalSignatures extends FloatingPointDataType.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FloatingPointDataType.ConstructorProps {}
@@ -7959,6 +8386,7 @@ export namespace Arrow {
 
     class HalfFloatDataType extends FloatingPointDataType {
         static $gtype: GObject.GType<HalfFloatDataType>;
+        declare static readonly __signalSignatures: HalfFloatDataType.SignalSignatures;
 
         // Constructors
 
@@ -7970,6 +8398,9 @@ export namespace Arrow {
     }
 
     namespace HalfFloatScalar {
+        // Signal signatures
+        interface SignalSignatures extends Scalar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {}
@@ -7977,6 +8408,7 @@ export namespace Arrow {
 
     class HalfFloatScalar extends Scalar {
         static $gtype: GObject.GType<HalfFloatScalar>;
+        declare static readonly __signalSignatures: HalfFloatScalar.SignalSignatures;
 
         // Constructors
 
@@ -7992,6 +8424,9 @@ export namespace Arrow {
     }
 
     namespace HashJoinNodeOptions {
+        // Signal signatures
+        interface SignalSignatures extends ExecuteNodeOptions.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ExecuteNodeOptions.ConstructorProps {}
@@ -7999,6 +8434,7 @@ export namespace Arrow {
 
     class HashJoinNodeOptions extends ExecuteNodeOptions {
         static $gtype: GObject.GType<HashJoinNodeOptions>;
+        declare static readonly __signalSignatures: HashJoinNodeOptions.SignalSignatures;
 
         // Constructors
 
@@ -8015,6 +8451,9 @@ export namespace Arrow {
     }
 
     namespace ISO8601TimestampParser {
+        // Signal signatures
+        interface SignalSignatures extends TimestampParser.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends TimestampParser.ConstructorProps {}
@@ -8022,6 +8461,7 @@ export namespace Arrow {
 
     class ISO8601TimestampParser extends TimestampParser {
         static $gtype: GObject.GType<ISO8601TimestampParser>;
+        declare static readonly __signalSignatures: ISO8601TimestampParser.SignalSignatures;
 
         // Constructors
 
@@ -8033,6 +8473,9 @@ export namespace Arrow {
     }
 
     namespace IndexOptions {
+        // Signal signatures
+        interface SignalSignatures extends FunctionOptions.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
@@ -8042,6 +8485,7 @@ export namespace Arrow {
 
     class IndexOptions extends FunctionOptions {
         static $gtype: GObject.GType<IndexOptions>;
+        declare static readonly __signalSignatures: IndexOptions.SignalSignatures;
 
         // Properties
 
@@ -8061,6 +8505,9 @@ export namespace Arrow {
     }
 
     namespace InputStream {
+        // Signal signatures
+        interface SignalSignatures extends Gio.InputStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -8074,6 +8521,7 @@ export namespace Arrow {
 
     class InputStream extends Gio.InputStream implements File, Readable {
         static $gtype: GObject.GType<InputStream>;
+        declare static readonly __signalSignatures: InputStream.SignalSignatures;
 
         // Properties
 
@@ -8546,6 +8994,9 @@ export namespace Arrow {
     }
 
     namespace Int16Array {
+        // Signal signatures
+        interface SignalSignatures extends NumericArray.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends NumericArray.ConstructorProps {}
@@ -8553,6 +9004,7 @@ export namespace Arrow {
 
     class Int16Array extends NumericArray {
         static $gtype: GObject.GType<Int16Array>;
+        declare static readonly __signalSignatures: Int16Array.SignalSignatures;
 
         // Constructors
 
@@ -8570,6 +9022,9 @@ export namespace Arrow {
     }
 
     namespace Int16ArrayBuilder {
+        // Signal signatures
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -8577,6 +9032,7 @@ export namespace Arrow {
 
     class Int16ArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<Int16ArrayBuilder>;
+        declare static readonly __signalSignatures: Int16ArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -8601,6 +9057,9 @@ export namespace Arrow {
     }
 
     namespace Int16DataType {
+        // Signal signatures
+        interface SignalSignatures extends IntegerDataType.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends IntegerDataType.ConstructorProps {}
@@ -8608,6 +9067,7 @@ export namespace Arrow {
 
     class Int16DataType extends IntegerDataType {
         static $gtype: GObject.GType<Int16DataType>;
+        declare static readonly __signalSignatures: Int16DataType.SignalSignatures;
 
         // Constructors
 
@@ -8619,6 +9079,9 @@ export namespace Arrow {
     }
 
     namespace Int16Scalar {
+        // Signal signatures
+        interface SignalSignatures extends Scalar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {}
@@ -8626,6 +9089,7 @@ export namespace Arrow {
 
     class Int16Scalar extends Scalar {
         static $gtype: GObject.GType<Int16Scalar>;
+        declare static readonly __signalSignatures: Int16Scalar.SignalSignatures;
 
         // Constructors
 
@@ -8641,6 +9105,9 @@ export namespace Arrow {
     }
 
     namespace Int32Array {
+        // Signal signatures
+        interface SignalSignatures extends NumericArray.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends NumericArray.ConstructorProps {}
@@ -8648,6 +9115,7 @@ export namespace Arrow {
 
     class Int32Array extends NumericArray {
         static $gtype: GObject.GType<Int32Array>;
+        declare static readonly __signalSignatures: Int32Array.SignalSignatures;
 
         // Constructors
 
@@ -8665,6 +9133,9 @@ export namespace Arrow {
     }
 
     namespace Int32ArrayBuilder {
+        // Signal signatures
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -8672,6 +9143,7 @@ export namespace Arrow {
 
     class Int32ArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<Int32ArrayBuilder>;
+        declare static readonly __signalSignatures: Int32ArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -8696,6 +9168,9 @@ export namespace Arrow {
     }
 
     namespace Int32DataType {
+        // Signal signatures
+        interface SignalSignatures extends IntegerDataType.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends IntegerDataType.ConstructorProps {}
@@ -8703,6 +9178,7 @@ export namespace Arrow {
 
     class Int32DataType extends IntegerDataType {
         static $gtype: GObject.GType<Int32DataType>;
+        declare static readonly __signalSignatures: Int32DataType.SignalSignatures;
 
         // Constructors
 
@@ -8714,6 +9190,9 @@ export namespace Arrow {
     }
 
     namespace Int32Scalar {
+        // Signal signatures
+        interface SignalSignatures extends Scalar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {}
@@ -8721,6 +9200,7 @@ export namespace Arrow {
 
     class Int32Scalar extends Scalar {
         static $gtype: GObject.GType<Int32Scalar>;
+        declare static readonly __signalSignatures: Int32Scalar.SignalSignatures;
 
         // Constructors
 
@@ -8736,6 +9216,9 @@ export namespace Arrow {
     }
 
     namespace Int64Array {
+        // Signal signatures
+        interface SignalSignatures extends NumericArray.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends NumericArray.ConstructorProps {}
@@ -8743,6 +9226,7 @@ export namespace Arrow {
 
     class Int64Array extends NumericArray {
         static $gtype: GObject.GType<Int64Array>;
+        declare static readonly __signalSignatures: Int64Array.SignalSignatures;
 
         // Constructors
 
@@ -8760,6 +9244,9 @@ export namespace Arrow {
     }
 
     namespace Int64ArrayBuilder {
+        // Signal signatures
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -8767,6 +9254,7 @@ export namespace Arrow {
 
     class Int64ArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<Int64ArrayBuilder>;
+        declare static readonly __signalSignatures: Int64ArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -8791,6 +9279,9 @@ export namespace Arrow {
     }
 
     namespace Int64DataType {
+        // Signal signatures
+        interface SignalSignatures extends IntegerDataType.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends IntegerDataType.ConstructorProps {}
@@ -8798,6 +9289,7 @@ export namespace Arrow {
 
     class Int64DataType extends IntegerDataType {
         static $gtype: GObject.GType<Int64DataType>;
+        declare static readonly __signalSignatures: Int64DataType.SignalSignatures;
 
         // Constructors
 
@@ -8809,6 +9301,9 @@ export namespace Arrow {
     }
 
     namespace Int64Scalar {
+        // Signal signatures
+        interface SignalSignatures extends Scalar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {}
@@ -8816,6 +9311,7 @@ export namespace Arrow {
 
     class Int64Scalar extends Scalar {
         static $gtype: GObject.GType<Int64Scalar>;
+        declare static readonly __signalSignatures: Int64Scalar.SignalSignatures;
 
         // Constructors
 
@@ -8831,6 +9327,9 @@ export namespace Arrow {
     }
 
     namespace Int8Array {
+        // Signal signatures
+        interface SignalSignatures extends NumericArray.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends NumericArray.ConstructorProps {}
@@ -8838,6 +9337,7 @@ export namespace Arrow {
 
     class Int8Array extends NumericArray {
         static $gtype: GObject.GType<Int8Array>;
+        declare static readonly __signalSignatures: Int8Array.SignalSignatures;
 
         // Constructors
 
@@ -8855,6 +9355,9 @@ export namespace Arrow {
     }
 
     namespace Int8ArrayBuilder {
+        // Signal signatures
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -8862,6 +9365,7 @@ export namespace Arrow {
 
     class Int8ArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<Int8ArrayBuilder>;
+        declare static readonly __signalSignatures: Int8ArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -8886,6 +9390,9 @@ export namespace Arrow {
     }
 
     namespace Int8DataType {
+        // Signal signatures
+        interface SignalSignatures extends IntegerDataType.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends IntegerDataType.ConstructorProps {}
@@ -8893,6 +9400,7 @@ export namespace Arrow {
 
     class Int8DataType extends IntegerDataType {
         static $gtype: GObject.GType<Int8DataType>;
+        declare static readonly __signalSignatures: Int8DataType.SignalSignatures;
 
         // Constructors
 
@@ -8904,6 +9412,9 @@ export namespace Arrow {
     }
 
     namespace Int8Scalar {
+        // Signal signatures
+        interface SignalSignatures extends Scalar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {}
@@ -8911,6 +9422,7 @@ export namespace Arrow {
 
     class Int8Scalar extends Scalar {
         static $gtype: GObject.GType<Int8Scalar>;
+        declare static readonly __signalSignatures: Int8Scalar.SignalSignatures;
 
         // Constructors
 
@@ -8926,6 +9438,9 @@ export namespace Arrow {
     }
 
     namespace IntArrayBuilder {
+        // Signal signatures
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -8933,6 +9448,7 @@ export namespace Arrow {
 
     class IntArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<IntArrayBuilder>;
+        declare static readonly __signalSignatures: IntArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -8957,6 +9473,9 @@ export namespace Arrow {
     }
 
     namespace IntegerDataType {
+        // Signal signatures
+        interface SignalSignatures extends NumericDataType.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends NumericDataType.ConstructorProps {}
@@ -8964,6 +9483,7 @@ export namespace Arrow {
 
     abstract class IntegerDataType extends NumericDataType {
         static $gtype: GObject.GType<IntegerDataType>;
+        declare static readonly __signalSignatures: IntegerDataType.SignalSignatures;
 
         // Constructors
 
@@ -8977,6 +9497,9 @@ export namespace Arrow {
     }
 
     namespace IntervalDataType {
+        // Signal signatures
+        interface SignalSignatures extends TemporalDataType.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends TemporalDataType.ConstructorProps {}
@@ -8984,6 +9507,7 @@ export namespace Arrow {
 
     abstract class IntervalDataType extends TemporalDataType {
         static $gtype: GObject.GType<IntervalDataType>;
+        declare static readonly __signalSignatures: IntervalDataType.SignalSignatures;
 
         // Constructors
 
@@ -8997,6 +9521,9 @@ export namespace Arrow {
     }
 
     namespace JSONReadOptions {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9014,6 +9541,7 @@ export namespace Arrow {
 
     class JSONReadOptions extends GObject.Object {
         static $gtype: GObject.GType<JSONReadOptions>;
+        declare static readonly __signalSignatures: JSONReadOptions.SignalSignatures;
 
         // Properties
 
@@ -9077,6 +9605,9 @@ export namespace Arrow {
     }
 
     namespace JSONReader {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9088,6 +9619,7 @@ export namespace Arrow {
 
     class JSONReader extends GObject.Object {
         static $gtype: GObject.GType<JSONReader>;
+        declare static readonly __signalSignatures: JSONReader.SignalSignatures;
 
         // Properties
 
@@ -9109,6 +9641,9 @@ export namespace Arrow {
     }
 
     namespace LargeBinaryArray {
+        // Signal signatures
+        interface SignalSignatures extends Array.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Array.ConstructorProps {}
@@ -9116,6 +9651,7 @@ export namespace Arrow {
 
     class LargeBinaryArray extends Array {
         static $gtype: GObject.GType<LargeBinaryArray>;
+        declare static readonly __signalSignatures: LargeBinaryArray.SignalSignatures;
 
         // Constructors
 
@@ -9140,6 +9676,9 @@ export namespace Arrow {
     }
 
     namespace LargeBinaryArrayBuilder {
+        // Signal signatures
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -9147,6 +9686,7 @@ export namespace Arrow {
 
     class LargeBinaryArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<LargeBinaryArrayBuilder>;
+        declare static readonly __signalSignatures: LargeBinaryArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -9171,6 +9711,9 @@ export namespace Arrow {
     }
 
     namespace LargeBinaryDataType {
+        // Signal signatures
+        interface SignalSignatures extends DataType.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DataType.ConstructorProps {}
@@ -9178,6 +9721,7 @@ export namespace Arrow {
 
     class LargeBinaryDataType extends DataType {
         static $gtype: GObject.GType<LargeBinaryDataType>;
+        declare static readonly __signalSignatures: LargeBinaryDataType.SignalSignatures;
 
         // Constructors
 
@@ -9189,6 +9733,9 @@ export namespace Arrow {
     }
 
     namespace LargeBinaryScalar {
+        // Signal signatures
+        interface SignalSignatures extends BaseBinaryScalar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends BaseBinaryScalar.ConstructorProps {}
@@ -9196,6 +9743,7 @@ export namespace Arrow {
 
     class LargeBinaryScalar extends BaseBinaryScalar {
         static $gtype: GObject.GType<LargeBinaryScalar>;
+        declare static readonly __signalSignatures: LargeBinaryScalar.SignalSignatures;
 
         // Constructors
 
@@ -9207,6 +9755,9 @@ export namespace Arrow {
     }
 
     namespace LargeListArray {
+        // Signal signatures
+        interface SignalSignatures extends Array.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Array.ConstructorProps {
@@ -9217,6 +9768,7 @@ export namespace Arrow {
 
     class LargeListArray extends Array {
         static $gtype: GObject.GType<LargeListArray>;
+        declare static readonly __signalSignatures: LargeListArray.SignalSignatures;
 
         // Properties
 
@@ -9251,6 +9803,9 @@ export namespace Arrow {
     }
 
     namespace LargeListArrayBuilder {
+        // Signal signatures
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -9258,6 +9813,7 @@ export namespace Arrow {
 
     class LargeListArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<LargeListArrayBuilder>;
+        declare static readonly __signalSignatures: LargeListArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -9274,6 +9830,9 @@ export namespace Arrow {
     }
 
     namespace LargeListDataType {
+        // Signal signatures
+        interface SignalSignatures extends DataType.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DataType.ConstructorProps {}
@@ -9281,6 +9840,7 @@ export namespace Arrow {
 
     class LargeListDataType extends DataType {
         static $gtype: GObject.GType<LargeListDataType>;
+        declare static readonly __signalSignatures: LargeListDataType.SignalSignatures;
 
         // Constructors
 
@@ -9296,6 +9856,9 @@ export namespace Arrow {
     }
 
     namespace LargeListScalar {
+        // Signal signatures
+        interface SignalSignatures extends BaseListScalar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends BaseListScalar.ConstructorProps {}
@@ -9303,6 +9866,7 @@ export namespace Arrow {
 
     class LargeListScalar extends BaseListScalar {
         static $gtype: GObject.GType<LargeListScalar>;
+        declare static readonly __signalSignatures: LargeListScalar.SignalSignatures;
 
         // Constructors
 
@@ -9314,6 +9878,9 @@ export namespace Arrow {
     }
 
     namespace LargeStringArray {
+        // Signal signatures
+        interface SignalSignatures extends LargeBinaryArray.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends LargeBinaryArray.ConstructorProps {}
@@ -9321,6 +9888,7 @@ export namespace Arrow {
 
     class LargeStringArray extends LargeBinaryArray {
         static $gtype: GObject.GType<LargeStringArray>;
+        declare static readonly __signalSignatures: LargeStringArray.SignalSignatures;
 
         // Constructors
 
@@ -9342,6 +9910,9 @@ export namespace Arrow {
     }
 
     namespace LargeStringArrayBuilder {
+        // Signal signatures
+        interface SignalSignatures extends LargeBinaryArrayBuilder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends LargeBinaryArrayBuilder.ConstructorProps {}
@@ -9349,6 +9920,7 @@ export namespace Arrow {
 
     class LargeStringArrayBuilder extends LargeBinaryArrayBuilder {
         static $gtype: GObject.GType<LargeStringArrayBuilder>;
+        declare static readonly __signalSignatures: LargeStringArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -9373,6 +9945,9 @@ export namespace Arrow {
     }
 
     namespace LargeStringDataType {
+        // Signal signatures
+        interface SignalSignatures extends DataType.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DataType.ConstructorProps {}
@@ -9380,6 +9955,7 @@ export namespace Arrow {
 
     class LargeStringDataType extends DataType {
         static $gtype: GObject.GType<LargeStringDataType>;
+        declare static readonly __signalSignatures: LargeStringDataType.SignalSignatures;
 
         // Constructors
 
@@ -9391,6 +9967,9 @@ export namespace Arrow {
     }
 
     namespace LargeStringScalar {
+        // Signal signatures
+        interface SignalSignatures extends BaseBinaryScalar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends BaseBinaryScalar.ConstructorProps {}
@@ -9398,6 +9977,7 @@ export namespace Arrow {
 
     class LargeStringScalar extends BaseBinaryScalar {
         static $gtype: GObject.GType<LargeStringScalar>;
+        declare static readonly __signalSignatures: LargeStringScalar.SignalSignatures;
 
         // Constructors
 
@@ -9409,6 +9989,9 @@ export namespace Arrow {
     }
 
     namespace ListArray {
+        // Signal signatures
+        interface SignalSignatures extends Array.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Array.ConstructorProps {
@@ -9419,6 +10002,7 @@ export namespace Arrow {
 
     class ListArray extends Array {
         static $gtype: GObject.GType<ListArray>;
+        declare static readonly __signalSignatures: ListArray.SignalSignatures;
 
         // Properties
 
@@ -9453,6 +10037,9 @@ export namespace Arrow {
     }
 
     namespace ListArrayBuilder {
+        // Signal signatures
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -9460,6 +10047,7 @@ export namespace Arrow {
 
     class ListArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<ListArrayBuilder>;
+        declare static readonly __signalSignatures: ListArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -9477,6 +10065,9 @@ export namespace Arrow {
     }
 
     namespace ListDataType {
+        // Signal signatures
+        interface SignalSignatures extends DataType.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DataType.ConstructorProps {}
@@ -9484,6 +10075,7 @@ export namespace Arrow {
 
     class ListDataType extends DataType {
         static $gtype: GObject.GType<ListDataType>;
+        declare static readonly __signalSignatures: ListDataType.SignalSignatures;
 
         // Constructors
 
@@ -9500,6 +10092,9 @@ export namespace Arrow {
     }
 
     namespace ListScalar {
+        // Signal signatures
+        interface SignalSignatures extends BaseListScalar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends BaseListScalar.ConstructorProps {}
@@ -9507,6 +10102,7 @@ export namespace Arrow {
 
     class ListScalar extends BaseListScalar {
         static $gtype: GObject.GType<ListScalar>;
+        declare static readonly __signalSignatures: ListScalar.SignalSignatures;
 
         // Constructors
 
@@ -9518,6 +10114,9 @@ export namespace Arrow {
     }
 
     namespace LiteralExpression {
+        // Signal signatures
+        interface SignalSignatures extends Expression.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Expression.ConstructorProps {}
@@ -9525,6 +10124,7 @@ export namespace Arrow {
 
     class LiteralExpression extends Expression {
         static $gtype: GObject.GType<LiteralExpression>;
+        declare static readonly __signalSignatures: LiteralExpression.SignalSignatures;
 
         // Constructors
 
@@ -9536,6 +10136,9 @@ export namespace Arrow {
     }
 
     namespace LocalFileSystem {
+        // Signal signatures
+        interface SignalSignatures extends FileSystem.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FileSystem.ConstructorProps {}
@@ -9543,6 +10146,7 @@ export namespace Arrow {
 
     class LocalFileSystem extends FileSystem {
         static $gtype: GObject.GType<LocalFileSystem>;
+        declare static readonly __signalSignatures: LocalFileSystem.SignalSignatures;
 
         // Constructors
 
@@ -9554,6 +10158,9 @@ export namespace Arrow {
     }
 
     namespace LocalFileSystemOptions {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9564,6 +10171,7 @@ export namespace Arrow {
 
     class LocalFileSystemOptions extends GObject.Object {
         static $gtype: GObject.GType<LocalFileSystemOptions>;
+        declare static readonly __signalSignatures: LocalFileSystemOptions.SignalSignatures;
 
         // Properties
 
@@ -9590,6 +10198,9 @@ export namespace Arrow {
     }
 
     namespace MapArray {
+        // Signal signatures
+        interface SignalSignatures extends ListArray.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ListArray.ConstructorProps {
@@ -9601,6 +10212,7 @@ export namespace Arrow {
 
     class MapArray extends ListArray {
         static $gtype: GObject.GType<MapArray>;
+        declare static readonly __signalSignatures: MapArray.SignalSignatures;
 
         // Properties
 
@@ -9626,6 +10238,9 @@ export namespace Arrow {
     }
 
     namespace MapArrayBuilder {
+        // Signal signatures
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -9633,6 +10248,7 @@ export namespace Arrow {
 
     class MapArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<MapArrayBuilder>;
+        declare static readonly __signalSignatures: MapArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -9659,6 +10275,9 @@ export namespace Arrow {
     }
 
     namespace MapDataType {
+        // Signal signatures
+        interface SignalSignatures extends ListDataType.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ListDataType.ConstructorProps {}
@@ -9666,6 +10285,7 @@ export namespace Arrow {
 
     class MapDataType extends ListDataType {
         static $gtype: GObject.GType<MapDataType>;
+        declare static readonly __signalSignatures: MapDataType.SignalSignatures;
 
         // Constructors
 
@@ -9685,6 +10305,9 @@ export namespace Arrow {
     }
 
     namespace MapScalar {
+        // Signal signatures
+        interface SignalSignatures extends BaseListScalar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends BaseListScalar.ConstructorProps {}
@@ -9692,6 +10315,7 @@ export namespace Arrow {
 
     class MapScalar extends BaseListScalar {
         static $gtype: GObject.GType<MapScalar>;
+        declare static readonly __signalSignatures: MapScalar.SignalSignatures;
 
         // Constructors
 
@@ -9703,6 +10327,9 @@ export namespace Arrow {
     }
 
     namespace MatchSubstringOptions {
+        // Signal signatures
+        interface SignalSignatures extends FunctionOptions.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
@@ -9714,6 +10341,7 @@ export namespace Arrow {
 
     class MatchSubstringOptions extends FunctionOptions {
         static $gtype: GObject.GType<MatchSubstringOptions>;
+        declare static readonly __signalSignatures: MatchSubstringOptions.SignalSignatures;
 
         // Properties
 
@@ -9744,6 +10372,9 @@ export namespace Arrow {
     }
 
     namespace MemoryMappedInputStream {
+        // Signal signatures
+        interface SignalSignatures extends SeekableInputStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9754,6 +10385,7 @@ export namespace Arrow {
 
     class MemoryMappedInputStream extends SeekableInputStream implements File, Readable {
         static $gtype: GObject.GType<MemoryMappedInputStream>;
+        declare static readonly __signalSignatures: MemoryMappedInputStream.SignalSignatures;
 
         // Constructors
 
@@ -10206,6 +10838,9 @@ export namespace Arrow {
     }
 
     namespace MemoryPool {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -10216,6 +10851,7 @@ export namespace Arrow {
 
     class MemoryPool extends GObject.Object {
         static $gtype: GObject.GType<MemoryPool>;
+        declare static readonly __signalSignatures: MemoryPool.SignalSignatures;
 
         // Properties
 
@@ -10244,6 +10880,9 @@ export namespace Arrow {
     }
 
     namespace MockFileSystem {
+        // Signal signatures
+        interface SignalSignatures extends FileSystem.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FileSystem.ConstructorProps {}
@@ -10251,6 +10890,7 @@ export namespace Arrow {
 
     class MockFileSystem extends FileSystem {
         static $gtype: GObject.GType<MockFileSystem>;
+        declare static readonly __signalSignatures: MockFileSystem.SignalSignatures;
 
         // Constructors
 
@@ -10260,6 +10900,9 @@ export namespace Arrow {
     }
 
     namespace MonthDayNano {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -10271,6 +10914,7 @@ export namespace Arrow {
 
     class MonthDayNano extends GObject.Object {
         static $gtype: GObject.GType<MonthDayNano>;
+        declare static readonly __signalSignatures: MonthDayNano.SignalSignatures;
 
         // Properties
 
@@ -10304,6 +10948,9 @@ export namespace Arrow {
     }
 
     namespace MonthDayNanoIntervalArray {
+        // Signal signatures
+        interface SignalSignatures extends PrimitiveArray.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends PrimitiveArray.ConstructorProps {}
@@ -10311,6 +10958,7 @@ export namespace Arrow {
 
     class MonthDayNanoIntervalArray extends PrimitiveArray {
         static $gtype: GObject.GType<MonthDayNanoIntervalArray>;
+        declare static readonly __signalSignatures: MonthDayNanoIntervalArray.SignalSignatures;
 
         // Constructors
 
@@ -10332,6 +10980,9 @@ export namespace Arrow {
     }
 
     namespace MonthDayNanoIntervalArrayBuilder {
+        // Signal signatures
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -10339,6 +10990,7 @@ export namespace Arrow {
 
     class MonthDayNanoIntervalArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<MonthDayNanoIntervalArrayBuilder>;
+        declare static readonly __signalSignatures: MonthDayNanoIntervalArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -10362,6 +11014,9 @@ export namespace Arrow {
     }
 
     namespace MonthDayNanoIntervalDataType {
+        // Signal signatures
+        interface SignalSignatures extends IntervalDataType.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends IntervalDataType.ConstructorProps {}
@@ -10369,6 +11024,7 @@ export namespace Arrow {
 
     class MonthDayNanoIntervalDataType extends IntervalDataType {
         static $gtype: GObject.GType<MonthDayNanoIntervalDataType>;
+        declare static readonly __signalSignatures: MonthDayNanoIntervalDataType.SignalSignatures;
 
         // Constructors
 
@@ -10380,6 +11036,9 @@ export namespace Arrow {
     }
 
     namespace MonthDayNanoIntervalScalar {
+        // Signal signatures
+        interface SignalSignatures extends Scalar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {}
@@ -10387,6 +11046,7 @@ export namespace Arrow {
 
     class MonthDayNanoIntervalScalar extends Scalar {
         static $gtype: GObject.GType<MonthDayNanoIntervalScalar>;
+        declare static readonly __signalSignatures: MonthDayNanoIntervalScalar.SignalSignatures;
 
         // Constructors
 
@@ -10402,6 +11062,9 @@ export namespace Arrow {
     }
 
     namespace MonthIntervalArray {
+        // Signal signatures
+        interface SignalSignatures extends NumericArray.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends NumericArray.ConstructorProps {}
@@ -10409,6 +11072,7 @@ export namespace Arrow {
 
     class MonthIntervalArray extends NumericArray {
         static $gtype: GObject.GType<MonthIntervalArray>;
+        declare static readonly __signalSignatures: MonthIntervalArray.SignalSignatures;
 
         // Constructors
 
@@ -10425,6 +11089,9 @@ export namespace Arrow {
     }
 
     namespace MonthIntervalArrayBuilder {
+        // Signal signatures
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -10432,6 +11099,7 @@ export namespace Arrow {
 
     class MonthIntervalArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<MonthIntervalArrayBuilder>;
+        declare static readonly __signalSignatures: MonthIntervalArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -10455,6 +11123,9 @@ export namespace Arrow {
     }
 
     namespace MonthIntervalDataType {
+        // Signal signatures
+        interface SignalSignatures extends IntervalDataType.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends IntervalDataType.ConstructorProps {}
@@ -10462,6 +11133,7 @@ export namespace Arrow {
 
     class MonthIntervalDataType extends IntervalDataType {
         static $gtype: GObject.GType<MonthIntervalDataType>;
+        declare static readonly __signalSignatures: MonthIntervalDataType.SignalSignatures;
 
         // Constructors
 
@@ -10473,6 +11145,9 @@ export namespace Arrow {
     }
 
     namespace MonthIntervalScalar {
+        // Signal signatures
+        interface SignalSignatures extends Scalar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {}
@@ -10480,6 +11155,7 @@ export namespace Arrow {
 
     class MonthIntervalScalar extends Scalar {
         static $gtype: GObject.GType<MonthIntervalScalar>;
+        declare static readonly __signalSignatures: MonthIntervalScalar.SignalSignatures;
 
         // Constructors
 
@@ -10495,6 +11171,9 @@ export namespace Arrow {
     }
 
     namespace MutableBuffer {
+        // Signal signatures
+        interface SignalSignatures extends Buffer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Buffer.ConstructorProps {}
@@ -10502,6 +11181,7 @@ export namespace Arrow {
 
     class MutableBuffer extends Buffer {
         static $gtype: GObject.GType<MutableBuffer>;
+        declare static readonly __signalSignatures: MutableBuffer.SignalSignatures;
 
         // Constructors
 
@@ -10522,6 +11202,9 @@ export namespace Arrow {
     }
 
     namespace NullArray {
+        // Signal signatures
+        interface SignalSignatures extends Array.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Array.ConstructorProps {}
@@ -10529,6 +11212,7 @@ export namespace Arrow {
 
     class NullArray extends Array {
         static $gtype: GObject.GType<NullArray>;
+        declare static readonly __signalSignatures: NullArray.SignalSignatures;
 
         // Constructors
 
@@ -10540,6 +11224,9 @@ export namespace Arrow {
     }
 
     namespace NullArrayBuilder {
+        // Signal signatures
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -10547,6 +11234,7 @@ export namespace Arrow {
 
     class NullArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<NullArrayBuilder>;
+        declare static readonly __signalSignatures: NullArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -10558,6 +11246,9 @@ export namespace Arrow {
     }
 
     namespace NullDataType {
+        // Signal signatures
+        interface SignalSignatures extends DataType.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DataType.ConstructorProps {}
@@ -10565,6 +11256,7 @@ export namespace Arrow {
 
     class NullDataType extends DataType {
         static $gtype: GObject.GType<NullDataType>;
+        declare static readonly __signalSignatures: NullDataType.SignalSignatures;
 
         // Constructors
 
@@ -10576,6 +11268,9 @@ export namespace Arrow {
     }
 
     namespace NullScalar {
+        // Signal signatures
+        interface SignalSignatures extends Scalar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {}
@@ -10583,6 +11278,7 @@ export namespace Arrow {
 
     class NullScalar extends Scalar {
         static $gtype: GObject.GType<NullScalar>;
+        declare static readonly __signalSignatures: NullScalar.SignalSignatures;
 
         // Constructors
 
@@ -10594,6 +11290,9 @@ export namespace Arrow {
     }
 
     namespace NumericArray {
+        // Signal signatures
+        interface SignalSignatures extends PrimitiveArray.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends PrimitiveArray.ConstructorProps {}
@@ -10601,6 +11300,7 @@ export namespace Arrow {
 
     class NumericArray extends PrimitiveArray {
         static $gtype: GObject.GType<NumericArray>;
+        declare static readonly __signalSignatures: NumericArray.SignalSignatures;
 
         // Constructors
 
@@ -10614,6 +11314,9 @@ export namespace Arrow {
     }
 
     namespace NumericDataType {
+        // Signal signatures
+        interface SignalSignatures extends FixedWidthDataType.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FixedWidthDataType.ConstructorProps {}
@@ -10621,6 +11324,7 @@ export namespace Arrow {
 
     abstract class NumericDataType extends FixedWidthDataType {
         static $gtype: GObject.GType<NumericDataType>;
+        declare static readonly __signalSignatures: NumericDataType.SignalSignatures;
 
         // Constructors
 
@@ -10630,6 +11334,9 @@ export namespace Arrow {
     }
 
     namespace ORCFileReader {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -10641,6 +11348,7 @@ export namespace Arrow {
 
     class ORCFileReader extends GObject.Object {
         static $gtype: GObject.GType<ORCFileReader>;
+        declare static readonly __signalSignatures: ORCFileReader.SignalSignatures;
 
         // Properties
 
@@ -10670,6 +11378,9 @@ export namespace Arrow {
     }
 
     namespace OutputStream {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -10683,6 +11394,7 @@ export namespace Arrow {
 
     class OutputStream extends GObject.Object implements File, Writable {
         static $gtype: GObject.GType<OutputStream>;
+        declare static readonly __signalSignatures: OutputStream.SignalSignatures;
 
         // Properties
 
@@ -11154,6 +11866,9 @@ export namespace Arrow {
     }
 
     namespace PrimitiveArray {
+        // Signal signatures
+        interface SignalSignatures extends Array.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Array.ConstructorProps {}
@@ -11161,6 +11876,7 @@ export namespace Arrow {
 
     class PrimitiveArray extends Array {
         static $gtype: GObject.GType<PrimitiveArray>;
+        declare static readonly __signalSignatures: PrimitiveArray.SignalSignatures;
 
         // Constructors
 
@@ -11175,6 +11891,9 @@ export namespace Arrow {
     }
 
     namespace ProjectNodeOptions {
+        // Signal signatures
+        interface SignalSignatures extends ExecuteNodeOptions.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ExecuteNodeOptions.ConstructorProps {}
@@ -11182,6 +11901,7 @@ export namespace Arrow {
 
     class ProjectNodeOptions extends ExecuteNodeOptions {
         static $gtype: GObject.GType<ProjectNodeOptions>;
+        declare static readonly __signalSignatures: ProjectNodeOptions.SignalSignatures;
 
         // Constructors
 
@@ -11193,6 +11913,9 @@ export namespace Arrow {
     }
 
     namespace QuantileOptions {
+        // Signal signatures
+        interface SignalSignatures extends FunctionOptions.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
@@ -11206,6 +11929,7 @@ export namespace Arrow {
 
     class QuantileOptions extends FunctionOptions {
         static $gtype: GObject.GType<QuantileOptions>;
+        declare static readonly __signalSignatures: QuantileOptions.SignalSignatures;
 
         // Properties
 
@@ -11254,6 +11978,9 @@ export namespace Arrow {
     }
 
     namespace RankOptions {
+        // Signal signatures
+        interface SignalSignatures extends FunctionOptions.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
@@ -11265,6 +11992,7 @@ export namespace Arrow {
 
     class RankOptions extends FunctionOptions {
         static $gtype: GObject.GType<RankOptions>;
+        declare static readonly __signalSignatures: RankOptions.SignalSignatures;
 
         // Properties
 
@@ -11311,6 +12039,9 @@ export namespace Arrow {
     }
 
     namespace ReadOptions {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -11323,6 +12054,7 @@ export namespace Arrow {
 
     class ReadOptions extends GObject.Object {
         static $gtype: GObject.GType<ReadOptions>;
+        declare static readonly __signalSignatures: ReadOptions.SignalSignatures;
 
         // Properties
 
@@ -11362,6 +12094,9 @@ export namespace Arrow {
     }
 
     namespace RecordBatch {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -11372,6 +12107,7 @@ export namespace Arrow {
 
     class RecordBatch extends GObject.Object {
         static $gtype: GObject.GType<RecordBatch>;
+        declare static readonly __signalSignatures: RecordBatch.SignalSignatures;
 
         // Properties
 
@@ -11411,6 +12147,9 @@ export namespace Arrow {
     }
 
     namespace RecordBatchBuilder {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -11421,6 +12160,7 @@ export namespace Arrow {
 
     class RecordBatchBuilder extends GObject.Object {
         static $gtype: GObject.GType<RecordBatchBuilder>;
+        declare static readonly __signalSignatures: RecordBatchBuilder.SignalSignatures;
 
         // Properties
 
@@ -11448,6 +12188,9 @@ export namespace Arrow {
     }
 
     namespace RecordBatchDatum {
+        // Signal signatures
+        interface SignalSignatures extends Datum.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Datum.ConstructorProps {
@@ -11457,6 +12200,7 @@ export namespace Arrow {
 
     class RecordBatchDatum extends Datum {
         static $gtype: GObject.GType<RecordBatchDatum>;
+        declare static readonly __signalSignatures: RecordBatchDatum.SignalSignatures;
 
         // Properties
 
@@ -11472,6 +12216,9 @@ export namespace Arrow {
     }
 
     namespace RecordBatchFileReader {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -11482,6 +12229,7 @@ export namespace Arrow {
 
     class RecordBatchFileReader extends GObject.Object {
         static $gtype: GObject.GType<RecordBatchFileReader>;
+        declare static readonly __signalSignatures: RecordBatchFileReader.SignalSignatures;
 
         // Properties
 
@@ -11506,6 +12254,9 @@ export namespace Arrow {
     }
 
     namespace RecordBatchFileWriter {
+        // Signal signatures
+        interface SignalSignatures extends RecordBatchStreamWriter.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends RecordBatchStreamWriter.ConstructorProps {}
@@ -11513,6 +12264,7 @@ export namespace Arrow {
 
     class RecordBatchFileWriter extends RecordBatchStreamWriter {
         static $gtype: GObject.GType<RecordBatchFileWriter>;
+        declare static readonly __signalSignatures: RecordBatchFileWriter.SignalSignatures;
 
         // Constructors
 
@@ -11524,6 +12276,9 @@ export namespace Arrow {
     }
 
     namespace RecordBatchIterator {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -11533,6 +12288,7 @@ export namespace Arrow {
 
     class RecordBatchIterator extends GObject.Object {
         static $gtype: GObject.GType<RecordBatchIterator>;
+        declare static readonly __signalSignatures: RecordBatchIterator.SignalSignatures;
 
         // Properties
 
@@ -11554,6 +12310,9 @@ export namespace Arrow {
     }
 
     namespace RecordBatchReader {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -11565,6 +12324,7 @@ export namespace Arrow {
 
     class RecordBatchReader extends GObject.Object {
         static $gtype: GObject.GType<RecordBatchReader>;
+        declare static readonly __signalSignatures: RecordBatchReader.SignalSignatures;
 
         // Properties
 
@@ -11596,6 +12356,9 @@ export namespace Arrow {
     }
 
     namespace RecordBatchStreamReader {
+        // Signal signatures
+        interface SignalSignatures extends RecordBatchReader.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends RecordBatchReader.ConstructorProps {}
@@ -11603,6 +12366,7 @@ export namespace Arrow {
 
     class RecordBatchStreamReader extends RecordBatchReader {
         static $gtype: GObject.GType<RecordBatchStreamReader>;
+        declare static readonly __signalSignatures: RecordBatchStreamReader.SignalSignatures;
 
         // Constructors
 
@@ -11617,6 +12381,9 @@ export namespace Arrow {
     }
 
     namespace RecordBatchStreamWriter {
+        // Signal signatures
+        interface SignalSignatures extends RecordBatchWriter.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends RecordBatchWriter.ConstructorProps {}
@@ -11624,6 +12391,7 @@ export namespace Arrow {
 
     class RecordBatchStreamWriter extends RecordBatchWriter {
         static $gtype: GObject.GType<RecordBatchStreamWriter>;
+        declare static readonly __signalSignatures: RecordBatchStreamWriter.SignalSignatures;
 
         // Constructors
 
@@ -11635,6 +12403,9 @@ export namespace Arrow {
     }
 
     namespace RecordBatchWriter {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -11645,6 +12416,7 @@ export namespace Arrow {
 
     class RecordBatchWriter extends GObject.Object {
         static $gtype: GObject.GType<RecordBatchWriter>;
+        declare static readonly __signalSignatures: RecordBatchWriter.SignalSignatures;
 
         // Properties
 
@@ -11665,6 +12437,9 @@ export namespace Arrow {
     }
 
     namespace ResizableBuffer {
+        // Signal signatures
+        interface SignalSignatures extends MutableBuffer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MutableBuffer.ConstructorProps {}
@@ -11672,6 +12447,7 @@ export namespace Arrow {
 
     class ResizableBuffer extends MutableBuffer {
         static $gtype: GObject.GType<ResizableBuffer>;
+        declare static readonly __signalSignatures: ResizableBuffer.SignalSignatures;
 
         // Constructors
 
@@ -11691,6 +12467,9 @@ export namespace Arrow {
     }
 
     namespace RoundOptions {
+        // Signal signatures
+        interface SignalSignatures extends FunctionOptions.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
@@ -11702,6 +12481,7 @@ export namespace Arrow {
 
     class RoundOptions extends FunctionOptions {
         static $gtype: GObject.GType<RoundOptions>;
+        declare static readonly __signalSignatures: RoundOptions.SignalSignatures;
 
         // Properties
 
@@ -11731,6 +12511,9 @@ export namespace Arrow {
     }
 
     namespace RoundToMultipleOptions {
+        // Signal signatures
+        interface SignalSignatures extends FunctionOptions.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
@@ -11741,6 +12524,7 @@ export namespace Arrow {
 
     class RoundToMultipleOptions extends FunctionOptions {
         static $gtype: GObject.GType<RoundToMultipleOptions>;
+        declare static readonly __signalSignatures: RoundToMultipleOptions.SignalSignatures;
 
         // Properties
 
@@ -11770,6 +12554,9 @@ export namespace Arrow {
     }
 
     namespace RunEndEncodeOptions {
+        // Signal signatures
+        interface SignalSignatures extends FunctionOptions.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
@@ -11780,6 +12567,7 @@ export namespace Arrow {
 
     class RunEndEncodeOptions extends FunctionOptions {
         static $gtype: GObject.GType<RunEndEncodeOptions>;
+        declare static readonly __signalSignatures: RunEndEncodeOptions.SignalSignatures;
 
         // Properties
 
@@ -11804,6 +12592,9 @@ export namespace Arrow {
     }
 
     namespace RunEndEncodedArray {
+        // Signal signatures
+        interface SignalSignatures extends Array.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Array.ConstructorProps {
@@ -11815,6 +12606,7 @@ export namespace Arrow {
 
     class RunEndEncodedArray extends Array {
         static $gtype: GObject.GType<RunEndEncodedArray>;
+        declare static readonly __signalSignatures: RunEndEncodedArray.SignalSignatures;
 
         // Properties
 
@@ -11848,6 +12640,9 @@ export namespace Arrow {
     }
 
     namespace RunEndEncodedDataType {
+        // Signal signatures
+        interface SignalSignatures extends FixedWidthDataType.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FixedWidthDataType.ConstructorProps {}
@@ -11855,6 +12650,7 @@ export namespace Arrow {
 
     class RunEndEncodedDataType extends FixedWidthDataType {
         static $gtype: GObject.GType<RunEndEncodedDataType>;
+        declare static readonly __signalSignatures: RunEndEncodedDataType.SignalSignatures;
 
         // Constructors
 
@@ -11871,6 +12667,9 @@ export namespace Arrow {
     }
 
     namespace S3FileSystem {
+        // Signal signatures
+        interface SignalSignatures extends FileSystem.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FileSystem.ConstructorProps {}
@@ -11878,6 +12677,7 @@ export namespace Arrow {
 
     class S3FileSystem extends FileSystem {
         static $gtype: GObject.GType<S3FileSystem>;
+        declare static readonly __signalSignatures: S3FileSystem.SignalSignatures;
 
         // Constructors
 
@@ -11887,6 +12687,9 @@ export namespace Arrow {
     }
 
     namespace S3GlobalOptions {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -11897,6 +12700,7 @@ export namespace Arrow {
 
     class S3GlobalOptions extends GObject.Object {
         static $gtype: GObject.GType<S3GlobalOptions>;
+        declare static readonly __signalSignatures: S3GlobalOptions.SignalSignatures;
 
         // Properties
 
@@ -11921,6 +12725,9 @@ export namespace Arrow {
     }
 
     namespace Scalar {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -11932,6 +12739,7 @@ export namespace Arrow {
 
     abstract class Scalar extends GObject.Object {
         static $gtype: GObject.GType<Scalar>;
+        declare static readonly __signalSignatures: Scalar.SignalSignatures;
 
         // Properties
 
@@ -11966,6 +12774,9 @@ export namespace Arrow {
     }
 
     namespace ScalarAggregateOptions {
+        // Signal signatures
+        interface SignalSignatures extends FunctionOptions.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
@@ -11978,6 +12789,7 @@ export namespace Arrow {
 
     class ScalarAggregateOptions extends FunctionOptions {
         static $gtype: GObject.GType<ScalarAggregateOptions>;
+        declare static readonly __signalSignatures: ScalarAggregateOptions.SignalSignatures;
 
         // Properties
 
@@ -12012,6 +12824,9 @@ export namespace Arrow {
     }
 
     namespace ScalarDatum {
+        // Signal signatures
+        interface SignalSignatures extends Datum.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Datum.ConstructorProps {
@@ -12021,6 +12836,7 @@ export namespace Arrow {
 
     class ScalarDatum extends Datum {
         static $gtype: GObject.GType<ScalarDatum>;
+        declare static readonly __signalSignatures: ScalarDatum.SignalSignatures;
 
         // Properties
 
@@ -12036,6 +12852,9 @@ export namespace Arrow {
     }
 
     namespace Schema {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -12045,6 +12864,7 @@ export namespace Arrow {
 
     class Schema extends GObject.Object {
         static $gtype: GObject.GType<Schema>;
+        declare static readonly __signalSignatures: Schema.SignalSignatures;
 
         // Properties
 
@@ -12082,6 +12902,9 @@ export namespace Arrow {
     }
 
     namespace SeekableInputStream {
+        // Signal signatures
+        interface SignalSignatures extends InputStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -12092,6 +12915,7 @@ export namespace Arrow {
 
     class SeekableInputStream extends InputStream implements File, Readable {
         static $gtype: GObject.GType<SeekableInputStream>;
+        declare static readonly __signalSignatures: SeekableInputStream.SignalSignatures;
 
         // Constructors
 
@@ -12560,6 +13384,9 @@ export namespace Arrow {
     }
 
     namespace SetLookupOptions {
+        // Signal signatures
+        interface SignalSignatures extends FunctionOptions.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
@@ -12572,6 +13399,7 @@ export namespace Arrow {
 
     class SetLookupOptions extends FunctionOptions {
         static $gtype: GObject.GType<SetLookupOptions>;
+        declare static readonly __signalSignatures: SetLookupOptions.SignalSignatures;
 
         // Properties
 
@@ -12606,6 +13434,9 @@ export namespace Arrow {
     }
 
     namespace SinkNodeOptions {
+        // Signal signatures
+        interface SignalSignatures extends ExecuteNodeOptions.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ExecuteNodeOptions.ConstructorProps {}
@@ -12613,6 +13444,7 @@ export namespace Arrow {
 
     class SinkNodeOptions extends ExecuteNodeOptions {
         static $gtype: GObject.GType<SinkNodeOptions>;
+        declare static readonly __signalSignatures: SinkNodeOptions.SignalSignatures;
 
         // Constructors
 
@@ -12628,6 +13460,9 @@ export namespace Arrow {
     }
 
     namespace SlowFileSystem {
+        // Signal signatures
+        interface SignalSignatures extends FileSystem.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FileSystem.ConstructorProps {
@@ -12638,6 +13473,7 @@ export namespace Arrow {
 
     class SlowFileSystem extends FileSystem {
         static $gtype: GObject.GType<SlowFileSystem>;
+        declare static readonly __signalSignatures: SlowFileSystem.SignalSignatures;
 
         // Properties
 
@@ -12660,6 +13496,9 @@ export namespace Arrow {
     }
 
     namespace SortKey {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -12670,6 +13509,7 @@ export namespace Arrow {
 
     class SortKey extends GObject.Object {
         static $gtype: GObject.GType<SortKey>;
+        declare static readonly __signalSignatures: SortKey.SignalSignatures;
 
         // Properties
 
@@ -12700,6 +13540,9 @@ export namespace Arrow {
     }
 
     namespace SortOptions {
+        // Signal signatures
+        interface SignalSignatures extends FunctionOptions.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {}
@@ -12707,6 +13550,7 @@ export namespace Arrow {
 
     class SortOptions extends FunctionOptions {
         static $gtype: GObject.GType<SortOptions>;
+        declare static readonly __signalSignatures: SortOptions.SignalSignatures;
 
         // Constructors
 
@@ -12735,6 +13579,9 @@ export namespace Arrow {
     }
 
     namespace SourceNodeOptions {
+        // Signal signatures
+        interface SignalSignatures extends ExecuteNodeOptions.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ExecuteNodeOptions.ConstructorProps {
@@ -12746,6 +13593,7 @@ export namespace Arrow {
 
     class SourceNodeOptions extends ExecuteNodeOptions {
         static $gtype: GObject.GType<SourceNodeOptions>;
+        declare static readonly __signalSignatures: SourceNodeOptions.SignalSignatures;
 
         // Properties
 
@@ -12767,6 +13615,9 @@ export namespace Arrow {
     }
 
     namespace SparseUnionArray {
+        // Signal signatures
+        interface SignalSignatures extends UnionArray.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends UnionArray.ConstructorProps {}
@@ -12774,6 +13625,7 @@ export namespace Arrow {
 
     class SparseUnionArray extends UnionArray {
         static $gtype: GObject.GType<SparseUnionArray>;
+        declare static readonly __signalSignatures: SparseUnionArray.SignalSignatures;
 
         // Constructors
 
@@ -12787,6 +13639,9 @@ export namespace Arrow {
     }
 
     namespace SparseUnionArrayBuilder {
+        // Signal signatures
+        interface SignalSignatures extends UnionArrayBuilder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends UnionArrayBuilder.ConstructorProps {}
@@ -12794,6 +13649,7 @@ export namespace Arrow {
 
     class SparseUnionArrayBuilder extends UnionArrayBuilder {
         static $gtype: GObject.GType<SparseUnionArrayBuilder>;
+        declare static readonly __signalSignatures: SparseUnionArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -12805,6 +13661,9 @@ export namespace Arrow {
     }
 
     namespace SparseUnionDataType {
+        // Signal signatures
+        interface SignalSignatures extends UnionDataType.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends UnionDataType.ConstructorProps {}
@@ -12812,6 +13671,7 @@ export namespace Arrow {
 
     class SparseUnionDataType extends UnionDataType {
         static $gtype: GObject.GType<SparseUnionDataType>;
+        declare static readonly __signalSignatures: SparseUnionDataType.SignalSignatures;
 
         // Constructors
 
@@ -12823,6 +13683,9 @@ export namespace Arrow {
     }
 
     namespace SparseUnionScalar {
+        // Signal signatures
+        interface SignalSignatures extends UnionScalar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends UnionScalar.ConstructorProps {}
@@ -12830,6 +13693,7 @@ export namespace Arrow {
 
     class SparseUnionScalar extends UnionScalar {
         static $gtype: GObject.GType<SparseUnionScalar>;
+        declare static readonly __signalSignatures: SparseUnionScalar.SignalSignatures;
 
         // Constructors
 
@@ -12841,6 +13705,9 @@ export namespace Arrow {
     }
 
     namespace SplitPatternOptions {
+        // Signal signatures
+        interface SignalSignatures extends FunctionOptions.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
@@ -12853,6 +13720,7 @@ export namespace Arrow {
 
     class SplitPatternOptions extends FunctionOptions {
         static $gtype: GObject.GType<SplitPatternOptions>;
+        declare static readonly __signalSignatures: SplitPatternOptions.SignalSignatures;
 
         // Properties
 
@@ -12882,6 +13750,9 @@ export namespace Arrow {
     }
 
     namespace StrftimeOptions {
+        // Signal signatures
+        interface SignalSignatures extends FunctionOptions.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
@@ -12892,6 +13763,7 @@ export namespace Arrow {
 
     class StrftimeOptions extends FunctionOptions {
         static $gtype: GObject.GType<StrftimeOptions>;
+        declare static readonly __signalSignatures: StrftimeOptions.SignalSignatures;
 
         // Properties
 
@@ -12916,6 +13788,9 @@ export namespace Arrow {
     }
 
     namespace StringArray {
+        // Signal signatures
+        interface SignalSignatures extends BinaryArray.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends BinaryArray.ConstructorProps {}
@@ -12923,6 +13798,7 @@ export namespace Arrow {
 
     class StringArray extends BinaryArray {
         static $gtype: GObject.GType<StringArray>;
+        declare static readonly __signalSignatures: StringArray.SignalSignatures;
 
         // Constructors
 
@@ -12944,6 +13820,9 @@ export namespace Arrow {
     }
 
     namespace StringArrayBuilder {
+        // Signal signatures
+        interface SignalSignatures extends BinaryArrayBuilder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends BinaryArrayBuilder.ConstructorProps {}
@@ -12951,6 +13830,7 @@ export namespace Arrow {
 
     class StringArrayBuilder extends BinaryArrayBuilder {
         static $gtype: GObject.GType<StringArrayBuilder>;
+        declare static readonly __signalSignatures: StringArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -12978,6 +13858,9 @@ export namespace Arrow {
     }
 
     namespace StringDataType {
+        // Signal signatures
+        interface SignalSignatures extends DataType.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DataType.ConstructorProps {}
@@ -12985,6 +13868,7 @@ export namespace Arrow {
 
     class StringDataType extends DataType {
         static $gtype: GObject.GType<StringDataType>;
+        declare static readonly __signalSignatures: StringDataType.SignalSignatures;
 
         // Constructors
 
@@ -12996,6 +13880,9 @@ export namespace Arrow {
     }
 
     namespace StringDictionaryArrayBuilder {
+        // Signal signatures
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -13003,6 +13890,7 @@ export namespace Arrow {
 
     class StringDictionaryArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<StringDictionaryArrayBuilder>;
+        declare static readonly __signalSignatures: StringDictionaryArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -13033,6 +13921,9 @@ export namespace Arrow {
     }
 
     namespace StringScalar {
+        // Signal signatures
+        interface SignalSignatures extends BaseBinaryScalar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends BaseBinaryScalar.ConstructorProps {}
@@ -13040,6 +13931,7 @@ export namespace Arrow {
 
     class StringScalar extends BaseBinaryScalar {
         static $gtype: GObject.GType<StringScalar>;
+        declare static readonly __signalSignatures: StringScalar.SignalSignatures;
 
         // Constructors
 
@@ -13051,6 +13943,9 @@ export namespace Arrow {
     }
 
     namespace StrptimeOptions {
+        // Signal signatures
+        interface SignalSignatures extends FunctionOptions.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
@@ -13063,6 +13958,7 @@ export namespace Arrow {
 
     class StrptimeOptions extends FunctionOptions {
         static $gtype: GObject.GType<StrptimeOptions>;
+        declare static readonly __signalSignatures: StrptimeOptions.SignalSignatures;
 
         // Properties
 
@@ -13097,6 +13993,9 @@ export namespace Arrow {
     }
 
     namespace StrptimeTimestampParser {
+        // Signal signatures
+        interface SignalSignatures extends TimestampParser.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends TimestampParser.ConstructorProps {}
@@ -13104,6 +14003,7 @@ export namespace Arrow {
 
     class StrptimeTimestampParser extends TimestampParser {
         static $gtype: GObject.GType<StrptimeTimestampParser>;
+        declare static readonly __signalSignatures: StrptimeTimestampParser.SignalSignatures;
 
         // Constructors
 
@@ -13119,6 +14019,9 @@ export namespace Arrow {
     }
 
     namespace StructArray {
+        // Signal signatures
+        interface SignalSignatures extends Array.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Array.ConstructorProps {}
@@ -13126,6 +14029,7 @@ export namespace Arrow {
 
     class StructArray extends Array {
         static $gtype: GObject.GType<StructArray>;
+        declare static readonly __signalSignatures: StructArray.SignalSignatures;
 
         // Constructors
 
@@ -13149,6 +14053,9 @@ export namespace Arrow {
     }
 
     namespace StructArrayBuilder {
+        // Signal signatures
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -13156,6 +14063,7 @@ export namespace Arrow {
 
     class StructArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<StructArrayBuilder>;
+        declare static readonly __signalSignatures: StructArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -13174,6 +14082,9 @@ export namespace Arrow {
     }
 
     namespace StructDataType {
+        // Signal signatures
+        interface SignalSignatures extends DataType.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DataType.ConstructorProps {}
@@ -13181,6 +14092,7 @@ export namespace Arrow {
 
     class StructDataType extends DataType {
         static $gtype: GObject.GType<StructDataType>;
+        declare static readonly __signalSignatures: StructDataType.SignalSignatures;
 
         // Constructors
 
@@ -13200,6 +14112,9 @@ export namespace Arrow {
     }
 
     namespace StructFieldOptions {
+        // Signal signatures
+        interface SignalSignatures extends FunctionOptions.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
@@ -13210,6 +14125,7 @@ export namespace Arrow {
 
     class StructFieldOptions extends FunctionOptions {
         static $gtype: GObject.GType<StructFieldOptions>;
+        declare static readonly __signalSignatures: StructFieldOptions.SignalSignatures;
 
         // Properties
 
@@ -13230,6 +14146,9 @@ export namespace Arrow {
     }
 
     namespace StructScalar {
+        // Signal signatures
+        interface SignalSignatures extends Scalar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {}
@@ -13237,6 +14156,7 @@ export namespace Arrow {
 
     class StructScalar extends Scalar {
         static $gtype: GObject.GType<StructScalar>;
+        declare static readonly __signalSignatures: StructScalar.SignalSignatures;
 
         // Constructors
 
@@ -13252,6 +14172,9 @@ export namespace Arrow {
     }
 
     namespace SubTreeFileSystem {
+        // Signal signatures
+        interface SignalSignatures extends FileSystem.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FileSystem.ConstructorProps {
@@ -13262,6 +14185,7 @@ export namespace Arrow {
 
     class SubTreeFileSystem extends FileSystem {
         static $gtype: GObject.GType<SubTreeFileSystem>;
+        declare static readonly __signalSignatures: SubTreeFileSystem.SignalSignatures;
 
         // Properties
 
@@ -13278,6 +14202,9 @@ export namespace Arrow {
     }
 
     namespace Table {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -13287,6 +14214,7 @@ export namespace Arrow {
 
     class Table extends GObject.Object {
         static $gtype: GObject.GType<Table>;
+        declare static readonly __signalSignatures: Table.SignalSignatures;
 
         // Properties
 
@@ -13334,6 +14262,9 @@ export namespace Arrow {
     }
 
     namespace TableBatchReader {
+        // Signal signatures
+        interface SignalSignatures extends RecordBatchReader.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends RecordBatchReader.ConstructorProps {}
@@ -13341,6 +14272,7 @@ export namespace Arrow {
 
     class TableBatchReader extends RecordBatchReader {
         static $gtype: GObject.GType<TableBatchReader>;
+        declare static readonly __signalSignatures: TableBatchReader.SignalSignatures;
 
         // Constructors
 
@@ -13366,6 +14298,9 @@ export namespace Arrow {
     }
 
     namespace TableConcatenateOptions {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -13378,6 +14313,7 @@ export namespace Arrow {
 
     class TableConcatenateOptions extends GObject.Object {
         static $gtype: GObject.GType<TableConcatenateOptions>;
+        declare static readonly __signalSignatures: TableConcatenateOptions.SignalSignatures;
 
         // Properties
 
@@ -13434,6 +14370,9 @@ export namespace Arrow {
     }
 
     namespace TableDatum {
+        // Signal signatures
+        interface SignalSignatures extends Datum.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Datum.ConstructorProps {
@@ -13443,6 +14382,7 @@ export namespace Arrow {
 
     class TableDatum extends Datum {
         static $gtype: GObject.GType<TableDatum>;
+        declare static readonly __signalSignatures: TableDatum.SignalSignatures;
 
         // Properties
 
@@ -13458,6 +14398,9 @@ export namespace Arrow {
     }
 
     namespace TakeOptions {
+        // Signal signatures
+        interface SignalSignatures extends FunctionOptions.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {}
@@ -13465,6 +14408,7 @@ export namespace Arrow {
 
     class TakeOptions extends FunctionOptions {
         static $gtype: GObject.GType<TakeOptions>;
+        declare static readonly __signalSignatures: TakeOptions.SignalSignatures;
 
         // Constructors
 
@@ -13476,6 +14420,9 @@ export namespace Arrow {
     }
 
     namespace TemporalDataType {
+        // Signal signatures
+        interface SignalSignatures extends FixedWidthDataType.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FixedWidthDataType.ConstructorProps {}
@@ -13483,6 +14430,7 @@ export namespace Arrow {
 
     abstract class TemporalDataType extends FixedWidthDataType {
         static $gtype: GObject.GType<TemporalDataType>;
+        declare static readonly __signalSignatures: TemporalDataType.SignalSignatures;
 
         // Constructors
 
@@ -13492,6 +14440,9 @@ export namespace Arrow {
     }
 
     namespace Tensor {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -13502,6 +14453,7 @@ export namespace Arrow {
 
     class Tensor extends GObject.Object {
         static $gtype: GObject.GType<Tensor>;
+        declare static readonly __signalSignatures: Tensor.SignalSignatures;
 
         // Properties
 
@@ -13540,6 +14492,9 @@ export namespace Arrow {
     }
 
     namespace Time32Array {
+        // Signal signatures
+        interface SignalSignatures extends NumericArray.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends NumericArray.ConstructorProps {}
@@ -13547,6 +14502,7 @@ export namespace Arrow {
 
     class Time32Array extends NumericArray {
         static $gtype: GObject.GType<Time32Array>;
+        declare static readonly __signalSignatures: Time32Array.SignalSignatures;
 
         // Constructors
 
@@ -13569,6 +14525,9 @@ export namespace Arrow {
     }
 
     namespace Time32ArrayBuilder {
+        // Signal signatures
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -13576,6 +14535,7 @@ export namespace Arrow {
 
     class Time32ArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<Time32ArrayBuilder>;
+        declare static readonly __signalSignatures: Time32ArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -13600,6 +14560,9 @@ export namespace Arrow {
     }
 
     namespace Time32DataType {
+        // Signal signatures
+        interface SignalSignatures extends TimeDataType.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends TimeDataType.ConstructorProps {}
@@ -13607,6 +14570,7 @@ export namespace Arrow {
 
     class Time32DataType extends TimeDataType {
         static $gtype: GObject.GType<Time32DataType>;
+        declare static readonly __signalSignatures: Time32DataType.SignalSignatures;
 
         // Constructors
 
@@ -13618,6 +14582,9 @@ export namespace Arrow {
     }
 
     namespace Time32Scalar {
+        // Signal signatures
+        interface SignalSignatures extends Scalar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {}
@@ -13625,6 +14592,7 @@ export namespace Arrow {
 
     class Time32Scalar extends Scalar {
         static $gtype: GObject.GType<Time32Scalar>;
+        declare static readonly __signalSignatures: Time32Scalar.SignalSignatures;
 
         // Constructors
 
@@ -13640,6 +14608,9 @@ export namespace Arrow {
     }
 
     namespace Time64Array {
+        // Signal signatures
+        interface SignalSignatures extends NumericArray.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends NumericArray.ConstructorProps {}
@@ -13647,6 +14618,7 @@ export namespace Arrow {
 
     class Time64Array extends NumericArray {
         static $gtype: GObject.GType<Time64Array>;
+        declare static readonly __signalSignatures: Time64Array.SignalSignatures;
 
         // Constructors
 
@@ -13669,6 +14641,9 @@ export namespace Arrow {
     }
 
     namespace Time64ArrayBuilder {
+        // Signal signatures
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -13676,6 +14651,7 @@ export namespace Arrow {
 
     class Time64ArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<Time64ArrayBuilder>;
+        declare static readonly __signalSignatures: Time64ArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -13700,6 +14676,9 @@ export namespace Arrow {
     }
 
     namespace Time64DataType {
+        // Signal signatures
+        interface SignalSignatures extends TimeDataType.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends TimeDataType.ConstructorProps {}
@@ -13707,6 +14686,7 @@ export namespace Arrow {
 
     class Time64DataType extends TimeDataType {
         static $gtype: GObject.GType<Time64DataType>;
+        declare static readonly __signalSignatures: Time64DataType.SignalSignatures;
 
         // Constructors
 
@@ -13718,6 +14698,9 @@ export namespace Arrow {
     }
 
     namespace Time64Scalar {
+        // Signal signatures
+        interface SignalSignatures extends Scalar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {}
@@ -13725,6 +14708,7 @@ export namespace Arrow {
 
     class Time64Scalar extends Scalar {
         static $gtype: GObject.GType<Time64Scalar>;
+        declare static readonly __signalSignatures: Time64Scalar.SignalSignatures;
 
         // Constructors
 
@@ -13740,6 +14724,9 @@ export namespace Arrow {
     }
 
     namespace TimeDataType {
+        // Signal signatures
+        interface SignalSignatures extends TemporalDataType.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends TemporalDataType.ConstructorProps {}
@@ -13747,6 +14734,7 @@ export namespace Arrow {
 
     abstract class TimeDataType extends TemporalDataType {
         static $gtype: GObject.GType<TimeDataType>;
+        declare static readonly __signalSignatures: TimeDataType.SignalSignatures;
 
         // Constructors
 
@@ -13760,6 +14748,9 @@ export namespace Arrow {
     }
 
     namespace TimestampArray {
+        // Signal signatures
+        interface SignalSignatures extends NumericArray.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends NumericArray.ConstructorProps {}
@@ -13767,6 +14758,7 @@ export namespace Arrow {
 
     class TimestampArray extends NumericArray {
         static $gtype: GObject.GType<TimestampArray>;
+        declare static readonly __signalSignatures: TimestampArray.SignalSignatures;
 
         // Constructors
 
@@ -13789,6 +14781,9 @@ export namespace Arrow {
     }
 
     namespace TimestampArrayBuilder {
+        // Signal signatures
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -13796,6 +14791,7 @@ export namespace Arrow {
 
     class TimestampArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<TimestampArrayBuilder>;
+        declare static readonly __signalSignatures: TimestampArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -13820,6 +14816,9 @@ export namespace Arrow {
     }
 
     namespace TimestampDataType {
+        // Signal signatures
+        interface SignalSignatures extends TemporalDataType.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends TemporalDataType.ConstructorProps {
@@ -13830,6 +14829,7 @@ export namespace Arrow {
 
     class TimestampDataType extends TemporalDataType {
         static $gtype: GObject.GType<TimestampDataType>;
+        declare static readonly __signalSignatures: TimestampDataType.SignalSignatures;
 
         // Properties
 
@@ -13856,6 +14856,9 @@ export namespace Arrow {
     }
 
     namespace TimestampParser {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -13865,6 +14868,7 @@ export namespace Arrow {
 
     abstract class TimestampParser extends GObject.Object {
         static $gtype: GObject.GType<TimestampParser>;
+        declare static readonly __signalSignatures: TimestampParser.SignalSignatures;
 
         // Properties
 
@@ -13882,6 +14886,9 @@ export namespace Arrow {
     }
 
     namespace TimestampScalar {
+        // Signal signatures
+        interface SignalSignatures extends Scalar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {}
@@ -13889,6 +14896,7 @@ export namespace Arrow {
 
     class TimestampScalar extends Scalar {
         static $gtype: GObject.GType<TimestampScalar>;
+        declare static readonly __signalSignatures: TimestampScalar.SignalSignatures;
 
         // Constructors
 
@@ -13904,6 +14912,9 @@ export namespace Arrow {
     }
 
     namespace UInt16Array {
+        // Signal signatures
+        interface SignalSignatures extends NumericArray.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends NumericArray.ConstructorProps {}
@@ -13911,6 +14922,7 @@ export namespace Arrow {
 
     class UInt16Array extends NumericArray {
         static $gtype: GObject.GType<UInt16Array>;
+        declare static readonly __signalSignatures: UInt16Array.SignalSignatures;
 
         // Constructors
 
@@ -13928,6 +14940,9 @@ export namespace Arrow {
     }
 
     namespace UInt16ArrayBuilder {
+        // Signal signatures
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -13935,6 +14950,7 @@ export namespace Arrow {
 
     class UInt16ArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<UInt16ArrayBuilder>;
+        declare static readonly __signalSignatures: UInt16ArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -13959,6 +14975,9 @@ export namespace Arrow {
     }
 
     namespace UInt16DataType {
+        // Signal signatures
+        interface SignalSignatures extends IntegerDataType.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends IntegerDataType.ConstructorProps {}
@@ -13966,6 +14985,7 @@ export namespace Arrow {
 
     class UInt16DataType extends IntegerDataType {
         static $gtype: GObject.GType<UInt16DataType>;
+        declare static readonly __signalSignatures: UInt16DataType.SignalSignatures;
 
         // Constructors
 
@@ -13977,6 +14997,9 @@ export namespace Arrow {
     }
 
     namespace UInt16Scalar {
+        // Signal signatures
+        interface SignalSignatures extends Scalar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {}
@@ -13984,6 +15007,7 @@ export namespace Arrow {
 
     class UInt16Scalar extends Scalar {
         static $gtype: GObject.GType<UInt16Scalar>;
+        declare static readonly __signalSignatures: UInt16Scalar.SignalSignatures;
 
         // Constructors
 
@@ -13999,6 +15023,9 @@ export namespace Arrow {
     }
 
     namespace UInt32Array {
+        // Signal signatures
+        interface SignalSignatures extends NumericArray.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends NumericArray.ConstructorProps {}
@@ -14006,6 +15033,7 @@ export namespace Arrow {
 
     class UInt32Array extends NumericArray {
         static $gtype: GObject.GType<UInt32Array>;
+        declare static readonly __signalSignatures: UInt32Array.SignalSignatures;
 
         // Constructors
 
@@ -14023,6 +15051,9 @@ export namespace Arrow {
     }
 
     namespace UInt32ArrayBuilder {
+        // Signal signatures
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -14030,6 +15061,7 @@ export namespace Arrow {
 
     class UInt32ArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<UInt32ArrayBuilder>;
+        declare static readonly __signalSignatures: UInt32ArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -14054,6 +15086,9 @@ export namespace Arrow {
     }
 
     namespace UInt32DataType {
+        // Signal signatures
+        interface SignalSignatures extends IntegerDataType.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends IntegerDataType.ConstructorProps {}
@@ -14061,6 +15096,7 @@ export namespace Arrow {
 
     class UInt32DataType extends IntegerDataType {
         static $gtype: GObject.GType<UInt32DataType>;
+        declare static readonly __signalSignatures: UInt32DataType.SignalSignatures;
 
         // Constructors
 
@@ -14072,6 +15108,9 @@ export namespace Arrow {
     }
 
     namespace UInt32Scalar {
+        // Signal signatures
+        interface SignalSignatures extends Scalar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {}
@@ -14079,6 +15118,7 @@ export namespace Arrow {
 
     class UInt32Scalar extends Scalar {
         static $gtype: GObject.GType<UInt32Scalar>;
+        declare static readonly __signalSignatures: UInt32Scalar.SignalSignatures;
 
         // Constructors
 
@@ -14094,6 +15134,9 @@ export namespace Arrow {
     }
 
     namespace UInt64Array {
+        // Signal signatures
+        interface SignalSignatures extends NumericArray.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends NumericArray.ConstructorProps {}
@@ -14101,6 +15144,7 @@ export namespace Arrow {
 
     class UInt64Array extends NumericArray {
         static $gtype: GObject.GType<UInt64Array>;
+        declare static readonly __signalSignatures: UInt64Array.SignalSignatures;
 
         // Constructors
 
@@ -14118,6 +15162,9 @@ export namespace Arrow {
     }
 
     namespace UInt64ArrayBuilder {
+        // Signal signatures
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -14125,6 +15172,7 @@ export namespace Arrow {
 
     class UInt64ArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<UInt64ArrayBuilder>;
+        declare static readonly __signalSignatures: UInt64ArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -14149,6 +15197,9 @@ export namespace Arrow {
     }
 
     namespace UInt64DataType {
+        // Signal signatures
+        interface SignalSignatures extends IntegerDataType.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends IntegerDataType.ConstructorProps {}
@@ -14156,6 +15207,7 @@ export namespace Arrow {
 
     class UInt64DataType extends IntegerDataType {
         static $gtype: GObject.GType<UInt64DataType>;
+        declare static readonly __signalSignatures: UInt64DataType.SignalSignatures;
 
         // Constructors
 
@@ -14167,6 +15219,9 @@ export namespace Arrow {
     }
 
     namespace UInt64Scalar {
+        // Signal signatures
+        interface SignalSignatures extends Scalar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {}
@@ -14174,6 +15229,7 @@ export namespace Arrow {
 
     class UInt64Scalar extends Scalar {
         static $gtype: GObject.GType<UInt64Scalar>;
+        declare static readonly __signalSignatures: UInt64Scalar.SignalSignatures;
 
         // Constructors
 
@@ -14189,6 +15245,9 @@ export namespace Arrow {
     }
 
     namespace UInt8Array {
+        // Signal signatures
+        interface SignalSignatures extends NumericArray.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends NumericArray.ConstructorProps {}
@@ -14196,6 +15255,7 @@ export namespace Arrow {
 
     class UInt8Array extends NumericArray {
         static $gtype: GObject.GType<UInt8Array>;
+        declare static readonly __signalSignatures: UInt8Array.SignalSignatures;
 
         // Constructors
 
@@ -14213,6 +15273,9 @@ export namespace Arrow {
     }
 
     namespace UInt8ArrayBuilder {
+        // Signal signatures
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -14220,6 +15283,7 @@ export namespace Arrow {
 
     class UInt8ArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<UInt8ArrayBuilder>;
+        declare static readonly __signalSignatures: UInt8ArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -14244,6 +15308,9 @@ export namespace Arrow {
     }
 
     namespace UInt8DataType {
+        // Signal signatures
+        interface SignalSignatures extends IntegerDataType.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends IntegerDataType.ConstructorProps {}
@@ -14251,6 +15318,7 @@ export namespace Arrow {
 
     class UInt8DataType extends IntegerDataType {
         static $gtype: GObject.GType<UInt8DataType>;
+        declare static readonly __signalSignatures: UInt8DataType.SignalSignatures;
 
         // Constructors
 
@@ -14262,6 +15330,9 @@ export namespace Arrow {
     }
 
     namespace UInt8Scalar {
+        // Signal signatures
+        interface SignalSignatures extends Scalar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {}
@@ -14269,6 +15340,7 @@ export namespace Arrow {
 
     class UInt8Scalar extends Scalar {
         static $gtype: GObject.GType<UInt8Scalar>;
+        declare static readonly __signalSignatures: UInt8Scalar.SignalSignatures;
 
         // Constructors
 
@@ -14284,6 +15356,9 @@ export namespace Arrow {
     }
 
     namespace UIntArrayBuilder {
+        // Signal signatures
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -14291,6 +15366,7 @@ export namespace Arrow {
 
     class UIntArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<UIntArrayBuilder>;
+        declare static readonly __signalSignatures: UIntArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -14315,6 +15391,9 @@ export namespace Arrow {
     }
 
     namespace UTF8NormalizeOptions {
+        // Signal signatures
+        interface SignalSignatures extends FunctionOptions.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
@@ -14324,6 +15403,7 @@ export namespace Arrow {
 
     class UTF8NormalizeOptions extends FunctionOptions {
         static $gtype: GObject.GType<UTF8NormalizeOptions>;
+        declare static readonly __signalSignatures: UTF8NormalizeOptions.SignalSignatures;
 
         // Properties
 
@@ -14343,6 +15423,9 @@ export namespace Arrow {
     }
 
     namespace UnionArray {
+        // Signal signatures
+        interface SignalSignatures extends Array.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Array.ConstructorProps {
@@ -14353,6 +15436,7 @@ export namespace Arrow {
 
     class UnionArray extends Array {
         static $gtype: GObject.GType<UnionArray>;
+        declare static readonly __signalSignatures: UnionArray.SignalSignatures;
 
         // Properties
 
@@ -14373,6 +15457,9 @@ export namespace Arrow {
     }
 
     namespace UnionArrayBuilder {
+        // Signal signatures
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ArrayBuilder.ConstructorProps {}
@@ -14380,6 +15467,7 @@ export namespace Arrow {
 
     abstract class UnionArrayBuilder extends ArrayBuilder {
         static $gtype: GObject.GType<UnionArrayBuilder>;
+        declare static readonly __signalSignatures: UnionArrayBuilder.SignalSignatures;
 
         // Constructors
 
@@ -14408,6 +15496,9 @@ export namespace Arrow {
     }
 
     namespace UnionDataType {
+        // Signal signatures
+        interface SignalSignatures extends DataType.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DataType.ConstructorProps {}
@@ -14415,6 +15506,7 @@ export namespace Arrow {
 
     abstract class UnionDataType extends DataType {
         static $gtype: GObject.GType<UnionDataType>;
+        declare static readonly __signalSignatures: UnionDataType.SignalSignatures;
 
         // Constructors
 
@@ -14431,6 +15523,9 @@ export namespace Arrow {
     }
 
     namespace UnionScalar {
+        // Signal signatures
+        interface SignalSignatures extends Scalar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Scalar.ConstructorProps {
@@ -14440,6 +15535,7 @@ export namespace Arrow {
 
     abstract class UnionScalar extends Scalar {
         static $gtype: GObject.GType<UnionScalar>;
+        declare static readonly __signalSignatures: UnionScalar.SignalSignatures;
 
         // Properties
 
@@ -14461,6 +15557,9 @@ export namespace Arrow {
     }
 
     namespace VarianceOptions {
+        // Signal signatures
+        interface SignalSignatures extends FunctionOptions.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FunctionOptions.ConstructorProps {
@@ -14474,6 +15573,7 @@ export namespace Arrow {
 
     class VarianceOptions extends FunctionOptions {
         static $gtype: GObject.GType<VarianceOptions>;
+        declare static readonly __signalSignatures: VarianceOptions.SignalSignatures;
 
         // Properties
 
@@ -14513,6 +15613,9 @@ export namespace Arrow {
     }
 
     namespace WriteOptions {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -14531,6 +15634,7 @@ export namespace Arrow {
 
     class WriteOptions extends GObject.Object {
         static $gtype: GObject.GType<WriteOptions>;
+        declare static readonly __signalSignatures: WriteOptions.SignalSignatures;
 
         // Properties
 

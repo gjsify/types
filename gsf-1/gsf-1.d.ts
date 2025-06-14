@@ -716,6 +716,9 @@ export namespace Gsf {
         ): boolean;
     }
     namespace Blob {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -723,6 +726,7 @@ export namespace Gsf {
 
     class Blob extends GObject.Object {
         static $gtype: GObject.GType<Blob>;
+        declare static readonly __signalSignatures: Blob.SignalSignatures;
 
         // Fields
 
@@ -754,6 +758,9 @@ export namespace Gsf {
     }
 
     namespace ClipData {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -761,6 +768,7 @@ export namespace Gsf {
 
     class ClipData extends GObject.Object {
         static $gtype: GObject.GType<ClipData>;
+        declare static readonly __signalSignatures: ClipData.SignalSignatures;
 
         // Fields
 
@@ -807,6 +815,9 @@ export namespace Gsf {
     }
 
     namespace DocMetaData {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -818,6 +829,7 @@ export namespace Gsf {
      */
     class DocMetaData extends GObject.Object {
         static $gtype: GObject.GType<DocMetaData>;
+        declare static readonly __signalSignatures: DocMetaData.SignalSignatures;
 
         // Constructors
 
@@ -875,6 +887,9 @@ export namespace Gsf {
     }
 
     namespace DocPropVector {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -882,6 +897,7 @@ export namespace Gsf {
 
     class DocPropVector extends GObject.Object {
         static $gtype: GObject.GType<DocPropVector>;
+        declare static readonly __signalSignatures: DocPropVector.SignalSignatures;
 
         // Constructors
 
@@ -908,6 +924,9 @@ export namespace Gsf {
     }
 
     namespace Infile {
+        // Signal signatures
+        interface SignalSignatures extends Input.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Input.ConstructorProps {}
@@ -918,6 +937,7 @@ export namespace Gsf {
      */
     abstract class Infile extends Input {
         static $gtype: GObject.GType<Infile>;
+        declare static readonly __signalSignatures: Infile.SignalSignatures;
 
         // Constructors
 
@@ -966,6 +986,9 @@ export namespace Gsf {
     }
 
     namespace InfileMSOle {
+        // Signal signatures
+        interface SignalSignatures extends Infile.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Infile.ConstructorProps {}
@@ -973,6 +996,7 @@ export namespace Gsf {
 
     class InfileMSOle extends Infile {
         static $gtype: GObject.GType<InfileMSOle>;
+        declare static readonly __signalSignatures: InfileMSOle.SignalSignatures;
 
         // Constructors
 
@@ -994,6 +1018,9 @@ export namespace Gsf {
     }
 
     namespace InfileMSVBA {
+        // Signal signatures
+        interface SignalSignatures extends Infile.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Infile.ConstructorProps {}
@@ -1001,6 +1028,7 @@ export namespace Gsf {
 
     class InfileMSVBA extends Infile {
         static $gtype: GObject.GType<InfileMSVBA>;
+        declare static readonly __signalSignatures: InfileMSVBA.SignalSignatures;
 
         // Constructors
 
@@ -1025,6 +1053,9 @@ export namespace Gsf {
     }
 
     namespace InfileStdio {
+        // Signal signatures
+        interface SignalSignatures extends Infile.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Infile.ConstructorProps {}
@@ -1032,6 +1063,7 @@ export namespace Gsf {
 
     class InfileStdio extends Infile {
         static $gtype: GObject.GType<InfileStdio>;
+        declare static readonly __signalSignatures: InfileStdio.SignalSignatures;
 
         // Constructors
 
@@ -1043,6 +1075,9 @@ export namespace Gsf {
     }
 
     namespace InfileTar {
+        // Signal signatures
+        interface SignalSignatures extends Infile.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Infile.ConstructorProps {
@@ -1052,6 +1087,7 @@ export namespace Gsf {
 
     class InfileTar extends Infile {
         static $gtype: GObject.GType<InfileTar>;
+        declare static readonly __signalSignatures: InfileTar.SignalSignatures;
 
         // Properties
 
@@ -1067,6 +1103,9 @@ export namespace Gsf {
     }
 
     namespace InfileZip {
+        // Signal signatures
+        interface SignalSignatures extends Infile.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Infile.ConstructorProps {
@@ -1081,6 +1120,7 @@ export namespace Gsf {
 
     class InfileZip extends Infile {
         static $gtype: GObject.GType<InfileZip>;
+        declare static readonly __signalSignatures: InfileZip.SignalSignatures;
 
         // Properties
 
@@ -1107,6 +1147,9 @@ export namespace Gsf {
     }
 
     namespace Input {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1125,6 +1168,7 @@ export namespace Gsf {
      */
     abstract class Input extends GObject.Object {
         static $gtype: GObject.GType<Input>;
+        declare static readonly __signalSignatures: Input.SignalSignatures;
 
         // Properties
 
@@ -1285,6 +1329,9 @@ export namespace Gsf {
     }
 
     namespace InputGZip {
+        // Signal signatures
+        interface SignalSignatures extends Input.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Input.ConstructorProps {
@@ -1297,6 +1344,7 @@ export namespace Gsf {
 
     class InputGZip extends Input {
         static $gtype: GObject.GType<InputGZip>;
+        declare static readonly __signalSignatures: InputGZip.SignalSignatures;
 
         // Properties
 
@@ -1315,6 +1363,9 @@ export namespace Gsf {
     }
 
     namespace InputGio {
+        // Signal signatures
+        interface SignalSignatures extends Input.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Input.ConstructorProps {}
@@ -1322,6 +1373,7 @@ export namespace Gsf {
 
     class InputGio extends Input {
         static $gtype: GObject.GType<InputGio>;
+        declare static readonly __signalSignatures: InputGio.SignalSignatures;
 
         // Constructors
 
@@ -1337,6 +1389,9 @@ export namespace Gsf {
     }
 
     namespace InputHTTP {
+        // Signal signatures
+        interface SignalSignatures extends Input.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Input.ConstructorProps {
@@ -1348,6 +1403,7 @@ export namespace Gsf {
 
     class InputHTTP extends Input {
         static $gtype: GObject.GType<InputHTTP>;
+        declare static readonly __signalSignatures: InputHTTP.SignalSignatures;
 
         // Properties
 
@@ -1370,6 +1426,9 @@ export namespace Gsf {
     }
 
     namespace InputMemory {
+        // Signal signatures
+        interface SignalSignatures extends Input.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Input.ConstructorProps {}
@@ -1377,6 +1436,7 @@ export namespace Gsf {
 
     class InputMemory extends Input {
         static $gtype: GObject.GType<InputMemory>;
+        declare static readonly __signalSignatures: InputMemory.SignalSignatures;
 
         // Constructors
 
@@ -1394,6 +1454,9 @@ export namespace Gsf {
     }
 
     namespace InputProxy {
+        // Signal signatures
+        interface SignalSignatures extends Input.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Input.ConstructorProps {}
@@ -1401,6 +1464,7 @@ export namespace Gsf {
 
     class InputProxy extends Input {
         static $gtype: GObject.GType<InputProxy>;
+        declare static readonly __signalSignatures: InputProxy.SignalSignatures;
 
         // Constructors
 
@@ -1414,6 +1478,9 @@ export namespace Gsf {
     }
 
     namespace InputStdio {
+        // Signal signatures
+        interface SignalSignatures extends Input.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Input.ConstructorProps {}
@@ -1421,6 +1488,7 @@ export namespace Gsf {
 
     class InputStdio extends Input {
         static $gtype: GObject.GType<InputStdio>;
+        declare static readonly __signalSignatures: InputStdio.SignalSignatures;
 
         // Constructors
 
@@ -1434,6 +1502,9 @@ export namespace Gsf {
     }
 
     namespace InputTextline {
+        // Signal signatures
+        interface SignalSignatures extends Input.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Input.ConstructorProps {}
@@ -1441,6 +1512,7 @@ export namespace Gsf {
 
     class InputTextline extends Input {
         static $gtype: GObject.GType<InputTextline>;
+        declare static readonly __signalSignatures: InputTextline.SignalSignatures;
 
         // Constructors
 
@@ -1469,6 +1541,9 @@ export namespace Gsf {
     }
 
     namespace ODFOut {
+        // Signal signatures
+        interface SignalSignatures extends XMLOut.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends XMLOut.ConstructorProps {
@@ -1479,6 +1554,7 @@ export namespace Gsf {
 
     class ODFOut extends XMLOut {
         static $gtype: GObject.GType<ODFOut>;
+        declare static readonly __signalSignatures: ODFOut.SignalSignatures;
 
         // Properties
 
@@ -1503,6 +1579,9 @@ export namespace Gsf {
     }
 
     namespace Outfile {
+        // Signal signatures
+        interface SignalSignatures extends Output.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Output.ConstructorProps {}
@@ -1513,6 +1592,7 @@ export namespace Gsf {
      */
     abstract class Outfile extends Output {
         static $gtype: GObject.GType<Outfile>;
+        declare static readonly __signalSignatures: Outfile.SignalSignatures;
 
         // Constructors
 
@@ -1536,6 +1616,9 @@ export namespace Gsf {
     }
 
     namespace OutfileMSOle {
+        // Signal signatures
+        interface SignalSignatures extends Outfile.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Outfile.ConstructorProps {
@@ -1549,6 +1632,7 @@ export namespace Gsf {
 
     class OutfileMSOle extends Outfile {
         static $gtype: GObject.GType<OutfileMSOle>;
+        declare static readonly __signalSignatures: OutfileMSOle.SignalSignatures;
 
         // Properties
 
@@ -1579,6 +1663,9 @@ export namespace Gsf {
     }
 
     namespace OutfileOpenPkg {
+        // Signal signatures
+        interface SignalSignatures extends Outfile.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Outfile.ConstructorProps {
@@ -1592,6 +1679,7 @@ export namespace Gsf {
 
     class OutfileOpenPkg extends Outfile {
         static $gtype: GObject.GType<OutfileOpenPkg>;
+        declare static readonly __signalSignatures: OutfileOpenPkg.SignalSignatures;
 
         // Properties
 
@@ -1634,6 +1722,9 @@ export namespace Gsf {
     }
 
     namespace OutfileStdio {
+        // Signal signatures
+        interface SignalSignatures extends Outfile.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Outfile.ConstructorProps {}
@@ -1641,6 +1732,7 @@ export namespace Gsf {
 
     class OutfileStdio extends Outfile {
         static $gtype: GObject.GType<OutfileStdio>;
+        declare static readonly __signalSignatures: OutfileStdio.SignalSignatures;
 
         // Constructors
 
@@ -1652,6 +1744,9 @@ export namespace Gsf {
     }
 
     namespace OutfileZip {
+        // Signal signatures
+        interface SignalSignatures extends Outfile.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Outfile.ConstructorProps {
@@ -1668,6 +1763,7 @@ export namespace Gsf {
 
     class OutfileZip extends Outfile {
         static $gtype: GObject.GType<OutfileZip>;
+        declare static readonly __signalSignatures: OutfileZip.SignalSignatures;
 
         // Properties
 
@@ -1694,6 +1790,9 @@ export namespace Gsf {
     }
 
     namespace Output {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1712,6 +1811,7 @@ export namespace Gsf {
      */
     abstract class Output extends GObject.Object {
         static $gtype: GObject.GType<Output>;
+        declare static readonly __signalSignatures: Output.SignalSignatures;
 
         // Properties
 
@@ -1856,6 +1956,9 @@ export namespace Gsf {
     }
 
     namespace OutputBzip {
+        // Signal signatures
+        interface SignalSignatures extends Output.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Output.ConstructorProps {}
@@ -1863,6 +1966,7 @@ export namespace Gsf {
 
     class OutputBzip extends Output {
         static $gtype: GObject.GType<OutputBzip>;
+        declare static readonly __signalSignatures: OutputBzip.SignalSignatures;
 
         // Constructors
 
@@ -1874,6 +1978,9 @@ export namespace Gsf {
     }
 
     namespace OutputCsv {
+        // Signal signatures
+        interface SignalSignatures extends Output.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Output.ConstructorProps {
@@ -1892,6 +1999,7 @@ export namespace Gsf {
 
     class OutputCsv extends Output {
         static $gtype: GObject.GType<OutputCsv>;
+        declare static readonly __signalSignatures: OutputCsv.SignalSignatures;
 
         // Properties
 
@@ -1938,6 +2046,9 @@ export namespace Gsf {
     }
 
     namespace OutputGZip {
+        // Signal signatures
+        interface SignalSignatures extends Output.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Output.ConstructorProps {
@@ -1950,6 +2061,7 @@ export namespace Gsf {
 
     class OutputGZip extends Output {
         static $gtype: GObject.GType<OutputGZip>;
+        declare static readonly __signalSignatures: OutputGZip.SignalSignatures;
 
         // Properties
 
@@ -1970,6 +2082,9 @@ export namespace Gsf {
     }
 
     namespace OutputGio {
+        // Signal signatures
+        interface SignalSignatures extends Output.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Output.ConstructorProps {}
@@ -1977,6 +2092,7 @@ export namespace Gsf {
 
     class OutputGio extends Output {
         static $gtype: GObject.GType<OutputGio>;
+        declare static readonly __signalSignatures: OutputGio.SignalSignatures;
 
         // Constructors
 
@@ -1992,6 +2108,9 @@ export namespace Gsf {
     }
 
     namespace OutputIOChannel {
+        // Signal signatures
+        interface SignalSignatures extends Output.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Output.ConstructorProps {}
@@ -1999,6 +2118,7 @@ export namespace Gsf {
 
     class OutputIOChannel extends Output {
         static $gtype: GObject.GType<OutputIOChannel>;
+        declare static readonly __signalSignatures: OutputIOChannel.SignalSignatures;
 
         // Constructors
 
@@ -2010,6 +2130,9 @@ export namespace Gsf {
     }
 
     namespace OutputIconv {
+        // Signal signatures
+        interface SignalSignatures extends Output.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Output.ConstructorProps {
@@ -2024,6 +2147,7 @@ export namespace Gsf {
 
     class OutputIconv extends Output {
         static $gtype: GObject.GType<OutputIconv>;
+        declare static readonly __signalSignatures: OutputIconv.SignalSignatures;
 
         // Properties
 
@@ -2050,6 +2174,9 @@ export namespace Gsf {
     }
 
     namespace OutputMemory {
+        // Signal signatures
+        interface SignalSignatures extends Output.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Output.ConstructorProps {}
@@ -2057,6 +2184,7 @@ export namespace Gsf {
 
     class OutputMemory extends Output {
         static $gtype: GObject.GType<OutputMemory>;
+        declare static readonly __signalSignatures: OutputMemory.SignalSignatures;
 
         // Constructors
 
@@ -2073,6 +2201,9 @@ export namespace Gsf {
     }
 
     namespace OutputStdio {
+        // Signal signatures
+        interface SignalSignatures extends Output.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Output.ConstructorProps {}
@@ -2080,6 +2211,7 @@ export namespace Gsf {
 
     class OutputStdio extends Output {
         static $gtype: GObject.GType<OutputStdio>;
+        declare static readonly __signalSignatures: OutputStdio.SignalSignatures;
 
         // Constructors
 
@@ -2091,6 +2223,9 @@ export namespace Gsf {
     }
 
     namespace SharedMemory {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2098,6 +2233,7 @@ export namespace Gsf {
 
     class SharedMemory extends GObject.Object {
         static $gtype: GObject.GType<SharedMemory>;
+        declare static readonly __signalSignatures: SharedMemory.SignalSignatures;
 
         // Fields
 
@@ -2119,6 +2255,9 @@ export namespace Gsf {
     }
 
     namespace StructuredBlob {
+        // Signal signatures
+        interface SignalSignatures extends Infile.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Infile.ConstructorProps {}
@@ -2126,6 +2265,7 @@ export namespace Gsf {
 
     class StructuredBlob extends Infile {
         static $gtype: GObject.GType<StructuredBlob>;
+        declare static readonly __signalSignatures: StructuredBlob.SignalSignatures;
 
         // Constructors
 
@@ -2154,6 +2294,9 @@ export namespace Gsf {
     }
 
     namespace XMLOut {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2165,6 +2308,7 @@ export namespace Gsf {
 
     class XMLOut extends GObject.Object {
         static $gtype: GObject.GType<XMLOut>;
+        declare static readonly __signalSignatures: XMLOut.SignalSignatures;
 
         // Properties
 

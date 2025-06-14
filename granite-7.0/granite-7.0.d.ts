@@ -179,6 +179,11 @@ export namespace Granite {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'contracts-changed': ContractsChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -186,6 +191,7 @@ export namespace Granite {
 
     class ServicesContractorProxy extends GObject.Object {
         static $gtype: GObject.GType<ServicesContractorProxy>;
+        declare static readonly __signalSignatures: ServicesContractorProxy.SignalSignatures;
 
         // Constructors
 
@@ -195,6 +201,18 @@ export namespace Granite {
 
         // Signals
 
+        connect<K extends keyof ServicesContractorProxy.SignalSignatures>(
+            signal: K,
+            callback: ServicesContractorProxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ServicesContractorProxy.SignalSignatures>(
+            signal: K,
+            callback: ServicesContractorProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ServicesContractorProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ServicesContractorProxy.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -213,6 +231,9 @@ export namespace Granite {
     }
 
     namespace ServicesSystem {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -220,6 +241,7 @@ export namespace Granite {
 
     class ServicesSystem extends GObject.Object {
         static $gtype: GObject.GType<ServicesSystem>;
+        declare static readonly __signalSignatures: ServicesSystem.SignalSignatures;
 
         // Constructors
 
@@ -235,6 +257,9 @@ export namespace Granite {
     }
 
     namespace SettingsPage {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Box.ConstructorProps {
@@ -253,6 +278,7 @@ export namespace Granite {
 
     abstract class SettingsPage extends Gtk.Box {
         static $gtype: GObject.GType<SettingsPage>;
+        declare static readonly __signalSignatures: SettingsPage.SignalSignatures;
 
         // Properties
 
@@ -297,6 +323,9 @@ export namespace Granite {
     }
 
     namespace SimpleSettingsPage {
+        // Signal signatures
+        interface SignalSignatures extends SettingsPage.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SettingsPage.ConstructorProps {
@@ -313,6 +342,7 @@ export namespace Granite {
 
     abstract class SimpleSettingsPage extends SettingsPage {
         static $gtype: GObject.GType<SimpleSettingsPage>;
+        declare static readonly __signalSignatures: SimpleSettingsPage.SignalSignatures;
 
         // Properties
 
@@ -343,6 +373,9 @@ export namespace Granite {
     }
 
     namespace AccelLabel {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Box.ConstructorProps {
@@ -356,6 +389,7 @@ export namespace Granite {
 
     class AccelLabel extends Gtk.Box {
         static $gtype: GObject.GType<AccelLabel>;
+        declare static readonly __signalSignatures: AccelLabel.SignalSignatures;
 
         // Properties
 
@@ -394,6 +428,9 @@ export namespace Granite {
     }
 
     namespace DatePicker {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Entry.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Entry.ConstructorProps, Gtk.Buildable.ConstructorProps {
@@ -404,6 +441,7 @@ export namespace Granite {
 
     class DatePicker extends Gtk.Entry implements Gtk.Buildable {
         static $gtype: GObject.GType<DatePicker>;
+        declare static readonly __signalSignatures: DatePicker.SignalSignatures;
 
         // Properties
 
@@ -870,6 +908,9 @@ export namespace Granite {
     }
 
     namespace Dialog {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Dialog.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Dialog.ConstructorProps {}
@@ -877,6 +918,7 @@ export namespace Granite {
 
     class Dialog extends Gtk.Dialog {
         static $gtype: GObject.GType<Dialog>;
+        declare static readonly __signalSignatures: Dialog.SignalSignatures;
 
         // Constructors
 
@@ -888,6 +930,9 @@ export namespace Granite {
     }
 
     namespace HeaderLabel {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Widget.ConstructorProps {
@@ -899,6 +944,7 @@ export namespace Granite {
 
     class HeaderLabel extends Gtk.Widget {
         static $gtype: GObject.GType<HeaderLabel>;
+        declare static readonly __signalSignatures: HeaderLabel.SignalSignatures;
 
         // Properties
 
@@ -926,6 +972,9 @@ export namespace Granite {
     }
 
     namespace HyperTextView {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.TextView.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.TextView.ConstructorProps {}
@@ -933,6 +982,7 @@ export namespace Granite {
 
     class HyperTextView extends Gtk.TextView {
         static $gtype: GObject.GType<HyperTextView>;
+        declare static readonly __signalSignatures: HyperTextView.SignalSignatures;
 
         // Constructors
 
@@ -944,6 +994,9 @@ export namespace Granite {
     }
 
     namespace MessageDialog {
+        // Signal signatures
+        interface SignalSignatures extends Dialog.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Dialog.ConstructorProps {
@@ -967,6 +1020,7 @@ export namespace Granite {
 
     class MessageDialog extends Dialog {
         static $gtype: GObject.GType<MessageDialog>;
+        declare static readonly __signalSignatures: MessageDialog.SignalSignatures;
 
         // Properties
 
@@ -1034,6 +1088,9 @@ export namespace Granite {
     }
 
     namespace ModeSwitch {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Box.ConstructorProps {
@@ -1055,6 +1112,7 @@ export namespace Granite {
 
     class ModeSwitch extends Gtk.Box {
         static $gtype: GObject.GType<ModeSwitch>;
+        declare static readonly __signalSignatures: ModeSwitch.SignalSignatures;
 
         // Properties
 
@@ -1117,6 +1175,9 @@ export namespace Granite {
     }
 
     namespace OverlayBar {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Widget.ConstructorProps {
@@ -1128,6 +1189,7 @@ export namespace Granite {
 
     class OverlayBar extends Gtk.Widget {
         static $gtype: GObject.GType<OverlayBar>;
+        declare static readonly __signalSignatures: OverlayBar.SignalSignatures;
 
         // Properties
 
@@ -1155,6 +1217,9 @@ export namespace Granite {
     }
 
     namespace Placeholder {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Widget.ConstructorProps {
@@ -1166,6 +1231,7 @@ export namespace Granite {
 
     class Placeholder extends Gtk.Widget {
         static $gtype: GObject.GType<Placeholder>;
+        declare static readonly __signalSignatures: Placeholder.SignalSignatures;
 
         // Properties
 
@@ -1196,6 +1262,9 @@ export namespace Granite {
     }
 
     namespace SettingsSidebar {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Widget.ConstructorProps {
@@ -1207,6 +1276,7 @@ export namespace Granite {
 
     class SettingsSidebar extends Gtk.Widget {
         static $gtype: GObject.GType<SettingsSidebar>;
+        declare static readonly __signalSignatures: SettingsSidebar.SignalSignatures;
 
         // Properties
 
@@ -1232,6 +1302,9 @@ export namespace Granite {
     }
 
     namespace Settings {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1242,6 +1315,7 @@ export namespace Granite {
 
     class Settings extends GObject.Object {
         static $gtype: GObject.GType<Settings>;
+        declare static readonly __signalSignatures: Settings.SignalSignatures;
 
         // Properties
 
@@ -1266,6 +1340,9 @@ export namespace Granite {
     }
 
     namespace SwitchModelButton {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.ToggleButton.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.ToggleButton.ConstructorProps {
@@ -1276,6 +1353,7 @@ export namespace Granite {
 
     class SwitchModelButton extends Gtk.ToggleButton {
         static $gtype: GObject.GType<SwitchModelButton>;
+        declare static readonly __signalSignatures: SwitchModelButton.SignalSignatures;
 
         // Properties
 
@@ -1310,6 +1388,11 @@ export namespace Granite {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Entry.SignalSignatures {
+            'time-changed': TimeChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Entry.ConstructorProps {
@@ -1323,6 +1406,7 @@ export namespace Granite {
 
     class TimePicker extends Gtk.Entry {
         static $gtype: GObject.GType<TimePicker>;
+        declare static readonly __signalSignatures: TimePicker.SignalSignatures;
 
         // Properties
 
@@ -1345,6 +1429,18 @@ export namespace Granite {
 
         // Signals
 
+        connect<K extends keyof TimePicker.SignalSignatures>(
+            signal: K,
+            callback: TimePicker.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TimePicker.SignalSignatures>(
+            signal: K,
+            callback: TimePicker.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TimePicker.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TimePicker.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1371,6 +1467,12 @@ export namespace Granite {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {
+            closed: Closed;
+            'default-action': DefaultAction;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Widget.ConstructorProps {
@@ -1380,6 +1482,7 @@ export namespace Granite {
 
     class Toast extends Gtk.Widget {
         static $gtype: GObject.GType<Toast>;
+        declare static readonly __signalSignatures: Toast.SignalSignatures;
 
         // Properties
 
@@ -1396,6 +1499,9 @@ export namespace Granite {
 
         // Signals
 
+        connect<K extends keyof Toast.SignalSignatures>(signal: K, callback: Toast.SignalSignatures[K]): number;
+        connect_after<K extends keyof Toast.SignalSignatures>(signal: K, callback: Toast.SignalSignatures[K]): number;
+        emit<K extends keyof Toast.SignalSignatures>(signal: K, ...args: Parameters<Toast.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1415,6 +1521,9 @@ export namespace Granite {
     }
 
     namespace ValidatedEntry {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Entry.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Entry.ConstructorProps {
@@ -1428,6 +1537,7 @@ export namespace Granite {
 
     class ValidatedEntry extends Gtk.Entry {
         static $gtype: GObject.GType<ValidatedEntry>;
+        declare static readonly __signalSignatures: ValidatedEntry.SignalSignatures;
 
         // Properties
 

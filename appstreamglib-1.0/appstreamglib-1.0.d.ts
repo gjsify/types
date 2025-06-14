@@ -3078,6 +3078,9 @@ export namespace AppStreamGlib {
         USE_BCD,
     }
     namespace Agreement {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3085,6 +3088,7 @@ export namespace AppStreamGlib {
 
     class Agreement extends GObject.Object {
         static $gtype: GObject.GType<Agreement>;
+        declare static readonly __signalSignatures: Agreement.SignalSignatures;
 
         // Constructors
 
@@ -3143,6 +3147,9 @@ export namespace AppStreamGlib {
     }
 
     namespace AgreementSection {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3150,6 +3157,7 @@ export namespace AppStreamGlib {
 
     class AgreementSection extends GObject.Object {
         static $gtype: GObject.GType<AgreementSection>;
+        declare static readonly __signalSignatures: AgreementSection.SignalSignatures;
 
         // Constructors
 
@@ -3198,6 +3206,9 @@ export namespace AppStreamGlib {
     }
 
     namespace App {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3205,6 +3216,7 @@ export namespace AppStreamGlib {
 
     class App extends GObject.Object {
         static $gtype: GObject.GType<App>;
+        declare static readonly __signalSignatures: App.SignalSignatures;
 
         // Constructors
 
@@ -4083,6 +4095,9 @@ export namespace AppStreamGlib {
     }
 
     namespace Bundle {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4090,6 +4105,7 @@ export namespace AppStreamGlib {
 
     class Bundle extends GObject.Object {
         static $gtype: GObject.GType<Bundle>;
+        declare static readonly __signalSignatures: Bundle.SignalSignatures;
 
         // Constructors
 
@@ -4157,6 +4173,9 @@ export namespace AppStreamGlib {
     }
 
     namespace Checksum {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4164,6 +4183,7 @@ export namespace AppStreamGlib {
 
     class Checksum extends GObject.Object {
         static $gtype: GObject.GType<Checksum>;
+        declare static readonly __signalSignatures: Checksum.SignalSignatures;
 
         // Constructors
 
@@ -4231,6 +4251,9 @@ export namespace AppStreamGlib {
     }
 
     namespace ContentRating {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4238,6 +4261,7 @@ export namespace AppStreamGlib {
 
     class ContentRating extends GObject.Object {
         static $gtype: GObject.GType<ContentRating>;
+        declare static readonly __signalSignatures: ContentRating.SignalSignatures;
 
         // Constructors
 
@@ -4376,6 +4400,9 @@ export namespace AppStreamGlib {
     }
 
     namespace Format {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4383,6 +4410,7 @@ export namespace AppStreamGlib {
 
     class Format extends GObject.Object {
         static $gtype: GObject.GType<Format>;
+        declare static readonly __signalSignatures: Format.SignalSignatures;
 
         // Constructors
 
@@ -4437,6 +4465,9 @@ export namespace AppStreamGlib {
     }
 
     namespace Icon {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4444,6 +4475,7 @@ export namespace AppStreamGlib {
 
     class Icon extends GObject.Object {
         static $gtype: GObject.GType<Icon>;
+        declare static readonly __signalSignatures: Icon.SignalSignatures;
 
         // Constructors
 
@@ -4576,6 +4608,9 @@ export namespace AppStreamGlib {
     }
 
     namespace Image {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4583,6 +4618,7 @@ export namespace AppStreamGlib {
 
     class Image extends GObject.Object {
         static $gtype: GObject.GType<Image>;
+        declare static readonly __signalSignatures: Image.SignalSignatures;
 
         // Constructors
 
@@ -4731,6 +4767,9 @@ export namespace AppStreamGlib {
     }
 
     namespace Launchable {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4738,6 +4777,7 @@ export namespace AppStreamGlib {
 
     class Launchable extends GObject.Object {
         static $gtype: GObject.GType<Launchable>;
+        declare static readonly __signalSignatures: Launchable.SignalSignatures;
 
         // Constructors
 
@@ -4785,6 +4825,9 @@ export namespace AppStreamGlib {
     }
 
     namespace Problem {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4792,6 +4835,7 @@ export namespace AppStreamGlib {
 
     class Problem extends GObject.Object {
         static $gtype: GObject.GType<Problem>;
+        declare static readonly __signalSignatures: Problem.SignalSignatures;
 
         // Constructors
 
@@ -4844,6 +4888,9 @@ export namespace AppStreamGlib {
     }
 
     namespace Provide {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4851,6 +4898,7 @@ export namespace AppStreamGlib {
 
     class Provide extends GObject.Object {
         static $gtype: GObject.GType<Provide>;
+        declare static readonly __signalSignatures: Provide.SignalSignatures;
 
         // Constructors
 
@@ -4898,6 +4946,9 @@ export namespace AppStreamGlib {
     }
 
     namespace Release {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4905,6 +4956,7 @@ export namespace AppStreamGlib {
 
     class Release extends GObject.Object {
         static $gtype: GObject.GType<Release>;
+        declare static readonly __signalSignatures: Release.SignalSignatures;
 
         // Constructors
 
@@ -5095,6 +5147,9 @@ export namespace AppStreamGlib {
     }
 
     namespace Require {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5102,6 +5157,7 @@ export namespace AppStreamGlib {
 
     class Require extends GObject.Object {
         static $gtype: GObject.GType<Require>;
+        declare static readonly __signalSignatures: Require.SignalSignatures;
 
         // Constructors
 
@@ -5191,6 +5247,9 @@ export namespace AppStreamGlib {
     }
 
     namespace Review {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5211,6 +5270,7 @@ export namespace AppStreamGlib {
 
     class Review extends GObject.Object {
         static $gtype: GObject.GType<Review>;
+        declare static readonly __signalSignatures: Review.SignalSignatures;
 
         // Properties
 
@@ -5393,6 +5453,9 @@ export namespace AppStreamGlib {
     }
 
     namespace Screenshot {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5400,6 +5463,7 @@ export namespace AppStreamGlib {
 
     class Screenshot extends GObject.Object {
         static $gtype: GObject.GType<Screenshot>;
+        declare static readonly __signalSignatures: Screenshot.SignalSignatures;
 
         // Constructors
 
@@ -5526,6 +5590,14 @@ export namespace AppStreamGlib {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'app-added': AppAdded;
+            'app-changed': AppChanged;
+            'app-removed': AppRemoved;
+            changed: Changed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5533,6 +5605,7 @@ export namespace AppStreamGlib {
 
     class Store extends GObject.Object {
         static $gtype: GObject.GType<Store>;
+        declare static readonly __signalSignatures: Store.SignalSignatures;
 
         // Constructors
 
@@ -5544,6 +5617,9 @@ export namespace AppStreamGlib {
 
         // Signals
 
+        connect<K extends keyof Store.SignalSignatures>(signal: K, callback: Store.SignalSignatures[K]): number;
+        connect_after<K extends keyof Store.SignalSignatures>(signal: K, callback: Store.SignalSignatures[K]): number;
+        emit<K extends keyof Store.SignalSignatures>(signal: K, ...args: Parameters<Store.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -5982,6 +6058,9 @@ export namespace AppStreamGlib {
     }
 
     namespace Suggest {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5989,6 +6068,7 @@ export namespace AppStreamGlib {
 
     class Suggest extends GObject.Object {
         static $gtype: GObject.GType<Suggest>;
+        declare static readonly __signalSignatures: Suggest.SignalSignatures;
 
         // Constructors
 
@@ -6036,6 +6116,9 @@ export namespace AppStreamGlib {
     }
 
     namespace Translation {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6043,6 +6126,7 @@ export namespace AppStreamGlib {
 
     class Translation extends GObject.Object {
         static $gtype: GObject.GType<Translation>;
+        declare static readonly __signalSignatures: Translation.SignalSignatures;
 
         // Constructors
 

@@ -356,6 +356,9 @@ export namespace gSignon {
         NETWORK,
     }
     namespace AuthService {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -366,6 +369,7 @@ export namespace gSignon {
      */
     class AuthService extends GObject.Object {
         static $gtype: GObject.GType<AuthService>;
+        declare static readonly __signalSignatures: AuthService.SignalSignatures;
 
         // Constructors
 
@@ -432,6 +436,11 @@ export namespace gSignon {
             (state: number, message: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'state-changed': StateChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -444,6 +453,7 @@ export namespace gSignon {
      */
     class AuthSession extends GObject.Object {
         static $gtype: GObject.GType<AuthSession>;
+        declare static readonly __signalSignatures: AuthSession.SignalSignatures;
 
         // Properties
 
@@ -461,6 +471,18 @@ export namespace gSignon {
 
         // Signals
 
+        connect<K extends keyof AuthSession.SignalSignatures>(
+            signal: K,
+            callback: AuthSession.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AuthSession.SignalSignatures>(
+            signal: K,
+            callback: AuthSession.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AuthSession.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AuthSession.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -599,6 +621,12 @@ export namespace gSignon {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            removed: Removed;
+            signout: Signout;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -610,6 +638,7 @@ export namespace gSignon {
 
     class Identity extends GObject.Object {
         static $gtype: GObject.GType<Identity>;
+        declare static readonly __signalSignatures: Identity.SignalSignatures;
 
         // Properties
 
@@ -636,6 +665,15 @@ export namespace gSignon {
 
         // Signals
 
+        connect<K extends keyof Identity.SignalSignatures>(signal: K, callback: Identity.SignalSignatures[K]): number;
+        connect_after<K extends keyof Identity.SignalSignatures>(
+            signal: K,
+            callback: Identity.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Identity.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Identity.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

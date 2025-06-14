@@ -100,6 +100,9 @@ export namespace Gucharmap {
     function unicode_get_script_for_char(wc: number): string;
     function unicode_version_to_string(version: UnicodeVersion | null): string;
     namespace BlockChaptersModel {
+        // Signal signatures
+        interface SignalSignatures extends ChaptersModel.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -116,6 +119,7 @@ export namespace Gucharmap {
         implements Gtk.Buildable, Gtk.TreeDragDest, Gtk.TreeDragSource, Gtk.TreeModel, Gtk.TreeSortable
     {
         static $gtype: GObject.GType<BlockChaptersModel>;
+        declare static readonly __signalSignatures: BlockChaptersModel.SignalSignatures;
 
         // Constructors
 
@@ -570,6 +574,9 @@ export namespace Gucharmap {
     }
 
     namespace BlockCodepointList {
+        // Signal signatures
+        interface SignalSignatures extends CodepointList.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends CodepointList.ConstructorProps {
@@ -582,6 +589,7 @@ export namespace Gucharmap {
 
     class BlockCodepointList extends CodepointList {
         static $gtype: GObject.GType<BlockCodepointList>;
+        declare static readonly __signalSignatures: BlockCodepointList.SignalSignatures;
 
         // Properties
 
@@ -600,6 +608,9 @@ export namespace Gucharmap {
     }
 
     namespace ChaptersModel {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.ListStore.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -616,6 +627,7 @@ export namespace Gucharmap {
         implements Gtk.Buildable, Gtk.TreeDragDest, Gtk.TreeDragSource, Gtk.TreeModel, Gtk.TreeSortable
     {
         static $gtype: GObject.GType<ChaptersModel>;
+        declare static readonly __signalSignatures: ChaptersModel.SignalSignatures;
 
         // Constructors
 
@@ -1870,6 +1882,9 @@ export namespace Gucharmap {
     }
 
     namespace ChaptersView {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.TreeView.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1881,6 +1896,7 @@ export namespace Gucharmap {
 
     class ChaptersView extends Gtk.TreeView implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<ChaptersView>;
+        declare static readonly __signalSignatures: ChaptersView.SignalSignatures;
 
         // Constructors
 
@@ -2454,6 +2470,12 @@ export namespace Gucharmap {
             (object: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Paned.SignalSignatures {
+            'link-clicked': LinkClicked;
+            'status-message': StatusMessage;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2482,6 +2504,7 @@ export namespace Gucharmap {
 
     class Charmap extends Gtk.Paned implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Charmap>;
+        declare static readonly __signalSignatures: Charmap.SignalSignatures;
 
         // Properties
 
@@ -2524,6 +2547,15 @@ export namespace Gucharmap {
 
         // Signals
 
+        connect<K extends keyof Charmap.SignalSignatures>(signal: K, callback: Charmap.SignalSignatures[K]): number;
+        connect_after<K extends keyof Charmap.SignalSignatures>(
+            signal: K,
+            callback: Charmap.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Charmap.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Charmap.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3043,6 +3075,15 @@ export namespace Gucharmap {
             (object: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.DrawingArea.SignalSignatures {
+            activate: Activate;
+            'copy-clipboard': CopyClipboard;
+            'move-cursor': MoveCursor;
+            'paste-clipboard': PasteClipboard;
+            'status-message': StatusMessage;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3069,6 +3110,7 @@ export namespace Gucharmap {
 
     class Chartable extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<Chartable>;
+        declare static readonly __signalSignatures: Chartable.SignalSignatures;
 
         // Properties
 
@@ -3109,6 +3151,15 @@ export namespace Gucharmap {
 
         // Signals
 
+        connect<K extends keyof Chartable.SignalSignatures>(signal: K, callback: Chartable.SignalSignatures[K]): number;
+        connect_after<K extends keyof Chartable.SignalSignatures>(
+            signal: K,
+            callback: Chartable.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Chartable.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Chartable.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3700,6 +3751,9 @@ export namespace Gucharmap {
     }
 
     namespace CodepointList {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3707,6 +3761,7 @@ export namespace Gucharmap {
 
     abstract class CodepointList extends GObject.Object {
         static $gtype: GObject.GType<CodepointList>;
+        declare static readonly __signalSignatures: CodepointList.SignalSignatures;
 
         // Constructors
 
@@ -3728,6 +3783,9 @@ export namespace Gucharmap {
     }
 
     namespace ScriptChaptersModel {
+        // Signal signatures
+        interface SignalSignatures extends ChaptersModel.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3744,6 +3802,7 @@ export namespace Gucharmap {
         implements Gtk.Buildable, Gtk.TreeDragDest, Gtk.TreeDragSource, Gtk.TreeModel, Gtk.TreeSortable
     {
         static $gtype: GObject.GType<ScriptChaptersModel>;
+        declare static readonly __signalSignatures: ScriptChaptersModel.SignalSignatures;
 
         // Constructors
 
@@ -4198,6 +4257,9 @@ export namespace Gucharmap {
     }
 
     namespace ScriptCodepointList {
+        // Signal signatures
+        interface SignalSignatures extends CodepointList.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends CodepointList.ConstructorProps {}
@@ -4205,6 +4267,7 @@ export namespace Gucharmap {
 
     class ScriptCodepointList extends CodepointList {
         static $gtype: GObject.GType<ScriptCodepointList>;
+        declare static readonly __signalSignatures: ScriptCodepointList.SignalSignatures;
 
         // Constructors
 

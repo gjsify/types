@@ -80,6 +80,13 @@ export namespace MetaTest {
             (): number;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Meta.Context.SignalSignatures {
+            'after-tests': AfterTests;
+            'before-tests': BeforeTests;
+            'run-tests': RunTests;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Meta.Context.ConstructorProps {}
@@ -87,6 +94,7 @@ export namespace MetaTest {
 
     class ContextTest extends Meta.Context {
         static $gtype: GObject.GType<ContextTest>;
+        declare static readonly __signalSignatures: ContextTest.SignalSignatures;
 
         // Constructors
 
@@ -96,6 +104,18 @@ export namespace MetaTest {
 
         // Signals
 
+        connect<K extends keyof ContextTest.SignalSignatures>(
+            signal: K,
+            callback: ContextTest.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ContextTest.SignalSignatures>(
+            signal: K,
+            callback: ContextTest.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ContextTest.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ContextTest.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -116,6 +136,9 @@ export namespace MetaTest {
     }
 
     namespace TestMonitor {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -123,6 +146,7 @@ export namespace MetaTest {
 
     class TestMonitor extends GObject.Object {
         static $gtype: GObject.GType<TestMonitor>;
+        declare static readonly __signalSignatures: TestMonitor.SignalSignatures;
 
         // Constructors
 

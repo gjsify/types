@@ -307,6 +307,9 @@ export namespace Dee {
         PREFIX,
     }
     namespace Analyzer {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -318,6 +321,7 @@ export namespace Dee {
      */
     class Analyzer extends GObject.Object {
         static $gtype: GObject.GType<Analyzer>;
+        declare static readonly __signalSignatures: Analyzer.SignalSignatures;
 
         // Constructors
 
@@ -458,6 +462,9 @@ export namespace Dee {
     }
 
     namespace Client {
+        // Signal signatures
+        interface SignalSignatures extends Peer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Peer.ConstructorProps {
@@ -468,6 +475,7 @@ export namespace Dee {
 
     class Client extends Peer {
         static $gtype: GObject.GType<Client>;
+        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Properties
 
@@ -486,6 +494,9 @@ export namespace Dee {
     }
 
     namespace FileResourceManager {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, ResourceManager.ConstructorProps {
@@ -496,6 +507,7 @@ export namespace Dee {
 
     class FileResourceManager extends GObject.Object implements ResourceManager {
         static $gtype: GObject.GType<FileResourceManager>;
+        declare static readonly __signalSignatures: FileResourceManager.SignalSignatures;
 
         // Properties
 
@@ -1032,6 +1044,9 @@ export namespace Dee {
     }
 
     namespace FilterModel {
+        // Signal signatures
+        interface SignalSignatures extends ProxyModel.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1048,6 +1063,7 @@ export namespace Dee {
      */
     class FilterModel extends ProxyModel implements Model, Serializable {
         static $gtype: GObject.GType<FilterModel>;
+        declare static readonly __signalSignatures: FilterModel.SignalSignatures;
 
         // Properties
 
@@ -1572,6 +1588,9 @@ export namespace Dee {
     }
 
     namespace GListResultSet {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, ResultSet.ConstructorProps {}
@@ -1579,6 +1598,7 @@ export namespace Dee {
 
     class GListResultSet extends GObject.Object implements ResultSet {
         static $gtype: GObject.GType<GListResultSet>;
+        declare static readonly __signalSignatures: GListResultSet.SignalSignatures;
 
         // Constructors
 
@@ -2111,6 +2131,9 @@ export namespace Dee {
     }
 
     namespace HashIndex {
+        // Signal signatures
+        interface SignalSignatures extends Index.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Index.ConstructorProps {}
@@ -2122,6 +2145,7 @@ export namespace Dee {
      */
     class HashIndex extends Index {
         static $gtype: GObject.GType<HashIndex>;
+        declare static readonly __signalSignatures: HashIndex.SignalSignatures;
 
         // Constructors
 
@@ -2133,6 +2157,9 @@ export namespace Dee {
     }
 
     namespace Index {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2148,6 +2175,7 @@ export namespace Dee {
      */
     abstract class Index extends GObject.Object {
         static $gtype: GObject.GType<Index>;
+        declare static readonly __signalSignatures: Index.SignalSignatures;
 
         // Properties
 
@@ -2284,6 +2312,14 @@ export namespace Dee {
             (name: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'connection-acquired': ConnectionAcquired;
+            'connection-closed': ConnectionClosed;
+            'peer-found': PeerFound;
+            'peer-lost': PeerLost;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2302,6 +2338,7 @@ export namespace Dee {
      */
     class Peer extends GObject.Object {
         static $gtype: GObject.GType<Peer>;
+        declare static readonly __signalSignatures: Peer.SignalSignatures;
 
         // Properties
 
@@ -2324,6 +2361,9 @@ export namespace Dee {
 
         // Signals
 
+        connect<K extends keyof Peer.SignalSignatures>(signal: K, callback: Peer.SignalSignatures[K]): number;
+        connect_after<K extends keyof Peer.SignalSignatures>(signal: K, callback: Peer.SignalSignatures[K]): number;
+        emit<K extends keyof Peer.SignalSignatures>(signal: K, ...args: Parameters<Peer.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2403,6 +2443,9 @@ export namespace Dee {
     }
 
     namespace ProxyModel {
+        // Signal signatures
+        interface SignalSignatures extends SerializableModel.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2424,6 +2467,7 @@ export namespace Dee {
      */
     class ProxyModel extends SerializableModel implements Model, Serializable {
         static $gtype: GObject.GType<ProxyModel>;
+        declare static readonly __signalSignatures: ProxyModel.SignalSignatures;
 
         // Properties
 
@@ -3562,6 +3606,9 @@ export namespace Dee {
     }
 
     namespace SequenceModel {
+        // Signal signatures
+        interface SignalSignatures extends SerializableModel.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3576,6 +3623,7 @@ export namespace Dee {
      */
     class SequenceModel extends SerializableModel implements Model, Serializable {
         static $gtype: GObject.GType<SequenceModel>;
+        declare static readonly __signalSignatures: SequenceModel.SignalSignatures;
 
         // Constructors
 
@@ -4677,6 +4725,9 @@ export namespace Dee {
     }
 
     namespace SerializableModel {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4691,6 +4742,7 @@ export namespace Dee {
      */
     abstract class SerializableModel extends GObject.Object implements Model, Serializable {
         static $gtype: GObject.GType<SerializableModel>;
+        declare static readonly __signalSignatures: SerializableModel.SignalSignatures;
 
         // Constructors
 
@@ -5803,6 +5855,9 @@ export namespace Dee {
     }
 
     namespace Server {
+        // Signal signatures
+        interface SignalSignatures extends Peer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Peer.ConstructorProps {
@@ -5815,6 +5870,7 @@ export namespace Dee {
 
     class Server extends Peer {
         static $gtype: GObject.GType<Server>;
+        declare static readonly __signalSignatures: Server.SignalSignatures;
 
         // Properties
 
@@ -5863,6 +5919,12 @@ export namespace Dee {
             (begin_seqnum: number, end_seqnum: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends ProxyModel.SignalSignatures {
+            'begin-transaction': BeginTransaction;
+            'end-transaction': EndTransaction;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5884,6 +5946,7 @@ export namespace Dee {
      */
     class SharedModel extends ProxyModel implements Model, Serializable {
         static $gtype: GObject.GType<SharedModel>;
+        declare static readonly __signalSignatures: SharedModel.SignalSignatures;
 
         // Properties
 
@@ -5959,6 +6022,18 @@ export namespace Dee {
 
         // Signals
 
+        connect<K extends keyof SharedModel.SignalSignatures>(
+            signal: K,
+            callback: SharedModel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SharedModel.SignalSignatures>(
+            signal: K,
+            callback: SharedModel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SharedModel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SharedModel.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -6493,6 +6568,9 @@ export namespace Dee {
     }
 
     namespace TermList {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6504,6 +6582,7 @@ export namespace Dee {
      */
     class TermList extends GObject.Object {
         static $gtype: GObject.GType<TermList>;
+        declare static readonly __signalSignatures: TermList.SignalSignatures;
 
         // Constructors
 
@@ -6603,6 +6682,9 @@ export namespace Dee {
     }
 
     namespace TextAnalyzer {
+        // Signal signatures
+        interface SignalSignatures extends Analyzer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Analyzer.ConstructorProps {}
@@ -6614,6 +6696,7 @@ export namespace Dee {
      */
     class TextAnalyzer extends Analyzer {
         static $gtype: GObject.GType<TextAnalyzer>;
+        declare static readonly __signalSignatures: TextAnalyzer.SignalSignatures;
 
         // Constructors
 
@@ -6625,6 +6708,9 @@ export namespace Dee {
     }
 
     namespace Transaction {
+        // Signal signatures
+        interface SignalSignatures extends SerializableModel.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6641,6 +6727,7 @@ export namespace Dee {
      */
     class Transaction extends SerializableModel implements Model, Serializable {
         static $gtype: GObject.GType<Transaction>;
+        declare static readonly __signalSignatures: Transaction.SignalSignatures;
 
         // Properties
 
@@ -7771,6 +7858,9 @@ export namespace Dee {
     }
 
     namespace TreeIndex {
+        // Signal signatures
+        interface SignalSignatures extends Index.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Index.ConstructorProps {}
@@ -7782,6 +7872,7 @@ export namespace Dee {
      */
     class TreeIndex extends Index {
         static $gtype: GObject.GType<TreeIndex>;
+        declare static readonly __signalSignatures: TreeIndex.SignalSignatures;
 
         // Constructors
 

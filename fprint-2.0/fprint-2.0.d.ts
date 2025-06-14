@@ -341,6 +341,12 @@ export namespace FPrint {
             (device: Device): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'device-added': DeviceAdded;
+            'device-removed': DeviceRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -348,6 +354,7 @@ export namespace FPrint {
 
     class Context extends GObject.Object {
         static $gtype: GObject.GType<Context>;
+        declare static readonly __signalSignatures: Context.SignalSignatures;
 
         // Constructors
 
@@ -359,6 +366,15 @@ export namespace FPrint {
 
         // Signals
 
+        connect<K extends keyof Context.SignalSignatures>(signal: K, callback: Context.SignalSignatures[K]): number;
+        connect_after<K extends keyof Context.SignalSignatures>(
+            signal: K,
+            callback: Context.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Context.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Context.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -404,6 +420,11 @@ export namespace FPrint {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            removed: Removed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps {
@@ -435,6 +456,7 @@ export namespace FPrint {
 
     abstract class Device extends GObject.Object implements Gio.AsyncInitable<Device> {
         static $gtype: GObject.GType<Device>;
+        declare static readonly __signalSignatures: Device.SignalSignatures;
 
         // Properties
 
@@ -470,6 +492,9 @@ export namespace FPrint {
 
         // Signals
 
+        connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1742,6 +1767,9 @@ export namespace FPrint {
     }
 
     namespace Image {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1752,6 +1780,7 @@ export namespace FPrint {
 
     class Image extends GObject.Object {
         static $gtype: GObject.GType<Image>;
+        declare static readonly __signalSignatures: Image.SignalSignatures;
 
         // Properties
 
@@ -1841,6 +1870,11 @@ export namespace FPrint {
             (new_state: unknown): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Device.SignalSignatures {
+            'fpi-image-device-state-changed': FpiImageDeviceStateChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Device.ConstructorProps, Gio.AsyncInitable.ConstructorProps {}
@@ -1848,6 +1882,7 @@ export namespace FPrint {
 
     abstract class ImageDevice extends Device implements Gio.AsyncInitable<ImageDevice> {
         static $gtype: GObject.GType<ImageDevice>;
+        declare static readonly __signalSignatures: ImageDevice.SignalSignatures;
 
         // Constructors
 
@@ -1857,6 +1892,18 @@ export namespace FPrint {
 
         // Signals
 
+        connect<K extends keyof ImageDevice.SignalSignatures>(
+            signal: K,
+            callback: ImageDevice.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ImageDevice.SignalSignatures>(
+            signal: K,
+            callback: ImageDevice.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ImageDevice.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ImageDevice.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2512,6 +2559,9 @@ export namespace FPrint {
     }
 
     namespace Print {
+        // Signal signatures
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
@@ -2535,6 +2585,7 @@ export namespace FPrint {
 
     class Print extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<Print>;
+        declare static readonly __signalSignatures: Print.SignalSignatures;
 
         // Properties
 

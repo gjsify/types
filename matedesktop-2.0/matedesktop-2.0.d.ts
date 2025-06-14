@@ -384,6 +384,12 @@ export namespace MateDesktop {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            changed: Changed;
+            transitioned: Transitioned;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -391,6 +397,7 @@ export namespace MateDesktop {
 
     class BG extends GObject.Object {
         static $gtype: GObject.GType<BG>;
+        declare static readonly __signalSignatures: BG.SignalSignatures;
 
         // Constructors
 
@@ -402,6 +409,9 @@ export namespace MateDesktop {
 
         // Signals
 
+        connect<K extends keyof BG.SignalSignatures>(signal: K, callback: BG.SignalSignatures[K]): number;
+        connect_after<K extends keyof BG.SignalSignatures>(signal: K, callback: BG.SignalSignatures[K]): number;
+        emit<K extends keyof BG.SignalSignatures>(signal: K, ...args: Parameters<BG.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -533,6 +543,11 @@ export namespace MateDesktop {
             (window: GObject.Object): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            finished: Finished;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -543,6 +558,7 @@ export namespace MateDesktop {
 
     class BGCrossfade extends GObject.Object {
         static $gtype: GObject.GType<BGCrossfade>;
+        declare static readonly __signalSignatures: BGCrossfade.SignalSignatures;
 
         // Properties
 
@@ -571,6 +587,18 @@ export namespace MateDesktop {
 
         // Signals
 
+        connect<K extends keyof BGCrossfade.SignalSignatures>(
+            signal: K,
+            callback: BGCrossfade.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BGCrossfade.SignalSignatures>(
+            signal: K,
+            callback: BGCrossfade.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BGCrossfade.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BGCrossfade.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -642,6 +670,11 @@ export namespace MateDesktop {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {
+            'color-changed': ColorChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -664,6 +697,7 @@ export namespace MateDesktop {
 
     class ColorSelection extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<ColorSelection>;
+        declare static readonly __signalSignatures: ColorSelection.SignalSignatures;
 
         // Properties
 
@@ -696,6 +730,18 @@ export namespace MateDesktop {
 
         // Signals
 
+        connect<K extends keyof ColorSelection.SignalSignatures>(
+            signal: K,
+            callback: ColorSelection.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ColorSelection.SignalSignatures>(
+            signal: K,
+            callback: ColorSelection.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ColorSelection.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ColorSelection.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1264,6 +1310,9 @@ export namespace MateDesktop {
     }
 
     namespace ColorSelectionDialog {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Dialog.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1283,6 +1332,7 @@ export namespace MateDesktop {
 
     class ColorSelectionDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ColorSelectionDialog>;
+        declare static readonly __signalSignatures: ColorSelectionDialog.SignalSignatures;
 
         // Properties
 
@@ -1761,6 +1811,9 @@ export namespace MateDesktop {
     }
 
     namespace DesktopThumbnailFactory {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1768,6 +1821,7 @@ export namespace MateDesktop {
 
     class DesktopThumbnailFactory extends GObject.Object {
         static $gtype: GObject.GType<DesktopThumbnailFactory>;
+        declare static readonly __signalSignatures: DesktopThumbnailFactory.SignalSignatures;
 
         // Constructors
 
@@ -1852,6 +1906,12 @@ export namespace MateDesktop {
             (object: Gtk.DirectionType): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {
+            changed: Changed;
+            move: Move;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1862,6 +1922,7 @@ export namespace MateDesktop {
 
     class HSV extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<HSV>;
+        declare static readonly __signalSignatures: HSV.SignalSignatures;
 
         // Constructors
 
@@ -1873,6 +1934,9 @@ export namespace MateDesktop {
 
         // Signals
 
+        connect<K extends keyof HSV.SignalSignatures>(signal: K, callback: HSV.SignalSignatures[K]): number;
+        connect_after<K extends keyof HSV.SignalSignatures>(signal: K, callback: HSV.SignalSignatures[K]): number;
+        emit<K extends keyof HSV.SignalSignatures>(signal: K, ...args: Parameters<HSV.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2541,6 +2605,9 @@ export namespace MateDesktop {
     }
 
     namespace ImageMenuItem {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.MenuItem.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2558,6 +2625,7 @@ export namespace MateDesktop {
         implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<ImageMenuItem>;
+        declare static readonly __signalSignatures: ImageMenuItem.SignalSignatures;
 
         // Properties
 
@@ -7125,6 +7193,9 @@ export namespace MateDesktop {
     }
 
     namespace RRConfig {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7134,6 +7205,7 @@ export namespace MateDesktop {
 
     class RRConfig extends GObject.Object {
         static $gtype: GObject.GType<RRConfig>;
+        declare static readonly __signalSignatures: RRConfig.SignalSignatures;
 
         // Properties
 
@@ -7172,6 +7244,9 @@ export namespace MateDesktop {
     }
 
     namespace RRLabeler {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7181,6 +7256,7 @@ export namespace MateDesktop {
 
     class RRLabeler extends GObject.Object {
         static $gtype: GObject.GType<RRLabeler>;
+        declare static readonly __signalSignatures: RRLabeler.SignalSignatures;
 
         // Properties
 
@@ -7208,6 +7284,9 @@ export namespace MateDesktop {
     }
 
     namespace RROutputInfo {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -7215,6 +7294,7 @@ export namespace MateDesktop {
 
     class RROutputInfo extends GObject.Object {
         static $gtype: GObject.GType<RROutputInfo>;
+        declare static readonly __signalSignatures: RROutputInfo.SignalSignatures;
 
         // Constructors
 
@@ -7259,6 +7339,11 @@ export namespace MateDesktop {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            changed: Changed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -7269,6 +7354,7 @@ export namespace MateDesktop {
 
     class RRScreen extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<RRScreen>;
+        declare static readonly __signalSignatures: RRScreen.SignalSignatures;
 
         // Properties
 
@@ -7285,6 +7371,15 @@ export namespace MateDesktop {
 
         // Signals
 
+        connect<K extends keyof RRScreen.SignalSignatures>(signal: K, callback: RRScreen.SignalSignatures[K]): number;
+        connect_after<K extends keyof RRScreen.SignalSignatures>(
+            signal: K,
+            callback: RRScreen.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RRScreen.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RRScreen.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

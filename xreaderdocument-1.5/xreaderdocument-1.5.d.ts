@@ -421,6 +421,9 @@ export namespace XreaderDocument {
         NUMBER_UP,
     }
     namespace Annotation {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -436,6 +439,7 @@ export namespace XreaderDocument {
 
     abstract class Annotation extends GObject.Object {
         static $gtype: GObject.GType<Annotation>;
+        declare static readonly __signalSignatures: Annotation.SignalSignatures;
 
         // Properties
 
@@ -576,6 +580,9 @@ export namespace XreaderDocument {
     }
 
     namespace AnnotationAttachment {
+        // Signal signatures
+        interface SignalSignatures extends Annotation.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Annotation.ConstructorProps, AnnotationMarkup.ConstructorProps {
@@ -585,6 +592,7 @@ export namespace XreaderDocument {
 
     class AnnotationAttachment extends Annotation implements AnnotationMarkup {
         static $gtype: GObject.GType<AnnotationAttachment>;
+        declare static readonly __signalSignatures: AnnotationAttachment.SignalSignatures;
 
         // Properties
 
@@ -762,6 +770,9 @@ export namespace XreaderDocument {
     }
 
     namespace AnnotationText {
+        // Signal signatures
+        interface SignalSignatures extends Annotation.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Annotation.ConstructorProps, AnnotationMarkup.ConstructorProps {
@@ -773,6 +784,7 @@ export namespace XreaderDocument {
 
     class AnnotationText extends Annotation implements AnnotationMarkup {
         static $gtype: GObject.GType<AnnotationText>;
+        declare static readonly __signalSignatures: AnnotationText.SignalSignatures;
 
         // Properties
 
@@ -956,6 +968,9 @@ export namespace XreaderDocument {
     }
 
     namespace AnnotationTextMarkup {
+        // Signal signatures
+        interface SignalSignatures extends Annotation.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Annotation.ConstructorProps, AnnotationMarkup.ConstructorProps {
@@ -965,6 +980,7 @@ export namespace XreaderDocument {
 
     class AnnotationTextMarkup extends Annotation implements AnnotationMarkup {
         static $gtype: GObject.GType<AnnotationTextMarkup>;
+        declare static readonly __signalSignatures: AnnotationTextMarkup.SignalSignatures;
 
         // Properties
 
@@ -1148,6 +1164,9 @@ export namespace XreaderDocument {
     }
 
     namespace Attachment {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1162,6 +1181,7 @@ export namespace XreaderDocument {
 
     class Attachment extends GObject.Object {
         static $gtype: GObject.GType<Attachment>;
+        declare static readonly __signalSignatures: Attachment.SignalSignatures;
 
         // Properties
 
@@ -1207,6 +1227,9 @@ export namespace XreaderDocument {
     }
 
     namespace Document {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1214,6 +1237,7 @@ export namespace XreaderDocument {
 
     abstract class Document extends GObject.Object {
         static $gtype: GObject.GType<Document>;
+        declare static readonly __signalSignatures: Document.SignalSignatures;
 
         // Fields
 
@@ -1361,6 +1385,9 @@ export namespace XreaderDocument {
     }
 
     namespace FormField {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1368,6 +1395,7 @@ export namespace XreaderDocument {
 
     abstract class FormField extends GObject.Object {
         static $gtype: GObject.GType<FormField>;
+        declare static readonly __signalSignatures: FormField.SignalSignatures;
 
         // Fields
 
@@ -1385,6 +1413,9 @@ export namespace XreaderDocument {
     }
 
     namespace FormFieldButton {
+        // Signal signatures
+        interface SignalSignatures extends FormField.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FormField.ConstructorProps {}
@@ -1392,6 +1423,7 @@ export namespace XreaderDocument {
 
     class FormFieldButton extends FormField {
         static $gtype: GObject.GType<FormFieldButton>;
+        declare static readonly __signalSignatures: FormFieldButton.SignalSignatures;
 
         // Fields
 
@@ -1409,6 +1441,9 @@ export namespace XreaderDocument {
     }
 
     namespace FormFieldChoice {
+        // Signal signatures
+        interface SignalSignatures extends FormField.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FormField.ConstructorProps {}
@@ -1416,6 +1451,7 @@ export namespace XreaderDocument {
 
     class FormFieldChoice extends FormField {
         static $gtype: GObject.GType<FormFieldChoice>;
+        declare static readonly __signalSignatures: FormFieldChoice.SignalSignatures;
 
         // Fields
 
@@ -1438,6 +1474,9 @@ export namespace XreaderDocument {
     }
 
     namespace FormFieldSignature {
+        // Signal signatures
+        interface SignalSignatures extends FormField.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FormField.ConstructorProps {}
@@ -1445,6 +1484,7 @@ export namespace XreaderDocument {
 
     class FormFieldSignature extends FormField {
         static $gtype: GObject.GType<FormFieldSignature>;
+        declare static readonly __signalSignatures: FormFieldSignature.SignalSignatures;
 
         // Fields
 
@@ -1460,6 +1500,9 @@ export namespace XreaderDocument {
     }
 
     namespace FormFieldText {
+        // Signal signatures
+        interface SignalSignatures extends FormField.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FormField.ConstructorProps {}
@@ -1467,6 +1510,7 @@ export namespace XreaderDocument {
 
     class FormFieldText extends FormField {
         static $gtype: GObject.GType<FormFieldText>;
+        declare static readonly __signalSignatures: FormFieldText.SignalSignatures;
 
         // Fields
 
@@ -1490,6 +1534,9 @@ export namespace XreaderDocument {
     }
 
     namespace Image {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1497,6 +1544,7 @@ export namespace XreaderDocument {
 
     class Image extends GObject.Object {
         static $gtype: GObject.GType<Image>;
+        declare static readonly __signalSignatures: Image.SignalSignatures;
 
         // Fields
 
@@ -1521,6 +1569,9 @@ export namespace XreaderDocument {
     }
 
     namespace Layer {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1528,6 +1579,7 @@ export namespace XreaderDocument {
 
     class Layer extends GObject.Object {
         static $gtype: GObject.GType<Layer>;
+        declare static readonly __signalSignatures: Layer.SignalSignatures;
 
         // Fields
 
@@ -1548,6 +1600,9 @@ export namespace XreaderDocument {
     }
 
     namespace Link {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1558,6 +1613,7 @@ export namespace XreaderDocument {
 
     class Link extends GObject.Object {
         static $gtype: GObject.GType<Link>;
+        declare static readonly __signalSignatures: Link.SignalSignatures;
 
         // Properties
 
@@ -1578,6 +1634,9 @@ export namespace XreaderDocument {
     }
 
     namespace LinkAction {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1598,6 +1657,7 @@ export namespace XreaderDocument {
 
     class LinkAction extends GObject.Object {
         static $gtype: GObject.GType<LinkAction>;
+        declare static readonly __signalSignatures: LinkAction.SignalSignatures;
 
         // Properties
 
@@ -1641,6 +1701,9 @@ export namespace XreaderDocument {
     }
 
     namespace LinkDest {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1660,6 +1723,7 @@ export namespace XreaderDocument {
 
     class LinkDest extends GObject.Object {
         static $gtype: GObject.GType<LinkDest>;
+        declare static readonly __signalSignatures: LinkDest.SignalSignatures;
 
         // Properties
 
@@ -1722,6 +1786,9 @@ export namespace XreaderDocument {
     }
 
     namespace Page {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1729,6 +1796,7 @@ export namespace XreaderDocument {
 
     class Page extends GObject.Object {
         static $gtype: GObject.GType<Page>;
+        declare static readonly __signalSignatures: Page.SignalSignatures;
 
         // Fields
 
@@ -1747,6 +1815,9 @@ export namespace XreaderDocument {
     }
 
     namespace RenderContext {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1754,6 +1825,7 @@ export namespace XreaderDocument {
 
     class RenderContext extends GObject.Object {
         static $gtype: GObject.GType<RenderContext>;
+        declare static readonly __signalSignatures: RenderContext.SignalSignatures;
 
         // Fields
 
@@ -1777,6 +1849,9 @@ export namespace XreaderDocument {
     }
 
     namespace TransitionEffect {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1792,6 +1867,7 @@ export namespace XreaderDocument {
 
     class TransitionEffect extends GObject.Object {
         static $gtype: GObject.GType<TransitionEffect>;
+        declare static readonly __signalSignatures: TransitionEffect.SignalSignatures;
 
         // Properties
 

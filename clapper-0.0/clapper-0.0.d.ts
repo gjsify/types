@@ -264,6 +264,9 @@ export namespace Clapper {
      */
     function init_check(argv?: string[] | null): [boolean, string[] | null];
     namespace AudioStream {
+        // Signal signatures
+        interface SignalSignatures extends Stream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Stream.ConstructorProps {
@@ -286,6 +289,7 @@ export namespace Clapper {
      */
     class AudioStream extends Stream {
         static $gtype: GObject.GType<AudioStream>;
+        declare static readonly __signalSignatures: AudioStream.SignalSignatures;
 
         // Properties
 
@@ -383,6 +387,9 @@ export namespace Clapper {
     }
 
     namespace Discoverer {
+        // Signal signatures
+        interface SignalSignatures extends Feature.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Feature.ConstructorProps {
@@ -412,6 +419,7 @@ export namespace Clapper {
      */
     class Discoverer extends Feature {
         static $gtype: GObject.GType<Discoverer>;
+        declare static readonly __signalSignatures: Discoverer.SignalSignatures;
 
         // Properties
 
@@ -449,6 +457,9 @@ export namespace Clapper {
     }
 
     namespace Feature {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {}
@@ -468,6 +479,7 @@ export namespace Clapper {
      */
     class Feature extends Gst.Object {
         static $gtype: GObject.GType<Feature>;
+        declare static readonly __signalSignatures: Feature.SignalSignatures;
 
         // Constructors
 
@@ -568,6 +580,9 @@ export namespace Clapper {
     }
 
     namespace Harvest {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {}
@@ -578,6 +593,7 @@ export namespace Clapper {
      */
     class Harvest extends Gst.Object {
         static $gtype: GObject.GType<Harvest>;
+        declare static readonly __signalSignatures: Harvest.SignalSignatures;
 
         // Constructors
 
@@ -648,6 +664,9 @@ export namespace Clapper {
     }
 
     namespace Marker {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {
@@ -699,6 +718,7 @@ export namespace Clapper {
      */
     class Marker extends Gst.Object {
         static $gtype: GObject.GType<Marker>;
+        declare static readonly __signalSignatures: Marker.SignalSignatures;
 
         // Properties
 
@@ -756,6 +776,9 @@ export namespace Clapper {
     }
 
     namespace MediaItem {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {
@@ -780,6 +803,7 @@ export namespace Clapper {
      */
     class MediaItem extends Gst.Object {
         static $gtype: GObject.GType<MediaItem>;
+        declare static readonly __signalSignatures: MediaItem.SignalSignatures;
 
         // Properties
 
@@ -888,6 +912,9 @@ export namespace Clapper {
     }
 
     namespace Mpris {
+        // Signal signatures
+        interface SignalSignatures extends Feature.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Feature.ConstructorProps {
@@ -911,6 +938,7 @@ export namespace Clapper {
      */
     class Mpris extends Feature {
         static $gtype: GObject.GType<Mpris>;
+        declare static readonly __signalSignatures: Mpris.SignalSignatures;
 
         // Properties
 
@@ -1029,6 +1057,15 @@ export namespace Clapper {
             (error: GLib.Error, debug_info?: string | null): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends ThreadedObject.SignalSignatures {
+            'download-complete': DownloadComplete;
+            error: Error;
+            'missing-plugin': MissingPlugin;
+            'seek-done': SeekDone;
+            warning: Warning;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends ThreadedObject.ConstructorProps {
@@ -1102,6 +1139,7 @@ export namespace Clapper {
      */
     class Player extends ThreadedObject {
         static $gtype: GObject.GType<Player>;
+        declare static readonly __signalSignatures: Player.SignalSignatures;
 
         // Properties
 
@@ -1442,6 +1480,9 @@ export namespace Clapper {
 
         // Signals
 
+        connect<K extends keyof Player.SignalSignatures>(signal: K, callback: Player.SignalSignatures[K]): number;
+        connect_after<K extends keyof Player.SignalSignatures>(signal: K, callback: Player.SignalSignatures[K]): number;
+        emit<K extends keyof Player.SignalSignatures>(signal: K, ...args: Parameters<Player.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1807,6 +1848,9 @@ export namespace Clapper {
     }
 
     namespace Queue {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -1830,6 +1874,7 @@ export namespace Clapper {
      */
     class Queue<A extends GObject.Object = GObject.Object> extends Gst.Object implements Gio.ListModel<A> {
         static $gtype: GObject.GType<Queue>;
+        declare static readonly __signalSignatures: Queue.SignalSignatures;
 
         // Properties
 
@@ -2587,6 +2632,9 @@ export namespace Clapper {
     }
 
     namespace Stream {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {
@@ -2601,6 +2649,7 @@ export namespace Clapper {
      */
     class Stream extends Gst.Object {
         static $gtype: GObject.GType<Stream>;
+        declare static readonly __signalSignatures: Stream.SignalSignatures;
 
         // Properties
 
@@ -2651,6 +2700,9 @@ export namespace Clapper {
     }
 
     namespace StreamList {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -2670,6 +2722,7 @@ export namespace Clapper {
      */
     class StreamList<A extends GObject.Object = GObject.Object> extends Gst.Object implements Gio.ListModel<A> {
         static $gtype: GObject.GType<StreamList>;
+        declare static readonly __signalSignatures: StreamList.SignalSignatures;
 
         // Properties
 
@@ -3287,6 +3340,9 @@ export namespace Clapper {
     }
 
     namespace SubtitleStream {
+        // Signal signatures
+        interface SignalSignatures extends Stream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Stream.ConstructorProps {
@@ -3302,6 +3358,7 @@ export namespace Clapper {
      */
     class SubtitleStream extends Stream {
         static $gtype: GObject.GType<SubtitleStream>;
+        declare static readonly __signalSignatures: SubtitleStream.SignalSignatures;
 
         // Properties
 
@@ -3346,6 +3403,9 @@ export namespace Clapper {
     }
 
     namespace ThreadedObject {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {}
@@ -3356,6 +3416,7 @@ export namespace Clapper {
      */
     class ThreadedObject extends Gst.Object {
         static $gtype: GObject.GType<ThreadedObject>;
+        declare static readonly __signalSignatures: ThreadedObject.SignalSignatures;
 
         // Constructors
 
@@ -3391,6 +3452,9 @@ export namespace Clapper {
     }
 
     namespace Timeline {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -3406,6 +3470,7 @@ export namespace Clapper {
      */
     class Timeline<A extends GObject.Object = GObject.Object> extends Gst.Object implements Gio.ListModel<A> {
         static $gtype: GObject.GType<Timeline>;
+        declare static readonly __signalSignatures: Timeline.SignalSignatures;
 
         // Properties
 
@@ -3997,6 +4062,9 @@ export namespace Clapper {
     }
 
     namespace VideoStream {
+        // Signal signatures
+        interface SignalSignatures extends Stream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Stream.ConstructorProps {
@@ -4015,6 +4083,7 @@ export namespace Clapper {
      */
     class VideoStream extends Stream {
         static $gtype: GObject.GType<VideoStream>;
+        declare static readonly __signalSignatures: VideoStream.SignalSignatures;
 
         // Properties
 

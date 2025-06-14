@@ -24,6 +24,9 @@ export namespace FolksLibsocialweb {
      */
 
     namespace Persona {
+        // Signal signatures
+        interface SignalSignatures extends Folks.Persona.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -50,6 +53,7 @@ export namespace FolksLibsocialweb {
             Folks.WebServiceDetails
     {
         static $gtype: GObject.GType<Persona>;
+        declare static readonly __signalSignatures: Persona.SignalSignatures;
 
         // Properties
 
@@ -637,6 +641,9 @@ export namespace FolksLibsocialweb {
     }
 
     namespace PersonaStore {
+        // Signal signatures
+        interface SignalSignatures extends Folks.PersonaStore.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Folks.PersonaStore.ConstructorProps {
@@ -646,6 +653,7 @@ export namespace FolksLibsocialweb {
 
     class PersonaStore extends Folks.PersonaStore {
         static $gtype: GObject.GType<PersonaStore>;
+        declare static readonly __signalSignatures: PersonaStore.SignalSignatures;
 
         // Properties
 

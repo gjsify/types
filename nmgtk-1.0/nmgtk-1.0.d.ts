@@ -144,6 +144,9 @@ export namespace NMGtk {
         (self: MobileWizard, canceled: boolean, method: MobileWizardAccessMethod): void;
     }
     namespace MobileProvidersDatabase {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -162,6 +165,7 @@ export namespace NMGtk {
         implements Gio.AsyncInitable<MobileProvidersDatabase>, Gio.Initable
     {
         static $gtype: GObject.GType<MobileProvidersDatabase>;
+        declare static readonly __signalSignatures: MobileProvidersDatabase.SignalSignatures;
 
         // Properties
 
@@ -931,6 +935,9 @@ export namespace NMGtk {
     }
 
     namespace VpnPasswordDialog {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Dialog.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -941,6 +948,7 @@ export namespace NMGtk {
 
     class VpnPasswordDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<VpnPasswordDialog>;
+        declare static readonly __signalSignatures: VpnPasswordDialog.SignalSignatures;
 
         // Constructors
 
@@ -1415,6 +1423,9 @@ export namespace NMGtk {
     }
 
     namespace WifiDialog {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Dialog.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1425,6 +1436,7 @@ export namespace NMGtk {
 
     class WifiDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<WifiDialog>;
+        declare static readonly __signalSignatures: WifiDialog.SignalSignatures;
 
         // Constructors
 

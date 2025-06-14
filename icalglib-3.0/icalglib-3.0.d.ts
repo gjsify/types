@@ -1169,6 +1169,9 @@ export namespace ICalGLib {
         (bytes: number[]): string;
     }
     namespace Array {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -1179,6 +1182,7 @@ export namespace ICalGLib {
      */
     class Array extends Object {
         static $gtype: GObject.GType<Array>;
+        declare static readonly __signalSignatures: Array.SignalSignatures;
 
         // Constructors
 
@@ -1206,6 +1210,9 @@ export namespace ICalGLib {
     }
 
     namespace Attach {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -1216,6 +1223,7 @@ export namespace ICalGLib {
      */
     class Attach extends Object {
         static $gtype: GObject.GType<Attach>;
+        declare static readonly __signalSignatures: Attach.SignalSignatures;
 
         // Constructors
 
@@ -1251,6 +1259,9 @@ export namespace ICalGLib {
     }
 
     namespace CompIter {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -1261,6 +1272,7 @@ export namespace ICalGLib {
      */
     class CompIter extends Object {
         static $gtype: GObject.GType<CompIter>;
+        declare static readonly __signalSignatures: CompIter.SignalSignatures;
 
         // Constructors
 
@@ -1288,6 +1300,9 @@ export namespace ICalGLib {
     }
 
     namespace Component {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -1298,6 +1313,7 @@ export namespace ICalGLib {
      */
     class Component extends Object {
         static $gtype: GObject.GType<Component>;
+        declare static readonly __signalSignatures: Component.SignalSignatures;
 
         // Constructors
 
@@ -1689,6 +1705,9 @@ export namespace ICalGLib {
     }
 
     namespace Datetimeperiod {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -1699,6 +1718,7 @@ export namespace ICalGLib {
      */
     class Datetimeperiod extends Object {
         static $gtype: GObject.GType<Datetimeperiod>;
+        declare static readonly __signalSignatures: Datetimeperiod.SignalSignatures;
 
         // Constructors
 
@@ -1733,6 +1753,9 @@ export namespace ICalGLib {
     }
 
     namespace Duration {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -1743,6 +1766,7 @@ export namespace ICalGLib {
      */
     class Duration extends Object {
         static $gtype: GObject.GType<Duration>;
+        declare static readonly __signalSignatures: Duration.SignalSignatures;
 
         // Constructors
 
@@ -1843,6 +1867,9 @@ export namespace ICalGLib {
     }
 
     namespace Geo {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -1853,6 +1880,7 @@ export namespace ICalGLib {
      */
     class Geo extends Object {
         static $gtype: GObject.GType<Geo>;
+        declare static readonly __signalSignatures: Geo.SignalSignatures;
 
         // Constructors
 
@@ -1892,6 +1920,9 @@ export namespace ICalGLib {
     }
 
     namespace Object {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1911,6 +1942,7 @@ export namespace ICalGLib {
      */
     abstract class Object extends GObject.Object {
         static $gtype: GObject.GType<Object>;
+        declare static readonly __signalSignatures: Object.SignalSignatures;
 
         // Properties
 
@@ -2035,6 +2067,9 @@ export namespace ICalGLib {
     }
 
     namespace Parameter {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -2045,6 +2080,7 @@ export namespace ICalGLib {
      */
     class Parameter extends Object {
         static $gtype: GObject.GType<Parameter>;
+        declare static readonly __signalSignatures: Parameter.SignalSignatures;
 
         // Constructors
 
@@ -2362,6 +2398,9 @@ export namespace ICalGLib {
     }
 
     namespace Parser {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -2372,6 +2411,7 @@ export namespace ICalGLib {
      */
     class Parser extends Object {
         static $gtype: GObject.GType<Parser>;
+        declare static readonly __signalSignatures: Parser.SignalSignatures;
 
         // Constructors
 
@@ -2430,6 +2470,9 @@ export namespace ICalGLib {
     }
 
     namespace Period {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -2440,6 +2483,7 @@ export namespace ICalGLib {
      */
     class Period extends Object {
         static $gtype: GObject.GType<Period>;
+        declare static readonly __signalSignatures: Period.SignalSignatures;
 
         // Constructors
 
@@ -2501,6 +2545,9 @@ export namespace ICalGLib {
     }
 
     namespace Property {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -2511,6 +2558,7 @@ export namespace ICalGLib {
      */
     class Property extends Object {
         static $gtype: GObject.GType<Property>;
+        declare static readonly __signalSignatures: Property.SignalSignatures;
 
         // Constructors
 
@@ -4101,6 +4149,9 @@ export namespace ICalGLib {
     }
 
     namespace RecurIterator {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -4111,6 +4162,7 @@ export namespace ICalGLib {
      */
     class RecurIterator extends Object {
         static $gtype: GObject.GType<RecurIterator>;
+        declare static readonly __signalSignatures: RecurIterator.SignalSignatures;
 
         // Constructors
 
@@ -4138,6 +4190,9 @@ export namespace ICalGLib {
     }
 
     namespace Recurrence {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -4148,6 +4203,7 @@ export namespace ICalGLib {
      */
     class Recurrence extends Object {
         static $gtype: GObject.GType<Recurrence>;
+        declare static readonly __signalSignatures: Recurrence.SignalSignatures;
 
         // Constructors
 
@@ -4487,6 +4543,9 @@ export namespace ICalGLib {
     }
 
     namespace Reqstat {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -4497,6 +4556,7 @@ export namespace ICalGLib {
      */
     class Reqstat extends Object {
         static $gtype: GObject.GType<Reqstat>;
+        declare static readonly __signalSignatures: Reqstat.SignalSignatures;
 
         // Constructors
 
@@ -4536,6 +4596,9 @@ export namespace ICalGLib {
     }
 
     namespace Time {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -4546,6 +4609,7 @@ export namespace ICalGLib {
      */
     class Time extends Object {
         static $gtype: GObject.GType<Time>;
+        declare static readonly __signalSignatures: Time.SignalSignatures;
 
         // Constructors
 
@@ -4843,6 +4907,9 @@ export namespace ICalGLib {
     }
 
     namespace TimeSpan {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -4853,6 +4920,7 @@ export namespace ICalGLib {
      */
     class TimeSpan extends Object {
         static $gtype: GObject.GType<TimeSpan>;
+        declare static readonly __signalSignatures: TimeSpan.SignalSignatures;
 
         // Constructors
 
@@ -4916,6 +4984,9 @@ export namespace ICalGLib {
     }
 
     namespace Timezone {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -4926,6 +4997,7 @@ export namespace ICalGLib {
      */
     class Timezone extends Object {
         static $gtype: GObject.GType<Timezone>;
+        declare static readonly __signalSignatures: Timezone.SignalSignatures;
 
         // Constructors
 
@@ -5104,6 +5176,9 @@ export namespace ICalGLib {
     }
 
     namespace Trigger {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -5114,6 +5189,7 @@ export namespace ICalGLib {
      */
     class Trigger extends Object {
         static $gtype: GObject.GType<Trigger>;
+        declare static readonly __signalSignatures: Trigger.SignalSignatures;
 
         // Constructors
 
@@ -5160,6 +5236,9 @@ export namespace ICalGLib {
     }
 
     namespace Value {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -5170,6 +5249,7 @@ export namespace ICalGLib {
      */
     class Value extends Object {
         static $gtype: GObject.GType<Value>;
+        declare static readonly __signalSignatures: Value.SignalSignatures;
 
         // Constructors
 

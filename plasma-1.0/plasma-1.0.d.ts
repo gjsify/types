@@ -23,6 +23,9 @@ export namespace Plasma {
      */
 
     namespace Client {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -32,6 +35,7 @@ export namespace Plasma {
 
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
+        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Properties
 
@@ -55,6 +59,9 @@ export namespace Plasma {
     }
 
     namespace ClientCreateOptions {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -65,6 +72,7 @@ export namespace Plasma {
 
     class ClientCreateOptions extends GObject.Object {
         static $gtype: GObject.GType<ClientCreateOptions>;
+        declare static readonly __signalSignatures: ClientCreateOptions.SignalSignatures;
 
         // Properties
 
@@ -88,6 +96,9 @@ export namespace Plasma {
     }
 
     namespace ClientOptions {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -98,6 +109,7 @@ export namespace Plasma {
 
     class ClientOptions extends GObject.Object {
         static $gtype: GObject.GType<ClientOptions>;
+        declare static readonly __signalSignatures: ClientOptions.SignalSignatures;
 
         // Properties
 
@@ -121,6 +133,9 @@ export namespace Plasma {
     }
 
     namespace CreatedObject {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -128,6 +143,7 @@ export namespace Plasma {
 
     class CreatedObject extends Object {
         static $gtype: GObject.GType<CreatedObject>;
+        declare static readonly __signalSignatures: CreatedObject.SignalSignatures;
 
         // Constructors
 
@@ -152,6 +168,9 @@ export namespace Plasma {
     }
 
     namespace Object {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -170,6 +189,7 @@ export namespace Plasma {
 
     class Object extends GObject.Object {
         static $gtype: GObject.GType<Object>;
+        declare static readonly __signalSignatures: Object.SignalSignatures;
 
         // Properties
 
@@ -192,6 +212,9 @@ export namespace Plasma {
     }
 
     namespace ObjectID {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -199,6 +222,7 @@ export namespace Plasma {
 
     class ObjectID extends GObject.Object {
         static $gtype: GObject.GType<ObjectID>;
+        declare static readonly __signalSignatures: ObjectID.SignalSignatures;
 
         // Constructors
 
@@ -215,6 +239,9 @@ export namespace Plasma {
     }
 
     namespace ReferredObject {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -222,6 +249,7 @@ export namespace Plasma {
 
     class ReferredObject extends Object {
         static $gtype: GObject.GType<ReferredObject>;
+        declare static readonly __signalSignatures: ReferredObject.SignalSignatures;
 
         // Constructors
 

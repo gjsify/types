@@ -64,6 +64,13 @@ export namespace Caribou {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'modifiers-changed': ModifiersChanged;
+            'group-changed': GroupChanged;
+            'config-changed': ConfigChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -73,6 +80,7 @@ export namespace Caribou {
 
     abstract class DisplayAdapter extends GObject.Object {
         static $gtype: GObject.GType<DisplayAdapter>;
+        declare static readonly __signalSignatures: DisplayAdapter.SignalSignatures;
 
         // Properties
 
@@ -86,6 +94,18 @@ export namespace Caribou {
 
         // Signals
 
+        connect<K extends keyof DisplayAdapter.SignalSignatures>(
+            signal: K,
+            callback: DisplayAdapter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DisplayAdapter.SignalSignatures>(
+            signal: K,
+            callback: DisplayAdapter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DisplayAdapter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DisplayAdapter.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -139,6 +159,9 @@ export namespace Caribou {
     }
 
     namespace NullAdapter {
+        // Signal signatures
+        interface SignalSignatures extends DisplayAdapter.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DisplayAdapter.ConstructorProps {}
@@ -146,6 +169,7 @@ export namespace Caribou {
 
     class NullAdapter extends DisplayAdapter {
         static $gtype: GObject.GType<NullAdapter>;
+        declare static readonly __signalSignatures: NullAdapter.SignalSignatures;
 
         // Constructors
 
@@ -157,6 +181,9 @@ export namespace Caribou {
     }
 
     namespace XAdapter {
+        // Signal signatures
+        interface SignalSignatures extends DisplayAdapter.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DisplayAdapter.ConstructorProps {}
@@ -164,6 +191,7 @@ export namespace Caribou {
 
     class XAdapter extends DisplayAdapter {
         static $gtype: GObject.GType<XAdapter>;
+        declare static readonly __signalSignatures: XAdapter.SignalSignatures;
 
         // Constructors
 
@@ -185,6 +213,12 @@ export namespace Caribou {
             (name: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'group-added': GroupAdded;
+            'group-removed': GroupRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, IKeyboardObject.ConstructorProps {
@@ -199,6 +233,7 @@ export namespace Caribou {
 
     class KeyboardModel extends GObject.Object implements IKeyboardObject {
         static $gtype: GObject.GType<KeyboardModel>;
+        declare static readonly __signalSignatures: KeyboardModel.SignalSignatures;
 
         // Properties
 
@@ -221,6 +256,18 @@ export namespace Caribou {
 
         // Signals
 
+        connect<K extends keyof KeyboardModel.SignalSignatures>(
+            signal: K,
+            callback: KeyboardModel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof KeyboardModel.SignalSignatures>(
+            signal: K,
+            callback: KeyboardModel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof KeyboardModel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<KeyboardModel.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -686,6 +733,9 @@ export namespace Caribou {
     }
 
     namespace KeyboardService {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -693,6 +743,7 @@ export namespace Caribou {
 
     abstract class KeyboardService extends GObject.Object {
         static $gtype: GObject.GType<KeyboardService>;
+        declare static readonly __signalSignatures: KeyboardService.SignalSignatures;
 
         // Constructors
 
@@ -719,6 +770,9 @@ export namespace Caribou {
     }
 
     namespace GroupModel {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, IKeyboardObject.ConstructorProps {
@@ -729,6 +783,7 @@ export namespace Caribou {
 
     class GroupModel extends GObject.Object implements IKeyboardObject {
         static $gtype: GObject.GType<GroupModel>;
+        declare static readonly __signalSignatures: GroupModel.SignalSignatures;
 
         // Properties
 
@@ -1213,6 +1268,11 @@ export namespace Caribou {
             (new_level: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends ScannableGroup.SignalSignatures {
+            'level-toggled': LevelToggled;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends ScannableGroup.ConstructorProps, IKeyboardObject.ConstructorProps {
@@ -1222,6 +1282,7 @@ export namespace Caribou {
 
     class LevelModel extends ScannableGroup implements IKeyboardObject {
         static $gtype: GObject.GType<LevelModel>;
+        declare static readonly __signalSignatures: LevelModel.SignalSignatures;
 
         // Properties
 
@@ -1238,6 +1299,18 @@ export namespace Caribou {
 
         // Signals
 
+        connect<K extends keyof LevelModel.SignalSignatures>(
+            signal: K,
+            callback: LevelModel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LevelModel.SignalSignatures>(
+            signal: K,
+            callback: LevelModel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LevelModel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LevelModel.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1697,6 +1770,9 @@ export namespace Caribou {
     }
 
     namespace RowModel {
+        // Signal signatures
+        interface SignalSignatures extends ScannableGroup.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1707,6 +1783,7 @@ export namespace Caribou {
 
     class RowModel extends ScannableGroup implements IScannableItem, IKeyboardObject {
         static $gtype: GObject.GType<RowModel>;
+        declare static readonly __signalSignatures: RowModel.SignalSignatures;
 
         // Constructors
 
@@ -2195,6 +2272,12 @@ export namespace Caribou {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'key-hold-end': KeyHoldEnd;
+            'key-hold': KeyHold;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2218,6 +2301,7 @@ export namespace Caribou {
 
     class KeyModel extends GObject.Object implements IScannableItem, IKeyboardObject {
         static $gtype: GObject.GType<KeyModel>;
+        declare static readonly __signalSignatures: KeyModel.SignalSignatures;
 
         // Properties
 
@@ -2260,6 +2344,15 @@ export namespace Caribou {
 
         // Signals
 
+        connect<K extends keyof KeyModel.SignalSignatures>(signal: K, callback: KeyModel.SignalSignatures[K]): number;
+        connect_after<K extends keyof KeyModel.SignalSignatures>(
+            signal: K,
+            callback: KeyModel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof KeyModel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<KeyModel.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2758,6 +2851,9 @@ export namespace Caribou {
     }
 
     namespace ColumnModel {
+        // Signal signatures
+        interface SignalSignatures extends ScannableGroup.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2768,6 +2864,7 @@ export namespace Caribou {
 
     class ColumnModel extends ScannableGroup implements IScannableItem, IKeyboardObject {
         static $gtype: GObject.GType<ColumnModel>;
+        declare static readonly __signalSignatures: ColumnModel.SignalSignatures;
 
         // Constructors
 
@@ -3247,6 +3344,9 @@ export namespace Caribou {
     }
 
     namespace Scanner {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3274,6 +3374,7 @@ export namespace Caribou {
 
     class Scanner extends GObject.Object {
         static $gtype: GObject.GType<Scanner>;
+        declare static readonly __signalSignatures: Scanner.SignalSignatures;
 
         // Properties
 
@@ -3348,6 +3449,9 @@ export namespace Caribou {
     }
 
     namespace ScannableGroup {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, IScannableGroup.ConstructorProps {}
@@ -3355,6 +3459,7 @@ export namespace Caribou {
 
     abstract class ScannableGroup extends GObject.Object implements IScannableGroup {
         static $gtype: GObject.GType<ScannableGroup>;
+        declare static readonly __signalSignatures: ScannableGroup.SignalSignatures;
 
         // Constructors
 

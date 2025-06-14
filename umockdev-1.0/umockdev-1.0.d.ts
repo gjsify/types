@@ -34,6 +34,9 @@ export namespace UMockdev {
 
     function in_mock_environment(): boolean;
     namespace Testbed {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -41,6 +44,7 @@ export namespace UMockdev {
 
     class Testbed extends GObject.Object {
         static $gtype: GObject.GType<Testbed>;
+        declare static readonly __signalSignatures: Testbed.SignalSignatures;
 
         // Constructors
 
@@ -92,6 +96,9 @@ export namespace UMockdev {
     }
 
     namespace IoctlData {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -99,6 +106,7 @@ export namespace UMockdev {
 
     class IoctlData extends GObject.Object {
         static $gtype: GObject.GType<IoctlData>;
+        declare static readonly __signalSignatures: IoctlData.SignalSignatures;
 
         // Fields
 
@@ -124,6 +132,9 @@ export namespace UMockdev {
     }
 
     namespace IoctlClient {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -136,6 +147,7 @@ export namespace UMockdev {
 
     class IoctlClient extends GObject.Object {
         static $gtype: GObject.GType<IoctlClient>;
+        declare static readonly __signalSignatures: IoctlClient.SignalSignatures;
 
         // Properties
 
@@ -172,6 +184,12 @@ export namespace UMockdev {
             (client: IoctlClient): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'client-connected': ClientConnected;
+            'client-vanished': ClientVanished;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -179,6 +197,7 @@ export namespace UMockdev {
 
     class IoctlBase extends GObject.Object {
         static $gtype: GObject.GType<IoctlBase>;
+        declare static readonly __signalSignatures: IoctlBase.SignalSignatures;
 
         // Constructors
 
@@ -190,6 +209,15 @@ export namespace UMockdev {
 
         // Signals
 
+        connect<K extends keyof IoctlBase.SignalSignatures>(signal: K, callback: IoctlBase.SignalSignatures[K]): number;
+        connect_after<K extends keyof IoctlBase.SignalSignatures>(
+            signal: K,
+            callback: IoctlBase.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof IoctlBase.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<IoctlBase.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

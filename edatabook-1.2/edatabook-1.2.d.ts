@@ -429,6 +429,12 @@ export namespace EDataBook {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends EBackend.Backend.SignalSignatures {
+            closed: Closed;
+            shutdown: Shutdown;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends EBackend.Backend.ConstructorProps {
@@ -447,6 +453,7 @@ export namespace EDataBook {
      */
     class BookBackend extends EBackend.Backend {
         static $gtype: GObject.GType<BookBackend>;
+        declare static readonly __signalSignatures: BookBackend.SignalSignatures;
 
         // Properties
 
@@ -468,6 +475,18 @@ export namespace EDataBook {
 
         // Signals
 
+        connect<K extends keyof BookBackend.SignalSignatures>(
+            signal: K,
+            callback: BookBackend.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BookBackend.SignalSignatures>(
+            signal: K,
+            callback: BookBackend.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BookBackend.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BookBackend.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1540,6 +1559,9 @@ export namespace EDataBook {
     }
 
     namespace BookBackendFactory {
+        // Signal signatures
+        interface SignalSignatures extends EBackend.BackendFactory.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends EBackend.BackendFactory.ConstructorProps {}
@@ -1551,6 +1573,7 @@ export namespace EDataBook {
      */
     abstract class BookBackendFactory extends EBackend.BackendFactory {
         static $gtype: GObject.GType<BookBackendFactory>;
+        declare static readonly __signalSignatures: BookBackendFactory.SignalSignatures;
 
         // Constructors
 
@@ -1560,6 +1583,9 @@ export namespace EDataBook {
     }
 
     namespace BookBackendSExp {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1567,6 +1593,7 @@ export namespace EDataBook {
 
     class BookBackendSExp extends GObject.Object {
         static $gtype: GObject.GType<BookBackendSExp>;
+        declare static readonly __signalSignatures: BookBackendSExp.SignalSignatures;
 
         // Constructors
 
@@ -1622,6 +1649,9 @@ export namespace EDataBook {
     }
 
     namespace BookBackendSync {
+        // Signal signatures
+        interface SignalSignatures extends BookBackend.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends BookBackend.ConstructorProps {}
@@ -1633,6 +1663,7 @@ export namespace EDataBook {
      */
     class BookBackendSync extends BookBackend {
         static $gtype: GObject.GType<BookBackendSync>;
+        declare static readonly __signalSignatures: BookBackendSync.SignalSignatures;
 
         // Constructors
 
@@ -1800,6 +1831,13 @@ export namespace EDataBook {
             (object: EBookContacts.Contact, p0: boolean): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends EBackend.Cache.SignalSignatures {
+            'categories-changed': CategoriesChanged;
+            'dup-contact-revision': DupContactRevision;
+            'e164-changed': E164Changed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends EBackend.Cache.ConstructorProps, EDataServer.Extensible.ConstructorProps {
@@ -1813,6 +1851,7 @@ export namespace EDataBook {
      */
     class BookCache extends EBackend.Cache implements EDataServer.Extensible {
         static $gtype: GObject.GType<BookCache>;
+        declare static readonly __signalSignatures: BookCache.SignalSignatures;
 
         // Properties
 
@@ -1839,6 +1878,15 @@ export namespace EDataBook {
 
         // Signals
 
+        connect<K extends keyof BookCache.SignalSignatures>(signal: K, callback: BookCache.SignalSignatures[K]): number;
+        connect_after<K extends keyof BookCache.SignalSignatures>(
+            signal: K,
+            callback: BookCache.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BookCache.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BookCache.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2758,6 +2806,12 @@ export namespace EDataBook {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends BookBackendSync.SignalSignatures {
+            'refresh-completed': RefreshCompleted;
+            'source-changed': SourceChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends BookBackendSync.ConstructorProps {
@@ -2771,6 +2825,7 @@ export namespace EDataBook {
      */
     abstract class BookMetaBackend extends BookBackendSync {
         static $gtype: GObject.GType<BookMetaBackend>;
+        declare static readonly __signalSignatures: BookMetaBackend.SignalSignatures;
 
         // Properties
 
@@ -2788,6 +2843,18 @@ export namespace EDataBook {
 
         // Signals
 
+        connect<K extends keyof BookMetaBackend.SignalSignatures>(
+            signal: K,
+            callback: BookMetaBackend.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BookMetaBackend.SignalSignatures>(
+            signal: K,
+            callback: BookMetaBackend.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BookMetaBackend.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BookMetaBackend.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3430,6 +3497,12 @@ export namespace EDataBook {
             (object: any | null, p0: string, p1?: Gio.Cancellable | null, p2?: any | null): boolean;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'before-insert-contact': BeforeInsertContact;
+            'before-remove-contact': BeforeRemoveContact;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, EDataServer.Extensible.ConstructorProps {}
@@ -3441,6 +3514,7 @@ export namespace EDataBook {
      */
     class BookSqlite extends GObject.Object implements EDataServer.Extensible {
         static $gtype: GObject.GType<BookSqlite>;
+        declare static readonly __signalSignatures: BookSqlite.SignalSignatures;
 
         // Constructors
 
@@ -3466,6 +3540,18 @@ export namespace EDataBook {
 
         // Signals
 
+        connect<K extends keyof BookSqlite.SignalSignatures>(
+            signal: K,
+            callback: BookSqlite.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BookSqlite.SignalSignatures>(
+            signal: K,
+            callback: BookSqlite.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BookSqlite.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BookSqlite.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -4326,6 +4412,9 @@ export namespace EDataBook {
     }
 
     namespace DataBook {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -4338,6 +4427,7 @@ export namespace EDataBook {
 
     class DataBook extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<DataBook>;
+        declare static readonly __signalSignatures: DataBook.SignalSignatures;
 
         // Properties
 
@@ -4996,6 +5086,9 @@ export namespace EDataBook {
     }
 
     namespace DataBookCursor {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5010,6 +5103,7 @@ export namespace EDataBook {
      */
     abstract class DataBookCursor extends GObject.Object {
         static $gtype: GObject.GType<DataBookCursor>;
+        declare static readonly __signalSignatures: DataBookCursor.SignalSignatures;
 
         // Properties
 
@@ -5194,6 +5288,9 @@ export namespace EDataBook {
     }
 
     namespace DataBookCursorCache {
+        // Signal signatures
+        interface SignalSignatures extends DataBookCursor.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DataBookCursor.ConstructorProps {
@@ -5208,6 +5305,7 @@ export namespace EDataBook {
      */
     class DataBookCursorCache extends DataBookCursor {
         static $gtype: GObject.GType<DataBookCursorCache>;
+        declare static readonly __signalSignatures: DataBookCursorCache.SignalSignatures;
 
         // Properties
 
@@ -5230,6 +5328,9 @@ export namespace EDataBook {
     }
 
     namespace DataBookCursorSqlite {
+        // Signal signatures
+        interface SignalSignatures extends DataBookCursor.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DataBookCursor.ConstructorProps {
@@ -5245,6 +5346,7 @@ export namespace EDataBook {
      */
     class DataBookCursorSqlite extends DataBookCursor {
         static $gtype: GObject.GType<DataBookCursorSqlite>;
+        declare static readonly __signalSignatures: DataBookCursorSqlite.SignalSignatures;
 
         // Properties
 
@@ -5269,6 +5371,9 @@ export namespace EDataBook {
     }
 
     namespace DataBookDirect {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5276,6 +5381,7 @@ export namespace EDataBook {
 
     class DataBookDirect extends GObject.Object {
         static $gtype: GObject.GType<DataBookDirect>;
+        declare static readonly __signalSignatures: DataBookDirect.SignalSignatures;
 
         // Constructors
 
@@ -5296,6 +5402,9 @@ export namespace EDataBook {
     }
 
     namespace DataBookFactory {
+        // Signal signatures
+        interface SignalSignatures extends EBackend.DataFactory.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5306,6 +5415,7 @@ export namespace EDataBook {
 
     class DataBookFactory extends EBackend.DataFactory implements EDataServer.Extensible, Gio.Initable {
         static $gtype: GObject.GType<DataBookFactory>;
+        declare static readonly __signalSignatures: DataBookFactory.SignalSignatures;
 
         // Constructors
 
@@ -5857,6 +5967,13 @@ export namespace EDataBook {
             (uids: string[]): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'objects-added': ObjectsAdded;
+            'objects-modified': ObjectsModified;
+            'objects-removed': ObjectsRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -5873,6 +5990,7 @@ export namespace EDataBook {
 
     class DataBookView extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<DataBookView>;
+        declare static readonly __signalSignatures: DataBookView.SignalSignatures;
 
         // Properties
 
@@ -5903,6 +6021,18 @@ export namespace EDataBook {
 
         // Signals
 
+        connect<K extends keyof DataBookView.SignalSignatures>(
+            signal: K,
+            callback: DataBookView.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DataBookView.SignalSignatures>(
+            signal: K,
+            callback: DataBookView.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DataBookView.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DataBookView.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -6637,6 +6767,9 @@ export namespace EDataBook {
     }
 
     namespace DataBookViewWatcherCache {
+        // Signal signatures
+        interface SignalSignatures extends EBookContacts.BookIndicesUpdater.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends EBookContacts.BookIndicesUpdater.ConstructorProps {}
@@ -6648,6 +6781,7 @@ export namespace EDataBook {
      */
     class DataBookViewWatcherCache extends EBookContacts.BookIndicesUpdater {
         static $gtype: GObject.GType<DataBookViewWatcherCache>;
+        declare static readonly __signalSignatures: DataBookViewWatcherCache.SignalSignatures;
 
         // Constructors
 
@@ -6679,6 +6813,9 @@ export namespace EDataBook {
     }
 
     namespace DataBookViewWatcherMemory {
+        // Signal signatures
+        interface SignalSignatures extends EBookContacts.BookIndicesUpdater.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends EBookContacts.BookIndicesUpdater.ConstructorProps {}
@@ -6690,6 +6827,7 @@ export namespace EDataBook {
      */
     class DataBookViewWatcherMemory extends EBookContacts.BookIndicesUpdater {
         static $gtype: GObject.GType<DataBookViewWatcherMemory>;
+        declare static readonly __signalSignatures: DataBookViewWatcherMemory.SignalSignatures;
 
         // Constructors
 
@@ -6727,6 +6865,9 @@ export namespace EDataBook {
     }
 
     namespace DataBookViewWatcherSqlite {
+        // Signal signatures
+        interface SignalSignatures extends EBookContacts.BookIndicesUpdater.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends EBookContacts.BookIndicesUpdater.ConstructorProps {}
@@ -6738,6 +6879,7 @@ export namespace EDataBook {
      */
     class DataBookViewWatcherSqlite extends EBookContacts.BookIndicesUpdater {
         static $gtype: GObject.GType<DataBookViewWatcherSqlite>;
+        declare static readonly __signalSignatures: DataBookViewWatcherSqlite.SignalSignatures;
 
         // Constructors
 
@@ -6769,6 +6911,9 @@ export namespace EDataBook {
     }
 
     namespace SubprocessBookFactory {
+        // Signal signatures
+        interface SignalSignatures extends EBackend.SubprocessFactory.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends EBackend.SubprocessFactory.ConstructorProps, Gio.Initable.ConstructorProps {}
@@ -6776,6 +6921,7 @@ export namespace EDataBook {
 
     class SubprocessBookFactory extends EBackend.SubprocessFactory implements Gio.Initable {
         static $gtype: GObject.GType<SubprocessBookFactory>;
+        declare static readonly __signalSignatures: SubprocessBookFactory.SignalSignatures;
 
         // Constructors
 
@@ -7313,6 +7459,9 @@ export namespace EDataBook {
     }
 
     namespace SystemLocaleWatcher {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7326,6 +7475,7 @@ export namespace EDataBook {
      */
     class SystemLocaleWatcher extends GObject.Object {
         static $gtype: GObject.GType<SystemLocaleWatcher>;
+        declare static readonly __signalSignatures: SystemLocaleWatcher.SignalSignatures;
 
         // Properties
 

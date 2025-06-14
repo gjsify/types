@@ -78,6 +78,11 @@ export namespace Unique {
             (command: number, message_data: MessageData, time_: number): Response;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'message-received': MessageReceived;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -97,6 +102,7 @@ export namespace Unique {
      */
     class App extends GObject.Object {
         static $gtype: GObject.GType<App>;
+        declare static readonly __signalSignatures: App.SignalSignatures;
 
         // Properties
 
@@ -141,6 +147,9 @@ export namespace Unique {
 
         // Signals
 
+        connect<K extends keyof App.SignalSignatures>(signal: K, callback: App.SignalSignatures[K]): number;
+        connect_after<K extends keyof App.SignalSignatures>(signal: K, callback: App.SignalSignatures[K]): number;
+        emit<K extends keyof App.SignalSignatures>(signal: K, ...args: Parameters<App.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -196,6 +205,9 @@ export namespace Unique {
     }
 
     namespace Backend {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -207,6 +219,7 @@ export namespace Unique {
      */
     abstract class Backend extends GObject.Object {
         static $gtype: GObject.GType<Backend>;
+        declare static readonly __signalSignatures: Backend.SignalSignatures;
 
         // Constructors
 

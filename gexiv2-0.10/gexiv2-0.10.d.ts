@@ -240,6 +240,9 @@ export namespace GExiv2 {
         OMIT_ALL_FORMATTING,
     }
     namespace Metadata {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -262,6 +265,7 @@ export namespace GExiv2 {
      */
     class Metadata extends GObject.Object {
         static $gtype: GObject.GType<Metadata>;
+        declare static readonly __signalSignatures: Metadata.SignalSignatures;
 
         // Constructors
 
@@ -992,6 +996,9 @@ export namespace GExiv2 {
     }
 
     namespace PreviewImage {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -999,6 +1006,7 @@ export namespace GExiv2 {
 
     class PreviewImage extends GObject.Object {
         static $gtype: GObject.GType<PreviewImage>;
+        declare static readonly __signalSignatures: PreviewImage.SignalSignatures;
 
         // Constructors
 
@@ -1024,6 +1032,9 @@ export namespace GExiv2 {
     }
 
     namespace PreviewProperties {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1031,6 +1042,7 @@ export namespace GExiv2 {
 
     class PreviewProperties extends GObject.Object {
         static $gtype: GObject.GType<PreviewProperties>;
+        declare static readonly __signalSignatures: PreviewProperties.SignalSignatures;
 
         // Constructors
 

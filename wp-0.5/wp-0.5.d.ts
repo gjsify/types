@@ -533,6 +533,9 @@ export namespace Wp {
         ENABLED,
     }
     namespace AsyncEventHook {
+        // Signal signatures
+        interface SignalSignatures extends InterestEventHook.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends InterestEventHook.ConstructorProps {
@@ -548,6 +551,7 @@ export namespace Wp {
      */
     class AsyncEventHook extends InterestEventHook {
         static $gtype: GObject.GType<AsyncEventHook>;
+        declare static readonly __signalSignatures: AsyncEventHook.SignalSignatures;
 
         // Properties
 
@@ -572,6 +576,9 @@ export namespace Wp {
     }
 
     namespace Client {
+        // Signal signatures
+        interface SignalSignatures extends GlobalProxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GlobalProxy.ConstructorProps, PipewireObject.ConstructorProps {}
@@ -582,6 +589,7 @@ export namespace Wp {
      */
     class Client extends GlobalProxy implements PipewireObject {
         static $gtype: GObject.GType<Client>;
+        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Constructors
 
@@ -840,6 +848,9 @@ export namespace Wp {
     }
 
     namespace Conf {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -853,6 +864,7 @@ export namespace Wp {
      */
     class Conf extends GObject.Object {
         static $gtype: GObject.GType<Conf>;
+        declare static readonly __signalSignatures: Conf.SignalSignatures;
 
         // Properties
 
@@ -921,6 +933,12 @@ export namespace Wp {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {
+            connected: Connected;
+            disconnected: Disconnected;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -951,6 +969,7 @@ export namespace Wp {
      */
     class Core extends Object {
         static $gtype: GObject.GType<Core>;
+        declare static readonly __signalSignatures: Core.SignalSignatures;
 
         // Properties
 
@@ -973,6 +992,8 @@ export namespace Wp {
 
         // Signals
 
+        connect_after<K extends keyof Core.SignalSignatures>(signal: K, callback: Core.SignalSignatures[K]): number;
+        emit<K extends keyof Core.SignalSignatures>(signal: K, ...args: Parameters<Core.SignalSignatures[K]>): void;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
         connect_after(signal: 'connected', callback: (_source: this) => void): number;
@@ -1288,6 +1309,9 @@ export namespace Wp {
     }
 
     namespace Device {
+        // Signal signatures
+        interface SignalSignatures extends GlobalProxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GlobalProxy.ConstructorProps, PipewireObject.ConstructorProps {}
@@ -1299,6 +1323,7 @@ export namespace Wp {
      */
     class Device extends GlobalProxy implements PipewireObject {
         static $gtype: GObject.GType<Device>;
+        declare static readonly __signalSignatures: Device.SignalSignatures;
 
         // Constructors
 
@@ -1541,6 +1566,9 @@ export namespace Wp {
     }
 
     namespace EventDispatcher {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1551,6 +1579,7 @@ export namespace Wp {
      */
     class EventDispatcher extends GObject.Object {
         static $gtype: GObject.GType<EventDispatcher>;
+        declare static readonly __signalSignatures: EventDispatcher.SignalSignatures;
 
         // Constructors
 
@@ -1594,6 +1623,9 @@ export namespace Wp {
     }
 
     namespace EventHook {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1611,6 +1643,7 @@ export namespace Wp {
      */
     abstract class EventHook extends GObject.Object {
         static $gtype: GObject.GType<EventHook>;
+        declare static readonly __signalSignatures: EventHook.SignalSignatures;
 
         // Properties
 
@@ -1690,6 +1723,9 @@ export namespace Wp {
     }
 
     namespace Factory {
+        // Signal signatures
+        interface SignalSignatures extends GlobalProxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GlobalProxy.ConstructorProps, PipewireObject.ConstructorProps {}
@@ -1701,6 +1737,7 @@ export namespace Wp {
      */
     class Factory extends GlobalProxy implements PipewireObject {
         static $gtype: GObject.GType<Factory>;
+        declare static readonly __signalSignatures: Factory.SignalSignatures;
 
         // Constructors
 
@@ -1941,6 +1978,9 @@ export namespace Wp {
     }
 
     namespace FeatureActivationTransition {
+        // Signal signatures
+        interface SignalSignatures extends Transition.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Transition.ConstructorProps, Gio.AsyncResult.ConstructorProps {}
@@ -1951,6 +1991,7 @@ export namespace Wp {
      */
     class FeatureActivationTransition extends Transition implements Gio.AsyncResult {
         static $gtype: GObject.GType<FeatureActivationTransition>;
+        declare static readonly __signalSignatures: FeatureActivationTransition.SignalSignatures;
 
         // Constructors
 
@@ -2458,6 +2499,9 @@ export namespace Wp {
     }
 
     namespace GlobalProxy {
+        // Signal signatures
+        interface SignalSignatures extends Proxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Proxy.ConstructorProps {
@@ -2474,6 +2518,7 @@ export namespace Wp {
      */
     class GlobalProxy extends Proxy {
         static $gtype: GObject.GType<GlobalProxy>;
+        declare static readonly __signalSignatures: GlobalProxy.SignalSignatures;
 
         // Properties
 
@@ -2521,6 +2566,9 @@ export namespace Wp {
     }
 
     namespace ImplMetadata {
+        // Signal signatures
+        interface SignalSignatures extends Metadata.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Metadata.ConstructorProps {
@@ -2535,6 +2583,7 @@ export namespace Wp {
      */
     class ImplMetadata extends Metadata {
         static $gtype: GObject.GType<ImplMetadata>;
+        declare static readonly __signalSignatures: ImplMetadata.SignalSignatures;
 
         // Properties
 
@@ -2553,6 +2602,9 @@ export namespace Wp {
     }
 
     namespace ImplModule {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2570,6 +2622,7 @@ export namespace Wp {
      */
     class ImplModule extends GObject.Object {
         static $gtype: GObject.GType<ImplModule>;
+        declare static readonly __signalSignatures: ImplModule.SignalSignatures;
 
         // Properties
 
@@ -2605,6 +2658,9 @@ export namespace Wp {
     }
 
     namespace ImplNode {
+        // Signal signatures
+        interface SignalSignatures extends Proxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Proxy.ConstructorProps, PipewireObject.ConstructorProps {
@@ -2618,6 +2674,7 @@ export namespace Wp {
      */
     class ImplNode extends Proxy implements PipewireObject {
         static $gtype: GObject.GType<ImplNode>;
+        declare static readonly __signalSignatures: ImplNode.SignalSignatures;
 
         // Properties
 
@@ -2867,6 +2924,9 @@ export namespace Wp {
     }
 
     namespace InterestEventHook {
+        // Signal signatures
+        interface SignalSignatures extends EventHook.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends EventHook.ConstructorProps {}
@@ -2877,6 +2937,7 @@ export namespace Wp {
      */
     abstract class InterestEventHook extends EventHook {
         static $gtype: GObject.GType<InterestEventHook>;
+        declare static readonly __signalSignatures: InterestEventHook.SignalSignatures;
 
         // Constructors
 
@@ -2896,6 +2957,11 @@ export namespace Wp {
             (object: LinkState, p0: LinkState): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GlobalProxy.SignalSignatures {
+            'state-changed': StateChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GlobalProxy.ConstructorProps, PipewireObject.ConstructorProps {
@@ -2909,6 +2975,7 @@ export namespace Wp {
      */
     class Link extends GlobalProxy implements PipewireObject {
         static $gtype: GObject.GType<Link>;
+        declare static readonly __signalSignatures: Link.SignalSignatures;
 
         // Properties
 
@@ -2924,6 +2991,9 @@ export namespace Wp {
 
         // Signals
 
+        connect<K extends keyof Link.SignalSignatures>(signal: K, callback: Link.SignalSignatures[K]): number;
+        connect_after<K extends keyof Link.SignalSignatures>(signal: K, callback: Link.SignalSignatures[K]): number;
+        emit<K extends keyof Link.SignalSignatures>(signal: K, ...args: Parameters<Link.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3188,6 +3258,11 @@ export namespace Wp {
             (object: number, p0: string, p1: string, p2: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GlobalProxy.SignalSignatures {
+            changed: Changed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GlobalProxy.ConstructorProps {}
@@ -3199,6 +3274,7 @@ export namespace Wp {
      */
     class Metadata extends GlobalProxy {
         static $gtype: GObject.GType<Metadata>;
+        declare static readonly __signalSignatures: Metadata.SignalSignatures;
 
         // Constructors
 
@@ -3208,6 +3284,15 @@ export namespace Wp {
 
         // Signals
 
+        connect<K extends keyof Metadata.SignalSignatures>(signal: K, callback: Metadata.SignalSignatures[K]): number;
+        connect_after<K extends keyof Metadata.SignalSignatures>(
+            signal: K,
+            callback: Metadata.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Metadata.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Metadata.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3267,6 +3352,12 @@ export namespace Wp {
             (object: NodeState, p0: NodeState): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GlobalProxy.SignalSignatures {
+            'ports-changed': PortsChanged;
+            'state-changed': StateChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GlobalProxy.ConstructorProps, PipewireObject.ConstructorProps {
@@ -3288,6 +3379,7 @@ export namespace Wp {
      */
     class Node extends GlobalProxy implements PipewireObject {
         static $gtype: GObject.GType<Node>;
+        declare static readonly __signalSignatures: Node.SignalSignatures;
 
         // Properties
 
@@ -3311,6 +3403,9 @@ export namespace Wp {
 
         // Signals
 
+        connect<K extends keyof Node.SignalSignatures>(signal: K, callback: Node.SignalSignatures[K]): number;
+        connect_after<K extends keyof Node.SignalSignatures>(signal: K, callback: Node.SignalSignatures[K]): number;
+        emit<K extends keyof Node.SignalSignatures>(signal: K, ...args: Parameters<Node.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3624,6 +3719,9 @@ export namespace Wp {
     }
 
     namespace Object {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3641,6 +3739,7 @@ export namespace Wp {
      */
     abstract class Object extends GObject.Object {
         static $gtype: GObject.GType<Object>;
+        declare static readonly __signalSignatures: Object.SignalSignatures;
 
         // Properties
 
@@ -3807,6 +3906,14 @@ export namespace Wp {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            installed: Installed;
+            'object-added': ObjectAdded;
+            'object-removed': ObjectRemoved;
+            'objects-changed': ObjectsChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3827,6 +3934,7 @@ export namespace Wp {
      */
     class ObjectManager extends GObject.Object {
         static $gtype: GObject.GType<ObjectManager>;
+        declare static readonly __signalSignatures: ObjectManager.SignalSignatures;
 
         // Properties
 
@@ -3842,6 +3950,18 @@ export namespace Wp {
 
         // Signals
 
+        connect<K extends keyof ObjectManager.SignalSignatures>(
+            signal: K,
+            callback: ObjectManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ObjectManager.SignalSignatures>(
+            signal: K,
+            callback: ObjectManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ObjectManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ObjectManager.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3910,6 +4030,9 @@ export namespace Wp {
     }
 
     namespace Plugin {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -3924,6 +4047,7 @@ export namespace Wp {
      */
     abstract class Plugin extends Object {
         static $gtype: GObject.GType<Plugin>;
+        declare static readonly __signalSignatures: Plugin.SignalSignatures;
 
         // Properties
 
@@ -3959,6 +4083,9 @@ export namespace Wp {
     }
 
     namespace Port {
+        // Signal signatures
+        interface SignalSignatures extends GlobalProxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GlobalProxy.ConstructorProps, PipewireObject.ConstructorProps {}
@@ -3970,6 +4097,7 @@ export namespace Wp {
      */
     class Port extends GlobalProxy implements PipewireObject {
         static $gtype: GObject.GType<Port>;
+        declare static readonly __signalSignatures: Port.SignalSignatures;
 
         // Constructors
 
@@ -4239,6 +4367,14 @@ export namespace Wp {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {
+            bound: Bound;
+            error: Error;
+            'pw-proxy-created': PwProxyCreated;
+            'pw-proxy-destroyed': PwProxyDestroyed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -4255,6 +4391,7 @@ export namespace Wp {
      */
     abstract class Proxy extends Object {
         static $gtype: GObject.GType<Proxy>;
+        declare static readonly __signalSignatures: Proxy.SignalSignatures;
 
         // Properties
 
@@ -4271,6 +4408,9 @@ export namespace Wp {
 
         // Signals
 
+        connect<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
+        connect_after<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
+        emit<K extends keyof Proxy.SignalSignatures>(signal: K, ...args: Parameters<Proxy.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -4329,6 +4469,9 @@ export namespace Wp {
     }
 
     namespace SessionItem {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -4342,6 +4485,7 @@ export namespace Wp {
      */
     abstract class SessionItem extends Object {
         static $gtype: GObject.GType<SessionItem>;
+        declare static readonly __signalSignatures: SessionItem.SignalSignatures;
 
         // Properties
 
@@ -4455,6 +4599,9 @@ export namespace Wp {
     }
 
     namespace Settings {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -4469,6 +4616,7 @@ export namespace Wp {
      */
     class Settings extends Object {
         static $gtype: GObject.GType<Settings>;
+        declare static readonly __signalSignatures: Settings.SignalSignatures;
 
         // Properties
 
@@ -4579,6 +4727,9 @@ export namespace Wp {
     }
 
     namespace SiFactory {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4604,6 +4755,7 @@ export namespace Wp {
      */
     abstract class SiFactory extends GObject.Object {
         static $gtype: GObject.GType<SiFactory>;
+        declare static readonly __signalSignatures: SiFactory.SignalSignatures;
 
         // Properties
 
@@ -4650,6 +4802,9 @@ export namespace Wp {
     }
 
     namespace SimpleEventHook {
+        // Signal signatures
+        interface SignalSignatures extends InterestEventHook.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends InterestEventHook.ConstructorProps {
@@ -4662,6 +4817,7 @@ export namespace Wp {
      */
     class SimpleEventHook extends InterestEventHook {
         static $gtype: GObject.GType<SimpleEventHook>;
+        declare static readonly __signalSignatures: SimpleEventHook.SignalSignatures;
 
         // Properties
 
@@ -4687,6 +4843,12 @@ export namespace Wp {
             (object: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Proxy.SignalSignatures {
+            'create-object': CreateObject;
+            'object-removed': ObjectRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Proxy.ConstructorProps {
@@ -4703,6 +4865,7 @@ export namespace Wp {
      */
     class SpaDevice extends Proxy {
         static $gtype: GObject.GType<SpaDevice>;
+        declare static readonly __signalSignatures: SpaDevice.SignalSignatures;
 
         // Properties
 
@@ -4722,6 +4885,15 @@ export namespace Wp {
 
         // Signals
 
+        connect<K extends keyof SpaDevice.SignalSignatures>(signal: K, callback: SpaDevice.SignalSignatures[K]): number;
+        connect_after<K extends keyof SpaDevice.SignalSignatures>(
+            signal: K,
+            callback: SpaDevice.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SpaDevice.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SpaDevice.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -4764,8 +4936,14 @@ export namespace Wp {
         store_managed_object(id: number, object?: GObject.Object | null): void;
     }
 
+    namespace SpaType {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+    }
+
     class SpaType {
         static $gtype: GObject.GType<SpaType>;
+        declare static readonly __signalSignatures: SpaType.SignalSignatures;
 
         // Constructors
 
@@ -4822,6 +5000,9 @@ export namespace Wp {
     }
 
     namespace State {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4835,6 +5016,7 @@ export namespace Wp {
      */
     class State extends GObject.Object {
         static $gtype: GObject.GType<State>;
+        declare static readonly __signalSignatures: State.SignalSignatures;
 
         // Properties
 
@@ -4893,6 +5075,9 @@ export namespace Wp {
     }
 
     namespace Transition {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.AsyncResult.ConstructorProps {
@@ -4907,6 +5092,7 @@ export namespace Wp {
      */
     abstract class Transition extends GObject.Object implements Gio.AsyncResult {
         static $gtype: GObject.GType<Transition>;
+        declare static readonly __signalSignatures: Transition.SignalSignatures;
 
         // Properties
 

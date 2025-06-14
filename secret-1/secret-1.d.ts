@@ -936,6 +936,9 @@ export namespace Secret {
         LOAD_COLLECTIONS,
     }
     namespace Collection {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -968,6 +971,7 @@ export namespace Secret {
      */
     class Collection extends Gio.DBusProxy implements Gio.AsyncInitable<Collection>, Gio.DBusInterface, Gio.Initable {
         static $gtype: GObject.GType<Collection>;
+        declare static readonly __signalSignatures: Collection.SignalSignatures;
 
         // Properties
 
@@ -2235,6 +2239,9 @@ export namespace Secret {
     }
 
     namespace Item {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2273,6 +2280,7 @@ export namespace Secret {
      */
     class Item extends Gio.DBusProxy implements Gio.AsyncInitable<Item>, Gio.DBusInterface, Gio.Initable, Retrievable {
         static $gtype: GObject.GType<Item>;
+        declare static readonly __signalSignatures: Item.SignalSignatures;
 
         // Properties
 
@@ -3653,6 +3661,9 @@ export namespace Secret {
     }
 
     namespace Prompt {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3680,6 +3691,7 @@ export namespace Secret {
      */
     class Prompt extends Gio.DBusProxy implements Gio.AsyncInitable<Prompt>, Gio.DBusInterface, Gio.Initable {
         static $gtype: GObject.GType<Prompt>;
+        declare static readonly __signalSignatures: Prompt.SignalSignatures;
 
         // Constructors
 
@@ -4578,6 +4590,9 @@ export namespace Secret {
     }
 
     namespace Service {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4631,6 +4646,7 @@ export namespace Secret {
         implements Gio.AsyncInitable<Service>, Gio.DBusInterface, Gio.Initable, Backend
     {
         static $gtype: GObject.GType<Service>;
+        declare static readonly __signalSignatures: Service.SignalSignatures;
 
         // Constructors
 

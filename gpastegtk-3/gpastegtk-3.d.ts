@@ -74,6 +74,9 @@ export namespace GPasteGtk {
         (data: string): void;
     }
     namespace SettingsUiPanel {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Grid.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -85,6 +88,7 @@ export namespace GPasteGtk {
 
     class SettingsUiPanel extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<SettingsUiPanel>;
+        declare static readonly __signalSignatures: SettingsUiPanel.SignalSignatures;
 
         // Constructors
 
@@ -609,6 +613,9 @@ export namespace GPasteGtk {
     }
 
     namespace SettingsUiStack {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Stack.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -619,6 +626,7 @@ export namespace GPasteGtk {
 
     class SettingsUiStack extends Gtk.Stack implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<SettingsUiStack>;
+        declare static readonly __signalSignatures: SettingsUiStack.SignalSignatures;
 
         // Constructors
 
@@ -1085,6 +1093,9 @@ export namespace GPasteGtk {
     }
 
     namespace SettingsUiWidget {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Grid.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1096,6 +1107,7 @@ export namespace GPasteGtk {
 
     class SettingsUiWidget extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<SettingsUiWidget>;
+        declare static readonly __signalSignatures: SettingsUiWidget.SignalSignatures;
 
         // Constructors
 

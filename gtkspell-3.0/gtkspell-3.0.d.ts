@@ -60,6 +60,11 @@ export namespace GtkSpell {
             (lang: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
+            'language-changed': LanguageChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
@@ -73,6 +78,7 @@ export namespace GtkSpell {
      */
     class Checker extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<Checker>;
+        declare static readonly __signalSignatures: Checker.SignalSignatures;
 
         // Properties
 
@@ -91,6 +97,15 @@ export namespace GtkSpell {
 
         // Signals
 
+        connect<K extends keyof Checker.SignalSignatures>(signal: K, callback: Checker.SignalSignatures[K]): number;
+        connect_after<K extends keyof Checker.SignalSignatures>(
+            signal: K,
+            callback: Checker.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Checker.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Checker.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

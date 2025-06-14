@@ -285,6 +285,13 @@ export namespace TotemPlParser {
             (uri: string, metadata: { [key: string]: any } | GLib.HashTable<string, string>): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'entry-parsed': EntryParsed;
+            'playlist-ended': PlaylistEnded;
+            'playlist-started': PlaylistStarted;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -301,6 +308,7 @@ export namespace TotemPlParser {
      */
     class Parser extends GObject.Object {
         static $gtype: GObject.GType<Parser>;
+        declare static readonly __signalSignatures: Parser.SignalSignatures;
 
         // Properties
 
@@ -346,6 +354,9 @@ export namespace TotemPlParser {
 
         // Signals
 
+        connect<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
+        connect_after<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
+        emit<K extends keyof Parser.SignalSignatures>(signal: K, ...args: Parameters<Parser.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -647,6 +658,9 @@ export namespace TotemPlParser {
     }
 
     namespace Playlist {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -657,6 +671,7 @@ export namespace TotemPlParser {
      */
     class Playlist extends GObject.Object {
         static $gtype: GObject.GType<Playlist>;
+        declare static readonly __signalSignatures: Playlist.SignalSignatures;
 
         // Constructors
 

@@ -109,6 +109,9 @@ export namespace RygelCore {
         ENERGY_MANAGEMENT,
     }
     namespace ConnectionManager {
+        // Signal signatures
+        interface SignalSignatures extends GUPnP.Service.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GUPnP.Service.ConstructorProps {}
@@ -116,6 +119,7 @@ export namespace RygelCore {
 
     class ConnectionManager extends GUPnP.Service {
         static $gtype: GObject.GType<ConnectionManager>;
+        declare static readonly __signalSignatures: ConnectionManager.SignalSignatures;
 
         // Fields
 
@@ -144,6 +148,9 @@ export namespace RygelCore {
     }
 
     namespace BasicManagement {
+        // Signal signatures
+        interface SignalSignatures extends GUPnP.Service.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GUPnP.Service.ConstructorProps {
@@ -154,6 +161,7 @@ export namespace RygelCore {
 
     class BasicManagement extends GUPnP.Service {
         static $gtype: GObject.GType<BasicManagement>;
+        declare static readonly __signalSignatures: BasicManagement.SignalSignatures;
 
         // Properties
 
@@ -181,6 +189,9 @@ export namespace RygelCore {
     }
 
     namespace DescriptionFile {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -188,6 +199,7 @@ export namespace RygelCore {
 
     class DescriptionFile extends GObject.Object {
         static $gtype: GObject.GType<DescriptionFile>;
+        declare static readonly __signalSignatures: DescriptionFile.SignalSignatures;
 
         // Constructors
 
@@ -221,8 +233,14 @@ export namespace RygelCore {
         save(path: string): void;
     }
 
+    namespace DLNAProfile {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+    }
+
     class DLNAProfile {
         static $gtype: GObject.GType<DLNAProfile>;
+        declare static readonly __signalSignatures: DLNAProfile.SignalSignatures;
 
         // Fields
 
@@ -242,6 +260,9 @@ export namespace RygelCore {
     }
 
     namespace EnergyManagement {
+        // Signal signatures
+        interface SignalSignatures extends GUPnP.Service.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GUPnP.Service.ConstructorProps {}
@@ -249,6 +270,7 @@ export namespace RygelCore {
 
     class EnergyManagement extends GUPnP.Service {
         static $gtype: GObject.GType<EnergyManagement>;
+        declare static readonly __signalSignatures: EnergyManagement.SignalSignatures;
 
         // Constructors
 
@@ -260,6 +282,9 @@ export namespace RygelCore {
     }
 
     namespace RootDevice {
+        // Signal signatures
+        interface SignalSignatures extends GUPnP.RootDevice.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GUPnP.RootDevice.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -269,6 +294,7 @@ export namespace RygelCore {
 
     class RootDevice extends GUPnP.RootDevice implements Gio.Initable {
         static $gtype: GObject.GType<RootDevice>;
+        declare static readonly __signalSignatures: RootDevice.SignalSignatures;
 
         // Properties
 
@@ -824,6 +850,9 @@ export namespace RygelCore {
     }
 
     namespace RootDeviceFactory {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -833,6 +862,7 @@ export namespace RygelCore {
 
     class RootDeviceFactory extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<RootDeviceFactory>;
+        declare static readonly __signalSignatures: RootDeviceFactory.SignalSignatures;
 
         // Properties
 
@@ -1379,6 +1409,9 @@ export namespace RygelCore {
     }
 
     namespace LogHandler {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1386,6 +1419,7 @@ export namespace RygelCore {
 
     class LogHandler extends GObject.Object {
         static $gtype: GObject.GType<LogHandler>;
+        declare static readonly __signalSignatures: LogHandler.SignalSignatures;
 
         // Constructors
 
@@ -1399,6 +1433,9 @@ export namespace RygelCore {
     }
 
     namespace MetaConfig {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Configuration.ConstructorProps {}
@@ -1406,6 +1443,7 @@ export namespace RygelCore {
 
     class MetaConfig extends GObject.Object implements Configuration {
         static $gtype: GObject.GType<MetaConfig>;
+        declare static readonly __signalSignatures: MetaConfig.SignalSignatures;
 
         // Constructors
 
@@ -1910,6 +1948,11 @@ export namespace RygelCore {
             (plugin: Plugin): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends RecursiveModuleLoader.SignalSignatures {
+            'plugin-available': PluginAvailable;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends RecursiveModuleLoader.ConstructorProps {}
@@ -1917,6 +1960,7 @@ export namespace RygelCore {
 
     class PluginLoader extends RecursiveModuleLoader {
         static $gtype: GObject.GType<PluginLoader>;
+        declare static readonly __signalSignatures: PluginLoader.SignalSignatures;
 
         // Constructors
 
@@ -1928,6 +1972,18 @@ export namespace RygelCore {
 
         // Signals
 
+        connect<K extends keyof PluginLoader.SignalSignatures>(
+            signal: K,
+            callback: PluginLoader.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PluginLoader.SignalSignatures>(
+            signal: K,
+            callback: PluginLoader.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PluginLoader.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PluginLoader.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1944,6 +2000,9 @@ export namespace RygelCore {
     }
 
     namespace RecursiveModuleLoader {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1954,6 +2013,7 @@ export namespace RygelCore {
 
     abstract class RecursiveModuleLoader extends GObject.Object {
         static $gtype: GObject.GType<RecursiveModuleLoader>;
+        declare static readonly __signalSignatures: RecursiveModuleLoader.SignalSignatures;
 
         // Properties
 
@@ -1984,6 +2044,9 @@ export namespace RygelCore {
     }
 
     namespace Plugin {
+        // Signal signatures
+        interface SignalSignatures extends GUPnP.ResourceFactory.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GUPnP.ResourceFactory.ConstructorProps {
@@ -2005,6 +2068,7 @@ export namespace RygelCore {
 
     class Plugin extends GUPnP.ResourceFactory {
         static $gtype: GObject.GType<Plugin>;
+        declare static readonly __signalSignatures: Plugin.SignalSignatures;
 
         // Properties
 
@@ -2071,8 +2135,14 @@ export namespace RygelCore {
         get_default_icons(): Gee.ArrayList;
     }
 
+    namespace ResourceInfo {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+    }
+
     class ResourceInfo {
         static $gtype: GObject.GType<ResourceInfo>;
+        declare static readonly __signalSignatures: ResourceInfo.SignalSignatures;
 
         // Fields
 
@@ -2090,6 +2160,9 @@ export namespace RygelCore {
     }
 
     namespace MediaDevice {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2101,6 +2174,7 @@ export namespace RygelCore {
 
     abstract class MediaDevice extends GObject.Object {
         static $gtype: GObject.GType<MediaDevice>;
+        declare static readonly __signalSignatures: MediaDevice.SignalSignatures;
 
         // Properties
 
@@ -2127,6 +2201,9 @@ export namespace RygelCore {
     }
 
     namespace BaseConfiguration {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Configuration.ConstructorProps {}
@@ -2134,6 +2211,7 @@ export namespace RygelCore {
 
     class BaseConfiguration extends GObject.Object implements Configuration {
         static $gtype: GObject.GType<BaseConfiguration>;
+        declare static readonly __signalSignatures: BaseConfiguration.SignalSignatures;
 
         // Constructors
 
@@ -2632,6 +2710,9 @@ export namespace RygelCore {
     }
 
     namespace CmdlineConfig {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Configuration.ConstructorProps {}
@@ -2639,6 +2720,7 @@ export namespace RygelCore {
 
     class CmdlineConfig extends GObject.Object implements Configuration {
         static $gtype: GObject.GType<CmdlineConfig>;
+        declare static readonly __signalSignatures: CmdlineConfig.SignalSignatures;
 
         // Constructors
 
@@ -3140,6 +3222,9 @@ export namespace RygelCore {
     }
 
     namespace EnvironmentConfig {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Configuration.ConstructorProps {}
@@ -3147,6 +3232,7 @@ export namespace RygelCore {
 
     class EnvironmentConfig extends GObject.Object implements Configuration {
         static $gtype: GObject.GType<EnvironmentConfig>;
+        declare static readonly __signalSignatures: EnvironmentConfig.SignalSignatures;
 
         // Constructors
 
@@ -3643,6 +3729,9 @@ export namespace RygelCore {
     }
 
     namespace UserConfig {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Configuration.ConstructorProps {}
@@ -3650,6 +3739,7 @@ export namespace RygelCore {
 
     class UserConfig extends GObject.Object implements Configuration {
         static $gtype: GObject.GType<UserConfig>;
+        declare static readonly __signalSignatures: UserConfig.SignalSignatures;
 
         // Fields
 
@@ -4153,6 +4243,9 @@ export namespace RygelCore {
     }
 
     namespace V1Hacks {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4165,6 +4258,7 @@ export namespace RygelCore {
 
     class V1Hacks extends GObject.Object {
         static $gtype: GObject.GType<V1Hacks>;
+        declare static readonly __signalSignatures: V1Hacks.SignalSignatures;
 
         // Properties
 
@@ -4195,8 +4289,14 @@ export namespace RygelCore {
         get_service_types(): string[];
     }
 
+    namespace IconInfo {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+    }
+
     class IconInfo {
         static $gtype: GObject.GType<IconInfo>;
+        declare static readonly __signalSignatures: IconInfo.SignalSignatures;
 
         // Fields
 
@@ -4216,8 +4316,14 @@ export namespace RygelCore {
         static ['new'](mime_type: string, file_extension: string): IconInfo;
     }
 
+    namespace XMLUtils {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+    }
+
     class XMLUtils {
         static $gtype: GObject.GType<XMLUtils>;
+        declare static readonly __signalSignatures: XMLUtils.SignalSignatures;
 
         // Fields
 
@@ -4230,8 +4336,14 @@ export namespace RygelCore {
         static ['new'](): XMLUtils;
     }
 
+    namespace XMLUtilsIterator {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+    }
+
     class XMLUtilsIterator {
         static $gtype: GObject.GType<XMLUtilsIterator>;
+        declare static readonly __signalSignatures: XMLUtilsIterator.SignalSignatures;
 
         // Fields
 
@@ -4250,8 +4362,14 @@ export namespace RygelCore {
         get(): any | null;
     }
 
+    namespace XMLUtilsChildIterator {
+        // Signal signatures
+        interface SignalSignatures extends XMLUtilsIterator.SignalSignatures {}
+    }
+
     class XMLUtilsChildIterator extends XMLUtilsIterator {
         static $gtype: GObject.GType<XMLUtilsChildIterator>;
+        declare static readonly __signalSignatures: XMLUtilsChildIterator.SignalSignatures;
 
         // Constructors
 
@@ -4261,6 +4379,9 @@ export namespace RygelCore {
     }
 
     namespace PluginInformation {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4275,6 +4396,7 @@ export namespace RygelCore {
 
     class PluginInformation extends GObject.Object {
         static $gtype: GObject.GType<PluginInformation>;
+        declare static readonly __signalSignatures: PluginInformation.SignalSignatures;
 
         // Properties
 

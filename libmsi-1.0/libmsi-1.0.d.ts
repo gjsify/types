@@ -164,6 +164,9 @@ export namespace Libmsi {
         PATCH,
     }
     namespace Database {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -175,6 +178,7 @@ export namespace Libmsi {
 
     class Database extends GObject.Object {
         static $gtype: GObject.GType<Database>;
+        declare static readonly __signalSignatures: Database.SignalSignatures;
 
         // Properties
 
@@ -228,6 +232,9 @@ export namespace Libmsi {
     }
 
     namespace Query {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -238,6 +245,7 @@ export namespace Libmsi {
 
     class Query extends GObject.Object {
         static $gtype: GObject.GType<Query>;
+        declare static readonly __signalSignatures: Query.SignalSignatures;
 
         // Properties
 
@@ -284,6 +292,9 @@ export namespace Libmsi {
     }
 
     namespace Record {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -293,6 +304,7 @@ export namespace Libmsi {
 
     class Record extends GObject.Object {
         static $gtype: GObject.GType<Record>;
+        declare static readonly __signalSignatures: Record.SignalSignatures;
 
         // Properties
 
@@ -368,6 +380,9 @@ export namespace Libmsi {
     }
 
     namespace SummaryInfo {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -379,6 +394,7 @@ export namespace Libmsi {
 
     class SummaryInfo extends GObject.Object {
         static $gtype: GObject.GType<SummaryInfo>;
+        declare static readonly __signalSignatures: SummaryInfo.SignalSignatures;
 
         // Properties
 

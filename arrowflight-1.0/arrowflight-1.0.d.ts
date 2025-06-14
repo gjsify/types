@@ -22,6 +22,9 @@ export namespace ArrowFlight {
      */
 
     namespace CallOptions {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -29,6 +32,7 @@ export namespace ArrowFlight {
 
     class CallOptions extends GObject.Object {
         static $gtype: GObject.GType<CallOptions>;
+        declare static readonly __signalSignatures: CallOptions.SignalSignatures;
 
         // Constructors
 
@@ -40,6 +44,9 @@ export namespace ArrowFlight {
     }
 
     namespace Client {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -49,6 +56,7 @@ export namespace ArrowFlight {
 
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
+        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Properties
 
@@ -69,6 +77,9 @@ export namespace ArrowFlight {
     }
 
     namespace ClientOptions {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -76,6 +87,7 @@ export namespace ArrowFlight {
 
     class ClientOptions extends GObject.Object {
         static $gtype: GObject.GType<ClientOptions>;
+        declare static readonly __signalSignatures: ClientOptions.SignalSignatures;
 
         // Constructors
 
@@ -87,6 +99,9 @@ export namespace ArrowFlight {
     }
 
     namespace CommandDescriptor {
+        // Signal signatures
+        interface SignalSignatures extends Descriptor.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Descriptor.ConstructorProps {}
@@ -94,6 +109,7 @@ export namespace ArrowFlight {
 
     class CommandDescriptor extends Descriptor {
         static $gtype: GObject.GType<CommandDescriptor>;
+        declare static readonly __signalSignatures: CommandDescriptor.SignalSignatures;
 
         // Constructors
 
@@ -109,6 +125,9 @@ export namespace ArrowFlight {
     }
 
     namespace Criteria {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -118,6 +137,7 @@ export namespace ArrowFlight {
 
     class Criteria extends GObject.Object {
         static $gtype: GObject.GType<Criteria>;
+        declare static readonly __signalSignatures: Criteria.SignalSignatures;
 
         // Properties
 
@@ -137,6 +157,9 @@ export namespace ArrowFlight {
     }
 
     namespace DataStream {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -146,6 +169,7 @@ export namespace ArrowFlight {
 
     class DataStream extends GObject.Object {
         static $gtype: GObject.GType<DataStream>;
+        declare static readonly __signalSignatures: DataStream.SignalSignatures;
 
         // Properties
 
@@ -159,6 +183,9 @@ export namespace ArrowFlight {
     }
 
     namespace Descriptor {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -168,6 +195,7 @@ export namespace ArrowFlight {
 
     abstract class Descriptor extends GObject.Object {
         static $gtype: GObject.GType<Descriptor>;
+        declare static readonly __signalSignatures: Descriptor.SignalSignatures;
 
         // Properties
 
@@ -186,6 +214,9 @@ export namespace ArrowFlight {
     }
 
     namespace Endpoint {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -195,6 +226,7 @@ export namespace ArrowFlight {
 
     class Endpoint extends GObject.Object {
         static $gtype: GObject.GType<Endpoint>;
+        declare static readonly __signalSignatures: Endpoint.SignalSignatures;
 
         // Properties
 
@@ -218,6 +250,9 @@ export namespace ArrowFlight {
     }
 
     namespace Info {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -227,6 +262,7 @@ export namespace ArrowFlight {
 
     class Info extends GObject.Object {
         static $gtype: GObject.GType<Info>;
+        declare static readonly __signalSignatures: Info.SignalSignatures;
 
         // Properties
 
@@ -257,6 +293,9 @@ export namespace ArrowFlight {
     }
 
     namespace Location {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -264,6 +303,7 @@ export namespace ArrowFlight {
 
     class Location extends GObject.Object {
         static $gtype: GObject.GType<Location>;
+        declare static readonly __signalSignatures: Location.SignalSignatures;
 
         // Constructors
 
@@ -281,6 +321,9 @@ export namespace ArrowFlight {
     }
 
     namespace PathDescriptor {
+        // Signal signatures
+        interface SignalSignatures extends Descriptor.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Descriptor.ConstructorProps {}
@@ -288,6 +331,7 @@ export namespace ArrowFlight {
 
     class PathDescriptor extends Descriptor {
         static $gtype: GObject.GType<PathDescriptor>;
+        declare static readonly __signalSignatures: PathDescriptor.SignalSignatures;
 
         // Constructors
 
@@ -303,6 +347,9 @@ export namespace ArrowFlight {
     }
 
     namespace RecordBatchReader {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -312,6 +359,7 @@ export namespace ArrowFlight {
 
     class RecordBatchReader extends GObject.Object {
         static $gtype: GObject.GType<RecordBatchReader>;
+        declare static readonly __signalSignatures: RecordBatchReader.SignalSignatures;
 
         // Properties
 
@@ -330,6 +378,9 @@ export namespace ArrowFlight {
     }
 
     namespace RecordBatchStream {
+        // Signal signatures
+        interface SignalSignatures extends DataStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DataStream.ConstructorProps {
@@ -339,6 +390,7 @@ export namespace ArrowFlight {
 
     class RecordBatchStream extends DataStream {
         static $gtype: GObject.GType<RecordBatchStream>;
+        declare static readonly __signalSignatures: RecordBatchStream.SignalSignatures;
 
         // Properties
 
@@ -357,6 +409,9 @@ export namespace ArrowFlight {
     }
 
     namespace Server {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -364,6 +419,7 @@ export namespace ArrowFlight {
 
     abstract class Server extends GObject.Object {
         static $gtype: GObject.GType<Server>;
+        declare static readonly __signalSignatures: Server.SignalSignatures;
 
         // Constructors
 
@@ -392,6 +448,9 @@ export namespace ArrowFlight {
     }
 
     namespace ServerCallContext {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -402,6 +461,7 @@ export namespace ArrowFlight {
 
     class ServerCallContext extends GObject.Object {
         static $gtype: GObject.GType<ServerCallContext>;
+        declare static readonly __signalSignatures: ServerCallContext.SignalSignatures;
 
         // Properties
 
@@ -416,6 +476,9 @@ export namespace ArrowFlight {
     }
 
     namespace ServerOptions {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -425,6 +488,7 @@ export namespace ArrowFlight {
 
     class ServerOptions extends GObject.Object {
         static $gtype: GObject.GType<ServerOptions>;
+        declare static readonly __signalSignatures: ServerOptions.SignalSignatures;
 
         // Properties
 
@@ -440,6 +504,9 @@ export namespace ArrowFlight {
     }
 
     namespace StreamChunk {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -449,6 +516,7 @@ export namespace ArrowFlight {
 
     class StreamChunk extends GObject.Object {
         static $gtype: GObject.GType<StreamChunk>;
+        declare static readonly __signalSignatures: StreamChunk.SignalSignatures;
 
         // Properties
 
@@ -469,6 +537,9 @@ export namespace ArrowFlight {
     }
 
     namespace StreamReader {
+        // Signal signatures
+        interface SignalSignatures extends RecordBatchReader.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends RecordBatchReader.ConstructorProps {}
@@ -476,6 +547,7 @@ export namespace ArrowFlight {
 
     class StreamReader extends RecordBatchReader {
         static $gtype: GObject.GType<StreamReader>;
+        declare static readonly __signalSignatures: StreamReader.SignalSignatures;
 
         // Constructors
 
@@ -485,6 +557,9 @@ export namespace ArrowFlight {
     }
 
     namespace Ticket {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -494,6 +569,7 @@ export namespace ArrowFlight {
 
     class Ticket extends GObject.Object {
         static $gtype: GObject.GType<Ticket>;
+        declare static readonly __signalSignatures: Ticket.SignalSignatures;
 
         // Properties
 

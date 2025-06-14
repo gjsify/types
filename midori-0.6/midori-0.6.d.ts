@@ -86,6 +86,9 @@ export namespace Midori {
         (): boolean;
     }
     namespace App {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Application.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Application.ConstructorProps {
@@ -96,6 +99,7 @@ export namespace Midori {
 
     class App extends Gtk.Application {
         static $gtype: GObject.GType<App>;
+        declare static readonly __signalSignatures: App.SignalSignatures;
 
         // Properties
 
@@ -125,6 +129,11 @@ export namespace Midori {
             (): boolean;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.ApplicationWindow.SignalSignatures {
+            'default-tab': DefaultTab;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.ApplicationWindow.ConstructorProps {
@@ -144,6 +153,7 @@ export namespace Midori {
 
     class Browser extends Gtk.ApplicationWindow {
         static $gtype: GObject.GType<Browser>;
+        declare static readonly __signalSignatures: Browser.SignalSignatures;
 
         // Properties
 
@@ -191,6 +201,15 @@ export namespace Midori {
 
         // Signals
 
+        connect<K extends keyof Browser.SignalSignatures>(signal: K, callback: Browser.SignalSignatures[K]): number;
+        connect_after<K extends keyof Browser.SignalSignatures>(
+            signal: K,
+            callback: Browser.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Browser.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Browser.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -220,6 +239,9 @@ export namespace Midori {
     }
 
     namespace ClearPrivateData {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Dialog.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Dialog.ConstructorProps {}
@@ -227,6 +249,7 @@ export namespace Midori {
 
     class ClearPrivateData extends Gtk.Dialog {
         static $gtype: GObject.GType<ClearPrivateData>;
+        declare static readonly __signalSignatures: ClearPrivateData.SignalSignatures;
 
         // Constructors
 
@@ -241,6 +264,9 @@ export namespace Midori {
     }
 
     namespace SuggestionItem {
+        // Signal signatures
+        interface SignalSignatures extends DatabaseItem.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DatabaseItem.ConstructorProps {
@@ -250,6 +276,7 @@ export namespace Midori {
 
     class SuggestionItem extends DatabaseItem {
         static $gtype: GObject.GType<SuggestionItem>;
+        declare static readonly __signalSignatures: SuggestionItem.SignalSignatures;
 
         // Properties
 
@@ -271,6 +298,9 @@ export namespace Midori {
     }
 
     namespace Completion {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -283,6 +313,7 @@ export namespace Midori {
 
     class Completion<A extends GObject.Object = GObject.Object> extends GObject.Object implements Gio.ListModel<A> {
         static $gtype: GObject.GType<Completion>;
+        declare static readonly __signalSignatures: Completion.SignalSignatures;
 
         // Properties
 
@@ -844,6 +875,9 @@ export namespace Midori {
     }
 
     namespace DatabaseStatement {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -854,6 +888,7 @@ export namespace Midori {
 
     class DatabaseStatement extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<DatabaseStatement>;
+        declare static readonly __signalSignatures: DatabaseStatement.SignalSignatures;
 
         // Properties
 
@@ -1331,6 +1366,9 @@ export namespace Midori {
     }
 
     namespace DatabaseItem {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1344,6 +1382,7 @@ export namespace Midori {
 
     class DatabaseItem extends GObject.Object {
         static $gtype: GObject.GType<DatabaseItem>;
+        declare static readonly __signalSignatures: DatabaseItem.SignalSignatures;
 
         // Properties
 
@@ -1385,6 +1424,9 @@ export namespace Midori {
     }
 
     namespace Database {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -1409,6 +1451,7 @@ export namespace Midori {
         implements Gio.Initable, Gio.ListModel<A>, Loggable
     {
         static $gtype: GObject.GType<Database>;
+        declare static readonly __signalSignatures: Database.SignalSignatures;
 
         // Properties
 
@@ -2065,6 +2108,11 @@ export namespace Midori {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Button.SignalSignatures {
+            'show-downloads': ShowDownloads;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Button.ConstructorProps {}
@@ -2072,6 +2120,7 @@ export namespace Midori {
 
     class DownloadButton extends Gtk.Button {
         static $gtype: GObject.GType<DownloadButton>;
+        declare static readonly __signalSignatures: DownloadButton.SignalSignatures;
 
         // Fields
 
@@ -2089,6 +2138,18 @@ export namespace Midori {
 
         // Signals
 
+        connect<K extends keyof DownloadButton.SignalSignatures>(
+            signal: K,
+            callback: DownloadButton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DownloadButton.SignalSignatures>(
+            signal: K,
+            callback: DownloadButton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DownloadButton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DownloadButton.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2112,6 +2173,11 @@ export namespace Midori {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            finished: Finished;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2129,6 +2195,7 @@ export namespace Midori {
 
     class DownloadItem extends GObject.Object {
         static $gtype: GObject.GType<DownloadItem>;
+        declare static readonly __signalSignatures: DownloadItem.SignalSignatures;
 
         // Properties
 
@@ -2164,6 +2231,18 @@ export namespace Midori {
 
         // Signals
 
+        connect<K extends keyof DownloadItem.SignalSignatures>(
+            signal: K,
+            callback: DownloadItem.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DownloadItem.SignalSignatures>(
+            signal: K,
+            callback: DownloadItem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DownloadItem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DownloadItem.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2191,6 +2270,9 @@ export namespace Midori {
     }
 
     namespace DownloadRow {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.ListBoxRow.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.ListBoxRow.ConstructorProps {
@@ -2200,6 +2282,7 @@ export namespace Midori {
 
     class DownloadRow extends Gtk.ListBoxRow {
         static $gtype: GObject.GType<DownloadRow>;
+        declare static readonly __signalSignatures: DownloadRow.SignalSignatures;
 
         // Properties
 
@@ -2234,6 +2317,9 @@ export namespace Midori {
     }
 
     namespace Favicon {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Image.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Image.ConstructorProps {
@@ -2244,6 +2330,7 @@ export namespace Midori {
 
     class Favicon extends Gtk.Image {
         static $gtype: GObject.GType<Favicon>;
+        declare static readonly __signalSignatures: Favicon.SignalSignatures;
 
         // Properties
 
@@ -2267,6 +2354,9 @@ export namespace Midori {
     }
 
     namespace HistoryDatabase {
+        // Signal signatures
+        interface SignalSignatures extends Database.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object> extends Database.ConstructorProps<A> {}
@@ -2274,6 +2364,7 @@ export namespace Midori {
 
     class HistoryDatabase<A extends GObject.Object = GObject.Object> extends Database<A> {
         static $gtype: GObject.GType<HistoryDatabase>;
+        declare static readonly __signalSignatures: HistoryDatabase.SignalSignatures;
 
         // Constructors
 
@@ -2287,6 +2378,9 @@ export namespace Midori {
     }
 
     namespace Navigationbar {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.ActionBar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.ActionBar.ConstructorProps {}
@@ -2294,6 +2388,7 @@ export namespace Midori {
 
     class Navigationbar extends Gtk.ActionBar {
         static $gtype: GObject.GType<Navigationbar>;
+        declare static readonly __signalSignatures: Navigationbar.SignalSignatures;
 
         // Fields
 
@@ -2316,6 +2411,9 @@ export namespace Midori {
     }
 
     namespace NetworkCheck {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.ActionBar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.ActionBar.ConstructorProps {}
@@ -2323,6 +2421,7 @@ export namespace Midori {
 
     class NetworkCheck extends Gtk.ActionBar {
         static $gtype: GObject.GType<NetworkCheck>;
+        declare static readonly __signalSignatures: NetworkCheck.SignalSignatures;
 
         // Constructors
 
@@ -2334,6 +2433,9 @@ export namespace Midori {
     }
 
     namespace Plugins {
+        // Signal signatures
+        interface SignalSignatures extends Peas.Engine.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Peas.Engine.ConstructorProps, Loggable.ConstructorProps {
@@ -2344,6 +2446,7 @@ export namespace Midori {
 
     class Plugins extends Peas.Engine implements Loggable {
         static $gtype: GObject.GType<Plugins>;
+        declare static readonly __signalSignatures: Plugins.SignalSignatures;
 
         // Properties
 
@@ -2814,6 +2917,9 @@ export namespace Midori {
     }
 
     namespace LabelWidget {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Box.ConstructorProps {
@@ -2825,6 +2931,7 @@ export namespace Midori {
 
     class LabelWidget extends Gtk.Box {
         static $gtype: GObject.GType<LabelWidget>;
+        declare static readonly __signalSignatures: LabelWidget.SignalSignatures;
 
         // Properties
 
@@ -2857,6 +2964,9 @@ export namespace Midori {
     }
 
     namespace Preferences {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Dialog.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Dialog.ConstructorProps {}
@@ -2864,6 +2974,7 @@ export namespace Midori {
 
     class Preferences extends Gtk.Dialog {
         static $gtype: GObject.GType<Preferences>;
+        declare static readonly __signalSignatures: Preferences.SignalSignatures;
 
         // Constructors
 
@@ -2884,6 +2995,9 @@ export namespace Midori {
     }
 
     namespace CoreSettings {
+        // Signal signatures
+        interface SignalSignatures extends Settings.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Settings.ConstructorProps {
@@ -2923,6 +3037,7 @@ export namespace Midori {
 
     class CoreSettings extends Settings {
         static $gtype: GObject.GType<CoreSettings>;
+        declare static readonly __signalSignatures: CoreSettings.SignalSignatures;
 
         // Properties
 
@@ -3039,6 +3154,9 @@ export namespace Midori {
     }
 
     namespace Settings {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3048,6 +3166,7 @@ export namespace Midori {
 
     class Settings extends GObject.Object {
         static $gtype: GObject.GType<Settings>;
+        declare static readonly __signalSignatures: Settings.SignalSignatures;
 
         // Properties
 
@@ -3073,6 +3192,9 @@ export namespace Midori {
     }
 
     namespace Statusbar {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Statusbar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Statusbar.ConstructorProps {
@@ -3082,6 +3204,7 @@ export namespace Midori {
 
     class Statusbar extends Gtk.Statusbar {
         static $gtype: GObject.GType<Statusbar>;
+        declare static readonly __signalSignatures: Statusbar.SignalSignatures;
 
         // Properties
 
@@ -3107,6 +3230,9 @@ export namespace Midori {
     }
 
     namespace SuggestionRow {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.ListBoxRow.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.ListBoxRow.ConstructorProps {
@@ -3119,6 +3245,7 @@ export namespace Midori {
 
     class SuggestionRow extends Gtk.ListBoxRow {
         static $gtype: GObject.GType<SuggestionRow>;
+        declare static readonly __signalSignatures: SuggestionRow.SignalSignatures;
 
         // Properties
 
@@ -3155,6 +3282,9 @@ export namespace Midori {
     }
 
     namespace Switcher {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Box.ConstructorProps {
@@ -3166,6 +3296,7 @@ export namespace Midori {
 
     class Switcher extends Gtk.Box {
         static $gtype: GObject.GType<Switcher>;
+        declare static readonly __signalSignatures: Switcher.SignalSignatures;
 
         // Properties
 
@@ -3193,6 +3324,9 @@ export namespace Midori {
     }
 
     namespace Tab {
+        // Signal signatures
+        interface SignalSignatures extends WebKit2.WebView.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends WebKit2.WebView.ConstructorProps {
@@ -3217,6 +3351,7 @@ export namespace Midori {
 
     class Tab extends WebKit2.WebView {
         static $gtype: GObject.GType<Tab>;
+        declare static readonly __signalSignatures: Tab.SignalSignatures;
 
         // Properties
 
@@ -3304,6 +3439,11 @@ export namespace Midori {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.EventBox.SignalSignatures {
+            clicked: Clicked;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.EventBox.ConstructorProps {
@@ -3318,6 +3458,7 @@ export namespace Midori {
 
     class Tally extends Gtk.EventBox {
         static $gtype: GObject.GType<Tally>;
+        declare static readonly __signalSignatures: Tally.SignalSignatures;
 
         // Properties
 
@@ -3347,6 +3488,9 @@ export namespace Midori {
 
         // Signals
 
+        connect<K extends keyof Tally.SignalSignatures>(signal: K, callback: Tally.SignalSignatures[K]): number;
+        connect_after<K extends keyof Tally.SignalSignatures>(signal: K, callback: Tally.SignalSignatures[K]): number;
+        emit<K extends keyof Tally.SignalSignatures>(signal: K, ...args: Parameters<Tally.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3369,6 +3513,9 @@ export namespace Midori {
     }
 
     namespace Urlbar {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Entry.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Entry.ConstructorProps {
@@ -3382,6 +3529,7 @@ export namespace Midori {
 
     class Urlbar extends Gtk.Entry {
         static $gtype: GObject.GType<Urlbar>;
+        declare static readonly __signalSignatures: Urlbar.SignalSignatures;
 
         // Properties
 

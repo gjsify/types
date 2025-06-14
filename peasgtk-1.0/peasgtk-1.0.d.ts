@@ -32,6 +32,9 @@ export namespace PeasGtk {
      */
 
     namespace PluginManager {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -50,6 +53,7 @@ export namespace PeasGtk {
      */
     class PluginManager extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<PluginManager>;
+        declare static readonly __signalSignatures: PluginManager.SignalSignatures;
 
         // Properties
 
@@ -551,6 +555,11 @@ export namespace PeasGtk {
             (menu: Gtk.Menu): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.TreeView.SignalSignatures {
+            'populate-popup': PopulatePopup;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -570,6 +579,7 @@ export namespace PeasGtk {
      */
     class PluginManagerView extends Gtk.TreeView implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<PluginManagerView>;
+        declare static readonly __signalSignatures: PluginManagerView.SignalSignatures;
 
         // Properties
 
@@ -598,6 +608,18 @@ export namespace PeasGtk {
 
         // Signals
 
+        connect<K extends keyof PluginManagerView.SignalSignatures>(
+            signal: K,
+            callback: PluginManagerView.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PluginManagerView.SignalSignatures>(
+            signal: K,
+            callback: PluginManagerView.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PluginManagerView.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PluginManagerView.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

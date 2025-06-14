@@ -501,6 +501,11 @@ export namespace GIRepository {
          */
         NOT_OVERRIDE,
     }
+    namespace ArgInfo {
+        // Signal signatures
+        interface SignalSignatures extends BaseInfo.SignalSignatures {}
+    }
+
     /**
      * `GIArgInfo` represents an argument of a callable.
      *
@@ -508,6 +513,7 @@ export namespace GIRepository {
      */
     class ArgInfo extends BaseInfo {
         static $gtype: GObject.GType<ArgInfo>;
+        declare static readonly __signalSignatures: ArgInfo.SignalSignatures;
 
         // Constructors
 
@@ -606,6 +612,11 @@ export namespace GIRepository {
         may_be_null(): boolean;
     }
 
+    namespace BaseInfo {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+    }
+
     /**
      * `GIBaseInfo` is the common base struct of all other Info structs
      * accessible through the [class`GIRepository`.Repository] API.
@@ -638,6 +649,7 @@ export namespace GIRepository {
      */
     abstract class BaseInfo {
         static $gtype: GObject.GType<BaseInfo>;
+        declare static readonly __signalSignatures: BaseInfo.SignalSignatures;
 
         // Constructors
 
@@ -751,6 +763,11 @@ export namespace GIRepository {
         unref(): void;
     }
 
+    namespace CallableInfo {
+        // Signal signatures
+        interface SignalSignatures extends BaseInfo.SignalSignatures {}
+    }
+
     /**
      * `GICallableInfo` represents an entity which is callable.
      *
@@ -765,6 +782,7 @@ export namespace GIRepository {
      */
     abstract class CallableInfo extends BaseInfo {
         static $gtype: GObject.GType<CallableInfo>;
+        declare static readonly __signalSignatures: CallableInfo.SignalSignatures;
 
         // Constructors
 
@@ -916,15 +934,26 @@ export namespace GIRepository {
         skip_return(): boolean;
     }
 
+    namespace CallbackInfo {
+        // Signal signatures
+        interface SignalSignatures extends CallableInfo.SignalSignatures {}
+    }
+
     /**
      * `GICallbackInfo` represents a callback.
      */
     class CallbackInfo extends CallableInfo {
         static $gtype: GObject.GType<CallbackInfo>;
+        declare static readonly __signalSignatures: CallbackInfo.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+    }
+
+    namespace ConstantInfo {
+        // Signal signatures
+        interface SignalSignatures extends BaseInfo.SignalSignatures {}
     }
 
     /**
@@ -936,6 +965,7 @@ export namespace GIRepository {
      */
     class ConstantInfo extends BaseInfo {
         static $gtype: GObject.GType<ConstantInfo>;
+        declare static readonly __signalSignatures: ConstantInfo.SignalSignatures;
 
         // Constructors
 
@@ -950,6 +980,11 @@ export namespace GIRepository {
         get_type_info(): TypeInfo;
     }
 
+    namespace EnumInfo {
+        // Signal signatures
+        interface SignalSignatures extends RegisteredTypeInfo.SignalSignatures {}
+    }
+
     /**
      * A `GIEnumInfo` represents an enumeration.
      *
@@ -961,6 +996,7 @@ export namespace GIRepository {
      */
     class EnumInfo extends RegisteredTypeInfo {
         static $gtype: GObject.GType<EnumInfo>;
+        declare static readonly __signalSignatures: EnumInfo.SignalSignatures;
 
         // Constructors
 
@@ -1008,6 +1044,11 @@ export namespace GIRepository {
         get_value(n: number): ValueInfo;
     }
 
+    namespace FieldInfo {
+        // Signal signatures
+        interface SignalSignatures extends BaseInfo.SignalSignatures {}
+    }
+
     /**
      * A `GIFieldInfo` struct represents a field of a struct, union, or object.
      *
@@ -1024,6 +1065,7 @@ export namespace GIRepository {
      */
     class FieldInfo extends BaseInfo {
         static $gtype: GObject.GType<FieldInfo>;
+        declare static readonly __signalSignatures: FieldInfo.SignalSignatures;
 
         // Constructors
 
@@ -1056,6 +1098,11 @@ export namespace GIRepository {
         get_type_info(): TypeInfo;
     }
 
+    namespace FlagsInfo {
+        // Signal signatures
+        interface SignalSignatures extends EnumInfo.SignalSignatures {}
+    }
+
     /**
      * A `GIFlagsInfo` represents an enumeration which defines flag values
      * (independently set bits).
@@ -1068,10 +1115,16 @@ export namespace GIRepository {
      */
     class FlagsInfo extends EnumInfo {
         static $gtype: GObject.GType<FlagsInfo>;
+        declare static readonly __signalSignatures: FlagsInfo.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+    }
+
+    namespace FunctionInfo {
+        // Signal signatures
+        interface SignalSignatures extends CallableInfo.SignalSignatures {}
     }
 
     /**
@@ -1085,6 +1138,7 @@ export namespace GIRepository {
      */
     class FunctionInfo extends CallableInfo {
         static $gtype: GObject.GType<FunctionInfo>;
+        declare static readonly __signalSignatures: FunctionInfo.SignalSignatures;
 
         // Constructors
 
@@ -1124,6 +1178,11 @@ export namespace GIRepository {
         get_vfunc(): VFuncInfo | null;
     }
 
+    namespace InterfaceInfo {
+        // Signal signatures
+        interface SignalSignatures extends RegisteredTypeInfo.SignalSignatures {}
+    }
+
     /**
      * `GIInterfaceInfo` represents a `GInterface` type.
      *
@@ -1132,6 +1191,7 @@ export namespace GIRepository {
      */
     class InterfaceInfo extends RegisteredTypeInfo {
         static $gtype: GObject.GType<InterfaceInfo>;
+        declare static readonly __signalSignatures: InterfaceInfo.SignalSignatures;
 
         // Constructors
 
@@ -1240,6 +1300,11 @@ export namespace GIRepository {
         get_vfunc(n: number): VFuncInfo;
     }
 
+    namespace ObjectInfo {
+        // Signal signatures
+        interface SignalSignatures extends RegisteredTypeInfo.SignalSignatures {}
+    }
+
     /**
      * `GIObjectInfo` represents a classed type.
      *
@@ -1254,6 +1319,7 @@ export namespace GIRepository {
      */
     class ObjectInfo extends RegisteredTypeInfo {
         static $gtype: GObject.GType<ObjectInfo>;
+        declare static readonly __signalSignatures: ObjectInfo.SignalSignatures;
 
         // Constructors
 
@@ -1486,6 +1552,11 @@ export namespace GIRepository {
         get_vfunc(n: number): VFuncInfo;
     }
 
+    namespace PropertyInfo {
+        // Signal signatures
+        interface SignalSignatures extends BaseInfo.SignalSignatures {}
+    }
+
     /**
      * `GIPropertyInfo` represents a property in a [class`GObject`.Object].
      *
@@ -1494,6 +1565,7 @@ export namespace GIRepository {
      */
     class PropertyInfo extends BaseInfo {
         static $gtype: GObject.GType<PropertyInfo>;
+        declare static readonly __signalSignatures: PropertyInfo.SignalSignatures;
 
         // Constructors
 
@@ -1538,6 +1610,11 @@ export namespace GIRepository {
         get_type_info(): TypeInfo;
     }
 
+    namespace RegisteredTypeInfo {
+        // Signal signatures
+        interface SignalSignatures extends BaseInfo.SignalSignatures {}
+    }
+
     /**
      * `GIRegisteredTypeInfo` represents an entity with a [type`GObject`.Type]
      * associated.
@@ -1561,6 +1638,7 @@ export namespace GIRepository {
      */
     abstract class RegisteredTypeInfo extends BaseInfo {
         static $gtype: GObject.GType<RegisteredTypeInfo>;
+        declare static readonly __signalSignatures: RegisteredTypeInfo.SignalSignatures;
 
         // Constructors
 
@@ -1618,6 +1696,9 @@ export namespace GIRepository {
     }
 
     namespace Repository {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1668,6 +1749,7 @@ export namespace GIRepository {
      */
     class Repository extends GObject.Object {
         static $gtype: GObject.GType<Repository>;
+        declare static readonly __signalSignatures: Repository.SignalSignatures;
 
         // Constructors
 
@@ -1990,6 +2072,11 @@ export namespace GIRepository {
         ): Typelib;
     }
 
+    namespace SignalInfo {
+        // Signal signatures
+        interface SignalSignatures extends CallableInfo.SignalSignatures {}
+    }
+
     /**
      * `GISignalInfo` represents a signal.
      *
@@ -2001,6 +2088,7 @@ export namespace GIRepository {
      */
     class SignalInfo extends CallableInfo {
         static $gtype: GObject.GType<SignalInfo>;
+        declare static readonly __signalSignatures: SignalInfo.SignalSignatures;
 
         // Constructors
 
@@ -2032,6 +2120,11 @@ export namespace GIRepository {
         true_stops_emit(): boolean;
     }
 
+    namespace StructInfo {
+        // Signal signatures
+        interface SignalSignatures extends RegisteredTypeInfo.SignalSignatures {}
+    }
+
     /**
      * `GIStructInfo` represents a generic C structure type.
      *
@@ -2039,6 +2132,7 @@ export namespace GIRepository {
      */
     class StructInfo extends RegisteredTypeInfo {
         static $gtype: GObject.GType<StructInfo>;
+        declare static readonly __signalSignatures: StructInfo.SignalSignatures;
 
         // Constructors
 
@@ -2117,6 +2211,11 @@ export namespace GIRepository {
         is_gtype_struct(): boolean;
     }
 
+    namespace TypeInfo {
+        // Signal signatures
+        interface SignalSignatures extends BaseInfo.SignalSignatures {}
+    }
+
     /**
      * `GITypeInfo` represents a type, including information about direction and
      * transfer.
@@ -2136,6 +2235,7 @@ export namespace GIRepository {
      */
     class TypeInfo extends BaseInfo {
         static $gtype: GObject.GType<TypeInfo>;
+        declare static readonly __signalSignatures: TypeInfo.SignalSignatures;
 
         // Constructors
 
@@ -2261,6 +2361,11 @@ export namespace GIRepository {
         is_zero_terminated(): boolean;
     }
 
+    namespace UnionInfo {
+        // Signal signatures
+        interface SignalSignatures extends RegisteredTypeInfo.SignalSignatures {}
+    }
+
     /**
      * `GIUnionInfo` represents a union type.
      *
@@ -2270,6 +2375,7 @@ export namespace GIRepository {
      */
     class UnionInfo extends RegisteredTypeInfo {
         static $gtype: GObject.GType<UnionInfo>;
+        declare static readonly __signalSignatures: UnionInfo.SignalSignatures;
 
         // Constructors
 
@@ -2354,15 +2460,26 @@ export namespace GIRepository {
         is_discriminated(): boolean;
     }
 
+    namespace UnresolvedInfo {
+        // Signal signatures
+        interface SignalSignatures extends BaseInfo.SignalSignatures {}
+    }
+
     /**
      * `GIUnresolvedInfo` represents an unresolved symbol.
      */
     class UnresolvedInfo extends BaseInfo {
         static $gtype: GObject.GType<UnresolvedInfo>;
+        declare static readonly __signalSignatures: UnresolvedInfo.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+    }
+
+    namespace VFuncInfo {
+        // Signal signatures
+        interface SignalSignatures extends CallableInfo.SignalSignatures {}
     }
 
     /**
@@ -2373,6 +2490,7 @@ export namespace GIRepository {
      */
     class VFuncInfo extends CallableInfo {
         static $gtype: GObject.GType<VFuncInfo>;
+        declare static readonly __signalSignatures: VFuncInfo.SignalSignatures;
 
         // Constructors
 
@@ -2420,6 +2538,11 @@ export namespace GIRepository {
         get_signal(): SignalInfo | null;
     }
 
+    namespace ValueInfo {
+        // Signal signatures
+        interface SignalSignatures extends BaseInfo.SignalSignatures {}
+    }
+
     /**
      * A `GIValueInfo` represents a value in an enumeration.
      *
@@ -2428,6 +2551,7 @@ export namespace GIRepository {
      */
     class ValueInfo extends BaseInfo {
         static $gtype: GObject.GType<ValueInfo>;
+        declare static readonly __signalSignatures: ValueInfo.SignalSignatures;
 
         // Constructors
 

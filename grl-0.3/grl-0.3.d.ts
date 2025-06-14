@@ -753,6 +753,9 @@ export namespace Grl {
         FULL,
     }
     namespace Caps {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -760,6 +763,7 @@ export namespace Grl {
 
     class Caps extends GObject.Object {
         static $gtype: GObject.GType<Caps>;
+        declare static readonly __signalSignatures: Caps.SignalSignatures;
 
         // Constructors
 
@@ -803,6 +807,9 @@ export namespace Grl {
     }
 
     namespace Config {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -810,6 +817,7 @@ export namespace Grl {
 
     class Config extends GObject.Object {
         static $gtype: GObject.GType<Config>;
+        declare static readonly __signalSignatures: Config.SignalSignatures;
 
         // Constructors
 
@@ -932,6 +940,9 @@ export namespace Grl {
     }
 
     namespace Data {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -939,6 +950,7 @@ export namespace Grl {
 
     class Data extends GObject.Object {
         static $gtype: GObject.GType<Data>;
+        declare static readonly __signalSignatures: Data.SignalSignatures;
 
         // Constructors
 
@@ -1224,6 +1236,9 @@ export namespace Grl {
     }
 
     namespace Media {
+        // Signal signatures
+        interface SignalSignatures extends Data.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Data.ConstructorProps {
@@ -1234,6 +1249,7 @@ export namespace Grl {
 
     class Media extends Data {
         static $gtype: GObject.GType<Media>;
+        declare static readonly __signalSignatures: Media.SignalSignatures;
 
         // Properties
 
@@ -1840,6 +1856,9 @@ export namespace Grl {
     }
 
     namespace OperationOptions {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1847,6 +1866,7 @@ export namespace Grl {
 
     class OperationOptions extends GObject.Object {
         static $gtype: GObject.GType<OperationOptions>;
+        declare static readonly __signalSignatures: OperationOptions.SignalSignatures;
 
         // Constructors
 
@@ -1952,6 +1972,9 @@ export namespace Grl {
     }
 
     namespace Plugin {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1961,6 +1984,7 @@ export namespace Grl {
 
     class Plugin extends GObject.Object {
         static $gtype: GObject.GType<Plugin>;
+        declare static readonly __signalSignatures: Plugin.SignalSignatures;
 
         // Properties
 
@@ -2044,6 +2068,13 @@ export namespace Grl {
             (source: Source): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'metadata-key-added': MetadataKeyAdded;
+            'source-added': SourceAdded;
+            'source-removed': SourceRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2051,6 +2082,7 @@ export namespace Grl {
 
     class Registry extends GObject.Object {
         static $gtype: GObject.GType<Registry>;
+        declare static readonly __signalSignatures: Registry.SignalSignatures;
 
         // Constructors
 
@@ -2060,6 +2092,15 @@ export namespace Grl {
 
         // Signals
 
+        connect<K extends keyof Registry.SignalSignatures>(signal: K, callback: Registry.SignalSignatures[K]): number;
+        connect_after<K extends keyof Registry.SignalSignatures>(
+            signal: K,
+            callback: Registry.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Registry.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Registry.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2266,6 +2307,9 @@ export namespace Grl {
     }
 
     namespace RelatedKeys {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2273,6 +2317,7 @@ export namespace Grl {
 
     class RelatedKeys extends GObject.Object {
         static $gtype: GObject.GType<RelatedKeys>;
+        declare static readonly __signalSignatures: RelatedKeys.SignalSignatures;
 
         // Constructors
 
@@ -2450,6 +2495,11 @@ export namespace Grl {
             (changed_medias: Media[], change_type: SourceChangeType, location_unknown: boolean): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'content-changed': ContentChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2474,6 +2524,7 @@ export namespace Grl {
 
     abstract class Source extends GObject.Object {
         static $gtype: GObject.GType<Source>;
+        declare static readonly __signalSignatures: Source.SignalSignatures;
 
         // Properties
 
@@ -2676,6 +2727,9 @@ export namespace Grl {
 
         // Signals
 
+        connect<K extends keyof Source.SignalSignatures>(signal: K, callback: Source.SignalSignatures[K]): number;
+        connect_after<K extends keyof Source.SignalSignatures>(signal: K, callback: Source.SignalSignatures[K]): number;
+        emit<K extends keyof Source.SignalSignatures>(signal: K, ...args: Parameters<Source.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

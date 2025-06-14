@@ -161,6 +161,14 @@ export namespace SugarExt {
             (object?: any | null): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            quit: Quit;
+            'quit-cancelled': QuitCancelled;
+            'quit-requested': QuitRequested;
+            'save-state': SaveState;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -168,6 +176,7 @@ export namespace SugarExt {
 
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
+        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Constructors
 
@@ -177,6 +186,9 @@ export namespace SugarExt {
 
         // Signals
 
+        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -288,6 +300,9 @@ export namespace SugarExt {
     }
 
     namespace ClientXSMP {
+        // Signal signatures
+        interface SignalSignatures extends Client.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Client.ConstructorProps {}
@@ -295,6 +310,7 @@ export namespace SugarExt {
 
     class ClientXSMP extends Client {
         static $gtype: GObject.GType<ClientXSMP>;
+        declare static readonly __signalSignatures: ClientXSMP.SignalSignatures;
 
         // Fields
 
@@ -323,6 +339,9 @@ export namespace SugarExt {
     }
 
     namespace CursorTracker {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -330,6 +349,7 @@ export namespace SugarExt {
 
     class CursorTracker extends GObject.Object {
         static $gtype: GObject.GType<CursorTracker>;
+        declare static readonly __signalSignatures: CursorTracker.SignalSignatures;
 
         // Constructors
 
@@ -341,6 +361,9 @@ export namespace SugarExt {
     }
 
     namespace GestureGrabber {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -348,6 +371,7 @@ export namespace SugarExt {
 
     class GestureGrabber extends GObject.Object {
         static $gtype: GObject.GType<GestureGrabber>;
+        declare static readonly __signalSignatures: GestureGrabber.SignalSignatures;
 
         // Constructors
 
@@ -364,6 +388,9 @@ export namespace SugarExt {
     }
 
     namespace Grid {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -371,6 +398,7 @@ export namespace SugarExt {
 
     class Grid extends GObject.Object {
         static $gtype: GObject.GType<Grid>;
+        declare static readonly __signalSignatures: Grid.SignalSignatures;
 
         // Fields
 
@@ -404,6 +432,12 @@ export namespace SugarExt {
             (object: number, p0: number, p1: number): boolean;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'key-pressed': KeyPressed;
+            'key-released': KeyReleased;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -411,6 +445,7 @@ export namespace SugarExt {
 
     class KeyGrabber extends GObject.Object {
         static $gtype: GObject.GType<KeyGrabber>;
+        declare static readonly __signalSignatures: KeyGrabber.SignalSignatures;
 
         // Fields
 
@@ -426,6 +461,18 @@ export namespace SugarExt {
 
         // Signals
 
+        connect<K extends keyof KeyGrabber.SignalSignatures>(
+            signal: K,
+            callback: KeyGrabber.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof KeyGrabber.SignalSignatures>(
+            signal: K,
+            callback: KeyGrabber.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof KeyGrabber.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<KeyGrabber.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -471,6 +518,11 @@ export namespace SugarExt {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'shutdown-completed': ShutdownCompleted;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -478,6 +530,7 @@ export namespace SugarExt {
 
     class Session extends GObject.Object {
         static $gtype: GObject.GType<Session>;
+        declare static readonly __signalSignatures: Session.SignalSignatures;
 
         // Constructors
 
@@ -487,6 +540,15 @@ export namespace SugarExt {
 
         // Signals
 
+        connect<K extends keyof Session.SignalSignatures>(signal: K, callback: Session.SignalSignatures[K]): number;
+        connect_after<K extends keyof Session.SignalSignatures>(
+            signal: K,
+            callback: Session.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Session.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Session.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -516,6 +578,9 @@ export namespace SugarExt {
     }
 
     namespace Volume {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -523,6 +588,7 @@ export namespace SugarExt {
 
     class Volume extends GObject.Object {
         static $gtype: GObject.GType<Volume>;
+        declare static readonly __signalSignatures: Volume.SignalSignatures;
 
         // Constructors
 
@@ -551,6 +617,9 @@ export namespace SugarExt {
     }
 
     namespace VolumeAlsa {
+        // Signal signatures
+        interface SignalSignatures extends Volume.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Volume.ConstructorProps {}
@@ -558,6 +627,7 @@ export namespace SugarExt {
 
     class VolumeAlsa extends Volume {
         static $gtype: GObject.GType<VolumeAlsa>;
+        declare static readonly __signalSignatures: VolumeAlsa.SignalSignatures;
 
         // Constructors
 

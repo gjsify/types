@@ -52,6 +52,9 @@ export namespace ColordGtk {
     const GTK_MICRO_VERSION: number;
     const GTK_MINOR_VERSION: number;
     namespace SampleWidget {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.DrawingArea.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -64,6 +67,7 @@ export namespace ColordGtk {
 
     class SampleWidget extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<SampleWidget>;
+        declare static readonly __signalSignatures: SampleWidget.SignalSignatures;
 
         // Properties
 
@@ -529,6 +533,9 @@ export namespace ColordGtk {
     }
 
     namespace SampleWindow {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Window.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -539,6 +546,7 @@ export namespace ColordGtk {
 
     class SampleWindow extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<SampleWindow>;
+        declare static readonly __signalSignatures: SampleWindow.SignalSignatures;
 
         // Constructors
 
@@ -1010,6 +1018,11 @@ export namespace ColordGtk {
             (object: Colord.Profile): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            changed: Changed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1019,6 +1032,7 @@ export namespace ColordGtk {
 
     class Window extends GObject.Object {
         static $gtype: GObject.GType<Window>;
+        declare static readonly __signalSignatures: Window.SignalSignatures;
 
         // Properties
 
@@ -1034,6 +1048,9 @@ export namespace ColordGtk {
 
         // Signals
 
+        connect<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
+        connect_after<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
+        emit<K extends keyof Window.SignalSignatures>(signal: K, ...args: Parameters<Window.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

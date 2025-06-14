@@ -584,6 +584,9 @@ export namespace GioUnix {
         (appinfo: Gio.DesktopAppInfo, pid: GLib.Pid): void;
     }
     namespace DesktopAppInfo {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.AppInfo.ConstructorProps {
@@ -601,6 +604,7 @@ export namespace GioUnix {
      */
     class DesktopAppInfo extends GObject.Object implements Gio.AppInfo {
         static $gtype: GObject.GType<DesktopAppInfo>;
+        declare static readonly __signalSignatures: DesktopAppInfo.SignalSignatures;
 
         // Properties
 
@@ -1760,6 +1764,9 @@ export namespace GioUnix {
     }
 
     namespace FDMessage {
+        // Signal signatures
+        interface SignalSignatures extends Gio.SocketControlMessage.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gio.SocketControlMessage.ConstructorProps {
@@ -1785,6 +1792,7 @@ export namespace GioUnix {
      */
     class FDMessage extends Gio.SocketControlMessage {
         static $gtype: GObject.GType<FDMessage>;
+        declare static readonly __signalSignatures: FDMessage.SignalSignatures;
 
         // Properties
 
@@ -1853,6 +1861,9 @@ export namespace GioUnix {
     }
 
     namespace InputStream {
+        // Signal signatures
+        interface SignalSignatures extends Gio.InputStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1878,6 +1889,7 @@ export namespace GioUnix {
      */
     class InputStream extends Gio.InputStream implements Gio.PollableInputStream, FileDescriptorBased {
         static $gtype: GObject.GType<InputStream>;
+        declare static readonly __signalSignatures: InputStream.SignalSignatures;
 
         // Properties
 
@@ -3246,6 +3258,12 @@ export namespace GioUnix {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'mountpoints-changed': MountpointsChanged;
+            'mounts-changed': MountsChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3263,6 +3281,7 @@ export namespace GioUnix {
      */
     class MountMonitor extends GObject.Object {
         static $gtype: GObject.GType<MountMonitor>;
+        declare static readonly __signalSignatures: MountMonitor.SignalSignatures;
 
         // Constructors
 
@@ -3274,6 +3293,18 @@ export namespace GioUnix {
 
         // Signals
 
+        connect<K extends keyof MountMonitor.SignalSignatures>(
+            signal: K,
+            callback: MountMonitor.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MountMonitor.SignalSignatures>(
+            signal: K,
+            callback: MountMonitor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MountMonitor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MountMonitor.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3313,6 +3344,9 @@ export namespace GioUnix {
     }
 
     namespace OutputStream {
+        // Signal signatures
+        interface SignalSignatures extends Gio.OutputStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3338,6 +3372,7 @@ export namespace GioUnix {
      */
     class OutputStream extends Gio.OutputStream implements Gio.PollableOutputStream, FileDescriptorBased {
         static $gtype: GObject.GType<OutputStream>;
+        declare static readonly __signalSignatures: OutputStream.SignalSignatures;
 
         // Properties
 

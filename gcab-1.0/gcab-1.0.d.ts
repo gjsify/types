@@ -126,6 +126,9 @@ export namespace GCab {
         (file: File): boolean;
     }
     namespace Cabinet {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -139,6 +142,7 @@ export namespace GCab {
      */
     class Cabinet extends GObject.Object {
         static $gtype: GObject.GType<Cabinet>;
+        declare static readonly __signalSignatures: Cabinet.SignalSignatures;
 
         // Properties
 
@@ -253,6 +257,9 @@ export namespace GCab {
     }
 
     namespace File {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -267,6 +274,7 @@ export namespace GCab {
      */
     class File extends GObject.Object {
         static $gtype: GObject.GType<File>;
+        declare static readonly __signalSignatures: File.SignalSignatures;
 
         // Properties
 
@@ -367,6 +375,9 @@ export namespace GCab {
     }
 
     namespace Folder {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -381,6 +392,7 @@ export namespace GCab {
      */
     class Folder extends GObject.Object {
         static $gtype: GObject.GType<Folder>;
+        declare static readonly __signalSignatures: Folder.SignalSignatures;
 
         // Properties
 

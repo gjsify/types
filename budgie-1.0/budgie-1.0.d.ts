@@ -140,6 +140,12 @@ export namespace Budgie {
             (panel_size: number, icon_size: number, small_icon_size: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.EventBox.SignalSignatures {
+            'panel-position-changed': PanelPositionChanged;
+            'panel-size-changed': PanelSizeChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -157,6 +163,7 @@ export namespace Budgie {
 
     class Applet extends Gtk.EventBox implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Applet>;
+        declare static readonly __signalSignatures: Applet.SignalSignatures;
 
         // Properties
 
@@ -251,6 +258,9 @@ export namespace Budgie {
 
         // Signals
 
+        connect<K extends keyof Applet.SignalSignatures>(signal: K, callback: Applet.SignalSignatures[K]): number;
+        connect_after<K extends keyof Applet.SignalSignatures>(signal: K, callback: Applet.SignalSignatures[K]): number;
+        emit<K extends keyof Applet.SignalSignatures>(signal: K, ...args: Parameters<Applet.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -919,6 +929,9 @@ export namespace Budgie {
     }
 
     namespace AppletInfo {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -939,6 +952,7 @@ export namespace Budgie {
      */
     class AppletInfo extends GObject.Object {
         static $gtype: GObject.GType<AppletInfo>;
+        declare static readonly __signalSignatures: AppletInfo.SignalSignatures;
 
         // Properties
 
@@ -977,6 +991,11 @@ export namespace Budgie {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Window.SignalSignatures {
+            closed: Closed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -992,6 +1011,7 @@ export namespace Budgie {
 
     class Popover extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Popover>;
+        declare static readonly __signalSignatures: Popover.SignalSignatures;
 
         // Properties
 
@@ -1023,6 +1043,15 @@ export namespace Budgie {
 
         // Signals
 
+        connect<K extends keyof Popover.SignalSignatures>(signal: K, callback: Popover.SignalSignatures[K]): number;
+        connect_after<K extends keyof Popover.SignalSignatures>(
+            signal: K,
+            callback: Popover.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Popover.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Popover.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1493,6 +1522,9 @@ export namespace Budgie {
     }
 
     namespace PopoverManager {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1500,6 +1532,7 @@ export namespace Budgie {
 
     class PopoverManager extends GObject.Object {
         static $gtype: GObject.GType<PopoverManager>;
+        declare static readonly __signalSignatures: PopoverManager.SignalSignatures;
 
         // Constructors
 

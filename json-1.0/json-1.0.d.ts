@@ -442,6 +442,9 @@ export namespace Json {
         (object: Object, member_name: string, member_node: Node): void;
     }
     namespace Builder {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -489,6 +492,7 @@ export namespace Json {
      */
     class Builder extends GObject.Object {
         static $gtype: GObject.GType<Builder>;
+        declare static readonly __signalSignatures: Builder.SignalSignatures;
 
         // Properties
 
@@ -652,6 +656,9 @@ export namespace Json {
     }
 
     namespace Generator {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -670,6 +677,7 @@ export namespace Json {
      */
     class Generator extends GObject.Object {
         static $gtype: GObject.GType<Generator>;
+        declare static readonly __signalSignatures: Generator.SignalSignatures;
 
         // Properties
 
@@ -841,6 +849,19 @@ export namespace Json {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'array-element': ArrayElement;
+            'array-end': ArrayEnd;
+            'array-start': ArrayStart;
+            error: Error;
+            'object-end': ObjectEnd;
+            'object-member': ObjectMember;
+            'object-start': ObjectStart;
+            'parse-end': ParseEnd;
+            'parse-start': ParseStart;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -889,6 +910,7 @@ export namespace Json {
      */
     class Parser extends GObject.Object {
         static $gtype: GObject.GType<Parser>;
+        declare static readonly __signalSignatures: Parser.SignalSignatures;
 
         // Properties
 
@@ -919,6 +941,9 @@ export namespace Json {
 
         // Signals
 
+        connect<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
+        connect_after<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
+        emit<K extends keyof Parser.SignalSignatures>(signal: K, ...args: Parameters<Parser.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1177,6 +1202,9 @@ export namespace Json {
     }
 
     namespace Path {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1313,6 +1341,7 @@ export namespace Json {
      */
     class Path extends GObject.Object {
         static $gtype: GObject.GType<Path>;
+        declare static readonly __signalSignatures: Path.SignalSignatures;
 
         // Constructors
 
@@ -1359,6 +1388,9 @@ export namespace Json {
     }
 
     namespace Reader {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1445,6 +1477,7 @@ export namespace Json {
      */
     class Reader extends GObject.Object {
         static $gtype: GObject.GType<Reader>;
+        declare static readonly __signalSignatures: Reader.SignalSignatures;
 
         // Properties
 

@@ -330,6 +330,9 @@ export namespace GdkPixbuf {
         THREADSAFE,
     }
     namespace Pixbuf {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -491,6 +494,7 @@ export namespace GdkPixbuf {
      */
     class Pixbuf extends GObject.Object implements Gio.Icon, Gio.LoadableIcon {
         static $gtype: GObject.GType<Pixbuf>;
+        declare static readonly __signalSignatures: Pixbuf.SignalSignatures;
 
         // Properties
 
@@ -1863,6 +1867,9 @@ export namespace GdkPixbuf {
     }
 
     namespace PixbufAnimation {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1885,6 +1892,7 @@ export namespace GdkPixbuf {
      */
     class PixbufAnimation extends GObject.Object {
         static $gtype: GObject.GType<PixbufAnimation>;
+        declare static readonly __signalSignatures: PixbufAnimation.SignalSignatures;
 
         // Constructors
 
@@ -2070,6 +2078,9 @@ export namespace GdkPixbuf {
     }
 
     namespace PixbufAnimationIter {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2081,6 +2092,7 @@ export namespace GdkPixbuf {
      */
     class PixbufAnimationIter extends GObject.Object {
         static $gtype: GObject.GType<PixbufAnimationIter>;
+        declare static readonly __signalSignatures: PixbufAnimationIter.SignalSignatures;
 
         // Constructors
 
@@ -2247,7 +2259,7 @@ export namespace GdkPixbuf {
         }
 
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
             'area-prepared': AreaPrepared;
             'area-updated': AreaUpdated;
             closed: Closed;
@@ -2454,6 +2466,9 @@ export namespace GdkPixbuf {
     }
 
     namespace PixbufNonAnim {
+        // Signal signatures
+        interface SignalSignatures extends PixbufAnimation.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends PixbufAnimation.ConstructorProps {}
@@ -2461,6 +2476,7 @@ export namespace GdkPixbuf {
 
     class PixbufNonAnim extends PixbufAnimation {
         static $gtype: GObject.GType<PixbufNonAnim>;
+        declare static readonly __signalSignatures: PixbufNonAnim.SignalSignatures;
 
         // Constructors
 
@@ -2472,6 +2488,9 @@ export namespace GdkPixbuf {
     }
 
     namespace PixbufSimpleAnim {
+        // Signal signatures
+        interface SignalSignatures extends PixbufAnimation.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends PixbufAnimation.ConstructorProps {
@@ -2484,6 +2503,7 @@ export namespace GdkPixbuf {
      */
     class PixbufSimpleAnim extends PixbufAnimation {
         static $gtype: GObject.GType<PixbufSimpleAnim>;
+        declare static readonly __signalSignatures: PixbufSimpleAnim.SignalSignatures;
 
         // Properties
 
@@ -2523,6 +2543,9 @@ export namespace GdkPixbuf {
     }
 
     namespace PixbufSimpleAnimIter {
+        // Signal signatures
+        interface SignalSignatures extends PixbufAnimationIter.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends PixbufAnimationIter.ConstructorProps {}
@@ -2530,6 +2553,7 @@ export namespace GdkPixbuf {
 
     class PixbufSimpleAnimIter extends PixbufAnimationIter {
         static $gtype: GObject.GType<PixbufSimpleAnimIter>;
+        declare static readonly __signalSignatures: PixbufSimpleAnimIter.SignalSignatures;
 
         // Constructors
 

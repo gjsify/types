@@ -22,6 +22,9 @@ export namespace GVncPulse {
      */
 
     namespace AudioPulse {
+        // Signal signatures
+        interface SignalSignatures extends GVnc.BaseAudio.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GVnc.BaseAudio.ConstructorProps, GVnc.Audio.ConstructorProps {}
@@ -29,6 +32,7 @@ export namespace GVncPulse {
 
     class AudioPulse extends GVnc.BaseAudio implements GVnc.Audio {
         static $gtype: GObject.GType<AudioPulse>;
+        declare static readonly __signalSignatures: AudioPulse.SignalSignatures;
 
         // Constructors
 

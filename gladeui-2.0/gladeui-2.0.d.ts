@@ -910,6 +910,9 @@ export namespace Gladeui {
         UNRECOGNIZED,
     }
     namespace AdaptorChooser {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -923,6 +926,7 @@ export namespace Gladeui {
 
     class AdaptorChooser extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<AdaptorChooser>;
+        declare static readonly __signalSignatures: AdaptorChooser.SignalSignatures;
 
         // Properties
 
@@ -1416,6 +1420,13 @@ export namespace Gladeui {
             (adaptor: GObject.Object): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'doc-search': DocSearch;
+            'signal-editor-created': SignalEditorCreated;
+            'widget-adaptor-registered': WidgetAdaptorRegistered;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1423,6 +1434,7 @@ export namespace Gladeui {
 
     class App extends GObject.Object {
         static $gtype: GObject.GType<App>;
+        declare static readonly __signalSignatures: App.SignalSignatures;
 
         // Constructors
 
@@ -1434,6 +1446,9 @@ export namespace Gladeui {
 
         // Signals
 
+        connect<K extends keyof App.SignalSignatures>(signal: K, callback: App.SignalSignatures[K]): number;
+        connect_after<K extends keyof App.SignalSignatures>(signal: K, callback: App.SignalSignatures[K]): number;
+        emit<K extends keyof App.SignalSignatures>(signal: K, ...args: Parameters<App.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1548,6 +1563,16 @@ export namespace Gladeui {
             (gparent: GObject.Object, gchild: GObject.Object): boolean;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {
+            'build-child': BuildChild;
+            'change-type': ChangeType;
+            'child-selected': ChildSelected;
+            'delete-child': DeleteChild;
+            'get-display-name': GetDisplayName;
+            'move-child': MoveChild;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1561,6 +1586,7 @@ export namespace Gladeui {
 
     class BaseEditor extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<BaseEditor>;
+        declare static readonly __signalSignatures: BaseEditor.SignalSignatures;
 
         // Properties
 
@@ -1575,6 +1601,18 @@ export namespace Gladeui {
 
         // Signals
 
+        connect<K extends keyof BaseEditor.SignalSignatures>(
+            signal: K,
+            callback: BaseEditor.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BaseEditor.SignalSignatures>(
+            signal: K,
+            callback: BaseEditor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BaseEditor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BaseEditor.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2132,6 +2170,11 @@ export namespace Gladeui {
             (object: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.CellRendererPixbuf.SignalSignatures {
+            activate: Activate;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.CellRendererPixbuf.ConstructorProps {
@@ -2142,6 +2185,7 @@ export namespace Gladeui {
 
     class CellRendererIcon extends Gtk.CellRendererPixbuf {
         static $gtype: GObject.GType<CellRendererIcon>;
+        declare static readonly __signalSignatures: CellRendererIcon.SignalSignatures;
 
         // Properties
 
@@ -2160,6 +2204,18 @@ export namespace Gladeui {
 
         // Signals
 
+        connect<K extends keyof CellRendererIcon.SignalSignatures>(
+            signal: K,
+            callback: CellRendererIcon.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CellRendererIcon.SignalSignatures>(
+            signal: K,
+            callback: CellRendererIcon.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CellRendererIcon.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CellRendererIcon.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2182,6 +2238,9 @@ export namespace Gladeui {
     }
 
     namespace Clipboard {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2192,6 +2251,7 @@ export namespace Gladeui {
 
     class Clipboard extends GObject.Object {
         static $gtype: GObject.GType<Clipboard>;
+        declare static readonly __signalSignatures: Clipboard.SignalSignatures;
 
         // Properties
 
@@ -2223,6 +2283,9 @@ export namespace Gladeui {
     }
 
     namespace Command {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2230,6 +2293,7 @@ export namespace Gladeui {
 
     class Command extends GObject.Object {
         static $gtype: GObject.GType<Command>;
+        declare static readonly __signalSignatures: Command.SignalSignatures;
 
         // Constructors
 
@@ -2444,6 +2508,9 @@ export namespace Gladeui {
     }
 
     namespace DesignView {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2457,6 +2524,7 @@ export namespace Gladeui {
 
     class DesignView extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<DesignView>;
+        declare static readonly __signalSignatures: DesignView.SignalSignatures;
 
         // Properties
 
@@ -2941,6 +3009,9 @@ export namespace Gladeui {
     }
 
     namespace EPropBool {
+        // Signal signatures
+        interface SignalSignatures extends EditorProperty.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2953,6 +3024,7 @@ export namespace Gladeui {
 
     class EPropBool extends EditorProperty implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<EPropBool>;
+        declare static readonly __signalSignatures: EPropBool.SignalSignatures;
 
         // Constructors
 
@@ -7277,6 +7349,9 @@ export namespace Gladeui {
     }
 
     namespace EPropCheck {
+        // Signal signatures
+        interface SignalSignatures extends EditorProperty.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7289,6 +7364,7 @@ export namespace Gladeui {
 
     class EPropCheck extends EditorProperty implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<EPropCheck>;
+        declare static readonly __signalSignatures: EPropCheck.SignalSignatures;
 
         // Constructors
 
@@ -11613,6 +11689,9 @@ export namespace Gladeui {
     }
 
     namespace EPropColor {
+        // Signal signatures
+        interface SignalSignatures extends EditorProperty.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -11625,6 +11704,7 @@ export namespace Gladeui {
 
     class EPropColor extends EditorProperty implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<EPropColor>;
+        declare static readonly __signalSignatures: EPropColor.SignalSignatures;
 
         // Constructors
 
@@ -15949,6 +16029,9 @@ export namespace Gladeui {
     }
 
     namespace EPropEnum {
+        // Signal signatures
+        interface SignalSignatures extends EditorProperty.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -15961,6 +16044,7 @@ export namespace Gladeui {
 
     class EPropEnum extends EditorProperty implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<EPropEnum>;
+        declare static readonly __signalSignatures: EPropEnum.SignalSignatures;
 
         // Constructors
 
@@ -20285,6 +20369,9 @@ export namespace Gladeui {
     }
 
     namespace EPropFlags {
+        // Signal signatures
+        interface SignalSignatures extends EditorProperty.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -20297,6 +20384,7 @@ export namespace Gladeui {
 
     class EPropFlags extends EditorProperty implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<EPropFlags>;
+        declare static readonly __signalSignatures: EPropFlags.SignalSignatures;
 
         // Constructors
 
@@ -24621,6 +24709,9 @@ export namespace Gladeui {
     }
 
     namespace EPropNamedIcon {
+        // Signal signatures
+        interface SignalSignatures extends EditorProperty.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -24636,6 +24727,7 @@ export namespace Gladeui {
         implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable
     {
         static $gtype: GObject.GType<EPropNamedIcon>;
+        declare static readonly __signalSignatures: EPropNamedIcon.SignalSignatures;
 
         // Constructors
 
@@ -28960,6 +29052,9 @@ export namespace Gladeui {
     }
 
     namespace EPropNumeric {
+        // Signal signatures
+        interface SignalSignatures extends EditorProperty.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -28972,6 +29067,7 @@ export namespace Gladeui {
 
     class EPropNumeric extends EditorProperty implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<EPropNumeric>;
+        declare static readonly __signalSignatures: EPropNumeric.SignalSignatures;
 
         // Constructors
 
@@ -33296,6 +33392,9 @@ export namespace Gladeui {
     }
 
     namespace EPropObject {
+        // Signal signatures
+        interface SignalSignatures extends EditorProperty.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -33308,6 +33407,7 @@ export namespace Gladeui {
 
     class EPropObject extends EditorProperty implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<EPropObject>;
+        declare static readonly __signalSignatures: EPropObject.SignalSignatures;
 
         // Constructors
 
@@ -37632,6 +37732,9 @@ export namespace Gladeui {
     }
 
     namespace EPropObjects {
+        // Signal signatures
+        interface SignalSignatures extends EditorProperty.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -37644,6 +37747,7 @@ export namespace Gladeui {
 
     class EPropObjects extends EditorProperty implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<EPropObjects>;
+        declare static readonly __signalSignatures: EPropObjects.SignalSignatures;
 
         // Constructors
 
@@ -41968,6 +42072,9 @@ export namespace Gladeui {
     }
 
     namespace EPropText {
+        // Signal signatures
+        interface SignalSignatures extends EditorProperty.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -41980,6 +42087,7 @@ export namespace Gladeui {
 
     class EPropText extends EditorProperty implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<EPropText>;
+        declare static readonly __signalSignatures: EPropText.SignalSignatures;
 
         // Constructors
 
@@ -46304,6 +46412,9 @@ export namespace Gladeui {
     }
 
     namespace EPropUnichar {
+        // Signal signatures
+        interface SignalSignatures extends EditorProperty.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -46316,6 +46427,7 @@ export namespace Gladeui {
 
     class EPropUnichar extends EditorProperty implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<EPropUnichar>;
+        declare static readonly __signalSignatures: EPropUnichar.SignalSignatures;
 
         // Constructors
 
@@ -50640,6 +50752,9 @@ export namespace Gladeui {
     }
 
     namespace Editor {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -50663,6 +50778,7 @@ export namespace Gladeui {
 
     class Editor extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Editor>;
+        declare static readonly __signalSignatures: Editor.SignalSignatures;
 
         // Properties
 
@@ -51182,6 +51298,12 @@ export namespace Gladeui {
             (arg1: Property): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {
+            commit: Commit;
+            'value-changed': ValueChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -51203,6 +51325,7 @@ export namespace Gladeui {
 
     class EditorProperty extends Gtk.Box implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<EditorProperty>;
+        declare static readonly __signalSignatures: EditorProperty.SignalSignatures;
 
         // Properties
 
@@ -51229,6 +51352,18 @@ export namespace Gladeui {
 
         // Signals
 
+        connect<K extends keyof EditorProperty.SignalSignatures>(
+            signal: K,
+            callback: EditorProperty.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof EditorProperty.SignalSignatures>(
+            signal: K,
+            callback: EditorProperty.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EditorProperty.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EditorProperty.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -55614,6 +55749,9 @@ export namespace Gladeui {
     }
 
     namespace EditorSkeleton {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -55626,6 +55764,7 @@ export namespace Gladeui {
 
     class EditorSkeleton extends Gtk.Box implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<EditorSkeleton>;
+        declare static readonly __signalSignatures: EditorSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -59965,6 +60104,9 @@ export namespace Gladeui {
     }
 
     namespace EditorTable {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Grid.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -59980,6 +60122,7 @@ export namespace Gladeui {
 
     class EditorTable extends Gtk.Grid implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<EditorTable>;
+        declare static readonly __signalSignatures: EditorTable.SignalSignatures;
 
         // Properties
 
@@ -64333,6 +64476,12 @@ export namespace Gladeui {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {
+            'item-activated': ItemActivated;
+            'selection-changed': SelectionChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -64349,6 +64498,7 @@ export namespace Gladeui {
      */
     class Inspector extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Inspector>;
+        declare static readonly __signalSignatures: Inspector.SignalSignatures;
 
         // Properties
 
@@ -64367,6 +64517,15 @@ export namespace Gladeui {
 
         // Signals
 
+        connect<K extends keyof Inspector.SignalSignatures>(signal: K, callback: Inspector.SignalSignatures[K]): number;
+        connect_after<K extends keyof Inspector.SignalSignatures>(
+            signal: K,
+            callback: Inspector.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Inspector.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Inspector.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -64871,6 +65030,12 @@ export namespace Gladeui {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Dialog.SignalSignatures {
+            'icon-activated': IconActivated;
+            'selection-changed': SelectionChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -64881,6 +65046,7 @@ export namespace Gladeui {
 
     class NamedIconChooserDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<NamedIconChooserDialog>;
+        declare static readonly __signalSignatures: NamedIconChooserDialog.SignalSignatures;
 
         // Constructors
 
@@ -64890,6 +65056,18 @@ export namespace Gladeui {
 
         // Signals
 
+        connect<K extends keyof NamedIconChooserDialog.SignalSignatures>(
+            signal: K,
+            callback: NamedIconChooserDialog.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof NamedIconChooserDialog.SignalSignatures>(
+            signal: K,
+            callback: NamedIconChooserDialog.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof NamedIconChooserDialog.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<NamedIconChooserDialog.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -65365,6 +65543,11 @@ export namespace Gladeui {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {
+            refresh: Refresh;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -65384,6 +65567,7 @@ export namespace Gladeui {
 
     class Palette extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Palette>;
+        declare static readonly __signalSignatures: Palette.SignalSignatures;
 
         // Properties
 
@@ -65412,6 +65596,15 @@ export namespace Gladeui {
 
         // Signals
 
+        connect<K extends keyof Palette.SignalSignatures>(signal: K, callback: Palette.SignalSignatures[K]): number;
+        connect_after<K extends keyof Palette.SignalSignatures>(
+            signal: K,
+            callback: Palette.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Palette.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Palette.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -65907,6 +66100,9 @@ export namespace Gladeui {
     }
 
     namespace Placeholder {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -65918,6 +66114,7 @@ export namespace Gladeui {
 
     class Placeholder extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<Placeholder>;
+        declare static readonly __signalSignatures: Placeholder.SignalSignatures;
 
         // Fields
 
@@ -66719,6 +66916,25 @@ export namespace Gladeui {
             (widget: Widget, visible: boolean): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'activate-signal-handler': ActivateSignalHandler;
+            'add-signal-handler': AddSignalHandler;
+            'add-widget': AddWidget;
+            'change-signal-handler': ChangeSignalHandler;
+            changed: Changed;
+            close: Close;
+            'load-progress': LoadProgress;
+            'parse-began': ParseBegan;
+            'parse-finished': ParseFinished;
+            'remove-signal-handler': RemoveSignalHandler;
+            'remove-widget': RemoveWidget;
+            'selection-changed': SelectionChanged;
+            'targets-changed': TargetsChanged;
+            'widget-name-changed': WidgetNameChanged;
+            'widget-visibility-changed': WidgetVisibilityChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -66748,6 +66964,7 @@ export namespace Gladeui {
 
     class Project extends GObject.Object implements Gtk.TreeDragSource, Gtk.TreeModel {
         static $gtype: GObject.GType<Project>;
+        declare static readonly __signalSignatures: Project.SignalSignatures;
 
         // Properties
 
@@ -66788,6 +67005,15 @@ export namespace Gladeui {
 
         // Signals
 
+        connect<K extends keyof Project.SignalSignatures>(signal: K, callback: Project.SignalSignatures[K]): number;
+        connect_after<K extends keyof Project.SignalSignatures>(
+            signal: K,
+            callback: Project.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Project.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Project.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -68078,6 +68304,12 @@ export namespace Gladeui {
             (object?: any | null, p0?: any | null): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'tooltip-changed': TooltipChanged;
+            'value-changed': ValueChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -68097,6 +68329,7 @@ export namespace Gladeui {
 
     class Property extends GObject.Object {
         static $gtype: GObject.GType<Property>;
+        declare static readonly __signalSignatures: Property.SignalSignatures;
 
         // Properties
 
@@ -68131,6 +68364,15 @@ export namespace Gladeui {
 
         // Signals
 
+        connect<K extends keyof Property.SignalSignatures>(signal: K, callback: Property.SignalSignatures[K]): number;
+        connect_after<K extends keyof Property.SignalSignatures>(
+            signal: K,
+            callback: Property.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Property.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Property.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -68287,6 +68529,9 @@ export namespace Gladeui {
     }
 
     namespace PropertyLabel {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.EventBox.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -68309,6 +68554,7 @@ export namespace Gladeui {
 
     class PropertyLabel extends Gtk.EventBox implements Atk.ImplementorIface, Editable, Gtk.Buildable {
         static $gtype: GObject.GType<PropertyLabel>;
+        declare static readonly __signalSignatures: PropertyLabel.SignalSignatures;
 
         // Properties
 
@@ -72660,6 +72906,12 @@ export namespace Gladeui {
             (arg1?: any | null): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {
+            'post-commit': PostCommit;
+            'pre-commit': PreCommit;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -72684,6 +72936,7 @@ export namespace Gladeui {
 
     class PropertyShell extends Gtk.Box implements Atk.ImplementorIface, Editable, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<PropertyShell>;
+        declare static readonly __signalSignatures: PropertyShell.SignalSignatures;
 
         // Properties
 
@@ -72718,6 +72971,18 @@ export namespace Gladeui {
 
         // Signals
 
+        connect<K extends keyof PropertyShell.SignalSignatures>(
+            signal: K,
+            callback: PropertyShell.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PropertyShell.SignalSignatures>(
+            signal: K,
+            callback: PropertyShell.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PropertyShell.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PropertyShell.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -77067,6 +77332,9 @@ export namespace Gladeui {
     }
 
     namespace Signal {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -77083,6 +77351,7 @@ export namespace Gladeui {
 
     class Signal extends GObject.Object {
         static $gtype: GObject.GType<Signal>;
+        declare static readonly __signalSignatures: Signal.SignalSignatures;
 
         // Properties
 
@@ -77214,6 +77483,13 @@ export namespace Gladeui {
             (signal: Signal): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {
+            'callback-suggestions': CallbackSuggestions;
+            'detail-suggestions': DetailSuggestions;
+            'signal-activated': SignalActivated;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -77228,6 +77504,7 @@ export namespace Gladeui {
 
     class SignalEditor extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<SignalEditor>;
+        declare static readonly __signalSignatures: SignalEditor.SignalSignatures;
 
         // Properties
 
@@ -77246,6 +77523,18 @@ export namespace Gladeui {
 
         // Signals
 
+        connect<K extends keyof SignalEditor.SignalSignatures>(
+            signal: K,
+            callback: SignalEditor.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SignalEditor.SignalSignatures>(
+            signal: K,
+            callback: SignalEditor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SignalEditor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SignalEditor.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -77737,6 +78026,9 @@ export namespace Gladeui {
     }
 
     namespace SignalModel {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -77750,6 +78042,7 @@ export namespace Gladeui {
 
     class SignalModel extends GObject.Object implements Gtk.TreeDragSource, Gtk.TreeModel {
         static $gtype: GObject.GType<SignalModel>;
+        declare static readonly __signalSignatures: SignalModel.SignalSignatures;
 
         // Properties
 
@@ -78699,6 +78992,17 @@ export namespace Gladeui {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
+            'add-signal-handler': AddSignalHandler;
+            'button-press-event': ButtonPressEvent;
+            'button-release-event': ButtonReleaseEvent;
+            'change-signal-handler': ChangeSignalHandler;
+            'motion-notify-event': MotionNotifyEvent;
+            'remove-signal-handler': RemoveSignalHandler;
+            'support-changed': SupportChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
@@ -78729,6 +79033,7 @@ export namespace Gladeui {
 
     class Widget extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<Widget>;
+        declare static readonly __signalSignatures: Widget.SignalSignatures;
 
         // Properties
 
@@ -78773,6 +79078,9 @@ export namespace Gladeui {
 
         // Signals
 
+        connect<K extends keyof Widget.SignalSignatures>(signal: K, callback: Widget.SignalSignatures[K]): number;
+        connect_after<K extends keyof Widget.SignalSignatures>(signal: K, callback: Widget.SignalSignatures[K]): number;
+        emit<K extends keyof Widget.SignalSignatures>(signal: K, ...args: Parameters<Widget.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -79374,6 +79682,9 @@ export namespace Gladeui {
     }
 
     namespace WidgetAction {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -79385,6 +79696,7 @@ export namespace Gladeui {
 
     class WidgetAction extends GObject.Object {
         static $gtype: GObject.GType<WidgetAction>;
+        declare static readonly __signalSignatures: WidgetAction.SignalSignatures;
 
         // Properties
 
@@ -79415,6 +79727,9 @@ export namespace Gladeui {
     }
 
     namespace WidgetAdaptor {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -79436,6 +79751,7 @@ export namespace Gladeui {
 
     class WidgetAdaptor extends GObject.Object {
         static $gtype: GObject.GType<WidgetAdaptor>;
+        declare static readonly __signalSignatures: WidgetAdaptor.SignalSignatures;
 
         // Properties
 

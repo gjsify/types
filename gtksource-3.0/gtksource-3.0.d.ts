@@ -609,6 +609,15 @@ export namespace GtkSource {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.TextBuffer.SignalSignatures {
+            'bracket-matched': BracketMatched;
+            'highlight-updated': HighlightUpdated;
+            redo: Redo;
+            'source-mark-updated': SourceMarkUpdated;
+            undo: Undo;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.TextBuffer.ConstructorProps {
@@ -634,6 +643,7 @@ export namespace GtkSource {
 
     class Buffer extends Gtk.TextBuffer {
         static $gtype: GObject.GType<Buffer>;
+        declare static readonly __signalSignatures: Buffer.SignalSignatures;
 
         // Properties
 
@@ -718,6 +728,9 @@ export namespace GtkSource {
 
         // Signals
 
+        connect<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
+        connect_after<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
+        emit<K extends keyof Buffer.SignalSignatures>(signal: K, ...args: Parameters<Buffer.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1095,6 +1108,16 @@ export namespace GtkSource {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'activate-proposal': ActivateProposal;
+            hide: Hide;
+            'move-cursor': MoveCursor;
+            'move-page': MovePage;
+            'populate-context': PopulateContext;
+            show: Show;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gtk.Buildable.ConstructorProps {
@@ -1119,6 +1142,7 @@ export namespace GtkSource {
 
     class Completion extends GObject.Object implements Gtk.Buildable {
         static $gtype: GObject.GType<Completion>;
+        declare static readonly __signalSignatures: Completion.SignalSignatures;
 
         // Properties
 
@@ -1240,6 +1264,18 @@ export namespace GtkSource {
 
         // Signals
 
+        connect<K extends keyof Completion.SignalSignatures>(
+            signal: K,
+            callback: Completion.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Completion.SignalSignatures>(
+            signal: K,
+            callback: Completion.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Completion.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Completion.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1993,6 +2029,11 @@ export namespace GtkSource {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
+            cancelled: Cancelled;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
@@ -2004,6 +2045,7 @@ export namespace GtkSource {
 
     class CompletionContext extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<CompletionContext>;
+        declare static readonly __signalSignatures: CompletionContext.SignalSignatures;
 
         // Properties
 
@@ -2030,6 +2072,18 @@ export namespace GtkSource {
 
         // Signals
 
+        connect<K extends keyof CompletionContext.SignalSignatures>(
+            signal: K,
+            callback: CompletionContext.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CompletionContext.SignalSignatures>(
+            signal: K,
+            callback: CompletionContext.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CompletionContext.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CompletionContext.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2075,6 +2129,11 @@ export namespace GtkSource {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Window.SignalSignatures {
+            'before-show': BeforeShow;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2085,6 +2144,7 @@ export namespace GtkSource {
 
     class CompletionInfo extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<CompletionInfo>;
+        declare static readonly __signalSignatures: CompletionInfo.SignalSignatures;
 
         // Constructors
 
@@ -2096,6 +2156,18 @@ export namespace GtkSource {
 
         // Signals
 
+        connect<K extends keyof CompletionInfo.SignalSignatures>(
+            signal: K,
+            callback: CompletionInfo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CompletionInfo.SignalSignatures>(
+            signal: K,
+            callback: CompletionInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CompletionInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CompletionInfo.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2574,6 +2646,9 @@ export namespace GtkSource {
     }
 
     namespace CompletionItem {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, CompletionProposal.ConstructorProps {
@@ -2590,6 +2665,7 @@ export namespace GtkSource {
 
     class CompletionItem extends GObject.Object implements CompletionProposal {
         static $gtype: GObject.GType<CompletionItem>;
+        declare static readonly __signalSignatures: CompletionItem.SignalSignatures;
 
         // Properties
 
@@ -3246,6 +3322,9 @@ export namespace GtkSource {
     }
 
     namespace CompletionWords {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, CompletionProvider.ConstructorProps {
@@ -3266,6 +3345,7 @@ export namespace GtkSource {
 
     class CompletionWords extends GObject.Object implements CompletionProvider {
         static $gtype: GObject.GType<CompletionWords>;
+        declare static readonly __signalSignatures: CompletionWords.SignalSignatures;
 
         // Properties
 
@@ -3992,6 +4072,9 @@ export namespace GtkSource {
     }
 
     namespace File {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4008,6 +4091,7 @@ export namespace GtkSource {
 
     class File extends GObject.Object {
         static $gtype: GObject.GType<File>;
+        declare static readonly __signalSignatures: File.SignalSignatures;
 
         // Properties
 
@@ -4120,6 +4204,9 @@ export namespace GtkSource {
     }
 
     namespace FileLoader {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4133,6 +4220,7 @@ export namespace GtkSource {
 
     class FileLoader extends GObject.Object {
         static $gtype: GObject.GType<FileLoader>;
+        declare static readonly __signalSignatures: FileLoader.SignalSignatures;
 
         // Properties
 
@@ -4259,6 +4347,9 @@ export namespace GtkSource {
     }
 
     namespace FileSaver {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4276,6 +4367,7 @@ export namespace GtkSource {
 
     class FileSaver extends GObject.Object {
         static $gtype: GObject.GType<FileSaver>;
+        declare static readonly __signalSignatures: FileSaver.SignalSignatures;
 
         // Properties
 
@@ -4429,6 +4521,9 @@ export namespace GtkSource {
     }
 
     namespace Gutter {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4442,6 +4537,7 @@ export namespace GtkSource {
 
     class Gutter extends GObject.Object {
         static $gtype: GObject.GType<Gutter>;
+        declare static readonly __signalSignatures: Gutter.SignalSignatures;
 
         // Properties
 
@@ -4543,6 +4639,15 @@ export namespace GtkSource {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
+            activate: Activate;
+            'query-activatable': QueryActivatable;
+            'query-data': QueryData;
+            'query-tooltip': QueryTooltip;
+            'queue-draw': QueueDraw;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
@@ -4566,6 +4671,7 @@ export namespace GtkSource {
 
     abstract class GutterRenderer extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<GutterRenderer>;
+        declare static readonly __signalSignatures: GutterRenderer.SignalSignatures;
 
         // Properties
 
@@ -4647,6 +4753,18 @@ export namespace GtkSource {
 
         // Signals
 
+        connect<K extends keyof GutterRenderer.SignalSignatures>(
+            signal: K,
+            callback: GutterRenderer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GutterRenderer.SignalSignatures>(
+            signal: K,
+            callback: GutterRenderer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GutterRenderer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GutterRenderer.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -5011,6 +5129,9 @@ export namespace GtkSource {
     }
 
     namespace GutterRendererPixbuf {
+        // Signal signatures
+        interface SignalSignatures extends GutterRenderer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GutterRenderer.ConstructorProps {
@@ -5025,6 +5146,7 @@ export namespace GtkSource {
 
     class GutterRendererPixbuf extends GutterRenderer {
         static $gtype: GObject.GType<GutterRendererPixbuf>;
+        declare static readonly __signalSignatures: GutterRendererPixbuf.SignalSignatures;
 
         // Properties
 
@@ -5076,6 +5198,9 @@ export namespace GtkSource {
     }
 
     namespace GutterRendererText {
+        // Signal signatures
+        interface SignalSignatures extends GutterRenderer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GutterRenderer.ConstructorProps {
@@ -5086,6 +5211,7 @@ export namespace GtkSource {
 
     class GutterRendererText extends GutterRenderer {
         static $gtype: GObject.GType<GutterRendererText>;
+        declare static readonly __signalSignatures: GutterRendererText.SignalSignatures;
 
         // Properties
 
@@ -5121,6 +5247,9 @@ export namespace GtkSource {
     }
 
     namespace Language {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5133,6 +5262,7 @@ export namespace GtkSource {
 
     class Language extends GObject.Object {
         static $gtype: GObject.GType<Language>;
+        declare static readonly __signalSignatures: Language.SignalSignatures;
 
         // Properties
 
@@ -5214,6 +5344,9 @@ export namespace GtkSource {
     }
 
     namespace LanguageManager {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5226,6 +5359,7 @@ export namespace GtkSource {
 
     class LanguageManager extends GObject.Object {
         static $gtype: GObject.GType<LanguageManager>;
+        declare static readonly __signalSignatures: LanguageManager.SignalSignatures;
 
         // Properties
 
@@ -5327,6 +5461,9 @@ export namespace GtkSource {
     }
 
     namespace Map {
+        // Signal signatures
+        interface SignalSignatures extends View.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5342,6 +5479,7 @@ export namespace GtkSource {
 
     class Map extends View implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<Map>;
+        declare static readonly __signalSignatures: Map.SignalSignatures;
 
         // Properties
 
@@ -5816,6 +5954,9 @@ export namespace GtkSource {
     }
 
     namespace Mark {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.TextMark.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.TextMark.ConstructorProps {
@@ -5825,6 +5966,7 @@ export namespace GtkSource {
 
     class Mark extends Gtk.TextMark {
         static $gtype: GObject.GType<Mark>;
+        declare static readonly __signalSignatures: Mark.SignalSignatures;
 
         // Properties
 
@@ -5883,6 +6025,12 @@ export namespace GtkSource {
             (mark: Mark): string;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'query-tooltip-markup': QueryTooltipMarkup;
+            'query-tooltip-text': QueryTooltipText;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5898,6 +6046,7 @@ export namespace GtkSource {
 
     class MarkAttributes extends GObject.Object {
         static $gtype: GObject.GType<MarkAttributes>;
+        declare static readonly __signalSignatures: MarkAttributes.SignalSignatures;
 
         // Properties
 
@@ -5947,6 +6096,18 @@ export namespace GtkSource {
 
         // Signals
 
+        connect<K extends keyof MarkAttributes.SignalSignatures>(
+            signal: K,
+            callback: MarkAttributes.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MarkAttributes.SignalSignatures>(
+            signal: K,
+            callback: MarkAttributes.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MarkAttributes.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MarkAttributes.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -6043,6 +6204,9 @@ export namespace GtkSource {
     }
 
     namespace PrintCompositor {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6074,6 +6238,7 @@ export namespace GtkSource {
 
     class PrintCompositor extends GObject.Object {
         static $gtype: GObject.GType<PrintCompositor>;
+        declare static readonly __signalSignatures: PrintCompositor.SignalSignatures;
 
         // Properties
 
@@ -6718,6 +6883,9 @@ export namespace GtkSource {
     }
 
     namespace Region {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6727,6 +6895,7 @@ export namespace GtkSource {
 
     class Region extends GObject.Object {
         static $gtype: GObject.GType<Region>;
+        declare static readonly __signalSignatures: Region.SignalSignatures;
 
         // Properties
 
@@ -6811,6 +6980,9 @@ export namespace GtkSource {
     }
 
     namespace SearchContext {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6828,6 +7000,7 @@ export namespace GtkSource {
 
     class SearchContext extends GObject.Object {
         static $gtype: GObject.GType<SearchContext>;
+        declare static readonly __signalSignatures: SearchContext.SignalSignatures;
 
         // Properties
 
@@ -7191,6 +7364,9 @@ export namespace GtkSource {
     }
 
     namespace SearchSettings {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7209,6 +7385,7 @@ export namespace GtkSource {
 
     class SearchSettings extends GObject.Object {
         static $gtype: GObject.GType<SearchSettings>;
+        declare static readonly __signalSignatures: SearchSettings.SignalSignatures;
 
         // Properties
 
@@ -7342,6 +7519,9 @@ export namespace GtkSource {
     }
 
     namespace SpaceDrawer {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7353,6 +7533,7 @@ export namespace GtkSource {
 
     class SpaceDrawer extends GObject.Object {
         static $gtype: GObject.GType<SpaceDrawer>;
+        declare static readonly __signalSignatures: SpaceDrawer.SignalSignatures;
 
         // Properties
 
@@ -7458,6 +7639,9 @@ export namespace GtkSource {
     }
 
     namespace Style {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7497,6 +7681,7 @@ export namespace GtkSource {
 
     class Style extends GObject.Object {
         static $gtype: GObject.GType<Style>;
+        declare static readonly __signalSignatures: Style.SignalSignatures;
 
         // Properties
 
@@ -7560,6 +7745,9 @@ export namespace GtkSource {
     }
 
     namespace StyleScheme {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7572,6 +7760,7 @@ export namespace GtkSource {
 
     class StyleScheme extends GObject.Object {
         static $gtype: GObject.GType<StyleScheme>;
+        declare static readonly __signalSignatures: StyleScheme.SignalSignatures;
 
         // Properties
 
@@ -7614,6 +7803,9 @@ export namespace GtkSource {
     }
 
     namespace StyleSchemeChooserButton {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Button.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7630,6 +7822,7 @@ export namespace GtkSource {
         implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable, StyleSchemeChooser
     {
         static $gtype: GObject.GType<StyleSchemeChooserButton>;
+        declare static readonly __signalSignatures: StyleSchemeChooserButton.SignalSignatures;
 
         // Constructors
 
@@ -12194,6 +12387,9 @@ export namespace GtkSource {
     }
 
     namespace StyleSchemeChooserWidget {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Bin.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -12205,6 +12401,7 @@ export namespace GtkSource {
 
     class StyleSchemeChooserWidget extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable, StyleSchemeChooser {
         static $gtype: GObject.GType<StyleSchemeChooserWidget>;
+        declare static readonly __signalSignatures: StyleSchemeChooserWidget.SignalSignatures;
 
         // Constructors
 
@@ -12692,6 +12889,9 @@ export namespace GtkSource {
     }
 
     namespace StyleSchemeManager {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -12704,6 +12904,7 @@ export namespace GtkSource {
 
     class StyleSchemeManager extends GObject.Object {
         static $gtype: GObject.GType<StyleSchemeManager>;
+        declare static readonly __signalSignatures: StyleSchemeManager.SignalSignatures;
 
         // Properties
 
@@ -12778,6 +12979,9 @@ export namespace GtkSource {
     }
 
     namespace Tag {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.TextTag.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.TextTag.ConstructorProps {
@@ -12790,6 +12994,7 @@ export namespace GtkSource {
 
     class Tag extends Gtk.TextTag {
         static $gtype: GObject.GType<Tag>;
+        declare static readonly __signalSignatures: Tag.SignalSignatures;
 
         // Properties
 
@@ -12882,6 +13087,21 @@ export namespace GtkSource {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.TextView.SignalSignatures {
+            'change-case': ChangeCase;
+            'change-number': ChangeNumber;
+            'join-lines': JoinLines;
+            'line-mark-activated': LineMarkActivated;
+            'move-lines': MoveLines;
+            'move-to-matching-bracket': MoveToMatchingBracket;
+            'move-words': MoveWords;
+            redo: Redo;
+            'show-completion': ShowCompletion;
+            'smart-home-end': SmartHomeEnd;
+            undo: Undo;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -12925,6 +13145,7 @@ export namespace GtkSource {
 
     class View extends Gtk.TextView implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<View>;
+        declare static readonly __signalSignatures: View.SignalSignatures;
 
         // Properties
 
@@ -13075,6 +13296,9 @@ export namespace GtkSource {
 
         // Signals
 
+        connect<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
+        connect_after<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
+        emit<K extends keyof View.SignalSignatures>(signal: K, ...args: Parameters<View.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

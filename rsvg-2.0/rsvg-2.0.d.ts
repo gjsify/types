@@ -321,6 +321,9 @@ export namespace Rsvg {
         FLAG_KEEP_IMAGE_DATA,
     }
     namespace Handle {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -507,6 +510,7 @@ export namespace Rsvg {
      */
     class Handle extends GObject.Object {
         static $gtype: GObject.GType<Handle>;
+        declare static readonly __signalSignatures: Handle.SignalSignatures;
 
         // Properties
 

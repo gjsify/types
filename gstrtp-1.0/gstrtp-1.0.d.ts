@@ -956,6 +956,9 @@ export namespace GstRtp {
         TWO_BYTE,
     }
     namespace RTPBaseAudioPayload {
+        // Signal signatures
+        interface SignalSignatures extends RTPBasePayload.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends RTPBasePayload.ConstructorProps {
@@ -996,6 +999,7 @@ export namespace GstRtp {
      */
     class RTPBaseAudioPayload extends RTPBasePayload {
         static $gtype: GObject.GType<RTPBaseAudioPayload>;
+        declare static readonly __signalSignatures: RTPBaseAudioPayload.SignalSignatures;
 
         // Properties
 
@@ -1091,6 +1095,13 @@ export namespace GstRtp {
             (ext_id: number, ext_uri?: string | null): RTPHeaderExtension | null;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gst.Element.SignalSignatures {
+            'add-extension': AddExtension;
+            'clear-extensions': ClearExtensions;
+            'request-extension': RequestExtension;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Element.ConstructorProps {
@@ -1109,6 +1120,7 @@ export namespace GstRtp {
      */
     abstract class RTPBaseDepayload extends Gst.Element {
         static $gtype: GObject.GType<RTPBaseDepayload>;
+        declare static readonly __signalSignatures: RTPBaseDepayload.SignalSignatures;
 
         // Properties
 
@@ -1189,6 +1201,18 @@ export namespace GstRtp {
 
         // Signals
 
+        connect<K extends keyof RTPBaseDepayload.SignalSignatures>(
+            signal: K,
+            callback: RTPBaseDepayload.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RTPBaseDepayload.SignalSignatures>(
+            signal: K,
+            callback: RTPBaseDepayload.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RTPBaseDepayload.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RTPBaseDepayload.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1262,6 +1286,13 @@ export namespace GstRtp {
             (ext_id: number, ext_uri: string): RTPHeaderExtension | null;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gst.Element.SignalSignatures {
+            'add-extension': AddExtension;
+            'clear-extensions': ClearExtensions;
+            'request-extension': RequestExtension;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Element.ConstructorProps {
@@ -1299,6 +1330,7 @@ export namespace GstRtp {
      */
     abstract class RTPBasePayload extends Gst.Element {
         static $gtype: GObject.GType<RTPBasePayload>;
+        declare static readonly __signalSignatures: RTPBasePayload.SignalSignatures;
 
         // Properties
 
@@ -1474,6 +1506,18 @@ export namespace GstRtp {
 
         // Signals
 
+        connect<K extends keyof RTPBasePayload.SignalSignatures>(
+            signal: K,
+            callback: RTPBasePayload.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RTPBasePayload.SignalSignatures>(
+            signal: K,
+            callback: RTPBasePayload.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RTPBasePayload.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RTPBasePayload.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1582,6 +1626,9 @@ export namespace GstRtp {
     }
 
     namespace RTPHeaderExtension {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Element.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Element.ConstructorProps {}
@@ -1592,6 +1639,7 @@ export namespace GstRtp {
      */
     abstract class RTPHeaderExtension extends Gst.Element {
         static $gtype: GObject.GType<RTPHeaderExtension>;
+        declare static readonly __signalSignatures: RTPHeaderExtension.SignalSignatures;
 
         // Constructors
 

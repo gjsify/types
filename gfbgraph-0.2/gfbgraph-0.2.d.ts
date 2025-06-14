@@ -39,6 +39,9 @@ export namespace GFBGraph {
      */
     function new_rest_call(authorizer: Authorizer): Rest.ProxyCall;
     namespace Album {
+        // Signal signatures
+        interface SignalSignatures extends Node.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Node.ConstructorProps, Connectable.ConstructorProps {
@@ -52,6 +55,7 @@ export namespace GFBGraph {
 
     class Album extends Node implements Connectable {
         static $gtype: GObject.GType<Album>;
+        declare static readonly __signalSignatures: Album.SignalSignatures;
 
         // Properties
 
@@ -272,6 +276,9 @@ export namespace GFBGraph {
     }
 
     namespace GoaAuthorizer {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Authorizer.ConstructorProps {}
@@ -279,6 +286,7 @@ export namespace GFBGraph {
 
     class GoaAuthorizer extends GObject.Object implements Authorizer {
         static $gtype: GObject.GType<GoaAuthorizer>;
+        declare static readonly __signalSignatures: GoaAuthorizer.SignalSignatures;
 
         // Constructors
 
@@ -776,6 +784,9 @@ export namespace GFBGraph {
     }
 
     namespace Node {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -790,6 +801,7 @@ export namespace GFBGraph {
 
     class Node extends GObject.Object {
         static $gtype: GObject.GType<Node>;
+        declare static readonly __signalSignatures: Node.SignalSignatures;
 
         // Properties
 
@@ -926,6 +938,9 @@ export namespace GFBGraph {
     }
 
     namespace Photo {
+        // Signal signatures
+        interface SignalSignatures extends Node.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -942,6 +957,7 @@ export namespace GFBGraph {
 
     class Photo extends Node implements Connectable, Json.Serializable {
         static $gtype: GObject.GType<Photo>;
+        declare static readonly __signalSignatures: Photo.SignalSignatures;
 
         // Properties
 
@@ -1760,6 +1776,9 @@ export namespace GFBGraph {
     }
 
     namespace SimpleAuthorizer {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Authorizer.ConstructorProps {
@@ -1770,6 +1789,7 @@ export namespace GFBGraph {
 
     class SimpleAuthorizer extends GObject.Object implements Authorizer {
         static $gtype: GObject.GType<SimpleAuthorizer>;
+        declare static readonly __signalSignatures: SimpleAuthorizer.SignalSignatures;
 
         // Properties
 
@@ -2276,6 +2296,9 @@ export namespace GFBGraph {
     }
 
     namespace User {
+        // Signal signatures
+        interface SignalSignatures extends Node.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Node.ConstructorProps {
@@ -2286,6 +2309,7 @@ export namespace GFBGraph {
 
     class User extends Node {
         static $gtype: GObject.GType<User>;
+        declare static readonly __signalSignatures: User.SignalSignatures;
 
         // Properties
 

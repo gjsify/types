@@ -69,6 +69,9 @@ export namespace Builder {
         (a: TreeNode, b: TreeNode): number;
     }
     namespace Application {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Application.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -79,6 +82,7 @@ export namespace Builder {
 
     class Application extends Gtk.Application implements Gio.ActionGroup, Gio.ActionMap {
         static $gtype: GObject.GType<Application>;
+        declare static readonly __signalSignatures: Application.SignalSignatures;
 
         // Constructors
 
@@ -618,6 +622,11 @@ export namespace Builder {
             (object: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends View.SignalSignatures {
+            'request-documentation': RequestDocumentation;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -629,6 +638,7 @@ export namespace Builder {
 
     class EditorView extends View implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<EditorView>;
+        declare static readonly __signalSignatures: EditorView.SignalSignatures;
 
         // Constructors
 
@@ -638,6 +648,18 @@ export namespace Builder {
 
         // Signals
 
+        connect<K extends keyof EditorView.SignalSignatures>(
+            signal: K,
+            callback: EditorView.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof EditorView.SignalSignatures>(
+            signal: K,
+            callback: EditorView.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EditorView.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EditorView.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1088,6 +1110,9 @@ export namespace Builder {
     }
 
     namespace MenuExtension {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1097,6 +1122,7 @@ export namespace Builder {
 
     class MenuExtension extends GObject.Object {
         static $gtype: GObject.GType<MenuExtension>;
+        declare static readonly __signalSignatures: MenuExtension.SignalSignatures;
 
         // Properties
 
@@ -1130,6 +1156,12 @@ export namespace Builder {
             (object: Gtk.Widget): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.TreeView.SignalSignatures {
+            action: Action;
+            'populate-popup': PopulatePopup;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1146,6 +1178,7 @@ export namespace Builder {
 
     class Tree extends Gtk.TreeView implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<Tree>;
+        declare static readonly __signalSignatures: Tree.SignalSignatures;
 
         // Properties
 
@@ -1166,6 +1199,9 @@ export namespace Builder {
 
         // Signals
 
+        connect<K extends keyof Tree.SignalSignatures>(signal: K, callback: Tree.SignalSignatures[K]): number;
+        connect_after<K extends keyof Tree.SignalSignatures>(signal: K, callback: Tree.SignalSignatures[K]): number;
+        emit<K extends keyof Tree.SignalSignatures>(signal: K, ...args: Parameters<Tree.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1822,6 +1858,17 @@ export namespace Builder {
             (object: Tree): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
+            added: Added;
+            'build-node': BuildNode;
+            'node-activated': NodeActivated;
+            'node-popup': NodePopup;
+            'node-selected': NodeSelected;
+            'node-unselected': NodeUnselected;
+            removed: Removed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
@@ -1831,6 +1878,7 @@ export namespace Builder {
 
     class TreeBuilder extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<TreeBuilder>;
+        declare static readonly __signalSignatures: TreeBuilder.SignalSignatures;
 
         // Properties
 
@@ -1844,6 +1892,18 @@ export namespace Builder {
 
         // Signals
 
+        connect<K extends keyof TreeBuilder.SignalSignatures>(
+            signal: K,
+            callback: TreeBuilder.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TreeBuilder.SignalSignatures>(
+            signal: K,
+            callback: TreeBuilder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TreeBuilder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TreeBuilder.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1889,6 +1949,9 @@ export namespace Builder {
     }
 
     namespace TreeNode {
+        // Signal signatures
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
@@ -1909,6 +1972,7 @@ export namespace Builder {
 
     class TreeNode extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<TreeNode>;
+        declare static readonly __signalSignatures: TreeNode.SignalSignatures;
 
         // Properties
 
@@ -2079,6 +2143,9 @@ export namespace Builder {
     }
 
     namespace View {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2098,6 +2165,7 @@ export namespace Builder {
 
     class View extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<View>;
+        declare static readonly __signalSignatures: View.SignalSignatures;
 
         // Properties
 
@@ -2645,6 +2713,9 @@ export namespace Builder {
     }
 
     namespace ViewGrid {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Bin.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2655,6 +2726,7 @@ export namespace Builder {
 
     class ViewGrid extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ViewGrid>;
+        declare static readonly __signalSignatures: ViewGrid.SignalSignatures;
 
         // Constructors
 
@@ -3138,6 +3210,12 @@ export namespace Builder {
             (view: View, split_type: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Bin.SignalSignatures {
+            empty: Empty;
+            split: Split;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3151,6 +3229,7 @@ export namespace Builder {
 
     class ViewStack extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ViewStack>;
+        declare static readonly __signalSignatures: ViewStack.SignalSignatures;
 
         // Properties
 
@@ -3169,6 +3248,15 @@ export namespace Builder {
 
         // Signals
 
+        connect<K extends keyof ViewStack.SignalSignatures>(signal: K, callback: ViewStack.SignalSignatures[K]): number;
+        connect_after<K extends keyof ViewStack.SignalSignatures>(
+            signal: K,
+            callback: ViewStack.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ViewStack.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ViewStack.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3644,6 +3732,11 @@ export namespace Builder {
             (object: Ide.Context): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.ApplicationWindow.SignalSignatures {
+            unload: Unload;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3664,6 +3757,7 @@ export namespace Builder {
         implements Atk.ImplementorIface, Gio.ActionGroup, Gio.ActionMap, Gtk.Buildable
     {
         static $gtype: GObject.GType<Workbench>;
+        declare static readonly __signalSignatures: Workbench.SignalSignatures;
 
         // Properties
 
@@ -3686,6 +3780,15 @@ export namespace Builder {
 
         // Signals
 
+        connect<K extends keyof Workbench.SignalSignatures>(signal: K, callback: Workbench.SignalSignatures[K]): number;
+        connect_after<K extends keyof Workbench.SignalSignatures>(
+            signal: K,
+            callback: Workbench.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Workbench.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Workbench.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

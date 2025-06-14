@@ -86,6 +86,11 @@ export namespace GSSDP {
             (from_ip: string, from_port: number, type: number, headers: Soup.MessageHeaders): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'message-received': MessageReceived;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -126,6 +131,7 @@ export namespace GSSDP {
      */
     class Client extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Client>;
+        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Properties
 
@@ -288,6 +294,9 @@ export namespace GSSDP {
 
         // Signals
 
+        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -969,6 +978,13 @@ export namespace GSSDP {
             (usn: string, boot_id: number, next_boot_id: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'resource-available': ResourceAvailable;
+            'resource-unavailable': ResourceUnavailable;
+            'resource-update': ResourceUpdate;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -994,6 +1010,7 @@ export namespace GSSDP {
      */
     class ResourceBrowser extends GObject.Object {
         static $gtype: GObject.GType<ResourceBrowser>;
+        declare static readonly __signalSignatures: ResourceBrowser.SignalSignatures;
 
         // Properties
 
@@ -1028,6 +1045,18 @@ export namespace GSSDP {
 
         // Signals
 
+        connect<K extends keyof ResourceBrowser.SignalSignatures>(
+            signal: K,
+            callback: ResourceBrowser.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ResourceBrowser.SignalSignatures>(
+            signal: K,
+            callback: ResourceBrowser.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ResourceBrowser.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ResourceBrowser.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1104,6 +1133,9 @@ export namespace GSSDP {
     }
 
     namespace ResourceGroup {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1125,6 +1157,7 @@ export namespace GSSDP {
      */
     class ResourceGroup extends GObject.Object {
         static $gtype: GObject.GType<ResourceGroup>;
+        declare static readonly __signalSignatures: ResourceGroup.SignalSignatures;
 
         // Properties
 

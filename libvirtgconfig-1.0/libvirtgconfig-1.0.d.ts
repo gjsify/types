@@ -503,6 +503,9 @@ export namespace LibvirtGConfig {
         REFCOUNT,
     }
     namespace Capabilities {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -510,6 +513,7 @@ export namespace LibvirtGConfig {
 
     class Capabilities extends Object {
         static $gtype: GObject.GType<Capabilities>;
+        declare static readonly __signalSignatures: Capabilities.SignalSignatures;
 
         // Constructors
 
@@ -539,6 +543,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace CapabilitiesCpu {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -546,6 +553,7 @@ export namespace LibvirtGConfig {
 
     class CapabilitiesCpu extends Object {
         static $gtype: GObject.GType<CapabilitiesCpu>;
+        declare static readonly __signalSignatures: CapabilitiesCpu.SignalSignatures;
 
         // Constructors
 
@@ -591,6 +599,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace CapabilitiesCpuFeature {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -598,6 +609,7 @@ export namespace LibvirtGConfig {
 
     class CapabilitiesCpuFeature extends Object {
         static $gtype: GObject.GType<CapabilitiesCpuFeature>;
+        declare static readonly __signalSignatures: CapabilitiesCpuFeature.SignalSignatures;
 
         // Constructors
 
@@ -612,6 +624,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace CapabilitiesCpuModel {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -619,6 +634,7 @@ export namespace LibvirtGConfig {
 
     class CapabilitiesCpuModel extends Object {
         static $gtype: GObject.GType<CapabilitiesCpuModel>;
+        declare static readonly __signalSignatures: CapabilitiesCpuModel.SignalSignatures;
 
         // Constructors
 
@@ -640,6 +656,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace CapabilitiesCpuTopology {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -647,6 +666,7 @@ export namespace LibvirtGConfig {
 
     class CapabilitiesCpuTopology extends Object {
         static $gtype: GObject.GType<CapabilitiesCpuTopology>;
+        declare static readonly __signalSignatures: CapabilitiesCpuTopology.SignalSignatures;
 
         // Constructors
 
@@ -672,6 +692,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace CapabilitiesGuest {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -679,6 +702,7 @@ export namespace LibvirtGConfig {
 
     class CapabilitiesGuest extends Object {
         static $gtype: GObject.GType<CapabilitiesGuest>;
+        declare static readonly __signalSignatures: CapabilitiesGuest.SignalSignatures;
 
         // Constructors
 
@@ -702,6 +726,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace CapabilitiesGuestArch {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -709,6 +736,7 @@ export namespace LibvirtGConfig {
 
     class CapabilitiesGuestArch extends Object {
         static $gtype: GObject.GType<CapabilitiesGuestArch>;
+        declare static readonly __signalSignatures: CapabilitiesGuestArch.SignalSignatures;
 
         // Constructors
 
@@ -728,6 +756,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace CapabilitiesGuestDomain {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -735,6 +766,7 @@ export namespace LibvirtGConfig {
 
     class CapabilitiesGuestDomain extends Object {
         static $gtype: GObject.GType<CapabilitiesGuestDomain>;
+        declare static readonly __signalSignatures: CapabilitiesGuestDomain.SignalSignatures;
 
         // Constructors
 
@@ -749,6 +781,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace CapabilitiesGuestFeature {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -756,6 +791,7 @@ export namespace LibvirtGConfig {
 
     class CapabilitiesGuestFeature extends Object {
         static $gtype: GObject.GType<CapabilitiesGuestFeature>;
+        declare static readonly __signalSignatures: CapabilitiesGuestFeature.SignalSignatures;
 
         // Constructors
 
@@ -769,6 +805,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace CapabilitiesHost {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -776,6 +815,7 @@ export namespace LibvirtGConfig {
 
     class CapabilitiesHost extends Object {
         static $gtype: GObject.GType<CapabilitiesHost>;
+        declare static readonly __signalSignatures: CapabilitiesHost.SignalSignatures;
 
         // Constructors
 
@@ -799,6 +839,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace CapabilitiesHostSecModel {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -806,6 +849,7 @@ export namespace LibvirtGConfig {
 
     class CapabilitiesHostSecModel extends Object {
         static $gtype: GObject.GType<CapabilitiesHostSecModel>;
+        declare static readonly __signalSignatures: CapabilitiesHostSecModel.SignalSignatures;
 
         // Constructors
 
@@ -820,6 +864,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace Domain {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -837,6 +884,7 @@ export namespace LibvirtGConfig {
 
     class Domain extends Object {
         static $gtype: GObject.GType<Domain>;
+        declare static readonly __signalSignatures: Domain.SignalSignatures;
 
         // Properties
 
@@ -947,6 +995,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainAddress {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -954,6 +1005,7 @@ export namespace LibvirtGConfig {
 
     abstract class DomainAddress extends Object {
         static $gtype: GObject.GType<DomainAddress>;
+        declare static readonly __signalSignatures: DomainAddress.SignalSignatures;
 
         // Constructors
 
@@ -963,6 +1015,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainAddressPci {
+        // Signal signatures
+        interface SignalSignatures extends DomainAddress.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DomainAddress.ConstructorProps {}
@@ -970,6 +1025,7 @@ export namespace LibvirtGConfig {
 
     class DomainAddressPci extends DomainAddress {
         static $gtype: GObject.GType<DomainAddressPci>;
+        declare static readonly __signalSignatures: DomainAddressPci.SignalSignatures;
 
         // Constructors
 
@@ -999,6 +1055,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainAddressUsb {
+        // Signal signatures
+        interface SignalSignatures extends DomainAddress.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DomainAddress.ConstructorProps {}
@@ -1006,6 +1065,7 @@ export namespace LibvirtGConfig {
 
     class DomainAddressUsb extends DomainAddress {
         static $gtype: GObject.GType<DomainAddressUsb>;
+        declare static readonly __signalSignatures: DomainAddressUsb.SignalSignatures;
 
         // Constructors
 
@@ -1027,6 +1087,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainCapabilities {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -1034,6 +1097,7 @@ export namespace LibvirtGConfig {
 
     class DomainCapabilities extends Object {
         static $gtype: GObject.GType<DomainCapabilities>;
+        declare static readonly __signalSignatures: DomainCapabilities.SignalSignatures;
 
         // Constructors
 
@@ -1058,6 +1122,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainCapabilitiesOs {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -1065,6 +1132,7 @@ export namespace LibvirtGConfig {
 
     class DomainCapabilitiesOs extends Object {
         static $gtype: GObject.GType<DomainCapabilitiesOs>;
+        declare static readonly __signalSignatures: DomainCapabilitiesOs.SignalSignatures;
 
         // Constructors
 
@@ -1091,6 +1159,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainChannel {
+        // Signal signatures
+        interface SignalSignatures extends DomainChardev.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DomainChardev.ConstructorProps {}
@@ -1098,6 +1169,7 @@ export namespace LibvirtGConfig {
 
     class DomainChannel extends DomainChardev {
         static $gtype: GObject.GType<DomainChannel>;
+        declare static readonly __signalSignatures: DomainChannel.SignalSignatures;
 
         // Constructors
 
@@ -1121,6 +1193,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainChardev {
+        // Signal signatures
+        interface SignalSignatures extends DomainDevice.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DomainDevice.ConstructorProps {}
@@ -1128,6 +1203,7 @@ export namespace LibvirtGConfig {
 
     abstract class DomainChardev extends DomainDevice {
         static $gtype: GObject.GType<DomainChardev>;
+        declare static readonly __signalSignatures: DomainChardev.SignalSignatures;
 
         // Constructors
 
@@ -1146,6 +1222,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainChardevSource {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -1153,6 +1232,7 @@ export namespace LibvirtGConfig {
 
     abstract class DomainChardevSource extends Object {
         static $gtype: GObject.GType<DomainChardevSource>;
+        declare static readonly __signalSignatures: DomainChardevSource.SignalSignatures;
 
         // Constructors
 
@@ -1162,6 +1242,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainChardevSourcePty {
+        // Signal signatures
+        interface SignalSignatures extends DomainChardevSource.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DomainChardevSource.ConstructorProps {}
@@ -1169,6 +1252,7 @@ export namespace LibvirtGConfig {
 
     class DomainChardevSourcePty extends DomainChardevSource {
         static $gtype: GObject.GType<DomainChardevSourcePty>;
+        declare static readonly __signalSignatures: DomainChardevSourcePty.SignalSignatures;
 
         // Constructors
 
@@ -1190,6 +1274,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainChardevSourceSpicePort {
+        // Signal signatures
+        interface SignalSignatures extends DomainChardevSource.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DomainChardevSource.ConstructorProps {}
@@ -1197,6 +1284,7 @@ export namespace LibvirtGConfig {
 
     class DomainChardevSourceSpicePort extends DomainChardevSource {
         static $gtype: GObject.GType<DomainChardevSourceSpicePort>;
+        declare static readonly __signalSignatures: DomainChardevSourceSpicePort.SignalSignatures;
 
         // Constructors
 
@@ -1218,6 +1306,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainChardevSourceSpiceVmc {
+        // Signal signatures
+        interface SignalSignatures extends DomainChardevSource.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DomainChardevSource.ConstructorProps {}
@@ -1225,6 +1316,7 @@ export namespace LibvirtGConfig {
 
     class DomainChardevSourceSpiceVmc extends DomainChardevSource {
         static $gtype: GObject.GType<DomainChardevSourceSpiceVmc>;
+        declare static readonly __signalSignatures: DomainChardevSourceSpiceVmc.SignalSignatures;
 
         // Constructors
 
@@ -1241,6 +1333,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainChardevSourceUnix {
+        // Signal signatures
+        interface SignalSignatures extends DomainChardevSource.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DomainChardevSource.ConstructorProps {}
@@ -1248,6 +1343,7 @@ export namespace LibvirtGConfig {
 
     class DomainChardevSourceUnix extends DomainChardevSource {
         static $gtype: GObject.GType<DomainChardevSourceUnix>;
+        declare static readonly __signalSignatures: DomainChardevSourceUnix.SignalSignatures;
 
         // Constructors
 
@@ -1264,6 +1360,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainClock {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -1271,6 +1370,7 @@ export namespace LibvirtGConfig {
 
     class DomainClock extends Object {
         static $gtype: GObject.GType<DomainClock>;
+        declare static readonly __signalSignatures: DomainClock.SignalSignatures;
 
         // Constructors
 
@@ -1297,6 +1397,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainConsole {
+        // Signal signatures
+        interface SignalSignatures extends DomainChardev.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DomainChardev.ConstructorProps {}
@@ -1304,6 +1407,7 @@ export namespace LibvirtGConfig {
 
     class DomainConsole extends DomainChardev {
         static $gtype: GObject.GType<DomainConsole>;
+        declare static readonly __signalSignatures: DomainConsole.SignalSignatures;
 
         // Constructors
 
@@ -1324,6 +1428,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainController {
+        // Signal signatures
+        interface SignalSignatures extends DomainDevice.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DomainDevice.ConstructorProps {}
@@ -1331,6 +1438,7 @@ export namespace LibvirtGConfig {
 
     abstract class DomainController extends DomainDevice {
         static $gtype: GObject.GType<DomainController>;
+        declare static readonly __signalSignatures: DomainController.SignalSignatures;
 
         // Constructors
 
@@ -1348,6 +1456,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainControllerUsb {
+        // Signal signatures
+        interface SignalSignatures extends DomainController.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DomainController.ConstructorProps {}
@@ -1360,6 +1471,7 @@ export namespace LibvirtGConfig {
      */
     class DomainControllerUsb extends DomainController {
         static $gtype: GObject.GType<DomainControllerUsb>;
+        declare static readonly __signalSignatures: DomainControllerUsb.SignalSignatures;
 
         // Constructors
 
@@ -1392,6 +1504,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainCpu {
+        // Signal signatures
+        interface SignalSignatures extends CapabilitiesCpu.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends CapabilitiesCpu.ConstructorProps {}
@@ -1399,6 +1514,7 @@ export namespace LibvirtGConfig {
 
     class DomainCpu extends CapabilitiesCpu {
         static $gtype: GObject.GType<DomainCpu>;
+        declare static readonly __signalSignatures: DomainCpu.SignalSignatures;
 
         // Constructors
 
@@ -1423,6 +1539,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainCpuFeature {
+        // Signal signatures
+        interface SignalSignatures extends CapabilitiesCpuFeature.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends CapabilitiesCpuFeature.ConstructorProps {}
@@ -1430,6 +1549,7 @@ export namespace LibvirtGConfig {
 
     class DomainCpuFeature extends CapabilitiesCpuFeature {
         static $gtype: GObject.GType<DomainCpuFeature>;
+        declare static readonly __signalSignatures: DomainCpuFeature.SignalSignatures;
 
         // Constructors
 
@@ -1451,6 +1571,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainCpuModel {
+        // Signal signatures
+        interface SignalSignatures extends CapabilitiesCpuModel.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends CapabilitiesCpuModel.ConstructorProps {}
@@ -1458,6 +1581,7 @@ export namespace LibvirtGConfig {
 
     class DomainCpuModel extends CapabilitiesCpuModel {
         static $gtype: GObject.GType<DomainCpuModel>;
+        declare static readonly __signalSignatures: DomainCpuModel.SignalSignatures;
 
         // Constructors
 
@@ -1474,6 +1598,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainDevice {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -1481,6 +1608,7 @@ export namespace LibvirtGConfig {
 
     class DomainDevice extends Object {
         static $gtype: GObject.GType<DomainDevice>;
+        declare static readonly __signalSignatures: DomainDevice.SignalSignatures;
 
         // Constructors
 
@@ -1494,6 +1622,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainDisk {
+        // Signal signatures
+        interface SignalSignatures extends DomainDevice.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DomainDevice.ConstructorProps {}
@@ -1501,6 +1632,7 @@ export namespace LibvirtGConfig {
 
     class DomainDisk extends DomainDevice {
         static $gtype: GObject.GType<DomainDisk>;
+        declare static readonly __signalSignatures: DomainDisk.SignalSignatures;
 
         // Constructors
 
@@ -1553,6 +1685,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainDiskDriver {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -1560,6 +1695,7 @@ export namespace LibvirtGConfig {
 
     class DomainDiskDriver extends Object {
         static $gtype: GObject.GType<DomainDiskDriver>;
+        declare static readonly __signalSignatures: DomainDiskDriver.SignalSignatures;
 
         // Constructors
 
@@ -1593,6 +1729,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainFilesys {
+        // Signal signatures
+        interface SignalSignatures extends DomainDevice.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DomainDevice.ConstructorProps {}
@@ -1600,6 +1739,7 @@ export namespace LibvirtGConfig {
 
     class DomainFilesys extends DomainDevice {
         static $gtype: GObject.GType<DomainFilesys>;
+        declare static readonly __signalSignatures: DomainFilesys.SignalSignatures;
 
         // Constructors
 
@@ -1627,6 +1767,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainGraphics {
+        // Signal signatures
+        interface SignalSignatures extends DomainDevice.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DomainDevice.ConstructorProps {}
@@ -1634,6 +1777,7 @@ export namespace LibvirtGConfig {
 
     abstract class DomainGraphics extends DomainDevice {
         static $gtype: GObject.GType<DomainGraphics>;
+        declare static readonly __signalSignatures: DomainGraphics.SignalSignatures;
 
         // Constructors
 
@@ -1643,6 +1787,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainGraphicsDesktop {
+        // Signal signatures
+        interface SignalSignatures extends DomainGraphics.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DomainGraphics.ConstructorProps {}
@@ -1650,6 +1797,7 @@ export namespace LibvirtGConfig {
 
     class DomainGraphicsDesktop extends DomainGraphics {
         static $gtype: GObject.GType<DomainGraphicsDesktop>;
+        declare static readonly __signalSignatures: DomainGraphicsDesktop.SignalSignatures;
 
         // Constructors
 
@@ -1673,6 +1821,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainGraphicsRdp {
+        // Signal signatures
+        interface SignalSignatures extends DomainGraphics.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DomainGraphics.ConstructorProps {}
@@ -1680,6 +1831,7 @@ export namespace LibvirtGConfig {
 
     class DomainGraphicsRdp extends DomainGraphics {
         static $gtype: GObject.GType<DomainGraphicsRdp>;
+        declare static readonly __signalSignatures: DomainGraphicsRdp.SignalSignatures;
 
         // Constructors
 
@@ -1706,6 +1858,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainGraphicsSdl {
+        // Signal signatures
+        interface SignalSignatures extends DomainGraphics.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DomainGraphics.ConstructorProps {}
@@ -1713,6 +1868,7 @@ export namespace LibvirtGConfig {
 
     class DomainGraphicsSdl extends DomainGraphics {
         static $gtype: GObject.GType<DomainGraphicsSdl>;
+        declare static readonly __signalSignatures: DomainGraphicsSdl.SignalSignatures;
 
         // Constructors
 
@@ -1735,6 +1891,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainGraphicsSpice {
+        // Signal signatures
+        interface SignalSignatures extends DomainGraphics.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DomainGraphics.ConstructorProps {}
@@ -1742,6 +1901,7 @@ export namespace LibvirtGConfig {
 
     class DomainGraphicsSpice extends DomainGraphics {
         static $gtype: GObject.GType<DomainGraphicsSpice>;
+        declare static readonly __signalSignatures: DomainGraphicsSpice.SignalSignatures;
 
         // Constructors
 
@@ -1769,6 +1929,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainGraphicsVnc {
+        // Signal signatures
+        interface SignalSignatures extends DomainGraphics.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DomainGraphics.ConstructorProps {}
@@ -1776,6 +1939,7 @@ export namespace LibvirtGConfig {
 
     class DomainGraphicsVnc extends DomainGraphics {
         static $gtype: GObject.GType<DomainGraphicsVnc>;
+        declare static readonly __signalSignatures: DomainGraphicsVnc.SignalSignatures;
 
         // Constructors
 
@@ -1801,6 +1965,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainHostdev {
+        // Signal signatures
+        interface SignalSignatures extends DomainDevice.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DomainDevice.ConstructorProps {}
@@ -1808,6 +1975,7 @@ export namespace LibvirtGConfig {
 
     abstract class DomainHostdev extends DomainDevice {
         static $gtype: GObject.GType<DomainHostdev>;
+        declare static readonly __signalSignatures: DomainHostdev.SignalSignatures;
 
         // Constructors
 
@@ -1839,6 +2007,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainHostdevPci {
+        // Signal signatures
+        interface SignalSignatures extends DomainHostdev.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DomainHostdev.ConstructorProps {}
@@ -1846,6 +2017,7 @@ export namespace LibvirtGConfig {
 
     class DomainHostdevPci extends DomainHostdev {
         static $gtype: GObject.GType<DomainHostdevPci>;
+        declare static readonly __signalSignatures: DomainHostdevPci.SignalSignatures;
 
         // Constructors
 
@@ -1877,6 +2049,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainInput {
+        // Signal signatures
+        interface SignalSignatures extends DomainDevice.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DomainDevice.ConstructorProps {}
@@ -1884,6 +2059,7 @@ export namespace LibvirtGConfig {
 
     class DomainInput extends DomainDevice {
         static $gtype: GObject.GType<DomainInput>;
+        declare static readonly __signalSignatures: DomainInput.SignalSignatures;
 
         // Constructors
 
@@ -1907,6 +2083,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainInterface {
+        // Signal signatures
+        interface SignalSignatures extends DomainDevice.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DomainDevice.ConstructorProps {}
@@ -1914,6 +2093,7 @@ export namespace LibvirtGConfig {
 
     abstract class DomainInterface extends DomainDevice {
         static $gtype: GObject.GType<DomainInterface>;
+        declare static readonly __signalSignatures: DomainInterface.SignalSignatures;
 
         // Constructors
 
@@ -1940,6 +2120,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainInterfaceBridge {
+        // Signal signatures
+        interface SignalSignatures extends DomainInterface.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DomainInterface.ConstructorProps {}
@@ -1947,6 +2130,7 @@ export namespace LibvirtGConfig {
 
     class DomainInterfaceBridge extends DomainInterface {
         static $gtype: GObject.GType<DomainInterfaceBridge>;
+        declare static readonly __signalSignatures: DomainInterfaceBridge.SignalSignatures;
 
         // Constructors
 
@@ -1967,6 +2151,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainInterfaceFilterref {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -1974,6 +2161,7 @@ export namespace LibvirtGConfig {
 
     class DomainInterfaceFilterref extends Object {
         static $gtype: GObject.GType<DomainInterfaceFilterref>;
+        declare static readonly __signalSignatures: DomainInterfaceFilterref.SignalSignatures;
 
         // Constructors
 
@@ -2003,6 +2191,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainInterfaceFilterrefParameter {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -2010,6 +2201,7 @@ export namespace LibvirtGConfig {
 
     class DomainInterfaceFilterrefParameter extends Object {
         static $gtype: GObject.GType<DomainInterfaceFilterrefParameter>;
+        declare static readonly __signalSignatures: DomainInterfaceFilterrefParameter.SignalSignatures;
 
         // Constructors
 
@@ -2033,6 +2225,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainInterfaceNetwork {
+        // Signal signatures
+        interface SignalSignatures extends DomainInterface.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DomainInterface.ConstructorProps {}
@@ -2040,6 +2235,7 @@ export namespace LibvirtGConfig {
 
     class DomainInterfaceNetwork extends DomainInterface {
         static $gtype: GObject.GType<DomainInterfaceNetwork>;
+        declare static readonly __signalSignatures: DomainInterfaceNetwork.SignalSignatures;
 
         // Constructors
 
@@ -2060,6 +2256,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainInterfaceUser {
+        // Signal signatures
+        interface SignalSignatures extends DomainInterface.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DomainInterface.ConstructorProps {}
@@ -2067,6 +2266,7 @@ export namespace LibvirtGConfig {
 
     class DomainInterfaceUser extends DomainInterface {
         static $gtype: GObject.GType<DomainInterfaceUser>;
+        declare static readonly __signalSignatures: DomainInterfaceUser.SignalSignatures;
 
         // Constructors
 
@@ -2083,6 +2283,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainMemballoon {
+        // Signal signatures
+        interface SignalSignatures extends DomainDevice.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DomainDevice.ConstructorProps {}
@@ -2090,6 +2293,7 @@ export namespace LibvirtGConfig {
 
     class DomainMemballoon extends DomainDevice {
         static $gtype: GObject.GType<DomainMemballoon>;
+        declare static readonly __signalSignatures: DomainMemballoon.SignalSignatures;
 
         // Constructors
 
@@ -2110,6 +2314,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainOs {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -2117,6 +2324,7 @@ export namespace LibvirtGConfig {
 
     class DomainOs extends Object {
         static $gtype: GObject.GType<DomainOs>;
+        declare static readonly __signalSignatures: DomainOs.SignalSignatures;
 
         // Constructors
 
@@ -2159,6 +2367,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainParallel {
+        // Signal signatures
+        interface SignalSignatures extends DomainChardev.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DomainChardev.ConstructorProps {}
@@ -2166,6 +2377,7 @@ export namespace LibvirtGConfig {
 
     class DomainParallel extends DomainChardev {
         static $gtype: GObject.GType<DomainParallel>;
+        declare static readonly __signalSignatures: DomainParallel.SignalSignatures;
 
         // Constructors
 
@@ -2182,6 +2394,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainPowerManagement {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -2189,6 +2404,7 @@ export namespace LibvirtGConfig {
 
     class DomainPowerManagement extends Object {
         static $gtype: GObject.GType<DomainPowerManagement>;
+        declare static readonly __signalSignatures: DomainPowerManagement.SignalSignatures;
 
         // Constructors
 
@@ -2210,6 +2426,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainRedirdev {
+        // Signal signatures
+        interface SignalSignatures extends DomainChardev.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DomainChardev.ConstructorProps {}
@@ -2217,6 +2436,7 @@ export namespace LibvirtGConfig {
 
     class DomainRedirdev extends DomainChardev {
         static $gtype: GObject.GType<DomainRedirdev>;
+        declare static readonly __signalSignatures: DomainRedirdev.SignalSignatures;
 
         // Constructors
 
@@ -2238,6 +2458,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainSeclabel {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -2245,6 +2468,7 @@ export namespace LibvirtGConfig {
 
     class DomainSeclabel extends Object {
         static $gtype: GObject.GType<DomainSeclabel>;
+        declare static readonly __signalSignatures: DomainSeclabel.SignalSignatures;
 
         // Constructors
 
@@ -2268,6 +2492,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainSerial {
+        // Signal signatures
+        interface SignalSignatures extends DomainChardev.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DomainChardev.ConstructorProps {}
@@ -2275,6 +2502,7 @@ export namespace LibvirtGConfig {
 
     class DomainSerial extends DomainChardev {
         static $gtype: GObject.GType<DomainSerial>;
+        declare static readonly __signalSignatures: DomainSerial.SignalSignatures;
 
         // Constructors
 
@@ -2291,6 +2519,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainSmartcard {
+        // Signal signatures
+        interface SignalSignatures extends DomainDevice.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DomainDevice.ConstructorProps {}
@@ -2298,6 +2529,7 @@ export namespace LibvirtGConfig {
 
     abstract class DomainSmartcard extends DomainDevice {
         static $gtype: GObject.GType<DomainSmartcard>;
+        declare static readonly __signalSignatures: DomainSmartcard.SignalSignatures;
 
         // Constructors
 
@@ -2311,6 +2543,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainSmartcardHost {
+        // Signal signatures
+        interface SignalSignatures extends DomainSmartcard.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DomainSmartcard.ConstructorProps {}
@@ -2318,6 +2553,7 @@ export namespace LibvirtGConfig {
 
     class DomainSmartcardHost extends DomainSmartcard {
         static $gtype: GObject.GType<DomainSmartcardHost>;
+        declare static readonly __signalSignatures: DomainSmartcardHost.SignalSignatures;
 
         // Constructors
 
@@ -2334,6 +2570,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainSmartcardHostCertificates {
+        // Signal signatures
+        interface SignalSignatures extends DomainSmartcard.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DomainSmartcard.ConstructorProps {}
@@ -2341,6 +2580,7 @@ export namespace LibvirtGConfig {
 
     class DomainSmartcardHostCertificates extends DomainSmartcard {
         static $gtype: GObject.GType<DomainSmartcardHostCertificates>;
+        declare static readonly __signalSignatures: DomainSmartcardHostCertificates.SignalSignatures;
 
         // Constructors
 
@@ -2362,6 +2602,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainSmartcardPassthrough {
+        // Signal signatures
+        interface SignalSignatures extends DomainSmartcard.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DomainSmartcard.ConstructorProps {}
@@ -2369,6 +2612,7 @@ export namespace LibvirtGConfig {
 
     class DomainSmartcardPassthrough extends DomainSmartcard {
         static $gtype: GObject.GType<DomainSmartcardPassthrough>;
+        declare static readonly __signalSignatures: DomainSmartcardPassthrough.SignalSignatures;
 
         // Constructors
 
@@ -2389,6 +2633,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainSnapshot {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -2396,6 +2643,7 @@ export namespace LibvirtGConfig {
 
     class DomainSnapshot extends Object {
         static $gtype: GObject.GType<DomainSnapshot>;
+        declare static readonly __signalSignatures: DomainSnapshot.SignalSignatures;
 
         // Constructors
 
@@ -2440,6 +2688,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainSnapshotDisk {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -2447,6 +2698,7 @@ export namespace LibvirtGConfig {
 
     class DomainSnapshotDisk extends Object {
         static $gtype: GObject.GType<DomainSnapshotDisk>;
+        declare static readonly __signalSignatures: DomainSnapshotDisk.SignalSignatures;
 
         // Constructors
 
@@ -2474,6 +2726,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainSound {
+        // Signal signatures
+        interface SignalSignatures extends DomainDevice.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DomainDevice.ConstructorProps {}
@@ -2481,6 +2736,7 @@ export namespace LibvirtGConfig {
 
     class DomainSound extends DomainDevice {
         static $gtype: GObject.GType<DomainSound>;
+        declare static readonly __signalSignatures: DomainSound.SignalSignatures;
 
         // Constructors
 
@@ -2501,6 +2757,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainTimer {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -2508,6 +2767,7 @@ export namespace LibvirtGConfig {
 
     abstract class DomainTimer extends Object {
         static $gtype: GObject.GType<DomainTimer>;
+        declare static readonly __signalSignatures: DomainTimer.SignalSignatures;
 
         // Constructors
 
@@ -2524,6 +2784,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainTimerHpet {
+        // Signal signatures
+        interface SignalSignatures extends DomainTimer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DomainTimer.ConstructorProps {}
@@ -2531,6 +2794,7 @@ export namespace LibvirtGConfig {
 
     class DomainTimerHpet extends DomainTimer {
         static $gtype: GObject.GType<DomainTimerHpet>;
+        declare static readonly __signalSignatures: DomainTimerHpet.SignalSignatures;
 
         // Constructors
 
@@ -2547,6 +2811,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainTimerPit {
+        // Signal signatures
+        interface SignalSignatures extends DomainTimer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DomainTimer.ConstructorProps {}
@@ -2554,6 +2821,7 @@ export namespace LibvirtGConfig {
 
     class DomainTimerPit extends DomainTimer {
         static $gtype: GObject.GType<DomainTimerPit>;
+        declare static readonly __signalSignatures: DomainTimerPit.SignalSignatures;
 
         // Constructors
 
@@ -2570,6 +2838,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainTimerRtc {
+        // Signal signatures
+        interface SignalSignatures extends DomainTimer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DomainTimer.ConstructorProps {}
@@ -2577,6 +2848,7 @@ export namespace LibvirtGConfig {
 
     class DomainTimerRtc extends DomainTimer {
         static $gtype: GObject.GType<DomainTimerRtc>;
+        declare static readonly __signalSignatures: DomainTimerRtc.SignalSignatures;
 
         // Constructors
 
@@ -2593,6 +2865,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace DomainVideo {
+        // Signal signatures
+        interface SignalSignatures extends DomainDevice.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DomainDevice.ConstructorProps {}
@@ -2600,6 +2875,7 @@ export namespace LibvirtGConfig {
 
     class DomainVideo extends DomainDevice {
         static $gtype: GObject.GType<DomainVideo>;
+        declare static readonly __signalSignatures: DomainVideo.SignalSignatures;
 
         // Constructors
 
@@ -2626,6 +2902,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace Interface {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -2633,6 +2912,7 @@ export namespace LibvirtGConfig {
 
     class Interface extends Object {
         static $gtype: GObject.GType<Interface>;
+        declare static readonly __signalSignatures: Interface.SignalSignatures;
 
         // Constructors
 
@@ -2649,6 +2929,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace Network {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -2656,6 +2939,7 @@ export namespace LibvirtGConfig {
 
     class Network extends Object {
         static $gtype: GObject.GType<Network>;
+        declare static readonly __signalSignatures: Network.SignalSignatures;
 
         // Constructors
 
@@ -2672,6 +2956,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace NetworkFilter {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -2679,6 +2966,7 @@ export namespace LibvirtGConfig {
 
     class NetworkFilter extends Object {
         static $gtype: GObject.GType<NetworkFilter>;
+        declare static readonly __signalSignatures: NetworkFilter.SignalSignatures;
 
         // Constructors
 
@@ -2695,6 +2983,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace NodeDevice {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -2702,6 +2993,7 @@ export namespace LibvirtGConfig {
 
     class NodeDevice extends Object {
         static $gtype: GObject.GType<NodeDevice>;
+        declare static readonly __signalSignatures: NodeDevice.SignalSignatures;
 
         // Constructors
 
@@ -2718,6 +3010,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace Object {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2728,6 +3023,7 @@ export namespace LibvirtGConfig {
 
     class Object extends GObject.Object {
         static $gtype: GObject.GType<Object>;
+        declare static readonly __signalSignatures: Object.SignalSignatures;
 
         // Properties
 
@@ -2756,6 +3052,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace Secret {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -2763,6 +3062,7 @@ export namespace LibvirtGConfig {
 
     class Secret extends Object {
         static $gtype: GObject.GType<Secret>;
+        declare static readonly __signalSignatures: Secret.SignalSignatures;
 
         // Constructors
 
@@ -2779,6 +3079,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace StoragePermissions {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -2786,6 +3089,7 @@ export namespace LibvirtGConfig {
 
     class StoragePermissions extends Object {
         static $gtype: GObject.GType<StoragePermissions>;
+        declare static readonly __signalSignatures: StoragePermissions.SignalSignatures;
 
         // Constructors
 
@@ -2829,6 +3133,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace StoragePool {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -2836,6 +3143,7 @@ export namespace LibvirtGConfig {
 
     class StoragePool extends Object {
         static $gtype: GObject.GType<StoragePool>;
+        declare static readonly __signalSignatures: StoragePool.SignalSignatures;
 
         // Constructors
 
@@ -2903,6 +3211,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace StoragePoolSource {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -2910,6 +3221,7 @@ export namespace LibvirtGConfig {
 
     class StoragePoolSource extends Object {
         static $gtype: GObject.GType<StoragePoolSource>;
+        declare static readonly __signalSignatures: StoragePoolSource.SignalSignatures;
 
         // Constructors
 
@@ -2982,6 +3294,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace StoragePoolTarget {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -2989,6 +3304,7 @@ export namespace LibvirtGConfig {
 
     class StoragePoolTarget extends Object {
         static $gtype: GObject.GType<StoragePoolTarget>;
+        declare static readonly __signalSignatures: StoragePoolTarget.SignalSignatures;
 
         // Constructors
 
@@ -3021,6 +3337,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace StorageVol {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -3028,6 +3347,7 @@ export namespace LibvirtGConfig {
 
     class StorageVol extends Object {
         static $gtype: GObject.GType<StorageVol>;
+        declare static readonly __signalSignatures: StorageVol.SignalSignatures;
 
         // Constructors
 
@@ -3052,6 +3372,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace StorageVolBackingStore {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -3059,6 +3382,7 @@ export namespace LibvirtGConfig {
 
     class StorageVolBackingStore extends Object {
         static $gtype: GObject.GType<StorageVolBackingStore>;
+        declare static readonly __signalSignatures: StorageVolBackingStore.SignalSignatures;
 
         // Constructors
 
@@ -3080,6 +3404,9 @@ export namespace LibvirtGConfig {
     }
 
     namespace StorageVolTarget {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -3087,6 +3414,7 @@ export namespace LibvirtGConfig {
 
     class StorageVolTarget extends Object {
         static $gtype: GObject.GType<StorageVolTarget>;
+        declare static readonly __signalSignatures: StorageVolTarget.SignalSignatures;
 
         // Constructors
 

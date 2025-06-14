@@ -2448,6 +2448,9 @@ export namespace Cogl {
         EGL,
     }
     namespace AtlasTexture {
+        // Signal signatures
+        interface SignalSignatures extends Texture.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Texture.ConstructorProps {}
@@ -2477,6 +2480,7 @@ export namespace Cogl {
      */
     class AtlasTexture extends Texture {
         static $gtype: GObject.GType<AtlasTexture>;
+        declare static readonly __signalSignatures: AtlasTexture.SignalSignatures;
 
         // Constructors
 
@@ -2499,6 +2503,9 @@ export namespace Cogl {
     }
 
     namespace Attribute {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2506,6 +2513,7 @@ export namespace Cogl {
 
     class Attribute extends GObject.Object {
         static $gtype: GObject.GType<Attribute>;
+        declare static readonly __signalSignatures: Attribute.SignalSignatures;
 
         // Constructors
 
@@ -2580,6 +2588,9 @@ export namespace Cogl {
     }
 
     namespace AttributeBuffer {
+        // Signal signatures
+        interface SignalSignatures extends Buffer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Buffer.ConstructorProps {}
@@ -2590,6 +2601,7 @@ export namespace Cogl {
      */
     class AttributeBuffer extends Buffer {
         static $gtype: GObject.GType<AttributeBuffer>;
+        declare static readonly __signalSignatures: AttributeBuffer.SignalSignatures;
 
         // Constructors
 
@@ -2603,6 +2615,9 @@ export namespace Cogl {
     }
 
     namespace Bitmap {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2616,6 +2631,7 @@ export namespace Cogl {
      */
     class Bitmap extends GObject.Object {
         static $gtype: GObject.GType<Bitmap>;
+        declare static readonly __signalSignatures: Bitmap.SignalSignatures;
 
         // Constructors
 
@@ -2657,6 +2673,9 @@ export namespace Cogl {
     }
 
     namespace Buffer {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2690,6 +2709,7 @@ export namespace Cogl {
      */
     abstract class Buffer extends GObject.Object {
         static $gtype: GObject.GType<Buffer>;
+        declare static readonly __signalSignatures: Buffer.SignalSignatures;
 
         // Properties
 
@@ -2786,6 +2806,9 @@ export namespace Cogl {
     }
 
     namespace Context {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2833,6 +2856,7 @@ export namespace Cogl {
      */
     class Context extends GObject.Object {
         static $gtype: GObject.GType<Context>;
+        declare static readonly __signalSignatures: Context.SignalSignatures;
 
         // Constructors
 
@@ -2885,6 +2909,9 @@ export namespace Cogl {
     }
 
     namespace Display {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2912,6 +2939,7 @@ export namespace Cogl {
      */
     class Display extends GObject.Object {
         static $gtype: GObject.GType<Display>;
+        declare static readonly __signalSignatures: Display.SignalSignatures;
 
         // Constructors
 
@@ -2966,6 +2994,9 @@ export namespace Cogl {
     }
 
     namespace FrameInfo {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2976,6 +3007,7 @@ export namespace Cogl {
      */
     class FrameInfo extends GObject.Object {
         static $gtype: GObject.GType<FrameInfo>;
+        declare static readonly __signalSignatures: FrameInfo.SignalSignatures;
 
         // Constructors
 
@@ -3033,6 +3065,11 @@ export namespace Cogl {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            destroy: Destroy;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3046,6 +3083,7 @@ export namespace Cogl {
 
     abstract class Framebuffer extends GObject.Object {
         static $gtype: GObject.GType<Framebuffer>;
+        declare static readonly __signalSignatures: Framebuffer.SignalSignatures;
 
         // Properties
 
@@ -3065,6 +3103,18 @@ export namespace Cogl {
 
         // Signals
 
+        connect<K extends keyof Framebuffer.SignalSignatures>(
+            signal: K,
+            callback: Framebuffer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Framebuffer.SignalSignatures>(
+            signal: K,
+            callback: Framebuffer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Framebuffer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Framebuffer.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3843,6 +3893,9 @@ export namespace Cogl {
     }
 
     namespace IndexBuffer {
+        // Signal signatures
+        interface SignalSignatures extends Buffer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Buffer.ConstructorProps {}
@@ -3853,6 +3906,7 @@ export namespace Cogl {
      */
     class IndexBuffer extends Buffer {
         static $gtype: GObject.GType<IndexBuffer>;
+        declare static readonly __signalSignatures: IndexBuffer.SignalSignatures;
 
         // Constructors
 
@@ -3864,6 +3918,9 @@ export namespace Cogl {
     }
 
     namespace Indices {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3927,6 +3984,7 @@ export namespace Cogl {
      */
     class Indices extends GObject.Object {
         static $gtype: GObject.GType<Indices>;
+        declare static readonly __signalSignatures: Indices.SignalSignatures;
 
         // Constructors
 
@@ -3947,6 +4005,9 @@ export namespace Cogl {
     }
 
     namespace MatrixStack {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3989,6 +4050,7 @@ export namespace Cogl {
      */
     class MatrixStack extends GObject.Object {
         static $gtype: GObject.GType<MatrixStack>;
+        declare static readonly __signalSignatures: MatrixStack.SignalSignatures;
 
         // Constructors
 
@@ -4150,6 +4212,9 @@ export namespace Cogl {
     }
 
     namespace Offscreen {
+        // Signal signatures
+        interface SignalSignatures extends Framebuffer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Framebuffer.ConstructorProps {}
@@ -4160,6 +4225,7 @@ export namespace Cogl {
      */
     class Offscreen extends Framebuffer {
         static $gtype: GObject.GType<Offscreen>;
+        declare static readonly __signalSignatures: Offscreen.SignalSignatures;
 
         // Constructors
 
@@ -4175,6 +4241,9 @@ export namespace Cogl {
     }
 
     namespace Onscreen {
+        // Signal signatures
+        interface SignalSignatures extends Framebuffer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Framebuffer.ConstructorProps {}
@@ -4182,6 +4251,7 @@ export namespace Cogl {
 
     class Onscreen extends Framebuffer {
         static $gtype: GObject.GType<Onscreen>;
+        declare static readonly __signalSignatures: Onscreen.SignalSignatures;
 
         // Constructors
 
@@ -4557,6 +4627,9 @@ export namespace Cogl {
     }
 
     namespace OnscreenTemplate {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4564,6 +4637,7 @@ export namespace Cogl {
 
     class OnscreenTemplate extends GObject.Object {
         static $gtype: GObject.GType<OnscreenTemplate>;
+        declare static readonly __signalSignatures: OnscreenTemplate.SignalSignatures;
 
         // Constructors
 
@@ -4605,6 +4679,9 @@ export namespace Cogl {
     }
 
     namespace Output {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4632,6 +4709,7 @@ export namespace Cogl {
      */
     class Output extends GObject.Object {
         static $gtype: GObject.GType<Output>;
+        declare static readonly __signalSignatures: Output.SignalSignatures;
 
         // Constructors
 
@@ -4695,6 +4773,9 @@ export namespace Cogl {
     }
 
     namespace Pipeline {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4713,6 +4794,7 @@ export namespace Cogl {
      */
     class Pipeline extends GObject.Object {
         static $gtype: GObject.GType<Pipeline>;
+        declare static readonly __signalSignatures: Pipeline.SignalSignatures;
 
         // Constructors
 
@@ -5273,6 +5355,9 @@ export namespace Cogl {
     }
 
     namespace PixelBuffer {
+        // Signal signatures
+        interface SignalSignatures extends Buffer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Buffer.ConstructorProps {}
@@ -5280,6 +5365,7 @@ export namespace Cogl {
 
     class PixelBuffer extends Buffer {
         static $gtype: GObject.GType<PixelBuffer>;
+        declare static readonly __signalSignatures: PixelBuffer.SignalSignatures;
 
         // Constructors
 
@@ -5291,6 +5377,9 @@ export namespace Cogl {
     }
 
     namespace Primitive {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5301,6 +5390,7 @@ export namespace Cogl {
      */
     class Primitive extends GObject.Object {
         static $gtype: GObject.GType<Primitive>;
+        declare static readonly __signalSignatures: Primitive.SignalSignatures;
 
         // Constructors
 
@@ -5426,6 +5516,9 @@ export namespace Cogl {
     }
 
     namespace Program {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5433,6 +5526,7 @@ export namespace Cogl {
 
     class Program extends GObject.Object {
         static $gtype: GObject.GType<Program>;
+        declare static readonly __signalSignatures: Program.SignalSignatures;
 
         // Constructors
 
@@ -5506,6 +5600,9 @@ export namespace Cogl {
     }
 
     namespace Renderer {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5536,6 +5633,7 @@ export namespace Cogl {
      */
     class Renderer extends GObject.Object {
         static $gtype: GObject.GType<Renderer>;
+        declare static readonly __signalSignatures: Renderer.SignalSignatures;
 
         // Constructors
 
@@ -5638,6 +5736,11 @@ export namespace Cogl {
             (object: Onscreen): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'scanout-failed': ScanoutFailed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5645,6 +5748,7 @@ export namespace Cogl {
 
     class Scanout extends GObject.Object {
         static $gtype: GObject.GType<Scanout>;
+        declare static readonly __signalSignatures: Scanout.SignalSignatures;
 
         // Constructors
 
@@ -5656,6 +5760,15 @@ export namespace Cogl {
 
         // Signals
 
+        connect<K extends keyof Scanout.SignalSignatures>(signal: K, callback: Scanout.SignalSignatures[K]): number;
+        connect_after<K extends keyof Scanout.SignalSignatures>(
+            signal: K,
+            callback: Scanout.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Scanout.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Scanout.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -5679,6 +5792,9 @@ export namespace Cogl {
     }
 
     namespace Shader {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5765,6 +5881,7 @@ export namespace Cogl {
      */
     class Shader extends GObject.Object {
         static $gtype: GObject.GType<Shader>;
+        declare static readonly __signalSignatures: Shader.SignalSignatures;
 
         // Constructors
 
@@ -5788,6 +5905,9 @@ export namespace Cogl {
     }
 
     namespace Snippet {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5971,6 +6091,7 @@ export namespace Cogl {
      */
     class Snippet extends GObject.Object {
         static $gtype: GObject.GType<Snippet>;
+        declare static readonly __signalSignatures: Snippet.SignalSignatures;
 
         // Constructors
 
@@ -6038,6 +6159,9 @@ export namespace Cogl {
     }
 
     namespace SubTexture {
+        // Signal signatures
+        interface SignalSignatures extends Texture.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Texture.ConstructorProps {}
@@ -6052,6 +6176,7 @@ export namespace Cogl {
      */
     class SubTexture extends Texture {
         static $gtype: GObject.GType<SubTexture>;
+        declare static readonly __signalSignatures: SubTexture.SignalSignatures;
 
         // Constructors
 
@@ -6080,6 +6205,9 @@ export namespace Cogl {
     }
 
     namespace SwapChain {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6087,6 +6215,7 @@ export namespace Cogl {
 
     class SwapChain extends GObject.Object {
         static $gtype: GObject.GType<SwapChain>;
+        declare static readonly __signalSignatures: SwapChain.SignalSignatures;
 
         // Constructors
 
@@ -6103,6 +6232,9 @@ export namespace Cogl {
     }
 
     namespace Texture {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6123,6 +6255,7 @@ export namespace Cogl {
      */
     abstract class Texture extends GObject.Object {
         static $gtype: GObject.GType<Texture>;
+        declare static readonly __signalSignatures: Texture.SignalSignatures;
 
         // Properties
 
@@ -6375,6 +6508,9 @@ export namespace Cogl {
     }
 
     namespace Texture2D {
+        // Signal signatures
+        interface SignalSignatures extends Texture.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Texture.ConstructorProps {}
@@ -6391,6 +6527,7 @@ export namespace Cogl {
      */
     class Texture2D extends Texture {
         static $gtype: GObject.GType<Texture2D>;
+        declare static readonly __signalSignatures: Texture2D.SignalSignatures;
 
         // Constructors
 
@@ -6415,6 +6552,9 @@ export namespace Cogl {
     }
 
     namespace Texture2DSliced {
+        // Signal signatures
+        interface SignalSignatures extends Texture.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Texture.ConstructorProps {}
@@ -6451,6 +6591,7 @@ export namespace Cogl {
      */
     class Texture2DSliced extends Texture {
         static $gtype: GObject.GType<Texture2DSliced>;
+        declare static readonly __signalSignatures: Texture2DSliced.SignalSignatures;
 
         // Constructors
 

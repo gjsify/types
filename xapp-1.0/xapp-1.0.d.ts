@@ -257,6 +257,9 @@ export namespace XApp {
         (favorites: Favorites, uri: string): void;
     }
     namespace DarkModeManager {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -264,6 +267,7 @@ export namespace XApp {
 
     class DarkModeManager extends GObject.Object {
         static $gtype: GObject.GType<DarkModeManager>;
+        declare static readonly __signalSignatures: DarkModeManager.SignalSignatures;
 
         // Constructors
 
@@ -281,6 +285,11 @@ export namespace XApp {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            changed: Changed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -288,6 +297,7 @@ export namespace XApp {
 
     class Favorites extends GObject.Object {
         static $gtype: GObject.GType<Favorites>;
+        declare static readonly __signalSignatures: Favorites.SignalSignatures;
 
         // Constructors
 
@@ -297,6 +307,15 @@ export namespace XApp {
 
         // Signals
 
+        connect<K extends keyof Favorites.SignalSignatures>(signal: K, callback: Favorites.SignalSignatures[K]): number;
+        connect_after<K extends keyof Favorites.SignalSignatures>(
+            signal: K,
+            callback: Favorites.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Favorites.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Favorites.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -380,6 +399,11 @@ export namespace XApp {
             (success: boolean): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            ready: Ready;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -387,6 +411,7 @@ export namespace XApp {
 
     class GpuOffloadHelper extends GObject.Object {
         static $gtype: GObject.GType<GpuOffloadHelper>;
+        declare static readonly __signalSignatures: GpuOffloadHelper.SignalSignatures;
 
         // Constructors
 
@@ -396,6 +421,18 @@ export namespace XApp {
 
         // Signals
 
+        connect<K extends keyof GpuOffloadHelper.SignalSignatures>(
+            signal: K,
+            callback: GpuOffloadHelper.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GpuOffloadHelper.SignalSignatures>(
+            signal: K,
+            callback: GpuOffloadHelper.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GpuOffloadHelper.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GpuOffloadHelper.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -456,6 +493,9 @@ export namespace XApp {
     }
 
     namespace GtkWindow {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Window.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -466,6 +506,7 @@ export namespace XApp {
 
     class GtkWindow extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<GtkWindow>;
+        declare static readonly __signalSignatures: GtkWindow.SignalSignatures;
 
         // Constructors
 
@@ -969,6 +1010,9 @@ export namespace XApp {
     }
 
     namespace IconChooserButton {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Button.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -989,6 +1033,7 @@ export namespace XApp {
         implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<IconChooserButton>;
+        declare static readonly __signalSignatures: IconChooserButton.SignalSignatures;
 
         // Properties
 
@@ -5586,6 +5631,12 @@ export namespace XApp {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GtkWindow.SignalSignatures {
+            close: Close;
+            select: Select;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5603,6 +5654,7 @@ export namespace XApp {
 
     class IconChooserDialog extends GtkWindow implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<IconChooserDialog>;
+        declare static readonly __signalSignatures: IconChooserDialog.SignalSignatures;
 
         // Properties
 
@@ -5651,6 +5703,18 @@ export namespace XApp {
 
         // Signals
 
+        connect<K extends keyof IconChooserDialog.SignalSignatures>(
+            signal: K,
+            callback: IconChooserDialog.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof IconChooserDialog.SignalSignatures>(
+            signal: K,
+            callback: IconChooserDialog.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof IconChooserDialog.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<IconChooserDialog.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -6189,6 +6253,12 @@ export namespace XApp {
             (object: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'config-changed': ConfigChanged;
+            'layout-changed': LayoutChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6198,6 +6268,7 @@ export namespace XApp {
 
     class KbdLayoutController extends GObject.Object {
         static $gtype: GObject.GType<KbdLayoutController>;
+        declare static readonly __signalSignatures: KbdLayoutController.SignalSignatures;
 
         // Properties
 
@@ -6217,6 +6288,18 @@ export namespace XApp {
 
         // Signals
 
+        connect<K extends keyof KbdLayoutController.SignalSignatures>(
+            signal: K,
+            callback: KbdLayoutController.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof KbdLayoutController.SignalSignatures>(
+            signal: K,
+            callback: KbdLayoutController.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof KbdLayoutController.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<KbdLayoutController.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -6324,6 +6407,9 @@ export namespace XApp {
     }
 
     namespace MonitorBlanker {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6331,6 +6417,7 @@ export namespace XApp {
 
     class MonitorBlanker extends GObject.Object {
         static $gtype: GObject.GType<MonitorBlanker>;
+        declare static readonly __signalSignatures: MonitorBlanker.SignalSignatures;
 
         // Constructors
 
@@ -6361,6 +6448,9 @@ export namespace XApp {
     }
 
     namespace ObjectManagerClient {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusObjectManagerClient.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6378,6 +6468,7 @@ export namespace XApp {
         implements Gio.AsyncInitable<ObjectManagerClient>, Gio.DBusObjectManager, Gio.Initable
     {
         static $gtype: GObject.GType<ObjectManagerClient>;
+        declare static readonly __signalSignatures: ObjectManagerClient.SignalSignatures;
 
         // Constructors
 
@@ -7273,6 +7364,9 @@ export namespace XApp {
     }
 
     namespace ObjectProxy {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusObjectProxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7286,6 +7380,7 @@ export namespace XApp {
      */
     class ObjectProxy extends Gio.DBusObjectProxy implements Gio.DBusObject, Object {
         static $gtype: GObject.GType<ObjectProxy>;
+        declare static readonly __signalSignatures: ObjectProxy.SignalSignatures;
 
         // Constructors
 
@@ -7800,6 +7895,9 @@ export namespace XApp {
     }
 
     namespace ObjectSkeleton {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusObjectSkeleton.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7813,6 +7911,7 @@ export namespace XApp {
      */
     class ObjectSkeleton extends Gio.DBusObjectSkeleton implements Gio.DBusObject, Object {
         static $gtype: GObject.GType<ObjectSkeleton>;
+        declare static readonly __signalSignatures: ObjectSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -8341,6 +8440,11 @@ export namespace XApp {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Window.SignalSignatures {
+            close: Close;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -8351,6 +8455,7 @@ export namespace XApp {
 
     class PreferencesWindow extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<PreferencesWindow>;
+        declare static readonly __signalSignatures: PreferencesWindow.SignalSignatures;
 
         // Constructors
 
@@ -8362,6 +8467,18 @@ export namespace XApp {
 
         // Signals
 
+        connect<K extends keyof PreferencesWindow.SignalSignatures>(
+            signal: K,
+            callback: PreferencesWindow.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PreferencesWindow.SignalSignatures>(
+            signal: K,
+            callback: PreferencesWindow.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PreferencesWindow.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PreferencesWindow.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -8837,6 +8954,9 @@ export namespace XApp {
     }
 
     namespace StackSidebar {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Bin.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -8849,6 +8969,7 @@ export namespace XApp {
 
     class StackSidebar extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<StackSidebar>;
+        declare static readonly __signalSignatures: StackSidebar.SignalSignatures;
 
         // Properties
 
@@ -9345,6 +9466,15 @@ export namespace XApp {
             (new_state: StatusIconState): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            activate: Activate;
+            'button-press-event': ButtonPressEvent;
+            'button-release-event': ButtonReleaseEvent;
+            'scroll-event': ScrollEvent;
+            'state-changed': StateChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9360,6 +9490,7 @@ export namespace XApp {
 
     class StatusIcon extends GObject.Object {
         static $gtype: GObject.GType<StatusIcon>;
+        declare static readonly __signalSignatures: StatusIcon.SignalSignatures;
 
         // Properties
 
@@ -9490,6 +9621,18 @@ export namespace XApp {
 
         // Signals
 
+        connect<K extends keyof StatusIcon.SignalSignatures>(
+            signal: K,
+            callback: StatusIcon.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StatusIcon.SignalSignatures>(
+            signal: K,
+            callback: StatusIcon.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StatusIcon.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StatusIcon.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -9668,6 +9811,9 @@ export namespace XApp {
     }
 
     namespace StatusIconInterfaceProxy {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9686,6 +9832,7 @@ export namespace XApp {
         implements Gio.AsyncInitable<StatusIconInterfaceProxy>, Gio.DBusInterface, Gio.Initable, StatusIconInterface
     {
         static $gtype: GObject.GType<StatusIconInterfaceProxy>;
+        declare static readonly __signalSignatures: StatusIconInterfaceProxy.SignalSignatures;
 
         // Constructors
 
@@ -10967,6 +11114,9 @@ export namespace XApp {
     }
 
     namespace StatusIconInterfaceSkeleton {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -10983,6 +11133,7 @@ export namespace XApp {
         implements Gio.DBusInterface, StatusIconInterface
     {
         static $gtype: GObject.GType<StatusIconInterfaceSkeleton>;
+        declare static readonly __signalSignatures: StatusIconInterfaceSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -11910,6 +12061,12 @@ export namespace XApp {
             (proxy: StatusIconInterfaceProxy): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'icon-added': IconAdded;
+            'icon-removed': IconRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -11917,6 +12074,7 @@ export namespace XApp {
 
     class StatusIconMonitor extends GObject.Object {
         static $gtype: GObject.GType<StatusIconMonitor>;
+        declare static readonly __signalSignatures: StatusIconMonitor.SignalSignatures;
 
         // Constructors
 
@@ -11928,6 +12086,18 @@ export namespace XApp {
 
         // Signals
 
+        connect<K extends keyof StatusIconMonitor.SignalSignatures>(
+            signal: K,
+            callback: StatusIconMonitor.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StatusIconMonitor.SignalSignatures>(
+            signal: K,
+            callback: StatusIconMonitor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StatusIconMonitor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StatusIconMonitor.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -11951,6 +12121,9 @@ export namespace XApp {
     }
 
     namespace StyleManager {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -11960,6 +12133,7 @@ export namespace XApp {
 
     class StyleManager extends GObject.Object {
         static $gtype: GObject.GType<StyleManager>;
+        declare static readonly __signalSignatures: StyleManager.SignalSignatures;
 
         // Properties
 
@@ -12008,6 +12182,9 @@ export namespace XApp {
     }
 
     namespace SwitcherooControlProxy {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -12026,6 +12203,7 @@ export namespace XApp {
         implements Gio.AsyncInitable<SwitcherooControlProxy>, Gio.DBusInterface, Gio.Initable, SwitcherooControl
     {
         static $gtype: GObject.GType<SwitcherooControlProxy>;
+        declare static readonly __signalSignatures: SwitcherooControlProxy.SignalSignatures;
 
         // Constructors
 
@@ -12913,6 +13091,9 @@ export namespace XApp {
     }
 
     namespace SwitcherooControlSkeleton {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -12926,6 +13107,7 @@ export namespace XApp {
      */
     class SwitcherooControlSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, SwitcherooControl {
         static $gtype: GObject.GType<SwitcherooControlSkeleton>;
+        declare static readonly __signalSignatures: SwitcherooControlSkeleton.SignalSignatures;
 
         // Constructors
 

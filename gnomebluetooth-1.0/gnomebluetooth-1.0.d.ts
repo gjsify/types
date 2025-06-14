@@ -348,6 +348,12 @@ export namespace GnomeBluetooth {
             (address: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {
+            'selected-device-activated': SelectedDeviceActivated;
+            'selected-device-changed': SelectedDeviceChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -384,6 +390,7 @@ export namespace GnomeBluetooth {
      */
     class Chooser extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Chooser>;
+        declare static readonly __signalSignatures: Chooser.SignalSignatures;
 
         // Properties
 
@@ -434,6 +441,15 @@ export namespace GnomeBluetooth {
 
         // Signals
 
+        connect<K extends keyof Chooser.SignalSignatures>(signal: K, callback: Chooser.SignalSignatures[K]): number;
+        connect_after<K extends keyof Chooser.SignalSignatures>(
+            signal: K,
+            callback: Chooser.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Chooser.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Chooser.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -975,6 +991,11 @@ export namespace GnomeBluetooth {
             (chooser: GObject.Object): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Button.SignalSignatures {
+            'chooser-created': ChooserCreated;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -998,6 +1019,7 @@ export namespace GnomeBluetooth {
         implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<ChooserButton>;
+        declare static readonly __signalSignatures: ChooserButton.SignalSignatures;
 
         // Properties
 
@@ -1029,6 +1051,18 @@ export namespace GnomeBluetooth {
 
         // Signals
 
+        connect<K extends keyof ChooserButton.SignalSignatures>(
+            signal: K,
+            callback: ChooserButton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ChooserButton.SignalSignatures>(
+            signal: K,
+            callback: ChooserButton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ChooserButton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ChooserButton.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -5576,6 +5610,11 @@ export namespace GnomeBluetooth {
             (chooser: GObject.Object): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {
+            'chooser-created': ChooserCreated;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5594,6 +5633,7 @@ export namespace GnomeBluetooth {
      */
     class ChooserCombo extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<ChooserCombo>;
+        declare static readonly __signalSignatures: ChooserCombo.SignalSignatures;
 
         // Properties
 
@@ -5617,6 +5657,18 @@ export namespace GnomeBluetooth {
 
         // Signals
 
+        connect<K extends keyof ChooserCombo.SignalSignatures>(
+            signal: K,
+            callback: ChooserCombo.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ChooserCombo.SignalSignatures>(
+            signal: K,
+            callback: ChooserCombo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ChooserCombo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ChooserCombo.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -6094,6 +6146,11 @@ export namespace GnomeBluetooth {
             (device: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'device-removed': DeviceRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6116,6 +6173,7 @@ export namespace GnomeBluetooth {
      */
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
+        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Properties
 
@@ -6174,6 +6232,9 @@ export namespace GnomeBluetooth {
 
         // Signals
 
+        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -6255,6 +6316,9 @@ export namespace GnomeBluetooth {
     }
 
     namespace FilterWidget {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6275,6 +6339,7 @@ export namespace GnomeBluetooth {
 
     class FilterWidget extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<FilterWidget>;
+        declare static readonly __signalSignatures: FilterWidget.SignalSignatures;
 
         // Properties
 
@@ -6787,6 +6852,12 @@ export namespace GnomeBluetooth {
             (panel: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {
+            'adapter-status-changed': AdapterStatusChanged;
+            'panel-changed': PanelChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6802,6 +6873,7 @@ export namespace GnomeBluetooth {
      */
     class SettingsWidget extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<SettingsWidget>;
+        declare static readonly __signalSignatures: SettingsWidget.SignalSignatures;
 
         // Constructors
 
@@ -6813,6 +6885,18 @@ export namespace GnomeBluetooth {
 
         // Signals
 
+        connect<K extends keyof SettingsWidget.SignalSignatures>(
+            signal: K,
+            callback: SettingsWidget.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SettingsWidget.SignalSignatures>(
+            signal: K,
+            callback: SettingsWidget.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SettingsWidget.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SettingsWidget.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

@@ -5438,6 +5438,9 @@ export namespace IBus {
         RESERVED_2,
     }
     namespace AttrList {
+        // Signal signatures
+        interface SignalSignatures extends Serializable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Serializable.ConstructorProps {}
@@ -5448,6 +5451,7 @@ export namespace IBus {
      */
     class AttrList extends Serializable {
         static $gtype: GObject.GType<AttrList>;
+        declare static readonly __signalSignatures: AttrList.SignalSignatures;
 
         // Fields
 
@@ -5477,6 +5481,9 @@ export namespace IBus {
     }
 
     namespace Attribute {
+        // Signal signatures
+        interface SignalSignatures extends Serializable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Serializable.ConstructorProps {}
@@ -5489,6 +5496,7 @@ export namespace IBus {
      */
     class Attribute extends Serializable {
         static $gtype: GObject.GType<Attribute>;
+        declare static readonly __signalSignatures: Attribute.SignalSignatures;
 
         // Fields
 
@@ -5558,6 +5566,15 @@ export namespace IBus {
             (name: string, old_owner: string, new_owner: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {
+            connected: Connected;
+            disconnected: Disconnected;
+            'global-engine-changed': GlobalEngineChanged;
+            'global-shortcut-key-responded': GlobalShortcutKeyResponded;
+            'name-owner-changed': NameOwnerChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -5573,6 +5590,7 @@ export namespace IBus {
      */
     class Bus extends Object {
         static $gtype: GObject.GType<Bus>;
+        declare static readonly __signalSignatures: Bus.SignalSignatures;
 
         // Properties
 
@@ -5607,6 +5625,9 @@ export namespace IBus {
 
         // Signals
 
+        connect<K extends keyof Bus.SignalSignatures>(signal: K, callback: Bus.SignalSignatures[K]): number;
+        connect_after<K extends keyof Bus.SignalSignatures>(signal: K, callback: Bus.SignalSignatures[K]): number;
+        emit<K extends keyof Bus.SignalSignatures>(signal: K, ...args: Parameters<Bus.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -6661,6 +6682,9 @@ export namespace IBus {
     }
 
     namespace Component {
+        // Signal signatures
+        interface SignalSignatures extends Serializable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Serializable.ConstructorProps {
@@ -6690,6 +6714,7 @@ export namespace IBus {
      */
     class Component extends Serializable {
         static $gtype: GObject.GType<Component>;
+        declare static readonly __signalSignatures: Component.SignalSignatures;
 
         // Properties
 
@@ -6845,6 +6870,11 @@ export namespace IBus {
             (section: string, name: string, value: GLib.Variant): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Proxy.SignalSignatures {
+            'value-changed': ValueChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6862,6 +6892,7 @@ export namespace IBus {
      */
     class Config extends Proxy implements Gio.AsyncInitable<Config>, Gio.DBusInterface, Gio.Initable {
         static $gtype: GObject.GType<Config>;
+        declare static readonly __signalSignatures: Config.SignalSignatures;
 
         // Constructors
 
@@ -6878,6 +6909,9 @@ export namespace IBus {
 
         // Signals
 
+        connect<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
+        connect_after<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
+        emit<K extends keyof Config.SignalSignatures>(signal: K, ...args: Parameters<Config.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -7773,6 +7807,9 @@ export namespace IBus {
     }
 
     namespace ConfigService {
+        // Signal signatures
+        interface SignalSignatures extends Service.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Service.ConstructorProps {}
@@ -7883,6 +7920,7 @@ export namespace IBus {
      */
     class ConfigService extends Service {
         static $gtype: GObject.GType<ConfigService>;
+        declare static readonly __signalSignatures: ConfigService.SignalSignatures;
 
         // Constructors
 
@@ -7915,6 +7953,9 @@ export namespace IBus {
     }
 
     namespace EmojiData {
+        // Signal signatures
+        interface SignalSignatures extends Serializable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Serializable.ConstructorProps {
@@ -7931,6 +7972,7 @@ export namespace IBus {
      */
     class EmojiData extends Serializable {
         static $gtype: GObject.GType<EmojiData>;
+        declare static readonly __signalSignatures: EmojiData.SignalSignatures;
 
         // Properties
 
@@ -8094,6 +8136,32 @@ export namespace IBus {
             (text: GObject.Object, cursor_pos: number, anchor_pos: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Service.SignalSignatures {
+            'cancel-hand-writing': CancelHandWriting;
+            'candidate-clicked': CandidateClicked;
+            'cursor-down': CursorDown;
+            'cursor-up': CursorUp;
+            disable: Disable;
+            enable: Enable;
+            'focus-in': FocusIn;
+            'focus-in-id': FocusInId;
+            'focus-out': FocusOut;
+            'focus-out-id': FocusOutId;
+            'page-down': PageDown;
+            'page-up': PageUp;
+            'process-hand-writing-event': ProcessHandWritingEvent;
+            'process-key-event': ProcessKeyEvent;
+            'property-activate': PropertyActivate;
+            'property-hide': PropertyHide;
+            'property-show': PropertyShow;
+            reset: Reset;
+            'set-capabilities': SetCapabilities;
+            'set-content-type': SetContentType;
+            'set-cursor-location': SetCursorLocation;
+            'set-surrounding-text': SetSurroundingText;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Service.ConstructorProps {
@@ -8114,6 +8182,7 @@ export namespace IBus {
      */
     class Engine extends Service {
         static $gtype: GObject.GType<Engine>;
+        declare static readonly __signalSignatures: Engine.SignalSignatures;
 
         // Properties
 
@@ -8185,6 +8254,9 @@ export namespace IBus {
 
         // Signals
 
+        connect<K extends keyof Engine.SignalSignatures>(signal: K, callback: Engine.SignalSignatures[K]): number;
+        connect_after<K extends keyof Engine.SignalSignatures>(signal: K, callback: Engine.SignalSignatures[K]): number;
+        emit<K extends keyof Engine.SignalSignatures>(signal: K, ...args: Parameters<Engine.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -8479,6 +8551,9 @@ export namespace IBus {
     }
 
     namespace EngineDesc {
+        // Signal signatures
+        interface SignalSignatures extends Serializable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Serializable.ConstructorProps {
@@ -8519,6 +8594,7 @@ export namespace IBus {
      */
     class EngineDesc extends Serializable {
         static $gtype: GObject.GType<EngineDesc>;
+        declare static readonly __signalSignatures: EngineDesc.SignalSignatures;
 
         // Properties
 
@@ -8723,6 +8799,9 @@ export namespace IBus {
     }
 
     namespace EngineSimple {
+        // Signal signatures
+        interface SignalSignatures extends Engine.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Engine.ConstructorProps {}
@@ -8735,6 +8814,7 @@ export namespace IBus {
      */
     class EngineSimple extends Engine {
         static $gtype: GObject.GType<EngineSimple>;
+        declare static readonly __signalSignatures: EngineSimple.SignalSignatures;
 
         // Constructors
 
@@ -8772,6 +8852,9 @@ export namespace IBus {
     }
 
     namespace ExtensionEvent {
+        // Signal signatures
+        interface SignalSignatures extends Serializable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Serializable.ConstructorProps {
@@ -8790,6 +8873,7 @@ export namespace IBus {
      */
     class ExtensionEvent extends Serializable {
         static $gtype: GObject.GType<ExtensionEvent>;
+        declare static readonly __signalSignatures: ExtensionEvent.SignalSignatures;
 
         // Properties
 
@@ -8850,6 +8934,11 @@ export namespace IBus {
             (engine_name: string): Engine | null;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Service.SignalSignatures {
+            'create-engine': CreateEngine;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Service.ConstructorProps {}
@@ -8864,6 +8953,7 @@ export namespace IBus {
      */
     class Factory extends Service {
         static $gtype: GObject.GType<Factory>;
+        declare static readonly __signalSignatures: Factory.SignalSignatures;
 
         // Constructors
 
@@ -8878,6 +8968,15 @@ export namespace IBus {
 
         // Signals
 
+        connect<K extends keyof Factory.SignalSignatures>(signal: K, callback: Factory.SignalSignatures[K]): number;
+        connect_after<K extends keyof Factory.SignalSignatures>(
+            signal: K,
+            callback: Factory.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Factory.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Factory.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -8916,6 +9015,11 @@ export namespace IBus {
             (event: number, user_data?: any | null): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Serializable.SignalSignatures {
+            trigger: Trigger;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Serializable.ConstructorProps {}
@@ -8926,6 +9030,7 @@ export namespace IBus {
      */
     class HotkeyProfile extends Serializable {
         static $gtype: GObject.GType<HotkeyProfile>;
+        declare static readonly __signalSignatures: HotkeyProfile.SignalSignatures;
 
         // Constructors
 
@@ -8937,6 +9042,18 @@ export namespace IBus {
 
         // Signals
 
+        connect<K extends keyof HotkeyProfile.SignalSignatures>(
+            signal: K,
+            callback: HotkeyProfile.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof HotkeyProfile.SignalSignatures>(
+            signal: K,
+            callback: HotkeyProfile.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HotkeyProfile.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HotkeyProfile.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -9093,6 +9210,32 @@ export namespace IBus {
             (prop: Property): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Proxy.SignalSignatures {
+            'commit-text': CommitText;
+            'cursor-down-lookup-table': CursorDownLookupTable;
+            'cursor-up-lookup-table': CursorUpLookupTable;
+            'delete-surrounding-text': DeleteSurroundingText;
+            disabled: Disabled;
+            enabled: Enabled;
+            'forward-key-event': ForwardKeyEvent;
+            'hide-auxiliary-text': HideAuxiliaryText;
+            'hide-lookup-table': HideLookupTable;
+            'hide-preedit-text': HidePreeditText;
+            'page-down-lookup-table': PageDownLookupTable;
+            'page-up-lookup-table': PageUpLookupTable;
+            'register-properties': RegisterProperties;
+            'require-surrounding-text': RequireSurroundingText;
+            'show-auxiliary-text': ShowAuxiliaryText;
+            'show-lookup-table': ShowLookupTable;
+            'show-preedit-text': ShowPreeditText;
+            'update-auxiliary-text': UpdateAuxiliaryText;
+            'update-lookup-table': UpdateLookupTable;
+            'update-preedit-text': UpdatePreeditText;
+            'update-preedit-text-with-mode': UpdatePreeditTextWithMode;
+            'update-property': UpdateProperty;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9112,6 +9255,7 @@ export namespace IBus {
      */
     class InputContext extends Proxy implements Gio.AsyncInitable<InputContext>, Gio.DBusInterface, Gio.Initable {
         static $gtype: GObject.GType<InputContext>;
+        declare static readonly __signalSignatures: InputContext.SignalSignatures;
 
         // Constructors
 
@@ -9132,6 +9276,18 @@ export namespace IBus {
 
         // Signals
 
+        connect<K extends keyof InputContext.SignalSignatures>(
+            signal: K,
+            callback: InputContext.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof InputContext.SignalSignatures>(
+            signal: K,
+            callback: InputContext.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InputContext.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InputContext.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -10215,6 +10371,9 @@ export namespace IBus {
     }
 
     namespace Keymap {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -10236,6 +10395,7 @@ export namespace IBus {
      */
     class Keymap extends Object {
         static $gtype: GObject.GType<Keymap>;
+        declare static readonly __signalSignatures: Keymap.SignalSignatures;
 
         // Fields
 
@@ -10276,6 +10436,9 @@ export namespace IBus {
     }
 
     namespace LookupTable {
+        // Signal signatures
+        interface SignalSignatures extends Serializable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Serializable.ConstructorProps {}
@@ -10293,6 +10456,7 @@ export namespace IBus {
      */
     class LookupTable extends Serializable {
         static $gtype: GObject.GType<LookupTable>;
+        declare static readonly __signalSignatures: LookupTable.SignalSignatures;
 
         // Fields
 
@@ -10458,6 +10622,11 @@ export namespace IBus {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
+            destroy: Destroy;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {}
@@ -10468,6 +10637,7 @@ export namespace IBus {
      */
     class Object extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<Object>;
+        declare static readonly __signalSignatures: Object.SignalSignatures;
 
         // Fields
 
@@ -10483,6 +10653,9 @@ export namespace IBus {
 
         // Signals
 
+        connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -10516,6 +10689,9 @@ export namespace IBus {
     }
 
     namespace ObservedPath {
+        // Signal signatures
+        interface SignalSignatures extends Serializable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Serializable.ConstructorProps {}
@@ -10527,6 +10703,7 @@ export namespace IBus {
      */
     class ObservedPath extends Serializable {
         static $gtype: GObject.GType<ObservedPath>;
+        declare static readonly __signalSignatures: ObservedPath.SignalSignatures;
 
         // Fields
 
@@ -10696,6 +10873,40 @@ export namespace IBus {
             (prop: Property): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Service.SignalSignatures {
+            'candidate-clicked-lookup-table': CandidateClickedLookupTable;
+            'commit-text-received': CommitTextReceived;
+            'cursor-down-lookup-table': CursorDownLookupTable;
+            'cursor-up-lookup-table': CursorUpLookupTable;
+            'destroy-context': DestroyContext;
+            'focus-in': FocusIn;
+            'focus-out': FocusOut;
+            'hide-auxiliary-text': HideAuxiliaryText;
+            'hide-language-bar': HideLanguageBar;
+            'hide-lookup-table': HideLookupTable;
+            'hide-preedit-text': HidePreeditText;
+            'page-down-lookup-table': PageDownLookupTable;
+            'page-up-lookup-table': PageUpLookupTable;
+            'panel-extension-received': PanelExtensionReceived;
+            'process-key-event': ProcessKeyEvent;
+            'register-properties': RegisterProperties;
+            reset: Reset;
+            'set-content-type': SetContentType;
+            'set-cursor-location': SetCursorLocation;
+            'set-cursor-location-relative': SetCursorLocationRelative;
+            'show-auxiliary-text': ShowAuxiliaryText;
+            'show-language-bar': ShowLanguageBar;
+            'show-lookup-table': ShowLookupTable;
+            'show-preedit-text': ShowPreeditText;
+            'start-setup': StartSetup;
+            'state-changed': StateChanged;
+            'update-auxiliary-text': UpdateAuxiliaryText;
+            'update-lookup-table': UpdateLookupTable;
+            'update-preedit-text': UpdatePreeditText;
+            'update-property': UpdateProperty;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Service.ConstructorProps {}
@@ -10707,6 +10918,7 @@ export namespace IBus {
      */
     class PanelService extends Service {
         static $gtype: GObject.GType<PanelService>;
+        declare static readonly __signalSignatures: PanelService.SignalSignatures;
 
         // Constructors
 
@@ -10721,6 +10933,18 @@ export namespace IBus {
 
         // Signals
 
+        connect<K extends keyof PanelService.SignalSignatures>(
+            signal: K,
+            callback: PanelService.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PanelService.SignalSignatures>(
+            signal: K,
+            callback: PanelService.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PanelService.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PanelService.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -11000,6 +11224,9 @@ export namespace IBus {
     }
 
     namespace PropList {
+        // Signal signatures
+        interface SignalSignatures extends Serializable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Serializable.ConstructorProps {}
@@ -11010,6 +11237,7 @@ export namespace IBus {
      */
     class PropList extends Serializable {
         static $gtype: GObject.GType<PropList>;
+        declare static readonly __signalSignatures: PropList.SignalSignatures;
 
         // Fields
 
@@ -11045,6 +11273,9 @@ export namespace IBus {
     }
 
     namespace Property {
+        // Signal signatures
+        interface SignalSignatures extends Serializable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Serializable.ConstructorProps {
@@ -11075,6 +11306,7 @@ export namespace IBus {
      */
     class Property extends Serializable {
         static $gtype: GObject.GType<Property>;
+        declare static readonly __signalSignatures: Property.SignalSignatures;
 
         // Properties
 
@@ -11226,6 +11458,11 @@ export namespace IBus {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+            destroy: Destroy;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -11248,6 +11485,7 @@ export namespace IBus {
      */
     class Proxy extends Gio.DBusProxy implements Gio.AsyncInitable<Proxy>, Gio.DBusInterface, Gio.Initable {
         static $gtype: GObject.GType<Proxy>;
+        declare static readonly __signalSignatures: Proxy.SignalSignatures;
 
         // Fields
 
@@ -11262,6 +11500,9 @@ export namespace IBus {
 
         // Signals
 
+        connect<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
+        connect_after<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
+        emit<K extends keyof Proxy.SignalSignatures>(signal: K, ...args: Parameters<Proxy.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -12064,6 +12305,11 @@ export namespace IBus {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Serializable.SignalSignatures {
+            changed: Changed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Serializable.ConstructorProps {}
@@ -12076,6 +12322,7 @@ export namespace IBus {
      */
     class Registry extends Serializable {
         static $gtype: GObject.GType<Registry>;
+        declare static readonly __signalSignatures: Registry.SignalSignatures;
 
         // Constructors
 
@@ -12087,6 +12334,15 @@ export namespace IBus {
 
         // Signals
 
+        connect<K extends keyof Registry.SignalSignatures>(signal: K, callback: Registry.SignalSignatures[K]): number;
+        connect_after<K extends keyof Registry.SignalSignatures>(
+            signal: K,
+            callback: Registry.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Registry.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Registry.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -12164,6 +12420,9 @@ export namespace IBus {
     }
 
     namespace Serializable {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -12191,6 +12450,7 @@ export namespace IBus {
      */
     class Serializable extends Object {
         static $gtype: GObject.GType<Serializable>;
+        declare static readonly __signalSignatures: Serializable.SignalSignatures;
 
         // Constructors
 
@@ -12253,6 +12513,9 @@ export namespace IBus {
     }
 
     namespace Service {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -12267,6 +12530,7 @@ export namespace IBus {
      */
     class Service extends Object {
         static $gtype: GObject.GType<Service>;
+        declare static readonly __signalSignatures: Service.SignalSignatures;
 
         // Properties
 
@@ -12389,6 +12653,9 @@ export namespace IBus {
     }
 
     namespace Text {
+        // Signal signatures
+        interface SignalSignatures extends Serializable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Serializable.ConstructorProps {}
@@ -12404,6 +12671,7 @@ export namespace IBus {
      */
     class Text extends Serializable {
         static $gtype: GObject.GType<Text>;
+        declare static readonly __signalSignatures: Text.SignalSignatures;
 
         // Fields
 
@@ -12454,6 +12722,9 @@ export namespace IBus {
     }
 
     namespace UnicodeBlock {
+        // Signal signatures
+        interface SignalSignatures extends Serializable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Serializable.ConstructorProps {
@@ -12465,6 +12736,7 @@ export namespace IBus {
 
     class UnicodeBlock extends Serializable {
         static $gtype: GObject.GType<UnicodeBlock>;
+        declare static readonly __signalSignatures: UnicodeBlock.SignalSignatures;
 
         // Properties
 
@@ -12518,6 +12790,9 @@ export namespace IBus {
     }
 
     namespace UnicodeData {
+        // Signal signatures
+        interface SignalSignatures extends Serializable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Serializable.ConstructorProps {
@@ -12535,6 +12810,7 @@ export namespace IBus {
      */
     class UnicodeData extends Serializable {
         static $gtype: GObject.GType<UnicodeData>;
+        declare static readonly __signalSignatures: UnicodeData.SignalSignatures;
 
         // Properties
 
@@ -12622,6 +12898,9 @@ export namespace IBus {
     }
 
     namespace XEvent {
+        // Signal signatures
+        interface SignalSignatures extends Serializable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Serializable.ConstructorProps {
@@ -12663,6 +12942,7 @@ export namespace IBus {
      */
     class XEvent extends Serializable {
         static $gtype: GObject.GType<XEvent>;
+        declare static readonly __signalSignatures: XEvent.SignalSignatures;
 
         // Properties
 

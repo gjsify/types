@@ -69,6 +69,11 @@ export namespace Gvc {
             (object: boolean): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'volume-changed': VolumeChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -76,6 +81,7 @@ export namespace Gvc {
 
     class ChannelMap extends GObject.Object {
         static $gtype: GObject.GType<ChannelMap>;
+        declare static readonly __signalSignatures: ChannelMap.SignalSignatures;
 
         // Constructors
 
@@ -87,6 +93,18 @@ export namespace Gvc {
 
         // Signals
 
+        connect<K extends keyof ChannelMap.SignalSignatures>(
+            signal: K,
+            callback: ChannelMap.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ChannelMap.SignalSignatures>(
+            signal: K,
+            callback: ChannelMap.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ChannelMap.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ChannelMap.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -108,6 +126,9 @@ export namespace Gvc {
     }
 
     namespace MixerCard {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -126,6 +147,7 @@ export namespace Gvc {
 
     class MixerCard extends GObject.Object {
         static $gtype: GObject.GType<MixerCard>;
+        declare static readonly __signalSignatures: MixerCard.SignalSignatures;
 
         // Properties
 
@@ -235,6 +257,25 @@ export namespace Gvc {
             (object: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'active-input-update': ActiveInputUpdate;
+            'active-output-update': ActiveOutputUpdate;
+            'audio-device-selection-needed': AudioDeviceSelectionNeeded;
+            'card-added': CardAdded;
+            'card-removed': CardRemoved;
+            'default-sink-changed': DefaultSinkChanged;
+            'default-source-changed': DefaultSourceChanged;
+            'input-added': InputAdded;
+            'input-removed': InputRemoved;
+            'output-added': OutputAdded;
+            'output-removed': OutputRemoved;
+            'state-changed': StateChanged;
+            'stream-added': StreamAdded;
+            'stream-changed': StreamChanged;
+            'stream-removed': StreamRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -244,6 +285,7 @@ export namespace Gvc {
 
     class MixerControl extends GObject.Object {
         static $gtype: GObject.GType<MixerControl>;
+        declare static readonly __signalSignatures: MixerControl.SignalSignatures;
 
         // Properties
 
@@ -259,6 +301,18 @@ export namespace Gvc {
 
         // Signals
 
+        connect<K extends keyof MixerControl.SignalSignatures>(
+            signal: K,
+            callback: MixerControl.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MixerControl.SignalSignatures>(
+            signal: K,
+            callback: MixerControl.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MixerControl.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MixerControl.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -363,6 +417,9 @@ export namespace Gvc {
     }
 
     namespace MixerEventRole {
+        // Signal signatures
+        interface SignalSignatures extends MixerStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MixerStream.ConstructorProps {
@@ -372,6 +429,7 @@ export namespace Gvc {
 
     class MixerEventRole extends MixerStream {
         static $gtype: GObject.GType<MixerEventRole>;
+        declare static readonly __signalSignatures: MixerEventRole.SignalSignatures;
 
         // Properties
 
@@ -386,6 +444,9 @@ export namespace Gvc {
     }
 
     namespace MixerSink {
+        // Signal signatures
+        interface SignalSignatures extends MixerStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MixerStream.ConstructorProps {}
@@ -393,6 +454,7 @@ export namespace Gvc {
 
     class MixerSink extends MixerStream {
         static $gtype: GObject.GType<MixerSink>;
+        declare static readonly __signalSignatures: MixerSink.SignalSignatures;
 
         // Constructors
 
@@ -402,6 +464,9 @@ export namespace Gvc {
     }
 
     namespace MixerSinkInput {
+        // Signal signatures
+        interface SignalSignatures extends MixerStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MixerStream.ConstructorProps {}
@@ -409,6 +474,7 @@ export namespace Gvc {
 
     class MixerSinkInput extends MixerStream {
         static $gtype: GObject.GType<MixerSinkInput>;
+        declare static readonly __signalSignatures: MixerSinkInput.SignalSignatures;
 
         // Constructors
 
@@ -418,6 +484,9 @@ export namespace Gvc {
     }
 
     namespace MixerSource {
+        // Signal signatures
+        interface SignalSignatures extends MixerStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MixerStream.ConstructorProps {}
@@ -425,6 +494,7 @@ export namespace Gvc {
 
     class MixerSource extends MixerStream {
         static $gtype: GObject.GType<MixerSource>;
+        declare static readonly __signalSignatures: MixerSource.SignalSignatures;
 
         // Constructors
 
@@ -434,6 +504,9 @@ export namespace Gvc {
     }
 
     namespace MixerSourceOutput {
+        // Signal signatures
+        interface SignalSignatures extends MixerStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MixerStream.ConstructorProps {}
@@ -441,6 +514,7 @@ export namespace Gvc {
 
     class MixerSourceOutput extends MixerStream {
         static $gtype: GObject.GType<MixerSourceOutput>;
+        declare static readonly __signalSignatures: MixerSourceOutput.SignalSignatures;
 
         // Constructors
 
@@ -450,6 +524,9 @@ export namespace Gvc {
     }
 
     namespace MixerStream {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -488,6 +565,7 @@ export namespace Gvc {
 
     abstract class MixerStream extends GObject.Object {
         static $gtype: GObject.GType<MixerStream>;
+        declare static readonly __signalSignatures: MixerStream.SignalSignatures;
 
         // Properties
 
@@ -605,6 +683,9 @@ export namespace Gvc {
     }
 
     namespace MixerUIDevice {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -625,6 +706,7 @@ export namespace Gvc {
 
     class MixerUIDevice extends GObject.Object {
         static $gtype: GObject.GType<MixerUIDevice>;
+        declare static readonly __signalSignatures: MixerUIDevice.SignalSignatures;
 
         // Properties
 

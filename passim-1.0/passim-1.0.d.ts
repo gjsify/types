@@ -67,6 +67,9 @@ export namespace Passim {
      */
     function version_string(): string;
     namespace Client {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -77,6 +80,7 @@ export namespace Passim {
      */
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
+        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Constructors
 
@@ -143,6 +147,9 @@ export namespace Passim {
     }
 
     namespace Item {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -153,6 +160,7 @@ export namespace Passim {
      */
     class Item extends GObject.Object {
         static $gtype: GObject.GType<Item>;
+        declare static readonly __signalSignatures: Item.SignalSignatures;
 
         // Constructors
 

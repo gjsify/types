@@ -115,6 +115,13 @@ export namespace Fep {
             (cols: number, rows: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'filter-event': FilterEvent;
+            'filter-key-event': FilterKeyEvent;
+            resized: Resized;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -124,6 +131,7 @@ export namespace Fep {
 
     class GClient extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<GClient>;
+        declare static readonly __signalSignatures: GClient.SignalSignatures;
 
         // Properties
 
@@ -139,6 +147,15 @@ export namespace Fep {
 
         // Signals
 
+        connect<K extends keyof GClient.SignalSignatures>(signal: K, callback: GClient.SignalSignatures[K]): number;
+        connect_after<K extends keyof GClient.SignalSignatures>(
+            signal: K,
+            callback: GClient.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GClient.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GClient.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

@@ -171,6 +171,11 @@ export namespace Notify {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            closed: Closed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -200,6 +205,7 @@ export namespace Notify {
      */
     class Notification extends GObject.Object {
         static $gtype: GObject.GType<Notification>;
+        declare static readonly __signalSignatures: Notification.SignalSignatures;
 
         // Properties
 
@@ -271,6 +277,18 @@ export namespace Notify {
 
         // Signals
 
+        connect<K extends keyof Notification.SignalSignatures>(
+            signal: K,
+            callback: Notification.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Notification.SignalSignatures>(
+            signal: K,
+            callback: Notification.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Notification.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Notification.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

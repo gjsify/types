@@ -1673,6 +1673,9 @@ export namespace GstAudio {
         VARIABLE_RATE,
     }
     namespace AudioAggregator {
+        // Signal signatures
+        interface SignalSignatures extends GstBase.Aggregator.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GstBase.Aggregator.ConstructorProps {
@@ -1739,6 +1742,7 @@ export namespace GstAudio {
      */
     abstract class AudioAggregator extends GstBase.Aggregator {
         static $gtype: GObject.GType<AudioAggregator>;
+        declare static readonly __signalSignatures: AudioAggregator.SignalSignatures;
 
         // Properties
 
@@ -1827,6 +1831,9 @@ export namespace GstAudio {
     }
 
     namespace AudioAggregatorConvertPad {
+        // Signal signatures
+        interface SignalSignatures extends AudioAggregatorPad.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends AudioAggregatorPad.ConstructorProps {
@@ -1842,6 +1849,7 @@ export namespace GstAudio {
      */
     class AudioAggregatorConvertPad extends AudioAggregatorPad {
         static $gtype: GObject.GType<AudioAggregatorConvertPad>;
+        declare static readonly __signalSignatures: AudioAggregatorConvertPad.SignalSignatures;
 
         // Properties
 
@@ -1858,6 +1866,9 @@ export namespace GstAudio {
     }
 
     namespace AudioAggregatorPad {
+        // Signal signatures
+        interface SignalSignatures extends GstBase.AggregatorPad.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GstBase.AggregatorPad.ConstructorProps {
@@ -1871,6 +1882,7 @@ export namespace GstAudio {
      */
     class AudioAggregatorPad extends GstBase.AggregatorPad {
         static $gtype: GObject.GType<AudioAggregatorPad>;
+        declare static readonly __signalSignatures: AudioAggregatorPad.SignalSignatures;
 
         // Properties
 
@@ -1898,6 +1910,9 @@ export namespace GstAudio {
     }
 
     namespace AudioBaseSink {
+        // Signal signatures
+        interface SignalSignatures extends GstBase.BaseSink.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GstBase.BaseSink.ConstructorProps {
@@ -1927,6 +1942,7 @@ export namespace GstAudio {
      */
     class AudioBaseSink extends GstBase.BaseSink {
         static $gtype: GObject.GType<AudioBaseSink>;
+        declare static readonly __signalSignatures: AudioBaseSink.SignalSignatures;
 
         // Properties
 
@@ -2089,6 +2105,9 @@ export namespace GstAudio {
     }
 
     namespace AudioBaseSrc {
+        // Signal signatures
+        interface SignalSignatures extends GstBase.PushSrc.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GstBase.PushSrc.ConstructorProps {
@@ -2114,6 +2133,7 @@ export namespace GstAudio {
      */
     class AudioBaseSrc extends GstBase.PushSrc {
         static $gtype: GObject.GType<AudioBaseSrc>;
+        declare static readonly __signalSignatures: AudioBaseSrc.SignalSignatures;
 
         // Properties
 
@@ -2207,6 +2227,9 @@ export namespace GstAudio {
     }
 
     namespace AudioCdSrc {
+        // Signal signatures
+        interface SignalSignatures extends GstBase.PushSrc.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GstBase.PushSrc.ConstructorProps, Gst.URIHandler.ConstructorProps {
@@ -2263,6 +2286,7 @@ export namespace GstAudio {
      */
     class AudioCdSrc extends GstBase.PushSrc implements Gst.URIHandler {
         static $gtype: GObject.GType<AudioCdSrc>;
+        declare static readonly __signalSignatures: AudioCdSrc.SignalSignatures;
 
         // Properties
 
@@ -2777,6 +2801,9 @@ export namespace GstAudio {
     }
 
     namespace AudioClock {
+        // Signal signatures
+        interface SignalSignatures extends Gst.SystemClock.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.SystemClock.ConstructorProps {}
@@ -2790,6 +2817,7 @@ export namespace GstAudio {
      */
     class AudioClock extends Gst.SystemClock {
         static $gtype: GObject.GType<AudioClock>;
+        declare static readonly __signalSignatures: AudioClock.SignalSignatures;
 
         // Fields
 
@@ -2840,6 +2868,9 @@ export namespace GstAudio {
     }
 
     namespace AudioDecoder {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Element.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Element.ConstructorProps {
@@ -2945,6 +2976,7 @@ export namespace GstAudio {
      */
     abstract class AudioDecoder extends Gst.Element {
         static $gtype: GObject.GType<AudioDecoder>;
+        declare static readonly __signalSignatures: AudioDecoder.SignalSignatures;
 
         // Properties
 
@@ -3229,6 +3261,9 @@ export namespace GstAudio {
     }
 
     namespace AudioEncoder {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Element.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Element.ConstructorProps, Gst.Preset.ConstructorProps {
@@ -3338,6 +3373,7 @@ export namespace GstAudio {
      */
     abstract class AudioEncoder extends Gst.Element implements Gst.Preset {
         static $gtype: GObject.GType<AudioEncoder>;
+        declare static readonly __signalSignatures: AudioEncoder.SignalSignatures;
 
         // Properties
 
@@ -4151,6 +4187,9 @@ export namespace GstAudio {
     }
 
     namespace AudioFilter {
+        // Signal signatures
+        interface SignalSignatures extends GstBase.BaseTransform.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GstBase.BaseTransform.ConstructorProps {}
@@ -4173,6 +4212,7 @@ export namespace GstAudio {
      */
     abstract class AudioFilter extends GstBase.BaseTransform {
         static $gtype: GObject.GType<AudioFilter>;
+        declare static readonly __signalSignatures: AudioFilter.SignalSignatures;
 
         // Fields
 
@@ -4194,6 +4234,9 @@ export namespace GstAudio {
     }
 
     namespace AudioRingBuffer {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {}
@@ -4211,6 +4254,7 @@ export namespace GstAudio {
      */
     abstract class AudioRingBuffer extends Gst.Object {
         static $gtype: GObject.GType<AudioRingBuffer>;
+        declare static readonly __signalSignatures: AudioRingBuffer.SignalSignatures;
 
         // Fields
 
@@ -4566,6 +4610,9 @@ export namespace GstAudio {
     }
 
     namespace AudioSink {
+        // Signal signatures
+        interface SignalSignatures extends AudioBaseSink.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends AudioBaseSink.ConstructorProps {}
@@ -4596,6 +4643,7 @@ export namespace GstAudio {
      */
     class AudioSink extends AudioBaseSink {
         static $gtype: GObject.GType<AudioSink>;
+        declare static readonly __signalSignatures: AudioSink.SignalSignatures;
 
         // Fields
 
@@ -4630,6 +4678,9 @@ export namespace GstAudio {
     }
 
     namespace AudioSrc {
+        // Signal signatures
+        interface SignalSignatures extends AudioBaseSrc.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends AudioBaseSrc.ConstructorProps {}
@@ -4653,6 +4704,7 @@ export namespace GstAudio {
      */
     class AudioSrc extends AudioBaseSrc {
         static $gtype: GObject.GType<AudioSrc>;
+        declare static readonly __signalSignatures: AudioSrc.SignalSignatures;
 
         // Fields
 

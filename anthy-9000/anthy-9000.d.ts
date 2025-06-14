@@ -52,6 +52,9 @@ export namespace Anthy {
         (level: number, arg1: string): void;
     }
     namespace GContext {
+        // Signal signatures
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {}
@@ -62,6 +65,7 @@ export namespace Anthy {
      */
     class GContext extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<GContext>;
+        declare static readonly __signalSignatures: GContext.SignalSignatures;
 
         // Constructors
 

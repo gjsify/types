@@ -85,6 +85,9 @@ export namespace CoglPango {
      */
     function font_map_set_use_mipmapping(font_map: FontMap, value: boolean): void;
     namespace Renderer {
+        // Signal signatures
+        interface SignalSignatures extends Pango.Renderer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Pango.Renderer.ConstructorProps {
@@ -94,6 +97,7 @@ export namespace CoglPango {
 
     class Renderer extends Pango.Renderer {
         static $gtype: GObject.GType<Renderer>;
+        declare static readonly __signalSignatures: Renderer.SignalSignatures;
 
         // Properties
 

@@ -3699,6 +3699,13 @@ export namespace NetworkManager {
             (setting_name: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            changed: Changed;
+            'secrets-cleared': SecretsCleared;
+            'secrets-updated': SecretsUpdated;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3712,6 +3719,7 @@ export namespace NetworkManager {
      */
     class Connection extends GObject.Object {
         static $gtype: GObject.GType<Connection>;
+        declare static readonly __signalSignatures: Connection.SignalSignatures;
 
         // Properties
 
@@ -3734,6 +3742,18 @@ export namespace NetworkManager {
 
         // Signals
 
+        connect<K extends keyof Connection.SignalSignatures>(
+            signal: K,
+            callback: Connection.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Connection.SignalSignatures>(
+            signal: K,
+            callback: Connection.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Connection.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Connection.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -4114,6 +4134,9 @@ export namespace NetworkManager {
     }
 
     namespace Setting {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4127,6 +4150,7 @@ export namespace NetworkManager {
      */
     abstract class Setting extends GObject.Object {
         static $gtype: GObject.GType<Setting>;
+        declare static readonly __signalSignatures: Setting.SignalSignatures;
 
         // Properties
 
@@ -4288,6 +4312,9 @@ export namespace NetworkManager {
     }
 
     namespace Setting8021x {
+        // Signal signatures
+        interface SignalSignatures extends Setting.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
@@ -4337,6 +4364,7 @@ export namespace NetworkManager {
 
     class Setting8021x extends Setting {
         static $gtype: GObject.GType<Setting8021x>;
+        declare static readonly __signalSignatures: Setting8021x.SignalSignatures;
 
         // Properties
 
@@ -5127,6 +5155,9 @@ export namespace NetworkManager {
     }
 
     namespace SettingAdsl {
+        // Signal signatures
+        interface SignalSignatures extends Setting.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
@@ -5143,6 +5174,7 @@ export namespace NetworkManager {
 
     class SettingAdsl extends Setting {
         static $gtype: GObject.GType<SettingAdsl>;
+        declare static readonly __signalSignatures: SettingAdsl.SignalSignatures;
 
         // Properties
 
@@ -5207,6 +5239,9 @@ export namespace NetworkManager {
     }
 
     namespace SettingBluetooth {
+        // Signal signatures
+        interface SignalSignatures extends Setting.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
@@ -5216,6 +5251,7 @@ export namespace NetworkManager {
 
     class SettingBluetooth extends Setting {
         static $gtype: GObject.GType<SettingBluetooth>;
+        declare static readonly __signalSignatures: SettingBluetooth.SignalSignatures;
 
         // Properties
 
@@ -5251,6 +5287,9 @@ export namespace NetworkManager {
     }
 
     namespace SettingBond {
+        // Signal signatures
+        interface SignalSignatures extends Setting.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
@@ -5261,6 +5300,7 @@ export namespace NetworkManager {
 
     class SettingBond extends Setting {
         static $gtype: GObject.GType<SettingBond>;
+        declare static readonly __signalSignatures: SettingBond.SignalSignatures;
 
         // Properties
 
@@ -5349,6 +5389,9 @@ export namespace NetworkManager {
     }
 
     namespace SettingBridge {
+        // Signal signatures
+        interface SignalSignatures extends Setting.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
@@ -5369,6 +5412,7 @@ export namespace NetworkManager {
 
     class SettingBridge extends Setting {
         static $gtype: GObject.GType<SettingBridge>;
+        declare static readonly __signalSignatures: SettingBridge.SignalSignatures;
 
         // Properties
 
@@ -5456,6 +5500,9 @@ export namespace NetworkManager {
     }
 
     namespace SettingBridgePort {
+        // Signal signatures
+        interface SignalSignatures extends Setting.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
@@ -5469,6 +5516,7 @@ export namespace NetworkManager {
 
     class SettingBridgePort extends Setting {
         static $gtype: GObject.GType<SettingBridgePort>;
+        declare static readonly __signalSignatures: SettingBridgePort.SignalSignatures;
 
         // Properties
 
@@ -5518,6 +5566,9 @@ export namespace NetworkManager {
     }
 
     namespace SettingCdma {
+        // Signal signatures
+        interface SignalSignatures extends Setting.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
@@ -5531,6 +5582,7 @@ export namespace NetworkManager {
 
     class SettingCdma extends Setting {
         static $gtype: GObject.GType<SettingCdma>;
+        declare static readonly __signalSignatures: SettingCdma.SignalSignatures;
 
         // Properties
 
@@ -5583,6 +5635,9 @@ export namespace NetworkManager {
     }
 
     namespace SettingConnection {
+        // Signal signatures
+        interface SignalSignatures extends Setting.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
@@ -5610,6 +5665,7 @@ export namespace NetworkManager {
      */
     class SettingConnection extends Setting {
         static $gtype: GObject.GType<SettingConnection>;
+        declare static readonly __signalSignatures: SettingConnection.SignalSignatures;
 
         // Properties
 
@@ -5878,6 +5934,9 @@ export namespace NetworkManager {
     }
 
     namespace SettingDcb {
+        // Signal signatures
+        interface SignalSignatures extends Setting.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
@@ -5904,6 +5963,7 @@ export namespace NetworkManager {
 
     class SettingDcb extends Setting {
         static $gtype: GObject.GType<SettingDcb>;
+        declare static readonly __signalSignatures: SettingDcb.SignalSignatures;
 
         // Properties
 
@@ -6096,6 +6156,9 @@ export namespace NetworkManager {
     }
 
     namespace SettingGeneric {
+        // Signal signatures
+        interface SignalSignatures extends Setting.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {}
@@ -6103,6 +6166,7 @@ export namespace NetworkManager {
 
     class SettingGeneric extends Setting {
         static $gtype: GObject.GType<SettingGeneric>;
+        declare static readonly __signalSignatures: SettingGeneric.SignalSignatures;
 
         // Constructors
 
@@ -6114,6 +6178,9 @@ export namespace NetworkManager {
     }
 
     namespace SettingGsm {
+        // Signal signatures
+        interface SignalSignatures extends Setting.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
@@ -6139,6 +6206,7 @@ export namespace NetworkManager {
 
     class SettingGsm extends Setting {
         static $gtype: GObject.GType<SettingGsm>;
+        declare static readonly __signalSignatures: SettingGsm.SignalSignatures;
 
         // Properties
 
@@ -6297,6 +6365,9 @@ export namespace NetworkManager {
     }
 
     namespace SettingIP4Config {
+        // Signal signatures
+        interface SignalSignatures extends Setting.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
@@ -6324,6 +6395,7 @@ export namespace NetworkManager {
 
     class SettingIP4Config extends Setting {
         static $gtype: GObject.GType<SettingIP4Config>;
+        declare static readonly __signalSignatures: SettingIP4Config.SignalSignatures;
 
         // Properties
 
@@ -6648,6 +6720,9 @@ export namespace NetworkManager {
     }
 
     namespace SettingIP6Config {
+        // Signal signatures
+        interface SignalSignatures extends Setting.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
@@ -6671,6 +6746,7 @@ export namespace NetworkManager {
 
     class SettingIP6Config extends Setting {
         static $gtype: GObject.GType<SettingIP6Config>;
+        declare static readonly __signalSignatures: SettingIP6Config.SignalSignatures;
 
         // Properties
 
@@ -6963,6 +7039,9 @@ export namespace NetworkManager {
     }
 
     namespace SettingInfiniband {
+        // Signal signatures
+        interface SignalSignatures extends Setting.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
@@ -6977,6 +7056,7 @@ export namespace NetworkManager {
 
     class SettingInfiniband extends Setting {
         static $gtype: GObject.GType<SettingInfiniband>;
+        declare static readonly __signalSignatures: SettingInfiniband.SignalSignatures;
 
         // Properties
 
@@ -7056,6 +7136,9 @@ export namespace NetworkManager {
     }
 
     namespace SettingOlpcMesh {
+        // Signal signatures
+        interface SignalSignatures extends Setting.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
@@ -7065,6 +7148,7 @@ export namespace NetworkManager {
 
     class SettingOlpcMesh extends Setting {
         static $gtype: GObject.GType<SettingOlpcMesh>;
+        declare static readonly __signalSignatures: SettingOlpcMesh.SignalSignatures;
 
         // Properties
 
@@ -7090,6 +7174,9 @@ export namespace NetworkManager {
     }
 
     namespace SettingPPP {
+        // Signal signatures
+        interface SignalSignatures extends Setting.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
@@ -7127,6 +7214,7 @@ export namespace NetworkManager {
 
     class SettingPPP extends Setting {
         static $gtype: GObject.GType<SettingPPP>;
+        declare static readonly __signalSignatures: SettingPPP.SignalSignatures;
 
         // Properties
 
@@ -7340,6 +7428,9 @@ export namespace NetworkManager {
     }
 
     namespace SettingPPPOE {
+        // Signal signatures
+        interface SignalSignatures extends Setting.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
@@ -7353,6 +7444,7 @@ export namespace NetworkManager {
 
     class SettingPPPOE extends Setting {
         static $gtype: GObject.GType<SettingPPPOE>;
+        declare static readonly __signalSignatures: SettingPPPOE.SignalSignatures;
 
         // Properties
 
@@ -7402,6 +7494,9 @@ export namespace NetworkManager {
     }
 
     namespace SettingSerial {
+        // Signal signatures
+        interface SignalSignatures extends Setting.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
@@ -7416,6 +7511,7 @@ export namespace NetworkManager {
 
     class SettingSerial extends Setting {
         static $gtype: GObject.GType<SettingSerial>;
+        declare static readonly __signalSignatures: SettingSerial.SignalSignatures;
 
         // Properties
 
@@ -7472,6 +7568,9 @@ export namespace NetworkManager {
     }
 
     namespace SettingTeam {
+        // Signal signatures
+        interface SignalSignatures extends Setting.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
@@ -7483,6 +7582,7 @@ export namespace NetworkManager {
 
     class SettingTeam extends Setting {
         static $gtype: GObject.GType<SettingTeam>;
+        declare static readonly __signalSignatures: SettingTeam.SignalSignatures;
 
         // Properties
 
@@ -7520,6 +7620,9 @@ export namespace NetworkManager {
     }
 
     namespace SettingTeamPort {
+        // Signal signatures
+        interface SignalSignatures extends Setting.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
@@ -7529,6 +7632,7 @@ export namespace NetworkManager {
 
     class SettingTeamPort extends Setting {
         static $gtype: GObject.GType<SettingTeamPort>;
+        declare static readonly __signalSignatures: SettingTeamPort.SignalSignatures;
 
         // Properties
 
@@ -7555,6 +7659,9 @@ export namespace NetworkManager {
     }
 
     namespace SettingVPN {
+        // Signal signatures
+        interface SignalSignatures extends Setting.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
@@ -7568,6 +7675,7 @@ export namespace NetworkManager {
 
     class SettingVPN extends Setting {
         static $gtype: GObject.GType<SettingVPN>;
+        declare static readonly __signalSignatures: SettingVPN.SignalSignatures;
 
         // Properties
 
@@ -7701,6 +7809,9 @@ export namespace NetworkManager {
     }
 
     namespace SettingVlan {
+        // Signal signatures
+        interface SignalSignatures extends Setting.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
@@ -7714,6 +7825,7 @@ export namespace NetworkManager {
 
     class SettingVlan extends Setting {
         static $gtype: GObject.GType<SettingVlan>;
+        declare static readonly __signalSignatures: SettingVlan.SignalSignatures;
 
         // Properties
 
@@ -7852,6 +7964,9 @@ export namespace NetworkManager {
     }
 
     namespace SettingWimax {
+        // Signal signatures
+        interface SignalSignatures extends Setting.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
@@ -7862,6 +7977,7 @@ export namespace NetworkManager {
 
     class SettingWimax extends Setting {
         static $gtype: GObject.GType<SettingWimax>;
+        declare static readonly __signalSignatures: SettingWimax.SignalSignatures;
 
         // Properties
 
@@ -7903,6 +8019,9 @@ export namespace NetworkManager {
     }
 
     namespace SettingWired {
+        // Signal signatures
+        interface SignalSignatures extends Setting.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
@@ -7919,6 +8038,7 @@ export namespace NetworkManager {
 
     class SettingWired extends Setting {
         static $gtype: GObject.GType<SettingWired>;
+        declare static readonly __signalSignatures: SettingWired.SignalSignatures;
 
         // Properties
 
@@ -8078,6 +8198,9 @@ export namespace NetworkManager {
     }
 
     namespace SettingWireless {
+        // Signal signatures
+        interface SignalSignatures extends Setting.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
@@ -8096,6 +8219,7 @@ export namespace NetworkManager {
 
     class SettingWireless extends Setting {
         static $gtype: GObject.GType<SettingWireless>;
+        declare static readonly __signalSignatures: SettingWireless.SignalSignatures;
 
         // Properties
 
@@ -8259,6 +8383,9 @@ export namespace NetworkManager {
     }
 
     namespace SettingWirelessSecurity {
+        // Signal signatures
+        interface SignalSignatures extends Setting.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Setting.ConstructorProps {
@@ -8294,6 +8421,7 @@ export namespace NetworkManager {
 
     class SettingWirelessSecurity extends Setting {
         static $gtype: GObject.GType<SettingWirelessSecurity>;
+        declare static readonly __signalSignatures: SettingWirelessSecurity.SignalSignatures;
 
         // Properties
 

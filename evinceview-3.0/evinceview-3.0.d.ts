@@ -142,6 +142,11 @@ export namespace EvinceView {
             (object: number, p0: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'page-changed': PageChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -171,6 +176,7 @@ export namespace EvinceView {
 
     class DocumentModel extends GObject.Object {
         static $gtype: GObject.GType<DocumentModel>;
+        declare static readonly __signalSignatures: DocumentModel.SignalSignatures;
 
         // Properties
 
@@ -229,6 +235,18 @@ export namespace EvinceView {
 
         // Signals
 
+        connect<K extends keyof DocumentModel.SignalSignatures>(
+            signal: K,
+            callback: DocumentModel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DocumentModel.SignalSignatures>(
+            signal: K,
+            callback: DocumentModel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DocumentModel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DocumentModel.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -293,6 +311,12 @@ export namespace EvinceView {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            cancelled: Cancelled;
+            finished: Finished;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -300,6 +324,7 @@ export namespace EvinceView {
 
     abstract class Job extends GObject.Object {
         static $gtype: GObject.GType<Job>;
+        declare static readonly __signalSignatures: Job.SignalSignatures;
 
         // Fields
 
@@ -320,6 +345,9 @@ export namespace EvinceView {
 
         // Signals
 
+        connect<K extends keyof Job.SignalSignatures>(signal: K, callback: Job.SignalSignatures[K]): number;
+        connect_after<K extends keyof Job.SignalSignatures>(signal: K, callback: Job.SignalSignatures[K]): number;
+        emit<K extends keyof Job.SignalSignatures>(signal: K, ...args: Parameters<Job.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -360,6 +388,9 @@ export namespace EvinceView {
     }
 
     namespace JobAnnots {
+        // Signal signatures
+        interface SignalSignatures extends Job.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -367,6 +398,7 @@ export namespace EvinceView {
 
     class JobAnnots extends Job {
         static $gtype: GObject.GType<JobAnnots>;
+        declare static readonly __signalSignatures: JobAnnots.SignalSignatures;
 
         // Fields
 
@@ -382,6 +414,9 @@ export namespace EvinceView {
     }
 
     namespace JobAttachments {
+        // Signal signatures
+        interface SignalSignatures extends Job.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -389,6 +424,7 @@ export namespace EvinceView {
 
     class JobAttachments extends Job {
         static $gtype: GObject.GType<JobAttachments>;
+        declare static readonly __signalSignatures: JobAttachments.SignalSignatures;
 
         // Fields
 
@@ -404,6 +440,9 @@ export namespace EvinceView {
     }
 
     namespace JobExport {
+        // Signal signatures
+        interface SignalSignatures extends Job.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -411,6 +450,7 @@ export namespace EvinceView {
 
     class JobExport extends Job {
         static $gtype: GObject.GType<JobExport>;
+        declare static readonly __signalSignatures: JobExport.SignalSignatures;
 
         // Fields
 
@@ -437,6 +477,11 @@ export namespace EvinceView {
             (object: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Job.SignalSignatures {
+            updated: Updated;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -444,6 +489,7 @@ export namespace EvinceView {
 
     class JobFind extends Job {
         static $gtype: GObject.GType<JobFind>;
+        declare static readonly __signalSignatures: JobFind.SignalSignatures;
 
         // Fields
 
@@ -471,6 +517,15 @@ export namespace EvinceView {
 
         // Signals
 
+        connect<K extends keyof JobFind.SignalSignatures>(signal: K, callback: JobFind.SignalSignatures[K]): number;
+        connect_after<K extends keyof JobFind.SignalSignatures>(
+            signal: K,
+            callback: JobFind.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof JobFind.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<JobFind.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -505,6 +560,11 @@ export namespace EvinceView {
             (object: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Job.SignalSignatures {
+            updated: Updated;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -512,6 +572,7 @@ export namespace EvinceView {
 
     class JobFonts extends Job {
         static $gtype: GObject.GType<JobFonts>;
+        declare static readonly __signalSignatures: JobFonts.SignalSignatures;
 
         // Fields
 
@@ -527,6 +588,15 @@ export namespace EvinceView {
 
         // Signals
 
+        connect<K extends keyof JobFonts.SignalSignatures>(signal: K, callback: JobFonts.SignalSignatures[K]): number;
+        connect_after<K extends keyof JobFonts.SignalSignatures>(
+            signal: K,
+            callback: JobFonts.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof JobFonts.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<JobFonts.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -540,6 +610,9 @@ export namespace EvinceView {
     }
 
     namespace JobLayers {
+        // Signal signatures
+        interface SignalSignatures extends Job.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -547,6 +620,7 @@ export namespace EvinceView {
 
     class JobLayers extends Job {
         static $gtype: GObject.GType<JobLayers>;
+        declare static readonly __signalSignatures: JobLayers.SignalSignatures;
 
         // Fields
 
@@ -562,6 +636,9 @@ export namespace EvinceView {
     }
 
     namespace JobLinks {
+        // Signal signatures
+        interface SignalSignatures extends Job.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -569,6 +646,7 @@ export namespace EvinceView {
 
     class JobLinks extends Job {
         static $gtype: GObject.GType<JobLinks>;
+        declare static readonly __signalSignatures: JobLinks.SignalSignatures;
 
         // Fields
 
@@ -592,6 +670,9 @@ export namespace EvinceView {
     }
 
     namespace JobLoad {
+        // Signal signatures
+        interface SignalSignatures extends Job.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -599,6 +680,7 @@ export namespace EvinceView {
 
     class JobLoad extends Job {
         static $gtype: GObject.GType<JobLoad>;
+        declare static readonly __signalSignatures: JobLoad.SignalSignatures;
 
         // Fields
 
@@ -620,6 +702,9 @@ export namespace EvinceView {
     }
 
     namespace JobLoadFd {
+        // Signal signatures
+        interface SignalSignatures extends Job.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -631,6 +716,7 @@ export namespace EvinceView {
      */
     class JobLoadFd extends Job {
         static $gtype: GObject.GType<JobLoadFd>;
+        declare static readonly __signalSignatures: JobLoadFd.SignalSignatures;
 
         // Fields
 
@@ -671,6 +757,9 @@ export namespace EvinceView {
     }
 
     namespace JobLoadGFile {
+        // Signal signatures
+        interface SignalSignatures extends Job.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -681,6 +770,7 @@ export namespace EvinceView {
      */
     class JobLoadGFile extends Job {
         static $gtype: GObject.GType<JobLoadGFile>;
+        declare static readonly __signalSignatures: JobLoadGFile.SignalSignatures;
 
         // Fields
 
@@ -704,6 +794,9 @@ export namespace EvinceView {
     }
 
     namespace JobLoadStream {
+        // Signal signatures
+        interface SignalSignatures extends Job.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -714,6 +807,7 @@ export namespace EvinceView {
      */
     class JobLoadStream extends Job {
         static $gtype: GObject.GType<JobLoadStream>;
+        declare static readonly __signalSignatures: JobLoadStream.SignalSignatures;
 
         // Fields
 
@@ -738,6 +832,9 @@ export namespace EvinceView {
     }
 
     namespace JobPageData {
+        // Signal signatures
+        interface SignalSignatures extends Job.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -745,6 +842,7 @@ export namespace EvinceView {
 
     class JobPageData extends Job {
         static $gtype: GObject.GType<JobPageData>;
+        declare static readonly __signalSignatures: JobPageData.SignalSignatures;
 
         // Fields
 
@@ -766,6 +864,9 @@ export namespace EvinceView {
     }
 
     namespace JobPrint {
+        // Signal signatures
+        interface SignalSignatures extends Job.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -773,6 +874,7 @@ export namespace EvinceView {
 
     class JobPrint extends Job {
         static $gtype: GObject.GType<JobPrint>;
+        declare static readonly __signalSignatures: JobPrint.SignalSignatures;
 
         // Fields
 
@@ -793,6 +895,9 @@ export namespace EvinceView {
     }
 
     namespace JobRender {
+        // Signal signatures
+        interface SignalSignatures extends Job.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -800,6 +905,7 @@ export namespace EvinceView {
 
     class JobRender extends Job {
         static $gtype: GObject.GType<JobRender>;
+        declare static readonly __signalSignatures: JobRender.SignalSignatures;
 
         // Fields
 
@@ -841,6 +947,9 @@ export namespace EvinceView {
     }
 
     namespace JobSave {
+        // Signal signatures
+        interface SignalSignatures extends Job.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -848,6 +957,7 @@ export namespace EvinceView {
 
     class JobSave extends Job {
         static $gtype: GObject.GType<JobSave>;
+        declare static readonly __signalSignatures: JobSave.SignalSignatures;
 
         // Fields
 
@@ -864,6 +974,9 @@ export namespace EvinceView {
     }
 
     namespace JobThumbnail {
+        // Signal signatures
+        interface SignalSignatures extends Job.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -871,6 +984,7 @@ export namespace EvinceView {
 
     class JobThumbnail extends Job {
         static $gtype: GObject.GType<JobThumbnail>;
+        declare static readonly __signalSignatures: JobThumbnail.SignalSignatures;
 
         // Fields
 
@@ -924,6 +1038,13 @@ export namespace EvinceView {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'begin-print': BeginPrint;
+            done: Done;
+            'status-changed': StatusChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -933,6 +1054,7 @@ export namespace EvinceView {
 
     abstract class PrintOperation extends GObject.Object {
         static $gtype: GObject.GType<PrintOperation>;
+        declare static readonly __signalSignatures: PrintOperation.SignalSignatures;
 
         // Properties
 
@@ -948,6 +1070,18 @@ export namespace EvinceView {
 
         // Signals
 
+        connect<K extends keyof PrintOperation.SignalSignatures>(
+            signal: K,
+            callback: PrintOperation.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PrintOperation.SignalSignatures>(
+            signal: K,
+            callback: PrintOperation.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PrintOperation.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PrintOperation.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1042,6 +1176,24 @@ export namespace EvinceView {
             (object: EvinceDocument.SourceLink): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Container.SignalSignatures {
+            activate: Activate;
+            'annot-added': AnnotAdded;
+            'annot-cancel-add': AnnotCancelAdd;
+            'annot-changed': AnnotChanged;
+            'annot-removed': AnnotRemoved;
+            'cursor-moved': CursorMoved;
+            'external-link': ExternalLink;
+            'handle-link': HandleLink;
+            'layers-changed': LayersChanged;
+            'move-cursor': MoveCursor;
+            popup: Popup;
+            scroll: Scroll;
+            'selection-changed': SelectionChanged;
+            'sync-source': SyncSource;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1060,6 +1212,7 @@ export namespace EvinceView {
 
     class View extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<View>;
+        declare static readonly __signalSignatures: View.SignalSignatures;
 
         // Properties
 
@@ -1086,6 +1239,9 @@ export namespace EvinceView {
 
         // Signals
 
+        connect<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
+        connect_after<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
+        emit<K extends keyof View.SignalSignatures>(signal: K, ...args: Parameters<View.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1799,6 +1955,13 @@ export namespace EvinceView {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {
+            'change-page': ChangePage;
+            'external-link': ExternalLink;
+            finished: Finished;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1816,6 +1979,7 @@ export namespace EvinceView {
 
     class ViewPresentation extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ViewPresentation>;
+        declare static readonly __signalSignatures: ViewPresentation.SignalSignatures;
 
         // Properties
 
@@ -1844,6 +2008,18 @@ export namespace EvinceView {
 
         // Signals
 
+        connect<K extends keyof ViewPresentation.SignalSignatures>(
+            signal: K,
+            callback: ViewPresentation.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ViewPresentation.SignalSignatures>(
+            signal: K,
+            callback: ViewPresentation.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ViewPresentation.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ViewPresentation.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

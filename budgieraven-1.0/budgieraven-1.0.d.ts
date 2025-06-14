@@ -38,6 +38,11 @@ export namespace BudgieRaven {
             (object: boolean): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Bin.SignalSignatures {
+            'raven-expanded': RavenExpanded;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -48,6 +53,7 @@ export namespace BudgieRaven {
 
     class RavenWidget extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<RavenWidget>;
+        declare static readonly __signalSignatures: RavenWidget.SignalSignatures;
 
         // Constructors
 
@@ -59,6 +65,18 @@ export namespace BudgieRaven {
 
         // Signals
 
+        connect<K extends keyof RavenWidget.SignalSignatures>(
+            signal: K,
+            callback: RavenWidget.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RavenWidget.SignalSignatures>(
+            signal: K,
+            callback: RavenWidget.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RavenWidget.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RavenWidget.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

@@ -326,6 +326,9 @@ export namespace Pluma {
         SAVING_SESSION,
     }
     namespace App {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -335,6 +338,7 @@ export namespace Pluma {
 
     class App extends GObject.Object {
         static $gtype: GObject.GType<App>;
+        declare static readonly __signalSignatures: App.SignalSignatures;
 
         // Properties
 
@@ -429,6 +433,18 @@ export namespace Pluma {
             (object: Gtk.TextIter, p0: Gtk.TextIter): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GtkSource.Buffer.SignalSignatures {
+            'cursor-moved': CursorMoved;
+            load: Load;
+            loaded: Loaded;
+            loading: Loading;
+            save: Save;
+            saved: Saved;
+            saving: Saving;
+            'search-highlight-updated': SearchHighlightUpdated;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GtkSource.Buffer.ConstructorProps {
@@ -452,6 +468,7 @@ export namespace Pluma {
 
     class Document extends GtkSource.Buffer {
         static $gtype: GObject.GType<Document>;
+        declare static readonly __signalSignatures: Document.SignalSignatures;
 
         // Properties
 
@@ -500,6 +517,15 @@ export namespace Pluma {
 
         // Signals
 
+        connect<K extends keyof Document.SignalSignatures>(signal: K, callback: Document.SignalSignatures[K]): number;
+        connect_after<K extends keyof Document.SignalSignatures>(
+            signal: K,
+            callback: Document.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Document.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Document.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -658,6 +684,9 @@ export namespace Pluma {
     }
 
     namespace EncodingsComboBox {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.ComboBox.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -676,6 +705,7 @@ export namespace Pluma {
         implements Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, Gtk.CellLayout
     {
         static $gtype: GObject.GType<EncodingsComboBox>;
+        declare static readonly __signalSignatures: EncodingsComboBox.SignalSignatures;
 
         // Properties
 
@@ -5181,6 +5211,9 @@ export namespace Pluma {
     }
 
     namespace Message {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5193,6 +5226,7 @@ export namespace Pluma {
 
     class Message extends GObject.Object {
         static $gtype: GObject.GType<Message>;
+        declare static readonly __signalSignatures: Message.SignalSignatures;
 
         // Properties
 
@@ -5274,6 +5308,13 @@ export namespace Pluma {
             (message_type: MessageType): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            dispatch: Dispatch;
+            registered: Registered;
+            unregistered: Unregistered;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5281,6 +5322,7 @@ export namespace Pluma {
 
     class MessageBus extends GObject.Object {
         static $gtype: GObject.GType<MessageBus>;
+        declare static readonly __signalSignatures: MessageBus.SignalSignatures;
 
         // Constructors
 
@@ -5292,6 +5334,14 @@ export namespace Pluma {
 
         // Signals
 
+        connect_after<K extends keyof MessageBus.SignalSignatures>(
+            signal: K,
+            callback: MessageBus.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MessageBus.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MessageBus.SignalSignatures[K]>
+        ): void;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
         connect_after(signal: 'dispatch', callback: (_source: this, message: Message) => void): number;
@@ -5445,6 +5495,15 @@ export namespace Pluma {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Notebook.SignalSignatures {
+            'tab-added': TabAdded;
+            'tab-close-request': TabCloseRequest;
+            'tab-detached': TabDetached;
+            'tab-removed': TabRemoved;
+            'tabs-reordered': TabsReordered;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5455,6 +5514,7 @@ export namespace Pluma {
 
     class Notebook extends Gtk.Notebook implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Notebook>;
+        declare static readonly __signalSignatures: Notebook.SignalSignatures;
 
         // Fields
 
@@ -5470,6 +5530,15 @@ export namespace Pluma {
 
         // Signals
 
+        connect<K extends keyof Notebook.SignalSignatures>(signal: K, callback: Notebook.SignalSignatures[K]): number;
+        connect_after<K extends keyof Notebook.SignalSignatures>(
+            signal: K,
+            callback: Notebook.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Notebook.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Notebook.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -6016,6 +6085,14 @@ export namespace Pluma {
             (object: Gtk.Widget): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {
+            close: Close;
+            'focus-document': FocusDocument;
+            'item-added': ItemAdded;
+            'item-removed': ItemRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6030,6 +6107,7 @@ export namespace Pluma {
 
     class Panel extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Panel>;
+        declare static readonly __signalSignatures: Panel.SignalSignatures;
 
         // Properties
 
@@ -6050,6 +6128,9 @@ export namespace Pluma {
 
         // Signals
 
+        connect<K extends keyof Panel.SignalSignatures>(signal: K, callback: Panel.SignalSignatures[K]): number;
+        connect_after<K extends keyof Panel.SignalSignatures>(signal: K, callback: Panel.SignalSignatures[K]): number;
+        emit<K extends keyof Panel.SignalSignatures>(signal: K, ...args: Parameters<Panel.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -6574,6 +6655,9 @@ export namespace Pluma {
     }
 
     namespace ProgressMessageArea {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.InfoBar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6588,6 +6672,7 @@ export namespace Pluma {
 
     class ProgressMessageArea extends Gtk.InfoBar implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<ProgressMessageArea>;
+        declare static readonly __signalSignatures: ProgressMessageArea.SignalSignatures;
 
         // Properties
 
@@ -7062,6 +7147,11 @@ export namespace Pluma {
             (object: Gtk.MenuItem): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.EventBox.SignalSignatures {
+            changed: Changed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7074,6 +7164,7 @@ export namespace Pluma {
 
     class StatusComboBox extends Gtk.EventBox implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<StatusComboBox>;
+        declare static readonly __signalSignatures: StatusComboBox.SignalSignatures;
 
         // Properties
 
@@ -7093,6 +7184,18 @@ export namespace Pluma {
 
         // Signals
 
+        connect<K extends keyof StatusComboBox.SignalSignatures>(
+            signal: K,
+            callback: StatusComboBox.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StatusComboBox.SignalSignatures>(
+            signal: K,
+            callback: StatusComboBox.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StatusComboBox.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StatusComboBox.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -7558,6 +7661,9 @@ export namespace Pluma {
     }
 
     namespace Statusbar {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Statusbar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7569,6 +7675,7 @@ export namespace Pluma {
 
     class Statusbar extends Gtk.Statusbar implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Statusbar>;
+        declare static readonly __signalSignatures: Statusbar.SignalSignatures;
 
         // Constructors
 
@@ -8032,6 +8139,9 @@ export namespace Pluma {
     }
 
     namespace Tab {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -8049,6 +8159,7 @@ export namespace Pluma {
 
     class Tab extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Tab>;
+        declare static readonly __signalSignatures: Tab.SignalSignatures;
 
         // Properties
 
@@ -8602,6 +8713,14 @@ export namespace Pluma {
             (): boolean;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GtkSource.View.SignalSignatures {
+            'drop-uris': DropUris;
+            'reset-searched-text': ResetSearchedText;
+            'start-interactive-goto-line': StartInteractiveGotoLine;
+            'start-interactive-search': StartInteractiveSearch;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -8613,6 +8732,7 @@ export namespace Pluma {
 
     class View extends GtkSource.View implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<View>;
+        declare static readonly __signalSignatures: View.SignalSignatures;
 
         // Fields
 
@@ -8631,6 +8751,9 @@ export namespace Pluma {
 
         // Signals
 
+        connect<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
+        connect_after<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
+        emit<K extends keyof View.SignalSignatures>(signal: K, ...args: Parameters<View.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -9149,6 +9272,15 @@ export namespace Pluma {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Window.SignalSignatures {
+            'active-tab-changed': ActiveTabChanged;
+            'active-tab-state-changed': ActiveTabStateChanged;
+            'tab-added': TabAdded;
+            'tab-removed': TabRemoved;
+            'tabs-reordered': TabsReordered;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9161,6 +9293,7 @@ export namespace Pluma {
 
     class Window extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Window>;
+        declare static readonly __signalSignatures: Window.SignalSignatures;
 
         // Properties
 
@@ -9179,6 +9312,9 @@ export namespace Pluma {
 
         // Signals
 
+        connect<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
+        connect_after<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
+        emit<K extends keyof Window.SignalSignatures>(signal: K, ...args: Parameters<Window.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

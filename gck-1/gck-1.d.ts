@@ -381,6 +381,9 @@ export namespace Gck {
         FOR_ANY,
     }
     namespace Enumerator {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -399,6 +402,7 @@ export namespace Gck {
      */
     class Enumerator extends GObject.Object {
         static $gtype: GObject.GType<Enumerator>;
+        declare static readonly __signalSignatures: Enumerator.SignalSignatures;
 
         // Properties
 
@@ -543,6 +547,12 @@ export namespace Gck {
             (slot: Slot, string: string, password?: any | null): boolean;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'authenticate-object': AuthenticateObject;
+            'authenticate-slot': AuthenticateSlot;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -561,6 +571,7 @@ export namespace Gck {
      */
     class Module extends GObject.Object {
         static $gtype: GObject.GType<Module>;
+        declare static readonly __signalSignatures: Module.SignalSignatures;
 
         // Properties
 
@@ -586,6 +597,9 @@ export namespace Gck {
 
         // Signals
 
+        connect<K extends keyof Module.SignalSignatures>(signal: K, callback: Module.SignalSignatures[K]): number;
+        connect_after<K extends keyof Module.SignalSignatures>(signal: K, callback: Module.SignalSignatures[K]): number;
+        emit<K extends keyof Module.SignalSignatures>(signal: K, ...args: Parameters<Module.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -682,6 +696,9 @@ export namespace Gck {
     }
 
     namespace Object {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -698,6 +715,7 @@ export namespace Gck {
      */
     class Object extends GObject.Object {
         static $gtype: GObject.GType<Object>;
+        declare static readonly __signalSignatures: Object.SignalSignatures;
 
         // Properties
 
@@ -1188,6 +1206,9 @@ export namespace Gck {
     }
 
     namespace Password {
+        // Signal signatures
+        interface SignalSignatures extends Gio.TlsPassword.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gio.TlsPassword.ConstructorProps {
@@ -1206,6 +1227,7 @@ export namespace Gck {
      */
     class Password extends Gio.TlsPassword {
         static $gtype: GObject.GType<Password>;
+        declare static readonly __signalSignatures: Password.SignalSignatures;
 
         // Properties
 
@@ -1258,6 +1280,11 @@ export namespace Gck {
             (handle: number): boolean;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'discard-handle': DiscardHandle;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1284,6 +1311,7 @@ export namespace Gck {
      */
     class Session extends GObject.Object implements Gio.AsyncInitable<Session>, Gio.Initable {
         static $gtype: GObject.GType<Session>;
+        declare static readonly __signalSignatures: Session.SignalSignatures;
 
         // Properties
 
@@ -1335,6 +1363,15 @@ export namespace Gck {
 
         // Signals
 
+        connect<K extends keyof Session.SignalSignatures>(signal: K, callback: Session.SignalSignatures[K]): number;
+        connect_after<K extends keyof Session.SignalSignatures>(
+            signal: K,
+            callback: Session.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Session.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Session.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3303,6 +3340,9 @@ export namespace Gck {
     }
 
     namespace Slot {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3320,6 +3360,7 @@ export namespace Gck {
      */
     class Slot extends GObject.Object {
         static $gtype: GObject.GType<Slot>;
+        declare static readonly __signalSignatures: Slot.SignalSignatures;
 
         // Properties
 

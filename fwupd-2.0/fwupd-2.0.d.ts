@@ -1101,6 +1101,15 @@ export namespace Fwupd {
             (object: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            changed: Changed;
+            'device-added': DeviceAdded;
+            'device-changed': DeviceChanged;
+            'device-removed': DeviceRemoved;
+            'status-changed': StatusChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1123,6 +1132,7 @@ export namespace Fwupd {
 
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
+        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Properties
 
@@ -1195,6 +1205,8 @@ export namespace Fwupd {
 
         // Signals
 
+        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
         connect_after(signal: 'changed', callback: (_source: this) => void): number;
@@ -3289,6 +3301,9 @@ export namespace Fwupd {
     }
 
     namespace Device {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3305,6 +3320,7 @@ export namespace Fwupd {
 
     class Device extends GObject.Object {
         static $gtype: GObject.GType<Device>;
+        declare static readonly __signalSignatures: Device.SignalSignatures;
 
         // Properties
 
@@ -3812,6 +3828,9 @@ export namespace Fwupd {
     }
 
     namespace Plugin {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3822,6 +3841,7 @@ export namespace Fwupd {
 
     class Plugin extends GObject.Object {
         static $gtype: GObject.GType<Plugin>;
+        declare static readonly __signalSignatures: Plugin.SignalSignatures;
 
         // Properties
 
@@ -3912,6 +3932,9 @@ export namespace Fwupd {
     }
 
     namespace Release {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3919,6 +3942,7 @@ export namespace Fwupd {
 
     class Release extends GObject.Object {
         static $gtype: GObject.GType<Release>;
+        declare static readonly __signalSignatures: Release.SignalSignatures;
 
         // Constructors
 
@@ -4329,6 +4353,9 @@ export namespace Fwupd {
     }
 
     namespace Remote {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4345,6 +4372,7 @@ export namespace Fwupd {
 
     class Remote extends GObject.Object {
         static $gtype: GObject.GType<Remote>;
+        declare static readonly __signalSignatures: Remote.SignalSignatures;
 
         // Properties
 
@@ -4614,6 +4642,9 @@ export namespace Fwupd {
     }
 
     namespace SecurityAttr {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4621,6 +4652,7 @@ export namespace Fwupd {
 
     class SecurityAttr extends GObject.Object {
         static $gtype: GObject.GType<SecurityAttr>;
+        declare static readonly __signalSignatures: SecurityAttr.SignalSignatures;
 
         // Constructors
 

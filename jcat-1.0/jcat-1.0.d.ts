@@ -234,6 +234,9 @@ export namespace Jcat {
         REQUIRE_SIGNATURE,
     }
     namespace Blob {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -241,6 +244,7 @@ export namespace Jcat {
 
     class Blob extends GObject.Object {
         static $gtype: GObject.GType<Blob>;
+        declare static readonly __signalSignatures: Blob.SignalSignatures;
 
         // Constructors
 
@@ -329,6 +333,9 @@ export namespace Jcat {
     }
 
     namespace BtCheckpoint {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -336,6 +343,7 @@ export namespace Jcat {
 
     class BtCheckpoint extends GObject.Object {
         static $gtype: GObject.GType<BtCheckpoint>;
+        declare static readonly __signalSignatures: BtCheckpoint.SignalSignatures;
 
         // Constructors
 
@@ -391,6 +399,9 @@ export namespace Jcat {
     }
 
     namespace BtVerifier {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -398,6 +409,7 @@ export namespace Jcat {
 
     class BtVerifier extends GObject.Object {
         static $gtype: GObject.GType<BtVerifier>;
+        declare static readonly __signalSignatures: BtVerifier.SignalSignatures;
 
         // Constructors
 
@@ -437,6 +449,9 @@ export namespace Jcat {
     }
 
     namespace Context {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -444,6 +459,7 @@ export namespace Jcat {
 
     class Context extends GObject.Object {
         static $gtype: GObject.GType<Context>;
+        declare static readonly __signalSignatures: Context.SignalSignatures;
 
         // Constructors
 
@@ -526,6 +542,9 @@ export namespace Jcat {
     }
 
     namespace Engine {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -539,6 +558,7 @@ export namespace Jcat {
 
     class Engine extends GObject.Object {
         static $gtype: GObject.GType<Engine>;
+        declare static readonly __signalSignatures: Engine.SignalSignatures;
 
         // Properties
 
@@ -671,6 +691,9 @@ export namespace Jcat {
     }
 
     namespace File {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -678,6 +701,7 @@ export namespace Jcat {
 
     class File extends GObject.Object {
         static $gtype: GObject.GType<File>;
+        declare static readonly __signalSignatures: File.SignalSignatures;
 
         // Constructors
 
@@ -782,6 +806,9 @@ export namespace Jcat {
     }
 
     namespace Item {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -789,6 +816,7 @@ export namespace Jcat {
 
     class Item extends GObject.Object {
         static $gtype: GObject.GType<Item>;
+        declare static readonly __signalSignatures: Item.SignalSignatures;
 
         // Constructors
 
@@ -858,6 +886,9 @@ export namespace Jcat {
     }
 
     namespace Result {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -869,6 +900,7 @@ export namespace Jcat {
 
     class Result extends GObject.Object {
         static $gtype: GObject.GType<Result>;
+        declare static readonly __signalSignatures: Result.SignalSignatures;
 
         // Properties
 

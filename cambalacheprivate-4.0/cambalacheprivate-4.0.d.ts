@@ -36,6 +36,9 @@ export namespace CambalachePrivate {
         value?: string | null,
     ): void;
     namespace BuilderScope {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.BuilderCScope.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.BuilderCScope.ConstructorProps, Gtk.BuilderScope.ConstructorProps {}
@@ -43,6 +46,7 @@ export namespace CambalachePrivate {
 
     class BuilderScope extends Gtk.BuilderCScope implements Gtk.BuilderScope {
         static $gtype: GObject.GType<BuilderScope>;
+        declare static readonly __signalSignatures: BuilderScope.SignalSignatures;
 
         // Constructors
 

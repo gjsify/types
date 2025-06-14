@@ -133,6 +133,9 @@ export namespace GstTag {
     function to_id3_tag(gst_tag: string): string;
     function to_vorbis_tag(gst_tag: string): string;
     namespace Demux {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Element.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Element.ConstructorProps {}
@@ -143,6 +146,7 @@ export namespace GstTag {
      */
     abstract class Demux extends Gst.Element {
         static $gtype: GObject.GType<Demux>;
+        declare static readonly __signalSignatures: Demux.SignalSignatures;
 
         // Fields
 

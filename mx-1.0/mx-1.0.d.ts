@@ -453,6 +453,12 @@ export namespace Mx {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
+            activate: Activate;
+            activated: Activated;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps, Gio.Action.ConstructorProps {
@@ -469,6 +475,7 @@ export namespace Mx {
      */
     class Action extends GObject.InitiallyUnowned implements Gio.Action {
         static $gtype: GObject.GType<Action>;
+        declare static readonly __signalSignatures: Action.SignalSignatures;
 
         // Properties
 
@@ -497,6 +504,9 @@ export namespace Mx {
 
         // Signals
 
+        connect<K extends keyof Action.SignalSignatures>(signal: K, callback: Action.SignalSignatures[K]): number;
+        connect_after<K extends keyof Action.SignalSignatures>(signal: K, callback: Action.SignalSignatures[K]): number;
+        emit<K extends keyof Action.SignalSignatures>(signal: K, ...args: Parameters<Action.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1258,6 +1268,17 @@ export namespace Mx {
             (id: number, error: GLib.Error): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'actor-added': ActorAdded;
+            'actor-created': ActorCreated;
+            'actor-finished': ActorFinished;
+            'actor-removed': ActorRemoved;
+            'operation-cancelled': OperationCancelled;
+            'operation-completed': OperationCompleted;
+            'operation-failed': OperationFailed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1271,6 +1292,7 @@ export namespace Mx {
 
     class ActorManager extends GObject.Object {
         static $gtype: GObject.GType<ActorManager>;
+        declare static readonly __signalSignatures: ActorManager.SignalSignatures;
 
         // Properties
 
@@ -1292,6 +1314,18 @@ export namespace Mx {
 
         // Signals
 
+        connect<K extends keyof ActorManager.SignalSignatures>(
+            signal: K,
+            callback: ActorManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ActorManager.SignalSignatures>(
+            signal: K,
+            callback: ActorManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ActorManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ActorManager.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1447,6 +1481,12 @@ export namespace Mx {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            changed: Changed;
+            'interpolation-completed': InterpolationCompleted;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1472,6 +1512,7 @@ export namespace Mx {
      */
     class Adjustment extends GObject.Object {
         static $gtype: GObject.GType<Adjustment>;
+        declare static readonly __signalSignatures: Adjustment.SignalSignatures;
 
         // Properties
 
@@ -1519,6 +1560,18 @@ export namespace Mx {
 
         // Signals
 
+        connect<K extends keyof Adjustment.SignalSignatures>(
+            signal: K,
+            callback: Adjustment.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Adjustment.SignalSignatures>(
+            signal: K,
+            callback: Adjustment.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Adjustment.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Adjustment.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1675,6 +1728,11 @@ export namespace Mx {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'actions-changed': ActionsChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1690,6 +1748,7 @@ export namespace Mx {
      */
     class Application extends GObject.Object {
         static $gtype: GObject.GType<Application>;
+        declare static readonly __signalSignatures: Application.SignalSignatures;
 
         // Properties
 
@@ -1707,6 +1766,18 @@ export namespace Mx {
 
         // Signals
 
+        connect<K extends keyof Application.SignalSignatures>(
+            signal: K,
+            callback: Application.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Application.SignalSignatures>(
+            signal: K,
+            callback: Application.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Application.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Application.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1805,6 +1876,9 @@ export namespace Mx {
     }
 
     namespace Bin {
+        // Signal signatures
+        interface SignalSignatures extends Widget.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1835,6 +1909,7 @@ export namespace Mx {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Focusable, Stylable
     {
         static $gtype: GObject.GType<Bin>;
+        declare static readonly __signalSignatures: Bin.SignalSignatures;
 
         // Properties
 
@@ -2554,6 +2629,9 @@ export namespace Mx {
     }
 
     namespace BoxLayout {
+        // Signal signatures
+        interface SignalSignatures extends Widget.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2590,6 +2668,7 @@ export namespace Mx {
             Stylable
     {
         static $gtype: GObject.GType<BoxLayout>;
+        declare static readonly __signalSignatures: BoxLayout.SignalSignatures;
 
         // Properties
 
@@ -3350,6 +3429,9 @@ export namespace Mx {
     }
 
     namespace BoxLayoutChild {
+        // Signal signatures
+        interface SignalSignatures extends Clutter.ChildMeta.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Clutter.ChildMeta.ConstructorProps {
@@ -3371,6 +3453,7 @@ export namespace Mx {
      */
     class BoxLayoutChild extends Clutter.ChildMeta {
         static $gtype: GObject.GType<BoxLayoutChild>;
+        declare static readonly __signalSignatures: BoxLayoutChild.SignalSignatures;
 
         // Properties
 
@@ -3405,6 +3488,11 @@ export namespace Mx {
 
         interface Clicked {
             (): void;
+        }
+
+        // Signal signatures
+        interface SignalSignatures extends Bin.SignalSignatures {
+            clicked: Clicked;
         }
 
         // Constructor properties interface
@@ -3444,6 +3532,7 @@ export namespace Mx {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Focusable, Stylable
     {
         static $gtype: GObject.GType<Button>;
+        declare static readonly __signalSignatures: Button.SignalSignatures;
 
         // Properties
 
@@ -3490,6 +3579,9 @@ export namespace Mx {
 
         // Signals
 
+        connect<K extends keyof Button.SignalSignatures>(signal: K, callback: Button.SignalSignatures[K]): number;
+        connect_after<K extends keyof Button.SignalSignatures>(signal: K, callback: Button.SignalSignatures[K]): number;
+        emit<K extends keyof Button.SignalSignatures>(signal: K, ...args: Parameters<Button.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -4072,6 +4164,9 @@ export namespace Mx {
     }
 
     namespace ButtonGroup {
+        // Signal signatures
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
@@ -4088,6 +4183,7 @@ export namespace Mx {
      */
     class ButtonGroup extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<ButtonGroup>;
+        declare static readonly __signalSignatures: ButtonGroup.SignalSignatures;
 
         // Properties
 
@@ -4154,6 +4250,9 @@ export namespace Mx {
     }
 
     namespace Clipboard {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4165,6 +4264,7 @@ export namespace Mx {
      */
     class Clipboard extends GObject.Object {
         static $gtype: GObject.GType<Clipboard>;
+        declare static readonly __signalSignatures: Clipboard.SignalSignatures;
 
         // Constructors
 
@@ -4195,6 +4295,9 @@ export namespace Mx {
     }
 
     namespace ComboBox {
+        // Signal signatures
+        interface SignalSignatures extends Widget.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4222,6 +4325,7 @@ export namespace Mx {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Focusable, Stylable
     {
         static $gtype: GObject.GType<ComboBox>;
+        declare static readonly __signalSignatures: ComboBox.SignalSignatures;
 
         // Properties
 
@@ -4914,6 +5018,9 @@ export namespace Mx {
     }
 
     namespace DeformBowTie {
+        // Signal signatures
+        interface SignalSignatures extends DeformTexture.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4938,6 +5045,7 @@ export namespace Mx {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Stylable
     {
         static $gtype: GObject.GType<DeformBowTie>;
+        declare static readonly __signalSignatures: DeformBowTie.SignalSignatures;
 
         // Properties
 
@@ -5408,6 +5516,9 @@ export namespace Mx {
     }
 
     namespace DeformPageTurn {
+        // Signal signatures
+        interface SignalSignatures extends DeformTexture.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5432,6 +5543,7 @@ export namespace Mx {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Stylable
     {
         static $gtype: GObject.GType<DeformPageTurn>;
+        declare static readonly __signalSignatures: DeformPageTurn.SignalSignatures;
 
         // Properties
 
@@ -5904,6 +6016,9 @@ export namespace Mx {
     }
 
     namespace DeformTexture {
+        // Signal signatures
+        interface SignalSignatures extends Widget.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5931,6 +6046,7 @@ export namespace Mx {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Stylable
     {
         static $gtype: GObject.GType<DeformTexture>;
+        declare static readonly __signalSignatures: DeformTexture.SignalSignatures;
 
         // Properties
 
@@ -6568,6 +6684,9 @@ export namespace Mx {
     }
 
     namespace DeformWaves {
+        // Signal signatures
+        interface SignalSignatures extends DeformTexture.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6593,6 +6712,7 @@ export namespace Mx {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Stylable
     {
         static $gtype: GObject.GType<DeformWaves>;
+        declare static readonly __signalSignatures: DeformWaves.SignalSignatures;
 
         // Properties
 
@@ -7069,6 +7189,9 @@ export namespace Mx {
     }
 
     namespace Dialog {
+        // Signal signatures
+        interface SignalSignatures extends Bin.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7090,6 +7213,7 @@ export namespace Mx {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Focusable, Stylable
     {
         static $gtype: GObject.GType<Dialog>;
+        declare static readonly __signalSignatures: Dialog.SignalSignatures;
 
         // Constructors
 
@@ -7608,6 +7732,12 @@ export namespace Mx {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Widget.SignalSignatures {
+            'primary-icon-clicked': PrimaryIconClicked;
+            'secondary-icon-clicked': SecondaryIconClicked;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7643,6 +7773,7 @@ export namespace Mx {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Focusable, Stylable
     {
         static $gtype: GObject.GType<Entry>;
+        declare static readonly __signalSignatures: Entry.SignalSignatures;
 
         // Properties
 
@@ -7683,6 +7814,9 @@ export namespace Mx {
 
         // Signals
 
+        connect<K extends keyof Entry.SignalSignatures>(signal: K, callback: Entry.SignalSignatures[K]): number;
+        connect_after<K extends keyof Entry.SignalSignatures>(signal: K, callback: Entry.SignalSignatures[K]): number;
+        emit<K extends keyof Entry.SignalSignatures>(signal: K, ...args: Parameters<Entry.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -8376,6 +8510,11 @@ export namespace Mx {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Bin.SignalSignatures {
+            'expand-complete': ExpandComplete;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -8400,6 +8539,7 @@ export namespace Mx {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Focusable, Stylable
     {
         static $gtype: GObject.GType<Expander>;
+        declare static readonly __signalSignatures: Expander.SignalSignatures;
 
         // Properties
 
@@ -8418,6 +8558,15 @@ export namespace Mx {
 
         // Signals
 
+        connect<K extends keyof Expander.SignalSignatures>(signal: K, callback: Expander.SignalSignatures[K]): number;
+        connect_after<K extends keyof Expander.SignalSignatures>(
+            signal: K,
+            callback: Expander.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Expander.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Expander.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -8917,6 +9066,9 @@ export namespace Mx {
     }
 
     namespace FadeEffect {
+        // Signal signatures
+        interface SignalSignatures extends Clutter.OffscreenEffect.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Clutter.OffscreenEffect.ConstructorProps {
@@ -8944,6 +9096,7 @@ export namespace Mx {
 
     class FadeEffect extends Clutter.OffscreenEffect {
         static $gtype: GObject.GType<FadeEffect>;
+        declare static readonly __signalSignatures: FadeEffect.SignalSignatures;
 
         // Properties
 
@@ -9042,6 +9195,9 @@ export namespace Mx {
     }
 
     namespace FloatingWidget {
+        // Signal signatures
+        interface SignalSignatures extends Widget.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9062,6 +9218,7 @@ export namespace Mx {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Stylable
     {
         static $gtype: GObject.GType<FloatingWidget>;
+        declare static readonly __signalSignatures: FloatingWidget.SignalSignatures;
 
         // Constructors
 
@@ -9650,6 +9807,9 @@ export namespace Mx {
     }
 
     namespace FocusManager {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9664,6 +9824,7 @@ export namespace Mx {
      */
     class FocusManager extends GObject.Object {
         static $gtype: GObject.GType<FocusManager>;
+        declare static readonly __signalSignatures: FocusManager.SignalSignatures;
 
         // Properties
 
@@ -9723,6 +9884,9 @@ export namespace Mx {
     }
 
     namespace Frame {
+        // Signal signatures
+        interface SignalSignatures extends Bin.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9744,6 +9908,7 @@ export namespace Mx {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Focusable, Stylable
     {
         static $gtype: GObject.GType<Frame>;
+        declare static readonly __signalSignatures: Frame.SignalSignatures;
 
         // Constructors
 
@@ -10222,6 +10387,9 @@ export namespace Mx {
     }
 
     namespace Grid {
+        // Signal signatures
+        interface SignalSignatures extends Widget.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -10269,6 +10437,7 @@ export namespace Mx {
             Stylable
     {
         static $gtype: GObject.GType<Grid>;
+        declare static readonly __signalSignatures: Grid.SignalSignatures;
 
         // Properties
 
@@ -10961,6 +11130,9 @@ export namespace Mx {
     }
 
     namespace Icon {
+        // Signal signatures
+        interface SignalSignatures extends Widget.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -10986,6 +11158,7 @@ export namespace Mx {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Stylable
     {
         static $gtype: GObject.GType<Icon>;
+        declare static readonly __signalSignatures: Icon.SignalSignatures;
 
         // Properties
 
@@ -11594,6 +11767,9 @@ export namespace Mx {
     }
 
     namespace IconTheme {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -11608,6 +11784,7 @@ export namespace Mx {
      */
     class IconTheme extends GObject.Object {
         static $gtype: GObject.GType<IconTheme>;
+        declare static readonly __signalSignatures: IconTheme.SignalSignatures;
 
         // Properties
 
@@ -11689,6 +11866,12 @@ export namespace Mx {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Widget.SignalSignatures {
+            'image-load-error': ImageLoadError;
+            'image-loaded': ImageLoaded;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -11724,6 +11907,7 @@ export namespace Mx {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Stylable
     {
         static $gtype: GObject.GType<Image>;
+        declare static readonly __signalSignatures: Image.SignalSignatures;
 
         // Properties
 
@@ -11766,6 +11950,9 @@ export namespace Mx {
 
         // Signals
 
+        connect<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
+        connect_after<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
+        emit<K extends keyof Image.SignalSignatures>(signal: K, ...args: Parameters<Image.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -12530,6 +12717,9 @@ export namespace Mx {
     }
 
     namespace ItemView {
+        // Signal signatures
+        interface SignalSignatures extends Grid.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -12564,6 +12754,7 @@ export namespace Mx {
             Stylable
     {
         static $gtype: GObject.GType<ItemView>;
+        declare static readonly __signalSignatures: ItemView.SignalSignatures;
 
         // Properties
 
@@ -13126,6 +13317,9 @@ export namespace Mx {
     }
 
     namespace KineticScrollView {
+        // Signal signatures
+        interface SignalSignatures extends Bin.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -13173,6 +13367,7 @@ export namespace Mx {
             Stylable
     {
         static $gtype: GObject.GType<KineticScrollView>;
+        declare static readonly __signalSignatures: KineticScrollView.SignalSignatures;
 
         // Properties
 
@@ -13817,6 +14012,9 @@ export namespace Mx {
     }
 
     namespace Label {
+        // Signal signatures
+        interface SignalSignatures extends Widget.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -13853,6 +14051,7 @@ export namespace Mx {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Stylable
     {
         static $gtype: GObject.GType<Label>;
+        declare static readonly __signalSignatures: Label.SignalSignatures;
 
         // Properties
 
@@ -14575,6 +14774,9 @@ export namespace Mx {
     }
 
     namespace ListView {
+        // Signal signatures
+        interface SignalSignatures extends BoxLayout.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -14609,6 +14811,7 @@ export namespace Mx {
             Stylable
     {
         static $gtype: GObject.GType<ListView>;
+        declare static readonly __signalSignatures: ListView.SignalSignatures;
 
         // Properties
 
@@ -15177,6 +15380,11 @@ export namespace Mx {
             (object: Action): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends FloatingWidget.SignalSignatures {
+            'action-activated': ActionActivated;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -15198,6 +15406,7 @@ export namespace Mx {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Focusable, Stylable
     {
         static $gtype: GObject.GType<Menu>;
+        declare static readonly __signalSignatures: Menu.SignalSignatures;
 
         // Constructors
 
@@ -15209,6 +15418,9 @@ export namespace Mx {
 
         // Signals
 
+        connect<K extends keyof Menu.SignalSignatures>(signal: K, callback: Menu.SignalSignatures[K]): number;
+        connect_after<K extends keyof Menu.SignalSignatures>(signal: K, callback: Menu.SignalSignatures[K]): number;
+        emit<K extends keyof Menu.SignalSignatures>(signal: K, ...args: Parameters<Menu.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -15716,6 +15928,9 @@ export namespace Mx {
     }
 
     namespace Notebook {
+        // Signal signatures
+        interface SignalSignatures extends Widget.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -15742,6 +15957,7 @@ export namespace Mx {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Focusable, Stylable
     {
         static $gtype: GObject.GType<Notebook>;
+        declare static readonly __signalSignatures: Notebook.SignalSignatures;
 
         // Properties
 
@@ -16378,6 +16594,9 @@ export namespace Mx {
     }
 
     namespace Offscreen {
+        // Signal signatures
+        interface SignalSignatures extends Clutter.Texture.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -16411,6 +16630,7 @@ export namespace Mx {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Focusable
     {
         static $gtype: GObject.GType<Offscreen>;
+        declare static readonly __signalSignatures: Offscreen.SignalSignatures;
 
         // Properties
 
@@ -16997,6 +17217,9 @@ export namespace Mx {
     }
 
     namespace PathBar {
+        // Signal signatures
+        interface SignalSignatures extends Widget.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -17024,6 +17247,7 @@ export namespace Mx {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Focusable, Stylable
     {
         static $gtype: GObject.GType<PathBar>;
+        declare static readonly __signalSignatures: PathBar.SignalSignatures;
 
         // Properties
 
@@ -17697,6 +17921,9 @@ export namespace Mx {
     }
 
     namespace ProgressBar {
+        // Signal signatures
+        interface SignalSignatures extends Widget.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -17719,6 +17946,7 @@ export namespace Mx {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Stylable
     {
         static $gtype: GObject.GType<ProgressBar>;
+        declare static readonly __signalSignatures: ProgressBar.SignalSignatures;
 
         // Properties
 
@@ -18337,6 +18565,12 @@ export namespace Mx {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Bin.SignalSignatures {
+            'scroll-start': ScrollStart;
+            'scroll-stop': ScrollStop;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -18361,6 +18595,7 @@ export namespace Mx {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Focusable, Stylable
     {
         static $gtype: GObject.GType<ScrollBar>;
+        declare static readonly __signalSignatures: ScrollBar.SignalSignatures;
 
         // Properties
 
@@ -18381,6 +18616,15 @@ export namespace Mx {
 
         // Signals
 
+        connect<K extends keyof ScrollBar.SignalSignatures>(signal: K, callback: ScrollBar.SignalSignatures[K]): number;
+        connect_after<K extends keyof ScrollBar.SignalSignatures>(
+            signal: K,
+            callback: ScrollBar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ScrollBar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ScrollBar.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -18877,6 +19121,9 @@ export namespace Mx {
     }
 
     namespace ScrollView {
+        // Signal signatures
+        interface SignalSignatures extends Bin.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -18905,6 +19152,7 @@ export namespace Mx {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Focusable, Stylable
     {
         static $gtype: GObject.GType<ScrollView>;
+        declare static readonly __signalSignatures: ScrollView.SignalSignatures;
 
         // Properties
 
@@ -19413,6 +19661,9 @@ export namespace Mx {
     }
 
     namespace Settings {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -19431,6 +19682,7 @@ export namespace Mx {
 
     class Settings extends GObject.Object {
         static $gtype: GObject.GType<Settings>;
+        declare static readonly __signalSignatures: Settings.SignalSignatures;
 
         // Properties
 
@@ -19470,6 +19722,9 @@ export namespace Mx {
     }
 
     namespace Slider {
+        // Signal signatures
+        interface SignalSignatures extends Widget.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -19495,6 +19750,7 @@ export namespace Mx {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Focusable, Stylable
     {
         static $gtype: GObject.GType<Slider>;
+        declare static readonly __signalSignatures: Slider.SignalSignatures;
 
         // Properties
 
@@ -20147,6 +20403,11 @@ export namespace Mx {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Widget.SignalSignatures {
+            looped: Looped;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -20169,6 +20430,7 @@ export namespace Mx {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Stylable
     {
         static $gtype: GObject.GType<Spinner>;
+        declare static readonly __signalSignatures: Spinner.SignalSignatures;
 
         // Properties
 
@@ -20185,6 +20447,15 @@ export namespace Mx {
 
         // Signals
 
+        connect<K extends keyof Spinner.SignalSignatures>(signal: K, callback: Spinner.SignalSignatures[K]): number;
+        connect_after<K extends keyof Spinner.SignalSignatures>(
+            signal: K,
+            callback: Spinner.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Spinner.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Spinner.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -20791,6 +21062,9 @@ export namespace Mx {
     }
 
     namespace Stack {
+        // Signal signatures
+        interface SignalSignatures extends Widget.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -20812,6 +21086,7 @@ export namespace Mx {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Focusable, Stylable
     {
         static $gtype: GObject.GType<Stack>;
+        declare static readonly __signalSignatures: Stack.SignalSignatures;
 
         // Constructors
 
@@ -21501,6 +21776,9 @@ export namespace Mx {
     }
 
     namespace StackChild {
+        // Signal signatures
+        interface SignalSignatures extends Clutter.ChildMeta.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Clutter.ChildMeta.ConstructorProps {
@@ -21523,6 +21801,7 @@ export namespace Mx {
      */
     class StackChild extends Clutter.ChildMeta {
         static $gtype: GObject.GType<StackChild>;
+        declare static readonly __signalSignatures: StackChild.SignalSignatures;
 
         // Properties
 
@@ -21561,6 +21840,11 @@ export namespace Mx {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            changed: Changed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -21572,6 +21856,7 @@ export namespace Mx {
      */
     class Style extends GObject.Object {
         static $gtype: GObject.GType<Style>;
+        declare static readonly __signalSignatures: Style.SignalSignatures;
 
         // Constructors
 
@@ -21583,6 +21868,9 @@ export namespace Mx {
 
         // Signals
 
+        connect<K extends keyof Style.SignalSignatures>(signal: K, callback: Style.SignalSignatures[K]): number;
+        connect_after<K extends keyof Style.SignalSignatures>(signal: K, callback: Style.SignalSignatures[K]): number;
+        emit<K extends keyof Style.SignalSignatures>(signal: K, ...args: Parameters<Style.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -21621,6 +21909,9 @@ export namespace Mx {
     }
 
     namespace Table {
+        // Signal signatures
+        interface SignalSignatures extends Widget.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -21651,6 +21942,7 @@ export namespace Mx {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Focusable, Stylable
     {
         static $gtype: GObject.GType<Table>;
+        declare static readonly __signalSignatures: Table.SignalSignatures;
 
         // Properties
 
@@ -22452,6 +22744,9 @@ export namespace Mx {
     }
 
     namespace TableChild {
+        // Signal signatures
+        interface SignalSignatures extends Clutter.ChildMeta.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Clutter.ChildMeta.ConstructorProps {
@@ -22482,6 +22777,7 @@ export namespace Mx {
      */
     class TableChild extends Clutter.ChildMeta {
         static $gtype: GObject.GType<TableChild>;
+        declare static readonly __signalSignatures: TableChild.SignalSignatures;
 
         // Properties
 
@@ -22530,6 +22826,9 @@ export namespace Mx {
     }
 
     namespace TextureCache {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -22541,6 +22840,7 @@ export namespace Mx {
      */
     class TextureCache extends GObject.Object {
         static $gtype: GObject.GType<TextureCache>;
+        declare static readonly __signalSignatures: TextureCache.SignalSignatures;
 
         // Constructors
 
@@ -22654,6 +22954,9 @@ export namespace Mx {
     }
 
     namespace TextureFrame {
+        // Signal signatures
+        interface SignalSignatures extends Clutter.Actor.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -22680,6 +22983,7 @@ export namespace Mx {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
         static $gtype: GObject.GType<TextureFrame>;
+        declare static readonly __signalSignatures: TextureFrame.SignalSignatures;
 
         // Properties
 
@@ -23627,6 +23931,9 @@ export namespace Mx {
     }
 
     namespace Toggle {
+        // Signal signatures
+        interface SignalSignatures extends Widget.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -23649,6 +23956,7 @@ export namespace Mx {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Stylable
     {
         static $gtype: GObject.GType<Toggle>;
+        declare static readonly __signalSignatures: Toggle.SignalSignatures;
 
         // Properties
 
@@ -24255,6 +24563,11 @@ export namespace Mx {
             (): boolean;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Bin.SignalSignatures {
+            'close-button-clicked': CloseButtonClicked;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -24279,6 +24592,7 @@ export namespace Mx {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Focusable, Stylable
     {
         static $gtype: GObject.GType<Toolbar>;
+        declare static readonly __signalSignatures: Toolbar.SignalSignatures;
 
         // Properties
 
@@ -24297,6 +24611,15 @@ export namespace Mx {
 
         // Signals
 
+        connect<K extends keyof Toolbar.SignalSignatures>(signal: K, callback: Toolbar.SignalSignatures[K]): number;
+        connect_after<K extends keyof Toolbar.SignalSignatures>(
+            signal: K,
+            callback: Toolbar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Toolbar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Toolbar.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -24790,6 +25113,9 @@ export namespace Mx {
     }
 
     namespace Tooltip {
+        // Signal signatures
+        interface SignalSignatures extends FloatingWidget.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -24814,6 +25140,7 @@ export namespace Mx {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Stylable
     {
         static $gtype: GObject.GType<Tooltip>;
+        declare static readonly __signalSignatures: Tooltip.SignalSignatures;
 
         // Properties
 
@@ -25323,6 +25650,9 @@ export namespace Mx {
     }
 
     namespace Viewport {
+        // Signal signatures
+        interface SignalSignatures extends Bin.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -25361,6 +25691,7 @@ export namespace Mx {
             Stylable
     {
         static $gtype: GObject.GType<Viewport>;
+        declare static readonly __signalSignatures: Viewport.SignalSignatures;
 
         // Properties
 
@@ -25893,6 +26224,11 @@ export namespace Mx {
             (object: number, p0: number, p1: LongPressAction): boolean;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Clutter.Actor.SignalSignatures {
+            'long-press': LongPress;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -25921,6 +26257,7 @@ export namespace Mx {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable, Stylable
     {
         static $gtype: GObject.GType<Widget>;
+        declare static readonly __signalSignatures: Widget.SignalSignatures;
 
         // Properties
 
@@ -25954,6 +26291,9 @@ export namespace Mx {
 
         // Signals
 
+        connect<K extends keyof Widget.SignalSignatures>(signal: K, callback: Widget.SignalSignatures[K]): number;
+        connect_after<K extends keyof Widget.SignalSignatures>(signal: K, callback: Widget.SignalSignatures[K]): number;
+        emit<K extends keyof Widget.SignalSignatures>(signal: K, ...args: Parameters<Widget.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -27105,6 +27445,11 @@ export namespace Mx {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            destroy: Destroy;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -27137,6 +27482,7 @@ export namespace Mx {
      */
     class Window extends GObject.Object {
         static $gtype: GObject.GType<Window>;
+        declare static readonly __signalSignatures: Window.SignalSignatures;
 
         // Properties
 
@@ -27187,6 +27533,9 @@ export namespace Mx {
 
         // Signals
 
+        connect<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
+        connect_after<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
+        emit<K extends keyof Window.SignalSignatures>(signal: K, ...args: Parameters<Window.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

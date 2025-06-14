@@ -152,6 +152,9 @@ export namespace PangoXft {
         (pattern: fontconfig.Pattern, data?: any | null): void;
     }
     namespace Font {
+        // Signal signatures
+        interface SignalSignatures extends PangoFc.Font.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends PangoFc.Font.ConstructorProps {}
@@ -163,6 +166,7 @@ export namespace PangoXft {
      */
     class Font extends PangoFc.Font {
         static $gtype: GObject.GType<Font>;
+        declare static readonly __signalSignatures: Font.SignalSignatures;
 
         // Constructors
 
@@ -204,6 +208,9 @@ export namespace PangoXft {
     }
 
     namespace FontMap {
+        // Signal signatures
+        interface SignalSignatures extends PangoFc.FontMap.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -218,6 +225,7 @@ export namespace PangoXft {
      */
     class FontMap<A extends GObject.Object = GObject.Object> extends PangoFc.FontMap implements Gio.ListModel<A> {
         static $gtype: GObject.GType<FontMap>;
+        declare static readonly __signalSignatures: FontMap.SignalSignatures;
 
         // Constructors
 
@@ -762,6 +770,9 @@ export namespace PangoXft {
     }
 
     namespace Renderer {
+        // Signal signatures
+        interface SignalSignatures extends Pango.Renderer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Pango.Renderer.ConstructorProps {
@@ -778,6 +789,7 @@ export namespace PangoXft {
      */
     class Renderer extends Pango.Renderer {
         static $gtype: GObject.GType<Renderer>;
+        declare static readonly __signalSignatures: Renderer.SignalSignatures;
 
         // Properties
 

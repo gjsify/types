@@ -90,6 +90,11 @@ export namespace Pnl {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
+            tick: Tick;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
@@ -103,6 +108,7 @@ export namespace Pnl {
 
     class Animation extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<Animation>;
+        declare static readonly __signalSignatures: Animation.SignalSignatures;
 
         // Properties
 
@@ -133,6 +139,15 @@ export namespace Pnl {
 
         // Signals
 
+        connect<K extends keyof Animation.SignalSignatures>(signal: K, callback: Animation.SignalSignatures[K]): number;
+        connect_after<K extends keyof Animation.SignalSignatures>(
+            signal: K,
+            callback: Animation.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Animation.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Animation.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -172,6 +187,9 @@ export namespace Pnl {
     }
 
     namespace DockBin {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Container.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -184,6 +202,7 @@ export namespace Pnl {
 
     class DockBin extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable, Dock, DockItem {
         static $gtype: GObject.GType<DockBin>;
+        declare static readonly __signalSignatures: DockBin.SignalSignatures;
 
         // Constructors
 
@@ -4858,6 +4877,11 @@ export namespace Pnl {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends DockRevealer.SignalSignatures {
+            'move-to-bin-child': MoveToBinChild;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4871,6 +4895,7 @@ export namespace Pnl {
 
     class DockBinEdge extends DockRevealer implements Atk.ImplementorIface, Gtk.Buildable, DockItem {
         static $gtype: GObject.GType<DockBinEdge>;
+        declare static readonly __signalSignatures: DockBinEdge.SignalSignatures;
 
         // Properties
 
@@ -4885,6 +4910,18 @@ export namespace Pnl {
 
         // Signals
 
+        connect<K extends keyof DockBinEdge.SignalSignatures>(
+            signal: K,
+            callback: DockBinEdge.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DockBinEdge.SignalSignatures>(
+            signal: K,
+            callback: DockBinEdge.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DockBinEdge.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DockBinEdge.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -9196,6 +9233,12 @@ export namespace Pnl {
             (object: Dock): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'register-dock': RegisterDock;
+            'unregister-dock': UnregisterDock;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -9203,6 +9246,7 @@ export namespace Pnl {
 
     class DockManager extends GObject.Object {
         static $gtype: GObject.GType<DockManager>;
+        declare static readonly __signalSignatures: DockManager.SignalSignatures;
 
         // Constructors
 
@@ -9214,6 +9258,18 @@ export namespace Pnl {
 
         // Signals
 
+        connect<K extends keyof DockManager.SignalSignatures>(
+            signal: K,
+            callback: DockManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DockManager.SignalSignatures>(
+            signal: K,
+            callback: DockManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DockManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DockManager.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -9242,6 +9298,11 @@ export namespace Pnl {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.EventBox.SignalSignatures {
+            'hide-edges': HideEdges;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9254,6 +9315,7 @@ export namespace Pnl {
 
     class DockOverlay extends Gtk.EventBox implements Atk.ImplementorIface, Gtk.Buildable, Dock, DockItem {
         static $gtype: GObject.GType<DockOverlay>;
+        declare static readonly __signalSignatures: DockOverlay.SignalSignatures;
 
         // Constructors
 
@@ -9265,6 +9327,18 @@ export namespace Pnl {
 
         // Signals
 
+        connect<K extends keyof DockOverlay.SignalSignatures>(
+            signal: K,
+            callback: DockOverlay.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DockOverlay.SignalSignatures>(
+            signal: K,
+            callback: DockOverlay.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DockOverlay.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DockOverlay.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -13928,6 +14002,9 @@ export namespace Pnl {
     }
 
     namespace DockOverlayEdge {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Bin.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -13942,6 +14019,7 @@ export namespace Pnl {
 
     class DockOverlayEdge extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable, DockItem {
         static $gtype: GObject.GType<DockOverlayEdge>;
+        declare static readonly __signalSignatures: DockOverlayEdge.SignalSignatures;
 
         // Properties
 
@@ -18248,6 +18326,9 @@ export namespace Pnl {
     }
 
     namespace DockPaned {
+        // Signal signatures
+        interface SignalSignatures extends MultiPaned.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -18260,6 +18341,7 @@ export namespace Pnl {
 
     class DockPaned extends MultiPaned implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, DockItem {
         static $gtype: GObject.GType<DockPaned>;
+        declare static readonly __signalSignatures: DockPaned.SignalSignatures;
 
         // Constructors
 
@@ -22573,6 +22655,9 @@ export namespace Pnl {
     }
 
     namespace DockRevealer {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Bin.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -22604,6 +22689,7 @@ export namespace Pnl {
      */
     class DockRevealer extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<DockRevealer>;
+        declare static readonly __signalSignatures: DockRevealer.SignalSignatures;
 
         // Properties
 
@@ -23094,6 +23180,9 @@ export namespace Pnl {
     }
 
     namespace DockStack {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -23108,6 +23197,7 @@ export namespace Pnl {
 
     class DockStack extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, DockItem {
         static $gtype: GObject.GType<DockStack>;
+        declare static readonly __signalSignatures: DockStack.SignalSignatures;
 
         // Properties
 
@@ -27427,6 +27517,9 @@ export namespace Pnl {
     }
 
     namespace DockTabStrip {
+        // Signal signatures
+        interface SignalSignatures extends TabStrip.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -27438,6 +27531,7 @@ export namespace Pnl {
 
     class DockTabStrip extends TabStrip implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<DockTabStrip>;
+        declare static readonly __signalSignatures: DockTabStrip.SignalSignatures;
 
         // Constructors
 
@@ -27890,6 +27984,9 @@ export namespace Pnl {
     }
 
     namespace DockTransientGrab {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -27899,6 +27996,7 @@ export namespace Pnl {
 
     class DockTransientGrab extends GObject.Object {
         static $gtype: GObject.GType<DockTransientGrab>;
+        declare static readonly __signalSignatures: DockTransientGrab.SignalSignatures;
 
         // Properties
 
@@ -27927,6 +28025,9 @@ export namespace Pnl {
     }
 
     namespace DockWidget {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Bin.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -27941,6 +28042,7 @@ export namespace Pnl {
 
     class DockWidget extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable, DockItem {
         static $gtype: GObject.GType<DockWidget>;
+        declare static readonly __signalSignatures: DockWidget.SignalSignatures;
 
         // Properties
 
@@ -32247,6 +32349,9 @@ export namespace Pnl {
     }
 
     namespace DockWindow {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Window.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -32259,6 +32364,7 @@ export namespace Pnl {
 
     class DockWindow extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable, Dock, DockItem {
         static $gtype: GObject.GType<DockWindow>;
+        declare static readonly __signalSignatures: DockWindow.SignalSignatures;
 
         // Constructors
 
@@ -36927,6 +37033,12 @@ export namespace Pnl {
             (object: Gtk.Widget): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Container.SignalSignatures {
+            'resize-drag-begin': ResizeDragBegin;
+            'resize-drag-end': ResizeDragEnd;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -36945,6 +37057,7 @@ export namespace Pnl {
      */
     class MultiPaned extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<MultiPaned>;
+        declare static readonly __signalSignatures: MultiPaned.SignalSignatures;
 
         // Properties
 
@@ -36961,6 +37074,18 @@ export namespace Pnl {
 
         // Signals
 
+        connect<K extends keyof MultiPaned.SignalSignatures>(
+            signal: K,
+            callback: MultiPaned.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MultiPaned.SignalSignatures>(
+            signal: K,
+            callback: MultiPaned.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MultiPaned.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MultiPaned.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -37433,6 +37558,9 @@ export namespace Pnl {
     }
 
     namespace Tab {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.ToggleButton.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -37449,6 +37577,7 @@ export namespace Pnl {
 
     class Tab extends Gtk.ToggleButton implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable {
         static $gtype: GObject.GType<Tab>;
+        declare static readonly __signalSignatures: Tab.SignalSignatures;
 
         // Properties
 
@@ -41751,6 +41880,9 @@ export namespace Pnl {
     }
 
     namespace TabStrip {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -41765,6 +41897,7 @@ export namespace Pnl {
 
     class TabStrip extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<TabStrip>;
+        declare static readonly __signalSignatures: TabStrip.SignalSignatures;
 
         // Properties
 

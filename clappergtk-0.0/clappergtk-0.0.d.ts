@@ -103,6 +103,9 @@ export namespace ClapperGtk {
         ANY,
     }
     namespace Billboard {
+        // Signal signatures
+        interface SignalSignatures extends Container.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -127,6 +130,7 @@ export namespace ClapperGtk {
      */
     class Billboard extends Container implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Billboard>;
+        declare static readonly __signalSignatures: Billboard.SignalSignatures;
 
         // Constructors
 
@@ -627,6 +631,11 @@ export namespace ClapperGtk {
             (adapt: boolean): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {
+            adapt: Adapt;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -662,6 +671,7 @@ export namespace ClapperGtk {
      */
     class Container extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Container>;
+        declare static readonly __signalSignatures: Container.SignalSignatures;
 
         // Properties
 
@@ -716,6 +726,15 @@ export namespace ClapperGtk {
 
         // Signals
 
+        connect<K extends keyof Container.SignalSignatures>(signal: K, callback: Container.SignalSignatures[K]): number;
+        connect_after<K extends keyof Container.SignalSignatures>(
+            signal: K,
+            callback: Container.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Container.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Container.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1516,6 +1535,11 @@ export namespace ClapperGtk {
             (item: Clapper.MediaItem): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {
+            'open-subtitles': OpenSubtitles;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1537,6 +1561,7 @@ export namespace ClapperGtk {
      */
     class ExtraMenuButton extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<ExtraMenuButton>;
+        declare static readonly __signalSignatures: ExtraMenuButton.SignalSignatures;
 
         // Properties
 
@@ -1581,6 +1606,18 @@ export namespace ClapperGtk {
 
         // Signals
 
+        connect<K extends keyof ExtraMenuButton.SignalSignatures>(
+            signal: K,
+            callback: ExtraMenuButton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExtraMenuButton.SignalSignatures>(
+            signal: K,
+            callback: ExtraMenuButton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExtraMenuButton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExtraMenuButton.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2351,6 +2388,9 @@ export namespace ClapperGtk {
     }
 
     namespace LeadContainer {
+        // Signal signatures
+        interface SignalSignatures extends Container.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2380,6 +2420,7 @@ export namespace ClapperGtk {
      */
     class LeadContainer extends Container implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<LeadContainer>;
+        declare static readonly __signalSignatures: LeadContainer.SignalSignatures;
 
         // Properties
 
@@ -2877,6 +2918,9 @@ export namespace ClapperGtk {
     }
 
     namespace NextItemButton {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Button.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2895,6 +2939,7 @@ export namespace ClapperGtk {
         implements Gtk.Accessible, Gtk.Actionable, Gtk.Buildable, Gtk.ConstraintTarget
     {
         static $gtype: GObject.GType<NextItemButton>;
+        declare static readonly __signalSignatures: NextItemButton.SignalSignatures;
 
         // Constructors
 
@@ -5951,6 +5996,9 @@ export namespace ClapperGtk {
     }
 
     namespace PreviousItemButton {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Button.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5969,6 +6017,7 @@ export namespace ClapperGtk {
         implements Gtk.Accessible, Gtk.Actionable, Gtk.Buildable, Gtk.ConstraintTarget
     {
         static $gtype: GObject.GType<PreviousItemButton>;
+        declare static readonly __signalSignatures: PreviousItemButton.SignalSignatures;
 
         // Constructors
 
@@ -9025,6 +9074,9 @@ export namespace ClapperGtk {
     }
 
     namespace SeekBar {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9044,6 +9096,7 @@ export namespace ClapperGtk {
      */
     class SeekBar extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<SeekBar>;
+        declare static readonly __signalSignatures: SeekBar.SignalSignatures;
 
         // Properties
 
@@ -9825,6 +9878,9 @@ export namespace ClapperGtk {
     }
 
     namespace SimpleControls {
+        // Signal signatures
+        interface SignalSignatures extends Container.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9852,6 +9908,7 @@ export namespace ClapperGtk {
      */
     class SimpleControls extends Container implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<SimpleControls>;
+        declare static readonly __signalSignatures: SimpleControls.SignalSignatures;
 
         // Properties
 
@@ -10363,6 +10420,9 @@ export namespace ClapperGtk {
     }
 
     namespace TitleHeader {
+        // Signal signatures
+        interface SignalSignatures extends LeadContainer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -10389,6 +10449,7 @@ export namespace ClapperGtk {
      */
     class TitleHeader extends LeadContainer implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<TitleHeader>;
+        declare static readonly __signalSignatures: TitleHeader.SignalSignatures;
 
         // Properties
 
@@ -10882,6 +10943,9 @@ export namespace ClapperGtk {
     }
 
     namespace TitleLabel {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -10912,6 +10976,7 @@ export namespace ClapperGtk {
      */
     class TitleLabel extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<TitleLabel>;
+        declare static readonly __signalSignatures: TitleLabel.SignalSignatures;
 
         // Properties
 
@@ -11709,6 +11774,9 @@ export namespace ClapperGtk {
     }
 
     namespace ToggleFullscreenButton {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Button.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -11727,6 +11795,7 @@ export namespace ClapperGtk {
         implements Gtk.Accessible, Gtk.Actionable, Gtk.Buildable, Gtk.ConstraintTarget
     {
         static $gtype: GObject.GType<ToggleFullscreenButton>;
+        declare static readonly __signalSignatures: ToggleFullscreenButton.SignalSignatures;
 
         // Constructors
 
@@ -14783,6 +14852,9 @@ export namespace ClapperGtk {
     }
 
     namespace TogglePlayButton {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Button.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -14801,6 +14873,7 @@ export namespace ClapperGtk {
         implements Gtk.Accessible, Gtk.Actionable, Gtk.Buildable, Gtk.ConstraintTarget
     {
         static $gtype: GObject.GType<TogglePlayButton>;
+        declare static readonly __signalSignatures: TogglePlayButton.SignalSignatures;
 
         // Constructors
 
@@ -17867,6 +17940,12 @@ export namespace ClapperGtk {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {
+            'seek-request': SeekRequest;
+            'toggle-fullscreen': ToggleFullscreen;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -17959,6 +18038,7 @@ export namespace ClapperGtk {
      */
     class Video extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Video>;
+        declare static readonly __signalSignatures: Video.SignalSignatures;
 
         // Properties
 
@@ -18013,6 +18093,9 @@ export namespace ClapperGtk {
 
         // Signals
 
+        connect<K extends keyof Video.SignalSignatures>(signal: K, callback: Video.SignalSignatures[K]): number;
+        connect_after<K extends keyof Video.SignalSignatures>(signal: K, callback: Video.SignalSignatures[K]): number;
+        emit<K extends keyof Video.SignalSignatures>(signal: K, ...args: Parameters<Video.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

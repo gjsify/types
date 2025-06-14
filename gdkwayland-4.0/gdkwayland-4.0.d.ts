@@ -31,6 +31,9 @@ export namespace GdkWayland {
         (toplevel: WaylandToplevel, handle: string): void;
     }
     namespace WaylandDevice {
+        // Signal signatures
+        interface SignalSignatures extends Gdk.Device.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gdk.Device.ConstructorProps {}
@@ -47,6 +50,7 @@ export namespace GdkWayland {
      */
     class WaylandDevice extends Gdk.Device {
         static $gtype: GObject.GType<WaylandDevice>;
+        declare static readonly __signalSignatures: WaylandDevice.SignalSignatures;
 
         // Constructors
 
@@ -76,6 +80,9 @@ export namespace GdkWayland {
     }
 
     namespace WaylandDisplay {
+        // Signal signatures
+        interface SignalSignatures extends Gdk.Display.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gdk.Display.ConstructorProps {}
@@ -94,6 +101,7 @@ export namespace GdkWayland {
      */
     class WaylandDisplay extends Gdk.Display {
         static $gtype: GObject.GType<WaylandDisplay>;
+        declare static readonly __signalSignatures: WaylandDisplay.SignalSignatures;
 
         // Constructors
 
@@ -143,6 +151,9 @@ export namespace GdkWayland {
     }
 
     namespace WaylandGLContext {
+        // Signal signatures
+        interface SignalSignatures extends Gdk.GLContext.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gdk.GLContext.ConstructorProps {}
@@ -153,6 +164,7 @@ export namespace GdkWayland {
      */
     class WaylandGLContext extends Gdk.GLContext {
         static $gtype: GObject.GType<WaylandGLContext>;
+        declare static readonly __signalSignatures: WaylandGLContext.SignalSignatures;
 
         // Constructors
 
@@ -162,6 +174,9 @@ export namespace GdkWayland {
     }
 
     namespace WaylandMonitor {
+        // Signal signatures
+        interface SignalSignatures extends Gdk.Monitor.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gdk.Monitor.ConstructorProps {}
@@ -176,6 +191,7 @@ export namespace GdkWayland {
      */
     class WaylandMonitor extends Gdk.Monitor {
         static $gtype: GObject.GType<WaylandMonitor>;
+        declare static readonly __signalSignatures: WaylandMonitor.SignalSignatures;
 
         // Constructors
 
@@ -185,6 +201,9 @@ export namespace GdkWayland {
     }
 
     namespace WaylandPopup {
+        // Signal signatures
+        interface SignalSignatures extends WaylandSurface.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends WaylandSurface.ConstructorProps, Gdk.Popup.ConstructorProps {}
@@ -195,6 +214,7 @@ export namespace GdkWayland {
      */
     class WaylandPopup extends WaylandSurface implements Gdk.Popup {
         static $gtype: GObject.GType<WaylandPopup>;
+        declare static readonly __signalSignatures: WaylandPopup.SignalSignatures;
 
         // Constructors
 
@@ -581,6 +601,9 @@ export namespace GdkWayland {
     }
 
     namespace WaylandSeat {
+        // Signal signatures
+        interface SignalSignatures extends Gdk.Seat.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gdk.Seat.ConstructorProps {}
@@ -595,6 +618,7 @@ export namespace GdkWayland {
      */
     class WaylandSeat extends Gdk.Seat {
         static $gtype: GObject.GType<WaylandSeat>;
+        declare static readonly __signalSignatures: WaylandSeat.SignalSignatures;
 
         // Constructors
 
@@ -604,6 +628,9 @@ export namespace GdkWayland {
     }
 
     namespace WaylandSurface {
+        // Signal signatures
+        interface SignalSignatures extends Gdk.Surface.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gdk.Surface.ConstructorProps {}
@@ -618,6 +645,7 @@ export namespace GdkWayland {
      */
     class WaylandSurface extends Gdk.Surface {
         static $gtype: GObject.GType<WaylandSurface>;
+        declare static readonly __signalSignatures: WaylandSurface.SignalSignatures;
 
         // Constructors
 
@@ -634,6 +662,9 @@ export namespace GdkWayland {
     }
 
     namespace WaylandToplevel {
+        // Signal signatures
+        interface SignalSignatures extends WaylandSurface.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends WaylandSurface.ConstructorProps, Gdk.Toplevel.ConstructorProps {}
@@ -649,6 +680,7 @@ export namespace GdkWayland {
      */
     class WaylandToplevel extends WaylandSurface implements Gdk.Toplevel {
         static $gtype: GObject.GType<WaylandToplevel>;
+        declare static readonly __signalSignatures: WaylandToplevel.SignalSignatures;
 
         // Constructors
 

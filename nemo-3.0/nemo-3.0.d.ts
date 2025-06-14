@@ -72,6 +72,9 @@ export namespace Nemo {
         (provider: InfoProvider, handle: OperationHandle, result: OperationResult): void;
     }
     namespace Column {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -90,6 +93,7 @@ export namespace Nemo {
 
     class Column extends GObject.Object {
         static $gtype: GObject.GType<Column>;
+        declare static readonly __signalSignatures: Column.SignalSignatures;
 
         // Properties
 
@@ -141,6 +145,9 @@ export namespace Nemo {
     }
 
     namespace DesktopPreferences {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Bin.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -151,6 +158,7 @@ export namespace Nemo {
 
     class DesktopPreferences extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<DesktopPreferences>;
+        declare static readonly __signalSignatures: DesktopPreferences.SignalSignatures;
 
         // Constructors
 
@@ -603,6 +611,9 @@ export namespace Nemo {
     }
 
     namespace Menu {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -610,6 +621,7 @@ export namespace Nemo {
 
     class Menu extends GObject.Object {
         static $gtype: GObject.GType<Menu>;
+        declare static readonly __signalSignatures: Menu.SignalSignatures;
 
         // Constructors
 
@@ -632,6 +644,11 @@ export namespace Nemo {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            activate: Activate;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -652,6 +669,7 @@ export namespace Nemo {
 
     class MenuItem extends GObject.Object {
         static $gtype: GObject.GType<MenuItem>;
+        declare static readonly __signalSignatures: MenuItem.SignalSignatures;
 
         // Properties
 
@@ -693,6 +711,15 @@ export namespace Nemo {
 
         // Signals
 
+        connect<K extends keyof MenuItem.SignalSignatures>(signal: K, callback: MenuItem.SignalSignatures[K]): number;
+        connect_after<K extends keyof MenuItem.SignalSignatures>(
+            signal: K,
+            callback: MenuItem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MenuItem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MenuItem.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -728,6 +755,9 @@ export namespace Nemo {
     }
 
     namespace PropertyPage {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -739,6 +769,7 @@ export namespace Nemo {
 
     class PropertyPage extends GObject.Object {
         static $gtype: GObject.GType<PropertyPage>;
+        declare static readonly __signalSignatures: PropertyPage.SignalSignatures;
 
         // Properties
 
@@ -758,6 +789,9 @@ export namespace Nemo {
     }
 
     namespace SimpleButton {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Button.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -773,6 +807,7 @@ export namespace Nemo {
         implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<SimpleButton>;
+        declare static readonly __signalSignatures: SimpleButton.SignalSignatures;
 
         // Constructors
 

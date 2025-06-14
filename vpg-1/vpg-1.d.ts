@@ -27,6 +27,9 @@ export namespace Vpg {
      */
 
     namespace Connection {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Vda.Connection.ConstructorProps {}
@@ -34,6 +37,7 @@ export namespace Vpg {
 
     class Connection extends GObject.Object implements Vda.Connection {
         static $gtype: GObject.GType<Connection>;
+        declare static readonly __signalSignatures: Connection.SignalSignatures;
 
         // Constructors
 

@@ -419,6 +419,9 @@ export namespace Tsparql {
         ANONYMOUS_BNODES,
     }
     namespace Batch {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -447,6 +450,7 @@ export namespace Tsparql {
      */
     abstract class Batch extends GObject.Object {
         static $gtype: GObject.GType<Batch>;
+        declare static readonly __signalSignatures: Batch.SignalSignatures;
 
         // Properties
 
@@ -576,6 +580,9 @@ export namespace Tsparql {
     }
 
     namespace Endpoint {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -620,6 +627,7 @@ export namespace Tsparql {
      */
     abstract class Endpoint extends GObject.Object {
         static $gtype: GObject.GType<Endpoint>;
+        declare static readonly __signalSignatures: Endpoint.SignalSignatures;
 
         // Properties
 
@@ -754,6 +762,11 @@ export namespace Tsparql {
             (object: string): boolean;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Endpoint.SignalSignatures {
+            'block-call': BlockCall;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Endpoint.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -809,6 +822,7 @@ export namespace Tsparql {
      */
     class EndpointDBus extends Endpoint implements Gio.Initable {
         static $gtype: GObject.GType<EndpointDBus>;
+        declare static readonly __signalSignatures: EndpointDBus.SignalSignatures;
 
         // Properties
 
@@ -844,6 +858,18 @@ export namespace Tsparql {
 
         // Signals
 
+        connect<K extends keyof EndpointDBus.SignalSignatures>(
+            signal: K,
+            callback: EndpointDBus.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof EndpointDBus.SignalSignatures>(
+            signal: K,
+            callback: EndpointDBus.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EndpointDBus.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EndpointDBus.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1385,6 +1411,11 @@ export namespace Tsparql {
             (address: Gio.SocketAddress): boolean;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Endpoint.SignalSignatures {
+            'block-remote-address': BlockRemoteAddress;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Endpoint.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -1438,6 +1469,7 @@ export namespace Tsparql {
      */
     class EndpointHttp extends Endpoint implements Gio.Initable {
         static $gtype: GObject.GType<EndpointHttp>;
+        declare static readonly __signalSignatures: EndpointHttp.SignalSignatures;
 
         // Properties
 
@@ -1473,6 +1505,18 @@ export namespace Tsparql {
 
         // Signals
 
+        connect<K extends keyof EndpointHttp.SignalSignatures>(
+            signal: K,
+            callback: EndpointHttp.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof EndpointHttp.SignalSignatures>(
+            signal: K,
+            callback: EndpointHttp.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EndpointHttp.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EndpointHttp.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2014,6 +2058,9 @@ export namespace Tsparql {
     }
 
     namespace NamespaceManager {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2034,6 +2081,7 @@ export namespace Tsparql {
      */
     class NamespaceManager extends GObject.Object {
         static $gtype: GObject.GType<NamespaceManager>;
+        declare static readonly __signalSignatures: NamespaceManager.SignalSignatures;
 
         // Constructors
 
@@ -2119,6 +2167,11 @@ export namespace Tsparql {
             (service: string, graph: string, events: NotifierEvent[]): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            events: Events;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2161,6 +2214,7 @@ export namespace Tsparql {
      */
     class Notifier extends GObject.Object {
         static $gtype: GObject.GType<Notifier>;
+        declare static readonly __signalSignatures: Notifier.SignalSignatures;
 
         // Properties
 
@@ -2177,6 +2231,15 @@ export namespace Tsparql {
 
         // Signals
 
+        connect<K extends keyof Notifier.SignalSignatures>(signal: K, callback: Notifier.SignalSignatures[K]): number;
+        connect_after<K extends keyof Notifier.SignalSignatures>(
+            signal: K,
+            callback: Notifier.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Notifier.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Notifier.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2231,6 +2294,9 @@ export namespace Tsparql {
     }
 
     namespace Resource {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2271,6 +2337,7 @@ export namespace Tsparql {
      */
     class Resource extends GObject.Object {
         static $gtype: GObject.GType<Resource>;
+        declare static readonly __signalSignatures: Resource.SignalSignatures;
 
         // Properties
 
@@ -2687,6 +2754,9 @@ export namespace Tsparql {
     }
 
     namespace SparqlConnection {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2755,6 +2825,7 @@ export namespace Tsparql {
      */
     abstract class SparqlConnection extends GObject.Object {
         static $gtype: GObject.GType<SparqlConnection>;
+        declare static readonly __signalSignatures: SparqlConnection.SignalSignatures;
 
         // Constructors
 
@@ -3491,6 +3562,9 @@ export namespace Tsparql {
     }
 
     namespace SparqlCursor {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3529,6 +3603,7 @@ export namespace Tsparql {
      */
     abstract class SparqlCursor extends GObject.Object {
         static $gtype: GObject.GType<SparqlCursor>;
+        declare static readonly __signalSignatures: SparqlCursor.SignalSignatures;
 
         // Properties
 
@@ -3729,6 +3804,9 @@ export namespace Tsparql {
     }
 
     namespace SparqlStatement {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3771,6 +3849,7 @@ export namespace Tsparql {
      */
     abstract class SparqlStatement extends GObject.Object {
         static $gtype: GObject.GType<SparqlStatement>;
+        declare static readonly __signalSignatures: SparqlStatement.SignalSignatures;
 
         // Properties
 

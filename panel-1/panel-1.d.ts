@@ -121,6 +121,9 @@ export namespace Panel {
         (workspace: Workspace): void;
     }
     namespace ActionMuxer {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.ActionGroup.ConstructorProps {}
@@ -128,6 +131,7 @@ export namespace Panel {
 
     class ActionMuxer extends GObject.Object implements Gio.ActionGroup {
         static $gtype: GObject.GType<ActionMuxer>;
+        declare static readonly __signalSignatures: ActionMuxer.SignalSignatures;
 
         // Constructors
 
@@ -1037,6 +1041,9 @@ export namespace Panel {
     }
 
     namespace Application {
+        // Signal signatures
+        interface SignalSignatures extends Adw.Application.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1047,6 +1054,7 @@ export namespace Panel {
 
     class Application extends Adw.Application implements Gio.ActionGroup, Gio.ActionMap {
         static $gtype: GObject.GType<Application>;
+        declare static readonly __signalSignatures: Application.SignalSignatures;
 
         // Constructors
 
@@ -1502,6 +1510,9 @@ export namespace Panel {
     }
 
     namespace ChangesDialog {
+        // Signal signatures
+        interface SignalSignatures extends Adw.AlertDialog.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1520,6 +1531,7 @@ export namespace Panel {
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.ShortcutManager
     {
         static $gtype: GObject.GType<ChangesDialog>;
+        declare static readonly __signalSignatures: ChangesDialog.SignalSignatures;
 
         // Properties
 
@@ -2021,6 +2033,14 @@ export namespace Panel {
             (panel: Widget): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {
+            'adopt-widget': AdoptWidget;
+            'create-frame': CreateFrame;
+            'panel-drag-begin': PanelDragBegin;
+            'panel-drag-end': PanelDragEnd;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2070,6 +2090,7 @@ export namespace Panel {
      */
     class Dock extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Dock>;
+        declare static readonly __signalSignatures: Dock.SignalSignatures;
 
         // Properties
 
@@ -2124,6 +2145,9 @@ export namespace Panel {
 
         // Signals
 
+        connect<K extends keyof Dock.SignalSignatures>(signal: K, callback: Dock.SignalSignatures[K]): number;
+        connect_after<K extends keyof Dock.SignalSignatures>(signal: K, callback: Dock.SignalSignatures[K]): number;
+        emit<K extends keyof Dock.SignalSignatures>(signal: K, ...args: Parameters<Dock.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2993,6 +3017,12 @@ export namespace Panel {
             (position: Position): Frame;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Workspace.SignalSignatures {
+            'add-widget': AddWidget;
+            'create-frame': CreateFrame;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3024,6 +3054,7 @@ export namespace Panel {
             Gtk.ShortcutManager
     {
         static $gtype: GObject.GType<DocumentWorkspace>;
+        declare static readonly __signalSignatures: DocumentWorkspace.SignalSignatures;
 
         // Properties
 
@@ -3041,6 +3072,18 @@ export namespace Panel {
 
         // Signals
 
+        connect<K extends keyof DocumentWorkspace.SignalSignatures>(
+            signal: K,
+            callback: DocumentWorkspace.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DocumentWorkspace.SignalSignatures>(
+            signal: K,
+            callback: DocumentWorkspace.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DocumentWorkspace.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DocumentWorkspace.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -6030,6 +6073,12 @@ export namespace Panel {
             (widget: Widget): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {
+            'adopt-widget': AdoptWidget;
+            'page-closed': PageClosed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6056,6 +6105,7 @@ export namespace Panel {
      */
     class Frame extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<Frame>;
+        declare static readonly __signalSignatures: Frame.SignalSignatures;
 
         // Properties
 
@@ -6078,6 +6128,9 @@ export namespace Panel {
 
         // Signals
 
+        connect<K extends keyof Frame.SignalSignatures>(signal: K, callback: Frame.SignalSignatures[K]): number;
+        connect_after<K extends keyof Frame.SignalSignatures>(signal: K, callback: Frame.SignalSignatures[K]): number;
+        emit<K extends keyof Frame.SignalSignatures>(signal: K, ...args: Parameters<Frame.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -6933,6 +6986,9 @@ export namespace Panel {
     }
 
     namespace FrameHeaderBar {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6958,6 +7014,7 @@ export namespace Panel {
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, FrameHeader
     {
         static $gtype: GObject.GType<FrameHeaderBar>;
+        declare static readonly __signalSignatures: FrameHeaderBar.SignalSignatures;
 
         // Properties
 
@@ -10265,6 +10322,9 @@ export namespace Panel {
     }
 
     namespace FrameSwitcher {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -10286,6 +10346,7 @@ export namespace Panel {
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable, FrameHeader
     {
         static $gtype: GObject.GType<FrameSwitcher>;
+        declare static readonly __signalSignatures: FrameSwitcher.SignalSignatures;
 
         // Constructors
 
@@ -13577,6 +13638,9 @@ export namespace Panel {
     }
 
     namespace FrameTabBar {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -13598,6 +13662,7 @@ export namespace Panel {
      */
     class FrameTabBar extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, FrameHeader {
         static $gtype: GObject.GType<FrameTabBar>;
+        declare static readonly __signalSignatures: FrameTabBar.SignalSignatures;
 
         // Properties
 
@@ -16930,6 +16995,9 @@ export namespace Panel {
     }
 
     namespace GSettingsActionGroup {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.ActionGroup.ConstructorProps {
@@ -16939,6 +17007,7 @@ export namespace Panel {
 
     class GSettingsActionGroup extends GObject.Object implements Gio.ActionGroup {
         static $gtype: GObject.GType<GSettingsActionGroup>;
+        declare static readonly __signalSignatures: GSettingsActionGroup.SignalSignatures;
 
         // Properties
 
@@ -17845,6 +17914,11 @@ export namespace Panel {
             (): Frame;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {
+            'create-frame': CreateFrame;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -17860,6 +17934,7 @@ export namespace Panel {
      */
     class Grid extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Grid>;
+        declare static readonly __signalSignatures: Grid.SignalSignatures;
 
         // Constructors
 
@@ -17871,6 +17946,9 @@ export namespace Panel {
 
         // Signals
 
+        connect<K extends keyof Grid.SignalSignatures>(signal: K, callback: Grid.SignalSignatures[K]): number;
+        connect_after<K extends keyof Grid.SignalSignatures>(signal: K, callback: Grid.SignalSignatures[K]): number;
+        emit<K extends keyof Grid.SignalSignatures>(signal: K, ...args: Parameters<Grid.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -18664,6 +18742,9 @@ export namespace Panel {
     }
 
     namespace GridColumn {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -18675,6 +18756,7 @@ export namespace Panel {
 
     class GridColumn extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<GridColumn>;
+        declare static readonly __signalSignatures: GridColumn.SignalSignatures;
 
         // Constructors
 
@@ -19431,6 +19513,9 @@ export namespace Panel {
     }
 
     namespace Inhibitor {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -19438,6 +19523,7 @@ export namespace Panel {
 
     class Inhibitor extends GObject.Object {
         static $gtype: GObject.GType<Inhibitor>;
+        declare static readonly __signalSignatures: Inhibitor.SignalSignatures;
 
         // Constructors
 
@@ -19457,6 +19543,11 @@ export namespace Panel {
             (object: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            changed: Changed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -19468,6 +19559,7 @@ export namespace Panel {
 
     class LayeredSettings extends GObject.Object {
         static $gtype: GObject.GType<LayeredSettings>;
+        declare static readonly __signalSignatures: LayeredSettings.SignalSignatures;
 
         // Properties
 
@@ -19485,6 +19577,18 @@ export namespace Panel {
 
         // Signals
 
+        connect<K extends keyof LayeredSettings.SignalSignatures>(
+            signal: K,
+            callback: LayeredSettings.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LayeredSettings.SignalSignatures>(
+            signal: K,
+            callback: LayeredSettings.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LayeredSettings.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LayeredSettings.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -19550,6 +19654,9 @@ export namespace Panel {
     }
 
     namespace MenuManager {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -19577,6 +19684,7 @@ export namespace Panel {
      */
     class MenuManager extends GObject.Object {
         static $gtype: GObject.GType<MenuManager>;
+        declare static readonly __signalSignatures: MenuManager.SignalSignatures;
 
         // Constructors
 
@@ -19633,6 +19741,9 @@ export namespace Panel {
     }
 
     namespace OmniBar {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -19667,6 +19778,7 @@ export namespace Panel {
      */
     class OmniBar extends Gtk.Widget implements Gtk.Accessible, Gtk.Actionable, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<OmniBar>;
+        declare static readonly __signalSignatures: OmniBar.SignalSignatures;
 
         // Properties
 
@@ -23100,6 +23212,9 @@ export namespace Panel {
     }
 
     namespace Paned {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -23115,6 +23230,7 @@ export namespace Panel {
      */
     class Paned extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<Paned>;
+        declare static readonly __signalSignatures: Paned.SignalSignatures;
 
         // Constructors
 
@@ -23908,6 +24024,9 @@ export namespace Panel {
     }
 
     namespace Position {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -23932,6 +24051,7 @@ export namespace Panel {
      */
     class Position extends GObject.Object {
         static $gtype: GObject.GType<Position>;
+        declare static readonly __signalSignatures: Position.SignalSignatures;
 
         // Properties
 
@@ -24055,6 +24175,13 @@ export namespace Panel {
             (task: Gio.Task): boolean;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            close: Close;
+            discard: Discard;
+            save: Save;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -24071,6 +24198,7 @@ export namespace Panel {
 
     class SaveDelegate extends GObject.Object {
         static $gtype: GObject.GType<SaveDelegate>;
+        declare static readonly __signalSignatures: SaveDelegate.SignalSignatures;
 
         // Properties
 
@@ -24147,6 +24275,18 @@ export namespace Panel {
 
         // Signals
 
+        connect<K extends keyof SaveDelegate.SignalSignatures>(
+            signal: K,
+            callback: SaveDelegate.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SaveDelegate.SignalSignatures>(
+            signal: K,
+            callback: SaveDelegate.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SaveDelegate.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SaveDelegate.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -24226,6 +24366,9 @@ export namespace Panel {
     }
 
     namespace SaveDialog {
+        // Signal signatures
+        interface SignalSignatures extends Adw.MessageDialog.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -24246,6 +24389,7 @@ export namespace Panel {
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Native, Gtk.Root, Gtk.ShortcutManager
     {
         static $gtype: GObject.GType<SaveDialog>;
+        declare static readonly __signalSignatures: SaveDialog.SignalSignatures;
 
         // Properties
 
@@ -27203,6 +27347,9 @@ export namespace Panel {
     }
 
     namespace Session {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -27210,6 +27357,7 @@ export namespace Panel {
 
     class Session extends GObject.Object {
         static $gtype: GObject.GType<Session>;
+        declare static readonly __signalSignatures: Session.SignalSignatures;
 
         // Constructors
 
@@ -27254,6 +27402,9 @@ export namespace Panel {
     }
 
     namespace SessionItem {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -27269,6 +27420,7 @@ export namespace Panel {
 
     class SessionItem extends GObject.Object {
         static $gtype: GObject.GType<SessionItem>;
+        declare static readonly __signalSignatures: SessionItem.SignalSignatures;
 
         // Properties
 
@@ -27401,6 +27553,11 @@ export namespace Panel {
             (object: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            changed: Changed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.ActionGroup.ConstructorProps {
@@ -27419,6 +27576,7 @@ export namespace Panel {
 
     class Settings extends GObject.Object implements Gio.ActionGroup {
         static $gtype: GObject.GType<Settings>;
+        declare static readonly __signalSignatures: Settings.SignalSignatures;
 
         // Properties
 
@@ -27458,6 +27616,15 @@ export namespace Panel {
 
         // Signals
 
+        connect<K extends keyof Settings.SignalSignatures>(signal: K, callback: Settings.SignalSignatures[K]): number;
+        connect_after<K extends keyof Settings.SignalSignatures>(
+            signal: K,
+            callback: Settings.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Settings.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Settings.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -28396,6 +28563,9 @@ export namespace Panel {
     }
 
     namespace Statusbar {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -28411,6 +28581,7 @@ export namespace Panel {
      */
     class Statusbar extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Statusbar>;
+        declare static readonly __signalSignatures: Statusbar.SignalSignatures;
 
         // Constructors
 
@@ -29168,6 +29339,9 @@ export namespace Panel {
     }
 
     namespace ThemeSelector {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -29194,6 +29368,7 @@ export namespace Panel {
      */
     class ThemeSelector extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<ThemeSelector>;
+        declare static readonly __signalSignatures: ThemeSelector.SignalSignatures;
 
         // Properties
 
@@ -29955,6 +30130,9 @@ export namespace Panel {
     }
 
     namespace ToggleButton {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -29981,6 +30159,7 @@ export namespace Panel {
      */
     class ToggleButton extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<ToggleButton>;
+        declare static readonly __signalSignatures: ToggleButton.SignalSignatures;
 
         // Properties
 
@@ -30738,6 +30917,12 @@ export namespace Panel {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {
+            'get-default-focus': GetDefaultFocus;
+            presented: Presented;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -30773,6 +30958,7 @@ export namespace Panel {
      */
     class Widget extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Widget>;
+        declare static readonly __signalSignatures: Widget.SignalSignatures;
 
         // Properties
 
@@ -30856,6 +31042,9 @@ export namespace Panel {
 
         // Signals
 
+        connect<K extends keyof Widget.SignalSignatures>(signal: K, callback: Widget.SignalSignatures[K]): number;
+        connect_after<K extends keyof Widget.SignalSignatures>(signal: K, callback: Widget.SignalSignatures[K]): number;
+        emit<K extends keyof Widget.SignalSignatures>(signal: K, ...args: Parameters<Widget.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -31770,6 +31959,11 @@ export namespace Panel {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.WindowGroup.SignalSignatures {
+            activate: Activate;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.WindowGroup.ConstructorProps {
@@ -31779,6 +31973,7 @@ export namespace Panel {
 
     class Workbench extends Gtk.WindowGroup {
         static $gtype: GObject.GType<Workbench>;
+        declare static readonly __signalSignatures: Workbench.SignalSignatures;
 
         // Properties
 
@@ -31801,6 +31996,15 @@ export namespace Panel {
 
         // Signals
 
+        connect<K extends keyof Workbench.SignalSignatures>(signal: K, callback: Workbench.SignalSignatures[K]): number;
+        connect_after<K extends keyof Workbench.SignalSignatures>(
+            signal: K,
+            callback: Workbench.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Workbench.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Workbench.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -31847,6 +32051,9 @@ export namespace Panel {
     }
 
     namespace Workspace {
+        // Signal signatures
+        interface SignalSignatures extends Adw.ApplicationWindow.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -31876,6 +32083,7 @@ export namespace Panel {
             Gtk.ShortcutManager
     {
         static $gtype: GObject.GType<Workspace>;
+        declare static readonly __signalSignatures: Workspace.SignalSignatures;
 
         // Properties
 

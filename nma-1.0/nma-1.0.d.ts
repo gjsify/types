@@ -156,6 +156,9 @@ export namespace NMA {
         (self: MobileWizard, canceled: boolean, method: MobileWizardAccessMethod): void;
     }
     namespace BarCode {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -166,6 +169,7 @@ export namespace NMA {
 
     class BarCode extends GObject.Object {
         static $gtype: GObject.GType<BarCode>;
+        declare static readonly __signalSignatures: BarCode.SignalSignatures;
 
         // Properties
 
@@ -196,6 +200,9 @@ export namespace NMA {
     }
 
     namespace BarCodeWidget {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -209,6 +216,7 @@ export namespace NMA {
 
     class BarCodeWidget extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<BarCodeWidget>;
+        declare static readonly __signalSignatures: BarCodeWidget.SignalSignatures;
 
         // Properties
 
@@ -703,6 +711,15 @@ export namespace NMA {
             (): GLib.Error;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Grid.SignalSignatures {
+            'cert-password-validate': CertPasswordValidate;
+            'cert-validate': CertValidate;
+            changed: Changed;
+            'key-password-validate': KeyPasswordValidate;
+            'key-validate': KeyValidate;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -717,6 +734,7 @@ export namespace NMA {
 
     class CertChooser extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<CertChooser>;
+        declare static readonly __signalSignatures: CertChooser.SignalSignatures;
 
         // Properties
 
@@ -736,6 +754,18 @@ export namespace NMA {
 
         // Signals
 
+        connect<K extends keyof CertChooser.SignalSignatures>(
+            signal: K,
+            callback: CertChooser.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CertChooser.SignalSignatures>(
+            signal: K,
+            callback: CertChooser.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CertChooser.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CertChooser.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1368,6 +1398,9 @@ export namespace NMA {
     }
 
     namespace MobileProvidersDatabase {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1386,6 +1419,7 @@ export namespace NMA {
         implements Gio.AsyncInitable<MobileProvidersDatabase>, Gio.Initable
     {
         static $gtype: GObject.GType<MobileProvidersDatabase>;
+        declare static readonly __signalSignatures: MobileProvidersDatabase.SignalSignatures;
 
         // Properties
 
@@ -2155,6 +2189,9 @@ export namespace NMA {
     }
 
     namespace MobileWizard {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2162,6 +2199,7 @@ export namespace NMA {
 
     class MobileWizard extends GObject.Object {
         static $gtype: GObject.GType<MobileWizard>;
+        declare static readonly __signalSignatures: MobileWizard.SignalSignatures;
 
         // Constructors
 
@@ -2176,6 +2214,9 @@ export namespace NMA {
     }
 
     namespace VpnPasswordDialog {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Dialog.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2186,6 +2227,7 @@ export namespace NMA {
 
     class VpnPasswordDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<VpnPasswordDialog>;
+        declare static readonly __signalSignatures: VpnPasswordDialog.SignalSignatures;
 
         // Constructors
 
@@ -2660,6 +2702,9 @@ export namespace NMA {
     }
 
     namespace WifiDialog {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Dialog.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2670,6 +2715,7 @@ export namespace NMA {
 
     class WifiDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<WifiDialog>;
+        declare static readonly __signalSignatures: WifiDialog.SignalSignatures;
 
         // Constructors
 

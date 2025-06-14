@@ -63,6 +63,11 @@ export namespace Abi {
             (object: number, p0: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Button.SignalSignatures {
+            selected: Selected;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -75,6 +80,7 @@ export namespace Abi {
 
     class Table extends Gtk.Button implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable {
         static $gtype: GObject.GType<Table>;
+        declare static readonly __signalSignatures: Table.SignalSignatures;
 
         // Fields
 
@@ -90,6 +96,9 @@ export namespace Abi {
 
         // Signals
 
+        connect<K extends keyof Table.SignalSignatures>(signal: K, callback: Table.SignalSignatures[K]): number;
+        connect_after<K extends keyof Table.SignalSignatures>(signal: K, callback: Table.SignalSignatures[K]): number;
+        emit<K extends keyof Table.SignalSignatures>(signal: K, ...args: Parameters<Table.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -4757,6 +4766,40 @@ export namespace Abi {
             (object: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Bin.SignalSignatures {
+            bold: Bold;
+            bottomline: Bottomline;
+            'can-redo': CanRedo;
+            'can-undo': CanUndo;
+            'center-align': CenterAlign;
+            changed: Changed;
+            color: Color;
+            'current-page': CurrentPage;
+            'enter-selection': EnterSelection;
+            'font-family': FontFamily;
+            'font-size': FontSize;
+            'image-selected': ImageSelected;
+            'is-dirty': IsDirty;
+            italic: Italic;
+            'justify-align': JustifyAlign;
+            'leave-selection': LeaveSelection;
+            'left-align': LeftAlign;
+            'line-through': LineThrough;
+            overline: Overline;
+            'page-count': PageCount;
+            'right-align': RightAlign;
+            'selection-cleared': SelectionCleared;
+            'style-name': StyleName;
+            subscript: Subscript;
+            superscript: Superscript;
+            'table-state': TableState;
+            'text-selected': TextSelected;
+            topline: Topline;
+            underline: Underline;
+            zoom: Zoom;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4788,6 +4831,7 @@ export namespace Abi {
 
     class Widget extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Widget>;
+        declare static readonly __signalSignatures: Widget.SignalSignatures;
 
         // Properties
 
@@ -4845,6 +4889,9 @@ export namespace Abi {
 
         // Signals
 
+        connect<K extends keyof Widget.SignalSignatures>(signal: K, callback: Widget.SignalSignatures[K]): number;
+        connect_after<K extends keyof Widget.SignalSignatures>(signal: K, callback: Widget.SignalSignatures[K]): number;
+        emit<K extends keyof Widget.SignalSignatures>(signal: K, ...args: Parameters<Widget.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

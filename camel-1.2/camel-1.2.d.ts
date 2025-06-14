@@ -3016,6 +3016,9 @@ export namespace Camel {
         NEWLINE,
     }
     namespace Address {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3023,6 +3026,7 @@ export namespace Camel {
 
     class Address extends GObject.Object {
         static $gtype: GObject.GType<Address>;
+        declare static readonly __signalSignatures: Address.SignalSignatures;
 
         // Constructors
 
@@ -3125,6 +3129,9 @@ export namespace Camel {
     }
 
     namespace BlockFile {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3132,6 +3139,7 @@ export namespace Camel {
 
     class BlockFile extends GObject.Object {
         static $gtype: GObject.GType<BlockFile>;
+        declare static readonly __signalSignatures: BlockFile.SignalSignatures;
 
         // Constructors
 
@@ -3211,6 +3219,9 @@ export namespace Camel {
     }
 
     namespace CertDB {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3218,6 +3229,7 @@ export namespace Camel {
 
     class CertDB extends GObject.Object {
         static $gtype: GObject.GType<CertDB>;
+        declare static readonly __signalSignatures: CertDB.SignalSignatures;
 
         // Constructors
 
@@ -3273,6 +3285,9 @@ export namespace Camel {
     }
 
     namespace CipherContext {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3282,6 +3297,7 @@ export namespace Camel {
 
     class CipherContext extends GObject.Object {
         static $gtype: GObject.GType<CipherContext>;
+        declare static readonly __signalSignatures: CipherContext.SignalSignatures;
 
         // Properties
 
@@ -3680,6 +3696,9 @@ export namespace Camel {
     }
 
     namespace DB {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3687,6 +3706,7 @@ export namespace Camel {
 
     class DB extends GObject.Object {
         static $gtype: GObject.GType<DB>;
+        declare static readonly __signalSignatures: DB.SignalSignatures;
 
         // Constructors
 
@@ -3960,6 +3980,9 @@ export namespace Camel {
     }
 
     namespace DataCache {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3971,6 +3994,7 @@ export namespace Camel {
 
     class DataCache extends GObject.Object {
         static $gtype: GObject.GType<DataCache>;
+        declare static readonly __signalSignatures: DataCache.SignalSignatures;
 
         // Properties
 
@@ -4103,6 +4127,9 @@ export namespace Camel {
     }
 
     namespace DataWrapper {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4110,6 +4137,7 @@ export namespace Camel {
 
     class DataWrapper extends GObject.Object {
         static $gtype: GObject.GType<DataWrapper>;
+        declare static readonly __signalSignatures: DataWrapper.SignalSignatures;
 
         // Constructors
 
@@ -4724,6 +4752,9 @@ export namespace Camel {
     }
 
     namespace FilterDriver {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4731,6 +4762,7 @@ export namespace Camel {
 
     class FilterDriver extends GObject.Object {
         static $gtype: GObject.GType<FilterDriver>;
+        declare static readonly __signalSignatures: FilterDriver.SignalSignatures;
 
         // Constructors
 
@@ -4845,6 +4877,9 @@ export namespace Camel {
     }
 
     namespace FilterInputStream {
+        // Signal signatures
+        interface SignalSignatures extends Gio.FilterInputStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gio.FilterInputStream.ConstructorProps {
@@ -4854,6 +4889,7 @@ export namespace Camel {
 
     class FilterInputStream extends Gio.FilterInputStream {
         static $gtype: GObject.GType<FilterInputStream>;
+        declare static readonly __signalSignatures: FilterInputStream.SignalSignatures;
 
         // Properties
 
@@ -4877,6 +4913,9 @@ export namespace Camel {
     }
 
     namespace FilterOutputStream {
+        // Signal signatures
+        interface SignalSignatures extends Gio.FilterOutputStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gio.FilterOutputStream.ConstructorProps {
@@ -4886,6 +4925,7 @@ export namespace Camel {
 
     class FilterOutputStream extends Gio.FilterOutputStream {
         static $gtype: GObject.GType<FilterOutputStream>;
+        declare static readonly __signalSignatures: FilterOutputStream.SignalSignatures;
 
         // Properties
 
@@ -4923,6 +4963,13 @@ export namespace Camel {
             (old_name: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {
+            changed: Changed;
+            deleted: Deleted;
+            renamed: Renamed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -4942,6 +4989,7 @@ export namespace Camel {
 
     abstract class Folder extends Object {
         static $gtype: GObject.GType<Folder>;
+        declare static readonly __signalSignatures: Folder.SignalSignatures;
 
         // Properties
 
@@ -5011,6 +5059,9 @@ export namespace Camel {
 
         // Signals
 
+        connect<K extends keyof Folder.SignalSignatures>(signal: K, callback: Folder.SignalSignatures[K]): number;
+        connect_after<K extends keyof Folder.SignalSignatures>(signal: K, callback: Folder.SignalSignatures[K]): number;
+        emit<K extends keyof Folder.SignalSignatures>(signal: K, ...args: Parameters<Folder.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -6138,6 +6189,9 @@ export namespace Camel {
     }
 
     namespace FolderSearch {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6145,6 +6199,7 @@ export namespace Camel {
 
     class FolderSearch extends GObject.Object {
         static $gtype: GObject.GType<FolderSearch>;
+        declare static readonly __signalSignatures: FolderSearch.SignalSignatures;
 
         // Constructors
 
@@ -6265,6 +6320,11 @@ export namespace Camel {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            changed: Changed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6286,6 +6346,7 @@ export namespace Camel {
 
     class FolderSummary extends GObject.Object {
         static $gtype: GObject.GType<FolderSummary>;
+        declare static readonly __signalSignatures: FolderSummary.SignalSignatures;
 
         // Properties
 
@@ -6352,6 +6413,18 @@ export namespace Camel {
 
         // Signals
 
+        connect<K extends keyof FolderSummary.SignalSignatures>(
+            signal: K,
+            callback: FolderSummary.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FolderSummary.SignalSignatures>(
+            signal: K,
+            callback: FolderSummary.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FolderSummary.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FolderSummary.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -6636,6 +6709,9 @@ export namespace Camel {
     }
 
     namespace GpgContext {
+        // Signal signatures
+        interface SignalSignatures extends CipherContext.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends CipherContext.ConstructorProps {
@@ -6650,6 +6726,7 @@ export namespace Camel {
 
     class GpgContext extends CipherContext {
         static $gtype: GObject.GType<GpgContext>;
+        declare static readonly __signalSignatures: GpgContext.SignalSignatures;
 
         // Properties
 
@@ -6791,6 +6868,9 @@ export namespace Camel {
     }
 
     namespace HTMLParser {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6798,6 +6878,7 @@ export namespace Camel {
 
     class HTMLParser extends GObject.Object {
         static $gtype: GObject.GType<HTMLParser>;
+        declare static readonly __signalSignatures: HTMLParser.SignalSignatures;
 
         // Constructors
 
@@ -6826,6 +6907,9 @@ export namespace Camel {
     }
 
     namespace Index {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6833,6 +6917,7 @@ export namespace Camel {
 
     class Index extends GObject.Object {
         static $gtype: GObject.GType<Index>;
+        declare static readonly __signalSignatures: Index.SignalSignatures;
 
         // Fields
 
@@ -6889,6 +6974,9 @@ export namespace Camel {
     }
 
     namespace IndexCursor {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6896,6 +6984,7 @@ export namespace Camel {
 
     class IndexCursor extends GObject.Object {
         static $gtype: GObject.GType<IndexCursor>;
+        declare static readonly __signalSignatures: IndexCursor.SignalSignatures;
 
         // Fields
 
@@ -6917,6 +7006,9 @@ export namespace Camel {
     }
 
     namespace IndexName {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6924,6 +7016,7 @@ export namespace Camel {
 
     class IndexName extends GObject.Object {
         static $gtype: GObject.GType<IndexName>;
+        declare static readonly __signalSignatures: IndexName.SignalSignatures;
 
         // Fields
 
@@ -6949,6 +7042,9 @@ export namespace Camel {
     }
 
     namespace InternetAddress {
+        // Signal signatures
+        interface SignalSignatures extends Address.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Address.ConstructorProps {}
@@ -6956,6 +7052,7 @@ export namespace Camel {
 
     class InternetAddress extends Address {
         static $gtype: GObject.GType<InternetAddress>;
+        declare static readonly __signalSignatures: InternetAddress.SignalSignatures;
 
         // Constructors
 
@@ -7029,6 +7126,9 @@ export namespace Camel {
     }
 
     namespace KeyFile {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -7036,6 +7136,7 @@ export namespace Camel {
 
     class KeyFile extends GObject.Object {
         static $gtype: GObject.GType<KeyFile>;
+        declare static readonly __signalSignatures: KeyFile.SignalSignatures;
 
         // Constructors
 
@@ -7067,6 +7168,9 @@ export namespace Camel {
     }
 
     namespace KeyTable {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -7074,6 +7178,7 @@ export namespace Camel {
 
     class KeyTable extends GObject.Object {
         static $gtype: GObject.GType<KeyTable>;
+        declare static readonly __signalSignatures: KeyTable.SignalSignatures;
 
         // Constructors
 
@@ -7096,6 +7201,9 @@ export namespace Camel {
     }
 
     namespace LocalSettings {
+        // Signal signatures
+        interface SignalSignatures extends StoreSettings.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends StoreSettings.ConstructorProps {
@@ -7115,6 +7223,7 @@ export namespace Camel {
      */
     class LocalSettings extends StoreSettings {
         static $gtype: GObject.GType<LocalSettings>;
+        declare static readonly __signalSignatures: LocalSettings.SignalSignatures;
 
         // Properties
 
@@ -7203,6 +7312,9 @@ export namespace Camel {
     }
 
     namespace Medium {
+        // Signal signatures
+        interface SignalSignatures extends DataWrapper.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DataWrapper.ConstructorProps {
@@ -7212,6 +7324,7 @@ export namespace Camel {
 
     abstract class Medium extends DataWrapper {
         static $gtype: GObject.GType<Medium>;
+        declare static readonly __signalSignatures: Medium.SignalSignatures;
 
         // Properties
 
@@ -7340,6 +7453,9 @@ export namespace Camel {
     }
 
     namespace MessageInfo {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7379,6 +7495,7 @@ export namespace Camel {
 
     abstract class MessageInfo extends GObject.Object {
         static $gtype: GObject.GType<MessageInfo>;
+        declare static readonly __signalSignatures: MessageInfo.SignalSignatures;
 
         // Properties
 
@@ -8327,6 +8444,9 @@ export namespace Camel {
     }
 
     namespace MessageInfoBase {
+        // Signal signatures
+        interface SignalSignatures extends MessageInfo.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MessageInfo.ConstructorProps {}
@@ -8334,6 +8454,7 @@ export namespace Camel {
 
     class MessageInfoBase extends MessageInfo {
         static $gtype: GObject.GType<MessageInfoBase>;
+        declare static readonly __signalSignatures: MessageInfoBase.SignalSignatures;
 
         // Constructors
 
@@ -8343,6 +8464,9 @@ export namespace Camel {
     }
 
     namespace MimeFilter {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -8350,6 +8474,7 @@ export namespace Camel {
 
     abstract class MimeFilter extends GObject.Object {
         static $gtype: GObject.GType<MimeFilter>;
+        declare static readonly __signalSignatures: MimeFilter.SignalSignatures;
 
         // Fields
 
@@ -8435,6 +8560,9 @@ export namespace Camel {
     }
 
     namespace MimeFilterBasic {
+        // Signal signatures
+        interface SignalSignatures extends MimeFilter.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MimeFilter.ConstructorProps {}
@@ -8442,6 +8570,7 @@ export namespace Camel {
 
     class MimeFilterBasic extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterBasic>;
+        declare static readonly __signalSignatures: MimeFilterBasic.SignalSignatures;
 
         // Constructors
 
@@ -8456,6 +8585,9 @@ export namespace Camel {
     }
 
     namespace MimeFilterBestenc {
+        // Signal signatures
+        interface SignalSignatures extends MimeFilter.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MimeFilter.ConstructorProps {}
@@ -8463,6 +8595,7 @@ export namespace Camel {
 
     class MimeFilterBestenc extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterBestenc>;
+        declare static readonly __signalSignatures: MimeFilterBestenc.SignalSignatures;
 
         // Constructors
 
@@ -8497,6 +8630,9 @@ export namespace Camel {
     }
 
     namespace MimeFilterCRLF {
+        // Signal signatures
+        interface SignalSignatures extends MimeFilter.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MimeFilter.ConstructorProps {}
@@ -8504,6 +8640,7 @@ export namespace Camel {
 
     class MimeFilterCRLF extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterCRLF>;
+        declare static readonly __signalSignatures: MimeFilterCRLF.SignalSignatures;
 
         // Constructors
 
@@ -8529,6 +8666,9 @@ export namespace Camel {
     }
 
     namespace MimeFilterCanon {
+        // Signal signatures
+        interface SignalSignatures extends MimeFilter.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MimeFilter.ConstructorProps {}
@@ -8536,6 +8676,7 @@ export namespace Camel {
 
     class MimeFilterCanon extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterCanon>;
+        declare static readonly __signalSignatures: MimeFilterCanon.SignalSignatures;
 
         // Constructors
 
@@ -8550,6 +8691,9 @@ export namespace Camel {
     }
 
     namespace MimeFilterCharset {
+        // Signal signatures
+        interface SignalSignatures extends MimeFilter.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MimeFilter.ConstructorProps {}
@@ -8557,6 +8701,7 @@ export namespace Camel {
 
     class MimeFilterCharset extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterCharset>;
+        declare static readonly __signalSignatures: MimeFilterCharset.SignalSignatures;
 
         // Constructors
 
@@ -8571,6 +8716,9 @@ export namespace Camel {
     }
 
     namespace MimeFilterEnriched {
+        // Signal signatures
+        interface SignalSignatures extends MimeFilter.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MimeFilter.ConstructorProps {}
@@ -8578,6 +8726,7 @@ export namespace Camel {
 
     class MimeFilterEnriched extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterEnriched>;
+        declare static readonly __signalSignatures: MimeFilterEnriched.SignalSignatures;
 
         // Constructors
 
@@ -8592,6 +8741,9 @@ export namespace Camel {
     }
 
     namespace MimeFilterFrom {
+        // Signal signatures
+        interface SignalSignatures extends MimeFilter.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MimeFilter.ConstructorProps {}
@@ -8599,6 +8751,7 @@ export namespace Camel {
 
     class MimeFilterFrom extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterFrom>;
+        declare static readonly __signalSignatures: MimeFilterFrom.SignalSignatures;
 
         // Constructors
 
@@ -8610,6 +8763,9 @@ export namespace Camel {
     }
 
     namespace MimeFilterGZip {
+        // Signal signatures
+        interface SignalSignatures extends MimeFilter.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MimeFilter.ConstructorProps {}
@@ -8617,6 +8773,7 @@ export namespace Camel {
 
     class MimeFilterGZip extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterGZip>;
+        declare static readonly __signalSignatures: MimeFilterGZip.SignalSignatures;
 
         // Constructors
 
@@ -8631,6 +8788,9 @@ export namespace Camel {
     }
 
     namespace MimeFilterHTML {
+        // Signal signatures
+        interface SignalSignatures extends MimeFilter.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MimeFilter.ConstructorProps {}
@@ -8638,6 +8798,7 @@ export namespace Camel {
 
     class MimeFilterHTML extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterHTML>;
+        declare static readonly __signalSignatures: MimeFilterHTML.SignalSignatures;
 
         // Constructors
 
@@ -8649,6 +8810,9 @@ export namespace Camel {
     }
 
     namespace MimeFilterIndex {
+        // Signal signatures
+        interface SignalSignatures extends MimeFilter.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MimeFilter.ConstructorProps {}
@@ -8656,6 +8820,7 @@ export namespace Camel {
 
     class MimeFilterIndex extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterIndex>;
+        declare static readonly __signalSignatures: MimeFilterIndex.SignalSignatures;
 
         // Constructors
 
@@ -8683,6 +8848,9 @@ export namespace Camel {
     }
 
     namespace MimeFilterLinewrap {
+        // Signal signatures
+        interface SignalSignatures extends MimeFilter.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MimeFilter.ConstructorProps {}
@@ -8690,6 +8858,7 @@ export namespace Camel {
 
     class MimeFilterLinewrap extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterLinewrap>;
+        declare static readonly __signalSignatures: MimeFilterLinewrap.SignalSignatures;
 
         // Constructors
 
@@ -8704,6 +8873,9 @@ export namespace Camel {
     }
 
     namespace MimeFilterPgp {
+        // Signal signatures
+        interface SignalSignatures extends MimeFilter.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MimeFilter.ConstructorProps {}
@@ -8711,6 +8883,7 @@ export namespace Camel {
 
     class MimeFilterPgp extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterPgp>;
+        declare static readonly __signalSignatures: MimeFilterPgp.SignalSignatures;
 
         // Constructors
 
@@ -8722,6 +8895,9 @@ export namespace Camel {
     }
 
     namespace MimeFilterProgress {
+        // Signal signatures
+        interface SignalSignatures extends MimeFilter.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MimeFilter.ConstructorProps {}
@@ -8729,6 +8905,7 @@ export namespace Camel {
 
     class MimeFilterProgress extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterProgress>;
+        declare static readonly __signalSignatures: MimeFilterProgress.SignalSignatures;
 
         // Constructors
 
@@ -8743,6 +8920,9 @@ export namespace Camel {
     }
 
     namespace MimeFilterToHTML {
+        // Signal signatures
+        interface SignalSignatures extends MimeFilter.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MimeFilter.ConstructorProps {}
@@ -8750,6 +8930,7 @@ export namespace Camel {
 
     class MimeFilterToHTML extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterToHTML>;
+        declare static readonly __signalSignatures: MimeFilterToHTML.SignalSignatures;
 
         // Constructors
 
@@ -8764,6 +8945,9 @@ export namespace Camel {
     }
 
     namespace MimeFilterWindows {
+        // Signal signatures
+        interface SignalSignatures extends MimeFilter.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MimeFilter.ConstructorProps {}
@@ -8771,6 +8955,7 @@ export namespace Camel {
 
     class MimeFilterWindows extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterWindows>;
+        declare static readonly __signalSignatures: MimeFilterWindows.SignalSignatures;
 
         // Constructors
 
@@ -8803,6 +8988,9 @@ export namespace Camel {
     }
 
     namespace MimeFilterYenc {
+        // Signal signatures
+        interface SignalSignatures extends MimeFilter.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MimeFilter.ConstructorProps {}
@@ -8810,6 +8998,7 @@ export namespace Camel {
 
     class MimeFilterYenc extends MimeFilter {
         static $gtype: GObject.GType<MimeFilterYenc>;
+        declare static readonly __signalSignatures: MimeFilterYenc.SignalSignatures;
 
         // Constructors
 
@@ -8847,6 +9036,9 @@ export namespace Camel {
     }
 
     namespace MimeMessage {
+        // Signal signatures
+        interface SignalSignatures extends MimePart.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MimePart.ConstructorProps {}
@@ -8854,6 +9046,7 @@ export namespace Camel {
 
     class MimeMessage extends MimePart {
         static $gtype: GObject.GType<MimeMessage>;
+        declare static readonly __signalSignatures: MimeMessage.SignalSignatures;
 
         // Constructors
 
@@ -9004,6 +9197,9 @@ export namespace Camel {
     }
 
     namespace MimeParser {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -9011,6 +9207,7 @@ export namespace Camel {
 
     class MimeParser extends GObject.Object {
         static $gtype: GObject.GType<MimeParser>;
+        declare static readonly __signalSignatures: MimeParser.SignalSignatures;
 
         // Constructors
 
@@ -9265,6 +9462,9 @@ export namespace Camel {
     }
 
     namespace MimePart {
+        // Signal signatures
+        interface SignalSignatures extends Medium.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Medium.ConstructorProps {
@@ -9279,6 +9479,7 @@ export namespace Camel {
 
     class MimePart extends Medium {
         static $gtype: GObject.GType<MimePart>;
+        declare static readonly __signalSignatures: MimePart.SignalSignatures;
 
         // Properties
 
@@ -9493,6 +9694,9 @@ export namespace Camel {
     }
 
     namespace Multipart {
+        // Signal signatures
+        interface SignalSignatures extends DataWrapper.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DataWrapper.ConstructorProps {}
@@ -9500,6 +9704,7 @@ export namespace Camel {
 
     class Multipart extends DataWrapper {
         static $gtype: GObject.GType<Multipart>;
+        declare static readonly __signalSignatures: Multipart.SignalSignatures;
 
         // Constructors
 
@@ -9586,6 +9791,9 @@ export namespace Camel {
     }
 
     namespace MultipartEncrypted {
+        // Signal signatures
+        interface SignalSignatures extends Multipart.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Multipart.ConstructorProps {}
@@ -9593,6 +9801,7 @@ export namespace Camel {
 
     class MultipartEncrypted extends Multipart {
         static $gtype: GObject.GType<MultipartEncrypted>;
+        declare static readonly __signalSignatures: MultipartEncrypted.SignalSignatures;
 
         // Constructors
 
@@ -9604,6 +9813,9 @@ export namespace Camel {
     }
 
     namespace MultipartSigned {
+        // Signal signatures
+        interface SignalSignatures extends Multipart.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Multipart.ConstructorProps {}
@@ -9611,6 +9823,7 @@ export namespace Camel {
 
     class MultipartSigned extends Multipart {
         static $gtype: GObject.GType<MultipartSigned>;
+        declare static readonly __signalSignatures: MultipartSigned.SignalSignatures;
 
         // Constructors
 
@@ -9642,6 +9855,9 @@ export namespace Camel {
     }
 
     namespace NNTPAddress {
+        // Signal signatures
+        interface SignalSignatures extends Address.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Address.ConstructorProps {}
@@ -9649,6 +9865,7 @@ export namespace Camel {
 
     class NNTPAddress extends Address {
         static $gtype: GObject.GType<NNTPAddress>;
+        declare static readonly __signalSignatures: NNTPAddress.SignalSignatures;
 
         // Constructors
 
@@ -9676,6 +9893,9 @@ export namespace Camel {
     }
 
     namespace NullOutputStream {
+        // Signal signatures
+        interface SignalSignatures extends Gio.OutputStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gio.OutputStream.ConstructorProps {}
@@ -9683,6 +9903,7 @@ export namespace Camel {
 
     class NullOutputStream extends Gio.OutputStream {
         static $gtype: GObject.GType<NullOutputStream>;
+        declare static readonly __signalSignatures: NullOutputStream.SignalSignatures;
 
         // Constructors
 
@@ -9703,6 +9924,9 @@ export namespace Camel {
     }
 
     namespace Object {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9713,6 +9937,7 @@ export namespace Camel {
 
     abstract class Object extends GObject.Object {
         static $gtype: GObject.GType<Object>;
+        declare static readonly __signalSignatures: Object.SignalSignatures;
 
         // Properties
 
@@ -9769,6 +9994,9 @@ export namespace Camel {
     }
 
     namespace OfflineFolder {
+        // Signal signatures
+        interface SignalSignatures extends Folder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Folder.ConstructorProps {
@@ -9779,6 +10007,7 @@ export namespace Camel {
 
     class OfflineFolder extends Folder {
         static $gtype: GObject.GType<OfflineFolder>;
+        declare static readonly __signalSignatures: OfflineFolder.SignalSignatures;
 
         // Properties
 
@@ -9887,6 +10116,9 @@ export namespace Camel {
     }
 
     namespace OfflineSettings {
+        // Signal signatures
+        interface SignalSignatures extends StoreSettings.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends StoreSettings.ConstructorProps {
@@ -9907,6 +10139,7 @@ export namespace Camel {
      */
     class OfflineSettings extends StoreSettings {
         static $gtype: GObject.GType<OfflineSettings>;
+        declare static readonly __signalSignatures: OfflineSettings.SignalSignatures;
 
         // Properties
 
@@ -9986,6 +10219,9 @@ export namespace Camel {
     }
 
     namespace OfflineStore {
+        // Signal signatures
+        interface SignalSignatures extends Store.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Store.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -9995,6 +10231,7 @@ export namespace Camel {
 
     class OfflineStore extends Store implements Gio.Initable {
         static $gtype: GObject.GType<OfflineStore>;
+        declare static readonly __signalSignatures: OfflineStore.SignalSignatures;
 
         // Properties
 
@@ -10570,6 +10807,14 @@ export namespace Camel {
             (object: string, p0: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gio.Cancellable.SignalSignatures {
+            'pop-message': PopMessage;
+            progress: Progress;
+            'push-message': PushMessage;
+            status: Status;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gio.Cancellable.ConstructorProps {}
@@ -10577,6 +10822,7 @@ export namespace Camel {
 
     class Operation extends Gio.Cancellable {
         static $gtype: GObject.GType<Operation>;
+        declare static readonly __signalSignatures: Operation.SignalSignatures;
 
         // Constructors
 
@@ -10590,6 +10836,14 @@ export namespace Camel {
 
         // Signals
 
+        connect_after<K extends keyof Operation.SignalSignatures>(
+            signal: K,
+            callback: Operation.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Operation.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Operation.SignalSignatures[K]>
+        ): void;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
         connect_after(signal: 'pop-message', callback: (_source: this) => void): number;
@@ -10634,6 +10888,9 @@ export namespace Camel {
     }
 
     namespace PartitionTable {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -10641,6 +10898,7 @@ export namespace Camel {
 
     class PartitionTable extends GObject.Object {
         static $gtype: GObject.GType<PartitionTable>;
+        declare static readonly __signalSignatures: PartitionTable.SignalSignatures;
 
         // Constructors
 
@@ -10659,6 +10917,9 @@ export namespace Camel {
     }
 
     namespace SExp {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -10666,6 +10927,7 @@ export namespace Camel {
 
     class SExp extends GObject.Object {
         static $gtype: GObject.GType<SExp>;
+        declare static readonly __signalSignatures: SExp.SignalSignatures;
 
         // Constructors
 
@@ -10748,6 +11010,9 @@ export namespace Camel {
     }
 
     namespace SMIMEContext {
+        // Signal signatures
+        interface SignalSignatures extends CipherContext.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends CipherContext.ConstructorProps {}
@@ -10755,6 +11020,7 @@ export namespace Camel {
 
     class SMIMEContext extends CipherContext {
         static $gtype: GObject.GType<SMIMEContext>;
+        declare static readonly __signalSignatures: SMIMEContext.SignalSignatures;
 
         // Constructors
 
@@ -10775,6 +11041,9 @@ export namespace Camel {
     }
 
     namespace Sasl {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -10788,6 +11057,7 @@ export namespace Camel {
 
     abstract class Sasl extends GObject.Object {
         static $gtype: GObject.GType<Sasl>;
+        declare static readonly __signalSignatures: Sasl.SignalSignatures;
 
         // Properties
 
@@ -11029,6 +11299,9 @@ export namespace Camel {
     }
 
     namespace SaslAnonymous {
+        // Signal signatures
+        interface SignalSignatures extends Sasl.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Sasl.ConstructorProps {}
@@ -11036,6 +11309,7 @@ export namespace Camel {
 
     class SaslAnonymous extends Sasl {
         static $gtype: GObject.GType<SaslAnonymous>;
+        declare static readonly __signalSignatures: SaslAnonymous.SignalSignatures;
 
         // Constructors
 
@@ -11050,6 +11324,9 @@ export namespace Camel {
     }
 
     namespace SaslCramMd5 {
+        // Signal signatures
+        interface SignalSignatures extends Sasl.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Sasl.ConstructorProps {}
@@ -11057,6 +11334,7 @@ export namespace Camel {
 
     class SaslCramMd5 extends Sasl {
         static $gtype: GObject.GType<SaslCramMd5>;
+        declare static readonly __signalSignatures: SaslCramMd5.SignalSignatures;
 
         // Constructors
 
@@ -11066,6 +11344,9 @@ export namespace Camel {
     }
 
     namespace SaslDigestMd5 {
+        // Signal signatures
+        interface SignalSignatures extends Sasl.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Sasl.ConstructorProps {}
@@ -11073,6 +11354,7 @@ export namespace Camel {
 
     class SaslDigestMd5 extends Sasl {
         static $gtype: GObject.GType<SaslDigestMd5>;
+        declare static readonly __signalSignatures: SaslDigestMd5.SignalSignatures;
 
         // Constructors
 
@@ -11082,6 +11364,9 @@ export namespace Camel {
     }
 
     namespace SaslGssapi {
+        // Signal signatures
+        interface SignalSignatures extends Sasl.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Sasl.ConstructorProps {}
@@ -11089,6 +11374,7 @@ export namespace Camel {
 
     class SaslGssapi extends Sasl {
         static $gtype: GObject.GType<SaslGssapi>;
+        declare static readonly __signalSignatures: SaslGssapi.SignalSignatures;
 
         // Constructors
 
@@ -11113,6 +11399,9 @@ export namespace Camel {
     }
 
     namespace SaslLogin {
+        // Signal signatures
+        interface SignalSignatures extends Sasl.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Sasl.ConstructorProps {}
@@ -11120,6 +11409,7 @@ export namespace Camel {
 
     class SaslLogin extends Sasl {
         static $gtype: GObject.GType<SaslLogin>;
+        declare static readonly __signalSignatures: SaslLogin.SignalSignatures;
 
         // Constructors
 
@@ -11129,6 +11419,9 @@ export namespace Camel {
     }
 
     namespace SaslNTLM {
+        // Signal signatures
+        interface SignalSignatures extends Sasl.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Sasl.ConstructorProps {}
@@ -11136,6 +11429,7 @@ export namespace Camel {
 
     class SaslNTLM extends Sasl {
         static $gtype: GObject.GType<SaslNTLM>;
+        declare static readonly __signalSignatures: SaslNTLM.SignalSignatures;
 
         // Constructors
 
@@ -11145,6 +11439,9 @@ export namespace Camel {
     }
 
     namespace SaslPOPB4SMTP {
+        // Signal signatures
+        interface SignalSignatures extends Sasl.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Sasl.ConstructorProps {}
@@ -11152,6 +11449,7 @@ export namespace Camel {
 
     class SaslPOPB4SMTP extends Sasl {
         static $gtype: GObject.GType<SaslPOPB4SMTP>;
+        declare static readonly __signalSignatures: SaslPOPB4SMTP.SignalSignatures;
 
         // Constructors
 
@@ -11161,6 +11459,9 @@ export namespace Camel {
     }
 
     namespace SaslPlain {
+        // Signal signatures
+        interface SignalSignatures extends Sasl.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Sasl.ConstructorProps {}
@@ -11168,6 +11469,7 @@ export namespace Camel {
 
     class SaslPlain extends Sasl {
         static $gtype: GObject.GType<SaslPlain>;
+        declare static readonly __signalSignatures: SaslPlain.SignalSignatures;
 
         // Constructors
 
@@ -11177,6 +11479,9 @@ export namespace Camel {
     }
 
     namespace SaslXOAuth2 {
+        // Signal signatures
+        interface SignalSignatures extends Sasl.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Sasl.ConstructorProps {}
@@ -11184,6 +11489,7 @@ export namespace Camel {
 
     class SaslXOAuth2 extends Sasl {
         static $gtype: GObject.GType<SaslXOAuth2>;
+        declare static readonly __signalSignatures: SaslXOAuth2.SignalSignatures;
 
         // Constructors
 
@@ -11193,6 +11499,9 @@ export namespace Camel {
     }
 
     namespace SaslXOAuth2Google {
+        // Signal signatures
+        interface SignalSignatures extends SaslXOAuth2.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SaslXOAuth2.ConstructorProps {}
@@ -11200,6 +11509,7 @@ export namespace Camel {
 
     class SaslXOAuth2Google extends SaslXOAuth2 {
         static $gtype: GObject.GType<SaslXOAuth2Google>;
+        declare static readonly __signalSignatures: SaslXOAuth2Google.SignalSignatures;
 
         // Constructors
 
@@ -11209,6 +11519,9 @@ export namespace Camel {
     }
 
     namespace SaslXOAuth2Outlook {
+        // Signal signatures
+        interface SignalSignatures extends SaslXOAuth2.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SaslXOAuth2.ConstructorProps {}
@@ -11216,6 +11529,7 @@ export namespace Camel {
 
     class SaslXOAuth2Outlook extends SaslXOAuth2 {
         static $gtype: GObject.GType<SaslXOAuth2Outlook>;
+        declare static readonly __signalSignatures: SaslXOAuth2Outlook.SignalSignatures;
 
         // Constructors
 
@@ -11225,6 +11539,9 @@ export namespace Camel {
     }
 
     namespace SaslXOAuth2Yahoo {
+        // Signal signatures
+        interface SignalSignatures extends SaslXOAuth2.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SaslXOAuth2.ConstructorProps {}
@@ -11232,6 +11549,7 @@ export namespace Camel {
 
     class SaslXOAuth2Yahoo extends SaslXOAuth2 {
         static $gtype: GObject.GType<SaslXOAuth2Yahoo>;
+        declare static readonly __signalSignatures: SaslXOAuth2Yahoo.SignalSignatures;
 
         // Constructors
 
@@ -11241,6 +11559,9 @@ export namespace Camel {
     }
 
     namespace Service {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -11260,6 +11581,7 @@ export namespace Camel {
 
     abstract class Service extends Object implements Gio.Initable {
         static $gtype: GObject.GType<Service>;
+        declare static readonly __signalSignatures: Service.SignalSignatures;
 
         // Properties
 
@@ -12359,6 +12681,13 @@ export namespace Camel {
             (service: Service, type: SessionAlertType, message: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'job-finished': JobFinished;
+            'job-started': JobStarted;
+            'user-alert': UserAlert;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -12378,6 +12707,7 @@ export namespace Camel {
 
     class Session extends GObject.Object {
         static $gtype: GObject.GType<Session>;
+        declare static readonly __signalSignatures: Session.SignalSignatures;
 
         // Properties
 
@@ -12410,6 +12740,15 @@ export namespace Camel {
 
         // Signals
 
+        connect<K extends keyof Session.SignalSignatures>(signal: K, callback: Session.SignalSignatures[K]): number;
+        connect_after<K extends keyof Session.SignalSignatures>(
+            signal: K,
+            callback: Session.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Session.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Session.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -13138,6 +13477,9 @@ export namespace Camel {
     }
 
     namespace Settings {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -13149,6 +13491,7 @@ export namespace Camel {
      */
     class Settings extends GObject.Object {
         static $gtype: GObject.GType<Settings>;
+        declare static readonly __signalSignatures: Settings.SignalSignatures;
 
         // Constructors
 
@@ -13228,6 +13571,15 @@ export namespace Camel {
             (object: string, p0: FolderInfo): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Service.SignalSignatures {
+            'folder-created': FolderCreated;
+            'folder-deleted': FolderDeleted;
+            'folder-info-stale': FolderInfoStale;
+            'folder-opened': FolderOpened;
+            'folder-renamed': FolderRenamed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Service.ConstructorProps, Gio.Initable.ConstructorProps {}
@@ -13235,6 +13587,7 @@ export namespace Camel {
 
     abstract class Store extends Service implements Gio.Initable {
         static $gtype: GObject.GType<Store>;
+        declare static readonly __signalSignatures: Store.SignalSignatures;
 
         // Constructors
 
@@ -13244,6 +13597,8 @@ export namespace Camel {
 
         // Signals
 
+        connect_after<K extends keyof Store.SignalSignatures>(signal: K, callback: Store.SignalSignatures[K]): number;
+        emit<K extends keyof Store.SignalSignatures>(signal: K, ...args: Parameters<Store.SignalSignatures[K]>): void;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
         connect_after(signal: 'folder-created', callback: (_source: this, object: FolderInfo) => void): number;
@@ -14728,6 +15083,9 @@ export namespace Camel {
     }
 
     namespace StoreSettings {
+        // Signal signatures
+        interface SignalSignatures extends Settings.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Settings.ConstructorProps {
@@ -14744,6 +15102,7 @@ export namespace Camel {
      */
     class StoreSettings extends Settings {
         static $gtype: GObject.GType<StoreSettings>;
+        declare static readonly __signalSignatures: StoreSettings.SignalSignatures;
 
         // Properties
 
@@ -14793,6 +15152,9 @@ export namespace Camel {
     }
 
     namespace StoreSummary {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -14800,6 +15162,7 @@ export namespace Camel {
 
     class StoreSummary extends GObject.Object {
         static $gtype: GObject.GType<StoreSummary>;
+        declare static readonly __signalSignatures: StoreSummary.SignalSignatures;
 
         // Constructors
 
@@ -14920,6 +15283,9 @@ export namespace Camel {
     }
 
     namespace Stream {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Seekable.ConstructorProps {
@@ -14930,6 +15296,7 @@ export namespace Camel {
 
     class Stream extends GObject.Object implements Gio.Seekable {
         static $gtype: GObject.GType<Stream>;
+        declare static readonly __signalSignatures: Stream.SignalSignatures;
 
         // Properties
 
@@ -15585,6 +15952,9 @@ export namespace Camel {
     }
 
     namespace StreamBuffer {
+        // Signal signatures
+        interface SignalSignatures extends Stream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Stream.ConstructorProps, Gio.Seekable.ConstructorProps {}
@@ -15592,6 +15962,7 @@ export namespace Camel {
 
     class StreamBuffer extends Stream implements Gio.Seekable {
         static $gtype: GObject.GType<StreamBuffer>;
+        declare static readonly __signalSignatures: StreamBuffer.SignalSignatures;
 
         // Constructors
 
@@ -16178,6 +16549,9 @@ export namespace Camel {
     }
 
     namespace StreamFilter {
+        // Signal signatures
+        interface SignalSignatures extends Stream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Stream.ConstructorProps, Gio.Seekable.ConstructorProps {}
@@ -16185,6 +16559,7 @@ export namespace Camel {
 
     class StreamFilter extends Stream implements Gio.Seekable {
         static $gtype: GObject.GType<StreamFilter>;
+        declare static readonly __signalSignatures: StreamFilter.SignalSignatures;
 
         // Constructors
 
@@ -16758,6 +17133,9 @@ export namespace Camel {
     }
 
     namespace StreamFs {
+        // Signal signatures
+        interface SignalSignatures extends Stream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Stream.ConstructorProps, Gio.Seekable.ConstructorProps {}
@@ -16765,6 +17143,7 @@ export namespace Camel {
 
     class StreamFs extends Stream implements Gio.Seekable {
         static $gtype: GObject.GType<StreamFs>;
+        declare static readonly __signalSignatures: StreamFs.SignalSignatures;
 
         // Constructors
 
@@ -17322,6 +17701,9 @@ export namespace Camel {
     }
 
     namespace StreamMem {
+        // Signal signatures
+        interface SignalSignatures extends Stream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Stream.ConstructorProps, Gio.Seekable.ConstructorProps {}
@@ -17329,6 +17711,7 @@ export namespace Camel {
 
     class StreamMem extends Stream implements Gio.Seekable {
         static $gtype: GObject.GType<StreamMem>;
+        declare static readonly __signalSignatures: StreamMem.SignalSignatures;
 
         // Constructors
 
@@ -17910,6 +18293,9 @@ export namespace Camel {
     }
 
     namespace StreamNull {
+        // Signal signatures
+        interface SignalSignatures extends Stream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Stream.ConstructorProps, Gio.Seekable.ConstructorProps {}
@@ -17917,6 +18303,7 @@ export namespace Camel {
 
     class StreamNull extends Stream implements Gio.Seekable {
         static $gtype: GObject.GType<StreamNull>;
+        declare static readonly __signalSignatures: StreamNull.SignalSignatures;
 
         // Constructors
 
@@ -18473,6 +18860,9 @@ export namespace Camel {
     }
 
     namespace StreamProcess {
+        // Signal signatures
+        interface SignalSignatures extends Stream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Stream.ConstructorProps, Gio.Seekable.ConstructorProps {}
@@ -18480,6 +18870,7 @@ export namespace Camel {
 
     class StreamProcess extends Stream implements Gio.Seekable {
         static $gtype: GObject.GType<StreamProcess>;
+        declare static readonly __signalSignatures: StreamProcess.SignalSignatures;
 
         // Constructors
 
@@ -19036,6 +19427,9 @@ export namespace Camel {
     }
 
     namespace TextIndex {
+        // Signal signatures
+        interface SignalSignatures extends Index.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Index.ConstructorProps {}
@@ -19043,6 +19437,7 @@ export namespace Camel {
 
     class TextIndex extends Index {
         static $gtype: GObject.GType<TextIndex>;
+        declare static readonly __signalSignatures: TextIndex.SignalSignatures;
 
         // Constructors
 
@@ -19066,6 +19461,9 @@ export namespace Camel {
     }
 
     namespace TextIndexCursor {
+        // Signal signatures
+        interface SignalSignatures extends IndexCursor.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends IndexCursor.ConstructorProps {}
@@ -19073,6 +19471,7 @@ export namespace Camel {
 
     class TextIndexCursor extends IndexCursor {
         static $gtype: GObject.GType<TextIndexCursor>;
+        declare static readonly __signalSignatures: TextIndexCursor.SignalSignatures;
 
         // Constructors
 
@@ -19082,6 +19481,9 @@ export namespace Camel {
     }
 
     namespace TextIndexKeyCursor {
+        // Signal signatures
+        interface SignalSignatures extends IndexCursor.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends IndexCursor.ConstructorProps {}
@@ -19089,6 +19491,7 @@ export namespace Camel {
 
     class TextIndexKeyCursor extends IndexCursor {
         static $gtype: GObject.GType<TextIndexKeyCursor>;
+        declare static readonly __signalSignatures: TextIndexKeyCursor.SignalSignatures;
 
         // Constructors
 
@@ -19098,6 +19501,9 @@ export namespace Camel {
     }
 
     namespace TextIndexName {
+        // Signal signatures
+        interface SignalSignatures extends IndexName.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends IndexName.ConstructorProps {}
@@ -19105,6 +19511,7 @@ export namespace Camel {
 
     class TextIndexName extends IndexName {
         static $gtype: GObject.GType<TextIndexName>;
+        declare static readonly __signalSignatures: TextIndexName.SignalSignatures;
 
         // Constructors
 
@@ -19114,6 +19521,9 @@ export namespace Camel {
     }
 
     namespace Transport {
+        // Signal signatures
+        interface SignalSignatures extends Service.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Service.ConstructorProps, Gio.Initable.ConstructorProps {}
@@ -19121,6 +19531,7 @@ export namespace Camel {
 
     abstract class Transport extends Service implements Gio.Initable {
         static $gtype: GObject.GType<Transport>;
+        declare static readonly __signalSignatures: Transport.SignalSignatures;
 
         // Constructors
 
@@ -19777,6 +20188,9 @@ export namespace Camel {
     }
 
     namespace VTrashFolder {
+        // Signal signatures
+        interface SignalSignatures extends VeeFolder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends VeeFolder.ConstructorProps {}
@@ -19784,6 +20198,7 @@ export namespace Camel {
 
     class VTrashFolder extends VeeFolder {
         static $gtype: GObject.GType<VTrashFolder>;
+        declare static readonly __signalSignatures: VTrashFolder.SignalSignatures;
 
         // Constructors
 
@@ -19802,6 +20217,9 @@ export namespace Camel {
     }
 
     namespace VeeDataCache {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -19813,6 +20231,7 @@ export namespace Camel {
      */
     class VeeDataCache extends GObject.Object {
         static $gtype: GObject.GType<VeeDataCache>;
+        declare static readonly __signalSignatures: VeeDataCache.SignalSignatures;
 
         // Constructors
 
@@ -19880,6 +20299,9 @@ export namespace Camel {
     }
 
     namespace VeeFolder {
+        // Signal signatures
+        interface SignalSignatures extends Folder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Folder.ConstructorProps {
@@ -19890,6 +20312,7 @@ export namespace Camel {
 
     class VeeFolder extends Folder {
         static $gtype: GObject.GType<VeeFolder>;
+        declare static readonly __signalSignatures: VeeFolder.SignalSignatures;
 
         // Properties
 
@@ -20043,6 +20466,9 @@ export namespace Camel {
     }
 
     namespace VeeMessageInfo {
+        // Signal signatures
+        interface SignalSignatures extends MessageInfo.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MessageInfo.ConstructorProps {}
@@ -20050,6 +20476,7 @@ export namespace Camel {
 
     class VeeMessageInfo extends MessageInfo {
         static $gtype: GObject.GType<VeeMessageInfo>;
+        declare static readonly __signalSignatures: VeeMessageInfo.SignalSignatures;
 
         // Constructors
 
@@ -20069,6 +20496,9 @@ export namespace Camel {
     }
 
     namespace VeeMessageInfoData {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -20080,6 +20510,7 @@ export namespace Camel {
      */
     class VeeMessageInfoData extends GObject.Object {
         static $gtype: GObject.GType<VeeMessageInfoData>;
+        declare static readonly __signalSignatures: VeeMessageInfoData.SignalSignatures;
 
         // Constructors
 
@@ -20097,6 +20528,9 @@ export namespace Camel {
     }
 
     namespace VeeStore {
+        // Signal signatures
+        interface SignalSignatures extends Store.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Store.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -20107,6 +20541,7 @@ export namespace Camel {
 
     class VeeStore extends Store implements Gio.Initable {
         static $gtype: GObject.GType<VeeStore>;
+        declare static readonly __signalSignatures: VeeStore.SignalSignatures;
 
         // Properties
 
@@ -20617,6 +21052,9 @@ export namespace Camel {
     }
 
     namespace VeeSubfolderData {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -20628,6 +21066,7 @@ export namespace Camel {
      */
     class VeeSubfolderData extends GObject.Object {
         static $gtype: GObject.GType<VeeSubfolderData>;
+        declare static readonly __signalSignatures: VeeSubfolderData.SignalSignatures;
 
         // Constructors
 
@@ -20644,6 +21083,9 @@ export namespace Camel {
     }
 
     namespace VeeSummary {
+        // Signal signatures
+        interface SignalSignatures extends FolderSummary.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FolderSummary.ConstructorProps {}
@@ -20651,6 +21093,7 @@ export namespace Camel {
 
     class VeeSummary extends FolderSummary {
         static $gtype: GObject.GType<VeeSummary>;
+        declare static readonly __signalSignatures: VeeSummary.SignalSignatures;
 
         // Constructors
 

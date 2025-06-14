@@ -116,6 +116,9 @@ export namespace Lasem {
     function str_point_list_exents(point_list: string, extents: Extents): void;
     function str_to_uri(str: string): string;
     namespace DomCharacterData {
+        // Signal signatures
+        interface SignalSignatures extends DomNode.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DomNode.ConstructorProps {}
@@ -123,6 +126,7 @@ export namespace Lasem {
 
     abstract class DomCharacterData extends DomNode {
         static $gtype: GObject.GType<DomCharacterData>;
+        declare static readonly __signalSignatures: DomCharacterData.SignalSignatures;
 
         // Fields
 
@@ -144,6 +148,9 @@ export namespace Lasem {
     }
 
     namespace DomDocument {
+        // Signal signatures
+        interface SignalSignatures extends DomNode.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DomNode.ConstructorProps {}
@@ -151,6 +158,7 @@ export namespace Lasem {
 
     abstract class DomDocument extends DomNode {
         static $gtype: GObject.GType<DomDocument>;
+        declare static readonly __signalSignatures: DomDocument.SignalSignatures;
 
         // Fields
 
@@ -205,6 +213,9 @@ export namespace Lasem {
     }
 
     namespace DomDocumentFragment {
+        // Signal signatures
+        interface SignalSignatures extends DomNode.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DomNode.ConstructorProps {}
@@ -212,6 +223,7 @@ export namespace Lasem {
 
     abstract class DomDocumentFragment extends DomNode {
         static $gtype: GObject.GType<DomDocumentFragment>;
+        declare static readonly __signalSignatures: DomDocumentFragment.SignalSignatures;
 
         // Fields
 
@@ -227,6 +239,9 @@ export namespace Lasem {
     }
 
     namespace DomElement {
+        // Signal signatures
+        interface SignalSignatures extends DomNode.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DomNode.ConstructorProps {}
@@ -234,6 +249,7 @@ export namespace Lasem {
 
     abstract class DomElement extends DomNode {
         static $gtype: GObject.GType<DomElement>;
+        declare static readonly __signalSignatures: DomElement.SignalSignatures;
 
         // Fields
 
@@ -269,6 +285,9 @@ export namespace Lasem {
     }
 
     namespace DomNamedNodeMap {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -276,6 +295,7 @@ export namespace Lasem {
 
     abstract class DomNamedNodeMap extends GObject.Object {
         static $gtype: GObject.GType<DomNamedNodeMap>;
+        declare static readonly __signalSignatures: DomNamedNodeMap.SignalSignatures;
 
         // Fields
 
@@ -302,6 +322,9 @@ export namespace Lasem {
     }
 
     namespace DomNode {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -309,6 +332,7 @@ export namespace Lasem {
 
     abstract class DomNode extends GObject.Object {
         static $gtype: GObject.GType<DomNode>;
+        declare static readonly __signalSignatures: DomNode.SignalSignatures;
 
         // Fields
 
@@ -402,6 +426,9 @@ export namespace Lasem {
     }
 
     namespace DomNodeList {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -409,6 +436,7 @@ export namespace Lasem {
 
     abstract class DomNodeList extends GObject.Object {
         static $gtype: GObject.GType<DomNodeList>;
+        declare static readonly __signalSignatures: DomNodeList.SignalSignatures;
 
         // Fields
 
@@ -432,6 +460,9 @@ export namespace Lasem {
     }
 
     namespace DomText {
+        // Signal signatures
+        interface SignalSignatures extends DomCharacterData.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DomCharacterData.ConstructorProps {}
@@ -439,6 +470,7 @@ export namespace Lasem {
 
     class DomText extends DomCharacterData {
         static $gtype: GObject.GType<DomText>;
+        declare static readonly __signalSignatures: DomText.SignalSignatures;
 
         // Fields
 
@@ -454,6 +486,9 @@ export namespace Lasem {
     }
 
     namespace DomView {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -461,6 +496,7 @@ export namespace Lasem {
 
     abstract class DomView extends GObject.Object {
         static $gtype: GObject.GType<DomView>;
+        declare static readonly __signalSignatures: DomView.SignalSignatures;
 
         // Fields
 

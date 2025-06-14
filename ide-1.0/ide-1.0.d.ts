@@ -983,6 +983,9 @@ export namespace Ide {
         BACKGROUND,
     }
     namespace Application {
+        // Signal signatures
+        interface SignalSignatures extends Dazzle.Application.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -993,6 +996,7 @@ export namespace Ide {
 
     class Application extends Dazzle.Application implements Gio.ActionGroup, Gio.ActionMap {
         static $gtype: GObject.GType<Application>;
+        declare static readonly __signalSignatures: Application.SignalSignatures;
 
         // Constructors
 
@@ -1536,6 +1540,9 @@ export namespace Ide {
     }
 
     namespace BackForwardItem {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -1546,6 +1553,7 @@ export namespace Ide {
 
     class BackForwardItem extends Object {
         static $gtype: GObject.GType<BackForwardItem>;
+        declare static readonly __signalSignatures: BackForwardItem.SignalSignatures;
 
         // Properties
 
@@ -1592,6 +1600,11 @@ export namespace Ide {
             (object: BackForwardItem): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {
+            'navigate-to': NavigateTo;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -1606,6 +1619,7 @@ export namespace Ide {
 
     class BackForwardList extends Object {
         static $gtype: GObject.GType<BackForwardList>;
+        declare static readonly __signalSignatures: BackForwardList.SignalSignatures;
 
         // Properties
 
@@ -1624,6 +1638,18 @@ export namespace Ide {
 
         // Signals
 
+        connect<K extends keyof BackForwardList.SignalSignatures>(
+            signal: K,
+            callback: BackForwardList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BackForwardList.SignalSignatures>(
+            signal: K,
+            callback: BackForwardList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BackForwardList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BackForwardList.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1683,6 +1709,16 @@ export namespace Ide {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GtkSource.Buffer.SignalSignatures {
+            'cursor-moved': CursorMoved;
+            destroy: Destroy;
+            'line-flags-changed': LineFlagsChanged;
+            loaded: Loaded;
+            saved: Saved;
+            'symbol-resolver-loaded': SymbolResolverLoaded;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GtkSource.Buffer.ConstructorProps {
@@ -1705,6 +1741,7 @@ export namespace Ide {
 
     class Buffer extends GtkSource.Buffer {
         static $gtype: GObject.GType<Buffer>;
+        declare static readonly __signalSignatures: Buffer.SignalSignatures;
 
         // Properties
 
@@ -1737,6 +1774,9 @@ export namespace Ide {
 
         // Signals
 
+        connect<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
+        connect_after<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
+        emit<K extends keyof Buffer.SignalSignatures>(signal: K, ...args: Parameters<Buffer.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1970,6 +2010,11 @@ export namespace Ide {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {
+            changed: Changed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -1979,6 +2024,7 @@ export namespace Ide {
 
     class BufferChangeMonitor extends Object {
         static $gtype: GObject.GType<BufferChangeMonitor>;
+        declare static readonly __signalSignatures: BufferChangeMonitor.SignalSignatures;
 
         // Properties
 
@@ -1992,6 +2038,18 @@ export namespace Ide {
 
         // Signals
 
+        connect<K extends keyof BufferChangeMonitor.SignalSignatures>(
+            signal: K,
+            callback: BufferChangeMonitor.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BufferChangeMonitor.SignalSignatures>(
+            signal: K,
+            callback: BufferChangeMonitor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BufferChangeMonitor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BufferChangeMonitor.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2047,6 +2105,18 @@ export namespace Ide {
             (buffer: Buffer): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {
+            'buffer-focus-enter': BufferFocusEnter;
+            'buffer-focus-leave': BufferFocusLeave;
+            'buffer-loaded': BufferLoaded;
+            'buffer-saved': BufferSaved;
+            'buffer-unloaded': BufferUnloaded;
+            'create-buffer': CreateBuffer;
+            'load-buffer': LoadBuffer;
+            'save-buffer': SaveBuffer;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -2065,6 +2135,7 @@ export namespace Ide {
 
     class BufferManager<A extends GObject.Object = GObject.Object> extends Object implements Gio.ListModel<A> {
         static $gtype: GObject.GType<BufferManager>;
+        declare static readonly __signalSignatures: BufferManager.SignalSignatures;
 
         // Properties
 
@@ -2093,6 +2164,18 @@ export namespace Ide {
 
         // Signals
 
+        connect<K extends keyof BufferManager.SignalSignatures>(
+            signal: K,
+            callback: BufferManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BufferManager.SignalSignatures>(
+            signal: K,
+            callback: BufferManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BufferManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BufferManager.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2913,6 +2996,13 @@ export namespace Ide {
             (pipeline: BuildPipeline): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {
+            'build-failed': BuildFailed;
+            'build-finished': BuildFinished;
+            'build-started': BuildStarted;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2935,6 +3025,7 @@ export namespace Ide {
 
     class BuildManager extends Object implements Gio.ActionGroup, Gio.Initable {
         static $gtype: GObject.GType<BuildManager>;
+        declare static readonly __signalSignatures: BuildManager.SignalSignatures;
 
         // Properties
 
@@ -3017,6 +3108,18 @@ export namespace Ide {
 
         // Signals
 
+        connect<K extends keyof BuildManager.SignalSignatures>(
+            signal: K,
+            callback: BuildManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BuildManager.SignalSignatures>(
+            signal: K,
+            callback: BuildManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BuildManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BuildManager.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -4122,6 +4225,13 @@ export namespace Ide {
             (phase: BuildPhase): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {
+            diagnostic: Diagnostic;
+            finished: Finished;
+            started: Started;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -4168,6 +4278,7 @@ export namespace Ide {
      */
     class BuildPipeline extends Object implements Gio.Initable {
         static $gtype: GObject.GType<BuildPipeline>;
+        declare static readonly __signalSignatures: BuildPipeline.SignalSignatures;
 
         // Properties
 
@@ -4194,6 +4305,14 @@ export namespace Ide {
 
         // Signals
 
+        connect_after<K extends keyof BuildPipeline.SignalSignatures>(
+            signal: K,
+            callback: BuildPipeline.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BuildPipeline.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BuildPipeline.SignalSignatures[K]>
+        ): void;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
         connect_after(signal: 'diagnostic', callback: (_source: this, diagnostic: Diagnostic) => void): number;
@@ -4951,6 +5070,13 @@ export namespace Ide {
             (reaper: Dazzle.DirectoryReaper): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {
+            chain: Chain;
+            query: Query;
+            reap: Reap;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -4967,6 +5093,7 @@ export namespace Ide {
 
     class BuildStage extends Object {
         static $gtype: GObject.GType<BuildStage>;
+        declare static readonly __signalSignatures: BuildStage.SignalSignatures;
 
         // Properties
 
@@ -5055,6 +5182,18 @@ export namespace Ide {
 
         // Signals
 
+        connect<K extends keyof BuildStage.SignalSignatures>(
+            signal: K,
+            callback: BuildStage.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BuildStage.SignalSignatures>(
+            signal: K,
+            callback: BuildStage.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BuildStage.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BuildStage.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -5158,6 +5297,9 @@ export namespace Ide {
     }
 
     namespace BuildStageLauncher {
+        // Signal signatures
+        interface SignalSignatures extends BuildStage.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends BuildStage.ConstructorProps {
@@ -5171,6 +5313,7 @@ export namespace Ide {
 
     class BuildStageLauncher extends BuildStage {
         static $gtype: GObject.GType<BuildStageLauncher>;
+        declare static readonly __signalSignatures: BuildStageLauncher.SignalSignatures;
 
         // Properties
 
@@ -5217,6 +5360,9 @@ export namespace Ide {
     }
 
     namespace BuildStageMkdirs {
+        // Signal signatures
+        interface SignalSignatures extends BuildStage.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends BuildStage.ConstructorProps {}
@@ -5224,6 +5370,7 @@ export namespace Ide {
 
     class BuildStageMkdirs extends BuildStage {
         static $gtype: GObject.GType<BuildStageMkdirs>;
+        declare static readonly __signalSignatures: BuildStageMkdirs.SignalSignatures;
 
         // Constructors
 
@@ -5239,6 +5386,9 @@ export namespace Ide {
     }
 
     namespace BuildStageTransfer {
+        // Signal signatures
+        interface SignalSignatures extends BuildStage.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends BuildStage.ConstructorProps {
@@ -5250,6 +5400,7 @@ export namespace Ide {
 
     class BuildStageTransfer extends BuildStage {
         static $gtype: GObject.GType<BuildStageTransfer>;
+        declare static readonly __signalSignatures: BuildStageTransfer.SignalSignatures;
 
         // Properties
 
@@ -5269,6 +5420,9 @@ export namespace Ide {
     }
 
     namespace BuildconfigConfiguration {
+        // Signal signatures
+        interface SignalSignatures extends Configuration.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Configuration.ConstructorProps {
@@ -5279,6 +5433,7 @@ export namespace Ide {
 
     class BuildconfigConfiguration extends Configuration {
         static $gtype: GObject.GType<BuildconfigConfiguration>;
+        declare static readonly __signalSignatures: BuildconfigConfiguration.SignalSignatures;
 
         // Properties
 
@@ -5302,6 +5457,9 @@ export namespace Ide {
     }
 
     namespace BuildconfigConfigurationProvider {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, ConfigurationProvider.ConstructorProps {}
@@ -5309,6 +5467,7 @@ export namespace Ide {
 
     class BuildconfigConfigurationProvider extends GObject.Object implements ConfigurationProvider {
         static $gtype: GObject.GType<BuildconfigConfigurationProvider>;
+        declare static readonly __signalSignatures: BuildconfigConfigurationProvider.SignalSignatures;
 
         // Constructors
 
@@ -5792,6 +5951,9 @@ export namespace Ide {
     }
 
     namespace CompletionItem {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5799,6 +5961,7 @@ export namespace Ide {
 
     abstract class CompletionItem extends GObject.Object {
         static $gtype: GObject.GType<CompletionItem>;
+        declare static readonly __signalSignatures: CompletionItem.SignalSignatures;
 
         // Constructors
 
@@ -5834,6 +5997,9 @@ export namespace Ide {
     }
 
     namespace CompletionResults {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5843,6 +6009,7 @@ export namespace Ide {
 
     class CompletionResults extends GObject.Object {
         static $gtype: GObject.GType<CompletionResults>;
+        declare static readonly __signalSignatures: CompletionResults.SignalSignatures;
 
         // Properties
 
@@ -5871,6 +6038,9 @@ export namespace Ide {
     }
 
     namespace CompletionWords {
+        // Signal signatures
+        interface SignalSignatures extends GtkSource.CompletionWords.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5880,6 +6050,7 @@ export namespace Ide {
 
     class CompletionWords extends GtkSource.CompletionWords implements GtkSource.CompletionProvider {
         static $gtype: GObject.GType<CompletionWords>;
+        declare static readonly __signalSignatures: CompletionWords.SignalSignatures;
 
         // Constructors
 
@@ -6573,6 +6744,11 @@ export namespace Ide {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {
+            changed: Changed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -6604,6 +6780,7 @@ export namespace Ide {
 
     class Configuration extends Object {
         static $gtype: GObject.GType<Configuration>;
+        declare static readonly __signalSignatures: Configuration.SignalSignatures;
 
         // Properties
 
@@ -6661,6 +6838,18 @@ export namespace Ide {
 
         // Signals
 
+        connect<K extends keyof Configuration.SignalSignatures>(
+            signal: K,
+            callback: Configuration.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Configuration.SignalSignatures>(
+            signal: K,
+            callback: Configuration.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Configuration.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Configuration.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -6795,6 +6984,11 @@ export namespace Ide {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {
+            invalidate: Invalidate;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -6812,6 +7006,7 @@ export namespace Ide {
         implements Gio.AsyncInitable<ConfigurationManager>, Gio.ListModel<A>
     {
         static $gtype: GObject.GType<ConfigurationManager>;
+        declare static readonly __signalSignatures: ConfigurationManager.SignalSignatures;
 
         // Properties
 
@@ -6828,6 +7023,18 @@ export namespace Ide {
 
         // Signals
 
+        connect<K extends keyof ConfigurationManager.SignalSignatures>(
+            signal: K,
+            callback: ConfigurationManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ConfigurationManager.SignalSignatures>(
+            signal: K,
+            callback: ConfigurationManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ConfigurationManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ConfigurationManager.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -7608,6 +7815,11 @@ export namespace Ide {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            loaded: Loaded;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps {
@@ -7640,6 +7852,7 @@ export namespace Ide {
 
     class Context extends GObject.Object implements Gio.AsyncInitable<Context> {
         static $gtype: GObject.GType<Context>;
+        declare static readonly __signalSignatures: Context.SignalSignatures;
 
         // Properties
 
@@ -7685,6 +7898,15 @@ export namespace Ide {
 
         // Signals
 
+        connect<K extends keyof Context.SignalSignatures>(signal: K, callback: Context.SignalSignatures[K]): number;
+        connect_after<K extends keyof Context.SignalSignatures>(
+            signal: K,
+            callback: Context.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Context.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Context.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -8554,6 +8776,9 @@ export namespace Ide {
     }
 
     namespace Cursor {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -8564,6 +8789,7 @@ export namespace Ide {
 
     class Cursor extends GObject.Object {
         static $gtype: GObject.GType<Cursor>;
+        declare static readonly __signalSignatures: Cursor.SignalSignatures;
 
         // Properties
 
@@ -8587,6 +8813,9 @@ export namespace Ide {
     }
 
     namespace Device {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -8600,6 +8829,7 @@ export namespace Ide {
 
     abstract class Device extends Object {
         static $gtype: GObject.GType<Device>;
+        declare static readonly __signalSignatures: Device.SignalSignatures;
 
         // Properties
 
@@ -8672,6 +8902,12 @@ export namespace Ide {
             (object: DeviceProvider, p0: Device): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {
+            'device-added': DeviceAdded;
+            'device-removed': DeviceRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -8683,6 +8919,7 @@ export namespace Ide {
 
     class DeviceManager<A extends GObject.Object = GObject.Object> extends Object implements Gio.ListModel<A> {
         static $gtype: GObject.GType<DeviceManager>;
+        declare static readonly __signalSignatures: DeviceManager.SignalSignatures;
 
         // Properties
 
@@ -8696,6 +8933,18 @@ export namespace Ide {
 
         // Signals
 
+        connect<K extends keyof DeviceManager.SignalSignatures>(
+            signal: K,
+            callback: DeviceManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DeviceManager.SignalSignatures>(
+            signal: K,
+            callback: DeviceManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DeviceManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DeviceManager.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -9275,6 +9524,11 @@ export namespace Ide {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {
+            changed: Changed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -9284,6 +9538,7 @@ export namespace Ide {
 
     class DiagnosticsManager extends Object implements Gio.Initable {
         static $gtype: GObject.GType<DiagnosticsManager>;
+        declare static readonly __signalSignatures: DiagnosticsManager.SignalSignatures;
 
         // Properties
 
@@ -9297,6 +9552,18 @@ export namespace Ide {
 
         // Signals
 
+        connect<K extends keyof DiagnosticsManager.SignalSignatures>(
+            signal: K,
+            callback: DiagnosticsManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DiagnosticsManager.SignalSignatures>(
+            signal: K,
+            callback: DiagnosticsManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DiagnosticsManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DiagnosticsManager.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -9853,6 +10120,9 @@ export namespace Ide {
     }
 
     namespace DirectoryBuildSystem {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9866,6 +10136,7 @@ export namespace Ide {
 
     class DirectoryBuildSystem extends Object implements Gio.AsyncInitable<DirectoryBuildSystem>, BuildSystem {
         static $gtype: GObject.GType<DirectoryBuildSystem>;
+        declare static readonly __signalSignatures: DirectoryBuildSystem.SignalSignatures;
 
         // Properties
 
@@ -10596,6 +10867,9 @@ export namespace Ide {
     }
 
     namespace DirectoryVcs {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -10606,6 +10880,7 @@ export namespace Ide {
 
     class DirectoryVcs extends Object implements Gio.AsyncInitable<DirectoryVcs>, Vcs {
         static $gtype: GObject.GType<DirectoryVcs>;
+        declare static readonly __signalSignatures: DirectoryVcs.SignalSignatures;
 
         // Constructors
 
@@ -11344,6 +11619,9 @@ export namespace Ide {
     }
 
     namespace Doap {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -11362,6 +11640,7 @@ export namespace Ide {
 
     class Doap extends GObject.Object {
         static $gtype: GObject.GType<Doap>;
+        declare static readonly __signalSignatures: Doap.SignalSignatures;
 
         // Properties
 
@@ -11410,6 +11689,9 @@ export namespace Ide {
     }
 
     namespace DoapPerson {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -11420,6 +11702,7 @@ export namespace Ide {
 
     class DoapPerson extends GObject.Object {
         static $gtype: GObject.GType<DoapPerson>;
+        declare static readonly __signalSignatures: DoapPerson.SignalSignatures;
 
         // Properties
 
@@ -11455,6 +11738,12 @@ export namespace Ide {
             (object: Gtk.Widget): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Dazzle.DockOverlay.SignalSignatures {
+            'view-added': ViewAdded;
+            'view-removed': ViewRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -11474,6 +11763,7 @@ export namespace Ide {
         implements Atk.ImplementorIface, Dazzle.Dock, Dazzle.DockItem, Gtk.Buildable, Perspective
     {
         static $gtype: GObject.GType<EditorPerspective>;
+        declare static readonly __signalSignatures: EditorPerspective.SignalSignatures;
 
         // Properties
 
@@ -11488,6 +11778,18 @@ export namespace Ide {
 
         // Signals
 
+        connect<K extends keyof EditorPerspective.SignalSignatures>(
+            signal: K,
+            callback: EditorPerspective.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof EditorPerspective.SignalSignatures>(
+            signal: K,
+            callback: EditorPerspective.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EditorPerspective.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EditorPerspective.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -16451,6 +16753,11 @@ export namespace Ide {
             (object: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends LayoutView.SignalSignatures {
+            'request-documentation': RequestDocumentation;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -16464,6 +16771,7 @@ export namespace Ide {
 
     class EditorView extends LayoutView implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<EditorView>;
+        declare static readonly __signalSignatures: EditorView.SignalSignatures;
 
         // Properties
 
@@ -16477,6 +16785,18 @@ export namespace Ide {
 
         // Signals
 
+        connect<K extends keyof EditorView.SignalSignatures>(
+            signal: K,
+            callback: EditorView.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof EditorView.SignalSignatures>(
+            signal: K,
+            callback: EditorView.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EditorView.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EditorView.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -16938,6 +17258,11 @@ export namespace Ide {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            changed: Changed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -16947,6 +17272,7 @@ export namespace Ide {
 
     class Environment<A extends GObject.Object = GObject.Object> extends GObject.Object implements Gio.ListModel<A> {
         static $gtype: GObject.GType<Environment>;
+        declare static readonly __signalSignatures: Environment.SignalSignatures;
 
         // Constructors
 
@@ -16958,6 +17284,18 @@ export namespace Ide {
 
         // Signals
 
+        connect<K extends keyof Environment.SignalSignatures>(
+            signal: K,
+            callback: Environment.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Environment.SignalSignatures>(
+            signal: K,
+            callback: Environment.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Environment.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Environment.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -17520,6 +17858,9 @@ export namespace Ide {
     }
 
     namespace EnvironmentVariable {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -17530,6 +17871,7 @@ export namespace Ide {
 
     class EnvironmentVariable extends GObject.Object {
         static $gtype: GObject.GType<EnvironmentVariable>;
+        declare static readonly __signalSignatures: EnvironmentVariable.SignalSignatures;
 
         // Properties
 
@@ -17555,6 +17897,9 @@ export namespace Ide {
     }
 
     namespace ExtensionAdapter {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -17569,6 +17914,7 @@ export namespace Ide {
 
     class ExtensionAdapter extends Object {
         static $gtype: GObject.GType<ExtensionAdapter>;
+        declare static readonly __signalSignatures: ExtensionAdapter.SignalSignatures;
 
         // Properties
 
@@ -17625,6 +17971,12 @@ export namespace Ide {
             (object: Peas.PluginInfo, p0: GObject.Object): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {
+            'extension-added': ExtensionAdded;
+            'extension-removed': ExtensionRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -17638,6 +17990,7 @@ export namespace Ide {
 
     class ExtensionSetAdapter extends Object {
         static $gtype: GObject.GType<ExtensionSetAdapter>;
+        declare static readonly __signalSignatures: ExtensionSetAdapter.SignalSignatures;
 
         // Properties
 
@@ -17665,6 +18018,18 @@ export namespace Ide {
 
         // Signals
 
+        connect<K extends keyof ExtensionSetAdapter.SignalSignatures>(
+            signal: K,
+            callback: ExtensionSetAdapter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExtensionSetAdapter.SignalSignatures>(
+            signal: K,
+            callback: ExtensionSetAdapter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExtensionSetAdapter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExtensionSetAdapter.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -17708,6 +18073,9 @@ export namespace Ide {
     }
 
     namespace File {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -17723,6 +18091,7 @@ export namespace Ide {
 
     class File extends Object {
         static $gtype: GObject.GType<File>;
+        declare static readonly __signalSignatures: File.SignalSignatures;
 
         // Properties
 
@@ -17800,6 +18169,9 @@ export namespace Ide {
     }
 
     namespace FileSettings {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -17849,6 +18221,7 @@ export namespace Ide {
 
     class FileSettings extends Object {
         static $gtype: GObject.GType<FileSettings>;
+        declare static readonly __signalSignatures: FileSettings.SignalSignatures;
 
         // Properties
 
@@ -17973,6 +18346,9 @@ export namespace Ide {
     }
 
     namespace FormatterOptions {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -17985,6 +18361,7 @@ export namespace Ide {
 
     class FormatterOptions extends GObject.Object {
         static $gtype: GObject.GType<FormatterOptions>;
+        declare static readonly __signalSignatures: FormatterOptions.SignalSignatures;
 
         // Properties
 
@@ -18014,6 +18391,9 @@ export namespace Ide {
     }
 
     namespace HighlightEngine {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -18024,6 +18404,7 @@ export namespace Ide {
 
     class HighlightEngine extends Object {
         static $gtype: GObject.GType<HighlightEngine>;
+        declare static readonly __signalSignatures: HighlightEngine.SignalSignatures;
 
         // Properties
 
@@ -18089,6 +18470,13 @@ export namespace Ide {
             (object: string): boolean;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {
+            notification: Notification;
+            'published-diagnostics': PublishedDiagnostics;
+            'supports-language': SupportsLanguage;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -18099,6 +18487,7 @@ export namespace Ide {
 
     class LangservClient extends Object {
         static $gtype: GObject.GType<LangservClient>;
+        declare static readonly __signalSignatures: LangservClient.SignalSignatures;
 
         // Properties
 
@@ -18115,6 +18504,18 @@ export namespace Ide {
 
         // Signals
 
+        connect<K extends keyof LangservClient.SignalSignatures>(
+            signal: K,
+            callback: LangservClient.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LangservClient.SignalSignatures>(
+            signal: K,
+            callback: LangservClient.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LangservClient.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LangservClient.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -18244,6 +18645,9 @@ export namespace Ide {
     }
 
     namespace LangservCompletionProvider {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -18259,6 +18663,7 @@ export namespace Ide {
         implements GtkSource.CompletionProvider, CompletionProvider
     {
         static $gtype: GObject.GType<LangservCompletionProvider>;
+        declare static readonly __signalSignatures: LangservCompletionProvider.SignalSignatures;
 
         // Properties
 
@@ -18962,6 +19367,9 @@ export namespace Ide {
     }
 
     namespace LangservDiagnosticProvider {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps, DiagnosticProvider.ConstructorProps {
@@ -18971,6 +19379,7 @@ export namespace Ide {
 
     abstract class LangservDiagnosticProvider extends Object implements DiagnosticProvider {
         static $gtype: GObject.GType<LangservDiagnosticProvider>;
+        declare static readonly __signalSignatures: LangservDiagnosticProvider.SignalSignatures;
 
         // Properties
 
@@ -19062,6 +19471,9 @@ export namespace Ide {
     }
 
     namespace LangservFormatter {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps, Formatter.ConstructorProps {
@@ -19071,6 +19483,7 @@ export namespace Ide {
 
     class LangservFormatter extends Object implements Formatter {
         static $gtype: GObject.GType<LangservFormatter>;
+        declare static readonly __signalSignatures: LangservFormatter.SignalSignatures;
 
         // Properties
 
@@ -19591,6 +20004,9 @@ export namespace Ide {
     }
 
     namespace LangservHighlighter {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps, Highlighter.ConstructorProps {
@@ -19600,6 +20016,7 @@ export namespace Ide {
 
     class LangservHighlighter extends Object implements Highlighter {
         static $gtype: GObject.GType<LangservHighlighter>;
+        declare static readonly __signalSignatures: LangservHighlighter.SignalSignatures;
 
         // Properties
 
@@ -19681,6 +20098,9 @@ export namespace Ide {
     }
 
     namespace LangservRenameProvider {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps, RenameProvider.ConstructorProps {
@@ -19691,6 +20111,7 @@ export namespace Ide {
 
     abstract class LangservRenameProvider extends Object implements RenameProvider {
         static $gtype: GObject.GType<LangservRenameProvider>;
+        declare static readonly __signalSignatures: LangservRenameProvider.SignalSignatures;
 
         // Properties
 
@@ -19827,6 +20248,9 @@ export namespace Ide {
     }
 
     namespace LangservSymbolNode {
+        // Signal signatures
+        interface SignalSignatures extends SymbolNode.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SymbolNode.ConstructorProps {}
@@ -19834,6 +20258,7 @@ export namespace Ide {
 
     class LangservSymbolNode extends SymbolNode {
         static $gtype: GObject.GType<LangservSymbolNode>;
+        declare static readonly __signalSignatures: LangservSymbolNode.SignalSignatures;
 
         // Constructors
 
@@ -19859,6 +20284,9 @@ export namespace Ide {
     }
 
     namespace LangservSymbolResolver {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps, SymbolResolver.ConstructorProps {
@@ -19868,6 +20296,7 @@ export namespace Ide {
 
     abstract class LangservSymbolResolver extends Object implements SymbolResolver {
         static $gtype: GObject.GType<LangservSymbolResolver>;
+        declare static readonly __signalSignatures: LangservSymbolResolver.SignalSignatures;
 
         // Properties
 
@@ -20076,6 +20505,9 @@ export namespace Ide {
     }
 
     namespace LangservSymbolTree {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, SymbolTree.ConstructorProps {}
@@ -20083,6 +20515,7 @@ export namespace Ide {
 
     class LangservSymbolTree extends GObject.Object implements SymbolTree {
         static $gtype: GObject.GType<LangservSymbolTree>;
+        declare static readonly __signalSignatures: LangservSymbolTree.SignalSignatures;
 
         // Constructors
 
@@ -20561,6 +20994,9 @@ export namespace Ide {
     }
 
     namespace Layout {
+        // Signal signatures
+        interface SignalSignatures extends Dazzle.DockBin.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -20576,6 +21012,7 @@ export namespace Ide {
 
     class Layout extends Dazzle.DockBin implements Atk.ImplementorIface, Dazzle.Dock, Dazzle.DockItem, Gtk.Buildable {
         static $gtype: GObject.GType<Layout>;
+        declare static readonly __signalSignatures: Layout.SignalSignatures;
 
         // Properties
 
@@ -25379,6 +25816,11 @@ export namespace Ide {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Bin.SignalSignatures {
+            empty: Empty;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -25389,6 +25831,7 @@ export namespace Ide {
 
     class LayoutGrid extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<LayoutGrid>;
+        declare static readonly __signalSignatures: LayoutGrid.SignalSignatures;
 
         // Constructors
 
@@ -25400,6 +25843,18 @@ export namespace Ide {
 
         // Signals
 
+        connect<K extends keyof LayoutGrid.SignalSignatures>(
+            signal: K,
+            callback: LayoutGrid.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LayoutGrid.SignalSignatures>(
+            signal: K,
+            callback: LayoutGrid.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LayoutGrid.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LayoutGrid.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -25873,6 +26328,9 @@ export namespace Ide {
     }
 
     namespace LayoutPane {
+        // Signal signatures
+        interface SignalSignatures extends Dazzle.DockBinEdge.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -25884,6 +26342,7 @@ export namespace Ide {
 
     class LayoutPane extends Dazzle.DockBinEdge implements Atk.ImplementorIface, Dazzle.DockItem, Gtk.Buildable {
         static $gtype: GObject.GType<LayoutPane>;
+        declare static readonly __signalSignatures: LayoutPane.SignalSignatures;
 
         // Constructors
 
@@ -30320,6 +30779,12 @@ export namespace Ide {
             (view: LayoutView, split_type: number, file: Gio.File): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Bin.SignalSignatures {
+            empty: Empty;
+            split: Split;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -30333,6 +30798,7 @@ export namespace Ide {
 
     class LayoutStack extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<LayoutStack>;
+        declare static readonly __signalSignatures: LayoutStack.SignalSignatures;
 
         // Properties
 
@@ -30351,6 +30817,18 @@ export namespace Ide {
 
         // Signals
 
+        connect<K extends keyof LayoutStack.SignalSignatures>(
+            signal: K,
+            callback: LayoutStack.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LayoutStack.SignalSignatures>(
+            signal: K,
+            callback: LayoutStack.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LayoutStack.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LayoutStack.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -30818,6 +31296,9 @@ export namespace Ide {
     }
 
     namespace LayoutView {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -30836,6 +31317,7 @@ export namespace Ide {
 
     class LayoutView extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<LayoutView>;
+        declare static readonly __signalSignatures: LayoutView.SignalSignatures;
 
         // Properties
 
@@ -31379,6 +31861,9 @@ export namespace Ide {
     }
 
     namespace LocalDevice {
+        // Signal signatures
+        interface SignalSignatures extends Device.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Device.ConstructorProps {}
@@ -31386,6 +31871,7 @@ export namespace Ide {
 
     class LocalDevice extends Device {
         static $gtype: GObject.GType<LocalDevice>;
+        declare static readonly __signalSignatures: LocalDevice.SignalSignatures;
 
         // Constructors
 
@@ -31401,6 +31887,11 @@ export namespace Ide {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            destroy: Destroy;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -31410,6 +31901,7 @@ export namespace Ide {
 
     class Object extends GObject.Object {
         static $gtype: GObject.GType<Object>;
+        declare static readonly __signalSignatures: Object.SignalSignatures;
 
         // Properties
 
@@ -31425,6 +31917,9 @@ export namespace Ide {
 
         // Signals
 
+        connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -31474,6 +31969,9 @@ export namespace Ide {
     }
 
     namespace OmniBar {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -31485,6 +31983,7 @@ export namespace Ide {
 
     class OmniBar extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<OmniBar>;
+        declare static readonly __signalSignatures: OmniBar.SignalSignatures;
 
         // Constructors
 
@@ -31964,6 +32463,12 @@ export namespace Ide {
             (object: SearchResult): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {
+            activate: Activate;
+            'result-activated': ResultActivated;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -31977,6 +32482,7 @@ export namespace Ide {
 
     class OmniSearchDisplay extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<OmniSearchDisplay>;
+        declare static readonly __signalSignatures: OmniSearchDisplay.SignalSignatures;
 
         // Properties
 
@@ -31991,6 +32497,18 @@ export namespace Ide {
 
         // Signals
 
+        connect<K extends keyof OmniSearchDisplay.SignalSignatures>(
+            signal: K,
+            callback: OmniSearchDisplay.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OmniSearchDisplay.SignalSignatures>(
+            signal: K,
+            callback: OmniSearchDisplay.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OmniSearchDisplay.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OmniSearchDisplay.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -32483,6 +33001,13 @@ export namespace Ide {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Entry.SignalSignatures {
+            'clear-search': ClearSearch;
+            'move-next-result': MoveNextResult;
+            'move-previous-result': MovePreviousResult;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -32498,6 +33023,7 @@ export namespace Ide {
         implements Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, Gtk.Editable
     {
         static $gtype: GObject.GType<OmniSearchEntry>;
+        declare static readonly __signalSignatures: OmniSearchEntry.SignalSignatures;
 
         // Constructors
 
@@ -32509,6 +33035,18 @@ export namespace Ide {
 
         // Signals
 
+        connect<K extends keyof OmniSearchEntry.SignalSignatures>(
+            signal: K,
+            callback: OmniSearchEntry.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OmniSearchEntry.SignalSignatures>(
+            signal: K,
+            callback: OmniSearchEntry.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OmniSearchEntry.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OmniSearchEntry.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -37070,6 +37608,12 @@ export namespace Ide {
             (object: SearchResult): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {
+            'result-activated': ResultActivated;
+            'result-selected': ResultSelected;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -37083,6 +37627,7 @@ export namespace Ide {
 
     class OmniSearchGroup extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<OmniSearchGroup>;
+        declare static readonly __signalSignatures: OmniSearchGroup.SignalSignatures;
 
         // Properties
 
@@ -37096,6 +37641,18 @@ export namespace Ide {
 
         // Signals
 
+        connect<K extends keyof OmniSearchGroup.SignalSignatures>(
+            signal: K,
+            callback: OmniSearchGroup.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof OmniSearchGroup.SignalSignatures>(
+            signal: K,
+            callback: OmniSearchGroup.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof OmniSearchGroup.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<OmniSearchGroup.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -37588,6 +38145,9 @@ export namespace Ide {
     }
 
     namespace OmniSearchRow {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.ListBoxRow.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -37602,6 +38162,7 @@ export namespace Ide {
 
     class OmniSearchRow extends Gtk.ListBoxRow implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<OmniSearchRow>;
+        declare static readonly __signalSignatures: OmniSearchRow.SignalSignatures;
 
         // Properties
 
@@ -38064,6 +38625,9 @@ export namespace Ide {
     }
 
     namespace PkconTransfer {
+        // Signal signatures
+        interface SignalSignatures extends Transfer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Transfer.ConstructorProps {
@@ -38073,6 +38637,7 @@ export namespace Ide {
 
     class PkconTransfer extends Transfer {
         static $gtype: GObject.GType<PkconTransfer>;
+        declare static readonly __signalSignatures: PkconTransfer.SignalSignatures;
 
         // Properties
 
@@ -38088,6 +38653,9 @@ export namespace Ide {
     }
 
     namespace PreferencesPerspective {
+        // Signal signatures
+        interface SignalSignatures extends Dazzle.PreferencesView.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -38103,6 +38671,7 @@ export namespace Ide {
         implements Atk.ImplementorIface, Dazzle.Preferences, Gtk.Buildable, Perspective
     {
         static $gtype: GObject.GType<PreferencesPerspective>;
+        declare static readonly __signalSignatures: PreferencesPerspective.SignalSignatures;
 
         // Constructors
 
@@ -38863,6 +39432,9 @@ export namespace Ide {
     }
 
     namespace Progress {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -38874,6 +39446,7 @@ export namespace Ide {
 
     class Progress extends GObject.Object {
         static $gtype: GObject.GType<Progress>;
+        declare static readonly __signalSignatures: Progress.SignalSignatures;
 
         // Properties
 
@@ -38930,6 +39503,12 @@ export namespace Ide {
             (object: Gio.File): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {
+            'file-renamed': FileRenamed;
+            'file-trashed': FileTrashed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -38941,6 +39520,7 @@ export namespace Ide {
 
     class Project extends Object {
         static $gtype: GObject.GType<Project>;
+        declare static readonly __signalSignatures: Project.SignalSignatures;
 
         // Properties
 
@@ -38956,6 +39536,15 @@ export namespace Ide {
 
         // Signals
 
+        connect<K extends keyof Project.SignalSignatures>(signal: K, callback: Project.SignalSignatures[K]): number;
+        connect_after<K extends keyof Project.SignalSignatures>(
+            signal: K,
+            callback: Project.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Project.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Project.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -39048,6 +39637,9 @@ export namespace Ide {
     }
 
     namespace ProjectEdit {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -39058,6 +39650,7 @@ export namespace Ide {
 
     class ProjectEdit extends GObject.Object {
         static $gtype: GObject.GType<ProjectEdit>;
+        declare static readonly __signalSignatures: ProjectEdit.SignalSignatures;
 
         // Properties
 
@@ -39087,6 +39680,9 @@ export namespace Ide {
     }
 
     namespace ProjectFile {
+        // Signal signatures
+        interface SignalSignatures extends ProjectItem.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ProjectItem.ConstructorProps {
@@ -39102,6 +39698,7 @@ export namespace Ide {
 
     class ProjectFile extends ProjectItem {
         static $gtype: GObject.GType<ProjectFile>;
+        declare static readonly __signalSignatures: ProjectFile.SignalSignatures;
 
         // Properties
 
@@ -39142,6 +39739,9 @@ export namespace Ide {
     }
 
     namespace ProjectFiles {
+        // Signal signatures
+        interface SignalSignatures extends ProjectItem.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ProjectItem.ConstructorProps {}
@@ -39149,6 +39749,7 @@ export namespace Ide {
 
     class ProjectFiles extends ProjectItem {
         static $gtype: GObject.GType<ProjectFiles>;
+        declare static readonly __signalSignatures: ProjectFiles.SignalSignatures;
 
         // Constructors
 
@@ -39176,6 +39777,9 @@ export namespace Ide {
     }
 
     namespace ProjectInfo {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -39201,6 +39805,7 @@ export namespace Ide {
      */
     class ProjectInfo extends GObject.Object {
         static $gtype: GObject.GType<ProjectInfo>;
+        declare static readonly __signalSignatures: ProjectInfo.SignalSignatures;
 
         // Properties
 
@@ -39271,6 +39876,9 @@ export namespace Ide {
     }
 
     namespace ProjectItem {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -39280,6 +39888,7 @@ export namespace Ide {
 
     class ProjectItem extends Object {
         static $gtype: GObject.GType<ProjectItem>;
+        declare static readonly __signalSignatures: ProjectItem.SignalSignatures;
 
         // Properties
 
@@ -39310,6 +39919,9 @@ export namespace Ide {
     }
 
     namespace RecentProjects {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -39319,6 +39931,7 @@ export namespace Ide {
 
     class RecentProjects<A extends GObject.Object = GObject.Object> extends GObject.Object implements Gio.ListModel<A> {
         static $gtype: GObject.GType<RecentProjects>;
+        declare static readonly __signalSignatures: RecentProjects.SignalSignatures;
 
         // Constructors
 
@@ -39891,6 +40504,9 @@ export namespace Ide {
     }
 
     namespace RunButton {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -39902,6 +40518,7 @@ export namespace Ide {
 
     class RunButton extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<RunButton>;
+        declare static readonly __signalSignatures: RunButton.SignalSignatures;
 
         // Constructors
 
@@ -40381,6 +40998,12 @@ export namespace Ide {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {
+            run: Run;
+            stopped: Stopped;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -40396,6 +41019,7 @@ export namespace Ide {
 
     class RunManager extends Object implements Gio.ActionGroup, Gio.Initable {
         static $gtype: GObject.GType<RunManager>;
+        declare static readonly __signalSignatures: RunManager.SignalSignatures;
 
         // Properties
 
@@ -40414,6 +41038,18 @@ export namespace Ide {
 
         // Signals
 
+        connect<K extends keyof RunManager.SignalSignatures>(
+            signal: K,
+            callback: RunManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RunManager.SignalSignatures>(
+            signal: K,
+            callback: RunManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RunManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RunManager.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -41439,6 +42075,12 @@ export namespace Ide {
             (object: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {
+            exited: Exited;
+            spawned: Spawned;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -41454,6 +42096,7 @@ export namespace Ide {
 
     class Runner extends Object {
         static $gtype: GObject.GType<Runner>;
+        declare static readonly __signalSignatures: Runner.SignalSignatures;
 
         // Properties
 
@@ -41495,6 +42138,9 @@ export namespace Ide {
 
         // Signals
 
+        connect<K extends keyof Runner.SignalSignatures>(signal: K, callback: Runner.SignalSignatures[K]): number;
+        connect_after<K extends keyof Runner.SignalSignatures>(signal: K, callback: Runner.SignalSignatures[K]): number;
+        emit<K extends keyof Runner.SignalSignatures>(signal: K, ...args: Parameters<Runner.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -41573,6 +42219,9 @@ export namespace Ide {
     }
 
     namespace Runtime {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -41584,6 +42233,7 @@ export namespace Ide {
 
     class Runtime extends Object {
         static $gtype: GObject.GType<Runtime>;
+        declare static readonly __signalSignatures: Runtime.SignalSignatures;
 
         // Properties
 
@@ -41665,6 +42315,9 @@ export namespace Ide {
     }
 
     namespace RuntimeManager {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -41678,6 +42331,7 @@ export namespace Ide {
         implements Gio.Initable, Gio.ListModel<A>
     {
         static $gtype: GObject.GType<RuntimeManager>;
+        declare static readonly __signalSignatures: RuntimeManager.SignalSignatures;
 
         // Constructors
 
@@ -42386,6 +43040,14 @@ export namespace Ide {
             (object: SearchProvider, p0: SearchResult): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {
+            completed: Completed;
+            'count-set': CountSet;
+            'result-added': ResultAdded;
+            'result-removed': ResultRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -42393,6 +43055,7 @@ export namespace Ide {
 
     class SearchContext extends Object {
         static $gtype: GObject.GType<SearchContext>;
+        declare static readonly __signalSignatures: SearchContext.SignalSignatures;
 
         // Constructors
 
@@ -42402,6 +43065,18 @@ export namespace Ide {
 
         // Signals
 
+        connect<K extends keyof SearchContext.SignalSignatures>(
+            signal: K,
+            callback: SearchContext.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SearchContext.SignalSignatures>(
+            signal: K,
+            callback: SearchContext.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SearchContext.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SearchContext.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -42450,6 +43125,9 @@ export namespace Ide {
     }
 
     namespace SearchEngine {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -42457,6 +43135,7 @@ export namespace Ide {
 
     class SearchEngine extends Object {
         static $gtype: GObject.GType<SearchEngine>;
+        declare static readonly __signalSignatures: SearchEngine.SignalSignatures;
 
         // Constructors
 
@@ -42477,6 +43156,9 @@ export namespace Ide {
     }
 
     namespace SearchResult {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -42489,6 +43171,7 @@ export namespace Ide {
 
     class SearchResult extends Object {
         static $gtype: GObject.GType<SearchResult>;
+        declare static readonly __signalSignatures: SearchResult.SignalSignatures;
 
         // Properties
 
@@ -42531,6 +43214,11 @@ export namespace Ide {
             (object: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {
+            changed: Changed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -42554,6 +43242,7 @@ export namespace Ide {
      */
     class Settings extends Object {
         static $gtype: GObject.GType<Settings>;
+        declare static readonly __signalSignatures: Settings.SignalSignatures;
 
         // Properties
 
@@ -42572,6 +43261,15 @@ export namespace Ide {
 
         // Signals
 
+        connect<K extends keyof Settings.SignalSignatures>(signal: K, callback: Settings.SignalSignatures[K]): number;
+        connect_after<K extends keyof Settings.SignalSignatures>(
+            signal: K,
+            callback: Settings.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Settings.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Settings.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -42633,6 +43331,12 @@ export namespace Ide {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GtkSource.Map.SignalSignatures {
+            'hide-map': HideMap;
+            'show-map': ShowMap;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -42644,6 +43348,7 @@ export namespace Ide {
 
     class SourceMap extends GtkSource.Map implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<SourceMap>;
+        declare static readonly __signalSignatures: SourceMap.SignalSignatures;
 
         // Constructors
 
@@ -42653,6 +43358,15 @@ export namespace Ide {
 
         // Signals
 
+        connect<K extends keyof SourceMap.SignalSignatures>(signal: K, callback: SourceMap.SignalSignatures[K]): number;
+        connect_after<K extends keyof SourceMap.SignalSignatures>(
+            signal: K,
+            callback: SourceMap.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceMap.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceMap.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -43106,6 +43820,9 @@ export namespace Ide {
     }
 
     namespace SourceSnippet {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -43126,6 +43843,7 @@ export namespace Ide {
 
     class SourceSnippet extends GObject.Object {
         static $gtype: GObject.GType<SourceSnippet>;
+        declare static readonly __signalSignatures: SourceSnippet.SignalSignatures;
 
         // Properties
 
@@ -43177,6 +43895,9 @@ export namespace Ide {
     }
 
     namespace SourceSnippetChunk {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -43192,6 +43913,7 @@ export namespace Ide {
 
     class SourceSnippetChunk extends GObject.Object {
         static $gtype: GObject.GType<SourceSnippetChunk>;
+        declare static readonly __signalSignatures: SourceSnippetChunk.SignalSignatures;
 
         // Properties
 
@@ -43248,6 +43970,11 @@ export namespace Ide {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            changed: Changed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -43264,6 +43991,7 @@ export namespace Ide {
      */
     class SourceSnippetContext extends GObject.Object {
         static $gtype: GObject.GType<SourceSnippetContext>;
+        declare static readonly __signalSignatures: SourceSnippetContext.SignalSignatures;
 
         // Constructors
 
@@ -43275,6 +44003,18 @@ export namespace Ide {
 
         // Signals
 
+        connect<K extends keyof SourceSnippetContext.SignalSignatures>(
+            signal: K,
+            callback: SourceSnippetContext.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceSnippetContext.SignalSignatures>(
+            signal: K,
+            callback: SourceSnippetContext.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceSnippetContext.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceSnippetContext.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -43297,6 +44037,9 @@ export namespace Ide {
     }
 
     namespace SourceSnippets {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -43304,6 +44047,7 @@ export namespace Ide {
 
     class SourceSnippets extends GObject.Object {
         static $gtype: GObject.GType<SourceSnippets>;
+        declare static readonly __signalSignatures: SourceSnippets.SignalSignatures;
 
         // Constructors
 
@@ -43323,6 +44067,9 @@ export namespace Ide {
     }
 
     namespace SourceSnippetsManager {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -43330,6 +44077,7 @@ export namespace Ide {
 
     class SourceSnippetsManager extends GObject.Object {
         static $gtype: GObject.GType<SourceSnippetsManager>;
+        declare static readonly __signalSignatures: SourceSnippetsManager.SignalSignatures;
 
         // Constructors
 
@@ -43575,6 +44323,63 @@ export namespace Ide {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GtkSource.View.SignalSignatures {
+            action: Action;
+            'add-cursor': AddCursor;
+            'append-to-count': AppendToCount;
+            'begin-macro': BeginMacro;
+            'begin-rename': BeginRename;
+            'begin-user-action': BeginUserAction;
+            'capture-modifier': CaptureModifier;
+            'clear-count': ClearCount;
+            'clear-modifier': ClearModifier;
+            'clear-search': ClearSearch;
+            'clear-selection': ClearSelection;
+            'clear-snippets': ClearSnippets;
+            'cycle-completion': CycleCompletion;
+            'decrease-font-size': DecreaseFontSize;
+            'delete-selection': DeleteSelection;
+            'duplicate-entire-line': DuplicateEntireLine;
+            'end-macro': EndMacro;
+            'end-user-action': EndUserAction;
+            'find-references': FindReferences;
+            'focus-location': FocusLocation;
+            'format-selection': FormatSelection;
+            'goto-definition': GotoDefinition;
+            'hide-completion': HideCompletion;
+            'increase-font-size': IncreaseFontSize;
+            'indent-selection': IndentSelection;
+            'insert-modifier': InsertModifier;
+            jump: Jump;
+            'move-error': MoveError;
+            'move-search': MoveSearch;
+            movement: Movement;
+            'paste-clipboard-extended': PasteClipboardExtended;
+            'pop-selection': PopSelection;
+            'pop-snippet': PopSnippet;
+            'push-selection': PushSelection;
+            'push-snippet': PushSnippet;
+            'rebuild-highlight': RebuildHighlight;
+            reindent: Reindent;
+            'remove-cursors': RemoveCursors;
+            'replay-macro': ReplayMacro;
+            'request-documentation': RequestDocumentation;
+            'reset-font-size': ResetFontSize;
+            'restore-insert-mark': RestoreInsertMark;
+            'save-command': SaveCommand;
+            'save-insert-mark': SaveInsertMark;
+            'save-search-char': SaveSearchChar;
+            'select-inner': SelectInner;
+            'select-tag': SelectTag;
+            'selection-theatric': SelectionTheatric;
+            'set-mode': SetMode;
+            'set-overwrite': SetOverwrite;
+            'set-search-text': SetSearchText;
+            sort: Sort;
+            'swap-selection-bounds': SwapSelectionBounds;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -43630,6 +44435,7 @@ export namespace Ide {
 
     class SourceView extends GtkSource.View implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<SourceView>;
+        declare static readonly __signalSignatures: SourceView.SignalSignatures;
 
         // Properties
 
@@ -43729,6 +44535,18 @@ export namespace Ide {
 
         // Signals
 
+        connect<K extends keyof SourceView.SignalSignatures>(
+            signal: K,
+            callback: SourceView.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceView.SignalSignatures>(
+            signal: K,
+            callback: SourceView.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceView.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceView.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -44916,6 +45734,81 @@ export namespace Ide {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {
+            action: Action;
+            'add-cursor': AddCursor;
+            'append-to-count': AppendToCount;
+            backspace: Backspace;
+            'begin-macro': BeginMacro;
+            'begin-rename': BeginRename;
+            'begin-user-action': BeginUserAction;
+            'capture-modifier': CaptureModifier;
+            'change-case': ChangeCase;
+            'change-number': ChangeNumber;
+            'clear-count': ClearCount;
+            'clear-modifier': ClearModifier;
+            'clear-search': ClearSearch;
+            'clear-selection': ClearSelection;
+            'clear-snippets': ClearSnippets;
+            'copy-clipboard': CopyClipboard;
+            'cut-clipboard': CutClipboard;
+            'cycle-completion': CycleCompletion;
+            'decrease-font-size': DecreaseFontSize;
+            'delete-from-cursor': DeleteFromCursor;
+            'delete-selection': DeleteSelection;
+            'duplicate-entire-line': DuplicateEntireLine;
+            'end-macro': EndMacro;
+            'end-user-action': EndUserAction;
+            'find-references': FindReferences;
+            'format-selection': FormatSelection;
+            'goto-definition': GotoDefinition;
+            'hide-completion': HideCompletion;
+            'increase-font-size': IncreaseFontSize;
+            'indent-selection': IndentSelection;
+            'insert-at-cursor': InsertAtCursor;
+            'insert-modifier': InsertModifier;
+            'join-lines': JoinLines;
+            'move-cursor': MoveCursor;
+            'move-error': MoveError;
+            'move-lines': MoveLines;
+            'move-search': MoveSearch;
+            'move-to-matching-bracket': MoveToMatchingBracket;
+            'move-viewport': MoveViewport;
+            'move-words': MoveWords;
+            movement: Movement;
+            'paste-clipboard': PasteClipboard;
+            'paste-clipboard-extended': PasteClipboardExtended;
+            'pop-selection': PopSelection;
+            'preedit-changed': PreeditChanged;
+            'push-selection': PushSelection;
+            'rebuild-highlight': RebuildHighlight;
+            redo: Redo;
+            reindent: Reindent;
+            'remove-cursors': RemoveCursors;
+            'replay-macro': ReplayMacro;
+            'request-documentation': RequestDocumentation;
+            'reset-font-size': ResetFontSize;
+            'restore-insert-mark': RestoreInsertMark;
+            'save-command': SaveCommand;
+            'save-insert-mark': SaveInsertMark;
+            'save-search-char': SaveSearchChar;
+            'select-all': SelectAll;
+            'select-inner': SelectInner;
+            'select-tag': SelectTag;
+            'selection-theatric': SelectionTheatric;
+            'set-anchor': SetAnchor;
+            'set-mode': SetMode;
+            'set-overwrite': SetOverwrite;
+            'set-search-text': SetSearchText;
+            'show-completion': ShowCompletion;
+            sort: Sort;
+            'swap-selection-bounds': SwapSelectionBounds;
+            'toggle-cursor-visible': ToggleCursorVisible;
+            'toggle-overwrite': ToggleOverwrite;
+            undo: Undo;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -44928,6 +45821,7 @@ export namespace Ide {
 
     class SourceViewMode extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<SourceViewMode>;
+        declare static readonly __signalSignatures: SourceViewMode.SignalSignatures;
 
         // Properties
 
@@ -44941,6 +45835,18 @@ export namespace Ide {
 
         // Signals
 
+        connect<K extends keyof SourceViewMode.SignalSignatures>(
+            signal: K,
+            callback: SourceViewMode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceViewMode.SignalSignatures>(
+            signal: K,
+            callback: SourceViewMode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceViewMode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceViewMode.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -45858,6 +46764,9 @@ export namespace Ide {
     }
 
     namespace SubprocessLauncher {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -45873,6 +46782,7 @@ export namespace Ide {
 
     class SubprocessLauncher extends GObject.Object {
         static $gtype: GObject.GType<SubprocessLauncher>;
+        declare static readonly __signalSignatures: SubprocessLauncher.SignalSignatures;
 
         // Properties
 
@@ -45977,6 +46887,13 @@ export namespace Ide {
             (object: SubprocessLauncher): boolean;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            spawned: Spawned;
+            supervise: Supervise;
+            unsupervise: Unsupervise;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -45984,6 +46901,7 @@ export namespace Ide {
 
     class SubprocessSupervisor extends GObject.Object {
         static $gtype: GObject.GType<SubprocessSupervisor>;
+        declare static readonly __signalSignatures: SubprocessSupervisor.SignalSignatures;
 
         // Constructors
 
@@ -45995,6 +46913,18 @@ export namespace Ide {
 
         // Signals
 
+        connect<K extends keyof SubprocessSupervisor.SignalSignatures>(
+            signal: K,
+            callback: SubprocessSupervisor.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SubprocessSupervisor.SignalSignatures>(
+            signal: K,
+            callback: SubprocessSupervisor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SubprocessSupervisor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SubprocessSupervisor.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -46029,6 +46959,9 @@ export namespace Ide {
     }
 
     namespace SymbolNode {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -46042,6 +46975,7 @@ export namespace Ide {
 
     class SymbolNode extends Object {
         static $gtype: GObject.GType<SymbolNode>;
+        declare static readonly __signalSignatures: SymbolNode.SignalSignatures;
 
         // Properties
 
@@ -46095,6 +47029,9 @@ export namespace Ide {
     }
 
     namespace TemplateBase {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -46104,6 +47041,7 @@ export namespace Ide {
 
     abstract class TemplateBase extends GObject.Object {
         static $gtype: GObject.GType<TemplateBase>;
+        declare static readonly __signalSignatures: TemplateBase.SignalSignatures;
 
         // Properties
 
@@ -46143,6 +47081,9 @@ export namespace Ide {
     }
 
     namespace Transfer {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -46158,6 +47099,7 @@ export namespace Ide {
 
     class Transfer extends GObject.Object {
         static $gtype: GObject.GType<Transfer>;
+        declare static readonly __signalSignatures: Transfer.SignalSignatures;
 
         // Properties
 
@@ -46212,6 +47154,9 @@ export namespace Ide {
     }
 
     namespace TransferButton {
+        // Signal signatures
+        interface SignalSignatures extends Dazzle.ProgressButton.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -46229,6 +47174,7 @@ export namespace Ide {
         implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<TransferButton>;
+        declare static readonly __signalSignatures: TransferButton.SignalSignatures;
 
         // Properties
 
@@ -50536,6 +51482,13 @@ export namespace Ide {
             (transfer: Transfer, reason: GLib.Error): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {
+            'all-transfers-completed': AllTransfersCompleted;
+            'transfer-completed': TransferCompleted;
+            'transfer-failed': TransferFailed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -50549,6 +51502,7 @@ export namespace Ide {
 
     class TransferManager<A extends GObject.Object = GObject.Object> extends Object implements Gio.ListModel<A> {
         static $gtype: GObject.GType<TransferManager>;
+        declare static readonly __signalSignatures: TransferManager.SignalSignatures;
 
         // Properties
 
@@ -50574,6 +51528,18 @@ export namespace Ide {
 
         // Signals
 
+        connect<K extends keyof TransferManager.SignalSignatures>(
+            signal: K,
+            callback: TransferManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TransferManager.SignalSignatures>(
+            signal: K,
+            callback: TransferManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TransferManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TransferManager.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -51188,6 +52154,11 @@ export namespace Ide {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.ListBoxRow.SignalSignatures {
+            cancelled: Cancelled;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -51200,6 +52171,7 @@ export namespace Ide {
 
     class TransferRow extends Gtk.ListBoxRow implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<TransferRow>;
+        declare static readonly __signalSignatures: TransferRow.SignalSignatures;
 
         // Properties
 
@@ -51214,6 +52186,18 @@ export namespace Ide {
 
         // Signals
 
+        connect<K extends keyof TransferRow.SignalSignatures>(
+            signal: K,
+            callback: TransferRow.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TransferRow.SignalSignatures>(
+            signal: K,
+            callback: TransferRow.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TransferRow.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TransferRow.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -51669,6 +52653,9 @@ export namespace Ide {
     }
 
     namespace TransfersButton {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.MenuButton.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -51684,6 +52671,7 @@ export namespace Ide {
         implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<TransfersButton>;
+        declare static readonly __signalSignatures: TransfersButton.SignalSignatures;
 
         // Constructors
 
@@ -55974,6 +56962,9 @@ export namespace Ide {
     }
 
     namespace TransfersProgressIcon {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.DrawingArea.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -55986,6 +56977,7 @@ export namespace Ide {
 
     class TransfersProgressIcon extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<TransfersProgressIcon>;
+        declare static readonly __signalSignatures: TransfersProgressIcon.SignalSignatures;
 
         // Properties
 
@@ -56448,6 +57440,9 @@ export namespace Ide {
     }
 
     namespace UnsavedFiles {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -56455,6 +57450,7 @@ export namespace Ide {
 
     class UnsavedFiles extends Object {
         static $gtype: GObject.GType<UnsavedFiles>;
+        declare static readonly __signalSignatures: UnsavedFiles.SignalSignatures;
 
         // Constructors
 
@@ -56519,6 +57515,13 @@ export namespace Ide {
             (object: Context): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.ApplicationWindow.SignalSignatures {
+            action: Action;
+            'set-perspective': SetPerspective;
+            unload: Unload;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -56542,6 +57545,7 @@ export namespace Ide {
         implements Atk.ImplementorIface, Gio.ActionGroup, Gio.ActionMap, Gtk.Buildable
     {
         static $gtype: GObject.GType<Workbench>;
+        declare static readonly __signalSignatures: Workbench.SignalSignatures;
 
         // Properties
 
@@ -56610,6 +57614,15 @@ export namespace Ide {
 
         // Signals
 
+        connect<K extends keyof Workbench.SignalSignatures>(signal: K, callback: Workbench.SignalSignatures[K]): number;
+        connect_after<K extends keyof Workbench.SignalSignatures>(
+            signal: K,
+            callback: Workbench.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Workbench.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Workbench.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -57723,6 +58736,9 @@ export namespace Ide {
     }
 
     namespace WorkbenchHeaderBar {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.HeaderBar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -57733,6 +58749,7 @@ export namespace Ide {
 
     class WorkbenchHeaderBar extends Gtk.HeaderBar implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<WorkbenchHeaderBar>;
+        declare static readonly __signalSignatures: WorkbenchHeaderBar.SignalSignatures;
 
         // Constructors
 
@@ -58192,6 +59209,9 @@ export namespace Ide {
     }
 
     namespace WorkbenchMessage {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.InfoBar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -58207,6 +59227,7 @@ export namespace Ide {
 
     class WorkbenchMessage extends Gtk.InfoBar implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<WorkbenchMessage>;
+        declare static readonly __signalSignatures: WorkbenchMessage.SignalSignatures;
 
         // Properties
 

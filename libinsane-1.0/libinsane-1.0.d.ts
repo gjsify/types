@@ -156,6 +156,9 @@ export namespace Libinsane {
         MUST_RELOAD_PARAMS,
     }
     namespace Api {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -163,6 +166,7 @@ export namespace Libinsane {
 
     class Api extends GObject.Object {
         static $gtype: GObject.GType<Api>;
+        declare static readonly __signalSignatures: Api.SignalSignatures;
 
         // Constructors
 
@@ -186,6 +190,9 @@ export namespace Libinsane {
     }
 
     namespace DeviceDescriptor {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -193,6 +200,7 @@ export namespace Libinsane {
 
     class DeviceDescriptor extends GObject.Object {
         static $gtype: GObject.GType<DeviceDescriptor>;
+        declare static readonly __signalSignatures: DeviceDescriptor.SignalSignatures;
 
         // Constructors
 
@@ -214,6 +222,9 @@ export namespace Libinsane {
     }
 
     namespace Item {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -221,6 +232,7 @@ export namespace Libinsane {
 
     class Item extends GObject.Object {
         static $gtype: GObject.GType<Item>;
+        declare static readonly __signalSignatures: Item.SignalSignatures;
 
         // Constructors
 
@@ -247,6 +259,9 @@ export namespace Libinsane {
     }
 
     namespace OptionDescriptor {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -254,6 +269,7 @@ export namespace Libinsane {
 
     class OptionDescriptor extends GObject.Object {
         static $gtype: GObject.GType<OptionDescriptor>;
+        declare static readonly __signalSignatures: OptionDescriptor.SignalSignatures;
 
         // Constructors
 
@@ -282,6 +298,9 @@ export namespace Libinsane {
     }
 
     namespace ScanParameters {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -289,6 +308,7 @@ export namespace Libinsane {
 
     class ScanParameters extends GObject.Object {
         static $gtype: GObject.GType<ScanParameters>;
+        declare static readonly __signalSignatures: ScanParameters.SignalSignatures;
 
         // Constructors
 
@@ -305,6 +325,9 @@ export namespace Libinsane {
     }
 
     namespace ScanSession {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -312,6 +335,7 @@ export namespace Libinsane {
 
     class ScanSession extends GObject.Object {
         static $gtype: GObject.GType<ScanSession>;
+        declare static readonly __signalSignatures: ScanSession.SignalSignatures;
 
         // Constructors
 

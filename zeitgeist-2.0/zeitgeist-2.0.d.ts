@@ -281,6 +281,13 @@ export namespace Zeitgeist {
             (data_source: DataSource): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends QueuedProxyWrapper.SignalSignatures {
+            'source-disconnected': SourceDisconnected;
+            'source-enabled': SourceEnabled;
+            'source-registered': SourceRegistered;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends QueuedProxyWrapper.ConstructorProps {}
@@ -288,6 +295,7 @@ export namespace Zeitgeist {
 
     class DataSourceRegistry extends QueuedProxyWrapper {
         static $gtype: GObject.GType<DataSourceRegistry>;
+        declare static readonly __signalSignatures: DataSourceRegistry.SignalSignatures;
 
         // Constructors
 
@@ -299,6 +307,18 @@ export namespace Zeitgeist {
 
         // Signals
 
+        connect<K extends keyof DataSourceRegistry.SignalSignatures>(
+            signal: K,
+            callback: DataSourceRegistry.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DataSourceRegistry.SignalSignatures>(
+            signal: K,
+            callback: DataSourceRegistry.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DataSourceRegistry.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DataSourceRegistry.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -375,6 +395,9 @@ export namespace Zeitgeist {
     }
 
     namespace Index {
+        // Signal signatures
+        interface SignalSignatures extends QueuedProxyWrapper.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends QueuedProxyWrapper.ConstructorProps {}
@@ -382,6 +405,7 @@ export namespace Zeitgeist {
 
     class Index extends QueuedProxyWrapper {
         static $gtype: GObject.GType<Index>;
+        declare static readonly __signalSignatures: Index.SignalSignatures;
 
         // Constructors
 
@@ -459,6 +483,9 @@ export namespace Zeitgeist {
     }
 
     namespace Log {
+        // Signal signatures
+        interface SignalSignatures extends QueuedProxyWrapper.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends QueuedProxyWrapper.ConstructorProps {}
@@ -466,6 +493,7 @@ export namespace Zeitgeist {
 
     class Log extends QueuedProxyWrapper {
         static $gtype: GObject.GType<Log>;
+        declare static readonly __signalSignatures: Log.SignalSignatures;
 
         // Constructors
 
@@ -640,6 +668,12 @@ export namespace Zeitgeist {
             (time_range: TimeRange, event_ids: number[]): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'events-inserted': EventsInserted;
+            'events-deleted': EventsDeleted;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, RemoteMonitor.ConstructorProps {
@@ -652,6 +686,7 @@ export namespace Zeitgeist {
 
     class Monitor extends GObject.Object implements RemoteMonitor {
         static $gtype: GObject.GType<Monitor>;
+        declare static readonly __signalSignatures: Monitor.SignalSignatures;
 
         // Properties
 
@@ -674,6 +709,15 @@ export namespace Zeitgeist {
 
         // Signals
 
+        connect<K extends keyof Monitor.SignalSignatures>(signal: K, callback: Monitor.SignalSignatures[K]): number;
+        connect_after<K extends keyof Monitor.SignalSignatures>(
+            signal: K,
+            callback: Monitor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Monitor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Monitor.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1184,6 +1228,9 @@ export namespace Zeitgeist {
     }
 
     namespace QueuedProxyWrapper {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1196,6 +1243,7 @@ export namespace Zeitgeist {
 
     abstract class QueuedProxyWrapper extends GObject.Object {
         static $gtype: GObject.GType<QueuedProxyWrapper>;
+        declare static readonly __signalSignatures: QueuedProxyWrapper.SignalSignatures;
 
         // Properties
 
@@ -1235,8 +1283,14 @@ export namespace Zeitgeist {
         get_is_connected(): boolean;
     }
 
+    namespace QueuedProxyWrapperQueuedMethod {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+    }
+
     class QueuedProxyWrapperQueuedMethod {
         static $gtype: GObject.GType<QueuedProxyWrapperQueuedMethod>;
+        declare static readonly __signalSignatures: QueuedProxyWrapperQueuedMethod.SignalSignatures;
 
         // Fields
 
@@ -1254,6 +1308,9 @@ export namespace Zeitgeist {
     }
 
     namespace DataSource {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1271,6 +1328,7 @@ export namespace Zeitgeist {
 
     class DataSource extends GObject.Object {
         static $gtype: GObject.GType<DataSource>;
+        declare static readonly __signalSignatures: DataSource.SignalSignatures;
 
         // Properties
 
@@ -1325,6 +1383,9 @@ export namespace Zeitgeist {
     }
 
     namespace Event {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1341,6 +1402,7 @@ export namespace Zeitgeist {
 
     class Event extends GObject.Object {
         static $gtype: GObject.GType<Event>;
+        declare static readonly __signalSignatures: Event.SignalSignatures;
 
         // Properties
 
@@ -1400,6 +1462,9 @@ export namespace Zeitgeist {
     }
 
     namespace Subject {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1419,6 +1484,7 @@ export namespace Zeitgeist {
 
     class Subject extends GObject.Object {
         static $gtype: GObject.GType<Subject>;
+        declare static readonly __signalSignatures: Subject.SignalSignatures;
 
         // Properties
 
@@ -1502,6 +1568,9 @@ export namespace Zeitgeist {
     }
 
     namespace TimeRange {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1512,6 +1581,7 @@ export namespace Zeitgeist {
 
     class TimeRange extends GObject.Object {
         static $gtype: GObject.GType<TimeRange>;
+        declare static readonly __signalSignatures: TimeRange.SignalSignatures;
 
         // Properties
 
@@ -1545,6 +1615,9 @@ export namespace Zeitgeist {
     }
 
     namespace SimpleResultSet {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, ResultSet.ConstructorProps {}
@@ -1552,6 +1625,7 @@ export namespace Zeitgeist {
 
     class SimpleResultSet extends GObject.Object implements ResultSet {
         static $gtype: GObject.GType<SimpleResultSet>;
+        declare static readonly __signalSignatures: SimpleResultSet.SignalSignatures;
 
         // Constructors
 

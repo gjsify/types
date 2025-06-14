@@ -478,6 +478,9 @@ export namespace GSystem {
      */
     function stdout_is_journal(): boolean;
     namespace Console {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -494,6 +497,7 @@ export namespace GSystem {
      */
     class Console extends GObject.Object {
         static $gtype: GObject.GType<Console>;
+        declare static readonly __signalSignatures: Console.SignalSignatures;
 
         // Constructors
 
@@ -549,6 +553,9 @@ export namespace GSystem {
     }
 
     namespace Subprocess {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -573,6 +580,7 @@ export namespace GSystem {
      */
     class Subprocess extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Subprocess>;
+        declare static readonly __signalSignatures: Subprocess.SignalSignatures;
 
         // Properties
 
@@ -1221,6 +1229,9 @@ export namespace GSystem {
     }
 
     namespace SubprocessContext {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1240,6 +1251,7 @@ export namespace GSystem {
      */
     class SubprocessContext extends GObject.Object {
         static $gtype: GObject.GType<SubprocessContext>;
+        declare static readonly __signalSignatures: SubprocessContext.SignalSignatures;
 
         // Properties
 

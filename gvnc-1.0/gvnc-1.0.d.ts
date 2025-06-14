@@ -233,6 +233,13 @@ export namespace GVnc {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'vnc-audio-playback-data': VncAudioPlaybackData;
+            'vnc-audio-playback-start': VncAudioPlaybackStart;
+            'vnc-audio-playback-stop': VncAudioPlaybackStop;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Audio.ConstructorProps {}
@@ -240,6 +247,7 @@ export namespace GVnc {
 
     class BaseAudio extends GObject.Object implements Audio {
         static $gtype: GObject.GType<BaseAudio>;
+        declare static readonly __signalSignatures: BaseAudio.SignalSignatures;
 
         // Constructors
 
@@ -251,6 +259,15 @@ export namespace GVnc {
 
         // Signals
 
+        connect<K extends keyof BaseAudio.SignalSignatures>(signal: K, callback: BaseAudio.SignalSignatures[K]): number;
+        connect_after<K extends keyof BaseAudio.SignalSignatures>(
+            signal: K,
+            callback: BaseAudio.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BaseAudio.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BaseAudio.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -735,6 +752,9 @@ export namespace GVnc {
     }
 
     namespace BaseFramebuffer {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Framebuffer.ConstructorProps {
@@ -753,6 +773,7 @@ export namespace GVnc {
 
     class BaseFramebuffer extends GObject.Object implements Framebuffer {
         static $gtype: GObject.GType<BaseFramebuffer>;
+        declare static readonly __signalSignatures: BaseFramebuffer.SignalSignatures;
 
         // Properties
 
@@ -1480,6 +1501,30 @@ export namespace GVnc {
             (object: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'vnc-auth-choose-subtype': VncAuthChooseSubtype;
+            'vnc-auth-choose-type': VncAuthChooseType;
+            'vnc-auth-credential': VncAuthCredential;
+            'vnc-auth-failure': VncAuthFailure;
+            'vnc-auth-unsupported': VncAuthUnsupported;
+            'vnc-bell': VncBell;
+            'vnc-connected': VncConnected;
+            'vnc-cursor-changed': VncCursorChanged;
+            'vnc-desktop-rename': VncDesktopRename;
+            'vnc-desktop-resize': VncDesktopResize;
+            'vnc-disconnected': VncDisconnected;
+            'vnc-error': VncError;
+            'vnc-framebuffer-update': VncFramebufferUpdate;
+            'vnc-initialized': VncInitialized;
+            'vnc-led-state': VncLedState;
+            'vnc-pixel-format-changed': VncPixelFormatChanged;
+            'vnc-pointer-mode-changed': VncPointerModeChanged;
+            'vnc-power-control-failed': VncPowerControlFailed;
+            'vnc-power-control-initialized': VncPowerControlInitialized;
+            'vnc-server-cut-text': VncServerCutText;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1489,6 +1534,7 @@ export namespace GVnc {
 
     class Connection extends GObject.Object {
         static $gtype: GObject.GType<Connection>;
+        declare static readonly __signalSignatures: Connection.SignalSignatures;
 
         // Properties
 
@@ -1505,6 +1551,18 @@ export namespace GVnc {
 
         // Signals
 
+        connect<K extends keyof Connection.SignalSignatures>(
+            signal: K,
+            callback: Connection.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Connection.SignalSignatures>(
+            signal: K,
+            callback: Connection.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Connection.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Connection.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1898,6 +1956,9 @@ export namespace GVnc {
     }
 
     namespace Cursor {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1911,6 +1972,7 @@ export namespace GVnc {
 
     class Cursor extends GObject.Object {
         static $gtype: GObject.GType<Cursor>;
+        declare static readonly __signalSignatures: Cursor.SignalSignatures;
 
         // Properties
 

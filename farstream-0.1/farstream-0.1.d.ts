@@ -357,6 +357,9 @@ export namespace Farstream {
         BOTH,
     }
     namespace Conference {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Bin.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Bin.ConstructorProps, Gst.ChildProxy.ConstructorProps {}
@@ -367,6 +370,7 @@ export namespace Farstream {
      */
     class Conference extends Gst.Bin implements Gst.ChildProxy {
         static $gtype: GObject.GType<Conference>;
+        declare static readonly __signalSignatures: Conference.SignalSignatures;
 
         // Constructors
 
@@ -434,6 +438,11 @@ export namespace Farstream {
             (bin: Gst.Bin, element: Gst.Element): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'element-added': ElementAdded;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -444,6 +453,7 @@ export namespace Farstream {
      */
     class ElementAddedNotifier extends GObject.Object {
         static $gtype: GObject.GType<ElementAddedNotifier>;
+        declare static readonly __signalSignatures: ElementAddedNotifier.SignalSignatures;
 
         // Constructors
 
@@ -455,6 +465,18 @@ export namespace Farstream {
 
         // Signals
 
+        connect<K extends keyof ElementAddedNotifier.SignalSignatures>(
+            signal: K,
+            callback: ElementAddedNotifier.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ElementAddedNotifier.SignalSignatures>(
+            signal: K,
+            callback: ElementAddedNotifier.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ElementAddedNotifier.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ElementAddedNotifier.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -509,6 +531,9 @@ export namespace Farstream {
     }
 
     namespace Participant {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {}
@@ -519,6 +544,7 @@ export namespace Farstream {
      */
     abstract class Participant extends Gst.Object {
         static $gtype: GObject.GType<Participant>;
+        declare static readonly __signalSignatures: Participant.SignalSignatures;
 
         // Constructors
 
@@ -528,6 +554,9 @@ export namespace Farstream {
     }
 
     namespace Plugin {
+        // Signal signatures
+        interface SignalSignatures extends GObject.TypeModule.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.TypeModule.ConstructorProps, GObject.TypePlugin.ConstructorProps {}
@@ -538,6 +567,7 @@ export namespace Farstream {
      */
     class Plugin extends GObject.TypeModule implements GObject.TypePlugin {
         static $gtype: GObject.GType<Plugin>;
+        declare static readonly __signalSignatures: Plugin.SignalSignatures;
 
         // Constructors
 
@@ -1038,6 +1068,11 @@ export namespace Farstream {
             (object: GObject.Object, error_no: Error, error_msg: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            error: Error;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {
@@ -1063,6 +1098,7 @@ export namespace Farstream {
      */
     abstract class Session extends Gst.Object {
         static $gtype: GObject.GType<Session>;
+        declare static readonly __signalSignatures: Session.SignalSignatures;
 
         // Properties
 
@@ -1212,6 +1248,15 @@ export namespace Farstream {
 
         // Signals
 
+        connect<K extends keyof Session.SignalSignatures>(signal: K, callback: Session.SignalSignatures[K]): number;
+        connect_after<K extends keyof Session.SignalSignatures>(
+            signal: K,
+            callback: Session.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Session.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Session.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1442,6 +1487,12 @@ export namespace Farstream {
             (pad: Gst.Pad, codec: Codec): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            error: Error;
+            'src-pad-added': SrcPadAdded;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {
@@ -1462,6 +1513,7 @@ export namespace Farstream {
      */
     abstract class Stream extends Gst.Object {
         static $gtype: GObject.GType<Stream>;
+        declare static readonly __signalSignatures: Stream.SignalSignatures;
 
         // Properties
 
@@ -1541,6 +1593,9 @@ export namespace Farstream {
 
         // Signals
 
+        connect<K extends keyof Stream.SignalSignatures>(signal: K, callback: Stream.SignalSignatures[K]): number;
+        connect_after<K extends keyof Stream.SignalSignatures>(signal: K, callback: Stream.SignalSignatures[K]): number;
+        emit<K extends keyof Stream.SignalSignatures>(signal: K, ...args: Parameters<Stream.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1759,6 +1814,16 @@ export namespace Farstream {
             (component: number, state: StreamState): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            error: Error;
+            'known-source-packet-received': KnownSourcePacketReceived;
+            'local-candidates-prepared': LocalCandidatesPrepared;
+            'new-active-candidate-pair': NewActiveCandidatePair;
+            'new-local-candidate': NewLocalCandidate;
+            'state-changed': StateChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {
@@ -1775,6 +1840,7 @@ export namespace Farstream {
      */
     abstract class StreamTransmitter extends Gst.Object {
         static $gtype: GObject.GType<StreamTransmitter>;
+        declare static readonly __signalSignatures: StreamTransmitter.SignalSignatures;
 
         // Properties
 
@@ -1804,6 +1870,18 @@ export namespace Farstream {
 
         // Signals
 
+        connect<K extends keyof StreamTransmitter.SignalSignatures>(
+            signal: K,
+            callback: StreamTransmitter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StreamTransmitter.SignalSignatures>(
+            signal: K,
+            callback: StreamTransmitter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StreamTransmitter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StreamTransmitter.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1921,6 +1999,12 @@ export namespace Farstream {
             (component: number): Gst.Element;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            error: Error;
+            'get-recvonly-filter': GetRecvonlyFilter;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {
@@ -1938,6 +2022,7 @@ export namespace Farstream {
      */
     abstract class Transmitter extends Gst.Object {
         static $gtype: GObject.GType<Transmitter>;
+        declare static readonly __signalSignatures: Transmitter.SignalSignatures;
 
         // Properties
 
@@ -1995,6 +2080,18 @@ export namespace Farstream {
 
         // Signals
 
+        connect<K extends keyof Transmitter.SignalSignatures>(
+            signal: K,
+            callback: Transmitter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Transmitter.SignalSignatures>(
+            signal: K,
+            callback: Transmitter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Transmitter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Transmitter.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

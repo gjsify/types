@@ -276,8 +276,14 @@ export namespace Dex {
     }
     type FileInfoList = object | null;
     type InetAddressList = object | null;
+    namespace AsyncPair {
+        // Signal signatures
+        interface SignalSignatures extends Future.SignalSignatures {}
+    }
+
     class AsyncPair extends Future {
         static $gtype: GObject.GType<AsyncPair>;
+        declare static readonly __signalSignatures: AsyncPair.SignalSignatures;
 
         // Constructors
 
@@ -338,6 +344,9 @@ export namespace Dex {
     }
 
     namespace AsyncResult {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.AsyncResult.ConstructorProps {}
@@ -345,6 +354,7 @@ export namespace Dex {
 
     class AsyncResult extends GObject.Object implements Gio.AsyncResult {
         static $gtype: GObject.GType<AsyncResult>;
+        declare static readonly __signalSignatures: AsyncResult.SignalSignatures;
 
         // Constructors
 
@@ -868,8 +878,14 @@ export namespace Dex {
         stop_emission_by_name(detailedName: string): void;
     }
 
+    namespace Block {
+        // Signal signatures
+        interface SignalSignatures extends Future.SignalSignatures {}
+    }
+
     class Block extends Future {
         static $gtype: GObject.GType<Block>;
+        declare static readonly __signalSignatures: Block.SignalSignatures;
 
         // Constructors
 
@@ -893,8 +909,14 @@ export namespace Dex {
         get_scheduler(): Scheduler;
     }
 
+    namespace Cancellable {
+        // Signal signatures
+        interface SignalSignatures extends Future.SignalSignatures {}
+    }
+
     class Cancellable extends Future {
         static $gtype: GObject.GType<Cancellable>;
+        declare static readonly __signalSignatures: Cancellable.SignalSignatures;
 
         // Constructors
 
@@ -909,8 +931,14 @@ export namespace Dex {
         cancel(): void;
     }
 
+    namespace Channel {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+    }
+
     class Channel extends Object {
         static $gtype: GObject.GType<Channel>;
+        declare static readonly __signalSignatures: Channel.SignalSignatures;
 
         // Constructors
 
@@ -964,8 +992,14 @@ export namespace Dex {
         send(future: Future): Future;
     }
 
+    namespace Delayed {
+        // Signal signatures
+        interface SignalSignatures extends Future.SignalSignatures {}
+    }
+
     class Delayed extends Future {
         static $gtype: GObject.GType<Delayed>;
+        declare static readonly __signalSignatures: Delayed.SignalSignatures;
 
         // Constructors
 
@@ -987,16 +1021,28 @@ export namespace Dex {
         release(): void;
     }
 
+    namespace Fiber {
+        // Signal signatures
+        interface SignalSignatures extends Future.SignalSignatures {}
+    }
+
     class Fiber extends Future {
         static $gtype: GObject.GType<Fiber>;
+        declare static readonly __signalSignatures: Fiber.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
     }
 
+    namespace Future {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+    }
+
     class Future extends Object {
         static $gtype: GObject.GType<Future>;
+        declare static readonly __signalSignatures: Future.SignalSignatures;
 
         // Constructors
 
@@ -1174,8 +1220,14 @@ export namespace Dex {
         get_value(): unknown;
     }
 
+    namespace FutureSet {
+        // Signal signatures
+        interface SignalSignatures extends Future.SignalSignatures {}
+    }
+
     class FutureSet extends Future {
         static $gtype: GObject.GType<FutureSet>;
+        declare static readonly __signalSignatures: FutureSet.SignalSignatures;
 
         // Constructors
 
@@ -1207,12 +1259,23 @@ export namespace Dex {
         get_value_at(position: number): unknown;
     }
 
+    namespace MainScheduler {
+        // Signal signatures
+        interface SignalSignatures extends Scheduler.SignalSignatures {}
+    }
+
     class MainScheduler extends Scheduler {
         static $gtype: GObject.GType<MainScheduler>;
+        declare static readonly __signalSignatures: MainScheduler.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+    }
+
+    namespace Object {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     /**
@@ -1226,6 +1289,7 @@ export namespace Dex {
      */
     abstract class Object {
         static $gtype: GObject.GType<Object>;
+        declare static readonly __signalSignatures: Object.SignalSignatures;
 
         // Constructors
 
@@ -1246,8 +1310,14 @@ export namespace Dex {
         unref(): void;
     }
 
+    namespace Promise {
+        // Signal signatures
+        interface SignalSignatures extends Future.SignalSignatures {}
+    }
+
     class Promise extends Future {
         static $gtype: GObject.GType<Promise>;
+        declare static readonly __signalSignatures: Promise.SignalSignatures;
 
         // Constructors
 
@@ -1293,8 +1363,14 @@ export namespace Dex {
         resolve_ulong(value: number): void;
     }
 
+    namespace Scheduler {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+    }
+
     abstract class Scheduler extends Object {
         static $gtype: GObject.GType<Scheduler>;
+        declare static readonly __signalSignatures: Scheduler.SignalSignatures;
 
         // Constructors
 
@@ -1353,16 +1429,28 @@ export namespace Dex {
         spawn(stack_size: number): Future;
     }
 
+    namespace StaticFuture {
+        // Signal signatures
+        interface SignalSignatures extends Future.SignalSignatures {}
+    }
+
     class StaticFuture extends Future {
         static $gtype: GObject.GType<StaticFuture>;
+        declare static readonly __signalSignatures: StaticFuture.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
     }
 
+    namespace ThreadPoolScheduler {
+        // Signal signatures
+        interface SignalSignatures extends Scheduler.SignalSignatures {}
+    }
+
     class ThreadPoolScheduler extends Scheduler {
         static $gtype: GObject.GType<ThreadPoolScheduler>;
+        declare static readonly __signalSignatures: ThreadPoolScheduler.SignalSignatures;
 
         // Constructors
 
@@ -1382,8 +1470,14 @@ export namespace Dex {
         static get_default(): Scheduler;
     }
 
+    namespace Timeout {
+        // Signal signatures
+        interface SignalSignatures extends Future.SignalSignatures {}
+    }
+
     class Timeout extends Future {
         static $gtype: GObject.GType<Timeout>;
+        declare static readonly __signalSignatures: Timeout.SignalSignatures;
 
         // Constructors
 
@@ -1402,8 +1496,14 @@ export namespace Dex {
         postpone_until(deadline: number): void;
     }
 
+    namespace UnixSignal {
+        // Signal signatures
+        interface SignalSignatures extends Future.SignalSignatures {}
+    }
+
     class UnixSignal extends Future {
         static $gtype: GObject.GType<UnixSignal>;
+        declare static readonly __signalSignatures: UnixSignal.SignalSignatures;
 
         // Constructors
 

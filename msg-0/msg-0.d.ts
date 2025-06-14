@@ -89,6 +89,9 @@ export namespace Msg {
     function error_quark(): GLib.Quark;
     function json_object_get_string(object: Json.Object, name: string): string;
     namespace Contact {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -101,6 +104,7 @@ export namespace Msg {
      */
     class Contact extends GObject.Object {
         static $gtype: GObject.GType<Contact>;
+        declare static readonly __signalSignatures: Contact.SignalSignatures;
 
         // Constructors
 
@@ -143,6 +147,9 @@ export namespace Msg {
     }
 
     namespace ContactService {
+        // Signal signatures
+        interface SignalSignatures extends Service.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Service.ConstructorProps {}
@@ -150,6 +157,7 @@ export namespace Msg {
 
     class ContactService extends Service {
         static $gtype: GObject.GType<ContactService>;
+        declare static readonly __signalSignatures: ContactService.SignalSignatures;
 
         // Constructors
 
@@ -184,6 +192,9 @@ export namespace Msg {
     }
 
     namespace Drive {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -196,6 +207,7 @@ export namespace Msg {
      */
     class Drive extends GObject.Object {
         static $gtype: GObject.GType<Drive>;
+        declare static readonly __signalSignatures: Drive.SignalSignatures;
 
         // Constructors
 
@@ -252,6 +264,9 @@ export namespace Msg {
     }
 
     namespace DriveItem {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -259,6 +274,7 @@ export namespace Msg {
 
     class DriveItem extends GObject.Object {
         static $gtype: GObject.GType<DriveItem>;
+        declare static readonly __signalSignatures: DriveItem.SignalSignatures;
 
         // Constructors
 
@@ -338,6 +354,9 @@ export namespace Msg {
     }
 
     namespace DriveItemFile {
+        // Signal signatures
+        interface SignalSignatures extends DriveItem.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DriveItem.ConstructorProps {}
@@ -345,6 +364,7 @@ export namespace Msg {
 
     class DriveItemFile extends DriveItem {
         static $gtype: GObject.GType<DriveItemFile>;
+        declare static readonly __signalSignatures: DriveItemFile.SignalSignatures;
 
         // Constructors
 
@@ -371,6 +391,9 @@ export namespace Msg {
     }
 
     namespace DriveItemFolder {
+        // Signal signatures
+        interface SignalSignatures extends DriveItem.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DriveItem.ConstructorProps {}
@@ -378,6 +401,7 @@ export namespace Msg {
 
     class DriveItemFolder extends DriveItem {
         static $gtype: GObject.GType<DriveItemFolder>;
+        declare static readonly __signalSignatures: DriveItemFolder.SignalSignatures;
 
         // Constructors
 
@@ -391,6 +415,9 @@ export namespace Msg {
     }
 
     namespace DriveService {
+        // Signal signatures
+        interface SignalSignatures extends Service.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Service.ConstructorProps {}
@@ -398,6 +425,7 @@ export namespace Msg {
 
     class DriveService extends Service {
         static $gtype: GObject.GType<DriveService>;
+        declare static readonly __signalSignatures: DriveService.SignalSignatures;
 
         // Constructors
 
@@ -514,6 +542,9 @@ export namespace Msg {
     }
 
     namespace GoaAuthorizer {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Authorizer.ConstructorProps {
@@ -528,6 +559,7 @@ export namespace Msg {
      */
     class GoaAuthorizer extends GObject.Object implements Authorizer {
         static $gtype: GObject.GType<GoaAuthorizer>;
+        declare static readonly __signalSignatures: GoaAuthorizer.SignalSignatures;
 
         // Properties
 
@@ -1028,6 +1060,9 @@ export namespace Msg {
     }
 
     namespace InputStream {
+        // Signal signatures
+        interface SignalSignatures extends Gio.InputStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gio.InputStream.ConstructorProps, Gio.Seekable.ConstructorProps {}
@@ -1035,6 +1070,7 @@ export namespace Msg {
 
     class InputStream extends Gio.InputStream implements Gio.Seekable {
         static $gtype: GObject.GType<InputStream>;
+        declare static readonly __signalSignatures: InputStream.SignalSignatures;
 
         // Constructors
 
@@ -1601,6 +1637,9 @@ export namespace Msg {
     }
 
     namespace MailFolder {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1611,6 +1650,7 @@ export namespace Msg {
      */
     class MailFolder extends GObject.Object {
         static $gtype: GObject.GType<MailFolder>;
+        declare static readonly __signalSignatures: MailFolder.SignalSignatures;
 
         // Constructors
 
@@ -1630,6 +1670,9 @@ export namespace Msg {
     }
 
     namespace Message {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1642,6 +1685,7 @@ export namespace Msg {
      */
     class Message extends GObject.Object {
         static $gtype: GObject.GType<Message>;
+        declare static readonly __signalSignatures: Message.SignalSignatures;
 
         // Constructors
 
@@ -1663,6 +1707,9 @@ export namespace Msg {
     }
 
     namespace MessageService {
+        // Signal signatures
+        interface SignalSignatures extends Service.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Service.ConstructorProps {}
@@ -1670,6 +1717,7 @@ export namespace Msg {
 
     class MessageService extends Service {
         static $gtype: GObject.GType<MessageService>;
+        declare static readonly __signalSignatures: MessageService.SignalSignatures;
 
         // Constructors
 
@@ -1717,6 +1765,9 @@ export namespace Msg {
     }
 
     namespace OAuth2Authorizer {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Authorizer.ConstructorProps {
@@ -1731,6 +1782,7 @@ export namespace Msg {
 
     class OAuth2Authorizer extends GObject.Object implements Authorizer {
         static $gtype: GObject.GType<OAuth2Authorizer>;
+        declare static readonly __signalSignatures: OAuth2Authorizer.SignalSignatures;
 
         // Properties
 
@@ -2239,6 +2291,9 @@ export namespace Msg {
     }
 
     namespace Service {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2248,6 +2303,7 @@ export namespace Msg {
 
     class Service extends GObject.Object {
         static $gtype: GObject.GType<Service>;
+        declare static readonly __signalSignatures: Service.SignalSignatures;
 
         // Properties
 
@@ -2332,6 +2388,9 @@ export namespace Msg {
     }
 
     namespace User {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2342,6 +2401,7 @@ export namespace Msg {
      */
     class User extends GObject.Object {
         static $gtype: GObject.GType<User>;
+        declare static readonly __signalSignatures: User.SignalSignatures;
 
         // Constructors
 
@@ -2359,6 +2419,9 @@ export namespace Msg {
     }
 
     namespace UserService {
+        // Signal signatures
+        interface SignalSignatures extends Service.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Service.ConstructorProps {}
@@ -2366,6 +2429,7 @@ export namespace Msg {
 
     class UserService extends Service {
         static $gtype: GObject.GType<UserService>;
+        declare static readonly __signalSignatures: UserService.SignalSignatures;
 
         // Constructors
 

@@ -2662,6 +2662,14 @@ export namespace EDataServer {
             (object: GLib.Error): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'backend-died': BackendDied;
+            'backend-error': BackendError;
+            'backend-property-changed': BackendPropertyChanged;
+            opened: Opened;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2681,6 +2689,7 @@ export namespace EDataServer {
      */
     abstract class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
+        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Properties
 
@@ -2724,6 +2733,9 @@ export namespace EDataServer {
 
         // Signals
 
+        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3465,6 +3477,9 @@ export namespace EDataServer {
     }
 
     namespace Extension {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3478,6 +3493,7 @@ export namespace EDataServer {
      */
     abstract class Extension extends GObject.Object {
         static $gtype: GObject.GType<Extension>;
+        declare static readonly __signalSignatures: Extension.SignalSignatures;
 
         // Properties
 
@@ -3499,6 +3515,9 @@ export namespace EDataServer {
     }
 
     namespace GDataSession {
+        // Signal signatures
+        interface SignalSignatures extends SoupSession.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SoupSession.ConstructorProps {}
@@ -3510,6 +3529,7 @@ export namespace EDataServer {
      */
     class GDataSession extends SoupSession {
         static $gtype: GObject.GType<GDataSession>;
+        declare static readonly __signalSignatures: GDataSession.SignalSignatures;
 
         // Constructors
 
@@ -3696,6 +3716,9 @@ export namespace EDataServer {
     }
 
     namespace Module {
+        // Signal signatures
+        interface SignalSignatures extends GObject.TypeModule.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.TypeModule.ConstructorProps, GObject.TypePlugin.ConstructorProps {
@@ -3709,6 +3732,7 @@ export namespace EDataServer {
      */
     class Module extends GObject.TypeModule implements GObject.TypePlugin {
         static $gtype: GObject.GType<Module>;
+        declare static readonly __signalSignatures: Module.SignalSignatures;
 
         // Properties
 
@@ -4244,6 +4268,9 @@ export namespace EDataServer {
     }
 
     namespace NetworkMonitor {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4261,6 +4288,7 @@ export namespace EDataServer {
      */
     class NetworkMonitor extends GObject.Object implements Gio.Initable, Gio.NetworkMonitor {
         static $gtype: GObject.GType<NetworkMonitor>;
+        declare static readonly __signalSignatures: NetworkMonitor.SignalSignatures;
 
         // Properties
 
@@ -5110,6 +5138,9 @@ export namespace EDataServer {
     }
 
     namespace OAuth2ServiceBase {
+        // Signal signatures
+        interface SignalSignatures extends Extension.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Extension.ConstructorProps {}
@@ -5117,6 +5148,7 @@ export namespace EDataServer {
 
     abstract class OAuth2ServiceBase extends Extension {
         static $gtype: GObject.GType<OAuth2ServiceBase>;
+        declare static readonly __signalSignatures: OAuth2ServiceBase.SignalSignatures;
 
         // Constructors
 
@@ -5126,6 +5158,9 @@ export namespace EDataServer {
     }
 
     namespace OAuth2ServiceGoogle {
+        // Signal signatures
+        interface SignalSignatures extends OAuth2ServiceBase.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends OAuth2ServiceBase.ConstructorProps, OAuth2Service.ConstructorProps {}
@@ -5133,6 +5168,7 @@ export namespace EDataServer {
 
     class OAuth2ServiceGoogle extends OAuth2ServiceBase implements OAuth2Service {
         static $gtype: GObject.GType<OAuth2ServiceGoogle>;
+        declare static readonly __signalSignatures: OAuth2ServiceGoogle.SignalSignatures;
 
         // Constructors
 
@@ -6021,6 +6057,9 @@ export namespace EDataServer {
     }
 
     namespace OAuth2ServiceOutlook {
+        // Signal signatures
+        interface SignalSignatures extends OAuth2ServiceBase.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends OAuth2ServiceBase.ConstructorProps, OAuth2Service.ConstructorProps {}
@@ -6028,6 +6067,7 @@ export namespace EDataServer {
 
     class OAuth2ServiceOutlook extends OAuth2ServiceBase implements OAuth2Service {
         static $gtype: GObject.GType<OAuth2ServiceOutlook>;
+        declare static readonly __signalSignatures: OAuth2ServiceOutlook.SignalSignatures;
 
         // Constructors
 
@@ -6916,6 +6956,9 @@ export namespace EDataServer {
     }
 
     namespace OAuth2ServiceYahoo {
+        // Signal signatures
+        interface SignalSignatures extends OAuth2ServiceBase.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends OAuth2ServiceBase.ConstructorProps, OAuth2Service.ConstructorProps {}
@@ -6923,6 +6966,7 @@ export namespace EDataServer {
 
     class OAuth2ServiceYahoo extends OAuth2ServiceBase implements OAuth2Service {
         static $gtype: GObject.GType<OAuth2ServiceYahoo>;
+        declare static readonly __signalSignatures: OAuth2ServiceYahoo.SignalSignatures;
 
         // Constructors
 
@@ -7811,6 +7855,9 @@ export namespace EDataServer {
     }
 
     namespace OAuth2Services {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Extensible.ConstructorProps {}
@@ -7822,6 +7869,7 @@ export namespace EDataServer {
      */
     class OAuth2Services extends GObject.Object implements Extensible {
         static $gtype: GObject.GType<OAuth2Services>;
+        declare static readonly __signalSignatures: OAuth2Services.SignalSignatures;
 
         // Constructors
 
@@ -8357,6 +8405,9 @@ export namespace EDataServer {
     }
 
     namespace SoupAuthBearer {
+        // Signal signatures
+        interface SignalSignatures extends Soup.Auth.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Soup.Auth.ConstructorProps {}
@@ -8368,6 +8419,7 @@ export namespace EDataServer {
      */
     class SoupAuthBearer extends Soup.Auth {
         static $gtype: GObject.GType<SoupAuthBearer>;
+        declare static readonly __signalSignatures: SoupAuthBearer.SignalSignatures;
 
         // Constructors
 
@@ -8392,6 +8444,9 @@ export namespace EDataServer {
     }
 
     namespace SoupSession {
+        // Signal signatures
+        interface SignalSignatures extends Soup.Session.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Soup.Session.ConstructorProps {
@@ -8408,6 +8463,7 @@ export namespace EDataServer {
      */
     class SoupSession extends Soup.Session {
         static $gtype: GObject.GType<SoupSession>;
+        declare static readonly __signalSignatures: SoupSession.SignalSignatures;
 
         // Properties
 
@@ -8772,6 +8828,13 @@ export namespace EDataServer {
             ): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            authenticate: Authenticate;
+            changed: Changed;
+            'credentials-required': CredentialsRequired;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -8802,6 +8865,7 @@ export namespace EDataServer {
      */
     class Source extends GObject.Object implements Gio.Initable, Gio.ProxyResolver {
         static $gtype: GObject.GType<Source>;
+        declare static readonly __signalSignatures: Source.SignalSignatures;
 
         // Properties
 
@@ -8837,6 +8901,9 @@ export namespace EDataServer {
 
         // Signals
 
+        connect<K extends keyof Source.SignalSignatures>(signal: K, callback: Source.SignalSignatures[K]): number;
+        connect_after<K extends keyof Source.SignalSignatures>(signal: K, callback: Source.SignalSignatures[K]): number;
+        emit<K extends keyof Source.SignalSignatures>(signal: K, ...args: Parameters<Source.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -11099,6 +11166,9 @@ export namespace EDataServer {
     }
 
     namespace SourceAddressBook {
+        // Signal signatures
+        interface SignalSignatures extends SourceBackend.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SourceBackend.ConstructorProps {
@@ -11112,6 +11182,7 @@ export namespace EDataServer {
      */
     class SourceAddressBook extends SourceBackend {
         static $gtype: GObject.GType<SourceAddressBook>;
+        declare static readonly __signalSignatures: SourceAddressBook.SignalSignatures;
 
         // Properties
 
@@ -11135,6 +11206,9 @@ export namespace EDataServer {
     }
 
     namespace SourceAlarms {
+        // Signal signatures
+        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -11151,6 +11225,7 @@ export namespace EDataServer {
      */
     class SourceAlarms extends SourceExtension {
         static $gtype: GObject.GType<SourceAlarms>;
+        declare static readonly __signalSignatures: SourceAlarms.SignalSignatures;
 
         // Properties
 
@@ -11222,6 +11297,9 @@ export namespace EDataServer {
     }
 
     namespace SourceAuthentication {
+        // Signal signatures
+        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -11247,6 +11325,7 @@ export namespace EDataServer {
      */
     class SourceAuthentication extends SourceExtension {
         static $gtype: GObject.GType<SourceAuthentication>;
+        declare static readonly __signalSignatures: SourceAuthentication.SignalSignatures;
 
         // Properties
 
@@ -11459,6 +11538,9 @@ export namespace EDataServer {
     }
 
     namespace SourceAutocomplete {
+        // Signal signatures
+        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -11473,6 +11555,7 @@ export namespace EDataServer {
      */
     class SourceAutocomplete extends SourceExtension {
         static $gtype: GObject.GType<SourceAutocomplete>;
+        declare static readonly __signalSignatures: SourceAutocomplete.SignalSignatures;
 
         // Properties
 
@@ -11506,6 +11589,9 @@ export namespace EDataServer {
     }
 
     namespace SourceAutoconfig {
+        // Signal signatures
+        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -11519,6 +11605,7 @@ export namespace EDataServer {
      */
     class SourceAutoconfig extends SourceExtension {
         static $gtype: GObject.GType<SourceAutoconfig>;
+        declare static readonly __signalSignatures: SourceAutoconfig.SignalSignatures;
 
         // Properties
 
@@ -11571,6 +11658,9 @@ export namespace EDataServer {
     }
 
     namespace SourceBackend {
+        // Signal signatures
+        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -11585,6 +11675,7 @@ export namespace EDataServer {
      */
     abstract class SourceBackend extends SourceExtension {
         static $gtype: GObject.GType<SourceBackend>;
+        declare static readonly __signalSignatures: SourceBackend.SignalSignatures;
 
         // Properties
 
@@ -11626,6 +11717,9 @@ export namespace EDataServer {
     }
 
     namespace SourceCalendar {
+        // Signal signatures
+        interface SignalSignatures extends SourceSelectable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SourceSelectable.ConstructorProps {}
@@ -11637,6 +11731,7 @@ export namespace EDataServer {
      */
     class SourceCalendar extends SourceSelectable {
         static $gtype: GObject.GType<SourceCalendar>;
+        declare static readonly __signalSignatures: SourceCalendar.SignalSignatures;
 
         // Constructors
 
@@ -11646,6 +11741,9 @@ export namespace EDataServer {
     }
 
     namespace SourceCamel {
+        // Signal signatures
+        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -11659,6 +11757,7 @@ export namespace EDataServer {
      */
     abstract class SourceCamel extends SourceExtension {
         static $gtype: GObject.GType<SourceCamel>;
+        declare static readonly __signalSignatures: SourceCamel.SignalSignatures;
 
         // Properties
 
@@ -11731,6 +11830,9 @@ export namespace EDataServer {
     }
 
     namespace SourceCollection {
+        // Signal signatures
+        interface SignalSignatures extends SourceBackend.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SourceBackend.ConstructorProps {
@@ -11756,6 +11858,7 @@ export namespace EDataServer {
      */
     class SourceCollection extends SourceBackend {
         static $gtype: GObject.GType<SourceCollection>;
+        declare static readonly __signalSignatures: SourceCollection.SignalSignatures;
 
         // Properties
 
@@ -11945,6 +12048,9 @@ export namespace EDataServer {
     }
 
     namespace SourceContacts {
+        // Signal signatures
+        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -11955,6 +12061,7 @@ export namespace EDataServer {
 
     class SourceContacts extends SourceExtension {
         static $gtype: GObject.GType<SourceContacts>;
+        declare static readonly __signalSignatures: SourceContacts.SignalSignatures;
 
         // Properties
 
@@ -11976,6 +12083,9 @@ export namespace EDataServer {
     }
 
     namespace SourceCredentialsProvider {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Extensible.ConstructorProps {
@@ -11989,6 +12099,7 @@ export namespace EDataServer {
      */
     class SourceCredentialsProvider extends GObject.Object implements Extensible {
         static $gtype: GObject.GType<SourceCredentialsProvider>;
+        declare static readonly __signalSignatures: SourceCredentialsProvider.SignalSignatures;
 
         // Properties
 
@@ -12733,6 +12844,9 @@ export namespace EDataServer {
     }
 
     namespace SourceCredentialsProviderImpl {
+        // Signal signatures
+        interface SignalSignatures extends Extension.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Extension.ConstructorProps {}
@@ -12745,6 +12859,7 @@ export namespace EDataServer {
      */
     abstract class SourceCredentialsProviderImpl extends Extension {
         static $gtype: GObject.GType<SourceCredentialsProviderImpl>;
+        declare static readonly __signalSignatures: SourceCredentialsProviderImpl.SignalSignatures;
 
         // Constructors
 
@@ -12877,6 +12992,9 @@ export namespace EDataServer {
     }
 
     namespace SourceCredentialsProviderImplOAuth2 {
+        // Signal signatures
+        interface SignalSignatures extends SourceCredentialsProviderImpl.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SourceCredentialsProviderImpl.ConstructorProps {}
@@ -12887,6 +13005,7 @@ export namespace EDataServer {
      */
     class SourceCredentialsProviderImplOAuth2 extends SourceCredentialsProviderImpl {
         static $gtype: GObject.GType<SourceCredentialsProviderImplOAuth2>;
+        declare static readonly __signalSignatures: SourceCredentialsProviderImplOAuth2.SignalSignatures;
 
         // Constructors
 
@@ -12896,6 +13015,9 @@ export namespace EDataServer {
     }
 
     namespace SourceCredentialsProviderImplPassword {
+        // Signal signatures
+        interface SignalSignatures extends SourceCredentialsProviderImpl.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SourceCredentialsProviderImpl.ConstructorProps {}
@@ -12906,6 +13028,7 @@ export namespace EDataServer {
      */
     class SourceCredentialsProviderImplPassword extends SourceCredentialsProviderImpl {
         static $gtype: GObject.GType<SourceCredentialsProviderImplPassword>;
+        declare static readonly __signalSignatures: SourceCredentialsProviderImplPassword.SignalSignatures;
 
         // Constructors
 
@@ -12915,6 +13038,9 @@ export namespace EDataServer {
     }
 
     namespace SourceExtension {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -12928,6 +13054,7 @@ export namespace EDataServer {
      */
     abstract class SourceExtension extends GObject.Object {
         static $gtype: GObject.GType<SourceExtension>;
+        declare static readonly __signalSignatures: SourceExtension.SignalSignatures;
 
         // Properties
 
@@ -12970,6 +13097,9 @@ export namespace EDataServer {
     }
 
     namespace SourceGoa {
+        // Signal signatures
+        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -12990,6 +13120,7 @@ export namespace EDataServer {
      */
     class SourceGoa extends SourceExtension {
         static $gtype: GObject.GType<SourceGoa>;
+        declare static readonly __signalSignatures: SourceGoa.SignalSignatures;
 
         // Properties
 
@@ -13145,6 +13276,9 @@ export namespace EDataServer {
     }
 
     namespace SourceLDAP {
+        // Signal signatures
+        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -13162,6 +13296,7 @@ export namespace EDataServer {
 
     class SourceLDAP extends SourceExtension {
         static $gtype: GObject.GType<SourceLDAP>;
+        declare static readonly __signalSignatures: SourceLDAP.SignalSignatures;
 
         // Properties
 
@@ -13211,6 +13346,9 @@ export namespace EDataServer {
     }
 
     namespace SourceLocal {
+        // Signal signatures
+        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -13224,6 +13362,7 @@ export namespace EDataServer {
 
     class SourceLocal extends SourceExtension {
         static $gtype: GObject.GType<SourceLocal>;
+        declare static readonly __signalSignatures: SourceLocal.SignalSignatures;
 
         // Properties
 
@@ -13302,6 +13441,9 @@ export namespace EDataServer {
     }
 
     namespace SourceMDN {
+        // Signal signatures
+        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -13316,6 +13458,7 @@ export namespace EDataServer {
      */
     class SourceMDN extends SourceExtension {
         static $gtype: GObject.GType<SourceMDN>;
+        declare static readonly __signalSignatures: SourceMDN.SignalSignatures;
 
         // Properties
 
@@ -13347,6 +13490,9 @@ export namespace EDataServer {
     }
 
     namespace SourceMailAccount {
+        // Signal signatures
+        interface SignalSignatures extends SourceBackend.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SourceBackend.ConstructorProps {
@@ -13370,6 +13516,7 @@ export namespace EDataServer {
      */
     class SourceMailAccount extends SourceBackend {
         static $gtype: GObject.GType<SourceMailAccount>;
+        declare static readonly __signalSignatures: SourceMailAccount.SignalSignatures;
 
         // Properties
 
@@ -13489,6 +13636,9 @@ export namespace EDataServer {
     }
 
     namespace SourceMailComposition {
+        // Signal signatures
+        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -13516,6 +13666,7 @@ export namespace EDataServer {
      */
     class SourceMailComposition extends SourceExtension {
         static $gtype: GObject.GType<SourceMailComposition>;
+        declare static readonly __signalSignatures: SourceMailComposition.SignalSignatures;
 
         // Properties
 
@@ -13736,6 +13887,9 @@ export namespace EDataServer {
     }
 
     namespace SourceMailIdentity {
+        // Signal signatures
+        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -13756,6 +13910,7 @@ export namespace EDataServer {
      */
     class SourceMailIdentity extends SourceExtension {
         static $gtype: GObject.GType<SourceMailIdentity>;
+        declare static readonly __signalSignatures: SourceMailIdentity.SignalSignatures;
 
         // Properties
 
@@ -13943,6 +14098,9 @@ export namespace EDataServer {
     }
 
     namespace SourceMailSignature {
+        // Signal signatures
+        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -13958,6 +14116,7 @@ export namespace EDataServer {
      */
     class SourceMailSignature extends SourceExtension {
         static $gtype: GObject.GType<SourceMailSignature>;
+        declare static readonly __signalSignatures: SourceMailSignature.SignalSignatures;
 
         // Properties
 
@@ -14017,6 +14176,9 @@ export namespace EDataServer {
     }
 
     namespace SourceMailSubmission {
+        // Signal signatures
+        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -14037,6 +14199,7 @@ export namespace EDataServer {
      */
     class SourceMailSubmission extends SourceExtension {
         static $gtype: GObject.GType<SourceMailSubmission>;
+        declare static readonly __signalSignatures: SourceMailSubmission.SignalSignatures;
 
         // Properties
 
@@ -14130,6 +14293,9 @@ export namespace EDataServer {
     }
 
     namespace SourceMailTransport {
+        // Signal signatures
+        interface SignalSignatures extends SourceBackend.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SourceBackend.ConstructorProps {}
@@ -14141,6 +14307,7 @@ export namespace EDataServer {
      */
     class SourceMailTransport extends SourceBackend {
         static $gtype: GObject.GType<SourceMailTransport>;
+        declare static readonly __signalSignatures: SourceMailTransport.SignalSignatures;
 
         // Constructors
 
@@ -14150,6 +14317,9 @@ export namespace EDataServer {
     }
 
     namespace SourceMemoList {
+        // Signal signatures
+        interface SignalSignatures extends SourceSelectable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SourceSelectable.ConstructorProps {}
@@ -14161,6 +14331,7 @@ export namespace EDataServer {
      */
     class SourceMemoList extends SourceSelectable {
         static $gtype: GObject.GType<SourceMemoList>;
+        declare static readonly __signalSignatures: SourceMemoList.SignalSignatures;
 
         // Constructors
 
@@ -14170,6 +14341,9 @@ export namespace EDataServer {
     }
 
     namespace SourceOffline {
+        // Signal signatures
+        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -14184,6 +14358,7 @@ export namespace EDataServer {
      */
     class SourceOffline extends SourceExtension {
         static $gtype: GObject.GType<SourceOffline>;
+        declare static readonly __signalSignatures: SourceOffline.SignalSignatures;
 
         // Properties
 
@@ -14217,6 +14392,9 @@ export namespace EDataServer {
     }
 
     namespace SourceOpenPGP {
+        // Signal signatures
+        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -14249,6 +14427,7 @@ export namespace EDataServer {
      */
     class SourceOpenPGP extends SourceExtension {
         static $gtype: GObject.GType<SourceOpenPGP>;
+        declare static readonly __signalSignatures: SourceOpenPGP.SignalSignatures;
 
         // Properties
 
@@ -14443,6 +14622,9 @@ export namespace EDataServer {
     }
 
     namespace SourceProxy {
+        // Signal signatures
+        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -14482,6 +14664,7 @@ export namespace EDataServer {
      */
     class SourceProxy extends SourceExtension {
         static $gtype: GObject.GType<SourceProxy>;
+        declare static readonly __signalSignatures: SourceProxy.SignalSignatures;
 
         // Properties
 
@@ -14806,6 +14989,9 @@ export namespace EDataServer {
     }
 
     namespace SourceRefresh {
+        // Signal signatures
+        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -14823,6 +15009,7 @@ export namespace EDataServer {
      */
     class SourceRefresh extends SourceExtension {
         static $gtype: GObject.GType<SourceRefresh>;
+        declare static readonly __signalSignatures: SourceRefresh.SignalSignatures;
 
         // Properties
 
@@ -14930,6 +15117,16 @@ export namespace EDataServer {
             (source: Source): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'credentials-required': CredentialsRequired;
+            'source-added': SourceAdded;
+            'source-changed': SourceChanged;
+            'source-disabled': SourceDisabled;
+            'source-enabled': SourceEnabled;
+            'source-removed': SourceRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -14957,6 +15154,7 @@ export namespace EDataServer {
      */
     class SourceRegistry extends GObject.Object implements Gio.AsyncInitable<SourceRegistry>, Gio.Initable {
         static $gtype: GObject.GType<SourceRegistry>;
+        declare static readonly __signalSignatures: SourceRegistry.SignalSignatures;
 
         // Properties
 
@@ -15036,6 +15234,18 @@ export namespace EDataServer {
 
         // Signals
 
+        connect<K extends keyof SourceRegistry.SignalSignatures>(
+            signal: K,
+            callback: SourceRegistry.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceRegistry.SignalSignatures>(
+            signal: K,
+            callback: SourceRegistry.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceRegistry.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceRegistry.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -16417,6 +16627,13 @@ export namespace EDataServer {
             (source: Source): boolean;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            appeared: Appeared;
+            disappeared: Disappeared;
+            filter: Filter;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -16432,6 +16649,7 @@ export namespace EDataServer {
      */
     class SourceRegistryWatcher extends GObject.Object {
         static $gtype: GObject.GType<SourceRegistryWatcher>;
+        declare static readonly __signalSignatures: SourceRegistryWatcher.SignalSignatures;
 
         // Properties
 
@@ -16464,6 +16682,18 @@ export namespace EDataServer {
 
         // Signals
 
+        connect<K extends keyof SourceRegistryWatcher.SignalSignatures>(
+            signal: K,
+            callback: SourceRegistryWatcher.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SourceRegistryWatcher.SignalSignatures>(
+            signal: K,
+            callback: SourceRegistryWatcher.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SourceRegistryWatcher.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SourceRegistryWatcher.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -16500,6 +16730,9 @@ export namespace EDataServer {
     }
 
     namespace SourceResource {
+        // Signal signatures
+        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -16513,6 +16746,7 @@ export namespace EDataServer {
      */
     class SourceResource extends SourceExtension {
         static $gtype: GObject.GType<SourceResource>;
+        declare static readonly __signalSignatures: SourceResource.SignalSignatures;
 
         // Properties
 
@@ -16554,6 +16788,9 @@ export namespace EDataServer {
     }
 
     namespace SourceRevisionGuards {
+        // Signal signatures
+        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -16567,6 +16804,7 @@ export namespace EDataServer {
      */
     class SourceRevisionGuards extends SourceExtension {
         static $gtype: GObject.GType<SourceRevisionGuards>;
+        declare static readonly __signalSignatures: SourceRevisionGuards.SignalSignatures;
 
         // Properties
 
@@ -16596,6 +16834,9 @@ export namespace EDataServer {
     }
 
     namespace SourceSMIME {
+        // Signal signatures
+        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -16620,6 +16861,7 @@ export namespace EDataServer {
      */
     class SourceSMIME extends SourceExtension {
         static $gtype: GObject.GType<SourceSMIME>;
+        declare static readonly __signalSignatures: SourceSMIME.SignalSignatures;
 
         // Properties
 
@@ -16757,6 +16999,9 @@ export namespace EDataServer {
     }
 
     namespace SourceSecurity {
+        // Signal signatures
+        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -16771,6 +17016,7 @@ export namespace EDataServer {
      */
     class SourceSecurity extends SourceExtension {
         static $gtype: GObject.GType<SourceSecurity>;
+        declare static readonly __signalSignatures: SourceSecurity.SignalSignatures;
 
         // Properties
 
@@ -16834,6 +17080,9 @@ export namespace EDataServer {
     }
 
     namespace SourceSelectable {
+        // Signal signatures
+        interface SignalSignatures extends SourceBackend.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SourceBackend.ConstructorProps {
@@ -16849,6 +17098,7 @@ export namespace EDataServer {
      */
     abstract class SourceSelectable extends SourceBackend {
         static $gtype: GObject.GType<SourceSelectable>;
+        declare static readonly __signalSignatures: SourceSelectable.SignalSignatures;
 
         // Properties
 
@@ -16921,6 +17171,9 @@ export namespace EDataServer {
     }
 
     namespace SourceTaskList {
+        // Signal signatures
+        interface SignalSignatures extends SourceSelectable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SourceSelectable.ConstructorProps {}
@@ -16932,6 +17185,7 @@ export namespace EDataServer {
      */
     class SourceTaskList extends SourceSelectable {
         static $gtype: GObject.GType<SourceTaskList>;
+        declare static readonly __signalSignatures: SourceTaskList.SignalSignatures;
 
         // Constructors
 
@@ -16941,6 +17195,9 @@ export namespace EDataServer {
     }
 
     namespace SourceUoa {
+        // Signal signatures
+        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -16955,6 +17212,7 @@ export namespace EDataServer {
      */
     class SourceUoa extends SourceExtension {
         static $gtype: GObject.GType<SourceUoa>;
+        declare static readonly __signalSignatures: SourceUoa.SignalSignatures;
 
         // Properties
 
@@ -16986,6 +17244,9 @@ export namespace EDataServer {
     }
 
     namespace SourceWeather {
+        // Signal signatures
+        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -16996,6 +17257,7 @@ export namespace EDataServer {
 
     class SourceWeather extends SourceExtension {
         static $gtype: GObject.GType<SourceWeather>;
+        declare static readonly __signalSignatures: SourceWeather.SignalSignatures;
 
         // Properties
 
@@ -17020,6 +17282,9 @@ export namespace EDataServer {
     }
 
     namespace SourceWebDAVNotes {
+        // Signal signatures
+        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -17034,6 +17299,7 @@ export namespace EDataServer {
      */
     class SourceWebDAVNotes extends SourceExtension {
         static $gtype: GObject.GType<SourceWebDAVNotes>;
+        declare static readonly __signalSignatures: SourceWebDAVNotes.SignalSignatures;
 
         // Properties
 
@@ -17075,6 +17341,9 @@ export namespace EDataServer {
     }
 
     namespace SourceWebdav {
+        // Signal signatures
+        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SourceExtension.ConstructorProps {
@@ -17104,6 +17373,7 @@ export namespace EDataServer {
      */
     class SourceWebdav extends SourceExtension {
         static $gtype: GObject.GType<SourceWebdav>;
+        declare static readonly __signalSignatures: SourceWebdav.SignalSignatures;
 
         // Properties
 
@@ -17401,6 +17671,9 @@ export namespace EDataServer {
     }
 
     namespace WebDAVSession {
+        // Signal signatures
+        interface SignalSignatures extends SoupSession.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SoupSession.ConstructorProps {}
@@ -17412,6 +17685,7 @@ export namespace EDataServer {
      */
     class WebDAVSession extends SoupSession {
         static $gtype: GObject.GType<WebDAVSession>;
+        declare static readonly __signalSignatures: WebDAVSession.SignalSignatures;
 
         // Constructors
 
@@ -18230,6 +18504,9 @@ export namespace EDataServer {
     }
 
     namespace XmlDocument {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -18241,6 +18518,7 @@ export namespace EDataServer {
      */
     class XmlDocument extends GObject.Object {
         static $gtype: GObject.GType<XmlDocument>;
+        declare static readonly __signalSignatures: XmlDocument.SignalSignatures;
 
         // Constructors
 

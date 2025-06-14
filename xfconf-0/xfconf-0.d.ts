@@ -245,6 +245,11 @@ export namespace Xfconf {
             (property: string, value: GObject.Value | any): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'property-changed': PropertyChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -262,6 +267,7 @@ export namespace Xfconf {
      */
     class Channel extends GObject.Object {
         static $gtype: GObject.GType<Channel>;
+        declare static readonly __signalSignatures: Channel.SignalSignatures;
 
         // Properties
 
@@ -308,6 +314,15 @@ export namespace Xfconf {
 
         // Signals
 
+        connect<K extends keyof Channel.SignalSignatures>(signal: K, callback: Channel.SignalSignatures[K]): number;
+        connect_after<K extends keyof Channel.SignalSignatures>(
+            signal: K,
+            callback: Channel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Channel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Channel.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -586,16 +601,28 @@ export namespace Xfconf {
         set_uint64(property: string, value: number): boolean;
     }
 
+    namespace Int16 {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+    }
+
     class Int16 {
         static $gtype: GObject.GType<Int16>;
+        declare static readonly __signalSignatures: Int16.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
     }
 
+    namespace Uint16 {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+    }
+
     class Uint16 {
         static $gtype: GObject.GType<Uint16>;
+        declare static readonly __signalSignatures: Uint16.SignalSignatures;
 
         // Constructors
 

@@ -160,6 +160,16 @@ export namespace Manette {
             (event: Event): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'absolute-axis-event': AbsoluteAxisEvent;
+            'button-press-event': ButtonPressEvent;
+            'button-release-event': ButtonReleaseEvent;
+            disconnected: Disconnected;
+            event: Event;
+            'hat-axis-event': HatAxisEvent;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -172,6 +182,7 @@ export namespace Manette {
      */
     class Device extends GObject.Object {
         static $gtype: GObject.GType<Device>;
+        declare static readonly __signalSignatures: Device.SignalSignatures;
 
         // Constructors
 
@@ -181,6 +192,9 @@ export namespace Manette {
 
         // Signals
 
+        connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -288,6 +302,12 @@ export namespace Manette {
             (device: Device): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'device-connected': DeviceConnected;
+            'device-disconnected': DeviceDisconnected;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -300,6 +320,7 @@ export namespace Manette {
      */
     class Monitor extends GObject.Object {
         static $gtype: GObject.GType<Monitor>;
+        declare static readonly __signalSignatures: Monitor.SignalSignatures;
 
         // Constructors
 
@@ -311,6 +332,15 @@ export namespace Manette {
 
         // Signals
 
+        connect<K extends keyof Monitor.SignalSignatures>(signal: K, callback: Monitor.SignalSignatures[K]): number;
+        connect_after<K extends keyof Monitor.SignalSignatures>(
+            signal: K,
+            callback: Monitor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Monitor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Monitor.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

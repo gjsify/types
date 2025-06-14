@@ -5518,6 +5518,9 @@ export namespace Clutter {
         TOUCHSCREEN,
     }
     namespace Action {
+        // Signal signatures
+        interface SignalSignatures extends ActorMeta.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ActorMeta.ConstructorProps {}
@@ -5525,6 +5528,7 @@ export namespace Clutter {
 
     abstract class Action extends ActorMeta {
         static $gtype: GObject.GType<Action>;
+        declare static readonly __signalSignatures: Action.SignalSignatures;
 
         // Constructors
 
@@ -5642,6 +5646,35 @@ export namespace Clutter {
 
         interface Unrealize {
             (): void;
+        }
+
+        // Signal signatures
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
+            'button-press-event': ButtonPressEvent;
+            'button-release-event': ButtonReleaseEvent;
+            'captured-event': CapturedEvent;
+            destroy: Destroy;
+            'enter-event': EnterEvent;
+            event: Event;
+            hide: Hide;
+            'key-focus-in': KeyFocusIn;
+            'key-focus-out': KeyFocusOut;
+            'key-press-event': KeyPressEvent;
+            'key-release-event': KeyReleaseEvent;
+            'leave-event': LeaveEvent;
+            'motion-event': MotionEvent;
+            'parent-set': ParentSet;
+            pick: Pick;
+            'queue-relayout': QueueRelayout;
+            realize: Realize;
+            'resource-scale-changed': ResourceScaleChanged;
+            'scroll-event': ScrollEvent;
+            show: Show;
+            'stage-views-changed': StageViewsChanged;
+            'touch-event': TouchEvent;
+            'transition-stopped': TransitionStopped;
+            'transitions-completed': TransitionsCompleted;
+            unrealize: Unrealize;
         }
 
         // Constructor properties interface
@@ -5785,6 +5818,7 @@ export namespace Clutter {
         implements Atk.ImplementorIface, Animatable, Container, Scriptable
     {
         static $gtype: GObject.GType<Actor>;
+        declare static readonly __signalSignatures: Actor.SignalSignatures;
 
         // Properties
 
@@ -6824,6 +6858,9 @@ export namespace Clutter {
 
         // Signals
 
+        connect<K extends keyof Actor.SignalSignatures>(signal: K, callback: Actor.SignalSignatures[K]): number;
+        connect_after<K extends keyof Actor.SignalSignatures>(signal: K, callback: Actor.SignalSignatures[K]): number;
+        emit<K extends keyof Actor.SignalSignatures>(signal: K, ...args: Parameters<Actor.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -9985,6 +10022,9 @@ export namespace Clutter {
     }
 
     namespace ActorMeta {
+        // Signal signatures
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
@@ -9996,6 +10036,7 @@ export namespace Clutter {
 
     abstract class ActorMeta extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<ActorMeta>;
+        declare static readonly __signalSignatures: ActorMeta.SignalSignatures;
 
         // Properties
 
@@ -10065,12 +10106,18 @@ export namespace Clutter {
         set_name(name: string): void;
     }
 
+    namespace ActorNode {
+        // Signal signatures
+        interface SignalSignatures extends PaintNode.SignalSignatures {}
+    }
+
     /**
      * The #ClutterActorNode structure is an opaque
      * type whose members cannot be directly accessed.
      */
     class ActorNode extends PaintNode {
         static $gtype: GObject.GType<ActorNode>;
+        declare static readonly __signalSignatures: ActorNode.SignalSignatures;
 
         // Constructors
 
@@ -10080,6 +10127,9 @@ export namespace Clutter {
     }
 
     namespace AlignConstraint {
+        // Signal signatures
+        interface SignalSignatures extends Constraint.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Constraint.ConstructorProps {
@@ -10098,6 +10148,7 @@ export namespace Clutter {
      */
     class AlignConstraint extends Constraint {
         static $gtype: GObject.GType<AlignConstraint>;
+        declare static readonly __signalSignatures: AlignConstraint.SignalSignatures;
 
         // Properties
 
@@ -10246,6 +10297,13 @@ export namespace Clutter {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'font-changed': FontChanged;
+            'resolution-changed': ResolutionChanged;
+            'settings-changed': SettingsChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -10257,6 +10315,7 @@ export namespace Clutter {
      */
     abstract class Backend extends GObject.Object {
         static $gtype: GObject.GType<Backend>;
+        declare static readonly __signalSignatures: Backend.SignalSignatures;
 
         // Constructors
 
@@ -10266,6 +10325,15 @@ export namespace Clutter {
 
         // Signals
 
+        connect<K extends keyof Backend.SignalSignatures>(signal: K, callback: Backend.SignalSignatures[K]): number;
+        connect_after<K extends keyof Backend.SignalSignatures>(
+            signal: K,
+            callback: Backend.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Backend.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Backend.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -10331,6 +10399,9 @@ export namespace Clutter {
     }
 
     namespace BinLayout {
+        // Signal signatures
+        interface SignalSignatures extends LayoutManager.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends LayoutManager.ConstructorProps {
@@ -10347,6 +10418,7 @@ export namespace Clutter {
      */
     class BinLayout extends LayoutManager {
         static $gtype: GObject.GType<BinLayout>;
+        declare static readonly __signalSignatures: BinLayout.SignalSignatures;
 
         // Properties
 
@@ -10385,6 +10457,9 @@ export namespace Clutter {
     }
 
     namespace BindConstraint {
+        // Signal signatures
+        interface SignalSignatures extends Constraint.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Constraint.ConstructorProps {
@@ -10400,6 +10475,7 @@ export namespace Clutter {
      */
     class BindConstraint extends Constraint {
         static $gtype: GObject.GType<BindConstraint>;
+        declare static readonly __signalSignatures: BindConstraint.SignalSignatures;
 
         // Properties
 
@@ -10465,6 +10541,9 @@ export namespace Clutter {
     }
 
     namespace BindingPool {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -10478,6 +10557,7 @@ export namespace Clutter {
      */
     class BindingPool extends GObject.Object {
         static $gtype: GObject.GType<BindingPool>;
+        declare static readonly __signalSignatures: BindingPool.SignalSignatures;
 
         // Properties
 
@@ -10662,8 +10742,14 @@ export namespace Clutter {
         unblock_action(action_name: string): void;
     }
 
+    namespace BlitNode {
+        // Signal signatures
+        interface SignalSignatures extends PaintNode.SignalSignatures {}
+    }
+
     class BlitNode extends PaintNode {
         static $gtype: GObject.GType<BlitNode>;
+        declare static readonly __signalSignatures: BlitNode.SignalSignatures;
 
         // Constructors
 
@@ -10694,6 +10780,9 @@ export namespace Clutter {
     }
 
     namespace BlurEffect {
+        // Signal signatures
+        interface SignalSignatures extends OffscreenEffect.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends OffscreenEffect.ConstructorProps {}
@@ -10705,6 +10794,7 @@ export namespace Clutter {
      */
     class BlurEffect extends OffscreenEffect {
         static $gtype: GObject.GType<BlurEffect>;
+        declare static readonly __signalSignatures: BlurEffect.SignalSignatures;
 
         // Constructors
 
@@ -10715,12 +10805,18 @@ export namespace Clutter {
         static ['new'](): BlurEffect;
     }
 
+    namespace BlurNode {
+        // Signal signatures
+        interface SignalSignatures extends LayerNode.SignalSignatures {}
+    }
+
     /**
      * The #ClutterBurNode structure is an opaque
      * type whose members cannot be directly accessed.
      */
     class BlurNode extends LayerNode {
         static $gtype: GObject.GType<BlurNode>;
+        declare static readonly __signalSignatures: BlurNode.SignalSignatures;
 
         // Constructors
 
@@ -10733,6 +10829,9 @@ export namespace Clutter {
     }
 
     namespace BoxLayout {
+        // Signal signatures
+        interface SignalSignatures extends LayoutManager.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends LayoutManager.ConstructorProps {
@@ -10750,6 +10849,7 @@ export namespace Clutter {
      */
     class BoxLayout extends LayoutManager {
         static $gtype: GObject.GType<BoxLayout>;
+        declare static readonly __signalSignatures: BoxLayout.SignalSignatures;
 
         // Properties
 
@@ -10821,6 +10921,9 @@ export namespace Clutter {
     }
 
     namespace BrightnessContrastEffect {
+        // Signal signatures
+        interface SignalSignatures extends OffscreenEffect.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends OffscreenEffect.ConstructorProps {
@@ -10835,6 +10938,7 @@ export namespace Clutter {
      */
     class BrightnessContrastEffect extends OffscreenEffect {
         static $gtype: GObject.GType<BrightnessContrastEffect>;
+        declare static readonly __signalSignatures: BrightnessContrastEffect.SignalSignatures;
 
         // Properties
 
@@ -10920,6 +11024,11 @@ export namespace Clutter {
             (cr: cairo.Context, width: number, height: number): boolean;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            draw: Draw;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Content.ConstructorProps {
@@ -10937,6 +11046,7 @@ export namespace Clutter {
      */
     class Canvas extends GObject.Object implements Content {
         static $gtype: GObject.GType<Canvas>;
+        declare static readonly __signalSignatures: Canvas.SignalSignatures;
 
         // Properties
 
@@ -10969,6 +11079,9 @@ export namespace Clutter {
 
         // Signals
 
+        connect<K extends keyof Canvas.SignalSignatures>(signal: K, callback: Canvas.SignalSignatures[K]): number;
+        connect_after<K extends keyof Canvas.SignalSignatures>(signal: K, callback: Canvas.SignalSignatures[K]): number;
+        emit<K extends keyof Canvas.SignalSignatures>(signal: K, ...args: Parameters<Canvas.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -11530,6 +11643,9 @@ export namespace Clutter {
     }
 
     namespace ChildMeta {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -11576,6 +11692,7 @@ export namespace Clutter {
      */
     abstract class ChildMeta extends GObject.Object {
         static $gtype: GObject.GType<ChildMeta>;
+        declare static readonly __signalSignatures: ChildMeta.SignalSignatures;
 
         // Properties
 
@@ -11619,6 +11736,12 @@ export namespace Clutter {
             (actor: Actor, state: LongPressState): boolean;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Action.SignalSignatures {
+            clicked: Clicked;
+            'long-press': LongPress;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Action.ConstructorProps {
@@ -11633,6 +11756,7 @@ export namespace Clutter {
 
     class ClickAction extends Action {
         static $gtype: GObject.GType<ClickAction>;
+        declare static readonly __signalSignatures: ClickAction.SignalSignatures;
 
         // Properties
 
@@ -11691,6 +11815,18 @@ export namespace Clutter {
 
         // Signals
 
+        connect<K extends keyof ClickAction.SignalSignatures>(
+            signal: K,
+            callback: ClickAction.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ClickAction.SignalSignatures>(
+            signal: K,
+            callback: ClickAction.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ClickAction.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ClickAction.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -11741,12 +11877,18 @@ export namespace Clutter {
         release(): void;
     }
 
+    namespace ClipNode {
+        // Signal signatures
+        interface SignalSignatures extends PaintNode.SignalSignatures {}
+    }
+
     /**
      * The #ClutterTextNode structure is an opaque
      * type whose members cannot be directly accessed.
      */
     class ClipNode extends PaintNode {
         static $gtype: GObject.GType<ClipNode>;
+        declare static readonly __signalSignatures: ClipNode.SignalSignatures;
 
         // Constructors
 
@@ -11756,6 +11898,9 @@ export namespace Clutter {
     }
 
     namespace Clone {
+        // Signal signatures
+        interface SignalSignatures extends Actor.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends Actor = Actor>
@@ -11777,6 +11922,7 @@ export namespace Clutter {
         implements Atk.ImplementorIface, Animatable, Container, Scriptable
     {
         static $gtype: GObject.GType<Clone>;
+        declare static readonly __signalSignatures: Clone.SignalSignatures;
 
         // Properties
 
@@ -12547,12 +12693,18 @@ export namespace Clutter {
         stop_emission_by_name(detailedName: string): void;
     }
 
+    namespace ColorNode {
+        // Signal signatures
+        interface SignalSignatures extends PipelineNode.SignalSignatures {}
+    }
+
     /**
      * The #ClutterTextNode structure is an opaque
      * type whose members cannot be directly accessed.
      */
     class ColorNode extends PipelineNode {
         static $gtype: GObject.GType<ColorNode>;
+        declare static readonly __signalSignatures: ColorNode.SignalSignatures;
 
         // Constructors
 
@@ -12565,6 +12717,9 @@ export namespace Clutter {
     }
 
     namespace ColorizeEffect {
+        // Signal signatures
+        interface SignalSignatures extends OffscreenEffect.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends OffscreenEffect.ConstructorProps {
@@ -12578,6 +12733,7 @@ export namespace Clutter {
      */
     class ColorizeEffect extends OffscreenEffect {
         static $gtype: GObject.GType<ColorizeEffect>;
+        declare static readonly __signalSignatures: ColorizeEffect.SignalSignatures;
 
         // Properties
 
@@ -12609,6 +12765,9 @@ export namespace Clutter {
     }
 
     namespace Constraint {
+        // Signal signatures
+        interface SignalSignatures extends ActorMeta.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ActorMeta.ConstructorProps {}
@@ -12620,6 +12779,7 @@ export namespace Clutter {
      */
     abstract class Constraint extends ActorMeta {
         static $gtype: GObject.GType<Constraint>;
+        declare static readonly __signalSignatures: Constraint.SignalSignatures;
 
         // Constructors
 
@@ -12666,6 +12826,9 @@ export namespace Clutter {
     }
 
     namespace DeformEffect {
+        // Signal signatures
+        interface SignalSignatures extends OffscreenEffect.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends OffscreenEffect.ConstructorProps {
@@ -12682,6 +12845,7 @@ export namespace Clutter {
      */
     abstract class DeformEffect extends OffscreenEffect {
         static $gtype: GObject.GType<DeformEffect>;
+        declare static readonly __signalSignatures: DeformEffect.SignalSignatures;
 
         // Properties
 
@@ -12759,6 +12923,9 @@ export namespace Clutter {
     }
 
     namespace DesaturateEffect {
+        // Signal signatures
+        interface SignalSignatures extends OffscreenEffect.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends OffscreenEffect.ConstructorProps {
@@ -12772,6 +12939,7 @@ export namespace Clutter {
      */
     class DesaturateEffect extends OffscreenEffect {
         static $gtype: GObject.GType<DesaturateEffect>;
+        declare static readonly __signalSignatures: DesaturateEffect.SignalSignatures;
 
         // Properties
 
@@ -12806,6 +12974,9 @@ export namespace Clutter {
     }
 
     namespace Effect {
+        // Signal signatures
+        interface SignalSignatures extends ActorMeta.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ActorMeta.ConstructorProps {}
@@ -12817,6 +12988,7 @@ export namespace Clutter {
      */
     abstract class Effect extends ActorMeta {
         static $gtype: GObject.GType<Effect>;
+        declare static readonly __signalSignatures: Effect.SignalSignatures;
 
         // Constructors
 
@@ -12876,6 +13048,9 @@ export namespace Clutter {
     }
 
     namespace FixedLayout {
+        // Signal signatures
+        interface SignalSignatures extends LayoutManager.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends LayoutManager.ConstructorProps {}
@@ -12887,6 +13062,7 @@ export namespace Clutter {
      */
     class FixedLayout extends LayoutManager {
         static $gtype: GObject.GType<FixedLayout>;
+        declare static readonly __signalSignatures: FixedLayout.SignalSignatures;
 
         // Constructors
 
@@ -12898,6 +13074,9 @@ export namespace Clutter {
     }
 
     namespace FlowLayout {
+        // Signal signatures
+        interface SignalSignatures extends LayoutManager.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends LayoutManager.ConstructorProps {
@@ -12926,6 +13105,7 @@ export namespace Clutter {
      */
     class FlowLayout extends LayoutManager {
         static $gtype: GObject.GType<FlowLayout>;
+        declare static readonly __signalSignatures: FlowLayout.SignalSignatures;
 
         // Properties
 
@@ -13122,6 +13302,11 @@ export namespace Clutter {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            destroy: Destroy;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -13129,6 +13314,7 @@ export namespace Clutter {
 
     class FrameClock extends GObject.Object {
         static $gtype: GObject.GType<FrameClock>;
+        declare static readonly __signalSignatures: FrameClock.SignalSignatures;
 
         // Constructors
 
@@ -13138,6 +13324,18 @@ export namespace Clutter {
 
         // Signals
 
+        connect<K extends keyof FrameClock.SignalSignatures>(
+            signal: K,
+            callback: FrameClock.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FrameClock.SignalSignatures>(
+            signal: K,
+            callback: FrameClock.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FrameClock.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FrameClock.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -13179,6 +13377,14 @@ export namespace Clutter {
             (actor: Actor): boolean;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Action.SignalSignatures {
+            'gesture-begin': GestureBegin;
+            'gesture-cancel': GestureCancel;
+            'gesture-end': GestureEnd;
+            'gesture-progress': GestureProgress;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Action.ConstructorProps {
@@ -13195,6 +13401,7 @@ export namespace Clutter {
 
     class GestureAction extends Action {
         static $gtype: GObject.GType<GestureAction>;
+        declare static readonly __signalSignatures: GestureAction.SignalSignatures;
 
         // Properties
 
@@ -13263,6 +13470,18 @@ export namespace Clutter {
 
         // Signals
 
+        connect<K extends keyof GestureAction.SignalSignatures>(
+            signal: K,
+            callback: GestureAction.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof GestureAction.SignalSignatures>(
+            signal: K,
+            callback: GestureAction.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof GestureAction.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<GestureAction.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -13395,6 +13614,9 @@ export namespace Clutter {
     }
 
     namespace GridLayout {
+        // Signal signatures
+        interface SignalSignatures extends LayoutManager.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends LayoutManager.ConstructorProps {
@@ -13416,6 +13638,7 @@ export namespace Clutter {
      */
     class GridLayout extends LayoutManager {
         static $gtype: GObject.GType<GridLayout>;
+        declare static readonly __signalSignatures: GridLayout.SignalSignatures;
 
         // Properties
 
@@ -13607,6 +13830,9 @@ export namespace Clutter {
     }
 
     namespace Image {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Content.ConstructorProps {}
@@ -13619,6 +13845,7 @@ export namespace Clutter {
      */
     class Image extends GObject.Object implements Content {
         static $gtype: GObject.GType<Image>;
+        declare static readonly __signalSignatures: Image.SignalSignatures;
 
         // Constructors
 
@@ -14225,6 +14452,9 @@ export namespace Clutter {
     }
 
     namespace InputDevice {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -14261,6 +14491,7 @@ export namespace Clutter {
      */
     class InputDevice extends GObject.Object {
         static $gtype: GObject.GType<InputDevice>;
+        declare static readonly __signalSignatures: InputDevice.SignalSignatures;
 
         // Properties
 
@@ -14394,6 +14625,9 @@ export namespace Clutter {
     }
 
     namespace InputDeviceTool {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -14406,6 +14640,7 @@ export namespace Clutter {
 
     abstract class InputDeviceTool extends GObject.Object {
         static $gtype: GObject.GType<InputDeviceTool>;
+        declare static readonly __signalSignatures: InputDeviceTool.SignalSignatures;
 
         // Properties
 
@@ -14443,6 +14678,9 @@ export namespace Clutter {
     }
 
     namespace InputFocus {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -14450,6 +14688,7 @@ export namespace Clutter {
 
     abstract class InputFocus extends GObject.Object {
         static $gtype: GObject.GType<InputFocus>;
+        declare static readonly __signalSignatures: InputFocus.SignalSignatures;
 
         // Constructors
 
@@ -14502,6 +14741,15 @@ export namespace Clutter {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            commit: Commit;
+            'cursor-location-changed': CursorLocationChanged;
+            'delete-surrounding': DeleteSurrounding;
+            'input-panel-state': InputPanelState;
+            'request-surrounding': RequestSurrounding;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -14516,6 +14764,7 @@ export namespace Clutter {
 
     abstract class InputMethod extends GObject.Object {
         static $gtype: GObject.GType<InputMethod>;
+        declare static readonly __signalSignatures: InputMethod.SignalSignatures;
 
         // Properties
 
@@ -14540,6 +14789,18 @@ export namespace Clutter {
 
         // Signals
 
+        connect<K extends keyof InputMethod.SignalSignatures>(
+            signal: K,
+            callback: InputMethod.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof InputMethod.SignalSignatures>(
+            signal: K,
+            callback: InputMethod.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InputMethod.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InputMethod.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -14596,6 +14857,9 @@ export namespace Clutter {
     }
 
     namespace Interval {
+        // Signal signatures
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps, Scriptable.ConstructorProps {
@@ -14612,6 +14876,7 @@ export namespace Clutter {
      */
     class Interval extends GObject.InitiallyUnowned implements Scriptable {
         static $gtype: GObject.GType<Interval>;
+        declare static readonly __signalSignatures: Interval.SignalSignatures;
 
         // Properties
 
@@ -15252,6 +15517,9 @@ export namespace Clutter {
     }
 
     namespace KeyframeTransition {
+        // Signal signatures
+        interface SignalSignatures extends PropertyTransition.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends PropertyTransition.ConstructorProps, Scriptable.ConstructorProps {}
@@ -15263,6 +15531,7 @@ export namespace Clutter {
      */
     class KeyframeTransition extends PropertyTransition implements Scriptable {
         static $gtype: GObject.GType<KeyframeTransition>;
+        declare static readonly __signalSignatures: KeyframeTransition.SignalSignatures;
 
         // Constructors
 
@@ -15782,6 +16051,11 @@ export namespace Clutter {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'state-changed': StateChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -15794,6 +16068,7 @@ export namespace Clutter {
 
     abstract class Keymap extends GObject.Object {
         static $gtype: GObject.GType<Keymap>;
+        declare static readonly __signalSignatures: Keymap.SignalSignatures;
 
         // Properties
 
@@ -15810,6 +16085,9 @@ export namespace Clutter {
 
         // Signals
 
+        connect<K extends keyof Keymap.SignalSignatures>(signal: K, callback: Keymap.SignalSignatures[K]): number;
+        connect_after<K extends keyof Keymap.SignalSignatures>(signal: K, callback: Keymap.SignalSignatures[K]): number;
+        emit<K extends keyof Keymap.SignalSignatures>(signal: K, ...args: Parameters<Keymap.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -15828,8 +16106,14 @@ export namespace Clutter {
         get_num_lock_state(): boolean;
     }
 
+    namespace LayerNode {
+        // Signal signatures
+        interface SignalSignatures extends PaintNode.SignalSignatures {}
+    }
+
     class LayerNode extends PaintNode {
         static $gtype: GObject.GType<LayerNode>;
+        declare static readonly __signalSignatures: LayerNode.SignalSignatures;
 
         // Constructors
 
@@ -15853,6 +16137,11 @@ export namespace Clutter {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
+            'layout-changed': LayoutChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {}
@@ -15864,6 +16153,7 @@ export namespace Clutter {
      */
     abstract class LayoutManager extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<LayoutManager>;
+        declare static readonly __signalSignatures: LayoutManager.SignalSignatures;
 
         // Constructors
 
@@ -15873,6 +16163,18 @@ export namespace Clutter {
 
         // Signals
 
+        connect<K extends keyof LayoutManager.SignalSignatures>(
+            signal: K,
+            callback: LayoutManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LayoutManager.SignalSignatures>(
+            signal: K,
+            callback: LayoutManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LayoutManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LayoutManager.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -16019,6 +16321,9 @@ export namespace Clutter {
     }
 
     namespace LayoutMeta {
+        // Signal signatures
+        interface SignalSignatures extends ChildMeta.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ChildMeta.ConstructorProps {
@@ -16035,6 +16340,7 @@ export namespace Clutter {
      */
     abstract class LayoutMeta extends ChildMeta {
         static $gtype: GObject.GType<LayoutMeta>;
+        declare static readonly __signalSignatures: LayoutMeta.SignalSignatures;
 
         // Properties
 
@@ -16059,6 +16365,9 @@ export namespace Clutter {
     }
 
     namespace OffscreenEffect {
+        // Signal signatures
+        interface SignalSignatures extends Effect.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Effect.ConstructorProps {}
@@ -16070,6 +16379,7 @@ export namespace Clutter {
      */
     abstract class OffscreenEffect extends Effect {
         static $gtype: GObject.GType<OffscreenEffect>;
+        declare static readonly __signalSignatures: OffscreenEffect.SignalSignatures;
 
         // Constructors
 
@@ -16142,6 +16452,9 @@ export namespace Clutter {
     }
 
     namespace PageTurnEffect {
+        // Signal signatures
+        interface SignalSignatures extends DeformEffect.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DeformEffect.ConstructorProps {
@@ -16157,6 +16470,7 @@ export namespace Clutter {
      */
     class PageTurnEffect extends DeformEffect {
         static $gtype: GObject.GType<PageTurnEffect>;
+        declare static readonly __signalSignatures: PageTurnEffect.SignalSignatures;
 
         // Properties
 
@@ -16220,12 +16534,18 @@ export namespace Clutter {
         set_radius(radius: number): void;
     }
 
+    namespace PaintNode {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+    }
+
     /**
      * The `ClutterPaintNode` structure contains only private data
      * and it should be accessed using the provided API.
      */
     abstract class PaintNode {
         static $gtype: GObject.GType<PaintNode>;
+        declare static readonly __signalSignatures: PaintNode.SignalSignatures;
 
         // Constructors
 
@@ -16331,6 +16651,12 @@ export namespace Clutter {
             (actor: Actor): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GestureAction.SignalSignatures {
+            pan: Pan;
+            'pan-stopped': PanStopped;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GestureAction.ConstructorProps {
@@ -16349,6 +16675,7 @@ export namespace Clutter {
      */
     class PanAction extends GestureAction {
         static $gtype: GObject.GType<PanAction>;
+        declare static readonly __signalSignatures: PanAction.SignalSignatures;
 
         // Properties
 
@@ -16404,6 +16731,15 @@ export namespace Clutter {
 
         // Signals
 
+        connect<K extends keyof PanAction.SignalSignatures>(signal: K, callback: PanAction.SignalSignatures[K]): number;
+        connect_after<K extends keyof PanAction.SignalSignatures>(
+            signal: K,
+            callback: PanAction.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PanAction.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PanAction.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -16515,6 +16851,9 @@ export namespace Clutter {
     }
 
     namespace Path {
+        // Signal signatures
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
@@ -16529,6 +16868,7 @@ export namespace Clutter {
      */
     class Path extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<Path>;
+        declare static readonly __signalSignatures: Path.SignalSignatures;
 
         // Properties
 
@@ -16735,6 +17075,11 @@ export namespace Clutter {
             (actor: Actor, index: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Constraint.SignalSignatures {
+            'node-reached': NodeReached;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Constraint.ConstructorProps {
@@ -16749,6 +17094,7 @@ export namespace Clutter {
      */
     class PathConstraint extends Constraint {
         static $gtype: GObject.GType<PathConstraint>;
+        declare static readonly __signalSignatures: PathConstraint.SignalSignatures;
 
         // Properties
 
@@ -16773,6 +17119,18 @@ export namespace Clutter {
 
         // Signals
 
+        connect<K extends keyof PathConstraint.SignalSignatures>(
+            signal: K,
+            callback: PathConstraint.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PathConstraint.SignalSignatures>(
+            signal: K,
+            callback: PathConstraint.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PathConstraint.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PathConstraint.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -16807,12 +17165,18 @@ export namespace Clutter {
         set_path(path?: Path | null): void;
     }
 
+    namespace PipelineNode {
+        // Signal signatures
+        interface SignalSignatures extends PaintNode.SignalSignatures {}
+    }
+
     /**
      * The #ClutterTextNode structure is an opaque
      * type whose members cannot be directly accessed.
      */
     class PipelineNode extends PaintNode {
         static $gtype: GObject.GType<PipelineNode>;
+        declare static readonly __signalSignatures: PipelineNode.SignalSignatures;
 
         // Constructors
 
@@ -16822,6 +17186,9 @@ export namespace Clutter {
     }
 
     namespace PropertyTransition {
+        // Signal signatures
+        interface SignalSignatures extends Transition.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Transition.ConstructorProps, Scriptable.ConstructorProps {
@@ -16836,6 +17203,7 @@ export namespace Clutter {
      */
     class PropertyTransition extends Transition implements Scriptable {
         static $gtype: GObject.GType<PropertyTransition>;
+        declare static readonly __signalSignatures: PropertyTransition.SignalSignatures;
 
         // Properties
 
@@ -17322,12 +17690,18 @@ export namespace Clutter {
         stop_emission_by_name(detailedName: string): void;
     }
 
+    namespace RootNode {
+        // Signal signatures
+        interface SignalSignatures extends PaintNode.SignalSignatures {}
+    }
+
     /**
      * The #ClutterRootNode structure is an opaque
      * type whose members cannot be directly accessed.
      */
     class RootNode extends PaintNode {
         static $gtype: GObject.GType<RootNode>;
+        declare static readonly __signalSignatures: RootNode.SignalSignatures;
 
         // Constructors
 
@@ -17343,6 +17717,11 @@ export namespace Clutter {
             (actor: Actor, angle: number): boolean;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GestureAction.SignalSignatures {
+            rotate: Rotate;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GestureAction.ConstructorProps {}
@@ -17354,6 +17733,7 @@ export namespace Clutter {
      */
     class RotateAction extends GestureAction {
         static $gtype: GObject.GType<RotateAction>;
+        declare static readonly __signalSignatures: RotateAction.SignalSignatures;
 
         // Constructors
 
@@ -17365,6 +17745,18 @@ export namespace Clutter {
 
         // Signals
 
+        connect<K extends keyof RotateAction.SignalSignatures>(
+            signal: K,
+            callback: RotateAction.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RotateAction.SignalSignatures>(
+            signal: K,
+            callback: RotateAction.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RotateAction.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RotateAction.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -17374,6 +17766,9 @@ export namespace Clutter {
     }
 
     namespace Script {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -17391,6 +17786,7 @@ export namespace Clutter {
      */
     class Script extends GObject.Object {
         static $gtype: GObject.GType<Script>;
+        declare static readonly __signalSignatures: Script.SignalSignatures;
 
         // Properties
 
@@ -17562,6 +17958,9 @@ export namespace Clutter {
     }
 
     namespace ScrollActor {
+        // Signal signatures
+        interface SignalSignatures extends Actor.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -17581,6 +17980,7 @@ export namespace Clutter {
      */
     class ScrollActor extends Actor implements Atk.ImplementorIface, Animatable, Container, Scriptable {
         static $gtype: GObject.GType<ScrollActor>;
+        declare static readonly __signalSignatures: ScrollActor.SignalSignatures;
 
         // Properties
 
@@ -18404,6 +18804,18 @@ export namespace Clutter {
             (device: InputDevice, timeout_type: PointerA11yTimeoutType, clicked: boolean): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'device-added': DeviceAdded;
+            'device-removed': DeviceRemoved;
+            'is-unfocus-inhibited-changed': IsUnfocusInhibitedChanged;
+            'kbd-a11y-flags-changed': KbdA11yFlagsChanged;
+            'kbd-a11y-mods-state-changed': KbdA11yModsStateChanged;
+            'ptr-a11y-dwell-click-type-changed': PtrA11yDwellClickTypeChanged;
+            'ptr-a11y-timeout-started': PtrA11yTimeoutStarted;
+            'ptr-a11y-timeout-stopped': PtrA11yTimeoutStopped;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -18414,6 +18826,7 @@ export namespace Clutter {
 
     abstract class Seat extends GObject.Object {
         static $gtype: GObject.GType<Seat>;
+        declare static readonly __signalSignatures: Seat.SignalSignatures;
 
         // Properties
 
@@ -18436,6 +18849,9 @@ export namespace Clutter {
 
         // Signals
 
+        connect<K extends keyof Seat.SignalSignatures>(signal: K, callback: Seat.SignalSignatures[K]): number;
+        connect_after<K extends keyof Seat.SignalSignatures>(signal: K, callback: Seat.SignalSignatures[K]): number;
+        emit<K extends keyof Seat.SignalSignatures>(signal: K, ...args: Parameters<Seat.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -18635,6 +19051,9 @@ export namespace Clutter {
     }
 
     namespace Settings {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -18674,6 +19093,7 @@ export namespace Clutter {
      */
     class Settings extends GObject.Object {
         static $gtype: GObject.GType<Settings>;
+        declare static readonly __signalSignatures: Settings.SignalSignatures;
 
         // Properties
 
@@ -18857,6 +19277,9 @@ export namespace Clutter {
     }
 
     namespace ShaderEffect {
+        // Signal signatures
+        interface SignalSignatures extends OffscreenEffect.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends OffscreenEffect.ConstructorProps {
@@ -18871,6 +19294,7 @@ export namespace Clutter {
      */
     class ShaderEffect extends OffscreenEffect {
         static $gtype: GObject.GType<ShaderEffect>;
+        declare static readonly __signalSignatures: ShaderEffect.SignalSignatures;
 
         // Properties
 
@@ -18940,24 +19364,42 @@ export namespace Clutter {
         set_uniform_value(name: string, value: GObject.Value | any): void;
     }
 
+    namespace ShaderFloat {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+    }
+
     class ShaderFloat {
         static $gtype: GObject.GType<ShaderFloat>;
+        declare static readonly __signalSignatures: ShaderFloat.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+    }
+
+    namespace ShaderInt {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
     class ShaderInt {
         static $gtype: GObject.GType<ShaderInt>;
+        declare static readonly __signalSignatures: ShaderInt.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
     }
 
+    namespace ShaderMatrix {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+    }
+
     class ShaderMatrix {
         static $gtype: GObject.GType<ShaderMatrix>;
+        declare static readonly __signalSignatures: ShaderMatrix.SignalSignatures;
 
         // Constructors
 
@@ -18965,6 +19407,9 @@ export namespace Clutter {
     }
 
     namespace SnapConstraint {
+        // Signal signatures
+        interface SignalSignatures extends Constraint.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Constraint.ConstructorProps {
@@ -18983,6 +19428,7 @@ export namespace Clutter {
      */
     class SnapConstraint extends Constraint {
         static $gtype: GObject.GType<SnapConstraint>;
+        declare static readonly __signalSignatures: SnapConstraint.SignalSignatures;
 
         // Properties
 
@@ -19107,6 +19553,20 @@ export namespace Clutter {
             (view: StageView, frame_info?: any | null): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Actor.SignalSignatures {
+            activate: Activate;
+            'after-paint': AfterPaint;
+            'after-update': AfterUpdate;
+            'before-paint': BeforePaint;
+            'before-update': BeforeUpdate;
+            deactivate: Deactivate;
+            'gl-video-memory-purged': GlVideoMemoryPurged;
+            'paint-view': PaintView;
+            'prepare-frame': PrepareFrame;
+            presented: Presented;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -19128,6 +19588,7 @@ export namespace Clutter {
      */
     class Stage extends Actor implements Atk.ImplementorIface, Animatable, Container, Scriptable {
         static $gtype: GObject.GType<Stage>;
+        declare static readonly __signalSignatures: Stage.SignalSignatures;
 
         // Properties
 
@@ -19166,6 +19627,9 @@ export namespace Clutter {
 
         // Signals
 
+        connect<K extends keyof Stage.SignalSignatures>(signal: K, callback: Stage.SignalSignatures[K]): number;
+        connect_after<K extends keyof Stage.SignalSignatures>(signal: K, callback: Stage.SignalSignatures[K]): number;
+        emit<K extends keyof Stage.SignalSignatures>(signal: K, ...args: Parameters<Stage.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -20128,6 +20592,12 @@ export namespace Clutter {
             (stage: Stage): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'stage-added': StageAdded;
+            'stage-removed': StageRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -20141,6 +20611,7 @@ export namespace Clutter {
      */
     class StageManager extends GObject.Object {
         static $gtype: GObject.GType<StageManager>;
+        declare static readonly __signalSignatures: StageManager.SignalSignatures;
 
         // Properties
 
@@ -20161,6 +20632,18 @@ export namespace Clutter {
 
         // Signals
 
+        connect<K extends keyof StageManager.SignalSignatures>(
+            signal: K,
+            callback: StageManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StageManager.SignalSignatures>(
+            signal: K,
+            callback: StageManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StageManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StageManager.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -20203,6 +20686,9 @@ export namespace Clutter {
     }
 
     namespace StageView {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -20223,6 +20709,7 @@ export namespace Clutter {
 
     class StageView extends GObject.Object {
         static $gtype: GObject.GType<StageView>;
+        declare static readonly __signalSignatures: StageView.SignalSignatures;
 
         // Properties
 
@@ -20293,6 +20780,12 @@ export namespace Clutter {
             (actor: Actor, direction: SwipeDirection): boolean;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GestureAction.SignalSignatures {
+            swept: Swept;
+            swipe: Swipe;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GestureAction.ConstructorProps {}
@@ -20304,6 +20797,7 @@ export namespace Clutter {
      */
     class SwipeAction extends GestureAction {
         static $gtype: GObject.GType<SwipeAction>;
+        declare static readonly __signalSignatures: SwipeAction.SignalSignatures;
 
         // Constructors
 
@@ -20315,6 +20809,18 @@ export namespace Clutter {
 
         // Signals
 
+        connect<K extends keyof SwipeAction.SignalSignatures>(
+            signal: K,
+            callback: SwipeAction.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SwipeAction.SignalSignatures>(
+            signal: K,
+            callback: SwipeAction.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SwipeAction.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SwipeAction.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -20343,6 +20849,11 @@ export namespace Clutter {
             (actor: Actor): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GestureAction.SignalSignatures {
+            tap: Tap;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GestureAction.ConstructorProps {}
@@ -20354,6 +20865,7 @@ export namespace Clutter {
      */
     class TapAction extends GestureAction {
         static $gtype: GObject.GType<TapAction>;
+        declare static readonly __signalSignatures: TapAction.SignalSignatures;
 
         // Constructors
 
@@ -20365,6 +20877,15 @@ export namespace Clutter {
 
         // Signals
 
+        connect<K extends keyof TapAction.SignalSignatures>(signal: K, callback: TapAction.SignalSignatures[K]): number;
+        connect_after<K extends keyof TapAction.SignalSignatures>(
+            signal: K,
+            callback: TapAction.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TapAction.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TapAction.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -20402,6 +20923,16 @@ export namespace Clutter {
 
         interface TextChanged {
             (): void;
+        }
+
+        // Signal signatures
+        interface SignalSignatures extends Actor.SignalSignatures {
+            activate: Activate;
+            'cursor-changed': CursorChanged;
+            'cursor-event': CursorEvent;
+            'delete-text': DeleteText;
+            'insert-text': InsertText;
+            'text-changed': TextChanged;
         }
 
         // Constructor properties interface
@@ -20472,6 +21003,7 @@ export namespace Clutter {
      */
     class Text extends Actor implements Atk.ImplementorIface, Animatable, Container, Scriptable {
         static $gtype: GObject.GType<Text>;
+        declare static readonly __signalSignatures: Text.SignalSignatures;
 
         // Properties
 
@@ -20810,6 +21342,9 @@ export namespace Clutter {
 
         // Signals
 
+        connect<K extends keyof Text.SignalSignatures>(signal: K, callback: Text.SignalSignatures[K]): number;
+        connect_after<K extends keyof Text.SignalSignatures>(signal: K, callback: Text.SignalSignatures[K]): number;
+        emit<K extends keyof Text.SignalSignatures>(signal: K, ...args: Parameters<Text.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -22128,6 +22663,12 @@ export namespace Clutter {
             (position: number, chars: string, n_chars: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'deleted-text': DeletedText;
+            'inserted-text': InsertedText;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -22144,6 +22685,7 @@ export namespace Clutter {
      */
     class TextBuffer extends GObject.Object {
         static $gtype: GObject.GType<TextBuffer>;
+        declare static readonly __signalSignatures: TextBuffer.SignalSignatures;
 
         // Properties
 
@@ -22178,6 +22720,18 @@ export namespace Clutter {
 
         // Signals
 
+        connect<K extends keyof TextBuffer.SignalSignatures>(
+            signal: K,
+            callback: TextBuffer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TextBuffer.SignalSignatures>(
+            signal: K,
+            callback: TextBuffer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TextBuffer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TextBuffer.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -22329,12 +22883,18 @@ export namespace Clutter {
         set_text(chars: string, n_chars: number): void;
     }
 
+    namespace TextNode {
+        // Signal signatures
+        interface SignalSignatures extends PaintNode.SignalSignatures {}
+    }
+
     /**
      * The #ClutterTextNode structure is an opaque
      * type whose members cannot be directly accessed.
      */
     class TextNode extends PaintNode {
         static $gtype: GObject.GType<TextNode>;
+        declare static readonly __signalSignatures: TextNode.SignalSignatures;
 
         // Constructors
 
@@ -22344,6 +22904,9 @@ export namespace Clutter {
     }
 
     namespace TextureContent {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Content.ConstructorProps {}
@@ -22351,6 +22914,7 @@ export namespace Clutter {
 
     class TextureContent extends GObject.Object implements Content {
         static $gtype: GObject.GType<TextureContent>;
+        declare static readonly __signalSignatures: TextureContent.SignalSignatures;
 
         // Constructors
 
@@ -22878,12 +23442,18 @@ export namespace Clutter {
         stop_emission_by_name(detailedName: string): void;
     }
 
+    namespace TextureNode {
+        // Signal signatures
+        interface SignalSignatures extends PipelineNode.SignalSignatures {}
+    }
+
     /**
      * The #ClutterTextNode structure is an opaque
      * type whose members cannot be directly accessed.
      */
     class TextureNode extends PipelineNode {
         static $gtype: GObject.GType<TextureNode>;
+        declare static readonly __signalSignatures: TextureNode.SignalSignatures;
 
         // Constructors
 
@@ -22927,6 +23497,16 @@ export namespace Clutter {
             (is_finished: boolean): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            completed: Completed;
+            'marker-reached': MarkerReached;
+            'new-frame': NewFrame;
+            paused: Paused;
+            started: Started;
+            stopped: Stopped;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Scriptable.ConstructorProps {
@@ -22951,6 +23531,7 @@ export namespace Clutter {
      */
     class Timeline extends GObject.Object implements Scriptable {
         static $gtype: GObject.GType<Timeline>;
+        declare static readonly __signalSignatures: Timeline.SignalSignatures;
 
         // Properties
 
@@ -23041,6 +23622,15 @@ export namespace Clutter {
 
         // Signals
 
+        connect<K extends keyof Timeline.SignalSignatures>(signal: K, callback: Timeline.SignalSignatures[K]): number;
+        connect_after<K extends keyof Timeline.SignalSignatures>(
+            signal: K,
+            callback: Timeline.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Timeline.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Timeline.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -23897,8 +24487,14 @@ export namespace Clutter {
         stop_emission_by_name(detailedName: string): void;
     }
 
+    namespace TransformNode {
+        // Signal signatures
+        interface SignalSignatures extends PaintNode.SignalSignatures {}
+    }
+
     class TransformNode extends PaintNode {
         static $gtype: GObject.GType<TransformNode>;
+        declare static readonly __signalSignatures: TransformNode.SignalSignatures;
 
         // Constructors
 
@@ -23908,6 +24504,9 @@ export namespace Clutter {
     }
 
     namespace Transition {
+        // Signal signatures
+        interface SignalSignatures extends Timeline.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Timeline.ConstructorProps, Scriptable.ConstructorProps {
@@ -23924,6 +24523,7 @@ export namespace Clutter {
      */
     abstract class Transition extends Timeline implements Scriptable {
         static $gtype: GObject.GType<Transition>;
+        declare static readonly __signalSignatures: Transition.SignalSignatures;
 
         // Properties
 
@@ -24563,6 +25163,9 @@ export namespace Clutter {
     }
 
     namespace TransitionGroup {
+        // Signal signatures
+        interface SignalSignatures extends Transition.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Transition.ConstructorProps, Scriptable.ConstructorProps {}
@@ -24574,6 +25177,7 @@ export namespace Clutter {
      */
     class TransitionGroup extends Transition implements Scriptable {
         static $gtype: GObject.GType<TransitionGroup>;
+        declare static readonly __signalSignatures: TransitionGroup.SignalSignatures;
 
         // Constructors
 
@@ -25052,6 +25656,9 @@ export namespace Clutter {
     }
 
     namespace VirtualInputDevice {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -25063,6 +25670,7 @@ export namespace Clutter {
 
     class VirtualInputDevice extends GObject.Object {
         static $gtype: GObject.GType<VirtualInputDevice>;
+        declare static readonly __signalSignatures: VirtualInputDevice.SignalSignatures;
 
         // Properties
 
@@ -25128,6 +25736,11 @@ export namespace Clutter {
             (actor: Actor, focal_point: Graphene.Point, factor: number): boolean;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GestureAction.SignalSignatures {
+            zoom: Zoom;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GestureAction.ConstructorProps {}
@@ -25139,6 +25752,7 @@ export namespace Clutter {
      */
     class ZoomAction extends GestureAction {
         static $gtype: GObject.GType<ZoomAction>;
+        declare static readonly __signalSignatures: ZoomAction.SignalSignatures;
 
         // Constructors
 
@@ -25150,6 +25764,18 @@ export namespace Clutter {
 
         // Signals
 
+        connect<K extends keyof ZoomAction.SignalSignatures>(
+            signal: K,
+            callback: ZoomAction.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ZoomAction.SignalSignatures>(
+            signal: K,
+            callback: ZoomAction.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ZoomAction.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ZoomAction.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

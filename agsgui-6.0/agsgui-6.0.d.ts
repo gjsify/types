@@ -743,6 +743,9 @@ export namespace AgsGui {
         R_SHIFT,
     }
     namespace Cartesian {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -854,6 +857,7 @@ export namespace AgsGui {
 
     class Cartesian extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Cartesian>;
+        declare static readonly __signalSignatures: Cartesian.SignalSignatures;
 
         // Properties
 
@@ -2578,6 +2582,11 @@ export namespace AgsGui {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {
+            'value-changed': ValueChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2606,6 +2615,7 @@ export namespace AgsGui {
 
     class Dial extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Dial>;
+        declare static readonly __signalSignatures: Dial.SignalSignatures;
 
         // Properties
 
@@ -2712,6 +2722,9 @@ export namespace AgsGui {
 
         // Signals
 
+        connect<K extends keyof Dial.SignalSignatures>(signal: K, callback: Dial.SignalSignatures[K]): number;
+        connect_after<K extends keyof Dial.SignalSignatures>(signal: K, callback: Dial.SignalSignatures[K]): number;
+        emit<K extends keyof Dial.SignalSignatures>(signal: K, ...args: Parameters<Dial.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3559,6 +3572,9 @@ export namespace AgsGui {
     }
 
     namespace Expander {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3571,6 +3587,7 @@ export namespace AgsGui {
 
     class Expander extends Gtk.Box implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<Expander>;
+        declare static readonly __signalSignatures: Expander.SignalSignatures;
 
         // Fields
 
@@ -4071,6 +4088,9 @@ export namespace AgsGui {
     }
 
     namespace ExpanderSet {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Grid.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4083,6 +4103,7 @@ export namespace AgsGui {
 
     class ExpanderSet extends Gtk.Grid implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<ExpanderSet>;
+        declare static readonly __signalSignatures: ExpanderSet.SignalSignatures;
 
         // Fields
 
@@ -4588,6 +4609,11 @@ export namespace AgsGui {
             (object: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Window.SignalSignatures {
+            response: Response;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4608,6 +4634,7 @@ export namespace AgsGui {
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Native, Gtk.Root, Gtk.ShortcutManager
     {
         static $gtype: GObject.GType<FileDialog>;
+        declare static readonly __signalSignatures: FileDialog.SignalSignatures;
 
         // Properties
 
@@ -4636,6 +4663,18 @@ export namespace AgsGui {
 
         // Signals
 
+        connect<K extends keyof FileDialog.SignalSignatures>(
+            signal: K,
+            callback: FileDialog.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FileDialog.SignalSignatures>(
+            signal: K,
+            callback: FileDialog.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FileDialog.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FileDialog.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -7619,6 +7658,12 @@ export namespace AgsGui {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {
+            'create-dir': CreateDir;
+            refresh: Refresh;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7650,6 +7695,7 @@ export namespace AgsGui {
 
     class FileWidget extends Gtk.Box implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<FileWidget>;
+        declare static readonly __signalSignatures: FileWidget.SignalSignatures;
 
         // Properties
 
@@ -7787,6 +7833,18 @@ export namespace AgsGui {
 
         // Signals
 
+        connect<K extends keyof FileWidget.SignalSignatures>(
+            signal: K,
+            callback: FileWidget.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FileWidget.SignalSignatures>(
+            signal: K,
+            callback: FileWidget.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FileWidget.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FileWidget.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -8485,6 +8543,13 @@ export namespace AgsGui {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {
+            clicked: Clicked;
+            'copy-event': CopyEvent;
+            'delete-event': DeleteEvent;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -8499,6 +8564,7 @@ export namespace AgsGui {
 
     class IconLink extends Gtk.Box implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<IconLink>;
+        declare static readonly __signalSignatures: IconLink.SignalSignatures;
 
         // Properties
 
@@ -8531,6 +8597,15 @@ export namespace AgsGui {
 
         // Signals
 
+        connect<K extends keyof IconLink.SignalSignatures>(signal: K, callback: IconLink.SignalSignatures[K]): number;
+        connect_after<K extends keyof IconLink.SignalSignatures>(
+            signal: K,
+            callback: IconLink.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof IconLink.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<IconLink.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -9072,6 +9147,9 @@ export namespace AgsGui {
     }
 
     namespace Indicator {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9094,6 +9172,7 @@ export namespace AgsGui {
 
     class Indicator extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<Indicator>;
+        declare static readonly __signalSignatures: Indicator.SignalSignatures;
 
         // Properties
 
@@ -9951,6 +10030,11 @@ export namespace AgsGui {
             (response: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Window.SignalSignatures {
+            response: Response;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9968,6 +10052,7 @@ export namespace AgsGui {
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Native, Gtk.Root, Gtk.ShortcutManager
     {
         static $gtype: GObject.GType<InputDialog>;
+        declare static readonly __signalSignatures: InputDialog.SignalSignatures;
 
         // Fields
 
@@ -9996,6 +10081,18 @@ export namespace AgsGui {
 
         // Signals
 
+        connect<K extends keyof InputDialog.SignalSignatures>(
+            signal: K,
+            callback: InputDialog.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof InputDialog.SignalSignatures>(
+            signal: K,
+            callback: InputDialog.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InputDialog.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InputDialog.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -13010,6 +13107,9 @@ export namespace AgsGui {
     }
 
     namespace Led {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -13026,6 +13126,7 @@ export namespace AgsGui {
 
     class Led extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Led>;
+        declare static readonly __signalSignatures: Led.SignalSignatures;
 
         // Properties
 
@@ -13822,6 +13923,9 @@ export namespace AgsGui {
     }
 
     namespace LedArray {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -13841,6 +13945,7 @@ export namespace AgsGui {
 
     class LedArray extends Gtk.Box implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<LedArray>;
+        declare static readonly __signalSignatures: LedArray.SignalSignatures;
 
         // Properties
 
@@ -14404,6 +14509,11 @@ export namespace AgsGui {
             (normalized_volume: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {
+            'value-changed': ValueChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -14424,6 +14534,7 @@ export namespace AgsGui {
 
     class Level extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<Level>;
+        declare static readonly __signalSignatures: Level.SignalSignatures;
 
         // Properties
 
@@ -14486,6 +14597,9 @@ export namespace AgsGui {
 
         // Signals
 
+        connect<K extends keyof Level.SignalSignatures>(signal: K, callback: Level.SignalSignatures[K]): number;
+        connect_after<K extends keyof Level.SignalSignatures>(signal: K, callback: Level.SignalSignatures[K]): number;
+        emit<K extends keyof Level.SignalSignatures>(signal: K, ...args: Parameters<Level.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -15295,6 +15409,12 @@ export namespace AgsGui {
             (level: GObject.Object, width_request: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {
+            'child-height-request': ChildHeightRequest;
+            'child-width-request': ChildWidthRequest;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -15307,6 +15427,7 @@ export namespace AgsGui {
 
     class LevelBox extends Gtk.Box implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<LevelBox>;
+        declare static readonly __signalSignatures: LevelBox.SignalSignatures;
 
         // Fields
 
@@ -15323,6 +15444,15 @@ export namespace AgsGui {
 
         // Signals
 
+        connect<K extends keyof LevelBox.SignalSignatures>(signal: K, callback: LevelBox.SignalSignatures[K]): number;
+        connect_after<K extends keyof LevelBox.SignalSignatures>(
+            signal: K,
+            callback: LevelBox.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LevelBox.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LevelBox.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -15850,6 +15980,9 @@ export namespace AgsGui {
     }
 
     namespace Notebook {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -15867,6 +16000,7 @@ export namespace AgsGui {
 
     class Notebook extends Gtk.Box implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<Notebook>;
+        declare static readonly __signalSignatures: Notebook.SignalSignatures;
 
         // Properties
 
@@ -16413,6 +16547,13 @@ export namespace AgsGui {
             (note: string, key_code: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {
+            'key-clicked': KeyClicked;
+            'key-pressed': KeyPressed;
+            'key-released': KeyReleased;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -16436,6 +16577,7 @@ export namespace AgsGui {
 
     class Piano extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<Piano>;
+        declare static readonly __signalSignatures: Piano.SignalSignatures;
 
         // Properties
 
@@ -16512,6 +16654,9 @@ export namespace AgsGui {
 
         // Signals
 
+        connect<K extends keyof Piano.SignalSignatures>(signal: K, callback: Piano.SignalSignatures[K]): number;
+        connect_after<K extends keyof Piano.SignalSignatures>(signal: K, callback: Piano.SignalSignatures[K]): number;
+        emit<K extends keyof Piano.SignalSignatures>(signal: K, ...args: Parameters<Piano.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -17380,6 +17525,9 @@ export namespace AgsGui {
     }
 
     namespace Ruler {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -17405,6 +17553,7 @@ export namespace AgsGui {
 
     class Ruler extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<Ruler>;
+        declare static readonly __signalSignatures: Ruler.SignalSignatures;
 
         // Properties
 
@@ -18313,6 +18462,11 @@ export namespace AgsGui {
             (default_value: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {
+            'value-changed': ValueChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -18332,6 +18486,7 @@ export namespace AgsGui {
 
     class Scale extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<Scale>;
+        declare static readonly __signalSignatures: Scale.SignalSignatures;
 
         // Properties
 
@@ -18390,6 +18545,9 @@ export namespace AgsGui {
 
         // Signals
 
+        connect<K extends keyof Scale.SignalSignatures>(signal: K, callback: Scale.SignalSignatures[K]): number;
+        connect_after<K extends keyof Scale.SignalSignatures>(signal: K, callback: Scale.SignalSignatures[K]): number;
+        emit<K extends keyof Scale.SignalSignatures>(signal: K, ...args: Parameters<Scale.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -19199,6 +19357,12 @@ export namespace AgsGui {
             (scale: GObject.Object, width_request: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {
+            'child-height-request': ChildHeightRequest;
+            'child-width-request': ChildWidthRequest;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -19211,6 +19375,7 @@ export namespace AgsGui {
 
     class ScaleBox extends Gtk.Box implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<ScaleBox>;
+        declare static readonly __signalSignatures: ScaleBox.SignalSignatures;
 
         // Fields
 
@@ -19227,6 +19392,15 @@ export namespace AgsGui {
 
         // Signals
 
+        connect<K extends keyof ScaleBox.SignalSignatures>(signal: K, callback: ScaleBox.SignalSignatures[K]): number;
+        connect_after<K extends keyof ScaleBox.SignalSignatures>(
+            signal: K,
+            callback: ScaleBox.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ScaleBox.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ScaleBox.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -19754,6 +19928,9 @@ export namespace AgsGui {
     }
 
     namespace ScrolledLevelBox {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Grid.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -19769,6 +19946,7 @@ export namespace AgsGui {
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable
     {
         static $gtype: GObject.GType<ScrolledLevelBox>;
+        declare static readonly __signalSignatures: ScrolledLevelBox.SignalSignatures;
 
         // Fields
 
@@ -20257,6 +20435,9 @@ export namespace AgsGui {
     }
 
     namespace ScrolledPiano {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Grid.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -20272,6 +20453,7 @@ export namespace AgsGui {
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable
     {
         static $gtype: GObject.GType<ScrolledPiano>;
+        declare static readonly __signalSignatures: ScrolledPiano.SignalSignatures;
 
         // Fields
 
@@ -20760,6 +20942,9 @@ export namespace AgsGui {
     }
 
     namespace ScrolledScaleBox {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Grid.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -20775,6 +20960,7 @@ export namespace AgsGui {
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable
     {
         static $gtype: GObject.GType<ScrolledScaleBox>;
+        declare static readonly __signalSignatures: ScrolledScaleBox.SignalSignatures;
 
         // Fields
 
@@ -21264,6 +21450,11 @@ export namespace AgsGui {
             (default_value: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {
+            'value-changed': ValueChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -21283,6 +21474,7 @@ export namespace AgsGui {
 
     class Tempo extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<Tempo>;
+        declare static readonly __signalSignatures: Tempo.SignalSignatures;
 
         // Properties
 
@@ -21340,6 +21532,9 @@ export namespace AgsGui {
 
         // Signals
 
+        connect<K extends keyof Tempo.SignalSignatures>(signal: K, callback: Tempo.SignalSignatures[K]): number;
+        connect_after<K extends keyof Tempo.SignalSignatures>(signal: K, callback: Tempo.SignalSignatures[K]): number;
+        emit<K extends keyof Tempo.SignalSignatures>(signal: K, ...args: Parameters<Tempo.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

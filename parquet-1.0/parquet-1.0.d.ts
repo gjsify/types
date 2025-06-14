@@ -39,6 +39,9 @@ export namespace Parquet {
      */
     const VERSION_TAG: string;
     namespace ArrowFileReader {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -49,6 +52,7 @@ export namespace Parquet {
 
     class ArrowFileReader extends GObject.Object {
         static $gtype: GObject.GType<ArrowFileReader>;
+        declare static readonly __signalSignatures: ArrowFileReader.SignalSignatures;
 
         // Properties
 
@@ -76,6 +80,9 @@ export namespace Parquet {
     }
 
     namespace ArrowFileWriter {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -86,6 +93,7 @@ export namespace Parquet {
 
     class ArrowFileWriter extends GObject.Object {
         static $gtype: GObject.GType<ArrowFileWriter>;
+        declare static readonly __signalSignatures: ArrowFileWriter.SignalSignatures;
 
         // Properties
 
@@ -117,6 +125,9 @@ export namespace Parquet {
     }
 
     namespace WriterProperties {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -124,6 +135,7 @@ export namespace Parquet {
 
     class WriterProperties extends GObject.Object {
         static $gtype: GObject.GType<WriterProperties>;
+        declare static readonly __signalSignatures: WriterProperties.SignalSignatures;
 
         // Constructors
 

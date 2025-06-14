@@ -310,6 +310,9 @@ export namespace GeocodeGlib {
      */
     function error_quark(): GLib.Quark;
     namespace BoundingBox {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -326,6 +329,7 @@ export namespace GeocodeGlib {
      */
     class BoundingBox extends GObject.Object {
         static $gtype: GObject.GType<BoundingBox>;
+        declare static readonly __signalSignatures: BoundingBox.SignalSignatures;
 
         // Properties
 
@@ -388,6 +392,9 @@ export namespace GeocodeGlib {
     }
 
     namespace Forward {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -404,6 +411,7 @@ export namespace GeocodeGlib {
      */
     class Forward extends GObject.Object {
         static $gtype: GObject.GType<Forward>;
+        declare static readonly __signalSignatures: Forward.SignalSignatures;
 
         // Properties
 
@@ -543,6 +551,9 @@ export namespace GeocodeGlib {
     }
 
     namespace Location {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -561,6 +572,7 @@ export namespace GeocodeGlib {
      */
     class Location extends GObject.Object {
         static $gtype: GObject.GType<Location>;
+        declare static readonly __signalSignatures: Location.SignalSignatures;
 
         // Properties
 
@@ -712,6 +724,9 @@ export namespace GeocodeGlib {
     }
 
     namespace MockBackend {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Backend.ConstructorProps {}
@@ -723,6 +738,7 @@ export namespace GeocodeGlib {
      */
     class MockBackend extends GObject.Object implements Backend {
         static $gtype: GObject.GType<MockBackend>;
+        declare static readonly __signalSignatures: MockBackend.SignalSignatures;
 
         // Constructors
 
@@ -1524,6 +1540,9 @@ export namespace GeocodeGlib {
     }
 
     namespace Nominatim {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Backend.ConstructorProps {
@@ -1542,6 +1561,7 @@ export namespace GeocodeGlib {
      */
     class Nominatim extends GObject.Object implements Backend {
         static $gtype: GObject.GType<Nominatim>;
+        declare static readonly __signalSignatures: Nominatim.SignalSignatures;
 
         // Properties
 
@@ -2350,6 +2370,9 @@ export namespace GeocodeGlib {
     }
 
     namespace Place {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2388,6 +2411,7 @@ export namespace GeocodeGlib {
      */
     class Place extends GObject.Object {
         static $gtype: GObject.GType<Place>;
+        declare static readonly __signalSignatures: Place.SignalSignatures;
 
         // Properties
 
@@ -2721,6 +2745,9 @@ export namespace GeocodeGlib {
     }
 
     namespace Reverse {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2731,6 +2758,7 @@ export namespace GeocodeGlib {
      */
     class Reverse extends GObject.Object {
         static $gtype: GObject.GType<Reverse>;
+        declare static readonly __signalSignatures: Reverse.SignalSignatures;
 
         // Constructors
 

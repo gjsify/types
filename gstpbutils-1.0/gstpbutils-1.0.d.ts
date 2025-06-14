@@ -961,6 +961,9 @@ export namespace GstPbutils {
         METADATA,
     }
     namespace AudioVisualizer {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Element.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Element.ConstructorProps {
@@ -981,6 +984,7 @@ export namespace GstPbutils {
      */
     abstract class AudioVisualizer extends Gst.Element {
         static $gtype: GObject.GType<AudioVisualizer>;
+        declare static readonly __signalSignatures: AudioVisualizer.SignalSignatures;
 
         // Properties
 
@@ -1031,6 +1035,15 @@ export namespace GstPbutils {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            discovered: Discovered;
+            finished: Finished;
+            'load-serialized-info': LoadSerializedInfo;
+            'source-setup': SourceSetup;
+            starting: Starting;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1060,6 +1073,7 @@ export namespace GstPbutils {
      */
     class Discoverer extends GObject.Object {
         static $gtype: GObject.GType<Discoverer>;
+        declare static readonly __signalSignatures: Discoverer.SignalSignatures;
 
         // Properties
 
@@ -1087,6 +1101,18 @@ export namespace GstPbutils {
 
         // Signals
 
+        connect<K extends keyof Discoverer.SignalSignatures>(
+            signal: K,
+            callback: Discoverer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Discoverer.SignalSignatures>(
+            signal: K,
+            callback: Discoverer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Discoverer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Discoverer.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1166,6 +1192,9 @@ export namespace GstPbutils {
     }
 
     namespace DiscovererAudioInfo {
+        // Signal signatures
+        interface SignalSignatures extends DiscovererStreamInfo.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DiscovererStreamInfo.ConstructorProps {}
@@ -1176,6 +1205,7 @@ export namespace GstPbutils {
      */
     class DiscovererAudioInfo extends DiscovererStreamInfo {
         static $gtype: GObject.GType<DiscovererAudioInfo>;
+        declare static readonly __signalSignatures: DiscovererAudioInfo.SignalSignatures;
 
         // Constructors
 
@@ -1195,6 +1225,9 @@ export namespace GstPbutils {
     }
 
     namespace DiscovererContainerInfo {
+        // Signal signatures
+        interface SignalSignatures extends DiscovererStreamInfo.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DiscovererStreamInfo.ConstructorProps {}
@@ -1205,6 +1238,7 @@ export namespace GstPbutils {
      */
     class DiscovererContainerInfo extends DiscovererStreamInfo {
         static $gtype: GObject.GType<DiscovererContainerInfo>;
+        declare static readonly __signalSignatures: DiscovererContainerInfo.SignalSignatures;
 
         // Constructors
 
@@ -1219,6 +1253,9 @@ export namespace GstPbutils {
     }
 
     namespace DiscovererInfo {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1229,6 +1266,7 @@ export namespace GstPbutils {
      */
     class DiscovererInfo extends GObject.Object {
         static $gtype: GObject.GType<DiscovererInfo>;
+        declare static readonly __signalSignatures: DiscovererInfo.SignalSignatures;
 
         // Constructors
 
@@ -1303,6 +1341,9 @@ export namespace GstPbutils {
     }
 
     namespace DiscovererStreamInfo {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1327,6 +1368,7 @@ export namespace GstPbutils {
      */
     class DiscovererStreamInfo extends GObject.Object {
         static $gtype: GObject.GType<DiscovererStreamInfo>;
+        declare static readonly __signalSignatures: DiscovererStreamInfo.SignalSignatures;
 
         // Constructors
 
@@ -1357,6 +1399,9 @@ export namespace GstPbutils {
     }
 
     namespace DiscovererSubtitleInfo {
+        // Signal signatures
+        interface SignalSignatures extends DiscovererStreamInfo.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DiscovererStreamInfo.ConstructorProps {}
@@ -1368,6 +1413,7 @@ export namespace GstPbutils {
      */
     class DiscovererSubtitleInfo extends DiscovererStreamInfo {
         static $gtype: GObject.GType<DiscovererSubtitleInfo>;
+        declare static readonly __signalSignatures: DiscovererSubtitleInfo.SignalSignatures;
 
         // Constructors
 
@@ -1381,6 +1427,9 @@ export namespace GstPbutils {
     }
 
     namespace DiscovererVideoInfo {
+        // Signal signatures
+        interface SignalSignatures extends DiscovererStreamInfo.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DiscovererStreamInfo.ConstructorProps {}
@@ -1391,6 +1440,7 @@ export namespace GstPbutils {
      */
     class DiscovererVideoInfo extends DiscovererStreamInfo {
         static $gtype: GObject.GType<DiscovererVideoInfo>;
+        declare static readonly __signalSignatures: DiscovererVideoInfo.SignalSignatures;
 
         // Constructors
 
@@ -1414,6 +1464,9 @@ export namespace GstPbutils {
     }
 
     namespace EncodingAudioProfile {
+        // Signal signatures
+        interface SignalSignatures extends EncodingProfile.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends EncodingProfile.ConstructorProps {}
@@ -1424,6 +1477,7 @@ export namespace GstPbutils {
      */
     class EncodingAudioProfile extends EncodingProfile {
         static $gtype: GObject.GType<EncodingAudioProfile>;
+        declare static readonly __signalSignatures: EncodingAudioProfile.SignalSignatures;
 
         // Constructors
 
@@ -1440,6 +1494,9 @@ export namespace GstPbutils {
     }
 
     namespace EncodingContainerProfile {
+        // Signal signatures
+        interface SignalSignatures extends EncodingProfile.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends EncodingProfile.ConstructorProps {}
@@ -1450,6 +1507,7 @@ export namespace GstPbutils {
      */
     class EncodingContainerProfile extends EncodingProfile {
         static $gtype: GObject.GType<EncodingContainerProfile>;
+        declare static readonly __signalSignatures: EncodingContainerProfile.SignalSignatures;
 
         // Constructors
 
@@ -1486,6 +1544,9 @@ export namespace GstPbutils {
     }
 
     namespace EncodingProfile {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1502,6 +1563,7 @@ export namespace GstPbutils {
      */
     class EncodingProfile extends GObject.Object {
         static $gtype: GObject.GType<EncodingProfile>;
+        declare static readonly __signalSignatures: EncodingProfile.SignalSignatures;
 
         // Properties
 
@@ -1677,6 +1739,9 @@ export namespace GstPbutils {
     }
 
     namespace EncodingTarget {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1690,6 +1755,7 @@ export namespace GstPbutils {
      */
     class EncodingTarget extends GObject.Object {
         static $gtype: GObject.GType<EncodingTarget>;
+        declare static readonly __signalSignatures: EncodingTarget.SignalSignatures;
 
         // Constructors
 
@@ -1755,6 +1821,9 @@ export namespace GstPbutils {
     }
 
     namespace EncodingVideoProfile {
+        // Signal signatures
+        interface SignalSignatures extends EncodingProfile.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends EncodingProfile.ConstructorProps {}
@@ -1765,6 +1834,7 @@ export namespace GstPbutils {
      */
     class EncodingVideoProfile extends EncodingProfile {
         static $gtype: GObject.GType<EncodingVideoProfile>;
+        declare static readonly __signalSignatures: EncodingVideoProfile.SignalSignatures;
 
         // Constructors
 

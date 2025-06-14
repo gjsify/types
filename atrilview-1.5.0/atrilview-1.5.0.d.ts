@@ -117,6 +117,11 @@ export namespace AtrilView {
             (object: number, p0: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'page-changed': PageChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -141,6 +146,7 @@ export namespace AtrilView {
 
     class DocumentModel extends GObject.Object {
         static $gtype: GObject.GType<DocumentModel>;
+        declare static readonly __signalSignatures: DocumentModel.SignalSignatures;
 
         // Properties
 
@@ -189,6 +195,18 @@ export namespace AtrilView {
 
         // Signals
 
+        connect<K extends keyof DocumentModel.SignalSignatures>(
+            signal: K,
+            callback: DocumentModel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DocumentModel.SignalSignatures>(
+            signal: K,
+            callback: DocumentModel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DocumentModel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DocumentModel.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -242,6 +260,12 @@ export namespace AtrilView {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            cancelled: Cancelled;
+            finished: Finished;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -249,6 +273,7 @@ export namespace AtrilView {
 
     abstract class Job extends GObject.Object {
         static $gtype: GObject.GType<Job>;
+        declare static readonly __signalSignatures: Job.SignalSignatures;
 
         // Fields
 
@@ -269,6 +294,9 @@ export namespace AtrilView {
 
         // Signals
 
+        connect<K extends keyof Job.SignalSignatures>(signal: K, callback: Job.SignalSignatures[K]): number;
+        connect_after<K extends keyof Job.SignalSignatures>(signal: K, callback: Job.SignalSignatures[K]): number;
+        emit<K extends keyof Job.SignalSignatures>(signal: K, ...args: Parameters<Job.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -304,6 +332,9 @@ export namespace AtrilView {
     }
 
     namespace JobAnnots {
+        // Signal signatures
+        interface SignalSignatures extends Job.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -311,6 +342,7 @@ export namespace AtrilView {
 
     class JobAnnots extends Job {
         static $gtype: GObject.GType<JobAnnots>;
+        declare static readonly __signalSignatures: JobAnnots.SignalSignatures;
 
         // Fields
 
@@ -326,6 +358,9 @@ export namespace AtrilView {
     }
 
     namespace JobAttachments {
+        // Signal signatures
+        interface SignalSignatures extends Job.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -333,6 +368,7 @@ export namespace AtrilView {
 
     class JobAttachments extends Job {
         static $gtype: GObject.GType<JobAttachments>;
+        declare static readonly __signalSignatures: JobAttachments.SignalSignatures;
 
         // Fields
 
@@ -348,6 +384,9 @@ export namespace AtrilView {
     }
 
     namespace JobExport {
+        // Signal signatures
+        interface SignalSignatures extends Job.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -355,6 +394,7 @@ export namespace AtrilView {
 
     class JobExport extends Job {
         static $gtype: GObject.GType<JobExport>;
+        declare static readonly __signalSignatures: JobExport.SignalSignatures;
 
         // Fields
 
@@ -381,6 +421,11 @@ export namespace AtrilView {
             (object: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Job.SignalSignatures {
+            updated: Updated;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -388,6 +433,7 @@ export namespace AtrilView {
 
     class JobFind extends Job {
         static $gtype: GObject.GType<JobFind>;
+        declare static readonly __signalSignatures: JobFind.SignalSignatures;
 
         // Fields
 
@@ -415,6 +461,15 @@ export namespace AtrilView {
 
         // Signals
 
+        connect<K extends keyof JobFind.SignalSignatures>(signal: K, callback: JobFind.SignalSignatures[K]): number;
+        connect_after<K extends keyof JobFind.SignalSignatures>(
+            signal: K,
+            callback: JobFind.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof JobFind.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<JobFind.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -440,6 +495,11 @@ export namespace AtrilView {
             (object: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Job.SignalSignatures {
+            updated: Updated;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -447,6 +507,7 @@ export namespace AtrilView {
 
     class JobFonts extends Job {
         static $gtype: GObject.GType<JobFonts>;
+        declare static readonly __signalSignatures: JobFonts.SignalSignatures;
 
         // Fields
 
@@ -462,6 +523,15 @@ export namespace AtrilView {
 
         // Signals
 
+        connect<K extends keyof JobFonts.SignalSignatures>(signal: K, callback: JobFonts.SignalSignatures[K]): number;
+        connect_after<K extends keyof JobFonts.SignalSignatures>(
+            signal: K,
+            callback: JobFonts.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof JobFonts.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<JobFonts.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -475,6 +545,9 @@ export namespace AtrilView {
     }
 
     namespace JobLayers {
+        // Signal signatures
+        interface SignalSignatures extends Job.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -482,6 +555,7 @@ export namespace AtrilView {
 
     class JobLayers extends Job {
         static $gtype: GObject.GType<JobLayers>;
+        declare static readonly __signalSignatures: JobLayers.SignalSignatures;
 
         // Fields
 
@@ -497,6 +571,9 @@ export namespace AtrilView {
     }
 
     namespace JobLinks {
+        // Signal signatures
+        interface SignalSignatures extends Job.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -504,6 +581,7 @@ export namespace AtrilView {
 
     class JobLinks extends Job {
         static $gtype: GObject.GType<JobLinks>;
+        declare static readonly __signalSignatures: JobLinks.SignalSignatures;
 
         // Fields
 
@@ -519,6 +597,9 @@ export namespace AtrilView {
     }
 
     namespace JobLoad {
+        // Signal signatures
+        interface SignalSignatures extends Job.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -526,6 +607,7 @@ export namespace AtrilView {
 
     class JobLoad extends Job {
         static $gtype: GObject.GType<JobLoad>;
+        declare static readonly __signalSignatures: JobLoad.SignalSignatures;
 
         // Fields
 
@@ -547,6 +629,9 @@ export namespace AtrilView {
     }
 
     namespace JobPageData {
+        // Signal signatures
+        interface SignalSignatures extends Job.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -554,6 +639,7 @@ export namespace AtrilView {
 
     class JobPageData extends Job {
         static $gtype: GObject.GType<JobPageData>;
+        declare static readonly __signalSignatures: JobPageData.SignalSignatures;
 
         // Fields
 
@@ -575,6 +661,9 @@ export namespace AtrilView {
     }
 
     namespace JobPrint {
+        // Signal signatures
+        interface SignalSignatures extends Job.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -582,6 +671,7 @@ export namespace AtrilView {
 
     class JobPrint extends Job {
         static $gtype: GObject.GType<JobPrint>;
+        declare static readonly __signalSignatures: JobPrint.SignalSignatures;
 
         // Fields
 
@@ -602,6 +692,9 @@ export namespace AtrilView {
     }
 
     namespace JobRender {
+        // Signal signatures
+        interface SignalSignatures extends Job.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -609,6 +702,7 @@ export namespace AtrilView {
 
     class JobRender extends Job {
         static $gtype: GObject.GType<JobRender>;
+        declare static readonly __signalSignatures: JobRender.SignalSignatures;
 
         // Fields
 
@@ -650,6 +744,9 @@ export namespace AtrilView {
     }
 
     namespace JobSave {
+        // Signal signatures
+        interface SignalSignatures extends Job.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -657,6 +754,7 @@ export namespace AtrilView {
 
     class JobSave extends Job {
         static $gtype: GObject.GType<JobSave>;
+        declare static readonly __signalSignatures: JobSave.SignalSignatures;
 
         // Fields
 
@@ -673,6 +771,9 @@ export namespace AtrilView {
     }
 
     namespace JobThumbnail {
+        // Signal signatures
+        interface SignalSignatures extends Job.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -680,6 +781,7 @@ export namespace AtrilView {
 
     class JobThumbnail extends Job {
         static $gtype: GObject.GType<JobThumbnail>;
+        declare static readonly __signalSignatures: JobThumbnail.SignalSignatures;
 
         // Fields
 
@@ -712,6 +814,13 @@ export namespace AtrilView {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'begin-print': BeginPrint;
+            done: Done;
+            'status-changed': StatusChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -721,6 +830,7 @@ export namespace AtrilView {
 
     abstract class PrintOperation extends GObject.Object {
         static $gtype: GObject.GType<PrintOperation>;
+        declare static readonly __signalSignatures: PrintOperation.SignalSignatures;
 
         // Properties
 
@@ -736,6 +846,18 @@ export namespace AtrilView {
 
         // Signals
 
+        connect<K extends keyof PrintOperation.SignalSignatures>(
+            signal: K,
+            callback: PrintOperation.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PrintOperation.SignalSignatures>(
+            signal: K,
+            callback: PrintOperation.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PrintOperation.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PrintOperation.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -818,6 +940,21 @@ export namespace AtrilView {
             (object?: any | null): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Container.SignalSignatures {
+            'annot-added': AnnotAdded;
+            'annot-removed': AnnotRemoved;
+            'cursor-moved': CursorMoved;
+            'external-link': ExternalLink;
+            'handle-link': HandleLink;
+            'layers-changed': LayersChanged;
+            'move-cursor': MoveCursor;
+            popup: Popup;
+            scroll: Scroll;
+            'selection-changed': SelectionChanged;
+            'sync-source': SyncSource;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -832,6 +969,7 @@ export namespace AtrilView {
 
     class View extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<View>;
+        declare static readonly __signalSignatures: View.SignalSignatures;
 
         // Properties
 
@@ -848,6 +986,9 @@ export namespace AtrilView {
 
         // Signals
 
+        connect<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
+        connect_after<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
+        emit<K extends keyof View.SignalSignatures>(signal: K, ...args: Parameters<View.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1513,6 +1654,13 @@ export namespace AtrilView {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {
+            'change-page': ChangePage;
+            'external-link': ExternalLink;
+            finished: Finished;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1530,6 +1678,7 @@ export namespace AtrilView {
 
     class ViewPresentation extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ViewPresentation>;
+        declare static readonly __signalSignatures: ViewPresentation.SignalSignatures;
 
         // Properties
 
@@ -1556,6 +1705,18 @@ export namespace AtrilView {
 
         // Signals
 
+        connect<K extends keyof ViewPresentation.SignalSignatures>(
+            signal: K,
+            callback: ViewPresentation.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ViewPresentation.SignalSignatures>(
+            signal: K,
+            callback: ViewPresentation.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ViewPresentation.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ViewPresentation.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2196,6 +2357,9 @@ export namespace AtrilView {
     }
 
     namespace WebView {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Container.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2206,6 +2370,7 @@ export namespace AtrilView {
 
     class WebView extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<WebView>;
+        declare static readonly __signalSignatures: WebView.SignalSignatures;
 
         // Constructors
 

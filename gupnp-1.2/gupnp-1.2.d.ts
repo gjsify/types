@@ -318,6 +318,9 @@ export namespace GUPnP {
     type URI = object | null;
     type UUID = object | null;
     namespace Context {
+        // Signal signatures
+        interface SignalSignatures extends GSSDP.Client.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GSSDP.Client.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -334,6 +337,7 @@ export namespace GUPnP {
 
     class Context extends GSSDP.Client implements Gio.Initable {
         static $gtype: GObject.GType<Context>;
+        declare static readonly __signalSignatures: Context.SignalSignatures;
 
         // Properties
 
@@ -1025,6 +1029,9 @@ export namespace GUPnP {
     }
 
     namespace ContextFilter {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1043,6 +1050,7 @@ export namespace GUPnP {
      */
     class ContextFilter extends GObject.Object {
         static $gtype: GObject.GType<ContextFilter>;
+        declare static readonly __signalSignatures: ContextFilter.SignalSignatures;
 
         // Properties
 
@@ -1134,6 +1142,12 @@ export namespace GUPnP {
             (context: Context): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'context-available': ContextAvailable;
+            'context-unavailable': ContextUnavailable;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1148,6 +1162,7 @@ export namespace GUPnP {
 
     abstract class ContextManager extends GObject.Object {
         static $gtype: GObject.GType<ContextManager>;
+        declare static readonly __signalSignatures: ContextManager.SignalSignatures;
 
         // Properties
 
@@ -1189,6 +1204,18 @@ export namespace GUPnP {
 
         // Signals
 
+        connect<K extends keyof ContextManager.SignalSignatures>(
+            signal: K,
+            callback: ContextManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ContextManager.SignalSignatures>(
+            signal: K,
+            callback: ContextManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ContextManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ContextManager.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1297,6 +1324,14 @@ export namespace GUPnP {
             (proxy: ServiceProxy): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GSSDP.ResourceBrowser.SignalSignatures {
+            'device-proxy-available': DeviceProxyAvailable;
+            'device-proxy-unavailable': DeviceProxyUnavailable;
+            'service-proxy-available': ServiceProxyAvailable;
+            'service-proxy-unavailable': ServiceProxyUnavailable;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GSSDP.ResourceBrowser.ConstructorProps {
@@ -1307,6 +1342,7 @@ export namespace GUPnP {
 
     class ControlPoint extends GSSDP.ResourceBrowser {
         static $gtype: GObject.GType<ControlPoint>;
+        declare static readonly __signalSignatures: ControlPoint.SignalSignatures;
 
         // Properties
 
@@ -1331,6 +1367,18 @@ export namespace GUPnP {
 
         // Signals
 
+        connect<K extends keyof ControlPoint.SignalSignatures>(
+            signal: K,
+            callback: ControlPoint.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ControlPoint.SignalSignatures>(
+            signal: K,
+            callback: ControlPoint.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ControlPoint.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ControlPoint.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1390,6 +1438,9 @@ export namespace GUPnP {
     }
 
     namespace Device {
+        // Signal signatures
+        interface SignalSignatures extends DeviceInfo.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DeviceInfo.ConstructorProps {
@@ -1400,6 +1451,7 @@ export namespace GUPnP {
 
     class Device extends DeviceInfo {
         static $gtype: GObject.GType<Device>;
+        declare static readonly __signalSignatures: Device.SignalSignatures;
 
         // Properties
 
@@ -1422,6 +1474,9 @@ export namespace GUPnP {
     }
 
     namespace DeviceInfo {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1441,6 +1496,7 @@ export namespace GUPnP {
 
     abstract class DeviceInfo extends GObject.Object {
         static $gtype: GObject.GType<DeviceInfo>;
+        declare static readonly __signalSignatures: DeviceInfo.SignalSignatures;
 
         // Properties
 
@@ -1686,6 +1742,9 @@ export namespace GUPnP {
     }
 
     namespace DeviceProxy {
+        // Signal signatures
+        interface SignalSignatures extends DeviceInfo.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DeviceInfo.ConstructorProps {}
@@ -1693,6 +1752,7 @@ export namespace GUPnP {
 
     class DeviceProxy extends DeviceInfo {
         static $gtype: GObject.GType<DeviceProxy>;
+        declare static readonly __signalSignatures: DeviceProxy.SignalSignatures;
 
         // Constructors
 
@@ -1702,6 +1762,9 @@ export namespace GUPnP {
     }
 
     namespace ResourceFactory {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1709,6 +1772,7 @@ export namespace GUPnP {
 
     class ResourceFactory extends GObject.Object {
         static $gtype: GObject.GType<ResourceFactory>;
+        declare static readonly __signalSignatures: ResourceFactory.SignalSignatures;
 
         // Constructors
 
@@ -1770,6 +1834,9 @@ export namespace GUPnP {
     }
 
     namespace RootDevice {
+        // Signal signatures
+        interface SignalSignatures extends Device.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Device.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -1785,6 +1852,7 @@ export namespace GUPnP {
 
     class RootDevice extends Device implements Gio.Initable {
         static $gtype: GObject.GType<RootDevice>;
+        declare static readonly __signalSignatures: RootDevice.SignalSignatures;
 
         // Properties
 
@@ -2418,6 +2486,13 @@ export namespace GUPnP {
             (variable: string, value: GObject.Value | any): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends ServiceInfo.SignalSignatures {
+            'action-invoked': ActionInvoked;
+            'notify-failed': NotifyFailed;
+            'query-variable': QueryVariable;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends ServiceInfo.ConstructorProps {
@@ -2428,6 +2503,7 @@ export namespace GUPnP {
 
     class Service extends ServiceInfo {
         static $gtype: GObject.GType<Service>;
+        declare static readonly __signalSignatures: Service.SignalSignatures;
 
         // Properties
 
@@ -2448,6 +2524,15 @@ export namespace GUPnP {
 
         // Signals
 
+        connect<K extends keyof Service.SignalSignatures>(signal: K, callback: Service.SignalSignatures[K]): number;
+        connect_after<K extends keyof Service.SignalSignatures>(
+            signal: K,
+            callback: Service.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Service.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Service.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2526,6 +2611,9 @@ export namespace GUPnP {
     }
 
     namespace ServiceInfo {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2543,6 +2631,7 @@ export namespace GUPnP {
 
     abstract class ServiceInfo extends GObject.Object {
         static $gtype: GObject.GType<ServiceInfo>;
+        declare static readonly __signalSignatures: ServiceInfo.SignalSignatures;
 
         // Properties
 
@@ -2702,6 +2791,9 @@ export namespace GUPnP {
     }
 
     namespace ServiceIntrospection {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2711,6 +2803,7 @@ export namespace GUPnP {
 
     class ServiceIntrospection extends GObject.Object {
         static $gtype: GObject.GType<ServiceIntrospection>;
+        declare static readonly __signalSignatures: ServiceIntrospection.SignalSignatures;
 
         // Properties
 
@@ -2770,6 +2863,11 @@ export namespace GUPnP {
             (error: GLib.Error): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends ServiceInfo.SignalSignatures {
+            'subscription-lost': SubscriptionLost;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends ServiceInfo.ConstructorProps {
@@ -2779,6 +2877,7 @@ export namespace GUPnP {
 
     class ServiceProxy extends ServiceInfo {
         static $gtype: GObject.GType<ServiceProxy>;
+        declare static readonly __signalSignatures: ServiceProxy.SignalSignatures;
 
         // Properties
 
@@ -2796,6 +2895,18 @@ export namespace GUPnP {
 
         // Signals
 
+        connect<K extends keyof ServiceProxy.SignalSignatures>(
+            signal: K,
+            callback: ServiceProxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ServiceProxy.SignalSignatures>(
+            signal: K,
+            callback: ServiceProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ServiceProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ServiceProxy.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2999,6 +3110,9 @@ export namespace GUPnP {
     }
 
     namespace XMLDoc {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3009,6 +3123,7 @@ export namespace GUPnP {
      */
     class XMLDoc extends GObject.Object {
         static $gtype: GObject.GType<XMLDoc>;
+        declare static readonly __signalSignatures: XMLDoc.SignalSignatures;
 
         // Constructors
 

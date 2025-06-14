@@ -516,6 +516,9 @@ export namespace GstValidate {
         ALL,
     }
     namespace BinMonitor {
+        // Signal signatures
+        interface SignalSignatures extends ElementMonitor.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ElementMonitor.ConstructorProps, Reporter.ConstructorProps {
@@ -531,6 +534,7 @@ export namespace GstValidate {
      */
     class BinMonitor extends ElementMonitor implements Reporter {
         static $gtype: GObject.GType<BinMonitor>;
+        declare static readonly __signalSignatures: BinMonitor.SignalSignatures;
 
         // Properties
 
@@ -999,6 +1003,9 @@ export namespace GstValidate {
     }
 
     namespace ElementMonitor {
+        // Signal signatures
+        interface SignalSignatures extends Monitor.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Monitor.ConstructorProps, Reporter.ConstructorProps {}
@@ -1011,6 +1018,7 @@ export namespace GstValidate {
      */
     class ElementMonitor extends Monitor implements Reporter {
         static $gtype: GObject.GType<ElementMonitor>;
+        declare static readonly __signalSignatures: ElementMonitor.SignalSignatures;
 
         // Constructors
 
@@ -1516,6 +1524,9 @@ export namespace GstValidate {
     }
 
     namespace MediaDescriptor {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps, Reporter.ConstructorProps {
@@ -1526,6 +1537,7 @@ export namespace GstValidate {
 
     abstract class MediaDescriptor extends Gst.Object implements Reporter {
         static $gtype: GObject.GType<MediaDescriptor>;
+        declare static readonly __signalSignatures: MediaDescriptor.SignalSignatures;
 
         // Properties
 
@@ -2038,6 +2050,9 @@ export namespace GstValidate {
     }
 
     namespace MediaDescriptorParser {
+        // Signal signatures
+        interface SignalSignatures extends MediaDescriptor.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MediaDescriptor.ConstructorProps, Reporter.ConstructorProps {}
@@ -2045,6 +2060,7 @@ export namespace GstValidate {
 
     class MediaDescriptorParser extends MediaDescriptor implements Reporter {
         static $gtype: GObject.GType<MediaDescriptorParser>;
+        declare static readonly __signalSignatures: MediaDescriptorParser.SignalSignatures;
 
         // Constructors
 
@@ -2560,6 +2576,9 @@ export namespace GstValidate {
     }
 
     namespace MediaDescriptorWriter {
+        // Signal signatures
+        interface SignalSignatures extends MediaDescriptor.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MediaDescriptor.ConstructorProps, Reporter.ConstructorProps {}
@@ -2567,6 +2586,7 @@ export namespace GstValidate {
 
     class MediaDescriptorWriter extends MediaDescriptor implements Reporter {
         static $gtype: GObject.GType<MediaDescriptorWriter>;
+        declare static readonly __signalSignatures: MediaDescriptorWriter.SignalSignatures;
 
         // Constructors
 
@@ -3092,6 +3112,9 @@ export namespace GstValidate {
     }
 
     namespace Monitor {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps, Reporter.ConstructorProps {
@@ -3112,6 +3135,7 @@ export namespace GstValidate {
      */
     abstract class Monitor extends Gst.Object implements Reporter {
         static $gtype: GObject.GType<Monitor>;
+        declare static readonly __signalSignatures: Monitor.SignalSignatures;
 
         // Properties
 
@@ -3655,6 +3679,9 @@ export namespace GstValidate {
     }
 
     namespace Override {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps, Reporter.ConstructorProps {
@@ -3665,6 +3692,7 @@ export namespace GstValidate {
 
     class Override extends Gst.Object implements Reporter {
         static $gtype: GObject.GType<Override>;
+        declare static readonly __signalSignatures: Override.SignalSignatures;
 
         // Properties
 
@@ -4188,6 +4216,9 @@ export namespace GstValidate {
     }
 
     namespace PadMonitor {
+        // Signal signatures
+        interface SignalSignatures extends Monitor.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Monitor.ConstructorProps, Reporter.ConstructorProps {}
@@ -4200,6 +4231,7 @@ export namespace GstValidate {
      */
     class PadMonitor extends Monitor implements Reporter {
         static $gtype: GObject.GType<PadMonitor>;
+        declare static readonly __signalSignatures: PadMonitor.SignalSignatures;
 
         // Fields
 
@@ -4716,6 +4748,9 @@ export namespace GstValidate {
     }
 
     namespace PipelineMonitor {
+        // Signal signatures
+        interface SignalSignatures extends BinMonitor.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends BinMonitor.ConstructorProps, Reporter.ConstructorProps {}
@@ -4728,6 +4763,7 @@ export namespace GstValidate {
      */
     class PipelineMonitor extends BinMonitor implements Reporter {
         static $gtype: GObject.GType<PipelineMonitor>;
+        declare static readonly __signalSignatures: PipelineMonitor.SignalSignatures;
 
         // Constructors
 
@@ -5192,6 +5228,12 @@ export namespace GstValidate {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gst.Tracer.SignalSignatures {
+            'report-added': ReportAdded;
+            stopping: Stopping;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Tracer.ConstructorProps {
@@ -5206,6 +5248,7 @@ export namespace GstValidate {
      */
     class Runner extends Gst.Tracer {
         static $gtype: GObject.GType<Runner>;
+        declare static readonly __signalSignatures: Runner.SignalSignatures;
 
         // Properties
 
@@ -5226,6 +5269,9 @@ export namespace GstValidate {
 
         // Signals
 
+        connect<K extends keyof Runner.SignalSignatures>(signal: K, callback: Runner.SignalSignatures[K]): number;
+        connect_after<K extends keyof Runner.SignalSignatures>(signal: K, callback: Runner.SignalSignatures[K]): number;
+        emit<K extends keyof Runner.SignalSignatures>(signal: K, ...args: Parameters<Runner.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -5267,6 +5313,12 @@ export namespace GstValidate {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            'action-done': ActionDone;
+            done: Done;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps, Reporter.ConstructorProps {
@@ -5281,6 +5333,7 @@ export namespace GstValidate {
 
     class Scenario extends Gst.Object implements Reporter {
         static $gtype: GObject.GType<Scenario>;
+        declare static readonly __signalSignatures: Scenario.SignalSignatures;
 
         // Properties
 
@@ -5301,6 +5354,15 @@ export namespace GstValidate {
 
         // Signals
 
+        connect<K extends keyof Scenario.SignalSignatures>(signal: K, callback: Scenario.SignalSignatures[K]): number;
+        connect_after<K extends keyof Scenario.SignalSignatures>(
+            signal: K,
+            callback: Scenario.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Scenario.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Scenario.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

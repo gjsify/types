@@ -531,6 +531,9 @@ export namespace WebKit2WebExtension {
         SELECTION,
     }
     namespace ContextMenu {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -553,6 +556,7 @@ export namespace WebKit2WebExtension {
      */
     class ContextMenu extends GObject.Object {
         static $gtype: GObject.GType<ContextMenu>;
+        declare static readonly __signalSignatures: ContextMenu.SignalSignatures;
 
         // Constructors
 
@@ -654,6 +658,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace ContextMenuItem {
+        // Signal signatures
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {}
@@ -670,6 +677,7 @@ export namespace WebKit2WebExtension {
      */
     class ContextMenuItem extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<ContextMenuItem>;
+        declare static readonly __signalSignatures: ContextMenuItem.SignalSignatures;
 
         // Constructors
 
@@ -725,6 +733,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMAttr {
+        // Signal signatures
+        interface SignalSignatures extends DOMNode.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMNode.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -743,6 +754,7 @@ export namespace WebKit2WebExtension {
 
     class DOMAttr extends DOMNode implements DOMEventTarget {
         static $gtype: GObject.GType<DOMAttr>;
+        declare static readonly __signalSignatures: DOMAttr.SignalSignatures;
 
         // Properties
 
@@ -1228,6 +1240,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMBlob {
+        // Signal signatures
+        interface SignalSignatures extends DOMObject.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
@@ -1237,6 +1252,7 @@ export namespace WebKit2WebExtension {
 
     class DOMBlob extends DOMObject {
         static $gtype: GObject.GType<DOMBlob>;
+        declare static readonly __signalSignatures: DOMBlob.SignalSignatures;
 
         // Properties
 
@@ -1254,6 +1270,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMCDATASection {
+        // Signal signatures
+        interface SignalSignatures extends DOMText.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMText.ConstructorProps, DOMEventTarget.ConstructorProps {}
@@ -1261,6 +1280,7 @@ export namespace WebKit2WebExtension {
 
     class DOMCDATASection extends DOMText implements DOMEventTarget {
         static $gtype: GObject.GType<DOMCDATASection>;
+        declare static readonly __signalSignatures: DOMCDATASection.SignalSignatures;
 
         // Constructors
 
@@ -1715,6 +1735,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMCSSRule {
+        // Signal signatures
+        interface SignalSignatures extends DOMObject.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
@@ -1730,6 +1753,7 @@ export namespace WebKit2WebExtension {
 
     class DOMCSSRule extends DOMObject {
         static $gtype: GObject.GType<DOMCSSRule>;
+        declare static readonly __signalSignatures: DOMCSSRule.SignalSignatures;
 
         // Properties
 
@@ -1759,6 +1783,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMCSSRuleList {
+        // Signal signatures
+        interface SignalSignatures extends DOMObject.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
@@ -1768,6 +1795,7 @@ export namespace WebKit2WebExtension {
 
     class DOMCSSRuleList extends DOMObject {
         static $gtype: GObject.GType<DOMCSSRuleList>;
+        declare static readonly __signalSignatures: DOMCSSRuleList.SignalSignatures;
 
         // Properties
 
@@ -1786,6 +1814,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMCSSStyleDeclaration {
+        // Signal signatures
+        interface SignalSignatures extends DOMObject.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
@@ -1799,6 +1830,7 @@ export namespace WebKit2WebExtension {
 
     class DOMCSSStyleDeclaration extends DOMObject {
         static $gtype: GObject.GType<DOMCSSStyleDeclaration>;
+        declare static readonly __signalSignatures: DOMCSSStyleDeclaration.SignalSignatures;
 
         // Properties
 
@@ -1834,6 +1866,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMCSSStyleSheet {
+        // Signal signatures
+        interface SignalSignatures extends DOMStyleSheet.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMStyleSheet.ConstructorProps {
@@ -1847,6 +1882,7 @@ export namespace WebKit2WebExtension {
 
     class DOMCSSStyleSheet extends DOMStyleSheet {
         static $gtype: GObject.GType<DOMCSSStyleSheet>;
+        declare static readonly __signalSignatures: DOMCSSStyleSheet.SignalSignatures;
 
         // Properties
 
@@ -1874,6 +1910,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMCSSValue {
+        // Signal signatures
+        interface SignalSignatures extends DOMObject.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
@@ -1886,6 +1925,7 @@ export namespace WebKit2WebExtension {
 
     class DOMCSSValue extends DOMObject {
         static $gtype: GObject.GType<DOMCSSValue>;
+        declare static readonly __signalSignatures: DOMCSSValue.SignalSignatures;
 
         // Properties
 
@@ -1910,6 +1950,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMCharacterData {
+        // Signal signatures
+        interface SignalSignatures extends DOMNode.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMNode.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -1920,6 +1963,7 @@ export namespace WebKit2WebExtension {
 
     class DOMCharacterData extends DOMNode implements DOMEventTarget {
         static $gtype: GObject.GType<DOMCharacterData>;
+        declare static readonly __signalSignatures: DOMCharacterData.SignalSignatures;
 
         // Properties
 
@@ -2378,6 +2422,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMClientRect {
+        // Signal signatures
+        interface SignalSignatures extends DOMObject.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
@@ -2392,6 +2439,7 @@ export namespace WebKit2WebExtension {
 
     class DOMClientRect extends DOMObject {
         static $gtype: GObject.GType<DOMClientRect>;
+        declare static readonly __signalSignatures: DOMClientRect.SignalSignatures;
 
         // Properties
 
@@ -2443,6 +2491,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMClientRectList {
+        // Signal signatures
+        interface SignalSignatures extends DOMObject.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
@@ -2452,6 +2503,7 @@ export namespace WebKit2WebExtension {
 
     class DOMClientRectList extends DOMObject {
         static $gtype: GObject.GType<DOMClientRectList>;
+        declare static readonly __signalSignatures: DOMClientRectList.SignalSignatures;
 
         // Properties
 
@@ -2479,6 +2531,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMComment {
+        // Signal signatures
+        interface SignalSignatures extends DOMCharacterData.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMCharacterData.ConstructorProps, DOMEventTarget.ConstructorProps {}
@@ -2486,6 +2541,7 @@ export namespace WebKit2WebExtension {
 
     class DOMComment extends DOMCharacterData implements DOMEventTarget {
         static $gtype: GObject.GType<DOMComment>;
+        declare static readonly __signalSignatures: DOMComment.SignalSignatures;
 
         // Constructors
 
@@ -2940,6 +2996,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMDOMImplementation {
+        // Signal signatures
+        interface SignalSignatures extends DOMObject.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {}
@@ -2947,6 +3006,7 @@ export namespace WebKit2WebExtension {
 
     class DOMDOMImplementation extends DOMObject {
         static $gtype: GObject.GType<DOMDOMImplementation>;
+        declare static readonly __signalSignatures: DOMDOMImplementation.SignalSignatures;
 
         // Constructors
 
@@ -2968,6 +3028,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMDOMSelection {
+        // Signal signatures
+        interface SignalSignatures extends DOMObject.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
@@ -2997,6 +3060,7 @@ export namespace WebKit2WebExtension {
 
     class DOMDOMSelection extends DOMObject {
         static $gtype: GObject.GType<DOMDOMSelection>;
+        declare static readonly __signalSignatures: DOMDOMSelection.SignalSignatures;
 
         // Properties
 
@@ -3058,6 +3122,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMDOMTokenList {
+        // Signal signatures
+        interface SignalSignatures extends DOMObject.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
@@ -3068,6 +3135,7 @@ export namespace WebKit2WebExtension {
 
     class DOMDOMTokenList extends DOMObject {
         static $gtype: GObject.GType<DOMDOMTokenList>;
+        declare static readonly __signalSignatures: DOMDOMTokenList.SignalSignatures;
 
         // Properties
 
@@ -3093,6 +3161,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMDOMWindow {
+        // Signal signatures
+        interface SignalSignatures extends DOMObject.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -3145,6 +3216,7 @@ export namespace WebKit2WebExtension {
 
     class DOMDOMWindow extends DOMObject implements DOMEventTarget {
         static $gtype: GObject.GType<DOMDOMWindow>;
+        declare static readonly __signalSignatures: DOMDOMWindow.SignalSignatures;
 
         // Properties
 
@@ -3718,6 +3790,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMDocument {
+        // Signal signatures
+        interface SignalSignatures extends DOMNode.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMNode.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -3806,6 +3881,7 @@ export namespace WebKit2WebExtension {
 
     class DOMDocument extends DOMNode implements DOMEventTarget {
         static $gtype: GObject.GType<DOMDocument>;
+        declare static readonly __signalSignatures: DOMDocument.SignalSignatures;
 
         // Properties
 
@@ -4504,6 +4580,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMDocumentFragment {
+        // Signal signatures
+        interface SignalSignatures extends DOMNode.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMNode.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -4519,6 +4598,7 @@ export namespace WebKit2WebExtension {
 
     class DOMDocumentFragment extends DOMNode implements DOMEventTarget {
         static $gtype: GObject.GType<DOMDocumentFragment>;
+        declare static readonly __signalSignatures: DOMDocumentFragment.SignalSignatures;
 
         // Properties
 
@@ -4999,6 +5079,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMDocumentType {
+        // Signal signatures
+        interface SignalSignatures extends DOMNode.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMNode.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -5016,6 +5099,7 @@ export namespace WebKit2WebExtension {
 
     class DOMDocumentType extends DOMNode implements DOMEventTarget {
         static $gtype: GObject.GType<DOMDocumentType>;
+        declare static readonly __signalSignatures: DOMDocumentType.SignalSignatures;
 
         // Properties
 
@@ -5497,6 +5581,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMNode.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMNode.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -5562,6 +5649,7 @@ export namespace WebKit2WebExtension {
 
     class DOMElement extends DOMNode implements DOMEventTarget {
         static $gtype: GObject.GType<DOMElement>;
+        declare static readonly __signalSignatures: DOMElement.SignalSignatures;
 
         // Properties
 
@@ -6205,6 +6293,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMEntityReference {
+        // Signal signatures
+        interface SignalSignatures extends DOMNode.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMNode.ConstructorProps, DOMEventTarget.ConstructorProps {}
@@ -6212,6 +6303,7 @@ export namespace WebKit2WebExtension {
 
     class DOMEntityReference extends DOMNode implements DOMEventTarget {
         static $gtype: GObject.GType<DOMEntityReference>;
+        declare static readonly __signalSignatures: DOMEntityReference.SignalSignatures;
 
         // Constructors
 
@@ -6672,6 +6764,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMEvent {
+        // Signal signatures
+        interface SignalSignatures extends DOMObject.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
@@ -6696,6 +6791,7 @@ export namespace WebKit2WebExtension {
 
     class DOMEvent extends DOMObject {
         static $gtype: GObject.GType<DOMEvent>;
+        declare static readonly __signalSignatures: DOMEvent.SignalSignatures;
 
         // Properties
 
@@ -6746,6 +6842,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMFile {
+        // Signal signatures
+        interface SignalSignatures extends DOMBlob.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMBlob.ConstructorProps {
@@ -6755,6 +6854,7 @@ export namespace WebKit2WebExtension {
 
     class DOMFile extends DOMBlob {
         static $gtype: GObject.GType<DOMFile>;
+        declare static readonly __signalSignatures: DOMFile.SignalSignatures;
 
         // Properties
 
@@ -6772,6 +6872,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMFileList {
+        // Signal signatures
+        interface SignalSignatures extends DOMObject.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
@@ -6781,6 +6884,7 @@ export namespace WebKit2WebExtension {
 
     class DOMFileList extends DOMObject {
         static $gtype: GObject.GType<DOMFileList>;
+        declare static readonly __signalSignatures: DOMFileList.SignalSignatures;
 
         // Properties
 
@@ -6799,6 +6903,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLAnchorElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -6825,6 +6932,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLAnchorElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLAnchorElement>;
+        declare static readonly __signalSignatures: DOMHTMLAnchorElement.SignalSignatures;
 
         // Properties
 
@@ -7353,6 +7461,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLAppletElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -7373,6 +7484,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLAppletElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLAppletElement>;
+        declare static readonly __signalSignatures: DOMHTMLAppletElement.SignalSignatures;
 
         // Properties
 
@@ -7875,6 +7987,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLAreaElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -7897,6 +8012,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLAreaElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLAreaElement>;
+        declare static readonly __signalSignatures: DOMHTMLAreaElement.SignalSignatures;
 
         // Properties
 
@@ -8407,6 +8523,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLBRElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -8416,6 +8535,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLBRElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLBRElement>;
+        declare static readonly __signalSignatures: DOMHTMLBRElement.SignalSignatures;
 
         // Properties
 
@@ -8876,6 +8996,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLBaseElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -8886,6 +9009,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLBaseElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLBaseElement>;
+        declare static readonly __signalSignatures: DOMHTMLBaseElement.SignalSignatures;
 
         // Properties
 
@@ -9350,6 +9474,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLBaseFontElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {}
@@ -9357,6 +9484,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLBaseFontElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLBaseFontElement>;
+        declare static readonly __signalSignatures: DOMHTMLBaseFontElement.SignalSignatures;
 
         // Constructors
 
@@ -9840,6 +9968,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLBodyElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -9857,6 +9988,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLBodyElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLBodyElement>;
+        declare static readonly __signalSignatures: DOMHTMLBodyElement.SignalSignatures;
 
         // Properties
 
@@ -10343,6 +10475,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLButtonElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -10359,6 +10494,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLButtonElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLButtonElement>;
+        declare static readonly __signalSignatures: DOMHTMLButtonElement.SignalSignatures;
 
         // Properties
 
@@ -10840,6 +10976,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLCanvasElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -10850,6 +10989,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLCanvasElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLCanvasElement>;
+        declare static readonly __signalSignatures: DOMHTMLCanvasElement.SignalSignatures;
 
         // Properties
 
@@ -11314,6 +11454,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLCollection {
+        // Signal signatures
+        interface SignalSignatures extends DOMObject.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
@@ -11323,6 +11466,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLCollection extends DOMObject {
         static $gtype: GObject.GType<DOMHTMLCollection>;
+        declare static readonly __signalSignatures: DOMHTMLCollection.SignalSignatures;
 
         // Properties
 
@@ -11342,6 +11486,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLDListElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -11351,6 +11498,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLDListElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLDListElement>;
+        declare static readonly __signalSignatures: DOMHTMLDListElement.SignalSignatures;
 
         // Properties
 
@@ -11811,6 +11959,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLDirectoryElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -11820,6 +11971,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLDirectoryElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLDirectoryElement>;
+        declare static readonly __signalSignatures: DOMHTMLDirectoryElement.SignalSignatures;
 
         // Properties
 
@@ -12280,6 +12432,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLDivElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -12289,6 +12444,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLDivElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLDivElement>;
+        declare static readonly __signalSignatures: DOMHTMLDivElement.SignalSignatures;
 
         // Properties
 
@@ -12749,6 +12905,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLDocument {
+        // Signal signatures
+        interface SignalSignatures extends DOMDocument.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMDocument.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -12770,6 +12929,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLDocument extends DOMDocument implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLDocument>;
+        declare static readonly __signalSignatures: DOMHTMLDocument.SignalSignatures;
 
         // Properties
 
@@ -13274,6 +13434,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -13302,6 +13465,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLElement extends DOMElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLElement>;
+        declare static readonly __signalSignatures: DOMHTMLElement.SignalSignatures;
 
         // Properties
 
@@ -13829,6 +13993,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLEmbedElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -13843,6 +14010,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLEmbedElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLEmbedElement>;
+        declare static readonly __signalSignatures: DOMHTMLEmbedElement.SignalSignatures;
 
         // Properties
 
@@ -14323,6 +14491,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLFieldSetElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -14332,6 +14503,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLFieldSetElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLFieldSetElement>;
+        declare static readonly __signalSignatures: DOMHTMLFieldSetElement.SignalSignatures;
 
         // Properties
 
@@ -14790,6 +14962,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLFontElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -14801,6 +14976,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLFontElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLFontElement>;
+        declare static readonly __signalSignatures: DOMHTMLFontElement.SignalSignatures;
 
         // Properties
 
@@ -15269,6 +15445,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLFormElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -15287,6 +15466,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLFormElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLFormElement>;
+        declare static readonly __signalSignatures: DOMHTMLFormElement.SignalSignatures;
 
         // Properties
 
@@ -15779,6 +15959,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLFrameElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -15806,6 +15989,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLFrameElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLFrameElement>;
+        declare static readonly __signalSignatures: DOMHTMLFrameElement.SignalSignatures;
 
         // Properties
 
@@ -16314,6 +16498,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLFrameSetElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -16324,6 +16511,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLFrameSetElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLFrameSetElement>;
+        declare static readonly __signalSignatures: DOMHTMLFrameSetElement.SignalSignatures;
 
         // Properties
 
@@ -16788,6 +16976,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLHRElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -16801,6 +16992,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLHRElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLHRElement>;
+        declare static readonly __signalSignatures: DOMHTMLHRElement.SignalSignatures;
 
         // Properties
 
@@ -17275,6 +17467,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLHeadElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -17284,6 +17479,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLHeadElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLHeadElement>;
+        declare static readonly __signalSignatures: DOMHTMLHeadElement.SignalSignatures;
 
         // Properties
 
@@ -17744,6 +17940,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLHeadingElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -17753,6 +17952,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLHeadingElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLHeadingElement>;
+        declare static readonly __signalSignatures: DOMHTMLHeadingElement.SignalSignatures;
 
         // Properties
 
@@ -18213,6 +18413,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLHtmlElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -18222,6 +18425,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLHtmlElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLHtmlElement>;
+        declare static readonly __signalSignatures: DOMHTMLHtmlElement.SignalSignatures;
 
         // Properties
 
@@ -18682,6 +18886,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLIFrameElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -18708,6 +18915,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLIFrameElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLIFrameElement>;
+        declare static readonly __signalSignatures: DOMHTMLIFrameElement.SignalSignatures;
 
         // Properties
 
@@ -19218,6 +19426,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLImageElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -19249,6 +19460,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLImageElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLImageElement>;
+        declare static readonly __signalSignatures: DOMHTMLImageElement.SignalSignatures;
 
         // Properties
 
@@ -19775,6 +19987,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLInputElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -19813,6 +20028,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLInputElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLInputElement>;
+        declare static readonly __signalSignatures: DOMHTMLInputElement.SignalSignatures;
 
         // Properties
 
@@ -20377,6 +20593,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLLIElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -20387,6 +20606,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLLIElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLLIElement>;
+        declare static readonly __signalSignatures: DOMHTMLLIElement.SignalSignatures;
 
         // Properties
 
@@ -20851,6 +21071,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLLabelElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -20862,6 +21085,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLLabelElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLLabelElement>;
+        declare static readonly __signalSignatures: DOMHTMLLabelElement.SignalSignatures;
 
         // Properties
 
@@ -21326,6 +21550,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLLegendElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -21336,6 +21563,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLLegendElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLLegendElement>;
+        declare static readonly __signalSignatures: DOMHTMLLegendElement.SignalSignatures;
 
         // Properties
 
@@ -21798,6 +22026,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLLinkElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -21817,6 +22048,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLLinkElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLLinkElement>;
+        declare static readonly __signalSignatures: DOMHTMLLinkElement.SignalSignatures;
 
         // Properties
 
@@ -22314,6 +22546,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLMapElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -22324,6 +22559,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLMapElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLMapElement>;
+        declare static readonly __signalSignatures: DOMHTMLMapElement.SignalSignatures;
 
         // Properties
 
@@ -22786,6 +23022,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLMarqueeElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {}
@@ -22793,6 +23032,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLMarqueeElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLMarqueeElement>;
+        declare static readonly __signalSignatures: DOMHTMLMarqueeElement.SignalSignatures;
 
         // Constructors
 
@@ -23248,6 +23488,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLMenuElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -23257,6 +23500,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLMenuElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLMenuElement>;
+        declare static readonly __signalSignatures: DOMHTMLMenuElement.SignalSignatures;
 
         // Properties
 
@@ -23717,6 +23961,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLMetaElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -23730,6 +23977,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLMetaElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLMetaElement>;
+        declare static readonly __signalSignatures: DOMHTMLMetaElement.SignalSignatures;
 
         // Properties
 
@@ -24204,6 +24452,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLModElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -24215,6 +24466,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLModElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLModElement>;
+        declare static readonly __signalSignatures: DOMHTMLModElement.SignalSignatures;
 
         // Properties
 
@@ -24681,6 +24933,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLOListElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -24692,6 +24947,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLOListElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLOListElement>;
+        declare static readonly __signalSignatures: DOMHTMLOListElement.SignalSignatures;
 
         // Properties
 
@@ -25160,6 +25416,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLObjectElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -25190,6 +25449,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLObjectElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLObjectElement>;
+        declare static readonly __signalSignatures: DOMHTMLObjectElement.SignalSignatures;
 
         // Properties
 
@@ -25702,6 +25962,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLOptGroupElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -25712,6 +25975,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLOptGroupElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLOptGroupElement>;
+        declare static readonly __signalSignatures: DOMHTMLOptGroupElement.SignalSignatures;
 
         // Properties
 
@@ -26176,6 +26440,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLOptionElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -26193,6 +26460,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLOptionElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLOptionElement>;
+        declare static readonly __signalSignatures: DOMHTMLOptionElement.SignalSignatures;
 
         // Properties
 
@@ -26677,6 +26945,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLOptionsCollection {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLCollection.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLCollection.ConstructorProps {
@@ -26688,6 +26959,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLOptionsCollection extends DOMHTMLCollection {
         static $gtype: GObject.GType<DOMHTMLOptionsCollection>;
+        declare static readonly __signalSignatures: DOMHTMLOptionsCollection.SignalSignatures;
 
         // Properties
 
@@ -26712,6 +26984,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLParagraphElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -26721,6 +26996,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLParagraphElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLParagraphElement>;
+        declare static readonly __signalSignatures: DOMHTMLParagraphElement.SignalSignatures;
 
         // Properties
 
@@ -27181,6 +27457,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLParamElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -27194,6 +27473,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLParamElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLParamElement>;
+        declare static readonly __signalSignatures: DOMHTMLParamElement.SignalSignatures;
 
         // Properties
 
@@ -27668,6 +27948,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLPreElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -27678,6 +27961,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLPreElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLPreElement>;
+        declare static readonly __signalSignatures: DOMHTMLPreElement.SignalSignatures;
 
         // Properties
 
@@ -28142,6 +28426,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLQuoteElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -28151,6 +28438,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLQuoteElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLQuoteElement>;
+        declare static readonly __signalSignatures: DOMHTMLQuoteElement.SignalSignatures;
 
         // Properties
 
@@ -28611,6 +28899,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLScriptElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -28627,6 +28918,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLScriptElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLScriptElement>;
+        declare static readonly __signalSignatures: DOMHTMLScriptElement.SignalSignatures;
 
         // Properties
 
@@ -29113,6 +29405,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLSelectElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -29135,6 +29430,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLSelectElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLSelectElement>;
+        declare static readonly __signalSignatures: DOMHTMLSelectElement.SignalSignatures;
 
         // Properties
 
@@ -29640,6 +29936,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLStyleElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -29652,6 +29951,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLStyleElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLStyleElement>;
+        declare static readonly __signalSignatures: DOMHTMLStyleElement.SignalSignatures;
 
         // Properties
 
@@ -30122,6 +30422,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLTableCaptionElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -30131,6 +30434,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLTableCaptionElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLTableCaptionElement>;
+        declare static readonly __signalSignatures: DOMHTMLTableCaptionElement.SignalSignatures;
 
         // Properties
 
@@ -30591,6 +30895,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLTableCellElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -30621,6 +30928,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLTableCellElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLTableCellElement>;
+        declare static readonly __signalSignatures: DOMHTMLTableCellElement.SignalSignatures;
 
         // Properties
 
@@ -31148,6 +31456,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLTableColElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -31164,6 +31475,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLTableColElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLTableColElement>;
+        declare static readonly __signalSignatures: DOMHTMLTableColElement.SignalSignatures;
 
         // Properties
 
@@ -31648,6 +31960,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLTableElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -31675,6 +31990,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLTableElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLTableElement>;
+        declare static readonly __signalSignatures: DOMHTMLTableElement.SignalSignatures;
 
         // Properties
 
@@ -32193,6 +32509,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLTableRowElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -32214,6 +32533,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLTableRowElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLTableRowElement>;
+        declare static readonly __signalSignatures: DOMHTMLTableRowElement.SignalSignatures;
 
         // Properties
 
@@ -32706,6 +33026,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLTableSectionElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -32721,6 +33044,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLTableSectionElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLTableSectionElement>;
+        declare static readonly __signalSignatures: DOMHTMLTableSectionElement.SignalSignatures;
 
         // Properties
 
@@ -33201,6 +33525,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLTextAreaElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -33227,6 +33554,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLTextAreaElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLTextAreaElement>;
+        declare static readonly __signalSignatures: DOMHTMLTextAreaElement.SignalSignatures;
 
         // Properties
 
@@ -33741,6 +34069,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLTitleElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -33750,6 +34081,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLTitleElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLTitleElement>;
+        declare static readonly __signalSignatures: DOMHTMLTitleElement.SignalSignatures;
 
         // Properties
 
@@ -34210,6 +34542,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMHTMLUListElement {
+        // Signal signatures
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMHTMLElement.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -34220,6 +34555,7 @@ export namespace WebKit2WebExtension {
 
     class DOMHTMLUListElement extends DOMHTMLElement implements DOMEventTarget {
         static $gtype: GObject.GType<DOMHTMLUListElement>;
+        declare static readonly __signalSignatures: DOMHTMLUListElement.SignalSignatures;
 
         // Properties
 
@@ -34684,6 +35020,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMKeyboardEvent {
+        // Signal signatures
+        interface SignalSignatures extends DOMUIEvent.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMUIEvent.ConstructorProps {
@@ -34706,6 +35045,7 @@ export namespace WebKit2WebExtension {
 
     class DOMKeyboardEvent extends DOMUIEvent {
         static $gtype: GObject.GType<DOMKeyboardEvent>;
+        declare static readonly __signalSignatures: DOMKeyboardEvent.SignalSignatures;
 
         // Properties
 
@@ -34756,6 +35096,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMMediaList {
+        // Signal signatures
+        interface SignalSignatures extends DOMObject.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
@@ -34767,6 +35110,7 @@ export namespace WebKit2WebExtension {
 
     class DOMMediaList extends DOMObject {
         static $gtype: GObject.GType<DOMMediaList>;
+        declare static readonly __signalSignatures: DOMMediaList.SignalSignatures;
 
         // Properties
 
@@ -34793,6 +35137,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMMouseEvent {
+        // Signal signatures
+        interface SignalSignatures extends DOMUIEvent.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMUIEvent.ConstructorProps {
@@ -34830,6 +35177,7 @@ export namespace WebKit2WebExtension {
 
     class DOMMouseEvent extends DOMUIEvent {
         static $gtype: GObject.GType<DOMMouseEvent>;
+        declare static readonly __signalSignatures: DOMMouseEvent.SignalSignatures;
 
         // Properties
 
@@ -34907,6 +35255,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMNamedNodeMap {
+        // Signal signatures
+        interface SignalSignatures extends DOMObject.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
@@ -34916,6 +35267,7 @@ export namespace WebKit2WebExtension {
 
     class DOMNamedNodeMap extends DOMObject {
         static $gtype: GObject.GType<DOMNamedNodeMap>;
+        declare static readonly __signalSignatures: DOMNamedNodeMap.SignalSignatures;
 
         // Properties
 
@@ -34940,6 +35292,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMNode {
+        // Signal signatures
+        interface SignalSignatures extends DOMObject.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -34974,6 +35329,7 @@ export namespace WebKit2WebExtension {
 
     class DOMNode extends DOMObject implements DOMEventTarget {
         static $gtype: GObject.GType<DOMNode>;
+        declare static readonly __signalSignatures: DOMNode.SignalSignatures;
 
         // Properties
 
@@ -35513,6 +35869,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMNodeIterator {
+        // Signal signatures
+        interface SignalSignatures extends DOMObject.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
@@ -35529,6 +35888,7 @@ export namespace WebKit2WebExtension {
 
     class DOMNodeIterator extends DOMObject {
         static $gtype: GObject.GType<DOMNodeIterator>;
+        declare static readonly __signalSignatures: DOMNodeIterator.SignalSignatures;
 
         // Properties
 
@@ -35565,6 +35925,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMNodeList {
+        // Signal signatures
+        interface SignalSignatures extends DOMObject.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
@@ -35574,6 +35937,7 @@ export namespace WebKit2WebExtension {
 
     class DOMNodeList extends DOMObject {
         static $gtype: GObject.GType<DOMNodeList>;
+        declare static readonly __signalSignatures: DOMNodeList.SignalSignatures;
 
         // Properties
 
@@ -35592,6 +35956,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMObject {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -35602,6 +35969,7 @@ export namespace WebKit2WebExtension {
 
     class DOMObject extends GObject.Object {
         static $gtype: GObject.GType<DOMObject>;
+        declare static readonly __signalSignatures: DOMObject.SignalSignatures;
 
         // Properties
 
@@ -35620,6 +35988,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMProcessingInstruction {
+        // Signal signatures
+        interface SignalSignatures extends DOMCharacterData.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMCharacterData.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -35630,6 +36001,7 @@ export namespace WebKit2WebExtension {
 
     class DOMProcessingInstruction extends DOMCharacterData implements DOMEventTarget {
         static $gtype: GObject.GType<DOMProcessingInstruction>;
+        declare static readonly __signalSignatures: DOMProcessingInstruction.SignalSignatures;
 
         // Properties
 
@@ -36094,6 +36466,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMRange {
+        // Signal signatures
+        interface SignalSignatures extends DOMObject.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
@@ -36114,6 +36489,7 @@ export namespace WebKit2WebExtension {
 
     class DOMRange extends DOMObject {
         static $gtype: GObject.GType<DOMRange>;
+        declare static readonly __signalSignatures: DOMRange.SignalSignatures;
 
         // Properties
 
@@ -36172,6 +36548,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMStyleSheet {
+        // Signal signatures
+        interface SignalSignatures extends DOMObject.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
@@ -36189,6 +36568,7 @@ export namespace WebKit2WebExtension {
 
     class DOMStyleSheet extends DOMObject {
         static $gtype: GObject.GType<DOMStyleSheet>;
+        declare static readonly __signalSignatures: DOMStyleSheet.SignalSignatures;
 
         // Properties
 
@@ -36222,6 +36602,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMStyleSheetList {
+        // Signal signatures
+        interface SignalSignatures extends DOMObject.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
@@ -36231,6 +36614,7 @@ export namespace WebKit2WebExtension {
 
     class DOMStyleSheetList extends DOMObject {
         static $gtype: GObject.GType<DOMStyleSheetList>;
+        declare static readonly __signalSignatures: DOMStyleSheetList.SignalSignatures;
 
         // Properties
 
@@ -36249,6 +36633,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMText {
+        // Signal signatures
+        interface SignalSignatures extends DOMCharacterData.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMCharacterData.ConstructorProps, DOMEventTarget.ConstructorProps {
@@ -36259,6 +36646,7 @@ export namespace WebKit2WebExtension {
 
     class DOMText extends DOMCharacterData implements DOMEventTarget {
         static $gtype: GObject.GType<DOMText>;
+        declare static readonly __signalSignatures: DOMText.SignalSignatures;
 
         // Properties
 
@@ -36724,6 +37112,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMTreeWalker {
+        // Signal signatures
+        interface SignalSignatures extends DOMObject.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
@@ -36738,6 +37129,7 @@ export namespace WebKit2WebExtension {
 
     class DOMTreeWalker extends DOMObject {
         static $gtype: GObject.GType<DOMTreeWalker>;
+        declare static readonly __signalSignatures: DOMTreeWalker.SignalSignatures;
 
         // Properties
 
@@ -36776,6 +37168,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMUIEvent {
+        // Signal signatures
+        interface SignalSignatures extends DOMEvent.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMEvent.ConstructorProps {
@@ -36798,6 +37193,7 @@ export namespace WebKit2WebExtension {
 
     class DOMUIEvent extends DOMEvent {
         static $gtype: GObject.GType<DOMUIEvent>;
+        declare static readonly __signalSignatures: DOMUIEvent.SignalSignatures;
 
         // Properties
 
@@ -36836,6 +37232,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMWheelEvent {
+        // Signal signatures
+        interface SignalSignatures extends DOMMouseEvent.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMMouseEvent.ConstructorProps {
@@ -36850,6 +37249,7 @@ export namespace WebKit2WebExtension {
 
     class DOMWheelEvent extends DOMMouseEvent {
         static $gtype: GObject.GType<DOMWheelEvent>;
+        declare static readonly __signalSignatures: DOMWheelEvent.SignalSignatures;
 
         // Properties
 
@@ -36887,6 +37287,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMXPathExpression {
+        // Signal signatures
+        interface SignalSignatures extends DOMObject.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {}
@@ -36894,6 +37297,7 @@ export namespace WebKit2WebExtension {
 
     class DOMXPathExpression extends DOMObject {
         static $gtype: GObject.GType<DOMXPathExpression>;
+        declare static readonly __signalSignatures: DOMXPathExpression.SignalSignatures;
 
         // Constructors
 
@@ -36907,6 +37311,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace DOMXPathResult {
+        // Signal signatures
+        interface SignalSignatures extends DOMObject.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DOMObject.ConstructorProps {
@@ -36929,6 +37336,7 @@ export namespace WebKit2WebExtension {
 
     class DOMXPathResult extends DOMObject {
         static $gtype: GObject.GType<DOMXPathResult>;
+        declare static readonly __signalSignatures: DOMXPathResult.SignalSignatures;
 
         // Properties
 
@@ -36967,6 +37375,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace Frame {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -36980,6 +37391,7 @@ export namespace WebKit2WebExtension {
      */
     class Frame extends GObject.Object {
         static $gtype: GObject.GType<Frame>;
+        declare static readonly __signalSignatures: Frame.SignalSignatures;
 
         // Constructors
 
@@ -37036,6 +37448,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace HitTestResult {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -37077,6 +37492,7 @@ export namespace WebKit2WebExtension {
      */
     class HitTestResult extends GObject.Object {
         static $gtype: GObject.GType<HitTestResult>;
+        declare static readonly __signalSignatures: HitTestResult.SignalSignatures;
 
         // Properties
 
@@ -37219,6 +37635,11 @@ export namespace WebKit2WebExtension {
             (page: WebPage, frame: Frame): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'window-object-cleared': WindowObjectCleared;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -37226,6 +37647,7 @@ export namespace WebKit2WebExtension {
 
     class ScriptWorld extends GObject.Object {
         static $gtype: GObject.GType<ScriptWorld>;
+        declare static readonly __signalSignatures: ScriptWorld.SignalSignatures;
 
         // Constructors
 
@@ -37239,6 +37661,18 @@ export namespace WebKit2WebExtension {
 
         // Signals
 
+        connect<K extends keyof ScriptWorld.SignalSignatures>(
+            signal: K,
+            callback: ScriptWorld.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ScriptWorld.SignalSignatures>(
+            signal: K,
+            callback: ScriptWorld.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ScriptWorld.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ScriptWorld.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -37272,6 +37706,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace URIRequest {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -37288,6 +37725,7 @@ export namespace WebKit2WebExtension {
      */
     class URIRequest extends GObject.Object {
         static $gtype: GObject.GType<URIRequest>;
+        declare static readonly __signalSignatures: URIRequest.SignalSignatures;
 
         // Properties
 
@@ -37330,6 +37768,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace URIResponse {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -37356,6 +37797,7 @@ export namespace WebKit2WebExtension {
      */
     class URIResponse extends GObject.Object {
         static $gtype: GObject.GType<URIResponse>;
+        declare static readonly __signalSignatures: URIResponse.SignalSignatures;
 
         // Properties
 
@@ -37456,6 +37898,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace UserMessage {
+        // Signal signatures
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
@@ -37478,6 +37923,7 @@ export namespace WebKit2WebExtension {
      */
     class UserMessage extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<UserMessage>;
+        declare static readonly __signalSignatures: UserMessage.SignalSignatures;
 
         // Properties
 
@@ -37556,6 +38002,11 @@ export namespace WebKit2WebExtension {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'selection-changed': SelectionChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -37570,6 +38021,7 @@ export namespace WebKit2WebExtension {
      */
     class WebEditor extends GObject.Object {
         static $gtype: GObject.GType<WebEditor>;
+        declare static readonly __signalSignatures: WebEditor.SignalSignatures;
 
         // Constructors
 
@@ -37579,6 +38031,15 @@ export namespace WebKit2WebExtension {
 
         // Signals
 
+        connect<K extends keyof WebEditor.SignalSignatures>(signal: K, callback: WebEditor.SignalSignatures[K]): number;
+        connect_after<K extends keyof WebEditor.SignalSignatures>(
+            signal: K,
+            callback: WebEditor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WebEditor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WebEditor.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -37605,6 +38066,12 @@ export namespace WebKit2WebExtension {
 
         interface UserMessageReceived {
             (message: UserMessage): void;
+        }
+
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'page-created': PageCreated;
+            'user-message-received': UserMessageReceived;
         }
 
         // Constructor properties interface
@@ -37687,6 +38154,7 @@ export namespace WebKit2WebExtension {
      */
     class WebExtension extends GObject.Object {
         static $gtype: GObject.GType<WebExtension>;
+        declare static readonly __signalSignatures: WebExtension.SignalSignatures;
 
         // Constructors
 
@@ -37696,6 +38164,18 @@ export namespace WebKit2WebExtension {
 
         // Signals
 
+        connect<K extends keyof WebExtension.SignalSignatures>(
+            signal: K,
+            callback: WebExtension.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WebExtension.SignalSignatures>(
+            signal: K,
+            callback: WebExtension.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WebExtension.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WebExtension.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -37763,6 +38243,9 @@ export namespace WebKit2WebExtension {
     }
 
     namespace WebHitTestResult {
+        // Signal signatures
+        interface SignalSignatures extends HitTestResult.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends HitTestResult.ConstructorProps {
@@ -37778,6 +38261,7 @@ export namespace WebKit2WebExtension {
      */
     class WebHitTestResult extends HitTestResult {
         static $gtype: GObject.GType<WebHitTestResult>;
+        declare static readonly __signalSignatures: WebHitTestResult.SignalSignatures;
 
         // Properties
 
@@ -37843,6 +38327,18 @@ export namespace WebKit2WebExtension {
             ): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'console-message-sent': ConsoleMessageSent;
+            'context-menu': ContextMenu;
+            'document-loaded': DocumentLoaded;
+            'form-controls-associated': FormControlsAssociated;
+            'form-controls-associated-for-frame': FormControlsAssociatedForFrame;
+            'send-request': SendRequest;
+            'user-message-received': UserMessageReceived;
+            'will-submit-form': WillSubmitForm;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -37855,6 +38351,7 @@ export namespace WebKit2WebExtension {
      */
     class WebPage extends GObject.Object {
         static $gtype: GObject.GType<WebPage>;
+        declare static readonly __signalSignatures: WebPage.SignalSignatures;
 
         // Properties
 
@@ -37871,6 +38368,15 @@ export namespace WebKit2WebExtension {
 
         // Signals
 
+        connect<K extends keyof WebPage.SignalSignatures>(signal: K, callback: WebPage.SignalSignatures[K]): number;
+        connect_after<K extends keyof WebPage.SignalSignatures>(
+            signal: K,
+            callback: WebPage.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WebPage.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WebPage.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

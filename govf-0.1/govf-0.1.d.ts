@@ -31,6 +31,9 @@ export namespace Govf {
         LAST,
     }
     namespace Disk {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -38,6 +41,7 @@ export namespace Govf {
 
     class Disk extends GObject.Object {
         static $gtype: GObject.GType<Disk>;
+        declare static readonly __signalSignatures: Disk.SignalSignatures;
 
         // Constructors
 
@@ -92,6 +96,9 @@ export namespace Govf {
     }
 
     namespace Package {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -99,6 +106,7 @@ export namespace Govf {
 
     class Package extends GObject.Object {
         static $gtype: GObject.GType<Package>;
+        declare static readonly __signalSignatures: Package.SignalSignatures;
 
         // Constructors
 

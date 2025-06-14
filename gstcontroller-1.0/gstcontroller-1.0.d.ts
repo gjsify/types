@@ -97,6 +97,9 @@ export namespace GstController {
         (self: DirectControlBinding, src_value: number, dest_value?: any | null): void;
     }
     namespace ARGBControlBinding {
+        // Signal signatures
+        interface SignalSignatures extends Gst.ControlBinding.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.ControlBinding.ConstructorProps {
@@ -118,6 +121,7 @@ export namespace GstController {
      */
     class ARGBControlBinding extends Gst.ControlBinding {
         static $gtype: GObject.GType<ARGBControlBinding>;
+        declare static readonly __signalSignatures: ARGBControlBinding.SignalSignatures;
 
         // Properties
 
@@ -155,6 +159,9 @@ export namespace GstController {
     }
 
     namespace DirectControlBinding {
+        // Signal signatures
+        interface SignalSignatures extends Gst.ControlBinding.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.ControlBinding.ConstructorProps {
@@ -174,6 +181,7 @@ export namespace GstController {
      */
     class DirectControlBinding extends Gst.ControlBinding {
         static $gtype: GObject.GType<DirectControlBinding>;
+        declare static readonly __signalSignatures: DirectControlBinding.SignalSignatures;
 
         // Properties
 
@@ -195,6 +203,9 @@ export namespace GstController {
     }
 
     namespace InterpolationControlSource {
+        // Signal signatures
+        interface SignalSignatures extends TimedValueControlSource.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends TimedValueControlSource.ConstructorProps {
@@ -214,6 +225,7 @@ export namespace GstController {
      */
     class InterpolationControlSource extends TimedValueControlSource {
         static $gtype: GObject.GType<InterpolationControlSource>;
+        declare static readonly __signalSignatures: InterpolationControlSource.SignalSignatures;
 
         // Properties
 
@@ -230,6 +242,9 @@ export namespace GstController {
     }
 
     namespace LFOControlSource {
+        // Signal signatures
+        interface SignalSignatures extends Gst.ControlSource.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.ControlSource.ConstructorProps {
@@ -253,6 +268,7 @@ export namespace GstController {
      */
     class LFOControlSource extends Gst.ControlSource {
         static $gtype: GObject.GType<LFOControlSource>;
+        declare static readonly __signalSignatures: LFOControlSource.SignalSignatures;
 
         // Properties
 
@@ -298,6 +314,9 @@ export namespace GstController {
     }
 
     namespace ProxyControlBinding {
+        // Signal signatures
+        interface SignalSignatures extends Gst.ControlBinding.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.ControlBinding.ConstructorProps {}
@@ -308,6 +327,7 @@ export namespace GstController {
      */
     class ProxyControlBinding extends Gst.ControlBinding {
         static $gtype: GObject.GType<ProxyControlBinding>;
+        declare static readonly __signalSignatures: ProxyControlBinding.SignalSignatures;
 
         // Constructors
 
@@ -338,6 +358,13 @@ export namespace GstController {
             (timed_value: ControlPoint): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gst.ControlSource.SignalSignatures {
+            'value-added': ValueAdded;
+            'value-changed': ValueChanged;
+            'value-removed': ValueRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.ControlSource.ConstructorProps {}
@@ -353,6 +380,7 @@ export namespace GstController {
      */
     abstract class TimedValueControlSource extends Gst.ControlSource {
         static $gtype: GObject.GType<TimedValueControlSource>;
+        declare static readonly __signalSignatures: TimedValueControlSource.SignalSignatures;
 
         // Fields
 
@@ -367,6 +395,18 @@ export namespace GstController {
 
         // Signals
 
+        connect<K extends keyof TimedValueControlSource.SignalSignatures>(
+            signal: K,
+            callback: TimedValueControlSource.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TimedValueControlSource.SignalSignatures>(
+            signal: K,
+            callback: TimedValueControlSource.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TimedValueControlSource.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TimedValueControlSource.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -432,6 +472,9 @@ export namespace GstController {
     }
 
     namespace TriggerControlSource {
+        // Signal signatures
+        interface SignalSignatures extends TimedValueControlSource.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends TimedValueControlSource.ConstructorProps {
@@ -451,6 +494,7 @@ export namespace GstController {
      */
     class TriggerControlSource extends TimedValueControlSource {
         static $gtype: GObject.GType<TriggerControlSource>;
+        declare static readonly __signalSignatures: TriggerControlSource.SignalSignatures;
 
         // Properties
 

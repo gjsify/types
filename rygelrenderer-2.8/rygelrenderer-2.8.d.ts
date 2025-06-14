@@ -28,6 +28,9 @@ export namespace RygelRenderer {
      */
 
     namespace MediaRendererPlugin {
+        // Signal signatures
+        interface SignalSignatures extends RygelCore.Plugin.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends RygelCore.Plugin.ConstructorProps {
@@ -38,6 +41,7 @@ export namespace RygelRenderer {
 
     class MediaRendererPlugin extends RygelCore.Plugin {
         static $gtype: GObject.GType<MediaRendererPlugin>;
+        declare static readonly __signalSignatures: MediaRendererPlugin.SignalSignatures;
 
         // Properties
 
@@ -77,6 +81,9 @@ export namespace RygelRenderer {
     }
 
     namespace MediaRenderer {
+        // Signal signatures
+        interface SignalSignatures extends RygelCore.MediaDevice.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends RygelCore.MediaDevice.ConstructorProps {
@@ -86,6 +93,7 @@ export namespace RygelRenderer {
 
     class MediaRenderer extends RygelCore.MediaDevice {
         static $gtype: GObject.GType<MediaRenderer>;
+        declare static readonly __signalSignatures: MediaRenderer.SignalSignatures;
 
         // Properties
 

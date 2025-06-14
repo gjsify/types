@@ -889,11 +889,17 @@ export namespace Gsk {
          */
         CONIC,
     }
+    namespace BlendNode {
+        // Signal signatures
+        interface SignalSignatures extends RenderNode.SignalSignatures {}
+    }
+
     /**
      * A render node applying a blending function between its two child nodes.
      */
     class BlendNode extends RenderNode {
         static $gtype: GObject.GType<BlendNode>;
+        declare static readonly __signalSignatures: BlendNode.SignalSignatures;
 
         // Constructors
 
@@ -920,11 +926,17 @@ export namespace Gsk {
         get_top_child(): RenderNode;
     }
 
+    namespace BlurNode {
+        // Signal signatures
+        interface SignalSignatures extends RenderNode.SignalSignatures {}
+    }
+
     /**
      * A render node applying a blur effect to its single child.
      */
     class BlurNode extends RenderNode {
         static $gtype: GObject.GType<BlurNode>;
+        declare static readonly __signalSignatures: BlurNode.SignalSignatures;
 
         // Constructors
 
@@ -946,11 +958,17 @@ export namespace Gsk {
         get_radius(): number;
     }
 
+    namespace BorderNode {
+        // Signal signatures
+        interface SignalSignatures extends RenderNode.SignalSignatures {}
+    }
+
     /**
      * A render node for a border.
      */
     class BorderNode extends RenderNode {
         static $gtype: GObject.GType<BorderNode>;
+        declare static readonly __signalSignatures: BorderNode.SignalSignatures;
 
         // Constructors
 
@@ -978,6 +996,9 @@ export namespace Gsk {
     }
 
     namespace BroadwayRenderer {
+        // Signal signatures
+        interface SignalSignatures extends Renderer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Renderer.ConstructorProps {}
@@ -990,6 +1011,7 @@ export namespace Gsk {
      */
     class BroadwayRenderer extends Renderer {
         static $gtype: GObject.GType<BroadwayRenderer>;
+        declare static readonly __signalSignatures: BroadwayRenderer.SignalSignatures;
 
         // Constructors
 
@@ -1000,11 +1022,17 @@ export namespace Gsk {
         static ['new'](): BroadwayRenderer;
     }
 
+    namespace CairoNode {
+        // Signal signatures
+        interface SignalSignatures extends RenderNode.SignalSignatures {}
+    }
+
     /**
      * A render node for a Cairo surface.
      */
     class CairoNode extends RenderNode {
         static $gtype: GObject.GType<CairoNode>;
+        declare static readonly __signalSignatures: CairoNode.SignalSignatures;
 
         // Constructors
 
@@ -1031,6 +1059,9 @@ export namespace Gsk {
     }
 
     namespace CairoRenderer {
+        // Signal signatures
+        interface SignalSignatures extends Renderer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Renderer.ConstructorProps {}
@@ -1044,6 +1075,7 @@ export namespace Gsk {
      */
     class CairoRenderer extends Renderer {
         static $gtype: GObject.GType<CairoRenderer>;
+        declare static readonly __signalSignatures: CairoRenderer.SignalSignatures;
 
         // Constructors
 
@@ -1054,11 +1086,17 @@ export namespace Gsk {
         static ['new'](): CairoRenderer;
     }
 
+    namespace ClipNode {
+        // Signal signatures
+        interface SignalSignatures extends RenderNode.SignalSignatures {}
+    }
+
     /**
      * A render node applying a rectangular clip to its single child node.
      */
     class ClipNode extends RenderNode {
         static $gtype: GObject.GType<ClipNode>;
+        declare static readonly __signalSignatures: ClipNode.SignalSignatures;
 
         // Constructors
 
@@ -1080,11 +1118,17 @@ export namespace Gsk {
         get_clip(): Graphene.Rect;
     }
 
+    namespace ColorMatrixNode {
+        // Signal signatures
+        interface SignalSignatures extends RenderNode.SignalSignatures {}
+    }
+
     /**
      * A render node controlling the color matrix of its single child node.
      */
     class ColorMatrixNode extends RenderNode {
         static $gtype: GObject.GType<ColorMatrixNode>;
+        declare static readonly __signalSignatures: ColorMatrixNode.SignalSignatures;
 
         // Constructors
 
@@ -1111,11 +1155,17 @@ export namespace Gsk {
         get_color_offset(): Graphene.Vec4;
     }
 
+    namespace ColorNode {
+        // Signal signatures
+        interface SignalSignatures extends RenderNode.SignalSignatures {}
+    }
+
     /**
      * A render node for a solid color.
      */
     class ColorNode extends RenderNode {
         static $gtype: GObject.GType<ColorNode>;
+        declare static readonly __signalSignatures: ColorNode.SignalSignatures;
 
         // Constructors
 
@@ -1135,11 +1185,17 @@ export namespace Gsk {
         get_color(): Gdk.RGBA;
     }
 
+    namespace ConicGradientNode {
+        // Signal signatures
+        interface SignalSignatures extends RenderNode.SignalSignatures {}
+    }
+
     /**
      * A render node for a conic gradient.
      */
     class ConicGradientNode extends RenderNode {
         static $gtype: GObject.GType<ConicGradientNode>;
+        declare static readonly __signalSignatures: ConicGradientNode.SignalSignatures;
 
         // Constructors
 
@@ -1186,11 +1242,17 @@ export namespace Gsk {
         get_rotation(): number;
     }
 
+    namespace ContainerNode {
+        // Signal signatures
+        interface SignalSignatures extends RenderNode.SignalSignatures {}
+    }
+
     /**
      * A render node that can contain other render nodes.
      */
     class ContainerNode extends RenderNode {
         static $gtype: GObject.GType<ContainerNode>;
+        declare static readonly __signalSignatures: ContainerNode.SignalSignatures;
 
         // Constructors
 
@@ -1213,11 +1275,17 @@ export namespace Gsk {
         get_n_children(): number;
     }
 
+    namespace CrossFadeNode {
+        // Signal signatures
+        interface SignalSignatures extends RenderNode.SignalSignatures {}
+    }
+
     /**
      * A render node cross fading between two child nodes.
      */
     class CrossFadeNode extends RenderNode {
         static $gtype: GObject.GType<CrossFadeNode>;
+        declare static readonly __signalSignatures: CrossFadeNode.SignalSignatures;
 
         // Constructors
 
@@ -1244,12 +1312,18 @@ export namespace Gsk {
         get_start_child(): RenderNode;
     }
 
+    namespace DebugNode {
+        // Signal signatures
+        interface SignalSignatures extends RenderNode.SignalSignatures {}
+    }
+
     /**
      * A render node that emits a debugging message when drawing its
      * child node.
      */
     class DebugNode extends RenderNode {
         static $gtype: GObject.GType<DebugNode>;
+        declare static readonly __signalSignatures: DebugNode.SignalSignatures;
 
         // Constructors
 
@@ -1271,12 +1345,18 @@ export namespace Gsk {
         get_message(): string;
     }
 
+    namespace FillNode {
+        // Signal signatures
+        interface SignalSignatures extends RenderNode.SignalSignatures {}
+    }
+
     /**
      * A render node filling the area given by [struct`Gsk`.Path]
      * and [enum`Gsk`.FillRule] with the child node.
      */
     class FillNode extends RenderNode {
         static $gtype: GObject.GType<FillNode>;
+        declare static readonly __signalSignatures: FillNode.SignalSignatures;
 
         // Constructors
 
@@ -1305,6 +1385,9 @@ export namespace Gsk {
     }
 
     namespace GLRenderer {
+        // Signal signatures
+        interface SignalSignatures extends Renderer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Renderer.ConstructorProps {}
@@ -1317,6 +1400,7 @@ export namespace Gsk {
      */
     class GLRenderer extends Renderer {
         static $gtype: GObject.GType<GLRenderer>;
+        declare static readonly __signalSignatures: GLRenderer.SignalSignatures;
 
         // Constructors
 
@@ -1328,6 +1412,9 @@ export namespace Gsk {
     }
 
     namespace GLShader {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1452,6 +1539,7 @@ export namespace Gsk {
      */
     class GLShader extends GObject.Object {
         static $gtype: GObject.GType<GLShader>;
+        declare static readonly __signalSignatures: GLShader.SignalSignatures;
 
         // Properties
 
@@ -1616,11 +1704,17 @@ export namespace Gsk {
         get_uniform_type(idx: number): GLUniformType;
     }
 
+    namespace GLShaderNode {
+        // Signal signatures
+        interface SignalSignatures extends RenderNode.SignalSignatures {}
+    }
+
     /**
      * A render node using a GL shader when drawing its children nodes.
      */
     class GLShaderNode extends RenderNode {
         static $gtype: GObject.GType<GLShaderNode>;
+        declare static readonly __signalSignatures: GLShaderNode.SignalSignatures;
 
         // Constructors
 
@@ -1658,11 +1752,17 @@ export namespace Gsk {
         get_shader(): GLShader;
     }
 
+    namespace InsetShadowNode {
+        // Signal signatures
+        interface SignalSignatures extends RenderNode.SignalSignatures {}
+    }
+
     /**
      * A render node for an inset shadow.
      */
     class InsetShadowNode extends RenderNode {
         static $gtype: GObject.GType<InsetShadowNode>;
+        declare static readonly __signalSignatures: InsetShadowNode.SignalSignatures;
 
         // Constructors
 
@@ -1714,11 +1814,17 @@ export namespace Gsk {
         get_spread(): number;
     }
 
+    namespace LinearGradientNode {
+        // Signal signatures
+        interface SignalSignatures extends RenderNode.SignalSignatures {}
+    }
+
     /**
      * A render node for a linear gradient.
      */
     class LinearGradientNode extends RenderNode {
         static $gtype: GObject.GType<LinearGradientNode>;
+        declare static readonly __signalSignatures: LinearGradientNode.SignalSignatures;
 
         // Constructors
 
@@ -1755,11 +1861,17 @@ export namespace Gsk {
         get_start(): Graphene.Point;
     }
 
+    namespace MaskNode {
+        // Signal signatures
+        interface SignalSignatures extends RenderNode.SignalSignatures {}
+    }
+
     /**
      * A render node masking one child node with another.
      */
     class MaskNode extends RenderNode {
         static $gtype: GObject.GType<MaskNode>;
+        declare static readonly __signalSignatures: MaskNode.SignalSignatures;
 
         // Constructors
 
@@ -1787,6 +1899,9 @@ export namespace Gsk {
     }
 
     namespace NglRenderer {
+        // Signal signatures
+        interface SignalSignatures extends Renderer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Renderer.ConstructorProps {}
@@ -1799,6 +1914,7 @@ export namespace Gsk {
      */
     class NglRenderer extends Renderer {
         static $gtype: GObject.GType<NglRenderer>;
+        declare static readonly __signalSignatures: NglRenderer.SignalSignatures;
 
         // Constructors
 
@@ -1809,11 +1925,17 @@ export namespace Gsk {
         static ['new'](): NglRenderer;
     }
 
+    namespace OpacityNode {
+        // Signal signatures
+        interface SignalSignatures extends RenderNode.SignalSignatures {}
+    }
+
     /**
      * A render node controlling the opacity of its single child node.
      */
     class OpacityNode extends RenderNode {
         static $gtype: GObject.GType<OpacityNode>;
+        declare static readonly __signalSignatures: OpacityNode.SignalSignatures;
 
         // Constructors
 
@@ -1835,11 +1957,17 @@ export namespace Gsk {
         get_opacity(): number;
     }
 
+    namespace OutsetShadowNode {
+        // Signal signatures
+        interface SignalSignatures extends RenderNode.SignalSignatures {}
+    }
+
     /**
      * A render node for an outset shadow.
      */
     class OutsetShadowNode extends RenderNode {
         static $gtype: GObject.GType<OutsetShadowNode>;
+        declare static readonly __signalSignatures: OutsetShadowNode.SignalSignatures;
 
         // Constructors
 
@@ -1891,11 +2019,17 @@ export namespace Gsk {
         get_spread(): number;
     }
 
+    namespace RadialGradientNode {
+        // Signal signatures
+        interface SignalSignatures extends RenderNode.SignalSignatures {}
+    }
+
     /**
      * A render node for a radial gradient.
      */
     class RadialGradientNode extends RenderNode {
         static $gtype: GObject.GType<RadialGradientNode>;
+        declare static readonly __signalSignatures: RadialGradientNode.SignalSignatures;
 
         // Constructors
 
@@ -1950,6 +2084,11 @@ export namespace Gsk {
         get_vradius(): number;
     }
 
+    namespace RenderNode {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+    }
+
     /**
      * The basic block in a scene graph to be rendered using [class`Gsk`.Renderer].
      *
@@ -1966,6 +2105,7 @@ export namespace Gsk {
      */
     abstract class RenderNode {
         static $gtype: GObject.GType<RenderNode>;
+        declare static readonly __signalSignatures: RenderNode.SignalSignatures;
 
         // Constructors
 
@@ -2059,6 +2199,9 @@ export namespace Gsk {
     }
 
     namespace Renderer {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2081,6 +2224,7 @@ export namespace Gsk {
      */
     abstract class Renderer extends GObject.Object {
         static $gtype: GObject.GType<Renderer>;
+        declare static readonly __signalSignatures: Renderer.SignalSignatures;
 
         // Properties
 
@@ -2175,11 +2319,17 @@ export namespace Gsk {
         unrealize(): void;
     }
 
+    namespace RepeatNode {
+        // Signal signatures
+        interface SignalSignatures extends RenderNode.SignalSignatures {}
+    }
+
     /**
      * A render node repeating its single child node.
      */
     class RepeatNode extends RenderNode {
         static $gtype: GObject.GType<RepeatNode>;
+        declare static readonly __signalSignatures: RepeatNode.SignalSignatures;
 
         // Constructors
 
@@ -2201,11 +2351,17 @@ export namespace Gsk {
         get_child_bounds(): Graphene.Rect;
     }
 
+    namespace RepeatingLinearGradientNode {
+        // Signal signatures
+        interface SignalSignatures extends RenderNode.SignalSignatures {}
+    }
+
     /**
      * A render node for a repeating linear gradient.
      */
     class RepeatingLinearGradientNode extends RenderNode {
         static $gtype: GObject.GType<RepeatingLinearGradientNode>;
+        declare static readonly __signalSignatures: RepeatingLinearGradientNode.SignalSignatures;
 
         // Constructors
 
@@ -2219,11 +2375,17 @@ export namespace Gsk {
         ): RepeatingLinearGradientNode;
     }
 
+    namespace RepeatingRadialGradientNode {
+        // Signal signatures
+        interface SignalSignatures extends RenderNode.SignalSignatures {}
+    }
+
     /**
      * A render node for a repeating radial gradient.
      */
     class RepeatingRadialGradientNode extends RenderNode {
         static $gtype: GObject.GType<RepeatingRadialGradientNode>;
+        declare static readonly __signalSignatures: RepeatingRadialGradientNode.SignalSignatures;
 
         // Constructors
 
@@ -2240,11 +2402,17 @@ export namespace Gsk {
         ): RepeatingRadialGradientNode;
     }
 
+    namespace RoundedClipNode {
+        // Signal signatures
+        interface SignalSignatures extends RenderNode.SignalSignatures {}
+    }
+
     /**
      * A render node applying a rounded rectangle clip to its single child.
      */
     class RoundedClipNode extends RenderNode {
         static $gtype: GObject.GType<RoundedClipNode>;
+        declare static readonly __signalSignatures: RoundedClipNode.SignalSignatures;
 
         // Constructors
 
@@ -2266,11 +2434,17 @@ export namespace Gsk {
         get_clip(): RoundedRect;
     }
 
+    namespace ShadowNode {
+        // Signal signatures
+        interface SignalSignatures extends RenderNode.SignalSignatures {}
+    }
+
     /**
      * A render node drawing one or more shadows behind its single child node.
      */
     class ShadowNode extends RenderNode {
         static $gtype: GObject.GType<ShadowNode>;
+        declare static readonly __signalSignatures: ShadowNode.SignalSignatures;
 
         // Constructors
 
@@ -2298,12 +2472,18 @@ export namespace Gsk {
         get_shadow(i: number): Shadow;
     }
 
+    namespace StrokeNode {
+        // Signal signatures
+        interface SignalSignatures extends RenderNode.SignalSignatures {}
+    }
+
     /**
      * A render node that will fill the area determined by stroking the the given
      * [struct`Gsk`.Path] using the [struct`Gsk`.Stroke] attributes.
      */
     class StrokeNode extends RenderNode {
         static $gtype: GObject.GType<StrokeNode>;
+        declare static readonly __signalSignatures: StrokeNode.SignalSignatures;
 
         // Constructors
 
@@ -2331,11 +2511,17 @@ export namespace Gsk {
         get_stroke(): Stroke;
     }
 
+    namespace SubsurfaceNode {
+        // Signal signatures
+        interface SignalSignatures extends RenderNode.SignalSignatures {}
+    }
+
     /**
      * A render node that potentially diverts a part of the scene graph to a subsurface.
      */
     class SubsurfaceNode extends RenderNode {
         static $gtype: GObject.GType<SubsurfaceNode>;
+        declare static readonly __signalSignatures: SubsurfaceNode.SignalSignatures;
 
         // Constructors
 
@@ -2350,11 +2536,17 @@ export namespace Gsk {
         get_child(): RenderNode;
     }
 
+    namespace TextNode {
+        // Signal signatures
+        interface SignalSignatures extends RenderNode.SignalSignatures {}
+    }
+
     /**
      * A render node drawing a set of glyphs.
      */
     class TextNode extends RenderNode {
         static $gtype: GObject.GType<TextNode>;
+        declare static readonly __signalSignatures: TextNode.SignalSignatures;
 
         // Constructors
 
@@ -2399,11 +2591,17 @@ export namespace Gsk {
         has_color_glyphs(): boolean;
     }
 
+    namespace TextureNode {
+        // Signal signatures
+        interface SignalSignatures extends RenderNode.SignalSignatures {}
+    }
+
     /**
      * A render node for a `GdkTexture`.
      */
     class TextureNode extends RenderNode {
         static $gtype: GObject.GType<TextureNode>;
+        declare static readonly __signalSignatures: TextureNode.SignalSignatures;
 
         // Constructors
 
@@ -2420,11 +2618,17 @@ export namespace Gsk {
         get_texture(): Gdk.Texture;
     }
 
+    namespace TextureScaleNode {
+        // Signal signatures
+        interface SignalSignatures extends RenderNode.SignalSignatures {}
+    }
+
     /**
      * A render node for a `GdkTexture`, with control over scaling.
      */
     class TextureScaleNode extends RenderNode {
         static $gtype: GObject.GType<TextureScaleNode>;
+        declare static readonly __signalSignatures: TextureScaleNode.SignalSignatures;
 
         // Constructors
 
@@ -2446,11 +2650,17 @@ export namespace Gsk {
         get_texture(): Gdk.Texture;
     }
 
+    namespace TransformNode {
+        // Signal signatures
+        interface SignalSignatures extends RenderNode.SignalSignatures {}
+    }
+
     /**
      * A render node applying a `GskTransform` to its single child node.
      */
     class TransformNode extends RenderNode {
         static $gtype: GObject.GType<TransformNode>;
+        declare static readonly __signalSignatures: TransformNode.SignalSignatures;
 
         // Constructors
 
@@ -2473,6 +2683,9 @@ export namespace Gsk {
     }
 
     namespace VulkanRenderer {
+        // Signal signatures
+        interface SignalSignatures extends Renderer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Renderer.ConstructorProps {}
@@ -2485,6 +2698,7 @@ export namespace Gsk {
      */
     class VulkanRenderer extends Renderer {
         static $gtype: GObject.GType<VulkanRenderer>;
+        declare static readonly __signalSignatures: VulkanRenderer.SignalSignatures;
 
         // Constructors
 

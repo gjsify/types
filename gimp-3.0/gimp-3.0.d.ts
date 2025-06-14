@@ -7257,6 +7257,9 @@ export namespace Gimp {
         ALWAYS,
     }
     namespace BatchProcedure {
+        // Signal signatures
+        interface SignalSignatures extends Procedure.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Procedure.ConstructorProps {}
@@ -7276,6 +7279,7 @@ export namespace Gimp {
      */
     class BatchProcedure extends Procedure {
         static $gtype: GObject.GType<BatchProcedure>;
+        declare static readonly __signalSignatures: BatchProcedure.SignalSignatures;
 
         // Constructors
 
@@ -7327,6 +7331,9 @@ export namespace Gimp {
     }
 
     namespace Brush {
+        // Signal signatures
+        interface SignalSignatures extends Resource.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Resource.ConstructorProps, ConfigInterface.ConstructorProps {}
@@ -7337,6 +7344,7 @@ export namespace Gimp {
      */
     class Brush extends Resource implements ConfigInterface {
         static $gtype: GObject.GType<Brush>;
+        declare static readonly __signalSignatures: Brush.SignalSignatures;
 
         // Constructors
 
@@ -7994,6 +8002,9 @@ export namespace Gimp {
     }
 
     namespace Channel {
+        // Signal signatures
+        interface SignalSignatures extends Drawable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Drawable.ConstructorProps {}
@@ -8004,6 +8015,7 @@ export namespace Gimp {
      */
     class Channel extends Drawable {
         static $gtype: GObject.GType<Channel>;
+        declare static readonly __signalSignatures: Channel.SignalSignatures;
 
         // Constructors
 
@@ -8113,6 +8125,11 @@ export namespace Gimp {
             (object: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'sensitivity-changed': SensitivityChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -8120,6 +8137,7 @@ export namespace Gimp {
 
     class Choice extends GObject.Object {
         static $gtype: GObject.GType<Choice>;
+        declare static readonly __signalSignatures: Choice.SignalSignatures;
 
         // Constructors
 
@@ -8131,6 +8149,9 @@ export namespace Gimp {
 
         // Signals
 
+        connect<K extends keyof Choice.SignalSignatures>(signal: K, callback: Choice.SignalSignatures[K]): number;
+        connect_after<K extends keyof Choice.SignalSignatures>(signal: K, callback: Choice.SignalSignatures[K]): number;
+        emit<K extends keyof Choice.SignalSignatures>(signal: K, ...args: Parameters<Choice.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -8190,6 +8211,9 @@ export namespace Gimp {
     }
 
     namespace ColorConfig {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, ConfigInterface.ConstructorProps {
@@ -8234,6 +8258,7 @@ export namespace Gimp {
      */
     class ColorConfig extends GObject.Object implements ConfigInterface {
         static $gtype: GObject.GType<ColorConfig>;
+        declare static readonly __signalSignatures: ColorConfig.SignalSignatures;
 
         // Properties
 
@@ -8771,6 +8796,9 @@ export namespace Gimp {
     }
 
     namespace ColorProfile {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -8781,6 +8809,7 @@ export namespace Gimp {
      */
     class ColorProfile extends GObject.Object {
         static $gtype: GObject.GType<ColorProfile>;
+        declare static readonly __signalSignatures: ColorProfile.SignalSignatures;
 
         // Constructors
 
@@ -8914,6 +8943,11 @@ export namespace Gimp {
             (object: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            progress: Progress;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -8924,6 +8958,7 @@ export namespace Gimp {
      */
     class ColorTransform extends GObject.Object {
         static $gtype: GObject.GType<ColorTransform>;
+        declare static readonly __signalSignatures: ColorTransform.SignalSignatures;
 
         // Constructors
 
@@ -8953,6 +8988,18 @@ export namespace Gimp {
 
         // Signals
 
+        connect<K extends keyof ColorTransform.SignalSignatures>(
+            signal: K,
+            callback: ColorTransform.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ColorTransform.SignalSignatures>(
+            signal: K,
+            callback: ColorTransform.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ColorTransform.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ColorTransform.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -9015,8 +9062,14 @@ export namespace Gimp {
         ): void;
     }
 
+    namespace ConfigPath {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+    }
+
     class ConfigPath {
         static $gtype: GObject.GType<ConfigPath>;
+        declare static readonly __signalSignatures: ConfigPath.SignalSignatures;
 
         // Constructors
 
@@ -9068,6 +9121,9 @@ export namespace Gimp {
     }
 
     namespace Display {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9080,6 +9136,7 @@ export namespace Gimp {
      */
     class Display extends GObject.Object {
         static $gtype: GObject.GType<Display>;
+        declare static readonly __signalSignatures: Display.SignalSignatures;
 
         // Properties
 
@@ -9177,6 +9234,9 @@ export namespace Gimp {
     }
 
     namespace Drawable {
+        // Signal signatures
+        interface SignalSignatures extends Item.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Item.ConstructorProps {}
@@ -9187,6 +9247,7 @@ export namespace Gimp {
      */
     abstract class Drawable extends Item {
         static $gtype: GObject.GType<Drawable>;
+        declare static readonly __signalSignatures: Drawable.SignalSignatures;
 
         // Constructors
 
@@ -9907,6 +9968,9 @@ export namespace Gimp {
     }
 
     namespace ExportOptions {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9927,6 +9991,7 @@ export namespace Gimp {
      */
     class ExportOptions extends GObject.Object {
         static $gtype: GObject.GType<ExportOptions>;
+        declare static readonly __signalSignatures: ExportOptions.SignalSignatures;
 
         // Properties
 
@@ -9969,6 +10034,9 @@ export namespace Gimp {
     }
 
     namespace ExportProcedure {
+        // Signal signatures
+        interface SignalSignatures extends FileProcedure.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FileProcedure.ConstructorProps {
@@ -9998,6 +10066,7 @@ export namespace Gimp {
      */
     class ExportProcedure extends FileProcedure {
         static $gtype: GObject.GType<ExportProcedure>;
+        declare static readonly __signalSignatures: ExportProcedure.SignalSignatures;
 
         // Properties
 
@@ -10253,6 +10322,9 @@ export namespace Gimp {
     }
 
     namespace FileProcedure {
+        // Signal signatures
+        interface SignalSignatures extends Procedure.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Procedure.ConstructorProps {}
@@ -10266,6 +10338,7 @@ export namespace Gimp {
      */
     abstract class FileProcedure extends Procedure {
         static $gtype: GObject.GType<FileProcedure>;
+        declare static readonly __signalSignatures: FileProcedure.SignalSignatures;
 
         // Constructors
 
@@ -10392,6 +10465,9 @@ export namespace Gimp {
     }
 
     namespace Font {
+        // Signal signatures
+        interface SignalSignatures extends Resource.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Resource.ConstructorProps, ConfigInterface.ConstructorProps {}
@@ -10402,6 +10478,7 @@ export namespace Gimp {
      */
     class Font extends Resource implements ConfigInterface {
         static $gtype: GObject.GType<Font>;
+        declare static readonly __signalSignatures: Font.SignalSignatures;
 
         // Constructors
 
@@ -10878,6 +10955,9 @@ export namespace Gimp {
     }
 
     namespace Gradient {
+        // Signal signatures
+        interface SignalSignatures extends Resource.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Resource.ConstructorProps, ConfigInterface.ConstructorProps {}
@@ -10888,6 +10968,7 @@ export namespace Gimp {
      */
     class Gradient extends Resource implements ConfigInterface {
         static $gtype: GObject.GType<Gradient>;
+        declare static readonly __signalSignatures: Gradient.SignalSignatures;
 
         // Constructors
 
@@ -11670,6 +11751,9 @@ export namespace Gimp {
     }
 
     namespace GroupLayer {
+        // Signal signatures
+        interface SignalSignatures extends Layer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Layer.ConstructorProps {}
@@ -11680,6 +11764,7 @@ export namespace Gimp {
      */
     class GroupLayer extends Layer {
         static $gtype: GObject.GType<GroupLayer>;
+        declare static readonly __signalSignatures: GroupLayer.SignalSignatures;
 
         // Constructors
 
@@ -11713,6 +11798,9 @@ export namespace Gimp {
     }
 
     namespace Image {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -11726,6 +11814,7 @@ export namespace Gimp {
      */
     class Image extends GObject.Object {
         static $gtype: GObject.GType<Image>;
+        declare static readonly __signalSignatures: Image.SignalSignatures;
 
         // Properties
 
@@ -13512,6 +13601,9 @@ export namespace Gimp {
     }
 
     namespace ImageProcedure {
+        // Signal signatures
+        interface SignalSignatures extends Procedure.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Procedure.ConstructorProps {}
@@ -13535,6 +13627,7 @@ export namespace Gimp {
      */
     class ImageProcedure extends Procedure {
         static $gtype: GObject.GType<ImageProcedure>;
+        declare static readonly __signalSignatures: ImageProcedure.SignalSignatures;
 
         // Constructors
 
@@ -13555,6 +13648,9 @@ export namespace Gimp {
     }
 
     namespace Item {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -13567,6 +13663,7 @@ export namespace Gimp {
      */
     abstract class Item extends GObject.Object {
         static $gtype: GObject.GType<Item>;
+        declare static readonly __signalSignatures: Item.SignalSignatures;
 
         // Properties
 
@@ -14298,6 +14395,9 @@ export namespace Gimp {
     }
 
     namespace Layer {
+        // Signal signatures
+        interface SignalSignatures extends Drawable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Drawable.ConstructorProps {}
@@ -14308,6 +14408,7 @@ export namespace Gimp {
      */
     class Layer extends Drawable {
         static $gtype: GObject.GType<Layer>;
+        declare static readonly __signalSignatures: Layer.SignalSignatures;
 
         // Constructors
 
@@ -14679,6 +14780,9 @@ export namespace Gimp {
     }
 
     namespace LayerMask {
+        // Signal signatures
+        interface SignalSignatures extends Channel.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Channel.ConstructorProps {}
@@ -14686,6 +14790,7 @@ export namespace Gimp {
 
     class LayerMask extends Channel {
         static $gtype: GObject.GType<LayerMask>;
+        declare static readonly __signalSignatures: LayerMask.SignalSignatures;
 
         // Constructors
 
@@ -14705,6 +14810,9 @@ export namespace Gimp {
     }
 
     namespace LoadProcedure {
+        // Signal signatures
+        interface SignalSignatures extends FileProcedure.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FileProcedure.ConstructorProps {}
@@ -14732,6 +14840,7 @@ export namespace Gimp {
      */
     class LoadProcedure extends FileProcedure {
         static $gtype: GObject.GType<LoadProcedure>;
+        declare static readonly __signalSignatures: LoadProcedure.SignalSignatures;
 
         // Constructors
 
@@ -14786,11 +14895,17 @@ export namespace Gimp {
         set_thumbnail_loader(thumbnail_proc: string): void;
     }
 
+    namespace Memsize {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+    }
+
     /**
      * Functions to (de)serialize a given memory size.
      */
     class Memsize {
         static $gtype: GObject.GType<Memsize>;
+        declare static readonly __signalSignatures: Memsize.SignalSignatures;
 
         // Constructors
 
@@ -14815,6 +14930,9 @@ export namespace Gimp {
     }
 
     namespace Metadata {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -14825,6 +14943,7 @@ export namespace Gimp {
      */
     class Metadata extends GObject.Object {
         static $gtype: GObject.GType<Metadata>;
+        declare static readonly __signalSignatures: Metadata.SignalSignatures;
 
         // Constructors
 
@@ -14940,6 +15059,9 @@ export namespace Gimp {
     }
 
     namespace Module {
+        // Signal signatures
+        interface SignalSignatures extends GObject.TypeModule.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.TypeModule.ConstructorProps, GObject.TypePlugin.ConstructorProps {
@@ -14959,6 +15081,7 @@ export namespace Gimp {
      */
     class Module extends GObject.TypeModule implements GObject.TypePlugin {
         static $gtype: GObject.GType<Module>;
+        declare static readonly __signalSignatures: Module.SignalSignatures;
 
         // Properties
 
@@ -15499,6 +15622,9 @@ export namespace Gimp {
     }
 
     namespace ModuleDB {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -15511,6 +15637,7 @@ export namespace Gimp {
      */
     class ModuleDB<A extends GObject.Object = GObject.Object> extends GObject.Object implements Gio.ListModel<A> {
         static $gtype: GObject.GType<ModuleDB>;
+        declare static readonly __signalSignatures: ModuleDB.SignalSignatures;
 
         // Constructors
 
@@ -16099,6 +16226,9 @@ export namespace Gimp {
     }
 
     namespace PDB {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -16109,6 +16239,7 @@ export namespace Gimp {
      */
     class PDB extends GObject.Object {
         static $gtype: GObject.GType<PDB>;
+        declare static readonly __signalSignatures: PDB.SignalSignatures;
 
         // Constructors
 
@@ -16212,6 +16343,9 @@ export namespace Gimp {
     }
 
     namespace Palette {
+        // Signal signatures
+        interface SignalSignatures extends Resource.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Resource.ConstructorProps, ConfigInterface.ConstructorProps {}
@@ -16222,6 +16356,7 @@ export namespace Gimp {
      */
     class Palette extends Resource implements ConfigInterface {
         static $gtype: GObject.GType<Palette>;
+        declare static readonly __signalSignatures: Palette.SignalSignatures;
 
         // Constructors
 
@@ -16784,144 +16919,252 @@ export namespace Gimp {
         stop_emission_by_name(detailedName: string): void;
     }
 
+    namespace ParamBrush {
+        // Signal signatures
+        interface SignalSignatures extends ParamResource.SignalSignatures {}
+    }
+
     class ParamBrush extends ParamResource {
         static $gtype: GObject.GType<ParamBrush>;
+        declare static readonly __signalSignatures: ParamBrush.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+    }
+
+    namespace ParamChannel {
+        // Signal signatures
+        interface SignalSignatures extends ParamDrawable.SignalSignatures {}
     }
 
     class ParamChannel extends ParamDrawable {
         static $gtype: GObject.GType<ParamChannel>;
+        declare static readonly __signalSignatures: ParamChannel.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+    }
+
+    namespace ParamColor {
+        // Signal signatures
+        interface SignalSignatures extends ParamObject.SignalSignatures {}
     }
 
     class ParamColor extends ParamObject {
         static $gtype: GObject.GType<ParamColor>;
+        declare static readonly __signalSignatures: ParamColor.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+    }
+
+    namespace ParamDrawable {
+        // Signal signatures
+        interface SignalSignatures extends ParamItem.SignalSignatures {}
     }
 
     class ParamDrawable extends ParamItem {
         static $gtype: GObject.GType<ParamDrawable>;
+        declare static readonly __signalSignatures: ParamDrawable.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+    }
+
+    namespace ParamFloatArray {
+        // Signal signatures
+        interface SignalSignatures extends ParamArray.SignalSignatures {}
     }
 
     class ParamFloatArray extends ParamArray {
         static $gtype: GObject.GType<ParamFloatArray>;
+        declare static readonly __signalSignatures: ParamFloatArray.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+    }
+
+    namespace ParamFont {
+        // Signal signatures
+        interface SignalSignatures extends ParamResource.SignalSignatures {}
     }
 
     class ParamFont extends ParamResource {
         static $gtype: GObject.GType<ParamFont>;
+        declare static readonly __signalSignatures: ParamFont.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+    }
+
+    namespace ParamGradient {
+        // Signal signatures
+        interface SignalSignatures extends ParamResource.SignalSignatures {}
     }
 
     class ParamGradient extends ParamResource {
         static $gtype: GObject.GType<ParamGradient>;
+        declare static readonly __signalSignatures: ParamGradient.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+    }
+
+    namespace ParamGroupLayer {
+        // Signal signatures
+        interface SignalSignatures extends ParamLayer.SignalSignatures {}
     }
 
     class ParamGroupLayer extends ParamLayer {
         static $gtype: GObject.GType<ParamGroupLayer>;
+        declare static readonly __signalSignatures: ParamGroupLayer.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+    }
+
+    namespace ParamInt32Array {
+        // Signal signatures
+        interface SignalSignatures extends ParamArray.SignalSignatures {}
     }
 
     class ParamInt32Array extends ParamArray {
         static $gtype: GObject.GType<ParamInt32Array>;
+        declare static readonly __signalSignatures: ParamInt32Array.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+    }
+
+    namespace ParamLayer {
+        // Signal signatures
+        interface SignalSignatures extends ParamDrawable.SignalSignatures {}
     }
 
     class ParamLayer extends ParamDrawable {
         static $gtype: GObject.GType<ParamLayer>;
+        declare static readonly __signalSignatures: ParamLayer.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+    }
+
+    namespace ParamLayerMask {
+        // Signal signatures
+        interface SignalSignatures extends ParamChannel.SignalSignatures {}
     }
 
     class ParamLayerMask extends ParamChannel {
         static $gtype: GObject.GType<ParamLayerMask>;
+        declare static readonly __signalSignatures: ParamLayerMask.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+    }
+
+    namespace ParamPalette {
+        // Signal signatures
+        interface SignalSignatures extends ParamResource.SignalSignatures {}
     }
 
     class ParamPalette extends ParamResource {
         static $gtype: GObject.GType<ParamPalette>;
+        declare static readonly __signalSignatures: ParamPalette.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+    }
+
+    namespace ParamPath {
+        // Signal signatures
+        interface SignalSignatures extends ParamItem.SignalSignatures {}
     }
 
     class ParamPath extends ParamItem {
         static $gtype: GObject.GType<ParamPath>;
+        declare static readonly __signalSignatures: ParamPath.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+    }
+
+    namespace ParamPattern {
+        // Signal signatures
+        interface SignalSignatures extends ParamResource.SignalSignatures {}
     }
 
     class ParamPattern extends ParamResource {
         static $gtype: GObject.GType<ParamPattern>;
+        declare static readonly __signalSignatures: ParamPattern.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+    }
+
+    namespace ParamResource {
+        // Signal signatures
+        interface SignalSignatures extends ParamObject.SignalSignatures {}
     }
 
     class ParamResource extends ParamObject {
         static $gtype: GObject.GType<ParamResource>;
+        declare static readonly __signalSignatures: ParamResource.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+    }
+
+    namespace ParamSelection {
+        // Signal signatures
+        interface SignalSignatures extends ParamChannel.SignalSignatures {}
     }
 
     class ParamSelection extends ParamChannel {
         static $gtype: GObject.GType<ParamSelection>;
+        declare static readonly __signalSignatures: ParamSelection.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+    }
+
+    namespace ParamTextLayer {
+        // Signal signatures
+        interface SignalSignatures extends ParamLayer.SignalSignatures {}
     }
 
     class ParamTextLayer extends ParamLayer {
         static $gtype: GObject.GType<ParamTextLayer>;
+        declare static readonly __signalSignatures: ParamTextLayer.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
     }
 
+    namespace ParamUnit {
+        // Signal signatures
+        interface SignalSignatures extends ParamObject.SignalSignatures {}
+    }
+
     class ParamUnit extends ParamObject {
         static $gtype: GObject.GType<ParamUnit>;
+        declare static readonly __signalSignatures: ParamUnit.SignalSignatures;
 
         // Constructors
 
@@ -16929,6 +17172,9 @@ export namespace Gimp {
     }
 
     namespace Path {
+        // Signal signatures
+        interface SignalSignatures extends Item.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Item.ConstructorProps {}
@@ -16939,6 +17185,7 @@ export namespace Gimp {
      */
     class Path extends Item {
         static $gtype: GObject.GType<Path>;
+        declare static readonly __signalSignatures: Path.SignalSignatures;
 
         // Constructors
 
@@ -17204,6 +17451,9 @@ export namespace Gimp {
     }
 
     namespace Pattern {
+        // Signal signatures
+        interface SignalSignatures extends Resource.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Resource.ConstructorProps, ConfigInterface.ConstructorProps {}
@@ -17214,6 +17464,7 @@ export namespace Gimp {
      */
     class Pattern extends Resource implements ConfigInterface {
         static $gtype: GObject.GType<Pattern>;
+        declare static readonly __signalSignatures: Pattern.SignalSignatures;
 
         // Constructors
 
@@ -17705,6 +17956,9 @@ export namespace Gimp {
     }
 
     namespace PlugIn {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -17772,6 +18026,7 @@ export namespace Gimp {
      */
     class PlugIn extends GObject.Object {
         static $gtype: GObject.GType<PlugIn>;
+        declare static readonly __signalSignatures: PlugIn.SignalSignatures;
 
         // Properties
 
@@ -18054,6 +18309,9 @@ export namespace Gimp {
     }
 
     namespace Procedure {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -18076,6 +18334,7 @@ export namespace Gimp {
      */
     class Procedure extends GObject.Object {
         static $gtype: GObject.GType<Procedure>;
+        declare static readonly __signalSignatures: Procedure.SignalSignatures;
 
         // Properties
 
@@ -19882,6 +20141,9 @@ export namespace Gimp {
     }
 
     namespace ProcedureConfig {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -19904,6 +20166,7 @@ export namespace Gimp {
      */
     abstract class ProcedureConfig extends GObject.Object {
         static $gtype: GObject.GType<ProcedureConfig>;
+        declare static readonly __signalSignatures: ProcedureConfig.SignalSignatures;
 
         // Properties
 
@@ -19953,6 +20216,9 @@ export namespace Gimp {
     }
 
     namespace Resource {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, ConfigInterface.ConstructorProps {
@@ -19965,6 +20231,7 @@ export namespace Gimp {
      */
     abstract class Resource extends GObject.Object implements ConfigInterface {
         static $gtype: GObject.GType<Resource>;
+        declare static readonly __signalSignatures: Resource.SignalSignatures;
 
         // Properties
 
@@ -20600,6 +20867,9 @@ export namespace Gimp {
     }
 
     namespace Selection {
+        // Signal signatures
+        interface SignalSignatures extends Channel.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Channel.ConstructorProps {}
@@ -20610,6 +20880,7 @@ export namespace Gimp {
      */
     class Selection extends Channel {
         static $gtype: GObject.GType<Selection>;
+        declare static readonly __signalSignatures: Selection.SignalSignatures;
 
         // Constructors
 
@@ -20780,6 +21051,9 @@ export namespace Gimp {
     }
 
     namespace TextLayer {
+        // Signal signatures
+        interface SignalSignatures extends Layer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Layer.ConstructorProps {}
@@ -20790,6 +21064,7 @@ export namespace Gimp {
      */
     class TextLayer extends Layer {
         static $gtype: GObject.GType<TextLayer>;
+        declare static readonly __signalSignatures: TextLayer.SignalSignatures;
 
         // Constructors
 
@@ -21069,6 +21344,9 @@ export namespace Gimp {
     }
 
     namespace ThumbnailProcedure {
+        // Signal signatures
+        interface SignalSignatures extends Procedure.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Procedure.ConstructorProps {}
@@ -21076,6 +21354,7 @@ export namespace Gimp {
 
     class ThumbnailProcedure extends Procedure {
         static $gtype: GObject.GType<ThumbnailProcedure>;
+        declare static readonly __signalSignatures: ThumbnailProcedure.SignalSignatures;
 
         // Constructors
 
@@ -21096,6 +21375,9 @@ export namespace Gimp {
     }
 
     namespace Unit {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -21114,6 +21396,7 @@ export namespace Gimp {
      */
     class Unit extends GObject.Object {
         static $gtype: GObject.GType<Unit>;
+        declare static readonly __signalSignatures: Unit.SignalSignatures;
 
         // Properties
 
@@ -21299,6 +21582,9 @@ export namespace Gimp {
     }
 
     namespace VectorLoadProcedure {
+        // Signal signatures
+        interface SignalSignatures extends LoadProcedure.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends LoadProcedure.ConstructorProps {}
@@ -21322,6 +21608,7 @@ export namespace Gimp {
      */
     class VectorLoadProcedure extends LoadProcedure {
         static $gtype: GObject.GType<VectorLoadProcedure>;
+        declare static readonly __signalSignatures: VectorLoadProcedure.SignalSignatures;
 
         // Constructors
 

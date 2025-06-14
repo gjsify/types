@@ -709,6 +709,16 @@ export namespace Xdp {
             ): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'location-updated': LocationUpdated;
+            'notification-action-invoked': NotificationActionInvoked;
+            'session-state-changed': SessionStateChanged;
+            'spawn-exited': SpawnExited;
+            'update-available': UpdateAvailable;
+            'update-progress': UpdateProgress;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {}
@@ -725,6 +735,7 @@ export namespace Xdp {
      */
     class Portal extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Portal>;
+        declare static readonly __signalSignatures: Portal.SignalSignatures;
 
         // Constructors
 
@@ -738,6 +749,9 @@ export namespace Xdp {
 
         // Signals
 
+        connect<K extends keyof Portal.SignalSignatures>(signal: K, callback: Portal.SignalSignatures[K]): number;
+        connect_after<K extends keyof Portal.SignalSignatures>(signal: K, callback: Portal.SignalSignatures[K]): number;
+        emit<K extends keyof Portal.SignalSignatures>(signal: K, ...args: Parameters<Portal.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3497,6 +3511,11 @@ export namespace Xdp {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            closed: Closed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3517,6 +3536,7 @@ export namespace Xdp {
      */
     class Session extends GObject.Object {
         static $gtype: GObject.GType<Session>;
+        declare static readonly __signalSignatures: Session.SignalSignatures;
 
         // Constructors
 
@@ -3526,6 +3546,15 @@ export namespace Xdp {
 
         // Signals
 
+        connect<K extends keyof Session.SignalSignatures>(signal: K, callback: Session.SignalSignatures[K]): number;
+        connect_after<K extends keyof Session.SignalSignatures>(
+            signal: K,
+            callback: Session.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Session.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Session.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

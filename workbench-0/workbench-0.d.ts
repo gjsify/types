@@ -63,6 +63,11 @@ export namespace Workbench {
             (request: CompletionRequest): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'completion-request': CompletionRequest;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -75,6 +80,7 @@ export namespace Workbench {
      */
     class CompletionProvider extends GObject.Object implements GtkSource.CompletionProvider {
         static $gtype: GObject.GType<CompletionProvider>;
+        declare static readonly __signalSignatures: CompletionProvider.SignalSignatures;
 
         // Constructors
 
@@ -84,6 +90,18 @@ export namespace Workbench {
 
         // Signals
 
+        connect<K extends keyof CompletionProvider.SignalSignatures>(
+            signal: K,
+            callback: CompletionProvider.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CompletionProvider.SignalSignatures>(
+            signal: K,
+            callback: CompletionProvider.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CompletionProvider.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CompletionProvider.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -834,6 +852,9 @@ export namespace Workbench {
     }
 
     namespace CompletionRequest {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -869,6 +890,7 @@ export namespace Workbench {
         implements Gio.ListModel<A>
     {
         static $gtype: GObject.GType<CompletionRequest>;
+        declare static readonly __signalSignatures: CompletionRequest.SignalSignatures;
 
         // Properties
 
@@ -1497,6 +1519,9 @@ export namespace Workbench {
     }
 
     namespace PreviewWindow {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Window.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1514,6 +1539,7 @@ export namespace Workbench {
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Native, Gtk.Root, Gtk.ShortcutManager
     {
         static $gtype: GObject.GType<PreviewWindow>;
+        declare static readonly __signalSignatures: PreviewWindow.SignalSignatures;
 
         // Constructors
 

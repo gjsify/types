@@ -332,6 +332,15 @@ export namespace GnomeAutoar {
             (completed_size: number, completed_files: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            cancelled: Cancelled;
+            completed: Completed;
+            'decide-dest': DecideDest;
+            error: Error;
+            progress: Progress;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -356,6 +365,7 @@ export namespace GnomeAutoar {
 
     class Compressor extends GObject.Object {
         static $gtype: GObject.GType<Compressor>;
+        declare static readonly __signalSignatures: Compressor.SignalSignatures;
 
         // Properties
 
@@ -398,6 +408,18 @@ export namespace GnomeAutoar {
 
         // Signals
 
+        connect<K extends keyof Compressor.SignalSignatures>(
+            signal: K,
+            callback: Compressor.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Compressor.SignalSignatures>(
+            signal: K,
+            callback: Compressor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Compressor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Compressor.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -572,6 +594,18 @@ export namespace GnomeAutoar {
             (files: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            cancelled: Cancelled;
+            completed: Completed;
+            conflict: Conflict;
+            'decide-destination': DecideDestination;
+            error: Error;
+            progress: Progress;
+            'request-passphrase': RequestPassphrase;
+            scanned: Scanned;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -598,6 +632,7 @@ export namespace GnomeAutoar {
 
     class Extractor extends GObject.Object {
         static $gtype: GObject.GType<Extractor>;
+        declare static readonly __signalSignatures: Extractor.SignalSignatures;
 
         // Properties
 
@@ -636,6 +671,15 @@ export namespace GnomeAutoar {
 
         // Signals
 
+        connect<K extends keyof Extractor.SignalSignatures>(signal: K, callback: Extractor.SignalSignatures[K]): number;
+        connect_after<K extends keyof Extractor.SignalSignatures>(
+            signal: K,
+            callback: Extractor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Extractor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Extractor.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

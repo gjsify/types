@@ -87,6 +87,9 @@ export namespace EBook {
         cancellable?: Gio.Cancellable | null,
     ): [boolean, string[]];
     namespace BookClient {
+        // Signal signatures
+        interface SignalSignatures extends EDataServer.Client.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -103,6 +106,7 @@ export namespace EBook {
      */
     class BookClient extends EDataServer.Client implements Gio.AsyncInitable<BookClient>, Gio.Initable {
         static $gtype: GObject.GType<BookClient>;
+        declare static readonly __signalSignatures: BookClient.SignalSignatures;
 
         // Properties
 
@@ -1848,6 +1852,11 @@ export namespace EBook {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            refresh: Refresh;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -1869,6 +1878,7 @@ export namespace EBook {
      */
     class BookClientCursor extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<BookClientCursor>;
+        declare static readonly __signalSignatures: BookClientCursor.SignalSignatures;
 
         // Properties
 
@@ -1979,6 +1989,18 @@ export namespace EBook {
 
         // Signals
 
+        connect<K extends keyof BookClientCursor.SignalSignatures>(
+            signal: K,
+            callback: BookClientCursor.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BookClientCursor.SignalSignatures>(
+            signal: K,
+            callback: BookClientCursor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BookClientCursor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BookClientCursor.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2875,6 +2897,16 @@ export namespace EBook {
             (object: number, p0: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            complete: Complete;
+            'content-changed': ContentChanged;
+            'objects-added': ObjectsAdded;
+            'objects-modified': ObjectsModified;
+            'objects-removed': ObjectsRemoved;
+            progress: Progress;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -2894,6 +2926,7 @@ export namespace EBook {
      */
     class BookClientView extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<BookClientView>;
+        declare static readonly __signalSignatures: BookClientView.SignalSignatures;
 
         // Properties
 
@@ -2931,6 +2964,18 @@ export namespace EBook {
 
         // Signals
 
+        connect<K extends keyof BookClientView.SignalSignatures>(
+            signal: K,
+            callback: BookClientView.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BookClientView.SignalSignatures>(
+            signal: K,
+            callback: BookClientView.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BookClientView.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BookClientView.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3628,6 +3673,11 @@ export namespace EBook {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            changed: Changed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3635,6 +3685,7 @@ export namespace EBook {
 
     class Destination extends GObject.Object {
         static $gtype: GObject.GType<Destination>;
+        declare static readonly __signalSignatures: Destination.SignalSignatures;
 
         // Fields
 
@@ -3650,6 +3701,18 @@ export namespace EBook {
 
         // Signals
 
+        connect<K extends keyof Destination.SignalSignatures>(
+            signal: K,
+            callback: Destination.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Destination.SignalSignatures>(
+            signal: K,
+            callback: Destination.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Destination.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Destination.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

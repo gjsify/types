@@ -24,6 +24,9 @@ export namespace GstGLWayland {
      */
 
     namespace GLDisplayWayland {
+        // Signal signatures
+        interface SignalSignatures extends GstGL.GLDisplay.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GstGL.GLDisplay.ConstructorProps {}
@@ -35,6 +38,7 @@ export namespace GstGLWayland {
      */
     class GLDisplayWayland extends GstGL.GLDisplay {
         static $gtype: GObject.GType<GLDisplayWayland>;
+        declare static readonly __signalSignatures: GLDisplayWayland.SignalSignatures;
 
         // Fields
 

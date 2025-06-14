@@ -1591,6 +1591,9 @@ export namespace Poppler {
         DIRECTION_RTL,
     }
     namespace Annot {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1598,6 +1601,7 @@ export namespace Poppler {
 
     class Annot extends GObject.Object {
         static $gtype: GObject.GType<Annot>;
+        declare static readonly __signalSignatures: Annot.SignalSignatures;
 
         // Constructors
 
@@ -1676,6 +1680,9 @@ export namespace Poppler {
     }
 
     namespace AnnotCircle {
+        // Signal signatures
+        interface SignalSignatures extends AnnotMarkup.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends AnnotMarkup.ConstructorProps {}
@@ -1683,6 +1690,7 @@ export namespace Poppler {
 
     class AnnotCircle extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotCircle>;
+        declare static readonly __signalSignatures: AnnotCircle.SignalSignatures;
 
         // Constructors
 
@@ -1707,6 +1715,9 @@ export namespace Poppler {
     }
 
     namespace AnnotFileAttachment {
+        // Signal signatures
+        interface SignalSignatures extends AnnotMarkup.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends AnnotMarkup.ConstructorProps {}
@@ -1714,6 +1725,7 @@ export namespace Poppler {
 
     class AnnotFileAttachment extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotFileAttachment>;
+        declare static readonly __signalSignatures: AnnotFileAttachment.SignalSignatures;
 
         // Constructors
 
@@ -1737,6 +1749,9 @@ export namespace Poppler {
     }
 
     namespace AnnotFreeText {
+        // Signal signatures
+        interface SignalSignatures extends AnnotMarkup.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends AnnotMarkup.ConstructorProps {}
@@ -1744,6 +1759,7 @@ export namespace Poppler {
 
     class AnnotFreeText extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotFreeText>;
+        declare static readonly __signalSignatures: AnnotFreeText.SignalSignatures;
 
         // Constructors
 
@@ -1767,6 +1783,9 @@ export namespace Poppler {
     }
 
     namespace AnnotLine {
+        // Signal signatures
+        interface SignalSignatures extends AnnotMarkup.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends AnnotMarkup.ConstructorProps {}
@@ -1774,6 +1793,7 @@ export namespace Poppler {
 
     class AnnotLine extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotLine>;
+        declare static readonly __signalSignatures: AnnotLine.SignalSignatures;
 
         // Constructors
 
@@ -1794,6 +1814,9 @@ export namespace Poppler {
     }
 
     namespace AnnotMarkup {
+        // Signal signatures
+        interface SignalSignatures extends Annot.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Annot.ConstructorProps {}
@@ -1801,6 +1824,7 @@ export namespace Poppler {
 
     class AnnotMarkup extends Annot {
         static $gtype: GObject.GType<AnnotMarkup>;
+        declare static readonly __signalSignatures: AnnotMarkup.SignalSignatures;
 
         // Constructors
 
@@ -1889,6 +1913,9 @@ export namespace Poppler {
     }
 
     namespace AnnotMovie {
+        // Signal signatures
+        interface SignalSignatures extends Annot.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Annot.ConstructorProps {}
@@ -1896,6 +1923,7 @@ export namespace Poppler {
 
     class AnnotMovie extends Annot {
         static $gtype: GObject.GType<AnnotMovie>;
+        declare static readonly __signalSignatures: AnnotMovie.SignalSignatures;
 
         // Constructors
 
@@ -1918,6 +1946,9 @@ export namespace Poppler {
     }
 
     namespace AnnotScreen {
+        // Signal signatures
+        interface SignalSignatures extends Annot.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Annot.ConstructorProps {}
@@ -1925,6 +1956,7 @@ export namespace Poppler {
 
     class AnnotScreen extends Annot {
         static $gtype: GObject.GType<AnnotScreen>;
+        declare static readonly __signalSignatures: AnnotScreen.SignalSignatures;
 
         // Constructors
 
@@ -1942,6 +1974,9 @@ export namespace Poppler {
     }
 
     namespace AnnotSquare {
+        // Signal signatures
+        interface SignalSignatures extends AnnotMarkup.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends AnnotMarkup.ConstructorProps {}
@@ -1949,6 +1984,7 @@ export namespace Poppler {
 
     class AnnotSquare extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotSquare>;
+        declare static readonly __signalSignatures: AnnotSquare.SignalSignatures;
 
         // Constructors
 
@@ -1973,6 +2009,9 @@ export namespace Poppler {
     }
 
     namespace AnnotStamp {
+        // Signal signatures
+        interface SignalSignatures extends Annot.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Annot.ConstructorProps {}
@@ -1980,6 +2019,7 @@ export namespace Poppler {
 
     class AnnotStamp extends Annot {
         static $gtype: GObject.GType<AnnotStamp>;
+        declare static readonly __signalSignatures: AnnotStamp.SignalSignatures;
 
         // Constructors
 
@@ -2006,6 +2046,9 @@ export namespace Poppler {
     }
 
     namespace AnnotText {
+        // Signal signatures
+        interface SignalSignatures extends AnnotMarkup.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends AnnotMarkup.ConstructorProps {}
@@ -2013,6 +2056,7 @@ export namespace Poppler {
 
     class AnnotText extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotText>;
+        declare static readonly __signalSignatures: AnnotText.SignalSignatures;
 
         // Constructors
 
@@ -2082,6 +2126,9 @@ export namespace Poppler {
     }
 
     namespace AnnotTextMarkup {
+        // Signal signatures
+        interface SignalSignatures extends AnnotMarkup.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends AnnotMarkup.ConstructorProps {}
@@ -2089,6 +2136,7 @@ export namespace Poppler {
 
     class AnnotTextMarkup extends AnnotMarkup {
         static $gtype: GObject.GType<AnnotTextMarkup>;
+        declare static readonly __signalSignatures: AnnotTextMarkup.SignalSignatures;
 
         // Constructors
 
@@ -2121,6 +2169,9 @@ export namespace Poppler {
     }
 
     namespace Attachment {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2128,6 +2179,7 @@ export namespace Poppler {
 
     class Attachment extends GObject.Object {
         static $gtype: GObject.GType<Attachment>;
+        declare static readonly __signalSignatures: Attachment.SignalSignatures;
 
         // Fields
 
@@ -2183,6 +2235,9 @@ export namespace Poppler {
     }
 
     namespace Document {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2232,6 +2287,7 @@ export namespace Poppler {
 
     class Document extends GObject.Object {
         static $gtype: GObject.GType<Document>;
+        declare static readonly __signalSignatures: Document.SignalSignatures;
 
         // Properties
 
@@ -2802,6 +2858,9 @@ export namespace Poppler {
     }
 
     namespace FontInfo {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2809,6 +2868,7 @@ export namespace Poppler {
 
     class FontInfo extends GObject.Object {
         static $gtype: GObject.GType<FontInfo>;
+        declare static readonly __signalSignatures: FontInfo.SignalSignatures;
 
         // Constructors
 
@@ -2850,6 +2910,9 @@ export namespace Poppler {
     }
 
     namespace FormField {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2857,6 +2920,7 @@ export namespace Poppler {
 
     class FormField extends GObject.Object {
         static $gtype: GObject.GType<FormField>;
+        declare static readonly __signalSignatures: FormField.SignalSignatures;
 
         // Constructors
 
@@ -3092,6 +3156,9 @@ export namespace Poppler {
     }
 
     namespace Layer {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3099,6 +3166,7 @@ export namespace Poppler {
 
     class Layer extends GObject.Object {
         static $gtype: GObject.GType<Layer>;
+        declare static readonly __signalSignatures: Layer.SignalSignatures;
 
         // Constructors
 
@@ -3142,6 +3210,9 @@ export namespace Poppler {
     }
 
     namespace Media {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3149,6 +3220,7 @@ export namespace Poppler {
 
     class Media extends GObject.Object {
         static $gtype: GObject.GType<Media>;
+        declare static readonly __signalSignatures: Media.SignalSignatures;
 
         // Constructors
 
@@ -3225,6 +3297,9 @@ export namespace Poppler {
     }
 
     namespace Movie {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3232,6 +3307,7 @@ export namespace Poppler {
 
     class Movie extends GObject.Object {
         static $gtype: GObject.GType<Movie>;
+        declare static readonly __signalSignatures: Movie.SignalSignatures;
 
         // Constructors
 
@@ -3305,6 +3381,9 @@ export namespace Poppler {
     }
 
     namespace PSFile {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3312,6 +3391,7 @@ export namespace Poppler {
 
     class PSFile extends GObject.Object {
         static $gtype: GObject.GType<PSFile>;
+        declare static readonly __signalSignatures: PSFile.SignalSignatures;
 
         // Constructors
 
@@ -3345,6 +3425,9 @@ export namespace Poppler {
     }
 
     namespace Page {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3354,6 +3437,7 @@ export namespace Poppler {
 
     class Page extends GObject.Object {
         static $gtype: GObject.GType<Page>;
+        declare static readonly __signalSignatures: Page.SignalSignatures;
 
         // Properties
 
@@ -3701,6 +3785,9 @@ export namespace Poppler {
     }
 
     namespace StructureElement {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3708,6 +3795,7 @@ export namespace Poppler {
 
     class StructureElement extends GObject.Object {
         static $gtype: GObject.GType<StructureElement>;
+        declare static readonly __signalSignatures: StructureElement.SignalSignatures;
 
         // Constructors
 

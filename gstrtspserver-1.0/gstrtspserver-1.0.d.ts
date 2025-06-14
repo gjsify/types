@@ -399,6 +399,9 @@ export namespace GstRtspServer {
         RECORD,
     }
     namespace RTSPAddressPool {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -409,6 +412,7 @@ export namespace GstRtspServer {
      */
     class RTSPAddressPool extends GObject.Object {
         static $gtype: GObject.GType<RTSPAddressPool>;
+        declare static readonly __signalSignatures: RTSPAddressPool.SignalSignatures;
 
         // Constructors
 
@@ -490,6 +494,11 @@ export namespace GstRtspServer {
             (connection: Gio.TlsConnection, peer_cert: Gio.TlsCertificate, errors: Gio.TlsCertificateFlags): boolean;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'accept-certificate': AcceptCertificate;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -500,6 +509,7 @@ export namespace GstRtspServer {
      */
     class RTSPAuth extends GObject.Object {
         static $gtype: GObject.GType<RTSPAuth>;
+        declare static readonly __signalSignatures: RTSPAuth.SignalSignatures;
 
         // Constructors
 
@@ -511,6 +521,15 @@ export namespace GstRtspServer {
 
         // Signals
 
+        connect<K extends keyof RTSPAuth.SignalSignatures>(signal: K, callback: RTSPAuth.SignalSignatures[K]): number;
+        connect_after<K extends keyof RTSPAuth.SignalSignatures>(
+            signal: K,
+            callback: RTSPAuth.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RTSPAuth.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RTSPAuth.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -771,6 +790,35 @@ export namespace GstRtspServer {
             (ctx: RTSPContext): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'announce-request': AnnounceRequest;
+            'check-requirements': CheckRequirements;
+            closed: Closed;
+            'describe-request': DescribeRequest;
+            'get-parameter-request': GetParameterRequest;
+            'handle-response': HandleResponse;
+            'new-session': NewSession;
+            'options-request': OptionsRequest;
+            'pause-request': PauseRequest;
+            'play-request': PlayRequest;
+            'pre-announce-request': PreAnnounceRequest;
+            'pre-describe-request': PreDescribeRequest;
+            'pre-get-parameter-request': PreGetParameterRequest;
+            'pre-options-request': PreOptionsRequest;
+            'pre-pause-request': PrePauseRequest;
+            'pre-play-request': PrePlayRequest;
+            'pre-record-request': PreRecordRequest;
+            'pre-set-parameter-request': PreSetParameterRequest;
+            'pre-setup-request': PreSetupRequest;
+            'pre-teardown-request': PreTeardownRequest;
+            'record-request': RecordRequest;
+            'send-message': SendMessage;
+            'set-parameter-request': SetParameterRequest;
+            'setup-request': SetupRequest;
+            'teardown-request': TeardownRequest;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -790,6 +838,7 @@ export namespace GstRtspServer {
      */
     class RTSPClient extends GObject.Object {
         static $gtype: GObject.GType<RTSPClient>;
+        declare static readonly __signalSignatures: RTSPClient.SignalSignatures;
 
         // Properties
 
@@ -820,6 +869,18 @@ export namespace GstRtspServer {
 
         // Signals
 
+        connect<K extends keyof RTSPClient.SignalSignatures>(
+            signal: K,
+            callback: RTSPClient.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RTSPClient.SignalSignatures>(
+            signal: K,
+            callback: RTSPClient.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RTSPClient.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RTSPClient.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1212,6 +1273,17 @@ export namespace GstRtspServer {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'handle-message': HandleMessage;
+            'new-state': NewState;
+            'new-stream': NewStream;
+            prepared: Prepared;
+            'removed-stream': RemovedStream;
+            'target-state': TargetState;
+            unprepared: Unprepared;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1251,6 +1323,7 @@ export namespace GstRtspServer {
      */
     class RTSPMedia extends GObject.Object {
         static $gtype: GObject.GType<RTSPMedia>;
+        declare static readonly __signalSignatures: RTSPMedia.SignalSignatures;
 
         // Properties
 
@@ -1314,6 +1387,15 @@ export namespace GstRtspServer {
 
         // Signals
 
+        connect<K extends keyof RTSPMedia.SignalSignatures>(signal: K, callback: RTSPMedia.SignalSignatures[K]): number;
+        connect_after<K extends keyof RTSPMedia.SignalSignatures>(
+            signal: K,
+            callback: RTSPMedia.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RTSPMedia.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RTSPMedia.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1863,6 +1945,12 @@ export namespace GstRtspServer {
             (object: RTSPMedia): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'media-configure': MediaConfigure;
+            'media-constructed': MediaConstructed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1899,6 +1987,7 @@ export namespace GstRtspServer {
      */
     class RTSPMediaFactory extends GObject.Object {
         static $gtype: GObject.GType<RTSPMediaFactory>;
+        declare static readonly __signalSignatures: RTSPMediaFactory.SignalSignatures;
 
         // Properties
 
@@ -1967,6 +2056,18 @@ export namespace GstRtspServer {
 
         // Signals
 
+        connect<K extends keyof RTSPMediaFactory.SignalSignatures>(
+            signal: K,
+            callback: RTSPMediaFactory.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RTSPMediaFactory.SignalSignatures>(
+            signal: K,
+            callback: RTSPMediaFactory.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RTSPMediaFactory.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RTSPMediaFactory.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2280,6 +2381,9 @@ export namespace GstRtspServer {
     }
 
     namespace RTSPMediaFactoryURI {
+        // Signal signatures
+        interface SignalSignatures extends RTSPMediaFactory.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends RTSPMediaFactory.ConstructorProps {
@@ -2294,6 +2398,7 @@ export namespace GstRtspServer {
      */
     class RTSPMediaFactoryURI extends RTSPMediaFactory {
         static $gtype: GObject.GType<RTSPMediaFactoryURI>;
+        declare static readonly __signalSignatures: RTSPMediaFactoryURI.SignalSignatures;
 
         // Properties
 
@@ -2327,6 +2432,9 @@ export namespace GstRtspServer {
     }
 
     namespace RTSPMountPoints {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2337,6 +2445,7 @@ export namespace GstRtspServer {
      */
     class RTSPMountPoints extends GObject.Object {
         static $gtype: GObject.GType<RTSPMountPoints>;
+        declare static readonly __signalSignatures: RTSPMountPoints.SignalSignatures;
 
         // Constructors
 
@@ -2391,6 +2500,9 @@ export namespace GstRtspServer {
     }
 
     namespace RTSPOnvifClient {
+        // Signal signatures
+        interface SignalSignatures extends RTSPClient.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends RTSPClient.ConstructorProps {}
@@ -2398,6 +2510,7 @@ export namespace GstRtspServer {
 
     class RTSPOnvifClient extends RTSPClient {
         static $gtype: GObject.GType<RTSPOnvifClient>;
+        declare static readonly __signalSignatures: RTSPOnvifClient.SignalSignatures;
 
         // Constructors
 
@@ -2409,6 +2522,9 @@ export namespace GstRtspServer {
     }
 
     namespace RTSPOnvifMedia {
+        // Signal signatures
+        interface SignalSignatures extends RTSPMedia.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends RTSPMedia.ConstructorProps {}
@@ -2416,6 +2532,7 @@ export namespace GstRtspServer {
 
     class RTSPOnvifMedia extends RTSPMedia {
         static $gtype: GObject.GType<RTSPOnvifMedia>;
+        declare static readonly __signalSignatures: RTSPOnvifMedia.SignalSignatures;
 
         // Constructors
 
@@ -2450,6 +2567,9 @@ export namespace GstRtspServer {
     }
 
     namespace RTSPOnvifMediaFactory {
+        // Signal signatures
+        interface SignalSignatures extends RTSPMediaFactory.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends RTSPMediaFactory.ConstructorProps {}
@@ -2457,6 +2577,7 @@ export namespace GstRtspServer {
 
     class RTSPOnvifMediaFactory extends RTSPMediaFactory {
         static $gtype: GObject.GType<RTSPOnvifMediaFactory>;
+        declare static readonly __signalSignatures: RTSPOnvifMediaFactory.SignalSignatures;
 
         // Constructors
 
@@ -2536,6 +2657,9 @@ export namespace GstRtspServer {
     }
 
     namespace RTSPOnvifServer {
+        // Signal signatures
+        interface SignalSignatures extends RTSPServer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends RTSPServer.ConstructorProps {}
@@ -2543,6 +2667,7 @@ export namespace GstRtspServer {
 
     class RTSPOnvifServer extends RTSPServer {
         static $gtype: GObject.GType<RTSPOnvifServer>;
+        declare static readonly __signalSignatures: RTSPOnvifServer.SignalSignatures;
 
         // Constructors
 
@@ -2558,6 +2683,11 @@ export namespace GstRtspServer {
 
         interface ClientConnected {
             (object: RTSPClient): void;
+        }
+
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'client-connected': ClientConnected;
         }
 
         // Constructor properties interface
@@ -2583,6 +2713,7 @@ export namespace GstRtspServer {
      */
     class RTSPServer extends GObject.Object {
         static $gtype: GObject.GType<RTSPServer>;
+        declare static readonly __signalSignatures: RTSPServer.SignalSignatures;
 
         // Properties
 
@@ -2617,6 +2748,18 @@ export namespace GstRtspServer {
 
         // Signals
 
+        connect<K extends keyof RTSPServer.SignalSignatures>(
+            signal: K,
+            callback: RTSPServer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RTSPServer.SignalSignatures>(
+            signal: K,
+            callback: RTSPServer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RTSPServer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RTSPServer.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2812,6 +2955,9 @@ export namespace GstRtspServer {
     }
 
     namespace RTSPSession {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2831,6 +2977,7 @@ export namespace GstRtspServer {
      */
     class RTSPSession extends GObject.Object {
         static $gtype: GObject.GType<RTSPSession>;
+        declare static readonly __signalSignatures: RTSPSession.SignalSignatures;
 
         // Properties
 
@@ -2966,6 +3113,9 @@ export namespace GstRtspServer {
     }
 
     namespace RTSPSessionMedia {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2976,6 +3126,7 @@ export namespace GstRtspServer {
      */
     class RTSPSessionMedia extends GObject.Object {
         static $gtype: GObject.GType<RTSPSessionMedia>;
+        declare static readonly __signalSignatures: RTSPSessionMedia.SignalSignatures;
 
         // Constructors
 
@@ -3059,6 +3210,11 @@ export namespace GstRtspServer {
             (object: RTSPSession): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'session-removed': SessionRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3073,6 +3229,7 @@ export namespace GstRtspServer {
      */
     class RTSPSessionPool extends GObject.Object {
         static $gtype: GObject.GType<RTSPSessionPool>;
+        declare static readonly __signalSignatures: RTSPSessionPool.SignalSignatures;
 
         // Properties
 
@@ -3091,6 +3248,18 @@ export namespace GstRtspServer {
 
         // Signals
 
+        connect<K extends keyof RTSPSessionPool.SignalSignatures>(
+            signal: K,
+            callback: RTSPSessionPool.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RTSPSessionPool.SignalSignatures>(
+            signal: K,
+            callback: RTSPSessionPool.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RTSPSessionPool.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RTSPSessionPool.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3188,6 +3357,13 @@ export namespace GstRtspServer {
             (object: Gst.Element): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'new-rtcp-encoder': NewRtcpEncoder;
+            'new-rtp-encoder': NewRtpEncoder;
+            'new-rtp-rtcp-decoder': NewRtpRtcpDecoder;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3202,6 +3378,7 @@ export namespace GstRtspServer {
      */
     class RTSPStream extends GObject.Object {
         static $gtype: GObject.GType<RTSPStream>;
+        declare static readonly __signalSignatures: RTSPStream.SignalSignatures;
 
         // Properties
 
@@ -3222,6 +3399,18 @@ export namespace GstRtspServer {
 
         // Signals
 
+        connect<K extends keyof RTSPStream.SignalSignatures>(
+            signal: K,
+            callback: RTSPStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RTSPStream.SignalSignatures>(
+            signal: K,
+            callback: RTSPStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RTSPStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RTSPStream.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3754,6 +3943,9 @@ export namespace GstRtspServer {
     }
 
     namespace RTSPStreamTransport {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3764,6 +3956,7 @@ export namespace GstRtspServer {
      */
     class RTSPStreamTransport extends GObject.Object {
         static $gtype: GObject.GType<RTSPStreamTransport>;
+        declare static readonly __signalSignatures: RTSPStreamTransport.SignalSignatures;
 
         // Constructors
 
@@ -3904,6 +4097,9 @@ export namespace GstRtspServer {
     }
 
     namespace RTSPThreadPool {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3917,6 +4113,7 @@ export namespace GstRtspServer {
      */
     class RTSPThreadPool extends GObject.Object {
         static $gtype: GObject.GType<RTSPThreadPool>;
+        declare static readonly __signalSignatures: RTSPThreadPool.SignalSignatures;
 
         // Properties
 

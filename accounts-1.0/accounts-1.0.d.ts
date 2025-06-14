@@ -144,6 +144,13 @@ export namespace Accounts {
             (service: string, enabled: boolean): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            deleted: Deleted;
+            'display-name-changed': DisplayNameChanged;
+            enabled: Enabled;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -162,6 +169,7 @@ export namespace Accounts {
      */
     class Account extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Account>;
+        declare static readonly __signalSignatures: Account.SignalSignatures;
 
         // Properties
 
@@ -199,6 +207,15 @@ export namespace Accounts {
 
         // Signals
 
+        connect<K extends keyof Account.SignalSignatures>(signal: K, callback: Account.SignalSignatures[K]): number;
+        connect_after<K extends keyof Account.SignalSignatures>(
+            signal: K,
+            callback: Account.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Account.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Account.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -956,6 +973,12 @@ export namespace Accounts {
             (enabled: boolean): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            changed: Changed;
+            enabled: Enabled;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -970,6 +993,7 @@ export namespace Accounts {
      */
     class AccountService extends GObject.Object {
         static $gtype: GObject.GType<AccountService>;
+        declare static readonly __signalSignatures: AccountService.SignalSignatures;
 
         // Properties
 
@@ -1000,6 +1024,18 @@ export namespace Accounts {
 
         // Signals
 
+        connect<K extends keyof AccountService.SignalSignatures>(
+            signal: K,
+            callback: AccountService.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AccountService.SignalSignatures>(
+            signal: K,
+            callback: AccountService.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AccountService.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AccountService.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1122,6 +1158,14 @@ export namespace Accounts {
             (account_id: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'account-created': AccountCreated;
+            'account-deleted': AccountDeleted;
+            'account-updated': AccountUpdated;
+            'enabled-event': EnabledEvent;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -1141,6 +1185,7 @@ export namespace Accounts {
      */
     class Manager extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Manager>;
+        declare static readonly __signalSignatures: Manager.SignalSignatures;
 
         // Properties
 
@@ -1205,6 +1250,15 @@ export namespace Accounts {
 
         // Signals
 
+        connect<K extends keyof Manager.SignalSignatures>(signal: K, callback: Manager.SignalSignatures[K]): number;
+        connect_after<K extends keyof Manager.SignalSignatures>(
+            signal: K,
+            callback: Manager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Manager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Manager.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

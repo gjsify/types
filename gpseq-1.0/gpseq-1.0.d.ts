@@ -314,6 +314,9 @@ export namespace Gpseq {
         UNORDERED,
     }
     namespace ArraySpliterator {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Spliterator.ConstructorProps {
@@ -328,6 +331,7 @@ export namespace Gpseq {
 
     class ArraySpliterator extends GObject.Object implements Spliterator {
         static $gtype: GObject.GType<ArraySpliterator>;
+        declare static readonly __signalSignatures: ArraySpliterator.SignalSignatures;
 
         // Properties
 
@@ -814,6 +818,9 @@ export namespace Gpseq {
     }
 
     namespace ForkJoinTask {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Task.ConstructorProps {
@@ -842,6 +849,7 @@ export namespace Gpseq {
 
     abstract class ForkJoinTask extends GObject.Object implements Task {
         static $gtype: GObject.GType<ForkJoinTask>;
+        declare static readonly __signalSignatures: ForkJoinTask.SignalSignatures;
 
         // Properties
 
@@ -1343,8 +1351,14 @@ export namespace Gpseq {
         stop_emission_by_name(detailedName: string): void;
     }
 
+    namespace ForkJoinTaskSharedResult {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+    }
+
     class ForkJoinTaskSharedResult {
         static $gtype: GObject.GType<ForkJoinTaskSharedResult>;
+        declare static readonly __signalSignatures: ForkJoinTaskSharedResult.SignalSignatures;
 
         // Fields
 
@@ -1367,6 +1381,9 @@ export namespace Gpseq {
     }
 
     namespace FuncTask {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Task.ConstructorProps {
@@ -1381,6 +1398,7 @@ export namespace Gpseq {
 
     class FuncTask extends GObject.Object implements Task {
         static $gtype: GObject.GType<FuncTask>;
+        declare static readonly __signalSignatures: FuncTask.SignalSignatures;
 
         // Properties
 
@@ -1850,6 +1868,9 @@ export namespace Gpseq {
     }
 
     namespace Future {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1868,6 +1889,7 @@ export namespace Gpseq {
 
     abstract class Future extends GObject.Object implements Gee.Hashable, Result {
         static $gtype: GObject.GType<Future>;
+        declare static readonly __signalSignatures: Future.SignalSignatures;
 
         // Properties
 
@@ -2388,6 +2410,9 @@ export namespace Gpseq {
     }
 
     namespace GenericArraySpliterator {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Spliterator.ConstructorProps {
@@ -2402,6 +2427,7 @@ export namespace Gpseq {
 
     class GenericArraySpliterator extends GObject.Object implements Spliterator {
         static $gtype: GObject.GType<GenericArraySpliterator>;
+        declare static readonly __signalSignatures: GenericArraySpliterator.SignalSignatures;
 
         // Properties
 
@@ -2888,6 +2914,9 @@ export namespace Gpseq {
     }
 
     namespace IteratorSpliterator {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Spliterator.ConstructorProps {
@@ -2902,6 +2931,7 @@ export namespace Gpseq {
 
     class IteratorSpliterator extends GObject.Object implements Spliterator {
         static $gtype: GObject.GType<IteratorSpliterator>;
+        declare static readonly __signalSignatures: IteratorSpliterator.SignalSignatures;
 
         // Properties
 
@@ -3394,6 +3424,9 @@ export namespace Gpseq {
     }
 
     namespace ListSpliterator {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Spliterator.ConstructorProps {
@@ -3408,6 +3441,7 @@ export namespace Gpseq {
 
     class ListSpliterator extends GObject.Object implements Spliterator {
         static $gtype: GObject.GType<ListSpliterator>;
+        declare static readonly __signalSignatures: ListSpliterator.SignalSignatures;
 
         // Properties
 
@@ -3894,6 +3928,9 @@ export namespace Gpseq {
     }
 
     namespace Optional {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3913,6 +3950,7 @@ export namespace Gpseq {
 
     class Optional extends GObject.Object {
         static $gtype: GObject.GType<Optional>;
+        declare static readonly __signalSignatures: Optional.SignalSignatures;
 
         // Properties
 
@@ -3955,8 +3993,14 @@ export namespace Gpseq {
         map(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, mapper: Gee.MapFunc): Optional;
     }
 
+    namespace Promise {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+    }
+
     class Promise {
         static $gtype: GObject.GType<Promise>;
+        declare static readonly __signalSignatures: Promise.SignalSignatures;
 
         // Fields
 
@@ -3976,6 +4020,9 @@ export namespace Gpseq {
     }
 
     namespace Seq {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3998,6 +4045,7 @@ export namespace Gpseq {
 
     class Seq extends GObject.Object {
         static $gtype: GObject.GType<Seq>;
+        declare static readonly __signalSignatures: Seq.SignalSignatures;
 
         // Properties
 
@@ -4155,6 +4203,9 @@ export namespace Gpseq {
     }
 
     namespace SpliteratorTask {
+        // Signal signatures
+        interface SignalSignatures extends ForkJoinTask.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ForkJoinTask.ConstructorProps {
@@ -4186,6 +4237,7 @@ export namespace Gpseq {
 
     abstract class SpliteratorTask extends ForkJoinTask {
         static $gtype: GObject.GType<SpliteratorTask>;
+        declare static readonly __signalSignatures: SpliteratorTask.SignalSignatures;
 
         // Properties
 
@@ -4241,6 +4293,9 @@ export namespace Gpseq {
     }
 
     namespace SubArray {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4259,6 +4314,7 @@ export namespace Gpseq {
 
     class SubArray extends GObject.Object implements Gee.Traversable, Gee.Iterable {
         static $gtype: GObject.GType<SubArray>;
+        declare static readonly __signalSignatures: SubArray.SignalSignatures;
 
         // Properties
 
@@ -4767,6 +4823,9 @@ export namespace Gpseq {
     }
 
     namespace SubArraySpliterator {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Spliterator.ConstructorProps {
@@ -4781,6 +4840,7 @@ export namespace Gpseq {
 
     class SubArraySpliterator extends GObject.Object implements Spliterator {
         static $gtype: GObject.GType<SubArraySpliterator>;
+        declare static readonly __signalSignatures: SubArraySpliterator.SignalSignatures;
 
         // Properties
 
@@ -5267,6 +5327,9 @@ export namespace Gpseq {
     }
 
     namespace SupplierSpliterator {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Spliterator.ConstructorProps {
@@ -5281,6 +5344,7 @@ export namespace Gpseq {
 
     class SupplierSpliterator extends GObject.Object implements Spliterator {
         static $gtype: GObject.GType<SupplierSpliterator>;
+        declare static readonly __signalSignatures: SupplierSpliterator.SignalSignatures;
 
         // Properties
 
@@ -5765,6 +5829,9 @@ export namespace Gpseq {
     }
 
     namespace TaskEnv {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5774,6 +5841,7 @@ export namespace Gpseq {
 
     abstract class TaskEnv extends GObject.Object {
         static $gtype: GObject.GType<TaskEnv>;
+        declare static readonly __signalSignatures: TaskEnv.SignalSignatures;
 
         // Properties
 
@@ -5808,6 +5876,9 @@ export namespace Gpseq {
     }
 
     namespace WaitGroup {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5815,6 +5886,7 @@ export namespace Gpseq {
 
     class WaitGroup extends GObject.Object {
         static $gtype: GObject.GType<WaitGroup>;
+        declare static readonly __signalSignatures: WaitGroup.SignalSignatures;
 
         // Constructors
 
@@ -5835,6 +5907,9 @@ export namespace Gpseq {
     }
 
     namespace WorkerPool {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Executor.ConstructorProps {
@@ -5854,6 +5929,7 @@ export namespace Gpseq {
 
     class WorkerPool extends GObject.Object implements Executor {
         static $gtype: GObject.GType<WorkerPool>;
+        declare static readonly __signalSignatures: WorkerPool.SignalSignatures;
 
         // Properties
 
@@ -6349,6 +6425,9 @@ export namespace Gpseq {
     }
 
     namespace WorkerThread {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6366,6 +6445,7 @@ export namespace Gpseq {
 
     class WorkerThread extends GObject.Object {
         static $gtype: GObject.GType<WorkerThread>;
+        declare static readonly __signalSignatures: WorkerThread.SignalSignatures;
 
         // Properties
 
@@ -6406,6 +6486,9 @@ export namespace Gpseq {
     }
 
     namespace Wrapper {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6423,6 +6506,7 @@ export namespace Gpseq {
 
     class Wrapper extends GObject.Object {
         static $gtype: GObject.GType<Wrapper>;
+        declare static readonly __signalSignatures: Wrapper.SignalSignatures;
 
         // Properties
 

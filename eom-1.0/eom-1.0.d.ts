@@ -282,6 +282,9 @@ export namespace Eom {
         DISABLE_COLLECTION,
     }
     namespace Application {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Application.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -292,6 +295,7 @@ export namespace Eom {
 
     class Application extends Gtk.Application implements Gio.ActionGroup, Gio.ActionMap {
         static $gtype: GObject.GType<Application>;
+        declare static readonly __signalSignatures: Application.SignalSignatures;
 
         // Fields
 
@@ -794,6 +798,9 @@ export namespace Eom {
     }
 
     namespace ClipboardHandler {
+        // Signal signatures
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
@@ -804,6 +811,7 @@ export namespace Eom {
 
     class ClipboardHandler extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<ClipboardHandler>;
+        declare static readonly __signalSignatures: ClipboardHandler.SignalSignatures;
 
         // Properties
 
@@ -824,6 +832,9 @@ export namespace Eom {
     }
 
     namespace FileChooser {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.FileChooserDialog.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -835,6 +846,7 @@ export namespace Eom {
 
     class FileChooser extends Gtk.FileChooserDialog implements Atk.ImplementorIface, Gtk.Buildable, Gtk.FileChooser {
         static $gtype: GObject.GType<FileChooser>;
+        declare static readonly __signalSignatures: FileChooser.SignalSignatures;
 
         // Constructors
 
@@ -1982,6 +1994,16 @@ export namespace Eom {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            changed: Changed;
+            'file-changed': FileChanged;
+            'next-frame': NextFrame;
+            'save-progress': SaveProgress;
+            'size-prepared': SizePrepared;
+            'thumbnail-changed': ThumbnailChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1989,6 +2011,7 @@ export namespace Eom {
 
     class Image extends GObject.Object {
         static $gtype: GObject.GType<Image>;
+        declare static readonly __signalSignatures: Image.SignalSignatures;
 
         // Constructors
 
@@ -2002,6 +2025,9 @@ export namespace Eom {
 
         // Signals
 
+        connect<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
+        connect_after<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
+        emit<K extends keyof Image.SignalSignatures>(signal: K, ...args: Parameters<Image.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2123,6 +2149,9 @@ export namespace Eom {
     }
 
     namespace ImageSaveInfo {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2130,6 +2159,7 @@ export namespace Eom {
 
     class ImageSaveInfo extends GObject.Object {
         static $gtype: GObject.GType<ImageSaveInfo>;
+        declare static readonly __signalSignatures: ImageSaveInfo.SignalSignatures;
 
         // Fields
 
@@ -2166,6 +2196,12 @@ export namespace Eom {
             (object: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            finished: Finished;
+            progress: Progress;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2173,6 +2209,7 @@ export namespace Eom {
 
     class Job extends GObject.Object {
         static $gtype: GObject.GType<Job>;
+        declare static readonly __signalSignatures: Job.SignalSignatures;
 
         // Fields
 
@@ -2187,6 +2224,9 @@ export namespace Eom {
 
         // Signals
 
+        connect<K extends keyof Job.SignalSignatures>(signal: K, callback: Job.SignalSignatures[K]): number;
+        connect_after<K extends keyof Job.SignalSignatures>(signal: K, callback: Job.SignalSignatures[K]): number;
+        emit<K extends keyof Job.SignalSignatures>(signal: K, ...args: Parameters<Job.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2225,6 +2265,9 @@ export namespace Eom {
     }
 
     namespace JobCopy {
+        // Signal signatures
+        interface SignalSignatures extends Job.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -2232,6 +2275,7 @@ export namespace Eom {
 
     class JobCopy extends Job {
         static $gtype: GObject.GType<JobCopy>;
+        declare static readonly __signalSignatures: JobCopy.SignalSignatures;
 
         // Fields
 
@@ -2249,6 +2293,9 @@ export namespace Eom {
     }
 
     namespace JobLoad {
+        // Signal signatures
+        interface SignalSignatures extends Job.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -2256,6 +2303,7 @@ export namespace Eom {
 
     class JobLoad extends Job {
         static $gtype: GObject.GType<JobLoad>;
+        declare static readonly __signalSignatures: JobLoad.SignalSignatures;
 
         // Fields
 
@@ -2272,6 +2320,9 @@ export namespace Eom {
     }
 
     namespace JobModel {
+        // Signal signatures
+        interface SignalSignatures extends Job.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -2279,6 +2330,7 @@ export namespace Eom {
 
     class JobModel extends Job {
         static $gtype: GObject.GType<JobModel>;
+        declare static readonly __signalSignatures: JobModel.SignalSignatures;
 
         // Fields
 
@@ -2295,6 +2347,9 @@ export namespace Eom {
     }
 
     namespace JobSave {
+        // Signal signatures
+        interface SignalSignatures extends Job.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -2302,6 +2357,7 @@ export namespace Eom {
 
     class JobSave extends Job {
         static $gtype: GObject.GType<JobSave>;
+        declare static readonly __signalSignatures: JobSave.SignalSignatures;
 
         // Fields
 
@@ -2319,6 +2375,9 @@ export namespace Eom {
     }
 
     namespace JobSaveAs {
+        // Signal signatures
+        interface SignalSignatures extends JobSave.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends JobSave.ConstructorProps {}
@@ -2326,6 +2385,7 @@ export namespace Eom {
 
     class JobSaveAs extends JobSave {
         static $gtype: GObject.GType<JobSaveAs>;
+        declare static readonly __signalSignatures: JobSaveAs.SignalSignatures;
 
         // Fields
 
@@ -2344,6 +2404,9 @@ export namespace Eom {
     }
 
     namespace JobThumbnail {
+        // Signal signatures
+        interface SignalSignatures extends Job.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -2351,6 +2414,7 @@ export namespace Eom {
 
     class JobThumbnail extends Job {
         static $gtype: GObject.GType<JobThumbnail>;
+        declare static readonly __signalSignatures: JobThumbnail.SignalSignatures;
 
         // Fields
 
@@ -2367,6 +2431,9 @@ export namespace Eom {
     }
 
     namespace JobTransform {
+        // Signal signatures
+        interface SignalSignatures extends Job.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Job.ConstructorProps {}
@@ -2374,6 +2441,7 @@ export namespace Eom {
 
     class JobTransform extends Job {
         static $gtype: GObject.GType<JobTransform>;
+        declare static readonly __signalSignatures: JobTransform.SignalSignatures;
 
         // Fields
 
@@ -2390,6 +2458,9 @@ export namespace Eom {
     }
 
     namespace ListStore {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.ListStore.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2406,6 +2477,7 @@ export namespace Eom {
         implements Gtk.Buildable, Gtk.TreeDragDest, Gtk.TreeDragSource, Gtk.TreeModel, Gtk.TreeSortable
     {
         static $gtype: GObject.GType<ListStore>;
+        declare static readonly __signalSignatures: ListStore.SignalSignatures;
 
         // Constructors
 
@@ -3727,6 +3799,9 @@ export namespace Eom {
     }
 
     namespace PropertiesDialog {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Dialog.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3741,6 +3816,7 @@ export namespace Eom {
 
     class PropertiesDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<PropertiesDialog>;
+        declare static readonly __signalSignatures: PropertiesDialog.SignalSignatures;
 
         // Properties
 
@@ -4225,6 +4301,11 @@ export namespace Eom {
             (object: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Grid.SignalSignatures {
+            'zoom-changed': ZoomChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4254,6 +4335,7 @@ export namespace Eom {
 
     class ScrollView extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<ScrollView>;
+        declare static readonly __signalSignatures: ScrollView.SignalSignatures;
 
         // Properties
 
@@ -4347,6 +4429,18 @@ export namespace Eom {
 
         // Signals
 
+        connect<K extends keyof ScrollView.SignalSignatures>(
+            signal: K,
+            callback: ScrollView.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ScrollView.SignalSignatures>(
+            signal: K,
+            callback: ScrollView.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ScrollView.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ScrollView.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -4858,6 +4952,12 @@ export namespace Eom {
             (object: Gtk.Widget): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {
+            'page-added': PageAdded;
+            'page-removed': PageRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4872,6 +4972,7 @@ export namespace Eom {
 
     class Sidebar extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Sidebar>;
+        declare static readonly __signalSignatures: Sidebar.SignalSignatures;
 
         // Properties
 
@@ -4894,6 +4995,15 @@ export namespace Eom {
 
         // Signals
 
+        connect<K extends keyof Sidebar.SignalSignatures>(signal: K, callback: Sidebar.SignalSignatures[K]): number;
+        connect_after<K extends keyof Sidebar.SignalSignatures>(
+            signal: K,
+            callback: Sidebar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Sidebar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Sidebar.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -5377,6 +5487,9 @@ export namespace Eom {
     }
 
     namespace Statusbar {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Statusbar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5388,6 +5501,7 @@ export namespace Eom {
 
     class Statusbar extends Gtk.Statusbar implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Statusbar>;
+        declare static readonly __signalSignatures: Statusbar.SignalSignatures;
 
         // Constructors
 
@@ -5845,6 +5959,9 @@ export namespace Eom {
     }
 
     namespace ThumbNav {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5861,6 +5978,7 @@ export namespace Eom {
 
     class ThumbNav extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<ThumbNav>;
+        declare static readonly __signalSignatures: ThumbNav.SignalSignatures;
 
         // Properties
 
@@ -6371,6 +6489,9 @@ export namespace Eom {
     }
 
     namespace ThumbView {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.IconView.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6387,6 +6508,7 @@ export namespace Eom {
         implements Atk.ImplementorIface, Gtk.Buildable, Gtk.CellLayout, Gtk.Orientable, Gtk.Scrollable
     {
         static $gtype: GObject.GType<ThumbView>;
+        declare static readonly __signalSignatures: ThumbView.SignalSignatures;
 
         // Fields
 
@@ -7165,6 +7287,9 @@ export namespace Eom {
     }
 
     namespace Transform {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -7172,6 +7297,7 @@ export namespace Eom {
 
     class Transform extends GObject.Object {
         static $gtype: GObject.GType<Transform>;
+        declare static readonly __signalSignatures: Transform.SignalSignatures;
 
         // Constructors
 
@@ -7214,6 +7340,11 @@ export namespace Eom {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.ApplicationWindow.SignalSignatures {
+            prepared: Prepared;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7236,6 +7367,7 @@ export namespace Eom {
         implements Atk.ImplementorIface, Gio.ActionGroup, Gio.ActionMap, Gtk.Buildable
     {
         static $gtype: GObject.GType<Window>;
+        declare static readonly __signalSignatures: Window.SignalSignatures;
 
         // Properties
 
@@ -7291,6 +7423,9 @@ export namespace Eom {
 
         // Signals
 
+        connect<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
+        connect_after<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
+        emit<K extends keyof Window.SignalSignatures>(signal: K, ...args: Parameters<Window.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

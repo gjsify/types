@@ -403,6 +403,14 @@ export namespace LibvirtGObject {
             (object: Domain): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'connection-closed': ConnectionClosed;
+            'connection-opened': ConnectionOpened;
+            'domain-added': DomainAdded;
+            'domain-removed': DomainRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -413,6 +421,7 @@ export namespace LibvirtGObject {
 
     class Connection extends GObject.Object {
         static $gtype: GObject.GType<Connection>;
+        declare static readonly __signalSignatures: Connection.SignalSignatures;
 
         // Properties
 
@@ -429,6 +438,18 @@ export namespace LibvirtGObject {
 
         // Signals
 
+        connect<K extends keyof Connection.SignalSignatures>(
+            signal: K,
+            callback: Connection.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Connection.SignalSignatures>(
+            signal: K,
+            callback: Connection.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Connection.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Connection.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -750,6 +771,16 @@ export namespace LibvirtGObject {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            pmsuspended: Pmsuspended;
+            resumed: Resumed;
+            started: Started;
+            stopped: Stopped;
+            suspended: Suspended;
+            updated: Updated;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -760,6 +791,7 @@ export namespace LibvirtGObject {
 
     class Domain extends GObject.Object {
         static $gtype: GObject.GType<Domain>;
+        declare static readonly __signalSignatures: Domain.SignalSignatures;
 
         // Properties
 
@@ -774,6 +806,9 @@ export namespace LibvirtGObject {
 
         // Signals
 
+        connect<K extends keyof Domain.SignalSignatures>(signal: K, callback: Domain.SignalSignatures[K]): number;
+        connect_after<K extends keyof Domain.SignalSignatures>(signal: K, callback: Domain.SignalSignatures[K]): number;
+        emit<K extends keyof Domain.SignalSignatures>(signal: K, ...args: Parameters<Domain.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1172,6 +1207,9 @@ export namespace LibvirtGObject {
     }
 
     namespace DomainDevice {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1182,6 +1220,7 @@ export namespace LibvirtGObject {
 
     abstract class DomainDevice extends GObject.Object {
         static $gtype: GObject.GType<DomainDevice>;
+        declare static readonly __signalSignatures: DomainDevice.SignalSignatures;
 
         // Properties
 
@@ -1201,6 +1240,9 @@ export namespace LibvirtGObject {
     }
 
     namespace DomainDisk {
+        // Signal signatures
+        interface SignalSignatures extends DomainDevice.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DomainDevice.ConstructorProps {}
@@ -1208,6 +1250,7 @@ export namespace LibvirtGObject {
 
     class DomainDisk extends DomainDevice {
         static $gtype: GObject.GType<DomainDisk>;
+        declare static readonly __signalSignatures: DomainDisk.SignalSignatures;
 
         // Constructors
 
@@ -1234,6 +1277,9 @@ export namespace LibvirtGObject {
     }
 
     namespace DomainInterface {
+        // Signal signatures
+        interface SignalSignatures extends DomainDevice.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DomainDevice.ConstructorProps {}
@@ -1241,6 +1287,7 @@ export namespace LibvirtGObject {
 
     class DomainInterface extends DomainDevice {
         static $gtype: GObject.GType<DomainInterface>;
+        declare static readonly __signalSignatures: DomainInterface.SignalSignatures;
 
         // Constructors
 
@@ -1260,6 +1307,9 @@ export namespace LibvirtGObject {
     }
 
     namespace DomainSnapshot {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1269,6 +1319,7 @@ export namespace LibvirtGObject {
 
     class DomainSnapshot extends GObject.Object {
         static $gtype: GObject.GType<DomainSnapshot>;
+        declare static readonly __signalSignatures: DomainSnapshot.SignalSignatures;
 
         // Properties
 
@@ -1321,6 +1372,9 @@ export namespace LibvirtGObject {
     }
 
     namespace Interface {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1330,6 +1384,7 @@ export namespace LibvirtGObject {
 
     class Interface extends GObject.Object {
         static $gtype: GObject.GType<Interface>;
+        declare static readonly __signalSignatures: Interface.SignalSignatures;
 
         // Properties
 
@@ -1359,6 +1414,12 @@ export namespace LibvirtGObject {
             (object: Connection): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'connection-added': ConnectionAdded;
+            'connection-removed': ConnectionRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1366,6 +1427,7 @@ export namespace LibvirtGObject {
 
     class Manager extends GObject.Object {
         static $gtype: GObject.GType<Manager>;
+        declare static readonly __signalSignatures: Manager.SignalSignatures;
 
         // Constructors
 
@@ -1377,6 +1439,15 @@ export namespace LibvirtGObject {
 
         // Signals
 
+        connect<K extends keyof Manager.SignalSignatures>(signal: K, callback: Manager.SignalSignatures[K]): number;
+        connect_after<K extends keyof Manager.SignalSignatures>(
+            signal: K,
+            callback: Manager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Manager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Manager.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1401,6 +1472,9 @@ export namespace LibvirtGObject {
     }
 
     namespace Network {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1410,6 +1484,7 @@ export namespace LibvirtGObject {
 
     class Network extends GObject.Object {
         static $gtype: GObject.GType<Network>;
+        declare static readonly __signalSignatures: Network.SignalSignatures;
 
         // Properties
 
@@ -1444,6 +1519,9 @@ export namespace LibvirtGObject {
     }
 
     namespace NetworkDHCPLease {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1453,6 +1531,7 @@ export namespace LibvirtGObject {
 
     class NetworkDHCPLease extends GObject.Object {
         static $gtype: GObject.GType<NetworkDHCPLease>;
+        declare static readonly __signalSignatures: NetworkDHCPLease.SignalSignatures;
 
         // Properties
 
@@ -1478,6 +1557,9 @@ export namespace LibvirtGObject {
     }
 
     namespace NetworkFilter {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1487,6 +1569,7 @@ export namespace LibvirtGObject {
 
     class NetworkFilter extends GObject.Object {
         static $gtype: GObject.GType<NetworkFilter>;
+        declare static readonly __signalSignatures: NetworkFilter.SignalSignatures;
 
         // Properties
 
@@ -1506,6 +1589,9 @@ export namespace LibvirtGObject {
     }
 
     namespace NodeDevice {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1515,6 +1601,7 @@ export namespace LibvirtGObject {
 
     class NodeDevice extends GObject.Object {
         static $gtype: GObject.GType<NodeDevice>;
+        declare static readonly __signalSignatures: NodeDevice.SignalSignatures;
 
         // Properties
 
@@ -1533,6 +1620,9 @@ export namespace LibvirtGObject {
     }
 
     namespace Secret {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1542,6 +1632,7 @@ export namespace LibvirtGObject {
 
     class Secret extends GObject.Object {
         static $gtype: GObject.GType<Secret>;
+        declare static readonly __signalSignatures: Secret.SignalSignatures;
 
         // Properties
 
@@ -1561,6 +1652,9 @@ export namespace LibvirtGObject {
     }
 
     namespace StoragePool {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1570,6 +1664,7 @@ export namespace LibvirtGObject {
 
     class StoragePool extends GObject.Object {
         static $gtype: GObject.GType<StoragePool>;
+        declare static readonly __signalSignatures: StoragePool.SignalSignatures;
 
         // Properties
 
@@ -1665,6 +1760,9 @@ export namespace LibvirtGObject {
     }
 
     namespace StorageVol {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1675,6 +1773,7 @@ export namespace LibvirtGObject {
 
     class StorageVol extends GObject.Object {
         static $gtype: GObject.GType<StorageVol>;
+        declare static readonly __signalSignatures: StorageVol.SignalSignatures;
 
         // Properties
 
@@ -1711,6 +1810,9 @@ export namespace LibvirtGObject {
     }
 
     namespace Stream {
+        // Signal signatures
+        interface SignalSignatures extends Gio.IOStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gio.IOStream.ConstructorProps {
@@ -1720,6 +1822,7 @@ export namespace LibvirtGObject {
 
     class Stream extends Gio.IOStream {
         static $gtype: GObject.GType<Stream>;
+        declare static readonly __signalSignatures: Stream.SignalSignatures;
 
         // Properties
 

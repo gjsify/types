@@ -403,6 +403,9 @@ export namespace Grl {
         NOTIFY_CHANGE,
     }
     namespace Config {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -410,6 +413,7 @@ export namespace Grl {
 
     class Config extends GObject.Object {
         static $gtype: GObject.GType<Config>;
+        declare static readonly __signalSignatures: Config.SignalSignatures;
 
         // Constructors
 
@@ -491,6 +495,9 @@ export namespace Grl {
     }
 
     namespace Data {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -500,6 +507,7 @@ export namespace Grl {
 
     class Data extends GObject.Object {
         static $gtype: GObject.GType<Data>;
+        declare static readonly __signalSignatures: Data.SignalSignatures;
 
         // Properties
 
@@ -767,6 +775,9 @@ export namespace Grl {
     }
 
     namespace Media {
+        // Signal signatures
+        interface SignalSignatures extends Data.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Data.ConstructorProps {}
@@ -774,6 +785,7 @@ export namespace Grl {
 
     class Media extends Data {
         static $gtype: GObject.GType<Media>;
+        declare static readonly __signalSignatures: Media.SignalSignatures;
 
         // Constructors
 
@@ -996,6 +1008,9 @@ export namespace Grl {
     }
 
     namespace MediaAudio {
+        // Signal signatures
+        interface SignalSignatures extends Media.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Media.ConstructorProps {}
@@ -1003,6 +1018,7 @@ export namespace Grl {
 
     class MediaAudio extends Media {
         static $gtype: GObject.GType<MediaAudio>;
+        declare static readonly __signalSignatures: MediaAudio.SignalSignatures;
 
         // Constructors
 
@@ -1101,6 +1117,9 @@ export namespace Grl {
     }
 
     namespace MediaBox {
+        // Signal signatures
+        interface SignalSignatures extends Media.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Media.ConstructorProps {}
@@ -1108,6 +1127,7 @@ export namespace Grl {
 
     class MediaBox extends Media {
         static $gtype: GObject.GType<MediaBox>;
+        declare static readonly __signalSignatures: MediaBox.SignalSignatures;
 
         // Constructors
 
@@ -1135,6 +1155,9 @@ export namespace Grl {
     }
 
     namespace MediaImage {
+        // Signal signatures
+        interface SignalSignatures extends Media.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Media.ConstructorProps {}
@@ -1142,6 +1165,7 @@ export namespace Grl {
 
     class MediaImage extends Media {
         static $gtype: GObject.GType<MediaImage>;
+        declare static readonly __signalSignatures: MediaImage.SignalSignatures;
 
         // Constructors
 
@@ -1223,6 +1247,9 @@ export namespace Grl {
     }
 
     namespace MediaPlugin {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1230,6 +1257,7 @@ export namespace Grl {
 
     abstract class MediaPlugin extends GObject.Object {
         static $gtype: GObject.GType<MediaPlugin>;
+        declare static readonly __signalSignatures: MediaPlugin.SignalSignatures;
 
         // Constructors
 
@@ -1309,6 +1337,11 @@ export namespace Grl {
             (changed_medias: any[], change_type: MediaSourceChangeType, location_unknown: boolean): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends MetadataSource.SignalSignatures {
+            'content-changed': ContentChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends MetadataSource.ConstructorProps {
@@ -1319,6 +1352,7 @@ export namespace Grl {
 
     abstract class MediaSource extends MetadataSource {
         static $gtype: GObject.GType<MediaSource>;
+        declare static readonly __signalSignatures: MediaSource.SignalSignatures;
 
         // Properties
 
@@ -1343,6 +1377,18 @@ export namespace Grl {
 
         // Signals
 
+        connect<K extends keyof MediaSource.SignalSignatures>(
+            signal: K,
+            callback: MediaSource.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MediaSource.SignalSignatures>(
+            signal: K,
+            callback: MediaSource.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MediaSource.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MediaSource.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1757,6 +1803,9 @@ export namespace Grl {
     }
 
     namespace MediaVideo {
+        // Signal signatures
+        interface SignalSignatures extends Media.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Media.ConstructorProps {}
@@ -1764,6 +1813,7 @@ export namespace Grl {
 
     class MediaVideo extends Media {
         static $gtype: GObject.GType<MediaVideo>;
+        declare static readonly __signalSignatures: MediaVideo.SignalSignatures;
 
         // Constructors
 
@@ -1857,6 +1907,9 @@ export namespace Grl {
     }
 
     namespace MetadataSource {
+        // Signal signatures
+        interface SignalSignatures extends MediaPlugin.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MediaPlugin.ConstructorProps {
@@ -1871,6 +1924,7 @@ export namespace Grl {
 
     abstract class MetadataSource extends MediaPlugin {
         static $gtype: GObject.GType<MetadataSource>;
+        declare static readonly __signalSignatures: MetadataSource.SignalSignatures;
 
         // Properties
 
@@ -2187,6 +2241,12 @@ export namespace Grl {
             (plugin: MediaPlugin): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'source-added': SourceAdded;
+            'source-removed': SourceRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2194,6 +2254,7 @@ export namespace Grl {
 
     class PluginRegistry extends GObject.Object {
         static $gtype: GObject.GType<PluginRegistry>;
+        declare static readonly __signalSignatures: PluginRegistry.SignalSignatures;
 
         // Constructors
 
@@ -2203,6 +2264,18 @@ export namespace Grl {
 
         // Signals
 
+        connect<K extends keyof PluginRegistry.SignalSignatures>(
+            signal: K,
+            callback: PluginRegistry.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PluginRegistry.SignalSignatures>(
+            signal: K,
+            callback: PluginRegistry.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PluginRegistry.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PluginRegistry.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2384,6 +2457,9 @@ export namespace Grl {
     }
 
     namespace RelatedKeys {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2391,6 +2467,7 @@ export namespace Grl {
 
     class RelatedKeys extends GObject.Object {
         static $gtype: GObject.GType<RelatedKeys>;
+        declare static readonly __signalSignatures: RelatedKeys.SignalSignatures;
 
         // Constructors
 

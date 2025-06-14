@@ -144,6 +144,9 @@ export namespace GstNet {
         (domain: number, stats: Gst.Structure): boolean;
     }
     namespace NetClientClock {
+        // Signal signatures
+        interface SignalSignatures extends Gst.SystemClock.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.SystemClock.ConstructorProps {
@@ -189,6 +192,7 @@ export namespace GstNet {
      */
     class NetClientClock extends Gst.SystemClock {
         static $gtype: GObject.GType<NetClientClock>;
+        declare static readonly __signalSignatures: NetClientClock.SignalSignatures;
 
         // Properties
 
@@ -234,6 +238,9 @@ export namespace GstNet {
     }
 
     namespace NetTimeProvider {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -259,6 +266,7 @@ export namespace GstNet {
      */
     class NetTimeProvider extends Gst.Object implements Gio.Initable {
         static $gtype: GObject.GType<NetTimeProvider>;
+        declare static readonly __signalSignatures: NetTimeProvider.SignalSignatures;
 
         // Properties
 
@@ -810,6 +818,9 @@ export namespace GstNet {
     }
 
     namespace NtpClock {
+        // Signal signatures
+        interface SignalSignatures extends NetClientClock.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends NetClientClock.ConstructorProps {}
@@ -817,6 +828,7 @@ export namespace GstNet {
 
     class NtpClock extends NetClientClock {
         static $gtype: GObject.GType<NtpClock>;
+        declare static readonly __signalSignatures: NtpClock.SignalSignatures;
 
         // Fields
 
@@ -837,6 +849,9 @@ export namespace GstNet {
     }
 
     namespace PtpClock {
+        // Signal signatures
+        interface SignalSignatures extends Gst.SystemClock.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.SystemClock.ConstructorProps {
@@ -875,6 +890,7 @@ export namespace GstNet {
      */
     class PtpClock extends Gst.SystemClock {
         static $gtype: GObject.GType<PtpClock>;
+        declare static readonly __signalSignatures: PtpClock.SignalSignatures;
 
         // Properties
 

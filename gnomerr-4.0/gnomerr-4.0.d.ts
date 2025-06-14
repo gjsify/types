@@ -92,6 +92,9 @@ export namespace GnomeRR {
         REFLECT_Y,
     }
     namespace Config {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -101,6 +104,7 @@ export namespace GnomeRR {
 
     class Config extends GObject.Object {
         static $gtype: GObject.GType<Config>;
+        declare static readonly __signalSignatures: Config.SignalSignatures;
 
         // Properties
 
@@ -130,6 +134,9 @@ export namespace GnomeRR {
     }
 
     namespace OutputInfo {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -141,6 +148,7 @@ export namespace GnomeRR {
      */
     class OutputInfo extends GObject.Object {
         static $gtype: GObject.GType<OutputInfo>;
+        declare static readonly __signalSignatures: OutputInfo.SignalSignatures;
 
         // Constructors
 
@@ -208,6 +216,13 @@ export namespace GnomeRR {
             (output: Output): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            changed: Changed;
+            'output-connected': OutputConnected;
+            'output-disconnected': OutputDisconnected;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -223,6 +238,7 @@ export namespace GnomeRR {
 
     class Screen extends GObject.Object implements Gio.AsyncInitable<Screen>, Gio.Initable {
         static $gtype: GObject.GType<Screen>;
+        declare static readonly __signalSignatures: Screen.SignalSignatures;
 
         // Properties
 
@@ -248,6 +264,9 @@ export namespace GnomeRR {
 
         // Signals
 
+        connect<K extends keyof Screen.SignalSignatures>(signal: K, callback: Screen.SignalSignatures[K]): number;
+        connect_after<K extends keyof Screen.SignalSignatures>(signal: K, callback: Screen.SignalSignatures[K]): number;
+        emit<K extends keyof Screen.SignalSignatures>(signal: K, ...args: Parameters<Screen.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

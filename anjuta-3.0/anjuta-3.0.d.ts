@@ -625,6 +625,9 @@ export namespace Anjuta {
         ALL,
     }
     namespace AsyncCommand {
+        // Signal signatures
+        interface SignalSignatures extends Command.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Command.ConstructorProps {}
@@ -632,6 +635,7 @@ export namespace Anjuta {
 
     class AsyncCommand extends Command {
         static $gtype: GObject.GType<AsyncCommand>;
+        declare static readonly __signalSignatures: AsyncCommand.SignalSignatures;
 
         // Constructors
 
@@ -668,6 +672,11 @@ export namespace Anjuta {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            finished: Finished;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -675,6 +684,7 @@ export namespace Anjuta {
 
     class AsyncNotify extends GObject.Object {
         static $gtype: GObject.GType<AsyncNotify>;
+        declare static readonly __signalSignatures: AsyncNotify.SignalSignatures;
 
         // Constructors
 
@@ -686,6 +696,18 @@ export namespace Anjuta {
 
         // Signals
 
+        connect<K extends keyof AsyncNotify.SignalSignatures>(
+            signal: K,
+            callback: AsyncNotify.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AsyncNotify.SignalSignatures>(
+            signal: K,
+            callback: AsyncNotify.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AsyncNotify.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AsyncNotify.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -717,6 +739,9 @@ export namespace Anjuta {
     }
 
     namespace Autogen {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -727,6 +752,7 @@ export namespace Anjuta {
      */
     class Autogen extends GObject.Object {
         static $gtype: GObject.GType<Autogen>;
+        declare static readonly __signalSignatures: Autogen.SignalSignatures;
 
         // Constructors
 
@@ -814,6 +840,9 @@ export namespace Anjuta {
     }
 
     namespace CModule {
+        // Signal signatures
+        interface SignalSignatures extends GObject.TypeModule.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.TypeModule.ConstructorProps, GObject.TypePlugin.ConstructorProps {}
@@ -821,6 +850,7 @@ export namespace Anjuta {
 
     class CModule extends GObject.TypeModule implements GObject.TypePlugin {
         static $gtype: GObject.GType<CModule>;
+        declare static readonly __signalSignatures: CModule.SignalSignatures;
 
         // Constructors
 
@@ -1317,6 +1347,9 @@ export namespace Anjuta {
     }
 
     namespace CPluginFactory {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1324,6 +1357,7 @@ export namespace Anjuta {
 
     class CPluginFactory extends GObject.Object {
         static $gtype: GObject.GType<CPluginFactory>;
+        declare static readonly __signalSignatures: CPluginFactory.SignalSignatures;
 
         // Constructors
 
@@ -1342,6 +1376,9 @@ export namespace Anjuta {
     }
 
     namespace CellRendererCaptionedImage {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.CellRenderer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.CellRenderer.ConstructorProps {
@@ -1352,6 +1389,7 @@ export namespace Anjuta {
 
     class CellRendererCaptionedImage extends Gtk.CellRenderer {
         static $gtype: GObject.GType<CellRendererCaptionedImage>;
+        declare static readonly __signalSignatures: CellRendererCaptionedImage.SignalSignatures;
 
         // Properties
 
@@ -1375,6 +1413,9 @@ export namespace Anjuta {
     }
 
     namespace CellRendererDiff {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.CellRenderer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.CellRenderer.ConstructorProps {
@@ -1384,6 +1425,7 @@ export namespace Anjuta {
 
     class CellRendererDiff extends Gtk.CellRenderer {
         static $gtype: GObject.GType<CellRendererDiff>;
+        declare static readonly __signalSignatures: CellRendererDiff.SignalSignatures;
 
         // Properties
 
@@ -1403,6 +1445,9 @@ export namespace Anjuta {
     }
 
     namespace CloseButton {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Button.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1418,6 +1463,7 @@ export namespace Anjuta {
         implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<CloseButton>;
+        declare static readonly __signalSignatures: CloseButton.SignalSignatures;
 
         // Constructors
 
@@ -5949,6 +5995,9 @@ export namespace Anjuta {
     }
 
     namespace ColumnTextView {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5960,6 +6009,7 @@ export namespace Anjuta {
 
     class ColumnTextView extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<ColumnTextView>;
+        declare static readonly __signalSignatures: ColumnTextView.SignalSignatures;
 
         // Constructors
 
@@ -6451,6 +6501,14 @@ export namespace Anjuta {
             (progress: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'command-finished': CommandFinished;
+            'command-started': CommandStarted;
+            'data-arrived': DataArrived;
+            progress: Progress;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6458,6 +6516,7 @@ export namespace Anjuta {
 
     class Command extends GObject.Object {
         static $gtype: GObject.GType<Command>;
+        declare static readonly __signalSignatures: Command.SignalSignatures;
 
         // Constructors
 
@@ -6467,6 +6526,15 @@ export namespace Anjuta {
 
         // Signals
 
+        connect<K extends keyof Command.SignalSignatures>(signal: K, callback: Command.SignalSignatures[K]): number;
+        connect_after<K extends keyof Command.SignalSignatures>(
+            signal: K,
+            callback: Command.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Command.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Command.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -6605,6 +6673,9 @@ export namespace Anjuta {
     }
 
     namespace CommandBar {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Notebook.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6618,6 +6689,7 @@ export namespace Anjuta {
 
     class CommandBar extends Gtk.Notebook implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<CommandBar>;
+        declare static readonly __signalSignatures: CommandBar.SignalSignatures;
 
         // Properties
 
@@ -7102,6 +7174,11 @@ export namespace Anjuta {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            finished: Finished;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -7109,6 +7186,7 @@ export namespace Anjuta {
 
     class CommandQueue extends GObject.Object {
         static $gtype: GObject.GType<CommandQueue>;
+        declare static readonly __signalSignatures: CommandQueue.SignalSignatures;
 
         // Constructors
 
@@ -7120,6 +7198,18 @@ export namespace Anjuta {
 
         // Signals
 
+        connect<K extends keyof CommandQueue.SignalSignatures>(
+            signal: K,
+            callback: CommandQueue.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CommandQueue.SignalSignatures>(
+            signal: K,
+            callback: CommandQueue.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CommandQueue.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CommandQueue.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -7143,6 +7233,9 @@ export namespace Anjuta {
     }
 
     namespace Completion {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7153,6 +7246,7 @@ export namespace Anjuta {
 
     class Completion extends GObject.Object {
         static $gtype: GObject.GType<Completion>;
+        declare static readonly __signalSignatures: Completion.SignalSignatures;
 
         // Properties
 
@@ -7184,6 +7278,9 @@ export namespace Anjuta {
     }
 
     namespace Dock {
+        // Signal signatures
+        interface SignalSignatures extends Gdl.Dock.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7194,6 +7291,7 @@ export namespace Anjuta {
 
     class Dock extends Gdl.Dock implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Dock>;
+        declare static readonly __signalSignatures: Dock.SignalSignatures;
 
         // Constructors
 
@@ -7753,6 +7851,12 @@ export namespace Anjuta {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'multiple-selection-changed': MultipleSelectionChanged;
+            'single-selection-changed': SingleSelectionChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7762,6 +7866,7 @@ export namespace Anjuta {
 
     abstract class DockPane extends GObject.Object {
         static $gtype: GObject.GType<DockPane>;
+        declare static readonly __signalSignatures: DockPane.SignalSignatures;
 
         // Properties
 
@@ -7776,6 +7881,15 @@ export namespace Anjuta {
 
         // Signals
 
+        connect<K extends keyof DockPane.SignalSignatures>(signal: K, callback: DockPane.SignalSignatures[K]): number;
+        connect_after<K extends keyof DockPane.SignalSignatures>(
+            signal: K,
+            callback: DockPane.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DockPane.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DockPane.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -7814,6 +7928,9 @@ export namespace Anjuta {
     }
 
     namespace DropEntry {
+        // Signal signatures
+        interface SignalSignatures extends Entry.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7826,6 +7943,7 @@ export namespace Anjuta {
 
     class DropEntry extends Entry implements Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, Gtk.Editable {
         static $gtype: GObject.GType<DropEntry>;
+        declare static readonly __signalSignatures: DropEntry.SignalSignatures;
 
         // Constructors
 
@@ -12110,6 +12228,9 @@ export namespace Anjuta {
     }
 
     namespace Entry {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Entry.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -12125,6 +12246,7 @@ export namespace Anjuta {
 
     class Entry extends Gtk.Entry implements Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, Gtk.Editable {
         static $gtype: GObject.GType<Entry>;
+        declare static readonly __signalSignatures: Entry.SignalSignatures;
 
         // Properties
 
@@ -16687,6 +16809,11 @@ export namespace Anjuta {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Bin.SignalSignatures {
+            changed: Changed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -16697,6 +16824,7 @@ export namespace Anjuta {
 
     class EnvironmentEditor extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<EnvironmentEditor>;
+        declare static readonly __signalSignatures: EnvironmentEditor.SignalSignatures;
 
         // Constructors
 
@@ -16708,6 +16836,18 @@ export namespace Anjuta {
 
         // Signals
 
+        connect<K extends keyof EnvironmentEditor.SignalSignatures>(
+            signal: K,
+            callback: EnvironmentEditor.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof EnvironmentEditor.SignalSignatures>(
+            signal: K,
+            callback: EnvironmentEditor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EnvironmentEditor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EnvironmentEditor.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -17167,6 +17307,9 @@ export namespace Anjuta {
     }
 
     namespace FileDropEntry {
+        // Signal signatures
+        interface SignalSignatures extends DropEntry.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -17185,6 +17328,7 @@ export namespace Anjuta {
         implements Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, Gtk.Editable
     {
         static $gtype: GObject.GType<FileDropEntry>;
+        declare static readonly __signalSignatures: FileDropEntry.SignalSignatures;
 
         // Properties
 
@@ -21480,6 +21624,9 @@ export namespace Anjuta {
     }
 
     namespace FileList {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -21496,6 +21643,7 @@ export namespace Anjuta {
 
     class FileList extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<FileList>;
+        declare static readonly __signalSignatures: FileList.SignalSignatures;
 
         // Properties
 
@@ -21981,6 +22129,9 @@ export namespace Anjuta {
     }
 
     namespace LanguageProvider {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -21988,6 +22139,7 @@ export namespace Anjuta {
 
     class LanguageProvider extends GObject.Object {
         static $gtype: GObject.GType<LanguageProvider>;
+        declare static readonly __signalSignatures: LanguageProvider.SignalSignatures;
 
         // Constructors
 
@@ -22052,6 +22204,12 @@ export namespace Anjuta {
             (child_pid: number, status: number, time: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            busy: Busy;
+            'child-exited': ChildExited;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -22059,6 +22217,7 @@ export namespace Anjuta {
 
     class Launcher extends GObject.Object {
         static $gtype: GObject.GType<Launcher>;
+        declare static readonly __signalSignatures: Launcher.SignalSignatures;
 
         // Constructors
 
@@ -22070,6 +22229,15 @@ export namespace Anjuta {
 
         // Signals
 
+        connect<K extends keyof Launcher.SignalSignatures>(signal: K, callback: Launcher.SignalSignatures[K]): number;
+        connect_after<K extends keyof Launcher.SignalSignatures>(
+            signal: K,
+            callback: Launcher.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Launcher.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Launcher.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -22176,6 +22344,12 @@ export namespace Anjuta {
             (_package: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.TreeView.SignalSignatures {
+            'package-activated': PackageActivated;
+            'package-deactivated': PackageDeactivated;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -22187,6 +22361,7 @@ export namespace Anjuta {
 
     class PkgConfigChooser extends Gtk.TreeView implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<PkgConfigChooser>;
+        declare static readonly __signalSignatures: PkgConfigChooser.SignalSignatures;
 
         // Constructors
 
@@ -22198,6 +22373,18 @@ export namespace Anjuta {
 
         // Signals
 
+        connect<K extends keyof PkgConfigChooser.SignalSignatures>(
+            signal: K,
+            callback: PkgConfigChooser.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PkgConfigChooser.SignalSignatures>(
+            signal: K,
+            callback: PkgConfigChooser.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PkgConfigChooser.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PkgConfigChooser.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -22761,6 +22948,9 @@ export namespace Anjuta {
     }
 
     namespace PkgScanner {
+        // Signal signatures
+        interface SignalSignatures extends AsyncCommand.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends AsyncCommand.ConstructorProps {
@@ -22771,6 +22961,7 @@ export namespace Anjuta {
 
     class PkgScanner extends AsyncCommand {
         static $gtype: GObject.GType<PkgScanner>;
+        declare static readonly __signalSignatures: PkgScanner.SignalSignatures;
 
         // Properties
 
@@ -22804,6 +22995,12 @@ export namespace Anjuta {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            activated: Activated;
+            deactivated: Deactivated;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -22813,6 +23010,7 @@ export namespace Anjuta {
 
     class Plugin extends GObject.Object {
         static $gtype: GObject.GType<Plugin>;
+        declare static readonly __signalSignatures: Plugin.SignalSignatures;
 
         // Properties
 
@@ -22830,6 +23028,9 @@ export namespace Anjuta {
 
         // Signals
 
+        connect<K extends keyof Plugin.SignalSignatures>(signal: K, callback: Plugin.SignalSignatures[K]): number;
+        connect_after<K extends keyof Plugin.SignalSignatures>(signal: K, callback: Plugin.SignalSignatures[K]): number;
+        emit<K extends keyof Plugin.SignalSignatures>(signal: K, ...args: Parameters<Plugin.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -22903,6 +23104,9 @@ export namespace Anjuta {
     }
 
     namespace PluginHandle {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -22934,6 +23138,7 @@ export namespace Anjuta {
 
     class PluginHandle extends GObject.Object {
         static $gtype: GObject.GType<PluginHandle>;
+        declare static readonly __signalSignatures: PluginHandle.SignalSignatures;
 
         // Properties
 
@@ -23002,6 +23207,12 @@ export namespace Anjuta {
             (object: any | null, p0: Plugin): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'plugin-activated': PluginActivated;
+            'plugin-deactivated': PluginDeactivated;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -23017,6 +23228,7 @@ export namespace Anjuta {
 
     class PluginManager extends GObject.Object {
         static $gtype: GObject.GType<PluginManager>;
+        declare static readonly __signalSignatures: PluginManager.SignalSignatures;
 
         // Properties
 
@@ -23038,6 +23250,18 @@ export namespace Anjuta {
 
         // Signals
 
+        connect<K extends keyof PluginManager.SignalSignatures>(
+            signal: K,
+            callback: PluginManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PluginManager.SignalSignatures>(
+            signal: K,
+            callback: PluginManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PluginManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PluginManager.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -23117,6 +23341,9 @@ export namespace Anjuta {
     }
 
     namespace Preferences {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -23124,6 +23351,7 @@ export namespace Anjuta {
 
     class Preferences extends GObject.Object {
         static $gtype: GObject.GType<Preferences>;
+        declare static readonly __signalSignatures: Preferences.SignalSignatures;
 
         // Constructors
 
@@ -23170,6 +23398,9 @@ export namespace Anjuta {
     }
 
     namespace PreferencesDialog {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Dialog.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -23180,6 +23411,7 @@ export namespace Anjuta {
 
     class PreferencesDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<PreferencesDialog>;
+        declare static readonly __signalSignatures: PreferencesDialog.SignalSignatures;
 
         // Constructors
 
@@ -23671,6 +23903,15 @@ export namespace Anjuta {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            changed: Changed;
+            descoped: Descoped;
+            'plugin-added': PluginAdded;
+            'plugin-removed': PluginRemoved;
+            scoped: Scoped;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -23688,6 +23929,7 @@ export namespace Anjuta {
      */
     class Profile extends GObject.Object {
         static $gtype: GObject.GType<Profile>;
+        declare static readonly __signalSignatures: Profile.SignalSignatures;
 
         // Properties
 
@@ -23714,6 +23956,15 @@ export namespace Anjuta {
 
         // Signals
 
+        connect<K extends keyof Profile.SignalSignatures>(signal: K, callback: Profile.SignalSignatures[K]): number;
+        connect_after<K extends keyof Profile.SignalSignatures>(
+            signal: K,
+            callback: Profile.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Profile.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Profile.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -23804,6 +24055,12 @@ export namespace Anjuta {
             (profile: Profile): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'profile-popped': ProfilePopped;
+            'profile-pushed': ProfilePushed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -23817,6 +24074,7 @@ export namespace Anjuta {
      */
     class ProfileManager extends GObject.Object {
         static $gtype: GObject.GType<ProfileManager>;
+        declare static readonly __signalSignatures: ProfileManager.SignalSignatures;
 
         // Properties
 
@@ -23835,6 +24093,18 @@ export namespace Anjuta {
 
         // Signals
 
+        connect<K extends keyof ProfileManager.SignalSignatures>(
+            signal: K,
+            callback: ProfileManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ProfileManager.SignalSignatures>(
+            signal: K,
+            callback: ProfileManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ProfileManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ProfileManager.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -23908,6 +24178,12 @@ export namespace Anjuta {
             (object: any | null, p0: GLib.Error): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
+            loaded: Loaded;
+            updated: Updated;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
@@ -23924,6 +24200,7 @@ export namespace Anjuta {
      */
     class ProjectNode extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<ProjectNode>;
+        declare static readonly __signalSignatures: ProjectNode.SignalSignatures;
 
         // Properties
 
@@ -23944,6 +24221,18 @@ export namespace Anjuta {
 
         // Signals
 
+        connect<K extends keyof ProjectNode.SignalSignatures>(
+            signal: K,
+            callback: ProjectNode.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ProjectNode.SignalSignatures>(
+            signal: K,
+            callback: ProjectNode.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ProjectNode.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ProjectNode.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -23997,6 +24286,9 @@ export namespace Anjuta {
     }
 
     namespace SavePrompt {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.MessageDialog.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -24007,6 +24299,7 @@ export namespace Anjuta {
 
     class SavePrompt extends Gtk.MessageDialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<SavePrompt>;
+        declare static readonly __signalSignatures: SavePrompt.SignalSignatures;
 
         // Constructors
 
@@ -24466,6 +24759,9 @@ export namespace Anjuta {
     }
 
     namespace Serializer {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -24476,6 +24772,7 @@ export namespace Anjuta {
 
     class Serializer extends GObject.Object {
         static $gtype: GObject.GType<Serializer>;
+        declare static readonly __signalSignatures: Serializer.SignalSignatures;
 
         // Properties
 
@@ -24501,6 +24798,9 @@ export namespace Anjuta {
     }
 
     namespace Session {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -24508,6 +24808,7 @@ export namespace Anjuta {
 
     class Session extends GObject.Object {
         static $gtype: GObject.GType<Session>;
+        declare static readonly __signalSignatures: Session.SignalSignatures;
 
         // Constructors
 
@@ -24616,6 +24917,11 @@ export namespace Anjuta {
             (object: boolean): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {
+            busy: Busy;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -24627,6 +24933,7 @@ export namespace Anjuta {
 
     class Status extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Status>;
+        declare static readonly __signalSignatures: Status.SignalSignatures;
 
         // Constructors
 
@@ -24638,6 +24945,9 @@ export namespace Anjuta {
 
         // Signals
 
+        connect<K extends keyof Status.SignalSignatures>(signal: K, callback: Status.SignalSignatures[K]): number;
+        connect_after<K extends keyof Status.SignalSignatures>(signal: K, callback: Status.SignalSignatures[K]): number;
+        emit<K extends keyof Status.SignalSignatures>(signal: K, ...args: Parameters<Status.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -25126,6 +25436,9 @@ export namespace Anjuta {
     }
 
     namespace SyncCommand {
+        // Signal signatures
+        interface SignalSignatures extends Command.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Command.ConstructorProps {}
@@ -25133,6 +25446,7 @@ export namespace Anjuta {
 
     class SyncCommand extends Command {
         static $gtype: GObject.GType<SyncCommand>;
+        declare static readonly __signalSignatures: SyncCommand.SignalSignatures;
 
         // Constructors
 
@@ -25142,6 +25456,9 @@ export namespace Anjuta {
     }
 
     namespace Tabber {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Container.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -25154,6 +25471,7 @@ export namespace Anjuta {
 
     class Tabber extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Tabber>;
+        declare static readonly __signalSignatures: Tabber.SignalSignatures;
 
         // Properties
 
@@ -25623,6 +25941,9 @@ export namespace Anjuta {
     }
 
     namespace TokenFile {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -25630,6 +25951,7 @@ export namespace Anjuta {
 
     class TokenFile extends GObject.Object {
         static $gtype: GObject.GType<TokenFile>;
+        declare static readonly __signalSignatures: TokenFile.SignalSignatures;
 
         // Constructors
 
@@ -25679,6 +26001,13 @@ export namespace Anjuta {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.ToggleButton.SignalSignatures {
+            changed: Changed;
+            popdown: Popdown;
+            popup: Popup;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -25697,6 +26026,7 @@ export namespace Anjuta {
         implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable, Gtk.CellLayout
     {
         static $gtype: GObject.GType<TreeComboBox>;
+        declare static readonly __signalSignatures: TreeComboBox.SignalSignatures;
 
         // Properties
 
@@ -25713,6 +26043,18 @@ export namespace Anjuta {
 
         // Signals
 
+        connect<K extends keyof TreeComboBox.SignalSignatures>(
+            signal: K,
+            callback: TreeComboBox.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TreeComboBox.SignalSignatures>(
+            signal: K,
+            callback: TreeComboBox.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TreeComboBox.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TreeComboBox.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -30168,6 +30510,9 @@ export namespace Anjuta {
     }
 
     namespace UI {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.UIManager.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.UIManager.ConstructorProps, Gtk.Buildable.ConstructorProps {}
@@ -30175,6 +30520,7 @@ export namespace Anjuta {
 
     class UI extends Gtk.UIManager implements Gtk.Buildable {
         static $gtype: GObject.GType<UI>;
+        declare static readonly __signalSignatures: UI.SignalSignatures;
 
         // Constructors
 
@@ -30943,6 +31289,9 @@ export namespace Anjuta {
     }
 
     namespace VcsStatusTreeView {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.TreeView.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -30961,6 +31310,7 @@ export namespace Anjuta {
 
     class VcsStatusTreeView extends Gtk.TreeView implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<VcsStatusTreeView>;
+        declare static readonly __signalSignatures: VcsStatusTreeView.SignalSignatures;
 
         // Properties
 

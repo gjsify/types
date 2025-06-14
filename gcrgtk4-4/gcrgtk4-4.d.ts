@@ -33,6 +33,9 @@ export namespace GcrGtk4 {
      */
 
     namespace CertificateWidget {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -46,6 +49,7 @@ export namespace GcrGtk4 {
 
     class CertificateWidget extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<CertificateWidget>;
+        declare static readonly __signalSignatures: CertificateWidget.SignalSignatures;
 
         // Properties
 

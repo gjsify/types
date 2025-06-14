@@ -142,6 +142,20 @@ export namespace Playerctl {
             (volume: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            exit: Exit;
+            'loop-status': LoopStatus;
+            metadata: Metadata;
+            pause: Pause;
+            play: Play;
+            'playback-status': PlaybackStatus;
+            seeked: Seeked;
+            shuffle: Shuffle;
+            stop: Stop;
+            volume: Volume;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -176,6 +190,7 @@ export namespace Playerctl {
 
     class Player extends GObject.Object {
         static $gtype: GObject.GType<Player>;
+        declare static readonly __signalSignatures: Player.SignalSignatures;
 
         // Properties
 
@@ -224,6 +239,9 @@ export namespace Playerctl {
 
         // Signals
 
+        connect<K extends keyof Player.SignalSignatures>(signal: K, callback: Player.SignalSignatures[K]): number;
+        connect_after<K extends keyof Player.SignalSignatures>(signal: K, callback: Player.SignalSignatures[K]): number;
+        emit<K extends keyof Player.SignalSignatures>(signal: K, ...args: Parameters<Player.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -376,6 +394,14 @@ export namespace Playerctl {
             (player: Player): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'name-appeared': NameAppeared;
+            'name-vanished': NameVanished;
+            'player-appeared': PlayerAppeared;
+            'player-vanished': PlayerVanished;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -387,6 +413,7 @@ export namespace Playerctl {
 
     class PlayerManager extends GObject.Object {
         static $gtype: GObject.GType<PlayerManager>;
+        declare static readonly __signalSignatures: PlayerManager.SignalSignatures;
 
         // Properties
 
@@ -413,6 +440,18 @@ export namespace Playerctl {
 
         // Signals
 
+        connect<K extends keyof PlayerManager.SignalSignatures>(
+            signal: K,
+            callback: PlayerManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PlayerManager.SignalSignatures>(
+            signal: K,
+            callback: PlayerManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PlayerManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PlayerManager.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

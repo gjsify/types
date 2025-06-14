@@ -50,6 +50,11 @@ export namespace GUdev {
             (action: string, device: Device): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            uevent: Uevent;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -82,6 +87,7 @@ export namespace GUdev {
      */
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
+        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Properties
 
@@ -109,6 +115,9 @@ export namespace GUdev {
 
         // Signals
 
+        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -157,6 +166,9 @@ export namespace GUdev {
     }
 
     namespace Device {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -212,6 +224,7 @@ export namespace GUdev {
      */
     class Device extends GObject.Object {
         static $gtype: GObject.GType<Device>;
+        declare static readonly __signalSignatures: Device.SignalSignatures;
 
         // Constructors
 
@@ -529,6 +542,9 @@ export namespace GUdev {
     }
 
     namespace Enumerator {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -541,6 +557,7 @@ export namespace GUdev {
      */
     class Enumerator extends GObject.Object {
         static $gtype: GObject.GType<Enumerator>;
+        declare static readonly __signalSignatures: Enumerator.SignalSignatures;
 
         // Properties
 

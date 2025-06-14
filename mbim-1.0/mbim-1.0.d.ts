@@ -5767,6 +5767,13 @@ export namespace Mbim {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'device-error': DeviceError;
+            'device-indicate-status': DeviceIndicateStatus;
+            'device-removed': DeviceRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps {
@@ -5787,6 +5794,7 @@ export namespace Mbim {
      */
     class Device extends GObject.Object implements Gio.AsyncInitable<Device> {
         static $gtype: GObject.GType<Device>;
+        declare static readonly __signalSignatures: Device.SignalSignatures;
 
         // Properties
 
@@ -5816,6 +5824,9 @@ export namespace Mbim {
 
         // Signals
 
+        connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -6986,6 +6997,9 @@ export namespace Mbim {
     }
 
     namespace Proxy {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7002,6 +7016,7 @@ export namespace Mbim {
      */
     class Proxy extends GObject.Object {
         static $gtype: GObject.GType<Proxy>;
+        declare static readonly __signalSignatures: Proxy.SignalSignatures;
 
         // Properties
 

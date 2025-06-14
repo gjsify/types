@@ -96,6 +96,11 @@ export namespace Egg {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
+            tick: Tick;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
@@ -109,6 +114,7 @@ export namespace Egg {
 
     class Animation extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<Animation>;
+        declare static readonly __signalSignatures: Animation.SignalSignatures;
 
         // Properties
 
@@ -139,6 +145,15 @@ export namespace Egg {
 
         // Signals
 
+        connect<K extends keyof Animation.SignalSignatures>(signal: K, callback: Animation.SignalSignatures[K]): number;
+        connect_after<K extends keyof Animation.SignalSignatures>(
+            signal: K,
+            callback: Animation.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Animation.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Animation.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -178,6 +193,9 @@ export namespace Egg {
     }
 
     namespace BindingGroup {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -198,6 +216,7 @@ export namespace Egg {
      */
     class BindingGroup extends GObject.Object {
         static $gtype: GObject.GType<BindingGroup>;
+        declare static readonly __signalSignatures: BindingGroup.SignalSignatures;
 
         // Properties
 
@@ -300,6 +319,9 @@ export namespace Egg {
     }
 
     namespace Box {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -314,6 +336,7 @@ export namespace Egg {
 
     class Box extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Box>;
+        declare static readonly __signalSignatures: Box.SignalSignatures;
 
         // Properties
 
@@ -795,6 +818,9 @@ export namespace Egg {
     }
 
     namespace CenteringBin {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Bin.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -817,6 +843,7 @@ export namespace Egg {
      */
     class CenteringBin extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<CenteringBin>;
+        declare static readonly __signalSignatures: CenteringBin.SignalSignatures;
 
         // Properties
 
@@ -1276,6 +1303,9 @@ export namespace Egg {
     }
 
     namespace ColumnLayout {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Container.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1295,6 +1325,7 @@ export namespace Egg {
 
     class ColumnLayout extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ColumnLayout>;
+        declare static readonly __signalSignatures: ColumnLayout.SignalSignatures;
 
         // Properties
 
@@ -1777,6 +1808,9 @@ export namespace Egg {
     }
 
     namespace ElasticBin {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Bin.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1787,6 +1821,7 @@ export namespace Egg {
 
     class ElasticBin extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ElasticBin>;
+        declare static readonly __signalSignatures: ElasticBin.SignalSignatures;
 
         // Constructors
 
@@ -2239,6 +2274,9 @@ export namespace Egg {
     }
 
     namespace EmptyState {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Bin.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2257,6 +2295,7 @@ export namespace Egg {
 
     class EmptyState extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<EmptyState>;
+        declare static readonly __signalSignatures: EmptyState.SignalSignatures;
 
         // Properties
 
@@ -2735,6 +2774,9 @@ export namespace Egg {
     }
 
     namespace EntryBox {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2749,6 +2791,7 @@ export namespace Egg {
 
     class EntryBox extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<EntryBox>;
+        declare static readonly __signalSignatures: EntryBox.SignalSignatures;
 
         // Properties
 
@@ -3225,6 +3268,9 @@ export namespace Egg {
     }
 
     namespace FileChooserEntry {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Bin.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3250,6 +3296,7 @@ export namespace Egg {
 
     class FileChooserEntry extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<FileChooserEntry>;
+        declare static readonly __signalSignatures: FileChooserEntry.SignalSignatures;
 
         // Properties
 
@@ -3742,6 +3789,9 @@ export namespace Egg {
     }
 
     namespace ListBox {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.ListBox.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3759,6 +3809,7 @@ export namespace Egg {
 
     class ListBox extends Gtk.ListBox implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ListBox>;
+        declare static readonly __signalSignatures: ListBox.SignalSignatures;
 
         // Properties
 
@@ -4230,6 +4281,9 @@ export namespace Egg {
     }
 
     namespace MenuManager {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4257,6 +4311,7 @@ export namespace Egg {
      */
     class MenuManager extends GObject.Object {
         static $gtype: GObject.GType<MenuManager>;
+        declare static readonly __signalSignatures: MenuManager.SignalSignatures;
 
         // Constructors
 
@@ -4275,6 +4330,9 @@ export namespace Egg {
     }
 
     namespace PillBox {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.EventBox.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4287,6 +4345,7 @@ export namespace Egg {
 
     class PillBox extends Gtk.EventBox implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<PillBox>;
+        declare static readonly __signalSignatures: PillBox.SignalSignatures;
 
         // Properties
 
@@ -4752,6 +4811,9 @@ export namespace Egg {
     }
 
     namespace PriorityBox {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4766,6 +4828,7 @@ export namespace Egg {
      */
     class PriorityBox extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<PriorityBox>;
+        declare static readonly __signalSignatures: PriorityBox.SignalSignatures;
 
         // Constructors
 
@@ -5235,6 +5298,9 @@ export namespace Egg {
     }
 
     namespace ProgressButton {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Button.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5254,6 +5320,7 @@ export namespace Egg {
         implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<ProgressButton>;
+        declare static readonly __signalSignatures: ProgressButton.SignalSignatures;
 
         // Properties
 
@@ -9807,6 +9874,11 @@ export namespace Egg {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Bin.SignalSignatures {
+            changed: Changed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9824,6 +9896,7 @@ export namespace Egg {
 
     class RadioBox extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<RadioBox>;
+        declare static readonly __signalSignatures: RadioBox.SignalSignatures;
 
         // Properties
 
@@ -9848,6 +9921,15 @@ export namespace Egg {
 
         // Signals
 
+        connect<K extends keyof RadioBox.SignalSignatures>(signal: K, callback: RadioBox.SignalSignatures[K]): number;
+        connect_after<K extends keyof RadioBox.SignalSignatures>(
+            signal: K,
+            callback: RadioBox.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RadioBox.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RadioBox.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -10304,6 +10386,9 @@ export namespace Egg {
     }
 
     namespace ScrolledWindow {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.ScrolledWindow.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -10314,6 +10399,7 @@ export namespace Egg {
 
     class ScrolledWindow extends Gtk.ScrolledWindow implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ScrolledWindow>;
+        declare static readonly __signalSignatures: ScrolledWindow.SignalSignatures;
 
         // Constructors
 
@@ -10774,6 +10860,12 @@ export namespace Egg {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Bin.SignalSignatures {
+            activate: Activate;
+            reveal: Reveal;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -10789,6 +10881,7 @@ export namespace Egg {
 
     class SearchBar extends Gtk.Bin implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<SearchBar>;
+        declare static readonly __signalSignatures: SearchBar.SignalSignatures;
 
         // Properties
 
@@ -10811,6 +10904,15 @@ export namespace Egg {
 
         // Signals
 
+        connect<K extends keyof SearchBar.SignalSignatures>(signal: K, callback: SearchBar.SignalSignatures[K]): number;
+        connect_after<K extends keyof SearchBar.SignalSignatures>(
+            signal: K,
+            callback: SearchBar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SearchBar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SearchBar.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -11272,6 +11374,9 @@ export namespace Egg {
     }
 
     namespace SettingsFlagAction {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Action.ConstructorProps {
@@ -11286,6 +11391,7 @@ export namespace Egg {
 
     class SettingsFlagAction extends GObject.Object implements Gio.Action {
         static $gtype: GObject.GType<SettingsFlagAction>;
+        declare static readonly __signalSignatures: SettingsFlagAction.SignalSignatures;
 
         // Properties
 
@@ -11994,6 +12100,9 @@ export namespace Egg {
     }
 
     namespace SettingsSandwich {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -12005,6 +12114,7 @@ export namespace Egg {
 
     class SettingsSandwich extends GObject.Object {
         static $gtype: GObject.GType<SettingsSandwich>;
+        declare static readonly __signalSignatures: SettingsSandwich.SignalSignatures;
 
         // Properties
 
@@ -12070,6 +12180,12 @@ export namespace Egg {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            bind: Bind;
+            unbind: Unbind;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -12101,6 +12217,7 @@ export namespace Egg {
      */
     class SignalGroup extends GObject.Object {
         static $gtype: GObject.GType<SignalGroup>;
+        declare static readonly __signalSignatures: SignalGroup.SignalSignatures;
 
         // Properties
 
@@ -12128,6 +12245,18 @@ export namespace Egg {
 
         // Signals
 
+        connect<K extends keyof SignalGroup.SignalSignatures>(
+            signal: K,
+            callback: SignalGroup.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SignalGroup.SignalSignatures>(
+            signal: K,
+            callback: SignalGroup.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SignalGroup.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SignalGroup.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -12205,6 +12334,9 @@ export namespace Egg {
     }
 
     namespace SimpleLabel {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -12220,6 +12352,7 @@ export namespace Egg {
 
     class SimpleLabel extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<SimpleLabel>;
+        declare static readonly __signalSignatures: SimpleLabel.SignalSignatures;
 
         // Properties
 
@@ -12882,6 +13015,13 @@ export namespace Egg {
             (position: number, chars: string, n_chars: number): boolean;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Popover.SignalSignatures {
+            activate: Activate;
+            changed: Changed;
+            'insert-text': InsertText;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -12899,6 +13039,7 @@ export namespace Egg {
 
     class SimplePopover extends Gtk.Popover implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<SimplePopover>;
+        declare static readonly __signalSignatures: SimplePopover.SignalSignatures;
 
         // Properties
 
@@ -12925,6 +13066,18 @@ export namespace Egg {
 
         // Signals
 
+        connect<K extends keyof SimplePopover.SignalSignatures>(
+            signal: K,
+            callback: SimplePopover.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SimplePopover.SignalSignatures>(
+            signal: K,
+            callback: SimplePopover.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SimplePopover.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SimplePopover.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -13406,6 +13559,9 @@ export namespace Egg {
     }
 
     namespace Slider {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Container.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -13418,6 +13574,7 @@ export namespace Egg {
 
     class Slider extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Slider>;
+        declare static readonly __signalSignatures: Slider.SignalSignatures;
 
         // Properties
 
@@ -13881,6 +14038,9 @@ export namespace Egg {
     }
 
     namespace StateMachine {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gtk.Buildable.ConstructorProps {
@@ -13890,6 +14050,7 @@ export namespace Egg {
 
     class StateMachine extends GObject.Object implements Gtk.Buildable {
         static $gtype: GObject.GType<StateMachine>;
+        declare static readonly __signalSignatures: StateMachine.SignalSignatures;
 
         // Properties
 
@@ -14572,6 +14733,12 @@ export namespace Egg {
             (object: string): string;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'replace-typed-text': ReplaceTypedText;
+            'suggest-suffix': SuggestSuffix;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -14585,6 +14752,7 @@ export namespace Egg {
 
     class Suggestion extends GObject.Object {
         static $gtype: GObject.GType<Suggestion>;
+        declare static readonly __signalSignatures: Suggestion.SignalSignatures;
 
         // Properties
 
@@ -14609,6 +14777,18 @@ export namespace Egg {
 
         // Signals
 
+        connect<K extends keyof Suggestion.SignalSignatures>(
+            signal: K,
+            callback: Suggestion.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Suggestion.SignalSignatures>(
+            signal: K,
+            callback: Suggestion.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Suggestion.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Suggestion.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -14695,6 +14875,15 @@ export namespace Egg {
             (object: Suggestion): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Entry.SignalSignatures {
+            'activate-suggestion': ActivateSuggestion;
+            'hide-suggestions': HideSuggestions;
+            'move-suggestion': MoveSuggestion;
+            'show-suggestions': ShowSuggestions;
+            'suggestion-activated': SuggestionActivated;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -14714,6 +14903,7 @@ export namespace Egg {
         implements Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, Gtk.Editable
     {
         static $gtype: GObject.GType<SuggestionEntry>;
+        declare static readonly __signalSignatures: SuggestionEntry.SignalSignatures;
 
         // Properties
 
@@ -14732,6 +14922,18 @@ export namespace Egg {
 
         // Signals
 
+        connect<K extends keyof SuggestionEntry.SignalSignatures>(
+            signal: K,
+            callback: SuggestionEntry.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SuggestionEntry.SignalSignatures>(
+            signal: K,
+            callback: SuggestionEntry.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SuggestionEntry.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SuggestionEntry.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -19303,6 +19505,9 @@ export namespace Egg {
     }
 
     namespace SuggestionEntryBuffer {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.EntryBuffer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.EntryBuffer.ConstructorProps {
@@ -19312,6 +19517,7 @@ export namespace Egg {
 
     class SuggestionEntryBuffer extends Gtk.EntryBuffer {
         static $gtype: GObject.GType<SuggestionEntryBuffer>;
+        declare static readonly __signalSignatures: SuggestionEntryBuffer.SignalSignatures;
 
         // Properties
 
@@ -19355,6 +19561,11 @@ export namespace Egg {
             (object: Suggestion): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Window.SignalSignatures {
+            'suggestion-activated': SuggestionActivated;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -19370,6 +19581,7 @@ export namespace Egg {
 
     class SuggestionPopover extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<SuggestionPopover>;
+        declare static readonly __signalSignatures: SuggestionPopover.SignalSignatures;
 
         // Properties
 
@@ -19392,6 +19604,18 @@ export namespace Egg {
 
         // Signals
 
+        connect<K extends keyof SuggestionPopover.SignalSignatures>(
+            signal: K,
+            callback: SuggestionPopover.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SuggestionPopover.SignalSignatures>(
+            signal: K,
+            callback: SuggestionPopover.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SuggestionPopover.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SuggestionPopover.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -19863,6 +20087,9 @@ export namespace Egg {
     }
 
     namespace SuggestionRow {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.ListBoxRow.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -19875,6 +20102,7 @@ export namespace Egg {
 
     class SuggestionRow extends Gtk.ListBoxRow implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<SuggestionRow>;
+        declare static readonly __signalSignatures: SuggestionRow.SignalSignatures;
 
         // Properties
 
@@ -20341,6 +20569,9 @@ export namespace Egg {
     }
 
     namespace TaskCache {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -20369,6 +20600,7 @@ export namespace Egg {
 
     class TaskCache extends GObject.Object {
         static $gtype: GObject.GType<TaskCache>;
+        declare static readonly __signalSignatures: TaskCache.SignalSignatures;
 
         // Properties
 
@@ -20449,6 +20681,9 @@ export namespace Egg {
     }
 
     namespace ThreeGrid {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Container.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -20464,6 +20699,7 @@ export namespace Egg {
 
     class ThreeGrid extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ThreeGrid>;
+        declare static readonly __signalSignatures: ThreeGrid.SignalSignatures;
 
         // Properties
 
@@ -20927,6 +21163,9 @@ export namespace Egg {
     }
 
     namespace WidgetActionGroup {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.ActionGroup.ConstructorProps {
@@ -20936,6 +21175,7 @@ export namespace Egg {
 
     class WidgetActionGroup extends GObject.Object implements Gio.ActionGroup {
         static $gtype: GObject.GType<WidgetActionGroup>;
+        declare static readonly __signalSignatures: WidgetActionGroup.SignalSignatures;
 
         // Properties
 

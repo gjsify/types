@@ -244,6 +244,9 @@ export namespace Gitg {
         SIGN_COMMIT,
     }
     namespace Async {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         interface ThreadFunc {
             (): void;
         }
@@ -251,6 +254,7 @@ export namespace Gitg {
 
     class Async {
         static $gtype: GObject.GType<Async>;
+        declare static readonly __signalSignatures: Async.SignalSignatures;
 
         // Fields
 
@@ -271,6 +275,9 @@ export namespace Gitg {
     }
 
     namespace AuthenticationDialog {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Dialog.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Dialog.ConstructorProps {
@@ -283,6 +290,7 @@ export namespace Gitg {
 
     class AuthenticationDialog extends Gtk.Dialog {
         static $gtype: GObject.GType<AuthenticationDialog>;
+        declare static readonly __signalSignatures: AuthenticationDialog.SignalSignatures;
 
         // Properties
 
@@ -310,6 +318,9 @@ export namespace Gitg {
     }
 
     namespace AvatarCache {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -317,6 +328,7 @@ export namespace Gitg {
 
     class AvatarCache extends GObject.Object {
         static $gtype: GObject.GType<AvatarCache>;
+        declare static readonly __signalSignatures: AvatarCache.SignalSignatures;
 
         // Constructors
 
@@ -347,6 +359,9 @@ export namespace Gitg {
     }
 
     namespace BranchBase {
+        // Signal signatures
+        interface SignalSignatures extends Ggit.Branch.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -357,6 +372,7 @@ export namespace Gitg {
 
     class BranchBase extends Ggit.Branch implements Ref, Branch {
         static $gtype: GObject.GType<BranchBase>;
+        declare static readonly __signalSignatures: BranchBase.SignalSignatures;
 
         // Constructors
 
@@ -572,6 +588,9 @@ export namespace Gitg {
     }
 
     namespace CellRendererLanes {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.CellRendererText.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.CellRendererText.ConstructorProps {
@@ -588,6 +607,7 @@ export namespace Gitg {
 
     class CellRendererLanes extends Gtk.CellRendererText {
         static $gtype: GObject.GType<CellRendererLanes>;
+        declare static readonly __signalSignatures: CellRendererLanes.SignalSignatures;
 
         // Properties
 
@@ -632,6 +652,9 @@ export namespace Gitg {
     }
 
     namespace Color {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -643,6 +666,7 @@ export namespace Gitg {
 
     class Color extends GObject.Object {
         static $gtype: GObject.GType<Color>;
+        declare static readonly __signalSignatures: Color.SignalSignatures;
 
         // Properties
 
@@ -678,6 +702,9 @@ export namespace Gitg {
     }
 
     namespace CommitListView {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.TreeView.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.TreeView.ConstructorProps, Gtk.Buildable.ConstructorProps {}
@@ -685,6 +712,7 @@ export namespace Gitg {
 
     class CommitListView extends Gtk.TreeView implements Gtk.Buildable {
         static $gtype: GObject.GType<CommitListView>;
+        declare static readonly __signalSignatures: CommitListView.SignalSignatures;
 
         // Constructors
 
@@ -1168,6 +1196,15 @@ export namespace Gitg {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            started: Started;
+            update: Update;
+            finished: Finished;
+            'begin-clear': BeginClear;
+            'end-clear': EndClear;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gtk.TreeModel.ConstructorProps {
@@ -1180,6 +1217,7 @@ export namespace Gitg {
 
     class CommitModel extends GObject.Object implements Gtk.TreeModel {
         static $gtype: GObject.GType<CommitModel>;
+        declare static readonly __signalSignatures: CommitModel.SignalSignatures;
 
         // Properties
 
@@ -1202,6 +1240,18 @@ export namespace Gitg {
 
         // Signals
 
+        connect<K extends keyof CommitModel.SignalSignatures>(
+            signal: K,
+            callback: CommitModel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CommitModel.SignalSignatures>(
+            signal: K,
+            callback: CommitModel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CommitModel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CommitModel.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2085,6 +2135,9 @@ export namespace Gitg {
     }
 
     namespace Commit {
+        // Signal signatures
+        interface SignalSignatures extends Ggit.Commit.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Ggit.Commit.ConstructorProps {
@@ -2102,6 +2155,7 @@ export namespace Gitg {
 
     class Commit extends Ggit.Commit {
         static $gtype: GObject.GType<Commit>;
+        declare static readonly __signalSignatures: Commit.SignalSignatures;
 
         // Properties
 
@@ -2143,8 +2197,14 @@ export namespace Gitg {
         get_author_date_for_display(): string;
     }
 
+    namespace CredentialsManager {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+    }
+
     class CredentialsManager {
         static $gtype: GObject.GType<CredentialsManager>;
+        declare static readonly __signalSignatures: CredentialsManager.SignalSignatures;
 
         // Fields
 
@@ -2166,6 +2226,9 @@ export namespace Gitg {
     }
 
     namespace Date {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -2177,6 +2240,7 @@ export namespace Gitg {
 
     class Date extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Date>;
+        declare static readonly __signalSignatures: Date.SignalSignatures;
 
         // Properties
 
@@ -2735,6 +2799,9 @@ export namespace Gitg {
     }
 
     namespace DiffStat {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.DrawingArea.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.DrawingArea.ConstructorProps {
@@ -2745,6 +2812,7 @@ export namespace Gitg {
 
     class DiffStat extends Gtk.DrawingArea {
         static $gtype: GObject.GType<DiffStat>;
+        declare static readonly __signalSignatures: DiffStat.SignalSignatures;
 
         // Properties
 
@@ -2770,6 +2838,9 @@ export namespace Gitg {
     }
 
     namespace DiffViewOptions {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Toolbar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Toolbar.ConstructorProps {
@@ -2781,6 +2852,7 @@ export namespace Gitg {
 
     class DiffViewOptions extends Gtk.Toolbar {
         static $gtype: GObject.GType<DiffViewOptions>;
+        declare static readonly __signalSignatures: DiffViewOptions.SignalSignatures;
 
         // Properties
 
@@ -2815,6 +2887,11 @@ export namespace Gitg {
 
         interface OptionsChanged {
             (): void;
+        }
+
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Grid.SignalSignatures {
+            'options-changed': OptionsChanged;
         }
 
         // Constructor properties interface
@@ -2854,6 +2931,7 @@ export namespace Gitg {
 
     class DiffView extends Gtk.Grid {
         static $gtype: GObject.GType<DiffView>;
+        declare static readonly __signalSignatures: DiffView.SignalSignatures;
 
         // Properties
 
@@ -2925,6 +3003,15 @@ export namespace Gitg {
 
         // Signals
 
+        connect<K extends keyof DiffView.SignalSignatures>(signal: K, callback: DiffView.SignalSignatures[K]): number;
+        connect_after<K extends keyof DiffView.SignalSignatures>(
+            signal: K,
+            callback: DiffView.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DiffView.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DiffView.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2986,6 +3073,9 @@ export namespace Gitg {
     }
 
     namespace FontManager {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2993,6 +3083,7 @@ export namespace Gitg {
 
     class FontManager extends GObject.Object {
         static $gtype: GObject.GType<FontManager>;
+        declare static readonly __signalSignatures: FontManager.SignalSignatures;
 
         // Constructors
 
@@ -3003,8 +3094,14 @@ export namespace Gitg {
         static ['new'](text_view: Gtk.TextView, plugin: boolean): FontManager;
     }
 
+    namespace GPGUtils {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+    }
+
     class GPGUtils {
         static $gtype: GObject.GType<GPGUtils>;
+        declare static readonly __signalSignatures: GPGUtils.SignalSignatures;
 
         // Fields
 
@@ -3022,6 +3119,9 @@ export namespace Gitg {
     }
 
     namespace Hook {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3035,6 +3135,7 @@ export namespace Gitg {
 
     class Hook extends GObject.Object {
         static $gtype: GObject.GType<Hook>;
+        declare static readonly __signalSignatures: Hook.SignalSignatures;
 
         // Properties
 
@@ -3074,8 +3175,14 @@ export namespace Gitg {
         get_output(): string[];
     }
 
+    namespace LabelRenderer {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+    }
+
     class LabelRenderer {
         static $gtype: GObject.GType<LabelRenderer>;
+        declare static readonly __signalSignatures: LabelRenderer.SignalSignatures;
 
         // Fields
 
@@ -3113,6 +3220,9 @@ export namespace Gitg {
     }
 
     namespace Lanes {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3131,6 +3241,7 @@ export namespace Gitg {
 
     class Lanes extends GObject.Object {
         static $gtype: GObject.GType<Lanes>;
+        declare static readonly __signalSignatures: Lanes.SignalSignatures;
 
         // Properties
 
@@ -3180,6 +3291,9 @@ export namespace Gitg {
     }
 
     namespace Lane {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3187,6 +3301,7 @@ export namespace Gitg {
 
     class Lane extends GObject.Object {
         static $gtype: GObject.GType<Lane>;
+        declare static readonly __signalSignatures: Lane.SignalSignatures;
 
         // Fields
 
@@ -3211,6 +3326,9 @@ export namespace Gitg {
     }
 
     namespace ProgressBin {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Bin.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Bin.ConstructorProps {
@@ -3220,6 +3338,7 @@ export namespace Gitg {
 
     class ProgressBin extends Gtk.Bin {
         static $gtype: GObject.GType<ProgressBin>;
+        declare static readonly __signalSignatures: ProgressBin.SignalSignatures;
 
         // Properties
 
@@ -3241,6 +3360,9 @@ export namespace Gitg {
     }
 
     namespace RefBase {
+        // Signal signatures
+        interface SignalSignatures extends Ggit.Ref.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Ggit.Ref.ConstructorProps, Ref.ConstructorProps {}
@@ -3248,6 +3370,7 @@ export namespace Gitg {
 
     class RefBase extends Ggit.Ref implements Ref {
         static $gtype: GObject.GType<RefBase>;
+        declare static readonly __signalSignatures: RefBase.SignalSignatures;
 
         // Constructors
 
@@ -3442,6 +3565,9 @@ export namespace Gitg {
     }
 
     namespace ParsedRefName {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3458,6 +3584,7 @@ export namespace Gitg {
 
     class ParsedRefName extends GObject.Object {
         static $gtype: GObject.GType<ParsedRefName>;
+        declare static readonly __signalSignatures: ParsedRefName.SignalSignatures;
 
         // Properties
 
@@ -3496,6 +3623,11 @@ export namespace Gitg {
             (refname: string, a: Ggit.OId, b: Ggit.OId): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Ggit.Remote.SignalSignatures {
+            'tip-updated': TipUpdated;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Ggit.Remote.ConstructorProps {
@@ -3513,6 +3645,7 @@ export namespace Gitg {
 
     class Remote extends Ggit.Remote {
         static $gtype: GObject.GType<Remote>;
+        declare static readonly __signalSignatures: Remote.SignalSignatures;
 
         // Properties
 
@@ -3543,6 +3676,8 @@ export namespace Gitg {
 
         // Signals
 
+        connect_after<K extends keyof Remote.SignalSignatures>(signal: K, callback: Remote.SignalSignatures[K]): number;
+        emit<K extends keyof Remote.SignalSignatures>(signal: K, ...args: Parameters<Remote.SignalSignatures[K]>): void;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
         connect_after(
@@ -3629,6 +3764,12 @@ export namespace Gitg {
             (primary_message: string, secondary_message: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.ListBox.SignalSignatures {
+            'repository-activated': RepositoryActivated;
+            'show-error': ShowError;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.ListBox.ConstructorProps {
@@ -3643,6 +3784,7 @@ export namespace Gitg {
 
     class RepositoryListBox extends Gtk.ListBox {
         static $gtype: GObject.GType<RepositoryListBox>;
+        declare static readonly __signalSignatures: RepositoryListBox.SignalSignatures;
 
         // Properties
 
@@ -3667,6 +3809,18 @@ export namespace Gitg {
 
         // Signals
 
+        connect<K extends keyof RepositoryListBox.SignalSignatures>(
+            signal: K,
+            callback: RepositoryListBox.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RepositoryListBox.SignalSignatures>(
+            signal: K,
+            callback: RepositoryListBox.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RepositoryListBox.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RepositoryListBox.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3714,6 +3868,12 @@ export namespace Gitg {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.ListBoxRow.SignalSignatures {
+            'request-remove': RequestRemove;
+            'request-delete-source': RequestDeleteSource;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.ListBoxRow.ConstructorProps {
@@ -3735,6 +3895,7 @@ export namespace Gitg {
 
     class RepositoryListBoxRow extends Gtk.ListBoxRow {
         static $gtype: GObject.GType<RepositoryListBoxRow>;
+        declare static readonly __signalSignatures: RepositoryListBoxRow.SignalSignatures;
 
         // Properties
 
@@ -3777,6 +3938,18 @@ export namespace Gitg {
 
         // Signals
 
+        connect<K extends keyof RepositoryListBoxRow.SignalSignatures>(
+            signal: K,
+            callback: RepositoryListBoxRow.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RepositoryListBoxRow.SignalSignatures>(
+            signal: K,
+            callback: RepositoryListBoxRow.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RepositoryListBoxRow.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RepositoryListBoxRow.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3811,6 +3984,9 @@ export namespace Gitg {
     }
 
     namespace Repository {
+        // Signal signatures
+        interface SignalSignatures extends Ggit.Repository.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Ggit.Repository.ConstructorProps {
@@ -3821,6 +3997,7 @@ export namespace Gitg {
 
     class Repository extends Ggit.Repository {
         static $gtype: GObject.GType<Repository>;
+        declare static readonly __signalSignatures: Repository.SignalSignatures;
 
         // Properties
 
@@ -3871,8 +4048,14 @@ export namespace Gitg {
         get_stage(): Stage;
     }
 
+    namespace Resource {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+    }
+
     class Resource {
         static $gtype: GObject.GType<Resource>;
+        declare static readonly __signalSignatures: Resource.SignalSignatures;
 
         // Fields
 
@@ -3890,6 +4073,9 @@ export namespace Gitg {
     }
 
     namespace SidebarStore {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.TreeStore.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.TreeStore.ConstructorProps {
@@ -3899,6 +4085,7 @@ export namespace Gitg {
 
     class SidebarStore extends Gtk.TreeStore {
         static $gtype: GObject.GType<SidebarStore>;
+        declare static readonly __signalSignatures: SidebarStore.SignalSignatures;
 
         // Properties
 
@@ -3929,6 +4116,9 @@ export namespace Gitg {
     }
 
     namespace SidebarStoreSidebarText {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, SidebarItem.ConstructorProps {}
@@ -3936,6 +4126,7 @@ export namespace Gitg {
 
     class SidebarStoreSidebarText extends GObject.Object implements SidebarItem {
         static $gtype: GObject.GType<SidebarStoreSidebarText>;
+        declare static readonly __signalSignatures: SidebarStoreSidebarText.SignalSignatures;
 
         // Constructors
 
@@ -4399,6 +4590,9 @@ export namespace Gitg {
     }
 
     namespace SidebarStoreSidebarHeader {
+        // Signal signatures
+        interface SignalSignatures extends SidebarStoreSidebarText.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SidebarStoreSidebarText.ConstructorProps {
@@ -4408,6 +4602,7 @@ export namespace Gitg {
 
     class SidebarStoreSidebarHeader extends SidebarStoreSidebarText {
         static $gtype: GObject.GType<SidebarStoreSidebarHeader>;
+        declare static readonly __signalSignatures: SidebarStoreSidebarHeader.SignalSignatures;
 
         // Properties
 
@@ -4440,6 +4635,12 @@ export namespace Gitg {
             (menu: Gtk.Menu): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.TreeView.SignalSignatures {
+            deselected: Deselected;
+            'populate-popup': PopulatePopup;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.TreeView.ConstructorProps {
@@ -4449,6 +4650,7 @@ export namespace Gitg {
 
     class Sidebar extends Gtk.TreeView {
         static $gtype: GObject.GType<Sidebar>;
+        declare static readonly __signalSignatures: Sidebar.SignalSignatures;
 
         // Properties
 
@@ -4465,6 +4667,15 @@ export namespace Gitg {
 
         // Signals
 
+        connect<K extends keyof Sidebar.SignalSignatures>(signal: K, callback: Sidebar.SignalSignatures[K]): number;
+        connect_after<K extends keyof Sidebar.SignalSignatures>(
+            signal: K,
+            callback: Sidebar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Sidebar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Sidebar.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -4499,6 +4710,9 @@ export namespace Gitg {
     }
 
     namespace StageStatusFile {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, StageStatusItem.ConstructorProps {
@@ -4508,6 +4722,7 @@ export namespace Gitg {
 
     class StageStatusFile extends GObject.Object implements StageStatusItem {
         static $gtype: GObject.GType<StageStatusFile>;
+        declare static readonly __signalSignatures: StageStatusFile.SignalSignatures;
 
         // Properties
 
@@ -4989,6 +5204,9 @@ export namespace Gitg {
     }
 
     namespace StageStatusSubmodule {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, StageStatusItem.ConstructorProps {
@@ -5001,6 +5219,7 @@ export namespace Gitg {
 
     class StageStatusSubmodule extends GObject.Object implements StageStatusItem {
         static $gtype: GObject.GType<StageStatusSubmodule>;
+        declare static readonly __signalSignatures: StageStatusSubmodule.SignalSignatures;
 
         // Properties
 
@@ -5487,6 +5706,9 @@ export namespace Gitg {
     }
 
     namespace StageStatusEnumerator {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5494,6 +5716,7 @@ export namespace Gitg {
 
     class StageStatusEnumerator extends GObject.Object {
         static $gtype: GObject.GType<StageStatusEnumerator>;
+        declare static readonly __signalSignatures: StageStatusEnumerator.SignalSignatures;
 
         // Constructors
 
@@ -5510,8 +5733,14 @@ export namespace Gitg {
         next_items_finish(_res_: Gio.AsyncResult): StageStatusItem[];
     }
 
+    namespace PatchSet {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+    }
+
     class PatchSet {
         static $gtype: GObject.GType<PatchSet>;
+        declare static readonly __signalSignatures: PatchSet.SignalSignatures;
 
         // Fields
 
@@ -5531,6 +5760,9 @@ export namespace Gitg {
     }
 
     namespace Stage {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5538,6 +5770,7 @@ export namespace Gitg {
 
     class Stage extends GObject.Object {
         static $gtype: GObject.GType<Stage>;
+        declare static readonly __signalSignatures: Stage.SignalSignatures;
 
         // Constructors
 
@@ -5743,8 +5976,14 @@ export namespace Gitg {
         diff_workdir_finish(_res_: Gio.AsyncResult): Ggit.Diff | null;
     }
 
+    namespace TextConv {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+    }
+
     class TextConv {
         static $gtype: GObject.GType<TextConv>;
+        declare static readonly __signalSignatures: TextConv.SignalSignatures;
 
         // Fields
 
@@ -5768,6 +6007,9 @@ export namespace Gitg {
     }
 
     namespace Theme {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Widget.ConstructorProps {}
@@ -5775,6 +6017,7 @@ export namespace Gitg {
 
     class Theme extends Gtk.Widget {
         static $gtype: GObject.GType<Theme>;
+        declare static readonly __signalSignatures: Theme.SignalSignatures;
 
         // Constructors
 
@@ -5793,8 +6036,14 @@ export namespace Gitg {
         is_theme_dark(): boolean;
     }
 
+    namespace Utils {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+    }
+
     class Utils {
         static $gtype: GObject.GType<Utils>;
+        declare static readonly __signalSignatures: Utils.SignalSignatures;
 
         // Fields
 
@@ -5813,6 +6062,9 @@ export namespace Gitg {
     }
 
     namespace WhenMapped {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         interface OnMapped {
             (): void;
         }
@@ -5820,6 +6072,7 @@ export namespace Gitg {
 
     class WhenMapped {
         static $gtype: GObject.GType<WhenMapped>;
+        declare static readonly __signalSignatures: WhenMapped.SignalSignatures;
 
         // Fields
 

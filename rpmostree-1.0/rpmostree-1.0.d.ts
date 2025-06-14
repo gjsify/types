@@ -102,6 +102,9 @@ export namespace RpmOstree {
         ALLOW_NOENT,
     }
     namespace Package {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -109,6 +112,7 @@ export namespace RpmOstree {
 
     class Package extends GObject.Object {
         static $gtype: GObject.GType<Package>;
+        declare static readonly __signalSignatures: Package.SignalSignatures;
 
         // Constructors
 

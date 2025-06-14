@@ -34,6 +34,9 @@ export namespace PQMarble {
     function set_theming_for_data(widget: Gtk.Widget, data: string, class_name: string | null, priority: number): void;
     function add_css_provider_from_resource(resource: string, priority: number, display: Gdk.Display): void;
     namespace Settings {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -43,6 +46,7 @@ export namespace PQMarble {
 
     abstract class Settings extends GObject.Object {
         static $gtype: GObject.GType<Settings>;
+        declare static readonly __signalSignatures: Settings.SignalSignatures;
 
         // Properties
 

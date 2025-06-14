@@ -2263,6 +2263,15 @@ export namespace Ags {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'load-config': LoadConfig;
+            prepare: Prepare;
+            quit: Quit;
+            'register-types': RegisterTypes;
+            setup: Setup;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Connectable.ConstructorProps {
@@ -2277,6 +2286,7 @@ export namespace Ags {
 
     class ApplicationContext extends GObject.Object implements Connectable {
         static $gtype: GObject.GType<ApplicationContext>;
+        declare static readonly __signalSignatures: ApplicationContext.SignalSignatures;
 
         // Properties
 
@@ -2338,6 +2348,14 @@ export namespace Ags {
 
         // Signals
 
+        connect_after<K extends keyof ApplicationContext.SignalSignatures>(
+            signal: K,
+            callback: ApplicationContext.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ApplicationContext.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ApplicationContext.SignalSignatures[K]>
+        ): void;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
         connect_after(signal: 'load-config', callback: (_source: this) => void): number;
@@ -2970,6 +2988,9 @@ export namespace Ags {
     }
 
     namespace AuthSecurityContext {
+        // Signal signatures
+        interface SignalSignatures extends SecurityContext.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SecurityContext.ConstructorProps {}
@@ -2977,6 +2998,7 @@ export namespace Ags {
 
     class AuthSecurityContext extends SecurityContext {
         static $gtype: GObject.GType<AuthSecurityContext>;
+        declare static readonly __signalSignatures: AuthSecurityContext.SignalSignatures;
 
         // Fields
 
@@ -2999,6 +3021,9 @@ export namespace Ags {
     }
 
     namespace AuthenticationManager {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3006,6 +3031,7 @@ export namespace Ags {
 
     class AuthenticationManager extends GObject.Object {
         static $gtype: GObject.GType<AuthenticationManager>;
+        declare static readonly __signalSignatures: AuthenticationManager.SignalSignatures;
 
         // Fields
 
@@ -3103,6 +3129,9 @@ export namespace Ags {
     }
 
     namespace BusinessGroupManager {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3110,6 +3139,7 @@ export namespace Ags {
 
     class BusinessGroupManager extends GObject.Object {
         static $gtype: GObject.GType<BusinessGroupManager>;
+        declare static readonly __signalSignatures: BusinessGroupManager.SignalSignatures;
 
         // Fields
 
@@ -3151,6 +3181,9 @@ export namespace Ags {
     }
 
     namespace CertificateManager {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3158,6 +3191,7 @@ export namespace Ags {
 
     class CertificateManager extends GObject.Object {
         static $gtype: GObject.GType<CertificateManager>;
+        declare static readonly __signalSignatures: CertificateManager.SignalSignatures;
 
         // Fields
 
@@ -3228,6 +3262,13 @@ export namespace Ags {
             (group: string, key: string, value: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'get-value': GetValue;
+            'load-defaults': LoadDefaults;
+            'set-value': SetValue;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3235,6 +3276,7 @@ export namespace Ags {
 
     class Config extends GObject.Object {
         static $gtype: GObject.GType<Config>;
+        declare static readonly __signalSignatures: Config.SignalSignatures;
 
         // Fields
 
@@ -3253,6 +3295,9 @@ export namespace Ags {
 
         // Signals
 
+        connect<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
+        connect_after<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
+        emit<K extends keyof Config.SignalSignatures>(signal: K, ...args: Parameters<Config.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3347,6 +3392,9 @@ export namespace Ags {
     }
 
     namespace Controller {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3358,6 +3406,7 @@ export namespace Ags {
 
     class Controller extends GObject.Object {
         static $gtype: GObject.GType<Controller>;
+        declare static readonly __signalSignatures: Controller.SignalSignatures;
 
         // Properties
 
@@ -3433,6 +3482,11 @@ export namespace Ags {
             (x: number, reverse: boolean): number;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            convert: Convert;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3443,6 +3497,7 @@ export namespace Ags {
 
     class Conversion extends GObject.Object {
         static $gtype: GObject.GType<Conversion>;
+        declare static readonly __signalSignatures: Conversion.SignalSignatures;
 
         // Properties
 
@@ -3471,6 +3526,18 @@ export namespace Ags {
 
         // Signals
 
+        connect<K extends keyof Conversion.SignalSignatures>(
+            signal: K,
+            callback: Conversion.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Conversion.SignalSignatures>(
+            signal: K,
+            callback: Conversion.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Conversion.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Conversion.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3501,6 +3568,9 @@ export namespace Ags {
     }
 
     namespace DestroyWorker {
+        // Signal signatures
+        interface SignalSignatures extends WorkerThread.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends WorkerThread.ConstructorProps, Connectable.ConstructorProps {}
@@ -3508,6 +3578,7 @@ export namespace Ags {
 
     class DestroyWorker extends WorkerThread implements Connectable {
         static $gtype: GObject.GType<DestroyWorker>;
+        declare static readonly __signalSignatures: DestroyWorker.SignalSignatures;
 
         // Fields
 
@@ -4020,6 +4091,19 @@ export namespace Ags {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            open: Open;
+            'open-from-data': OpenFromData;
+            read: Read;
+            'read-resolve': ReadResolve;
+            'read-start': ReadStart;
+            'rw-open': RwOpen;
+            write: Write;
+            'write-concurrent': WriteConcurrent;
+            'write-resolve': WriteResolve;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4036,6 +4120,7 @@ export namespace Ags {
 
     class File extends GObject.Object {
         static $gtype: GObject.GType<File>;
+        declare static readonly __signalSignatures: File.SignalSignatures;
 
         // Properties
 
@@ -4112,6 +4197,9 @@ export namespace Ags {
 
         // Signals
 
+        connect<K extends keyof File.SignalSignatures>(signal: K, callback: File.SignalSignatures[K]): number;
+        connect_after<K extends keyof File.SignalSignatures>(signal: K, callback: File.SignalSignatures[K]): number;
+        emit<K extends keyof File.SignalSignatures>(signal: K, ...args: Parameters<File.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -4385,6 +4473,11 @@ export namespace Ags {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            resolved: Resolved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4397,6 +4490,7 @@ export namespace Ags {
 
     class FileIdRef extends GObject.Object {
         static $gtype: GObject.GType<FileIdRef>;
+        declare static readonly __signalSignatures: FileIdRef.SignalSignatures;
 
         // Properties
 
@@ -4438,6 +4532,15 @@ export namespace Ags {
 
         // Signals
 
+        connect<K extends keyof FileIdRef.SignalSignatures>(signal: K, callback: FileIdRef.SignalSignatures[K]): number;
+        connect_after<K extends keyof FileIdRef.SignalSignatures>(
+            signal: K,
+            callback: FileIdRef.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FileIdRef.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FileIdRef.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -4467,6 +4570,11 @@ export namespace Ags {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            start: Start;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4478,6 +4586,7 @@ export namespace Ags {
 
     class FileLaunch extends GObject.Object {
         static $gtype: GObject.GType<FileLaunch>;
+        declare static readonly __signalSignatures: FileLaunch.SignalSignatures;
 
         // Properties
 
@@ -4511,6 +4620,18 @@ export namespace Ags {
 
         // Signals
 
+        connect<K extends keyof FileLaunch.SignalSignatures>(
+            signal: K,
+            callback: FileLaunch.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FileLaunch.SignalSignatures>(
+            signal: K,
+            callback: FileLaunch.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FileLaunch.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FileLaunch.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -4534,6 +4655,9 @@ export namespace Ags {
     }
 
     namespace FileLink {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Plugin.ConstructorProps {
@@ -4544,6 +4668,7 @@ export namespace Ags {
 
     class FileLink extends GObject.Object implements Plugin {
         static $gtype: GObject.GType<FileLink>;
+        declare static readonly __signalSignatures: FileLink.SignalSignatures;
 
         // Properties
 
@@ -5122,6 +5247,11 @@ export namespace Ags {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            resolve: Resolve;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5133,6 +5263,7 @@ export namespace Ags {
 
     class FileLookup extends GObject.Object {
         static $gtype: GObject.GType<FileLookup>;
+        declare static readonly __signalSignatures: FileLookup.SignalSignatures;
 
         // Properties
 
@@ -5160,6 +5291,18 @@ export namespace Ags {
 
         // Signals
 
+        connect<K extends keyof FileLookup.SignalSignatures>(
+            signal: K,
+            callback: FileLookup.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FileLookup.SignalSignatures>(
+            signal: K,
+            callback: FileLookup.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FileLookup.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FileLookup.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -5211,6 +5354,11 @@ export namespace Ags {
             ): any | null;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Controller.SignalSignatures {
+            'do-request': DoRequest;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Controller.ConstructorProps {}
@@ -5218,6 +5366,7 @@ export namespace Ags {
 
     class FrontController extends Controller {
         static $gtype: GObject.GType<FrontController>;
+        declare static readonly __signalSignatures: FrontController.SignalSignatures;
 
         // Fields
 
@@ -5233,6 +5382,18 @@ export namespace Ags {
 
         // Signals
 
+        connect<K extends keyof FrontController.SignalSignatures>(
+            signal: K,
+            callback: FrontController.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FrontController.SignalSignatures>(
+            signal: K,
+            callback: FrontController.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FrontController.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FrontController.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -5313,6 +5474,9 @@ export namespace Ags {
     }
 
     namespace Function {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5327,6 +5491,7 @@ export namespace Ags {
 
     class Function extends GObject.Object {
         static $gtype: GObject.GType<Function>;
+        declare static readonly __signalSignatures: Function.SignalSignatures;
 
         // Properties
 
@@ -5399,6 +5564,9 @@ export namespace Ags {
     }
 
     namespace GenericMainLoop {
+        // Signal signatures
+        interface SignalSignatures extends Thread.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5409,6 +5577,7 @@ export namespace Ags {
 
     class GenericMainLoop extends Thread implements Connectable, MainLoop {
         static $gtype: GObject.GType<GenericMainLoop>;
+        declare static readonly __signalSignatures: GenericMainLoop.SignalSignatures;
 
         // Fields
 
@@ -6056,6 +6225,9 @@ export namespace Ags {
     }
 
     namespace Log {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6063,6 +6235,7 @@ export namespace Ags {
 
     class Log extends GObject.Object {
         static $gtype: GObject.GType<Log>;
+        declare static readonly __signalSignatures: Log.SignalSignatures;
 
         // Fields
 
@@ -6100,6 +6273,9 @@ export namespace Ags {
     }
 
     namespace MessageDelivery {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6107,6 +6283,7 @@ export namespace Ags {
 
     class MessageDelivery extends GObject.Object {
         static $gtype: GObject.GType<MessageDelivery>;
+        declare static readonly __signalSignatures: MessageDelivery.SignalSignatures;
 
         // Fields
 
@@ -6201,6 +6378,9 @@ export namespace Ags {
     }
 
     namespace MessageEnvelope {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6213,6 +6393,7 @@ export namespace Ags {
 
     class MessageEnvelope extends GObject.Object {
         static $gtype: GObject.GType<MessageEnvelope>;
+        declare static readonly __signalSignatures: MessageEnvelope.SignalSignatures;
 
         // Properties
 
@@ -6288,6 +6469,9 @@ export namespace Ags {
     }
 
     namespace MessageQueue {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6300,6 +6484,7 @@ export namespace Ags {
 
     class MessageQueue extends GObject.Object {
         static $gtype: GObject.GType<MessageQueue>;
+        declare static readonly __signalSignatures: MessageQueue.SignalSignatures;
 
         // Properties
 
@@ -6400,6 +6585,9 @@ export namespace Ags {
     }
 
     namespace PasswordStoreManager {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6407,6 +6595,7 @@ export namespace Ags {
 
     class PasswordStoreManager extends GObject.Object {
         static $gtype: GObject.GType<PasswordStoreManager>;
+        declare static readonly __signalSignatures: PasswordStoreManager.SignalSignatures;
 
         // Fields
 
@@ -6470,6 +6659,13 @@ export namespace Ags {
             (group: string, key: string, value: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'get-value': GetValue;
+            'load-defaults': LoadDefaults;
+            'set-value': SetValue;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6477,6 +6673,7 @@ export namespace Ags {
 
     class Priority extends GObject.Object {
         static $gtype: GObject.GType<Priority>;
+        declare static readonly __signalSignatures: Priority.SignalSignatures;
 
         // Fields
 
@@ -6495,6 +6692,15 @@ export namespace Ags {
 
         // Signals
 
+        connect<K extends keyof Priority.SignalSignatures>(signal: K, callback: Priority.SignalSignatures[K]): number;
+        connect_after<K extends keyof Priority.SignalSignatures>(
+            signal: K,
+            callback: Priority.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Priority.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Priority.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -6569,6 +6775,9 @@ export namespace Ags {
     }
 
     namespace Registry {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6578,6 +6787,7 @@ export namespace Ags {
 
     class Registry extends GObject.Object {
         static $gtype: GObject.GType<Registry>;
+        declare static readonly __signalSignatures: Registry.SignalSignatures;
 
         // Properties
 
@@ -6618,6 +6828,11 @@ export namespace Ags {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Thread.SignalSignatures {
+            'safe-run': SafeRun;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Thread.ConstructorProps, Connectable.ConstructorProps {
@@ -6628,6 +6843,7 @@ export namespace Ags {
 
     class ReturnableThread extends Thread implements Connectable {
         static $gtype: GObject.GType<ReturnableThread>;
+        declare static readonly __signalSignatures: ReturnableThread.SignalSignatures;
 
         // Properties
 
@@ -6662,6 +6878,14 @@ export namespace Ags {
 
         // Signals
 
+        connect_after<K extends keyof ReturnableThread.SignalSignatures>(
+            signal: K,
+            callback: ReturnableThread.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ReturnableThread.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ReturnableThread.SignalSignatures[K]>
+        ): void;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
         connect_after(signal: 'safe-run', callback: (_source: this) => void): number;
@@ -7261,6 +7485,9 @@ export namespace Ags {
     }
 
     namespace SecurityContext {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7270,6 +7497,7 @@ export namespace Ags {
 
     class SecurityContext extends GObject.Object {
         static $gtype: GObject.GType<SecurityContext>;
+        declare static readonly __signalSignatures: SecurityContext.SignalSignatures;
 
         // Properties
 
@@ -7340,6 +7568,13 @@ export namespace Ags {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            listen: Listen;
+            start: Start;
+            stop: Stop;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7358,6 +7593,7 @@ export namespace Ags {
 
     class Server extends GObject.Object {
         static $gtype: GObject.GType<Server>;
+        declare static readonly __signalSignatures: Server.SignalSignatures;
 
         // Properties
 
@@ -7438,6 +7674,9 @@ export namespace Ags {
 
         // Signals
 
+        connect<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
+        connect_after<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
+        emit<K extends keyof Server.SignalSignatures>(signal: K, ...args: Parameters<Server.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -7510,6 +7749,9 @@ export namespace Ags {
     }
 
     namespace ServerApplicationContext {
+        // Signal signatures
+        interface SignalSignatures extends ApplicationContext.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7524,6 +7766,7 @@ export namespace Ags {
         implements ConcurrencyProvider, Connectable, ServiceProvider
     {
         static $gtype: GObject.GType<ServerApplicationContext>;
+        declare static readonly __signalSignatures: ServerApplicationContext.SignalSignatures;
 
         // Fields
 
@@ -8205,6 +8448,9 @@ export namespace Ags {
     }
 
     namespace ServerStatus {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Connectable.ConstructorProps {}
@@ -8212,6 +8458,7 @@ export namespace Ags {
 
     class ServerStatus extends GObject.Object implements Connectable {
         static $gtype: GObject.GType<ServerStatus>;
+        declare static readonly __signalSignatures: ServerStatus.SignalSignatures;
 
         // Fields
 
@@ -8784,6 +9031,9 @@ export namespace Ags {
     }
 
     namespace SolverMatrix {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -8800,6 +9050,7 @@ export namespace Ags {
 
     class SolverMatrix extends GObject.Object {
         static $gtype: GObject.GType<SolverMatrix>;
+        declare static readonly __signalSignatures: SolverMatrix.SignalSignatures;
 
         // Properties
 
@@ -8908,6 +9159,9 @@ export namespace Ags {
     }
 
     namespace SolverPolynomial {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -8924,6 +9178,7 @@ export namespace Ags {
 
     class SolverPolynomial extends GObject.Object {
         static $gtype: GObject.GType<SolverPolynomial>;
+        declare static readonly __signalSignatures: SolverPolynomial.SignalSignatures;
 
         // Properties
 
@@ -9074,6 +9329,9 @@ export namespace Ags {
     }
 
     namespace SolverVector {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9086,6 +9344,7 @@ export namespace Ags {
 
     class SolverVector extends GObject.Object {
         static $gtype: GObject.GType<SolverVector>;
+        declare static readonly __signalSignatures: SolverVector.SignalSignatures;
 
         // Properties
 
@@ -9164,6 +9423,12 @@ export namespace Ags {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            failure: Failure;
+            launch: Launch;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9174,6 +9439,7 @@ export namespace Ags {
 
     class Task extends GObject.Object {
         static $gtype: GObject.GType<Task>;
+        declare static readonly __signalSignatures: Task.SignalSignatures;
 
         // Properties
 
@@ -9204,6 +9470,9 @@ export namespace Ags {
 
         // Signals
 
+        connect<K extends keyof Task.SignalSignatures>(signal: K, callback: Task.SignalSignatures[K]): number;
+        connect_after<K extends keyof Task.SignalSignatures>(signal: K, callback: Task.SignalSignatures[K]): number;
+        emit<K extends keyof Task.SignalSignatures>(signal: K, ...args: Parameters<Task.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -9262,6 +9531,11 @@ export namespace Ags {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            complete: Complete;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Connectable.ConstructorProps {
@@ -9271,6 +9545,7 @@ export namespace Ags {
 
     class TaskCompletion extends GObject.Object implements Connectable {
         static $gtype: GObject.GType<TaskCompletion>;
+        declare static readonly __signalSignatures: TaskCompletion.SignalSignatures;
 
         // Properties
 
@@ -9298,6 +9573,14 @@ export namespace Ags {
 
         // Signals
 
+        connect_after<K extends keyof TaskCompletion.SignalSignatures>(
+            signal: K,
+            callback: TaskCompletion.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TaskCompletion.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TaskCompletion.SignalSignatures[K]>
+        ): void;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
         connect_after(signal: 'complete', callback: (_source: this) => void): number;
@@ -9894,6 +10177,11 @@ export namespace Ags {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            run: Run;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Connectable.ConstructorProps {}
@@ -9901,6 +10189,7 @@ export namespace Ags {
 
     class TaskLauncher extends GObject.Object implements Connectable {
         static $gtype: GObject.GType<TaskLauncher>;
+        declare static readonly __signalSignatures: TaskLauncher.SignalSignatures;
 
         // Fields
 
@@ -9921,6 +10210,14 @@ export namespace Ags {
 
         // Signals
 
+        connect_after<K extends keyof TaskLauncher.SignalSignatures>(
+            signal: K,
+            callback: TaskLauncher.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TaskLauncher.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TaskLauncher.SignalSignatures[K]>
+        ): void;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
         connect_after(signal: 'run', callback: (_source: this) => void): number;
@@ -10542,6 +10839,14 @@ export namespace Ags {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            clock: Clock;
+            run: Run;
+            start: Start;
+            stop: Stop;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Connectable.ConstructorProps {
@@ -10554,6 +10859,7 @@ export namespace Ags {
 
     class Thread extends GObject.Object implements Connectable {
         static $gtype: GObject.GType<Thread>;
+        declare static readonly __signalSignatures: Thread.SignalSignatures;
 
         // Properties
 
@@ -10602,6 +10908,8 @@ export namespace Ags {
 
         // Signals
 
+        connect_after<K extends keyof Thread.SignalSignatures>(signal: K, callback: Thread.SignalSignatures[K]): number;
+        emit<K extends keyof Thread.SignalSignatures>(signal: K, ...args: Parameters<Thread.SignalSignatures[K]>): void;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
         connect_after(signal: 'clock', callback: (_source: this) => number): number;
@@ -11406,6 +11714,9 @@ export namespace Ags {
     }
 
     namespace ThreadApplicationContext {
+        // Signal signatures
+        interface SignalSignatures extends ApplicationContext.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -11419,6 +11730,7 @@ export namespace Ags {
 
     class ThreadApplicationContext extends ApplicationContext implements ConcurrencyProvider, Connectable {
         static $gtype: GObject.GType<ThreadApplicationContext>;
+        declare static readonly __signalSignatures: ThreadApplicationContext.SignalSignatures;
 
         // Properties
 
@@ -12085,6 +12397,11 @@ export namespace Ags {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            start: Start;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -12097,6 +12414,7 @@ export namespace Ags {
 
     class ThreadPool extends GObject.Object {
         static $gtype: GObject.GType<ThreadPool>;
+        declare static readonly __signalSignatures: ThreadPool.SignalSignatures;
 
         // Properties
 
@@ -12140,6 +12458,18 @@ export namespace Ags {
 
         // Signals
 
+        connect<K extends keyof ThreadPool.SignalSignatures>(
+            signal: K,
+            callback: ThreadPool.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ThreadPool.SignalSignatures>(
+            signal: K,
+            callback: ThreadPool.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ThreadPool.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ThreadPool.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -12169,6 +12499,9 @@ export namespace Ags {
     }
 
     namespace Timestamp {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -12176,6 +12509,7 @@ export namespace Ags {
 
     class Timestamp extends GObject.Object {
         static $gtype: GObject.GType<Timestamp>;
+        declare static readonly __signalSignatures: Timestamp.SignalSignatures;
 
         // Fields
 
@@ -12233,6 +12567,9 @@ export namespace Ags {
     }
 
     namespace Turtle {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -12244,6 +12581,7 @@ export namespace Ags {
 
     class Turtle extends GObject.Object {
         static $gtype: GObject.GType<Turtle>;
+        declare static readonly __signalSignatures: Turtle.SignalSignatures;
 
         // Properties
 
@@ -12634,6 +12972,9 @@ export namespace Ags {
     }
 
     namespace TurtleManager {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -12641,6 +12982,7 @@ export namespace Ags {
 
     class TurtleManager extends GObject.Object {
         static $gtype: GObject.GType<TurtleManager>;
+        declare static readonly __signalSignatures: TurtleManager.SignalSignatures;
 
         // Fields
 
@@ -12684,6 +13026,11 @@ export namespace Ags {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Thread.SignalSignatures {
+            'do-poll': DoPoll;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Thread.ConstructorProps, Connectable.ConstructorProps {}
@@ -12691,6 +13038,7 @@ export namespace Ags {
 
     class WorkerThread extends Thread implements Connectable {
         static $gtype: GObject.GType<WorkerThread>;
+        declare static readonly __signalSignatures: WorkerThread.SignalSignatures;
 
         // Fields
 
@@ -12707,6 +13055,14 @@ export namespace Ags {
 
         // Signals
 
+        connect_after<K extends keyof WorkerThread.SignalSignatures>(
+            signal: K,
+            callback: WorkerThread.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WorkerThread.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WorkerThread.SignalSignatures[K]>
+        ): void;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
         connect_after(signal: 'do-poll', callback: (_source: this) => void): number;
@@ -13303,6 +13659,9 @@ export namespace Ags {
     }
 
     namespace XmlAuthentication {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Authentication.ConstructorProps {}
@@ -13310,6 +13669,7 @@ export namespace Ags {
 
     class XmlAuthentication extends GObject.Object implements Authentication {
         static $gtype: GObject.GType<XmlAuthentication>;
+        declare static readonly __signalSignatures: XmlAuthentication.SignalSignatures;
 
         // Fields
 
@@ -13859,6 +14219,9 @@ export namespace Ags {
     }
 
     namespace XmlBusinessGroup {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, BusinessGroup.ConstructorProps {}
@@ -13866,6 +14229,7 @@ export namespace Ags {
 
     class XmlBusinessGroup extends GObject.Object implements BusinessGroup {
         static $gtype: GObject.GType<XmlBusinessGroup>;
+        declare static readonly __signalSignatures: XmlBusinessGroup.SignalSignatures;
 
         // Fields
 
@@ -14462,6 +14826,9 @@ export namespace Ags {
     }
 
     namespace XmlCertificate {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Certificate.ConstructorProps {}
@@ -14469,6 +14836,7 @@ export namespace Ags {
 
     class XmlCertificate extends GObject.Object implements Certificate {
         static $gtype: GObject.GType<XmlCertificate>;
+        declare static readonly __signalSignatures: XmlCertificate.SignalSignatures;
 
         // Fields
 
@@ -15179,6 +15547,9 @@ export namespace Ags {
     }
 
     namespace XmlPasswordStore {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, PasswordStore.ConstructorProps {}
@@ -15186,6 +15557,7 @@ export namespace Ags {
 
     class XmlPasswordStore extends GObject.Object implements PasswordStore {
         static $gtype: GObject.GType<XmlPasswordStore>;
+        declare static readonly __signalSignatures: XmlPasswordStore.SignalSignatures;
 
         // Fields
 

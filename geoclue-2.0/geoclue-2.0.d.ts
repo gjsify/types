@@ -81,6 +81,9 @@ export namespace Geoclue {
         AUTO_DELETE,
     }
     namespace ClientProxy {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -99,6 +102,7 @@ export namespace Geoclue {
         implements Client, Gio.AsyncInitable<ClientProxy>, Gio.DBusInterface, Gio.Initable
     {
         static $gtype: GObject.GType<ClientProxy>;
+        declare static readonly __signalSignatures: ClientProxy.SignalSignatures;
 
         // Constructors
 
@@ -1225,6 +1229,9 @@ export namespace Geoclue {
     }
 
     namespace ClientSkeleton {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1238,6 +1245,7 @@ export namespace Geoclue {
      */
     class ClientSkeleton extends Gio.DBusInterfaceSkeleton implements Client, Gio.DBusInterface {
         static $gtype: GObject.GType<ClientSkeleton>;
+        declare static readonly __signalSignatures: ClientSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -1911,6 +1919,9 @@ export namespace Geoclue {
     }
 
     namespace LocationProxy {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1929,6 +1940,7 @@ export namespace Geoclue {
         implements Location, Gio.AsyncInitable<LocationProxy>, Gio.DBusInterface, Gio.Initable
     {
         static $gtype: GObject.GType<LocationProxy>;
+        declare static readonly __signalSignatures: LocationProxy.SignalSignatures;
 
         // Constructors
 
@@ -2837,6 +2849,9 @@ export namespace Geoclue {
     }
 
     namespace LocationSkeleton {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2850,6 +2865,7 @@ export namespace Geoclue {
      */
     class LocationSkeleton extends Gio.DBusInterfaceSkeleton implements Location, Gio.DBusInterface {
         static $gtype: GObject.GType<LocationSkeleton>;
+        declare static readonly __signalSignatures: LocationSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -3394,6 +3410,9 @@ export namespace Geoclue {
     }
 
     namespace ManagerProxy {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3412,6 +3431,7 @@ export namespace Geoclue {
         implements Manager, Gio.AsyncInitable<ManagerProxy>, Gio.DBusInterface, Gio.Initable
     {
         static $gtype: GObject.GType<ManagerProxy>;
+        declare static readonly __signalSignatures: ManagerProxy.SignalSignatures;
 
         // Constructors
 
@@ -4528,6 +4548,9 @@ export namespace Geoclue {
     }
 
     namespace ManagerSkeleton {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4541,6 +4564,7 @@ export namespace Geoclue {
      */
     class ManagerSkeleton extends Gio.DBusInterfaceSkeleton implements Manager, Gio.DBusInterface {
         static $gtype: GObject.GType<ManagerSkeleton>;
+        declare static readonly __signalSignatures: ManagerSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -5293,6 +5317,9 @@ export namespace Geoclue {
     }
 
     namespace Simple {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps {
@@ -5311,6 +5338,7 @@ export namespace Geoclue {
 
     class Simple extends GObject.Object implements Gio.AsyncInitable<Simple> {
         static $gtype: GObject.GType<Simple>;
+        declare static readonly __signalSignatures: Simple.SignalSignatures;
 
         // Properties
 

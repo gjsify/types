@@ -426,6 +426,11 @@ export namespace Shell {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'windows-changed': WindowsChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -448,6 +453,7 @@ export namespace Shell {
      */
     class App extends GObject.Object {
         static $gtype: GObject.GType<App>;
+        declare static readonly __signalSignatures: App.SignalSignatures;
 
         // Properties
 
@@ -496,6 +502,9 @@ export namespace Shell {
 
         // Signals
 
+        connect<K extends keyof App.SignalSignatures>(signal: K, callback: App.SignalSignatures[K]): number;
+        connect_after<K extends keyof App.SignalSignatures>(signal: K, callback: App.SignalSignatures[K]): number;
+        emit<K extends keyof App.SignalSignatures>(signal: K, ...args: Parameters<App.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -685,6 +694,12 @@ export namespace Shell {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'app-state-changed': AppStateChanged;
+            'installed-changed': InstalledChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -692,6 +707,7 @@ export namespace Shell {
 
     class AppSystem extends GObject.Object {
         static $gtype: GObject.GType<AppSystem>;
+        declare static readonly __signalSignatures: AppSystem.SignalSignatures;
 
         // Constructors
 
@@ -701,6 +717,15 @@ export namespace Shell {
 
         // Signals
 
+        connect<K extends keyof AppSystem.SignalSignatures>(signal: K, callback: AppSystem.SignalSignatures[K]): number;
+        connect_after<K extends keyof AppSystem.SignalSignatures>(
+            signal: K,
+            callback: AppSystem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AppSystem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AppSystem.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -765,6 +790,9 @@ export namespace Shell {
     }
 
     namespace AppUsage {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -783,6 +811,7 @@ export namespace Shell {
      */
     class AppUsage extends GObject.Object {
         static $gtype: GObject.GType<AppUsage>;
+        declare static readonly __signalSignatures: AppUsage.SignalSignatures;
 
         // Constructors
 
@@ -807,6 +836,9 @@ export namespace Shell {
     }
 
     namespace BlurEffect {
+        // Signal signatures
+        interface SignalSignatures extends Clutter.Effect.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Clutter.Effect.ConstructorProps {
@@ -834,6 +866,7 @@ export namespace Shell {
      */
     class BlurEffect extends Clutter.Effect {
         static $gtype: GObject.GType<BlurEffect>;
+        declare static readonly __signalSignatures: BlurEffect.SignalSignatures;
 
         // Properties
 
@@ -863,6 +896,9 @@ export namespace Shell {
     }
 
     namespace CameraMonitor {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -873,6 +909,7 @@ export namespace Shell {
 
     class CameraMonitor extends GObject.Object {
         static $gtype: GObject.GType<CameraMonitor>;
+        declare static readonly __signalSignatures: CameraMonitor.SignalSignatures;
 
         // Properties
 
@@ -887,6 +924,9 @@ export namespace Shell {
     }
 
     namespace GLSLEffect {
+        // Signal signatures
+        interface SignalSignatures extends Clutter.OffscreenEffect.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Clutter.OffscreenEffect.ConstructorProps {}
@@ -901,6 +941,7 @@ export namespace Shell {
      */
     class GLSLEffect extends Clutter.OffscreenEffect {
         static $gtype: GObject.GType<GLSLEffect>;
+        declare static readonly __signalSignatures: GLSLEffect.SignalSignatures;
 
         // Constructors
 
@@ -951,6 +992,13 @@ export namespace Shell {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'locate-pointer': LocatePointer;
+            'notify-error': NotifyError;
+            shutdown: Shutdown;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -994,6 +1042,7 @@ export namespace Shell {
 
     class Global extends GObject.Object {
         static $gtype: GObject.GType<Global>;
+        declare static readonly __signalSignatures: Global.SignalSignatures;
 
         // Properties
 
@@ -1047,6 +1096,9 @@ export namespace Shell {
 
         // Signals
 
+        connect<K extends keyof Global.SignalSignatures>(signal: K, callback: Global.SignalSignatures[K]): number;
+        connect_after<K extends keyof Global.SignalSignatures>(signal: K, callback: Global.SignalSignatures[K]): number;
+        emit<K extends keyof Global.SignalSignatures>(signal: K, ...args: Parameters<Global.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1198,6 +1250,9 @@ export namespace Shell {
     }
 
     namespace InvertLightnessEffect {
+        // Signal signatures
+        interface SignalSignatures extends Clutter.OffscreenEffect.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Clutter.OffscreenEffect.ConstructorProps {}
@@ -1214,6 +1269,7 @@ export namespace Shell {
      */
     class InvertLightnessEffect extends Clutter.OffscreenEffect {
         static $gtype: GObject.GType<InvertLightnessEffect>;
+        declare static readonly __signalSignatures: InvertLightnessEffect.SignalSignatures;
 
         // Constructors
 
@@ -1233,6 +1289,12 @@ export namespace Shell {
 
         interface ShowPassword {
             (): void;
+        }
+
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'show-confirm': ShowConfirm;
+            'show-password': ShowPassword;
         }
 
         // Constructor properties interface
@@ -1255,6 +1317,7 @@ export namespace Shell {
 
     class KeyringPrompt extends GObject.Object implements Gcr.Prompt {
         static $gtype: GObject.GType<KeyringPrompt>;
+        declare static readonly __signalSignatures: KeyringPrompt.SignalSignatures;
 
         // Properties
 
@@ -1321,6 +1384,18 @@ export namespace Shell {
 
         // Signals
 
+        connect<K extends keyof KeyringPrompt.SignalSignatures>(
+            signal: K,
+            callback: KeyringPrompt.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof KeyringPrompt.SignalSignatures>(
+            signal: K,
+            callback: KeyringPrompt.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof KeyringPrompt.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<KeyringPrompt.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2357,6 +2432,11 @@ export namespace Shell {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gio.MountOperation.SignalSignatures {
+            'show-processes-2': ShowProcesses2;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gio.MountOperation.ConstructorProps {}
@@ -2364,6 +2444,7 @@ export namespace Shell {
 
     class MountOperation extends Gio.MountOperation {
         static $gtype: GObject.GType<MountOperation>;
+        declare static readonly __signalSignatures: MountOperation.SignalSignatures;
 
         // Constructors
 
@@ -2375,6 +2456,18 @@ export namespace Shell {
 
         // Signals
 
+        connect<K extends keyof MountOperation.SignalSignatures>(
+            signal: K,
+            callback: MountOperation.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MountOperation.SignalSignatures>(
+            signal: K,
+            callback: MountOperation.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MountOperation.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MountOperation.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2400,6 +2493,12 @@ export namespace Shell {
             (object: string, p0: NM.Connection, p1: string, p2: string[], p3: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends NM.SecretAgentOld.SignalSignatures {
+            'cancel-request': CancelRequest;
+            'new-request': NewRequest;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2410,6 +2509,7 @@ export namespace Shell {
 
     class NetworkAgent extends NM.SecretAgentOld implements Gio.AsyncInitable<NetworkAgent>, Gio.Initable {
         static $gtype: GObject.GType<NetworkAgent>;
+        declare static readonly __signalSignatures: NetworkAgent.SignalSignatures;
 
         // Constructors
 
@@ -2419,6 +2519,18 @@ export namespace Shell {
 
         // Signals
 
+        connect<K extends keyof NetworkAgent.SignalSignatures>(
+            signal: K,
+            callback: NetworkAgent.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof NetworkAgent.SignalSignatures>(
+            signal: K,
+            callback: NetworkAgent.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof NetworkAgent.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<NetworkAgent.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3175,6 +3287,9 @@ export namespace Shell {
     }
 
     namespace PerfLog {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3201,6 +3316,7 @@ export namespace Shell {
      */
     class PerfLog extends GObject.Object {
         static $gtype: GObject.GType<PerfLog>;
+        declare static readonly __signalSignatures: PerfLog.SignalSignatures;
 
         // Constructors
 
@@ -3337,6 +3453,12 @@ export namespace Shell {
             (object: string, p0: string, p1: string, p2: string, p3: string[]): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends PolkitAgent.Listener.SignalSignatures {
+            cancel: Cancel;
+            initiate: Initiate;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends PolkitAgent.Listener.ConstructorProps {}
@@ -3344,6 +3466,7 @@ export namespace Shell {
 
     class PolkitAuthenticationAgent extends PolkitAgent.Listener {
         static $gtype: GObject.GType<PolkitAuthenticationAgent>;
+        declare static readonly __signalSignatures: PolkitAuthenticationAgent.SignalSignatures;
 
         // Constructors
 
@@ -3355,6 +3478,18 @@ export namespace Shell {
 
         // Signals
 
+        connect<K extends keyof PolkitAuthenticationAgent.SignalSignatures>(
+            signal: K,
+            callback: PolkitAuthenticationAgent.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PolkitAuthenticationAgent.SignalSignatures>(
+            signal: K,
+            callback: PolkitAuthenticationAgent.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PolkitAuthenticationAgent.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PolkitAuthenticationAgent.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3387,6 +3522,11 @@ export namespace Shell {
             (object: Mtk.Rectangle): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'screenshot-taken': ScreenshotTaken;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3400,6 +3540,7 @@ export namespace Shell {
      */
     class Screenshot extends GObject.Object {
         static $gtype: GObject.GType<Screenshot>;
+        declare static readonly __signalSignatures: Screenshot.SignalSignatures;
 
         // Constructors
 
@@ -3411,6 +3552,18 @@ export namespace Shell {
 
         // Signals
 
+        connect<K extends keyof Screenshot.SignalSignatures>(
+            signal: K,
+            callback: Screenshot.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Screenshot.SignalSignatures>(
+            signal: K,
+            callback: Screenshot.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Screenshot.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Screenshot.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3660,6 +3813,9 @@ export namespace Shell {
     }
 
     namespace SecureTextBuffer {
+        // Signal signatures
+        interface SignalSignatures extends Clutter.TextBuffer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Clutter.TextBuffer.ConstructorProps {}
@@ -3667,6 +3823,7 @@ export namespace Shell {
 
     class SecureTextBuffer extends Clutter.TextBuffer {
         static $gtype: GObject.GType<SecureTextBuffer>;
+        declare static readonly __signalSignatures: SecureTextBuffer.SignalSignatures;
 
         // Constructors
 
@@ -3678,6 +3835,9 @@ export namespace Shell {
     }
 
     namespace SquareBin {
+        // Signal signatures
+        interface SignalSignatures extends St.Bin.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor>
@@ -3691,6 +3851,7 @@ export namespace Shell {
         implements Atk.ImplementorIface, Clutter.Animatable
     {
         static $gtype: GObject.GType<SquareBin>;
+        declare static readonly __signalSignatures: SquareBin.SignalSignatures;
 
         // Constructors
 
@@ -4141,6 +4302,9 @@ export namespace Shell {
     }
 
     namespace Stack {
+        // Signal signatures
+        interface SignalSignatures extends St.Widget.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4161,6 +4325,7 @@ export namespace Shell {
      */
     class Stack extends St.Widget implements Atk.ImplementorIface, Clutter.Animatable {
         static $gtype: GObject.GType<Stack>;
+        declare static readonly __signalSignatures: Stack.SignalSignatures;
 
         // Constructors
 
@@ -4611,6 +4776,9 @@ export namespace Shell {
     }
 
     namespace TrayIcon {
+        // Signal signatures
+        interface SignalSignatures extends Clutter.Clone.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor>
@@ -4629,6 +4797,7 @@ export namespace Shell {
         implements Atk.ImplementorIface, Clutter.Animatable
     {
         static $gtype: GObject.GType<TrayIcon>;
+        declare static readonly __signalSignatures: TrayIcon.SignalSignatures;
 
         // Properties
 
@@ -5108,6 +5277,12 @@ export namespace Shell {
             (object: Clutter.Actor): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'tray-icon-added': TrayIconAdded;
+            'tray-icon-removed': TrayIconRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5118,6 +5293,7 @@ export namespace Shell {
 
     class TrayManager extends GObject.Object {
         static $gtype: GObject.GType<TrayManager>;
+        declare static readonly __signalSignatures: TrayManager.SignalSignatures;
 
         // Properties
 
@@ -5134,6 +5310,18 @@ export namespace Shell {
 
         // Signals
 
+        connect<K extends keyof TrayManager.SignalSignatures>(
+            signal: K,
+            callback: TrayManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TrayManager.SignalSignatures>(
+            signal: K,
+            callback: TrayManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TrayManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TrayManager.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -5217,6 +5405,26 @@ export namespace Shell {
             (object: Meta.WindowActor): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'confirm-display-change': ConfirmDisplayChange;
+            'create-close-dialog': CreateCloseDialog;
+            'create-inhibit-shortcuts-dialog': CreateInhibitShortcutsDialog;
+            destroy: Destroy;
+            'filter-keybinding': FilterKeybinding;
+            'hide-tile-preview': HideTilePreview;
+            'kill-switch-workspace': KillSwitchWorkspace;
+            'kill-window-effects': KillWindowEffects;
+            map: Map;
+            minimize: Minimize;
+            'show-tile-preview': ShowTilePreview;
+            'show-window-menu': ShowWindowMenu;
+            'size-change': SizeChange;
+            'size-changed': SizeChanged;
+            'switch-workspace': SwitchWorkspace;
+            unminimize: Unminimize;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5224,6 +5432,7 @@ export namespace Shell {
 
     class WM extends GObject.Object {
         static $gtype: GObject.GType<WM>;
+        declare static readonly __signalSignatures: WM.SignalSignatures;
 
         // Constructors
 
@@ -5235,6 +5444,9 @@ export namespace Shell {
 
         // Signals
 
+        connect<K extends keyof WM.SignalSignatures>(signal: K, callback: WM.SignalSignatures[K]): number;
+        connect_after<K extends keyof WM.SignalSignatures>(signal: K, callback: WM.SignalSignatures[K]): number;
+        emit<K extends keyof WM.SignalSignatures>(signal: K, ...args: Parameters<WM.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -5383,6 +5595,9 @@ export namespace Shell {
     }
 
     namespace WindowPreview {
+        // Signal signatures
+        interface SignalSignatures extends St.Widget.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5396,6 +5611,7 @@ export namespace Shell {
 
     class WindowPreview extends St.Widget implements Atk.ImplementorIface, Clutter.Animatable {
         static $gtype: GObject.GType<WindowPreview>;
+        declare static readonly __signalSignatures: WindowPreview.SignalSignatures;
 
         // Properties
 
@@ -5853,6 +6069,9 @@ export namespace Shell {
     }
 
     namespace WindowPreviewLayout {
+        // Signal signatures
+        interface SignalSignatures extends Clutter.LayoutManager.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Clutter.LayoutManager.ConstructorProps {
@@ -5863,6 +6082,7 @@ export namespace Shell {
 
     class WindowPreviewLayout extends Clutter.LayoutManager {
         static $gtype: GObject.GType<WindowPreviewLayout>;
+        declare static readonly __signalSignatures: WindowPreviewLayout.SignalSignatures;
 
         // Properties
 
@@ -5912,6 +6132,12 @@ export namespace Shell {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'startup-sequence-changed': StartupSequenceChanged;
+            'tracked-windows-changed': TrackedWindowsChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5930,6 +6156,7 @@ export namespace Shell {
      */
     class WindowTracker extends GObject.Object {
         static $gtype: GObject.GType<WindowTracker>;
+        declare static readonly __signalSignatures: WindowTracker.SignalSignatures;
 
         // Properties
 
@@ -5944,6 +6171,18 @@ export namespace Shell {
 
         // Signals
 
+        connect<K extends keyof WindowTracker.SignalSignatures>(
+            signal: K,
+            callback: WindowTracker.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WindowTracker.SignalSignatures>(
+            signal: K,
+            callback: WindowTracker.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WindowTracker.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WindowTracker.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -5977,6 +6216,9 @@ export namespace Shell {
     }
 
     namespace WorkspaceBackground {
+        // Signal signatures
+        interface SignalSignatures extends St.Widget.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5992,6 +6234,7 @@ export namespace Shell {
 
     class WorkspaceBackground extends St.Widget implements Atk.ImplementorIface, Clutter.Animatable {
         static $gtype: GObject.GType<WorkspaceBackground>;
+        declare static readonly __signalSignatures: WorkspaceBackground.SignalSignatures;
 
         // Properties
 

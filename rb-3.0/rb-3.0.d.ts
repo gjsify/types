@@ -1751,6 +1751,9 @@ export namespace RB {
         (file: Gio.File, info: Gio.FileInfo, data?: any | null): boolean;
     }
     namespace Application {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Application.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1763,6 +1766,7 @@ export namespace RB {
 
     class Application extends Gtk.Application implements Gio.ActionGroup, Gio.ActionMap {
         static $gtype: GObject.GType<Application>;
+        declare static readonly __signalSignatures: Application.SignalSignatures;
 
         // Properties
 
@@ -2291,6 +2295,9 @@ export namespace RB {
     }
 
     namespace AsyncCopy {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2298,6 +2305,7 @@ export namespace RB {
 
     class AsyncCopy extends GObject.Object {
         static $gtype: GObject.GType<AsyncCopy>;
+        declare static readonly __signalSignatures: AsyncCopy.SignalSignatures;
 
         // Constructors
 
@@ -2331,6 +2339,9 @@ export namespace RB {
     }
 
     namespace AutoPlaylistSource {
+        // Signal signatures
+        interface SignalSignatures extends PlaylistSource.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2342,6 +2353,7 @@ export namespace RB {
 
     class AutoPlaylistSource extends PlaylistSource implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<AutoPlaylistSource>;
+        declare static readonly __signalSignatures: AutoPlaylistSource.SignalSignatures;
 
         // Constructors
 
@@ -2802,6 +2814,9 @@ export namespace RB {
     }
 
     namespace BrowserSource {
+        // Signal signatures
+        interface SignalSignatures extends Source.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2815,6 +2830,7 @@ export namespace RB {
 
     abstract class BrowserSource extends Source implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<BrowserSource>;
+        declare static readonly __signalSignatures: BrowserSource.SignalSignatures;
 
         // Properties
 
@@ -3289,6 +3305,9 @@ export namespace RB {
     }
 
     namespace ButtonBar {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Grid.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3303,6 +3322,7 @@ export namespace RB {
 
     class ButtonBar extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<ButtonBar>;
+        declare static readonly __signalSignatures: ButtonBar.SignalSignatures;
 
         // Properties
 
@@ -3800,6 +3820,11 @@ export namespace RB {
             (path: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.CellRendererPixbuf.SignalSignatures {
+            'pixbuf-clicked': PixbufClicked;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.CellRendererPixbuf.ConstructorProps {}
@@ -3807,6 +3832,7 @@ export namespace RB {
 
     class CellRendererPixbuf extends Gtk.CellRendererPixbuf {
         static $gtype: GObject.GType<CellRendererPixbuf>;
+        declare static readonly __signalSignatures: CellRendererPixbuf.SignalSignatures;
 
         // Constructors
 
@@ -3818,6 +3844,18 @@ export namespace RB {
 
         // Signals
 
+        connect<K extends keyof CellRendererPixbuf.SignalSignatures>(
+            signal: K,
+            callback: CellRendererPixbuf.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CellRendererPixbuf.SignalSignatures>(
+            signal: K,
+            callback: CellRendererPixbuf.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CellRendererPixbuf.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CellRendererPixbuf.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3837,6 +3875,11 @@ export namespace RB {
             (score: string, path: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.CellRenderer.SignalSignatures {
+            rated: Rated;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.CellRenderer.ConstructorProps {
@@ -3846,6 +3889,7 @@ export namespace RB {
 
     class CellRendererRating extends Gtk.CellRenderer {
         static $gtype: GObject.GType<CellRendererRating>;
+        declare static readonly __signalSignatures: CellRendererRating.SignalSignatures;
 
         // Properties
 
@@ -3866,6 +3910,18 @@ export namespace RB {
 
         // Signals
 
+        connect<K extends keyof CellRendererRating.SignalSignatures>(
+            signal: K,
+            callback: CellRendererRating.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CellRendererRating.SignalSignatures>(
+            signal: K,
+            callback: CellRendererRating.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CellRendererRating.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CellRendererRating.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3879,6 +3935,9 @@ export namespace RB {
     }
 
     namespace ChunkLoader {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3886,6 +3945,7 @@ export namespace RB {
 
     class ChunkLoader extends GObject.Object {
         static $gtype: GObject.GType<ChunkLoader>;
+        declare static readonly __signalSignatures: ChunkLoader.SignalSignatures;
 
         // Constructors
 
@@ -3939,6 +3999,12 @@ export namespace RB {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {
+            deleted: Deleted;
+            'status-changed': StatusChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3958,6 +4024,7 @@ export namespace RB {
 
     abstract class DisplayPage extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<DisplayPage>;
+        declare static readonly __signalSignatures: DisplayPage.SignalSignatures;
 
         // Properties
 
@@ -4002,6 +4069,18 @@ export namespace RB {
 
         // Signals
 
+        connect<K extends keyof DisplayPage.SignalSignatures>(
+            signal: K,
+            callback: DisplayPage.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DisplayPage.SignalSignatures>(
+            signal: K,
+            callback: DisplayPage.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DisplayPage.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DisplayPage.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -4582,6 +4661,9 @@ export namespace RB {
     }
 
     namespace DisplayPageGroup {
+        // Signal signatures
+        interface SignalSignatures extends DisplayPage.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4597,6 +4679,7 @@ export namespace RB {
 
     class DisplayPageGroup extends DisplayPage implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<DisplayPageGroup>;
+        declare static readonly __signalSignatures: DisplayPageGroup.SignalSignatures;
 
         // Properties
 
@@ -5094,6 +5177,12 @@ export namespace RB {
             (page: DisplayPage, iter: Gtk.TreeIter): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.TreeModelFilter.SignalSignatures {
+            'drop-received': DropReceived;
+            'page-inserted': PageInserted;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5104,6 +5193,7 @@ export namespace RB {
 
     class DisplayPageModel extends Gtk.TreeModelFilter implements Gtk.TreeDragSource, Gtk.TreeModel {
         static $gtype: GObject.GType<DisplayPageModel>;
+        declare static readonly __signalSignatures: DisplayPageModel.SignalSignatures;
 
         // Constructors
 
@@ -5115,6 +5205,18 @@ export namespace RB {
 
         // Signals
 
+        connect<K extends keyof DisplayPageModel.SignalSignatures>(
+            signal: K,
+            callback: DisplayPageModel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DisplayPageModel.SignalSignatures>(
+            signal: K,
+            callback: DisplayPageModel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DisplayPageModel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DisplayPageModel.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -6093,6 +6195,12 @@ export namespace RB {
             (page: GObject.Object): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Grid.SignalSignatures {
+            'drop-received': DropReceived;
+            selected: Selected;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6107,6 +6215,7 @@ export namespace RB {
 
     class DisplayPageTree extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<DisplayPageTree>;
+        declare static readonly __signalSignatures: DisplayPageTree.SignalSignatures;
 
         // Properties
 
@@ -6132,6 +6241,18 @@ export namespace RB {
 
         // Signals
 
+        connect<K extends keyof DisplayPageTree.SignalSignatures>(
+            signal: K,
+            callback: DisplayPageTree.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DisplayPageTree.SignalSignatures>(
+            signal: K,
+            callback: DisplayPageTree.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DisplayPageTree.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DisplayPageTree.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -6641,6 +6762,12 @@ export namespace RB {
             (uri: string, source: GObject.Object): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'prepare-sink': PrepareSink;
+            'prepare-source': PrepareSource;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6648,6 +6775,7 @@ export namespace RB {
 
     class EncoderFactory extends GObject.Object {
         static $gtype: GObject.GType<EncoderFactory>;
+        declare static readonly __signalSignatures: EncoderFactory.SignalSignatures;
 
         // Fields
 
@@ -6661,6 +6789,18 @@ export namespace RB {
 
         // Signals
 
+        connect<K extends keyof EncoderFactory.SignalSignatures>(
+            signal: K,
+            callback: EncoderFactory.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof EncoderFactory.SignalSignatures>(
+            signal: K,
+            callback: EncoderFactory.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EncoderFactory.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EncoderFactory.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -6724,6 +6864,17 @@ export namespace RB {
             (over_entry: boolean): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {
+            'entries-replaced': EntriesReplaced;
+            'entry-activated': EntryActivated;
+            'entry-added': EntryAdded;
+            'entry-deleted': EntryDeleted;
+            'have-selection-changed': HaveSelectionChanged;
+            'selection-changed': SelectionChanged;
+            'show-popup': ShowPopup;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6750,6 +6901,7 @@ export namespace RB {
 
     class EntryView extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<EntryView>;
+        declare static readonly __signalSignatures: EntryView.SignalSignatures;
 
         // Properties
 
@@ -6837,6 +6989,15 @@ export namespace RB {
 
         // Signals
 
+        connect<K extends keyof EntryView.SignalSignatures>(signal: K, callback: EntryView.SignalSignatures[K]): number;
+        connect_after<K extends keyof EntryView.SignalSignatures>(
+            signal: K,
+            callback: EntryView.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EntryView.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EntryView.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -7538,6 +7699,14 @@ export namespace RB {
             (data: GObject.Value | any): any | null;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            added: Added;
+            load: Load;
+            request: Request;
+            store: Store;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7547,6 +7716,7 @@ export namespace RB {
 
     class ExtDB extends GObject.Object {
         static $gtype: GObject.GType<ExtDB>;
+        declare static readonly __signalSignatures: ExtDB.SignalSignatures;
 
         // Properties
 
@@ -7565,6 +7735,9 @@ export namespace RB {
 
         // Signals
 
+        connect<K extends keyof ExtDB.SignalSignatures>(signal: K, callback: ExtDB.SignalSignatures[K]): number;
+        connect_after<K extends keyof ExtDB.SignalSignatures>(signal: K, callback: ExtDB.SignalSignatures[K]): number;
+        emit<K extends keyof ExtDB.SignalSignatures>(signal: K, ...args: Parameters<ExtDB.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -7659,6 +7832,12 @@ export namespace RB {
             (uri: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {
+            'pixbuf-dropped': PixbufDropped;
+            'uri-dropped': UriDropped;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7673,6 +7852,7 @@ export namespace RB {
 
     class FadingImage extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<FadingImage>;
+        declare static readonly __signalSignatures: FadingImage.SignalSignatures;
 
         // Properties
 
@@ -7697,6 +7877,18 @@ export namespace RB {
 
         // Signals
 
+        connect<K extends keyof FadingImage.SignalSignatures>(
+            signal: K,
+            callback: FadingImage.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FadingImage.SignalSignatures>(
+            signal: K,
+            callback: FadingImage.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FadingImage.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FadingImage.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -8343,6 +8535,9 @@ export namespace RB {
     }
 
     namespace History {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -8355,6 +8550,7 @@ export namespace RB {
 
     class History extends GObject.Object {
         static $gtype: GObject.GType<History>;
+        declare static readonly __signalSignatures: History.SignalSignatures;
 
         // Properties
 
@@ -8503,6 +8699,9 @@ export namespace RB {
     }
 
     namespace LibraryBrowser {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -8524,6 +8723,7 @@ export namespace RB {
 
     class LibraryBrowser extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<LibraryBrowser>;
+        declare static readonly __signalSignatures: LibraryBrowser.SignalSignatures;
 
         // Properties
 
@@ -9108,6 +9308,11 @@ export namespace RB {
             (object: number, p0: number, p1: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'items-changed': ItemsChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -9115,6 +9320,7 @@ export namespace RB {
 
     class ListModel extends GObject.Object {
         static $gtype: GObject.GType<ListModel>;
+        declare static readonly __signalSignatures: ListModel.SignalSignatures;
 
         // Constructors
 
@@ -9126,6 +9332,15 @@ export namespace RB {
 
         // Signals
 
+        connect<K extends keyof ListModel.SignalSignatures>(signal: K, callback: ListModel.SignalSignatures[K]): number;
+        connect_after<K extends keyof ListModel.SignalSignatures>(
+            signal: K,
+            callback: ListModel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ListModel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ListModel.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -9196,6 +9411,9 @@ export namespace RB {
     }
 
     namespace MediaPlayerEntryType {
+        // Signal signatures
+        interface SignalSignatures extends RhythmDBEntryType.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends RhythmDBEntryType.ConstructorProps {
@@ -9208,6 +9426,7 @@ export namespace RB {
 
     class MediaPlayerEntryType extends RhythmDBEntryType {
         static $gtype: GObject.GType<MediaPlayerEntryType>;
+        declare static readonly __signalSignatures: MediaPlayerEntryType.SignalSignatures;
 
         // Properties
 
@@ -9224,6 +9443,9 @@ export namespace RB {
     }
 
     namespace MediaPlayerSource {
+        // Signal signatures
+        interface SignalSignatures extends BrowserSource.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9241,6 +9463,7 @@ export namespace RB {
 
     class MediaPlayerSource extends BrowserSource implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<MediaPlayerSource>;
+        declare static readonly __signalSignatures: MediaPlayerSource.SignalSignatures;
 
         // Properties
 
@@ -9735,6 +9958,9 @@ export namespace RB {
     }
 
     namespace MetaData {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -9742,6 +9968,7 @@ export namespace RB {
 
     class MetaData extends GObject.Object {
         static $gtype: GObject.GType<MetaData>;
+        declare static readonly __signalSignatures: MetaData.SignalSignatures;
 
         // Constructors
 
@@ -9848,6 +10075,11 @@ export namespace RB {
             (have_next: boolean, have_previous: boolean): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'have-next-previous-changed': HaveNextPreviousChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9859,6 +10091,7 @@ export namespace RB {
 
     class PlayOrder extends GObject.Object {
         static $gtype: GObject.GType<PlayOrder>;
+        declare static readonly __signalSignatures: PlayOrder.SignalSignatures;
 
         // Properties
 
@@ -9885,6 +10118,15 @@ export namespace RB {
 
         // Signals
 
+        connect<K extends keyof PlayOrder.SignalSignatures>(signal: K, callback: PlayOrder.SignalSignatures[K]): number;
+        connect_after<K extends keyof PlayOrder.SignalSignatures>(
+            signal: K,
+            callback: PlayOrder.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PlayOrder.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PlayOrder.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -10054,6 +10296,14 @@ export namespace RB {
             (source: GObject.Object): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'load-finish': LoadFinish;
+            'load-start': LoadStart;
+            'playlist-added': PlaylistAdded;
+            'playlist-created': PlaylistCreated;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -10066,6 +10316,7 @@ export namespace RB {
 
     class PlaylistManager extends GObject.Object {
         static $gtype: GObject.GType<PlaylistManager>;
+        declare static readonly __signalSignatures: PlaylistManager.SignalSignatures;
 
         // Properties
 
@@ -10088,6 +10339,18 @@ export namespace RB {
 
         // Signals
 
+        connect<K extends keyof PlaylistManager.SignalSignatures>(
+            signal: K,
+            callback: PlaylistManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PlaylistManager.SignalSignatures>(
+            signal: K,
+            callback: PlaylistManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PlaylistManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PlaylistManager.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -10217,6 +10480,9 @@ export namespace RB {
     }
 
     namespace PlaylistSource {
+        // Signal signatures
+        interface SignalSignatures extends Source.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -10233,6 +10499,7 @@ export namespace RB {
 
     abstract class PlaylistSource extends Source implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<PlaylistSource>;
+        declare static readonly __signalSignatures: PlaylistSource.SignalSignatures;
 
         // Properties
 
@@ -10797,6 +11064,13 @@ export namespace RB {
             (object: RhythmDBEntry): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'feed-update-status': FeedUpdateStatus;
+            'finish-download': FinishDownload;
+            'start-download': StartDownload;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -10807,6 +11081,7 @@ export namespace RB {
 
     class PodcastManager extends GObject.Object {
         static $gtype: GObject.GType<PodcastManager>;
+        declare static readonly __signalSignatures: PodcastManager.SignalSignatures;
 
         // Properties
 
@@ -10824,6 +11099,18 @@ export namespace RB {
 
         // Signals
 
+        connect<K extends keyof PodcastManager.SignalSignatures>(
+            signal: K,
+            callback: PodcastManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PodcastManager.SignalSignatures>(
+            signal: K,
+            callback: PodcastManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PodcastManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PodcastManager.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -10903,6 +11190,12 @@ export namespace RB {
             (object?: any | null): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            finished: Finished;
+            result: Result;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -10910,6 +11203,7 @@ export namespace RB {
 
     class PodcastSearch extends GObject.Object {
         static $gtype: GObject.GType<PodcastSearch>;
+        declare static readonly __signalSignatures: PodcastSearch.SignalSignatures;
 
         // Constructors
 
@@ -10919,6 +11213,18 @@ export namespace RB {
 
         // Signals
 
+        connect<K extends keyof PodcastSearch.SignalSignatures>(
+            signal: K,
+            callback: PodcastSearch.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PodcastSearch.SignalSignatures>(
+            signal: K,
+            callback: PodcastSearch.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PodcastSearch.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PodcastSearch.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -10943,6 +11249,9 @@ export namespace RB {
     }
 
     namespace PodcastSearchITunes {
+        // Signal signatures
+        interface SignalSignatures extends PodcastSearch.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends PodcastSearch.ConstructorProps {}
@@ -10950,6 +11259,7 @@ export namespace RB {
 
     class PodcastSearchITunes extends PodcastSearch {
         static $gtype: GObject.GType<PodcastSearchITunes>;
+        declare static readonly __signalSignatures: PodcastSearchITunes.SignalSignatures;
 
         // Constructors
 
@@ -10981,6 +11291,15 @@ export namespace RB {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.ScrolledWindow.SignalSignatures {
+            'properties-selected': PropertiesSelected;
+            'property-activated': PropertyActivated;
+            'property-selected': PropertySelected;
+            'property-selection-reset': PropertySelectionReset;
+            'show-popup': ShowPopup;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -10998,6 +11317,7 @@ export namespace RB {
 
     class PropertyView extends Gtk.ScrolledWindow implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<PropertyView>;
+        declare static readonly __signalSignatures: PropertyView.SignalSignatures;
 
         // Properties
 
@@ -11041,6 +11361,18 @@ export namespace RB {
 
         // Signals
 
+        connect<K extends keyof PropertyView.SignalSignatures>(
+            signal: K,
+            callback: PropertyView.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PropertyView.SignalSignatures>(
+            signal: K,
+            callback: PropertyView.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PropertyView.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PropertyView.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -11582,6 +11914,13 @@ export namespace RB {
             (score: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {
+            'adjust-rating': AdjustRating;
+            rated: Rated;
+            'set-rating': SetRating;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -11594,6 +11933,7 @@ export namespace RB {
 
     class Rating extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Rating>;
+        declare static readonly __signalSignatures: Rating.SignalSignatures;
 
         // Properties
 
@@ -11614,6 +11954,9 @@ export namespace RB {
 
         // Signals
 
+        connect<K extends keyof Rating.SignalSignatures>(signal: K, callback: Rating.SignalSignatures[K]): number;
+        connect_after<K extends keyof Rating.SignalSignatures>(signal: K, callback: Rating.SignalSignatures[K]): number;
+        emit<K extends keyof Rating.SignalSignatures>(signal: K, ...args: Parameters<Rating.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -12270,6 +12613,14 @@ export namespace RB {
             (source: GObject.Object): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'create-source-device': CreateSourceDevice;
+            'create-source-mount': CreateSourceMount;
+            'create-source-volume': CreateSourceVolume;
+            'medium-added': MediumAdded;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -12280,6 +12631,7 @@ export namespace RB {
 
     class RemovableMediaManager extends GObject.Object {
         static $gtype: GObject.GType<RemovableMediaManager>;
+        declare static readonly __signalSignatures: RemovableMediaManager.SignalSignatures;
 
         // Properties
 
@@ -12305,6 +12657,18 @@ export namespace RB {
 
         // Signals
 
+        connect<K extends keyof RemovableMediaManager.SignalSignatures>(
+            signal: K,
+            callback: RemovableMediaManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RemovableMediaManager.SignalSignatures>(
+            signal: K,
+            callback: RemovableMediaManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RemovableMediaManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RemovableMediaManager.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -12412,6 +12776,23 @@ export namespace RB {
             (uri: string, error?: any | null): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'create-mount-op': CreateMountOp;
+            'entry-added': EntryAdded;
+            'entry-changed': EntryChanged;
+            'entry-deleted': EntryDeleted;
+            'entry-extra-metadata-gather': EntryExtraMetadataGather;
+            'entry-extra-metadata-notify': EntryExtraMetadataNotify;
+            'entry-extra-metadata-request': EntryExtraMetadataRequest;
+            'entry-keyword-added': EntryKeywordAdded;
+            'entry-keyword-removed': EntryKeywordRemoved;
+            'load-complete': LoadComplete;
+            'read-only': ReadOnly;
+            'save-complete': SaveComplete;
+            'save-error': SaveError;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -12434,6 +12815,7 @@ export namespace RB {
      */
     abstract class RhythmDB extends GObject.Object {
         static $gtype: GObject.GType<RhythmDB>;
+        declare static readonly __signalSignatures: RhythmDB.SignalSignatures;
 
         // Properties
 
@@ -12471,6 +12853,15 @@ export namespace RB {
 
         // Signals
 
+        connect<K extends keyof RhythmDB.SignalSignatures>(signal: K, callback: RhythmDB.SignalSignatures[K]): number;
+        connect_after<K extends keyof RhythmDB.SignalSignatures>(
+            signal: K,
+            callback: RhythmDB.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RhythmDB.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RhythmDB.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -13006,6 +13397,9 @@ export namespace RB {
     }
 
     namespace RhythmDBEntryType {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -13023,6 +13417,7 @@ export namespace RB {
 
     class RhythmDBEntryType extends GObject.Object {
         static $gtype: GObject.GType<RhythmDBEntryType>;
+        declare static readonly __signalSignatures: RhythmDBEntryType.SignalSignatures;
 
         // Properties
 
@@ -13123,6 +13518,14 @@ export namespace RB {
             (total: number, imported: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            complete: Complete;
+            'entry-added': EntryAdded;
+            'scan-complete': ScanComplete;
+            'status-changed': StatusChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, TaskProgress.ConstructorProps {
@@ -13138,6 +13541,7 @@ export namespace RB {
 
     class RhythmDBImportJob extends GObject.Object implements TaskProgress {
         static $gtype: GObject.GType<RhythmDBImportJob>;
+        declare static readonly __signalSignatures: RhythmDBImportJob.SignalSignatures;
 
         // Properties
 
@@ -13164,6 +13568,18 @@ export namespace RB {
 
         // Signals
 
+        connect<K extends keyof RhythmDBImportJob.SignalSignatures>(
+            signal: K,
+            callback: RhythmDBImportJob.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RhythmDBImportJob.SignalSignatures>(
+            signal: K,
+            callback: RhythmDBImportJob.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RhythmDBImportJob.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RhythmDBImportJob.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -13721,6 +14137,11 @@ export namespace RB {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'pre-row-deletion': PreRowDeletion;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gtk.TreeModel.ConstructorProps {
@@ -13733,6 +14154,7 @@ export namespace RB {
 
     class RhythmDBPropertyModel extends GObject.Object implements Gtk.TreeModel {
         static $gtype: GObject.GType<RhythmDBPropertyModel>;
+        declare static readonly __signalSignatures: RhythmDBPropertyModel.SignalSignatures;
 
         // Properties
 
@@ -13765,6 +14187,18 @@ export namespace RB {
 
         // Signals
 
+        connect<K extends keyof RhythmDBPropertyModel.SignalSignatures>(
+            signal: K,
+            callback: RhythmDBPropertyModel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RhythmDBPropertyModel.SignalSignatures>(
+            signal: K,
+            callback: RhythmDBPropertyModel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RhythmDBPropertyModel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RhythmDBPropertyModel.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -14663,6 +15097,16 @@ export namespace RB {
             (entry: RhythmDBEntry): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            complete: Complete;
+            'entry-prop-changed': EntryPropChanged;
+            'entry-removed': EntryRemoved;
+            'filter-entry-drop': FilterEntryDrop;
+            'non-entry-dropped': NonEntryDropped;
+            'post-entry-delete': PostEntryDelete;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -14692,6 +15136,7 @@ export namespace RB {
 
     class RhythmDBQueryModel extends GObject.Object implements Gtk.TreeModel, RhythmDBQueryResults {
         static $gtype: GObject.GType<RhythmDBQueryModel>;
+        declare static readonly __signalSignatures: RhythmDBQueryModel.SignalSignatures;
 
         // Properties
 
@@ -14743,6 +15188,18 @@ export namespace RB {
 
         // Signals
 
+        connect<K extends keyof RhythmDBQueryModel.SignalSignatures>(
+            signal: K,
+            callback: RhythmDBQueryModel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RhythmDBQueryModel.SignalSignatures>(
+            signal: K,
+            callback: RhythmDBQueryModel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RhythmDBQueryModel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RhythmDBQueryModel.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -15902,6 +16359,11 @@ export namespace RB {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            complete: Complete;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, RhythmDBQueryResults.ConstructorProps {}
@@ -15909,6 +16371,7 @@ export namespace RB {
 
     class RhythmDBQueryResultList extends GObject.Object implements RhythmDBQueryResults {
         static $gtype: GObject.GType<RhythmDBQueryResultList>;
+        declare static readonly __signalSignatures: RhythmDBQueryResultList.SignalSignatures;
 
         // Constructors
 
@@ -15920,6 +16383,18 @@ export namespace RB {
 
         // Signals
 
+        connect<K extends keyof RhythmDBQueryResultList.SignalSignatures>(
+            signal: K,
+            callback: RhythmDBQueryResultList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RhythmDBQueryResultList.SignalSignatures>(
+            signal: K,
+            callback: RhythmDBQueryResultList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RhythmDBQueryResultList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RhythmDBQueryResultList.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -16424,6 +16899,13 @@ export namespace RB {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {
+            activate: Activate;
+            search: Search;
+            'show-popup': ShowPopup;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -16440,6 +16922,7 @@ export namespace RB {
 
     class SearchEntry extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<SearchEntry>;
+        declare static readonly __signalSignatures: SearchEntry.SignalSignatures;
 
         // Properties
 
@@ -16477,6 +16960,18 @@ export namespace RB {
 
         // Signals
 
+        connect<K extends keyof SearchEntry.SignalSignatures>(
+            signal: K,
+            callback: SearchEntry.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SearchEntry.SignalSignatures>(
+            signal: K,
+            callback: SearchEntry.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SearchEntry.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SearchEntry.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -16990,6 +17485,9 @@ export namespace RB {
     }
 
     namespace SegmentedBar {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -17007,6 +17505,7 @@ export namespace RB {
 
     class SegmentedBar extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<SegmentedBar>;
+        declare static readonly __signalSignatures: SegmentedBar.SignalSignatures;
 
         // Properties
 
@@ -17705,6 +18204,15 @@ export namespace RB {
             (initial: boolean, visible: boolean): boolean;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'create-song-info': CreateSongInfo;
+            'notify-custom': NotifyCustom;
+            'notify-playing-entry': NotifyPlayingEntry;
+            'visibility-changed': VisibilityChanged;
+            'visibility-changing': VisibilityChanging;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -17749,6 +18257,7 @@ export namespace RB {
 
     class Shell extends GObject.Object {
         static $gtype: GObject.GType<Shell>;
+        declare static readonly __signalSignatures: Shell.SignalSignatures;
 
         // Properties
 
@@ -17903,6 +18412,9 @@ export namespace RB {
 
         // Signals
 
+        connect<K extends keyof Shell.SignalSignatures>(signal: K, callback: Shell.SignalSignatures[K]): number;
+        connect_after<K extends keyof Shell.SignalSignatures>(signal: K, callback: Shell.SignalSignatures[K]): number;
+        emit<K extends keyof Shell.SignalSignatures>(signal: K, ...args: Parameters<Shell.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -18131,6 +18643,18 @@ export namespace RB {
             (title: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'elapsed-changed': ElapsedChanged;
+            'elapsed-nano-changed': ElapsedNanoChanged;
+            'playing-changed': PlayingChanged;
+            'playing-song-changed': PlayingSongChanged;
+            'playing-song-property-changed': PlayingSongPropertyChanged;
+            'playing-source-changed': PlayingSourceChanged;
+            'playing-uri-changed': PlayingUriChanged;
+            'window-title-changed': WindowTitleChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -18157,6 +18681,7 @@ export namespace RB {
 
     class ShellPlayer extends GObject.Object {
         static $gtype: GObject.GType<ShellPlayer>;
+        declare static readonly __signalSignatures: ShellPlayer.SignalSignatures;
 
         // Properties
 
@@ -18250,6 +18775,18 @@ export namespace RB {
 
         // Signals
 
+        connect<K extends keyof ShellPlayer.SignalSignatures>(
+            signal: K,
+            callback: ShellPlayer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ShellPlayer.SignalSignatures>(
+            signal: K,
+            callback: ShellPlayer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ShellPlayer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ShellPlayer.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -18496,6 +19033,9 @@ export namespace RB {
     }
 
     namespace ShellPreferences {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Dialog.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -18506,6 +19046,7 @@ export namespace RB {
 
     class ShellPreferences extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ShellPreferences>;
+        declare static readonly __signalSignatures: ShellPreferences.SignalSignatures;
 
         // Constructors
 
@@ -18996,6 +19537,12 @@ export namespace RB {
             (entry: RhythmDBEntry): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Dialog.SignalSignatures {
+            'post-metadata-change': PostMetadataChange;
+            'pre-metadata-change': PreMetadataChange;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -19014,6 +19561,7 @@ export namespace RB {
 
     class SongInfo extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<SongInfo>;
+        declare static readonly __signalSignatures: SongInfo.SignalSignatures;
 
         // Properties
 
@@ -19069,6 +19617,15 @@ export namespace RB {
 
         // Signals
 
+        connect<K extends keyof SongInfo.SignalSignatures>(signal: K, callback: SongInfo.SignalSignatures[K]): number;
+        connect_after<K extends keyof SongInfo.SignalSignatures>(
+            signal: K,
+            callback: SongInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SongInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SongInfo.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -19552,6 +20109,13 @@ export namespace RB {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends DisplayPage.SignalSignatures {
+            'filter-changed': FilterChanged;
+            'playback-status-changed': PlaybackStatusChanged;
+            'reset-filters': ResetFilters;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -19583,6 +20147,7 @@ export namespace RB {
 
     abstract class Source extends DisplayPage implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Source>;
+        declare static readonly __signalSignatures: Source.SignalSignatures;
 
         // Properties
 
@@ -19705,6 +20270,9 @@ export namespace RB {
 
         // Signals
 
+        connect<K extends keyof Source.SignalSignatures>(signal: K, callback: Source.SignalSignatures[K]): number;
+        connect_after<K extends keyof Source.SignalSignatures>(signal: K, callback: Source.SignalSignatures[K]): number;
+        emit<K extends keyof Source.SignalSignatures>(signal: K, ...args: Parameters<Source.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -20538,6 +21106,9 @@ export namespace RB {
     }
 
     namespace SourceSearch {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -20545,6 +21116,7 @@ export namespace RB {
 
     class SourceSearch extends GObject.Object {
         static $gtype: GObject.GType<SourceSearch>;
+        declare static readonly __signalSignatures: SourceSearch.SignalSignatures;
 
         // Constructors
 
@@ -20621,6 +21193,9 @@ export namespace RB {
     }
 
     namespace SourceSearchBasic {
+        // Signal signatures
+        interface SignalSignatures extends SourceSearch.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SourceSearch.ConstructorProps {
@@ -20631,6 +21206,7 @@ export namespace RB {
 
     class SourceSearchBasic extends SourceSearch {
         static $gtype: GObject.GType<SourceSearchBasic>;
+        declare static readonly __signalSignatures: SourceSearchBasic.SignalSignatures;
 
         // Properties
 
@@ -20682,6 +21258,9 @@ export namespace RB {
     }
 
     namespace SourceToolbar {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Grid.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -20697,6 +21276,7 @@ export namespace RB {
 
     class SourceToolbar extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<SourceToolbar>;
+        declare static readonly __signalSignatures: SourceToolbar.SignalSignatures;
 
         // Properties
 
@@ -21202,6 +21782,9 @@ export namespace RB {
     }
 
     namespace StaticPlaylistSource {
+        // Signal signatures
+        interface SignalSignatures extends PlaylistSource.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -21213,6 +21796,7 @@ export namespace RB {
 
     class StaticPlaylistSource extends PlaylistSource implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<StaticPlaylistSource>;
+        declare static readonly __signalSignatures: StaticPlaylistSource.SignalSignatures;
 
         // Constructors
 
@@ -21725,6 +22309,9 @@ export namespace RB {
     }
 
     namespace StreamingSource {
+        // Signal signatures
+        interface SignalSignatures extends Source.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -21736,6 +22323,7 @@ export namespace RB {
 
     class StreamingSource extends Source implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<StreamingSource>;
+        declare static readonly __signalSignatures: StreamingSource.SignalSignatures;
 
         // Constructors
 
@@ -22212,6 +22800,9 @@ export namespace RB {
     }
 
     namespace StringValueMap {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -22219,6 +22810,7 @@ export namespace RB {
 
     class StringValueMap extends GObject.Object {
         static $gtype: GObject.GType<StringValueMap>;
+        declare static readonly __signalSignatures: StringValueMap.SignalSignatures;
 
         // Constructors
 
@@ -22272,6 +22864,9 @@ export namespace RB {
     }
 
     namespace TaskList {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -22281,6 +22876,7 @@ export namespace RB {
 
     class TaskList extends GObject.Object {
         static $gtype: GObject.GType<TaskList>;
+        declare static readonly __signalSignatures: TaskList.SignalSignatures;
 
         // Properties
 
@@ -22312,6 +22908,11 @@ export namespace RB {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'cancel-task': CancelTask;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, TaskProgress.ConstructorProps {}
@@ -22319,6 +22920,7 @@ export namespace RB {
 
     class TaskProgressSimple extends GObject.Object implements TaskProgress {
         static $gtype: GObject.GType<TaskProgressSimple>;
+        declare static readonly __signalSignatures: TaskProgressSimple.SignalSignatures;
 
         // Constructors
 
@@ -22328,6 +22930,18 @@ export namespace RB {
 
         // Signals
 
+        connect<K extends keyof TaskProgressSimple.SignalSignatures>(
+            signal: K,
+            callback: TaskProgressSimple.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TaskProgressSimple.SignalSignatures>(
+            signal: K,
+            callback: TaskProgressSimple.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TaskProgressSimple.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TaskProgressSimple.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -22855,6 +23469,20 @@ export namespace RB {
             (entry: RhythmDBEntry, dest: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            cancelled: Cancelled;
+            complete: Complete;
+            'get-dest-uri': GetDestUri;
+            'overwrite-prompt': OverwritePrompt;
+            started: Started;
+            'track-done': TrackDone;
+            'track-postprocess': TrackPostprocess;
+            'track-prepare': TrackPrepare;
+            'track-progress': TrackProgress;
+            'track-started': TrackStarted;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, TaskProgress.ConstructorProps {
@@ -22876,6 +23504,7 @@ export namespace RB {
 
     class TrackTransferBatch extends GObject.Object implements TaskProgress {
         static $gtype: GObject.GType<TrackTransferBatch>;
+        declare static readonly __signalSignatures: TrackTransferBatch.SignalSignatures;
 
         // Properties
 
@@ -22952,6 +23581,18 @@ export namespace RB {
 
         // Signals
 
+        connect<K extends keyof TrackTransferBatch.SignalSignatures>(
+            signal: K,
+            callback: TrackTransferBatch.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TrackTransferBatch.SignalSignatures>(
+            signal: K,
+            callback: TrackTransferBatch.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TrackTransferBatch.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TrackTransferBatch.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -23608,6 +24249,12 @@ export namespace RB {
             (done: number, total: number, fraction: number, time_left: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'missing-plugins': MissingPlugins;
+            'transfer-progress': TransferProgress;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -23618,6 +24265,7 @@ export namespace RB {
 
     class TrackTransferQueue extends GObject.Object {
         static $gtype: GObject.GType<TrackTransferQueue>;
+        declare static readonly __signalSignatures: TrackTransferQueue.SignalSignatures;
 
         // Properties
 
@@ -23640,6 +24288,18 @@ export namespace RB {
 
         // Signals
 
+        connect<K extends keyof TrackTransferQueue.SignalSignatures>(
+            signal: K,
+            callback: TrackTransferQueue.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TrackTransferQueue.SignalSignatures>(
+            signal: K,
+            callback: TrackTransferQueue.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TrackTransferQueue.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TrackTransferQueue.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -23705,6 +24365,11 @@ export namespace RB {
             (uri: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Dialog.SignalSignatures {
+            'location-added': LocationAdded;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -23717,6 +24382,7 @@ export namespace RB {
 
     class URIDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<URIDialog>;
+        declare static readonly __signalSignatures: URIDialog.SignalSignatures;
 
         // Properties
 
@@ -23738,6 +24404,15 @@ export namespace RB {
 
         // Signals
 
+        connect<K extends keyof URIDialog.SignalSignatures>(signal: K, callback: URIDialog.SignalSignatures[K]): number;
+        connect_after<K extends keyof URIDialog.SignalSignatures>(
+            signal: K,
+            callback: URIDialog.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof URIDialog.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<URIDialog.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

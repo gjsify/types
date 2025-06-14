@@ -119,6 +119,20 @@ export namespace GstApp {
             (timeout: number): Gst.Sample | null;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GstBase.BaseSink.SignalSignatures {
+            eos: Eos;
+            'new-preroll': NewPreroll;
+            'new-sample': NewSample;
+            'new-serialized-event': NewSerializedEvent;
+            'propose-allocation': ProposeAllocation;
+            'pull-preroll': PullPreroll;
+            'pull-sample': PullSample;
+            'try-pull-object': TryPullObject;
+            'try-pull-preroll': TryPullPreroll;
+            'try-pull-sample': TryPullSample;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GstBase.BaseSink.ConstructorProps, Gst.URIHandler.ConstructorProps {
@@ -176,6 +190,7 @@ export namespace GstApp {
      */
     class AppSink extends GstBase.BaseSink implements Gst.URIHandler {
         static $gtype: GObject.GType<AppSink>;
+        declare static readonly __signalSignatures: AppSink.SignalSignatures;
 
         // Properties
 
@@ -214,6 +229,15 @@ export namespace GstApp {
 
         // Signals
 
+        connect<K extends keyof AppSink.SignalSignatures>(signal: K, callback: AppSink.SignalSignatures[K]): number;
+        connect_after<K extends keyof AppSink.SignalSignatures>(
+            signal: K,
+            callback: AppSink.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AppSink.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AppSink.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1006,6 +1030,17 @@ export namespace GstApp {
             (offset: number): boolean;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GstBase.BaseSrc.SignalSignatures {
+            'end-of-stream': EndOfStream;
+            'enough-data': EnoughData;
+            'need-data': NeedData;
+            'push-buffer': PushBuffer;
+            'push-buffer-list': PushBufferList;
+            'push-sample': PushSample;
+            'seek-data': SeekData;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GstBase.BaseSrc.ConstructorProps, Gst.URIHandler.ConstructorProps {
@@ -1114,6 +1149,7 @@ export namespace GstApp {
      */
     class AppSrc extends GstBase.BaseSrc implements Gst.URIHandler {
         static $gtype: GObject.GType<AppSrc>;
+        declare static readonly __signalSignatures: AppSrc.SignalSignatures;
 
         // Properties
 
@@ -1333,6 +1369,9 @@ export namespace GstApp {
 
         // Signals
 
+        connect<K extends keyof AppSrc.SignalSignatures>(signal: K, callback: AppSrc.SignalSignatures[K]): number;
+        connect_after<K extends keyof AppSrc.SignalSignatures>(signal: K, callback: AppSrc.SignalSignatures[K]): number;
+        emit<K extends keyof AppSrc.SignalSignatures>(signal: K, ...args: Parameters<AppSrc.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

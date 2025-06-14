@@ -2246,6 +2246,9 @@ export namespace Kkc {
         RELEASE_MASK,
     }
     namespace MetadataFile {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -2258,6 +2261,7 @@ export namespace Kkc {
 
     abstract class MetadataFile extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<MetadataFile>;
+        declare static readonly __signalSignatures: MetadataFile.SignalSignatures;
 
         // Properties
 
@@ -2819,8 +2823,14 @@ export namespace Kkc {
         stop_emission_by_name(detailedName: string): void;
     }
 
+    namespace TrellisNode {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+    }
+
     abstract class TrellisNode {
         static $gtype: GObject.GType<TrellisNode>;
+        declare static readonly __signalSignatures: TrellisNode.SignalSignatures;
 
         // Fields
 
@@ -2851,8 +2861,14 @@ export namespace Kkc {
         get_entries(): LanguageModelEntry[];
     }
 
+    namespace UnigramTrellisNode {
+        // Signal signatures
+        interface SignalSignatures extends TrellisNode.SignalSignatures {}
+    }
+
     class UnigramTrellisNode extends TrellisNode {
         static $gtype: GObject.GType<UnigramTrellisNode>;
+        declare static readonly __signalSignatures: UnigramTrellisNode.SignalSignatures;
 
         // Constructors
 
@@ -2865,8 +2881,14 @@ export namespace Kkc {
         get_entry(): LanguageModelEntry;
     }
 
+    namespace BigramTrellisNode {
+        // Signal signatures
+        interface SignalSignatures extends TrellisNode.SignalSignatures {}
+    }
+
     class BigramTrellisNode extends TrellisNode {
         static $gtype: GObject.GType<BigramTrellisNode>;
+        declare static readonly __signalSignatures: BigramTrellisNode.SignalSignatures;
 
         // Constructors
 
@@ -2885,6 +2907,9 @@ export namespace Kkc {
     }
 
     namespace LanguageModelMetadata {
+        // Signal signatures
+        interface SignalSignatures extends MetadataFile.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MetadataFile.ConstructorProps {
@@ -2895,6 +2920,7 @@ export namespace Kkc {
 
     class LanguageModelMetadata extends MetadataFile {
         static $gtype: GObject.GType<LanguageModelMetadata>;
+        declare static readonly __signalSignatures: LanguageModelMetadata.SignalSignatures;
 
         // Properties
 
@@ -2923,6 +2949,9 @@ export namespace Kkc {
     }
 
     namespace LanguageModel {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -2934,6 +2963,7 @@ export namespace Kkc {
 
     abstract class LanguageModel extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<LanguageModel>;
+        declare static readonly __signalSignatures: LanguageModel.SignalSignatures;
 
         // Properties
 
@@ -3500,6 +3530,9 @@ export namespace Kkc {
     }
 
     namespace TextBigramLanguageModel {
+        // Signal signatures
+        interface SignalSignatures extends LanguageModel.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3510,6 +3543,7 @@ export namespace Kkc {
 
     class TextBigramLanguageModel extends LanguageModel implements UnigramLanguageModel, BigramLanguageModel {
         static $gtype: GObject.GType<TextBigramLanguageModel>;
+        declare static readonly __signalSignatures: TextBigramLanguageModel.SignalSignatures;
 
         // Fields
 
@@ -3566,6 +3600,9 @@ export namespace Kkc {
     }
 
     namespace TextTrigramLanguageModel {
+        // Signal signatures
+        interface SignalSignatures extends TextBigramLanguageModel.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3575,6 +3612,7 @@ export namespace Kkc {
 
     class TextTrigramLanguageModel extends TextBigramLanguageModel implements TrigramLanguageModel {
         static $gtype: GObject.GType<TextTrigramLanguageModel>;
+        declare static readonly __signalSignatures: TextTrigramLanguageModel.SignalSignatures;
 
         // Constructors
 
@@ -3608,6 +3646,9 @@ export namespace Kkc {
     }
 
     namespace SortedBigramLanguageModel {
+        // Signal signatures
+        interface SignalSignatures extends LanguageModel.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3621,6 +3662,7 @@ export namespace Kkc {
 
     class SortedBigramLanguageModel extends LanguageModel implements UnigramLanguageModel, BigramLanguageModel {
         static $gtype: GObject.GType<SortedBigramLanguageModel>;
+        declare static readonly __signalSignatures: SortedBigramLanguageModel.SignalSignatures;
 
         // Properties
 
@@ -3675,6 +3717,9 @@ export namespace Kkc {
     }
 
     namespace SortedTrigramLanguageModel {
+        // Signal signatures
+        interface SignalSignatures extends SortedBigramLanguageModel.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3684,6 +3729,7 @@ export namespace Kkc {
 
     class SortedTrigramLanguageModel extends SortedBigramLanguageModel implements TrigramLanguageModel {
         static $gtype: GObject.GType<SortedTrigramLanguageModel>;
+        declare static readonly __signalSignatures: SortedTrigramLanguageModel.SignalSignatures;
 
         // Constructors
 
@@ -3717,6 +3763,9 @@ export namespace Kkc {
     }
 
     namespace Decoder {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3724,6 +3773,7 @@ export namespace Kkc {
 
     abstract class Decoder extends GObject.Object {
         static $gtype: GObject.GType<Decoder>;
+        declare static readonly __signalSignatures: Decoder.SignalSignatures;
 
         // Constructors
 
@@ -3759,6 +3809,9 @@ export namespace Kkc {
     }
 
     namespace BigramDecoder {
+        // Signal signatures
+        interface SignalSignatures extends Decoder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Decoder.ConstructorProps {
@@ -3768,6 +3821,7 @@ export namespace Kkc {
 
     class BigramDecoder extends Decoder {
         static $gtype: GObject.GType<BigramDecoder>;
+        declare static readonly __signalSignatures: BigramDecoder.SignalSignatures;
 
         // Properties
 
@@ -3801,6 +3855,9 @@ export namespace Kkc {
     }
 
     namespace TrigramDecoder {
+        // Signal signatures
+        interface SignalSignatures extends BigramDecoder.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends BigramDecoder.ConstructorProps {}
@@ -3808,6 +3865,7 @@ export namespace Kkc {
 
     class TrigramDecoder extends BigramDecoder {
         static $gtype: GObject.GType<TrigramDecoder>;
+        declare static readonly __signalSignatures: TrigramDecoder.SignalSignatures;
 
         // Constructors
 
@@ -3819,6 +3877,9 @@ export namespace Kkc {
     }
 
     namespace SegmentList {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3830,6 +3891,7 @@ export namespace Kkc {
 
     class SegmentList extends GObject.Object {
         static $gtype: GObject.GType<SegmentList>;
+        declare static readonly __signalSignatures: SegmentList.SignalSignatures;
 
         // Properties
 
@@ -3867,6 +3929,9 @@ export namespace Kkc {
     }
 
     namespace Segment {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3877,6 +3942,7 @@ export namespace Kkc {
 
     class Segment extends GObject.Object {
         static $gtype: GObject.GType<Segment>;
+        declare static readonly __signalSignatures: Segment.SignalSignatures;
 
         // Properties
 
@@ -3916,6 +3982,12 @@ export namespace Kkc {
             (candidate: Candidate): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            populated: Populated;
+            selected: Selected;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3934,6 +4006,7 @@ export namespace Kkc {
 
     class CandidateList extends GObject.Object {
         static $gtype: GObject.GType<CandidateList>;
+        declare static readonly __signalSignatures: CandidateList.SignalSignatures;
 
         // Properties
 
@@ -3965,6 +4038,18 @@ export namespace Kkc {
 
         // Signals
 
+        connect<K extends keyof CandidateList.SignalSignatures>(
+            signal: K,
+            callback: CandidateList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CandidateList.SignalSignatures>(
+            signal: K,
+            callback: CandidateList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CandidateList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CandidateList.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -4005,6 +4090,9 @@ export namespace Kkc {
     }
 
     namespace Candidate {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4018,6 +4106,7 @@ export namespace Kkc {
 
     class Candidate extends GObject.Object {
         static $gtype: GObject.GType<Candidate>;
+        declare static readonly __signalSignatures: Candidate.SignalSignatures;
 
         // Properties
 
@@ -4068,6 +4157,11 @@ export namespace Kkc {
             (key: KeyEvent): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            forwarded: Forwarded;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4075,6 +4169,7 @@ export namespace Kkc {
 
     abstract class KeyEventFilter extends GObject.Object {
         static $gtype: GObject.GType<KeyEventFilter>;
+        declare static readonly __signalSignatures: KeyEventFilter.SignalSignatures;
 
         // Constructors
 
@@ -4084,6 +4179,18 @@ export namespace Kkc {
 
         // Signals
 
+        connect<K extends keyof KeyEventFilter.SignalSignatures>(
+            signal: K,
+            callback: KeyEventFilter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof KeyEventFilter.SignalSignatures>(
+            signal: K,
+            callback: KeyEventFilter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof KeyEventFilter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<KeyEventFilter.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -4103,6 +4210,9 @@ export namespace Kkc {
     }
 
     namespace KeyEvent {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4116,6 +4226,7 @@ export namespace Kkc {
 
     class KeyEvent extends GObject.Object {
         static $gtype: GObject.GType<KeyEvent>;
+        declare static readonly __signalSignatures: KeyEvent.SignalSignatures;
 
         // Properties
 
@@ -4158,6 +4269,9 @@ export namespace Kkc {
     }
 
     namespace Keymap {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4167,6 +4281,7 @@ export namespace Kkc {
 
     class Keymap extends GObject.Object {
         static $gtype: GObject.GType<Keymap>;
+        declare static readonly __signalSignatures: Keymap.SignalSignatures;
 
         // Properties
 
@@ -4200,6 +4315,9 @@ export namespace Kkc {
     }
 
     namespace NicolaKeyEventFilter {
+        // Signal signatures
+        interface SignalSignatures extends KeyEventFilter.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends KeyEventFilter.ConstructorProps {}
@@ -4207,6 +4325,7 @@ export namespace Kkc {
 
     class NicolaKeyEventFilter extends KeyEventFilter {
         static $gtype: GObject.GType<NicolaKeyEventFilter>;
+        declare static readonly __signalSignatures: NicolaKeyEventFilter.SignalSignatures;
 
         // Fields
 
@@ -4227,6 +4346,9 @@ export namespace Kkc {
     }
 
     namespace RomKanaCharacterList {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4236,6 +4358,7 @@ export namespace Kkc {
 
     class RomKanaCharacterList extends GObject.Object {
         static $gtype: GObject.GType<RomKanaCharacterList>;
+        declare static readonly __signalSignatures: RomKanaCharacterList.SignalSignatures;
 
         // Properties
 
@@ -4265,6 +4388,9 @@ export namespace Kkc {
     }
 
     namespace RomKanaConverter {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4284,6 +4410,7 @@ export namespace Kkc {
 
     class RomKanaConverter extends GObject.Object {
         static $gtype: GObject.GType<RomKanaConverter>;
+        declare static readonly __signalSignatures: RomKanaConverter.SignalSignatures;
 
         // Properties
 
@@ -4335,6 +4462,9 @@ export namespace Kkc {
     }
 
     namespace RuleMetadata {
+        // Signal signatures
+        interface SignalSignatures extends MetadataFile.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MetadataFile.ConstructorProps {
@@ -4345,6 +4475,7 @@ export namespace Kkc {
 
     class RuleMetadata extends MetadataFile {
         static $gtype: GObject.GType<RuleMetadata>;
+        declare static readonly __signalSignatures: RuleMetadata.SignalSignatures;
 
         // Properties
 
@@ -4376,6 +4507,9 @@ export namespace Kkc {
     }
 
     namespace Rule {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -4386,6 +4520,7 @@ export namespace Kkc {
 
     class Rule extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Rule>;
+        declare static readonly __signalSignatures: Rule.SignalSignatures;
 
         // Properties
 
@@ -4946,6 +5081,9 @@ export namespace Kkc {
     }
 
     namespace UserRule {
+        // Signal signatures
+        interface SignalSignatures extends Rule.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Rule.ConstructorProps {}
@@ -4953,6 +5091,7 @@ export namespace Kkc {
 
     class UserRule extends Rule {
         static $gtype: GObject.GType<UserRule>;
+        declare static readonly __signalSignatures: UserRule.SignalSignatures;
 
         // Constructors
 
@@ -4975,6 +5114,11 @@ export namespace Kkc {
 
         interface RequestSelectionText {
             (): void;
+        }
+
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'request-selection-text': RequestSelectionText;
         }
 
         // Constructor properties interface
@@ -5003,6 +5147,7 @@ export namespace Kkc {
 
     class Context extends GObject.Object {
         static $gtype: GObject.GType<Context>;
+        declare static readonly __signalSignatures: Context.SignalSignatures;
 
         // Properties
 
@@ -5044,6 +5189,15 @@ export namespace Kkc {
 
         // Signals
 
+        connect<K extends keyof Context.SignalSignatures>(signal: K, callback: Context.SignalSignatures[K]): number;
+        connect_after<K extends keyof Context.SignalSignatures>(
+            signal: K,
+            callback: Context.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Context.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Context.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -5080,6 +5234,9 @@ export namespace Kkc {
     }
 
     namespace EmptySegmentDictionary {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5090,6 +5247,7 @@ export namespace Kkc {
 
     class EmptySegmentDictionary extends GObject.Object implements Dictionary, SegmentDictionary {
         static $gtype: GObject.GType<EmptySegmentDictionary>;
+        declare static readonly __signalSignatures: EmptySegmentDictionary.SignalSignatures;
 
         // Constructors
 
@@ -5554,6 +5712,9 @@ export namespace Kkc {
     }
 
     namespace SystemSegmentDictionary {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5564,6 +5725,7 @@ export namespace Kkc {
 
     class SystemSegmentDictionary extends GObject.Object implements Dictionary, SegmentDictionary {
         static $gtype: GObject.GType<SystemSegmentDictionary>;
+        declare static readonly __signalSignatures: SystemSegmentDictionary.SignalSignatures;
 
         // Constructors
 
@@ -6028,6 +6190,9 @@ export namespace Kkc {
     }
 
     namespace UserSegmentDictionary {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6038,6 +6203,7 @@ export namespace Kkc {
 
     class UserSegmentDictionary extends GObject.Object implements Dictionary, SegmentDictionary {
         static $gtype: GObject.GType<UserSegmentDictionary>;
+        declare static readonly __signalSignatures: UserSegmentDictionary.SignalSignatures;
 
         // Constructors
 
@@ -6502,6 +6668,9 @@ export namespace Kkc {
     }
 
     namespace UserSentenceDictionary {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6512,6 +6681,7 @@ export namespace Kkc {
 
     class UserSentenceDictionary extends GObject.Object implements Dictionary, SentenceDictionary {
         static $gtype: GObject.GType<UserSentenceDictionary>;
+        declare static readonly __signalSignatures: UserSentenceDictionary.SignalSignatures;
 
         // Constructors
 
@@ -6974,6 +7144,9 @@ export namespace Kkc {
     }
 
     namespace UserDictionary {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6985,6 +7158,7 @@ export namespace Kkc {
 
     class UserDictionary extends GObject.Object implements Dictionary, SegmentDictionary, SentenceDictionary {
         static $gtype: GObject.GType<UserDictionary>;
+        declare static readonly __signalSignatures: UserDictionary.SignalSignatures;
 
         // Constructors
 
@@ -7455,6 +7629,9 @@ export namespace Kkc {
     }
 
     namespace DictionaryList {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         interface DictionaryCallback {
             (dictionary: Dictionary): DictionaryCallbackReturn;
         }
@@ -7468,6 +7645,7 @@ export namespace Kkc {
 
     class DictionaryList extends GObject.Object {
         static $gtype: GObject.GType<DictionaryList>;
+        declare static readonly __signalSignatures: DictionaryList.SignalSignatures;
 
         // Properties
 
@@ -7502,6 +7680,12 @@ export namespace Kkc {
             (midasi: string, okuri: boolean, text: string, annotation: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            populated: Populated;
+            selected: Selected;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7520,6 +7704,7 @@ export namespace Kkc {
 
     class DBusCandidateList extends GObject.Object {
         static $gtype: GObject.GType<DBusCandidateList>;
+        declare static readonly __signalSignatures: DBusCandidateList.SignalSignatures;
 
         // Properties
 
@@ -7548,6 +7733,18 @@ export namespace Kkc {
 
         // Signals
 
+        connect<K extends keyof DBusCandidateList.SignalSignatures>(
+            signal: K,
+            callback: DBusCandidateList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DBusCandidateList.SignalSignatures>(
+            signal: K,
+            callback: DBusCandidateList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DBusCandidateList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DBusCandidateList.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -7585,6 +7782,9 @@ export namespace Kkc {
     }
 
     namespace DBusSegmentList {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7596,6 +7796,7 @@ export namespace Kkc {
 
     class DBusSegmentList extends GObject.Object {
         static $gtype: GObject.GType<DBusSegmentList>;
+        declare static readonly __signalSignatures: DBusSegmentList.SignalSignatures;
 
         // Properties
 
@@ -7625,6 +7826,9 @@ export namespace Kkc {
     }
 
     namespace DBusContext {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7642,6 +7846,7 @@ export namespace Kkc {
 
     class DBusContext extends GObject.Object {
         static $gtype: GObject.GType<DBusContext>;
+        declare static readonly __signalSignatures: DBusContext.SignalSignatures;
 
         // Properties
 
@@ -7689,6 +7894,9 @@ export namespace Kkc {
     }
 
     namespace DBusServer {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -7696,6 +7904,7 @@ export namespace Kkc {
 
     class DBusServer extends GObject.Object {
         static $gtype: GObject.GType<DBusServer>;
+        declare static readonly __signalSignatures: DBusServer.SignalSignatures;
 
         // Constructors
 

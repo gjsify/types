@@ -422,6 +422,9 @@ export namespace GSignond {
      */
     function wipe_file(filename: string): boolean;
     namespace AccessControlManager {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -434,6 +437,7 @@ export namespace GSignond {
      */
     class AccessControlManager extends GObject.Object {
         static $gtype: GObject.GType<AccessControlManager>;
+        declare static readonly __signalSignatures: AccessControlManager.SignalSignatures;
 
         // Properties
 
@@ -589,6 +593,9 @@ export namespace GSignond {
     }
 
     namespace Config {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -599,6 +606,7 @@ export namespace GSignond {
      */
     class Config extends GObject.Object {
         static $gtype: GObject.GType<Config>;
+        declare static readonly __signalSignatures: Config.SignalSignatures;
 
         // Constructors
 
@@ -637,6 +645,9 @@ export namespace GSignond {
     }
 
     namespace Credentials {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -647,6 +658,7 @@ export namespace GSignond {
      */
     class Credentials extends GObject.Object {
         static $gtype: GObject.GType<Credentials>;
+        declare static readonly __signalSignatures: Credentials.SignalSignatures;
 
         // Constructors
 
@@ -710,6 +722,9 @@ export namespace GSignond {
     }
 
     namespace Dictionary {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -720,6 +735,7 @@ export namespace GSignond {
      */
     class Dictionary extends GObject.Object {
         static $gtype: GObject.GType<Dictionary>;
+        declare static readonly __signalSignatures: Dictionary.SignalSignatures;
 
         // Constructors
 
@@ -874,6 +890,9 @@ export namespace GSignond {
     }
 
     namespace Extension {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -884,6 +903,7 @@ export namespace GSignond {
      */
     class Extension extends GObject.Object {
         static $gtype: GObject.GType<Extension>;
+        declare static readonly __signalSignatures: Extension.SignalSignatures;
 
         // Constructors
 
@@ -951,6 +971,9 @@ export namespace GSignond {
     }
 
     namespace SecretStorage {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -963,6 +986,7 @@ export namespace GSignond {
      */
     class SecretStorage extends GObject.Object {
         static $gtype: GObject.GType<SecretStorage>;
+        declare static readonly __signalSignatures: SecretStorage.SignalSignatures;
 
         // Properties
 
@@ -1124,6 +1148,9 @@ export namespace GSignond {
     }
 
     namespace SessionData {
+        // Signal signatures
+        interface SignalSignatures extends Dictionary.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Dictionary.ConstructorProps {}
@@ -1134,6 +1161,7 @@ export namespace GSignond {
      */
     class SessionData extends Dictionary {
         static $gtype: GObject.GType<SessionData>;
+        declare static readonly __signalSignatures: SessionData.SignalSignatures;
 
         // Constructors
 
@@ -1263,6 +1291,9 @@ export namespace GSignond {
     }
 
     namespace SignonuiData {
+        // Signal signatures
+        interface SignalSignatures extends Dictionary.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Dictionary.ConstructorProps {}
@@ -1276,6 +1307,7 @@ export namespace GSignond {
      */
     class SignonuiData extends Dictionary {
         static $gtype: GObject.GType<SignonuiData>;
+        declare static readonly __signalSignatures: SignonuiData.SignalSignatures;
 
         // Constructors
 
@@ -1506,6 +1538,9 @@ export namespace GSignond {
     }
 
     namespace StorageManager {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1518,6 +1553,7 @@ export namespace GSignond {
      */
     class StorageManager extends GObject.Object {
         static $gtype: GObject.GType<StorageManager>;
+        declare static readonly __signalSignatures: StorageManager.SignalSignatures;
 
         // Properties
 

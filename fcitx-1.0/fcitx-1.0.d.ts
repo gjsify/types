@@ -66,6 +66,19 @@ export namespace Fcitx {
             (preedit: PreeditItem[], cursor: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'close-im': CloseIm;
+            'commit-string': CommitString;
+            connected: Connected;
+            'delete-surrounding-text': DeleteSurroundingText;
+            disconnected: Disconnected;
+            'enable-im': EnableIm;
+            'forward-key': ForwardKey;
+            'update-client-side-ui': UpdateClientSideUi;
+            'update-formatted-preedit': UpdateFormattedPreedit;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -78,6 +91,7 @@ export namespace Fcitx {
      */
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
+        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Properties
 
@@ -95,6 +109,9 @@ export namespace Fcitx {
 
         // Signals
 
+        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -306,6 +323,12 @@ export namespace Fcitx {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            connected: Connected;
+            disconnected: Disconnected;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -316,6 +339,7 @@ export namespace Fcitx {
      */
     class Connection extends GObject.Object {
         static $gtype: GObject.GType<Connection>;
+        declare static readonly __signalSignatures: Connection.SignalSignatures;
 
         // Constructors
 
@@ -327,6 +351,18 @@ export namespace Fcitx {
 
         // Signals
 
+        connect<K extends keyof Connection.SignalSignatures>(
+            signal: K,
+            callback: Connection.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Connection.SignalSignatures>(
+            signal: K,
+            callback: Connection.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Connection.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Connection.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -358,6 +394,11 @@ export namespace Fcitx {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+            'imlist-changed': ImlistChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -375,6 +416,7 @@ export namespace Fcitx {
      */
     class InputMethod extends Gio.DBusProxy implements Gio.AsyncInitable<InputMethod>, Gio.DBusInterface, Gio.Initable {
         static $gtype: GObject.GType<InputMethod>;
+        declare static readonly __signalSignatures: InputMethod.SignalSignatures;
 
         // Properties
 
@@ -407,6 +449,18 @@ export namespace Fcitx {
 
         // Signals
 
+        connect<K extends keyof InputMethod.SignalSignatures>(
+            signal: K,
+            callback: InputMethod.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof InputMethod.SignalSignatures>(
+            signal: K,
+            callback: InputMethod.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InputMethod.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InputMethod.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1254,6 +1308,9 @@ export namespace Fcitx {
     }
 
     namespace Kbd {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1268,6 +1325,7 @@ export namespace Fcitx {
      */
     class Kbd extends Gio.DBusProxy implements Gio.AsyncInitable<Kbd>, Gio.DBusInterface, Gio.Initable {
         static $gtype: GObject.GType<Kbd>;
+        declare static readonly __signalSignatures: Kbd.SignalSignatures;
 
         // Constructors
 

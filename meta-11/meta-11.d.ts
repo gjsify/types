@@ -1931,6 +1931,16 @@ export namespace Meta {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'gpu-added': GpuAdded;
+            'keymap-changed': KeymapChanged;
+            'keymap-layout-group-changed': KeymapLayoutGroupChanged;
+            'last-device-changed': LastDeviceChanged;
+            'lid-is-closed-changed': LidIsClosedChanged;
+            'prepare-shutdown': PrepareShutdown;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -1941,6 +1951,7 @@ export namespace Meta {
 
     abstract class Backend extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Backend>;
+        declare static readonly __signalSignatures: Backend.SignalSignatures;
 
         // Properties
 
@@ -1955,6 +1966,15 @@ export namespace Meta {
 
         // Signals
 
+        connect<K extends keyof Backend.SignalSignatures>(signal: K, callback: Backend.SignalSignatures[K]): number;
+        connect_after<K extends keyof Backend.SignalSignatures>(
+            signal: K,
+            callback: Backend.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Backend.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Backend.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2536,6 +2556,11 @@ export namespace Meta {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            changed: Changed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2551,6 +2576,7 @@ export namespace Meta {
      */
     class Background extends GObject.Object {
         static $gtype: GObject.GType<Background>;
+        declare static readonly __signalSignatures: Background.SignalSignatures;
 
         // Properties
 
@@ -2567,6 +2593,18 @@ export namespace Meta {
 
         // Signals
 
+        connect<K extends keyof Background.SignalSignatures>(
+            signal: K,
+            callback: Background.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Background.SignalSignatures>(
+            signal: K,
+            callback: Background.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Background.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Background.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2601,6 +2639,9 @@ export namespace Meta {
     }
 
     namespace BackgroundActor {
+        // Signal signatures
+        interface SignalSignatures extends Clutter.Actor.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor>
@@ -2625,6 +2666,7 @@ export namespace Meta {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable
     {
         static $gtype: GObject.GType<BackgroundActor>;
+        declare static readonly __signalSignatures: BackgroundActor.SignalSignatures;
 
         // Properties
 
@@ -3390,6 +3432,9 @@ export namespace Meta {
     }
 
     namespace BackgroundContent {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Clutter.Content.ConstructorProps {
@@ -3418,6 +3463,7 @@ export namespace Meta {
      */
     class BackgroundContent extends GObject.Object implements Clutter.Content {
         static $gtype: GObject.GType<BackgroundContent>;
+        declare static readonly __signalSignatures: BackgroundContent.SignalSignatures;
 
         // Properties
 
@@ -3974,6 +4020,9 @@ export namespace Meta {
     }
 
     namespace BackgroundGroup {
+        // Signal signatures
+        interface SignalSignatures extends Clutter.Actor.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor>
@@ -3989,6 +4038,7 @@ export namespace Meta {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable
     {
         static $gtype: GObject.GType<BackgroundGroup>;
+        declare static readonly __signalSignatures: BackgroundGroup.SignalSignatures;
 
         // Constructors
 
@@ -4751,6 +4801,11 @@ export namespace Meta {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            loaded: Loaded;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4761,6 +4816,7 @@ export namespace Meta {
      */
     class BackgroundImage extends GObject.Object {
         static $gtype: GObject.GType<BackgroundImage>;
+        declare static readonly __signalSignatures: BackgroundImage.SignalSignatures;
 
         // Constructors
 
@@ -4770,6 +4826,18 @@ export namespace Meta {
 
         // Signals
 
+        connect<K extends keyof BackgroundImage.SignalSignatures>(
+            signal: K,
+            callback: BackgroundImage.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BackgroundImage.SignalSignatures>(
+            signal: K,
+            callback: BackgroundImage.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BackgroundImage.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BackgroundImage.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -4791,6 +4859,9 @@ export namespace Meta {
     }
 
     namespace BackgroundImageCache {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4803,6 +4874,7 @@ export namespace Meta {
      */
     class BackgroundImageCache extends GObject.Object {
         static $gtype: GObject.GType<BackgroundImageCache>;
+        declare static readonly __signalSignatures: BackgroundImageCache.SignalSignatures;
 
         // Constructors
 
@@ -4847,6 +4919,12 @@ export namespace Meta {
             (event: BarrierEvent): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            hit: Hit;
+            left: Left;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -4862,6 +4940,7 @@ export namespace Meta {
 
     class Barrier extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Barrier>;
+        declare static readonly __signalSignatures: Barrier.SignalSignatures;
 
         // Properties
 
@@ -4890,6 +4969,15 @@ export namespace Meta {
 
         // Signals
 
+        connect<K extends keyof Barrier.SignalSignatures>(signal: K, callback: Barrier.SignalSignatures[K]): number;
+        connect_after<K extends keyof Barrier.SignalSignatures>(
+            signal: K,
+            callback: Barrier.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Barrier.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Barrier.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -5441,6 +5529,9 @@ export namespace Meta {
     }
 
     namespace Context {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5452,6 +5543,7 @@ export namespace Meta {
 
     class Context extends GObject.Object {
         static $gtype: GObject.GType<Context>;
+        declare static readonly __signalSignatures: Context.SignalSignatures;
 
         // Properties
 
@@ -5520,6 +5612,13 @@ export namespace Meta {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'cursor-changed': CursorChanged;
+            'position-invalidated': PositionInvalidated;
+            'visibility-changed': VisibilityChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5529,6 +5628,7 @@ export namespace Meta {
 
     class CursorTracker extends GObject.Object {
         static $gtype: GObject.GType<CursorTracker>;
+        declare static readonly __signalSignatures: CursorTracker.SignalSignatures;
 
         // Properties
 
@@ -5542,6 +5642,18 @@ export namespace Meta {
 
         // Signals
 
+        connect<K extends keyof CursorTracker.SignalSignatures>(
+            signal: K,
+            callback: CursorTracker.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CursorTracker.SignalSignatures>(
+            signal: K,
+            callback: CursorTracker.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CursorTracker.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CursorTracker.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -5697,6 +5809,38 @@ export namespace Meta {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'accelerator-activated': AcceleratorActivated;
+            closing: Closing;
+            'cursor-updated': CursorUpdated;
+            'gl-video-memory-purged': GlVideoMemoryPurged;
+            'grab-op-begin': GrabOpBegin;
+            'grab-op-end': GrabOpEnd;
+            'in-fullscreen-changed': InFullscreenChanged;
+            'init-xserver': InitXserver;
+            'modifiers-accelerator-activated': ModifiersAcceleratorActivated;
+            'overlay-key': OverlayKey;
+            'pad-mode-switch': PadModeSwitch;
+            restacked: Restacked;
+            restart: Restart;
+            'show-osd': ShowOsd;
+            'show-pad-osd': ShowPadOsd;
+            'show-resize-popup': ShowResizePopup;
+            'show-restart-message': ShowRestartMessage;
+            'showing-desktop-changed': ShowingDesktopChanged;
+            'window-created': WindowCreated;
+            'window-demands-attention': WindowDemandsAttention;
+            'window-entered-monitor': WindowEnteredMonitor;
+            'window-left-monitor': WindowLeftMonitor;
+            'window-marked-urgent': WindowMarkedUrgent;
+            'window-visibility-updated': WindowVisibilityUpdated;
+            'workareas-changed': WorkareasChanged;
+            'x11-display-closing': X11DisplayClosing;
+            'x11-display-opened': X11DisplayOpened;
+            'x11-display-setup': X11DisplaySetup;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5709,6 +5853,7 @@ export namespace Meta {
 
     class Display extends GObject.Object {
         static $gtype: GObject.GType<Display>;
+        declare static readonly __signalSignatures: Display.SignalSignatures;
 
         // Properties
 
@@ -5725,6 +5870,15 @@ export namespace Meta {
 
         // Signals
 
+        connect<K extends keyof Display.SignalSignatures>(signal: K, callback: Display.SignalSignatures[K]): number;
+        connect_after<K extends keyof Display.SignalSignatures>(
+            signal: K,
+            callback: Display.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Display.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Display.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -6115,6 +6269,13 @@ export namespace Meta {
             (object: number, p0: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'dnd-enter': DndEnter;
+            'dnd-leave': DndLeave;
+            'dnd-position-change': DndPositionChange;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6122,6 +6283,7 @@ export namespace Meta {
 
     class Dnd extends GObject.Object {
         static $gtype: GObject.GType<Dnd>;
+        declare static readonly __signalSignatures: Dnd.SignalSignatures;
 
         // Constructors
 
@@ -6131,6 +6293,9 @@ export namespace Meta {
 
         // Signals
 
+        connect<K extends keyof Dnd.SignalSignatures>(signal: K, callback: Dnd.SignalSignatures[K]): number;
+        connect_after<K extends keyof Dnd.SignalSignatures>(signal: K, callback: Dnd.SignalSignatures[K]): number;
+        emit<K extends keyof Dnd.SignalSignatures>(signal: K, ...args: Parameters<Dnd.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -6149,6 +6314,9 @@ export namespace Meta {
     }
 
     namespace IdleMonitor {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6158,6 +6326,7 @@ export namespace Meta {
 
     class IdleMonitor extends GObject.Object {
         static $gtype: GObject.GType<IdleMonitor>;
+        declare static readonly __signalSignatures: IdleMonitor.SignalSignatures;
 
         // Properties
 
@@ -6187,6 +6356,9 @@ export namespace Meta {
     }
 
     namespace LaunchContext {
+        // Signal signatures
+        interface SignalSignatures extends Gio.AppLaunchContext.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gio.AppLaunchContext.ConstructorProps {
@@ -6198,6 +6370,7 @@ export namespace Meta {
 
     class LaunchContext extends Gio.AppLaunchContext {
         static $gtype: GObject.GType<LaunchContext>;
+        declare static readonly __signalSignatures: LaunchContext.SignalSignatures;
 
         // Properties
 
@@ -6242,6 +6415,15 @@ export namespace Meta {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'confirm-display-change': ConfirmDisplayChange;
+            'monitor-privacy-screen-changed': MonitorPrivacyScreenChanged;
+            'monitors-changed': MonitorsChanged;
+            'monitors-changed-internal': MonitorsChangedInternal;
+            'power-save-mode-changed': PowerSaveModeChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6257,6 +6439,7 @@ export namespace Meta {
 
     class MonitorManager extends GObject.Object {
         static $gtype: GObject.GType<MonitorManager>;
+        declare static readonly __signalSignatures: MonitorManager.SignalSignatures;
 
         // Properties
 
@@ -6276,6 +6459,18 @@ export namespace Meta {
 
         // Signals
 
+        connect<K extends keyof MonitorManager.SignalSignatures>(
+            signal: K,
+            callback: MonitorManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MonitorManager.SignalSignatures>(
+            signal: K,
+            callback: MonitorManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MonitorManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MonitorManager.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -6323,6 +6518,9 @@ export namespace Meta {
     }
 
     namespace Plugin {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6330,6 +6528,7 @@ export namespace Meta {
 
     abstract class Plugin extends GObject.Object {
         static $gtype: GObject.GType<Plugin>;
+        declare static readonly __signalSignatures: Plugin.SignalSignatures;
 
         // Constructors
 
@@ -6444,6 +6643,11 @@ export namespace Meta {
             (object: RemoteAccessHandle): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'new-handle': NewHandle;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6451,6 +6655,7 @@ export namespace Meta {
 
     class RemoteAccessController extends GObject.Object {
         static $gtype: GObject.GType<RemoteAccessController>;
+        declare static readonly __signalSignatures: RemoteAccessController.SignalSignatures;
 
         // Constructors
 
@@ -6460,6 +6665,18 @@ export namespace Meta {
 
         // Signals
 
+        connect<K extends keyof RemoteAccessController.SignalSignatures>(
+            signal: K,
+            callback: RemoteAccessController.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RemoteAccessController.SignalSignatures>(
+            signal: K,
+            callback: RemoteAccessController.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RemoteAccessController.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RemoteAccessController.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -6489,6 +6706,11 @@ export namespace Meta {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            stopped: Stopped;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6499,6 +6721,7 @@ export namespace Meta {
 
     class RemoteAccessHandle extends GObject.Object {
         static $gtype: GObject.GType<RemoteAccessHandle>;
+        declare static readonly __signalSignatures: RemoteAccessHandle.SignalSignatures;
 
         // Properties
 
@@ -6513,6 +6736,18 @@ export namespace Meta {
 
         // Signals
 
+        connect<K extends keyof RemoteAccessHandle.SignalSignatures>(
+            signal: K,
+            callback: RemoteAccessHandle.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RemoteAccessHandle.SignalSignatures>(
+            signal: K,
+            callback: RemoteAccessHandle.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RemoteAccessHandle.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RemoteAccessHandle.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -6543,6 +6778,11 @@ export namespace Meta {
             (object: number, p0: SelectionSource): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'owner-changed': OwnerChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6550,6 +6790,7 @@ export namespace Meta {
 
     class Selection extends GObject.Object {
         static $gtype: GObject.GType<Selection>;
+        declare static readonly __signalSignatures: Selection.SignalSignatures;
 
         // Constructors
 
@@ -6561,6 +6802,15 @@ export namespace Meta {
 
         // Signals
 
+        connect<K extends keyof Selection.SignalSignatures>(signal: K, callback: Selection.SignalSignatures[K]): number;
+        connect_after<K extends keyof Selection.SignalSignatures>(
+            signal: K,
+            callback: Selection.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Selection.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Selection.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -6667,6 +6917,12 @@ export namespace Meta {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            activated: Activated;
+            deactivated: Deactivated;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6674,6 +6930,7 @@ export namespace Meta {
 
     class SelectionSource extends GObject.Object {
         static $gtype: GObject.GType<SelectionSource>;
+        declare static readonly __signalSignatures: SelectionSource.SignalSignatures;
 
         // Constructors
 
@@ -6683,6 +6940,18 @@ export namespace Meta {
 
         // Signals
 
+        connect<K extends keyof SelectionSource.SignalSignatures>(
+            signal: K,
+            callback: SelectionSource.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SelectionSource.SignalSignatures>(
+            signal: K,
+            callback: SelectionSource.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SelectionSource.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SelectionSource.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -6744,6 +7013,9 @@ export namespace Meta {
     }
 
     namespace SelectionSourceMemory {
+        // Signal signatures
+        interface SignalSignatures extends SelectionSource.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SelectionSource.ConstructorProps {}
@@ -6751,6 +7023,7 @@ export namespace Meta {
 
     class SelectionSourceMemory extends SelectionSource {
         static $gtype: GObject.GType<SelectionSourceMemory>;
+        declare static readonly __signalSignatures: SelectionSourceMemory.SignalSignatures;
 
         // Constructors
 
@@ -6768,6 +7041,11 @@ export namespace Meta {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            changed: Changed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6780,6 +7058,7 @@ export namespace Meta {
      */
     class ShadowFactory extends GObject.Object {
         static $gtype: GObject.GType<ShadowFactory>;
+        declare static readonly __signalSignatures: ShadowFactory.SignalSignatures;
 
         // Constructors
 
@@ -6791,6 +7070,18 @@ export namespace Meta {
 
         // Signals
 
+        connect<K extends keyof ShadowFactory.SignalSignatures>(
+            signal: K,
+            callback: ShadowFactory.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ShadowFactory.SignalSignatures>(
+            signal: K,
+            callback: ShadowFactory.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ShadowFactory.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ShadowFactory.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -6847,6 +7138,11 @@ export namespace Meta {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'size-changed': SizeChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Clutter.Content.ConstructorProps {}
@@ -6854,6 +7150,7 @@ export namespace Meta {
 
     class ShapedTexture extends GObject.Object implements Clutter.Content {
         static $gtype: GObject.GType<ShapedTexture>;
+        declare static readonly __signalSignatures: ShapedTexture.SignalSignatures;
 
         // Constructors
 
@@ -6863,6 +7160,18 @@ export namespace Meta {
 
         // Signals
 
+        connect<K extends keyof ShapedTexture.SignalSignatures>(
+            signal: K,
+            callback: ShapedTexture.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ShapedTexture.SignalSignatures>(
+            signal: K,
+            callback: ShapedTexture.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ShapedTexture.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ShapedTexture.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -7379,6 +7688,9 @@ export namespace Meta {
     }
 
     namespace SoundPlayer {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -7386,6 +7698,7 @@ export namespace Meta {
 
     class SoundPlayer extends GObject.Object {
         static $gtype: GObject.GType<SoundPlayer>;
+        declare static readonly __signalSignatures: SoundPlayer.SignalSignatures;
 
         // Constructors
 
@@ -7418,6 +7731,11 @@ export namespace Meta {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Clutter.Stage.SignalSignatures {
+            'actors-painted': ActorsPainted;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor>
@@ -7433,6 +7751,7 @@ export namespace Meta {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable
     {
         static $gtype: GObject.GType<Stage>;
+        declare static readonly __signalSignatures: Stage.SignalSignatures;
 
         // Constructors
 
@@ -7442,6 +7761,9 @@ export namespace Meta {
 
         // Signals
 
+        connect<K extends keyof Stage.SignalSignatures>(signal: K, callback: Stage.SignalSignatures[K]): number;
+        connect_after<K extends keyof Stage.SignalSignatures>(signal: K, callback: Stage.SignalSignatures[K]): number;
+        emit<K extends keyof Stage.SignalSignatures>(signal: K, ...args: Parameters<Stage.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -8058,6 +8380,11 @@ export namespace Meta {
             (object: StartupSequence): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            changed: Changed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -8067,6 +8394,7 @@ export namespace Meta {
 
     class StartupNotification extends GObject.Object {
         static $gtype: GObject.GType<StartupNotification>;
+        declare static readonly __signalSignatures: StartupNotification.SignalSignatures;
 
         // Properties
 
@@ -8080,6 +8408,18 @@ export namespace Meta {
 
         // Signals
 
+        connect<K extends keyof StartupNotification.SignalSignatures>(
+            signal: K,
+            callback: StartupNotification.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StartupNotification.SignalSignatures>(
+            signal: K,
+            callback: StartupNotification.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StartupNotification.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StartupNotification.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -8112,6 +8452,12 @@ export namespace Meta {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            complete: Complete;
+            timeout: Timeout;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -8129,6 +8475,7 @@ export namespace Meta {
 
     class StartupSequence extends GObject.Object {
         static $gtype: GObject.GType<StartupSequence>;
+        declare static readonly __signalSignatures: StartupSequence.SignalSignatures;
 
         // Properties
 
@@ -8150,6 +8497,18 @@ export namespace Meta {
 
         // Signals
 
+        connect<K extends keyof StartupSequence.SignalSignatures>(
+            signal: K,
+            callback: StartupSequence.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StartupSequence.SignalSignatures>(
+            signal: K,
+            callback: StartupSequence.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StartupSequence.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StartupSequence.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -8186,6 +8545,9 @@ export namespace Meta {
     }
 
     namespace WaylandClient {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -8193,6 +8555,7 @@ export namespace Meta {
 
     class WaylandClient extends GObject.Object {
         static $gtype: GObject.GType<WaylandClient>;
+        declare static readonly __signalSignatures: WaylandClient.SignalSignatures;
 
         // Constructors
 
@@ -8262,6 +8625,19 @@ export namespace Meta {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            focus: Focus;
+            'monitor-changed': MonitorChanged;
+            'position-changed': PositionChanged;
+            raised: Raised;
+            shown: Shown;
+            'size-changed': SizeChanged;
+            unmanaged: Unmanaged;
+            unmanaging: Unmanaging;
+            'workspace-changed': WorkspaceChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -8314,6 +8690,7 @@ export namespace Meta {
 
     abstract class Window extends GObject.Object {
         static $gtype: GObject.GType<Window>;
+        declare static readonly __signalSignatures: Window.SignalSignatures;
 
         // Properties
 
@@ -8370,6 +8747,9 @@ export namespace Meta {
 
         // Signals
 
+        connect<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
+        connect_after<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
+        emit<K extends keyof Window.SignalSignatures>(signal: K, ...args: Parameters<Window.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -8760,6 +9140,14 @@ export namespace Meta {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Clutter.Actor.SignalSignatures {
+            damaged: Damaged;
+            'effects-completed': EffectsCompleted;
+            'first-frame': FirstFrame;
+            thawed: Thawed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor>
@@ -8778,6 +9166,7 @@ export namespace Meta {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable
     {
         static $gtype: GObject.GType<WindowActor>;
+        declare static readonly __signalSignatures: WindowActor.SignalSignatures;
 
         // Properties
 
@@ -8792,6 +9181,18 @@ export namespace Meta {
 
         // Signals
 
+        connect<K extends keyof WindowActor.SignalSignatures>(
+            signal: K,
+            callback: WindowActor.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WindowActor.SignalSignatures>(
+            signal: K,
+            callback: WindowActor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WindowActor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WindowActor.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -9595,6 +9996,9 @@ export namespace Meta {
     }
 
     namespace WindowGroup {
+        // Signal signatures
+        interface SignalSignatures extends Clutter.Actor.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor>
@@ -9610,6 +10014,7 @@ export namespace Meta {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container<A>, Clutter.Scriptable
     {
         static $gtype: GObject.GType<WindowGroup>;
+        declare static readonly __signalSignatures: WindowGroup.SignalSignatures;
 
         // Constructors
 
@@ -10374,6 +10779,12 @@ export namespace Meta {
             (object: Window): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'window-added': WindowAdded;
+            'window-removed': WindowRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -10387,6 +10798,7 @@ export namespace Meta {
 
     class Workspace extends GObject.Object {
         static $gtype: GObject.GType<Workspace>;
+        declare static readonly __signalSignatures: Workspace.SignalSignatures;
 
         // Properties
 
@@ -10404,6 +10816,15 @@ export namespace Meta {
 
         // Signals
 
+        connect<K extends keyof Workspace.SignalSignatures>(signal: K, callback: Workspace.SignalSignatures[K]): number;
+        connect_after<K extends keyof Workspace.SignalSignatures>(
+            signal: K,
+            callback: Workspace.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Workspace.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Workspace.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -10500,6 +10921,16 @@ export namespace Meta {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'active-workspace-changed': ActiveWorkspaceChanged;
+            'showing-desktop-changed': ShowingDesktopChanged;
+            'workspace-added': WorkspaceAdded;
+            'workspace-removed': WorkspaceRemoved;
+            'workspace-switched': WorkspaceSwitched;
+            'workspaces-reordered': WorkspacesReordered;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -10514,6 +10945,7 @@ export namespace Meta {
 
     class WorkspaceManager extends GObject.Object {
         static $gtype: GObject.GType<WorkspaceManager>;
+        declare static readonly __signalSignatures: WorkspaceManager.SignalSignatures;
 
         // Properties
 
@@ -10532,6 +10964,18 @@ export namespace Meta {
 
         // Signals
 
+        connect<K extends keyof WorkspaceManager.SignalSignatures>(
+            signal: K,
+            callback: WorkspaceManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WorkspaceManager.SignalSignatures>(
+            signal: K,
+            callback: WorkspaceManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WorkspaceManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WorkspaceManager.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -10610,6 +11054,9 @@ export namespace Meta {
     }
 
     namespace X11Display {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -10617,6 +11064,7 @@ export namespace Meta {
 
     class X11Display extends GObject.Object {
         static $gtype: GObject.GType<X11Display>;
+        declare static readonly __signalSignatures: X11Display.SignalSignatures;
 
         // Constructors
 

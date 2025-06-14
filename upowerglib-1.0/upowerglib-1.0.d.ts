@@ -164,6 +164,12 @@ export namespace UPowerGlib {
             (object_path: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'device-added': DeviceAdded;
+            'device-removed': DeviceRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -180,6 +186,7 @@ export namespace UPowerGlib {
 
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
+        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Properties
 
@@ -226,6 +233,9 @@ export namespace UPowerGlib {
 
         // Signals
 
+        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -282,6 +292,9 @@ export namespace UPowerGlib {
     }
 
     namespace ClientGlueProxy {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -300,6 +313,7 @@ export namespace UPowerGlib {
         implements Gio.AsyncInitable<ClientGlueProxy>, Gio.DBusInterface, Gio.Initable, ClientGlue
     {
         static $gtype: GObject.GType<ClientGlueProxy>;
+        declare static readonly __signalSignatures: ClientGlueProxy.SignalSignatures;
 
         // Constructors
 
@@ -1394,6 +1408,9 @@ export namespace UPowerGlib {
     }
 
     namespace ClientGlueSkeleton {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1407,6 +1424,7 @@ export namespace UPowerGlib {
      */
     class ClientGlueSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, ClientGlue {
         static $gtype: GObject.GType<ClientGlueSkeleton>;
+        declare static readonly __signalSignatures: ClientGlueSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -2137,6 +2155,9 @@ export namespace UPowerGlib {
     }
 
     namespace Device {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2188,6 +2209,7 @@ export namespace UPowerGlib {
 
     class Device extends GObject.Object {
         static $gtype: GObject.GType<Device>;
+        declare static readonly __signalSignatures: Device.SignalSignatures;
 
         // Properties
 
@@ -2515,6 +2537,9 @@ export namespace UPowerGlib {
     }
 
     namespace DeviceGlueProxy {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2533,6 +2558,7 @@ export namespace UPowerGlib {
         implements Gio.AsyncInitable<DeviceGlueProxy>, Gio.DBusInterface, Gio.Initable, DeviceGlue
     {
         static $gtype: GObject.GType<DeviceGlueProxy>;
+        declare static readonly __signalSignatures: DeviceGlueProxy.SignalSignatures;
 
         // Constructors
 
@@ -3895,6 +3921,9 @@ export namespace UPowerGlib {
     }
 
     namespace DeviceGlueSkeleton {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3908,6 +3937,7 @@ export namespace UPowerGlib {
      */
     class DeviceGlueSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, DeviceGlue {
         static $gtype: GObject.GType<DeviceGlueSkeleton>;
+        declare static readonly __signalSignatures: DeviceGlueSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -4906,6 +4936,9 @@ export namespace UPowerGlib {
     }
 
     namespace HistoryItem {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4917,6 +4950,7 @@ export namespace UPowerGlib {
 
     class HistoryItem extends GObject.Object {
         static $gtype: GObject.GType<HistoryItem>;
+        declare static readonly __signalSignatures: HistoryItem.SignalSignatures;
 
         // Properties
 
@@ -4980,6 +5014,9 @@ export namespace UPowerGlib {
     }
 
     namespace StatsItem {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4990,6 +5027,7 @@ export namespace UPowerGlib {
 
     class StatsItem extends GObject.Object {
         static $gtype: GObject.GType<StatsItem>;
+        declare static readonly __signalSignatures: StatsItem.SignalSignatures;
 
         // Properties
 
@@ -5029,6 +5067,9 @@ export namespace UPowerGlib {
     }
 
     namespace WakeupItem {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5044,6 +5085,7 @@ export namespace UPowerGlib {
 
     class WakeupItem extends GObject.Object {
         static $gtype: GObject.GType<WakeupItem>;
+        declare static readonly __signalSignatures: WakeupItem.SignalSignatures;
 
         // Properties
 
@@ -5145,6 +5187,12 @@ export namespace UPowerGlib {
             (object: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'data-changed': DataChanged;
+            'total-changed': TotalChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5152,6 +5200,7 @@ export namespace UPowerGlib {
 
     class Wakeups extends GObject.Object {
         static $gtype: GObject.GType<Wakeups>;
+        declare static readonly __signalSignatures: Wakeups.SignalSignatures;
 
         // Constructors
 
@@ -5163,6 +5212,15 @@ export namespace UPowerGlib {
 
         // Signals
 
+        connect<K extends keyof Wakeups.SignalSignatures>(signal: K, callback: Wakeups.SignalSignatures[K]): number;
+        connect_after<K extends keyof Wakeups.SignalSignatures>(
+            signal: K,
+            callback: Wakeups.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Wakeups.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Wakeups.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -5206,6 +5264,9 @@ export namespace UPowerGlib {
     }
 
     namespace WakeupsGlueProxy {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5224,6 +5285,7 @@ export namespace UPowerGlib {
         implements Gio.AsyncInitable<WakeupsGlueProxy>, Gio.DBusInterface, Gio.Initable, WakeupsGlue
     {
         static $gtype: GObject.GType<WakeupsGlueProxy>;
+        declare static readonly __signalSignatures: WakeupsGlueProxy.SignalSignatures;
 
         // Constructors
 
@@ -6211,6 +6273,9 @@ export namespace UPowerGlib {
     }
 
     namespace WakeupsGlueSkeleton {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6224,6 +6289,7 @@ export namespace UPowerGlib {
      */
     class WakeupsGlueSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, WakeupsGlue {
         static $gtype: GObject.GType<WakeupsGlueSkeleton>;
+        declare static readonly __signalSignatures: WakeupsGlueSkeleton.SignalSignatures;
 
         // Constructors
 

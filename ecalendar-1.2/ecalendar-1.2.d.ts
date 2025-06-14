@@ -402,6 +402,15 @@ export namespace ECalendar {
             (object: CalSetModeStatusEnum, p0: unknown): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'backend-died': BackendDied;
+            'backend-error': BackendError;
+            'cal-opened': CalOpened;
+            'cal-opened-ex': CalOpenedEx;
+            'cal-set-mode': CalSetMode;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -409,6 +418,7 @@ export namespace ECalendar {
 
     class Cal extends GObject.Object {
         static $gtype: GObject.GType<Cal>;
+        declare static readonly __signalSignatures: Cal.SignalSignatures;
 
         // Fields
 
@@ -424,6 +434,9 @@ export namespace ECalendar {
 
         // Signals
 
+        connect<K extends keyof Cal.SignalSignatures>(signal: K, callback: Cal.SignalSignatures[K]): number;
+        connect_after<K extends keyof Cal.SignalSignatures>(signal: K, callback: Cal.SignalSignatures[K]): number;
+        emit<K extends keyof Cal.SignalSignatures>(signal: K, ...args: Parameters<Cal.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -686,6 +699,11 @@ export namespace ECalendar {
             (object: any): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends EDataServer.Client.SignalSignatures {
+            'free-busy-data': FreeBusyData;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends EDataServer.Client.ConstructorProps {}
@@ -697,6 +715,7 @@ export namespace ECalendar {
      */
     class CalClient extends EDataServer.Client {
         static $gtype: GObject.GType<CalClient>;
+        declare static readonly __signalSignatures: CalClient.SignalSignatures;
 
         // Constructors
 
@@ -708,6 +727,15 @@ export namespace ECalendar {
 
         // Signals
 
+        connect<K extends keyof CalClient.SignalSignatures>(signal: K, callback: CalClient.SignalSignatures[K]): number;
+        connect_after<K extends keyof CalClient.SignalSignatures>(
+            signal: K,
+            callback: CalClient.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CalClient.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CalClient.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1265,6 +1293,15 @@ export namespace ECalendar {
             (object: number, p0: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            complete: Complete;
+            'objects-added': ObjectsAdded;
+            'objects-modified': ObjectsModified;
+            'objects-removed': ObjectsRemoved;
+            progress: Progress;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1279,6 +1316,7 @@ export namespace ECalendar {
      */
     class CalClientView extends GObject.Object {
         static $gtype: GObject.GType<CalClientView>;
+        declare static readonly __signalSignatures: CalClientView.SignalSignatures;
 
         // Properties
 
@@ -1297,6 +1335,18 @@ export namespace ECalendar {
 
         // Signals
 
+        connect<K extends keyof CalClientView.SignalSignatures>(
+            signal: K,
+            callback: CalClientView.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CalClientView.SignalSignatures>(
+            signal: K,
+            callback: CalClientView.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CalClientView.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CalClientView.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1363,6 +1413,9 @@ export namespace ECalendar {
     }
 
     namespace CalComponent {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1370,6 +1423,7 @@ export namespace ECalendar {
 
     class CalComponent extends GObject.Object {
         static $gtype: GObject.GType<CalComponent>;
+        declare static readonly __signalSignatures: CalComponent.SignalSignatures;
 
         // Fields
 
@@ -1973,6 +2027,16 @@ export namespace ECalendar {
             (object: string, p0: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'objects-added': ObjectsAdded;
+            'objects-modified': ObjectsModified;
+            'objects-removed': ObjectsRemoved;
+            'view-complete': ViewComplete;
+            'view-done': ViewDone;
+            'view-progress': ViewProgress;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1983,6 +2047,7 @@ export namespace ECalendar {
 
     class CalView extends GObject.Object {
         static $gtype: GObject.GType<CalView>;
+        declare static readonly __signalSignatures: CalView.SignalSignatures;
 
         // Properties
 
@@ -2001,6 +2066,15 @@ export namespace ECalendar {
 
         // Signals
 
+        connect<K extends keyof CalView.SignalSignatures>(signal: K, callback: CalView.SignalSignatures[K]): number;
+        connect_after<K extends keyof CalView.SignalSignatures>(
+            signal: K,
+            callback: CalView.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CalView.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CalView.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

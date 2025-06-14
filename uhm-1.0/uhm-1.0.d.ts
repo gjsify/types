@@ -54,6 +54,9 @@ export namespace Uhm {
      */
     const MINOR_VERSION: number;
     namespace Message {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -64,6 +67,7 @@ export namespace Uhm {
 
     class Message extends GObject.Object {
         static $gtype: GObject.GType<Message>;
+        declare static readonly __signalSignatures: Message.SignalSignatures;
 
         // Properties
 
@@ -94,6 +98,9 @@ export namespace Uhm {
     }
 
     namespace Resolver {
+        // Signal signatures
+        interface SignalSignatures extends Gio.Resolver.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gio.Resolver.ConstructorProps {}
@@ -104,6 +111,7 @@ export namespace Uhm {
      */
     class Resolver extends Gio.Resolver {
         static $gtype: GObject.GType<Resolver>;
+        declare static readonly __signalSignatures: Resolver.SignalSignatures;
 
         // Constructors
 
@@ -149,6 +157,12 @@ export namespace Uhm {
             (message: Message): boolean;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'compare-messages': CompareMessages;
+            'handle-message': HandleMessage;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -171,6 +185,7 @@ export namespace Uhm {
      */
     class Server extends GObject.Object {
         static $gtype: GObject.GType<Server>;
+        declare static readonly __signalSignatures: Server.SignalSignatures;
 
         // Properties
 
@@ -278,6 +293,9 @@ export namespace Uhm {
 
         // Signals
 
+        connect<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
+        connect_after<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
+        emit<K extends keyof Server.SignalSignatures>(signal: K, ...args: Parameters<Server.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

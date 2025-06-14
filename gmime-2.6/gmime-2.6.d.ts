@@ -1181,6 +1181,9 @@ export namespace GMime {
         UNSUPP_ALGO,
     }
     namespace Certificate {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1191,6 +1194,7 @@ export namespace GMime {
      */
     class Certificate extends GObject.Object {
         static $gtype: GObject.GType<Certificate>;
+        declare static readonly __signalSignatures: Certificate.SignalSignatures;
 
         // Fields
 
@@ -1330,6 +1334,9 @@ export namespace GMime {
     }
 
     namespace CertificateList {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1340,6 +1347,7 @@ export namespace GMime {
      */
     class CertificateList extends GObject.Object {
         static $gtype: GObject.GType<CertificateList>;
+        declare static readonly __signalSignatures: CertificateList.SignalSignatures;
 
         // Fields
 
@@ -1420,6 +1428,9 @@ export namespace GMime {
     }
 
     namespace ContentDisposition {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1430,6 +1441,7 @@ export namespace GMime {
      */
     class ContentDisposition extends GObject.Object {
         static $gtype: GObject.GType<ContentDisposition>;
+        declare static readonly __signalSignatures: ContentDisposition.SignalSignatures;
 
         // Fields
 
@@ -1502,6 +1514,9 @@ export namespace GMime {
     }
 
     namespace ContentType {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1512,6 +1527,7 @@ export namespace GMime {
      */
     class ContentType extends GObject.Object {
         static $gtype: GObject.GType<ContentType>;
+        declare static readonly __signalSignatures: ContentType.SignalSignatures;
 
         // Fields
 
@@ -1594,6 +1610,9 @@ export namespace GMime {
     }
 
     namespace CryptoContext {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1604,6 +1623,7 @@ export namespace GMime {
      */
     class CryptoContext extends GObject.Object {
         static $gtype: GObject.GType<CryptoContext>;
+        declare static readonly __signalSignatures: CryptoContext.SignalSignatures;
 
         // Fields
 
@@ -1898,6 +1918,9 @@ export namespace GMime {
     }
 
     namespace DataWrapper {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1908,6 +1931,7 @@ export namespace GMime {
      */
     class DataWrapper extends GObject.Object {
         static $gtype: GObject.GType<DataWrapper>;
+        declare static readonly __signalSignatures: DataWrapper.SignalSignatures;
 
         // Fields
 
@@ -1969,6 +1993,9 @@ export namespace GMime {
     }
 
     namespace DecryptResult {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1979,6 +2006,7 @@ export namespace GMime {
      */
     class DecryptResult extends GObject.Object {
         static $gtype: GObject.GType<DecryptResult>;
+        declare static readonly __signalSignatures: DecryptResult.SignalSignatures;
 
         // Fields
 
@@ -2055,6 +2083,9 @@ export namespace GMime {
     }
 
     namespace Filter {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2065,6 +2096,7 @@ export namespace GMime {
      */
     abstract class Filter extends GObject.Object {
         static $gtype: GObject.GType<Filter>;
+        declare static readonly __signalSignatures: Filter.SignalSignatures;
 
         // Fields
 
@@ -2146,6 +2178,9 @@ export namespace GMime {
     }
 
     namespace FilterBasic {
+        // Signal signatures
+        interface SignalSignatures extends Filter.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Filter.ConstructorProps {}
@@ -2156,6 +2191,7 @@ export namespace GMime {
      */
     class FilterBasic extends Filter {
         static $gtype: GObject.GType<FilterBasic>;
+        declare static readonly __signalSignatures: FilterBasic.SignalSignatures;
 
         // Fields
 
@@ -2171,6 +2207,9 @@ export namespace GMime {
     }
 
     namespace FilterBest {
+        // Signal signatures
+        interface SignalSignatures extends Filter.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Filter.ConstructorProps {}
@@ -2182,6 +2221,7 @@ export namespace GMime {
      */
     class FilterBest extends Filter {
         static $gtype: GObject.GType<FilterBest>;
+        declare static readonly __signalSignatures: FilterBest.SignalSignatures;
 
         // Fields
 
@@ -2225,6 +2265,9 @@ export namespace GMime {
     }
 
     namespace FilterCRLF {
+        // Signal signatures
+        interface SignalSignatures extends Filter.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Filter.ConstructorProps {}
@@ -2236,6 +2279,7 @@ export namespace GMime {
      */
     class FilterCRLF extends Filter {
         static $gtype: GObject.GType<FilterCRLF>;
+        declare static readonly __signalSignatures: FilterCRLF.SignalSignatures;
 
         // Fields
 
@@ -2256,6 +2300,9 @@ export namespace GMime {
     }
 
     namespace FilterCharset {
+        // Signal signatures
+        interface SignalSignatures extends Filter.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Filter.ConstructorProps {}
@@ -2266,6 +2313,7 @@ export namespace GMime {
      */
     class FilterCharset extends Filter {
         static $gtype: GObject.GType<FilterCharset>;
+        declare static readonly __signalSignatures: FilterCharset.SignalSignatures;
 
         // Fields
 
@@ -2283,6 +2331,9 @@ export namespace GMime {
     }
 
     namespace FilterEnriched {
+        // Signal signatures
+        interface SignalSignatures extends Filter.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Filter.ConstructorProps {}
@@ -2294,6 +2345,7 @@ export namespace GMime {
      */
     class FilterEnriched extends Filter {
         static $gtype: GObject.GType<FilterEnriched>;
+        declare static readonly __signalSignatures: FilterEnriched.SignalSignatures;
 
         // Fields
 
@@ -2311,6 +2363,9 @@ export namespace GMime {
     }
 
     namespace FilterFrom {
+        // Signal signatures
+        interface SignalSignatures extends Filter.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Filter.ConstructorProps {}
@@ -2321,6 +2376,7 @@ export namespace GMime {
      */
     class FilterFrom extends Filter {
         static $gtype: GObject.GType<FilterFrom>;
+        declare static readonly __signalSignatures: FilterFrom.SignalSignatures;
 
         // Fields
 
@@ -2338,6 +2394,9 @@ export namespace GMime {
     }
 
     namespace FilterGZip {
+        // Signal signatures
+        interface SignalSignatures extends Filter.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Filter.ConstructorProps {}
@@ -2348,6 +2407,7 @@ export namespace GMime {
      */
     class FilterGZip extends Filter {
         static $gtype: GObject.GType<FilterGZip>;
+        declare static readonly __signalSignatures: FilterGZip.SignalSignatures;
 
         // Fields
 
@@ -2366,6 +2426,9 @@ export namespace GMime {
     }
 
     namespace FilterHTML {
+        // Signal signatures
+        interface SignalSignatures extends Filter.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Filter.ConstructorProps {}
@@ -2376,6 +2439,7 @@ export namespace GMime {
      */
     class FilterHTML extends Filter {
         static $gtype: GObject.GType<FilterHTML>;
+        declare static readonly __signalSignatures: FilterHTML.SignalSignatures;
 
         // Fields
 
@@ -2396,6 +2460,9 @@ export namespace GMime {
     }
 
     namespace FilterMd5 {
+        // Signal signatures
+        interface SignalSignatures extends Filter.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Filter.ConstructorProps {}
@@ -2406,6 +2473,7 @@ export namespace GMime {
      */
     class FilterMd5 extends Filter {
         static $gtype: GObject.GType<FilterMd5>;
+        declare static readonly __signalSignatures: FilterMd5.SignalSignatures;
 
         // Fields
 
@@ -2430,6 +2498,9 @@ export namespace GMime {
     }
 
     namespace FilterStrip {
+        // Signal signatures
+        interface SignalSignatures extends Filter.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Filter.ConstructorProps {}
@@ -2440,6 +2511,7 @@ export namespace GMime {
      */
     class FilterStrip extends Filter {
         static $gtype: GObject.GType<FilterStrip>;
+        declare static readonly __signalSignatures: FilterStrip.SignalSignatures;
 
         // Fields
 
@@ -2455,6 +2527,9 @@ export namespace GMime {
     }
 
     namespace FilterWindows {
+        // Signal signatures
+        interface SignalSignatures extends Filter.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Filter.ConstructorProps {}
@@ -2467,6 +2542,7 @@ export namespace GMime {
      */
     class FilterWindows extends Filter {
         static $gtype: GObject.GType<FilterWindows>;
+        declare static readonly __signalSignatures: FilterWindows.SignalSignatures;
 
         // Fields
 
@@ -2498,6 +2574,9 @@ export namespace GMime {
     }
 
     namespace FilterYenc {
+        // Signal signatures
+        interface SignalSignatures extends Filter.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Filter.ConstructorProps {}
@@ -2508,6 +2587,7 @@ export namespace GMime {
      */
     class FilterYenc extends Filter {
         static $gtype: GObject.GType<FilterYenc>;
+        declare static readonly __signalSignatures: FilterYenc.SignalSignatures;
 
         // Fields
 
@@ -2551,6 +2631,9 @@ export namespace GMime {
     }
 
     namespace GpgContext {
+        // Signal signatures
+        interface SignalSignatures extends CryptoContext.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends CryptoContext.ConstructorProps {}
@@ -2561,6 +2644,7 @@ export namespace GMime {
      */
     class GpgContext extends CryptoContext {
         static $gtype: GObject.GType<GpgContext>;
+        declare static readonly __signalSignatures: GpgContext.SignalSignatures;
 
         // Fields
 
@@ -2617,6 +2701,9 @@ export namespace GMime {
     }
 
     namespace InternetAddress {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2627,6 +2714,7 @@ export namespace GMime {
      */
     abstract class InternetAddress extends GObject.Object {
         static $gtype: GObject.GType<InternetAddress>;
+        declare static readonly __signalSignatures: InternetAddress.SignalSignatures;
 
         // Fields
 
@@ -2668,6 +2756,9 @@ export namespace GMime {
     }
 
     namespace InternetAddressGroup {
+        // Signal signatures
+        interface SignalSignatures extends InternetAddress.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends InternetAddress.ConstructorProps {}
@@ -2678,6 +2769,7 @@ export namespace GMime {
      */
     class InternetAddressGroup extends InternetAddress {
         static $gtype: GObject.GType<InternetAddressGroup>;
+        declare static readonly __signalSignatures: InternetAddressGroup.SignalSignatures;
 
         // Fields
 
@@ -2714,6 +2806,9 @@ export namespace GMime {
     }
 
     namespace InternetAddressList {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2724,6 +2819,7 @@ export namespace GMime {
      */
     class InternetAddressList extends GObject.Object {
         static $gtype: GObject.GType<InternetAddressList>;
+        declare static readonly __signalSignatures: InternetAddressList.SignalSignatures;
 
         // Fields
 
@@ -2836,6 +2932,9 @@ export namespace GMime {
     }
 
     namespace InternetAddressMailbox {
+        // Signal signatures
+        interface SignalSignatures extends InternetAddress.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends InternetAddress.ConstructorProps {}
@@ -2846,6 +2945,7 @@ export namespace GMime {
      */
     class InternetAddressMailbox extends InternetAddress {
         static $gtype: GObject.GType<InternetAddressMailbox>;
+        declare static readonly __signalSignatures: InternetAddressMailbox.SignalSignatures;
 
         // Fields
 
@@ -2875,6 +2975,9 @@ export namespace GMime {
     }
 
     namespace Message {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -2885,6 +2988,7 @@ export namespace GMime {
      */
     class Message extends Object {
         static $gtype: GObject.GType<Message>;
+        declare static readonly __signalSignatures: Message.SignalSignatures;
 
         // Fields
 
@@ -3038,6 +3142,9 @@ export namespace GMime {
     }
 
     namespace MessagePart {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -3048,6 +3155,7 @@ export namespace GMime {
      */
     class MessagePart extends Object {
         static $gtype: GObject.GType<MessagePart>;
+        declare static readonly __signalSignatures: MessagePart.SignalSignatures;
 
         // Fields
 
@@ -3082,6 +3190,9 @@ export namespace GMime {
     }
 
     namespace MessagePartial {
+        // Signal signatures
+        interface SignalSignatures extends Part.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Part.ConstructorProps {}
@@ -3092,6 +3203,7 @@ export namespace GMime {
      */
     class MessagePartial extends Part {
         static $gtype: GObject.GType<MessagePartial>;
+        declare static readonly __signalSignatures: MessagePartial.SignalSignatures;
 
         // Fields
 
@@ -3142,6 +3254,9 @@ export namespace GMime {
     }
 
     namespace Multipart {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -3152,6 +3267,7 @@ export namespace GMime {
      */
     class Multipart extends Object {
         static $gtype: GObject.GType<Multipart>;
+        declare static readonly __signalSignatures: Multipart.SignalSignatures;
 
         // Fields
 
@@ -3338,6 +3454,9 @@ export namespace GMime {
     }
 
     namespace MultipartEncrypted {
+        // Signal signatures
+        interface SignalSignatures extends Multipart.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Multipart.ConstructorProps {}
@@ -3348,6 +3467,7 @@ export namespace GMime {
      */
     class MultipartEncrypted extends Multipart {
         static $gtype: GObject.GType<MultipartEncrypted>;
+        declare static readonly __signalSignatures: MultipartEncrypted.SignalSignatures;
 
         // Fields
 
@@ -3423,6 +3543,9 @@ export namespace GMime {
     }
 
     namespace MultipartSigned {
+        // Signal signatures
+        interface SignalSignatures extends Multipart.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Multipart.ConstructorProps {}
@@ -3433,6 +3556,7 @@ export namespace GMime {
      */
     class MultipartSigned extends Multipart {
         static $gtype: GObject.GType<MultipartSigned>;
+        declare static readonly __signalSignatures: MultipartSigned.SignalSignatures;
 
         // Fields
 
@@ -3470,6 +3594,9 @@ export namespace GMime {
     }
 
     namespace Object {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3480,6 +3607,7 @@ export namespace GMime {
      */
     abstract class Object extends GObject.Object {
         static $gtype: GObject.GType<Object>;
+        declare static readonly __signalSignatures: Object.SignalSignatures;
 
         // Fields
 
@@ -3728,6 +3856,9 @@ export namespace GMime {
     }
 
     namespace Parser {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3738,6 +3869,7 @@ export namespace GMime {
      */
     class Parser extends GObject.Object {
         static $gtype: GObject.GType<Parser>;
+        declare static readonly __signalSignatures: Parser.SignalSignatures;
 
         // Fields
 
@@ -3875,6 +4007,9 @@ export namespace GMime {
     }
 
     namespace Part {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -3885,6 +4020,7 @@ export namespace GMime {
      */
     class Part extends Object {
         static $gtype: GObject.GType<Part>;
+        declare static readonly __signalSignatures: Part.SignalSignatures;
 
         // Fields
 
@@ -4015,6 +4151,9 @@ export namespace GMime {
     }
 
     namespace Pkcs7Context {
+        // Signal signatures
+        interface SignalSignatures extends CryptoContext.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends CryptoContext.ConstructorProps {}
@@ -4025,6 +4164,7 @@ export namespace GMime {
      */
     class Pkcs7Context extends CryptoContext {
         static $gtype: GObject.GType<Pkcs7Context>;
+        declare static readonly __signalSignatures: Pkcs7Context.SignalSignatures;
 
         // Fields
 
@@ -4053,6 +4193,9 @@ export namespace GMime {
     }
 
     namespace Signature {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4063,6 +4206,7 @@ export namespace GMime {
      */
     class Signature extends GObject.Object {
         static $gtype: GObject.GType<Signature>;
+        declare static readonly __signalSignatures: Signature.SignalSignatures;
 
         // Fields
 
@@ -4138,6 +4282,9 @@ export namespace GMime {
     }
 
     namespace SignatureList {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4148,6 +4295,7 @@ export namespace GMime {
      */
     class SignatureList extends GObject.Object {
         static $gtype: GObject.GType<SignatureList>;
+        declare static readonly __signalSignatures: SignatureList.SignalSignatures;
 
         // Fields
 
@@ -4228,6 +4376,9 @@ export namespace GMime {
     }
 
     namespace Stream {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4238,6 +4389,7 @@ export namespace GMime {
      */
     abstract class Stream extends GObject.Object {
         static $gtype: GObject.GType<Stream>;
+        declare static readonly __signalSignatures: Stream.SignalSignatures;
 
         // Fields
 
@@ -4430,6 +4582,9 @@ export namespace GMime {
     }
 
     namespace StreamBuffer {
+        // Signal signatures
+        interface SignalSignatures extends Stream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Stream.ConstructorProps {}
@@ -4440,6 +4595,7 @@ export namespace GMime {
      */
     class StreamBuffer extends Stream {
         static $gtype: GObject.GType<StreamBuffer>;
+        declare static readonly __signalSignatures: StreamBuffer.SignalSignatures;
 
         // Fields
 
@@ -4461,6 +4617,9 @@ export namespace GMime {
     }
 
     namespace StreamCat {
+        // Signal signatures
+        interface SignalSignatures extends Stream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Stream.ConstructorProps {}
@@ -4471,6 +4630,7 @@ export namespace GMime {
      */
     class StreamCat extends Stream {
         static $gtype: GObject.GType<StreamCat>;
+        declare static readonly __signalSignatures: StreamCat.SignalSignatures;
 
         // Fields
 
@@ -4497,6 +4657,9 @@ export namespace GMime {
     }
 
     namespace StreamFile {
+        // Signal signatures
+        interface SignalSignatures extends Stream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Stream.ConstructorProps {}
@@ -4507,6 +4670,7 @@ export namespace GMime {
      */
     class StreamFile extends Stream {
         static $gtype: GObject.GType<StreamFile>;
+        declare static readonly __signalSignatures: StreamFile.SignalSignatures;
 
         // Fields
 
@@ -4544,6 +4708,9 @@ export namespace GMime {
     }
 
     namespace StreamFilter {
+        // Signal signatures
+        interface SignalSignatures extends Stream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Stream.ConstructorProps {}
@@ -4554,6 +4721,7 @@ export namespace GMime {
      */
     class StreamFilter extends Stream {
         static $gtype: GObject.GType<StreamFilter>;
+        declare static readonly __signalSignatures: StreamFilter.SignalSignatures;
 
         // Fields
 
@@ -4587,6 +4755,9 @@ export namespace GMime {
     }
 
     namespace StreamFs {
+        // Signal signatures
+        interface SignalSignatures extends Stream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Stream.ConstructorProps {}
@@ -4597,6 +4768,7 @@ export namespace GMime {
      */
     class StreamFs extends Stream {
         static $gtype: GObject.GType<StreamFs>;
+        declare static readonly __signalSignatures: StreamFs.SignalSignatures;
 
         // Fields
 
@@ -4637,6 +4809,9 @@ export namespace GMime {
     }
 
     namespace StreamGIO {
+        // Signal signatures
+        interface SignalSignatures extends Stream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Stream.ConstructorProps {}
@@ -4647,6 +4822,7 @@ export namespace GMime {
      */
     class StreamGIO extends Stream {
         static $gtype: GObject.GType<StreamGIO>;
+        declare static readonly __signalSignatures: StreamGIO.SignalSignatures;
 
         // Fields
 
@@ -4687,6 +4863,9 @@ export namespace GMime {
     }
 
     namespace StreamMem {
+        // Signal signatures
+        interface SignalSignatures extends Stream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Stream.ConstructorProps {}
@@ -4697,6 +4876,7 @@ export namespace GMime {
      */
     class StreamMem extends Stream {
         static $gtype: GObject.GType<StreamMem>;
+        declare static readonly __signalSignatures: StreamMem.SignalSignatures;
 
         // Fields
 
@@ -4747,6 +4927,9 @@ export namespace GMime {
     }
 
     namespace StreamMmap {
+        // Signal signatures
+        interface SignalSignatures extends Stream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Stream.ConstructorProps {}
@@ -4757,6 +4940,7 @@ export namespace GMime {
      */
     class StreamMmap extends Stream {
         static $gtype: GObject.GType<StreamMmap>;
+        declare static readonly __signalSignatures: StreamMmap.SignalSignatures;
 
         // Fields
 
@@ -4781,6 +4965,9 @@ export namespace GMime {
     }
 
     namespace StreamNull {
+        // Signal signatures
+        interface SignalSignatures extends Stream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Stream.ConstructorProps {}
@@ -4791,6 +4978,7 @@ export namespace GMime {
      */
     class StreamNull extends Stream {
         static $gtype: GObject.GType<StreamNull>;
+        declare static readonly __signalSignatures: StreamNull.SignalSignatures;
 
         // Fields
 
@@ -4808,6 +4996,9 @@ export namespace GMime {
     }
 
     namespace StreamPipe {
+        // Signal signatures
+        interface SignalSignatures extends Stream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Stream.ConstructorProps {}
@@ -4818,6 +5009,7 @@ export namespace GMime {
      */
     class StreamPipe extends Stream {
         static $gtype: GObject.GType<StreamPipe>;
+        declare static readonly __signalSignatures: StreamPipe.SignalSignatures;
 
         // Fields
 

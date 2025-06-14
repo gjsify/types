@@ -259,6 +259,9 @@ export namespace GUsb {
         BIND_KERNEL_DRIVER,
     }
     namespace BosDescriptor {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -266,6 +269,7 @@ export namespace GUsb {
 
     class BosDescriptor extends GObject.Object {
         static $gtype: GObject.GType<BosDescriptor>;
+        declare static readonly __signalSignatures: BosDescriptor.SignalSignatures;
 
         // Constructors
 
@@ -302,6 +306,13 @@ export namespace GUsb {
             (device: Device): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'device-added': DeviceAdded;
+            'device-changed': DeviceChanged;
+            'device-removed': DeviceRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -314,6 +325,7 @@ export namespace GUsb {
 
     class Context extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Context>;
+        declare static readonly __signalSignatures: Context.SignalSignatures;
 
         // Properties
 
@@ -334,6 +346,15 @@ export namespace GUsb {
 
         // Signals
 
+        connect<K extends keyof Context.SignalSignatures>(signal: K, callback: Context.SignalSignatures[K]): number;
+        connect_after<K extends keyof Context.SignalSignatures>(
+            signal: K,
+            callback: Context.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Context.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Context.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1001,6 +1022,9 @@ export namespace GUsb {
     }
 
     namespace Device {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -1014,6 +1038,7 @@ export namespace GUsb {
 
     class Device extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Device>;
+        declare static readonly __signalSignatures: Device.SignalSignatures;
 
         // Properties
 
@@ -2100,6 +2125,9 @@ export namespace GUsb {
     }
 
     namespace DeviceEvent {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2107,6 +2135,7 @@ export namespace GUsb {
 
     class DeviceEvent extends GObject.Object {
         static $gtype: GObject.GType<DeviceEvent>;
+        declare static readonly __signalSignatures: DeviceEvent.SignalSignatures;
 
         // Constructors
 
@@ -2154,6 +2183,12 @@ export namespace GUsb {
             (device: Device): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'device-added': DeviceAdded;
+            'device-removed': DeviceRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2163,6 +2198,7 @@ export namespace GUsb {
 
     class DeviceList extends GObject.Object {
         static $gtype: GObject.GType<DeviceList>;
+        declare static readonly __signalSignatures: DeviceList.SignalSignatures;
 
         // Properties
 
@@ -2178,6 +2214,18 @@ export namespace GUsb {
 
         // Signals
 
+        connect<K extends keyof DeviceList.SignalSignatures>(
+            signal: K,
+            callback: DeviceList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DeviceList.SignalSignatures>(
+            signal: K,
+            callback: DeviceList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DeviceList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DeviceList.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2217,6 +2265,9 @@ export namespace GUsb {
     }
 
     namespace Endpoint {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2224,6 +2275,7 @@ export namespace GUsb {
 
     class Endpoint extends GObject.Object {
         static $gtype: GObject.GType<Endpoint>;
+        declare static readonly __signalSignatures: Endpoint.SignalSignatures;
 
         // Constructors
 
@@ -2281,6 +2333,9 @@ export namespace GUsb {
     }
 
     namespace Interface {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2288,6 +2343,7 @@ export namespace GUsb {
 
     class Interface extends GObject.Object {
         static $gtype: GObject.GType<Interface>;
+        declare static readonly __signalSignatures: Interface.SignalSignatures;
 
         // Constructors
 

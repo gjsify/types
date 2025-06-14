@@ -75,6 +75,9 @@ export namespace GtkClutter {
         translation_domain?: string | null,
     ): [Clutter.InitError, string[] | null];
     namespace Actor {
+        // Signal signatures
+        interface SignalSignatures extends Clutter.Actor.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -95,6 +98,7 @@ export namespace GtkClutter {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
         static $gtype: GObject.GType<Actor>;
+        declare static readonly __signalSignatures: Actor.SignalSignatures;
 
         // Properties
 
@@ -1022,6 +1026,9 @@ export namespace GtkClutter {
     }
 
     namespace Embed {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Container.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1041,6 +1048,7 @@ export namespace GtkClutter {
      */
     class Embed extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Embed>;
+        declare static readonly __signalSignatures: Embed.SignalSignatures;
 
         // Properties
 
@@ -1539,6 +1547,9 @@ export namespace GtkClutter {
     }
 
     namespace Texture {
+        // Signal signatures
+        interface SignalSignatures extends Clutter.Texture.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1558,6 +1569,7 @@ export namespace GtkClutter {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
         static $gtype: GObject.GType<Texture>;
+        declare static readonly __signalSignatures: Texture.SignalSignatures;
 
         // Constructors
 
@@ -2041,6 +2053,9 @@ export namespace GtkClutter {
     }
 
     namespace Window {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Window.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2057,6 +2072,7 @@ export namespace GtkClutter {
      */
     class Window extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Window>;
+        declare static readonly __signalSignatures: Window.SignalSignatures;
 
         // Constructors
 

@@ -41,6 +41,12 @@ export namespace ZBar {
             (text: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk__.Widget.SignalSignatures {
+            decoded: Decoded;
+            'decoded-text': DecodedText;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -58,6 +64,7 @@ export namespace ZBar {
 
     class Gtk extends Gtk__.Widget implements Atk.ImplementorIface, Gtk__.Buildable {
         static $gtype: GObject.GType<Gtk>;
+        declare static readonly __signalSignatures: Gtk.SignalSignatures;
 
         // Properties
 
@@ -86,6 +93,9 @@ export namespace ZBar {
 
         // Signals
 
+        connect<K extends keyof Gtk.SignalSignatures>(signal: K, callback: Gtk.SignalSignatures[K]): number;
+        connect_after<K extends keyof Gtk.SignalSignatures>(signal: K, callback: Gtk.SignalSignatures[K]): number;
+        emit<K extends keyof Gtk.SignalSignatures>(signal: K, ...args: Parameters<Gtk.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

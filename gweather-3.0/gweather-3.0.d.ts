@@ -661,6 +661,11 @@ export namespace GWeather {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            updated: Updated;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -684,6 +689,7 @@ export namespace GWeather {
      */
     class Info extends GObject.Object {
         static $gtype: GObject.GType<Info>;
+        declare static readonly __signalSignatures: Info.SignalSignatures;
 
         // Properties
 
@@ -712,6 +718,9 @@ export namespace GWeather {
 
         // Signals
 
+        connect<K extends keyof Info.SignalSignatures>(signal: K, callback: Info.SignalSignatures[K]): number;
+        connect_after<K extends keyof Info.SignalSignatures>(signal: K, callback: Info.SignalSignatures[K]): number;
+        emit<K extends keyof Info.SignalSignatures>(signal: K, ...args: Parameters<Info.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -863,6 +872,9 @@ export namespace GWeather {
     }
 
     namespace LocationEntry {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.SearchEntry.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -887,6 +899,7 @@ export namespace GWeather {
         implements Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, Gtk.Editable
     {
         static $gtype: GObject.GType<LocationEntry>;
+        declare static readonly __signalSignatures: LocationEntry.SignalSignatures;
 
         // Properties
 
@@ -5215,6 +5228,9 @@ export namespace GWeather {
     }
 
     namespace TimezoneMenu {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.ComboBox.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5236,6 +5252,7 @@ export namespace GWeather {
         implements Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, Gtk.CellLayout
     {
         static $gtype: GObject.GType<TimezoneMenu>;
+        declare static readonly __signalSignatures: TimezoneMenu.SignalSignatures;
 
         // Properties
 

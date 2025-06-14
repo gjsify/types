@@ -46,6 +46,9 @@ export namespace Gtd {
         (task: Task, previous_task: Task): Gtk.Widget | null;
     }
     namespace BinLayout {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.LayoutManager.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.LayoutManager.ConstructorProps {}
@@ -53,6 +56,7 @@ export namespace Gtd {
 
     class BinLayout extends Gtk.LayoutManager {
         static $gtype: GObject.GType<BinLayout>;
+        declare static readonly __signalSignatures: BinLayout.SignalSignatures;
 
         // Constructors
 
@@ -78,6 +82,13 @@ export namespace Gtd {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {
+            'day-changed': DayChanged;
+            'hour-changed': HourChanged;
+            'minute-changed': MinuteChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -85,6 +96,7 @@ export namespace Gtd {
 
     class Clock extends Object {
         static $gtype: GObject.GType<Clock>;
+        declare static readonly __signalSignatures: Clock.SignalSignatures;
 
         // Constructors
 
@@ -96,6 +108,9 @@ export namespace Gtd {
 
         // Signals
 
+        connect<K extends keyof Clock.SignalSignatures>(signal: K, callback: Clock.SignalSignatures[K]): number;
+        connect_after<K extends keyof Clock.SignalSignatures>(signal: K, callback: Clock.SignalSignatures[K]): number;
+        emit<K extends keyof Clock.SignalSignatures>(signal: K, ...args: Parameters<Clock.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -111,6 +126,9 @@ export namespace Gtd {
     }
 
     namespace ListModelFilter {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -126,6 +144,7 @@ export namespace Gtd {
         implements Gio.ListModel<A>
     {
         static $gtype: GObject.GType<ListModelFilter>;
+        declare static readonly __signalSignatures: ListModelFilter.SignalSignatures;
 
         // Properties
 
@@ -687,6 +706,9 @@ export namespace Gtd {
     }
 
     namespace ListStore {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -706,6 +728,7 @@ export namespace Gtd {
      */
     class ListStore<A extends GObject.Object = GObject.Object> extends GObject.Object implements Gio.ListModel<A> {
         static $gtype: GObject.GType<ListStore>;
+        declare static readonly __signalSignatures: ListStore.SignalSignatures;
 
         // Properties
 
@@ -1387,6 +1410,17 @@ export namespace Gtd {
             (notification: Notification): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {
+            'list-added': ListAdded;
+            'list-changed': ListChanged;
+            'list-removed': ListRemoved;
+            'provider-added': ProviderAdded;
+            'provider-removed': ProviderRemoved;
+            'show-error-message': ShowErrorMessage;
+            'show-notification': ShowNotification;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -1398,6 +1432,7 @@ export namespace Gtd {
 
     class Manager extends Object {
         static $gtype: GObject.GType<Manager>;
+        declare static readonly __signalSignatures: Manager.SignalSignatures;
 
         // Properties
 
@@ -1417,6 +1452,15 @@ export namespace Gtd {
 
         // Signals
 
+        connect<K extends keyof Manager.SignalSignatures>(signal: K, callback: Manager.SignalSignatures[K]): number;
+        connect_after<K extends keyof Manager.SignalSignatures>(
+            signal: K,
+            callback: Manager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Manager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Manager.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1580,6 +1624,9 @@ export namespace Gtd {
     }
 
     namespace MaxSizeLayout {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.LayoutManager.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.LayoutManager.ConstructorProps {
@@ -1596,6 +1643,7 @@ export namespace Gtd {
 
     class MaxSizeLayout extends Gtk.LayoutManager {
         static $gtype: GObject.GType<MaxSizeLayout>;
+        declare static readonly __signalSignatures: MaxSizeLayout.SignalSignatures;
 
         // Properties
 
@@ -1695,6 +1743,9 @@ export namespace Gtd {
     }
 
     namespace MenuButton {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1719,6 +1770,7 @@ export namespace Gtd {
 
     class MenuButton extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<MenuButton>;
+        declare static readonly __signalSignatures: MenuButton.SignalSignatures;
 
         // Properties
 
@@ -2647,6 +2699,11 @@ export namespace Gtd {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {
+            executed: Executed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -2663,6 +2720,7 @@ export namespace Gtd {
 
     class Notification extends Object {
         static $gtype: GObject.GType<Notification>;
+        declare static readonly __signalSignatures: Notification.SignalSignatures;
 
         // Properties
 
@@ -2692,6 +2750,18 @@ export namespace Gtd {
 
         // Signals
 
+        connect<K extends keyof Notification.SignalSignatures>(
+            signal: K,
+            callback: Notification.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Notification.SignalSignatures>(
+            signal: K,
+            callback: Notification.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Notification.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Notification.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2756,6 +2826,9 @@ export namespace Gtd {
     }
 
     namespace Object {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2766,6 +2839,7 @@ export namespace Gtd {
 
     class Object extends GObject.Object {
         static $gtype: GObject.GType<Object>;
+        declare static readonly __signalSignatures: Object.SignalSignatures;
 
         // Properties
 
@@ -2828,6 +2902,9 @@ export namespace Gtd {
     }
 
     namespace OmniArea {
+        // Signal signatures
+        interface SignalSignatures extends Widget.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2839,6 +2916,7 @@ export namespace Gtd {
 
     class OmniArea extends Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<OmniArea>;
+        declare static readonly __signalSignatures: OmniArea.SignalSignatures;
 
         // Constructors
 
@@ -3305,6 +3383,9 @@ export namespace Gtd {
     }
 
     namespace ProviderPopover {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Popover.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3321,6 +3402,7 @@ export namespace Gtd {
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Native, Gtk.ShortcutManager
     {
         static $gtype: GObject.GType<ProviderPopover>;
+        declare static readonly __signalSignatures: ProviderPopover.SignalSignatures;
 
         // Constructors
 
@@ -6265,6 +6347,9 @@ export namespace Gtd {
     }
 
     namespace StarWidget {
+        // Signal signatures
+        interface SignalSignatures extends Widget.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6278,6 +6363,7 @@ export namespace Gtd {
 
     class StarWidget extends Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<StarWidget>;
+        declare static readonly __signalSignatures: StarWidget.SignalSignatures;
 
         // Properties
 
@@ -6744,6 +6830,9 @@ export namespace Gtd {
     }
 
     namespace Task {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {
@@ -6762,6 +6851,7 @@ export namespace Gtd {
 
     class Task extends Object {
         static $gtype: GObject.GType<Task>;
+        declare static readonly __signalSignatures: Task.SignalSignatures;
 
         // Properties
 
@@ -7012,6 +7102,13 @@ export namespace Gtd {
             (task: Task): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {
+            'task-added': TaskAdded;
+            'task-removed': TaskRemoved;
+            'task-updated': TaskUpdated;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -7028,6 +7125,7 @@ export namespace Gtd {
 
     class TaskList<A extends GObject.Object = GObject.Object> extends Object implements Gio.ListModel<A> {
         static $gtype: GObject.GType<TaskList>;
+        declare static readonly __signalSignatures: TaskList.SignalSignatures;
 
         // Properties
 
@@ -7057,6 +7155,15 @@ export namespace Gtd {
 
         // Signals
 
+        connect<K extends keyof TaskList.SignalSignatures>(signal: K, callback: TaskList.SignalSignatures[K]): number;
+        connect_after<K extends keyof TaskList.SignalSignatures>(
+            signal: K,
+            callback: TaskList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TaskList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TaskList.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -7714,6 +7821,9 @@ export namespace Gtd {
     }
 
     namespace TaskListView {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7731,6 +7841,7 @@ export namespace Gtd {
 
     class TaskListView extends Gtk.Box implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<TaskListView>;
+        declare static readonly __signalSignatures: TaskListView.SignalSignatures;
 
         // Properties
 
@@ -8274,6 +8385,12 @@ export namespace Gtd {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {
+            'transition-stopped': TransitionStopped;
+            'transitions-completed': TransitionsCompleted;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -8306,6 +8423,7 @@ export namespace Gtd {
 
     class Widget extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Widget>;
+        declare static readonly __signalSignatures: Widget.SignalSignatures;
 
         // Properties
 
@@ -8360,6 +8478,9 @@ export namespace Gtd {
 
         // Signals
 
+        connect<K extends keyof Widget.SignalSignatures>(signal: K, callback: Widget.SignalSignatures[K]): number;
+        connect_after<K extends keyof Widget.SignalSignatures>(signal: K, callback: Widget.SignalSignatures[K]): number;
+        emit<K extends keyof Widget.SignalSignatures>(signal: K, ...args: Parameters<Widget.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -9212,6 +9333,9 @@ export namespace Gtd {
     }
 
     namespace Window {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.ApplicationWindow.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9242,6 +9366,7 @@ export namespace Gtd {
             Gtk.ShortcutManager
     {
         static $gtype: GObject.GType<Window>;
+        declare static readonly __signalSignatures: Window.SignalSignatures;
 
         // Properties
 

@@ -6995,7 +6995,7 @@ export namespace Gio {
         }
 
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
             changed: Changed;
         }
 
@@ -7112,7 +7112,7 @@ export namespace Gio {
         }
 
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
             'launch-failed': LaunchFailed;
             'launch-started': LaunchStarted;
             launched: Launched;
@@ -7313,7 +7313,7 @@ export namespace Gio {
         }
 
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
             activate: Activate;
             'command-line': CommandLine;
             'handle-local-options': HandleLocalOptions;
@@ -9370,6 +9370,9 @@ export namespace Gio {
     }
 
     namespace ApplicationCommandLine {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9554,6 +9557,7 @@ export namespace Gio {
      */
     class ApplicationCommandLine extends GObject.Object {
         static $gtype: GObject.GType<ApplicationCommandLine>;
+        declare static readonly __signalSignatures: ApplicationCommandLine.SignalSignatures;
 
         // Properties
 
@@ -9839,6 +9843,9 @@ export namespace Gio {
     }
 
     namespace BufferedInputStream {
+        // Signal signatures
+        interface SignalSignatures extends FilterInputStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FilterInputStream.ConstructorProps, Seekable.ConstructorProps {
@@ -9864,6 +9871,7 @@ export namespace Gio {
      */
     class BufferedInputStream extends FilterInputStream implements Seekable {
         static $gtype: GObject.GType<BufferedInputStream>;
+        declare static readonly __signalSignatures: BufferedInputStream.SignalSignatures;
 
         // Properties
 
@@ -10624,6 +10632,9 @@ export namespace Gio {
     }
 
     namespace BufferedOutputStream {
+        // Signal signatures
+        interface SignalSignatures extends FilterOutputStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FilterOutputStream.ConstructorProps, Seekable.ConstructorProps {
@@ -10651,6 +10662,7 @@ export namespace Gio {
      */
     class BufferedOutputStream extends FilterOutputStream implements Seekable {
         static $gtype: GObject.GType<BufferedOutputStream>;
+        declare static readonly __signalSignatures: BufferedOutputStream.SignalSignatures;
 
         // Properties
 
@@ -11253,6 +11265,9 @@ export namespace Gio {
     }
 
     namespace BytesIcon {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -11269,6 +11284,7 @@ export namespace Gio {
      */
     class BytesIcon extends GObject.Object implements Icon, LoadableIcon {
         static $gtype: GObject.GType<BytesIcon>;
+        declare static readonly __signalSignatures: BytesIcon.SignalSignatures;
 
         // Properties
 
@@ -11874,7 +11890,7 @@ export namespace Gio {
         }
 
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
             cancelled: Cancelled;
         }
 
@@ -12136,6 +12152,9 @@ export namespace Gio {
     }
 
     namespace CharsetConverter {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -12157,6 +12176,7 @@ export namespace Gio {
      */
     class CharsetConverter extends GObject.Object implements Converter, Initable {
         static $gtype: GObject.GType<CharsetConverter>;
+        declare static readonly __signalSignatures: CharsetConverter.SignalSignatures;
 
         // Properties
 
@@ -12944,6 +12964,9 @@ export namespace Gio {
     }
 
     namespace ConverterInputStream {
+        // Signal signatures
+        interface SignalSignatures extends FilterInputStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FilterInputStream.ConstructorProps, PollableInputStream.ConstructorProps {
@@ -12960,6 +12983,7 @@ export namespace Gio {
      */
     class ConverterInputStream extends FilterInputStream implements PollableInputStream {
         static $gtype: GObject.GType<ConverterInputStream>;
+        declare static readonly __signalSignatures: ConverterInputStream.SignalSignatures;
 
         // Properties
 
@@ -13856,6 +13880,9 @@ export namespace Gio {
     }
 
     namespace ConverterOutputStream {
+        // Signal signatures
+        interface SignalSignatures extends FilterOutputStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FilterOutputStream.ConstructorProps, PollableOutputStream.ConstructorProps {
@@ -13872,6 +13899,7 @@ export namespace Gio {
      */
     class ConverterOutputStream extends FilterOutputStream implements PollableOutputStream {
         static $gtype: GObject.GType<ConverterOutputStream>;
+        declare static readonly __signalSignatures: ConverterOutputStream.SignalSignatures;
 
         // Properties
 
@@ -15252,6 +15280,9 @@ export namespace Gio {
     }
 
     namespace Credentials {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -15296,6 +15327,7 @@ export namespace Gio {
      */
     class Credentials extends GObject.Object {
         static $gtype: GObject.GType<Credentials>;
+        declare static readonly __signalSignatures: Credentials.SignalSignatures;
 
         // Constructors
 
@@ -15369,6 +15401,9 @@ export namespace Gio {
     }
 
     namespace DBusActionGroup {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -15386,6 +15421,7 @@ export namespace Gio {
      */
     class DBusActionGroup extends GObject.Object implements ActionGroup, RemoteActionGroup {
         static $gtype: GObject.GType<DBusActionGroup>;
+        declare static readonly __signalSignatures: DBusActionGroup.SignalSignatures;
 
         // Constructors
 
@@ -16371,7 +16407,7 @@ export namespace Gio {
         }
 
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
             'allow-mechanism': AllowMechanism;
             'authorize-authenticated-peer': AuthorizeAuthenticatedPeer;
         }
@@ -16513,7 +16549,7 @@ export namespace Gio {
         }
 
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
             closed: Closed;
         }
 
@@ -18876,7 +18912,7 @@ export namespace Gio {
         }
 
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
             'g-authorize-method': GAuthorizeMethod;
         }
 
@@ -19533,6 +19569,9 @@ export namespace Gio {
     }
 
     namespace DBusMenuModel {
+        // Signal signatures
+        interface SignalSignatures extends MenuModel.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MenuModel.ConstructorProps {}
@@ -19545,6 +19584,7 @@ export namespace Gio {
      */
     class DBusMenuModel extends MenuModel {
         static $gtype: GObject.GType<DBusMenuModel>;
+        declare static readonly __signalSignatures: DBusMenuModel.SignalSignatures;
 
         // Constructors
 
@@ -19571,6 +19611,9 @@ export namespace Gio {
     }
 
     namespace DBusMessage {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -19584,6 +19627,7 @@ export namespace Gio {
      */
     class DBusMessage extends GObject.Object {
         static $gtype: GObject.GType<DBusMessage>;
+        declare static readonly __signalSignatures: DBusMessage.SignalSignatures;
 
         // Properties
 
@@ -19924,6 +19968,9 @@ export namespace Gio {
     }
 
     namespace DBusMethodInvocation {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -19941,6 +19988,7 @@ export namespace Gio {
      */
     class DBusMethodInvocation extends GObject.Object {
         static $gtype: GObject.GType<DBusMethodInvocation>;
+        declare static readonly __signalSignatures: DBusMethodInvocation.SignalSignatures;
 
         // Constructors
 
@@ -20138,7 +20186,7 @@ export namespace Gio {
         }
 
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
             'interface-proxy-properties-changed': InterfaceProxyPropertiesChanged;
             'interface-proxy-signal': InterfaceProxySignal;
         }
@@ -21349,6 +21397,9 @@ export namespace Gio {
     }
 
     namespace DBusObjectManagerServer {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DBusObjectManager.ConstructorProps {
@@ -21383,6 +21434,7 @@ export namespace Gio {
      */
     class DBusObjectManagerServer extends GObject.Object implements DBusObjectManager {
         static $gtype: GObject.GType<DBusObjectManagerServer>;
+        declare static readonly __signalSignatures: DBusObjectManagerServer.SignalSignatures;
 
         // Properties
 
@@ -21969,6 +22021,9 @@ export namespace Gio {
     }
 
     namespace DBusObjectProxy {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, DBusObject.ConstructorProps {
@@ -21987,6 +22042,7 @@ export namespace Gio {
      */
     class DBusObjectProxy extends GObject.Object implements DBusObject {
         static $gtype: GObject.GType<DBusObjectProxy>;
+        declare static readonly __signalSignatures: DBusObjectProxy.SignalSignatures;
 
         // Properties
 
@@ -22514,7 +22570,7 @@ export namespace Gio {
         }
 
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
             'authorize-method': AuthorizeMethod;
         }
 
@@ -23127,7 +23183,7 @@ export namespace Gio {
         }
 
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
             'g-properties-changed': GPropertiesChanged;
             'g-signal': GSignal;
         }
@@ -24760,7 +24816,7 @@ export namespace Gio {
         }
 
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
             'new-connection': NewConnection;
         }
 
@@ -25442,6 +25498,9 @@ export namespace Gio {
     }
 
     namespace DataInputStream {
+        // Signal signatures
+        interface SignalSignatures extends BufferedInputStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends BufferedInputStream.ConstructorProps, Seekable.ConstructorProps {
@@ -25458,6 +25517,7 @@ export namespace Gio {
      */
     class DataInputStream extends BufferedInputStream implements Seekable {
         static $gtype: GObject.GType<DataInputStream>;
+        declare static readonly __signalSignatures: DataInputStream.SignalSignatures;
 
         // Properties
 
@@ -26440,6 +26500,9 @@ export namespace Gio {
     }
 
     namespace DataOutputStream {
+        // Signal signatures
+        interface SignalSignatures extends FilterOutputStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FilterOutputStream.ConstructorProps, Seekable.ConstructorProps {
@@ -26454,6 +26517,7 @@ export namespace Gio {
      */
     class DataOutputStream extends FilterOutputStream implements Seekable {
         static $gtype: GObject.GType<DataOutputStream>;
+        declare static readonly __signalSignatures: DataOutputStream.SignalSignatures;
 
         // Properties
 
@@ -27096,7 +27160,7 @@ export namespace Gio {
         }
 
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
             authorize: Authorize;
         }
 
@@ -27851,6 +27915,9 @@ export namespace Gio {
     }
 
     namespace DesktopAppInfo {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, AppInfo.ConstructorProps {
@@ -27868,6 +27935,7 @@ export namespace Gio {
      */
     class DesktopAppInfo extends GObject.Object implements AppInfo {
         static $gtype: GObject.GType<DesktopAppInfo>;
+        declare static readonly __signalSignatures: DesktopAppInfo.SignalSignatures;
 
         // Properties
 
@@ -29023,6 +29091,9 @@ export namespace Gio {
     }
 
     namespace Emblem {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Icon.ConstructorProps {
@@ -29041,6 +29112,7 @@ export namespace Gio {
      */
     class Emblem extends GObject.Object implements Icon {
         static $gtype: GObject.GType<Emblem>;
+        declare static readonly __signalSignatures: Emblem.SignalSignatures;
 
         // Properties
 
@@ -29581,6 +29653,9 @@ export namespace Gio {
     }
 
     namespace EmblemedIcon {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Icon.ConstructorProps {
@@ -29598,6 +29673,7 @@ export namespace Gio {
      */
     class EmblemedIcon extends GObject.Object implements Icon {
         static $gtype: GObject.GType<EmblemedIcon>;
+        declare static readonly __signalSignatures: EmblemedIcon.SignalSignatures;
 
         // Properties
 
@@ -30141,6 +30217,9 @@ export namespace Gio {
     }
 
     namespace FileEnumerator {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -30178,6 +30257,7 @@ export namespace Gio {
      */
     class FileEnumerator extends GObject.Object {
         static $gtype: GObject.GType<FileEnumerator>;
+        declare static readonly __signalSignatures: FileEnumerator.SignalSignatures;
 
         // Properties
 
@@ -30777,6 +30857,9 @@ export namespace Gio {
     }
 
     namespace FileIOStream {
+        // Signal signatures
+        interface SignalSignatures extends IOStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends IOStream.ConstructorProps, Seekable.ConstructorProps {}
@@ -30805,6 +30888,7 @@ export namespace Gio {
      */
     class FileIOStream extends IOStream implements Seekable {
         static $gtype: GObject.GType<FileIOStream>;
+        declare static readonly __signalSignatures: FileIOStream.SignalSignatures;
 
         // Constructors
 
@@ -31455,6 +31539,9 @@ export namespace Gio {
     }
 
     namespace FileIcon {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -31473,6 +31560,7 @@ export namespace Gio {
      */
     class FileIcon extends GObject.Object implements Icon, LoadableIcon {
         static $gtype: GObject.GType<FileIcon>;
+        declare static readonly __signalSignatures: FileIcon.SignalSignatures;
 
         // Properties
 
@@ -32071,6 +32159,9 @@ export namespace Gio {
     }
 
     namespace FileInfo {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -32116,6 +32207,7 @@ export namespace Gio {
      */
     class FileInfo extends GObject.Object {
         static $gtype: GObject.GType<FileInfo>;
+        declare static readonly __signalSignatures: FileInfo.SignalSignatures;
 
         // Constructors
 
@@ -32676,6 +32768,9 @@ export namespace Gio {
     }
 
     namespace FileInputStream {
+        // Signal signatures
+        interface SignalSignatures extends InputStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends InputStream.ConstructorProps, Seekable.ConstructorProps {}
@@ -32694,6 +32789,7 @@ export namespace Gio {
      */
     class FileInputStream extends InputStream implements Seekable {
         static $gtype: GObject.GType<FileInputStream>;
+        declare static readonly __signalSignatures: FileInputStream.SignalSignatures;
 
         // Constructors
 
@@ -33349,7 +33445,7 @@ export namespace Gio {
         }
 
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
             changed: Changed;
         }
 
@@ -33473,6 +33569,9 @@ export namespace Gio {
     }
 
     namespace FileOutputStream {
+        // Signal signatures
+        interface SignalSignatures extends OutputStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends OutputStream.ConstructorProps, Seekable.ConstructorProps {}
@@ -33496,6 +33595,7 @@ export namespace Gio {
      */
     class FileOutputStream extends OutputStream implements Seekable {
         static $gtype: GObject.GType<FileOutputStream>;
+        declare static readonly __signalSignatures: FileOutputStream.SignalSignatures;
 
         // Constructors
 
@@ -34153,7 +34253,7 @@ export namespace Gio {
         }
 
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
             'got-completion-data': GotCompletionData;
         }
 
@@ -34227,6 +34327,9 @@ export namespace Gio {
     }
 
     namespace FilterInputStream {
+        // Signal signatures
+        interface SignalSignatures extends InputStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends InputStream.ConstructorProps {
@@ -34245,6 +34348,7 @@ export namespace Gio {
      */
     abstract class FilterInputStream extends InputStream {
         static $gtype: GObject.GType<FilterInputStream>;
+        declare static readonly __signalSignatures: FilterInputStream.SignalSignatures;
 
         // Properties
 
@@ -34294,6 +34398,9 @@ export namespace Gio {
     }
 
     namespace FilterOutputStream {
+        // Signal signatures
+        interface SignalSignatures extends OutputStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends OutputStream.ConstructorProps {
@@ -34312,6 +34419,7 @@ export namespace Gio {
      */
     abstract class FilterOutputStream extends OutputStream {
         static $gtype: GObject.GType<FilterOutputStream>;
+        declare static readonly __signalSignatures: FilterOutputStream.SignalSignatures;
 
         // Properties
 
@@ -34359,6 +34467,9 @@ export namespace Gio {
     }
 
     namespace IOModule {
+        // Signal signatures
+        interface SignalSignatures extends GObject.TypeModule.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.TypeModule.ConstructorProps, GObject.TypePlugin.ConstructorProps {}
@@ -34371,6 +34482,7 @@ export namespace Gio {
      */
     class IOModule extends GObject.TypeModule implements GObject.TypePlugin {
         static $gtype: GObject.GType<IOModule>;
+        declare static readonly __signalSignatures: IOModule.SignalSignatures;
 
         // Constructors
 
@@ -34896,6 +35008,9 @@ export namespace Gio {
     }
 
     namespace IOStream {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -34959,6 +35074,7 @@ export namespace Gio {
      */
     abstract class IOStream extends GObject.Object {
         static $gtype: GObject.GType<IOStream>;
+        declare static readonly __signalSignatures: IOStream.SignalSignatures;
 
         // Properties
 
@@ -35194,6 +35310,9 @@ export namespace Gio {
     }
 
     namespace InetAddress {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -35236,6 +35355,7 @@ export namespace Gio {
      */
     class InetAddress extends GObject.Object {
         static $gtype: GObject.GType<InetAddress>;
+        declare static readonly __signalSignatures: InetAddress.SignalSignatures;
 
         // Properties
 
@@ -35451,6 +35571,9 @@ export namespace Gio {
     }
 
     namespace InetAddressMask {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Initable.ConstructorProps {
@@ -35468,6 +35591,7 @@ export namespace Gio {
      */
     class InetAddressMask extends GObject.Object implements Initable {
         static $gtype: GObject.GType<InetAddressMask>;
+        declare static readonly __signalSignatures: InetAddressMask.SignalSignatures;
 
         // Properties
 
@@ -36059,6 +36183,9 @@ export namespace Gio {
     }
 
     namespace InetSocketAddress {
+        // Signal signatures
+        interface SignalSignatures extends SocketAddress.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SocketAddress.ConstructorProps, SocketConnectable.ConstructorProps {
@@ -36079,6 +36206,7 @@ export namespace Gio {
      */
     class InetSocketAddress extends SocketAddress implements SocketConnectable {
         static $gtype: GObject.GType<InetSocketAddress>;
+        declare static readonly __signalSignatures: InetSocketAddress.SignalSignatures;
 
         // Properties
 
@@ -36632,6 +36760,9 @@ export namespace Gio {
     }
 
     namespace InputStream {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -36654,6 +36785,7 @@ export namespace Gio {
      */
     abstract class InputStream extends GObject.Object {
         static $gtype: GObject.GType<InputStream>;
+        declare static readonly __signalSignatures: InputStream.SignalSignatures;
 
         // Constructors
 
@@ -37420,6 +37552,9 @@ export namespace Gio {
     }
 
     namespace ListStore {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -37441,6 +37576,7 @@ export namespace Gio {
      */
     class ListStore<A extends GObject.Object = GObject.Object> extends GObject.Object implements ListModel<A> {
         static $gtype: GObject.GType<ListStore>;
+        declare static readonly __signalSignatures: ListStore.SignalSignatures;
 
         // Properties
 
@@ -38126,6 +38262,9 @@ export namespace Gio {
     }
 
     namespace MemoryInputStream {
+        // Signal signatures
+        interface SignalSignatures extends InputStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -38143,6 +38282,7 @@ export namespace Gio {
      */
     class MemoryInputStream extends InputStream implements PollableInputStream, Seekable {
         static $gtype: GObject.GType<MemoryInputStream>;
+        declare static readonly __signalSignatures: MemoryInputStream.SignalSignatures;
 
         // Constructors
 
@@ -39580,6 +39720,9 @@ export namespace Gio {
     }
 
     namespace MemoryOutputStream {
+        // Signal signatures
+        interface SignalSignatures extends OutputStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -39602,6 +39745,7 @@ export namespace Gio {
      */
     class MemoryOutputStream extends OutputStream implements PollableOutputStream, Seekable {
         static $gtype: GObject.GType<MemoryOutputStream>;
+        declare static readonly __signalSignatures: MemoryOutputStream.SignalSignatures;
 
         // Properties
 
@@ -41563,6 +41707,9 @@ export namespace Gio {
     }
 
     namespace Menu {
+        // Signal signatures
+        interface SignalSignatures extends MenuModel.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MenuModel.ConstructorProps {}
@@ -41580,6 +41727,7 @@ export namespace Gio {
      */
     class Menu extends MenuModel {
         static $gtype: GObject.GType<Menu>;
+        declare static readonly __signalSignatures: Menu.SignalSignatures;
 
         // Constructors
 
@@ -41734,6 +41882,9 @@ export namespace Gio {
     }
 
     namespace MenuAttributeIter {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -41745,6 +41896,7 @@ export namespace Gio {
      */
     abstract class MenuAttributeIter extends GObject.Object {
         static $gtype: GObject.GType<MenuAttributeIter>;
+        declare static readonly __signalSignatures: MenuAttributeIter.SignalSignatures;
 
         // Constructors
 
@@ -41825,6 +41977,9 @@ export namespace Gio {
     }
 
     namespace MenuItem {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -41836,6 +41991,7 @@ export namespace Gio {
      */
     class MenuItem extends GObject.Object {
         static $gtype: GObject.GType<MenuItem>;
+        declare static readonly __signalSignatures: MenuItem.SignalSignatures;
 
         // Constructors
 
@@ -42014,6 +42170,9 @@ export namespace Gio {
     }
 
     namespace MenuLinkIter {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -42025,6 +42184,7 @@ export namespace Gio {
      */
     abstract class MenuLinkIter extends GObject.Object {
         static $gtype: GObject.GType<MenuLinkIter>;
+        declare static readonly __signalSignatures: MenuLinkIter.SignalSignatures;
 
         // Constructors
 
@@ -42108,7 +42268,7 @@ export namespace Gio {
         }
 
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
             'items-changed': ItemsChanged;
         }
 
@@ -42460,7 +42620,7 @@ export namespace Gio {
         }
 
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
             aborted: Aborted;
             'ask-password': AskPassword;
             'ask-question': AskQuestion;
@@ -42807,6 +42967,9 @@ export namespace Gio {
     }
 
     namespace NativeSocketAddress {
+        // Signal signatures
+        interface SignalSignatures extends SocketAddress.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SocketAddress.ConstructorProps, SocketConnectable.ConstructorProps {}
@@ -42820,6 +42983,7 @@ export namespace Gio {
      */
     class NativeSocketAddress extends SocketAddress implements SocketConnectable {
         static $gtype: GObject.GType<NativeSocketAddress>;
+        declare static readonly __signalSignatures: NativeSocketAddress.SignalSignatures;
 
         // Constructors
 
@@ -43323,6 +43487,9 @@ export namespace Gio {
     }
 
     namespace NativeVolumeMonitor {
+        // Signal signatures
+        interface SignalSignatures extends VolumeMonitor.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends VolumeMonitor.ConstructorProps {}
@@ -43330,6 +43497,7 @@ export namespace Gio {
 
     abstract class NativeVolumeMonitor extends VolumeMonitor {
         static $gtype: GObject.GType<NativeVolumeMonitor>;
+        declare static readonly __signalSignatures: NativeVolumeMonitor.SignalSignatures;
 
         // Constructors
 
@@ -43339,6 +43507,9 @@ export namespace Gio {
     }
 
     namespace NetworkAddress {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, SocketConnectable.ConstructorProps {
@@ -43362,6 +43533,7 @@ export namespace Gio {
      */
     class NetworkAddress extends GObject.Object implements SocketConnectable {
         static $gtype: GObject.GType<NetworkAddress>;
+        declare static readonly __signalSignatures: NetworkAddress.SignalSignatures;
 
         // Properties
 
@@ -43941,6 +44113,9 @@ export namespace Gio {
     }
 
     namespace NetworkService {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, SocketConnectable.ConstructorProps {
@@ -43964,6 +44139,7 @@ export namespace Gio {
      */
     class NetworkService extends GObject.Object implements SocketConnectable {
         static $gtype: GObject.GType<NetworkService>;
+        declare static readonly __signalSignatures: NetworkService.SignalSignatures;
 
         // Properties
 
@@ -44518,6 +44694,9 @@ export namespace Gio {
     }
 
     namespace Notification {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -44572,6 +44751,7 @@ export namespace Gio {
      */
     class Notification extends GObject.Object {
         static $gtype: GObject.GType<Notification>;
+        declare static readonly __signalSignatures: Notification.SignalSignatures;
 
         // Constructors
 
@@ -44675,6 +44855,9 @@ export namespace Gio {
     }
 
     namespace OutputStream {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -44701,6 +44884,7 @@ export namespace Gio {
      */
     abstract class OutputStream extends GObject.Object {
         static $gtype: GObject.GType<OutputStream>;
+        declare static readonly __signalSignatures: OutputStream.SignalSignatures;
 
         // Constructors
 
@@ -45893,6 +46077,9 @@ export namespace Gio {
     }
 
     namespace Permission {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -45923,6 +46110,7 @@ export namespace Gio {
      */
     abstract class Permission extends GObject.Object {
         static $gtype: GObject.GType<Permission>;
+        declare static readonly __signalSignatures: Permission.SignalSignatures;
 
         // Properties
 
@@ -46190,6 +46378,9 @@ export namespace Gio {
     }
 
     namespace PropertyAction {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Action.ConstructorProps {
@@ -46264,6 +46455,7 @@ export namespace Gio {
      */
     class PropertyAction extends GObject.Object implements Action {
         static $gtype: GObject.GType<PropertyAction>;
+        declare static readonly __signalSignatures: PropertyAction.SignalSignatures;
 
         // Properties
 
@@ -46981,6 +47173,9 @@ export namespace Gio {
     }
 
     namespace ProxyAddress {
+        // Signal signatures
+        interface SignalSignatures extends InetSocketAddress.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends InetSocketAddress.ConstructorProps, SocketConnectable.ConstructorProps {
@@ -47002,6 +47197,7 @@ export namespace Gio {
      */
     class ProxyAddress extends InetSocketAddress implements SocketConnectable {
         static $gtype: GObject.GType<ProxyAddress>;
+        declare static readonly __signalSignatures: ProxyAddress.SignalSignatures;
 
         // Properties
 
@@ -47554,6 +47750,9 @@ export namespace Gio {
     }
 
     namespace ProxyAddressEnumerator {
+        // Signal signatures
+        interface SignalSignatures extends SocketAddressEnumerator.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SocketAddressEnumerator.ConstructorProps {
@@ -47580,6 +47779,7 @@ export namespace Gio {
      */
     class ProxyAddressEnumerator extends SocketAddressEnumerator {
         static $gtype: GObject.GType<ProxyAddressEnumerator>;
+        declare static readonly __signalSignatures: ProxyAddressEnumerator.SignalSignatures;
 
         // Properties
 
@@ -47627,7 +47827,7 @@ export namespace Gio {
         }
 
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
             reload: Reload;
         }
 
@@ -48342,7 +48542,7 @@ export namespace Gio {
         }
 
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
             'change-event': ChangeEvent;
             changed: Changed;
             'writable-change-event': WritableChangeEvent;
@@ -49478,6 +49678,9 @@ export namespace Gio {
     }
 
     namespace SettingsBackend {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -49510,6 +49713,7 @@ export namespace Gio {
      */
     abstract class SettingsBackend extends GObject.Object {
         static $gtype: GObject.GType<SettingsBackend>;
+        declare static readonly __signalSignatures: SettingsBackend.SignalSignatures;
 
         // Constructors
 
@@ -49714,7 +49918,7 @@ export namespace Gio {
         }
 
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
             activate: Activate;
             'change-state': ChangeState;
         }
@@ -50491,6 +50695,9 @@ export namespace Gio {
     }
 
     namespace SimpleActionGroup {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -50506,6 +50713,7 @@ export namespace Gio {
      */
     class SimpleActionGroup extends GObject.Object implements ActionGroup, ActionMap {
         static $gtype: GObject.GType<SimpleActionGroup>;
+        declare static readonly __signalSignatures: SimpleActionGroup.SignalSignatures;
 
         // Constructors
 
@@ -51512,6 +51720,9 @@ export namespace Gio {
     }
 
     namespace SimpleAsyncResult {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, AsyncResult.ConstructorProps {}
@@ -51687,6 +51898,7 @@ export namespace Gio {
      */
     class SimpleAsyncResult extends GObject.Object implements AsyncResult {
         static $gtype: GObject.GType<SimpleAsyncResult>;
+        declare static readonly __signalSignatures: SimpleAsyncResult.SignalSignatures;
 
         // Constructors
 
@@ -52302,6 +52514,9 @@ export namespace Gio {
     }
 
     namespace SimpleIOStream {
+        // Signal signatures
+        interface SignalSignatures extends IOStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends IOStream.ConstructorProps {
@@ -52326,6 +52541,7 @@ export namespace Gio {
      */
     class SimpleIOStream extends IOStream {
         static $gtype: GObject.GType<SimpleIOStream>;
+        declare static readonly __signalSignatures: SimpleIOStream.SignalSignatures;
 
         // Properties
 
@@ -52356,6 +52572,9 @@ export namespace Gio {
     }
 
     namespace SimplePermission {
+        // Signal signatures
+        interface SignalSignatures extends Permission.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Permission.ConstructorProps {}
@@ -52371,6 +52590,7 @@ export namespace Gio {
      */
     class SimplePermission extends Permission {
         static $gtype: GObject.GType<SimplePermission>;
+        declare static readonly __signalSignatures: SimplePermission.SignalSignatures;
 
         // Constructors
 
@@ -52382,6 +52602,9 @@ export namespace Gio {
     }
 
     namespace SimpleProxyResolver {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, ProxyResolver.ConstructorProps {
@@ -52404,6 +52627,7 @@ export namespace Gio {
      */
     class SimpleProxyResolver extends GObject.Object implements ProxyResolver {
         static $gtype: GObject.GType<SimpleProxyResolver>;
+        declare static readonly __signalSignatures: SimpleProxyResolver.SignalSignatures;
 
         // Properties
 
@@ -53110,6 +53334,9 @@ export namespace Gio {
     }
 
     namespace Socket {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -53212,6 +53439,7 @@ export namespace Gio {
      */
     class Socket extends GObject.Object implements DatagramBased, Initable {
         static $gtype: GObject.GType<Socket>;
+        declare static readonly __signalSignatures: Socket.SignalSignatures;
 
         // Properties
 
@@ -55010,6 +55238,9 @@ export namespace Gio {
     }
 
     namespace SocketAddress {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, SocketConnectable.ConstructorProps {
@@ -55025,6 +55256,7 @@ export namespace Gio {
      */
     abstract class SocketAddress extends GObject.Object implements SocketConnectable {
         static $gtype: GObject.GType<SocketAddress>;
+        declare static readonly __signalSignatures: SocketAddress.SignalSignatures;
 
         // Properties
 
@@ -55586,6 +55818,9 @@ export namespace Gio {
     }
 
     namespace SocketAddressEnumerator {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -55610,6 +55845,7 @@ export namespace Gio {
      */
     abstract class SocketAddressEnumerator extends GObject.Object {
         static $gtype: GObject.GType<SocketAddressEnumerator>;
+        declare static readonly __signalSignatures: SocketAddressEnumerator.SignalSignatures;
 
         // Constructors
 
@@ -55726,7 +55962,7 @@ export namespace Gio {
         }
 
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
             event: Event;
         }
 
@@ -56447,6 +56683,9 @@ export namespace Gio {
     }
 
     namespace SocketConnection {
+        // Signal signatures
+        interface SignalSignatures extends IOStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends IOStream.ConstructorProps {
@@ -56474,6 +56713,7 @@ export namespace Gio {
      */
     class SocketConnection extends IOStream {
         static $gtype: GObject.GType<SocketConnection>;
+        declare static readonly __signalSignatures: SocketConnection.SignalSignatures;
 
         // Properties
 
@@ -56621,6 +56861,9 @@ export namespace Gio {
     }
 
     namespace SocketControlMessage {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -56650,6 +56893,7 @@ export namespace Gio {
      */
     abstract class SocketControlMessage extends GObject.Object {
         static $gtype: GObject.GType<SocketControlMessage>;
+        declare static readonly __signalSignatures: SocketControlMessage.SignalSignatures;
 
         // Constructors
 
@@ -56740,7 +56984,7 @@ export namespace Gio {
         }
 
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
             event: Event;
         }
 
@@ -57186,6 +57430,9 @@ export namespace Gio {
     }
 
     namespace Subprocess {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Initable.ConstructorProps {
@@ -57261,6 +57508,7 @@ export namespace Gio {
      */
     class Subprocess extends GObject.Object implements Initable {
         static $gtype: GObject.GType<Subprocess>;
+        declare static readonly __signalSignatures: Subprocess.SignalSignatures;
 
         // Properties
 
@@ -58159,6 +58407,9 @@ export namespace Gio {
     }
 
     namespace SubprocessLauncher {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -58178,6 +58429,7 @@ export namespace Gio {
      */
     class SubprocessLauncher extends GObject.Object {
         static $gtype: GObject.GType<SubprocessLauncher>;
+        declare static readonly __signalSignatures: SubprocessLauncher.SignalSignatures;
 
         // Properties
 
@@ -58424,6 +58676,9 @@ export namespace Gio {
     }
 
     namespace Task {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, AsyncResult.ConstructorProps {
@@ -58957,6 +59212,7 @@ export namespace Gio {
      */
     class Task extends GObject.Object implements AsyncResult {
         static $gtype: GObject.GType<Task>;
+        declare static readonly __signalSignatures: Task.SignalSignatures;
 
         // Properties
 
@@ -59859,6 +60115,9 @@ export namespace Gio {
     }
 
     namespace TcpConnection {
+        // Signal signatures
+        interface SignalSignatures extends SocketConnection.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SocketConnection.ConstructorProps {
@@ -59873,6 +60132,7 @@ export namespace Gio {
      */
     class TcpConnection extends SocketConnection {
         static $gtype: GObject.GType<TcpConnection>;
+        declare static readonly __signalSignatures: TcpConnection.SignalSignatures;
 
         // Properties
 
@@ -59917,6 +60177,9 @@ export namespace Gio {
     }
 
     namespace TcpWrapperConnection {
+        // Signal signatures
+        interface SignalSignatures extends TcpConnection.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends TcpConnection.ConstructorProps {
@@ -59935,6 +60198,7 @@ export namespace Gio {
      */
     class TcpWrapperConnection extends TcpConnection {
         static $gtype: GObject.GType<TcpWrapperConnection>;
+        declare static readonly __signalSignatures: TcpWrapperConnection.SignalSignatures;
 
         // Properties
 
@@ -59965,6 +60229,9 @@ export namespace Gio {
     }
 
     namespace TestDBus {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -60055,6 +60322,7 @@ export namespace Gio {
      */
     class TestDBus extends GObject.Object {
         static $gtype: GObject.GType<TestDBus>;
+        declare static readonly __signalSignatures: TestDBus.SignalSignatures;
 
         // Properties
 
@@ -60134,6 +60402,9 @@ export namespace Gio {
     }
 
     namespace ThemedIcon {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Icon.ConstructorProps {
@@ -60157,6 +60428,7 @@ export namespace Gio {
      */
     class ThemedIcon extends GObject.Object implements Icon {
         static $gtype: GObject.GType<ThemedIcon>;
+        declare static readonly __signalSignatures: ThemedIcon.SignalSignatures;
 
         // Properties
 
@@ -60750,6 +61022,9 @@ export namespace Gio {
     }
 
     namespace ThreadedResolver {
+        // Signal signatures
+        interface SignalSignatures extends Resolver.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Resolver.ConstructorProps {}
@@ -60761,6 +61036,7 @@ export namespace Gio {
      */
     class ThreadedResolver extends Resolver {
         static $gtype: GObject.GType<ThreadedResolver>;
+        declare static readonly __signalSignatures: ThreadedResolver.SignalSignatures;
 
         // Constructors
 
@@ -60866,6 +61142,9 @@ export namespace Gio {
     }
 
     namespace TlsCertificate {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -60908,6 +61187,7 @@ export namespace Gio {
      */
     abstract class TlsCertificate extends GObject.Object {
         static $gtype: GObject.GType<TlsCertificate>;
+        declare static readonly __signalSignatures: TlsCertificate.SignalSignatures;
 
         // Properties
 
@@ -61300,7 +61580,7 @@ export namespace Gio {
         }
 
         // Signal signatures
-        interface SignalSignatures {
+        interface SignalSignatures extends IOStream.SignalSignatures {
             'accept-certificate': AcceptCertificate;
         }
 
@@ -61940,6 +62220,9 @@ export namespace Gio {
     }
 
     namespace TlsDatabase {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -61958,6 +62241,7 @@ export namespace Gio {
      */
     abstract class TlsDatabase extends GObject.Object {
         static $gtype: GObject.GType<TlsDatabase>;
+        declare static readonly __signalSignatures: TlsDatabase.SignalSignatures;
 
         // Constructors
 
@@ -62658,6 +62942,9 @@ export namespace Gio {
     }
 
     namespace TlsInteraction {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -62687,6 +62974,7 @@ export namespace Gio {
      */
     class TlsInteraction extends GObject.Object {
         static $gtype: GObject.GType<TlsInteraction>;
+        declare static readonly __signalSignatures: TlsInteraction.SignalSignatures;
 
         // Constructors
 
@@ -63077,6 +63365,9 @@ export namespace Gio {
     }
 
     namespace TlsPassword {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -63092,6 +63383,7 @@ export namespace Gio {
      */
     class TlsPassword extends GObject.Object {
         static $gtype: GObject.GType<TlsPassword>;
+        declare static readonly __signalSignatures: TlsPassword.SignalSignatures;
 
         // Properties
 
@@ -63222,6 +63514,9 @@ export namespace Gio {
     }
 
     namespace UnixConnection {
+        // Signal signatures
+        interface SignalSignatures extends SocketConnection.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SocketConnection.ConstructorProps {}
@@ -63243,6 +63538,7 @@ export namespace Gio {
      */
     class UnixConnection extends SocketConnection {
         static $gtype: GObject.GType<UnixConnection>;
+        declare static readonly __signalSignatures: UnixConnection.SignalSignatures;
 
         // Constructors
 
@@ -63417,6 +63713,9 @@ export namespace Gio {
     }
 
     namespace UnixCredentialsMessage {
+        // Signal signatures
+        interface SignalSignatures extends SocketControlMessage.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SocketControlMessage.ConstructorProps {
@@ -63447,6 +63746,7 @@ export namespace Gio {
      */
     class UnixCredentialsMessage extends SocketControlMessage {
         static $gtype: GObject.GType<UnixCredentialsMessage>;
+        declare static readonly __signalSignatures: UnixCredentialsMessage.SignalSignatures;
 
         // Properties
 
@@ -63482,6 +63782,9 @@ export namespace Gio {
     }
 
     namespace UnixFDList {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -63505,6 +63808,7 @@ export namespace Gio {
      */
     class UnixFDList extends GObject.Object {
         static $gtype: GObject.GType<UnixFDList>;
+        declare static readonly __signalSignatures: UnixFDList.SignalSignatures;
 
         // Constructors
 
@@ -63600,6 +63904,9 @@ export namespace Gio {
     }
 
     namespace UnixFDMessage {
+        // Signal signatures
+        interface SignalSignatures extends SocketControlMessage.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SocketControlMessage.ConstructorProps {
@@ -63625,6 +63932,7 @@ export namespace Gio {
      */
     class UnixFDMessage extends SocketControlMessage {
         static $gtype: GObject.GType<UnixFDMessage>;
+        declare static readonly __signalSignatures: UnixFDMessage.SignalSignatures;
 
         // Properties
 
@@ -63693,6 +64001,9 @@ export namespace Gio {
     }
 
     namespace UnixInputStream {
+        // Signal signatures
+        interface SignalSignatures extends InputStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -63718,6 +64029,7 @@ export namespace Gio {
      */
     class UnixInputStream extends InputStream implements FileDescriptorBased, PollableInputStream {
         static $gtype: GObject.GType<UnixInputStream>;
+        declare static readonly __signalSignatures: UnixInputStream.SignalSignatures;
 
         // Properties
 
@@ -65090,7 +65402,7 @@ export namespace Gio {
         }
 
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
             'mountpoints-changed': MountpointsChanged;
             'mounts-changed': MountsChanged;
         }
@@ -65177,6 +65489,9 @@ export namespace Gio {
     }
 
     namespace UnixOutputStream {
+        // Signal signatures
+        interface SignalSignatures extends OutputStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -65202,6 +65517,7 @@ export namespace Gio {
      */
     class UnixOutputStream extends OutputStream implements FileDescriptorBased, PollableOutputStream {
         static $gtype: GObject.GType<UnixOutputStream>;
+        declare static readonly __signalSignatures: UnixOutputStream.SignalSignatures;
 
         // Properties
 
@@ -67047,6 +67363,9 @@ export namespace Gio {
     }
 
     namespace UnixSocketAddress {
+        // Signal signatures
+        interface SignalSignatures extends SocketAddress.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SocketAddress.ConstructorProps, SocketConnectable.ConstructorProps {
@@ -67082,6 +67401,7 @@ export namespace Gio {
      */
     class UnixSocketAddress extends SocketAddress implements SocketConnectable {
         static $gtype: GObject.GType<UnixSocketAddress>;
+        declare static readonly __signalSignatures: UnixSocketAddress.SignalSignatures;
 
         // Properties
 
@@ -67653,6 +67973,9 @@ export namespace Gio {
     }
 
     namespace Vfs {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -67663,6 +67986,7 @@ export namespace Gio {
      */
     class Vfs extends GObject.Object {
         static $gtype: GObject.GType<Vfs>;
+        declare static readonly __signalSignatures: Vfs.SignalSignatures;
 
         // Constructors
 
@@ -67862,7 +68186,7 @@ export namespace Gio {
         }
 
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
             'drive-changed': DriveChanged;
             'drive-connected': DriveConnected;
             'drive-disconnected': DriveDisconnected;
@@ -68085,6 +68409,9 @@ export namespace Gio {
     }
 
     namespace ZlibCompressor {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Converter.ConstructorProps {
@@ -68101,6 +68428,7 @@ export namespace Gio {
      */
     class ZlibCompressor extends GObject.Object implements Converter {
         static $gtype: GObject.GType<ZlibCompressor>;
+        declare static readonly __signalSignatures: ZlibCompressor.SignalSignatures;
 
         // Properties
 
@@ -68802,6 +69130,9 @@ export namespace Gio {
     }
 
     namespace ZlibDecompressor {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Converter.ConstructorProps {
@@ -68817,6 +69148,7 @@ export namespace Gio {
      */
     class ZlibDecompressor extends GObject.Object implements Converter {
         static $gtype: GObject.GType<ZlibDecompressor>;
+        declare static readonly __signalSignatures: ZlibDecompressor.SignalSignatures;
 
         // Properties
 
@@ -84950,8 +85282,14 @@ export namespace Gio {
         new (): DBus; // This allows `obj instanceof DBus`
     };
 
+    namespace DBusExportedObject {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+    }
+
     class DBusExportedObject {
         static $gtype: GObject.GType<DBusExportedObject>;
+        declare static readonly __signalSignatures: DBusExportedObject.SignalSignatures;
 
         // Constructors
 

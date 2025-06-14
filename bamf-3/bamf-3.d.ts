@@ -98,6 +98,13 @@ export namespace Bamf {
             (object: Window): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends View.SignalSignatures {
+            'desktop-file-updated': DesktopFileUpdated;
+            'window-added': WindowAdded;
+            'window-removed': WindowRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends View.ConstructorProps {}
@@ -105,6 +112,7 @@ export namespace Bamf {
 
     class Application extends View {
         static $gtype: GObject.GType<Application>;
+        declare static readonly __signalSignatures: Application.SignalSignatures;
 
         // Constructors
 
@@ -114,6 +122,18 @@ export namespace Bamf {
 
         // Signals
 
+        connect<K extends keyof Application.SignalSignatures>(
+            signal: K,
+            callback: Application.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Application.SignalSignatures>(
+            signal: K,
+            callback: Application.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Application.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Application.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -167,6 +187,9 @@ export namespace Bamf {
     }
 
     namespace Control {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -174,6 +197,7 @@ export namespace Bamf {
 
     class Control extends GObject.Object {
         static $gtype: GObject.GType<Control>;
+        declare static readonly __signalSignatures: Control.SignalSignatures;
 
         // Constructors
 
@@ -216,6 +240,15 @@ export namespace Bamf {
             (object: View): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'active-application-changed': ActiveApplicationChanged;
+            'active-window-changed': ActiveWindowChanged;
+            'stacking-order-changed': StackingOrderChanged;
+            'view-closed': ViewClosed;
+            'view-opened': ViewOpened;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -223,6 +256,7 @@ export namespace Bamf {
 
     class Matcher extends GObject.Object {
         static $gtype: GObject.GType<Matcher>;
+        declare static readonly __signalSignatures: Matcher.SignalSignatures;
 
         // Constructors
 
@@ -232,6 +266,15 @@ export namespace Bamf {
 
         // Signals
 
+        connect<K extends keyof Matcher.SignalSignatures>(signal: K, callback: Matcher.SignalSignatures[K]): number;
+        connect_after<K extends keyof Matcher.SignalSignatures>(
+            signal: K,
+            callback: Matcher.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Matcher.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Matcher.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -345,6 +388,9 @@ export namespace Bamf {
     }
 
     namespace Tab {
+        // Signal signatures
+        interface SignalSignatures extends View.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends View.ConstructorProps {
@@ -359,6 +405,7 @@ export namespace Bamf {
 
     class Tab extends View {
         static $gtype: GObject.GType<Tab>;
+        declare static readonly __signalSignatures: Tab.SignalSignatures;
 
         // Properties
 
@@ -462,6 +509,21 @@ export namespace Bamf {
             (object: boolean): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
+            'active-changed': ActiveChanged;
+            'child-added': ChildAdded;
+            'child-moved': ChildMoved;
+            'child-removed': ChildRemoved;
+            closed: Closed;
+            'icon-changed': IconChanged;
+            'name-changed': NameChanged;
+            'running-changed': RunningChanged;
+            'starting-changed': StartingChanged;
+            'urgent-changed': UrgentChanged;
+            'user-visible-changed': UserVisibleChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
@@ -477,6 +539,7 @@ export namespace Bamf {
 
     class View extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<View>;
+        declare static readonly __signalSignatures: View.SignalSignatures;
 
         // Properties
 
@@ -496,6 +559,9 @@ export namespace Bamf {
 
         // Signals
 
+        connect<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
+        connect_after<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
+        emit<K extends keyof View.SignalSignatures>(signal: K, ...args: Parameters<View.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -648,6 +714,12 @@ export namespace Bamf {
             (object: number, p0: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends View.SignalSignatures {
+            'maximized-changed': MaximizedChanged;
+            'monitor-changed': MonitorChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends View.ConstructorProps {}
@@ -655,6 +727,7 @@ export namespace Bamf {
 
     class Window extends View {
         static $gtype: GObject.GType<Window>;
+        declare static readonly __signalSignatures: Window.SignalSignatures;
 
         // Constructors
 
@@ -664,6 +737,9 @@ export namespace Bamf {
 
         // Signals
 
+        connect<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
+        connect_after<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
+        emit<K extends keyof Window.SignalSignatures>(signal: K, ...args: Parameters<Window.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

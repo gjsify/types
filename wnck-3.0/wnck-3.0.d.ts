@@ -582,6 +582,9 @@ export namespace Wnck {
         BELOW,
     }
     namespace ActionMenu {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Menu.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -598,6 +601,7 @@ export namespace Wnck {
      */
     class ActionMenu extends Gtk.Menu implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ActionMenu>;
+        declare static readonly __signalSignatures: ActionMenu.SignalSignatures;
 
         // Properties
 
@@ -1068,6 +1072,12 @@ export namespace Wnck {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'icon-changed': IconChanged;
+            'name-changed': NameChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1079,6 +1089,7 @@ export namespace Wnck {
      */
     class Application extends GObject.Object {
         static $gtype: GObject.GType<Application>;
+        declare static readonly __signalSignatures: Application.SignalSignatures;
 
         // Constructors
 
@@ -1088,6 +1099,18 @@ export namespace Wnck {
 
         // Signals
 
+        connect<K extends keyof Application.SignalSignatures>(
+            signal: K,
+            callback: Application.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Application.SignalSignatures>(
+            signal: K,
+            callback: Application.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Application.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Application.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1189,6 +1212,12 @@ export namespace Wnck {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'icon-changed': IconChanged;
+            'name-changed': NameChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1200,6 +1229,7 @@ export namespace Wnck {
      */
     class ClassGroup extends GObject.Object {
         static $gtype: GObject.GType<ClassGroup>;
+        declare static readonly __signalSignatures: ClassGroup.SignalSignatures;
 
         // Constructors
 
@@ -1209,6 +1239,18 @@ export namespace Wnck {
 
         // Signals
 
+        connect<K extends keyof ClassGroup.SignalSignatures>(
+            signal: K,
+            callback: ClassGroup.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ClassGroup.SignalSignatures>(
+            signal: K,
+            callback: ClassGroup.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ClassGroup.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ClassGroup.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1280,6 +1322,9 @@ export namespace Wnck {
     }
 
     namespace Handle {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1290,6 +1335,7 @@ export namespace Wnck {
 
     class Handle extends GObject.Object {
         static $gtype: GObject.GType<Handle>;
+        declare static readonly __signalSignatures: Handle.SignalSignatures;
 
         // Properties
 
@@ -1365,6 +1411,9 @@ export namespace Wnck {
     }
 
     namespace ImageMenuItem {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.MenuItem.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1380,6 +1429,7 @@ export namespace Wnck {
         implements Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk.Buildable
     {
         static $gtype: GObject.GType<ImageMenuItem>;
+        declare static readonly __signalSignatures: ImageMenuItem.SignalSignatures;
 
         // Constructors
 
@@ -5924,6 +5974,9 @@ export namespace Wnck {
     }
 
     namespace Pager {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5940,6 +5993,7 @@ export namespace Wnck {
      */
     class Pager extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Pager>;
+        declare static readonly __signalSignatures: Pager.SignalSignatures;
 
         // Properties
 
@@ -6710,6 +6764,25 @@ export namespace Wnck {
             (space: Workspace): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'active-window-changed': ActiveWindowChanged;
+            'active-workspace-changed': ActiveWorkspaceChanged;
+            'application-closed': ApplicationClosed;
+            'application-opened': ApplicationOpened;
+            'background-changed': BackgroundChanged;
+            'class-group-closed': ClassGroupClosed;
+            'class-group-opened': ClassGroupOpened;
+            'showing-desktop-changed': ShowingDesktopChanged;
+            'viewports-changed': ViewportsChanged;
+            'window-closed': WindowClosed;
+            'window-manager-changed': WindowManagerChanged;
+            'window-opened': WindowOpened;
+            'window-stacking-changed': WindowStackingChanged;
+            'workspace-created': WorkspaceCreated;
+            'workspace-destroyed': WorkspaceDestroyed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6721,6 +6794,7 @@ export namespace Wnck {
      */
     class Screen extends GObject.Object {
         static $gtype: GObject.GType<Screen>;
+        declare static readonly __signalSignatures: Screen.SignalSignatures;
 
         // Constructors
 
@@ -6730,6 +6804,9 @@ export namespace Wnck {
 
         // Signals
 
+        connect<K extends keyof Screen.SignalSignatures>(signal: K, callback: Screen.SignalSignatures[K]): number;
+        connect_after<K extends keyof Screen.SignalSignatures>(signal: K, callback: Screen.SignalSignatures[K]): number;
+        emit<K extends keyof Screen.SignalSignatures>(signal: K, ...args: Parameters<Screen.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -7011,6 +7088,9 @@ export namespace Wnck {
     }
 
     namespace Selector {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.MenuBar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7027,6 +7107,7 @@ export namespace Wnck {
      */
     class Selector extends Gtk.MenuBar implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Selector>;
+        declare static readonly __signalSignatures: Selector.SignalSignatures;
 
         // Properties
 
@@ -7495,6 +7576,12 @@ export namespace Wnck {
             (windows?: any | null): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Container.SignalSignatures {
+            'task-enter-notify': TaskEnterNotify;
+            'task-leave-notify': TaskLeaveNotify;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7513,6 +7600,7 @@ export namespace Wnck {
      */
     class Tasklist extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Tasklist>;
+        declare static readonly __signalSignatures: Tasklist.SignalSignatures;
 
         // Properties
 
@@ -7534,6 +7622,15 @@ export namespace Wnck {
 
         // Signals
 
+        connect<K extends keyof Tasklist.SignalSignatures>(signal: K, callback: Tasklist.SignalSignatures[K]): number;
+        connect_after<K extends keyof Tasklist.SignalSignatures>(
+            signal: K,
+            callback: Tasklist.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Tasklist.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Tasklist.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -8112,6 +8209,19 @@ export namespace Wnck {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'actions-changed': ActionsChanged;
+            'class-changed': ClassChanged;
+            'geometry-changed': GeometryChanged;
+            'icon-changed': IconChanged;
+            'name-changed': NameChanged;
+            'role-changed': RoleChanged;
+            'state-changed': StateChanged;
+            'type-changed': TypeChanged;
+            'workspace-changed': WorkspaceChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -8123,6 +8233,7 @@ export namespace Wnck {
      */
     class Window extends GObject.Object {
         static $gtype: GObject.GType<Window>;
+        declare static readonly __signalSignatures: Window.SignalSignatures;
 
         // Constructors
 
@@ -8132,6 +8243,9 @@ export namespace Wnck {
 
         // Signals
 
+        connect<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
+        connect_after<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
+        emit<K extends keyof Window.SignalSignatures>(signal: K, ...args: Parameters<Window.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -8744,6 +8858,11 @@ export namespace Wnck {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'name-changed': NameChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -8755,6 +8874,7 @@ export namespace Wnck {
      */
     class Workspace extends GObject.Object {
         static $gtype: GObject.GType<Workspace>;
+        declare static readonly __signalSignatures: Workspace.SignalSignatures;
 
         // Constructors
 
@@ -8764,6 +8884,15 @@ export namespace Wnck {
 
         // Signals
 
+        connect<K extends keyof Workspace.SignalSignatures>(signal: K, callback: Workspace.SignalSignatures[K]): number;
+        connect_after<K extends keyof Workspace.SignalSignatures>(
+            signal: K,
+            callback: Workspace.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Workspace.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Workspace.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

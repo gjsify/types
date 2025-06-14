@@ -469,6 +469,9 @@ export namespace Retro {
      */
     function video_filter_from_string(filter: string): VideoFilter;
     namespace ControllerIterator {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -476,6 +479,7 @@ export namespace Retro {
 
     class ControllerIterator extends GObject.Object {
         static $gtype: GObject.GType<ControllerIterator>;
+        declare static readonly __signalSignatures: ControllerIterator.SignalSignatures;
 
         // Constructors
 
@@ -519,6 +523,16 @@ export namespace Retro {
             (pixdata: Pixdata): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'audio-output': AudioOutput;
+            log: Log;
+            message: Message;
+            'options-set': OptionsSet;
+            shutdown: Shutdown;
+            'video-output': VideoOutput;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -545,6 +559,7 @@ export namespace Retro {
 
     class Core extends GObject.Object {
         static $gtype: GObject.GType<Core>;
+        declare static readonly __signalSignatures: Core.SignalSignatures;
 
         // Properties
 
@@ -642,6 +657,9 @@ export namespace Retro {
 
         // Signals
 
+        connect<K extends keyof Core.SignalSignatures>(signal: K, callback: Core.SignalSignatures[K]): number;
+        connect_after<K extends keyof Core.SignalSignatures>(signal: K, callback: Core.SignalSignatures[K]): number;
+        emit<K extends keyof Core.SignalSignatures>(signal: K, ...args: Parameters<Core.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -848,6 +866,9 @@ export namespace Retro {
     }
 
     namespace CoreDescriptor {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -855,6 +876,7 @@ export namespace Retro {
 
     class CoreDescriptor extends GObject.Object {
         static $gtype: GObject.GType<CoreDescriptor>;
+        declare static readonly __signalSignatures: CoreDescriptor.SignalSignatures;
 
         // Constructors
 
@@ -981,6 +1003,9 @@ export namespace Retro {
     }
 
     namespace CoreView {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.EventBox.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -996,6 +1021,7 @@ export namespace Retro {
 
     class CoreView extends Gtk.EventBox implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<CoreView>;
+        declare static readonly __signalSignatures: CoreView.SignalSignatures;
 
         // Properties
 
@@ -1554,6 +1580,9 @@ export namespace Retro {
     }
 
     namespace KeyJoypadMapping {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1561,6 +1590,7 @@ export namespace Retro {
 
     class KeyJoypadMapping extends GObject.Object {
         static $gtype: GObject.GType<KeyJoypadMapping>;
+        declare static readonly __signalSignatures: KeyJoypadMapping.SignalSignatures;
 
         // Constructors
 
@@ -1589,6 +1619,9 @@ export namespace Retro {
     }
 
     namespace MainLoop {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1600,6 +1633,7 @@ export namespace Retro {
 
     class MainLoop extends GObject.Object {
         static $gtype: GObject.GType<MainLoop>;
+        declare static readonly __signalSignatures: MainLoop.SignalSignatures;
 
         // Properties
 
@@ -1655,6 +1689,9 @@ export namespace Retro {
     }
 
     namespace ModuleIterator {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1662,6 +1699,7 @@ export namespace Retro {
 
     class ModuleIterator extends GObject.Object {
         static $gtype: GObject.GType<ModuleIterator>;
+        declare static readonly __signalSignatures: ModuleIterator.SignalSignatures;
 
         // Constructors
 
@@ -1687,6 +1725,9 @@ export namespace Retro {
     }
 
     namespace ModuleQuery {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1694,6 +1735,7 @@ export namespace Retro {
 
     class ModuleQuery extends GObject.Object {
         static $gtype: GObject.GType<ModuleQuery>;
+        declare static readonly __signalSignatures: ModuleQuery.SignalSignatures;
 
         // Constructors
 
@@ -1719,6 +1761,11 @@ export namespace Retro {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'value-changed': ValueChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1726,6 +1773,7 @@ export namespace Retro {
 
     class Option extends GObject.Object {
         static $gtype: GObject.GType<Option>;
+        declare static readonly __signalSignatures: Option.SignalSignatures;
 
         // Constructors
 
@@ -1735,6 +1783,9 @@ export namespace Retro {
 
         // Signals
 
+        connect<K extends keyof Option.SignalSignatures>(signal: K, callback: Option.SignalSignatures[K]): number;
+        connect_after<K extends keyof Option.SignalSignatures>(signal: K, callback: Option.SignalSignatures[K]): number;
+        emit<K extends keyof Option.SignalSignatures>(signal: K, ...args: Parameters<Option.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1773,6 +1824,9 @@ export namespace Retro {
     }
 
     namespace OptionIterator {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1780,6 +1834,7 @@ export namespace Retro {
 
     class OptionIterator extends GObject.Object {
         static $gtype: GObject.GType<OptionIterator>;
+        declare static readonly __signalSignatures: OptionIterator.SignalSignatures;
 
         // Constructors
 

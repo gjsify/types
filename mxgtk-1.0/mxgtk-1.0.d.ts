@@ -29,6 +29,9 @@ export namespace MxGtk {
      */
 
     namespace Frame {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Frame.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -43,6 +46,7 @@ export namespace MxGtk {
      */
     class Frame extends Gtk.Frame implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Frame>;
+        declare static readonly __signalSignatures: Frame.SignalSignatures;
 
         // Constructors
 
@@ -501,6 +505,11 @@ export namespace MxGtk {
             (object: boolean): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.DrawingArea.SignalSignatures {
+            'switch-flipped': SwitchFlipped;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -517,6 +526,7 @@ export namespace MxGtk {
      */
     class LightSwitch extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<LightSwitch>;
+        declare static readonly __signalSignatures: LightSwitch.SignalSignatures;
 
         // Properties
 
@@ -533,6 +543,18 @@ export namespace MxGtk {
 
         // Signals
 
+        connect<K extends keyof LightSwitch.SignalSignatures>(
+            signal: K,
+            callback: LightSwitch.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LightSwitch.SignalSignatures>(
+            signal: K,
+            callback: LightSwitch.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LightSwitch.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LightSwitch.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

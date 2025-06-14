@@ -262,6 +262,9 @@ export namespace Granite {
         (): void;
     }
     namespace DrawingBufferSurface {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -274,6 +277,7 @@ export namespace Granite {
 
     class DrawingBufferSurface extends GObject.Object {
         static $gtype: GObject.GType<DrawingBufferSurface>;
+        declare static readonly __signalSignatures: DrawingBufferSurface.SignalSignatures;
 
         // Properties
 
@@ -312,6 +316,9 @@ export namespace Granite {
     }
 
     namespace DrawingColor {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -321,6 +328,7 @@ export namespace Granite {
 
     class DrawingColor extends GObject.Object implements ServicesSettingsSerializable {
         static $gtype: GObject.GType<DrawingColor>;
+        declare static readonly __signalSignatures: DrawingColor.SignalSignatures;
 
         // Fields
 
@@ -820,6 +828,9 @@ export namespace Granite {
     }
 
     namespace DrawingUtilities {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -827,6 +838,7 @@ export namespace Granite {
 
     class DrawingUtilities extends GObject.Object {
         static $gtype: GObject.GType<DrawingUtilities>;
+        declare static readonly __signalSignatures: DrawingUtilities.SignalSignatures;
 
         // Constructors
 
@@ -856,6 +868,11 @@ export namespace Granite {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'contracts-changed': ContractsChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -863,6 +880,7 @@ export namespace Granite {
 
     class ServicesContractorProxy extends GObject.Object {
         static $gtype: GObject.GType<ServicesContractorProxy>;
+        declare static readonly __signalSignatures: ServicesContractorProxy.SignalSignatures;
 
         // Constructors
 
@@ -872,6 +890,18 @@ export namespace Granite {
 
         // Signals
 
+        connect<K extends keyof ServicesContractorProxy.SignalSignatures>(
+            signal: K,
+            callback: ServicesContractorProxy.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ServicesContractorProxy.SignalSignatures>(
+            signal: K,
+            callback: ServicesContractorProxy.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ServicesContractorProxy.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ServicesContractorProxy.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -890,6 +920,9 @@ export namespace Granite {
     }
 
     namespace ServicesIconFactory {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -897,6 +930,7 @@ export namespace Granite {
 
     class ServicesIconFactory extends GObject.Object {
         static $gtype: GObject.GType<ServicesIconFactory>;
+        declare static readonly __signalSignatures: ServicesIconFactory.SignalSignatures;
 
         // Constructors
 
@@ -917,6 +951,9 @@ export namespace Granite {
     }
 
     namespace ServicesLogger {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -924,6 +961,7 @@ export namespace Granite {
 
     class ServicesLogger extends GObject.Object {
         static $gtype: GObject.GType<ServicesLogger>;
+        declare static readonly __signalSignatures: ServicesLogger.SignalSignatures;
 
         // Constructors
 
@@ -942,6 +980,9 @@ export namespace Granite {
     }
 
     namespace ServicesPaths {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -949,6 +990,7 @@ export namespace Granite {
 
     class ServicesPaths extends GObject.Object {
         static $gtype: GObject.GType<ServicesPaths>;
+        declare static readonly __signalSignatures: ServicesPaths.SignalSignatures;
 
         // Constructors
 
@@ -989,6 +1031,11 @@ export namespace Granite {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            changed: Changed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -998,6 +1045,7 @@ export namespace Granite {
 
     abstract class ServicesSettings extends GObject.Object {
         static $gtype: GObject.GType<ServicesSettings>;
+        declare static readonly __signalSignatures: ServicesSettings.SignalSignatures;
 
         // Properties
 
@@ -1011,6 +1059,18 @@ export namespace Granite {
 
         // Signals
 
+        connect<K extends keyof ServicesSettings.SignalSignatures>(
+            signal: K,
+            callback: ServicesSettings.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ServicesSettings.SignalSignatures>(
+            signal: K,
+            callback: ServicesSettings.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ServicesSettings.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ServicesSettings.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1047,6 +1107,14 @@ export namespace Granite {
             (text: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            done: Done;
+            'output-changed': OutputChanged;
+            'standard-changed': StandardChanged;
+            'error-changed': ErrorChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1054,6 +1122,7 @@ export namespace Granite {
 
     class ServicesSimpleCommand extends GObject.Object {
         static $gtype: GObject.GType<ServicesSimpleCommand>;
+        declare static readonly __signalSignatures: ServicesSimpleCommand.SignalSignatures;
 
         // Fields
 
@@ -1071,6 +1140,18 @@ export namespace Granite {
 
         // Signals
 
+        connect<K extends keyof ServicesSimpleCommand.SignalSignatures>(
+            signal: K,
+            callback: ServicesSimpleCommand.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ServicesSimpleCommand.SignalSignatures>(
+            signal: K,
+            callback: ServicesSimpleCommand.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ServicesSimpleCommand.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ServicesSimpleCommand.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1093,6 +1174,9 @@ export namespace Granite {
     }
 
     namespace ServicesSystem {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1100,6 +1184,7 @@ export namespace Granite {
 
     class ServicesSystem extends GObject.Object {
         static $gtype: GObject.GType<ServicesSystem>;
+        declare static readonly __signalSignatures: ServicesSystem.SignalSignatures;
 
         // Constructors
 
@@ -1127,6 +1212,11 @@ export namespace Granite {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Grid.SignalSignatures {
+            'action-activated': ActionActivated;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Grid.ConstructorProps {
@@ -1139,6 +1229,7 @@ export namespace Granite {
 
     class WidgetsAlertView extends Gtk.Grid {
         static $gtype: GObject.GType<WidgetsAlertView>;
+        declare static readonly __signalSignatures: WidgetsAlertView.SignalSignatures;
 
         // Properties
 
@@ -1164,6 +1255,18 @@ export namespace Granite {
 
         // Signals
 
+        connect<K extends keyof WidgetsAlertView.SignalSignatures>(
+            signal: K,
+            callback: WidgetsAlertView.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WidgetsAlertView.SignalSignatures>(
+            signal: K,
+            callback: WidgetsAlertView.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WidgetsAlertView.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WidgetsAlertView.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1184,6 +1287,9 @@ export namespace Granite {
     }
 
     namespace WidgetsAvatar {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.EventBox.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.EventBox.ConstructorProps {
@@ -1193,6 +1299,7 @@ export namespace Granite {
 
     class WidgetsAvatar extends Gtk.EventBox {
         static $gtype: GObject.GType<WidgetsAvatar>;
+        declare static readonly __signalSignatures: WidgetsAvatar.SignalSignatures;
 
         // Properties
 
@@ -1221,6 +1328,9 @@ export namespace Granite {
     }
 
     namespace WidgetsCellRendererBadge {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.CellRenderer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.CellRenderer.ConstructorProps {
@@ -1230,6 +1340,7 @@ export namespace Granite {
 
     class WidgetsCellRendererBadge extends Gtk.CellRenderer {
         static $gtype: GObject.GType<WidgetsCellRendererBadge>;
+        declare static readonly __signalSignatures: WidgetsCellRendererBadge.SignalSignatures;
 
         // Properties
 
@@ -1251,6 +1362,9 @@ export namespace Granite {
     }
 
     namespace WidgetsCellRendererExpander {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.CellRenderer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.CellRenderer.ConstructorProps {
@@ -1261,6 +1375,7 @@ export namespace Granite {
 
     class WidgetsCellRendererExpander extends Gtk.CellRenderer {
         static $gtype: GObject.GType<WidgetsCellRendererExpander>;
+        declare static readonly __signalSignatures: WidgetsCellRendererExpander.SignalSignatures;
 
         // Properties
 
@@ -1289,6 +1404,9 @@ export namespace Granite {
     }
 
     namespace WidgetsCollapsiblePaned {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Paned.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Paned.ConstructorProps {
@@ -1299,6 +1417,7 @@ export namespace Granite {
 
     class WidgetsCollapsiblePaned extends Gtk.Paned {
         static $gtype: GObject.GType<WidgetsCollapsiblePaned>;
+        declare static readonly __signalSignatures: WidgetsCollapsiblePaned.SignalSignatures;
 
         // Properties
 
@@ -1322,6 +1441,9 @@ export namespace Granite {
     }
 
     namespace WidgetsCompositedWindow {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Window.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Window.ConstructorProps, Gtk.Buildable.ConstructorProps {}
@@ -1329,6 +1451,7 @@ export namespace Granite {
 
     class WidgetsCompositedWindow extends Gtk.Window implements Gtk.Buildable {
         static $gtype: GObject.GType<WidgetsCompositedWindow>;
+        declare static readonly __signalSignatures: WidgetsCompositedWindow.SignalSignatures;
 
         // Constructors
 
@@ -1787,6 +1910,11 @@ export namespace Granite {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Entry.SignalSignatures {
+            'date-changed': DateChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Entry.ConstructorProps, Gtk.Buildable.ConstructorProps {
@@ -1797,6 +1925,7 @@ export namespace Granite {
 
     class WidgetsDatePicker extends Gtk.Entry implements Gtk.Buildable {
         static $gtype: GObject.GType<WidgetsDatePicker>;
+        declare static readonly __signalSignatures: WidgetsDatePicker.SignalSignatures;
 
         // Properties
 
@@ -1821,6 +1950,18 @@ export namespace Granite {
 
         // Signals
 
+        connect<K extends keyof WidgetsDatePicker.SignalSignatures>(
+            signal: K,
+            callback: WidgetsDatePicker.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WidgetsDatePicker.SignalSignatures>(
+            signal: K,
+            callback: WidgetsDatePicker.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WidgetsDatePicker.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WidgetsDatePicker.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2282,6 +2423,9 @@ export namespace Granite {
     }
 
     namespace WidgetsTab {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.EventBox.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.EventBox.ConstructorProps {
@@ -2308,6 +2452,7 @@ export namespace Granite {
 
     class WidgetsTab extends Gtk.EventBox {
         static $gtype: GObject.GType<WidgetsTab>;
+        declare static readonly __signalSignatures: WidgetsTab.SignalSignatures;
 
         // Properties
 
@@ -2437,6 +2582,19 @@ export namespace Granite {
             (tab: WidgetsTab): boolean;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.EventBox.SignalSignatures {
+            'tab-added': TabAdded;
+            'tab-removed': TabRemoved;
+            'tab-switched': TabSwitched;
+            'tab-reordered': TabReordered;
+            'tab-moved': TabMoved;
+            'tab-duplicated': TabDuplicated;
+            'tab-restored': TabRestored;
+            'new-tab-requested': NewTabRequested;
+            'close-tab-requested': CloseTabRequested;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.EventBox.ConstructorProps {
@@ -2480,6 +2638,7 @@ export namespace Granite {
 
     class WidgetsDynamicNotebook extends Gtk.EventBox {
         static $gtype: GObject.GType<WidgetsDynamicNotebook>;
+        declare static readonly __signalSignatures: WidgetsDynamicNotebook.SignalSignatures;
 
         // Properties
 
@@ -2559,6 +2718,18 @@ export namespace Granite {
 
         // Signals
 
+        connect<K extends keyof WidgetsDynamicNotebook.SignalSignatures>(
+            signal: K,
+            callback: WidgetsDynamicNotebook.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WidgetsDynamicNotebook.SignalSignatures>(
+            signal: K,
+            callback: WidgetsDynamicNotebook.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WidgetsDynamicNotebook.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WidgetsDynamicNotebook.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2670,6 +2841,13 @@ export namespace Granite {
             (widget: Gtk.Widget): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {
+            'mode-added': ModeAdded;
+            'mode-removed': ModeRemoved;
+            'mode-changed': ModeChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Box.ConstructorProps {
@@ -2681,6 +2859,7 @@ export namespace Granite {
 
     class WidgetsModeButton extends Gtk.Box {
         static $gtype: GObject.GType<WidgetsModeButton>;
+        declare static readonly __signalSignatures: WidgetsModeButton.SignalSignatures;
 
         // Properties
 
@@ -2699,6 +2878,18 @@ export namespace Granite {
 
         // Signals
 
+        connect<K extends keyof WidgetsModeButton.SignalSignatures>(
+            signal: K,
+            callback: WidgetsModeButton.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WidgetsModeButton.SignalSignatures>(
+            signal: K,
+            callback: WidgetsModeButton.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WidgetsModeButton.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WidgetsModeButton.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2736,6 +2927,9 @@ export namespace Granite {
     }
 
     namespace WidgetsOverlayBar {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.EventBox.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.EventBox.ConstructorProps {
@@ -2748,6 +2942,7 @@ export namespace Granite {
 
     class WidgetsOverlayBar extends Gtk.EventBox {
         static $gtype: GObject.GType<WidgetsOverlayBar>;
+        declare static readonly __signalSignatures: WidgetsOverlayBar.SignalSignatures;
 
         // Properties
 
@@ -2788,6 +2983,11 @@ export namespace Granite {
             (item?: WidgetsSourceListItem | null): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.ScrolledWindow.SignalSignatures {
+            'item-selected': ItemSelected;
+        }
+
         interface VisibleFunc {
             (item: WidgetsSourceListItem): boolean;
         }
@@ -2805,6 +3005,7 @@ export namespace Granite {
 
     class WidgetsSourceList extends Gtk.ScrolledWindow {
         static $gtype: GObject.GType<WidgetsSourceList>;
+        declare static readonly __signalSignatures: WidgetsSourceList.SignalSignatures;
 
         // Properties
 
@@ -2831,6 +3032,18 @@ export namespace Granite {
 
         // Signals
 
+        connect<K extends keyof WidgetsSourceList.SignalSignatures>(
+            signal: K,
+            callback: WidgetsSourceList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WidgetsSourceList.SignalSignatures>(
+            signal: K,
+            callback: WidgetsSourceList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WidgetsSourceList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WidgetsSourceList.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2892,6 +3105,13 @@ export namespace Granite {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            edited: Edited;
+            'action-activated': ActionActivated;
+            activated: Activated;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2912,6 +3132,7 @@ export namespace Granite {
 
     class WidgetsSourceListItem extends GObject.Object {
         static $gtype: GObject.GType<WidgetsSourceListItem>;
+        declare static readonly __signalSignatures: WidgetsSourceListItem.SignalSignatures;
 
         // Properties
 
@@ -2950,6 +3171,18 @@ export namespace Granite {
 
         // Signals
 
+        connect<K extends keyof WidgetsSourceListItem.SignalSignatures>(
+            signal: K,
+            callback: WidgetsSourceListItem.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WidgetsSourceListItem.SignalSignatures>(
+            signal: K,
+            callback: WidgetsSourceListItem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WidgetsSourceListItem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WidgetsSourceListItem.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3011,6 +3244,13 @@ export namespace Granite {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends WidgetsSourceListItem.SignalSignatures {
+            'child-added': ChildAdded;
+            'child-removed': ChildRemoved;
+            toggled: Toggled;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends WidgetsSourceListItem.ConstructorProps {
@@ -3024,6 +3264,7 @@ export namespace Granite {
 
     class WidgetsSourceListExpandableItem extends WidgetsSourceListItem {
         static $gtype: GObject.GType<WidgetsSourceListExpandableItem>;
+        declare static readonly __signalSignatures: WidgetsSourceListExpandableItem.SignalSignatures;
 
         // Properties
 
@@ -3045,6 +3286,18 @@ export namespace Granite {
 
         // Signals
 
+        connect<K extends keyof WidgetsSourceListExpandableItem.SignalSignatures>(
+            signal: K,
+            callback: WidgetsSourceListExpandableItem.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WidgetsSourceListExpandableItem.SignalSignatures>(
+            signal: K,
+            callback: WidgetsSourceListExpandableItem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WidgetsSourceListExpandableItem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WidgetsSourceListExpandableItem.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3081,6 +3334,9 @@ export namespace Granite {
     }
 
     namespace WidgetsStorageBar {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Box.ConstructorProps {
@@ -3094,6 +3350,7 @@ export namespace Granite {
 
     class WidgetsStorageBar extends Gtk.Box {
         static $gtype: GObject.GType<WidgetsStorageBar>;
+        declare static readonly __signalSignatures: WidgetsStorageBar.SignalSignatures;
 
         // Properties
 
@@ -3139,6 +3396,11 @@ export namespace Granite {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Entry.SignalSignatures {
+            'time-changed': TimeChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Entry.ConstructorProps {
@@ -3152,6 +3414,7 @@ export namespace Granite {
 
     class WidgetsTimePicker extends Gtk.Entry {
         static $gtype: GObject.GType<WidgetsTimePicker>;
+        declare static readonly __signalSignatures: WidgetsTimePicker.SignalSignatures;
 
         // Properties
 
@@ -3174,6 +3437,18 @@ export namespace Granite {
 
         // Signals
 
+        connect<K extends keyof WidgetsTimePicker.SignalSignatures>(
+            signal: K,
+            callback: WidgetsTimePicker.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WidgetsTimePicker.SignalSignatures>(
+            signal: K,
+            callback: WidgetsTimePicker.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WidgetsTimePicker.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WidgetsTimePicker.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3205,6 +3480,12 @@ export namespace Granite {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Revealer.SignalSignatures {
+            closed: Closed;
+            'default-action': DefaultAction;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Revealer.ConstructorProps {
@@ -3214,6 +3495,7 @@ export namespace Granite {
 
     class WidgetsToast extends Gtk.Revealer {
         static $gtype: GObject.GType<WidgetsToast>;
+        declare static readonly __signalSignatures: WidgetsToast.SignalSignatures;
 
         // Properties
 
@@ -3233,6 +3515,18 @@ export namespace Granite {
 
         // Signals
 
+        connect<K extends keyof WidgetsToast.SignalSignatures>(
+            signal: K,
+            callback: WidgetsToast.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WidgetsToast.SignalSignatures>(
+            signal: K,
+            callback: WidgetsToast.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WidgetsToast.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WidgetsToast.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3252,6 +3546,9 @@ export namespace Granite {
     }
 
     namespace WidgetsWelcomeButton {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Button.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Button.ConstructorProps {
@@ -3263,6 +3560,7 @@ export namespace Granite {
 
     class WidgetsWelcomeButton extends Gtk.Button {
         static $gtype: GObject.GType<WidgetsWelcomeButton>;
+        declare static readonly __signalSignatures: WidgetsWelcomeButton.SignalSignatures;
 
         // Properties
 
@@ -3301,6 +3599,11 @@ export namespace Granite {
             (index: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.EventBox.SignalSignatures {
+            activated: Activated;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.EventBox.ConstructorProps {
@@ -3311,6 +3614,7 @@ export namespace Granite {
 
     class WidgetsWelcome extends Gtk.EventBox {
         static $gtype: GObject.GType<WidgetsWelcome>;
+        declare static readonly __signalSignatures: WidgetsWelcome.SignalSignatures;
 
         // Properties
 
@@ -3337,6 +3641,18 @@ export namespace Granite {
 
         // Signals
 
+        connect<K extends keyof WidgetsWelcome.SignalSignatures>(
+            signal: K,
+            callback: WidgetsWelcome.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WidgetsWelcome.SignalSignatures>(
+            signal: K,
+            callback: WidgetsWelcome.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WidgetsWelcome.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WidgetsWelcome.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3360,6 +3676,9 @@ export namespace Granite {
     }
 
     namespace Application {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Application.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Application.ConstructorProps {}
@@ -3367,6 +3686,7 @@ export namespace Granite {
 
     abstract class Application extends Gtk.Application {
         static $gtype: GObject.GType<Application>;
+        declare static readonly __signalSignatures: Application.SignalSignatures;
 
         // Fields
 
@@ -3416,6 +3736,9 @@ export namespace Granite {
     }
 
     namespace SettingsPage {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.ScrolledWindow.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.ScrolledWindow.ConstructorProps {
@@ -3433,6 +3756,7 @@ export namespace Granite {
 
     abstract class SettingsPage extends Gtk.ScrolledWindow {
         static $gtype: GObject.GType<SettingsPage>;
+        declare static readonly __signalSignatures: SettingsPage.SignalSignatures;
 
         // Properties
 
@@ -3473,6 +3797,9 @@ export namespace Granite {
     }
 
     namespace SimpleSettingsPage {
+        // Signal signatures
+        interface SignalSignatures extends SettingsPage.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SettingsPage.ConstructorProps {
@@ -3492,6 +3819,7 @@ export namespace Granite {
 
     abstract class SimpleSettingsPage extends SettingsPage {
         static $gtype: GObject.GType<SimpleSettingsPage>;
+        declare static readonly __signalSignatures: SimpleSettingsPage.SignalSignatures;
 
         // Properties
 
@@ -3536,6 +3864,9 @@ export namespace Granite {
     }
 
     namespace AccelLabel {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Grid.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Grid.ConstructorProps {
@@ -3549,6 +3880,7 @@ export namespace Granite {
 
     class AccelLabel extends Gtk.Grid {
         static $gtype: GObject.GType<AccelLabel>;
+        declare static readonly __signalSignatures: AccelLabel.SignalSignatures;
 
         // Properties
 
@@ -3587,6 +3919,9 @@ export namespace Granite {
     }
 
     namespace AsyncImage {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Image.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Image.ConstructorProps {
@@ -3603,6 +3938,7 @@ export namespace Granite {
 
     class AsyncImage extends Gtk.Image {
         static $gtype: GObject.GType<AsyncImage>;
+        declare static readonly __signalSignatures: AsyncImage.SignalSignatures;
 
         // Properties
 
@@ -3707,6 +4043,9 @@ export namespace Granite {
     }
 
     namespace Dialog {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Dialog.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Dialog.ConstructorProps {}
@@ -3714,6 +4053,7 @@ export namespace Granite {
 
     class Dialog extends Gtk.Dialog {
         static $gtype: GObject.GType<Dialog>;
+        declare static readonly __signalSignatures: Dialog.SignalSignatures;
 
         // Constructors
 
@@ -3725,6 +4065,9 @@ export namespace Granite {
     }
 
     namespace HeaderLabel {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Label.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Label.ConstructorProps {}
@@ -3732,6 +4075,7 @@ export namespace Granite {
 
     class HeaderLabel extends Gtk.Label {
         static $gtype: GObject.GType<HeaderLabel>;
+        declare static readonly __signalSignatures: HeaderLabel.SignalSignatures;
 
         // Constructors
 
@@ -3746,6 +4090,9 @@ export namespace Granite {
     }
 
     namespace HyperTextView {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.TextView.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.TextView.ConstructorProps {}
@@ -3753,6 +4100,7 @@ export namespace Granite {
 
     class HyperTextView extends Gtk.TextView {
         static $gtype: GObject.GType<HyperTextView>;
+        declare static readonly __signalSignatures: HyperTextView.SignalSignatures;
 
         // Constructors
 
@@ -3764,6 +4112,9 @@ export namespace Granite {
     }
 
     namespace MessageDialog {
+        // Signal signatures
+        interface SignalSignatures extends Dialog.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Dialog.ConstructorProps {
@@ -3787,6 +4138,7 @@ export namespace Granite {
 
     class MessageDialog extends Dialog {
         static $gtype: GObject.GType<MessageDialog>;
+        declare static readonly __signalSignatures: MessageDialog.SignalSignatures;
 
         // Properties
 
@@ -3854,6 +4206,9 @@ export namespace Granite {
     }
 
     namespace ModeSwitch {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Grid.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Grid.ConstructorProps {
@@ -3875,6 +4230,7 @@ export namespace Granite {
 
     class ModeSwitch extends Gtk.Grid {
         static $gtype: GObject.GType<ModeSwitch>;
+        declare static readonly __signalSignatures: ModeSwitch.SignalSignatures;
 
         // Properties
 
@@ -3937,6 +4293,9 @@ export namespace Granite {
     }
 
     namespace SeekBar {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Grid.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Grid.ConstructorProps {
@@ -3958,6 +4317,7 @@ export namespace Granite {
 
     class SeekBar extends Gtk.Grid {
         static $gtype: GObject.GType<SeekBar>;
+        declare static readonly __signalSignatures: SeekBar.SignalSignatures;
 
         // Properties
 
@@ -4016,6 +4376,9 @@ export namespace Granite {
     }
 
     namespace SettingsSidebar {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.ScrolledWindow.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.ScrolledWindow.ConstructorProps {
@@ -4027,6 +4390,7 @@ export namespace Granite {
 
     class SettingsSidebar extends Gtk.ScrolledWindow {
         static $gtype: GObject.GType<SettingsSidebar>;
+        declare static readonly __signalSignatures: SettingsSidebar.SignalSignatures;
 
         // Properties
 
@@ -4055,6 +4419,9 @@ export namespace Granite {
     }
 
     namespace Settings {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4065,6 +4432,7 @@ export namespace Granite {
 
     class Settings extends GObject.Object {
         static $gtype: GObject.GType<Settings>;
+        declare static readonly __signalSignatures: Settings.SignalSignatures;
 
         // Properties
 
@@ -4089,6 +4457,9 @@ export namespace Granite {
     }
 
     namespace SwitchModelButton {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.ToggleButton.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.ToggleButton.ConstructorProps {
@@ -4099,6 +4470,7 @@ export namespace Granite {
 
     class SwitchModelButton extends Gtk.ToggleButton {
         static $gtype: GObject.GType<SwitchModelButton>;
+        declare static readonly __signalSignatures: SwitchModelButton.SignalSignatures;
 
         // Properties
 
@@ -4127,6 +4499,9 @@ export namespace Granite {
     }
 
     namespace ValidatedEntry {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Entry.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.Entry.ConstructorProps {
@@ -4140,6 +4515,7 @@ export namespace Granite {
 
     class ValidatedEntry extends Gtk.Entry {
         static $gtype: GObject.GType<ValidatedEntry>;
+        declare static readonly __signalSignatures: ValidatedEntry.SignalSignatures;
 
         // Properties
 

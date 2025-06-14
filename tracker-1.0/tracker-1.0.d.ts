@@ -64,6 +64,9 @@ export namespace Tracker {
     function sparql_escape_string(literal: string): string;
     function sparql_get_uuid_urn(): string;
     namespace SparqlBuilder {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -75,6 +78,7 @@ export namespace Tracker {
 
     class SparqlBuilder extends GObject.Object {
         static $gtype: GObject.GType<SparqlBuilder>;
+        declare static readonly __signalSignatures: SparqlBuilder.SignalSignatures;
 
         // Properties
 
@@ -130,6 +134,9 @@ export namespace Tracker {
     }
 
     namespace SparqlConnection {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -137,6 +144,7 @@ export namespace Tracker {
 
     abstract class SparqlConnection extends GObject.Object {
         static $gtype: GObject.GType<SparqlConnection>;
+        declare static readonly __signalSignatures: SparqlConnection.SignalSignatures;
 
         // Constructors
 
@@ -267,6 +275,9 @@ export namespace Tracker {
     }
 
     namespace SparqlCursor {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -278,6 +289,7 @@ export namespace Tracker {
 
     abstract class SparqlCursor extends GObject.Object {
         static $gtype: GObject.GType<SparqlCursor>;
+        declare static readonly __signalSignatures: SparqlCursor.SignalSignatures;
 
         // Properties
 

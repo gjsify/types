@@ -186,6 +186,9 @@ export namespace GCalc {
         THREE,
     }
     namespace Assign {
+        // Signal signatures
+        interface SignalSignatures extends Expression.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -197,6 +200,7 @@ export namespace GCalc {
 
     class Assign extends Expression implements MathOperator, MathBinaryOperator, MathAssign {
         static $gtype: GObject.GType<Assign>;
+        declare static readonly __signalSignatures: Assign.SignalSignatures;
 
         // Constructors
 
@@ -650,6 +654,9 @@ export namespace GCalc {
     }
 
     namespace Calculator {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -657,6 +664,7 @@ export namespace GCalc {
 
     class Calculator extends GObject.Object {
         static $gtype: GObject.GType<Calculator>;
+        declare static readonly __signalSignatures: Calculator.SignalSignatures;
 
         // Constructors
 
@@ -693,6 +701,9 @@ export namespace GCalc {
     }
 
     namespace Constant {
+        // Signal signatures
+        interface SignalSignatures extends Expression.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -708,6 +719,7 @@ export namespace GCalc {
         implements MathConstant, MathConstantNumber, MathConstantComplex, MathConstantVector
     {
         static $gtype: GObject.GType<Constant>;
+        declare static readonly __signalSignatures: Constant.SignalSignatures;
 
         // Constructors
 
@@ -1198,6 +1210,9 @@ export namespace GCalc {
     }
 
     namespace Division {
+        // Signal signatures
+        interface SignalSignatures extends Expression.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1209,6 +1224,7 @@ export namespace GCalc {
 
     class Division extends Expression implements MathOperator, MathBinaryOperator, MathDivision {
         static $gtype: GObject.GType<Division>;
+        declare static readonly __signalSignatures: Division.SignalSignatures;
 
         // Constructors
 
@@ -1661,6 +1677,9 @@ export namespace GCalc {
     }
 
     namespace Equation {
+        // Signal signatures
+        interface SignalSignatures extends Expression.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Expression.ConstructorProps, MathEquation.ConstructorProps {}
@@ -1668,6 +1687,7 @@ export namespace GCalc {
 
     class Equation extends Expression implements MathEquation {
         static $gtype: GObject.GType<Equation>;
+        declare static readonly __signalSignatures: Equation.SignalSignatures;
 
         // Constructors
 
@@ -2125,6 +2145,9 @@ export namespace GCalc {
     }
 
     namespace EquationManager {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, MathEquationManager.ConstructorProps {}
@@ -2132,6 +2155,7 @@ export namespace GCalc {
 
     class EquationManager extends GObject.Object implements MathEquationManager {
         static $gtype: GObject.GType<EquationManager>;
+        declare static readonly __signalSignatures: EquationManager.SignalSignatures;
 
         // Constructors
 
@@ -2594,6 +2618,9 @@ export namespace GCalc {
     }
 
     namespace ErrorResult {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2604,6 +2631,7 @@ export namespace GCalc {
 
     class ErrorResult extends GObject.Object implements MathResult, MathErrorResult {
         static $gtype: GObject.GType<ErrorResult>;
+        declare static readonly __signalSignatures: ErrorResult.SignalSignatures;
 
         // Constructors
 
@@ -3066,6 +3094,9 @@ export namespace GCalc {
     }
 
     namespace Expression {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, MathExpression.ConstructorProps {}
@@ -3073,6 +3104,7 @@ export namespace GCalc {
 
     class Expression extends GObject.Object implements MathExpression {
         static $gtype: GObject.GType<Expression>;
+        declare static readonly __signalSignatures: Expression.SignalSignatures;
 
         // Constructors
 
@@ -3546,6 +3578,9 @@ export namespace GCalc {
     }
 
     namespace ErrorExpression {
+        // Signal signatures
+        interface SignalSignatures extends Expression.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Expression.ConstructorProps {}
@@ -3553,6 +3588,7 @@ export namespace GCalc {
 
     class ErrorExpression extends Expression {
         static $gtype: GObject.GType<ErrorExpression>;
+        declare static readonly __signalSignatures: ErrorExpression.SignalSignatures;
 
         // Constructors
 
@@ -3564,6 +3600,9 @@ export namespace GCalc {
     }
 
     namespace ExpressionContainer {
+        // Signal signatures
+        interface SignalSignatures extends Gee.ArrayList.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -3578,6 +3617,7 @@ export namespace GCalc {
         implements Gio.ListModel<A>
     {
         static $gtype: GObject.GType<ExpressionContainer>;
+        declare static readonly __signalSignatures: ExpressionContainer.SignalSignatures;
 
         // Properties
 
@@ -4139,6 +4179,9 @@ export namespace GCalc {
     }
 
     namespace ExpressionHashMap {
+        // Signal signatures
+        interface SignalSignatures extends Gee.HashMap.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gee.HashMap.ConstructorProps {
@@ -4148,6 +4191,7 @@ export namespace GCalc {
 
     class ExpressionHashMap extends Gee.HashMap {
         static $gtype: GObject.GType<ExpressionHashMap>;
+        declare static readonly __signalSignatures: ExpressionHashMap.SignalSignatures;
 
         // Properties
 
@@ -4174,6 +4218,9 @@ export namespace GCalc {
     }
 
     namespace Function {
+        // Signal signatures
+        interface SignalSignatures extends Expression.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4184,6 +4231,7 @@ export namespace GCalc {
 
     class Function extends Expression implements MathFunction, Hashable {
         static $gtype: GObject.GType<Function>;
+        declare static readonly __signalSignatures: Function.SignalSignatures;
 
         // Constructors
 
@@ -4676,6 +4724,9 @@ export namespace GCalc {
     }
 
     namespace FunctionAcos {
+        // Signal signatures
+        interface SignalSignatures extends Function.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Function.ConstructorProps {}
@@ -4683,6 +4734,7 @@ export namespace GCalc {
 
     class FunctionAcos extends Function {
         static $gtype: GObject.GType<FunctionAcos>;
+        declare static readonly __signalSignatures: FunctionAcos.SignalSignatures;
 
         // Constructors
 
@@ -4694,6 +4746,9 @@ export namespace GCalc {
     }
 
     namespace FunctionAcosh {
+        // Signal signatures
+        interface SignalSignatures extends Function.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Function.ConstructorProps {}
@@ -4701,6 +4756,7 @@ export namespace GCalc {
 
     class FunctionAcosh extends Function {
         static $gtype: GObject.GType<FunctionAcosh>;
+        declare static readonly __signalSignatures: FunctionAcosh.SignalSignatures;
 
         // Constructors
 
@@ -4712,6 +4768,9 @@ export namespace GCalc {
     }
 
     namespace FunctionAsin {
+        // Signal signatures
+        interface SignalSignatures extends Function.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Function.ConstructorProps {}
@@ -4719,6 +4778,7 @@ export namespace GCalc {
 
     class FunctionAsin extends Function {
         static $gtype: GObject.GType<FunctionAsin>;
+        declare static readonly __signalSignatures: FunctionAsin.SignalSignatures;
 
         // Constructors
 
@@ -4730,6 +4790,9 @@ export namespace GCalc {
     }
 
     namespace FunctionAsinh {
+        // Signal signatures
+        interface SignalSignatures extends Function.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Function.ConstructorProps {}
@@ -4737,6 +4800,7 @@ export namespace GCalc {
 
     class FunctionAsinh extends Function {
         static $gtype: GObject.GType<FunctionAsinh>;
+        declare static readonly __signalSignatures: FunctionAsinh.SignalSignatures;
 
         // Constructors
 
@@ -4748,6 +4812,9 @@ export namespace GCalc {
     }
 
     namespace FunctionAtan {
+        // Signal signatures
+        interface SignalSignatures extends Function.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Function.ConstructorProps {}
@@ -4755,6 +4822,7 @@ export namespace GCalc {
 
     class FunctionAtan extends Function {
         static $gtype: GObject.GType<FunctionAtan>;
+        declare static readonly __signalSignatures: FunctionAtan.SignalSignatures;
 
         // Constructors
 
@@ -4766,6 +4834,9 @@ export namespace GCalc {
     }
 
     namespace FunctionAtanh {
+        // Signal signatures
+        interface SignalSignatures extends Function.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Function.ConstructorProps {}
@@ -4773,6 +4844,7 @@ export namespace GCalc {
 
     class FunctionAtanh extends Function {
         static $gtype: GObject.GType<FunctionAtanh>;
+        declare static readonly __signalSignatures: FunctionAtanh.SignalSignatures;
 
         // Constructors
 
@@ -4784,6 +4856,9 @@ export namespace GCalc {
     }
 
     namespace FunctionCos {
+        // Signal signatures
+        interface SignalSignatures extends Function.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Function.ConstructorProps {}
@@ -4791,6 +4866,7 @@ export namespace GCalc {
 
     class FunctionCos extends Function {
         static $gtype: GObject.GType<FunctionCos>;
+        declare static readonly __signalSignatures: FunctionCos.SignalSignatures;
 
         // Constructors
 
@@ -4802,6 +4878,9 @@ export namespace GCalc {
     }
 
     namespace FunctionCosh {
+        // Signal signatures
+        interface SignalSignatures extends Function.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Function.ConstructorProps {}
@@ -4809,6 +4888,7 @@ export namespace GCalc {
 
     class FunctionCosh extends Function {
         static $gtype: GObject.GType<FunctionCosh>;
+        declare static readonly __signalSignatures: FunctionCosh.SignalSignatures;
 
         // Constructors
 
@@ -4820,6 +4900,9 @@ export namespace GCalc {
     }
 
     namespace FunctionExp {
+        // Signal signatures
+        interface SignalSignatures extends Function.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Function.ConstructorProps {}
@@ -4827,6 +4910,7 @@ export namespace GCalc {
 
     class FunctionExp extends Function {
         static $gtype: GObject.GType<FunctionExp>;
+        declare static readonly __signalSignatures: FunctionExp.SignalSignatures;
 
         // Constructors
 
@@ -4838,6 +4922,9 @@ export namespace GCalc {
     }
 
     namespace FunctionLog {
+        // Signal signatures
+        interface SignalSignatures extends Function.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Function.ConstructorProps {}
@@ -4845,6 +4932,7 @@ export namespace GCalc {
 
     class FunctionLog extends Function {
         static $gtype: GObject.GType<FunctionLog>;
+        declare static readonly __signalSignatures: FunctionLog.SignalSignatures;
 
         // Constructors
 
@@ -4856,6 +4944,9 @@ export namespace GCalc {
     }
 
     namespace FunctionSin {
+        // Signal signatures
+        interface SignalSignatures extends Function.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Function.ConstructorProps {}
@@ -4863,6 +4954,7 @@ export namespace GCalc {
 
     class FunctionSin extends Function {
         static $gtype: GObject.GType<FunctionSin>;
+        declare static readonly __signalSignatures: FunctionSin.SignalSignatures;
 
         // Constructors
 
@@ -4874,6 +4966,9 @@ export namespace GCalc {
     }
 
     namespace FunctionSinh {
+        // Signal signatures
+        interface SignalSignatures extends Function.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Function.ConstructorProps {}
@@ -4881,6 +4976,7 @@ export namespace GCalc {
 
     class FunctionSinh extends Function {
         static $gtype: GObject.GType<FunctionSinh>;
+        declare static readonly __signalSignatures: FunctionSinh.SignalSignatures;
 
         // Constructors
 
@@ -4892,6 +4988,9 @@ export namespace GCalc {
     }
 
     namespace FunctionSqrt {
+        // Signal signatures
+        interface SignalSignatures extends Function.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Function.ConstructorProps {}
@@ -4899,6 +4998,7 @@ export namespace GCalc {
 
     class FunctionSqrt extends Function {
         static $gtype: GObject.GType<FunctionSqrt>;
+        declare static readonly __signalSignatures: FunctionSqrt.SignalSignatures;
 
         // Constructors
 
@@ -4910,6 +5010,9 @@ export namespace GCalc {
     }
 
     namespace FunctionTan {
+        // Signal signatures
+        interface SignalSignatures extends Function.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Function.ConstructorProps {}
@@ -4917,6 +5020,7 @@ export namespace GCalc {
 
     class FunctionTan extends Function {
         static $gtype: GObject.GType<FunctionTan>;
+        declare static readonly __signalSignatures: FunctionTan.SignalSignatures;
 
         // Constructors
 
@@ -4928,6 +5032,9 @@ export namespace GCalc {
     }
 
     namespace FunctionTanh {
+        // Signal signatures
+        interface SignalSignatures extends Function.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Function.ConstructorProps {}
@@ -4935,6 +5042,7 @@ export namespace GCalc {
 
     class FunctionTanh extends Function {
         static $gtype: GObject.GType<FunctionTanh>;
+        declare static readonly __signalSignatures: FunctionTanh.SignalSignatures;
 
         // Constructors
 
@@ -4946,6 +5054,9 @@ export namespace GCalc {
     }
 
     namespace Group {
+        // Signal signatures
+        interface SignalSignatures extends Expression.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Expression.ConstructorProps, MathGroup.ConstructorProps {}
@@ -4953,6 +5064,7 @@ export namespace GCalc {
 
     class Group extends Expression implements MathGroup {
         static $gtype: GObject.GType<Group>;
+        declare static readonly __signalSignatures: Group.SignalSignatures;
 
         // Constructors
 
@@ -5421,6 +5533,9 @@ export namespace GCalc {
     }
 
     namespace Minus {
+        // Signal signatures
+        interface SignalSignatures extends Expression.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5432,6 +5547,7 @@ export namespace GCalc {
 
     class Minus extends Expression implements MathOperator, MathBinaryOperator, MathMinus {
         static $gtype: GObject.GType<Minus>;
+        declare static readonly __signalSignatures: Minus.SignalSignatures;
 
         // Constructors
 
@@ -5884,6 +6000,9 @@ export namespace GCalc {
     }
 
     namespace Multiply {
+        // Signal signatures
+        interface SignalSignatures extends Expression.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5895,6 +6014,7 @@ export namespace GCalc {
 
     class Multiply extends Expression implements MathOperator, MathBinaryOperator, MathMultiply {
         static $gtype: GObject.GType<Multiply>;
+        declare static readonly __signalSignatures: Multiply.SignalSignatures;
 
         // Constructors
 
@@ -6347,6 +6467,9 @@ export namespace GCalc {
     }
 
     namespace Parameter {
+        // Signal signatures
+        interface SignalSignatures extends Variable.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Variable.ConstructorProps, MathParameter.ConstructorProps {}
@@ -6354,6 +6477,7 @@ export namespace GCalc {
 
     class Parameter extends Variable implements MathParameter {
         static $gtype: GObject.GType<Parameter>;
+        declare static readonly __signalSignatures: Parameter.SignalSignatures;
 
         // Constructors
 
@@ -6821,6 +6945,9 @@ export namespace GCalc {
     }
 
     namespace Parser {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6828,6 +6955,7 @@ export namespace GCalc {
 
     class Parser extends GObject.Object {
         static $gtype: GObject.GType<Parser>;
+        declare static readonly __signalSignatures: Parser.SignalSignatures;
 
         // Constructors
 
@@ -6845,6 +6973,9 @@ export namespace GCalc {
     }
 
     namespace Plus {
+        // Signal signatures
+        interface SignalSignatures extends Expression.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6856,6 +6987,7 @@ export namespace GCalc {
 
     class Plus extends Expression implements MathOperator, MathBinaryOperator, MathPlus {
         static $gtype: GObject.GType<Plus>;
+        declare static readonly __signalSignatures: Plus.SignalSignatures;
 
         // Constructors
 
@@ -7308,6 +7440,9 @@ export namespace GCalc {
     }
 
     namespace Polynomial {
+        // Signal signatures
+        interface SignalSignatures extends Expression.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Expression.ConstructorProps, MathPolynomial.ConstructorProps {}
@@ -7315,6 +7450,7 @@ export namespace GCalc {
 
     class Polynomial extends Expression implements MathPolynomial {
         static $gtype: GObject.GType<Polynomial>;
+        declare static readonly __signalSignatures: Polynomial.SignalSignatures;
 
         // Constructors
 
@@ -7769,6 +7905,9 @@ export namespace GCalc {
     }
 
     namespace Pow {
+        // Signal signatures
+        interface SignalSignatures extends Expression.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7779,6 +7918,7 @@ export namespace GCalc {
 
     class Pow extends Expression implements MathOperator, MathPow {
         static $gtype: GObject.GType<Pow>;
+        declare static readonly __signalSignatures: Pow.SignalSignatures;
 
         // Constructors
 
@@ -8231,6 +8371,9 @@ export namespace GCalc {
     }
 
     namespace Result {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, MathResult.ConstructorProps {}
@@ -8238,6 +8381,7 @@ export namespace GCalc {
 
     class Result extends GObject.Object implements MathResult {
         static $gtype: GObject.GType<Result>;
+        declare static readonly __signalSignatures: Result.SignalSignatures;
 
         // Constructors
 
@@ -8697,6 +8841,9 @@ export namespace GCalc {
     }
 
     namespace Solver {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -8707,6 +8854,7 @@ export namespace GCalc {
 
     class Solver extends GObject.Object {
         static $gtype: GObject.GType<Solver>;
+        declare static readonly __signalSignatures: Solver.SignalSignatures;
 
         // Properties
 
@@ -8732,6 +8880,9 @@ export namespace GCalc {
     }
 
     namespace Term {
+        // Signal signatures
+        interface SignalSignatures extends Expression.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Expression.ConstructorProps, MathTerm.ConstructorProps {}
@@ -8739,6 +8890,7 @@ export namespace GCalc {
 
     class Term extends Expression implements MathTerm {
         static $gtype: GObject.GType<Term>;
+        declare static readonly __signalSignatures: Term.SignalSignatures;
 
         // Constructors
 
@@ -9195,6 +9347,9 @@ export namespace GCalc {
     }
 
     namespace UnitConverter {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -9202,6 +9357,7 @@ export namespace GCalc {
 
     class UnitConverter extends GObject.Object {
         static $gtype: GObject.GType<UnitConverter>;
+        declare static readonly __signalSignatures: UnitConverter.SignalSignatures;
 
         // Constructors
 
@@ -9217,6 +9373,9 @@ export namespace GCalc {
     }
 
     namespace Variable {
+        // Signal signatures
+        interface SignalSignatures extends Expression.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9227,6 +9386,7 @@ export namespace GCalc {
 
     class Variable extends Expression implements MathVariable, Hashable {
         static $gtype: GObject.GType<Variable>;
+        declare static readonly __signalSignatures: Variable.SignalSignatures;
 
         // Constructors
 

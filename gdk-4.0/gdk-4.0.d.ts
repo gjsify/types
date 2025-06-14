@@ -4736,6 +4736,9 @@ export namespace Gdk {
         SUSPENDED,
     }
     namespace AppLaunchContext {
+        // Signal signatures
+        interface SignalSignatures extends Gio.AppLaunchContext.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gio.AppLaunchContext.ConstructorProps {
@@ -4766,6 +4769,7 @@ export namespace Gdk {
      */
     class AppLaunchContext extends Gio.AppLaunchContext {
         static $gtype: GObject.GType<AppLaunchContext>;
+        declare static readonly __signalSignatures: AppLaunchContext.SignalSignatures;
 
         // Properties
 
@@ -4845,11 +4849,17 @@ export namespace Gdk {
         set_timestamp(timestamp: number): void;
     }
 
+    namespace ButtonEvent {
+        // Signal signatures
+        interface SignalSignatures extends Event.SignalSignatures {}
+    }
+
     /**
      * An event related to a button on a pointer device.
      */
     class ButtonEvent extends Event {
         static $gtype: GObject.GType<ButtonEvent>;
+        declare static readonly __signalSignatures: ButtonEvent.SignalSignatures;
 
         // Constructors
 
@@ -4865,6 +4875,9 @@ export namespace Gdk {
     }
 
     namespace CairoContext {
+        // Signal signatures
+        interface SignalSignatures extends DrawContext.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DrawContext.ConstructorProps {}
@@ -4879,6 +4892,7 @@ export namespace Gdk {
      */
     abstract class CairoContext extends DrawContext {
         static $gtype: GObject.GType<CairoContext>;
+        declare static readonly __signalSignatures: CairoContext.SignalSignatures;
 
         // Constructors
 
@@ -4903,6 +4917,9 @@ export namespace Gdk {
     }
 
     namespace CicpParams {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4939,6 +4956,7 @@ export namespace Gdk {
      */
     class CicpParams extends GObject.Object {
         static $gtype: GObject.GType<CicpParams>;
+        declare static readonly __signalSignatures: CicpParams.SignalSignatures;
 
         // Properties
 
@@ -5101,7 +5119,7 @@ export namespace Gdk {
         }
 
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
             changed: Changed;
         }
 
@@ -5505,6 +5523,9 @@ export namespace Gdk {
     }
 
     namespace ContentDeserializer {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.AsyncResult.ConstructorProps {}
@@ -5524,6 +5545,7 @@ export namespace Gdk {
      */
     class ContentDeserializer extends GObject.Object implements Gio.AsyncResult {
         static $gtype: GObject.GType<ContentDeserializer>;
+        declare static readonly __signalSignatures: ContentDeserializer.SignalSignatures;
 
         // Constructors
 
@@ -6088,7 +6110,7 @@ export namespace Gdk {
         }
 
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
             'content-changed': ContentChanged;
         }
 
@@ -6332,6 +6354,9 @@ export namespace Gdk {
     }
 
     namespace ContentSerializer {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.AsyncResult.ConstructorProps {}
@@ -6352,6 +6377,7 @@ export namespace Gdk {
      */
     class ContentSerializer extends GObject.Object implements Gio.AsyncResult {
         static $gtype: GObject.GType<ContentSerializer>;
+        declare static readonly __signalSignatures: ContentSerializer.SignalSignatures;
 
         // Constructors
 
@@ -6908,11 +6934,17 @@ export namespace Gdk {
         stop_emission_by_name(detailedName: string): void;
     }
 
+    namespace CrossingEvent {
+        // Signal signatures
+        interface SignalSignatures extends Event.SignalSignatures {}
+    }
+
     /**
      * An event caused by a pointing device moving between surfaces.
      */
     class CrossingEvent extends Event {
         static $gtype: GObject.GType<CrossingEvent>;
+        declare static readonly __signalSignatures: CrossingEvent.SignalSignatures;
 
         // Constructors
 
@@ -6938,6 +6970,9 @@ export namespace Gdk {
     }
 
     namespace Cursor {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6989,6 +7024,7 @@ export namespace Gdk {
      */
     class Cursor extends GObject.Object {
         static $gtype: GObject.GType<Cursor>;
+        declare static readonly __signalSignatures: Cursor.SignalSignatures;
 
         // Properties
 
@@ -7093,11 +7129,17 @@ export namespace Gdk {
         get_texture(): Texture | null;
     }
 
+    namespace DNDEvent {
+        // Signal signatures
+        interface SignalSignatures extends Event.SignalSignatures {}
+    }
+
     /**
      * An event related to drag and drop operations.
      */
     class DNDEvent extends Event {
         static $gtype: GObject.GType<DNDEvent>;
+        declare static readonly __signalSignatures: DNDEvent.SignalSignatures;
 
         // Constructors
 
@@ -7112,11 +7154,17 @@ export namespace Gdk {
         get_drop(): Drop | null;
     }
 
+    namespace DeleteEvent {
+        // Signal signatures
+        interface SignalSignatures extends Event.SignalSignatures {}
+    }
+
     /**
      * An event related to closing a top-level surface.
      */
     class DeleteEvent extends Event {
         static $gtype: GObject.GType<DeleteEvent>;
+        declare static readonly __signalSignatures: DeleteEvent.SignalSignatures;
 
         // Constructors
 
@@ -7135,7 +7183,7 @@ export namespace Gdk {
         }
 
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
             changed: Changed;
             'tool-changed': ToolChanged;
         }
@@ -7535,6 +7583,9 @@ export namespace Gdk {
     }
 
     namespace DeviceTool {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7552,6 +7603,7 @@ export namespace Gdk {
      */
     class DeviceTool extends GObject.Object {
         static $gtype: GObject.GType<DeviceTool>;
+        declare static readonly __signalSignatures: DeviceTool.SignalSignatures;
 
         // Properties
 
@@ -7647,7 +7699,7 @@ export namespace Gdk {
         }
 
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
             closed: Closed;
             opened: Opened;
             'seat-added': SeatAdded;
@@ -8077,7 +8129,7 @@ export namespace Gdk {
         }
 
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
             'display-opened': DisplayOpened;
         }
 
@@ -8219,6 +8271,9 @@ export namespace Gdk {
     }
 
     namespace DmabufTexture {
+        // Signal signatures
+        interface SignalSignatures extends Texture.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -8238,6 +8293,7 @@ export namespace Gdk {
      */
     class DmabufTexture extends Texture implements Paintable, Gio.Icon, Gio.LoadableIcon {
         static $gtype: GObject.GType<DmabufTexture>;
+        declare static readonly __signalSignatures: DmabufTexture.SignalSignatures;
 
         // Constructors
 
@@ -9024,6 +9080,9 @@ export namespace Gdk {
     }
 
     namespace DmabufTextureBuilder {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9104,6 +9163,7 @@ export namespace Gdk {
      */
     class DmabufTextureBuilder extends GObject.Object {
         static $gtype: GObject.GType<DmabufTextureBuilder>;
+        declare static readonly __signalSignatures: DmabufTextureBuilder.SignalSignatures;
 
         // Properties
 
@@ -9411,7 +9471,7 @@ export namespace Gdk {
         }
 
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
             cancel: Cancel;
             'dnd-finished': DndFinished;
             'drop-performed': DropPerformed;
@@ -9617,6 +9677,9 @@ export namespace Gdk {
     }
 
     namespace DrawContext {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9638,6 +9701,7 @@ export namespace Gdk {
      */
     abstract class DrawContext extends GObject.Object {
         static $gtype: GObject.GType<DrawContext>;
+        declare static readonly __signalSignatures: DrawContext.SignalSignatures;
 
         // Properties
 
@@ -9731,6 +9795,9 @@ export namespace Gdk {
     }
 
     namespace Drop {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9761,6 +9828,7 @@ export namespace Gdk {
      */
     abstract class Drop extends GObject.Object {
         static $gtype: GObject.GType<Drop>;
+        declare static readonly __signalSignatures: Drop.SignalSignatures;
 
         // Properties
 
@@ -9985,6 +10053,11 @@ export namespace Gdk {
         status(actions: DragAction | null, preferred: DragAction | null): void;
     }
 
+    namespace Event {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+    }
+
     /**
      * Represents windowing system events.
      *
@@ -9996,6 +10069,7 @@ export namespace Gdk {
      */
     abstract class Event {
         static $gtype: GObject.GType<Event>;
+        declare static readonly __signalSignatures: Event.SignalSignatures;
 
         // Constructors
 
@@ -10167,11 +10241,17 @@ export namespace Gdk {
         unref(): void;
     }
 
+    namespace FocusEvent {
+        // Signal signatures
+        interface SignalSignatures extends Event.SignalSignatures {}
+    }
+
     /**
      * An event related to a keyboard focus change.
      */
     class FocusEvent extends Event {
         static $gtype: GObject.GType<FocusEvent>;
+        declare static readonly __signalSignatures: FocusEvent.SignalSignatures;
 
         // Constructors
 
@@ -10219,7 +10299,7 @@ export namespace Gdk {
         }
 
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
             'after-paint': AfterPaint;
             'before-paint': BeforePaint;
             'flush-events': FlushEvents;
@@ -10415,6 +10495,9 @@ export namespace Gdk {
     }
 
     namespace GLContext {
+        // Signal signatures
+        interface SignalSignatures extends DrawContext.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DrawContext.ConstructorProps {
@@ -10478,6 +10561,7 @@ export namespace Gdk {
      */
     abstract class GLContext extends DrawContext {
         static $gtype: GObject.GType<GLContext>;
+        declare static readonly __signalSignatures: GLContext.SignalSignatures;
 
         // Properties
 
@@ -10713,6 +10797,9 @@ export namespace Gdk {
     }
 
     namespace GLTexture {
+        // Signal signatures
+        interface SignalSignatures extends Texture.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -10727,6 +10814,7 @@ export namespace Gdk {
      */
     class GLTexture extends Texture implements Paintable, Gio.Icon, Gio.LoadableIcon {
         static $gtype: GObject.GType<GLTexture>;
+        declare static readonly __signalSignatures: GLTexture.SignalSignatures;
 
         // Constructors
 
@@ -11526,6 +11614,9 @@ export namespace Gdk {
     }
 
     namespace GLTextureBuilder {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -11560,6 +11651,7 @@ export namespace Gdk {
      */
     class GLTextureBuilder extends GObject.Object {
         static $gtype: GObject.GType<GLTextureBuilder>;
+        declare static readonly __signalSignatures: GLTextureBuilder.SignalSignatures;
 
         // Properties
 
@@ -11822,11 +11914,17 @@ export namespace Gdk {
         set_width(width: number): void;
     }
 
+    namespace GrabBrokenEvent {
+        // Signal signatures
+        interface SignalSignatures extends Event.SignalSignatures {}
+    }
+
     /**
      * An event related to a broken windowing system grab.
      */
     class GrabBrokenEvent extends Event {
         static $gtype: GObject.GType<GrabBrokenEvent>;
+        declare static readonly __signalSignatures: GrabBrokenEvent.SignalSignatures;
 
         // Constructors
 
@@ -11846,11 +11944,17 @@ export namespace Gdk {
         get_implicit(): boolean;
     }
 
+    namespace KeyEvent {
+        // Signal signatures
+        interface SignalSignatures extends Event.SignalSignatures {}
+    }
+
     /**
      * An event related to a key-based device.
      */
     class KeyEvent extends Event {
         static $gtype: GObject.GType<KeyEvent>;
+        declare static readonly __signalSignatures: KeyEvent.SignalSignatures;
 
         // Constructors
 
@@ -11913,6 +12017,9 @@ export namespace Gdk {
     }
 
     namespace MemoryTexture {
+        // Signal signatures
+        interface SignalSignatures extends Texture.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -11927,6 +12034,7 @@ export namespace Gdk {
      */
     class MemoryTexture extends Texture implements Paintable, Gio.Icon, Gio.LoadableIcon {
         static $gtype: GObject.GType<MemoryTexture>;
+        declare static readonly __signalSignatures: MemoryTexture.SignalSignatures;
 
         // Constructors
 
@@ -12721,6 +12829,9 @@ export namespace Gdk {
     }
 
     namespace MemoryTextureBuilder {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -12753,6 +12864,7 @@ export namespace Gdk {
      */
     class MemoryTextureBuilder extends GObject.Object {
         static $gtype: GObject.GType<MemoryTextureBuilder>;
+        declare static readonly __signalSignatures: MemoryTextureBuilder.SignalSignatures;
 
         // Properties
 
@@ -12956,7 +13068,7 @@ export namespace Gdk {
         }
 
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
             invalidate: Invalidate;
         }
 
@@ -13206,15 +13318,26 @@ export namespace Gdk {
         is_valid(): boolean;
     }
 
+    namespace MotionEvent {
+        // Signal signatures
+        interface SignalSignatures extends Event.SignalSignatures {}
+    }
+
     /**
      * An event related to a pointer or touch device motion.
      */
     class MotionEvent extends Event {
         static $gtype: GObject.GType<MotionEvent>;
+        declare static readonly __signalSignatures: MotionEvent.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+    }
+
+    namespace PadEvent {
+        // Signal signatures
+        interface SignalSignatures extends Event.SignalSignatures {}
     }
 
     /**
@@ -13222,6 +13345,7 @@ export namespace Gdk {
      */
     class PadEvent extends Event {
         static $gtype: GObject.GType<PadEvent>;
+        declare static readonly __signalSignatures: PadEvent.SignalSignatures;
 
         // Constructors
 
@@ -13245,15 +13369,26 @@ export namespace Gdk {
         get_group_mode(): [number, number];
     }
 
+    namespace ProximityEvent {
+        // Signal signatures
+        interface SignalSignatures extends Event.SignalSignatures {}
+    }
+
     /**
      * An event related to the proximity of a tool to a device.
      */
     class ProximityEvent extends Event {
         static $gtype: GObject.GType<ProximityEvent>;
+        declare static readonly __signalSignatures: ProximityEvent.SignalSignatures;
 
         // Constructors
 
         _init(...args: any[]): void;
+    }
+
+    namespace ScrollEvent {
+        // Signal signatures
+        interface SignalSignatures extends Event.SignalSignatures {}
     }
 
     /**
@@ -13261,6 +13396,7 @@ export namespace Gdk {
      */
     class ScrollEvent extends Event {
         static $gtype: GObject.GType<ScrollEvent>;
+        declare static readonly __signalSignatures: ScrollEvent.SignalSignatures;
 
         // Constructors
 
@@ -13326,7 +13462,7 @@ export namespace Gdk {
         }
 
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
             'device-added': DeviceAdded;
             'device-removed': DeviceRemoved;
             'tool-added': ToolAdded;
@@ -13417,6 +13553,9 @@ export namespace Gdk {
     }
 
     namespace Snapshot {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -13429,6 +13568,7 @@ export namespace Gdk {
      */
     abstract class Snapshot extends GObject.Object {
         static $gtype: GObject.GType<Snapshot>;
+        declare static readonly __signalSignatures: Snapshot.SignalSignatures;
 
         // Constructors
 
@@ -13461,7 +13601,7 @@ export namespace Gdk {
         }
 
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
             'enter-monitor': EnterMonitor;
             event: Event;
             layout: Layout;
@@ -13855,6 +13995,9 @@ export namespace Gdk {
     }
 
     namespace Texture {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -13899,6 +14042,7 @@ export namespace Gdk {
      */
     abstract class Texture extends GObject.Object implements Paintable, Gio.Icon, Gio.LoadableIcon {
         static $gtype: GObject.GType<Texture>;
+        declare static readonly __signalSignatures: Texture.SignalSignatures;
 
         // Properties
 
@@ -14825,11 +14969,17 @@ export namespace Gdk {
         stop_emission_by_name(detailedName: string): void;
     }
 
+    namespace TouchEvent {
+        // Signal signatures
+        interface SignalSignatures extends Event.SignalSignatures {}
+    }
+
     /**
      * An event related to a touch-based device.
      */
     class TouchEvent extends Event {
         static $gtype: GObject.GType<TouchEvent>;
+        declare static readonly __signalSignatures: TouchEvent.SignalSignatures;
 
         // Constructors
 
@@ -14844,6 +14994,11 @@ export namespace Gdk {
         get_emulating_pointer(): boolean;
     }
 
+    namespace TouchpadEvent {
+        // Signal signatures
+        interface SignalSignatures extends Event.SignalSignatures {}
+    }
+
     /**
      * An event related to a gesture on a touchpad device.
      *
@@ -14854,6 +15009,7 @@ export namespace Gdk {
      */
     class TouchpadEvent extends Event {
         static $gtype: GObject.GType<TouchpadEvent>;
+        declare static readonly __signalSignatures: TouchpadEvent.SignalSignatures;
 
         // Constructors
 
@@ -14895,7 +15051,7 @@ export namespace Gdk {
         }
 
         // Signal signatures
-        interface SignalSignatures {
+        interface SignalSignatures extends DrawContext.SignalSignatures {
             'images-updated': ImagesUpdated;
         }
 

@@ -63,6 +63,9 @@ export namespace Nautilus {
         result: OperationResult | null,
     ): void;
     namespace Column {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -90,6 +93,7 @@ export namespace Nautilus {
      */
     class Column extends GObject.Object {
         static $gtype: GObject.GType<Column>;
+        declare static readonly __signalSignatures: Column.SignalSignatures;
 
         // Properties
 
@@ -149,6 +153,9 @@ export namespace Nautilus {
     }
 
     namespace Menu {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -156,6 +163,7 @@ export namespace Nautilus {
 
     class Menu extends GObject.Object {
         static $gtype: GObject.GType<Menu>;
+        declare static readonly __signalSignatures: Menu.SignalSignatures;
 
         // Constructors
 
@@ -178,6 +186,11 @@ export namespace Nautilus {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            activate: Activate;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -193,6 +206,7 @@ export namespace Nautilus {
 
     class MenuItem extends GObject.Object {
         static $gtype: GObject.GType<MenuItem>;
+        declare static readonly __signalSignatures: MenuItem.SignalSignatures;
 
         // Properties
 
@@ -220,6 +234,15 @@ export namespace Nautilus {
 
         // Signals
 
+        connect<K extends keyof MenuItem.SignalSignatures>(signal: K, callback: MenuItem.SignalSignatures[K]): number;
+        connect_after<K extends keyof MenuItem.SignalSignatures>(
+            signal: K,
+            callback: MenuItem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MenuItem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MenuItem.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -252,6 +275,9 @@ export namespace Nautilus {
     }
 
     namespace PropertiesItem {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -262,6 +288,7 @@ export namespace Nautilus {
 
     class PropertiesItem extends GObject.Object {
         static $gtype: GObject.GType<PropertiesItem>;
+        declare static readonly __signalSignatures: PropertiesItem.SignalSignatures;
 
         // Properties
 
@@ -283,6 +310,9 @@ export namespace Nautilus {
     }
 
     namespace PropertiesModel {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -293,6 +323,7 @@ export namespace Nautilus {
 
     class PropertiesModel extends GObject.Object {
         static $gtype: GObject.GType<PropertiesModel>;
+        declare static readonly __signalSignatures: PropertiesModel.SignalSignatures;
 
         // Properties
 

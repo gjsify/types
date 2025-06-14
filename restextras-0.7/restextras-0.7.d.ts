@@ -34,6 +34,9 @@ export namespace RestExtras {
         ): void;
     }
     namespace FlickrProxy {
+        // Signal signatures
+        interface SignalSignatures extends Rest.Proxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Rest.Proxy.ConstructorProps {
@@ -50,6 +53,7 @@ export namespace RestExtras {
      */
     class FlickrProxy extends Rest.Proxy {
         static $gtype: GObject.GType<FlickrProxy>;
+        declare static readonly __signalSignatures: FlickrProxy.SignalSignatures;
 
         // Properties
 
@@ -130,6 +134,9 @@ export namespace RestExtras {
     }
 
     namespace FlickrProxyCall {
+        // Signal signatures
+        interface SignalSignatures extends Rest.ProxyCall.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Rest.ProxyCall.ConstructorProps {
@@ -142,6 +149,7 @@ export namespace RestExtras {
      */
     class FlickrProxyCall extends Rest.ProxyCall {
         static $gtype: GObject.GType<FlickrProxyCall>;
+        declare static readonly __signalSignatures: FlickrProxyCall.SignalSignatures;
 
         // Properties
 
@@ -160,6 +168,9 @@ export namespace RestExtras {
     }
 
     namespace LastfmProxy {
+        // Signal signatures
+        interface SignalSignatures extends Rest.Proxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Rest.Proxy.ConstructorProps {
@@ -176,6 +187,7 @@ export namespace RestExtras {
      */
     class LastfmProxy extends Rest.Proxy {
         static $gtype: GObject.GType<LastfmProxy>;
+        declare static readonly __signalSignatures: LastfmProxy.SignalSignatures;
 
         // Properties
 
@@ -236,6 +248,9 @@ export namespace RestExtras {
     }
 
     namespace LastfmProxyCall {
+        // Signal signatures
+        interface SignalSignatures extends Rest.ProxyCall.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Rest.ProxyCall.ConstructorProps {}
@@ -246,6 +261,7 @@ export namespace RestExtras {
      */
     class LastfmProxyCall extends Rest.ProxyCall {
         static $gtype: GObject.GType<LastfmProxyCall>;
+        declare static readonly __signalSignatures: LastfmProxyCall.SignalSignatures;
 
         // Constructors
 
@@ -255,6 +271,9 @@ export namespace RestExtras {
     }
 
     namespace YoutubeProxy {
+        // Signal signatures
+        interface SignalSignatures extends Rest.Proxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Rest.Proxy.ConstructorProps {
@@ -270,6 +289,7 @@ export namespace RestExtras {
      */
     class YoutubeProxy extends Rest.Proxy {
         static $gtype: GObject.GType<YoutubeProxy>;
+        declare static readonly __signalSignatures: YoutubeProxy.SignalSignatures;
 
         // Properties
 

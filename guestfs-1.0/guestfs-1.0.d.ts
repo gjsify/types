@@ -107,6 +107,9 @@ export namespace Guestfs {
         NONE,
     }
     namespace AddDomain {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -127,6 +130,7 @@ export namespace Guestfs {
      */
     class AddDomain extends GObject.Object {
         static $gtype: GObject.GType<AddDomain>;
+        declare static readonly __signalSignatures: AddDomain.SignalSignatures;
 
         // Properties
 
@@ -186,6 +190,9 @@ export namespace Guestfs {
     }
 
     namespace AddDrive {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -208,6 +215,7 @@ export namespace Guestfs {
      */
     class AddDrive extends GObject.Object {
         static $gtype: GObject.GType<AddDrive>;
+        declare static readonly __signalSignatures: AddDrive.SignalSignatures;
 
         // Properties
 
@@ -277,6 +285,9 @@ export namespace Guestfs {
     }
 
     namespace AddDriveScratch {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -290,6 +301,7 @@ export namespace Guestfs {
      */
     class AddDriveScratch extends GObject.Object {
         static $gtype: GObject.GType<AddDriveScratch>;
+        declare static readonly __signalSignatures: AddDriveScratch.SignalSignatures;
 
         // Properties
 
@@ -314,6 +326,9 @@ export namespace Guestfs {
     }
 
     namespace AddLibvirtDom {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -332,6 +347,7 @@ export namespace Guestfs {
      */
     class AddLibvirtDom extends GObject.Object {
         static $gtype: GObject.GType<AddLibvirtDom>;
+        declare static readonly __signalSignatures: AddLibvirtDom.SignalSignatures;
 
         // Properties
 
@@ -381,6 +397,9 @@ export namespace Guestfs {
     }
 
     namespace AugTransform {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -393,6 +412,7 @@ export namespace Guestfs {
      */
     class AugTransform extends GObject.Object {
         static $gtype: GObject.GType<AugTransform>;
+        declare static readonly __signalSignatures: AugTransform.SignalSignatures;
 
         // Properties
 
@@ -412,6 +432,9 @@ export namespace Guestfs {
     }
 
     namespace BTRFSFilesystemDefragment {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -425,6 +448,7 @@ export namespace Guestfs {
      */
     class BTRFSFilesystemDefragment extends GObject.Object {
         static $gtype: GObject.GType<BTRFSFilesystemDefragment>;
+        declare static readonly __signalSignatures: BTRFSFilesystemDefragment.SignalSignatures;
 
         // Properties
 
@@ -449,6 +473,9 @@ export namespace Guestfs {
     }
 
     namespace BTRFSFilesystemResize {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -461,6 +488,7 @@ export namespace Guestfs {
      */
     class BTRFSFilesystemResize extends GObject.Object {
         static $gtype: GObject.GType<BTRFSFilesystemResize>;
+        declare static readonly __signalSignatures: BTRFSFilesystemResize.SignalSignatures;
 
         // Properties
 
@@ -480,6 +508,9 @@ export namespace Guestfs {
     }
 
     namespace BTRFSImage {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -492,6 +523,7 @@ export namespace Guestfs {
      */
     class BTRFSImage extends GObject.Object {
         static $gtype: GObject.GType<BTRFSImage>;
+        declare static readonly __signalSignatures: BTRFSImage.SignalSignatures;
 
         // Properties
 
@@ -511,6 +543,9 @@ export namespace Guestfs {
     }
 
     namespace BTRFSSubvolumeCreate {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -523,6 +558,7 @@ export namespace Guestfs {
      */
     class BTRFSSubvolumeCreate extends GObject.Object {
         static $gtype: GObject.GType<BTRFSSubvolumeCreate>;
+        declare static readonly __signalSignatures: BTRFSSubvolumeCreate.SignalSignatures;
 
         // Properties
 
@@ -542,6 +578,9 @@ export namespace Guestfs {
     }
 
     namespace BTRFSSubvolumeSnapshot {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -555,6 +594,7 @@ export namespace Guestfs {
      */
     class BTRFSSubvolumeSnapshot extends GObject.Object {
         static $gtype: GObject.GType<BTRFSSubvolumeSnapshot>;
+        declare static readonly __signalSignatures: BTRFSSubvolumeSnapshot.SignalSignatures;
 
         // Properties
 
@@ -579,6 +619,9 @@ export namespace Guestfs {
     }
 
     namespace BtrfsFsck {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -592,6 +635,7 @@ export namespace Guestfs {
      */
     class BtrfsFsck extends GObject.Object {
         static $gtype: GObject.GType<BtrfsFsck>;
+        declare static readonly __signalSignatures: BtrfsFsck.SignalSignatures;
 
         // Properties
 
@@ -616,6 +660,9 @@ export namespace Guestfs {
     }
 
     namespace CompressDeviceOut {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -628,6 +675,7 @@ export namespace Guestfs {
      */
     class CompressDeviceOut extends GObject.Object {
         static $gtype: GObject.GType<CompressDeviceOut>;
+        declare static readonly __signalSignatures: CompressDeviceOut.SignalSignatures;
 
         // Properties
 
@@ -647,6 +695,9 @@ export namespace Guestfs {
     }
 
     namespace CompressOut {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -659,6 +710,7 @@ export namespace Guestfs {
      */
     class CompressOut extends GObject.Object {
         static $gtype: GObject.GType<CompressOut>;
+        declare static readonly __signalSignatures: CompressOut.SignalSignatures;
 
         // Properties
 
@@ -678,6 +730,9 @@ export namespace Guestfs {
     }
 
     namespace CopyAttributes {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -693,6 +748,7 @@ export namespace Guestfs {
      */
     class CopyAttributes extends GObject.Object {
         static $gtype: GObject.GType<CopyAttributes>;
+        declare static readonly __signalSignatures: CopyAttributes.SignalSignatures;
 
         // Properties
 
@@ -727,6 +783,9 @@ export namespace Guestfs {
     }
 
     namespace CopyDeviceToDevice {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -743,6 +802,7 @@ export namespace Guestfs {
      */
     class CopyDeviceToDevice extends GObject.Object {
         static $gtype: GObject.GType<CopyDeviceToDevice>;
+        declare static readonly __signalSignatures: CopyDeviceToDevice.SignalSignatures;
 
         // Properties
 
@@ -782,6 +842,9 @@ export namespace Guestfs {
     }
 
     namespace CopyDeviceToFile {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -798,6 +861,7 @@ export namespace Guestfs {
      */
     class CopyDeviceToFile extends GObject.Object {
         static $gtype: GObject.GType<CopyDeviceToFile>;
+        declare static readonly __signalSignatures: CopyDeviceToFile.SignalSignatures;
 
         // Properties
 
@@ -837,6 +901,9 @@ export namespace Guestfs {
     }
 
     namespace CopyFileToDevice {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -853,6 +920,7 @@ export namespace Guestfs {
      */
     class CopyFileToDevice extends GObject.Object {
         static $gtype: GObject.GType<CopyFileToDevice>;
+        declare static readonly __signalSignatures: CopyFileToDevice.SignalSignatures;
 
         // Properties
 
@@ -892,6 +960,9 @@ export namespace Guestfs {
     }
 
     namespace CopyFileToFile {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -908,6 +979,7 @@ export namespace Guestfs {
      */
     class CopyFileToFile extends GObject.Object {
         static $gtype: GObject.GType<CopyFileToFile>;
+        declare static readonly __signalSignatures: CopyFileToFile.SignalSignatures;
 
         // Properties
 
@@ -947,6 +1019,9 @@ export namespace Guestfs {
     }
 
     namespace CpioOut {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -959,6 +1034,7 @@ export namespace Guestfs {
      */
     class CpioOut extends GObject.Object {
         static $gtype: GObject.GType<CpioOut>;
+        declare static readonly __signalSignatures: CpioOut.SignalSignatures;
 
         // Properties
 
@@ -978,6 +1054,9 @@ export namespace Guestfs {
     }
 
     namespace DiskCreate {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -994,6 +1073,7 @@ export namespace Guestfs {
      */
     class DiskCreate extends GObject.Object {
         static $gtype: GObject.GType<DiskCreate>;
+        declare static readonly __signalSignatures: DiskCreate.SignalSignatures;
 
         // Properties
 
@@ -1033,6 +1113,9 @@ export namespace Guestfs {
     }
 
     namespace DownloadBlocks {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1045,6 +1128,7 @@ export namespace Guestfs {
      */
     class DownloadBlocks extends GObject.Object {
         static $gtype: GObject.GType<DownloadBlocks>;
+        declare static readonly __signalSignatures: DownloadBlocks.SignalSignatures;
 
         // Properties
 
@@ -1064,6 +1148,9 @@ export namespace Guestfs {
     }
 
     namespace E2fsck {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1077,6 +1164,7 @@ export namespace Guestfs {
      */
     class E2fsck extends GObject.Object {
         static $gtype: GObject.GType<E2fsck>;
+        declare static readonly __signalSignatures: E2fsck.SignalSignatures;
 
         // Properties
 
@@ -1101,6 +1189,9 @@ export namespace Guestfs {
     }
 
     namespace Fstrim {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1115,6 +1206,7 @@ export namespace Guestfs {
      */
     class Fstrim extends GObject.Object {
         static $gtype: GObject.GType<Fstrim>;
+        declare static readonly __signalSignatures: Fstrim.SignalSignatures;
 
         // Properties
 
@@ -1144,6 +1236,9 @@ export namespace Guestfs {
     }
 
     namespace GlobExpand {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1156,6 +1251,7 @@ export namespace Guestfs {
      */
     class GlobExpand extends GObject.Object {
         static $gtype: GObject.GType<GlobExpand>;
+        declare static readonly __signalSignatures: GlobExpand.SignalSignatures;
 
         // Properties
 
@@ -1175,6 +1271,9 @@ export namespace Guestfs {
     }
 
     namespace Grep {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1190,6 +1289,7 @@ export namespace Guestfs {
      */
     class Grep extends GObject.Object {
         static $gtype: GObject.GType<Grep>;
+        declare static readonly __signalSignatures: Grep.SignalSignatures;
 
         // Properties
 
@@ -1224,6 +1324,9 @@ export namespace Guestfs {
     }
 
     namespace HivexOpen {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1239,6 +1342,7 @@ export namespace Guestfs {
      */
     class HivexOpen extends GObject.Object {
         static $gtype: GObject.GType<HivexOpen>;
+        declare static readonly __signalSignatures: HivexOpen.SignalSignatures;
 
         // Properties
 
@@ -1273,6 +1377,9 @@ export namespace Guestfs {
     }
 
     namespace InspectGetIcon {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1286,6 +1393,7 @@ export namespace Guestfs {
      */
     class InspectGetIcon extends GObject.Object {
         static $gtype: GObject.GType<InspectGetIcon>;
+        declare static readonly __signalSignatures: InspectGetIcon.SignalSignatures;
 
         // Properties
 
@@ -1310,6 +1418,9 @@ export namespace Guestfs {
     }
 
     namespace InternalTest {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1325,6 +1436,7 @@ export namespace Guestfs {
      */
     class InternalTest extends GObject.Object {
         static $gtype: GObject.GType<InternalTest>;
+        declare static readonly __signalSignatures: InternalTest.SignalSignatures;
 
         // Properties
 
@@ -1359,6 +1471,9 @@ export namespace Guestfs {
     }
 
     namespace InternalTest63Optargs {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1433,6 +1548,7 @@ export namespace Guestfs {
      */
     class InternalTest63Optargs extends GObject.Object {
         static $gtype: GObject.GType<InternalTest63Optargs>;
+        declare static readonly __signalSignatures: InternalTest63Optargs.SignalSignatures;
 
         // Properties
 
@@ -1762,6 +1878,9 @@ export namespace Guestfs {
     }
 
     namespace InternalTestOnlyOptargs {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1774,6 +1893,7 @@ export namespace Guestfs {
      */
     class InternalTestOnlyOptargs extends GObject.Object {
         static $gtype: GObject.GType<InternalTestOnlyOptargs>;
+        declare static readonly __signalSignatures: InternalTestOnlyOptargs.SignalSignatures;
 
         // Properties
 
@@ -1793,6 +1913,9 @@ export namespace Guestfs {
     }
 
     namespace IsBlockdev {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1805,6 +1928,7 @@ export namespace Guestfs {
      */
     class IsBlockdev extends GObject.Object {
         static $gtype: GObject.GType<IsBlockdev>;
+        declare static readonly __signalSignatures: IsBlockdev.SignalSignatures;
 
         // Properties
 
@@ -1824,6 +1948,9 @@ export namespace Guestfs {
     }
 
     namespace IsChardev {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1836,6 +1963,7 @@ export namespace Guestfs {
      */
     class IsChardev extends GObject.Object {
         static $gtype: GObject.GType<IsChardev>;
+        declare static readonly __signalSignatures: IsChardev.SignalSignatures;
 
         // Properties
 
@@ -1855,6 +1983,9 @@ export namespace Guestfs {
     }
 
     namespace IsDir {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1867,6 +1998,7 @@ export namespace Guestfs {
      */
     class IsDir extends GObject.Object {
         static $gtype: GObject.GType<IsDir>;
+        declare static readonly __signalSignatures: IsDir.SignalSignatures;
 
         // Properties
 
@@ -1886,6 +2018,9 @@ export namespace Guestfs {
     }
 
     namespace IsFifo {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1898,6 +2033,7 @@ export namespace Guestfs {
      */
     class IsFifo extends GObject.Object {
         static $gtype: GObject.GType<IsFifo>;
+        declare static readonly __signalSignatures: IsFifo.SignalSignatures;
 
         // Properties
 
@@ -1917,6 +2053,9 @@ export namespace Guestfs {
     }
 
     namespace IsFile {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1929,6 +2068,7 @@ export namespace Guestfs {
      */
     class IsFile extends GObject.Object {
         static $gtype: GObject.GType<IsFile>;
+        declare static readonly __signalSignatures: IsFile.SignalSignatures;
 
         // Properties
 
@@ -1948,6 +2088,9 @@ export namespace Guestfs {
     }
 
     namespace IsSocket {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1960,6 +2103,7 @@ export namespace Guestfs {
      */
     class IsSocket extends GObject.Object {
         static $gtype: GObject.GType<IsSocket>;
+        declare static readonly __signalSignatures: IsSocket.SignalSignatures;
 
         // Properties
 
@@ -1979,6 +2123,9 @@ export namespace Guestfs {
     }
 
     namespace MDCreate {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1995,6 +2142,7 @@ export namespace Guestfs {
      */
     class MDCreate extends GObject.Object {
         static $gtype: GObject.GType<MDCreate>;
+        declare static readonly __signalSignatures: MDCreate.SignalSignatures;
 
         // Properties
 
@@ -2034,6 +2182,9 @@ export namespace Guestfs {
     }
 
     namespace Mke2fs {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2083,6 +2234,7 @@ export namespace Guestfs {
      */
     class Mke2fs extends GObject.Object {
         static $gtype: GObject.GType<Mke2fs>;
+        declare static readonly __signalSignatures: Mke2fs.SignalSignatures;
 
         // Properties
 
@@ -2287,6 +2439,9 @@ export namespace Guestfs {
     }
 
     namespace Mkfs {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2303,6 +2458,7 @@ export namespace Guestfs {
      */
     class Mkfs extends GObject.Object {
         static $gtype: GObject.GType<Mkfs>;
+        declare static readonly __signalSignatures: Mkfs.SignalSignatures;
 
         // Properties
 
@@ -2342,6 +2498,9 @@ export namespace Guestfs {
     }
 
     namespace MkfsBtrfs {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2361,6 +2520,7 @@ export namespace Guestfs {
      */
     class MkfsBtrfs extends GObject.Object {
         static $gtype: GObject.GType<MkfsBtrfs>;
+        declare static readonly __signalSignatures: MkfsBtrfs.SignalSignatures;
 
         // Properties
 
@@ -2415,6 +2575,9 @@ export namespace Guestfs {
     }
 
     namespace Mksquashfs {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2427,6 +2590,7 @@ export namespace Guestfs {
      */
     class Mksquashfs extends GObject.Object {
         static $gtype: GObject.GType<Mksquashfs>;
+        declare static readonly __signalSignatures: Mksquashfs.SignalSignatures;
 
         // Properties
 
@@ -2446,6 +2610,9 @@ export namespace Guestfs {
     }
 
     namespace Mkswap {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2459,6 +2626,7 @@ export namespace Guestfs {
      */
     class Mkswap extends GObject.Object {
         static $gtype: GObject.GType<Mkswap>;
+        declare static readonly __signalSignatures: Mkswap.SignalSignatures;
 
         // Properties
 
@@ -2483,6 +2651,9 @@ export namespace Guestfs {
     }
 
     namespace Mktemp {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2495,6 +2666,7 @@ export namespace Guestfs {
      */
     class Mktemp extends GObject.Object {
         static $gtype: GObject.GType<Mktemp>;
+        declare static readonly __signalSignatures: Mktemp.SignalSignatures;
 
         // Properties
 
@@ -2514,6 +2686,9 @@ export namespace Guestfs {
     }
 
     namespace Mount9P {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2526,6 +2701,7 @@ export namespace Guestfs {
      */
     class Mount9P extends GObject.Object {
         static $gtype: GObject.GType<Mount9P>;
+        declare static readonly __signalSignatures: Mount9P.SignalSignatures;
 
         // Properties
 
@@ -2545,6 +2721,9 @@ export namespace Guestfs {
     }
 
     namespace MountLocal {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2560,6 +2739,7 @@ export namespace Guestfs {
      */
     class MountLocal extends GObject.Object {
         static $gtype: GObject.GType<MountLocal>;
+        declare static readonly __signalSignatures: MountLocal.SignalSignatures;
 
         // Properties
 
@@ -2594,6 +2774,9 @@ export namespace Guestfs {
     }
 
     namespace NTFSResizeOpts {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2607,6 +2790,7 @@ export namespace Guestfs {
      */
     class NTFSResizeOpts extends GObject.Object {
         static $gtype: GObject.GType<NTFSResizeOpts>;
+        declare static readonly __signalSignatures: NTFSResizeOpts.SignalSignatures;
 
         // Properties
 
@@ -2631,6 +2815,9 @@ export namespace Guestfs {
     }
 
     namespace NtfscloneOut {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2647,6 +2834,7 @@ export namespace Guestfs {
      */
     class NtfscloneOut extends GObject.Object {
         static $gtype: GObject.GType<NtfscloneOut>;
+        declare static readonly __signalSignatures: NtfscloneOut.SignalSignatures;
 
         // Properties
 
@@ -2686,6 +2874,9 @@ export namespace Guestfs {
     }
 
     namespace Ntfsfix {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2698,6 +2889,7 @@ export namespace Guestfs {
      */
     class Ntfsfix extends GObject.Object {
         static $gtype: GObject.GType<Ntfsfix>;
+        declare static readonly __signalSignatures: Ntfsfix.SignalSignatures;
 
         // Properties
 
@@ -2717,6 +2909,9 @@ export namespace Guestfs {
     }
 
     namespace Remount {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2729,6 +2924,7 @@ export namespace Guestfs {
      */
     class Remount extends GObject.Object {
         static $gtype: GObject.GType<Remount>;
+        declare static readonly __signalSignatures: Remount.SignalSignatures;
 
         // Properties
 
@@ -2748,6 +2944,9 @@ export namespace Guestfs {
     }
 
     namespace Rsync {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2761,6 +2960,7 @@ export namespace Guestfs {
      */
     class Rsync extends GObject.Object {
         static $gtype: GObject.GType<Rsync>;
+        declare static readonly __signalSignatures: Rsync.SignalSignatures;
 
         // Properties
 
@@ -2785,6 +2985,9 @@ export namespace Guestfs {
     }
 
     namespace RsyncIn {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2798,6 +3001,7 @@ export namespace Guestfs {
      */
     class RsyncIn extends GObject.Object {
         static $gtype: GObject.GType<RsyncIn>;
+        declare static readonly __signalSignatures: RsyncIn.SignalSignatures;
 
         // Properties
 
@@ -2822,6 +3026,9 @@ export namespace Guestfs {
     }
 
     namespace RsyncOut {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2835,6 +3042,7 @@ export namespace Guestfs {
      */
     class RsyncOut extends GObject.Object {
         static $gtype: GObject.GType<RsyncOut>;
+        declare static readonly __signalSignatures: RsyncOut.SignalSignatures;
 
         // Properties
 
@@ -2859,6 +3067,9 @@ export namespace Guestfs {
     }
 
     namespace SelinuxRelabel {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2871,6 +3082,7 @@ export namespace Guestfs {
      */
     class SelinuxRelabel extends GObject.Object {
         static $gtype: GObject.GType<SelinuxRelabel>;
+        declare static readonly __signalSignatures: SelinuxRelabel.SignalSignatures;
 
         // Properties
 
@@ -2932,6 +3144,20 @@ export namespace Guestfs {
             (params: SessionEventParams): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            appliance: Appliance;
+            close: Close;
+            enter: Enter;
+            'launch-done': LaunchDone;
+            library: Library;
+            'libvirt-auth': LibvirtAuth;
+            progress: Progress;
+            'subprocess-quit': SubprocessQuit;
+            trace: Trace;
+            warning: Warning;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2942,6 +3168,7 @@ export namespace Guestfs {
      */
     class Session extends GObject.Object {
         static $gtype: GObject.GType<Session>;
+        declare static readonly __signalSignatures: Session.SignalSignatures;
 
         // Constructors
 
@@ -2953,6 +3180,15 @@ export namespace Guestfs {
 
         // Signals
 
+        connect<K extends keyof Session.SignalSignatures>(signal: K, callback: Session.SignalSignatures[K]): number;
+        connect_after<K extends keyof Session.SignalSignatures>(
+            signal: K,
+            callback: Session.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Session.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Session.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -13485,6 +13721,9 @@ export namespace Guestfs {
     }
 
     namespace SetE2attrs {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -13497,6 +13736,7 @@ export namespace Guestfs {
      */
     class SetE2attrs extends GObject.Object {
         static $gtype: GObject.GType<SetE2attrs>;
+        declare static readonly __signalSignatures: SetE2attrs.SignalSignatures;
 
         // Properties
 
@@ -13516,6 +13756,9 @@ export namespace Guestfs {
     }
 
     namespace Syslinux {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -13528,6 +13771,7 @@ export namespace Guestfs {
      */
     class Syslinux extends GObject.Object {
         static $gtype: GObject.GType<Syslinux>;
+        declare static readonly __signalSignatures: Syslinux.SignalSignatures;
 
         // Properties
 
@@ -13547,6 +13791,9 @@ export namespace Guestfs {
     }
 
     namespace TarIn {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -13562,6 +13809,7 @@ export namespace Guestfs {
      */
     class TarIn extends GObject.Object {
         static $gtype: GObject.GType<TarIn>;
+        declare static readonly __signalSignatures: TarIn.SignalSignatures;
 
         // Properties
 
@@ -13596,6 +13844,9 @@ export namespace Guestfs {
     }
 
     namespace TarOut {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -13612,6 +13863,7 @@ export namespace Guestfs {
      */
     class TarOut extends GObject.Object {
         static $gtype: GObject.GType<TarOut>;
+        declare static readonly __signalSignatures: TarOut.SignalSignatures;
 
         // Properties
 
@@ -13651,6 +13903,9 @@ export namespace Guestfs {
     }
 
     namespace Tune2FS {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -13672,6 +13927,7 @@ export namespace Guestfs {
      */
     class Tune2FS extends GObject.Object {
         static $gtype: GObject.GType<Tune2FS>;
+        declare static readonly __signalSignatures: Tune2FS.SignalSignatures;
 
         // Properties
 
@@ -13736,6 +13992,9 @@ export namespace Guestfs {
     }
 
     namespace Umount {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -13749,6 +14008,7 @@ export namespace Guestfs {
      */
     class Umount extends GObject.Object {
         static $gtype: GObject.GType<Umount>;
+        declare static readonly __signalSignatures: Umount.SignalSignatures;
 
         // Properties
 
@@ -13773,6 +14033,9 @@ export namespace Guestfs {
     }
 
     namespace UmountLocal {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -13785,6 +14048,7 @@ export namespace Guestfs {
      */
     class UmountLocal extends GObject.Object {
         static $gtype: GObject.GType<UmountLocal>;
+        declare static readonly __signalSignatures: UmountLocal.SignalSignatures;
 
         // Properties
 
@@ -13804,6 +14068,9 @@ export namespace Guestfs {
     }
 
     namespace XfsAdmin {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -13822,6 +14089,7 @@ export namespace Guestfs {
      */
     class XfsAdmin extends GObject.Object {
         static $gtype: GObject.GType<XfsAdmin>;
+        declare static readonly __signalSignatures: XfsAdmin.SignalSignatures;
 
         // Properties
 
@@ -13871,6 +14139,9 @@ export namespace Guestfs {
     }
 
     namespace XfsGrowfs {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -13890,6 +14161,7 @@ export namespace Guestfs {
      */
     class XfsGrowfs extends GObject.Object {
         static $gtype: GObject.GType<XfsGrowfs>;
+        declare static readonly __signalSignatures: XfsGrowfs.SignalSignatures;
 
         // Properties
 
@@ -13944,6 +14216,9 @@ export namespace Guestfs {
     }
 
     namespace XfsRepair {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -13965,6 +14240,7 @@ export namespace Guestfs {
      */
     class XfsRepair extends GObject.Object {
         static $gtype: GObject.GType<XfsRepair>;
+        declare static readonly __signalSignatures: XfsRepair.SignalSignatures;
 
         // Properties
 

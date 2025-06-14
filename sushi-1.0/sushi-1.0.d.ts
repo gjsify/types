@@ -60,6 +60,9 @@ export namespace Sushi {
     function create_rounded_background(): Clutter.Actor;
     function query_supported_document_types(): string[];
     namespace CoverArtFetcher {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -70,6 +73,7 @@ export namespace Sushi {
 
     class CoverArtFetcher extends GObject.Object {
         static $gtype: GObject.GType<CoverArtFetcher>;
+        declare static readonly __signalSignatures: CoverArtFetcher.SignalSignatures;
 
         // Properties
 
@@ -87,6 +91,9 @@ export namespace Sushi {
     }
 
     namespace FileLoader {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -102,6 +109,7 @@ export namespace Sushi {
 
     class FileLoader extends GObject.Object {
         static $gtype: GObject.GType<FileLoader>;
+        declare static readonly __signalSignatures: FileLoader.SignalSignatures;
 
         // Properties
 
@@ -140,6 +148,11 @@ export namespace Sushi {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.DrawingArea.SignalSignatures {
+            loaded: Loaded;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -152,6 +165,7 @@ export namespace Sushi {
 
     class FontWidget extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<FontWidget>;
+        declare static readonly __signalSignatures: FontWidget.SignalSignatures;
 
         // Properties
 
@@ -171,6 +185,18 @@ export namespace Sushi {
 
         // Signals
 
+        connect<K extends keyof FontWidget.SignalSignatures>(
+            signal: K,
+            callback: FontWidget.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof FontWidget.SignalSignatures>(
+            signal: K,
+            callback: FontWidget.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof FontWidget.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<FontWidget.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -621,6 +647,9 @@ export namespace Sushi {
     }
 
     namespace PdfLoader {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -631,6 +660,7 @@ export namespace Sushi {
 
     class PdfLoader extends GObject.Object {
         static $gtype: GObject.GType<PdfLoader>;
+        declare static readonly __signalSignatures: PdfLoader.SignalSignatures;
 
         // Properties
 
@@ -653,6 +683,9 @@ export namespace Sushi {
     }
 
     namespace SoundPlayer {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -667,6 +700,7 @@ export namespace Sushi {
 
     class SoundPlayer extends GObject.Object {
         static $gtype: GObject.GType<SoundPlayer>;
+        declare static readonly __signalSignatures: SoundPlayer.SignalSignatures;
 
         // Properties
 
@@ -694,6 +728,11 @@ export namespace Sushi {
             (object: GtkSource.Buffer): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            loaded: Loaded;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -703,6 +742,7 @@ export namespace Sushi {
 
     class TextLoader extends GObject.Object {
         static $gtype: GObject.GType<TextLoader>;
+        declare static readonly __signalSignatures: TextLoader.SignalSignatures;
 
         // Properties
 
@@ -719,6 +759,18 @@ export namespace Sushi {
 
         // Signals
 
+        connect<K extends keyof TextLoader.SignalSignatures>(
+            signal: K,
+            callback: TextLoader.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TextLoader.SignalSignatures>(
+            signal: K,
+            callback: TextLoader.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TextLoader.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TextLoader.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

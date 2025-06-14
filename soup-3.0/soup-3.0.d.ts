@@ -1754,6 +1754,9 @@ export namespace Soup {
         IPV6_ONLY,
     }
     namespace Auth {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1782,6 +1785,7 @@ export namespace Soup {
      */
     abstract class Auth extends GObject.Object {
         static $gtype: GObject.GType<Auth>;
+        declare static readonly __signalSignatures: Auth.SignalSignatures;
 
         // Properties
 
@@ -1991,6 +1995,9 @@ export namespace Soup {
     }
 
     namespace AuthBasic {
+        // Signal signatures
+        interface SignalSignatures extends Auth.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Auth.ConstructorProps {}
@@ -2005,6 +2012,7 @@ export namespace Soup {
      */
     class AuthBasic extends Auth {
         static $gtype: GObject.GType<AuthBasic>;
+        declare static readonly __signalSignatures: AuthBasic.SignalSignatures;
 
         // Constructors
 
@@ -2014,6 +2022,9 @@ export namespace Soup {
     }
 
     namespace AuthDigest {
+        // Signal signatures
+        interface SignalSignatures extends Auth.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Auth.ConstructorProps {}
@@ -2028,6 +2039,7 @@ export namespace Soup {
      */
     class AuthDigest extends Auth {
         static $gtype: GObject.GType<AuthDigest>;
+        declare static readonly __signalSignatures: AuthDigest.SignalSignatures;
 
         // Constructors
 
@@ -2037,6 +2049,9 @@ export namespace Soup {
     }
 
     namespace AuthDomain {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2073,6 +2088,7 @@ export namespace Soup {
      */
     abstract class AuthDomain extends GObject.Object {
         static $gtype: GObject.GType<AuthDomain>;
+        declare static readonly __signalSignatures: AuthDomain.SignalSignatures;
 
         // Properties
 
@@ -2274,6 +2290,9 @@ export namespace Soup {
     }
 
     namespace AuthDomainBasic {
+        // Signal signatures
+        interface SignalSignatures extends AuthDomain.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends AuthDomain.ConstructorProps {
@@ -2292,6 +2311,7 @@ export namespace Soup {
      */
     class AuthDomainBasic extends AuthDomain {
         static $gtype: GObject.GType<AuthDomainBasic>;
+        declare static readonly __signalSignatures: AuthDomainBasic.SignalSignatures;
 
         // Properties
 
@@ -2342,6 +2362,9 @@ export namespace Soup {
     }
 
     namespace AuthDomainDigest {
+        // Signal signatures
+        interface SignalSignatures extends AuthDomain.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends AuthDomain.ConstructorProps {
@@ -2360,6 +2383,7 @@ export namespace Soup {
      */
     class AuthDomainDigest extends AuthDomain {
         static $gtype: GObject.GType<AuthDomainDigest>;
+        declare static readonly __signalSignatures: AuthDomainDigest.SignalSignatures;
 
         // Properties
 
@@ -2434,6 +2458,9 @@ export namespace Soup {
     }
 
     namespace AuthManager {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, SessionFeature.ConstructorProps {}
@@ -2460,6 +2487,7 @@ export namespace Soup {
      */
     class AuthManager extends GObject.Object implements SessionFeature {
         static $gtype: GObject.GType<AuthManager>;
+        declare static readonly __signalSignatures: AuthManager.SignalSignatures;
 
         // Constructors
 
@@ -2932,6 +2960,9 @@ export namespace Soup {
     }
 
     namespace AuthNTLM {
+        // Signal signatures
+        interface SignalSignatures extends Auth.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Auth.ConstructorProps {}
@@ -2946,6 +2977,7 @@ export namespace Soup {
      */
     class AuthNTLM extends Auth {
         static $gtype: GObject.GType<AuthNTLM>;
+        declare static readonly __signalSignatures: AuthNTLM.SignalSignatures;
 
         // Constructors
 
@@ -2955,6 +2987,9 @@ export namespace Soup {
     }
 
     namespace AuthNegotiate {
+        // Signal signatures
+        interface SignalSignatures extends Auth.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Auth.ConstructorProps {}
@@ -2974,6 +3009,7 @@ export namespace Soup {
      */
     class AuthNegotiate extends Auth {
         static $gtype: GObject.GType<AuthNegotiate>;
+        declare static readonly __signalSignatures: AuthNegotiate.SignalSignatures;
 
         // Constructors
 
@@ -2994,6 +3030,9 @@ export namespace Soup {
     }
 
     namespace Cache {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, SessionFeature.ConstructorProps {
@@ -3009,6 +3048,7 @@ export namespace Soup {
      */
     class Cache extends GObject.Object implements SessionFeature {
         static $gtype: GObject.GType<Cache>;
+        declare static readonly __signalSignatures: Cache.SignalSignatures;
 
         // Properties
 
@@ -3531,6 +3571,9 @@ export namespace Soup {
     }
 
     namespace ContentDecoder {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, SessionFeature.ConstructorProps {}
@@ -3564,6 +3607,7 @@ export namespace Soup {
      */
     class ContentDecoder extends GObject.Object implements SessionFeature {
         static $gtype: GObject.GType<ContentDecoder>;
+        declare static readonly __signalSignatures: ContentDecoder.SignalSignatures;
 
         // Constructors
 
@@ -4014,6 +4058,9 @@ export namespace Soup {
     }
 
     namespace ContentSniffer {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, SessionFeature.ConstructorProps {}
@@ -4031,6 +4078,7 @@ export namespace Soup {
      */
     class ContentSniffer extends GObject.Object implements SessionFeature {
         static $gtype: GObject.GType<ContentSniffer>;
+        declare static readonly __signalSignatures: ContentSniffer.SignalSignatures;
 
         // Constructors
 
@@ -4502,6 +4550,11 @@ export namespace Soup {
             (old_cookie?: Cookie | null, new_cookie?: Cookie | null): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            changed: Changed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, SessionFeature.ConstructorProps {
@@ -4525,6 +4578,7 @@ export namespace Soup {
      */
     class CookieJar extends GObject.Object implements SessionFeature {
         static $gtype: GObject.GType<CookieJar>;
+        declare static readonly __signalSignatures: CookieJar.SignalSignatures;
 
         // Properties
 
@@ -4557,6 +4611,15 @@ export namespace Soup {
 
         // Signals
 
+        connect<K extends keyof CookieJar.SignalSignatures>(signal: K, callback: CookieJar.SignalSignatures[K]): number;
+        connect_after<K extends keyof CookieJar.SignalSignatures>(
+            signal: K,
+            callback: CookieJar.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CookieJar.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CookieJar.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -5185,6 +5248,9 @@ export namespace Soup {
     }
 
     namespace CookieJarDB {
+        // Signal signatures
+        interface SignalSignatures extends CookieJar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends CookieJar.ConstructorProps, SessionFeature.ConstructorProps {
@@ -5204,6 +5270,7 @@ export namespace Soup {
      */
     class CookieJarDB extends CookieJar implements SessionFeature {
         static $gtype: GObject.GType<CookieJarDB>;
+        declare static readonly __signalSignatures: CookieJarDB.SignalSignatures;
 
         // Properties
 
@@ -5666,6 +5733,9 @@ export namespace Soup {
     }
 
     namespace CookieJarText {
+        // Signal signatures
+        interface SignalSignatures extends CookieJar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends CookieJar.ConstructorProps, SessionFeature.ConstructorProps {
@@ -5681,6 +5751,7 @@ export namespace Soup {
      */
     class CookieJarText extends CookieJar implements SessionFeature {
         static $gtype: GObject.GType<CookieJarText>;
+        declare static readonly __signalSignatures: CookieJarText.SignalSignatures;
 
         // Properties
 
@@ -6149,6 +6220,11 @@ export namespace Soup {
             (old_policy: HSTSPolicy, new_policy: HSTSPolicy): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            changed: Changed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, SessionFeature.ConstructorProps {}
@@ -6180,6 +6256,7 @@ export namespace Soup {
      */
     class HSTSEnforcer extends GObject.Object implements SessionFeature {
         static $gtype: GObject.GType<HSTSEnforcer>;
+        declare static readonly __signalSignatures: HSTSEnforcer.SignalSignatures;
 
         // Constructors
 
@@ -6191,6 +6268,18 @@ export namespace Soup {
 
         // Signals
 
+        connect<K extends keyof HSTSEnforcer.SignalSignatures>(
+            signal: K,
+            callback: HSTSEnforcer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof HSTSEnforcer.SignalSignatures>(
+            signal: K,
+            callback: HSTSEnforcer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HSTSEnforcer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HSTSEnforcer.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -6712,6 +6801,9 @@ export namespace Soup {
     }
 
     namespace HSTSEnforcerDB {
+        // Signal signatures
+        interface SignalSignatures extends HSTSEnforcer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends HSTSEnforcer.ConstructorProps, SessionFeature.ConstructorProps {
@@ -6727,6 +6819,7 @@ export namespace Soup {
      */
     class HSTSEnforcerDB extends HSTSEnforcer implements SessionFeature {
         static $gtype: GObject.GType<HSTSEnforcerDB>;
+        declare static readonly __signalSignatures: HSTSEnforcerDB.SignalSignatures;
 
         // Properties
 
@@ -7189,6 +7282,9 @@ export namespace Soup {
     }
 
     namespace Logger {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, SessionFeature.ConstructorProps {
@@ -7260,6 +7356,7 @@ export namespace Soup {
      */
     class Logger extends GObject.Object implements SessionFeature {
         static $gtype: GObject.GType<Logger>;
+        declare static readonly __signalSignatures: Logger.SignalSignatures;
 
         // Properties
 
@@ -7843,6 +7940,27 @@ export namespace Soup {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'accept-certificate': AcceptCertificate;
+            authenticate: Authenticate;
+            'content-sniffed': ContentSniffed;
+            finished: Finished;
+            'got-body': GotBody;
+            'got-body-data': GotBodyData;
+            'got-headers': GotHeaders;
+            'got-informational': GotInformational;
+            'hsts-enforced': HstsEnforced;
+            'network-event': NetworkEvent;
+            'request-certificate': RequestCertificate;
+            'request-certificate-password': RequestCertificatePassword;
+            restarted: Restarted;
+            starting: Starting;
+            'wrote-body': WroteBody;
+            'wrote-body-data': WroteBodyData;
+            'wrote-headers': WroteHeaders;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7907,6 +8025,7 @@ export namespace Soup {
      */
     class Message extends GObject.Object {
         static $gtype: GObject.GType<Message>;
+        declare static readonly __signalSignatures: Message.SignalSignatures;
 
         // Properties
 
@@ -8084,6 +8203,15 @@ export namespace Soup {
 
         // Signals
 
+        connect<K extends keyof Message.SignalSignatures>(signal: K, callback: Message.SignalSignatures[K]): number;
+        connect_after<K extends keyof Message.SignalSignatures>(
+            signal: K,
+            callback: Message.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Message.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Message.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -8495,6 +8623,9 @@ export namespace Soup {
     }
 
     namespace MultipartInputStream {
+        // Signal signatures
+        interface SignalSignatures extends Gio.FilterInputStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -8519,6 +8650,7 @@ export namespace Soup {
      */
     class MultipartInputStream extends Gio.FilterInputStream implements Gio.PollableInputStream {
         static $gtype: GObject.GType<MultipartInputStream>;
+        declare static readonly __signalSignatures: MultipartInputStream.SignalSignatures;
 
         // Properties
 
@@ -9500,6 +9632,14 @@ export namespace Soup {
             (message: ServerMessage): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'request-aborted': RequestAborted;
+            'request-finished': RequestFinished;
+            'request-read': RequestRead;
+            'request-started': RequestStarted;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9606,6 +9746,7 @@ export namespace Soup {
      */
     class Server extends GObject.Object {
         static $gtype: GObject.GType<Server>;
+        declare static readonly __signalSignatures: Server.SignalSignatures;
 
         // Properties
 
@@ -9726,6 +9867,9 @@ export namespace Soup {
 
         // Signals
 
+        connect<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
+        connect_after<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
+        emit<K extends keyof Server.SignalSignatures>(signal: K, ...args: Parameters<Server.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -10129,6 +10273,22 @@ export namespace Soup {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'accept-certificate': AcceptCertificate;
+            connected: Connected;
+            disconnected: Disconnected;
+            finished: Finished;
+            'got-body': GotBody;
+            'got-chunk': GotChunk;
+            'got-headers': GotHeaders;
+            'wrote-body': WroteBody;
+            'wrote-body-data': WroteBodyData;
+            'wrote-chunk': WroteChunk;
+            'wrote-headers': WroteHeaders;
+            'wrote-informational': WroteInformational;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -10155,6 +10315,7 @@ export namespace Soup {
      */
     class ServerMessage extends GObject.Object {
         static $gtype: GObject.GType<ServerMessage>;
+        declare static readonly __signalSignatures: ServerMessage.SignalSignatures;
 
         // Properties
 
@@ -10183,6 +10344,18 @@ export namespace Soup {
 
         // Signals
 
+        connect<K extends keyof ServerMessage.SignalSignatures>(
+            signal: K,
+            callback: ServerMessage.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ServerMessage.SignalSignatures>(
+            signal: K,
+            callback: ServerMessage.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ServerMessage.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ServerMessage.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -10415,6 +10588,12 @@ export namespace Soup {
             (msg: Message): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'request-queued': RequestQueued;
+            'request-unqueued': RequestUnqueued;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -10482,6 +10661,7 @@ export namespace Soup {
      */
     class Session extends GObject.Object {
         static $gtype: GObject.GType<Session>;
+        declare static readonly __signalSignatures: Session.SignalSignatures;
 
         // Properties
 
@@ -10741,6 +10921,15 @@ export namespace Soup {
 
         // Signals
 
+        connect<K extends keyof Session.SignalSignatures>(signal: K, callback: Session.SignalSignatures[K]): number;
+        connect_after<K extends keyof Session.SignalSignatures>(
+            signal: K,
+            callback: Session.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Session.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Session.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -11422,6 +11611,15 @@ export namespace Soup {
             (message: GLib.Bytes | Uint8Array): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            closed: Closed;
+            closing: Closing;
+            error: Error;
+            message: Message;
+            pong: Pong;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -11468,6 +11666,7 @@ export namespace Soup {
      */
     class WebsocketConnection extends GObject.Object {
         static $gtype: GObject.GType<WebsocketConnection>;
+        declare static readonly __signalSignatures: WebsocketConnection.SignalSignatures;
 
         // Properties
 
@@ -11585,6 +11784,18 @@ export namespace Soup {
 
         // Signals
 
+        connect<K extends keyof WebsocketConnection.SignalSignatures>(
+            signal: K,
+            callback: WebsocketConnection.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WebsocketConnection.SignalSignatures>(
+            signal: K,
+            callback: WebsocketConnection.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WebsocketConnection.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WebsocketConnection.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -11750,6 +11961,9 @@ export namespace Soup {
     }
 
     namespace WebsocketExtension {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -11762,6 +11976,7 @@ export namespace Soup {
      */
     abstract class WebsocketExtension extends GObject.Object {
         static $gtype: GObject.GType<WebsocketExtension>;
+        declare static readonly __signalSignatures: WebsocketExtension.SignalSignatures;
 
         // Constructors
 
@@ -11870,6 +12085,9 @@ export namespace Soup {
     }
 
     namespace WebsocketExtensionDeflate {
+        // Signal signatures
+        interface SignalSignatures extends WebsocketExtension.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends WebsocketExtension.ConstructorProps {}
@@ -11884,6 +12102,7 @@ export namespace Soup {
      */
     class WebsocketExtensionDeflate extends WebsocketExtension {
         static $gtype: GObject.GType<WebsocketExtensionDeflate>;
+        declare static readonly __signalSignatures: WebsocketExtensionDeflate.SignalSignatures;
 
         // Constructors
 
@@ -11893,6 +12112,9 @@ export namespace Soup {
     }
 
     namespace WebsocketExtensionManager {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, SessionFeature.ConstructorProps {}
@@ -11910,6 +12132,7 @@ export namespace Soup {
      */
     class WebsocketExtensionManager extends GObject.Object implements SessionFeature {
         static $gtype: GObject.GType<WebsocketExtensionManager>;
+        declare static readonly __signalSignatures: WebsocketExtensionManager.SignalSignatures;
 
         // Constructors
 

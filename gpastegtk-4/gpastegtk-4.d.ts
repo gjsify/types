@@ -85,6 +85,9 @@ export namespace GPasteGtk {
         (settings: GPaste.Settings, data: string): void;
     }
     namespace PreferencesBehaviourPage {
+        // Signal signatures
+        interface SignalSignatures extends PreferencesPage.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -99,6 +102,7 @@ export namespace GPasteGtk {
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget
     {
         static $gtype: GObject.GType<PreferencesBehaviourPage>;
+        declare static readonly __signalSignatures: PreferencesBehaviourPage.SignalSignatures;
 
         // Constructors
 
@@ -554,6 +558,9 @@ export namespace GPasteGtk {
     }
 
     namespace PreferencesGroup {
+        // Signal signatures
+        interface SignalSignatures extends Adw.PreferencesGroup.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -565,6 +572,7 @@ export namespace GPasteGtk {
 
     class PreferencesGroup extends Adw.PreferencesGroup implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<PreferencesGroup>;
+        declare static readonly __signalSignatures: PreferencesGroup.SignalSignatures;
 
         // Constructors
 
@@ -1071,6 +1079,9 @@ export namespace GPasteGtk {
     }
 
     namespace PreferencesHistorySettingsPage {
+        // Signal signatures
+        interface SignalSignatures extends PreferencesPage.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1085,6 +1096,7 @@ export namespace GPasteGtk {
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget
     {
         static $gtype: GObject.GType<PreferencesHistorySettingsPage>;
+        declare static readonly __signalSignatures: PreferencesHistorySettingsPage.SignalSignatures;
 
         // Constructors
 
@@ -1540,6 +1552,9 @@ export namespace GPasteGtk {
     }
 
     namespace PreferencesManager {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1547,6 +1562,7 @@ export namespace GPasteGtk {
 
     class PreferencesManager extends GObject.Object {
         static $gtype: GObject.GType<PreferencesManager>;
+        declare static readonly __signalSignatures: PreferencesManager.SignalSignatures;
 
         // Constructors
 
@@ -1576,6 +1592,9 @@ export namespace GPasteGtk {
     }
 
     namespace PreferencesPage {
+        // Signal signatures
+        interface SignalSignatures extends Adw.PreferencesPage.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1587,6 +1606,7 @@ export namespace GPasteGtk {
 
     class PreferencesPage extends Adw.PreferencesPage implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<PreferencesPage>;
+        declare static readonly __signalSignatures: PreferencesPage.SignalSignatures;
 
         // Constructors
 
@@ -2055,6 +2075,9 @@ export namespace GPasteGtk {
     }
 
     namespace PreferencesShortcutsPage {
+        // Signal signatures
+        interface SignalSignatures extends PreferencesPage.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2069,6 +2092,7 @@ export namespace GPasteGtk {
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget
     {
         static $gtype: GObject.GType<PreferencesShortcutsPage>;
+        declare static readonly __signalSignatures: PreferencesShortcutsPage.SignalSignatures;
 
         // Constructors
 
@@ -2524,6 +2548,9 @@ export namespace GPasteGtk {
     }
 
     namespace PreferencesWidget {
+        // Signal signatures
+        interface SignalSignatures extends Adw.Bin.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2535,6 +2562,7 @@ export namespace GPasteGtk {
 
     class PreferencesWidget extends Adw.Bin implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<PreferencesWidget>;
+        declare static readonly __signalSignatures: PreferencesWidget.SignalSignatures;
 
         // Constructors
 
@@ -2987,6 +3015,9 @@ export namespace GPasteGtk {
     }
 
     namespace PreferencesWindow {
+        // Signal signatures
+        interface SignalSignatures extends Adw.PreferencesWindow.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3004,6 +3035,7 @@ export namespace GPasteGtk {
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Native, Gtk.Root, Gtk.ShortcutManager
     {
         static $gtype: GObject.GType<PreferencesWindow>;
+        declare static readonly __signalSignatures: PreferencesWindow.SignalSignatures;
 
         // Constructors
 

@@ -244,6 +244,16 @@ export namespace LightDM {
             (text: string, type: PromptType): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'authentication-complete': AuthenticationComplete;
+            'autologin-timer-expired': AutologinTimerExpired;
+            idle: Idle;
+            reset: Reset;
+            'show-message': ShowMessage;
+            'show-prompt': ShowPrompt;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -286,6 +296,7 @@ export namespace LightDM {
      */
     class Greeter extends GObject.Object {
         static $gtype: GObject.GType<Greeter>;
+        declare static readonly __signalSignatures: Greeter.SignalSignatures;
 
         // Properties
 
@@ -330,6 +341,15 @@ export namespace LightDM {
 
         // Signals
 
+        connect<K extends keyof Greeter.SignalSignatures>(signal: K, callback: Greeter.SignalSignatures[K]): number;
+        connect_after<K extends keyof Greeter.SignalSignatures>(
+            signal: K,
+            callback: Greeter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Greeter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Greeter.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -686,6 +706,9 @@ export namespace LightDM {
     }
 
     namespace Language {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -701,6 +724,7 @@ export namespace LightDM {
      */
     class Language extends GObject.Object {
         static $gtype: GObject.GType<Language>;
+        declare static readonly __signalSignatures: Language.SignalSignatures;
 
         // Properties
 
@@ -740,6 +764,9 @@ export namespace LightDM {
     }
 
     namespace Layout {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -756,6 +783,7 @@ export namespace LightDM {
      */
     class Layout extends GObject.Object {
         static $gtype: GObject.GType<Layout>;
+        declare static readonly __signalSignatures: Layout.SignalSignatures;
 
         // Properties
 
@@ -790,6 +818,9 @@ export namespace LightDM {
     }
 
     namespace Session {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -805,6 +836,7 @@ export namespace LightDM {
      */
     class Session extends GObject.Object {
         static $gtype: GObject.GType<Session>;
+        declare static readonly __signalSignatures: Session.SignalSignatures;
 
         // Properties
 
@@ -849,6 +881,11 @@ export namespace LightDM {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            changed: Changed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -881,6 +918,7 @@ export namespace LightDM {
      */
     class User extends GObject.Object {
         static $gtype: GObject.GType<User>;
+        declare static readonly __signalSignatures: User.SignalSignatures;
 
         // Properties
 
@@ -913,6 +951,9 @@ export namespace LightDM {
 
         // Signals
 
+        connect<K extends keyof User.SignalSignatures>(signal: K, callback: User.SignalSignatures[K]): number;
+        connect_after<K extends keyof User.SignalSignatures>(signal: K, callback: User.SignalSignatures[K]): number;
+        emit<K extends keyof User.SignalSignatures>(signal: K, ...args: Parameters<User.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1013,6 +1054,13 @@ export namespace LightDM {
             (user: User): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'user-added': UserAdded;
+            'user-changed': UserChanged;
+            'user-removed': UserRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1028,6 +1076,7 @@ export namespace LightDM {
      */
     class UserList extends GObject.Object {
         static $gtype: GObject.GType<UserList>;
+        declare static readonly __signalSignatures: UserList.SignalSignatures;
 
         // Properties
 
@@ -1043,6 +1092,15 @@ export namespace LightDM {
 
         // Signals
 
+        connect<K extends keyof UserList.SignalSignatures>(signal: K, callback: UserList.SignalSignatures[K]): number;
+        connect_after<K extends keyof UserList.SignalSignatures>(
+            signal: K,
+            callback: UserList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof UserList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<UserList.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

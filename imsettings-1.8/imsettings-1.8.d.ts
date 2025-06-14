@@ -120,6 +120,9 @@ export namespace IMSettings {
      */
     function is_enabled(): boolean;
     namespace Client {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -130,6 +133,7 @@ export namespace IMSettings {
 
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
+        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Properties
 
@@ -643,6 +647,9 @@ export namespace IMSettings {
     }
 
     namespace Info {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -650,6 +657,7 @@ export namespace IMSettings {
 
     class Info extends GObject.Object {
         static $gtype: GObject.GType<Info>;
+        declare static readonly __signalSignatures: Info.SignalSignatures;
 
         // Constructors
 

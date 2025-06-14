@@ -177,6 +177,12 @@ export namespace Garcon {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'directory-changed': DirectoryChanged;
+            'reload-required': ReloadRequired;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, MenuElement.ConstructorProps {
@@ -187,6 +193,7 @@ export namespace Garcon {
 
     class Menu extends GObject.Object implements MenuElement {
         static $gtype: GObject.GType<Menu>;
+        declare static readonly __signalSignatures: Menu.SignalSignatures;
 
         // Properties
 
@@ -214,6 +221,9 @@ export namespace Garcon {
 
         // Signals
 
+        connect<K extends keyof Menu.SignalSignatures>(signal: K, callback: Menu.SignalSignatures[K]): number;
+        connect_after<K extends keyof Menu.SignalSignatures>(signal: K, callback: Menu.SignalSignatures[K]): number;
+        emit<K extends keyof Menu.SignalSignatures>(signal: K, ...args: Parameters<Menu.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -770,6 +780,9 @@ export namespace Garcon {
     }
 
     namespace MenuDirectory {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -785,6 +798,7 @@ export namespace Garcon {
 
     class MenuDirectory extends GObject.Object {
         static $gtype: GObject.GType<MenuDirectory>;
+        declare static readonly __signalSignatures: MenuDirectory.SignalSignatures;
 
         // Properties
 
@@ -913,6 +927,11 @@ export namespace Garcon {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            changed: Changed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, MenuElement.ConstructorProps {
@@ -943,6 +962,7 @@ export namespace Garcon {
 
     class MenuItem extends GObject.Object implements MenuElement {
         static $gtype: GObject.GType<MenuItem>;
+        declare static readonly __signalSignatures: MenuItem.SignalSignatures;
 
         // Properties
 
@@ -1077,6 +1097,15 @@ export namespace Garcon {
 
         // Signals
 
+        connect<K extends keyof MenuItem.SignalSignatures>(signal: K, callback: MenuItem.SignalSignatures[K]): number;
+        connect_after<K extends keyof MenuItem.SignalSignatures>(
+            signal: K,
+            callback: MenuItem.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MenuItem.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MenuItem.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1578,6 +1607,9 @@ export namespace Garcon {
     }
 
     namespace MenuItemAction {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1590,6 +1622,7 @@ export namespace Garcon {
 
     class MenuItemAction extends GObject.Object {
         static $gtype: GObject.GType<MenuItemAction>;
+        declare static readonly __signalSignatures: MenuItemAction.SignalSignatures;
 
         // Properties
 
@@ -1641,6 +1674,9 @@ export namespace Garcon {
     }
 
     namespace MenuItemCache {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1648,6 +1684,7 @@ export namespace Garcon {
 
     class MenuItemCache extends GObject.Object {
         static $gtype: GObject.GType<MenuItemCache>;
+        declare static readonly __signalSignatures: MenuItemCache.SignalSignatures;
 
         // Constructors
 
@@ -1666,6 +1703,9 @@ export namespace Garcon {
     }
 
     namespace MenuItemPool {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1673,6 +1713,7 @@ export namespace Garcon {
 
     class MenuItemPool extends GObject.Object {
         static $gtype: GObject.GType<MenuItemPool>;
+        declare static readonly __signalSignatures: MenuItemPool.SignalSignatures;
 
         // Constructors
 
@@ -1694,6 +1735,9 @@ export namespace Garcon {
     }
 
     namespace MenuMerger {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, MenuTreeProvider.ConstructorProps {
@@ -1704,6 +1748,7 @@ export namespace Garcon {
 
     class MenuMerger extends GObject.Object implements MenuTreeProvider {
         static $gtype: GObject.GType<MenuMerger>;
+        declare static readonly __signalSignatures: MenuMerger.SignalSignatures;
 
         // Properties
 
@@ -2167,6 +2212,9 @@ export namespace Garcon {
     }
 
     namespace MenuNode {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2177,6 +2225,7 @@ export namespace Garcon {
 
     class MenuNode extends GObject.Object {
         static $gtype: GObject.GType<MenuNode>;
+        declare static readonly __signalSignatures: MenuNode.SignalSignatures;
 
         // Properties
 
@@ -2224,6 +2273,9 @@ export namespace Garcon {
     }
 
     namespace MenuParser {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, MenuTreeProvider.ConstructorProps {
@@ -2233,6 +2285,7 @@ export namespace Garcon {
 
     class MenuParser extends GObject.Object implements MenuTreeProvider {
         static $gtype: GObject.GType<MenuParser>;
+        declare static readonly __signalSignatures: MenuParser.SignalSignatures;
 
         // Properties
 
@@ -2695,6 +2748,9 @@ export namespace Garcon {
     }
 
     namespace MenuSeparator {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, MenuElement.ConstructorProps {}
@@ -2702,6 +2758,7 @@ export namespace Garcon {
 
     class MenuSeparator extends GObject.Object implements MenuElement {
         static $gtype: GObject.GType<MenuSeparator>;
+        declare static readonly __signalSignatures: MenuSeparator.SignalSignatures;
 
         // Constructors
 

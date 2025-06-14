@@ -171,6 +171,9 @@ export namespace Tracker {
         NOTIFY_UNEXTRACTED,
     }
     namespace NamespaceManager {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -178,6 +181,7 @@ export namespace Tracker {
 
     class NamespaceManager extends GObject.Object {
         static $gtype: GObject.GType<NamespaceManager>;
+        declare static readonly __signalSignatures: NamespaceManager.SignalSignatures;
 
         // Constructors
 
@@ -245,6 +249,11 @@ export namespace Tracker {
             (events: NotifierEvent[]): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            events: Events;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -254,6 +263,7 @@ export namespace Tracker {
 
     class Notifier extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Notifier>;
+        declare static readonly __signalSignatures: Notifier.SignalSignatures;
 
         // Properties
 
@@ -272,6 +282,15 @@ export namespace Tracker {
 
         // Signals
 
+        connect<K extends keyof Notifier.SignalSignatures>(signal: K, callback: Notifier.SignalSignatures[K]): number;
+        connect_after<K extends keyof Notifier.SignalSignatures>(
+            signal: K,
+            callback: Notifier.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Notifier.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Notifier.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -807,6 +826,9 @@ export namespace Tracker {
     }
 
     namespace Resource {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -820,6 +842,7 @@ export namespace Tracker {
      */
     class Resource extends GObject.Object {
         static $gtype: GObject.GType<Resource>;
+        declare static readonly __signalSignatures: Resource.SignalSignatures;
 
         // Properties
 
@@ -1071,6 +1094,9 @@ export namespace Tracker {
     }
 
     namespace SparqlBuilder {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1082,6 +1108,7 @@ export namespace Tracker {
 
     class SparqlBuilder extends GObject.Object {
         static $gtype: GObject.GType<SparqlBuilder>;
+        declare static readonly __signalSignatures: SparqlBuilder.SignalSignatures;
 
         // Properties
 
@@ -1137,6 +1164,9 @@ export namespace Tracker {
     }
 
     namespace SparqlConnection {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1144,6 +1174,7 @@ export namespace Tracker {
 
     abstract class SparqlConnection extends GObject.Object {
         static $gtype: GObject.GType<SparqlConnection>;
+        declare static readonly __signalSignatures: SparqlConnection.SignalSignatures;
 
         // Constructors
 
@@ -1322,6 +1353,9 @@ export namespace Tracker {
     }
 
     namespace SparqlCursor {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1333,6 +1367,7 @@ export namespace Tracker {
 
     abstract class SparqlCursor extends GObject.Object {
         static $gtype: GObject.GType<SparqlCursor>;
+        declare static readonly __signalSignatures: SparqlCursor.SignalSignatures;
 
         // Properties
 
@@ -1388,6 +1423,9 @@ export namespace Tracker {
     }
 
     namespace SparqlStatement {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1398,6 +1436,7 @@ export namespace Tracker {
 
     abstract class SparqlStatement extends GObject.Object {
         static $gtype: GObject.GType<SparqlStatement>;
+        declare static readonly __signalSignatures: SparqlStatement.SignalSignatures;
 
         // Properties
 

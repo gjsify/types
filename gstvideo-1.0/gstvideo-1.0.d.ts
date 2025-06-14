@@ -4589,6 +4589,11 @@ export namespace GstVideo {
             (value: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'value-changed': ValueChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4601,6 +4606,7 @@ export namespace GstVideo {
      */
     class ColorBalanceChannel extends GObject.Object {
         static $gtype: GObject.GType<ColorBalanceChannel>;
+        declare static readonly __signalSignatures: ColorBalanceChannel.SignalSignatures;
 
         // Fields
 
@@ -4616,6 +4622,18 @@ export namespace GstVideo {
 
         // Signals
 
+        connect<K extends keyof ColorBalanceChannel.SignalSignatures>(
+            signal: K,
+            callback: ColorBalanceChannel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ColorBalanceChannel.SignalSignatures>(
+            signal: K,
+            callback: ColorBalanceChannel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ColorBalanceChannel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ColorBalanceChannel.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -4633,6 +4651,9 @@ export namespace GstVideo {
     }
 
     namespace VideoAggregator {
+        // Signal signatures
+        interface SignalSignatures extends GstBase.Aggregator.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GstBase.Aggregator.ConstructorProps {
@@ -4654,6 +4675,7 @@ export namespace GstVideo {
      */
     abstract class VideoAggregator extends GstBase.Aggregator {
         static $gtype: GObject.GType<VideoAggregator>;
+        declare static readonly __signalSignatures: VideoAggregator.SignalSignatures;
 
         // Properties
 
@@ -4724,6 +4746,9 @@ export namespace GstVideo {
     }
 
     namespace VideoAggregatorConvertPad {
+        // Signal signatures
+        interface SignalSignatures extends VideoAggregatorPad.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends VideoAggregatorPad.ConstructorProps {
@@ -4739,6 +4764,7 @@ export namespace GstVideo {
      */
     class VideoAggregatorConvertPad extends VideoAggregatorPad {
         static $gtype: GObject.GType<VideoAggregatorConvertPad>;
+        declare static readonly __signalSignatures: VideoAggregatorConvertPad.SignalSignatures;
 
         // Properties
 
@@ -4767,6 +4793,9 @@ export namespace GstVideo {
     }
 
     namespace VideoAggregatorPad {
+        // Signal signatures
+        interface SignalSignatures extends GstBase.AggregatorPad.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GstBase.AggregatorPad.ConstructorProps {
@@ -4780,6 +4809,7 @@ export namespace GstVideo {
 
     class VideoAggregatorPad extends GstBase.AggregatorPad {
         static $gtype: GObject.GType<VideoAggregatorPad>;
+        declare static readonly __signalSignatures: VideoAggregatorPad.SignalSignatures;
 
         // Properties
 
@@ -4887,6 +4917,9 @@ export namespace GstVideo {
     }
 
     namespace VideoAggregatorParallelConvertPad {
+        // Signal signatures
+        interface SignalSignatures extends VideoAggregatorConvertPad.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends VideoAggregatorConvertPad.ConstructorProps {}
@@ -4899,6 +4932,7 @@ export namespace GstVideo {
      */
     class VideoAggregatorParallelConvertPad extends VideoAggregatorConvertPad {
         static $gtype: GObject.GType<VideoAggregatorParallelConvertPad>;
+        declare static readonly __signalSignatures: VideoAggregatorParallelConvertPad.SignalSignatures;
 
         // Constructors
 
@@ -4908,6 +4942,9 @@ export namespace GstVideo {
     }
 
     namespace VideoBufferPool {
+        // Signal signatures
+        interface SignalSignatures extends Gst.BufferPool.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.BufferPool.ConstructorProps {}
@@ -4915,6 +4952,7 @@ export namespace GstVideo {
 
     class VideoBufferPool extends Gst.BufferPool {
         static $gtype: GObject.GType<VideoBufferPool>;
+        declare static readonly __signalSignatures: VideoBufferPool.SignalSignatures;
 
         // Fields
 
@@ -4930,6 +4968,9 @@ export namespace GstVideo {
     }
 
     namespace VideoDecoder {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Element.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Element.ConstructorProps {
@@ -5069,6 +5110,7 @@ export namespace GstVideo {
      */
     abstract class VideoDecoder extends Gst.Element {
         static $gtype: GObject.GType<VideoDecoder>;
+        declare static readonly __signalSignatures: VideoDecoder.SignalSignatures;
 
         // Properties
 
@@ -5677,6 +5719,9 @@ export namespace GstVideo {
     }
 
     namespace VideoEncoder {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Element.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Element.ConstructorProps, Gst.Preset.ConstructorProps {
@@ -5748,6 +5793,7 @@ export namespace GstVideo {
      */
     abstract class VideoEncoder extends Gst.Element implements Gst.Preset {
         static $gtype: GObject.GType<VideoEncoder>;
+        declare static readonly __signalSignatures: VideoEncoder.SignalSignatures;
 
         // Properties
 
@@ -6665,6 +6711,9 @@ export namespace GstVideo {
     }
 
     namespace VideoFilter {
+        // Signal signatures
+        interface SignalSignatures extends GstBase.BaseTransform.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GstBase.BaseTransform.ConstructorProps {}
@@ -6678,6 +6727,7 @@ export namespace GstVideo {
      */
     abstract class VideoFilter extends GstBase.BaseTransform {
         static $gtype: GObject.GType<VideoFilter>;
+        declare static readonly __signalSignatures: VideoFilter.SignalSignatures;
 
         // Fields
 
@@ -6713,11 +6763,17 @@ export namespace GstVideo {
         vfunc_transform_frame_ip(frame: VideoFrame): Gst.FlowReturn;
     }
 
+    namespace VideoMultiviewFlagsSet {
+        // Signal signatures
+        interface SignalSignatures extends Gst.FlagSet.SignalSignatures {}
+    }
+
     /**
      * See #GstVideoMultiviewFlags.
      */
     class VideoMultiviewFlagsSet extends Gst.FlagSet {
         static $gtype: GObject.GType<VideoMultiviewFlagsSet>;
+        declare static readonly __signalSignatures: VideoMultiviewFlagsSet.SignalSignatures;
 
         // Constructors
 
@@ -6725,6 +6781,9 @@ export namespace GstVideo {
     }
 
     namespace VideoSink {
+        // Signal signatures
+        interface SignalSignatures extends GstBase.BaseSink.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GstBase.BaseSink.ConstructorProps {
@@ -6742,6 +6801,7 @@ export namespace GstVideo {
      */
     class VideoSink extends GstBase.BaseSink {
         static $gtype: GObject.GType<VideoSink>;
+        declare static readonly __signalSignatures: VideoSink.SignalSignatures;
 
         // Properties
 

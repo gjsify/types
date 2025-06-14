@@ -347,6 +347,23 @@ export namespace BraseroBurn {
             (): number;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'action-changed': ActionChanged;
+            'blank-failure': BlankFailure;
+            'disable-joliet': DisableJoliet;
+            'dummy-success': DummySuccess;
+            'eject-failure': EjectFailure;
+            'insert-media': InsertMedia;
+            'install-missing': InstallMissing;
+            'location-request': LocationRequest;
+            'progress-changed': ProgressChanged;
+            'warn-audio-to-appendable': WarnAudioToAppendable;
+            'warn-data-loss': WarnDataLoss;
+            'warn-previous-session-loss': WarnPreviousSessionLoss;
+            'warn-rewritable': WarnRewritable;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -354,6 +371,7 @@ export namespace BraseroBurn {
 
     class Burn extends GObject.Object {
         static $gtype: GObject.GType<Burn>;
+        declare static readonly __signalSignatures: Burn.SignalSignatures;
 
         // Constructors
 
@@ -365,6 +383,9 @@ export namespace BraseroBurn {
 
         // Signals
 
+        connect<K extends keyof Burn.SignalSignatures>(signal: K, callback: Burn.SignalSignatures[K]): number;
+        connect_after<K extends keyof Burn.SignalSignatures>(signal: K, callback: Burn.SignalSignatures[K]): number;
+        emit<K extends keyof Burn.SignalSignatures>(signal: K, ...args: Parameters<Burn.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -498,6 +519,9 @@ export namespace BraseroBurn {
     }
 
     namespace BurnDialog {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Dialog.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -508,6 +532,7 @@ export namespace BraseroBurn {
 
     class BurnDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<BurnDialog>;
+        declare static readonly __signalSignatures: BurnDialog.SignalSignatures;
 
         // Constructors
 
@@ -986,6 +1011,9 @@ export namespace BraseroBurn {
     }
 
     namespace BurnOptions {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Dialog.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -998,6 +1026,7 @@ export namespace BraseroBurn {
 
     class BurnOptions extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<BurnOptions>;
+        declare static readonly __signalSignatures: BurnOptions.SignalSignatures;
 
         // Properties
 
@@ -1487,6 +1516,15 @@ export namespace BraseroBurn {
             (track: Track, former_position: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'output-changed': OutputChanged;
+            'tag-changed': TagChanged;
+            'track-added': TrackAdded;
+            'track-changed': TrackChanged;
+            'track-removed': TrackRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1498,6 +1536,7 @@ export namespace BraseroBurn {
 
     class BurnSession extends GObject.Object {
         static $gtype: GObject.GType<BurnSession>;
+        declare static readonly __signalSignatures: BurnSession.SignalSignatures;
 
         // Properties
 
@@ -1518,6 +1557,18 @@ export namespace BraseroBurn {
 
         // Signals
 
+        connect<K extends keyof BurnSession.SignalSignatures>(
+            signal: K,
+            callback: BurnSession.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BurnSession.SignalSignatures>(
+            signal: K,
+            callback: BurnSession.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BurnSession.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BurnSession.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1813,6 +1864,12 @@ export namespace BraseroBurn {
             (): boolean;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends SessionSpan.SignalSignatures {
+            'is-valid': IsValid;
+            'wrong-extension': WrongExtension;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends SessionSpan.ConstructorProps {}
@@ -1820,6 +1877,7 @@ export namespace BraseroBurn {
 
     class SessionCfg extends SessionSpan {
         static $gtype: GObject.GType<SessionCfg>;
+        declare static readonly __signalSignatures: SessionCfg.SignalSignatures;
 
         // Constructors
 
@@ -1831,6 +1889,18 @@ export namespace BraseroBurn {
 
         // Signals
 
+        connect<K extends keyof SessionCfg.SignalSignatures>(
+            signal: K,
+            callback: SessionCfg.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SessionCfg.SignalSignatures>(
+            signal: K,
+            callback: SessionCfg.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SessionCfg.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SessionCfg.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1889,6 +1959,9 @@ export namespace BraseroBurn {
     }
 
     namespace SessionSpan {
+        // Signal signatures
+        interface SignalSignatures extends BurnSession.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends BurnSession.ConstructorProps {}
@@ -1896,6 +1969,7 @@ export namespace BraseroBurn {
 
     class SessionSpan extends BurnSession {
         static $gtype: GObject.GType<SessionSpan>;
+        declare static readonly __signalSignatures: SessionSpan.SignalSignatures;
 
         // Constructors
 
@@ -1949,6 +2023,9 @@ export namespace BraseroBurn {
     }
 
     namespace Status {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1956,6 +2033,7 @@ export namespace BraseroBurn {
 
     class Status extends GObject.Object {
         static $gtype: GObject.GType<Status>;
+        declare static readonly __signalSignatures: Status.SignalSignatures;
 
         // Constructors
 
@@ -2020,6 +2098,9 @@ export namespace BraseroBurn {
     }
 
     namespace SumDialog {
+        // Signal signatures
+        interface SignalSignatures extends ToolDialog.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2030,6 +2111,7 @@ export namespace BraseroBurn {
 
     class SumDialog extends ToolDialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<SumDialog>;
+        declare static readonly __signalSignatures: SumDialog.SignalSignatures;
 
         // Constructors
 
@@ -2482,6 +2564,9 @@ export namespace BraseroBurn {
     }
 
     namespace ToolDialog {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Dialog.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2492,6 +2577,7 @@ export namespace BraseroBurn {
 
     class ToolDialog extends Gtk.Dialog implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<ToolDialog>;
+        declare static readonly __signalSignatures: ToolDialog.SignalSignatures;
 
         // Constructors
 
@@ -2963,6 +3049,11 @@ export namespace BraseroBurn {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            changed: Changed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2970,6 +3061,7 @@ export namespace BraseroBurn {
 
     class Track extends GObject.Object {
         static $gtype: GObject.GType<Track>;
+        declare static readonly __signalSignatures: Track.SignalSignatures;
 
         // Constructors
 
@@ -2979,6 +3071,9 @@ export namespace BraseroBurn {
 
         // Signals
 
+        connect<K extends keyof Track.SignalSignatures>(signal: K, callback: Track.SignalSignatures[K]): number;
+        connect_after<K extends keyof Track.SignalSignatures>(signal: K, callback: Track.SignalSignatures[K]): number;
+        emit<K extends keyof Track.SignalSignatures>(signal: K, ...args: Parameters<Track.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3109,6 +3204,9 @@ export namespace BraseroBurn {
     }
 
     namespace TrackData {
+        // Signal signatures
+        interface SignalSignatures extends Track.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Track.ConstructorProps {}
@@ -3116,6 +3214,7 @@ export namespace BraseroBurn {
 
     class TrackData extends Track {
         static $gtype: GObject.GType<TrackData>;
+        declare static readonly __signalSignatures: TrackData.SignalSignatures;
 
         // Constructors
 
@@ -3303,6 +3402,22 @@ export namespace BraseroBurn {
             (object: any | null, p0: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends TrackData.SignalSignatures {
+            'deep-directory': DeepDirectory;
+            'icon-changed': IconChanged;
+            'image-uri': ImageUri;
+            'joliet-rename': JolietRename;
+            'name-collision': NameCollision;
+            'recursive-sym': RecursiveSym;
+            'session-available': SessionAvailable;
+            'session-loaded': SessionLoaded;
+            'source-loaded': SourceLoaded;
+            'source-loading': SourceLoading;
+            'unknown-uri': UnknownUri;
+            'unreadable-uri': UnreadableUri;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3318,6 +3433,7 @@ export namespace BraseroBurn {
         implements Gtk.TreeDragDest, Gtk.TreeDragSource, Gtk.TreeModel, Gtk.TreeSortable
     {
         static $gtype: GObject.GType<TrackDataCfg>;
+        declare static readonly __signalSignatures: TrackDataCfg.SignalSignatures;
 
         // Constructors
 
@@ -3329,6 +3445,18 @@ export namespace BraseroBurn {
 
         // Signals
 
+        connect<K extends keyof TrackDataCfg.SignalSignatures>(
+            signal: K,
+            callback: TrackDataCfg.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TrackDataCfg.SignalSignatures>(
+            signal: K,
+            callback: TrackDataCfg.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TrackDataCfg.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TrackDataCfg.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -4549,6 +4677,9 @@ export namespace BraseroBurn {
     }
 
     namespace TrackDisc {
+        // Signal signatures
+        interface SignalSignatures extends Track.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Track.ConstructorProps {}
@@ -4556,6 +4687,7 @@ export namespace BraseroBurn {
 
     class TrackDisc extends Track {
         static $gtype: GObject.GType<TrackDisc>;
+        declare static readonly __signalSignatures: TrackDisc.SignalSignatures;
 
         // Constructors
 
@@ -4583,6 +4715,9 @@ export namespace BraseroBurn {
     }
 
     namespace TrackImage {
+        // Signal signatures
+        interface SignalSignatures extends Track.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Track.ConstructorProps {}
@@ -4590,6 +4725,7 @@ export namespace BraseroBurn {
 
     class TrackImage extends Track {
         static $gtype: GObject.GType<TrackImage>;
+        declare static readonly __signalSignatures: TrackImage.SignalSignatures;
 
         // Constructors
 
@@ -4662,6 +4798,9 @@ export namespace BraseroBurn {
     }
 
     namespace TrackImageCfg {
+        // Signal signatures
+        interface SignalSignatures extends TrackImage.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends TrackImage.ConstructorProps {}
@@ -4669,6 +4808,7 @@ export namespace BraseroBurn {
 
     class TrackImageCfg extends TrackImage {
         static $gtype: GObject.GType<TrackImageCfg>;
+        declare static readonly __signalSignatures: TrackImageCfg.SignalSignatures;
 
         // Constructors
 
@@ -4704,6 +4844,9 @@ export namespace BraseroBurn {
     }
 
     namespace TrackStream {
+        // Signal signatures
+        interface SignalSignatures extends Track.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Track.ConstructorProps {}
@@ -4711,6 +4854,7 @@ export namespace BraseroBurn {
 
     class TrackStream extends Track {
         static $gtype: GObject.GType<TrackStream>;
+        declare static readonly __signalSignatures: TrackStream.SignalSignatures;
 
         // Constructors
 
@@ -4810,6 +4954,9 @@ export namespace BraseroBurn {
     }
 
     namespace TrackStreamCfg {
+        // Signal signatures
+        interface SignalSignatures extends TrackStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends TrackStream.ConstructorProps {}
@@ -4817,6 +4964,7 @@ export namespace BraseroBurn {
 
     class TrackStreamCfg extends TrackStream {
         static $gtype: GObject.GType<TrackStreamCfg>;
+        declare static readonly __signalSignatures: TrackStreamCfg.SignalSignatures;
 
         // Constructors
 

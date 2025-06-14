@@ -429,6 +429,9 @@ export namespace Modulemd {
         (data: any, size: number): number;
     }
     namespace BuildConfig {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -436,6 +439,7 @@ export namespace Modulemd {
 
     class BuildConfig extends GObject.Object {
         static $gtype: GObject.GType<BuildConfig>;
+        declare static readonly __signalSignatures: BuildConfig.SignalSignatures;
 
         // Constructors
 
@@ -527,6 +531,9 @@ export namespace Modulemd {
     }
 
     namespace Buildopts {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -537,6 +544,7 @@ export namespace Modulemd {
 
     class Buildopts extends GObject.Object {
         static $gtype: GObject.GType<Buildopts>;
+        declare static readonly __signalSignatures: Buildopts.SignalSignatures;
 
         // Properties
 
@@ -591,6 +599,9 @@ export namespace Modulemd {
     }
 
     namespace Component {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -603,6 +614,7 @@ export namespace Modulemd {
 
     abstract class Component extends GObject.Object {
         static $gtype: GObject.GType<Component>;
+        declare static readonly __signalSignatures: Component.SignalSignatures;
 
         // Properties
 
@@ -666,6 +678,9 @@ export namespace Modulemd {
     }
 
     namespace ComponentModule {
+        // Signal signatures
+        interface SignalSignatures extends Component.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Component.ConstructorProps {
@@ -676,6 +691,7 @@ export namespace Modulemd {
 
     class ComponentModule extends Component {
         static $gtype: GObject.GType<ComponentModule>;
+        declare static readonly __signalSignatures: ComponentModule.SignalSignatures;
 
         // Properties
 
@@ -701,6 +717,9 @@ export namespace Modulemd {
     }
 
     namespace ComponentRpm {
+        // Signal signatures
+        interface SignalSignatures extends Component.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Component.ConstructorProps {
@@ -715,6 +734,7 @@ export namespace Modulemd {
 
     class ComponentRpm extends Component {
         static $gtype: GObject.GType<ComponentRpm>;
+        declare static readonly __signalSignatures: ComponentRpm.SignalSignatures;
 
         // Properties
 
@@ -787,6 +807,9 @@ export namespace Modulemd {
     }
 
     namespace Defaults {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -798,6 +821,7 @@ export namespace Modulemd {
 
     abstract class Defaults extends GObject.Object {
         static $gtype: GObject.GType<Defaults>;
+        declare static readonly __signalSignatures: Defaults.SignalSignatures;
 
         // Properties
 
@@ -833,6 +857,9 @@ export namespace Modulemd {
     }
 
     namespace DefaultsV1 {
+        // Signal signatures
+        interface SignalSignatures extends Defaults.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Defaults.ConstructorProps {}
@@ -840,6 +867,7 @@ export namespace Modulemd {
 
     class DefaultsV1 extends Defaults {
         static $gtype: GObject.GType<DefaultsV1>;
+        declare static readonly __signalSignatures: DefaultsV1.SignalSignatures;
 
         // Constructors
 
@@ -889,6 +917,9 @@ export namespace Modulemd {
     }
 
     namespace Dependencies {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -896,6 +927,7 @@ export namespace Modulemd {
 
     class Dependencies extends GObject.Object {
         static $gtype: GObject.GType<Dependencies>;
+        declare static readonly __signalSignatures: Dependencies.SignalSignatures;
 
         // Constructors
 
@@ -961,6 +993,9 @@ export namespace Modulemd {
     }
 
     namespace Module {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -971,6 +1006,7 @@ export namespace Modulemd {
 
     class Module extends GObject.Object {
         static $gtype: GObject.GType<Module>;
+        declare static readonly __signalSignatures: Module.SignalSignatures;
 
         // Properties
 
@@ -1048,6 +1084,9 @@ export namespace Modulemd {
     }
 
     namespace ModuleIndex {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1055,6 +1094,7 @@ export namespace Modulemd {
 
     class ModuleIndex extends GObject.Object {
         static $gtype: GObject.GType<ModuleIndex>;
+        declare static readonly __signalSignatures: ModuleIndex.SignalSignatures;
 
         // Constructors
 
@@ -1169,6 +1209,9 @@ export namespace Modulemd {
     }
 
     namespace ModuleIndexMerger {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1176,6 +1219,7 @@ export namespace Modulemd {
 
     class ModuleIndexMerger extends GObject.Object {
         static $gtype: GObject.GType<ModuleIndexMerger>;
+        declare static readonly __signalSignatures: ModuleIndexMerger.SignalSignatures;
 
         // Constructors
 
@@ -1228,6 +1272,9 @@ export namespace Modulemd {
     }
 
     namespace ModuleStream {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1244,6 +1291,7 @@ export namespace Modulemd {
 
     abstract class ModuleStream extends GObject.Object {
         static $gtype: GObject.GType<ModuleStream>;
+        declare static readonly __signalSignatures: ModuleStream.SignalSignatures;
 
         // Properties
 
@@ -1393,6 +1441,9 @@ export namespace Modulemd {
     }
 
     namespace ModuleStreamV1 {
+        // Signal signatures
+        interface SignalSignatures extends ModuleStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ModuleStream.ConstructorProps {
@@ -1406,6 +1457,7 @@ export namespace Modulemd {
 
     class ModuleStreamV1 extends ModuleStream {
         static $gtype: GObject.GType<ModuleStreamV1>;
+        declare static readonly __signalSignatures: ModuleStreamV1.SignalSignatures;
 
         // Properties
 
@@ -1621,6 +1673,9 @@ export namespace Modulemd {
     }
 
     namespace ModuleStreamV2 {
+        // Signal signatures
+        interface SignalSignatures extends ModuleStream.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ModuleStream.ConstructorProps {
@@ -1636,6 +1691,7 @@ export namespace Modulemd {
 
     class ModuleStreamV2 extends ModuleStream {
         static $gtype: GObject.GType<ModuleStreamV2>;
+        declare static readonly __signalSignatures: ModuleStreamV2.SignalSignatures;
 
         // Properties
 
@@ -1864,6 +1920,9 @@ export namespace Modulemd {
     }
 
     namespace Obsoletes {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1889,6 +1948,7 @@ export namespace Modulemd {
 
     class Obsoletes extends GObject.Object {
         static $gtype: GObject.GType<Obsoletes>;
+        declare static readonly __signalSignatures: Obsoletes.SignalSignatures;
 
         // Properties
 
@@ -1976,6 +2036,9 @@ export namespace Modulemd {
     }
 
     namespace PackagerV3 {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1983,6 +2046,7 @@ export namespace Modulemd {
 
     class PackagerV3 extends GObject.Object {
         static $gtype: GObject.GType<PackagerV3>;
+        declare static readonly __signalSignatures: PackagerV3.SignalSignatures;
 
         // Constructors
 
@@ -2152,6 +2216,9 @@ export namespace Modulemd {
     }
 
     namespace Profile {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2161,6 +2228,7 @@ export namespace Modulemd {
 
     class Profile extends GObject.Object {
         static $gtype: GObject.GType<Profile>;
+        declare static readonly __signalSignatures: Profile.SignalSignatures;
 
         // Properties
 
@@ -2208,6 +2276,9 @@ export namespace Modulemd {
     }
 
     namespace RpmMapEntry {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2222,6 +2293,7 @@ export namespace Modulemd {
 
     class RpmMapEntry extends GObject.Object {
         static $gtype: GObject.GType<RpmMapEntry>;
+        declare static readonly __signalSignatures: RpmMapEntry.SignalSignatures;
 
         // Properties
 
@@ -2264,6 +2336,9 @@ export namespace Modulemd {
     }
 
     namespace ServiceLevel {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2273,6 +2348,7 @@ export namespace Modulemd {
 
     class ServiceLevel extends GObject.Object {
         static $gtype: GObject.GType<ServiceLevel>;
+        declare static readonly __signalSignatures: ServiceLevel.SignalSignatures;
 
         // Properties
 
@@ -2315,6 +2391,9 @@ export namespace Modulemd {
     }
 
     namespace SubdocumentInfo {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2322,6 +2401,7 @@ export namespace Modulemd {
 
     class SubdocumentInfo extends GObject.Object {
         static $gtype: GObject.GType<SubdocumentInfo>;
+        declare static readonly __signalSignatures: SubdocumentInfo.SignalSignatures;
 
         // Constructors
 
@@ -2336,6 +2416,9 @@ export namespace Modulemd {
     }
 
     namespace Translation {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2350,6 +2433,7 @@ export namespace Modulemd {
 
     class Translation extends GObject.Object {
         static $gtype: GObject.GType<Translation>;
+        declare static readonly __signalSignatures: Translation.SignalSignatures;
 
         // Properties
 
@@ -2390,6 +2474,9 @@ export namespace Modulemd {
     }
 
     namespace TranslationEntry {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2401,6 +2488,7 @@ export namespace Modulemd {
 
     class TranslationEntry extends GObject.Object {
         static $gtype: GObject.GType<TranslationEntry>;
+        declare static readonly __signalSignatures: TranslationEntry.SignalSignatures;
 
         // Properties
 

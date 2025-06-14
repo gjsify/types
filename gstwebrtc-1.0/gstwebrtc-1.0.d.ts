@@ -615,6 +615,9 @@ export namespace GstWebRTC {
         (ice: WebRTCICE, stream_id: number, candidate: string): void;
     }
     namespace WebRTCDTLSTransport {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {
@@ -631,6 +634,7 @@ export namespace GstWebRTC {
 
     class WebRTCDTLSTransport extends Gst.Object {
         static $gtype: GObject.GType<WebRTCDTLSTransport>;
+        declare static readonly __signalSignatures: WebRTCDTLSTransport.SignalSignatures;
 
         // Properties
 
@@ -691,6 +695,19 @@ export namespace GstWebRTC {
             (data?: string | null): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            close: Close;
+            'on-buffered-amount-low': OnBufferedAmountLow;
+            'on-close': OnClose;
+            'on-error': OnError;
+            'on-message-data': OnMessageData;
+            'on-message-string': OnMessageString;
+            'on-open': OnOpen;
+            'send-data': SendData;
+            'send-string': SendString;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -715,6 +732,7 @@ export namespace GstWebRTC {
 
     abstract class WebRTCDataChannel extends GObject.Object {
         static $gtype: GObject.GType<WebRTCDataChannel>;
+        declare static readonly __signalSignatures: WebRTCDataChannel.SignalSignatures;
 
         // Properties
 
@@ -745,6 +763,18 @@ export namespace GstWebRTC {
 
         // Signals
 
+        connect<K extends keyof WebRTCDataChannel.SignalSignatures>(
+            signal: K,
+            callback: WebRTCDataChannel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WebRTCDataChannel.SignalSignatures>(
+            signal: K,
+            callback: WebRTCDataChannel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WebRTCDataChannel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WebRTCDataChannel.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -813,6 +843,11 @@ export namespace GstWebRTC {
             (address: string): boolean;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            'add-local-ip-address': AddLocalIpAddress;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {
@@ -825,6 +860,7 @@ export namespace GstWebRTC {
 
     abstract class WebRTCICE extends Gst.Object {
         static $gtype: GObject.GType<WebRTCICE>;
+        declare static readonly __signalSignatures: WebRTCICE.SignalSignatures;
 
         // Properties
 
@@ -866,6 +902,15 @@ export namespace GstWebRTC {
 
         // Signals
 
+        connect<K extends keyof WebRTCICE.SignalSignatures>(signal: K, callback: WebRTCICE.SignalSignatures[K]): number;
+        connect_after<K extends keyof WebRTCICE.SignalSignatures>(
+            signal: K,
+            callback: WebRTCICE.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WebRTCICE.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WebRTCICE.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -934,6 +979,9 @@ export namespace GstWebRTC {
     }
 
     namespace WebRTCICEStream {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {
@@ -944,6 +992,7 @@ export namespace GstWebRTC {
 
     abstract class WebRTCICEStream extends Gst.Object {
         static $gtype: GObject.GType<WebRTCICEStream>;
+        declare static readonly __signalSignatures: WebRTCICEStream.SignalSignatures;
 
         // Properties
 
@@ -978,6 +1027,12 @@ export namespace GstWebRTC {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            'on-new-candidate': OnNewCandidate;
+            'on-selected-candidate-pair-change': OnSelectedCandidatePairChange;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {
@@ -990,6 +1045,7 @@ export namespace GstWebRTC {
 
     abstract class WebRTCICETransport extends Gst.Object {
         static $gtype: GObject.GType<WebRTCICETransport>;
+        declare static readonly __signalSignatures: WebRTCICETransport.SignalSignatures;
 
         // Properties
 
@@ -1012,6 +1068,18 @@ export namespace GstWebRTC {
 
         // Signals
 
+        connect<K extends keyof WebRTCICETransport.SignalSignatures>(
+            signal: K,
+            callback: WebRTCICETransport.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof WebRTCICETransport.SignalSignatures>(
+            signal: K,
+            callback: WebRTCICETransport.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof WebRTCICETransport.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<WebRTCICETransport.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1035,6 +1103,9 @@ export namespace GstWebRTC {
     }
 
     namespace WebRTCRTPReceiver {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {
@@ -1049,6 +1120,7 @@ export namespace GstWebRTC {
      */
     class WebRTCRTPReceiver extends Gst.Object {
         static $gtype: GObject.GType<WebRTCRTPReceiver>;
+        declare static readonly __signalSignatures: WebRTCRTPReceiver.SignalSignatures;
 
         // Properties
 
@@ -1065,6 +1137,9 @@ export namespace GstWebRTC {
     }
 
     namespace WebRTCRTPSender {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {
@@ -1080,6 +1155,7 @@ export namespace GstWebRTC {
      */
     class WebRTCRTPSender extends Gst.Object {
         static $gtype: GObject.GType<WebRTCRTPSender>;
+        declare static readonly __signalSignatures: WebRTCRTPSender.SignalSignatures;
 
         // Properties
 
@@ -1111,6 +1187,9 @@ export namespace GstWebRTC {
     }
 
     namespace WebRTCRTPTransceiver {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {
@@ -1132,6 +1211,7 @@ export namespace GstWebRTC {
      */
     abstract class WebRTCRTPTransceiver extends Gst.Object {
         static $gtype: GObject.GType<WebRTCRTPTransceiver>;
+        declare static readonly __signalSignatures: WebRTCRTPTransceiver.SignalSignatures;
 
         // Properties
 
@@ -1189,6 +1269,9 @@ export namespace GstWebRTC {
     }
 
     namespace WebRTCSCTPTransport {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {
@@ -1203,6 +1286,7 @@ export namespace GstWebRTC {
 
     abstract class WebRTCSCTPTransport extends Gst.Object {
         static $gtype: GObject.GType<WebRTCSCTPTransport>;
+        declare static readonly __signalSignatures: WebRTCSCTPTransport.SignalSignatures;
 
         // Properties
 

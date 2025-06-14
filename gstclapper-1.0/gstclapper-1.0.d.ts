@@ -214,6 +214,22 @@ export namespace GstClapper {
             (object: GLib.Error): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            'audio-decoder-changed': AudioDecoderChanged;
+            buffering: Buffering;
+            'duration-changed': DurationChanged;
+            'end-of-stream': EndOfStream;
+            error: Error;
+            'media-info-updated': MediaInfoUpdated;
+            'position-updated': PositionUpdated;
+            'state-changed': StateChanged;
+            'uri-loaded': UriLoaded;
+            'video-decoder-changed': VideoDecoderChanged;
+            'video-dimensions-changed': VideoDimensionsChanged;
+            warning: Warning;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {
@@ -258,6 +274,7 @@ export namespace GstClapper {
 
     class Clapper extends Gst.Object {
         static $gtype: GObject.GType<Clapper>;
+        declare static readonly __signalSignatures: Clapper.SignalSignatures;
 
         // Properties
 
@@ -327,6 +344,15 @@ export namespace GstClapper {
 
         // Signals
 
+        connect<K extends keyof Clapper.SignalSignatures>(signal: K, callback: Clapper.SignalSignatures[K]): number;
+        connect_after<K extends keyof Clapper.SignalSignatures>(
+            signal: K,
+            callback: Clapper.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Clapper.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Clapper.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -611,6 +637,9 @@ export namespace GstClapper {
     }
 
     namespace ClapperAudioInfo {
+        // Signal signatures
+        interface SignalSignatures extends ClapperStreamInfo.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ClapperStreamInfo.ConstructorProps {}
@@ -621,6 +650,7 @@ export namespace GstClapper {
      */
     class ClapperAudioInfo extends ClapperStreamInfo {
         static $gtype: GObject.GType<ClapperAudioInfo>;
+        declare static readonly __signalSignatures: ClapperAudioInfo.SignalSignatures;
 
         // Constructors
 
@@ -638,6 +668,9 @@ export namespace GstClapper {
     }
 
     namespace ClapperGMainContextSignalDispatcher {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, ClapperSignalDispatcher.ConstructorProps {
@@ -648,6 +681,7 @@ export namespace GstClapper {
 
     class ClapperGMainContextSignalDispatcher extends GObject.Object implements ClapperSignalDispatcher {
         static $gtype: GObject.GType<ClapperGMainContextSignalDispatcher>;
+        declare static readonly __signalSignatures: ClapperGMainContextSignalDispatcher.SignalSignatures;
 
         // Properties
 
@@ -1113,6 +1147,9 @@ export namespace GstClapper {
     }
 
     namespace ClapperGtk4Plugin {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1126,6 +1163,7 @@ export namespace GstClapper {
      */
     class ClapperGtk4Plugin extends GObject.Object {
         static $gtype: GObject.GType<ClapperGtk4Plugin>;
+        declare static readonly __signalSignatures: ClapperGtk4Plugin.SignalSignatures;
 
         // Properties
 
@@ -1142,6 +1180,9 @@ export namespace GstClapper {
     }
 
     namespace ClapperMediaInfo {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1152,6 +1193,7 @@ export namespace GstClapper {
      */
     class ClapperMediaInfo extends GObject.Object {
         static $gtype: GObject.GType<ClapperMediaInfo>;
+        declare static readonly __signalSignatures: ClapperMediaInfo.SignalSignatures;
 
         // Constructors
 
@@ -1186,6 +1228,9 @@ export namespace GstClapper {
     }
 
     namespace ClapperMpris {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1204,6 +1249,7 @@ export namespace GstClapper {
 
     class ClapperMpris extends GObject.Object {
         static $gtype: GObject.GType<ClapperMpris>;
+        declare static readonly __signalSignatures: ClapperMpris.SignalSignatures;
 
         // Properties
 
@@ -1235,6 +1281,9 @@ export namespace GstClapper {
     }
 
     namespace ClapperStreamInfo {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1247,6 +1296,7 @@ export namespace GstClapper {
      */
     abstract class ClapperStreamInfo extends GObject.Object {
         static $gtype: GObject.GType<ClapperStreamInfo>;
+        declare static readonly __signalSignatures: ClapperStreamInfo.SignalSignatures;
 
         // Constructors
 
@@ -1277,6 +1327,9 @@ export namespace GstClapper {
     }
 
     namespace ClapperSubtitleInfo {
+        // Signal signatures
+        interface SignalSignatures extends ClapperStreamInfo.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ClapperStreamInfo.ConstructorProps {}
@@ -1287,6 +1340,7 @@ export namespace GstClapper {
      */
     class ClapperSubtitleInfo extends ClapperStreamInfo {
         static $gtype: GObject.GType<ClapperSubtitleInfo>;
+        declare static readonly __signalSignatures: ClapperSubtitleInfo.SignalSignatures;
 
         // Constructors
 
@@ -1301,6 +1355,9 @@ export namespace GstClapper {
     }
 
     namespace ClapperVideoInfo {
+        // Signal signatures
+        interface SignalSignatures extends ClapperStreamInfo.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ClapperStreamInfo.ConstructorProps {}
@@ -1311,6 +1368,7 @@ export namespace GstClapper {
      */
     class ClapperVideoInfo extends ClapperStreamInfo {
         static $gtype: GObject.GType<ClapperVideoInfo>;
+        declare static readonly __signalSignatures: ClapperVideoInfo.SignalSignatures;
 
         // Constructors
 
@@ -1332,6 +1390,9 @@ export namespace GstClapper {
     }
 
     namespace ClapperVideoOverlayVideoRenderer {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, ClapperVideoRenderer.ConstructorProps {
@@ -1344,6 +1405,7 @@ export namespace GstClapper {
 
     class ClapperVideoOverlayVideoRenderer extends GObject.Object implements ClapperVideoRenderer {
         static $gtype: GObject.GType<ClapperVideoOverlayVideoRenderer>;
+        declare static readonly __signalSignatures: ClapperVideoOverlayVideoRenderer.SignalSignatures;
 
         // Properties
 

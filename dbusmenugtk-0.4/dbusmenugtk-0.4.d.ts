@@ -110,6 +110,9 @@ export namespace DbusmenuGtk {
      */
     function menuitem_property_set_shortcut_string(menuitem: Dbusmenu.Menuitem, shortcut: string): boolean;
     namespace Client {
+        // Signal signatures
+        interface SignalSignatures extends Dbusmenu.Client.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Dbusmenu.Client.ConstructorProps {}
@@ -121,6 +124,7 @@ export namespace DbusmenuGtk {
      */
     class Client extends Dbusmenu.Client {
         static $gtype: GObject.GType<Client>;
+        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Constructors
 
@@ -173,6 +177,9 @@ export namespace DbusmenuGtk {
     }
 
     namespace Menu {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Menu.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -192,6 +199,7 @@ export namespace DbusmenuGtk {
      */
     class Menu extends Gtk.Menu implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Menu>;
+        declare static readonly __signalSignatures: Menu.SignalSignatures;
 
         // Properties
 

@@ -112,6 +112,9 @@ export namespace CoglPango {
      */
     function render_layout_subpixel(layout: Pango.Layout, x: number, y: number, color: Cogl.Color, flags: number): void;
     namespace Renderer {
+        // Signal signatures
+        interface SignalSignatures extends Pango.Renderer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Pango.Renderer.ConstructorProps {
@@ -121,6 +124,7 @@ export namespace CoglPango {
 
     class Renderer extends Pango.Renderer {
         static $gtype: GObject.GType<Renderer>;
+        declare static readonly __signalSignatures: Renderer.SignalSignatures;
 
         // Properties
 

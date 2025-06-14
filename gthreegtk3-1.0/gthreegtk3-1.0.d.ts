@@ -32,6 +32,9 @@ export namespace GthreeGtk3 {
      */
 
     namespace Area {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.GLArea.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -46,6 +49,7 @@ export namespace GthreeGtk3 {
 
     class Area extends Gtk.GLArea implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Area>;
+        declare static readonly __signalSignatures: Area.SignalSignatures;
 
         // Properties
 

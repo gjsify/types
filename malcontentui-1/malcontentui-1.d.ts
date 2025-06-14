@@ -34,6 +34,9 @@ export namespace MalcontentUi {
      */
 
     namespace RestrictApplicationsDialog {
+        // Signal signatures
+        interface SignalSignatures extends Adw.PreferencesWindow.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -67,6 +70,7 @@ export namespace MalcontentUi {
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Native, Gtk.Root, Gtk.ShortcutManager
     {
         static $gtype: GObject.GType<RestrictApplicationsDialog>;
+        declare static readonly __signalSignatures: RestrictApplicationsDialog.SignalSignatures;
 
         // Properties
 
@@ -3074,6 +3078,11 @@ export namespace MalcontentUi {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {
+            changed: Changed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3102,6 +3111,7 @@ export namespace MalcontentUi {
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable
     {
         static $gtype: GObject.GType<RestrictApplicationsSelector>;
+        declare static readonly __signalSignatures: RestrictApplicationsSelector.SignalSignatures;
 
         // Properties
 
@@ -3135,6 +3145,18 @@ export namespace MalcontentUi {
 
         // Signals
 
+        connect<K extends keyof RestrictApplicationsSelector.SignalSignatures>(
+            signal: K,
+            callback: RestrictApplicationsSelector.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RestrictApplicationsSelector.SignalSignatures>(
+            signal: K,
+            callback: RestrictApplicationsSelector.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RestrictApplicationsSelector.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RestrictApplicationsSelector.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3625,6 +3647,9 @@ export namespace MalcontentUi {
     }
 
     namespace UserControls {
+        // Signal signatures
+        interface SignalSignatures extends Adw.Bin.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3678,6 +3703,7 @@ export namespace MalcontentUi {
      */
     class UserControls extends Adw.Bin implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<UserControls>;
+        declare static readonly __signalSignatures: UserControls.SignalSignatures;
 
         // Properties
 

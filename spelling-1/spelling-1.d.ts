@@ -37,6 +37,9 @@ export namespace Spelling {
      */
     function init(): void;
     namespace Checker {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -51,6 +54,7 @@ export namespace Spelling {
      */
     class Checker extends GObject.Object {
         static $gtype: GObject.GType<Checker>;
+        declare static readonly __signalSignatures: Checker.SignalSignatures;
 
         // Properties
 
@@ -136,6 +140,9 @@ export namespace Spelling {
     }
 
     namespace Dictionary {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -148,6 +155,7 @@ export namespace Spelling {
      */
     abstract class Dictionary extends GObject.Object {
         static $gtype: GObject.GType<Dictionary>;
+        declare static readonly __signalSignatures: Dictionary.SignalSignatures;
 
         // Properties
 
@@ -201,6 +209,9 @@ export namespace Spelling {
     }
 
     namespace Language {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -215,6 +226,7 @@ export namespace Spelling {
      */
     class Language extends GObject.Object {
         static $gtype: GObject.GType<Language>;
+        declare static readonly __signalSignatures: Language.SignalSignatures;
 
         // Properties
 
@@ -257,6 +269,9 @@ export namespace Spelling {
     }
 
     namespace Provider {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -270,6 +285,7 @@ export namespace Spelling {
      */
     abstract class Provider extends GObject.Object {
         static $gtype: GObject.GType<Provider>;
+        declare static readonly __signalSignatures: Provider.SignalSignatures;
 
         // Properties
 
@@ -329,6 +345,9 @@ export namespace Spelling {
     }
 
     namespace TextBufferAdapter {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.ActionGroup.ConstructorProps {
@@ -345,6 +364,7 @@ export namespace Spelling {
      */
     class TextBufferAdapter extends GObject.Object implements Gio.ActionGroup {
         static $gtype: GObject.GType<TextBufferAdapter>;
+        declare static readonly __signalSignatures: TextBufferAdapter.SignalSignatures;
 
         // Properties
 

@@ -28,6 +28,9 @@ export namespace Vgsl {
      */
 
     namespace Connection {
+        // Signal signatures
+        interface SignalSignatures extends Vgda.GProvider.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Vgda.GProvider.ConstructorProps {}
@@ -35,6 +38,7 @@ export namespace Vgsl {
 
     class Connection extends Vgda.GProvider {
         static $gtype: GObject.GType<Connection>;
+        declare static readonly __signalSignatures: Connection.SignalSignatures;
 
         // Constructors
 

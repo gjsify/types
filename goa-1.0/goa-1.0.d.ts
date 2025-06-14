@@ -378,6 +378,9 @@ export namespace Goa {
      */
     function todo_override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     namespace AccountProxy {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -396,6 +399,7 @@ export namespace Goa {
         implements Gio.AsyncInitable<AccountProxy>, Gio.DBusInterface, Gio.Initable, Account
     {
         static $gtype: GObject.GType<AccountProxy>;
+        declare static readonly __signalSignatures: AccountProxy.SignalSignatures;
 
         // Constructors
 
@@ -1662,6 +1666,9 @@ export namespace Goa {
     }
 
     namespace AccountSkeleton {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1675,6 +1682,7 @@ export namespace Goa {
      */
     class AccountSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Account {
         static $gtype: GObject.GType<AccountSkeleton>;
+        declare static readonly __signalSignatures: AccountSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -2577,6 +2585,9 @@ export namespace Goa {
     }
 
     namespace CalendarProxy {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2595,6 +2606,7 @@ export namespace Goa {
         implements Gio.AsyncInitable<CalendarProxy>, Gio.DBusInterface, Gio.Initable, Calendar
     {
         static $gtype: GObject.GType<CalendarProxy>;
+        declare static readonly __signalSignatures: CalendarProxy.SignalSignatures;
 
         // Constructors
 
@@ -3468,6 +3480,9 @@ export namespace Goa {
     }
 
     namespace CalendarSkeleton {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3481,6 +3496,7 @@ export namespace Goa {
      */
     class CalendarSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Calendar {
         static $gtype: GObject.GType<CalendarSkeleton>;
+        declare static readonly __signalSignatures: CalendarSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -3990,6 +4006,9 @@ export namespace Goa {
     }
 
     namespace ChatProxy {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4008,6 +4027,7 @@ export namespace Goa {
         implements Gio.AsyncInitable<ChatProxy>, Gio.DBusInterface, Gio.Initable, Chat
     {
         static $gtype: GObject.GType<ChatProxy>;
+        declare static readonly __signalSignatures: ChatProxy.SignalSignatures;
 
         // Constructors
 
@@ -4858,6 +4878,9 @@ export namespace Goa {
     }
 
     namespace ChatSkeleton {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4871,6 +4894,7 @@ export namespace Goa {
      */
     class ChatSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Chat {
         static $gtype: GObject.GType<ChatSkeleton>;
+        declare static readonly __signalSignatures: ChatSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -5371,6 +5395,13 @@ export namespace Goa {
             (object: Object): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'account-added': AccountAdded;
+            'account-changed': AccountChanged;
+            'account-removed': AccountRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5388,6 +5419,7 @@ export namespace Goa {
      */
     class Client extends GObject.Object implements Gio.AsyncInitable<Client>, Gio.Initable {
         static $gtype: GObject.GType<Client>;
+        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Properties
 
@@ -5415,6 +5447,9 @@ export namespace Goa {
 
         // Signals
 
+        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -6198,6 +6233,9 @@ export namespace Goa {
     }
 
     namespace ContactsProxy {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6216,6 +6254,7 @@ export namespace Goa {
         implements Gio.AsyncInitable<ContactsProxy>, Gio.DBusInterface, Gio.Initable, Contacts
     {
         static $gtype: GObject.GType<ContactsProxy>;
+        declare static readonly __signalSignatures: ContactsProxy.SignalSignatures;
 
         // Constructors
 
@@ -7089,6 +7128,9 @@ export namespace Goa {
     }
 
     namespace ContactsSkeleton {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7102,6 +7144,7 @@ export namespace Goa {
      */
     class ContactsSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Contacts {
         static $gtype: GObject.GType<ContactsSkeleton>;
+        declare static readonly __signalSignatures: ContactsSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -7611,6 +7654,9 @@ export namespace Goa {
     }
 
     namespace DocumentsProxy {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7629,6 +7675,7 @@ export namespace Goa {
         implements Gio.AsyncInitable<DocumentsProxy>, Gio.DBusInterface, Gio.Initable, Documents
     {
         static $gtype: GObject.GType<DocumentsProxy>;
+        declare static readonly __signalSignatures: DocumentsProxy.SignalSignatures;
 
         // Constructors
 
@@ -8479,6 +8526,9 @@ export namespace Goa {
     }
 
     namespace DocumentsSkeleton {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -8492,6 +8542,7 @@ export namespace Goa {
      */
     class DocumentsSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Documents {
         static $gtype: GObject.GType<DocumentsSkeleton>;
+        declare static readonly __signalSignatures: DocumentsSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -8978,6 +9029,9 @@ export namespace Goa {
     }
 
     namespace ExchangeProxy {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -8996,6 +9050,7 @@ export namespace Goa {
         implements Gio.AsyncInitable<ExchangeProxy>, Gio.DBusInterface, Gio.Initable, Exchange
     {
         static $gtype: GObject.GType<ExchangeProxy>;
+        declare static readonly __signalSignatures: ExchangeProxy.SignalSignatures;
 
         // Constructors
 
@@ -9869,6 +9924,9 @@ export namespace Goa {
     }
 
     namespace ExchangeSkeleton {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9882,6 +9940,7 @@ export namespace Goa {
      */
     class ExchangeSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Exchange {
         static $gtype: GObject.GType<ExchangeSkeleton>;
+        declare static readonly __signalSignatures: ExchangeSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -10391,6 +10450,9 @@ export namespace Goa {
     }
 
     namespace FilesProxy {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -10409,6 +10471,7 @@ export namespace Goa {
         implements Gio.AsyncInitable<FilesProxy>, Gio.DBusInterface, Gio.Initable, Files
     {
         static $gtype: GObject.GType<FilesProxy>;
+        declare static readonly __signalSignatures: FilesProxy.SignalSignatures;
 
         // Constructors
 
@@ -11282,6 +11345,9 @@ export namespace Goa {
     }
 
     namespace FilesSkeleton {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -11295,6 +11361,7 @@ export namespace Goa {
      */
     class FilesSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Files {
         static $gtype: GObject.GType<FilesSkeleton>;
+        declare static readonly __signalSignatures: FilesSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -11804,6 +11871,9 @@ export namespace Goa {
     }
 
     namespace MailProxy {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -11822,6 +11892,7 @@ export namespace Goa {
         implements Gio.AsyncInitable<MailProxy>, Gio.DBusInterface, Gio.Initable, Mail
     {
         static $gtype: GObject.GType<MailProxy>;
+        declare static readonly __signalSignatures: MailProxy.SignalSignatures;
 
         // Constructors
 
@@ -12919,6 +12990,9 @@ export namespace Goa {
     }
 
     namespace MailSkeleton {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -12932,6 +13006,7 @@ export namespace Goa {
      */
     class MailSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Mail {
         static $gtype: GObject.GType<MailSkeleton>;
+        declare static readonly __signalSignatures: MailSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -13665,6 +13740,9 @@ export namespace Goa {
     }
 
     namespace ManagerProxy {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -13683,6 +13761,7 @@ export namespace Goa {
         implements Gio.AsyncInitable<ManagerProxy>, Gio.DBusInterface, Gio.Initable, Manager
     {
         static $gtype: GObject.GType<ManagerProxy>;
+        declare static readonly __signalSignatures: ManagerProxy.SignalSignatures;
 
         // Constructors
 
@@ -14723,6 +14802,9 @@ export namespace Goa {
     }
 
     namespace ManagerSkeleton {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -14736,6 +14818,7 @@ export namespace Goa {
      */
     class ManagerSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Manager {
         static $gtype: GObject.GType<ManagerSkeleton>;
+        declare static readonly __signalSignatures: ManagerSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -15412,6 +15495,9 @@ export namespace Goa {
     }
 
     namespace MapsProxy {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -15430,6 +15516,7 @@ export namespace Goa {
         implements Gio.AsyncInitable<MapsProxy>, Gio.DBusInterface, Gio.Initable, Maps
     {
         static $gtype: GObject.GType<MapsProxy>;
+        declare static readonly __signalSignatures: MapsProxy.SignalSignatures;
 
         // Constructors
 
@@ -16280,6 +16367,9 @@ export namespace Goa {
     }
 
     namespace MapsSkeleton {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -16293,6 +16383,7 @@ export namespace Goa {
      */
     class MapsSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Maps {
         static $gtype: GObject.GType<MapsSkeleton>;
+        declare static readonly __signalSignatures: MapsSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -16779,6 +16870,9 @@ export namespace Goa {
     }
 
     namespace MediaServerProxy {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -16797,6 +16891,7 @@ export namespace Goa {
         implements Gio.AsyncInitable<MediaServerProxy>, Gio.DBusInterface, Gio.Initable, MediaServer
     {
         static $gtype: GObject.GType<MediaServerProxy>;
+        declare static readonly __signalSignatures: MediaServerProxy.SignalSignatures;
 
         // Constructors
 
@@ -17670,6 +17765,9 @@ export namespace Goa {
     }
 
     namespace MediaServerSkeleton {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -17683,6 +17781,7 @@ export namespace Goa {
      */
     class MediaServerSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, MediaServer {
         static $gtype: GObject.GType<MediaServerSkeleton>;
+        declare static readonly __signalSignatures: MediaServerSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -18192,6 +18291,9 @@ export namespace Goa {
     }
 
     namespace MusicProxy {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -18210,6 +18312,7 @@ export namespace Goa {
         implements Gio.AsyncInitable<MusicProxy>, Gio.DBusInterface, Gio.Initable, Music
     {
         static $gtype: GObject.GType<MusicProxy>;
+        declare static readonly __signalSignatures: MusicProxy.SignalSignatures;
 
         // Constructors
 
@@ -19060,6 +19163,9 @@ export namespace Goa {
     }
 
     namespace MusicSkeleton {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -19073,6 +19179,7 @@ export namespace Goa {
      */
     class MusicSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Music {
         static $gtype: GObject.GType<MusicSkeleton>;
+        declare static readonly __signalSignatures: MusicSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -19559,6 +19666,9 @@ export namespace Goa {
     }
 
     namespace OAuth2BasedProxy {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -19577,6 +19687,7 @@ export namespace Goa {
         implements Gio.AsyncInitable<OAuth2BasedProxy>, Gio.DBusInterface, Gio.Initable, OAuth2Based
     {
         static $gtype: GObject.GType<OAuth2BasedProxy>;
+        declare static readonly __signalSignatures: OAuth2BasedProxy.SignalSignatures;
 
         // Constructors
 
@@ -20517,6 +20628,9 @@ export namespace Goa {
     }
 
     namespace OAuth2BasedSkeleton {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -20530,6 +20644,7 @@ export namespace Goa {
      */
     class OAuth2BasedSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, OAuth2Based {
         static $gtype: GObject.GType<OAuth2BasedSkeleton>;
+        declare static readonly __signalSignatures: OAuth2BasedSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -21106,6 +21221,9 @@ export namespace Goa {
     }
 
     namespace OAuthBasedProxy {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -21124,6 +21242,7 @@ export namespace Goa {
         implements Gio.AsyncInitable<OAuthBasedProxy>, Gio.DBusInterface, Gio.Initable, OAuthBased
     {
         static $gtype: GObject.GType<OAuthBasedProxy>;
+        declare static readonly __signalSignatures: OAuthBasedProxy.SignalSignatures;
 
         // Constructors
 
@@ -22070,6 +22189,9 @@ export namespace Goa {
     }
 
     namespace OAuthBasedSkeleton {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -22083,6 +22205,7 @@ export namespace Goa {
      */
     class OAuthBasedSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, OAuthBased {
         static $gtype: GObject.GType<OAuthBasedSkeleton>;
+        declare static readonly __signalSignatures: OAuthBasedSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -22665,6 +22788,9 @@ export namespace Goa {
     }
 
     namespace ObjectManagerClient {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusObjectManagerClient.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -22682,6 +22808,7 @@ export namespace Goa {
         implements Gio.AsyncInitable<ObjectManagerClient>, Gio.DBusObjectManager, Gio.Initable
     {
         static $gtype: GObject.GType<ObjectManagerClient>;
+        declare static readonly __signalSignatures: ObjectManagerClient.SignalSignatures;
 
         // Constructors
 
@@ -23577,6 +23704,9 @@ export namespace Goa {
     }
 
     namespace ObjectProxy {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusObjectProxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -23590,6 +23720,7 @@ export namespace Goa {
      */
     class ObjectProxy extends Gio.DBusObjectProxy implements Gio.DBusObject, Object {
         static $gtype: GObject.GType<ObjectProxy>;
+        declare static readonly __signalSignatures: ObjectProxy.SignalSignatures;
 
         // Constructors
 
@@ -24360,6 +24491,9 @@ export namespace Goa {
     }
 
     namespace ObjectSkeleton {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusObjectSkeleton.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -24373,6 +24507,7 @@ export namespace Goa {
      */
     class ObjectSkeleton extends Gio.DBusObjectSkeleton implements Gio.DBusObject, Object {
         static $gtype: GObject.GType<ObjectSkeleton>;
+        declare static readonly __signalSignatures: ObjectSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -25246,6 +25381,9 @@ export namespace Goa {
     }
 
     namespace PasswordBasedProxy {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -25264,6 +25402,7 @@ export namespace Goa {
         implements Gio.AsyncInitable<PasswordBasedProxy>, Gio.DBusInterface, Gio.Initable, PasswordBased
     {
         static $gtype: GObject.GType<PasswordBasedProxy>;
+        declare static readonly __signalSignatures: PasswordBasedProxy.SignalSignatures;
 
         // Constructors
 
@@ -26183,6 +26322,9 @@ export namespace Goa {
     }
 
     namespace PasswordBasedSkeleton {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -26196,6 +26338,7 @@ export namespace Goa {
      */
     class PasswordBasedSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, PasswordBased {
         static $gtype: GObject.GType<PasswordBasedSkeleton>;
+        declare static readonly __signalSignatures: PasswordBasedSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -26751,6 +26894,9 @@ export namespace Goa {
     }
 
     namespace PhotosProxy {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -26769,6 +26915,7 @@ export namespace Goa {
         implements Gio.AsyncInitable<PhotosProxy>, Gio.DBusInterface, Gio.Initable, Photos
     {
         static $gtype: GObject.GType<PhotosProxy>;
+        declare static readonly __signalSignatures: PhotosProxy.SignalSignatures;
 
         // Constructors
 
@@ -27619,6 +27766,9 @@ export namespace Goa {
     }
 
     namespace PhotosSkeleton {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -27632,6 +27782,7 @@ export namespace Goa {
      */
     class PhotosSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Photos {
         static $gtype: GObject.GType<PhotosSkeleton>;
+        declare static readonly __signalSignatures: PhotosSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -28118,6 +28269,9 @@ export namespace Goa {
     }
 
     namespace PrintersProxy {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -28136,6 +28290,7 @@ export namespace Goa {
         implements Gio.AsyncInitable<PrintersProxy>, Gio.DBusInterface, Gio.Initable, Printers
     {
         static $gtype: GObject.GType<PrintersProxy>;
+        declare static readonly __signalSignatures: PrintersProxy.SignalSignatures;
 
         // Constructors
 
@@ -28986,6 +29141,9 @@ export namespace Goa {
     }
 
     namespace PrintersSkeleton {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -28999,6 +29157,7 @@ export namespace Goa {
      */
     class PrintersSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Printers {
         static $gtype: GObject.GType<PrintersSkeleton>;
+        declare static readonly __signalSignatures: PrintersSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -29485,6 +29644,9 @@ export namespace Goa {
     }
 
     namespace ReadLaterProxy {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -29503,6 +29665,7 @@ export namespace Goa {
         implements Gio.AsyncInitable<ReadLaterProxy>, Gio.DBusInterface, Gio.Initable, ReadLater
     {
         static $gtype: GObject.GType<ReadLaterProxy>;
+        declare static readonly __signalSignatures: ReadLaterProxy.SignalSignatures;
 
         // Constructors
 
@@ -30353,6 +30516,9 @@ export namespace Goa {
     }
 
     namespace ReadLaterSkeleton {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -30366,6 +30532,7 @@ export namespace Goa {
      */
     class ReadLaterSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, ReadLater {
         static $gtype: GObject.GType<ReadLaterSkeleton>;
+        declare static readonly __signalSignatures: ReadLaterSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -30852,6 +31019,9 @@ export namespace Goa {
     }
 
     namespace TicketingProxy {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -30870,6 +31040,7 @@ export namespace Goa {
         implements Gio.AsyncInitable<TicketingProxy>, Gio.DBusInterface, Gio.Initable, Ticketing
     {
         static $gtype: GObject.GType<TicketingProxy>;
+        declare static readonly __signalSignatures: TicketingProxy.SignalSignatures;
 
         // Constructors
 
@@ -31787,6 +31958,9 @@ export namespace Goa {
     }
 
     namespace TicketingSkeleton {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -31800,6 +31974,7 @@ export namespace Goa {
      */
     class TicketingSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Ticketing {
         static $gtype: GObject.GType<TicketingSkeleton>;
+        declare static readonly __signalSignatures: TicketingSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -32353,6 +32528,9 @@ export namespace Goa {
     }
 
     namespace TodoProxy {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -32371,6 +32549,7 @@ export namespace Goa {
         implements Gio.AsyncInitable<TodoProxy>, Gio.DBusInterface, Gio.Initable, Todo
     {
         static $gtype: GObject.GType<TodoProxy>;
+        declare static readonly __signalSignatures: TodoProxy.SignalSignatures;
 
         // Constructors
 
@@ -33221,6 +33400,9 @@ export namespace Goa {
     }
 
     namespace TodoSkeleton {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -33234,6 +33416,7 @@ export namespace Goa {
      */
     class TodoSkeleton extends Gio.DBusInterfaceSkeleton implements Gio.DBusInterface, Todo {
         static $gtype: GObject.GType<TodoSkeleton>;
+        declare static readonly __signalSignatures: TodoSkeleton.SignalSignatures;
 
         // Constructors
 

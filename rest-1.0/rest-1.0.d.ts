@@ -283,6 +283,9 @@ export namespace Rest {
         ): void;
     }
     namespace OAuth2Proxy {
+        // Signal signatures
+        interface SignalSignatures extends Proxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Proxy.ConstructorProps {
@@ -307,6 +310,7 @@ export namespace Rest {
 
     class OAuth2Proxy extends Proxy {
         static $gtype: GObject.GType<OAuth2Proxy>;
+        declare static readonly __signalSignatures: OAuth2Proxy.SignalSignatures;
 
         // Properties
 
@@ -416,6 +420,9 @@ export namespace Rest {
     }
 
     namespace OAuth2ProxyCall {
+        // Signal signatures
+        interface SignalSignatures extends ProxyCall.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ProxyCall.ConstructorProps {}
@@ -423,6 +430,7 @@ export namespace Rest {
 
     class OAuth2ProxyCall extends ProxyCall {
         static $gtype: GObject.GType<OAuth2ProxyCall>;
+        declare static readonly __signalSignatures: OAuth2ProxyCall.SignalSignatures;
 
         // Constructors
 
@@ -432,6 +440,9 @@ export namespace Rest {
     }
 
     namespace Proxy {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -457,6 +468,7 @@ export namespace Rest {
      */
     class Proxy extends GObject.Object {
         static $gtype: GObject.GType<Proxy>;
+        declare static readonly __signalSignatures: Proxy.SignalSignatures;
 
         // Properties
 
@@ -542,6 +554,9 @@ export namespace Rest {
     }
 
     namespace ProxyAuth {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -552,6 +567,7 @@ export namespace Rest {
      */
     class ProxyAuth extends GObject.Object {
         static $gtype: GObject.GType<ProxyAuth>;
+        declare static readonly __signalSignatures: ProxyAuth.SignalSignatures;
 
         // Constructors
 
@@ -582,6 +598,9 @@ export namespace Rest {
     }
 
     namespace ProxyCall {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -594,6 +613,7 @@ export namespace Rest {
      */
     class ProxyCall extends GObject.Object {
         static $gtype: GObject.GType<ProxyCall>;
+        declare static readonly __signalSignatures: ProxyCall.SignalSignatures;
 
         // Properties
 
@@ -759,6 +779,9 @@ export namespace Rest {
     }
 
     namespace XmlParser {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -769,6 +792,7 @@ export namespace Rest {
      */
     class XmlParser extends GObject.Object {
         static $gtype: GObject.GType<XmlParser>;
+        declare static readonly __signalSignatures: XmlParser.SignalSignatures;
 
         // Constructors
 

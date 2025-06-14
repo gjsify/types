@@ -65,6 +65,18 @@ export namespace FcitxG {
             (preedit: PreeditItem[], cursor: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'commit-string': CommitString;
+            connected: Connected;
+            'current-im': CurrentIm;
+            'delete-surrounding-text': DeleteSurroundingText;
+            'forward-key': ForwardKey;
+            'notify-focus-out': NotifyFocusOut;
+            'update-client-side-ui': UpdateClientSideUi;
+            'update-formatted-preedit': UpdateFormattedPreedit;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -77,6 +89,7 @@ export namespace FcitxG {
      */
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
+        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Properties
 
@@ -94,6 +107,9 @@ export namespace FcitxG {
 
         // Signals
 
+        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -336,6 +352,11 @@ export namespace FcitxG {
             (available: boolean): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'availability-changed': AvailabilityChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -346,6 +367,7 @@ export namespace FcitxG {
      */
     class Watcher extends GObject.Object {
         static $gtype: GObject.GType<Watcher>;
+        declare static readonly __signalSignatures: Watcher.SignalSignatures;
 
         // Constructors
 
@@ -357,6 +379,15 @@ export namespace FcitxG {
 
         // Signals
 
+        connect<K extends keyof Watcher.SignalSignatures>(signal: K, callback: Watcher.SignalSignatures[K]): number;
+        connect_after<K extends keyof Watcher.SignalSignatures>(
+            signal: K,
+            callback: Watcher.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Watcher.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Watcher.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

@@ -76,6 +76,11 @@ export namespace OsmGpsMap {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.DrawingArea.SignalSignatures {
+            changed: Changed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -134,6 +139,7 @@ export namespace OsmGpsMap {
 
     class Map extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Map>;
+        declare static readonly __signalSignatures: Map.SignalSignatures;
 
         // Properties
 
@@ -439,6 +445,9 @@ export namespace OsmGpsMap {
 
         // Signals
 
+        connect<K extends keyof Map.SignalSignatures>(signal: K, callback: Map.SignalSignatures[K]): number;
+        connect_after<K extends keyof Map.SignalSignatures>(signal: K, callback: Map.SignalSignatures[K]): number;
+        emit<K extends keyof Map.SignalSignatures>(signal: K, ...args: Parameters<Map.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1008,6 +1017,9 @@ export namespace OsmGpsMap {
     }
 
     namespace MapImage {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1025,6 +1037,7 @@ export namespace OsmGpsMap {
 
     class MapImage extends GObject.Object {
         static $gtype: GObject.GType<MapImage>;
+        declare static readonly __signalSignatures: MapImage.SignalSignatures;
 
         // Properties
 
@@ -1065,6 +1078,9 @@ export namespace OsmGpsMap {
     }
 
     namespace MapOsd {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, MapLayer.ConstructorProps {
@@ -1093,6 +1109,7 @@ export namespace OsmGpsMap {
 
     class MapOsd extends GObject.Object implements MapLayer {
         static $gtype: GObject.GType<MapOsd>;
+        declare static readonly __signalSignatures: MapOsd.SignalSignatures;
 
         // Properties
 
@@ -1656,6 +1673,9 @@ export namespace OsmGpsMap {
     }
 
     namespace MapPolygon {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1668,6 +1688,7 @@ export namespace OsmGpsMap {
 
     class MapPolygon extends GObject.Object {
         static $gtype: GObject.GType<MapPolygon>;
+        declare static readonly __signalSignatures: MapPolygon.SignalSignatures;
 
         // Properties
 
@@ -1708,6 +1729,14 @@ export namespace OsmGpsMap {
             (object: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'point-added': PointAdded;
+            'point-changed': PointChanged;
+            'point-inserted': PointInserted;
+            'point-removed': PointRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1723,6 +1752,7 @@ export namespace OsmGpsMap {
 
     class MapTrack extends GObject.Object {
         static $gtype: GObject.GType<MapTrack>;
+        declare static readonly __signalSignatures: MapTrack.SignalSignatures;
 
         // Properties
 
@@ -1750,6 +1780,15 @@ export namespace OsmGpsMap {
 
         // Signals
 
+        connect<K extends keyof MapTrack.SignalSignatures>(signal: K, callback: MapTrack.SignalSignatures[K]): number;
+        connect_after<K extends keyof MapTrack.SignalSignatures>(
+            signal: K,
+            callback: MapTrack.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MapTrack.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MapTrack.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

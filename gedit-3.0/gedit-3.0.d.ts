@@ -292,6 +292,9 @@ export namespace Gedit {
         ERROR,
     }
     namespace App {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Application.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -302,6 +305,7 @@ export namespace Gedit {
 
     class App extends Gtk.Application implements Gio.ActionGroup, Gio.ActionMap {
         static $gtype: GObject.GType<App>;
+        declare static readonly __signalSignatures: App.SignalSignatures;
 
         // Constructors
 
@@ -806,6 +810,14 @@ export namespace Gedit {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GtkSource.Buffer.SignalSignatures {
+            load: Load;
+            loaded: Loaded;
+            save: Save;
+            saved: Saved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GtkSource.Buffer.ConstructorProps {
@@ -820,6 +832,7 @@ export namespace Gedit {
 
     class Document extends GtkSource.Buffer {
         static $gtype: GObject.GType<Document>;
+        declare static readonly __signalSignatures: Document.SignalSignatures;
 
         // Properties
 
@@ -866,6 +879,15 @@ export namespace Gedit {
 
         // Signals
 
+        connect<K extends keyof Document.SignalSignatures>(signal: K, callback: Document.SignalSignatures[K]): number;
+        connect_after<K extends keyof Document.SignalSignatures>(
+            signal: K,
+            callback: Document.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Document.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Document.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -948,6 +970,9 @@ export namespace Gedit {
     }
 
     namespace EncodingsComboBox {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.ComboBox.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -966,6 +991,7 @@ export namespace Gedit {
         implements Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, Gtk.CellLayout
     {
         static $gtype: GObject.GType<EncodingsComboBox>;
+        declare static readonly __signalSignatures: EncodingsComboBox.SignalSignatures;
 
         // Properties
 
@@ -5485,6 +5511,9 @@ export namespace Gedit {
     }
 
     namespace MenuExtension {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5494,6 +5523,7 @@ export namespace Gedit {
 
     class MenuExtension extends GObject.Object {
         static $gtype: GObject.GType<MenuExtension>;
+        declare static readonly __signalSignatures: MenuExtension.SignalSignatures;
 
         // Properties
 
@@ -5515,6 +5545,9 @@ export namespace Gedit {
     }
 
     namespace Message {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5526,6 +5559,7 @@ export namespace Gedit {
 
     class Message extends GObject.Object {
         static $gtype: GObject.GType<Message>;
+        declare static readonly __signalSignatures: Message.SignalSignatures;
 
         // Properties
 
@@ -5596,6 +5630,13 @@ export namespace Gedit {
             (object_path: string, method: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            dispatch: Dispatch;
+            registered: Registered;
+            unregistered: Unregistered;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5603,6 +5644,7 @@ export namespace Gedit {
 
     class MessageBus extends GObject.Object {
         static $gtype: GObject.GType<MessageBus>;
+        declare static readonly __signalSignatures: MessageBus.SignalSignatures;
 
         // Constructors
 
@@ -5614,6 +5656,14 @@ export namespace Gedit {
 
         // Signals
 
+        connect_after<K extends keyof MessageBus.SignalSignatures>(
+            signal: K,
+            callback: MessageBus.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MessageBus.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MessageBus.SignalSignatures[K]>
+        ): void;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
         connect_after(signal: 'dispatch', callback: (_source: this, message: Message) => void): number;
@@ -5769,6 +5819,9 @@ export namespace Gedit {
     }
 
     namespace Statusbar {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Statusbar.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5780,6 +5833,7 @@ export namespace Gedit {
 
     class Statusbar extends Gtk.Statusbar implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Statusbar>;
+        declare static readonly __signalSignatures: Statusbar.SignalSignatures;
 
         // Constructors
 
@@ -6248,6 +6302,11 @@ export namespace Gedit {
             (object: string[]): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {
+            'drop-uris': DropUris;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6267,6 +6326,7 @@ export namespace Gedit {
 
     class Tab extends Gtk.Box implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Tab>;
+        declare static readonly __signalSignatures: Tab.SignalSignatures;
 
         // Properties
 
@@ -6289,6 +6349,9 @@ export namespace Gedit {
 
         // Signals
 
+        connect<K extends keyof Tab.SignalSignatures>(signal: K, callback: Tab.SignalSignatures[K]): number;
+        connect_after<K extends keyof Tab.SignalSignatures>(signal: K, callback: Tab.SignalSignatures[K]): number;
+        emit<K extends keyof Tab.SignalSignatures>(signal: K, ...args: Parameters<Tab.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -6812,6 +6875,11 @@ export namespace Gedit {
             (uri_list: string[]): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GtkSource.View.SignalSignatures {
+            'drop-uris': DropUris;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6823,6 +6891,7 @@ export namespace Gedit {
 
     class View extends GtkSource.View implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<View>;
+        declare static readonly __signalSignatures: View.SignalSignatures;
 
         // Constructors
 
@@ -6837,6 +6906,9 @@ export namespace Gedit {
 
         // Signals
 
+        connect<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
+        connect_after<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
+        emit<K extends keyof View.SignalSignatures>(signal: K, ...args: Parameters<View.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -7313,6 +7385,15 @@ export namespace Gedit {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.ApplicationWindow.SignalSignatures {
+            'active-tab-changed': ActiveTabChanged;
+            'active-tab-state-changed': ActiveTabStateChanged;
+            'tab-added': TabAdded;
+            'tab-removed': TabRemoved;
+            'tabs-reordered': TabsReordered;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7330,6 +7411,7 @@ export namespace Gedit {
         implements Atk.ImplementorIface, Gio.ActionGroup, Gio.ActionMap, Gtk.Buildable
     {
         static $gtype: GObject.GType<Window>;
+        declare static readonly __signalSignatures: Window.SignalSignatures;
 
         // Properties
 
@@ -7348,6 +7430,9 @@ export namespace Gedit {
 
         // Signals
 
+        connect<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
+        connect_after<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
+        emit<K extends keyof Window.SignalSignatures>(signal: K, ...args: Parameters<Window.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

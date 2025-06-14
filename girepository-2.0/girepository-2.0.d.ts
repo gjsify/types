@@ -1702,6 +1702,9 @@ export namespace GIRepository {
         THROWS,
     }
     namespace Repository {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1724,6 +1727,7 @@ export namespace GIRepository {
      */
     class Repository extends GObject.Object {
         static $gtype: GObject.GType<Repository>;
+        declare static readonly __signalSignatures: Repository.SignalSignatures;
 
         // Constructors
 

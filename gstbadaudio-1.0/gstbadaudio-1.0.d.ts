@@ -81,6 +81,9 @@ export namespace GstBadAudio {
      */
     const NONSTREAM_AUDIO_DECODER_SRC_NAME: string;
     namespace NonstreamAudioDecoder {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Element.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Element.ConstructorProps {
@@ -225,6 +228,7 @@ export namespace GstBadAudio {
      */
     abstract class NonstreamAudioDecoder extends Gst.Element {
         static $gtype: GObject.GType<NonstreamAudioDecoder>;
+        declare static readonly __signalSignatures: NonstreamAudioDecoder.SignalSignatures;
 
         // Properties
 
@@ -392,6 +396,9 @@ export namespace GstBadAudio {
     }
 
     namespace PlanarAudioAdapter {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -404,6 +411,7 @@ export namespace GstBadAudio {
      */
     class PlanarAudioAdapter extends GObject.Object {
         static $gtype: GObject.GType<PlanarAudioAdapter>;
+        declare static readonly __signalSignatures: PlanarAudioAdapter.SignalSignatures;
 
         // Constructors
 

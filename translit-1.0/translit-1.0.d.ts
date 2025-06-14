@@ -33,6 +33,9 @@ export namespace Translit {
     function error_quark(): GLib.Quark;
     function implement_transliterator(backend: string, type: GObject.GType): void;
     namespace Transliterator {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -42,6 +45,7 @@ export namespace Translit {
 
     class Transliterator extends GObject.Object {
         static $gtype: GObject.GType<Transliterator>;
+        declare static readonly __signalSignatures: Transliterator.SignalSignatures;
 
         // Properties
 

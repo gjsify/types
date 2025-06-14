@@ -1113,6 +1113,9 @@ export namespace Gcr {
         IMPORTANT,
     }
     namespace AccessDescription {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1126,6 +1129,7 @@ export namespace Gcr {
      */
     class AccessDescription extends GObject.Object {
         static $gtype: GObject.GType<AccessDescription>;
+        declare static readonly __signalSignatures: AccessDescription.SignalSignatures;
 
         // Constructors
 
@@ -1154,6 +1158,9 @@ export namespace Gcr {
     }
 
     namespace CertificateChain {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1194,6 +1201,7 @@ export namespace Gcr {
      */
     class CertificateChain extends GObject.Object {
         static $gtype: GObject.GType<CertificateChain>;
+        declare static readonly __signalSignatures: CertificateChain.SignalSignatures;
 
         // Properties
 
@@ -1443,6 +1451,9 @@ export namespace Gcr {
     }
 
     namespace CertificateExtension {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1465,6 +1476,7 @@ export namespace Gcr {
      */
     class CertificateExtension extends GObject.Object {
         static $gtype: GObject.GType<CertificateExtension>;
+        declare static readonly __signalSignatures: CertificateExtension.SignalSignatures;
 
         // Properties
 
@@ -1512,6 +1524,9 @@ export namespace Gcr {
     }
 
     namespace CertificateExtensionAuthorityInfoAccess {
+        // Signal signatures
+        interface SignalSignatures extends CertificateExtension.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -1537,6 +1552,7 @@ export namespace Gcr {
         implements Gio.ListModel<A>
     {
         static $gtype: GObject.GType<CertificateExtensionAuthorityInfoAccess>;
+        declare static readonly __signalSignatures: CertificateExtensionAuthorityInfoAccess.SignalSignatures;
 
         // Properties
 
@@ -2103,6 +2119,9 @@ export namespace Gcr {
     }
 
     namespace CertificateExtensionAuthorityKeyIdentifier {
+        // Signal signatures
+        interface SignalSignatures extends CertificateExtension.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends CertificateExtension.ConstructorProps {}
@@ -2119,6 +2138,7 @@ export namespace Gcr {
      */
     class CertificateExtensionAuthorityKeyIdentifier extends CertificateExtension {
         static $gtype: GObject.GType<CertificateExtensionAuthorityKeyIdentifier>;
+        declare static readonly __signalSignatures: CertificateExtensionAuthorityKeyIdentifier.SignalSignatures;
 
         // Constructors
 
@@ -2147,6 +2167,9 @@ export namespace Gcr {
     }
 
     namespace CertificateExtensionBasicConstraints {
+        // Signal signatures
+        interface SignalSignatures extends CertificateExtension.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends CertificateExtension.ConstructorProps {}
@@ -2158,6 +2181,7 @@ export namespace Gcr {
      */
     class CertificateExtensionBasicConstraints extends CertificateExtension {
         static $gtype: GObject.GType<CertificateExtensionBasicConstraints>;
+        declare static readonly __signalSignatures: CertificateExtensionBasicConstraints.SignalSignatures;
 
         // Constructors
 
@@ -2187,6 +2211,9 @@ export namespace Gcr {
     }
 
     namespace CertificateExtensionCertificatePolicies {
+        // Signal signatures
+        interface SignalSignatures extends CertificateExtension.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -2208,6 +2235,7 @@ export namespace Gcr {
         implements Gio.ListModel<A>
     {
         static $gtype: GObject.GType<CertificateExtensionCertificatePolicies>;
+        declare static readonly __signalSignatures: CertificateExtensionCertificatePolicies.SignalSignatures;
 
         // Properties
 
@@ -2772,6 +2800,9 @@ export namespace Gcr {
     }
 
     namespace CertificateExtensionCrlDistributionPoints {
+        // Signal signatures
+        interface SignalSignatures extends CertificateExtension.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -2793,6 +2824,7 @@ export namespace Gcr {
         implements Gio.ListModel<A>
     {
         static $gtype: GObject.GType<CertificateExtensionCrlDistributionPoints>;
+        declare static readonly __signalSignatures: CertificateExtensionCrlDistributionPoints.SignalSignatures;
 
         // Properties
 
@@ -3359,6 +3391,9 @@ export namespace Gcr {
     }
 
     namespace CertificateExtensionExtendedKeyUsage {
+        // Signal signatures
+        interface SignalSignatures extends CertificateExtension.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends CertificateExtension.ConstructorProps {}
@@ -3373,6 +3408,7 @@ export namespace Gcr {
      */
     class CertificateExtensionExtendedKeyUsage extends CertificateExtension {
         static $gtype: GObject.GType<CertificateExtensionExtendedKeyUsage>;
+        declare static readonly __signalSignatures: CertificateExtensionExtendedKeyUsage.SignalSignatures;
 
         // Constructors
 
@@ -3395,6 +3431,9 @@ export namespace Gcr {
     }
 
     namespace CertificateExtensionKeyUsage {
+        // Signal signatures
+        interface SignalSignatures extends CertificateExtension.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends CertificateExtension.ConstructorProps {}
@@ -3409,6 +3448,7 @@ export namespace Gcr {
      */
     class CertificateExtensionKeyUsage extends CertificateExtension {
         static $gtype: GObject.GType<CertificateExtensionKeyUsage>;
+        declare static readonly __signalSignatures: CertificateExtensionKeyUsage.SignalSignatures;
 
         // Constructors
 
@@ -3430,6 +3470,9 @@ export namespace Gcr {
     }
 
     namespace CertificateExtensionList {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -3448,6 +3491,7 @@ export namespace Gcr {
         implements Gio.ListModel<A>
     {
         static $gtype: GObject.GType<CertificateExtensionList>;
+        declare static readonly __signalSignatures: CertificateExtensionList.SignalSignatures;
 
         // Properties
 
@@ -4014,6 +4058,9 @@ export namespace Gcr {
     }
 
     namespace CertificateExtensionSubjectAltName {
+        // Signal signatures
+        interface SignalSignatures extends CertificateExtension.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -4034,6 +4081,7 @@ export namespace Gcr {
         implements Gio.ListModel<A>
     {
         static $gtype: GObject.GType<CertificateExtensionSubjectAltName>;
+        declare static readonly __signalSignatures: CertificateExtensionSubjectAltName.SignalSignatures;
 
         // Constructors
 
@@ -4587,6 +4635,9 @@ export namespace Gcr {
     }
 
     namespace CertificateExtensionSubjectKeyIdentifier {
+        // Signal signatures
+        interface SignalSignatures extends CertificateExtension.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends CertificateExtension.ConstructorProps {}
@@ -4597,6 +4648,7 @@ export namespace Gcr {
      */
     class CertificateExtensionSubjectKeyIdentifier extends CertificateExtension {
         static $gtype: GObject.GType<CertificateExtensionSubjectKeyIdentifier>;
+        declare static readonly __signalSignatures: CertificateExtensionSubjectKeyIdentifier.SignalSignatures;
 
         // Constructors
 
@@ -4614,6 +4666,9 @@ export namespace Gcr {
     }
 
     namespace CertificateField {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4625,6 +4680,7 @@ export namespace Gcr {
 
     class CertificateField extends GObject.Object {
         static $gtype: GObject.GType<CertificateField>;
+        declare static readonly __signalSignatures: CertificateField.SignalSignatures;
 
         // Properties
 
@@ -4666,6 +4722,9 @@ export namespace Gcr {
     }
 
     namespace CertificatePolicy {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -4687,6 +4746,7 @@ export namespace Gcr {
         implements Gio.ListModel<A>
     {
         static $gtype: GObject.GType<CertificatePolicy>;
+        declare static readonly __signalSignatures: CertificatePolicy.SignalSignatures;
 
         // Constructors
 
@@ -5244,6 +5304,9 @@ export namespace Gcr {
     }
 
     namespace CertificatePolicyQualifier {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5257,6 +5320,7 @@ export namespace Gcr {
      */
     class CertificatePolicyQualifier extends GObject.Object {
         static $gtype: GObject.GType<CertificatePolicyQualifier>;
+        declare static readonly __signalSignatures: CertificatePolicyQualifier.SignalSignatures;
 
         // Constructors
 
@@ -5279,6 +5343,9 @@ export namespace Gcr {
     }
 
     namespace CertificateRequest {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5298,6 +5365,7 @@ export namespace Gcr {
      */
     class CertificateRequest extends GObject.Object {
         static $gtype: GObject.GType<CertificateRequest>;
+        declare static readonly __signalSignatures: CertificateRequest.SignalSignatures;
 
         // Properties
 
@@ -5428,6 +5496,9 @@ export namespace Gcr {
     }
 
     namespace CertificateSection {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5438,6 +5509,7 @@ export namespace Gcr {
 
     class CertificateSection extends GObject.Object {
         static $gtype: GObject.GType<CertificateSection>;
+        declare static readonly __signalSignatures: CertificateSection.SignalSignatures;
 
         // Properties
 
@@ -5470,6 +5542,9 @@ export namespace Gcr {
     }
 
     namespace DistributionPoint {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5486,6 +5561,7 @@ export namespace Gcr {
      */
     class DistributionPoint extends GObject.Object {
         static $gtype: GObject.GType<DistributionPoint>;
+        declare static readonly __signalSignatures: DistributionPoint.SignalSignatures;
 
         // Constructors
 
@@ -5514,6 +5590,9 @@ export namespace Gcr {
     }
 
     namespace GeneralName {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5525,6 +5604,7 @@ export namespace Gcr {
      */
     class GeneralName extends GObject.Object {
         static $gtype: GObject.GType<GeneralName>;
+        declare static readonly __signalSignatures: GeneralName.SignalSignatures;
 
         // Constructors
 
@@ -5549,6 +5629,9 @@ export namespace Gcr {
     }
 
     namespace GeneralNames {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -5561,6 +5644,7 @@ export namespace Gcr {
      */
     class GeneralNames<A extends GObject.Object = GObject.Object> extends GObject.Object implements Gio.ListModel<A> {
         static $gtype: GObject.GType<GeneralNames>;
+        declare static readonly __signalSignatures: GeneralNames.SignalSignatures;
 
         // Constructors
 
@@ -6127,6 +6211,12 @@ export namespace Gcr {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            authenticate: Authenticate;
+            parsed: Parsed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6157,6 +6247,7 @@ export namespace Gcr {
      */
     class Parser extends GObject.Object {
         static $gtype: GObject.GType<Parser>;
+        declare static readonly __signalSignatures: Parser.SignalSignatures;
 
         // Properties
 
@@ -6201,6 +6292,9 @@ export namespace Gcr {
 
         // Signals
 
+        connect<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
+        connect_after<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
+        emit<K extends keyof Parser.SignalSignatures>(signal: K, ...args: Parameters<Parser.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -6379,6 +6473,9 @@ export namespace Gcr {
     }
 
     namespace Pkcs11Certificate {
+        // Signal signatures
+        interface SignalSignatures extends Gck.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gck.Object.ConstructorProps, Certificate.ConstructorProps {
@@ -6398,6 +6495,7 @@ export namespace Gcr {
      */
     class Pkcs11Certificate extends Gck.Object implements Certificate {
         static $gtype: GObject.GType<Pkcs11Certificate>;
+        declare static readonly __signalSignatures: Pkcs11Certificate.SignalSignatures;
 
         // Properties
 
@@ -7168,6 +7266,9 @@ export namespace Gcr {
     }
 
     namespace SecretExchange {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7201,6 +7302,7 @@ export namespace Gcr {
      */
     class SecretExchange extends GObject.Object {
         static $gtype: GObject.GType<SecretExchange>;
+        declare static readonly __signalSignatures: SecretExchange.SignalSignatures;
 
         // Properties
 
@@ -7281,6 +7383,9 @@ export namespace Gcr {
     }
 
     namespace SimpleCertificate {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Certificate.ConstructorProps {}
@@ -7295,6 +7400,7 @@ export namespace Gcr {
      */
     class SimpleCertificate extends GObject.Object implements Certificate {
         static $gtype: GObject.GType<SimpleCertificate>;
+        declare static readonly __signalSignatures: SimpleCertificate.SignalSignatures;
 
         // Constructors
 
@@ -7969,6 +8075,9 @@ export namespace Gcr {
     }
 
     namespace SshAskpass {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -7982,6 +8091,7 @@ export namespace Gcr {
      */
     class SshAskpass extends GObject.Object {
         static $gtype: GObject.GType<SshAskpass>;
+        declare static readonly __signalSignatures: SshAskpass.SignalSignatures;
 
         // Properties
 
@@ -8017,6 +8127,9 @@ export namespace Gcr {
     }
 
     namespace SystemPrompt {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -8048,6 +8161,7 @@ export namespace Gcr {
      */
     class SystemPrompt extends GObject.Object implements Prompt, Gio.AsyncInitable<SystemPrompt>, Gio.Initable {
         static $gtype: GObject.GType<SystemPrompt>;
+        declare static readonly __signalSignatures: SystemPrompt.SignalSignatures;
 
         // Properties
 
@@ -9501,6 +9615,11 @@ export namespace Gcr {
             (): Prompt;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'new-prompt': NewPrompt;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9524,6 +9643,7 @@ export namespace Gcr {
      */
     class SystemPrompter extends GObject.Object {
         static $gtype: GObject.GType<SystemPrompter>;
+        declare static readonly __signalSignatures: SystemPrompter.SignalSignatures;
 
         // Properties
 
@@ -9552,6 +9672,18 @@ export namespace Gcr {
 
         // Signals
 
+        connect<K extends keyof SystemPrompter.SignalSignatures>(
+            signal: K,
+            callback: SystemPrompter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SystemPrompter.SignalSignatures>(
+            signal: K,
+            callback: SystemPrompter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SystemPrompter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SystemPrompter.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

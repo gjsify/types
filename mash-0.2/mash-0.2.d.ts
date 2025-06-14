@@ -104,6 +104,9 @@ export namespace Mash {
         NEGATE_Z,
     }
     namespace Data {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -114,6 +117,7 @@ export namespace Mash {
      */
     class Data extends GObject.Object {
         static $gtype: GObject.GType<Data>;
+        declare static readonly __signalSignatures: Data.SignalSignatures;
 
         // Constructors
 
@@ -162,6 +166,9 @@ export namespace Mash {
     }
 
     namespace DataLoader {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -172,6 +179,7 @@ export namespace Mash {
      */
     abstract class DataLoader extends GObject.Object {
         static $gtype: GObject.GType<DataLoader>;
+        declare static readonly __signalSignatures: DataLoader.SignalSignatures;
 
         // Constructors
 
@@ -205,6 +213,9 @@ export namespace Mash {
     }
 
     namespace DirectionalLight {
+        // Signal signatures
+        interface SignalSignatures extends Light.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -223,6 +234,7 @@ export namespace Mash {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
         static $gtype: GObject.GType<DirectionalLight>;
+        declare static readonly __signalSignatures: DirectionalLight.SignalSignatures;
 
         // Constructors
 
@@ -675,6 +687,9 @@ export namespace Mash {
     }
 
     namespace Light {
+        // Signal signatures
+        interface SignalSignatures extends Clutter.Actor.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -697,6 +712,7 @@ export namespace Mash {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
         static $gtype: GObject.GType<Light>;
+        declare static readonly __signalSignatures: Light.SignalSignatures;
 
         // Properties
 
@@ -1911,6 +1927,9 @@ export namespace Mash {
     }
 
     namespace LightSet {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1921,6 +1940,7 @@ export namespace Mash {
      */
     class LightSet extends GObject.Object {
         static $gtype: GObject.GType<LightSet>;
+        declare static readonly __signalSignatures: LightSet.SignalSignatures;
 
         // Constructors
 
@@ -1947,6 +1967,9 @@ export namespace Mash {
     }
 
     namespace Model {
+        // Signal signatures
+        interface SignalSignatures extends Clutter.Actor.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1971,6 +1994,7 @@ export namespace Mash {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
         static $gtype: GObject.GType<Model>;
+        declare static readonly __signalSignatures: Model.SignalSignatures;
 
         // Properties
 
@@ -2931,6 +2955,9 @@ export namespace Mash {
     }
 
     namespace PlyLoader {
+        // Signal signatures
+        interface SignalSignatures extends Data.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Data.ConstructorProps {}
@@ -2938,6 +2965,7 @@ export namespace Mash {
 
     class PlyLoader extends Data {
         static $gtype: GObject.GType<PlyLoader>;
+        declare static readonly __signalSignatures: PlyLoader.SignalSignatures;
 
         // Constructors
 
@@ -2947,6 +2975,9 @@ export namespace Mash {
     }
 
     namespace PointLight {
+        // Signal signatures
+        interface SignalSignatures extends Light.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2972,6 +3003,7 @@ export namespace Mash {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
         static $gtype: GObject.GType<PointLight>;
+        declare static readonly __signalSignatures: PointLight.SignalSignatures;
 
         // Properties
 
@@ -3468,6 +3500,9 @@ export namespace Mash {
     }
 
     namespace SpotLight {
+        // Signal signatures
+        interface SignalSignatures extends PointLight.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3491,6 +3526,7 @@ export namespace Mash {
         implements Atk.ImplementorIface, Clutter.Animatable, Clutter.Container, Clutter.Scriptable
     {
         static $gtype: GObject.GType<SpotLight>;
+        declare static readonly __signalSignatures: SpotLight.SignalSignatures;
 
         // Properties
 

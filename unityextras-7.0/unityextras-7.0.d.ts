@@ -37,6 +37,11 @@ export namespace UnityExtras {
             (uri: string, state: Unity.MusicPreviewTrackState, progress: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            progress: Progress;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -44,6 +49,7 @@ export namespace UnityExtras {
 
     class PreviewPlayer extends GObject.Object {
         static $gtype: GObject.GType<PreviewPlayer>;
+        declare static readonly __signalSignatures: PreviewPlayer.SignalSignatures;
 
         // Constructors
 
@@ -55,6 +61,18 @@ export namespace UnityExtras {
 
         // Signals
 
+        connect<K extends keyof PreviewPlayer.SignalSignatures>(
+            signal: K,
+            callback: PreviewPlayer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof PreviewPlayer.SignalSignatures>(
+            signal: K,
+            callback: PreviewPlayer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof PreviewPlayer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<PreviewPlayer.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

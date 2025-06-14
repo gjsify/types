@@ -93,6 +93,14 @@ export namespace PanelApplet {
             (direction: Gtk.DirectionType): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.EventBox.SignalSignatures {
+            'change-background': ChangeBackground;
+            'change-orient': ChangeOrient;
+            'change-size': ChangeSize;
+            'move-focus-out-of-applet': MoveFocusOutOfApplet;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -115,6 +123,7 @@ export namespace PanelApplet {
 
     class Applet extends Gtk.EventBox implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Applet>;
+        declare static readonly __signalSignatures: Applet.SignalSignatures;
 
         // Properties
 
@@ -202,6 +211,9 @@ export namespace PanelApplet {
 
         // Signals
 
+        connect<K extends keyof Applet.SignalSignatures>(signal: K, callback: Applet.SignalSignatures[K]): number;
+        connect_after<K extends keyof Applet.SignalSignatures>(signal: K, callback: Applet.SignalSignatures[K]): number;
+        emit<K extends keyof Applet.SignalSignatures>(signal: K, ...args: Parameters<Applet.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

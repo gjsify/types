@@ -27,6 +27,9 @@ export namespace Vgda {
      */
 
     namespace GProvider {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Vda.Connection.ConstructorProps {}
@@ -34,6 +37,7 @@ export namespace Vgda {
 
     class GProvider extends GObject.Object implements Vda.Connection {
         static $gtype: GObject.GType<GProvider>;
+        declare static readonly __signalSignatures: GProvider.SignalSignatures;
 
         // Constructors
 

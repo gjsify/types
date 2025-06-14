@@ -216,6 +216,9 @@ export namespace MediaArt {
         FORCE,
     }
     namespace Process {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {}
@@ -226,6 +229,7 @@ export namespace MediaArt {
      */
     class Process extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Process>;
+        declare static readonly __signalSignatures: Process.SignalSignatures;
 
         // Constructors
 

@@ -555,6 +555,11 @@ export namespace GooCanvas {
             (item: CanvasItem, model: CanvasItemModel): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Container.SignalSignatures {
+            'item-created': ItemCreated;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -690,6 +695,7 @@ export namespace GooCanvas {
      */
     class Canvas extends Gtk.Container implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<Canvas>;
+        declare static readonly __signalSignatures: Canvas.SignalSignatures;
 
         // Properties
 
@@ -799,6 +805,9 @@ export namespace GooCanvas {
 
         // Signals
 
+        connect<K extends keyof Canvas.SignalSignatures>(signal: K, callback: Canvas.SignalSignatures[K]): number;
+        connect_after<K extends keyof Canvas.SignalSignatures>(signal: K, callback: Canvas.SignalSignatures[K]): number;
+        emit<K extends keyof Canvas.SignalSignatures>(signal: K, ...args: Parameters<Canvas.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1804,6 +1813,9 @@ export namespace GooCanvas {
     }
 
     namespace CanvasAccessibleFactory {
+        // Signal signatures
+        interface SignalSignatures extends Atk.ObjectFactory.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Atk.ObjectFactory.ConstructorProps {}
@@ -1811,6 +1823,7 @@ export namespace GooCanvas {
 
     class CanvasAccessibleFactory extends Atk.ObjectFactory {
         static $gtype: GObject.GType<CanvasAccessibleFactory>;
+        declare static readonly __signalSignatures: CanvasAccessibleFactory.SignalSignatures;
 
         // Constructors
 
@@ -1820,6 +1833,9 @@ export namespace GooCanvas {
     }
 
     namespace CanvasEllipse {
+        // Signal signatures
+        interface SignalSignatures extends CanvasItemSimple.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends CanvasItemSimple.ConstructorProps, CanvasItem.ConstructorProps {
@@ -1859,6 +1875,7 @@ export namespace GooCanvas {
      */
     class CanvasEllipse extends CanvasItemSimple implements CanvasItem {
         static $gtype: GObject.GType<CanvasEllipse>;
+        declare static readonly __signalSignatures: CanvasEllipse.SignalSignatures;
 
         // Properties
 
@@ -3006,6 +3023,9 @@ export namespace GooCanvas {
     }
 
     namespace CanvasEllipseModel {
+        // Signal signatures
+        interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends CanvasItemModelSimple.ConstructorProps, CanvasItemModel.ConstructorProps {
@@ -3049,6 +3069,7 @@ export namespace GooCanvas {
      */
     class CanvasEllipseModel extends CanvasItemModelSimple implements CanvasItemModel {
         static $gtype: GObject.GType<CanvasEllipseModel>;
+        declare static readonly __signalSignatures: CanvasEllipseModel.SignalSignatures;
 
         // Properties
 
@@ -3832,6 +3853,9 @@ export namespace GooCanvas {
     }
 
     namespace CanvasGrid {
+        // Signal signatures
+        interface SignalSignatures extends CanvasItemSimple.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends CanvasItemSimple.ConstructorProps, CanvasItem.ConstructorProps {
@@ -3933,6 +3957,7 @@ export namespace GooCanvas {
      */
     class CanvasGrid extends CanvasItemSimple implements CanvasItem {
         static $gtype: GObject.GType<CanvasGrid>;
+        declare static readonly __signalSignatures: CanvasGrid.SignalSignatures;
 
         // Properties
 
@@ -5169,6 +5194,9 @@ export namespace GooCanvas {
     }
 
     namespace CanvasGridModel {
+        // Signal signatures
+        interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends CanvasItemModelSimple.ConstructorProps, CanvasItemModel.ConstructorProps {
@@ -5276,6 +5304,7 @@ export namespace GooCanvas {
      */
     class CanvasGridModel extends CanvasItemModelSimple implements CanvasItemModel {
         static $gtype: GObject.GType<CanvasGridModel>;
+        declare static readonly __signalSignatures: CanvasGridModel.SignalSignatures;
 
         // Properties
 
@@ -6130,6 +6159,9 @@ export namespace GooCanvas {
     }
 
     namespace CanvasGroup {
+        // Signal signatures
+        interface SignalSignatures extends CanvasItemSimple.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends CanvasItemSimple.ConstructorProps, CanvasItem.ConstructorProps {
@@ -6166,6 +6198,7 @@ export namespace GooCanvas {
      */
     class CanvasGroup extends CanvasItemSimple implements CanvasItem {
         static $gtype: GObject.GType<CanvasGroup>;
+        declare static readonly __signalSignatures: CanvasGroup.SignalSignatures;
 
         // Properties
 
@@ -7297,6 +7330,9 @@ export namespace GooCanvas {
     }
 
     namespace CanvasGroupModel {
+        // Signal signatures
+        interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends CanvasItemModelSimple.ConstructorProps, CanvasItemModel.ConstructorProps {
@@ -7334,6 +7370,7 @@ export namespace GooCanvas {
      */
     class CanvasGroupModel extends CanvasItemModelSimple implements CanvasItemModel {
         static $gtype: GObject.GType<CanvasGroupModel>;
+        declare static readonly __signalSignatures: CanvasGroupModel.SignalSignatures;
 
         // Properties
 
@@ -8101,6 +8138,9 @@ export namespace GooCanvas {
     }
 
     namespace CanvasImage {
+        // Signal signatures
+        interface SignalSignatures extends CanvasItemSimple.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends CanvasItemSimple.ConstructorProps, CanvasItem.ConstructorProps {
@@ -8138,6 +8178,7 @@ export namespace GooCanvas {
      */
     class CanvasImage extends CanvasItemSimple implements CanvasItem {
         static $gtype: GObject.GType<CanvasImage>;
+        declare static readonly __signalSignatures: CanvasImage.SignalSignatures;
 
         // Properties
 
@@ -9277,6 +9318,9 @@ export namespace GooCanvas {
     }
 
     namespace CanvasImageModel {
+        // Signal signatures
+        interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends CanvasItemModelSimple.ConstructorProps, CanvasItemModel.ConstructorProps {
@@ -9320,6 +9364,7 @@ export namespace GooCanvas {
      */
     class CanvasImageModel extends CanvasItemModelSimple implements CanvasItemModel {
         static $gtype: GObject.GType<CanvasImageModel>;
+        declare static readonly __signalSignatures: CanvasImageModel.SignalSignatures;
 
         // Properties
 
@@ -10095,6 +10140,9 @@ export namespace GooCanvas {
     }
 
     namespace CanvasItemAccessibleFactory {
+        // Signal signatures
+        interface SignalSignatures extends Atk.ObjectFactory.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Atk.ObjectFactory.ConstructorProps {}
@@ -10102,6 +10150,7 @@ export namespace GooCanvas {
 
     class CanvasItemAccessibleFactory extends Atk.ObjectFactory {
         static $gtype: GObject.GType<CanvasItemAccessibleFactory>;
+        declare static readonly __signalSignatures: CanvasItemAccessibleFactory.SignalSignatures;
 
         // Constructors
 
@@ -10111,6 +10160,9 @@ export namespace GooCanvas {
     }
 
     namespace CanvasItemModelSimple {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, CanvasItemModel.ConstructorProps {
@@ -10179,6 +10231,7 @@ export namespace GooCanvas {
      */
     class CanvasItemModelSimple extends GObject.Object implements CanvasItemModel {
         static $gtype: GObject.GType<CanvasItemModelSimple>;
+        declare static readonly __signalSignatures: CanvasItemModelSimple.SignalSignatures;
 
         // Properties
 
@@ -11025,6 +11078,9 @@ export namespace GooCanvas {
     }
 
     namespace CanvasItemSimple {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, CanvasItem.ConstructorProps {
@@ -11094,6 +11150,7 @@ export namespace GooCanvas {
      */
     class CanvasItemSimple extends GObject.Object implements CanvasItem {
         static $gtype: GObject.GType<CanvasItemSimple>;
+        declare static readonly __signalSignatures: CanvasItemSimple.SignalSignatures;
 
         // Properties
 
@@ -12408,6 +12465,9 @@ export namespace GooCanvas {
     }
 
     namespace CanvasPath {
+        // Signal signatures
+        interface SignalSignatures extends CanvasItemSimple.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends CanvasItemSimple.ConstructorProps, CanvasItem.ConstructorProps {
@@ -12441,6 +12501,7 @@ export namespace GooCanvas {
      */
     class CanvasPath extends CanvasItemSimple implements CanvasItem {
         static $gtype: GObject.GType<CanvasPath>;
+        declare static readonly __signalSignatures: CanvasPath.SignalSignatures;
 
         // Properties
 
@@ -13577,6 +13638,9 @@ export namespace GooCanvas {
     }
 
     namespace CanvasPathModel {
+        // Signal signatures
+        interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends CanvasItemModelSimple.ConstructorProps, CanvasItemModel.ConstructorProps {
@@ -13614,6 +13678,7 @@ export namespace GooCanvas {
      */
     class CanvasPathModel extends CanvasItemModelSimple implements CanvasItemModel {
         static $gtype: GObject.GType<CanvasPathModel>;
+        declare static readonly __signalSignatures: CanvasPathModel.SignalSignatures;
 
         // Properties
 
@@ -14382,6 +14447,9 @@ export namespace GooCanvas {
     }
 
     namespace CanvasPolyline {
+        // Signal signatures
+        interface SignalSignatures extends CanvasItemSimple.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends CanvasItemSimple.ConstructorProps, CanvasItem.ConstructorProps {
@@ -14424,6 +14492,7 @@ export namespace GooCanvas {
      */
     class CanvasPolyline extends CanvasItemSimple implements CanvasItem {
         static $gtype: GObject.GType<CanvasPolyline>;
+        declare static readonly __signalSignatures: CanvasPolyline.SignalSignatures;
 
         // Properties
 
@@ -15580,6 +15649,9 @@ export namespace GooCanvas {
     }
 
     namespace CanvasPolylineModel {
+        // Signal signatures
+        interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends CanvasItemModelSimple.ConstructorProps, CanvasItemModel.ConstructorProps {
@@ -15626,6 +15698,7 @@ export namespace GooCanvas {
      */
     class CanvasPolylineModel extends CanvasItemModelSimple implements CanvasItemModel {
         static $gtype: GObject.GType<CanvasPolylineModel>;
+        declare static readonly __signalSignatures: CanvasPolylineModel.SignalSignatures;
 
         // Properties
 
@@ -16419,6 +16492,9 @@ export namespace GooCanvas {
     }
 
     namespace CanvasRect {
+        // Signal signatures
+        interface SignalSignatures extends CanvasItemSimple.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends CanvasItemSimple.ConstructorProps, CanvasItem.ConstructorProps {
@@ -16466,6 +16542,7 @@ export namespace GooCanvas {
      */
     class CanvasRect extends CanvasItemSimple implements CanvasItem {
         static $gtype: GObject.GType<CanvasRect>;
+        declare static readonly __signalSignatures: CanvasRect.SignalSignatures;
 
         // Properties
 
@@ -17636,6 +17713,9 @@ export namespace GooCanvas {
     }
 
     namespace CanvasRectModel {
+        // Signal signatures
+        interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends CanvasItemModelSimple.ConstructorProps, CanvasItemModel.ConstructorProps {
@@ -17687,6 +17767,7 @@ export namespace GooCanvas {
      */
     class CanvasRectModel extends CanvasItemModelSimple implements CanvasItemModel {
         static $gtype: GObject.GType<CanvasRectModel>;
+        declare static readonly __signalSignatures: CanvasRectModel.SignalSignatures;
 
         // Properties
 
@@ -18494,6 +18575,9 @@ export namespace GooCanvas {
     }
 
     namespace CanvasStyle {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -18518,6 +18602,7 @@ export namespace GooCanvas {
      */
     class CanvasStyle extends GObject.Object {
         static $gtype: GObject.GType<CanvasStyle>;
+        declare static readonly __signalSignatures: CanvasStyle.SignalSignatures;
 
         // Fields
 
@@ -18589,6 +18674,9 @@ export namespace GooCanvas {
     }
 
     namespace CanvasTable {
+        // Signal signatures
+        interface SignalSignatures extends CanvasGroup.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends CanvasGroup.ConstructorProps, CanvasItem.ConstructorProps {
@@ -18640,6 +18728,7 @@ export namespace GooCanvas {
      */
     class CanvasTable extends CanvasGroup implements CanvasItem {
         static $gtype: GObject.GType<CanvasTable>;
+        declare static readonly __signalSignatures: CanvasTable.SignalSignatures;
 
         // Properties
 
@@ -19125,6 +19214,9 @@ export namespace GooCanvas {
     }
 
     namespace CanvasTableModel {
+        // Signal signatures
+        interface SignalSignatures extends CanvasGroupModel.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends CanvasGroupModel.ConstructorProps, CanvasItemModel.ConstructorProps {
@@ -19176,6 +19268,7 @@ export namespace GooCanvas {
      */
     class CanvasTableModel extends CanvasGroupModel implements CanvasItemModel {
         static $gtype: GObject.GType<CanvasTableModel>;
+        declare static readonly __signalSignatures: CanvasTableModel.SignalSignatures;
 
         // Properties
 
@@ -19665,6 +19758,9 @@ export namespace GooCanvas {
     }
 
     namespace CanvasText {
+        // Signal signatures
+        interface SignalSignatures extends CanvasItemSimple.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends CanvasItemSimple.ConstructorProps, CanvasItem.ConstructorProps {
@@ -19703,6 +19799,7 @@ export namespace GooCanvas {
      */
     class CanvasText extends CanvasItemSimple implements CanvasItem {
         static $gtype: GObject.GType<CanvasText>;
+        declare static readonly __signalSignatures: CanvasText.SignalSignatures;
 
         // Properties
 
@@ -20858,6 +20955,9 @@ export namespace GooCanvas {
     }
 
     namespace CanvasTextModel {
+        // Signal signatures
+        interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends CanvasItemModelSimple.ConstructorProps, CanvasItemModel.ConstructorProps {
@@ -20896,6 +20996,7 @@ export namespace GooCanvas {
      */
     class CanvasTextModel extends CanvasItemModelSimple implements CanvasItemModel {
         static $gtype: GObject.GType<CanvasTextModel>;
+        declare static readonly __signalSignatures: CanvasTextModel.SignalSignatures;
 
         // Properties
 
@@ -21677,6 +21778,9 @@ export namespace GooCanvas {
     }
 
     namespace CanvasWidget {
+        // Signal signatures
+        interface SignalSignatures extends CanvasItemSimple.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends CanvasItemSimple.ConstructorProps, CanvasItem.ConstructorProps {
@@ -21716,6 +21820,7 @@ export namespace GooCanvas {
      */
     class CanvasWidget extends CanvasItemSimple implements CanvasItem {
         static $gtype: GObject.GType<CanvasWidget>;
+        declare static readonly __signalSignatures: CanvasWidget.SignalSignatures;
 
         // Properties
 
@@ -22850,6 +22955,9 @@ export namespace GooCanvas {
     }
 
     namespace CanvasWidgetAccessibleFactory {
+        // Signal signatures
+        interface SignalSignatures extends Atk.ObjectFactory.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Atk.ObjectFactory.ConstructorProps {}
@@ -22857,6 +22965,7 @@ export namespace GooCanvas {
 
     class CanvasWidgetAccessibleFactory extends Atk.ObjectFactory {
         static $gtype: GObject.GType<CanvasWidgetAccessibleFactory>;
+        declare static readonly __signalSignatures: CanvasWidgetAccessibleFactory.SignalSignatures;
 
         // Constructors
 

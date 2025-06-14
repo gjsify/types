@@ -71,6 +71,9 @@ export namespace Libxfce4windowingui {
      */
     function check_version(required_major: number, required_minor: number, required_micro: number): string | null;
     namespace WindowActionMenu {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Menu.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -83,6 +86,7 @@ export namespace Libxfce4windowingui {
 
     class WindowActionMenu extends Gtk.Menu implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<WindowActionMenu>;
+        declare static readonly __signalSignatures: WindowActionMenu.SignalSignatures;
 
         // Properties
 

@@ -175,6 +175,19 @@ export namespace Hex {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'document-changed': DocumentChanged;
+            'file-loaded': FileLoaded;
+            'file-name-changed': FileNameChanged;
+            'file-read-started': FileReadStarted;
+            'file-save-started': FileSaveStarted;
+            'file-saved': FileSaved;
+            redo: Redo;
+            undo: Undo;
+            'undo-stack-forget': UndoStackForget;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -190,6 +203,7 @@ export namespace Hex {
      */
     class Document extends GObject.Object {
         static $gtype: GObject.GType<Document>;
+        declare static readonly __signalSignatures: Document.SignalSignatures;
 
         // Properties
 
@@ -210,6 +224,15 @@ export namespace Hex {
 
         // Signals
 
+        connect<K extends keyof Document.SignalSignatures>(signal: K, callback: Document.SignalSignatures[K]): number;
+        connect_after<K extends keyof Document.SignalSignatures>(
+            signal: K,
+            callback: Document.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Document.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Document.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -658,6 +681,16 @@ export namespace Hex {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures {
+            'copy-clipboard': CopyClipboard;
+            'cursor-moved': CursorMoved;
+            'cut-clipboard': CutClipboard;
+            'data-changed': DataChanged;
+            'draw-complete': DrawComplete;
+            'paste-clipboard': PasteClipboard;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -678,6 +711,7 @@ export namespace Hex {
      */
     class Widget extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Widget>;
+        declare static readonly __signalSignatures: Widget.SignalSignatures;
 
         // Properties
 
@@ -706,6 +740,9 @@ export namespace Hex {
 
         // Signals
 
+        connect<K extends keyof Widget.SignalSignatures>(signal: K, callback: Widget.SignalSignatures[K]): number;
+        connect_after<K extends keyof Widget.SignalSignatures>(signal: K, callback: Widget.SignalSignatures[K]): number;
+        emit<K extends keyof Widget.SignalSignatures>(signal: K, ...args: Parameters<Widget.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1642,6 +1679,9 @@ export namespace Hex {
     }
 
     namespace WidgetMark {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1661,6 +1701,7 @@ export namespace Hex {
      */
     class WidgetMark extends GObject.Object {
         static $gtype: GObject.GType<WidgetMark>;
+        declare static readonly __signalSignatures: WidgetMark.SignalSignatures;
 
         // Properties
 

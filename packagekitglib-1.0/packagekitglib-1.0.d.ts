@@ -2133,6 +2133,9 @@ export namespace PackageKitGlib {
         INTERACTIVE,
     }
     namespace Category {
+        // Signal signatures
+        interface SignalSignatures extends Source.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Source.ConstructorProps {
@@ -2148,6 +2151,7 @@ export namespace PackageKitGlib {
 
     class Category extends Source {
         static $gtype: GObject.GType<Category>;
+        declare static readonly __signalSignatures: Category.SignalSignatures;
 
         // Properties
 
@@ -2229,6 +2233,9 @@ export namespace PackageKitGlib {
     }
 
     namespace Client {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2245,6 +2252,7 @@ export namespace PackageKitGlib {
 
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
+        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Properties
 
@@ -3469,6 +3477,9 @@ export namespace PackageKitGlib {
     }
 
     namespace ClientHelper {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -3476,6 +3487,7 @@ export namespace PackageKitGlib {
 
     class ClientHelper extends GObject.Object {
         static $gtype: GObject.GType<ClientHelper>;
+        declare static readonly __signalSignatures: ClientHelper.SignalSignatures;
 
         // Constructors
 
@@ -3533,6 +3545,14 @@ export namespace PackageKitGlib {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'repo-list-changed': RepoListChanged;
+            'restart-schedule': RestartSchedule;
+            'transaction-list-changed': TransactionListChanged;
+            'updates-changed': UpdatesChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3565,6 +3585,7 @@ export namespace PackageKitGlib {
 
     class Control extends GObject.Object {
         static $gtype: GObject.GType<Control>;
+        declare static readonly __signalSignatures: Control.SignalSignatures;
 
         // Properties
 
@@ -3621,6 +3642,15 @@ export namespace PackageKitGlib {
 
         // Signals
 
+        connect<K extends keyof Control.SignalSignatures>(signal: K, callback: Control.SignalSignatures[K]): number;
+        connect_after<K extends keyof Control.SignalSignatures>(
+            signal: K,
+            callback: Control.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Control.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Control.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3996,6 +4026,9 @@ export namespace PackageKitGlib {
     }
 
     namespace Desktop {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4003,6 +4036,7 @@ export namespace PackageKitGlib {
 
     class Desktop extends GObject.Object {
         static $gtype: GObject.GType<Desktop>;
+        declare static readonly __signalSignatures: Desktop.SignalSignatures;
 
         // Constructors
 
@@ -4043,6 +4077,9 @@ export namespace PackageKitGlib {
     }
 
     namespace Details {
+        // Signal signatures
+        interface SignalSignatures extends Source.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Source.ConstructorProps {
@@ -4061,6 +4098,7 @@ export namespace PackageKitGlib {
 
     class Details extends Source {
         static $gtype: GObject.GType<Details>;
+        declare static readonly __signalSignatures: Details.SignalSignatures;
 
         // Properties
 
@@ -4139,6 +4177,9 @@ export namespace PackageKitGlib {
     }
 
     namespace DistroUpgrade {
+        // Signal signatures
+        interface SignalSignatures extends Source.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Source.ConstructorProps {
@@ -4150,6 +4191,7 @@ export namespace PackageKitGlib {
 
     class DistroUpgrade extends Source {
         static $gtype: GObject.GType<DistroUpgrade>;
+        declare static readonly __signalSignatures: DistroUpgrade.SignalSignatures;
 
         // Properties
 
@@ -4189,6 +4231,9 @@ export namespace PackageKitGlib {
     }
 
     namespace Error {
+        // Signal signatures
+        interface SignalSignatures extends Source.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Source.ConstructorProps {
@@ -4199,6 +4244,7 @@ export namespace PackageKitGlib {
 
     class Error extends Source {
         static $gtype: GObject.GType<Error>;
+        declare static readonly __signalSignatures: Error.SignalSignatures;
 
         // Properties
 
@@ -4230,6 +4276,9 @@ export namespace PackageKitGlib {
     }
 
     namespace EulaRequired {
+        // Signal signatures
+        interface SignalSignatures extends Source.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Source.ConstructorProps {
@@ -4246,6 +4295,7 @@ export namespace PackageKitGlib {
 
     class EulaRequired extends Source {
         static $gtype: GObject.GType<EulaRequired>;
+        declare static readonly __signalSignatures: EulaRequired.SignalSignatures;
 
         // Properties
 
@@ -4323,6 +4373,9 @@ export namespace PackageKitGlib {
     }
 
     namespace Files {
+        // Signal signatures
+        interface SignalSignatures extends Source.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Source.ConstructorProps {
@@ -4334,6 +4387,7 @@ export namespace PackageKitGlib {
 
     class Files extends Source {
         static $gtype: GObject.GType<Files>;
+        declare static readonly __signalSignatures: Files.SignalSignatures;
 
         // Properties
 
@@ -4367,6 +4421,9 @@ export namespace PackageKitGlib {
     }
 
     namespace ItemProgress {
+        // Signal signatures
+        interface SignalSignatures extends Source.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Source.ConstructorProps {
@@ -4379,6 +4436,7 @@ export namespace PackageKitGlib {
 
     class ItemProgress extends Source {
         static $gtype: GObject.GType<ItemProgress>;
+        declare static readonly __signalSignatures: ItemProgress.SignalSignatures;
 
         // Properties
 
@@ -4419,6 +4477,9 @@ export namespace PackageKitGlib {
     }
 
     namespace MediaChangeRequired {
+        // Signal signatures
+        interface SignalSignatures extends Source.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Source.ConstructorProps {
@@ -4433,6 +4494,7 @@ export namespace PackageKitGlib {
 
     class MediaChangeRequired extends Source {
         static $gtype: GObject.GType<MediaChangeRequired>;
+        declare static readonly __signalSignatures: MediaChangeRequired.SignalSignatures;
 
         // Properties
 
@@ -4463,6 +4525,11 @@ export namespace PackageKitGlib {
 
         interface Changed {
             (): void;
+        }
+
+        // Signal signatures
+        interface SignalSignatures extends Source.SignalSignatures {
+            changed: Changed;
         }
 
         // Constructor properties interface
@@ -4506,6 +4573,7 @@ export namespace PackageKitGlib {
 
     class Package extends Source {
         static $gtype: GObject.GType<Package>;
+        declare static readonly __signalSignatures: Package.SignalSignatures;
 
         // Properties
 
@@ -4592,6 +4660,15 @@ export namespace PackageKitGlib {
 
         // Signals
 
+        connect<K extends keyof Package.SignalSignatures>(signal: K, callback: Package.SignalSignatures[K]): number;
+        connect_after<K extends keyof Package.SignalSignatures>(
+            signal: K,
+            callback: Package.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Package.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Package.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -4779,6 +4856,9 @@ export namespace PackageKitGlib {
     }
 
     namespace PackageSack {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4786,6 +4866,7 @@ export namespace PackageKitGlib {
 
     class PackageSack extends GObject.Object {
         static $gtype: GObject.GType<PackageSack>;
+        declare static readonly __signalSignatures: PackageSack.SignalSignatures;
 
         // Constructors
 
@@ -4968,6 +5049,9 @@ export namespace PackageKitGlib {
     }
 
     namespace Progress {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5001,6 +5085,7 @@ export namespace PackageKitGlib {
 
     class Progress extends GObject.Object {
         static $gtype: GObject.GType<Progress>;
+        declare static readonly __signalSignatures: Progress.SignalSignatures;
 
         // Properties
 
@@ -5319,6 +5404,9 @@ export namespace PackageKitGlib {
     }
 
     namespace RepoDetail {
+        // Signal signatures
+        interface SignalSignatures extends Source.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Source.ConstructorProps {
@@ -5331,6 +5419,7 @@ export namespace PackageKitGlib {
 
     class RepoDetail extends Source {
         static $gtype: GObject.GType<RepoDetail>;
+        declare static readonly __signalSignatures: RepoDetail.SignalSignatures;
 
         // Properties
 
@@ -5371,6 +5460,9 @@ export namespace PackageKitGlib {
     }
 
     namespace RepoSignatureRequired {
+        // Signal signatures
+        interface SignalSignatures extends Source.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Source.ConstructorProps {
@@ -5394,6 +5486,7 @@ export namespace PackageKitGlib {
 
     class RepoSignatureRequired extends Source {
         static $gtype: GObject.GType<RepoSignatureRequired>;
+        declare static readonly __signalSignatures: RepoSignatureRequired.SignalSignatures;
 
         // Properties
 
@@ -5438,6 +5531,9 @@ export namespace PackageKitGlib {
     }
 
     namespace RequireRestart {
+        // Signal signatures
+        interface SignalSignatures extends Source.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Source.ConstructorProps {
@@ -5449,6 +5545,7 @@ export namespace PackageKitGlib {
 
     class RequireRestart extends Source {
         static $gtype: GObject.GType<RequireRestart>;
+        declare static readonly __signalSignatures: RequireRestart.SignalSignatures;
 
         // Properties
 
@@ -5469,6 +5566,9 @@ export namespace PackageKitGlib {
     }
 
     namespace Results {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5482,6 +5582,7 @@ export namespace PackageKitGlib {
 
     class Results extends GObject.Object {
         static $gtype: GObject.GType<Results>;
+        declare static readonly __signalSignatures: Results.SignalSignatures;
 
         // Properties
 
@@ -5705,6 +5806,9 @@ export namespace PackageKitGlib {
     }
 
     namespace Source {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5716,6 +5820,7 @@ export namespace PackageKitGlib {
 
     class Source extends GObject.Object {
         static $gtype: GObject.GType<Source>;
+        declare static readonly __signalSignatures: Source.SignalSignatures;
 
         // Properties
 
@@ -5736,6 +5841,9 @@ export namespace PackageKitGlib {
     }
 
     namespace Task {
+        // Signal signatures
+        interface SignalSignatures extends Client.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Client.ConstructorProps {
@@ -5753,6 +5861,7 @@ export namespace PackageKitGlib {
 
     class Task extends Client {
         static $gtype: GObject.GType<Task>;
+        declare static readonly __signalSignatures: Task.SignalSignatures;
 
         // Properties
 
@@ -6592,6 +6701,12 @@ export namespace PackageKitGlib {
             (tid: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            added: Added;
+            removed: Removed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6599,6 +6714,7 @@ export namespace PackageKitGlib {
 
     class TransactionList extends GObject.Object {
         static $gtype: GObject.GType<TransactionList>;
+        declare static readonly __signalSignatures: TransactionList.SignalSignatures;
 
         // Constructors
 
@@ -6610,6 +6726,18 @@ export namespace PackageKitGlib {
 
         // Signals
 
+        connect<K extends keyof TransactionList.SignalSignatures>(
+            signal: K,
+            callback: TransactionList.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TransactionList.SignalSignatures>(
+            signal: K,
+            callback: TransactionList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TransactionList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TransactionList.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -6635,6 +6763,9 @@ export namespace PackageKitGlib {
     }
 
     namespace TransactionPast {
+        // Signal signatures
+        interface SignalSignatures extends Source.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Source.ConstructorProps {
@@ -6651,6 +6782,7 @@ export namespace PackageKitGlib {
 
     class TransactionPast extends Source {
         static $gtype: GObject.GType<TransactionPast>;
+        declare static readonly __signalSignatures: TransactionPast.SignalSignatures;
 
         // Properties
 
@@ -6736,6 +6868,9 @@ export namespace PackageKitGlib {
     }
 
     namespace UpdateDetail {
+        // Signal signatures
+        interface SignalSignatures extends Source.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Source.ConstructorProps {
@@ -6761,6 +6896,7 @@ export namespace PackageKitGlib {
 
     class UpdateDetail extends Source {
         static $gtype: GObject.GType<UpdateDetail>;
+        declare static readonly __signalSignatures: UpdateDetail.SignalSignatures;
 
         // Properties
 

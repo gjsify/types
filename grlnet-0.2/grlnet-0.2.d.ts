@@ -74,6 +74,9 @@ export namespace GrlNet {
         CANCELLED,
     }
     namespace Wc {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -89,6 +92,7 @@ export namespace GrlNet {
 
     class Wc extends GObject.Object {
         static $gtype: GObject.GType<Wc>;
+        declare static readonly __signalSignatures: Wc.SignalSignatures;
 
         // Properties
 

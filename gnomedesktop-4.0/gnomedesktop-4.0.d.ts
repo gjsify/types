@@ -249,6 +249,9 @@ export namespace GnomeDesktop {
         (monitor: IdleMonitor, id: number): void;
     }
     namespace DesktopThumbnailFactory {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -256,6 +259,7 @@ export namespace GnomeDesktop {
 
     class DesktopThumbnailFactory extends GObject.Object {
         static $gtype: GObject.GType<DesktopThumbnailFactory>;
+        declare static readonly __signalSignatures: DesktopThumbnailFactory.SignalSignatures;
 
         // Constructors
 
@@ -478,6 +482,9 @@ export namespace GnomeDesktop {
     }
 
     namespace IdleMonitor {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {}
@@ -485,6 +492,7 @@ export namespace GnomeDesktop {
 
     class IdleMonitor extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<IdleMonitor>;
+        declare static readonly __signalSignatures: IdleMonitor.SignalSignatures;
 
         // Constructors
 
@@ -1035,6 +1043,9 @@ export namespace GnomeDesktop {
     }
 
     namespace PnpIds {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1042,6 +1053,7 @@ export namespace GnomeDesktop {
 
     class PnpIds extends GObject.Object {
         static $gtype: GObject.GType<PnpIds>;
+        declare static readonly __signalSignatures: PnpIds.SignalSignatures;
 
         // Constructors
 
@@ -1062,6 +1074,9 @@ export namespace GnomeDesktop {
     }
 
     namespace WallClock {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1076,6 +1091,7 @@ export namespace GnomeDesktop {
 
     class WallClock extends GObject.Object {
         static $gtype: GObject.GType<WallClock>;
+        declare static readonly __signalSignatures: WallClock.SignalSignatures;
 
         // Properties
 
@@ -1155,6 +1171,11 @@ export namespace GnomeDesktop {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'layouts-changed': LayoutsChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1162,6 +1183,7 @@ export namespace GnomeDesktop {
 
     class XkbInfo extends GObject.Object {
         static $gtype: GObject.GType<XkbInfo>;
+        declare static readonly __signalSignatures: XkbInfo.SignalSignatures;
 
         // Fields
 
@@ -1177,6 +1199,15 @@ export namespace GnomeDesktop {
 
         // Signals
 
+        connect<K extends keyof XkbInfo.SignalSignatures>(signal: K, callback: XkbInfo.SignalSignatures[K]): number;
+        connect_after<K extends keyof XkbInfo.SignalSignatures>(
+            signal: K,
+            callback: XkbInfo.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof XkbInfo.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<XkbInfo.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

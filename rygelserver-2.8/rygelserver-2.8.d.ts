@@ -142,6 +142,9 @@ export namespace RygelServer {
     }
 
     namespace AudioItem {
+        // Signal signatures
+        interface SignalSignatures extends MediaFileItem.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MediaFileItem.ConstructorProps {
@@ -158,6 +161,7 @@ export namespace RygelServer {
 
     class AudioItem extends MediaFileItem {
         static $gtype: GObject.GType<AudioItem>;
+        declare static readonly __signalSignatures: AudioItem.SignalSignatures;
 
         // Properties
 
@@ -203,6 +207,9 @@ export namespace RygelServer {
     }
 
     namespace ImageItem {
+        // Signal signatures
+        interface SignalSignatures extends MediaFileItem.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MediaFileItem.ConstructorProps, VisualItem.ConstructorProps {}
@@ -210,6 +217,7 @@ export namespace RygelServer {
 
     class ImageItem extends MediaFileItem implements VisualItem {
         static $gtype: GObject.GType<ImageItem>;
+        declare static readonly __signalSignatures: ImageItem.SignalSignatures;
 
         // Constructors
 
@@ -285,8 +293,14 @@ export namespace RygelServer {
         vfunc_add_additional_resources(server: HTTPServer): void;
     }
 
+    namespace LogicalExpression {
+        // Signal signatures
+        interface SignalSignatures extends SearchExpression.SignalSignatures {}
+    }
+
     class LogicalExpression extends SearchExpression {
         static $gtype: GObject.GType<LogicalExpression>;
+        declare static readonly __signalSignatures: LogicalExpression.SignalSignatures;
 
         // Constructors
 
@@ -296,6 +310,9 @@ export namespace RygelServer {
     }
 
     namespace MediaArtStore {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -303,6 +320,7 @@ export namespace RygelServer {
 
     class MediaArtStore extends GObject.Object {
         static $gtype: GObject.GType<MediaArtStore>;
+        declare static readonly __signalSignatures: MediaArtStore.SignalSignatures;
 
         // Constructors
 
@@ -322,6 +340,9 @@ export namespace RygelServer {
     }
 
     namespace MediaObjects {
+        // Signal signatures
+        interface SignalSignatures extends Gee.ArrayList.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gee.ArrayList.ConstructorProps {}
@@ -329,6 +350,7 @@ export namespace RygelServer {
 
     class MediaObjects extends Gee.ArrayList {
         static $gtype: GObject.GType<MediaObjects>;
+        declare static readonly __signalSignatures: MediaObjects.SignalSignatures;
 
         // Constructors
 
@@ -344,6 +366,9 @@ export namespace RygelServer {
     }
 
     namespace MusicItem {
+        // Signal signatures
+        interface SignalSignatures extends AudioItem.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends AudioItem.ConstructorProps {
@@ -358,6 +383,7 @@ export namespace RygelServer {
 
     class MusicItem extends AudioItem {
         static $gtype: GObject.GType<MusicItem>;
+        declare static readonly __signalSignatures: MusicItem.SignalSignatures;
 
         // Properties
 
@@ -394,6 +420,9 @@ export namespace RygelServer {
     }
 
     namespace PhotoItem {
+        // Signal signatures
+        interface SignalSignatures extends ImageItem.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ImageItem.ConstructorProps {}
@@ -401,6 +430,7 @@ export namespace RygelServer {
 
     class PhotoItem extends ImageItem {
         static $gtype: GObject.GType<PhotoItem>;
+        declare static readonly __signalSignatures: PhotoItem.SignalSignatures;
 
         // Constructors
 
@@ -411,8 +441,14 @@ export namespace RygelServer {
         static ['new'](id: string, parent: MediaContainer, title: string, upnp_class: string): PhotoItem;
     }
 
+    namespace RelationalExpression {
+        // Signal signatures
+        interface SignalSignatures extends SearchExpression.SignalSignatures {}
+    }
+
     class RelationalExpression extends SearchExpression {
         static $gtype: GObject.GType<RelationalExpression>;
+        declare static readonly __signalSignatures: RelationalExpression.SignalSignatures;
 
         // Constructors
 
@@ -428,6 +464,9 @@ export namespace RygelServer {
     }
 
     namespace SimpleContainer {
+        // Signal signatures
+        interface SignalSignatures extends MediaContainer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MediaContainer.ConstructorProps, SearchableContainer.ConstructorProps {}
@@ -435,6 +474,7 @@ export namespace RygelServer {
 
     class SimpleContainer extends MediaContainer implements SearchableContainer {
         static $gtype: GObject.GType<SimpleContainer>;
+        declare static readonly __signalSignatures: SimpleContainer.SignalSignatures;
 
         // Fields
 
@@ -604,8 +644,14 @@ export namespace RygelServer {
         vfunc_find_object_finish(_res_: Gio.AsyncResult): MediaObject | null;
     }
 
+    namespace Subtitle {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+    }
+
     class Subtitle {
         static $gtype: GObject.GType<Subtitle>;
+        declare static readonly __signalSignatures: Subtitle.SignalSignatures;
 
         // Fields
 
@@ -631,8 +677,14 @@ export namespace RygelServer {
         get_resource(protocol: string, index: number): MediaResource;
     }
 
+    namespace Thumbnail {
+        // Signal signatures
+        interface SignalSignatures extends RygelCore.IconInfo.SignalSignatures {}
+    }
+
     class Thumbnail extends RygelCore.IconInfo {
         static $gtype: GObject.GType<Thumbnail>;
+        declare static readonly __signalSignatures: Thumbnail.SignalSignatures;
 
         // Fields
 
@@ -657,6 +709,9 @@ export namespace RygelServer {
     }
 
     namespace VideoItem {
+        // Signal signatures
+        interface SignalSignatures extends AudioItem.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends AudioItem.ConstructorProps, VisualItem.ConstructorProps {
@@ -667,6 +722,7 @@ export namespace RygelServer {
 
     class VideoItem extends AudioItem implements VisualItem {
         static $gtype: GObject.GType<VideoItem>;
+        declare static readonly __signalSignatures: VideoItem.SignalSignatures;
 
         // Properties
 
@@ -777,6 +833,12 @@ export namespace RygelServer {
             (sub_tree_root: MediaObject): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends MediaObject.SignalSignatures {
+            'container-updated': ContainerUpdated;
+            'sub-tree-updates-finished': SubTreeUpdatesFinished;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends MediaObject.ConstructorProps {
@@ -795,6 +857,7 @@ export namespace RygelServer {
 
     abstract class MediaContainer extends MediaObject {
         static $gtype: GObject.GType<MediaContainer>;
+        declare static readonly __signalSignatures: MediaContainer.SignalSignatures;
 
         // Properties
 
@@ -831,6 +894,18 @@ export namespace RygelServer {
 
         // Signals
 
+        connect<K extends keyof MediaContainer.SignalSignatures>(
+            signal: K,
+            callback: MediaContainer.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MediaContainer.SignalSignatures>(
+            signal: K,
+            callback: MediaContainer.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MediaContainer.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MediaContainer.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -940,6 +1015,9 @@ export namespace RygelServer {
     }
 
     namespace MediaItem {
+        // Signal signatures
+        interface SignalSignatures extends MediaObject.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MediaObject.ConstructorProps {
@@ -949,6 +1027,7 @@ export namespace RygelServer {
 
     abstract class MediaItem extends MediaObject {
         static $gtype: GObject.GType<MediaItem>;
+        declare static readonly __signalSignatures: MediaItem.SignalSignatures;
 
         // Properties
 
@@ -968,6 +1047,9 @@ export namespace RygelServer {
     }
 
     namespace MediaFileItem {
+        // Signal signatures
+        interface SignalSignatures extends MediaItem.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MediaItem.ConstructorProps {
@@ -983,6 +1065,7 @@ export namespace RygelServer {
 
     abstract class MediaFileItem extends MediaItem {
         static $gtype: GObject.GType<MediaFileItem>;
+        declare static readonly __signalSignatures: MediaFileItem.SignalSignatures;
 
         // Properties
 
@@ -1040,6 +1123,9 @@ export namespace RygelServer {
     }
 
     namespace MediaObject {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1066,6 +1152,7 @@ export namespace RygelServer {
 
     abstract class MediaObject extends GObject.Object {
         static $gtype: GObject.GType<MediaObject>;
+        declare static readonly __signalSignatures: MediaObject.SignalSignatures;
 
         // Properties
 
@@ -1186,6 +1273,9 @@ export namespace RygelServer {
     }
 
     namespace MediaResource {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1225,6 +1315,7 @@ export namespace RygelServer {
 
     class MediaResource extends GObject.Object {
         static $gtype: GObject.GType<MediaResource>;
+        declare static readonly __signalSignatures: MediaResource.SignalSignatures;
 
         // Properties
 
@@ -1377,6 +1468,9 @@ export namespace RygelServer {
     }
 
     namespace MediaServerPlugin {
+        // Signal signatures
+        interface SignalSignatures extends RygelCore.Plugin.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends RygelCore.Plugin.ConstructorProps {
@@ -1393,6 +1487,7 @@ export namespace RygelServer {
 
     abstract class MediaServerPlugin extends RygelCore.Plugin {
         static $gtype: GObject.GType<MediaServerPlugin>;
+        declare static readonly __signalSignatures: MediaServerPlugin.SignalSignatures;
 
         // Properties
 
@@ -1429,8 +1524,14 @@ export namespace RygelServer {
         set_supported_profiles(value: RygelCore.DLNAProfile[]): void;
     }
 
+    namespace SearchExpression {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+    }
+
     abstract class SearchExpression {
         static $gtype: GObject.GType<SearchExpression>;
+        declare static readonly __signalSignatures: SearchExpression.SignalSignatures;
 
         // Fields
 
@@ -1455,6 +1556,9 @@ export namespace RygelServer {
     }
 
     namespace MediaServer {
+        // Signal signatures
+        interface SignalSignatures extends RygelCore.MediaDevice.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends RygelCore.MediaDevice.ConstructorProps {
@@ -1465,6 +1569,7 @@ export namespace RygelServer {
 
     class MediaServer extends RygelCore.MediaDevice {
         static $gtype: GObject.GType<MediaServer>;
+        declare static readonly __signalSignatures: MediaServer.SignalSignatures;
 
         // Properties
 
@@ -1491,6 +1596,11 @@ export namespace RygelServer {
             (media_object_uri: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'resource-changed': ResourceChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1498,6 +1608,7 @@ export namespace RygelServer {
 
     abstract class MediaEngine extends GObject.Object {
         static $gtype: GObject.GType<MediaEngine>;
+        declare static readonly __signalSignatures: MediaEngine.SignalSignatures;
 
         // Constructors
 
@@ -1507,6 +1618,18 @@ export namespace RygelServer {
 
         // Signals
 
+        connect<K extends keyof MediaEngine.SignalSignatures>(
+            signal: K,
+            callback: MediaEngine.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MediaEngine.SignalSignatures>(
+            signal: K,
+            callback: MediaEngine.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MediaEngine.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MediaEngine.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1552,6 +1675,9 @@ export namespace RygelServer {
     }
 
     namespace HTTPSeekRequest {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1559,6 +1685,7 @@ export namespace RygelServer {
 
     abstract class HTTPSeekRequest extends GObject.Object {
         static $gtype: GObject.GType<HTTPSeekRequest>;
+        declare static readonly __signalSignatures: HTTPSeekRequest.SignalSignatures;
 
         // Constructors
 
@@ -1568,6 +1695,9 @@ export namespace RygelServer {
     }
 
     namespace PlaylistItem {
+        // Signal signatures
+        interface SignalSignatures extends MediaFileItem.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends MediaFileItem.ConstructorProps {}
@@ -1575,6 +1705,7 @@ export namespace RygelServer {
 
     class PlaylistItem extends MediaFileItem {
         static $gtype: GObject.GType<PlaylistItem>;
+        declare static readonly __signalSignatures: PlaylistItem.SignalSignatures;
 
         // Constructors
 
@@ -1586,6 +1717,9 @@ export namespace RygelServer {
     }
 
     namespace ContentDirectory {
+        // Signal signatures
+        interface SignalSignatures extends GUPnP.Service.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GUPnP.Service.ConstructorProps {}
@@ -1593,6 +1727,7 @@ export namespace RygelServer {
 
     class ContentDirectory extends GUPnP.Service {
         static $gtype: GObject.GType<ContentDirectory>;
+        declare static readonly __signalSignatures: ContentDirectory.SignalSignatures;
 
         // Fields
 
@@ -1612,6 +1747,9 @@ export namespace RygelServer {
     }
 
     namespace HTTPByteSeekRequest {
+        // Signal signatures
+        interface SignalSignatures extends HTTPSeekRequest.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends HTTPSeekRequest.ConstructorProps {
@@ -1628,6 +1766,7 @@ export namespace RygelServer {
 
     class HTTPByteSeekRequest extends HTTPSeekRequest {
         static $gtype: GObject.GType<HTTPByteSeekRequest>;
+        declare static readonly __signalSignatures: HTTPByteSeekRequest.SignalSignatures;
 
         // Properties
 
@@ -1673,6 +1812,9 @@ export namespace RygelServer {
     }
 
     namespace HTTPByteSeekResponse {
+        // Signal signatures
+        interface SignalSignatures extends HTTPResponseElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends HTTPResponseElement.ConstructorProps {
@@ -1689,6 +1831,7 @@ export namespace RygelServer {
 
     class HTTPByteSeekResponse extends HTTPResponseElement {
         static $gtype: GObject.GType<HTTPByteSeekResponse>;
+        declare static readonly __signalSignatures: HTTPByteSeekResponse.SignalSignatures;
 
         // Properties
 
@@ -1731,6 +1874,9 @@ export namespace RygelServer {
     }
 
     namespace HTTPGetHandler {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1740,6 +1886,7 @@ export namespace RygelServer {
 
     abstract class HTTPGetHandler extends GObject.Object {
         static $gtype: GObject.GType<HTTPGetHandler>;
+        declare static readonly __signalSignatures: HTTPGetHandler.SignalSignatures;
 
         // Properties
 
@@ -1780,6 +1927,9 @@ export namespace RygelServer {
     }
 
     namespace HTTPGet {
+        // Signal signatures
+        interface SignalSignatures extends HTTPRequest.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends HTTPRequest.ConstructorProps {}
@@ -1787,6 +1937,7 @@ export namespace RygelServer {
 
     class HTTPGet extends HTTPRequest {
         static $gtype: GObject.GType<HTTPGet>;
+        declare static readonly __signalSignatures: HTTPGet.SignalSignatures;
 
         // Fields
 
@@ -1804,6 +1955,9 @@ export namespace RygelServer {
     }
 
     namespace HTTPItemURI {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1823,6 +1977,7 @@ export namespace RygelServer {
 
     class HTTPItemURI extends GObject.Object {
         static $gtype: GObject.GType<HTTPItemURI>;
+        declare static readonly __signalSignatures: HTTPItemURI.SignalSignatures;
 
         // Properties
 
@@ -1887,6 +2042,9 @@ export namespace RygelServer {
     }
 
     namespace HTTPRequest {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, RygelCore.StateMachine.ConstructorProps {}
@@ -1894,6 +2052,7 @@ export namespace RygelServer {
 
     abstract class HTTPRequest extends GObject.Object implements RygelCore.StateMachine {
         static $gtype: GObject.GType<HTTPRequest>;
+        declare static readonly __signalSignatures: HTTPRequest.SignalSignatures;
 
         // Fields
 
@@ -2387,6 +2546,9 @@ export namespace RygelServer {
     }
 
     namespace HTTPResponse {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, RygelCore.StateMachine.ConstructorProps {
@@ -2397,6 +2559,7 @@ export namespace RygelServer {
 
     class HTTPResponse extends GObject.Object implements RygelCore.StateMachine {
         static $gtype: GObject.GType<HTTPResponse>;
+        declare static readonly __signalSignatures: HTTPResponse.SignalSignatures;
 
         // Properties
 
@@ -2886,6 +3049,9 @@ export namespace RygelServer {
     }
 
     namespace HTTPResponseElement {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2893,6 +3059,7 @@ export namespace RygelServer {
 
     abstract class HTTPResponseElement extends GObject.Object {
         static $gtype: GObject.GType<HTTPResponseElement>;
+        declare static readonly __signalSignatures: HTTPResponseElement.SignalSignatures;
 
         // Constructors
 
@@ -2912,6 +3079,9 @@ export namespace RygelServer {
     }
 
     namespace HTTPServer {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, RygelCore.StateMachine.ConstructorProps {
@@ -2924,6 +3094,7 @@ export namespace RygelServer {
 
     class HTTPServer extends GObject.Object implements RygelCore.StateMachine {
         static $gtype: GObject.GType<HTTPServer>;
+        declare static readonly __signalSignatures: HTTPServer.SignalSignatures;
 
         // Properties
 
@@ -3423,6 +3594,9 @@ export namespace RygelServer {
     }
 
     namespace HTTPTimeSeekRequest {
+        // Signal signatures
+        interface SignalSignatures extends HTTPSeekRequest.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends HTTPSeekRequest.ConstructorProps {}
@@ -3430,6 +3604,7 @@ export namespace RygelServer {
 
     class HTTPTimeSeekRequest extends HTTPSeekRequest {
         static $gtype: GObject.GType<HTTPTimeSeekRequest>;
+        declare static readonly __signalSignatures: HTTPTimeSeekRequest.SignalSignatures;
 
         // Fields
 
@@ -3455,6 +3630,9 @@ export namespace RygelServer {
     }
 
     namespace HTTPTimeSeekResponse {
+        // Signal signatures
+        interface SignalSignatures extends HTTPResponseElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends HTTPResponseElement.ConstructorProps {
@@ -3479,6 +3657,7 @@ export namespace RygelServer {
 
     class HTTPTimeSeekResponse extends HTTPResponseElement {
         static $gtype: GObject.GType<HTTPTimeSeekResponse>;
+        declare static readonly __signalSignatures: HTTPTimeSeekResponse.SignalSignatures;
 
         // Properties
 
@@ -3557,6 +3736,9 @@ export namespace RygelServer {
     }
 
     namespace Serializer {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3567,6 +3749,7 @@ export namespace RygelServer {
 
     class Serializer extends GObject.Object {
         static $gtype: GObject.GType<Serializer>;
+        declare static readonly __signalSignatures: Serializer.SignalSignatures;
 
         // Properties
 
@@ -3589,8 +3772,14 @@ export namespace RygelServer {
         get_string(): string;
     }
 
+    namespace PlaySpeed {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+    }
+
     class PlaySpeed {
         static $gtype: GObject.GType<PlaySpeed>;
+        declare static readonly __signalSignatures: PlaySpeed.SignalSignatures;
 
         // Fields
 
@@ -3617,6 +3806,9 @@ export namespace RygelServer {
     }
 
     namespace PlaySpeedRequest {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -3626,6 +3818,7 @@ export namespace RygelServer {
 
     class PlaySpeedRequest extends GObject.Object {
         static $gtype: GObject.GType<PlaySpeedRequest>;
+        declare static readonly __signalSignatures: PlaySpeedRequest.SignalSignatures;
 
         // Properties
 
@@ -3653,6 +3846,9 @@ export namespace RygelServer {
     }
 
     namespace PlaySpeedResponse {
+        // Signal signatures
+        interface SignalSignatures extends HTTPResponseElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends HTTPResponseElement.ConstructorProps {}
@@ -3660,6 +3856,7 @@ export namespace RygelServer {
 
     class PlaySpeedResponse extends HTTPResponseElement {
         static $gtype: GObject.GType<PlaySpeedResponse>;
+        declare static readonly __signalSignatures: PlaySpeedResponse.SignalSignatures;
 
         // Fields
 
@@ -3683,6 +3880,9 @@ export namespace RygelServer {
     }
 
     namespace DTCPCleartextRequest {
+        // Signal signatures
+        interface SignalSignatures extends HTTPSeekRequest.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends HTTPSeekRequest.ConstructorProps {
@@ -3699,6 +3899,7 @@ export namespace RygelServer {
 
     class DTCPCleartextRequest extends HTTPSeekRequest {
         static $gtype: GObject.GType<DTCPCleartextRequest>;
+        declare static readonly __signalSignatures: DTCPCleartextRequest.SignalSignatures;
 
         // Properties
 
@@ -3741,6 +3942,9 @@ export namespace RygelServer {
     }
 
     namespace DTCPCleartextResponse {
+        // Signal signatures
+        interface SignalSignatures extends HTTPResponseElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends HTTPResponseElement.ConstructorProps {
@@ -3759,6 +3963,7 @@ export namespace RygelServer {
 
     class DTCPCleartextResponse extends HTTPResponseElement {
         static $gtype: GObject.GType<DTCPCleartextResponse>;
+        declare static readonly __signalSignatures: DTCPCleartextResponse.SignalSignatures;
 
         // Properties
 
@@ -3809,6 +4014,9 @@ export namespace RygelServer {
     }
 
     namespace DLNAAvailableSeekRangeRequest {
+        // Signal signatures
+        interface SignalSignatures extends HTTPSeekRequest.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends HTTPSeekRequest.ConstructorProps {}
@@ -3816,6 +4024,7 @@ export namespace RygelServer {
 
     class DLNAAvailableSeekRangeRequest extends HTTPSeekRequest {
         static $gtype: GObject.GType<DLNAAvailableSeekRangeRequest>;
+        declare static readonly __signalSignatures: DLNAAvailableSeekRangeRequest.SignalSignatures;
 
         // Constructors
 
@@ -3830,6 +4039,9 @@ export namespace RygelServer {
     }
 
     namespace DLNAAvailableSeekRangeResponse {
+        // Signal signatures
+        interface SignalSignatures extends HTTPResponseElement.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends HTTPResponseElement.ConstructorProps {
@@ -3849,6 +4061,7 @@ export namespace RygelServer {
 
     class DLNAAvailableSeekRangeResponse extends HTTPResponseElement {
         static $gtype: GObject.GType<DLNAAvailableSeekRangeResponse>;
+        declare static readonly __signalSignatures: DLNAAvailableSeekRangeResponse.SignalSignatures;
 
         // Properties
 

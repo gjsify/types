@@ -111,6 +111,9 @@ export namespace Gxps {
     const VERSION_STRING: string;
     function error_quark(): GLib.Quark;
     namespace CoreProperties {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -124,6 +127,7 @@ export namespace Gxps {
      */
     class CoreProperties extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<CoreProperties>;
+        declare static readonly __signalSignatures: CoreProperties.SignalSignatures;
 
         // Properties
 
@@ -747,6 +751,9 @@ export namespace Gxps {
     }
 
     namespace Document {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -760,6 +767,7 @@ export namespace Gxps {
      */
     class Document extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Document>;
+        declare static readonly __signalSignatures: Document.SignalSignatures;
 
         // Properties
 
@@ -1340,6 +1348,9 @@ export namespace Gxps {
     }
 
     namespace DocumentStructure {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1353,6 +1364,7 @@ export namespace Gxps {
      */
     class DocumentStructure extends GObject.Object {
         static $gtype: GObject.GType<DocumentStructure>;
+        declare static readonly __signalSignatures: DocumentStructure.SignalSignatures;
 
         // Properties
 
@@ -1408,6 +1420,9 @@ export namespace Gxps {
     }
 
     namespace File {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -1421,6 +1436,7 @@ export namespace Gxps {
      */
     class File extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<File>;
+        declare static readonly __signalSignatures: File.SignalSignatures;
 
         // Properties
 
@@ -2000,6 +2016,9 @@ export namespace Gxps {
     }
 
     namespace Page {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -2013,6 +2032,7 @@ export namespace Gxps {
      */
     class Page extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Page>;
+        declare static readonly __signalSignatures: Page.SignalSignatures;
 
         // Properties
 

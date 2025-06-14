@@ -226,6 +226,9 @@ export namespace EDataServerUI4 {
         ALLOW_STORED_CREDENTIALS,
     }
     namespace CellRendererColor {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.CellRenderer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gtk.CellRenderer.ConstructorProps {
@@ -235,6 +238,7 @@ export namespace EDataServerUI4 {
 
     class CellRendererColor extends Gtk.CellRenderer {
         static $gtype: GObject.GType<CellRendererColor>;
+        declare static readonly __signalSignatures: CellRendererColor.SignalSignatures;
 
         // Properties
 
@@ -251,6 +255,9 @@ export namespace EDataServerUI4 {
     }
 
     namespace CertificateWidget {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -266,6 +273,7 @@ export namespace EDataServerUI4 {
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable
     {
         static $gtype: GObject.GType<CertificateWidget>;
+        declare static readonly __signalSignatures: CertificateWidget.SignalSignatures;
 
         // Constructors
 
@@ -766,6 +774,12 @@ export namespace EDataServerUI4 {
             (auth_source?: EDataServer.Source | null): Gtk.Window | null;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'get-dialog-parent': GetDialogParent;
+            'get-dialog-parent-full': GetDialogParentFull;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, EDataServer.Extensible.ConstructorProps {
@@ -782,6 +796,7 @@ export namespace EDataServerUI4 {
      */
     class CredentialsPrompter extends GObject.Object implements EDataServer.Extensible {
         static $gtype: GObject.GType<CredentialsPrompter>;
+        declare static readonly __signalSignatures: CredentialsPrompter.SignalSignatures;
 
         // Properties
 
@@ -816,6 +831,18 @@ export namespace EDataServerUI4 {
 
         // Signals
 
+        connect<K extends keyof CredentialsPrompter.SignalSignatures>(
+            signal: K,
+            callback: CredentialsPrompter.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CredentialsPrompter.SignalSignatures>(
+            signal: K,
+            callback: CredentialsPrompter.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CredentialsPrompter.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CredentialsPrompter.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1531,6 +1558,11 @@ export namespace EDataServerUI4 {
             (prompt_id?: any | null, credentials?: EDataServer.NamedParameters | null): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends EDataServer.Extension.SignalSignatures {
+            'prompt-finished': PromptFinished;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends EDataServer.Extension.ConstructorProps {}
@@ -1544,6 +1576,7 @@ export namespace EDataServerUI4 {
      */
     abstract class CredentialsPrompterImpl extends EDataServer.Extension {
         static $gtype: GObject.GType<CredentialsPrompterImpl>;
+        declare static readonly __signalSignatures: CredentialsPrompterImpl.SignalSignatures;
 
         // Constructors
 
@@ -1553,6 +1586,18 @@ export namespace EDataServerUI4 {
 
         // Signals
 
+        connect<K extends keyof CredentialsPrompterImpl.SignalSignatures>(
+            signal: K,
+            callback: CredentialsPrompterImpl.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CredentialsPrompterImpl.SignalSignatures>(
+            signal: K,
+            callback: CredentialsPrompterImpl.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CredentialsPrompterImpl.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CredentialsPrompterImpl.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1634,6 +1679,9 @@ export namespace EDataServerUI4 {
     }
 
     namespace CredentialsPrompterImplOAuth2 {
+        // Signal signatures
+        interface SignalSignatures extends CredentialsPrompterImpl.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends CredentialsPrompterImpl.ConstructorProps {}
@@ -1645,6 +1693,7 @@ export namespace EDataServerUI4 {
      */
     class CredentialsPrompterImplOAuth2 extends CredentialsPrompterImpl {
         static $gtype: GObject.GType<CredentialsPrompterImplOAuth2>;
+        declare static readonly __signalSignatures: CredentialsPrompterImplOAuth2.SignalSignatures;
 
         // Constructors
 
@@ -1656,6 +1705,9 @@ export namespace EDataServerUI4 {
     }
 
     namespace CredentialsPrompterImplPassword {
+        // Signal signatures
+        interface SignalSignatures extends CredentialsPrompterImpl.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends CredentialsPrompterImpl.ConstructorProps {}
@@ -1667,6 +1719,7 @@ export namespace EDataServerUI4 {
      */
     class CredentialsPrompterImplPassword extends CredentialsPrompterImpl {
         static $gtype: GObject.GType<CredentialsPrompterImplPassword>;
+        declare static readonly __signalSignatures: CredentialsPrompterImplPassword.SignalSignatures;
 
         // Constructors
 
@@ -1686,6 +1739,12 @@ export namespace EDataServerUI4 {
 
         interface Changed {
             (): void;
+        }
+
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Grid.SignalSignatures {
+            activated: Activated;
+            changed: Changed;
         }
 
         // Constructor properties interface
@@ -1711,6 +1770,7 @@ export namespace EDataServerUI4 {
         implements EDataServer.Extensible, Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable
     {
         static $gtype: GObject.GType<RemindersWidget>;
+        declare static readonly __signalSignatures: RemindersWidget.SignalSignatures;
 
         // Properties
 
@@ -1730,6 +1790,18 @@ export namespace EDataServerUI4 {
 
         // Signals
 
+        connect<K extends keyof RemindersWidget.SignalSignatures>(
+            signal: K,
+            callback: RemindersWidget.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RemindersWidget.SignalSignatures>(
+            signal: K,
+            callback: RemindersWidget.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RemindersWidget.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RemindersWidget.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2247,6 +2319,9 @@ export namespace EDataServerUI4 {
     }
 
     namespace WebDAVDiscoverContent {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Grid.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2262,6 +2337,7 @@ export namespace EDataServerUI4 {
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable
     {
         static $gtype: GObject.GType<WebDAVDiscoverContent>;
+        declare static readonly __signalSignatures: WebDAVDiscoverContent.SignalSignatures;
 
         // Constructors
 
@@ -2854,6 +2930,9 @@ export namespace EDataServerUI4 {
     }
 
     namespace WebDAVDiscoverDialog {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Dialog.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2871,6 +2950,7 @@ export namespace EDataServerUI4 {
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Native, Gtk.Root, Gtk.ShortcutManager
     {
         static $gtype: GObject.GType<WebDAVDiscoverDialog>;
+        declare static readonly __signalSignatures: WebDAVDiscoverDialog.SignalSignatures;
 
         // Constructors
 

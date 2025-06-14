@@ -1812,6 +1812,9 @@ export namespace Atk {
         INLINE,
     }
     namespace GObjectAccessible {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -1827,6 +1830,7 @@ export namespace Atk {
      */
     class GObjectAccessible extends Object {
         static $gtype: GObject.GType<GObjectAccessible>;
+        declare static readonly __signalSignatures: GObjectAccessible.SignalSignatures;
 
         // Constructors
 
@@ -1858,6 +1862,11 @@ export namespace Atk {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'link-activated': LinkActivated;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Action.ConstructorProps {
@@ -1884,6 +1893,7 @@ export namespace Atk {
      */
     class Hyperlink extends GObject.Object implements Action {
         static $gtype: GObject.GType<Hyperlink>;
+        declare static readonly __signalSignatures: Hyperlink.SignalSignatures;
 
         // Properties
 
@@ -1910,6 +1920,15 @@ export namespace Atk {
 
         // Signals
 
+        connect<K extends keyof Hyperlink.SignalSignatures>(signal: K, callback: Hyperlink.SignalSignatures[K]): number;
+        connect_after<K extends keyof Hyperlink.SignalSignatures>(
+            signal: K,
+            callback: Hyperlink.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Hyperlink.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Hyperlink.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2612,6 +2631,9 @@ export namespace Atk {
     }
 
     namespace Misc {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2625,6 +2647,7 @@ export namespace Atk {
      */
     class Misc extends GObject.Object {
         static $gtype: GObject.GType<Misc>;
+        declare static readonly __signalSignatures: Misc.SignalSignatures;
 
         // Constructors
 
@@ -2685,6 +2708,9 @@ export namespace Atk {
     }
 
     namespace NoOpObject {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2728,6 +2754,7 @@ export namespace Atk {
             Window
     {
         static $gtype: GObject.GType<NoOpObject>;
+        declare static readonly __signalSignatures: NoOpObject.SignalSignatures;
 
         // Constructors
 
@@ -5330,6 +5357,9 @@ export namespace Atk {
     }
 
     namespace NoOpObjectFactory {
+        // Signal signatures
+        interface SignalSignatures extends ObjectFactory.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends ObjectFactory.ConstructorProps {}
@@ -5344,6 +5374,7 @@ export namespace Atk {
      */
     class NoOpObjectFactory extends ObjectFactory {
         static $gtype: GObject.GType<NoOpObjectFactory>;
+        declare static readonly __signalSignatures: NoOpObjectFactory.SignalSignatures;
 
         // Constructors
 
@@ -5391,6 +5422,19 @@ export namespace Atk {
 
         interface VisibleDataChanged {
             (): void;
+        }
+
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'active-descendant-changed': ActiveDescendantChanged;
+            announcement: Announcement;
+            'attribute-changed': AttributeChanged;
+            'children-changed': ChildrenChanged;
+            'focus-event': FocusEvent;
+            notification: Notification;
+            'property-change': PropertyChange;
+            'state-change': StateChange;
+            'visible-data-changed': VisibleDataChanged;
         }
 
         // Constructor properties interface
@@ -5459,6 +5503,7 @@ export namespace Atk {
      */
     class Object extends GObject.Object {
         static $gtype: GObject.GType<Object>;
+        declare static readonly __signalSignatures: Object.SignalSignatures;
 
         // Properties
 
@@ -5577,6 +5622,9 @@ export namespace Atk {
 
         // Signals
 
+        connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -5916,6 +5964,9 @@ export namespace Atk {
     }
 
     namespace ObjectFactory {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5933,6 +5984,7 @@ export namespace Atk {
      */
     class ObjectFactory extends GObject.Object {
         static $gtype: GObject.GType<ObjectFactory>;
+        declare static readonly __signalSignatures: ObjectFactory.SignalSignatures;
 
         // Constructors
 
@@ -5976,6 +6028,9 @@ export namespace Atk {
     }
 
     namespace Plug {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps, Component.ConstructorProps {}
@@ -5988,6 +6043,7 @@ export namespace Atk {
      */
     class Plug extends Object implements Component {
         static $gtype: GObject.GType<Plug>;
+        declare static readonly __signalSignatures: Plug.SignalSignatures;
 
         // Constructors
 
@@ -6706,6 +6762,9 @@ export namespace Atk {
     }
 
     namespace Registry {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6725,6 +6784,7 @@ export namespace Atk {
      */
     class Registry extends GObject.Object {
         static $gtype: GObject.GType<Registry>;
+        declare static readonly __signalSignatures: Registry.SignalSignatures;
 
         // Constructors
 
@@ -6760,6 +6820,9 @@ export namespace Atk {
     }
 
     namespace Relation {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6780,6 +6843,7 @@ export namespace Atk {
      */
     class Relation extends GObject.Object {
         static $gtype: GObject.GType<Relation>;
+        declare static readonly __signalSignatures: Relation.SignalSignatures;
 
         // Properties
 
@@ -6829,6 +6893,9 @@ export namespace Atk {
     }
 
     namespace RelationSet {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6849,6 +6916,7 @@ export namespace Atk {
      */
     class RelationSet extends GObject.Object {
         static $gtype: GObject.GType<RelationSet>;
+        declare static readonly __signalSignatures: RelationSet.SignalSignatures;
 
         // Fields
 
@@ -6925,6 +6993,9 @@ export namespace Atk {
     }
 
     namespace Socket {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps, Component.ConstructorProps {}
@@ -6960,6 +7031,7 @@ export namespace Atk {
      */
     class Socket extends Object implements Component {
         static $gtype: GObject.GType<Socket>;
+        declare static readonly __signalSignatures: Socket.SignalSignatures;
 
         // Constructors
 
@@ -7685,6 +7757,9 @@ export namespace Atk {
     }
 
     namespace StateSet {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -7699,6 +7774,7 @@ export namespace Atk {
      */
     class StateSet extends GObject.Object {
         static $gtype: GObject.GType<StateSet>;
+        declare static readonly __signalSignatures: StateSet.SignalSignatures;
 
         // Constructors
 
@@ -7789,6 +7865,9 @@ export namespace Atk {
     }
 
     namespace Util {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -7804,6 +7883,7 @@ export namespace Atk {
      */
     class Util extends GObject.Object {
         static $gtype: GObject.GType<Util>;
+        declare static readonly __signalSignatures: Util.SignalSignatures;
 
         // Constructors
 

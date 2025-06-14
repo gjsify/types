@@ -2472,8 +2472,14 @@ export namespace Cogl {
          */
         NO_ATLAS,
     }
+    namespace Bitmap {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+    }
+
     class Bitmap {
         static $gtype: GObject.GType<Bitmap>;
+        declare static readonly __signalSignatures: Bitmap.SignalSignatures;
 
         // Constructors
 
@@ -2491,11 +2497,17 @@ export namespace Cogl {
         static get_size_from_file(filename: string): [Bool, number, number];
     }
 
+    namespace Fixed {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+    }
+
     /**
      * Fixed point number using a (16.16) notation.
      */
     class Fixed {
         static $gtype: GObject.GType<Fixed>;
+        declare static readonly __signalSignatures: Fixed.SignalSignatures;
 
         // Constructors
 
@@ -2522,8 +2534,14 @@ export namespace Cogl {
         pow2(): number;
     }
 
+    namespace Offscreen {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+    }
+
     class Offscreen {
         static $gtype: GObject.GType<Offscreen>;
+        declare static readonly __signalSignatures: Offscreen.SignalSignatures;
 
         // Constructors
 

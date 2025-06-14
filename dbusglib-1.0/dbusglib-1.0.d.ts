@@ -19,6 +19,9 @@ export namespace DBusGLib {
      */
 
     namespace Proxy {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -26,6 +29,7 @@ export namespace DBusGLib {
 
     class Proxy extends GObject.Object {
         static $gtype: GObject.GType<Proxy>;
+        declare static readonly __signalSignatures: Proxy.SignalSignatures;
 
         // Constructors
 

@@ -74,6 +74,9 @@ export namespace Gepub {
      */
     function utils_replace_resources(content: GLib.Bytes | Uint8Array, path: string): GLib.Bytes;
     namespace Archive {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -81,6 +84,7 @@ export namespace Gepub {
 
     class Archive extends GObject.Object {
         static $gtype: GObject.GType<Archive>;
+        declare static readonly __signalSignatures: Archive.SignalSignatures;
 
         // Constructors
 
@@ -98,6 +102,9 @@ export namespace Gepub {
     }
 
     namespace Doc {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -108,6 +115,7 @@ export namespace Gepub {
 
     class Doc extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Doc>;
+        declare static readonly __signalSignatures: Doc.SignalSignatures;
 
         // Properties
 
@@ -696,6 +704,9 @@ export namespace Gepub {
     }
 
     namespace TextChunk {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -703,6 +714,7 @@ export namespace Gepub {
 
     class TextChunk extends GObject.Object {
         static $gtype: GObject.GType<TextChunk>;
+        declare static readonly __signalSignatures: TextChunk.SignalSignatures;
 
         // Constructors
 
@@ -720,6 +732,9 @@ export namespace Gepub {
     }
 
     namespace Widget {
+        // Signal signatures
+        interface SignalSignatures extends WebKit2.WebView.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -737,6 +752,7 @@ export namespace Gepub {
 
     class Widget extends WebKit2.WebView implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Widget>;
+        declare static readonly __signalSignatures: Widget.SignalSignatures;
 
         // Properties
 

@@ -46,6 +46,15 @@ export namespace GstInsertBin {
             (callback: Gst.Element, user_data?: any | null, user_data2?: any | null): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gst.Bin.SignalSignatures {
+            append: Append;
+            'insert-after': InsertAfter;
+            'insert-before': InsertBefore;
+            prepend: Prepend;
+            remove: Remove;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Bin.ConstructorProps, Gst.ChildProxy.ConstructorProps {}
@@ -66,6 +75,7 @@ export namespace GstInsertBin {
      */
     class InsertBin extends Gst.Bin implements Gst.ChildProxy {
         static $gtype: GObject.GType<InsertBin>;
+        declare static readonly __signalSignatures: InsertBin.SignalSignatures;
 
         // Constructors
 
@@ -77,6 +87,15 @@ export namespace GstInsertBin {
 
         // Signals
 
+        connect<K extends keyof InsertBin.SignalSignatures>(signal: K, callback: InsertBin.SignalSignatures[K]): number;
+        connect_after<K extends keyof InsertBin.SignalSignatures>(
+            signal: K,
+            callback: InsertBin.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof InsertBin.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<InsertBin.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

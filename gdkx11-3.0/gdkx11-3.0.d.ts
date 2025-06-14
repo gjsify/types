@@ -200,6 +200,9 @@ export namespace GdkX11 {
      */
     function x11_xatom_to_atom_for_display(display: X11Display, xatom: xlib.Atom): Gdk.Atom;
     namespace X11AppLaunchContext {
+        // Signal signatures
+        interface SignalSignatures extends Gdk.AppLaunchContext.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gdk.AppLaunchContext.ConstructorProps {}
@@ -207,6 +210,7 @@ export namespace GdkX11 {
 
     class X11AppLaunchContext extends Gdk.AppLaunchContext {
         static $gtype: GObject.GType<X11AppLaunchContext>;
+        declare static readonly __signalSignatures: X11AppLaunchContext.SignalSignatures;
 
         // Constructors
 
@@ -216,6 +220,9 @@ export namespace GdkX11 {
     }
 
     namespace X11Cursor {
+        // Signal signatures
+        interface SignalSignatures extends Gdk.Cursor.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gdk.Cursor.ConstructorProps {}
@@ -223,6 +230,7 @@ export namespace GdkX11 {
 
     class X11Cursor extends Gdk.Cursor {
         static $gtype: GObject.GType<X11Cursor>;
+        declare static readonly __signalSignatures: X11Cursor.SignalSignatures;
 
         // Constructors
 
@@ -245,6 +253,9 @@ export namespace GdkX11 {
     }
 
     namespace X11DeviceCore {
+        // Signal signatures
+        interface SignalSignatures extends Gdk.Device.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gdk.Device.ConstructorProps {}
@@ -252,6 +263,7 @@ export namespace GdkX11 {
 
     class X11DeviceCore extends Gdk.Device {
         static $gtype: GObject.GType<X11DeviceCore>;
+        declare static readonly __signalSignatures: X11DeviceCore.SignalSignatures;
 
         // Constructors
 
@@ -261,6 +273,9 @@ export namespace GdkX11 {
     }
 
     namespace X11DeviceManagerCore {
+        // Signal signatures
+        interface SignalSignatures extends Gdk.DeviceManager.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gdk.DeviceManager.ConstructorProps {}
@@ -268,6 +283,7 @@ export namespace GdkX11 {
 
     class X11DeviceManagerCore extends Gdk.DeviceManager {
         static $gtype: GObject.GType<X11DeviceManagerCore>;
+        declare static readonly __signalSignatures: X11DeviceManagerCore.SignalSignatures;
 
         // Constructors
 
@@ -277,6 +293,9 @@ export namespace GdkX11 {
     }
 
     namespace X11DeviceManagerXI2 {
+        // Signal signatures
+        interface SignalSignatures extends X11DeviceManagerCore.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends X11DeviceManagerCore.ConstructorProps {
@@ -288,6 +307,7 @@ export namespace GdkX11 {
 
     class X11DeviceManagerXI2 extends X11DeviceManagerCore {
         static $gtype: GObject.GType<X11DeviceManagerXI2>;
+        declare static readonly __signalSignatures: X11DeviceManagerXI2.SignalSignatures;
 
         // Properties
 
@@ -303,6 +323,9 @@ export namespace GdkX11 {
     }
 
     namespace X11DeviceXI2 {
+        // Signal signatures
+        interface SignalSignatures extends Gdk.Device.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gdk.Device.ConstructorProps {
@@ -313,6 +336,7 @@ export namespace GdkX11 {
 
     class X11DeviceXI2 extends Gdk.Device {
         static $gtype: GObject.GType<X11DeviceXI2>;
+        declare static readonly __signalSignatures: X11DeviceXI2.SignalSignatures;
 
         // Properties
 
@@ -327,6 +351,9 @@ export namespace GdkX11 {
     }
 
     namespace X11Display {
+        // Signal signatures
+        interface SignalSignatures extends Gdk.Display.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gdk.Display.ConstructorProps {}
@@ -334,6 +361,7 @@ export namespace GdkX11 {
 
     class X11Display extends Gdk.Display {
         static $gtype: GObject.GType<X11Display>;
+        declare static readonly __signalSignatures: X11Display.SignalSignatures;
 
         // Constructors
 
@@ -495,6 +523,9 @@ export namespace GdkX11 {
     }
 
     namespace X11DisplayManager {
+        // Signal signatures
+        interface SignalSignatures extends Gdk.DisplayManager.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gdk.DisplayManager.ConstructorProps {}
@@ -502,6 +533,7 @@ export namespace GdkX11 {
 
     class X11DisplayManager extends Gdk.DisplayManager {
         static $gtype: GObject.GType<X11DisplayManager>;
+        declare static readonly __signalSignatures: X11DisplayManager.SignalSignatures;
 
         // Constructors
 
@@ -511,6 +543,9 @@ export namespace GdkX11 {
     }
 
     namespace X11DragContext {
+        // Signal signatures
+        interface SignalSignatures extends Gdk.DragContext.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gdk.DragContext.ConstructorProps {}
@@ -518,6 +553,7 @@ export namespace GdkX11 {
 
     class X11DragContext extends Gdk.DragContext {
         static $gtype: GObject.GType<X11DragContext>;
+        declare static readonly __signalSignatures: X11DragContext.SignalSignatures;
 
         // Constructors
 
@@ -527,6 +563,9 @@ export namespace GdkX11 {
     }
 
     namespace X11GLContext {
+        // Signal signatures
+        interface SignalSignatures extends Gdk.GLContext.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gdk.GLContext.ConstructorProps {}
@@ -534,6 +573,7 @@ export namespace GdkX11 {
 
     class X11GLContext extends Gdk.GLContext {
         static $gtype: GObject.GType<X11GLContext>;
+        declare static readonly __signalSignatures: X11GLContext.SignalSignatures;
 
         // Constructors
 
@@ -543,6 +583,9 @@ export namespace GdkX11 {
     }
 
     namespace X11Keymap {
+        // Signal signatures
+        interface SignalSignatures extends Gdk.Keymap.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gdk.Keymap.ConstructorProps {}
@@ -550,6 +593,7 @@ export namespace GdkX11 {
 
     class X11Keymap extends Gdk.Keymap {
         static $gtype: GObject.GType<X11Keymap>;
+        declare static readonly __signalSignatures: X11Keymap.SignalSignatures;
 
         // Constructors
 
@@ -581,6 +625,9 @@ export namespace GdkX11 {
     }
 
     namespace X11Monitor {
+        // Signal signatures
+        interface SignalSignatures extends Gdk.Monitor.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gdk.Monitor.ConstructorProps {}
@@ -588,6 +635,7 @@ export namespace GdkX11 {
 
     class X11Monitor extends Gdk.Monitor {
         static $gtype: GObject.GType<X11Monitor>;
+        declare static readonly __signalSignatures: X11Monitor.SignalSignatures;
 
         // Constructors
 
@@ -607,6 +655,11 @@ export namespace GdkX11 {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gdk.Screen.SignalSignatures {
+            'window-manager-changed': WindowManagerChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gdk.Screen.ConstructorProps {}
@@ -614,6 +667,7 @@ export namespace GdkX11 {
 
     class X11Screen extends Gdk.Screen {
         static $gtype: GObject.GType<X11Screen>;
+        declare static readonly __signalSignatures: X11Screen.SignalSignatures;
 
         // Constructors
 
@@ -623,6 +677,15 @@ export namespace GdkX11 {
 
         // Signals
 
+        connect<K extends keyof X11Screen.SignalSignatures>(signal: K, callback: X11Screen.SignalSignatures[K]): number;
+        connect_after<K extends keyof X11Screen.SignalSignatures>(
+            signal: K,
+            callback: X11Screen.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof X11Screen.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<X11Screen.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -697,6 +760,9 @@ export namespace GdkX11 {
     }
 
     namespace X11Visual {
+        // Signal signatures
+        interface SignalSignatures extends Gdk.Visual.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gdk.Visual.ConstructorProps {}
@@ -704,6 +770,7 @@ export namespace GdkX11 {
 
     class X11Visual extends Gdk.Visual {
         static $gtype: GObject.GType<X11Visual>;
+        declare static readonly __signalSignatures: X11Visual.SignalSignatures;
 
         // Constructors
 
@@ -721,6 +788,9 @@ export namespace GdkX11 {
     }
 
     namespace X11Window {
+        // Signal signatures
+        interface SignalSignatures extends Gdk.Window.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gdk.Window.ConstructorProps {}
@@ -728,6 +798,7 @@ export namespace GdkX11 {
 
     class X11Window extends Gdk.Window {
         static $gtype: GObject.GType<X11Window>;
+        declare static readonly __signalSignatures: X11Window.SignalSignatures;
 
         // Constructors
 

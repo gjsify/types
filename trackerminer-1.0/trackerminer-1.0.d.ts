@@ -198,6 +198,12 @@ export namespace TrackerMiner {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Miner.SignalSignatures {
+            finished: Finished;
+            'items-available': ItemsAvailable;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Miner.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -218,6 +224,7 @@ export namespace TrackerMiner {
      */
     abstract class Decorator extends Miner implements Gio.Initable {
         static $gtype: GObject.GType<Decorator>;
+        declare static readonly __signalSignatures: Decorator.SignalSignatures;
 
         // Properties
 
@@ -246,6 +253,15 @@ export namespace TrackerMiner {
 
         // Signals
 
+        connect<K extends keyof Decorator.SignalSignatures>(signal: K, callback: Decorator.SignalSignatures[K]): number;
+        connect_after<K extends keyof Decorator.SignalSignatures>(
+            signal: K,
+            callback: Decorator.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Decorator.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Decorator.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -887,6 +903,9 @@ export namespace TrackerMiner {
     }
 
     namespace DecoratorFS {
+        // Signal signatures
+        interface SignalSignatures extends Decorator.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Decorator.ConstructorProps, Gio.Initable.ConstructorProps {}
@@ -897,6 +916,7 @@ export namespace TrackerMiner {
      */
     abstract class DecoratorFS extends Decorator implements Gio.Initable {
         static $gtype: GObject.GType<DecoratorFS>;
+        declare static readonly __signalSignatures: DecoratorFS.SignalSignatures;
 
         // Fields
 
@@ -1378,6 +1398,14 @@ export namespace TrackerMiner {
             (directory: Gio.File): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'child-updated': ChildUpdated;
+            'directory-added': DirectoryAdded;
+            'directory-removed': DirectoryRemoved;
+            'directory-updated': DirectoryUpdated;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1392,6 +1420,7 @@ export namespace TrackerMiner {
      */
     class IndexingTree extends GObject.Object {
         static $gtype: GObject.GType<IndexingTree>;
+        declare static readonly __signalSignatures: IndexingTree.SignalSignatures;
 
         // Properties
 
@@ -1417,6 +1446,18 @@ export namespace TrackerMiner {
 
         // Signals
 
+        connect<K extends keyof IndexingTree.SignalSignatures>(
+            signal: K,
+            callback: IndexingTree.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof IndexingTree.SignalSignatures>(
+            signal: K,
+            callback: IndexingTree.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof IndexingTree.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<IndexingTree.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1626,6 +1667,16 @@ export namespace TrackerMiner {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'ignore-next-update': IgnoreNextUpdate;
+            paused: Paused;
+            progress: Progress;
+            resumed: Resumed;
+            started: Started;
+            stopped: Stopped;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -1646,6 +1697,7 @@ export namespace TrackerMiner {
      */
     abstract class Miner extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Miner>;
+        declare static readonly __signalSignatures: Miner.SignalSignatures;
 
         // Properties
 
@@ -1675,6 +1727,9 @@ export namespace TrackerMiner {
 
         // Signals
 
+        connect<K extends keyof Miner.SignalSignatures>(signal: K, callback: Miner.SignalSignatures[K]): number;
+        connect_after<K extends keyof Miner.SignalSignatures>(signal: K, callback: Miner.SignalSignatures[K]): number;
+        emit<K extends keyof Miner.SignalSignatures>(signal: K, ...args: Parameters<Miner.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2356,6 +2411,17 @@ export namespace TrackerMiner {
             (file: Gio.File, rdf_types: string[], results: string[][], cancellable?: Gio.Cancellable | null): boolean;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Miner.SignalSignatures {
+            finished: Finished;
+            'finished-root': FinishedRoot;
+            'ignore-next-update-file': IgnoreNextUpdateFile;
+            'process-file': ProcessFile;
+            'process-file-attributes': ProcessFileAttributes;
+            'remove-file': RemoveFile;
+            'writeback-file': WritebackFile;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Miner.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -2379,6 +2445,7 @@ export namespace TrackerMiner {
      */
     abstract class MinerFS extends Miner implements Gio.Initable {
         static $gtype: GObject.GType<MinerFS>;
+        declare static readonly __signalSignatures: MinerFS.SignalSignatures;
 
         // Properties
 
@@ -2412,6 +2479,15 @@ export namespace TrackerMiner {
 
         // Signals
 
+        connect<K extends keyof MinerFS.SignalSignatures>(signal: K, callback: MinerFS.SignalSignatures[K]): number;
+        connect_after<K extends keyof MinerFS.SignalSignatures>(
+            signal: K,
+            callback: MinerFS.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MinerFS.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MinerFS.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3365,6 +3441,12 @@ export namespace TrackerMiner {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Miner.SignalSignatures {
+            connected: Connected;
+            disconnected: Disconnected;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Miner.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -3378,6 +3460,7 @@ export namespace TrackerMiner {
      */
     abstract class MinerOnline extends Miner implements Gio.Initable {
         static $gtype: GObject.GType<MinerOnline>;
+        declare static readonly __signalSignatures: MinerOnline.SignalSignatures;
 
         // Properties
 
@@ -3392,6 +3475,18 @@ export namespace TrackerMiner {
 
         // Signals
 
+        connect<K extends keyof MinerOnline.SignalSignatures>(
+            signal: K,
+            callback: MinerOnline.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MinerOnline.SignalSignatures>(
+            signal: K,
+            callback: MinerOnline.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MinerOnline.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MinerOnline.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

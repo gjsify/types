@@ -85,6 +85,13 @@ export namespace SugarGestures {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            began: Began;
+            ended: Ended;
+            updated: Updated;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -95,6 +102,7 @@ export namespace SugarGestures {
 
     abstract class EventController extends GObject.Object {
         static $gtype: GObject.GType<EventController>;
+        declare static readonly __signalSignatures: EventController.SignalSignatures;
 
         // Properties
 
@@ -110,6 +118,18 @@ export namespace SugarGestures {
 
         // Signals
 
+        connect<K extends keyof EventController.SignalSignatures>(
+            signal: K,
+            callback: EventController.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof EventController.SignalSignatures>(
+            signal: K,
+            callback: EventController.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof EventController.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<EventController.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -148,6 +168,11 @@ export namespace SugarGestures {
             (object: number, p0: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends EventController.SignalSignatures {
+            pressed: Pressed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends EventController.ConstructorProps {
@@ -159,6 +184,7 @@ export namespace SugarGestures {
 
     class LongPressController extends EventController {
         static $gtype: GObject.GType<LongPressController>;
+        declare static readonly __signalSignatures: LongPressController.SignalSignatures;
 
         // Properties
 
@@ -179,6 +205,18 @@ export namespace SugarGestures {
 
         // Signals
 
+        connect<K extends keyof LongPressController.SignalSignatures>(
+            signal: K,
+            callback: LongPressController.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof LongPressController.SignalSignatures>(
+            signal: K,
+            callback: LongPressController.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof LongPressController.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<LongPressController.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -198,6 +236,11 @@ export namespace SugarGestures {
             (angle: number, angle_delta: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends TouchController.SignalSignatures {
+            'angle-changed': AngleChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends TouchController.ConstructorProps {}
@@ -205,6 +248,7 @@ export namespace SugarGestures {
 
     class RotateController extends TouchController {
         static $gtype: GObject.GType<RotateController>;
+        declare static readonly __signalSignatures: RotateController.SignalSignatures;
 
         // Fields
 
@@ -220,6 +264,18 @@ export namespace SugarGestures {
 
         // Signals
 
+        connect<K extends keyof RotateController.SignalSignatures>(
+            signal: K,
+            callback: RotateController.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof RotateController.SignalSignatures>(
+            signal: K,
+            callback: RotateController.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RotateController.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RotateController.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -252,6 +308,11 @@ export namespace SugarGestures {
             (object: SwipeDirection): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends EventController.SignalSignatures {
+            'swipe-ended': SwipeEnded;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends EventController.ConstructorProps {
@@ -261,6 +322,7 @@ export namespace SugarGestures {
 
     class SwipeController extends EventController {
         static $gtype: GObject.GType<SwipeController>;
+        declare static readonly __signalSignatures: SwipeController.SignalSignatures;
 
         // Properties
 
@@ -276,6 +338,18 @@ export namespace SugarGestures {
 
         // Signals
 
+        connect<K extends keyof SwipeController.SignalSignatures>(
+            signal: K,
+            callback: SwipeController.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SwipeController.SignalSignatures>(
+            signal: K,
+            callback: SwipeController.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SwipeController.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SwipeController.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -289,6 +363,9 @@ export namespace SugarGestures {
     }
 
     namespace TouchController {
+        // Signal signatures
+        interface SignalSignatures extends EventController.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends EventController.ConstructorProps {
@@ -301,6 +378,7 @@ export namespace SugarGestures {
 
     abstract class TouchController extends EventController {
         static $gtype: GObject.GType<TouchController>;
+        declare static readonly __signalSignatures: TouchController.SignalSignatures;
 
         // Properties
 
@@ -353,6 +431,11 @@ export namespace SugarGestures {
             (scale: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends TouchController.SignalSignatures {
+            'scale-changed': ScaleChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends TouchController.ConstructorProps {}
@@ -360,6 +443,7 @@ export namespace SugarGestures {
 
     class ZoomController extends TouchController {
         static $gtype: GObject.GType<ZoomController>;
+        declare static readonly __signalSignatures: ZoomController.SignalSignatures;
 
         // Fields
 
@@ -375,6 +459,18 @@ export namespace SugarGestures {
 
         // Signals
 
+        connect<K extends keyof ZoomController.SignalSignatures>(
+            signal: K,
+            callback: ZoomController.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ZoomController.SignalSignatures>(
+            signal: K,
+            callback: ZoomController.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ZoomController.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ZoomController.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

@@ -100,6 +100,9 @@ export namespace Gm {
         notify?: GLib.DestroyNotify | null,
     ): number;
     namespace Cutout {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -123,6 +126,7 @@ export namespace Gm {
      */
     class Cutout extends GObject.Object {
         static $gtype: GObject.GType<Cutout>;
+        declare static readonly __signalSignatures: Cutout.SignalSignatures;
 
         // Properties
 
@@ -167,6 +171,9 @@ export namespace Gm {
     }
 
     namespace DeviceInfo {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -185,6 +192,7 @@ export namespace Gm {
      */
     class DeviceInfo extends GObject.Object {
         static $gtype: GObject.GType<DeviceInfo>;
+        declare static readonly __signalSignatures: DeviceInfo.SignalSignatures;
 
         // Properties
 
@@ -212,6 +220,9 @@ export namespace Gm {
     }
 
     namespace DisplayPanel {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -234,6 +245,7 @@ export namespace Gm {
      */
     class DisplayPanel extends GObject.Object {
         static $gtype: GObject.GType<DisplayPanel>;
+        declare static readonly __signalSignatures: DisplayPanel.SignalSignatures;
 
         // Properties
 

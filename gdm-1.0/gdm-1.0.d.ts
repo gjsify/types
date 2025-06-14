@@ -58,6 +58,9 @@ export namespace Gdm {
     function worker_manager_interface_info(): Gio.DBusInterfaceInfo;
     function worker_manager_override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     namespace ChooserProxy {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -73,6 +76,7 @@ export namespace Gdm {
         implements Chooser, Gio.AsyncInitable<ChooserProxy>, Gio.DBusInterface, Gio.Initable
     {
         static $gtype: GObject.GType<ChooserProxy>;
+        declare static readonly __signalSignatures: ChooserProxy.SignalSignatures;
 
         // Constructors
 
@@ -891,6 +895,9 @@ export namespace Gdm {
     }
 
     namespace ChooserSkeleton {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -901,6 +908,7 @@ export namespace Gdm {
 
     class ChooserSkeleton extends Gio.DBusInterfaceSkeleton implements Chooser, Gio.DBusInterface {
         static $gtype: GObject.GType<ChooserSkeleton>;
+        declare static readonly __signalSignatures: ChooserSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -1410,6 +1418,9 @@ export namespace Gdm {
     }
 
     namespace Client {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1417,6 +1428,7 @@ export namespace Gdm {
 
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
+        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Constructors
 
@@ -1646,6 +1658,9 @@ export namespace Gdm {
     }
 
     namespace GreeterProxy {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1661,6 +1676,7 @@ export namespace Gdm {
         implements Greeter, Gio.AsyncInitable<GreeterProxy>, Gio.DBusInterface, Gio.Initable
     {
         static $gtype: GObject.GType<GreeterProxy>;
+        declare static readonly __signalSignatures: GreeterProxy.SignalSignatures;
 
         // Constructors
 
@@ -2568,6 +2584,9 @@ export namespace Gdm {
     }
 
     namespace GreeterSkeleton {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2578,6 +2597,7 @@ export namespace Gdm {
 
     class GreeterSkeleton extends Gio.DBusInterfaceSkeleton implements Greeter, Gio.DBusInterface {
         static $gtype: GObject.GType<GreeterSkeleton>;
+        declare static readonly __signalSignatures: GreeterSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -3176,6 +3196,9 @@ export namespace Gdm {
     }
 
     namespace ManagerProxy {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -3191,6 +3214,7 @@ export namespace Gdm {
         implements Manager, Gio.AsyncInitable<ManagerProxy>, Gio.DBusInterface, Gio.Initable
     {
         static $gtype: GObject.GType<ManagerProxy>;
+        declare static readonly __signalSignatures: ManagerProxy.SignalSignatures;
 
         // Constructors
 
@@ -4054,6 +4078,9 @@ export namespace Gdm {
     }
 
     namespace ManagerSkeleton {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4064,6 +4091,7 @@ export namespace Gdm {
 
     class ManagerSkeleton extends Gio.DBusInterfaceSkeleton implements Manager, Gio.DBusInterface {
         static $gtype: GObject.GType<ManagerSkeleton>;
+        declare static readonly __signalSignatures: ManagerSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -4618,6 +4646,9 @@ export namespace Gdm {
     }
 
     namespace RemoteGreeterProxy {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -4633,6 +4664,7 @@ export namespace Gdm {
         implements RemoteGreeter, Gio.AsyncInitable<RemoteGreeterProxy>, Gio.DBusInterface, Gio.Initable
     {
         static $gtype: GObject.GType<RemoteGreeterProxy>;
+        declare static readonly __signalSignatures: RemoteGreeterProxy.SignalSignatures;
 
         // Constructors
 
@@ -5436,6 +5468,9 @@ export namespace Gdm {
     }
 
     namespace RemoteGreeterSkeleton {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5446,6 +5481,7 @@ export namespace Gdm {
 
     class RemoteGreeterSkeleton extends Gio.DBusInterfaceSkeleton implements RemoteGreeter, Gio.DBusInterface {
         static $gtype: GObject.GType<RemoteGreeterSkeleton>;
+        declare static readonly __signalSignatures: RemoteGreeterSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -5940,6 +5976,9 @@ export namespace Gdm {
     }
 
     namespace UserVerifierChoiceListProxy {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5959,6 +5998,7 @@ export namespace Gdm {
             Gio.Initable
     {
         static $gtype: GObject.GType<UserVerifierChoiceListProxy>;
+        declare static readonly __signalSignatures: UserVerifierChoiceListProxy.SignalSignatures;
 
         // Constructors
 
@@ -6783,6 +6823,9 @@ export namespace Gdm {
     }
 
     namespace UserVerifierChoiceListSkeleton {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -6796,6 +6839,7 @@ export namespace Gdm {
         implements UserVerifierChoiceList, Gio.DBusInterface
     {
         static $gtype: GObject.GType<UserVerifierChoiceListSkeleton>;
+        declare static readonly __signalSignatures: UserVerifierChoiceListSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -7311,6 +7355,9 @@ export namespace Gdm {
     }
 
     namespace UserVerifierProxy {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -7326,6 +7373,7 @@ export namespace Gdm {
         implements UserVerifier, Gio.AsyncInitable<UserVerifierProxy>, Gio.DBusInterface, Gio.Initable
     {
         static $gtype: GObject.GType<UserVerifierProxy>;
+        declare static readonly __signalSignatures: UserVerifierProxy.SignalSignatures;
 
         // Constructors
 
@@ -8239,6 +8287,9 @@ export namespace Gdm {
     }
 
     namespace UserVerifierSkeleton {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -8249,6 +8300,7 @@ export namespace Gdm {
 
     class UserVerifierSkeleton extends Gio.DBusInterfaceSkeleton implements UserVerifier, Gio.DBusInterface {
         static $gtype: GObject.GType<UserVerifierSkeleton>;
+        declare static readonly __signalSignatures: UserVerifierSkeleton.SignalSignatures;
 
         // Constructors
 
@@ -8853,6 +8905,9 @@ export namespace Gdm {
     }
 
     namespace WorkerManagerProxy {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -8868,6 +8923,7 @@ export namespace Gdm {
         implements WorkerManager, Gio.AsyncInitable<WorkerManagerProxy>, Gio.DBusInterface, Gio.Initable
     {
         static $gtype: GObject.GType<WorkerManagerProxy>;
+        declare static readonly __signalSignatures: WorkerManagerProxy.SignalSignatures;
 
         // Constructors
 
@@ -9808,6 +9864,9 @@ export namespace Gdm {
     }
 
     namespace WorkerManagerSkeleton {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -9818,6 +9877,7 @@ export namespace Gdm {
 
     class WorkerManagerSkeleton extends Gio.DBusInterfaceSkeleton implements WorkerManager, Gio.DBusInterface {
         static $gtype: GObject.GType<WorkerManagerSkeleton>;
+        declare static readonly __signalSignatures: WorkerManagerSkeleton.SignalSignatures;
 
         // Constructors
 

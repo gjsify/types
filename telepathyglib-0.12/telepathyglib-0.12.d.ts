@@ -4920,6 +4920,13 @@ export namespace TelepathyGLib {
             ): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Proxy.SignalSignatures {
+            'avatar-changed': AvatarChanged;
+            'presence-changed': PresenceChanged;
+            'status-changed': StatusChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Proxy.ConstructorProps {
@@ -5010,6 +5017,7 @@ export namespace TelepathyGLib {
      */
     class Account extends Proxy {
         static $gtype: GObject.GType<Account>;
+        declare static readonly __signalSignatures: Account.SignalSignatures;
 
         // Properties
 
@@ -5841,6 +5849,15 @@ export namespace TelepathyGLib {
 
         // Signals
 
+        connect<K extends keyof Account.SignalSignatures>(signal: K, callback: Account.SignalSignatures[K]): number;
+        connect_after<K extends keyof Account.SignalSignatures>(
+            signal: K,
+            callback: Account.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Account.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Account.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -6836,6 +6853,11 @@ export namespace TelepathyGLib {
             (channel: Channel, user_action_time: number, context: HandleChannelsContext): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            're-handled': ReHandled;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -6854,6 +6876,7 @@ export namespace TelepathyGLib {
      */
     class AccountChannelRequest extends GObject.Object {
         static $gtype: GObject.GType<AccountChannelRequest>;
+        declare static readonly __signalSignatures: AccountChannelRequest.SignalSignatures;
 
         // Properties
 
@@ -7001,6 +7024,18 @@ export namespace TelepathyGLib {
 
         // Signals
 
+        connect<K extends keyof AccountChannelRequest.SignalSignatures>(
+            signal: K,
+            callback: AccountChannelRequest.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AccountChannelRequest.SignalSignatures>(
+            signal: K,
+            callback: AccountChannelRequest.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AccountChannelRequest.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AccountChannelRequest.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -7782,6 +7817,15 @@ export namespace TelepathyGLib {
             (presence: number, status: string, message: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Proxy.SignalSignatures {
+            'account-disabled': AccountDisabled;
+            'account-enabled': AccountEnabled;
+            'account-removed': AccountRemoved;
+            'account-validity-changed': AccountValidityChanged;
+            'most-available-presence-changed': MostAvailablePresenceChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Proxy.ConstructorProps {}
@@ -7804,6 +7848,7 @@ export namespace TelepathyGLib {
      */
     class AccountManager extends Proxy {
         static $gtype: GObject.GType<AccountManager>;
+        declare static readonly __signalSignatures: AccountManager.SignalSignatures;
 
         // Constructors
 
@@ -7817,6 +7862,18 @@ export namespace TelepathyGLib {
 
         // Signals
 
+        connect<K extends keyof AccountManager.SignalSignatures>(
+            signal: K,
+            callback: AccountManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof AccountManager.SignalSignatures>(
+            signal: K,
+            callback: AccountManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof AccountManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<AccountManager.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -8114,6 +8171,9 @@ export namespace TelepathyGLib {
     }
 
     namespace AccountRequest {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -8160,6 +8220,7 @@ export namespace TelepathyGLib {
      */
     class AccountRequest extends GObject.Object {
         static $gtype: GObject.GType<AccountRequest>;
+        declare static readonly __signalSignatures: AccountRequest.SignalSignatures;
 
         // Properties
 
@@ -8525,6 +8586,9 @@ export namespace TelepathyGLib {
     }
 
     namespace AddDispatchOperationContext {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -8542,6 +8606,7 @@ export namespace TelepathyGLib {
      */
     class AddDispatchOperationContext extends GObject.Object {
         static $gtype: GObject.GType<AddDispatchOperationContext>;
+        declare static readonly __signalSignatures: AddDispatchOperationContext.SignalSignatures;
 
         // Properties
 
@@ -8616,6 +8681,9 @@ export namespace TelepathyGLib {
     }
 
     namespace AutomaticClientFactory {
+        // Signal signatures
+        interface SignalSignatures extends SimpleClientFactory.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends SimpleClientFactory.ConstructorProps {}
@@ -8626,6 +8694,7 @@ export namespace TelepathyGLib {
      */
     class AutomaticClientFactory extends SimpleClientFactory {
         static $gtype: GObject.GType<AutomaticClientFactory>;
+        declare static readonly __signalSignatures: AutomaticClientFactory.SignalSignatures;
 
         // Constructors
 
@@ -8637,6 +8706,9 @@ export namespace TelepathyGLib {
     }
 
     namespace AutomaticProxyFactory {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, ClientChannelFactory.ConstructorProps {}
@@ -8647,6 +8719,7 @@ export namespace TelepathyGLib {
      */
     class AutomaticProxyFactory extends GObject.Object implements ClientChannelFactory {
         static $gtype: GObject.GType<AutomaticProxyFactory>;
+        declare static readonly __signalSignatures: AutomaticProxyFactory.SignalSignatures;
 
         // Constructors
 
@@ -9146,6 +9219,12 @@ export namespace TelepathyGLib {
             (request: ChannelRequest, error: string, message: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'request-added': RequestAdded;
+            'request-removed': RequestRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9167,6 +9246,7 @@ export namespace TelepathyGLib {
      */
     abstract class BaseClient extends GObject.Object {
         static $gtype: GObject.GType<BaseClient>;
+        declare static readonly __signalSignatures: BaseClient.SignalSignatures;
 
         // Properties
 
@@ -9297,6 +9377,18 @@ export namespace TelepathyGLib {
 
         // Signals
 
+        connect<K extends keyof BaseClient.SignalSignatures>(
+            signal: K,
+            callback: BaseClient.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BaseClient.SignalSignatures>(
+            signal: K,
+            callback: BaseClient.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BaseClient.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BaseClient.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -9734,6 +9826,13 @@ export namespace TelepathyGLib {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'clients-interested': ClientsInterested;
+            'clients-uninterested': ClientsUninterested;
+            'shutdown-finished': ShutdownFinished;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -9754,6 +9853,7 @@ export namespace TelepathyGLib {
      */
     abstract class BaseConnection extends GObject.Object {
         static $gtype: GObject.GType<BaseConnection>;
+        declare static readonly __signalSignatures: BaseConnection.SignalSignatures;
 
         // Properties
 
@@ -9798,6 +9898,18 @@ export namespace TelepathyGLib {
 
         // Signals
 
+        connect<K extends keyof BaseConnection.SignalSignatures>(
+            signal: K,
+            callback: BaseConnection.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof BaseConnection.SignalSignatures>(
+            signal: K,
+            callback: BaseConnection.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof BaseConnection.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<BaseConnection.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -9989,6 +10101,9 @@ export namespace TelepathyGLib {
     }
 
     namespace BasicProxyFactory {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, ClientChannelFactory.ConstructorProps {}
@@ -9999,6 +10114,7 @@ export namespace TelepathyGLib {
      */
     class BasicProxyFactory extends GObject.Object implements ClientChannelFactory {
         static $gtype: GObject.GType<BasicProxyFactory>;
+        declare static readonly __signalSignatures: BasicProxyFactory.SignalSignatures;
 
         // Constructors
 
@@ -10515,6 +10631,14 @@ export namespace TelepathyGLib {
             ): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Channel.SignalSignatures {
+            'content-added': ContentAdded;
+            'content-removed': ContentRemoved;
+            'members-changed': MembersChanged;
+            'state-changed': StateChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Channel.ConstructorProps {
@@ -10549,6 +10673,7 @@ export namespace TelepathyGLib {
      */
     class CallChannel extends Channel {
         static $gtype: GObject.GType<CallChannel>;
+        declare static readonly __signalSignatures: CallChannel.SignalSignatures;
 
         // Properties
 
@@ -10663,6 +10788,18 @@ export namespace TelepathyGLib {
 
         // Signals
 
+        connect<K extends keyof CallChannel.SignalSignatures>(
+            signal: K,
+            callback: CallChannel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CallChannel.SignalSignatures>(
+            signal: K,
+            callback: CallChannel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CallChannel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CallChannel.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -11054,6 +11191,13 @@ export namespace TelepathyGLib {
             (streams: CallStream[], reason: CallStateReason): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Proxy.SignalSignatures {
+            removed: Removed;
+            'streams-added': StreamsAdded;
+            'streams-removed': StreamsRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Proxy.ConstructorProps {
@@ -11072,6 +11216,7 @@ export namespace TelepathyGLib {
      */
     class CallContent extends Proxy {
         static $gtype: GObject.GType<CallContent>;
+        declare static readonly __signalSignatures: CallContent.SignalSignatures;
 
         // Properties
 
@@ -11116,6 +11261,18 @@ export namespace TelepathyGLib {
 
         // Signals
 
+        connect<K extends keyof CallContent.SignalSignatures>(
+            signal: K,
+            callback: CallContent.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CallContent.SignalSignatures>(
+            signal: K,
+            callback: CallContent.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CallContent.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CallContent.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -11252,6 +11409,12 @@ export namespace TelepathyGLib {
             ): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Proxy.SignalSignatures {
+            'local-sending-state-changed': LocalSendingStateChanged;
+            'remote-members-changed': RemoteMembersChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Proxy.ConstructorProps {
@@ -11269,6 +11432,7 @@ export namespace TelepathyGLib {
      */
     class CallStream extends Proxy {
         static $gtype: GObject.GType<CallStream>;
+        declare static readonly __signalSignatures: CallStream.SignalSignatures;
 
         // Properties
 
@@ -11307,6 +11471,18 @@ export namespace TelepathyGLib {
 
         // Signals
 
+        connect<K extends keyof CallStream.SignalSignatures>(
+            signal: K,
+            callback: CallStream.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CallStream.SignalSignatures>(
+            signal: K,
+            callback: CallStream.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CallStream.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CallStream.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -11466,6 +11642,9 @@ export namespace TelepathyGLib {
     }
 
     namespace Capabilities {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -11481,6 +11660,7 @@ export namespace TelepathyGLib {
      */
     class Capabilities extends GObject.Object {
         static $gtype: GObject.GType<Capabilities>;
+        declare static readonly __signalSignatures: Capabilities.SignalSignatures;
 
         // Properties
 
@@ -11768,6 +11948,15 @@ export namespace TelepathyGLib {
             ): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Proxy.SignalSignatures {
+            'chat-state-changed': ChatStateChanged;
+            'group-contacts-changed': GroupContactsChanged;
+            'group-flags-changed': GroupFlagsChanged;
+            'group-members-changed': GroupMembersChanged;
+            'group-members-changed-detailed': GroupMembersChangedDetailed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Proxy.ConstructorProps {
@@ -11805,6 +11994,7 @@ export namespace TelepathyGLib {
      */
     class Channel extends Proxy {
         static $gtype: GObject.GType<Channel>;
+        declare static readonly __signalSignatures: Channel.SignalSignatures;
 
         // Properties
 
@@ -12111,6 +12301,15 @@ export namespace TelepathyGLib {
 
         // Signals
 
+        connect<K extends keyof Channel.SignalSignatures>(signal: K, callback: Channel.SignalSignatures[K]): number;
+        connect_after<K extends keyof Channel.SignalSignatures>(
+            signal: K,
+            callback: Channel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Channel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Channel.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -12804,6 +13003,11 @@ export namespace TelepathyGLib {
             (channel: Channel, domain: number, code: number, message: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Proxy.SignalSignatures {
+            'channel-lost': ChannelLost;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Proxy.ConstructorProps {
@@ -12867,6 +13071,7 @@ export namespace TelepathyGLib {
      */
     class ChannelDispatchOperation extends Proxy {
         static $gtype: GObject.GType<ChannelDispatchOperation>;
+        declare static readonly __signalSignatures: ChannelDispatchOperation.SignalSignatures;
 
         // Properties
 
@@ -12934,6 +13139,18 @@ export namespace TelepathyGLib {
 
         // Signals
 
+        connect<K extends keyof ChannelDispatchOperation.SignalSignatures>(
+            signal: K,
+            callback: ChannelDispatchOperation.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ChannelDispatchOperation.SignalSignatures>(
+            signal: K,
+            callback: ChannelDispatchOperation.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ChannelDispatchOperation.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ChannelDispatchOperation.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -13442,6 +13659,9 @@ export namespace TelepathyGLib {
     }
 
     namespace ChannelDispatcher {
+        // Signal signatures
+        interface SignalSignatures extends Proxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Proxy.ConstructorProps {}
@@ -13466,6 +13686,7 @@ export namespace TelepathyGLib {
      */
     class ChannelDispatcher extends Proxy {
         static $gtype: GObject.GType<ChannelDispatcher>;
+        declare static readonly __signalSignatures: ChannelDispatcher.SignalSignatures;
 
         // Constructors
 
@@ -13546,6 +13767,12 @@ export namespace TelepathyGLib {
             (connection: Connection, channel: Channel): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Proxy.SignalSignatures {
+            succeeded: Succeeded;
+            'succeeded-with-channel': SucceededWithChannel;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Proxy.ConstructorProps {
@@ -13594,6 +13821,7 @@ export namespace TelepathyGLib {
      */
     class ChannelRequest extends Proxy {
         static $gtype: GObject.GType<ChannelRequest>;
+        declare static readonly __signalSignatures: ChannelRequest.SignalSignatures;
 
         // Properties
 
@@ -13711,6 +13939,18 @@ export namespace TelepathyGLib {
 
         // Signals
 
+        connect<K extends keyof ChannelRequest.SignalSignatures>(
+            signal: K,
+            callback: ChannelRequest.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ChannelRequest.SignalSignatures>(
+            signal: K,
+            callback: ChannelRequest.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ChannelRequest.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ChannelRequest.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -13784,6 +14024,9 @@ export namespace TelepathyGLib {
     }
 
     namespace ClientMessage {
+        // Signal signatures
+        interface SignalSignatures extends Message.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Message.ConstructorProps {}
@@ -13795,6 +14038,7 @@ export namespace TelepathyGLib {
      */
     class ClientMessage extends Message {
         static $gtype: GObject.GType<ClientMessage>;
+        declare static readonly __signalSignatures: ClientMessage.SignalSignatures;
 
         // Constructors
 
@@ -13832,6 +14076,16 @@ export namespace TelepathyGLib {
 
         interface GroupsRemoved {
             (added: string[]): void;
+        }
+
+        // Signal signatures
+        interface SignalSignatures extends Proxy.SignalSignatures {
+            'balance-changed': BalanceChanged;
+            'blocked-contacts-changed': BlockedContactsChanged;
+            'contact-list-changed': ContactListChanged;
+            'group-renamed': GroupRenamed;
+            'groups-created': GroupsCreated;
+            'groups-removed': GroupsRemoved;
         }
 
         // Constructor properties interface
@@ -13890,6 +14144,7 @@ export namespace TelepathyGLib {
      */
     class Connection extends Proxy {
         static $gtype: GObject.GType<Connection>;
+        declare static readonly __signalSignatures: Connection.SignalSignatures;
 
         // Properties
 
@@ -14331,6 +14586,18 @@ export namespace TelepathyGLib {
 
         // Signals
 
+        connect<K extends keyof Connection.SignalSignatures>(
+            signal: K,
+            callback: Connection.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Connection.SignalSignatures>(
+            signal: K,
+            callback: Connection.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Connection.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Connection.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -15547,6 +15814,13 @@ export namespace TelepathyGLib {
             (source: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Proxy.SignalSignatures {
+            activated: Activated;
+            exited: Exited;
+            'got-info': GotInfo;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Proxy.ConstructorProps {
@@ -15586,6 +15860,7 @@ export namespace TelepathyGLib {
      */
     class ConnectionManager extends Proxy {
         static $gtype: GObject.GType<ConnectionManager>;
+        declare static readonly __signalSignatures: ConnectionManager.SignalSignatures;
 
         // Properties
 
@@ -15668,6 +15943,18 @@ export namespace TelepathyGLib {
 
         // Signals
 
+        connect<K extends keyof ConnectionManager.SignalSignatures>(
+            signal: K,
+            callback: ConnectionManager.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ConnectionManager.SignalSignatures>(
+            signal: K,
+            callback: ConnectionManager.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ConnectionManager.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ConnectionManager.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -15826,6 +16113,13 @@ export namespace TelepathyGLib {
             (subscribe: number, publish: number, publish_request: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'contact-groups-changed': ContactGroupsChanged;
+            'presence-changed': PresenceChanged;
+            'subscription-states-changed': SubscriptionStatesChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -15890,6 +16184,7 @@ export namespace TelepathyGLib {
      */
     class Contact extends GObject.Object {
         static $gtype: GObject.GType<Contact>;
+        declare static readonly __signalSignatures: Contact.SignalSignatures;
 
         // Properties
 
@@ -16219,6 +16514,15 @@ export namespace TelepathyGLib {
 
         // Signals
 
+        connect<K extends keyof Contact.SignalSignatures>(signal: K, callback: Contact.SignalSignatures[K]): number;
+        connect_after<K extends keyof Contact.SignalSignatures>(
+            signal: K,
+            callback: Contact.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Contact.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Contact.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -16798,6 +17102,11 @@ export namespace TelepathyGLib {
             (results: ContactSearchResult[]): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'search-results-received': SearchResultsReceived;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps {
@@ -16814,6 +17123,7 @@ export namespace TelepathyGLib {
      */
     class ContactSearch extends GObject.Object implements Gio.AsyncInitable<ContactSearch> {
         static $gtype: GObject.GType<ContactSearch>;
+        declare static readonly __signalSignatures: ContactSearch.SignalSignatures;
 
         // Properties
 
@@ -16859,6 +17169,18 @@ export namespace TelepathyGLib {
 
         // Signals
 
+        connect<K extends keyof ContactSearch.SignalSignatures>(
+            signal: K,
+            callback: ContactSearch.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ContactSearch.SignalSignatures>(
+            signal: K,
+            callback: ContactSearch.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ContactSearch.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ContactSearch.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -17608,6 +17930,9 @@ export namespace TelepathyGLib {
     }
 
     namespace ContactSearchResult {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -17622,6 +17947,7 @@ export namespace TelepathyGLib {
      */
     class ContactSearchResult extends GObject.Object {
         static $gtype: GObject.GType<ContactSearchResult>;
+        declare static readonly __signalSignatures: ContactSearchResult.SignalSignatures;
 
         // Properties
 
@@ -17659,6 +17985,9 @@ export namespace TelepathyGLib {
     }
 
     namespace DBusDaemon {
+        // Signal signatures
+        interface SignalSignatures extends Proxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Proxy.ConstructorProps {}
@@ -17670,6 +17999,7 @@ export namespace TelepathyGLib {
      */
     class DBusDaemon extends Proxy {
         static $gtype: GObject.GType<DBusDaemon>;
+        declare static readonly __signalSignatures: DBusDaemon.SignalSignatures;
 
         // Constructors
 
@@ -17778,6 +18108,9 @@ export namespace TelepathyGLib {
     }
 
     namespace DBusTubeChannel {
+        // Signal signatures
+        interface SignalSignatures extends Channel.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Channel.ConstructorProps {
@@ -17793,6 +18126,7 @@ export namespace TelepathyGLib {
      */
     class DBusTubeChannel extends Channel {
         static $gtype: GObject.GType<DBusTubeChannel>;
+        declare static readonly __signalSignatures: DBusTubeChannel.SignalSignatures;
 
         // Properties
 
@@ -17923,6 +18257,11 @@ export namespace TelepathyGLib {
             (message: DebugMessage): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Proxy.SignalSignatures {
+            'new-debug-message': NewDebugMessage;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Proxy.ConstructorProps {
@@ -17935,6 +18274,7 @@ export namespace TelepathyGLib {
      */
     class DebugClient extends Proxy {
         static $gtype: GObject.GType<DebugClient>;
+        declare static readonly __signalSignatures: DebugClient.SignalSignatures;
 
         // Properties
 
@@ -17956,6 +18296,18 @@ export namespace TelepathyGLib {
 
         // Signals
 
+        connect<K extends keyof DebugClient.SignalSignatures>(
+            signal: K,
+            callback: DebugClient.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DebugClient.SignalSignatures>(
+            signal: K,
+            callback: DebugClient.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DebugClient.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DebugClient.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -18038,6 +18390,9 @@ export namespace TelepathyGLib {
     }
 
     namespace DebugMessage {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -18054,6 +18409,7 @@ export namespace TelepathyGLib {
      */
     class DebugMessage extends GObject.Object {
         static $gtype: GObject.GType<DebugMessage>;
+        declare static readonly __signalSignatures: DebugMessage.SignalSignatures;
 
         // Properties
 
@@ -18114,6 +18470,9 @@ export namespace TelepathyGLib {
     }
 
     namespace FileTransferChannel {
+        // Signal signatures
+        interface SignalSignatures extends Channel.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Channel.ConstructorProps {
@@ -18139,6 +18498,7 @@ export namespace TelepathyGLib {
      */
     class FileTransferChannel extends Channel {
         static $gtype: GObject.GType<FileTransferChannel>;
+        declare static readonly __signalSignatures: FileTransferChannel.SignalSignatures;
 
         // Properties
 
@@ -18470,6 +18830,11 @@ export namespace TelepathyGLib {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            done: Done;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -18489,6 +18854,7 @@ export namespace TelepathyGLib {
      */
     class HandleChannelsContext extends GObject.Object {
         static $gtype: GObject.GType<HandleChannelsContext>;
+        declare static readonly __signalSignatures: HandleChannelsContext.SignalSignatures;
 
         // Properties
 
@@ -18559,6 +18925,18 @@ export namespace TelepathyGLib {
 
         // Signals
 
+        connect<K extends keyof HandleChannelsContext.SignalSignatures>(
+            signal: K,
+            callback: HandleChannelsContext.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof HandleChannelsContext.SignalSignatures>(
+            signal: K,
+            callback: HandleChannelsContext.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof HandleChannelsContext.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<HandleChannelsContext.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -18609,6 +18987,9 @@ export namespace TelepathyGLib {
     }
 
     namespace Message {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -18632,6 +19013,7 @@ export namespace TelepathyGLib {
      */
     class Message extends GObject.Object {
         static $gtype: GObject.GType<Message>;
+        declare static readonly __signalSignatures: Message.SignalSignatures;
 
         // Constructors
 
@@ -18878,6 +19260,9 @@ export namespace TelepathyGLib {
     }
 
     namespace ObserveChannelsContext {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -18896,6 +19281,7 @@ export namespace TelepathyGLib {
      */
     class ObserveChannelsContext extends GObject.Object {
         static $gtype: GObject.GType<ObserveChannelsContext>;
+        declare static readonly __signalSignatures: ObserveChannelsContext.SignalSignatures;
 
         // Properties
 
@@ -18990,6 +19376,9 @@ export namespace TelepathyGLib {
     }
 
     namespace Protocol {
+        // Signal signatures
+        interface SignalSignatures extends Proxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Proxy.ConstructorProps {
@@ -19024,6 +19413,7 @@ export namespace TelepathyGLib {
      */
     class Protocol extends Proxy {
         static $gtype: GObject.GType<Protocol>;
+        declare static readonly __signalSignatures: Protocol.SignalSignatures;
 
         // Properties
 
@@ -19540,6 +19930,12 @@ export namespace TelepathyGLib {
             (domain: number, code: number, message: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'interface-added': InterfaceAdded;
+            invalidated: Invalidated;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -19559,6 +19955,7 @@ export namespace TelepathyGLib {
      */
     class Proxy extends GObject.Object {
         static $gtype: GObject.GType<Proxy>;
+        declare static readonly __signalSignatures: Proxy.SignalSignatures;
 
         // Properties
 
@@ -19608,6 +20005,9 @@ export namespace TelepathyGLib {
 
         // Signals
 
+        connect<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
+        connect_after<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
+        emit<K extends keyof Proxy.SignalSignatures>(signal: K, ...args: Parameters<Proxy.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -19872,6 +20272,9 @@ export namespace TelepathyGLib {
     }
 
     namespace RoomInfo {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -19882,6 +20285,7 @@ export namespace TelepathyGLib {
      */
     class RoomInfo extends GObject.Object {
         static $gtype: GObject.GType<RoomInfo>;
+        declare static readonly __signalSignatures: RoomInfo.SignalSignatures;
 
         // Constructors
 
@@ -19962,6 +20366,12 @@ export namespace TelepathyGLib {
             (room: RoomInfo): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            failed: Failed;
+            'got-room': GotRoom;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps {
@@ -19976,6 +20386,7 @@ export namespace TelepathyGLib {
      */
     class RoomList extends GObject.Object implements Gio.AsyncInitable<RoomList> {
         static $gtype: GObject.GType<RoomList>;
+        declare static readonly __signalSignatures: RoomList.SignalSignatures;
 
         // Properties
 
@@ -20009,6 +20420,15 @@ export namespace TelepathyGLib {
 
         // Signals
 
+        connect<K extends keyof RoomList.SignalSignatures>(signal: K, callback: RoomList.SignalSignatures[K]): number;
+        connect_after<K extends keyof RoomList.SignalSignatures>(
+            signal: K,
+            callback: RoomList.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof RoomList.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<RoomList.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -20695,6 +21115,9 @@ export namespace TelepathyGLib {
     }
 
     namespace SignalledMessage {
+        // Signal signatures
+        interface SignalSignatures extends Message.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Message.ConstructorProps {
@@ -20708,6 +21131,7 @@ export namespace TelepathyGLib {
      */
     class SignalledMessage extends Message {
         static $gtype: GObject.GType<SignalledMessage>;
+        declare static readonly __signalSignatures: SignalledMessage.SignalSignatures;
 
         // Properties
 
@@ -20734,6 +21158,9 @@ export namespace TelepathyGLib {
     }
 
     namespace SimpleApprover {
+        // Signal signatures
+        interface SignalSignatures extends BaseClient.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends BaseClient.ConstructorProps {
@@ -20749,6 +21176,7 @@ export namespace TelepathyGLib {
      */
     class SimpleApprover extends BaseClient {
         static $gtype: GObject.GType<SimpleApprover>;
+        declare static readonly __signalSignatures: SimpleApprover.SignalSignatures;
 
         // Properties
 
@@ -20802,6 +21230,9 @@ export namespace TelepathyGLib {
     }
 
     namespace SimpleClientFactory {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -20815,6 +21246,7 @@ export namespace TelepathyGLib {
      */
     class SimpleClientFactory extends GObject.Object {
         static $gtype: GObject.GType<SimpleClientFactory>;
+        declare static readonly __signalSignatures: SimpleClientFactory.SignalSignatures;
 
         // Properties
 
@@ -21110,6 +21542,9 @@ export namespace TelepathyGLib {
     }
 
     namespace SimpleHandler {
+        // Signal signatures
+        interface SignalSignatures extends BaseClient.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends BaseClient.ConstructorProps {
@@ -21128,6 +21563,7 @@ export namespace TelepathyGLib {
      */
     class SimpleHandler extends BaseClient {
         static $gtype: GObject.GType<SimpleHandler>;
+        declare static readonly __signalSignatures: SimpleHandler.SignalSignatures;
 
         // Properties
 
@@ -21199,6 +21635,9 @@ export namespace TelepathyGLib {
     }
 
     namespace SimpleObserver {
+        // Signal signatures
+        interface SignalSignatures extends BaseClient.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends BaseClient.ConstructorProps {
@@ -21215,6 +21654,7 @@ export namespace TelepathyGLib {
      */
     class SimpleObserver extends BaseClient {
         static $gtype: GObject.GType<SimpleObserver>;
+        declare static readonly __signalSignatures: SimpleObserver.SignalSignatures;
 
         // Properties
 
@@ -21283,6 +21723,11 @@ export namespace TelepathyGLib {
             (tube_connection: StreamTubeConnection): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Channel.SignalSignatures {
+            incoming: Incoming;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Channel.ConstructorProps {
@@ -21297,6 +21742,7 @@ export namespace TelepathyGLib {
      */
     class StreamTubeChannel extends Channel {
         static $gtype: GObject.GType<StreamTubeChannel>;
+        declare static readonly __signalSignatures: StreamTubeChannel.SignalSignatures;
 
         // Properties
 
@@ -21334,6 +21780,18 @@ export namespace TelepathyGLib {
 
         // Signals
 
+        connect<K extends keyof StreamTubeChannel.SignalSignatures>(
+            signal: K,
+            callback: StreamTubeChannel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StreamTubeChannel.SignalSignatures>(
+            signal: K,
+            callback: StreamTubeChannel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StreamTubeChannel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StreamTubeChannel.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -21445,6 +21903,11 @@ export namespace TelepathyGLib {
             (error: GLib.Error): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            closed: Closed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -21460,6 +21923,7 @@ export namespace TelepathyGLib {
      */
     class StreamTubeConnection extends GObject.Object {
         static $gtype: GObject.GType<StreamTubeConnection>;
+        declare static readonly __signalSignatures: StreamTubeConnection.SignalSignatures;
 
         // Properties
 
@@ -21501,6 +21965,18 @@ export namespace TelepathyGLib {
 
         // Signals
 
+        connect<K extends keyof StreamTubeConnection.SignalSignatures>(
+            signal: K,
+            callback: StreamTubeConnection.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof StreamTubeConnection.SignalSignatures>(
+            signal: K,
+            callback: StreamTubeConnection.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof StreamTubeConnection.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<StreamTubeConnection.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -21528,6 +22004,9 @@ export namespace TelepathyGLib {
     }
 
     namespace TLSCertificate {
+        // Signal signatures
+        interface SignalSignatures extends Proxy.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Proxy.ConstructorProps {
@@ -21546,6 +22025,7 @@ export namespace TelepathyGLib {
      */
     class TLSCertificate extends Proxy {
         static $gtype: GObject.GType<TLSCertificate>;
+        declare static readonly __signalSignatures: TLSCertificate.SignalSignatures;
 
         // Properties
 
@@ -21766,6 +22246,9 @@ export namespace TelepathyGLib {
     }
 
     namespace TLSCertificateRejection {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -21782,6 +22265,7 @@ export namespace TelepathyGLib {
      */
     class TLSCertificateRejection extends GObject.Object {
         static $gtype: GObject.GType<TLSCertificateRejection>;
+        declare static readonly __signalSignatures: TLSCertificateRejection.SignalSignatures;
 
         // Properties
 
@@ -21862,6 +22346,14 @@ export namespace TelepathyGLib {
             (message: SignalledMessage): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Channel.SignalSignatures {
+            'contact-chat-state-changed': ContactChatStateChanged;
+            'message-received': MessageReceived;
+            'message-sent': MessageSent;
+            'pending-message-removed': PendingMessageRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Channel.ConstructorProps {
@@ -21883,6 +22375,7 @@ export namespace TelepathyGLib {
      */
     class TextChannel extends Channel {
         static $gtype: GObject.GType<TextChannel>;
+        declare static readonly __signalSignatures: TextChannel.SignalSignatures;
 
         // Properties
 
@@ -21964,6 +22457,18 @@ export namespace TelepathyGLib {
 
         // Signals
 
+        connect<K extends keyof TextChannel.SignalSignatures>(
+            signal: K,
+            callback: TextChannel.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof TextChannel.SignalSignatures>(
+            signal: K,
+            callback: TextChannel.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof TextChannel.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<TextChannel.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

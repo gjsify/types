@@ -63,6 +63,9 @@ export namespace GtkVnc {
         CLICK,
     }
     namespace CairoFramebuffer {
+        // Signal signatures
+        interface SignalSignatures extends GVnc.BaseFramebuffer.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GVnc.BaseFramebuffer.ConstructorProps, GVnc.Framebuffer.ConstructorProps {
@@ -72,6 +75,7 @@ export namespace GtkVnc {
 
     class CairoFramebuffer extends GVnc.BaseFramebuffer implements GVnc.Framebuffer {
         static $gtype: GObject.GType<CairoFramebuffer>;
+        declare static readonly __signalSignatures: CairoFramebuffer.SignalSignatures;
 
         // Properties
 
@@ -781,6 +785,27 @@ export namespace GtkVnc {
             (object: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.DrawingArea.SignalSignatures {
+            'vnc-auth-credential': VncAuthCredential;
+            'vnc-auth-failure': VncAuthFailure;
+            'vnc-auth-unsupported': VncAuthUnsupported;
+            'vnc-bell': VncBell;
+            'vnc-connected': VncConnected;
+            'vnc-desktop-rename': VncDesktopRename;
+            'vnc-desktop-resize': VncDesktopResize;
+            'vnc-disconnected': VncDisconnected;
+            'vnc-error': VncError;
+            'vnc-initialized': VncInitialized;
+            'vnc-keyboard-grab': VncKeyboardGrab;
+            'vnc-keyboard-ungrab': VncKeyboardUngrab;
+            'vnc-pointer-grab': VncPointerGrab;
+            'vnc-pointer-ungrab': VncPointerUngrab;
+            'vnc-power-control-failed': VncPowerControlFailed;
+            'vnc-power-control-initialized': VncPowerControlInitialized;
+            'vnc-server-cut-text': VncServerCutText;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -822,6 +847,7 @@ export namespace GtkVnc {
 
     class Display extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Display>;
+        declare static readonly __signalSignatures: Display.SignalSignatures;
 
         // Properties
 
@@ -892,6 +918,15 @@ export namespace GtkVnc {
 
         // Signals
 
+        connect<K extends keyof Display.SignalSignatures>(signal: K, callback: Display.SignalSignatures[K]): number;
+        connect_after<K extends keyof Display.SignalSignatures>(
+            signal: K,
+            callback: Display.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Display.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Display.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

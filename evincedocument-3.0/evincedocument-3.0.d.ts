@@ -472,6 +472,9 @@ export namespace EvinceDocument {
         WHOLE_WORDS_ONLY,
     }
     namespace Annotation {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -487,6 +490,7 @@ export namespace EvinceDocument {
 
     abstract class Annotation extends GObject.Object {
         static $gtype: GObject.GType<Annotation>;
+        declare static readonly __signalSignatures: Annotation.SignalSignatures;
 
         // Properties
 
@@ -639,6 +643,9 @@ export namespace EvinceDocument {
     }
 
     namespace AnnotationAttachment {
+        // Signal signatures
+        interface SignalSignatures extends Annotation.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Annotation.ConstructorProps, AnnotationMarkup.ConstructorProps {
@@ -648,6 +655,7 @@ export namespace EvinceDocument {
 
     class AnnotationAttachment extends Annotation implements AnnotationMarkup {
         static $gtype: GObject.GType<AnnotationAttachment>;
+        declare static readonly __signalSignatures: AnnotationAttachment.SignalSignatures;
 
         // Properties
 
@@ -837,6 +845,9 @@ export namespace EvinceDocument {
     }
 
     namespace AnnotationText {
+        // Signal signatures
+        interface SignalSignatures extends Annotation.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Annotation.ConstructorProps, AnnotationMarkup.ConstructorProps {
@@ -848,6 +859,7 @@ export namespace EvinceDocument {
 
     class AnnotationText extends Annotation implements AnnotationMarkup {
         static $gtype: GObject.GType<AnnotationText>;
+        declare static readonly __signalSignatures: AnnotationText.SignalSignatures;
 
         // Properties
 
@@ -1043,6 +1055,9 @@ export namespace EvinceDocument {
     }
 
     namespace AnnotationTextMarkup {
+        // Signal signatures
+        interface SignalSignatures extends Annotation.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Annotation.ConstructorProps, AnnotationMarkup.ConstructorProps {
@@ -1052,6 +1067,7 @@ export namespace EvinceDocument {
 
     class AnnotationTextMarkup extends Annotation implements AnnotationMarkup {
         static $gtype: GObject.GType<AnnotationTextMarkup>;
+        declare static readonly __signalSignatures: AnnotationTextMarkup.SignalSignatures;
 
         // Properties
 
@@ -1247,6 +1263,9 @@ export namespace EvinceDocument {
     }
 
     namespace Attachment {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1261,6 +1280,7 @@ export namespace EvinceDocument {
 
     class Attachment extends GObject.Object {
         static $gtype: GObject.GType<Attachment>;
+        declare static readonly __signalSignatures: Attachment.SignalSignatures;
 
         // Properties
 
@@ -1306,6 +1326,9 @@ export namespace EvinceDocument {
     }
 
     namespace Document {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1315,6 +1338,7 @@ export namespace EvinceDocument {
 
     abstract class Document extends GObject.Object {
         static $gtype: GObject.GType<Document>;
+        declare static readonly __signalSignatures: Document.SignalSignatures;
 
         // Properties
 
@@ -1681,6 +1705,9 @@ export namespace EvinceDocument {
     }
 
     namespace FormField {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1688,6 +1715,7 @@ export namespace EvinceDocument {
 
     abstract class FormField extends GObject.Object {
         static $gtype: GObject.GType<FormField>;
+        declare static readonly __signalSignatures: FormField.SignalSignatures;
 
         // Fields
 
@@ -1706,6 +1734,9 @@ export namespace EvinceDocument {
     }
 
     namespace FormFieldButton {
+        // Signal signatures
+        interface SignalSignatures extends FormField.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FormField.ConstructorProps {}
@@ -1713,6 +1744,7 @@ export namespace EvinceDocument {
 
     class FormFieldButton extends FormField {
         static $gtype: GObject.GType<FormFieldButton>;
+        declare static readonly __signalSignatures: FormFieldButton.SignalSignatures;
 
         // Fields
 
@@ -1729,6 +1761,9 @@ export namespace EvinceDocument {
     }
 
     namespace FormFieldChoice {
+        // Signal signatures
+        interface SignalSignatures extends FormField.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FormField.ConstructorProps {}
@@ -1736,6 +1771,7 @@ export namespace EvinceDocument {
 
     class FormFieldChoice extends FormField {
         static $gtype: GObject.GType<FormFieldChoice>;
+        declare static readonly __signalSignatures: FormFieldChoice.SignalSignatures;
 
         // Fields
 
@@ -1757,6 +1793,9 @@ export namespace EvinceDocument {
     }
 
     namespace FormFieldSignature {
+        // Signal signatures
+        interface SignalSignatures extends FormField.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FormField.ConstructorProps {}
@@ -1764,6 +1803,7 @@ export namespace EvinceDocument {
 
     class FormFieldSignature extends FormField {
         static $gtype: GObject.GType<FormFieldSignature>;
+        declare static readonly __signalSignatures: FormFieldSignature.SignalSignatures;
 
         // Constructors
 
@@ -1775,6 +1815,9 @@ export namespace EvinceDocument {
     }
 
     namespace FormFieldText {
+        // Signal signatures
+        interface SignalSignatures extends FormField.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FormField.ConstructorProps {}
@@ -1782,6 +1825,7 @@ export namespace EvinceDocument {
 
     class FormFieldText extends FormField {
         static $gtype: GObject.GType<FormFieldText>;
+        declare static readonly __signalSignatures: FormFieldText.SignalSignatures;
 
         // Fields
 
@@ -1804,6 +1848,9 @@ export namespace EvinceDocument {
     }
 
     namespace Image {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1811,6 +1858,7 @@ export namespace EvinceDocument {
 
     class Image extends GObject.Object {
         static $gtype: GObject.GType<Image>;
+        declare static readonly __signalSignatures: Image.SignalSignatures;
 
         // Fields
 
@@ -1836,6 +1884,9 @@ export namespace EvinceDocument {
     }
 
     namespace Layer {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1843,6 +1894,7 @@ export namespace EvinceDocument {
 
     class Layer extends GObject.Object {
         static $gtype: GObject.GType<Layer>;
+        declare static readonly __signalSignatures: Layer.SignalSignatures;
 
         // Fields
 
@@ -1863,6 +1915,9 @@ export namespace EvinceDocument {
     }
 
     namespace Link {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1873,6 +1928,7 @@ export namespace EvinceDocument {
 
     class Link extends GObject.Object {
         static $gtype: GObject.GType<Link>;
+        declare static readonly __signalSignatures: Link.SignalSignatures;
 
         // Properties
 
@@ -1894,6 +1950,9 @@ export namespace EvinceDocument {
     }
 
     namespace LinkAction {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1918,6 +1977,7 @@ export namespace EvinceDocument {
 
     class LinkAction extends GObject.Object {
         static $gtype: GObject.GType<LinkAction>;
+        declare static readonly __signalSignatures: LinkAction.SignalSignatures;
 
         // Properties
 
@@ -1980,6 +2040,9 @@ export namespace EvinceDocument {
     }
 
     namespace LinkDest {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1999,6 +2062,7 @@ export namespace EvinceDocument {
 
     class LinkDest extends GObject.Object {
         static $gtype: GObject.GType<LinkDest>;
+        declare static readonly __signalSignatures: LinkDest.SignalSignatures;
 
         // Properties
 
@@ -2064,6 +2128,9 @@ export namespace EvinceDocument {
     }
 
     namespace Media {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2071,6 +2138,7 @@ export namespace EvinceDocument {
 
     class Media extends GObject.Object {
         static $gtype: GObject.GType<Media>;
+        declare static readonly __signalSignatures: Media.SignalSignatures;
 
         // Fields
 
@@ -2093,6 +2161,9 @@ export namespace EvinceDocument {
     }
 
     namespace Page {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2100,6 +2171,7 @@ export namespace EvinceDocument {
 
     class Page extends GObject.Object {
         static $gtype: GObject.GType<Page>;
+        declare static readonly __signalSignatures: Page.SignalSignatures;
 
         // Fields
 
@@ -2118,6 +2190,9 @@ export namespace EvinceDocument {
     }
 
     namespace RenderContext {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2125,6 +2200,7 @@ export namespace EvinceDocument {
 
     class RenderContext extends GObject.Object {
         static $gtype: GObject.GType<RenderContext>;
+        declare static readonly __signalSignatures: RenderContext.SignalSignatures;
 
         // Fields
 
@@ -2164,6 +2240,9 @@ export namespace EvinceDocument {
     }
 
     namespace TransitionEffect {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2181,6 +2260,7 @@ export namespace EvinceDocument {
 
     class TransitionEffect extends GObject.Object {
         static $gtype: GObject.GType<TransitionEffect>;
+        declare static readonly __signalSignatures: TransitionEffect.SignalSignatures;
 
         // Properties
 

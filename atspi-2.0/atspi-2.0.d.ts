@@ -2353,6 +2353,12 @@ export namespace Atspi {
             (arg1: number, arg2: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {
+            'mode-changed': ModeChanged;
+            'region-changed': RegionChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2395,6 +2401,7 @@ export namespace Atspi {
             Value
     {
         static $gtype: GObject.GType<Accessible>;
+        declare static readonly __signalSignatures: Accessible.SignalSignatures;
 
         // Fields
 
@@ -2415,6 +2422,18 @@ export namespace Atspi {
 
         // Signals
 
+        connect<K extends keyof Accessible.SignalSignatures>(
+            signal: K,
+            callback: Accessible.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof Accessible.SignalSignatures>(
+            signal: K,
+            callback: Accessible.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Accessible.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Accessible.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -4171,6 +4190,9 @@ export namespace Atspi {
     }
 
     namespace Application {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4185,6 +4207,7 @@ export namespace Atspi {
      */
     class Application extends GObject.Object {
         static $gtype: GObject.GType<Application>;
+        declare static readonly __signalSignatures: Application.SignalSignatures;
 
         // Fields
 
@@ -4204,6 +4227,9 @@ export namespace Atspi {
     }
 
     namespace Device {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4214,6 +4240,7 @@ export namespace Atspi {
 
     class Device extends GObject.Object {
         static $gtype: GObject.GType<Device>;
+        declare static readonly __signalSignatures: Device.SignalSignatures;
 
         // Properties
 
@@ -4439,6 +4466,9 @@ export namespace Atspi {
     }
 
     namespace DeviceA11yManager {
+        // Signal signatures
+        interface SignalSignatures extends Device.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Device.ConstructorProps {}
@@ -4446,6 +4476,7 @@ export namespace Atspi {
 
     class DeviceA11yManager extends Device {
         static $gtype: GObject.GType<DeviceA11yManager>;
+        declare static readonly __signalSignatures: DeviceA11yManager.SignalSignatures;
 
         // Constructors
 
@@ -4459,6 +4490,9 @@ export namespace Atspi {
     }
 
     namespace DeviceLegacy {
+        // Signal signatures
+        interface SignalSignatures extends Device.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Device.ConstructorProps {}
@@ -4466,6 +4500,7 @@ export namespace Atspi {
 
     class DeviceLegacy extends Device {
         static $gtype: GObject.GType<DeviceLegacy>;
+        declare static readonly __signalSignatures: DeviceLegacy.SignalSignatures;
 
         // Constructors
 
@@ -4479,6 +4514,9 @@ export namespace Atspi {
     }
 
     namespace DeviceListener {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4486,6 +4524,7 @@ export namespace Atspi {
 
     class DeviceListener extends GObject.Object {
         static $gtype: GObject.GType<DeviceListener>;
+        declare static readonly __signalSignatures: DeviceListener.SignalSignatures;
 
         // Fields
 
@@ -4520,6 +4559,9 @@ export namespace Atspi {
     }
 
     namespace DeviceX11 {
+        // Signal signatures
+        interface SignalSignatures extends Device.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Device.ConstructorProps {}
@@ -4527,6 +4569,7 @@ export namespace Atspi {
 
     class DeviceX11 extends Device {
         static $gtype: GObject.GType<DeviceX11>;
+        declare static readonly __signalSignatures: DeviceX11.SignalSignatures;
 
         // Constructors
 
@@ -4540,6 +4583,9 @@ export namespace Atspi {
     }
 
     namespace EventListener {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4556,6 +4602,7 @@ export namespace Atspi {
      */
     class EventListener extends GObject.Object {
         static $gtype: GObject.GType<EventListener>;
+        declare static readonly __signalSignatures: EventListener.SignalSignatures;
 
         // Fields
 
@@ -4714,6 +4761,9 @@ export namespace Atspi {
     }
 
     namespace Hyperlink {
+        // Signal signatures
+        interface SignalSignatures extends Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Object.ConstructorProps {}
@@ -4733,6 +4783,7 @@ export namespace Atspi {
      */
     class Hyperlink extends Object {
         static $gtype: GObject.GType<Hyperlink>;
+        declare static readonly __signalSignatures: Hyperlink.SignalSignatures;
 
         // Constructors
 
@@ -4789,6 +4840,9 @@ export namespace Atspi {
     }
 
     namespace MatchRule {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4800,6 +4854,7 @@ export namespace Atspi {
      */
     class MatchRule extends GObject.Object {
         static $gtype: GObject.GType<MatchRule>;
+        declare static readonly __signalSignatures: MatchRule.SignalSignatures;
 
         // Fields
 
@@ -4832,6 +4887,9 @@ export namespace Atspi {
     }
 
     namespace Object {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4839,6 +4897,7 @@ export namespace Atspi {
 
     class Object extends GObject.Object {
         static $gtype: GObject.GType<Object>;
+        declare static readonly __signalSignatures: Object.SignalSignatures;
 
         // Fields
 
@@ -4853,6 +4912,9 @@ export namespace Atspi {
     }
 
     namespace Relation {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4868,6 +4930,7 @@ export namespace Atspi {
      */
     class Relation extends GObject.Object {
         static $gtype: GObject.GType<Relation>;
+        declare static readonly __signalSignatures: Relation.SignalSignatures;
 
         // Fields
 
@@ -4903,6 +4966,9 @@ export namespace Atspi {
     }
 
     namespace StateSet {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4914,6 +4980,7 @@ export namespace Atspi {
      */
     class StateSet extends GObject.Object {
         static $gtype: GObject.GType<StateSet>;
+        declare static readonly __signalSignatures: StateSet.SignalSignatures;
 
         // Fields
 

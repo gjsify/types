@@ -23,6 +23,9 @@ export namespace Gee {
     function functions_get_compare_func_for(t: GObject.Type): GLib.CompareFunc;
     function direct_compare(_val1: any, _val2: any): number;
     namespace AbstractCollection {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -39,6 +42,7 @@ export namespace Gee {
 
     abstract class AbstractCollection extends GObject.Object implements Iterable, Collection {
         static $gtype: GObject.GType<AbstractCollection>;
+        declare static readonly __signalSignatures: AbstractCollection.SignalSignatures;
 
         // Properties
 
@@ -527,6 +531,9 @@ export namespace Gee {
     }
 
     namespace AbstractList {
+        // Signal signatures
+        interface SignalSignatures extends AbstractCollection.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractCollection.ConstructorProps, List.ConstructorProps {
@@ -537,6 +544,7 @@ export namespace Gee {
 
     abstract class AbstractList extends AbstractCollection implements List {
         static $gtype: GObject.GType<AbstractList>;
+        declare static readonly __signalSignatures: AbstractList.SignalSignatures;
 
         // Properties
 
@@ -610,6 +618,9 @@ export namespace Gee {
     }
 
     namespace AbstractMap {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -629,6 +640,7 @@ export namespace Gee {
 
     abstract class AbstractMap extends GObject.Object implements Iterable, Map {
         static $gtype: GObject.GType<AbstractMap>;
+        declare static readonly __signalSignatures: AbstractMap.SignalSignatures;
 
         // Properties
 
@@ -1131,6 +1143,9 @@ export namespace Gee {
     }
 
     namespace AbstractMultiMap {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, MultiMap.ConstructorProps {}
@@ -1138,6 +1153,7 @@ export namespace Gee {
 
     abstract class AbstractMultiMap extends GObject.Object implements MultiMap {
         static $gtype: GObject.GType<AbstractMultiMap>;
+        declare static readonly __signalSignatures: AbstractMultiMap.SignalSignatures;
 
         // Constructors
 
@@ -1618,6 +1634,9 @@ export namespace Gee {
     }
 
     namespace AbstractMultiSet {
+        // Signal signatures
+        interface SignalSignatures extends AbstractCollection.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractCollection.ConstructorProps, MultiSet.ConstructorProps {}
@@ -1625,6 +1644,7 @@ export namespace Gee {
 
     abstract class AbstractMultiSet extends AbstractCollection implements MultiSet {
         static $gtype: GObject.GType<AbstractMultiSet>;
+        declare static readonly __signalSignatures: AbstractMultiSet.SignalSignatures;
 
         // Constructors
 
@@ -1667,6 +1687,9 @@ export namespace Gee {
     }
 
     namespace AbstractQueue {
+        // Signal signatures
+        interface SignalSignatures extends AbstractCollection.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractCollection.ConstructorProps, Queue.ConstructorProps {
@@ -1680,6 +1703,7 @@ export namespace Gee {
 
     abstract class AbstractQueue extends AbstractCollection implements Queue {
         static $gtype: GObject.GType<AbstractQueue>;
+        declare static readonly __signalSignatures: AbstractQueue.SignalSignatures;
 
         // Properties
 
@@ -1742,6 +1766,9 @@ export namespace Gee {
     }
 
     namespace AbstractSet {
+        // Signal signatures
+        interface SignalSignatures extends AbstractCollection.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractCollection.ConstructorProps, Set.ConstructorProps {
@@ -1752,6 +1779,7 @@ export namespace Gee {
 
     abstract class AbstractSet extends AbstractCollection implements Set {
         static $gtype: GObject.GType<AbstractSet>;
+        declare static readonly __signalSignatures: AbstractSet.SignalSignatures;
 
         // Properties
 
@@ -1795,6 +1823,9 @@ export namespace Gee {
     }
 
     namespace ArrayList {
+        // Signal signatures
+        interface SignalSignatures extends AbstractList.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractList.ConstructorProps {
@@ -1805,6 +1836,7 @@ export namespace Gee {
 
     class ArrayList extends AbstractList {
         static $gtype: GObject.GType<ArrayList>;
+        declare static readonly __signalSignatures: ArrayList.SignalSignatures;
 
         // Properties
 
@@ -1827,6 +1859,9 @@ export namespace Gee {
     }
 
     namespace HashMap {
+        // Signal signatures
+        interface SignalSignatures extends AbstractMap.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractMap.ConstructorProps {
@@ -1841,6 +1876,7 @@ export namespace Gee {
 
     class HashMap extends AbstractMap {
         static $gtype: GObject.GType<HashMap>;
+        declare static readonly __signalSignatures: HashMap.SignalSignatures;
 
         // Properties
 
@@ -1871,6 +1907,9 @@ export namespace Gee {
     }
 
     namespace HashMultiMap {
+        // Signal signatures
+        interface SignalSignatures extends AbstractMultiMap.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractMultiMap.ConstructorProps {
@@ -1887,6 +1926,7 @@ export namespace Gee {
 
     class HashMultiMap extends AbstractMultiMap {
         static $gtype: GObject.GType<HashMultiMap>;
+        declare static readonly __signalSignatures: HashMultiMap.SignalSignatures;
 
         // Properties
 
@@ -1918,6 +1958,9 @@ export namespace Gee {
     }
 
     namespace HashMultiSet {
+        // Signal signatures
+        interface SignalSignatures extends AbstractMultiSet.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractMultiSet.ConstructorProps {
@@ -1930,6 +1973,7 @@ export namespace Gee {
 
     class HashMultiSet extends AbstractMultiSet {
         static $gtype: GObject.GType<HashMultiSet>;
+        declare static readonly __signalSignatures: HashMultiSet.SignalSignatures;
 
         // Properties
 
@@ -1948,6 +1992,9 @@ export namespace Gee {
     }
 
     namespace HashSet {
+        // Signal signatures
+        interface SignalSignatures extends AbstractSet.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractSet.ConstructorProps {
@@ -1960,6 +2007,7 @@ export namespace Gee {
 
     class HashSet extends AbstractSet {
         static $gtype: GObject.GType<HashSet>;
+        declare static readonly __signalSignatures: HashSet.SignalSignatures;
 
         // Properties
 
@@ -1982,6 +2030,9 @@ export namespace Gee {
     }
 
     namespace LinkedList {
+        // Signal signatures
+        interface SignalSignatures extends AbstractList.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -1997,6 +2048,7 @@ export namespace Gee {
 
     class LinkedList extends AbstractList implements Queue, Deque {
         static $gtype: GObject.GType<LinkedList>;
+        declare static readonly __signalSignatures: LinkedList.SignalSignatures;
 
         // Properties
 
@@ -2050,6 +2102,9 @@ export namespace Gee {
     }
 
     namespace PriorityQueue {
+        // Signal signatures
+        interface SignalSignatures extends AbstractQueue.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractQueue.ConstructorProps {
@@ -2060,6 +2115,7 @@ export namespace Gee {
 
     class PriorityQueue extends AbstractQueue {
         static $gtype: GObject.GType<PriorityQueue>;
+        declare static readonly __signalSignatures: PriorityQueue.SignalSignatures;
 
         // Properties
 
@@ -2078,6 +2134,9 @@ export namespace Gee {
     }
 
     namespace TreeMap {
+        // Signal signatures
+        interface SignalSignatures extends AbstractMap.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractMap.ConstructorProps {
@@ -2090,6 +2149,7 @@ export namespace Gee {
 
     class TreeMap extends AbstractMap {
         static $gtype: GObject.GType<TreeMap>;
+        declare static readonly __signalSignatures: TreeMap.SignalSignatures;
 
         // Properties
 
@@ -2112,6 +2172,9 @@ export namespace Gee {
     }
 
     namespace TreeMultiMap {
+        // Signal signatures
+        interface SignalSignatures extends AbstractMultiMap.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractMultiMap.ConstructorProps {
@@ -2124,6 +2187,7 @@ export namespace Gee {
 
     class TreeMultiMap extends AbstractMultiMap {
         static $gtype: GObject.GType<TreeMultiMap>;
+        declare static readonly __signalSignatures: TreeMultiMap.SignalSignatures;
 
         // Properties
 
@@ -2144,6 +2208,9 @@ export namespace Gee {
     }
 
     namespace TreeMultiSet {
+        // Signal signatures
+        interface SignalSignatures extends AbstractMultiSet.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractMultiSet.ConstructorProps {
@@ -2154,6 +2221,7 @@ export namespace Gee {
 
     class TreeMultiSet extends AbstractMultiSet {
         static $gtype: GObject.GType<TreeMultiSet>;
+        declare static readonly __signalSignatures: TreeMultiSet.SignalSignatures;
 
         // Properties
 
@@ -2170,6 +2238,9 @@ export namespace Gee {
     }
 
     namespace TreeSet {
+        // Signal signatures
+        interface SignalSignatures extends AbstractSet.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractSet.ConstructorProps, SortedSet.ConstructorProps {
@@ -2180,6 +2251,7 @@ export namespace Gee {
 
     class TreeSet extends AbstractSet implements SortedSet {
         static $gtype: GObject.GType<TreeSet>;
+        declare static readonly __signalSignatures: TreeSet.SignalSignatures;
 
         // Properties
 
@@ -2226,6 +2298,9 @@ export namespace Gee {
     }
 
     namespace MapEntry {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2236,6 +2311,7 @@ export namespace Gee {
 
     abstract class MapEntry extends GObject.Object {
         static $gtype: GObject.GType<MapEntry>;
+        declare static readonly __signalSignatures: MapEntry.SignalSignatures;
 
         // Properties
 

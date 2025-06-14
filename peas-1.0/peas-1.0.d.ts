@@ -71,6 +71,12 @@ export namespace Peas {
             (info: PluginInfo): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'load-plugin': LoadPlugin;
+            'unload-plugin': UnloadPlugin;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -89,6 +95,7 @@ export namespace Peas {
      */
     class Engine extends GObject.Object {
         static $gtype: GObject.GType<Engine>;
+        declare static readonly __signalSignatures: Engine.SignalSignatures;
 
         // Properties
 
@@ -175,6 +182,9 @@ export namespace Peas {
 
         // Signals
 
+        connect<K extends keyof Engine.SignalSignatures>(signal: K, callback: Engine.SignalSignatures[K]): number;
+        connect_after<K extends keyof Engine.SignalSignatures>(signal: K, callback: Engine.SignalSignatures[K]): number;
+        emit<K extends keyof Engine.SignalSignatures>(signal: K, ...args: Parameters<Engine.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -358,6 +368,9 @@ export namespace Peas {
     }
 
     namespace ExtensionBase {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -373,6 +386,7 @@ export namespace Peas {
      */
     abstract class ExtensionBase extends GObject.Object {
         static $gtype: GObject.GType<ExtensionBase>;
+        declare static readonly __signalSignatures: ExtensionBase.SignalSignatures;
 
         // Properties
 
@@ -433,6 +447,12 @@ export namespace Peas {
             (info: PluginInfo, exten: GObject.Object): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'extension-added': ExtensionAdded;
+            'extension-removed': ExtensionRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps<A extends GObject.Object = GObject.Object>
@@ -452,6 +472,7 @@ export namespace Peas {
      */
     class ExtensionSet<A extends GObject.Object = GObject.Object> extends GObject.Object implements Gio.ListModel<A> {
         static $gtype: GObject.GType<ExtensionSet>;
+        declare static readonly __signalSignatures: ExtensionSet.SignalSignatures;
 
         // Properties
 
@@ -476,6 +497,18 @@ export namespace Peas {
 
         // Signals
 
+        connect<K extends keyof ExtensionSet.SignalSignatures>(
+            signal: K,
+            callback: ExtensionSet.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ExtensionSet.SignalSignatures>(
+            signal: K,
+            callback: ExtensionSet.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ExtensionSet.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ExtensionSet.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1057,6 +1090,9 @@ export namespace Peas {
     }
 
     namespace ObjectModule {
+        // Signal signatures
+        interface SignalSignatures extends GObject.TypeModule.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.TypeModule.ConstructorProps, GObject.TypePlugin.ConstructorProps {
@@ -1076,6 +1112,7 @@ export namespace Peas {
      */
     class ObjectModule extends GObject.TypeModule implements GObject.TypePlugin {
         static $gtype: GObject.GType<ObjectModule>;
+        declare static readonly __signalSignatures: ObjectModule.SignalSignatures;
 
         // Properties
 

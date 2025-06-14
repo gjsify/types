@@ -828,6 +828,9 @@ export namespace Snapd {
         PURGE,
     }
     namespace Alias {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -849,6 +852,7 @@ export namespace Snapd {
      */
     class Alias extends GObject.Object {
         static $gtype: GObject.GType<Alias>;
+        declare static readonly __signalSignatures: Alias.SignalSignatures;
 
         // Properties
 
@@ -909,6 +913,9 @@ export namespace Snapd {
     }
 
     namespace App {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -933,6 +940,7 @@ export namespace Snapd {
      */
     class App extends GObject.Object {
         static $gtype: GObject.GType<App>;
+        declare static readonly __signalSignatures: App.SignalSignatures;
 
         // Properties
 
@@ -999,6 +1007,9 @@ export namespace Snapd {
     }
 
     namespace Assertion {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1014,6 +1025,7 @@ export namespace Snapd {
      */
     class Assertion extends GObject.Object {
         static $gtype: GObject.GType<Assertion>;
+        declare static readonly __signalSignatures: Assertion.SignalSignatures;
 
         // Properties
 
@@ -1053,6 +1065,9 @@ export namespace Snapd {
     }
 
     namespace AuthData {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1068,6 +1083,7 @@ export namespace Snapd {
      */
     class AuthData extends GObject.Object {
         static $gtype: GObject.GType<AuthData>;
+        declare static readonly __signalSignatures: AuthData.SignalSignatures;
 
         // Properties
 
@@ -1099,6 +1115,9 @@ export namespace Snapd {
     }
 
     namespace Change {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1121,6 +1140,7 @@ export namespace Snapd {
      */
     class Change extends GObject.Object {
         static $gtype: GObject.GType<Change>;
+        declare static readonly __signalSignatures: Change.SignalSignatures;
 
         // Properties
 
@@ -1192,6 +1212,9 @@ export namespace Snapd {
     }
 
     namespace Channel {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1212,6 +1235,7 @@ export namespace Snapd {
      */
     class Channel extends GObject.Object {
         static $gtype: GObject.GType<Channel>;
+        declare static readonly __signalSignatures: Channel.SignalSignatures;
 
         // Properties
 
@@ -1299,6 +1323,9 @@ export namespace Snapd {
     }
 
     namespace Client {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1309,6 +1336,7 @@ export namespace Snapd {
      */
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
+        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Constructors
 
@@ -4402,6 +4430,9 @@ export namespace Snapd {
     }
 
     namespace Connection {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4424,6 +4455,7 @@ export namespace Snapd {
      */
     class Connection extends GObject.Object {
         static $gtype: GObject.GType<Connection>;
+        declare static readonly __signalSignatures: Connection.SignalSignatures;
 
         // Properties
 
@@ -4519,6 +4551,9 @@ export namespace Snapd {
     }
 
     namespace Icon {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4533,6 +4568,7 @@ export namespace Snapd {
      */
     class Icon extends GObject.Object {
         static $gtype: GObject.GType<Icon>;
+        declare static readonly __signalSignatures: Icon.SignalSignatures;
 
         // Properties
 
@@ -4563,6 +4599,9 @@ export namespace Snapd {
     }
 
     namespace Interface {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4580,6 +4619,7 @@ export namespace Snapd {
      */
     class Interface extends GObject.Object {
         static $gtype: GObject.GType<Interface>;
+        declare static readonly __signalSignatures: Interface.SignalSignatures;
 
         // Properties
 
@@ -4631,6 +4671,9 @@ export namespace Snapd {
     }
 
     namespace Maintenance {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4644,6 +4687,7 @@ export namespace Snapd {
      */
     class Maintenance extends GObject.Object {
         static $gtype: GObject.GType<Maintenance>;
+        declare static readonly __signalSignatures: Maintenance.SignalSignatures;
 
         // Properties
 
@@ -4671,6 +4715,9 @@ export namespace Snapd {
     }
 
     namespace MarkdownNode {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4687,6 +4734,7 @@ export namespace Snapd {
      */
     class MarkdownNode extends GObject.Object {
         static $gtype: GObject.GType<MarkdownNode>;
+        declare static readonly __signalSignatures: MarkdownNode.SignalSignatures;
 
         // Properties
 
@@ -4722,6 +4770,9 @@ export namespace Snapd {
     }
 
     namespace MarkdownParser {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -4733,6 +4784,7 @@ export namespace Snapd {
      */
     class MarkdownParser extends GObject.Object {
         static $gtype: GObject.GType<MarkdownParser>;
+        declare static readonly __signalSignatures: MarkdownParser.SignalSignatures;
 
         // Constructors
 
@@ -4766,6 +4818,9 @@ export namespace Snapd {
     }
 
     namespace Media {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4781,6 +4836,7 @@ export namespace Snapd {
      */
     class Media extends GObject.Object {
         static $gtype: GObject.GType<Media>;
+        declare static readonly __signalSignatures: Media.SignalSignatures;
 
         // Properties
 
@@ -4820,6 +4876,9 @@ export namespace Snapd {
     }
 
     namespace Plug {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4837,6 +4896,7 @@ export namespace Snapd {
      */
     class Plug extends GObject.Object {
         static $gtype: GObject.GType<Plug>;
+        declare static readonly __signalSignatures: Plug.SignalSignatures;
 
         // Properties
 
@@ -4905,6 +4965,9 @@ export namespace Snapd {
     }
 
     namespace PlugRef {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4918,6 +4981,7 @@ export namespace Snapd {
      */
     class PlugRef extends GObject.Object {
         static $gtype: GObject.GType<PlugRef>;
+        declare static readonly __signalSignatures: PlugRef.SignalSignatures;
 
         // Properties
 
@@ -4945,6 +5009,9 @@ export namespace Snapd {
     }
 
     namespace Price {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4958,6 +5025,7 @@ export namespace Snapd {
      */
     class Price extends GObject.Object {
         static $gtype: GObject.GType<Price>;
+        declare static readonly __signalSignatures: Price.SignalSignatures;
 
         // Properties
 
@@ -4985,6 +5053,9 @@ export namespace Snapd {
     }
 
     namespace Screenshot {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4999,6 +5070,7 @@ export namespace Snapd {
      */
     class Screenshot extends GObject.Object {
         static $gtype: GObject.GType<Screenshot>;
+        declare static readonly __signalSignatures: Screenshot.SignalSignatures;
 
         // Properties
 
@@ -5032,6 +5104,9 @@ export namespace Snapd {
     }
 
     namespace Slot {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5049,6 +5124,7 @@ export namespace Snapd {
      */
     class Slot extends GObject.Object {
         static $gtype: GObject.GType<Slot>;
+        declare static readonly __signalSignatures: Slot.SignalSignatures;
 
         // Properties
 
@@ -5117,6 +5193,9 @@ export namespace Snapd {
     }
 
     namespace SlotRef {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5130,6 +5209,7 @@ export namespace Snapd {
      */
     class SlotRef extends GObject.Object {
         static $gtype: GObject.GType<SlotRef>;
+        declare static readonly __signalSignatures: SlotRef.SignalSignatures;
 
         // Properties
 
@@ -5157,6 +5237,9 @@ export namespace Snapd {
     }
 
     namespace Snap {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5217,6 +5300,7 @@ export namespace Snapd {
      */
     class Snap extends GObject.Object {
         static $gtype: GObject.GType<Snap>;
+        declare static readonly __signalSignatures: Snap.SignalSignatures;
 
         // Properties
 
@@ -5485,6 +5569,9 @@ export namespace Snapd {
     }
 
     namespace SystemInformation {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5527,6 +5614,7 @@ export namespace Snapd {
      */
     class SystemInformation extends GObject.Object {
         static $gtype: GObject.GType<SystemInformation>;
+        declare static readonly __signalSignatures: SystemInformation.SignalSignatures;
 
         // Properties
 
@@ -5665,6 +5753,9 @@ export namespace Snapd {
     }
 
     namespace Task {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5691,6 +5782,7 @@ export namespace Snapd {
      */
     class Task extends GObject.Object {
         static $gtype: GObject.GType<Task>;
+        declare static readonly __signalSignatures: Task.SignalSignatures;
 
         // Properties
 
@@ -5771,6 +5863,9 @@ export namespace Snapd {
     }
 
     namespace UserInformation {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -5790,6 +5885,7 @@ export namespace Snapd {
      */
     class UserInformation extends GObject.Object {
         static $gtype: GObject.GType<UserInformation>;
+        declare static readonly __signalSignatures: UserInformation.SignalSignatures;
 
         // Properties
 

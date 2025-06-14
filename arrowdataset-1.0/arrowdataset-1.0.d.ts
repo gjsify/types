@@ -43,6 +43,9 @@ export namespace ArrowDataset {
         URI,
     }
     namespace CSVFileFormat {
+        // Signal signatures
+        interface SignalSignatures extends FileFormat.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FileFormat.ConstructorProps {}
@@ -50,6 +53,7 @@ export namespace ArrowDataset {
 
     class CSVFileFormat extends FileFormat {
         static $gtype: GObject.GType<CSVFileFormat>;
+        declare static readonly __signalSignatures: CSVFileFormat.SignalSignatures;
 
         // Constructors
 
@@ -61,6 +65,9 @@ export namespace ArrowDataset {
     }
 
     namespace Dataset {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -70,6 +77,7 @@ export namespace ArrowDataset {
 
     abstract class Dataset extends GObject.Object {
         static $gtype: GObject.GType<Dataset>;
+        declare static readonly __signalSignatures: Dataset.SignalSignatures;
 
         // Properties
 
@@ -89,6 +97,9 @@ export namespace ArrowDataset {
     }
 
     namespace DatasetFactory {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -99,6 +110,7 @@ export namespace ArrowDataset {
 
     abstract class DatasetFactory extends GObject.Object {
         static $gtype: GObject.GType<DatasetFactory>;
+        declare static readonly __signalSignatures: DatasetFactory.SignalSignatures;
 
         // Properties
 
@@ -117,6 +129,9 @@ export namespace ArrowDataset {
     }
 
     namespace DirectoryPartitioning {
+        // Signal signatures
+        interface SignalSignatures extends KeyValuePartitioning.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends KeyValuePartitioning.ConstructorProps {}
@@ -124,6 +139,7 @@ export namespace ArrowDataset {
 
     class DirectoryPartitioning extends KeyValuePartitioning {
         static $gtype: GObject.GType<DirectoryPartitioning>;
+        declare static readonly __signalSignatures: DirectoryPartitioning.SignalSignatures;
 
         // Constructors
 
@@ -142,6 +158,9 @@ export namespace ArrowDataset {
     }
 
     namespace FileFormat {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -151,6 +170,7 @@ export namespace ArrowDataset {
 
     class FileFormat extends GObject.Object {
         static $gtype: GObject.GType<FileFormat>;
+        declare static readonly __signalSignatures: FileFormat.SignalSignatures;
 
         // Properties
 
@@ -177,6 +197,9 @@ export namespace ArrowDataset {
     }
 
     namespace FileSystemDataset {
+        // Signal signatures
+        interface SignalSignatures extends Dataset.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Dataset.ConstructorProps {
@@ -189,6 +212,7 @@ export namespace ArrowDataset {
 
     class FileSystemDataset extends Dataset {
         static $gtype: GObject.GType<FileSystemDataset>;
+        declare static readonly __signalSignatures: FileSystemDataset.SignalSignatures;
 
         // Properties
 
@@ -221,6 +245,9 @@ export namespace ArrowDataset {
     }
 
     namespace FileSystemDatasetFactory {
+        // Signal signatures
+        interface SignalSignatures extends DatasetFactory.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DatasetFactory.ConstructorProps {
@@ -235,6 +262,7 @@ export namespace ArrowDataset {
 
     class FileSystemDatasetFactory extends DatasetFactory {
         static $gtype: GObject.GType<FileSystemDatasetFactory>;
+        declare static readonly __signalSignatures: FileSystemDatasetFactory.SignalSignatures;
 
         // Properties
 
@@ -283,6 +311,9 @@ export namespace ArrowDataset {
     }
 
     namespace FileSystemDatasetWriteOptions {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -302,6 +333,7 @@ export namespace ArrowDataset {
 
     class FileSystemDatasetWriteOptions extends GObject.Object {
         static $gtype: GObject.GType<FileSystemDatasetWriteOptions>;
+        declare static readonly __signalSignatures: FileSystemDatasetWriteOptions.SignalSignatures;
 
         // Properties
 
@@ -355,6 +387,9 @@ export namespace ArrowDataset {
     }
 
     namespace FileWriteOptions {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -364,6 +399,7 @@ export namespace ArrowDataset {
 
     class FileWriteOptions extends GObject.Object {
         static $gtype: GObject.GType<FileWriteOptions>;
+        declare static readonly __signalSignatures: FileWriteOptions.SignalSignatures;
 
         // Properties
 
@@ -377,6 +413,9 @@ export namespace ArrowDataset {
     }
 
     namespace FileWriter {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -386,6 +425,7 @@ export namespace ArrowDataset {
 
     class FileWriter extends GObject.Object {
         static $gtype: GObject.GType<FileWriter>;
+        declare static readonly __signalSignatures: FileWriter.SignalSignatures;
 
         // Properties
 
@@ -405,6 +445,9 @@ export namespace ArrowDataset {
     }
 
     namespace Fragment {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -414,6 +457,7 @@ export namespace ArrowDataset {
 
     abstract class Fragment extends GObject.Object {
         static $gtype: GObject.GType<Fragment>;
+        declare static readonly __signalSignatures: Fragment.SignalSignatures;
 
         // Properties
 
@@ -427,6 +471,9 @@ export namespace ArrowDataset {
     }
 
     namespace IPCFileFormat {
+        // Signal signatures
+        interface SignalSignatures extends FileFormat.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FileFormat.ConstructorProps {}
@@ -434,6 +481,7 @@ export namespace ArrowDataset {
 
     class IPCFileFormat extends FileFormat {
         static $gtype: GObject.GType<IPCFileFormat>;
+        declare static readonly __signalSignatures: IPCFileFormat.SignalSignatures;
 
         // Constructors
 
@@ -445,6 +493,9 @@ export namespace ArrowDataset {
     }
 
     namespace InMemoryFragment {
+        // Signal signatures
+        interface SignalSignatures extends Fragment.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Fragment.ConstructorProps {}
@@ -452,6 +503,7 @@ export namespace ArrowDataset {
 
     class InMemoryFragment extends Fragment {
         static $gtype: GObject.GType<InMemoryFragment>;
+        declare static readonly __signalSignatures: InMemoryFragment.SignalSignatures;
 
         // Constructors
 
@@ -463,6 +515,9 @@ export namespace ArrowDataset {
     }
 
     namespace KeyValuePartitioning {
+        // Signal signatures
+        interface SignalSignatures extends Partitioning.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Partitioning.ConstructorProps {}
@@ -470,6 +525,7 @@ export namespace ArrowDataset {
 
     class KeyValuePartitioning extends Partitioning {
         static $gtype: GObject.GType<KeyValuePartitioning>;
+        declare static readonly __signalSignatures: KeyValuePartitioning.SignalSignatures;
 
         // Constructors
 
@@ -479,6 +535,9 @@ export namespace ArrowDataset {
     }
 
     namespace ParquetFileFormat {
+        // Signal signatures
+        interface SignalSignatures extends FileFormat.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends FileFormat.ConstructorProps {}
@@ -486,6 +545,7 @@ export namespace ArrowDataset {
 
     class ParquetFileFormat extends FileFormat {
         static $gtype: GObject.GType<ParquetFileFormat>;
+        declare static readonly __signalSignatures: ParquetFileFormat.SignalSignatures;
 
         // Constructors
 
@@ -497,6 +557,9 @@ export namespace ArrowDataset {
     }
 
     namespace Partitioning {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -506,6 +569,7 @@ export namespace ArrowDataset {
 
     class Partitioning extends GObject.Object {
         static $gtype: GObject.GType<Partitioning>;
+        declare static readonly __signalSignatures: Partitioning.SignalSignatures;
 
         // Properties
 
@@ -525,6 +589,9 @@ export namespace ArrowDataset {
     }
 
     namespace PartitioningOptions {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -538,6 +605,7 @@ export namespace ArrowDataset {
 
     class PartitioningOptions extends GObject.Object {
         static $gtype: GObject.GType<PartitioningOptions>;
+        declare static readonly __signalSignatures: PartitioningOptions.SignalSignatures;
 
         // Properties
 
@@ -589,6 +657,9 @@ export namespace ArrowDataset {
     }
 
     namespace Scanner {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -598,6 +669,7 @@ export namespace ArrowDataset {
 
     class Scanner extends GObject.Object {
         static $gtype: GObject.GType<Scanner>;
+        declare static readonly __signalSignatures: Scanner.SignalSignatures;
 
         // Properties
 
@@ -615,6 +687,9 @@ export namespace ArrowDataset {
     }
 
     namespace ScannerBuilder {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -625,6 +700,7 @@ export namespace ArrowDataset {
 
     class ScannerBuilder extends GObject.Object {
         static $gtype: GObject.GType<ScannerBuilder>;
+        declare static readonly __signalSignatures: ScannerBuilder.SignalSignatures;
 
         // Properties
 

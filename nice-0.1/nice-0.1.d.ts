@@ -656,6 +656,21 @@ export namespace Nice {
             (stream_ids: number[]): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'candidate-gathering-done': CandidateGatheringDone;
+            'component-state-changed': ComponentStateChanged;
+            'initial-binding-request-received': InitialBindingRequestReceived;
+            'new-candidate': NewCandidate;
+            'new-candidate-full': NewCandidateFull;
+            'new-remote-candidate': NewRemoteCandidate;
+            'new-remote-candidate-full': NewRemoteCandidateFull;
+            'new-selected-pair': NewSelectedPair;
+            'new-selected-pair-full': NewSelectedPairFull;
+            'reliable-transport-writable': ReliableTransportWritable;
+            'streams-removed': StreamsRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -721,6 +736,7 @@ export namespace Nice {
      */
     class Agent extends GObject.Object {
         static $gtype: GObject.GType<Agent>;
+        declare static readonly __signalSignatures: Agent.SignalSignatures;
 
         // Properties
 
@@ -1208,6 +1224,9 @@ export namespace Nice {
 
         // Signals
 
+        connect<K extends keyof Agent.SignalSignatures>(signal: K, callback: Agent.SignalSignatures[K]): number;
+        connect_after<K extends keyof Agent.SignalSignatures>(signal: K, callback: Agent.SignalSignatures[K]): number;
+        emit<K extends keyof Agent.SignalSignatures>(signal: K, ...args: Parameters<Agent.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -2031,6 +2050,9 @@ export namespace Nice {
     }
 
     namespace PseudoTcpSocket {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2055,6 +2077,7 @@ export namespace Nice {
      */
     class PseudoTcpSocket extends GObject.Object {
         static $gtype: GObject.GType<PseudoTcpSocket>;
+        declare static readonly __signalSignatures: PseudoTcpSocket.SignalSignatures;
 
         // Properties
 

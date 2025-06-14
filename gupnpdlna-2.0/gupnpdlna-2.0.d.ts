@@ -44,6 +44,9 @@ export namespace GUPnPDLNA {
         UNSUPPORTED,
     }
     namespace AudioInformation {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -51,6 +54,7 @@ export namespace GUPnPDLNA {
 
     abstract class AudioInformation extends GObject.Object {
         static $gtype: GObject.GType<AudioInformation>;
+        declare static readonly __signalSignatures: AudioInformation.SignalSignatures;
 
         // Constructors
 
@@ -60,6 +64,9 @@ export namespace GUPnPDLNA {
     }
 
     namespace ContainerInformation {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -67,6 +74,7 @@ export namespace GUPnPDLNA {
 
     abstract class ContainerInformation extends GObject.Object {
         static $gtype: GObject.GType<ContainerInformation>;
+        declare static readonly __signalSignatures: ContainerInformation.SignalSignatures;
 
         // Constructors
 
@@ -76,6 +84,9 @@ export namespace GUPnPDLNA {
     }
 
     namespace ImageInformation {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -83,6 +94,7 @@ export namespace GUPnPDLNA {
 
     abstract class ImageInformation extends GObject.Object {
         static $gtype: GObject.GType<ImageInformation>;
+        declare static readonly __signalSignatures: ImageInformation.SignalSignatures;
 
         // Constructors
 
@@ -92,6 +104,9 @@ export namespace GUPnPDLNA {
     }
 
     namespace Information {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -109,6 +124,7 @@ export namespace GUPnPDLNA {
 
     abstract class Information extends GObject.Object {
         static $gtype: GObject.GType<Information>;
+        declare static readonly __signalSignatures: Information.SignalSignatures;
 
         // Properties
 
@@ -216,6 +232,11 @@ export namespace GUPnPDLNA {
             (info: Information, error?: GLib.Error | null): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            done: Done;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -223,6 +244,7 @@ export namespace GUPnPDLNA {
 
     abstract class MetadataExtractor extends GObject.Object {
         static $gtype: GObject.GType<MetadataExtractor>;
+        declare static readonly __signalSignatures: MetadataExtractor.SignalSignatures;
 
         // Constructors
 
@@ -232,6 +254,18 @@ export namespace GUPnPDLNA {
 
         // Signals
 
+        connect<K extends keyof MetadataExtractor.SignalSignatures>(
+            signal: K,
+            callback: MetadataExtractor.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MetadataExtractor.SignalSignatures>(
+            signal: K,
+            callback: MetadataExtractor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MetadataExtractor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MetadataExtractor.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -288,6 +322,9 @@ export namespace GUPnPDLNA {
     }
 
     namespace Profile {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -311,6 +348,7 @@ export namespace GUPnPDLNA {
      */
     class Profile extends GObject.Object {
         static $gtype: GObject.GType<Profile>;
+        declare static readonly __signalSignatures: Profile.SignalSignatures;
 
         // Properties
 
@@ -375,6 +413,11 @@ export namespace GUPnPDLNA {
             (info: Information, dlna?: Profile | null, error?: GLib.Error | null): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            done: Done;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -387,6 +430,7 @@ export namespace GUPnPDLNA {
 
     class ProfileGuesser extends GObject.Object {
         static $gtype: GObject.GType<ProfileGuesser>;
+        declare static readonly __signalSignatures: ProfileGuesser.SignalSignatures;
 
         // Properties
 
@@ -421,6 +465,18 @@ export namespace GUPnPDLNA {
 
         // Signals
 
+        connect<K extends keyof ProfileGuesser.SignalSignatures>(
+            signal: K,
+            callback: ProfileGuesser.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ProfileGuesser.SignalSignatures>(
+            signal: K,
+            callback: ProfileGuesser.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ProfileGuesser.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ProfileGuesser.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -483,6 +539,9 @@ export namespace GUPnPDLNA {
     }
 
     namespace VideoInformation {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -490,6 +549,7 @@ export namespace GUPnPDLNA {
 
     abstract class VideoInformation extends GObject.Object {
         static $gtype: GObject.GType<VideoInformation>;
+        declare static readonly __signalSignatures: VideoInformation.SignalSignatures;
 
         // Constructors
 

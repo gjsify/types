@@ -128,6 +128,9 @@ export namespace PangoOT {
      */
     function tag_to_script(script_tag: Tag): Pango.Script;
     namespace Info {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -135,6 +138,7 @@ export namespace PangoOT {
 
     class Info extends GObject.Object {
         static $gtype: GObject.GType<Info>;
+        declare static readonly __signalSignatures: Info.SignalSignatures;
 
         // Constructors
 
@@ -234,6 +238,9 @@ export namespace PangoOT {
     }
 
     namespace Ruleset {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -254,6 +261,7 @@ export namespace PangoOT {
      */
     class Ruleset extends GObject.Object {
         static $gtype: GObject.GType<Ruleset>;
+        declare static readonly __signalSignatures: Ruleset.SignalSignatures;
 
         // Constructors
 

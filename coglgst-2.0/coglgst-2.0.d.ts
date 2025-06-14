@@ -34,6 +34,12 @@ export namespace CoglGst {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GstBase.BaseSink.SignalSignatures {
+            'new-frame': NewFrame;
+            'pipeline-ready': PipelineReady;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GstBase.BaseSink.ConstructorProps {
@@ -48,6 +54,7 @@ export namespace CoglGst {
      */
     class VideoSink extends GstBase.BaseSink {
         static $gtype: GObject.GType<VideoSink>;
+        declare static readonly __signalSignatures: VideoSink.SignalSignatures;
 
         // Properties
 
@@ -66,6 +73,15 @@ export namespace CoglGst {
 
         // Signals
 
+        connect<K extends keyof VideoSink.SignalSignatures>(signal: K, callback: VideoSink.SignalSignatures[K]): number;
+        connect_after<K extends keyof VideoSink.SignalSignatures>(
+            signal: K,
+            callback: VideoSink.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof VideoSink.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<VideoSink.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

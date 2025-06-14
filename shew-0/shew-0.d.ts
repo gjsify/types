@@ -31,6 +31,9 @@ export namespace Shew {
      */
 
     namespace ExternalWindow {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -40,6 +43,7 @@ export namespace Shew {
 
     class ExternalWindow extends GObject.Object {
         static $gtype: GObject.GType<ExternalWindow>;
+        declare static readonly __signalSignatures: ExternalWindow.SignalSignatures;
 
         // Properties
 
@@ -64,6 +68,9 @@ export namespace Shew {
     }
 
     namespace WindowExporter {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -73,6 +80,7 @@ export namespace Shew {
 
     class WindowExporter extends GObject.Object {
         static $gtype: GObject.GType<WindowExporter>;
+        declare static readonly __signalSignatures: WindowExporter.SignalSignatures;
 
         // Properties
 

@@ -185,6 +185,12 @@ export namespace BraseroMedia {
             (medium: Medium): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'medium-added': MediumAdded;
+            'medium-removed': MediumRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -199,6 +205,7 @@ export namespace BraseroMedia {
      */
     class Drive extends GObject.Object {
         static $gtype: GObject.GType<Drive>;
+        declare static readonly __signalSignatures: Drive.SignalSignatures;
 
         // Properties
 
@@ -215,6 +222,9 @@ export namespace BraseroMedia {
 
         // Signals
 
+        connect<K extends keyof Drive.SignalSignatures>(signal: K, callback: Drive.SignalSignatures[K]): number;
+        connect_after<K extends keyof Drive.SignalSignatures>(signal: K, callback: Drive.SignalSignatures[K]): number;
+        emit<K extends keyof Drive.SignalSignatures>(signal: K, ...args: Parameters<Drive.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -365,6 +375,11 @@ export namespace BraseroMedia {
             (drive: Drive): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.ComboBox.SignalSignatures {
+            'drive-changed': DriveChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -384,6 +399,7 @@ export namespace BraseroMedia {
         implements Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, Gtk.CellLayout
     {
         static $gtype: GObject.GType<DriveSelection>;
+        declare static readonly __signalSignatures: DriveSelection.SignalSignatures;
 
         // Properties
 
@@ -404,6 +420,18 @@ export namespace BraseroMedia {
 
         // Signals
 
+        connect<K extends keyof DriveSelection.SignalSignatures>(
+            signal: K,
+            callback: DriveSelection.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DriveSelection.SignalSignatures>(
+            signal: K,
+            callback: DriveSelection.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DriveSelection.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DriveSelection.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -4918,6 +4946,11 @@ export namespace BraseroMedia {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            probed: Probed;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -4930,6 +4963,7 @@ export namespace BraseroMedia {
      */
     class Medium extends GObject.Object {
         static $gtype: GObject.GType<Medium>;
+        declare static readonly __signalSignatures: Medium.SignalSignatures;
 
         // Properties
 
@@ -4943,6 +4977,9 @@ export namespace BraseroMedia {
 
         // Signals
 
+        connect<K extends keyof Medium.SignalSignatures>(signal: K, callback: Medium.SignalSignatures[K]): number;
+        connect_after<K extends keyof Medium.SignalSignatures>(signal: K, callback: Medium.SignalSignatures[K]): number;
+        emit<K extends keyof Medium.SignalSignatures>(signal: K, ...args: Parameters<Medium.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -5120,6 +5157,14 @@ export namespace BraseroMedia {
             (medium: Medium): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'drive-added': DriveAdded;
+            'drive-removed': DriveRemoved;
+            'medium-added': MediumAdded;
+            'medium-removed': MediumRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -5127,6 +5172,7 @@ export namespace BraseroMedia {
 
     class MediumMonitor extends GObject.Object {
         static $gtype: GObject.GType<MediumMonitor>;
+        declare static readonly __signalSignatures: MediumMonitor.SignalSignatures;
 
         // Constructors
 
@@ -5136,6 +5182,18 @@ export namespace BraseroMedia {
 
         // Signals
 
+        connect<K extends keyof MediumMonitor.SignalSignatures>(
+            signal: K,
+            callback: MediumMonitor.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MediumMonitor.SignalSignatures>(
+            signal: K,
+            callback: MediumMonitor.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MediumMonitor.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MediumMonitor.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -5187,6 +5245,11 @@ export namespace BraseroMedia {
             (medium: Medium): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Gtk.ComboBox.SignalSignatures {
+            'medium-changed': MediumChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5206,6 +5269,7 @@ export namespace BraseroMedia {
         implements Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, Gtk.CellLayout
     {
         static $gtype: GObject.GType<MediumSelection>;
+        declare static readonly __signalSignatures: MediumSelection.SignalSignatures;
 
         // Properties
 
@@ -5226,6 +5290,18 @@ export namespace BraseroMedia {
 
         // Signals
 
+        connect<K extends keyof MediumSelection.SignalSignatures>(
+            signal: K,
+            callback: MediumSelection.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof MediumSelection.SignalSignatures>(
+            signal: K,
+            callback: MediumSelection.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof MediumSelection.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<MediumSelection.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -9735,6 +9811,9 @@ export namespace BraseroMedia {
     }
 
     namespace Volume {
+        // Signal signatures
+        interface SignalSignatures extends Medium.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Medium.ConstructorProps {}
@@ -9742,6 +9821,7 @@ export namespace BraseroMedia {
 
     class Volume extends Medium {
         static $gtype: GObject.GType<Volume>;
+        declare static readonly __signalSignatures: Volume.SignalSignatures;
 
         // Constructors
 

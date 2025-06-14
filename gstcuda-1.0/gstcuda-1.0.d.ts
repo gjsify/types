@@ -192,6 +192,9 @@ export namespace GstCuda {
         SYNC,
     }
     namespace CudaAllocator {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Allocator.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Allocator.ConstructorProps {}
@@ -202,6 +205,7 @@ export namespace GstCuda {
      */
     class CudaAllocator extends Gst.Allocator {
         static $gtype: GObject.GType<CudaAllocator>;
+        declare static readonly __signalSignatures: CudaAllocator.SignalSignatures;
 
         // Constructors
 
@@ -281,6 +285,9 @@ export namespace GstCuda {
     }
 
     namespace CudaBufferPool {
+        // Signal signatures
+        interface SignalSignatures extends Gst.BufferPool.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.BufferPool.ConstructorProps {}
@@ -288,6 +295,7 @@ export namespace GstCuda {
 
     class CudaBufferPool extends Gst.BufferPool {
         static $gtype: GObject.GType<CudaBufferPool>;
+        declare static readonly __signalSignatures: CudaBufferPool.SignalSignatures;
 
         // Fields
 
@@ -306,6 +314,9 @@ export namespace GstCuda {
     }
 
     namespace CudaContext {
+        // Signal signatures
+        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Gst.Object.ConstructorProps {
@@ -320,6 +331,7 @@ export namespace GstCuda {
 
     class CudaContext extends Gst.Object {
         static $gtype: GObject.GType<CudaContext>;
+        declare static readonly __signalSignatures: CudaContext.SignalSignatures;
 
         // Properties
 
@@ -393,6 +405,9 @@ export namespace GstCuda {
     }
 
     namespace CudaPoolAllocator {
+        // Signal signatures
+        interface SignalSignatures extends CudaAllocator.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends CudaAllocator.ConstructorProps {}
@@ -403,6 +418,7 @@ export namespace GstCuda {
      */
     class CudaPoolAllocator extends CudaAllocator {
         static $gtype: GObject.GType<CudaPoolAllocator>;
+        declare static readonly __signalSignatures: CudaPoolAllocator.SignalSignatures;
 
         // Fields
 

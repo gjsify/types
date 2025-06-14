@@ -50,6 +50,9 @@ export namespace Deviced {
      */
     const VERSION_S: string;
     namespace AppInfo {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -65,6 +68,7 @@ export namespace Deviced {
 
     class AppInfo extends GObject.Object {
         static $gtype: GObject.GType<AppInfo>;
+        declare static readonly __signalSignatures: AppInfo.SignalSignatures;
 
         // Properties
 
@@ -101,6 +105,12 @@ export namespace Deviced {
             (device: Device): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'device-added': DeviceAdded;
+            'device-removed': DeviceRemoved;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -114,6 +124,7 @@ export namespace Deviced {
 
     class Browser extends GObject.Object {
         static $gtype: GObject.GType<Browser>;
+        declare static readonly __signalSignatures: Browser.SignalSignatures;
 
         // Properties
 
@@ -141,6 +152,15 @@ export namespace Deviced {
 
         // Signals
 
+        connect<K extends keyof Browser.SignalSignatures>(signal: K, callback: Browser.SignalSignatures[K]): number;
+        connect_after<K extends keyof Browser.SignalSignatures>(
+            signal: K,
+            callback: Browser.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Browser.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Browser.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -254,6 +274,12 @@ export namespace Deviced {
             (service: string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            notification: Notification;
+            'service-added': ServiceAdded;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -268,6 +294,7 @@ export namespace Deviced {
 
     abstract class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
+        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Properties
 
@@ -287,6 +314,9 @@ export namespace Deviced {
 
         // Signals
 
+        connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -840,6 +870,9 @@ export namespace Deviced {
     }
 
     namespace Device {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -855,6 +888,7 @@ export namespace Deviced {
 
     abstract class Device extends GObject.Object {
         static $gtype: GObject.GType<Device>;
+        declare static readonly __signalSignatures: Device.SignalSignatures;
 
         // Properties
 
@@ -954,6 +988,9 @@ export namespace Deviced {
     }
 
     namespace FlatpakService {
+        // Signal signatures
+        interface SignalSignatures extends Service.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Service.ConstructorProps {}
@@ -961,6 +998,7 @@ export namespace Deviced {
 
     class FlatpakService extends Service {
         static $gtype: GObject.GType<FlatpakService>;
+        declare static readonly __signalSignatures: FlatpakService.SignalSignatures;
 
         // Constructors
 
@@ -990,6 +1028,9 @@ export namespace Deviced {
     }
 
     namespace NetworkClient {
+        // Signal signatures
+        interface SignalSignatures extends Client.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Client.ConstructorProps {
@@ -1000,6 +1041,7 @@ export namespace Deviced {
 
     class NetworkClient extends Client {
         static $gtype: GObject.GType<NetworkClient>;
+        declare static readonly __signalSignatures: NetworkClient.SignalSignatures;
 
         // Properties
 
@@ -1033,6 +1075,9 @@ export namespace Deviced {
     }
 
     namespace NetworkDevice {
+        // Signal signatures
+        interface SignalSignatures extends Device.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Device.ConstructorProps {
@@ -1043,6 +1088,7 @@ export namespace Deviced {
 
     class NetworkDevice extends Device {
         static $gtype: GObject.GType<NetworkDevice>;
+        declare static readonly __signalSignatures: NetworkDevice.SignalSignatures;
 
         // Properties
 
@@ -1082,6 +1128,12 @@ export namespace Deviced {
             (identifier: string, term_sig: number): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Service.SignalSignatures {
+            'process-exited': ProcessExited;
+            'process-signaled': ProcessSignaled;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Service.ConstructorProps {}
@@ -1089,6 +1141,7 @@ export namespace Deviced {
 
     class ProcessService extends Service {
         static $gtype: GObject.GType<ProcessService>;
+        declare static readonly __signalSignatures: ProcessService.SignalSignatures;
 
         // Constructors
 
@@ -1103,6 +1156,18 @@ export namespace Deviced {
 
         // Signals
 
+        connect<K extends keyof ProcessService.SignalSignatures>(
+            signal: K,
+            callback: ProcessService.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ProcessService.SignalSignatures>(
+            signal: K,
+            callback: ProcessService.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ProcessService.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ProcessService.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1279,6 +1344,11 @@ export namespace Deviced {
             (object: string, p0: GLib.Variant): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            notification: Notification;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1288,6 +1358,7 @@ export namespace Deviced {
 
     abstract class Service extends GObject.Object {
         static $gtype: GObject.GType<Service>;
+        declare static readonly __signalSignatures: Service.SignalSignatures;
 
         // Properties
 
@@ -1303,6 +1374,15 @@ export namespace Deviced {
 
         // Signals
 
+        connect<K extends keyof Service.SignalSignatures>(signal: K, callback: Service.SignalSignatures[K]): number;
+        connect_after<K extends keyof Service.SignalSignatures>(
+            signal: K,
+            callback: Service.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof Service.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<Service.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1382,6 +1462,9 @@ export namespace Deviced {
     }
 
     namespace TransferService {
+        // Signal signatures
+        interface SignalSignatures extends Service.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Service.ConstructorProps {}
@@ -1389,6 +1472,7 @@ export namespace Deviced {
 
     class TransferService extends Service {
         static $gtype: GObject.GType<TransferService>;
+        declare static readonly __signalSignatures: TransferService.SignalSignatures;
 
         // Constructors
 

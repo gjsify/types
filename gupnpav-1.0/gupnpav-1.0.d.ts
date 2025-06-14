@@ -390,6 +390,9 @@ export namespace GUPnPAV {
         CHANGE_METADATA,
     }
     namespace CDSLastChangeParser {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -397,6 +400,7 @@ export namespace GUPnPAV {
 
     class CDSLastChangeParser extends GObject.Object {
         static $gtype: GObject.GType<CDSLastChangeParser>;
+        declare static readonly __signalSignatures: CDSLastChangeParser.SignalSignatures;
 
         // Constructors
 
@@ -418,6 +422,9 @@ export namespace GUPnPAV {
     }
 
     namespace DIDLLiteContainer {
+        // Signal signatures
+        interface SignalSignatures extends DIDLLiteObject.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DIDLLiteObject.ConstructorProps {
@@ -435,6 +442,7 @@ export namespace GUPnPAV {
 
     class DIDLLiteContainer extends DIDLLiteObject {
         static $gtype: GObject.GType<DIDLLiteContainer>;
+        declare static readonly __signalSignatures: DIDLLiteContainer.SignalSignatures;
 
         // Properties
 
@@ -602,6 +610,9 @@ export namespace GUPnPAV {
     }
 
     namespace DIDLLiteContributor {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -614,6 +625,7 @@ export namespace GUPnPAV {
 
     class DIDLLiteContributor extends GObject.Object {
         static $gtype: GObject.GType<DIDLLiteContributor>;
+        declare static readonly __signalSignatures: DIDLLiteContributor.SignalSignatures;
 
         // Properties
 
@@ -672,6 +684,9 @@ export namespace GUPnPAV {
     }
 
     namespace DIDLLiteCreateClass {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -687,6 +702,7 @@ export namespace GUPnPAV {
 
     class DIDLLiteCreateClass extends GObject.Object {
         static $gtype: GObject.GType<DIDLLiteCreateClass>;
+        declare static readonly __signalSignatures: DIDLLiteCreateClass.SignalSignatures;
 
         // Properties
 
@@ -770,6 +786,9 @@ export namespace GUPnPAV {
     }
 
     namespace DIDLLiteDescriptor {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -786,6 +805,7 @@ export namespace GUPnPAV {
 
     class DIDLLiteDescriptor extends GObject.Object {
         static $gtype: GObject.GType<DIDLLiteDescriptor>;
+        declare static readonly __signalSignatures: DIDLLiteDescriptor.SignalSignatures;
 
         // Properties
 
@@ -886,6 +906,9 @@ export namespace GUPnPAV {
     }
 
     namespace DIDLLiteItem {
+        // Signal signatures
+        interface SignalSignatures extends DIDLLiteObject.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends DIDLLiteObject.ConstructorProps {
@@ -897,6 +920,7 @@ export namespace GUPnPAV {
 
     class DIDLLiteItem extends DIDLLiteObject {
         static $gtype: GObject.GType<DIDLLiteItem>;
+        declare static readonly __signalSignatures: DIDLLiteItem.SignalSignatures;
 
         // Properties
 
@@ -939,6 +963,9 @@ export namespace GUPnPAV {
     }
 
     namespace DIDLLiteObject {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -981,6 +1008,7 @@ export namespace GUPnPAV {
 
     abstract class DIDLLiteObject extends GObject.Object {
         static $gtype: GObject.GType<DIDLLiteObject>;
+        declare static readonly __signalSignatures: DIDLLiteObject.SignalSignatures;
 
         // Properties
 
@@ -1519,6 +1547,13 @@ export namespace GUPnPAV {
             (object: DIDLLiteObject): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'container-available': ContainerAvailable;
+            'item-available': ItemAvailable;
+            'object-available': ObjectAvailable;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1526,6 +1561,7 @@ export namespace GUPnPAV {
 
     class DIDLLiteParser extends GObject.Object {
         static $gtype: GObject.GType<DIDLLiteParser>;
+        declare static readonly __signalSignatures: DIDLLiteParser.SignalSignatures;
 
         // Constructors
 
@@ -1537,6 +1573,18 @@ export namespace GUPnPAV {
 
         // Signals
 
+        connect<K extends keyof DIDLLiteParser.SignalSignatures>(
+            signal: K,
+            callback: DIDLLiteParser.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof DIDLLiteParser.SignalSignatures>(
+            signal: K,
+            callback: DIDLLiteParser.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof DIDLLiteParser.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<DIDLLiteParser.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1572,6 +1620,9 @@ export namespace GUPnPAV {
     }
 
     namespace DIDLLiteResource {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -1616,6 +1667,7 @@ export namespace GUPnPAV {
 
     class DIDLLiteResource extends GObject.Object {
         static $gtype: GObject.GType<DIDLLiteResource>;
+        declare static readonly __signalSignatures: DIDLLiteResource.SignalSignatures;
 
         // Properties
 
@@ -2030,6 +2082,9 @@ export namespace GUPnPAV {
     }
 
     namespace DIDLLiteWriter {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2041,6 +2096,7 @@ export namespace GUPnPAV {
 
     class DIDLLiteWriter extends GObject.Object {
         static $gtype: GObject.GType<DIDLLiteWriter>;
+        declare static readonly __signalSignatures: DIDLLiteWriter.SignalSignatures;
 
         // Properties
 
@@ -2109,6 +2165,9 @@ export namespace GUPnPAV {
     }
 
     namespace Feature {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2121,6 +2180,7 @@ export namespace GUPnPAV {
 
     class Feature extends GObject.Object {
         static $gtype: GObject.GType<Feature>;
+        declare static readonly __signalSignatures: Feature.SignalSignatures;
 
         // Properties
 
@@ -2167,6 +2227,9 @@ export namespace GUPnPAV {
     }
 
     namespace FeatureListParser {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2174,6 +2237,7 @@ export namespace GUPnPAV {
 
     class FeatureListParser extends GObject.Object {
         static $gtype: GObject.GType<FeatureListParser>;
+        declare static readonly __signalSignatures: FeatureListParser.SignalSignatures;
 
         // Constructors
 
@@ -2195,6 +2259,9 @@ export namespace GUPnPAV {
     }
 
     namespace LastChangeParser {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2202,6 +2269,7 @@ export namespace GUPnPAV {
 
     class LastChangeParser extends GObject.Object {
         static $gtype: GObject.GType<LastChangeParser>;
+        declare static readonly __signalSignatures: LastChangeParser.SignalSignatures;
 
         // Constructors
 
@@ -2213,6 +2281,9 @@ export namespace GUPnPAV {
     }
 
     namespace MediaCollection {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2225,6 +2296,7 @@ export namespace GUPnPAV {
 
     class MediaCollection extends GObject.Object {
         static $gtype: GObject.GType<MediaCollection>;
+        declare static readonly __signalSignatures: MediaCollection.SignalSignatures;
 
         // Properties
 
@@ -2280,6 +2352,9 @@ export namespace GUPnPAV {
     }
 
     namespace ProtocolInfo {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2302,6 +2377,7 @@ export namespace GUPnPAV {
 
     class ProtocolInfo extends GObject.Object {
         static $gtype: GObject.GType<ProtocolInfo>;
+        declare static readonly __signalSignatures: ProtocolInfo.SignalSignatures;
 
         // Properties
 
@@ -2506,6 +2582,15 @@ export namespace GUPnPAV {
             (property: string, op: SearchCriteriaOp, value: string, error?: any | null): boolean;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'begin-parens': BeginParens;
+            conjunction: Conjunction;
+            disjunction: Disjunction;
+            'end-parens': EndParens;
+            expression: Expression;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2513,6 +2598,7 @@ export namespace GUPnPAV {
 
     class SearchCriteriaParser extends GObject.Object {
         static $gtype: GObject.GType<SearchCriteriaParser>;
+        declare static readonly __signalSignatures: SearchCriteriaParser.SignalSignatures;
 
         // Constructors
 
@@ -2524,6 +2610,18 @@ export namespace GUPnPAV {
 
         // Signals
 
+        connect<K extends keyof SearchCriteriaParser.SignalSignatures>(
+            signal: K,
+            callback: SearchCriteriaParser.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof SearchCriteriaParser.SignalSignatures>(
+            signal: K,
+            callback: SearchCriteriaParser.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof SearchCriteriaParser.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<SearchCriteriaParser.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;

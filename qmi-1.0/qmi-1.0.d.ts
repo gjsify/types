@@ -18897,6 +18897,9 @@ export namespace Qmi {
         '3GPP2',
     }
     namespace Client {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -18921,6 +18924,7 @@ export namespace Qmi {
      */
     abstract class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
+        declare static readonly __signalSignatures: Client.SignalSignatures;
 
         // Properties
 
@@ -19022,6 +19026,11 @@ export namespace Qmi {
             (output: IndicationAtrReceivedOutput): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Client.SignalSignatures {
+            received: Received;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Client.ConstructorProps {}
@@ -19033,6 +19042,7 @@ export namespace Qmi {
      */
     class ClientAtr extends Client {
         static $gtype: GObject.GType<ClientAtr>;
+        declare static readonly __signalSignatures: ClientAtr.SignalSignatures;
 
         // Constructors
 
@@ -19042,6 +19052,15 @@ export namespace Qmi {
 
         // Signals
 
+        connect<K extends keyof ClientAtr.SignalSignatures>(signal: K, callback: ClientAtr.SignalSignatures[K]): number;
+        connect_after<K extends keyof ClientAtr.SignalSignatures>(
+            signal: K,
+            callback: ClientAtr.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ClientAtr.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ClientAtr.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -19118,6 +19137,11 @@ export namespace Qmi {
             (output: IndicationDmsEventReportOutput): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Client.SignalSignatures {
+            'event-report': EventReport;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Client.ConstructorProps {}
@@ -19129,6 +19153,7 @@ export namespace Qmi {
      */
     class ClientDms extends Client {
         static $gtype: GObject.GType<ClientDms>;
+        declare static readonly __signalSignatures: ClientDms.SignalSignatures;
 
         // Constructors
 
@@ -19138,6 +19163,15 @@ export namespace Qmi {
 
         // Signals
 
+        connect<K extends keyof ClientDms.SignalSignatures>(signal: K, callback: ClientDms.SignalSignatures[K]): number;
+        connect_after<K extends keyof ClientDms.SignalSignatures>(
+            signal: K,
+            callback: ClientDms.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ClientDms.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ClientDms.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -22566,6 +22600,9 @@ export namespace Qmi {
     }
 
     namespace ClientDpm {
+        // Signal signatures
+        interface SignalSignatures extends Client.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Client.ConstructorProps {}
@@ -22577,6 +22614,7 @@ export namespace Qmi {
      */
     class ClientDpm extends Client {
         static $gtype: GObject.GType<ClientDpm>;
+        declare static readonly __signalSignatures: ClientDpm.SignalSignatures;
 
         // Constructors
 
@@ -22705,6 +22743,11 @@ export namespace Qmi {
             (output: IndicationDsdSystemStatusOutput): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Client.SignalSignatures {
+            'system-status': SystemStatus;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Client.ConstructorProps {}
@@ -22716,6 +22759,7 @@ export namespace Qmi {
      */
     class ClientDsd extends Client {
         static $gtype: GObject.GType<ClientDsd>;
+        declare static readonly __signalSignatures: ClientDsd.SignalSignatures;
 
         // Constructors
 
@@ -22725,6 +22769,15 @@ export namespace Qmi {
 
         // Signals
 
+        connect<K extends keyof ClientDsd.SignalSignatures>(signal: K, callback: ClientDsd.SignalSignatures[K]): number;
+        connect_after<K extends keyof ClientDsd.SignalSignatures>(
+            signal: K,
+            callback: ClientDsd.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ClientDsd.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ClientDsd.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -22963,6 +23016,9 @@ export namespace Qmi {
     }
 
     namespace ClientFox {
+        // Signal signatures
+        interface SignalSignatures extends Client.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Client.ConstructorProps {}
@@ -22974,6 +23030,7 @@ export namespace Qmi {
      */
     class ClientFox extends Client {
         static $gtype: GObject.GType<ClientFox>;
+        declare static readonly __signalSignatures: ClientFox.SignalSignatures;
 
         // Constructors
 
@@ -23041,6 +23098,9 @@ export namespace Qmi {
     }
 
     namespace ClientGas {
+        // Signal signatures
+        interface SignalSignatures extends Client.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Client.ConstructorProps {}
@@ -23052,6 +23112,7 @@ export namespace Qmi {
      */
     class ClientGas extends Client {
         static $gtype: GObject.GType<ClientGas>;
+        declare static readonly __signalSignatures: ClientGas.SignalSignatures;
 
         // Constructors
 
@@ -23284,6 +23345,9 @@ export namespace Qmi {
     }
 
     namespace ClientGms {
+        // Signal signatures
+        interface SignalSignatures extends Client.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Client.ConstructorProps {}
@@ -23295,6 +23359,7 @@ export namespace Qmi {
      */
     class ClientGms extends Client {
         static $gtype: GObject.GType<ClientGms>;
+        declare static readonly __signalSignatures: ClientGms.SignalSignatures;
 
         // Constructors
 
@@ -23487,6 +23552,27 @@ export namespace Qmi {
             (output: IndicationLocSetServerOutput): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Client.SignalSignatures {
+            'delete-assistance-data': DeleteAssistanceData;
+            'engine-state': EngineState;
+            'fix-recurrence-type': FixRecurrenceType;
+            'get-engine-lock': GetEngineLock;
+            'get-nmea-types': GetNmeaTypes;
+            'get-operation-mode': GetOperationMode;
+            'get-predicted-orbits-data-source': GetPredictedOrbitsDataSource;
+            'get-server': GetServer;
+            'gnss-sv-info': GnssSvInfo;
+            'inject-predicted-orbits-data': InjectPredictedOrbitsData;
+            'inject-xtra-data': InjectXtraData;
+            nmea: Nmea;
+            'position-report': PositionReport;
+            'set-engine-lock': SetEngineLock;
+            'set-nmea-types': SetNmeaTypes;
+            'set-operation-mode': SetOperationMode;
+            'set-server': SetServer;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Client.ConstructorProps {}
@@ -23498,6 +23584,7 @@ export namespace Qmi {
      */
     class ClientLoc extends Client {
         static $gtype: GObject.GType<ClientLoc>;
+        declare static readonly __signalSignatures: ClientLoc.SignalSignatures;
 
         // Constructors
 
@@ -23507,6 +23594,15 @@ export namespace Qmi {
 
         // Signals
 
+        connect<K extends keyof ClientLoc.SignalSignatures>(signal: K, callback: ClientLoc.SignalSignatures[K]): number;
+        connect_after<K extends keyof ClientLoc.SignalSignatures>(
+            signal: K,
+            callback: ClientLoc.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ClientLoc.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ClientLoc.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -24512,6 +24608,17 @@ export namespace Qmi {
             (output: IndicationNasSystemInfoOutput): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Client.SignalSignatures {
+            'event-report': EventReport;
+            'network-reject': NetworkReject;
+            'network-time': NetworkTime;
+            'operator-name': OperatorName;
+            'serving-system': ServingSystem;
+            'signal-info': SignalInfo;
+            'system-info': SystemInfo;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Client.ConstructorProps {}
@@ -24523,6 +24630,7 @@ export namespace Qmi {
      */
     class ClientNas extends Client {
         static $gtype: GObject.GType<ClientNas>;
+        declare static readonly __signalSignatures: ClientNas.SignalSignatures;
 
         // Constructors
 
@@ -24532,6 +24640,15 @@ export namespace Qmi {
 
         // Signals
 
+        connect<K extends keyof ClientNas.SignalSignatures>(signal: K, callback: ClientNas.SignalSignatures[K]): number;
+        connect_after<K extends keyof ClientNas.SignalSignatures>(
+            signal: K,
+            callback: ClientNas.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ClientNas.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ClientNas.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -26281,6 +26398,11 @@ export namespace Qmi {
             (output: IndicationOmaEventReportOutput): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Client.SignalSignatures {
+            'event-report': EventReport;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Client.ConstructorProps {}
@@ -26292,6 +26414,7 @@ export namespace Qmi {
      */
     class ClientOma extends Client {
         static $gtype: GObject.GType<ClientOma>;
+        declare static readonly __signalSignatures: ClientOma.SignalSignatures;
 
         // Constructors
 
@@ -26301,6 +26424,15 @@ export namespace Qmi {
 
         // Signals
 
+        connect<K extends keyof ClientOma.SignalSignatures>(signal: K, callback: ClientOma.SignalSignatures[K]): number;
+        connect_after<K extends keyof ClientOma.SignalSignatures>(
+            signal: K,
+            callback: ClientOma.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ClientOma.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ClientOma.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -26759,6 +26891,9 @@ export namespace Qmi {
     }
 
     namespace ClientPbm {
+        // Signal signatures
+        interface SignalSignatures extends Client.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Client.ConstructorProps {}
@@ -26770,6 +26905,7 @@ export namespace Qmi {
      */
     class ClientPbm extends Client {
         static $gtype: GObject.GType<ClientPbm>;
+        declare static readonly __signalSignatures: ClientPbm.SignalSignatures;
 
         // Constructors
 
@@ -26981,6 +27117,18 @@ export namespace Qmi {
             (output: IndicationPdcSetSelectedConfigOutput): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Client.SignalSignatures {
+            'activate-config': ActivateConfig;
+            'deactivate-config': DeactivateConfig;
+            'get-config-info': GetConfigInfo;
+            'get-selected-config': GetSelectedConfig;
+            'list-configs': ListConfigs;
+            'load-config': LoadConfig;
+            refresh: Refresh;
+            'set-selected-config': SetSelectedConfig;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Client.ConstructorProps {}
@@ -26992,6 +27140,7 @@ export namespace Qmi {
      */
     class ClientPdc extends Client {
         static $gtype: GObject.GType<ClientPdc>;
+        declare static readonly __signalSignatures: ClientPdc.SignalSignatures;
 
         // Constructors
 
@@ -27001,6 +27150,15 @@ export namespace Qmi {
 
         // Signals
 
+        connect<K extends keyof ClientPdc.SignalSignatures>(signal: K, callback: ClientPdc.SignalSignatures[K]): number;
+        connect_after<K extends keyof ClientPdc.SignalSignatures>(
+            signal: K,
+            callback: ClientPdc.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ClientPdc.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ClientPdc.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -27801,6 +27959,12 @@ export namespace Qmi {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Client.SignalSignatures {
+            'event-report': EventReport;
+            'gps-ready': GpsReady;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Client.ConstructorProps {}
@@ -27812,6 +27976,7 @@ export namespace Qmi {
      */
     class ClientPds extends Client {
         static $gtype: GObject.GType<ClientPds>;
+        declare static readonly __signalSignatures: ClientPds.SignalSignatures;
 
         // Constructors
 
@@ -27821,6 +27986,15 @@ export namespace Qmi {
 
         // Signals
 
+        connect<K extends keyof ClientPds.SignalSignatures>(signal: K, callback: ClientPds.SignalSignatures[K]): number;
+        connect_after<K extends keyof ClientPds.SignalSignatures>(
+            signal: K,
+            callback: ClientPds.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ClientPds.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ClientPds.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -28402,6 +28576,12 @@ export namespace Qmi {
             (output: IndicationQosNetworkStatusOutput): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Client.SignalSignatures {
+            'flow-status': FlowStatus;
+            'network-status': NetworkStatus;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Client.ConstructorProps {}
@@ -28413,6 +28593,7 @@ export namespace Qmi {
      */
     class ClientQos extends Client {
         static $gtype: GObject.GType<ClientQos>;
+        declare static readonly __signalSignatures: ClientQos.SignalSignatures;
 
         // Constructors
 
@@ -28422,6 +28603,15 @@ export namespace Qmi {
 
         // Signals
 
+        connect<K extends keyof ClientQos.SignalSignatures>(signal: K, callback: ClientQos.SignalSignatures[K]): number;
+        connect_after<K extends keyof ClientQos.SignalSignatures>(
+            signal: K,
+            callback: ClientQos.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ClientQos.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ClientQos.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -28669,6 +28859,9 @@ export namespace Qmi {
     }
 
     namespace ClientSar {
+        // Signal signatures
+        interface SignalSignatures extends Client.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Client.ConstructorProps {}
@@ -28680,6 +28873,7 @@ export namespace Qmi {
      */
     class ClientSar extends Client {
         static $gtype: GObject.GType<ClientSar>;
+        declare static readonly __signalSignatures: ClientSar.SignalSignatures;
 
         // Constructors
 
@@ -28816,6 +29010,13 @@ export namespace Qmi {
             (output: IndicationUimSlotStatusOutput): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Client.SignalSignatures {
+            'card-status': CardStatus;
+            refresh: Refresh;
+            'slot-status': SlotStatus;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Client.ConstructorProps {}
@@ -28827,6 +29028,7 @@ export namespace Qmi {
      */
     class ClientUim extends Client {
         static $gtype: GObject.GType<ClientUim>;
+        declare static readonly __signalSignatures: ClientUim.SignalSignatures;
 
         // Constructors
 
@@ -28836,6 +29038,15 @@ export namespace Qmi {
 
         // Signals
 
+        connect<K extends keyof ClientUim.SignalSignatures>(signal: K, callback: ClientUim.SignalSignatures[K]): number;
+        connect_after<K extends keyof ClientUim.SignalSignatures>(
+            signal: K,
+            callback: ClientUim.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ClientUim.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ClientUim.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -30098,6 +30309,15 @@ export namespace Qmi {
             (output: IndicationVoiceUssdOutput): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Client.SignalSignatures {
+            'all-call-status': AllCallStatus;
+            'originate-ussd-no-wait': OriginateUssdNoWait;
+            'release-ussd': ReleaseUssd;
+            'supplementary-service': SupplementaryService;
+            ussd: Ussd;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Client.ConstructorProps {}
@@ -30109,6 +30329,7 @@ export namespace Qmi {
      */
     class ClientVoice extends Client {
         static $gtype: GObject.GType<ClientVoice>;
+        declare static readonly __signalSignatures: ClientVoice.SignalSignatures;
 
         // Constructors
 
@@ -30118,6 +30339,18 @@ export namespace Qmi {
 
         // Signals
 
+        connect<K extends keyof ClientVoice.SignalSignatures>(
+            signal: K,
+            callback: ClientVoice.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof ClientVoice.SignalSignatures>(
+            signal: K,
+            callback: ClientVoice.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ClientVoice.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ClientVoice.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -31095,6 +31328,9 @@ export namespace Qmi {
     }
 
     namespace ClientWda {
+        // Signal signatures
+        interface SignalSignatures extends Client.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends Client.ConstructorProps {}
@@ -31106,6 +31342,7 @@ export namespace Qmi {
      */
     class ClientWda extends Client {
         static $gtype: GObject.GType<ClientWda>;
+        declare static readonly __signalSignatures: ClientWda.SignalSignatures;
 
         // Constructors
 
@@ -31305,6 +31542,15 @@ export namespace Qmi {
             (output: IndicationWdsSetLteAttachPdnListOutput): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Client.SignalSignatures {
+            'event-report': EventReport;
+            'extended-ip-config': ExtendedIpConfig;
+            'packet-service-status': PacketServiceStatus;
+            'profile-changed': ProfileChanged;
+            'set-lte-attach-pdn-list': SetLteAttachPdnList;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Client.ConstructorProps {}
@@ -31316,6 +31562,7 @@ export namespace Qmi {
      */
     class ClientWds extends Client {
         static $gtype: GObject.GType<ClientWds>;
+        declare static readonly __signalSignatures: ClientWds.SignalSignatures;
 
         // Constructors
 
@@ -31325,6 +31572,15 @@ export namespace Qmi {
 
         // Signals
 
+        connect<K extends keyof ClientWds.SignalSignatures>(signal: K, callback: ClientWds.SignalSignatures[K]): number;
+        connect_after<K extends keyof ClientWds.SignalSignatures>(
+            signal: K,
+            callback: ClientWds.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ClientWds.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ClientWds.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -33335,6 +33591,12 @@ export namespace Qmi {
             (output: IndicationWmsSmscAddressOutput): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends Client.SignalSignatures {
+            'event-report': EventReport;
+            'smsc-address': SmscAddress;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends Client.ConstructorProps {}
@@ -33346,6 +33608,7 @@ export namespace Qmi {
      */
     class ClientWms extends Client {
         static $gtype: GObject.GType<ClientWms>;
+        declare static readonly __signalSignatures: ClientWms.SignalSignatures;
 
         // Constructors
 
@@ -33355,6 +33618,15 @@ export namespace Qmi {
 
         // Signals
 
+        connect<K extends keyof ClientWms.SignalSignatures>(signal: K, callback: ClientWms.SignalSignatures[K]): number;
+        connect_after<K extends keyof ClientWms.SignalSignatures>(
+            signal: K,
+            callback: ClientWms.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof ClientWms.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<ClientWms.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -34162,6 +34434,12 @@ export namespace Qmi {
             (output: Uint8Array | string): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'device-removed': DeviceRemoved;
+            indication: Indication;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.AsyncInitable.ConstructorProps {
@@ -34186,6 +34464,7 @@ export namespace Qmi {
      */
     class Device extends GObject.Object implements Gio.AsyncInitable<Device> {
         static $gtype: GObject.GType<Device>;
+        declare static readonly __signalSignatures: Device.SignalSignatures;
 
         // Properties
 
@@ -34217,6 +34496,9 @@ export namespace Qmi {
 
         // Signals
 
+        connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -35870,6 +36152,9 @@ export namespace Qmi {
     }
 
     namespace Proxy {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -35884,6 +36169,7 @@ export namespace Qmi {
      */
     class Proxy extends GObject.Object {
         static $gtype: GObject.GType<Proxy>;
+        declare static readonly __signalSignatures: Proxy.SignalSignatures;
 
         // Properties
 

@@ -24,6 +24,9 @@ export namespace GstGLX11 {
      */
 
     namespace GLDisplayX11 {
+        // Signal signatures
+        interface SignalSignatures extends GstGL.GLDisplay.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GstGL.GLDisplay.ConstructorProps {}
@@ -35,6 +38,7 @@ export namespace GstGLX11 {
      */
     class GLDisplayX11 extends GstGL.GLDisplay {
         static $gtype: GObject.GType<GLDisplayX11>;
+        declare static readonly __signalSignatures: GLDisplayX11.SignalSignatures;
 
         // Constructors
 

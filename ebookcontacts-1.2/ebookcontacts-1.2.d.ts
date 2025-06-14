@@ -1158,6 +1158,9 @@ export namespace EBookContacts {
         CONFLICT_WRITE_COPY,
     }
     namespace BookIndicesUpdater {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1168,6 +1171,7 @@ export namespace EBookContacts {
      */
     abstract class BookIndicesUpdater extends GObject.Object {
         static $gtype: GObject.GType<BookIndicesUpdater>;
+        declare static readonly __signalSignatures: BookIndicesUpdater.SignalSignatures;
 
         // Constructors
 
@@ -1219,6 +1223,9 @@ export namespace EBookContacts {
     }
 
     namespace Contact {
+        // Signal signatures
+        interface SignalSignatures extends VCard.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends VCard.ConstructorProps {
@@ -1479,6 +1486,7 @@ export namespace EBookContacts {
 
     class Contact extends VCard {
         static $gtype: GObject.GType<Contact>;
+        declare static readonly __signalSignatures: Contact.SignalSignatures;
 
         // Properties
 
@@ -2098,6 +2106,9 @@ export namespace EBookContacts {
     }
 
     namespace SourceBackendSummarySetup {
+        // Signal signatures
+        interface SignalSignatures extends EDataServer.SourceExtension.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends EDataServer.SourceExtension.ConstructorProps {
@@ -2114,6 +2125,7 @@ export namespace EBookContacts {
      */
     class SourceBackendSummarySetup extends EDataServer.SourceExtension {
         static $gtype: GObject.GType<SourceBackendSummarySetup>;
+        declare static readonly __signalSignatures: SourceBackendSummarySetup.SignalSignatures;
 
         // Properties
 
@@ -2181,6 +2193,9 @@ export namespace EBookContacts {
     }
 
     namespace VCard {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -2188,6 +2203,7 @@ export namespace EBookContacts {
 
     class VCard extends GObject.Object {
         static $gtype: GObject.GType<VCard>;
+        declare static readonly __signalSignatures: VCard.SignalSignatures;
 
         // Constructors
 

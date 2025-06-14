@@ -87,6 +87,12 @@ export namespace EDataCal {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends EBackend.Backend.SignalSignatures {
+            closed: Closed;
+            shutdown: Shutdown;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends EBackend.Backend.ConstructorProps, ECal.TimezoneCache.ConstructorProps {
@@ -106,6 +112,7 @@ export namespace EDataCal {
      */
     class CalBackend extends EBackend.Backend implements ECal.TimezoneCache {
         static $gtype: GObject.GType<CalBackend>;
+        declare static readonly __signalSignatures: CalBackend.SignalSignatures;
 
         // Properties
 
@@ -128,6 +135,18 @@ export namespace EDataCal {
 
         // Signals
 
+        connect<K extends keyof CalBackend.SignalSignatures>(
+            signal: K,
+            callback: CalBackend.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CalBackend.SignalSignatures>(
+            signal: K,
+            callback: CalBackend.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CalBackend.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CalBackend.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -1943,6 +1962,9 @@ export namespace EDataCal {
     }
 
     namespace CalBackendFactory {
+        // Signal signatures
+        interface SignalSignatures extends EBackend.BackendFactory.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends EBackend.BackendFactory.ConstructorProps {}
@@ -1954,6 +1976,7 @@ export namespace EDataCal {
      */
     abstract class CalBackendFactory extends EBackend.BackendFactory {
         static $gtype: GObject.GType<CalBackendFactory>;
+        declare static readonly __signalSignatures: CalBackendFactory.SignalSignatures;
 
         // Constructors
 
@@ -1963,6 +1986,9 @@ export namespace EDataCal {
     }
 
     namespace CalBackendSExp {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -1970,6 +1996,7 @@ export namespace EDataCal {
 
     class CalBackendSExp extends GObject.Object {
         static $gtype: GObject.GType<CalBackendSExp>;
+        declare static readonly __signalSignatures: CalBackendSExp.SignalSignatures;
 
         // Constructors
 
@@ -2019,6 +2046,9 @@ export namespace EDataCal {
     }
 
     namespace CalBackendSync {
+        // Signal signatures
+        interface SignalSignatures extends CalBackend.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends CalBackend.ConstructorProps, ECal.TimezoneCache.ConstructorProps {}
@@ -2030,6 +2060,7 @@ export namespace EDataCal {
      */
     class CalBackendSync extends CalBackend implements ECal.TimezoneCache {
         static $gtype: GObject.GType<CalBackendSync>;
+        declare static readonly __signalSignatures: CalBackendSync.SignalSignatures;
 
         // Constructors
 
@@ -2733,6 +2764,12 @@ export namespace EDataCal {
             (tzid: string): ICalGLib.Timezone;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends EBackend.Cache.SignalSignatures {
+            'dup-component-revision': DupComponentRevision;
+            'get-timezone': GetTimezone;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -2747,6 +2784,7 @@ export namespace EDataCal {
      */
     class CalCache extends EBackend.Cache implements ECal.TimezoneCache, EDataServer.Extensible {
         static $gtype: GObject.GType<CalCache>;
+        declare static readonly __signalSignatures: CalCache.SignalSignatures;
 
         // Constructors
 
@@ -2758,6 +2796,15 @@ export namespace EDataCal {
 
         // Signals
 
+        connect<K extends keyof CalCache.SignalSignatures>(signal: K, callback: CalCache.SignalSignatures[K]): number;
+        connect_after<K extends keyof CalCache.SignalSignatures>(
+            signal: K,
+            callback: CalCache.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CalCache.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CalCache.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -3667,6 +3714,12 @@ export namespace EDataCal {
             (): void;
         }
 
+        // Signal signatures
+        interface SignalSignatures extends CalBackendSync.SignalSignatures {
+            'refresh-completed': RefreshCompleted;
+            'source-changed': SourceChanged;
+        }
+
         // Constructor properties interface
 
         interface ConstructorProps extends CalBackendSync.ConstructorProps, ECal.TimezoneCache.ConstructorProps {
@@ -3680,6 +3733,7 @@ export namespace EDataCal {
      */
     abstract class CalMetaBackend extends CalBackendSync implements ECal.TimezoneCache {
         static $gtype: GObject.GType<CalMetaBackend>;
+        declare static readonly __signalSignatures: CalMetaBackend.SignalSignatures;
 
         // Properties
 
@@ -3697,6 +3751,18 @@ export namespace EDataCal {
 
         // Signals
 
+        connect<K extends keyof CalMetaBackend.SignalSignatures>(
+            signal: K,
+            callback: CalMetaBackend.SignalSignatures[K],
+        ): number;
+        connect_after<K extends keyof CalMetaBackend.SignalSignatures>(
+            signal: K,
+            callback: CalMetaBackend.SignalSignatures[K],
+        ): number;
+        emit<K extends keyof CalMetaBackend.SignalSignatures>(
+            signal: K,
+            ...args: Parameters<CalMetaBackend.SignalSignatures[K]>
+        ): void;
         connect(id: string, callback: (...args: any[]) => any): number;
         connect_after(id: string, callback: (...args: any[]) => any): number;
         emit(id: string, ...args: any[]): void;
@@ -4812,6 +4878,9 @@ export namespace EDataCal {
     }
 
     namespace DataCal {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -4824,6 +4893,7 @@ export namespace EDataCal {
 
     class DataCal extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<DataCal>;
+        declare static readonly __signalSignatures: DataCal.SignalSignatures;
 
         // Properties
 
@@ -5520,6 +5590,9 @@ export namespace EDataCal {
     }
 
     namespace DataCalFactory {
+        // Signal signatures
+        interface SignalSignatures extends EBackend.DataFactory.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps
@@ -5530,6 +5603,7 @@ export namespace EDataCal {
 
     class DataCalFactory extends EBackend.DataFactory implements EDataServer.Extensible, Gio.Initable {
         static $gtype: GObject.GType<DataCalFactory>;
+        declare static readonly __signalSignatures: DataCalFactory.SignalSignatures;
 
         // Constructors
 
@@ -6067,6 +6141,9 @@ export namespace EDataCal {
     }
 
     namespace DataCalView {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.Initable.ConstructorProps {
@@ -6080,6 +6157,7 @@ export namespace EDataCal {
 
     class DataCalView extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<DataCalView>;
+        declare static readonly __signalSignatures: DataCalView.SignalSignatures;
 
         // Properties
 
@@ -6756,6 +6834,9 @@ export namespace EDataCal {
     }
 
     namespace IntervalTree {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
@@ -6767,6 +6848,7 @@ export namespace EDataCal {
      */
     class IntervalTree extends GObject.Object {
         static $gtype: GObject.GType<IntervalTree>;
+        declare static readonly __signalSignatures: IntervalTree.SignalSignatures;
 
         // Constructors
 
@@ -6786,6 +6868,9 @@ export namespace EDataCal {
     }
 
     namespace SubprocessCalFactory {
+        // Signal signatures
+        interface SignalSignatures extends EBackend.SubprocessFactory.SignalSignatures {}
+
         // Constructor properties interface
 
         interface ConstructorProps extends EBackend.SubprocessFactory.ConstructorProps, Gio.Initable.ConstructorProps {}
@@ -6793,6 +6878,7 @@ export namespace EDataCal {
 
     class SubprocessCalFactory extends EBackend.SubprocessFactory implements Gio.Initable {
         static $gtype: GObject.GType<SubprocessCalFactory>;
+        declare static readonly __signalSignatures: SubprocessCalFactory.SignalSignatures;
 
         // Constructors
 
