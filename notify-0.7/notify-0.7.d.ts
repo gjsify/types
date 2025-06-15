@@ -174,6 +174,17 @@ export namespace Notify {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             closed: Closed;
+            'notify::app-icon': GObject.Object.Notify;
+            'notify::app-icon': GObject.Object.Notify;
+            'notify::app-name': GObject.Object.Notify;
+            'notify::app-name': GObject.Object.Notify;
+            'notify::body': GObject.Object.Notify;
+            'notify::closed-reason': GObject.Object.Notify;
+            'notify::closed-reason': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::summary': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -280,14 +291,17 @@ export namespace Notify {
             signal: K,
             callback: Notification.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Notification.SignalSignatures>(
             signal: K,
             callback: Notification.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Notification.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Notification.SignalSignatures[K]>
+            ...args: Notification.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 

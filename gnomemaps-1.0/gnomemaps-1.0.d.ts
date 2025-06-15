@@ -64,7 +64,13 @@ export namespace GnomeMaps {
     }
     namespace Contact {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::bounding-box': GObject.Object.Notify;
+            'notify::bounding-box': GObject.Object.Notify;
+            'notify::icon': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -117,14 +123,17 @@ export namespace GnomeMaps {
         // Signals
 
         connect<K extends keyof Contact.SignalSignatures>(signal: K, callback: Contact.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Contact.SignalSignatures>(
             signal: K,
             callback: Contact.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Contact.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Contact.SignalSignatures[K]>
+            ...args: Contact.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -135,7 +144,9 @@ export namespace GnomeMaps {
 
     namespace ContactStore {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::state': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -168,14 +179,17 @@ export namespace GnomeMaps {
             signal: K,
             callback: ContactStore.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ContactStore.SignalSignatures>(
             signal: K,
             callback: ContactStore.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ContactStore.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContactStore.SignalSignatures[K]>
+            ...args: ContactStore.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -189,7 +203,30 @@ export namespace GnomeMaps {
 
     namespace FileTileSource {
         // Signal signatures
-        interface SignalSignatures extends Champlain.TileSource.SignalSignatures {}
+        interface SignalSignatures extends Champlain.TileSource.SignalSignatures {
+            'notify::max-zoom': GObject.Object.Notify;
+            'notify::max-zoom': GObject.Object.Notify;
+            'notify::min-zoom': GObject.Object.Notify;
+            'notify::min-zoom': GObject.Object.Notify;
+            'notify::path': GObject.Object.Notify;
+            'notify::world': GObject.Object.Notify;
+            'notify::cache': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::license': GObject.Object.Notify;
+            'notify::license-uri': GObject.Object.Notify;
+            'notify::license-uri': GObject.Object.Notify;
+            'notify::max-zoom-level': GObject.Object.Notify;
+            'notify::max-zoom-level': GObject.Object.Notify;
+            'notify::min-zoom-level': GObject.Object.Notify;
+            'notify::min-zoom-level': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::projection': GObject.Object.Notify;
+            'notify::tile-size': GObject.Object.Notify;
+            'notify::tile-size': GObject.Object.Notify;
+            'notify::next-source': GObject.Object.Notify;
+            'notify::next-source': GObject.Object.Notify;
+            'notify::renderer': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -252,14 +289,17 @@ export namespace GnomeMaps {
             signal: K,
             callback: FileTileSource.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FileTileSource.SignalSignatures>(
             signal: K,
             callback: FileTileSource.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FileTileSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileTileSource.SignalSignatures[K]>
+            ...args: FileTileSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -268,7 +308,11 @@ export namespace GnomeMaps {
 
     namespace OSMChangeset {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::comment': GObject.Object.Notify;
+            'notify::created-by': GObject.Object.Notify;
+            'notify::created-by': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -308,14 +352,17 @@ export namespace GnomeMaps {
             signal: K,
             callback: OSMChangeset.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OSMChangeset.SignalSignatures>(
             signal: K,
             callback: OSMChangeset.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OSMChangeset.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OSMChangeset.SignalSignatures[K]>
+            ...args: OSMChangeset.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -324,7 +371,13 @@ export namespace GnomeMaps {
 
     namespace OSMNode {
         // Signal signatures
-        interface SignalSignatures extends OSMObject.SignalSignatures {}
+        interface SignalSignatures extends OSMObject.SignalSignatures {
+            'notify::latitude': GObject.Object.Notify;
+            'notify::longitude': GObject.Object.Notify;
+            'notify::changeset': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::version': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -361,19 +414,24 @@ export namespace GnomeMaps {
         // Signals
 
         connect<K extends keyof OSMNode.SignalSignatures>(signal: K, callback: OSMNode.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OSMNode.SignalSignatures>(
             signal: K,
             callback: OSMNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OSMNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OSMNode.SignalSignatures[K]>
+            ...args: OSMNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace OSMOAuthProxyCall {
         // Signal signatures
-        interface SignalSignatures extends Rest.OAuthProxyCall.SignalSignatures {}
+        interface SignalSignatures extends Rest.OAuthProxyCall.SignalSignatures {
+            'notify::proxy': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -397,19 +455,26 @@ export namespace GnomeMaps {
             signal: K,
             callback: OSMOAuthProxyCall.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OSMOAuthProxyCall.SignalSignatures>(
             signal: K,
             callback: OSMOAuthProxyCall.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OSMOAuthProxyCall.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OSMOAuthProxyCall.SignalSignatures[K]>
+            ...args: OSMOAuthProxyCall.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace OSMObject {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::changeset': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::version': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -450,14 +515,17 @@ export namespace GnomeMaps {
         // Signals
 
         connect<K extends keyof OSMObject.SignalSignatures>(signal: K, callback: OSMObject.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OSMObject.SignalSignatures>(
             signal: K,
             callback: OSMObject.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OSMObject.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OSMObject.SignalSignatures[K]>
+            ...args: OSMObject.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -469,7 +537,11 @@ export namespace GnomeMaps {
 
     namespace OSMRelation {
         // Signal signatures
-        interface SignalSignatures extends OSMObject.SignalSignatures {}
+        interface SignalSignatures extends OSMObject.SignalSignatures {
+            'notify::changeset': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::version': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -493,14 +565,17 @@ export namespace GnomeMaps {
             signal: K,
             callback: OSMRelation.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OSMRelation.SignalSignatures>(
             signal: K,
             callback: OSMRelation.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OSMRelation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OSMRelation.SignalSignatures[K]>
+            ...args: OSMRelation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -509,7 +584,11 @@ export namespace GnomeMaps {
 
     namespace OSMWay {
         // Signal signatures
-        interface SignalSignatures extends OSMObject.SignalSignatures {}
+        interface SignalSignatures extends OSMObject.SignalSignatures {
+            'notify::changeset': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::version': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -530,8 +609,14 @@ export namespace GnomeMaps {
         // Signals
 
         connect<K extends keyof OSMWay.SignalSignatures>(signal: K, callback: OSMWay.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OSMWay.SignalSignatures>(signal: K, callback: OSMWay.SignalSignatures[K]): number;
-        emit<K extends keyof OSMWay.SignalSignatures>(signal: K, ...args: Parameters<OSMWay.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof OSMWay.SignalSignatures>(
+            signal: K,
+            ...args: OSMWay.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

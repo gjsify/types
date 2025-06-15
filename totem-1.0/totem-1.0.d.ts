@@ -331,6 +331,46 @@ export namespace Totem {
             'get-text-subtitle': GetTextSubtitle;
             'get-user-agent': GetUserAgent;
             'metadata-updated': MetadataUpdated;
+            'notify::current-content-type': GObject.Object.Notify;
+            'notify::current-content-type': GObject.Object.Notify;
+            'notify::current-display-name': GObject.Object.Notify;
+            'notify::current-display-name': GObject.Object.Notify;
+            'notify::current-mrl': GObject.Object.Notify;
+            'notify::current-mrl': GObject.Object.Notify;
+            'notify::current-time': GObject.Object.Notify;
+            'notify::current-time': GObject.Object.Notify;
+            'notify::fullscreen': GObject.Object.Notify;
+            'notify::main-page': GObject.Object.Notify;
+            'notify::main-page': GObject.Object.Notify;
+            'notify::playing': GObject.Object.Notify;
+            'notify::seekable': GObject.Object.Notify;
+            'notify::stream-length': GObject.Object.Notify;
+            'notify::stream-length': GObject.Object.Notify;
+            'notify::active-window': GObject.Object.Notify;
+            'notify::active-window': GObject.Object.Notify;
+            'notify::app-menu': GObject.Object.Notify;
+            'notify::app-menu': GObject.Object.Notify;
+            'notify::menubar': GObject.Object.Notify;
+            'notify::register-session': GObject.Object.Notify;
+            'notify::register-session': GObject.Object.Notify;
+            'notify::screensaver-active': GObject.Object.Notify;
+            'notify::screensaver-active': GObject.Object.Notify;
+            'notify::action-group': GObject.Object.Notify;
+            'notify::action-group': GObject.Object.Notify;
+            'notify::application-id': GObject.Object.Notify;
+            'notify::application-id': GObject.Object.Notify;
+            'notify::flags': GObject.Object.Notify;
+            'notify::inactivity-timeout': GObject.Object.Notify;
+            'notify::inactivity-timeout': GObject.Object.Notify;
+            'notify::is-busy': GObject.Object.Notify;
+            'notify::is-busy': GObject.Object.Notify;
+            'notify::is-registered': GObject.Object.Notify;
+            'notify::is-registered': GObject.Object.Notify;
+            'notify::is-remote': GObject.Object.Notify;
+            'notify::is-remote': GObject.Object.Notify;
+            'notify::resource-base-path': GObject.Object.Notify;
+            'notify::resource-base-path': GObject.Object.Notify;
+            'notify::version': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -435,8 +475,14 @@ export namespace Totem {
         // Signals
 
         connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
-        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            ...args: Object.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 

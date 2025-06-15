@@ -150,6 +150,16 @@ export namespace Lfb {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'feedback-ended': FeedbackEnded;
+            'notify::app-id': GObject.Object.Notify;
+            'notify::app-id': GObject.Object.Notify;
+            'notify::end-reason': GObject.Object.Notify;
+            'notify::end-reason': GObject.Object.Notify;
+            'notify::event': GObject.Object.Notify;
+            'notify::feedback-profile': GObject.Object.Notify;
+            'notify::feedback-profile': GObject.Object.Notify;
+            'notify::important': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::timeout': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -289,8 +299,14 @@ export namespace Lfb {
         // Signals
 
         connect<K extends keyof Event.SignalSignatures>(signal: K, callback: Event.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Event.SignalSignatures>(signal: K, callback: Event.SignalSignatures[K]): number;
-        emit<K extends keyof Event.SignalSignatures>(signal: K, ...args: Parameters<Event.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Event.SignalSignatures>(
+            signal: K,
+            ...args: Event.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -461,7 +477,27 @@ export namespace Lfb {
 
     namespace GdbusFeedbackProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::profile': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -523,14 +559,17 @@ export namespace Lfb {
             signal: K,
             callback: GdbusFeedbackProxy.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GdbusFeedbackProxy.SignalSignatures>(
             signal: K,
             callback: GdbusFeedbackProxy.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GdbusFeedbackProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GdbusFeedbackProxy.SignalSignatures[K]>
+            ...args: GdbusFeedbackProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1544,7 +1583,11 @@ export namespace Lfb {
 
     namespace GdbusFeedbackSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::profile': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1574,14 +1617,17 @@ export namespace Lfb {
             signal: K,
             callback: GdbusFeedbackSkeleton.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GdbusFeedbackSkeleton.SignalSignatures>(
             signal: K,
             callback: GdbusFeedbackSkeleton.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GdbusFeedbackSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GdbusFeedbackSkeleton.SignalSignatures[K]>
+            ...args: GdbusFeedbackSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         /**

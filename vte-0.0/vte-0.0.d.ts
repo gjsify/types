@@ -226,7 +226,11 @@ export namespace Vte {
     }
     namespace Pty {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::fd': GObject.Object.Notify;
+            'notify::flags': GObject.Object.Notify;
+            'notify::term': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -271,8 +275,14 @@ export namespace Vte {
         // Signals
 
         connect<K extends keyof Pty.SignalSignatures>(signal: K, callback: Pty.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Pty.SignalSignatures>(signal: K, callback: Pty.SignalSignatures[K]): number;
-        emit<K extends keyof Pty.SignalSignatures>(signal: K, ...args: Parameters<Pty.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Pty.SignalSignatures>(
+            signal: K,
+            ...args: Pty.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1004,6 +1014,96 @@ export namespace Vte {
             'text-modified': TextModified;
             'text-scrolled': TextScrolled;
             'window-title-changed': WindowTitleChanged;
+            'notify::allow-bold': GObject.Object.Notify;
+            'notify::allow-bold': GObject.Object.Notify;
+            'notify::audible-bell': GObject.Object.Notify;
+            'notify::audible-bell': GObject.Object.Notify;
+            'notify::background-image-file': GObject.Object.Notify;
+            'notify::background-image-file': GObject.Object.Notify;
+            'notify::background-image-pixbuf': GObject.Object.Notify;
+            'notify::background-image-pixbuf': GObject.Object.Notify;
+            'notify::background-opacity': GObject.Object.Notify;
+            'notify::background-opacity': GObject.Object.Notify;
+            'notify::background-saturation': GObject.Object.Notify;
+            'notify::background-saturation': GObject.Object.Notify;
+            'notify::background-tint-color': GObject.Object.Notify;
+            'notify::background-tint-color': GObject.Object.Notify;
+            'notify::background-transparent': GObject.Object.Notify;
+            'notify::background-transparent': GObject.Object.Notify;
+            'notify::backspace-binding': GObject.Object.Notify;
+            'notify::backspace-binding': GObject.Object.Notify;
+            'notify::cursor-blink-mode': GObject.Object.Notify;
+            'notify::cursor-blink-mode': GObject.Object.Notify;
+            'notify::cursor-shape': GObject.Object.Notify;
+            'notify::cursor-shape': GObject.Object.Notify;
+            'notify::delete-binding': GObject.Object.Notify;
+            'notify::delete-binding': GObject.Object.Notify;
+            'notify::emulation': GObject.Object.Notify;
+            'notify::encoding': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::icon-title': GObject.Object.Notify;
+            'notify::icon-title': GObject.Object.Notify;
+            'notify::pointer-autohide': GObject.Object.Notify;
+            'notify::pointer-autohide': GObject.Object.Notify;
+            'notify::pty': GObject.Object.Notify;
+            'notify::pty-object': GObject.Object.Notify;
+            'notify::pty-object': GObject.Object.Notify;
+            'notify::scroll-background': GObject.Object.Notify;
+            'notify::scroll-background': GObject.Object.Notify;
+            'notify::scroll-on-keystroke': GObject.Object.Notify;
+            'notify::scroll-on-keystroke': GObject.Object.Notify;
+            'notify::scroll-on-output': GObject.Object.Notify;
+            'notify::scroll-on-output': GObject.Object.Notify;
+            'notify::scrollback-lines': GObject.Object.Notify;
+            'notify::scrollback-lines': GObject.Object.Notify;
+            'notify::visible-bell': GObject.Object.Notify;
+            'notify::visible-bell': GObject.Object.Notify;
+            'notify::window-title': GObject.Object.Notify;
+            'notify::window-title': GObject.Object.Notify;
+            'notify::word-chars': GObject.Object.Notify;
+            'notify::word-chars': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::events': GObject.Object.Notify;
+            'notify::extension-events': GObject.Object.Notify;
+            'notify::extension-events': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::sensitive': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::window': GObject.Object.Notify;
+            'notify::user-data': GObject.Object.Notify;
+            'notify::user-data': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1442,14 +1542,17 @@ export namespace Vte {
         // Signals
 
         connect<K extends keyof Terminal.SignalSignatures>(signal: K, callback: Terminal.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Terminal.SignalSignatures>(
             signal: K,
             callback: Terminal.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Terminal.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Terminal.SignalSignatures[K]>
+            ...args: Terminal.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 

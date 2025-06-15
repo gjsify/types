@@ -26,6 +26,7 @@ export namespace RygelServer {
     // Workaround
     /** @ignore */
     interface IconInfo extends RygelCore.IconInfo {}
+
     /**
      * RygelServer-2.6
      */
@@ -146,7 +147,42 @@ export namespace RygelServer {
 
     namespace AudioItem {
         // Signal signatures
-        interface SignalSignatures extends MediaFileItem.SignalSignatures {}
+        interface SignalSignatures extends MediaFileItem.SignalSignatures {
+            'notify::duration': GObject.Object.Notify;
+            'notify::bitrate': GObject.Object.Notify;
+            'notify::sample-freq': GObject.Object.Notify;
+            'notify::sample-freq': GObject.Object.Notify;
+            'notify::bits-per-sample': GObject.Object.Notify;
+            'notify::bits-per-sample': GObject.Object.Notify;
+            'notify::channels': GObject.Object.Notify;
+            'notify::album': GObject.Object.Notify;
+            'notify::mime-type': GObject.Object.Notify;
+            'notify::mime-type': GObject.Object.Notify;
+            'notify::dlna-profile': GObject.Object.Notify;
+            'notify::dlna-profile': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::place-holder': GObject.Object.Notify;
+            'notify::place-holder': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::ref-id': GObject.Object.Notify;
+            'notify::ref-id': GObject.Object.Notify;
+            'notify::upnp-class': GObject.Object.Notify;
+            'notify::upnp-class': GObject.Object.Notify;
+            'notify::date': GObject.Object.Notify;
+            'notify::creator': GObject.Object.Notify;
+            'notify::modified': GObject.Object.Notify;
+            'notify::object-update-id': GObject.Object.Notify;
+            'notify::object-update-id': GObject.Object.Notify;
+            'notify::artist': GObject.Object.Notify;
+            'notify::genre': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::parent-ref': GObject.Object.Notify;
+            'notify::parent-ref': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::ocm-flags': GObject.Object.Notify;
+            'notify::ocm-flags': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -195,14 +231,17 @@ export namespace RygelServer {
         // Signals
 
         connect<K extends keyof AudioItem.SignalSignatures>(signal: K, callback: AudioItem.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AudioItem.SignalSignatures>(
             signal: K,
             callback: AudioItem.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AudioItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AudioItem.SignalSignatures[K]>
+            ...args: AudioItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -222,7 +261,39 @@ export namespace RygelServer {
 
     namespace ImageItem {
         // Signal signatures
-        interface SignalSignatures extends MediaFileItem.SignalSignatures {}
+        interface SignalSignatures extends MediaFileItem.SignalSignatures {
+            'notify::mime-type': GObject.Object.Notify;
+            'notify::mime-type': GObject.Object.Notify;
+            'notify::dlna-profile': GObject.Object.Notify;
+            'notify::dlna-profile': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::place-holder': GObject.Object.Notify;
+            'notify::place-holder': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::ref-id': GObject.Object.Notify;
+            'notify::ref-id': GObject.Object.Notify;
+            'notify::upnp-class': GObject.Object.Notify;
+            'notify::upnp-class': GObject.Object.Notify;
+            'notify::date': GObject.Object.Notify;
+            'notify::creator': GObject.Object.Notify;
+            'notify::modified': GObject.Object.Notify;
+            'notify::object-update-id': GObject.Object.Notify;
+            'notify::object-update-id': GObject.Object.Notify;
+            'notify::artist': GObject.Object.Notify;
+            'notify::genre': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::parent-ref': GObject.Object.Notify;
+            'notify::parent-ref': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::ocm-flags': GObject.Object.Notify;
+            'notify::ocm-flags': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::color-depth': GObject.Object.Notify;
+            'notify::color-depth': GObject.Object.Notify;
+            'notify::thumbnails': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -243,14 +314,17 @@ export namespace RygelServer {
         // Signals
 
         connect<K extends keyof ImageItem.SignalSignatures>(signal: K, callback: ImageItem.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ImageItem.SignalSignatures>(
             signal: K,
             callback: ImageItem.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ImageItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ImageItem.SignalSignatures[K]>
+            ...args: ImageItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get width(): number;
@@ -338,14 +412,17 @@ export namespace RygelServer {
             signal: K,
             callback: LogicalExpression.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LogicalExpression.SignalSignatures>(
             signal: K,
             callback: LogicalExpression.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LogicalExpression.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LogicalExpression.SignalSignatures[K]>
+            ...args: LogicalExpression.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace MediaArtStore {
@@ -372,14 +449,17 @@ export namespace RygelServer {
             signal: K,
             callback: MediaArtStore.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MediaArtStore.SignalSignatures>(
             signal: K,
             callback: MediaArtStore.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MediaArtStore.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaArtStore.SignalSignatures[K]>
+            ...args: MediaArtStore.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -394,7 +474,19 @@ export namespace RygelServer {
 
     namespace MediaObjects {
         // Signal signatures
-        interface SignalSignatures extends Gee.ArrayList.SignalSignatures {}
+        interface SignalSignatures extends Gee.ArrayList.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -418,14 +510,17 @@ export namespace RygelServer {
             signal: K,
             callback: MediaObjects.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MediaObjects.SignalSignatures>(
             signal: K,
             callback: MediaObjects.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MediaObjects.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaObjects.SignalSignatures[K]>
+            ...args: MediaObjects.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -434,7 +529,46 @@ export namespace RygelServer {
 
     namespace MusicItem {
         // Signal signatures
-        interface SignalSignatures extends AudioItem.SignalSignatures {}
+        interface SignalSignatures extends AudioItem.SignalSignatures {
+            'notify::track-number': GObject.Object.Notify;
+            'notify::track-number': GObject.Object.Notify;
+            'notify::album-art': GObject.Object.Notify;
+            'notify::album-art': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::bitrate': GObject.Object.Notify;
+            'notify::sample-freq': GObject.Object.Notify;
+            'notify::sample-freq': GObject.Object.Notify;
+            'notify::bits-per-sample': GObject.Object.Notify;
+            'notify::bits-per-sample': GObject.Object.Notify;
+            'notify::channels': GObject.Object.Notify;
+            'notify::album': GObject.Object.Notify;
+            'notify::mime-type': GObject.Object.Notify;
+            'notify::mime-type': GObject.Object.Notify;
+            'notify::dlna-profile': GObject.Object.Notify;
+            'notify::dlna-profile': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::place-holder': GObject.Object.Notify;
+            'notify::place-holder': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::ref-id': GObject.Object.Notify;
+            'notify::ref-id': GObject.Object.Notify;
+            'notify::upnp-class': GObject.Object.Notify;
+            'notify::upnp-class': GObject.Object.Notify;
+            'notify::date': GObject.Object.Notify;
+            'notify::creator': GObject.Object.Notify;
+            'notify::modified': GObject.Object.Notify;
+            'notify::object-update-id': GObject.Object.Notify;
+            'notify::object-update-id': GObject.Object.Notify;
+            'notify::artist': GObject.Object.Notify;
+            'notify::genre': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::parent-ref': GObject.Object.Notify;
+            'notify::parent-ref': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::ocm-flags': GObject.Object.Notify;
+            'notify::ocm-flags': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -471,14 +605,17 @@ export namespace RygelServer {
         // Signals
 
         connect<K extends keyof MusicItem.SignalSignatures>(signal: K, callback: MusicItem.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MusicItem.SignalSignatures>(
             signal: K,
             callback: MusicItem.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MusicItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MusicItem.SignalSignatures[K]>
+            ...args: MusicItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -491,7 +628,34 @@ export namespace RygelServer {
 
     namespace PhotoItem {
         // Signal signatures
-        interface SignalSignatures extends ImageItem.SignalSignatures {}
+        interface SignalSignatures extends ImageItem.SignalSignatures {
+            'notify::mime-type': GObject.Object.Notify;
+            'notify::mime-type': GObject.Object.Notify;
+            'notify::dlna-profile': GObject.Object.Notify;
+            'notify::dlna-profile': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::place-holder': GObject.Object.Notify;
+            'notify::place-holder': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::ref-id': GObject.Object.Notify;
+            'notify::ref-id': GObject.Object.Notify;
+            'notify::upnp-class': GObject.Object.Notify;
+            'notify::upnp-class': GObject.Object.Notify;
+            'notify::date': GObject.Object.Notify;
+            'notify::creator': GObject.Object.Notify;
+            'notify::modified': GObject.Object.Notify;
+            'notify::object-update-id': GObject.Object.Notify;
+            'notify::object-update-id': GObject.Object.Notify;
+            'notify::artist': GObject.Object.Notify;
+            'notify::genre': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::parent-ref': GObject.Object.Notify;
+            'notify::parent-ref': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::ocm-flags': GObject.Object.Notify;
+            'notify::ocm-flags': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -512,14 +676,17 @@ export namespace RygelServer {
         // Signals
 
         connect<K extends keyof PhotoItem.SignalSignatures>(signal: K, callback: PhotoItem.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PhotoItem.SignalSignatures>(
             signal: K,
             callback: PhotoItem.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PhotoItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PhotoItem.SignalSignatures[K]>
+            ...args: PhotoItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace RelationalExpression {
@@ -542,14 +709,17 @@ export namespace RygelServer {
             signal: K,
             callback: RelationalExpression.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RelationalExpression.SignalSignatures>(
             signal: K,
             callback: RelationalExpression.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RelationalExpression.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RelationalExpression.SignalSignatures[K]>
+            ...args: RelationalExpression.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -560,7 +730,38 @@ export namespace RygelServer {
 
     namespace SimpleContainer {
         // Signal signatures
-        interface SignalSignatures extends MediaContainer.SignalSignatures {}
+        interface SignalSignatures extends MediaContainer.SignalSignatures {
+            'notify::child-count': GObject.Object.Notify;
+            'notify::child-count': GObject.Object.Notify;
+            'notify::empty-child-count': GObject.Object.Notify;
+            'notify::empty-child-count': GObject.Object.Notify;
+            'notify::all-child-count': GObject.Object.Notify;
+            'notify::all-child-count': GObject.Object.Notify;
+            'notify::create-mode-enabled': GObject.Object.Notify;
+            'notify::create-mode-enabled': GObject.Object.Notify;
+            'notify::sort-criteria': GObject.Object.Notify;
+            'notify::sort-criteria': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::ref-id': GObject.Object.Notify;
+            'notify::ref-id': GObject.Object.Notify;
+            'notify::upnp-class': GObject.Object.Notify;
+            'notify::upnp-class': GObject.Object.Notify;
+            'notify::date': GObject.Object.Notify;
+            'notify::creator': GObject.Object.Notify;
+            'notify::modified': GObject.Object.Notify;
+            'notify::object-update-id': GObject.Object.Notify;
+            'notify::object-update-id': GObject.Object.Notify;
+            'notify::artist': GObject.Object.Notify;
+            'notify::genre': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::parent-ref': GObject.Object.Notify;
+            'notify::parent-ref': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::ocm-flags': GObject.Object.Notify;
+            'notify::ocm-flags': GObject.Object.Notify;
+            'notify::search-classes': GObject.Object.Notify;
+            'notify::search-classes': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -590,14 +791,17 @@ export namespace RygelServer {
             signal: K,
             callback: SimpleContainer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SimpleContainer.SignalSignatures>(
             signal: K,
             callback: SimpleContainer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SimpleContainer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SimpleContainer.SignalSignatures[K]>
+            ...args: SimpleContainer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -779,14 +983,17 @@ export namespace RygelServer {
         // Signals
 
         connect<K extends keyof Subtitle.SignalSignatures>(signal: K, callback: Subtitle.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Subtitle.SignalSignatures>(
             signal: K,
             callback: Subtitle.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Subtitle.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Subtitle.SignalSignatures[K]>
+            ...args: Subtitle.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -821,14 +1028,17 @@ export namespace RygelServer {
         // Signals
 
         connect<K extends keyof Thumbnail.SignalSignatures>(signal: K, callback: Thumbnail.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Thumbnail.SignalSignatures>(
             signal: K,
             callback: Thumbnail.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Thumbnail.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Thumbnail.SignalSignatures[K]>
+            ...args: Thumbnail.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -841,7 +1051,49 @@ export namespace RygelServer {
 
     namespace VideoItem {
         // Signal signatures
-        interface SignalSignatures extends AudioItem.SignalSignatures {}
+        interface SignalSignatures extends AudioItem.SignalSignatures {
+            'notify::author': GObject.Object.Notify;
+            'notify::subtitles': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::bitrate': GObject.Object.Notify;
+            'notify::sample-freq': GObject.Object.Notify;
+            'notify::sample-freq': GObject.Object.Notify;
+            'notify::bits-per-sample': GObject.Object.Notify;
+            'notify::bits-per-sample': GObject.Object.Notify;
+            'notify::channels': GObject.Object.Notify;
+            'notify::album': GObject.Object.Notify;
+            'notify::mime-type': GObject.Object.Notify;
+            'notify::mime-type': GObject.Object.Notify;
+            'notify::dlna-profile': GObject.Object.Notify;
+            'notify::dlna-profile': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::place-holder': GObject.Object.Notify;
+            'notify::place-holder': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::ref-id': GObject.Object.Notify;
+            'notify::ref-id': GObject.Object.Notify;
+            'notify::upnp-class': GObject.Object.Notify;
+            'notify::upnp-class': GObject.Object.Notify;
+            'notify::date': GObject.Object.Notify;
+            'notify::creator': GObject.Object.Notify;
+            'notify::modified': GObject.Object.Notify;
+            'notify::object-update-id': GObject.Object.Notify;
+            'notify::object-update-id': GObject.Object.Notify;
+            'notify::artist': GObject.Object.Notify;
+            'notify::genre': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::parent-ref': GObject.Object.Notify;
+            'notify::parent-ref': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::ocm-flags': GObject.Object.Notify;
+            'notify::ocm-flags': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::color-depth': GObject.Object.Notify;
+            'notify::color-depth': GObject.Object.Notify;
+            'notify::thumbnails': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -872,14 +1124,17 @@ export namespace RygelServer {
         // Signals
 
         connect<K extends keyof VideoItem.SignalSignatures>(signal: K, callback: VideoItem.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VideoItem.SignalSignatures>(
             signal: K,
             callback: VideoItem.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VideoItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VideoItem.SignalSignatures[K]>
+            ...args: VideoItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -980,6 +1235,34 @@ export namespace RygelServer {
         interface SignalSignatures extends MediaObject.SignalSignatures {
             'container-updated': ContainerUpdated;
             'sub-tree-updates-finished': SubTreeUpdatesFinished;
+            'notify::child-count': GObject.Object.Notify;
+            'notify::child-count': GObject.Object.Notify;
+            'notify::empty-child-count': GObject.Object.Notify;
+            'notify::empty-child-count': GObject.Object.Notify;
+            'notify::all-child-count': GObject.Object.Notify;
+            'notify::all-child-count': GObject.Object.Notify;
+            'notify::create-mode-enabled': GObject.Object.Notify;
+            'notify::create-mode-enabled': GObject.Object.Notify;
+            'notify::sort-criteria': GObject.Object.Notify;
+            'notify::sort-criteria': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::ref-id': GObject.Object.Notify;
+            'notify::ref-id': GObject.Object.Notify;
+            'notify::upnp-class': GObject.Object.Notify;
+            'notify::upnp-class': GObject.Object.Notify;
+            'notify::date': GObject.Object.Notify;
+            'notify::creator': GObject.Object.Notify;
+            'notify::modified': GObject.Object.Notify;
+            'notify::object-update-id': GObject.Object.Notify;
+            'notify::object-update-id': GObject.Object.Notify;
+            'notify::artist': GObject.Object.Notify;
+            'notify::genre': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::parent-ref': GObject.Object.Notify;
+            'notify::parent-ref': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::ocm-flags': GObject.Object.Notify;
+            'notify::ocm-flags': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1040,14 +1323,17 @@ export namespace RygelServer {
             signal: K,
             callback: MediaContainer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MediaContainer.SignalSignatures>(
             signal: K,
             callback: MediaContainer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MediaContainer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaContainer.SignalSignatures[K]>
+            ...args: MediaContainer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1119,7 +1405,27 @@ export namespace RygelServer {
 
     namespace MediaItem {
         // Signal signatures
-        interface SignalSignatures extends MediaObject.SignalSignatures {}
+        interface SignalSignatures extends MediaObject.SignalSignatures {
+            'notify::description': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::ref-id': GObject.Object.Notify;
+            'notify::ref-id': GObject.Object.Notify;
+            'notify::upnp-class': GObject.Object.Notify;
+            'notify::upnp-class': GObject.Object.Notify;
+            'notify::date': GObject.Object.Notify;
+            'notify::creator': GObject.Object.Notify;
+            'notify::modified': GObject.Object.Notify;
+            'notify::object-update-id': GObject.Object.Notify;
+            'notify::object-update-id': GObject.Object.Notify;
+            'notify::artist': GObject.Object.Notify;
+            'notify::genre': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::parent-ref': GObject.Object.Notify;
+            'notify::parent-ref': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::ocm-flags': GObject.Object.Notify;
+            'notify::ocm-flags': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1145,14 +1451,17 @@ export namespace RygelServer {
         // Signals
 
         connect<K extends keyof MediaItem.SignalSignatures>(signal: K, callback: MediaItem.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MediaItem.SignalSignatures>(
             signal: K,
             callback: MediaItem.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MediaItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaItem.SignalSignatures[K]>
+            ...args: MediaItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1162,7 +1471,34 @@ export namespace RygelServer {
 
     namespace MediaFileItem {
         // Signal signatures
-        interface SignalSignatures extends MediaItem.SignalSignatures {}
+        interface SignalSignatures extends MediaItem.SignalSignatures {
+            'notify::mime-type': GObject.Object.Notify;
+            'notify::mime-type': GObject.Object.Notify;
+            'notify::dlna-profile': GObject.Object.Notify;
+            'notify::dlna-profile': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::place-holder': GObject.Object.Notify;
+            'notify::place-holder': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::ref-id': GObject.Object.Notify;
+            'notify::ref-id': GObject.Object.Notify;
+            'notify::upnp-class': GObject.Object.Notify;
+            'notify::upnp-class': GObject.Object.Notify;
+            'notify::date': GObject.Object.Notify;
+            'notify::creator': GObject.Object.Notify;
+            'notify::modified': GObject.Object.Notify;
+            'notify::object-update-id': GObject.Object.Notify;
+            'notify::object-update-id': GObject.Object.Notify;
+            'notify::artist': GObject.Object.Notify;
+            'notify::genre': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::parent-ref': GObject.Object.Notify;
+            'notify::parent-ref': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::ocm-flags': GObject.Object.Notify;
+            'notify::ocm-flags': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1213,14 +1549,17 @@ export namespace RygelServer {
             signal: K,
             callback: MediaFileItem.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MediaFileItem.SignalSignatures>(
             signal: K,
             callback: MediaFileItem.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MediaFileItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaFileItem.SignalSignatures[K]>
+            ...args: MediaFileItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1252,7 +1591,26 @@ export namespace RygelServer {
 
     namespace MediaObject {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::id': GObject.Object.Notify;
+            'notify::ref-id': GObject.Object.Notify;
+            'notify::ref-id': GObject.Object.Notify;
+            'notify::upnp-class': GObject.Object.Notify;
+            'notify::upnp-class': GObject.Object.Notify;
+            'notify::date': GObject.Object.Notify;
+            'notify::creator': GObject.Object.Notify;
+            'notify::modified': GObject.Object.Notify;
+            'notify::object-update-id': GObject.Object.Notify;
+            'notify::object-update-id': GObject.Object.Notify;
+            'notify::artist': GObject.Object.Notify;
+            'notify::genre': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::parent-ref': GObject.Object.Notify;
+            'notify::parent-ref': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::ocm-flags': GObject.Object.Notify;
+            'notify::ocm-flags': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1334,14 +1692,17 @@ export namespace RygelServer {
             signal: K,
             callback: MediaObject.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MediaObject.SignalSignatures>(
             signal: K,
             callback: MediaObject.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MediaObject.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaObject.SignalSignatures[K]>
+            ...args: MediaObject.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1416,7 +1777,39 @@ export namespace RygelServer {
 
     namespace MediaResource {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::uri': GObject.Object.Notify;
+            'notify::import-uri': GObject.Object.Notify;
+            'notify::import-uri': GObject.Object.Notify;
+            'notify::extension': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::cleartext-size': GObject.Object.Notify;
+            'notify::cleartext-size': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::bitrate': GObject.Object.Notify;
+            'notify::bits-per-sample': GObject.Object.Notify;
+            'notify::bits-per-sample': GObject.Object.Notify;
+            'notify::color-depth': GObject.Object.Notify;
+            'notify::color-depth': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::audio-channels': GObject.Object.Notify;
+            'notify::audio-channels': GObject.Object.Notify;
+            'notify::sample-freq': GObject.Object.Notify;
+            'notify::sample-freq': GObject.Object.Notify;
+            'notify::protocol': GObject.Object.Notify;
+            'notify::mime-type': GObject.Object.Notify;
+            'notify::mime-type': GObject.Object.Notify;
+            'notify::dlna-profile': GObject.Object.Notify;
+            'notify::dlna-profile': GObject.Object.Notify;
+            'notify::network': GObject.Object.Notify;
+            'notify::dlna-conversion': GObject.Object.Notify;
+            'notify::dlna-conversion': GObject.Object.Notify;
+            'notify::dlna-flags': GObject.Object.Notify;
+            'notify::dlna-flags': GObject.Object.Notify;
+            'notify::dlna-operation': GObject.Object.Notify;
+            'notify::dlna-operation': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1546,14 +1939,17 @@ export namespace RygelServer {
             signal: K,
             callback: MediaResource.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MediaResource.SignalSignatures>(
             signal: K,
             callback: MediaResource.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MediaResource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaResource.SignalSignatures[K]>
+            ...args: MediaResource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1625,7 +2021,29 @@ export namespace RygelServer {
 
     namespace MediaServerPlugin {
         // Signal signatures
-        interface SignalSignatures extends RygelCore.Plugin.SignalSignatures {}
+        interface SignalSignatures extends RygelCore.Plugin.SignalSignatures {
+            'notify::root-container': GObject.Object.Notify;
+            'notify::root-container': GObject.Object.Notify;
+            'notify::search-caps': GObject.Object.Notify;
+            'notify::search-caps': GObject.Object.Notify;
+            'notify::upload-profiles': GObject.Object.Notify;
+            'notify::upload-profiles': GObject.Object.Notify;
+            'notify::supported-profiles': GObject.Object.Notify;
+            'notify::supported-profiles': GObject.Object.Notify;
+            'notify::capabilities': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::desc-path': GObject.Object.Notify;
+            'notify::desc-path': GObject.Object.Notify;
+            'notify::active': GObject.Object.Notify;
+            'notify::resource-infos': GObject.Object.Notify;
+            'notify::resource-infos': GObject.Object.Notify;
+            'notify::icon-infos': GObject.Object.Notify;
+            'notify::icon-infos': GObject.Object.Notify;
+            'notify::default-icons': GObject.Object.Notify;
+            'notify::default-icons': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1671,14 +2089,17 @@ export namespace RygelServer {
             signal: K,
             callback: MediaServerPlugin.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MediaServerPlugin.SignalSignatures>(
             signal: K,
             callback: MediaServerPlugin.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MediaServerPlugin.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaServerPlugin.SignalSignatures[K]>
+            ...args: MediaServerPlugin.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1719,14 +2140,17 @@ export namespace RygelServer {
             signal: K,
             callback: SearchExpression.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SearchExpression.SignalSignatures>(
             signal: K,
             callback: SearchExpression.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SearchExpression.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SearchExpression.SignalSignatures[K]>
+            ...args: SearchExpression.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1741,7 +2165,13 @@ export namespace RygelServer {
 
     namespace MediaServer {
         // Signal signatures
-        interface SignalSignatures extends RygelCore.MediaDevice.SignalSignatures {}
+        interface SignalSignatures extends RygelCore.MediaDevice.SignalSignatures {
+            'notify::root-container': GObject.Object.Notify;
+            'notify::root-container': GObject.Object.Notify;
+            'notify::plugin': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::capabilities': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1777,14 +2207,17 @@ export namespace RygelServer {
             signal: K,
             callback: MediaServer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MediaServer.SignalSignatures>(
             signal: K,
             callback: MediaServer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MediaServer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaServer.SignalSignatures[K]>
+            ...args: MediaServer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace MediaEngine {
@@ -1819,14 +2252,17 @@ export namespace RygelServer {
             signal: K,
             callback: MediaEngine.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MediaEngine.SignalSignatures>(
             signal: K,
             callback: MediaEngine.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MediaEngine.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaEngine.SignalSignatures[K]>
+            ...args: MediaEngine.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1889,19 +2325,49 @@ export namespace RygelServer {
             signal: K,
             callback: HTTPSeekRequest.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HTTPSeekRequest.SignalSignatures>(
             signal: K,
             callback: HTTPSeekRequest.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HTTPSeekRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HTTPSeekRequest.SignalSignatures[K]>
+            ...args: HTTPSeekRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace PlaylistItem {
         // Signal signatures
-        interface SignalSignatures extends MediaFileItem.SignalSignatures {}
+        interface SignalSignatures extends MediaFileItem.SignalSignatures {
+            'notify::mime-type': GObject.Object.Notify;
+            'notify::mime-type': GObject.Object.Notify;
+            'notify::dlna-profile': GObject.Object.Notify;
+            'notify::dlna-profile': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::place-holder': GObject.Object.Notify;
+            'notify::place-holder': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::ref-id': GObject.Object.Notify;
+            'notify::ref-id': GObject.Object.Notify;
+            'notify::upnp-class': GObject.Object.Notify;
+            'notify::upnp-class': GObject.Object.Notify;
+            'notify::date': GObject.Object.Notify;
+            'notify::creator': GObject.Object.Notify;
+            'notify::modified': GObject.Object.Notify;
+            'notify::object-update-id': GObject.Object.Notify;
+            'notify::object-update-id': GObject.Object.Notify;
+            'notify::artist': GObject.Object.Notify;
+            'notify::genre': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::parent-ref': GObject.Object.Notify;
+            'notify::parent-ref': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::ocm-flags': GObject.Object.Notify;
+            'notify::ocm-flags': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1925,19 +2391,34 @@ export namespace RygelServer {
             signal: K,
             callback: PlaylistItem.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PlaylistItem.SignalSignatures>(
             signal: K,
             callback: PlaylistItem.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PlaylistItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PlaylistItem.SignalSignatures[K]>
+            ...args: PlaylistItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace ContentDirectory {
         // Signal signatures
-        interface SignalSignatures extends GUPnP.Service.SignalSignatures {}
+        interface SignalSignatures extends GUPnP.Service.SignalSignatures {
+            'notify::root-device': GObject.Object.Notify;
+            'notify::root-device': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
+            'notify::document': GObject.Object.Notify;
+            'notify::element': GObject.Object.Notify;
+            'notify::location': GObject.Object.Notify;
+            'notify::service-type': GObject.Object.Notify;
+            'notify::service-type': GObject.Object.Notify;
+            'notify::udn': GObject.Object.Notify;
+            'notify::url-base': GObject.Object.Notify;
+            'notify::url-base': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1969,19 +2450,31 @@ export namespace RygelServer {
             signal: K,
             callback: ContentDirectory.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ContentDirectory.SignalSignatures>(
             signal: K,
             callback: ContentDirectory.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ContentDirectory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContentDirectory.SignalSignatures[K]>
+            ...args: ContentDirectory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace HTTPByteSeekRequest {
         // Signal signatures
-        interface SignalSignatures extends HTTPSeekRequest.SignalSignatures {}
+        interface SignalSignatures extends HTTPSeekRequest.SignalSignatures {
+            'notify::start-byte': GObject.Object.Notify;
+            'notify::start-byte': GObject.Object.Notify;
+            'notify::end-byte': GObject.Object.Notify;
+            'notify::end-byte': GObject.Object.Notify;
+            'notify::range-length': GObject.Object.Notify;
+            'notify::range-length': GObject.Object.Notify;
+            'notify::total-size': GObject.Object.Notify;
+            'notify::total-size': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2033,14 +2526,17 @@ export namespace RygelServer {
             signal: K,
             callback: HTTPByteSeekRequest.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HTTPByteSeekRequest.SignalSignatures>(
             signal: K,
             callback: HTTPByteSeekRequest.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HTTPByteSeekRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HTTPByteSeekRequest.SignalSignatures[K]>
+            ...args: HTTPByteSeekRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2060,7 +2556,16 @@ export namespace RygelServer {
 
     namespace HTTPByteSeekResponse {
         // Signal signatures
-        interface SignalSignatures extends HTTPResponseElement.SignalSignatures {}
+        interface SignalSignatures extends HTTPResponseElement.SignalSignatures {
+            'notify::start-byte': GObject.Object.Notify;
+            'notify::start-byte': GObject.Object.Notify;
+            'notify::end-byte': GObject.Object.Notify;
+            'notify::end-byte': GObject.Object.Notify;
+            'notify::range-length': GObject.Object.Notify;
+            'notify::range-length': GObject.Object.Notify;
+            'notify::total-size': GObject.Object.Notify;
+            'notify::total-size': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2114,14 +2619,17 @@ export namespace RygelServer {
             signal: K,
             callback: HTTPByteSeekResponse.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HTTPByteSeekResponse.SignalSignatures>(
             signal: K,
             callback: HTTPByteSeekResponse.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HTTPByteSeekResponse.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HTTPByteSeekResponse.SignalSignatures[K]>
+            ...args: HTTPByteSeekResponse.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2136,7 +2644,9 @@ export namespace RygelServer {
 
     namespace HTTPGetHandler {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::cancellable': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2165,14 +2675,17 @@ export namespace RygelServer {
             signal: K,
             callback: HTTPGetHandler.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HTTPGetHandler.SignalSignatures>(
             signal: K,
             callback: HTTPGetHandler.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HTTPGetHandler.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HTTPGetHandler.SignalSignatures[K]>
+            ...args: HTTPGetHandler.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -2230,19 +2743,34 @@ export namespace RygelServer {
         // Signals
 
         connect<K extends keyof HTTPGet.SignalSignatures>(signal: K, callback: HTTPGet.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HTTPGet.SignalSignatures>(
             signal: K,
             callback: HTTPGet.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HTTPGet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HTTPGet.SignalSignatures[K]>
+            ...args: HTTPGet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace HTTPItemURI {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::item-id': GObject.Object.Notify;
+            'notify::item-id': GObject.Object.Notify;
+            'notify::thumbnail-index': GObject.Object.Notify;
+            'notify::thumbnail-index': GObject.Object.Notify;
+            'notify::subtitle-index': GObject.Object.Notify;
+            'notify::subtitle-index': GObject.Object.Notify;
+            'notify::resource-name': GObject.Object.Notify;
+            'notify::resource-name': GObject.Object.Notify;
+            'notify::http-server': GObject.Object.Notify;
+            'notify::http-server': GObject.Object.Notify;
+            'notify::extension': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2315,14 +2843,17 @@ export namespace RygelServer {
             signal: K,
             callback: HTTPItemURI.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HTTPItemURI.SignalSignatures>(
             signal: K,
             callback: HTTPItemURI.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HTTPItemURI.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HTTPItemURI.SignalSignatures[K]>
+            ...args: HTTPItemURI.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2343,7 +2874,9 @@ export namespace RygelServer {
 
     namespace HTTPRequest {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::cancellable': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2374,14 +2907,17 @@ export namespace RygelServer {
             signal: K,
             callback: HTTPRequest.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HTTPRequest.SignalSignatures>(
             signal: K,
             callback: HTTPRequest.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HTTPRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HTTPRequest.SignalSignatures[K]>
+            ...args: HTTPRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -2861,7 +3397,11 @@ export namespace RygelServer {
 
     namespace HTTPResponse {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::server': GObject.Object.Notify;
+            'notify::priority': GObject.Object.Notify;
+            'notify::cancellable': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2900,14 +3440,17 @@ export namespace RygelServer {
             signal: K,
             callback: HTTPResponse.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HTTPResponse.SignalSignatures>(
             signal: K,
             callback: HTTPResponse.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HTTPResponse.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HTTPResponse.SignalSignatures[K]>
+            ...args: HTTPResponse.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -3400,14 +3943,17 @@ export namespace RygelServer {
             signal: K,
             callback: HTTPResponseElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HTTPResponseElement.SignalSignatures>(
             signal: K,
             callback: HTTPResponseElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HTTPResponseElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HTTPResponseElement.SignalSignatures[K]>
+            ...args: HTTPResponseElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -3422,7 +3968,13 @@ export namespace RygelServer {
 
     namespace HTTPServer {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::path-root': GObject.Object.Notify;
+            'notify::path-root': GObject.Object.Notify;
+            'notify::server-name': GObject.Object.Notify;
+            'notify::server-name': GObject.Object.Notify;
+            'notify::cancellable': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3467,14 +4019,17 @@ export namespace RygelServer {
             signal: K,
             callback: HTTPServer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HTTPServer.SignalSignatures>(
             signal: K,
             callback: HTTPServer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HTTPServer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HTTPServer.SignalSignatures[K]>
+            ...args: HTTPServer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -3980,14 +4535,17 @@ export namespace RygelServer {
             signal: K,
             callback: HTTPTimeSeekRequest.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HTTPTimeSeekRequest.SignalSignatures>(
             signal: K,
             callback: HTTPTimeSeekRequest.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HTTPTimeSeekRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HTTPTimeSeekRequest.SignalSignatures[K]>
+            ...args: HTTPTimeSeekRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -4001,7 +4559,24 @@ export namespace RygelServer {
 
     namespace HTTPTimeSeekResponse {
         // Signal signatures
-        interface SignalSignatures extends HTTPResponseElement.SignalSignatures {}
+        interface SignalSignatures extends HTTPResponseElement.SignalSignatures {
+            'notify::start-time': GObject.Object.Notify;
+            'notify::start-time': GObject.Object.Notify;
+            'notify::end-time': GObject.Object.Notify;
+            'notify::end-time': GObject.Object.Notify;
+            'notify::range-duration': GObject.Object.Notify;
+            'notify::range-duration': GObject.Object.Notify;
+            'notify::total-duration': GObject.Object.Notify;
+            'notify::total-duration': GObject.Object.Notify;
+            'notify::start-byte': GObject.Object.Notify;
+            'notify::start-byte': GObject.Object.Notify;
+            'notify::end-byte': GObject.Object.Notify;
+            'notify::end-byte': GObject.Object.Notify;
+            'notify::response-length': GObject.Object.Notify;
+            'notify::response-length': GObject.Object.Notify;
+            'notify::total-size': GObject.Object.Notify;
+            'notify::total-size': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4098,14 +4673,17 @@ export namespace RygelServer {
             signal: K,
             callback: HTTPTimeSeekResponse.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HTTPTimeSeekResponse.SignalSignatures>(
             signal: K,
             callback: HTTPTimeSeekResponse.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HTTPTimeSeekResponse.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HTTPTimeSeekResponse.SignalSignatures[K]>
+            ...args: HTTPTimeSeekResponse.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4121,7 +4699,10 @@ export namespace RygelServer {
 
     namespace Serializer {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::serializer-type': GObject.Object.Notify;
+            'notify::serializer-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4153,14 +4734,17 @@ export namespace RygelServer {
             signal: K,
             callback: Serializer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Serializer.SignalSignatures>(
             signal: K,
             callback: Serializer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Serializer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Serializer.SignalSignatures[K]>
+            ...args: Serializer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4195,14 +4779,17 @@ export namespace RygelServer {
         // Signals
 
         connect<K extends keyof PlaySpeed.SignalSignatures>(signal: K, callback: PlaySpeed.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PlaySpeed.SignalSignatures>(
             signal: K,
             callback: PlaySpeed.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PlaySpeed.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PlaySpeed.SignalSignatures[K]>
+            ...args: PlaySpeed.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4216,7 +4803,9 @@ export namespace RygelServer {
 
     namespace PlaySpeedRequest {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::speed': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4249,14 +4838,17 @@ export namespace RygelServer {
             signal: K,
             callback: PlaySpeedRequest.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PlaySpeedRequest.SignalSignatures>(
             signal: K,
             callback: PlaySpeedRequest.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PlaySpeedRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PlaySpeedRequest.SignalSignatures[K]>
+            ...args: PlaySpeedRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -4302,14 +4894,17 @@ export namespace RygelServer {
             signal: K,
             callback: PlaySpeedResponse.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PlaySpeedResponse.SignalSignatures>(
             signal: K,
             callback: PlaySpeedResponse.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PlaySpeedResponse.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PlaySpeedResponse.SignalSignatures[K]>
+            ...args: PlaySpeedResponse.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4318,7 +4913,16 @@ export namespace RygelServer {
 
     namespace DTCPCleartextRequest {
         // Signal signatures
-        interface SignalSignatures extends HTTPSeekRequest.SignalSignatures {}
+        interface SignalSignatures extends HTTPSeekRequest.SignalSignatures {
+            'notify::start-byte': GObject.Object.Notify;
+            'notify::start-byte': GObject.Object.Notify;
+            'notify::end-byte': GObject.Object.Notify;
+            'notify::end-byte': GObject.Object.Notify;
+            'notify::range-length': GObject.Object.Notify;
+            'notify::range-length': GObject.Object.Notify;
+            'notify::total-size': GObject.Object.Notify;
+            'notify::total-size': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4370,14 +4974,17 @@ export namespace RygelServer {
             signal: K,
             callback: DTCPCleartextRequest.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DTCPCleartextRequest.SignalSignatures>(
             signal: K,
             callback: DTCPCleartextRequest.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DTCPCleartextRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DTCPCleartextRequest.SignalSignatures[K]>
+            ...args: DTCPCleartextRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -4394,7 +5001,18 @@ export namespace RygelServer {
 
     namespace DTCPCleartextResponse {
         // Signal signatures
-        interface SignalSignatures extends HTTPResponseElement.SignalSignatures {}
+        interface SignalSignatures extends HTTPResponseElement.SignalSignatures {
+            'notify::start-byte': GObject.Object.Notify;
+            'notify::start-byte': GObject.Object.Notify;
+            'notify::end-byte': GObject.Object.Notify;
+            'notify::end-byte': GObject.Object.Notify;
+            'notify::range-length': GObject.Object.Notify;
+            'notify::range-length': GObject.Object.Notify;
+            'notify::total-size': GObject.Object.Notify;
+            'notify::total-size': GObject.Object.Notify;
+            'notify::encrypted-length': GObject.Object.Notify;
+            'notify::encrypted-length': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4459,14 +5077,17 @@ export namespace RygelServer {
             signal: K,
             callback: DTCPCleartextResponse.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DTCPCleartextResponse.SignalSignatures>(
             signal: K,
             callback: DTCPCleartextResponse.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DTCPCleartextResponse.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DTCPCleartextResponse.SignalSignatures[K]>
+            ...args: DTCPCleartextResponse.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4502,14 +5123,17 @@ export namespace RygelServer {
             signal: K,
             callback: DLNAAvailableSeekRangeRequest.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DLNAAvailableSeekRangeRequest.SignalSignatures>(
             signal: K,
             callback: DLNAAvailableSeekRangeRequest.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DLNAAvailableSeekRangeRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DLNAAvailableSeekRangeRequest.SignalSignatures[K]>
+            ...args: DLNAAvailableSeekRangeRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -4519,7 +5143,19 @@ export namespace RygelServer {
 
     namespace DLNAAvailableSeekRangeResponse {
         // Signal signatures
-        interface SignalSignatures extends HTTPResponseElement.SignalSignatures {}
+        interface SignalSignatures extends HTTPResponseElement.SignalSignatures {
+            'notify::mode': GObject.Object.Notify;
+            'notify::start-time': GObject.Object.Notify;
+            'notify::start-time': GObject.Object.Notify;
+            'notify::end-time': GObject.Object.Notify;
+            'notify::end-time': GObject.Object.Notify;
+            'notify::start-byte': GObject.Object.Notify;
+            'notify::start-byte': GObject.Object.Notify;
+            'notify::end-byte': GObject.Object.Notify;
+            'notify::end-byte': GObject.Object.Notify;
+            'notify::range-length': GObject.Object.Notify;
+            'notify::range-length': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4588,14 +5224,17 @@ export namespace RygelServer {
             signal: K,
             callback: DLNAAvailableSeekRangeResponse.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DLNAAvailableSeekRangeResponse.SignalSignatures>(
             signal: K,
             callback: DLNAAvailableSeekRangeResponse.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DLNAAvailableSeekRangeResponse.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DLNAAvailableSeekRangeResponse.SignalSignatures[K]>
+            ...args: DLNAAvailableSeekRangeResponse.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

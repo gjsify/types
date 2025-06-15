@@ -572,14 +572,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: ContextMenu.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ContextMenu.SignalSignatures>(
             signal: K,
             callback: ContextMenu.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ContextMenu.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContextMenu.SignalSignatures[K]>
+            ...args: ContextMenu.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -735,14 +738,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: ContextMenuItem.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ContextMenuItem.SignalSignatures>(
             signal: K,
             callback: ContextMenuItem.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ContextMenuItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContextMenuItem.SignalSignatures[K]>
+            ...args: ContextMenuItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -788,7 +794,46 @@ export namespace WebKit2WebExtension {
 
     namespace DOMAttr {
         // Signal signatures
-        interface SignalSignatures extends DOMNode.SignalSignatures {}
+        interface SignalSignatures extends DOMNode.SignalSignatures {
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::owner-element': GObject.Object.Notify;
+            'notify::owner-element': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::specified': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -832,14 +877,17 @@ export namespace WebKit2WebExtension {
         // Signals
 
         connect<K extends keyof DOMAttr.SignalSignatures>(signal: K, callback: DOMAttr.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMAttr.SignalSignatures>(
             signal: K,
             callback: DOMAttr.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMAttr.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMAttr.SignalSignatures[K]>
+            ...args: DOMAttr.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1306,7 +1354,11 @@ export namespace WebKit2WebExtension {
 
     namespace DOMBlob {
         // Signal signatures
-        interface SignalSignatures extends DOMObject.SignalSignatures {}
+        interface SignalSignatures extends DOMObject.SignalSignatures {
+            'notify::size': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1331,14 +1383,17 @@ export namespace WebKit2WebExtension {
         // Signals
 
         connect<K extends keyof DOMBlob.SignalSignatures>(signal: K, callback: DOMBlob.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMBlob.SignalSignatures>(
             signal: K,
             callback: DOMBlob.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMBlob.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMBlob.SignalSignatures[K]>
+            ...args: DOMBlob.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1347,7 +1402,40 @@ export namespace WebKit2WebExtension {
 
     namespace DOMCDATASection {
         // Signal signatures
-        interface SignalSignatures extends DOMText.SignalSignatures {}
+        interface SignalSignatures extends DOMText.SignalSignatures {
+            'notify::whole-text': GObject.Object.Notify;
+            'notify::whole-text': GObject.Object.Notify;
+            'notify::data': GObject.Object.Notify;
+            'notify::length': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1369,14 +1457,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMCDATASection.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMCDATASection.SignalSignatures>(
             signal: K,
             callback: DOMCDATASection.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMCDATASection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMCDATASection.SignalSignatures[K]>
+            ...args: DOMCDATASection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -1826,7 +1917,17 @@ export namespace WebKit2WebExtension {
 
     namespace DOMCSSRule {
         // Signal signatures
-        interface SignalSignatures extends DOMObject.SignalSignatures {}
+        interface SignalSignatures extends DOMObject.SignalSignatures {
+            'notify::css-text': GObject.Object.Notify;
+            'notify::css-text': GObject.Object.Notify;
+            'notify::parent-rule': GObject.Object.Notify;
+            'notify::parent-rule': GObject.Object.Notify;
+            'notify::parent-style-sheet': GObject.Object.Notify;
+            'notify::parent-style-sheet': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1868,14 +1969,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMCSSRule.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMCSSRule.SignalSignatures>(
             signal: K,
             callback: DOMCSSRule.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMCSSRule.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMCSSRule.SignalSignatures[K]>
+            ...args: DOMCSSRule.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1888,7 +1992,11 @@ export namespace WebKit2WebExtension {
 
     namespace DOMCSSRuleList {
         // Signal signatures
-        interface SignalSignatures extends DOMObject.SignalSignatures {}
+        interface SignalSignatures extends DOMObject.SignalSignatures {
+            'notify::length': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1916,14 +2024,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMCSSRuleList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMCSSRuleList.SignalSignatures>(
             signal: K,
             callback: DOMCSSRuleList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMCSSRuleList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMCSSRuleList.SignalSignatures[K]>
+            ...args: DOMCSSRuleList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1933,7 +2044,15 @@ export namespace WebKit2WebExtension {
 
     namespace DOMCSSStyleDeclaration {
         // Signal signatures
-        interface SignalSignatures extends DOMObject.SignalSignatures {}
+        interface SignalSignatures extends DOMObject.SignalSignatures {
+            'notify::css-text': GObject.Object.Notify;
+            'notify::css-text': GObject.Object.Notify;
+            'notify::length': GObject.Object.Notify;
+            'notify::parent-rule': GObject.Object.Notify;
+            'notify::parent-rule': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1971,14 +2090,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMCSSStyleDeclaration.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMCSSStyleDeclaration.SignalSignatures>(
             signal: K,
             callback: DOMCSSStyleDeclaration.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMCSSStyleDeclaration.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMCSSStyleDeclaration.SignalSignatures[K]>
+            ...args: DOMCSSStyleDeclaration.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1999,7 +2121,24 @@ export namespace WebKit2WebExtension {
 
     namespace DOMCSSStyleSheet {
         // Signal signatures
-        interface SignalSignatures extends DOMStyleSheet.SignalSignatures {}
+        interface SignalSignatures extends DOMStyleSheet.SignalSignatures {
+            'notify::css-rules': GObject.Object.Notify;
+            'notify::css-rules': GObject.Object.Notify;
+            'notify::owner-rule': GObject.Object.Notify;
+            'notify::owner-rule': GObject.Object.Notify;
+            'notify::rules': GObject.Object.Notify;
+            'notify::disabled': GObject.Object.Notify;
+            'notify::href': GObject.Object.Notify;
+            'notify::media': GObject.Object.Notify;
+            'notify::owner-node': GObject.Object.Notify;
+            'notify::owner-node': GObject.Object.Notify;
+            'notify::parent-style-sheet': GObject.Object.Notify;
+            'notify::parent-style-sheet': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2035,14 +2174,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMCSSStyleSheet.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMCSSStyleSheet.SignalSignatures>(
             signal: K,
             callback: DOMCSSStyleSheet.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMCSSStyleSheet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMCSSStyleSheet.SignalSignatures[K]>
+            ...args: DOMCSSStyleSheet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2057,7 +2199,14 @@ export namespace WebKit2WebExtension {
 
     namespace DOMCSSValue {
         // Signal signatures
-        interface SignalSignatures extends DOMObject.SignalSignatures {}
+        interface SignalSignatures extends DOMObject.SignalSignatures {
+            'notify::css-text': GObject.Object.Notify;
+            'notify::css-text': GObject.Object.Notify;
+            'notify::css-value-type': GObject.Object.Notify;
+            'notify::css-value-type': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2093,14 +2242,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMCSSValue.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMCSSValue.SignalSignatures>(
             signal: K,
             callback: DOMCSSValue.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMCSSValue.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMCSSValue.SignalSignatures[K]>
+            ...args: DOMCSSValue.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2111,7 +2263,38 @@ export namespace WebKit2WebExtension {
 
     namespace DOMCharacterData {
         // Signal signatures
-        interface SignalSignatures extends DOMNode.SignalSignatures {}
+        interface SignalSignatures extends DOMNode.SignalSignatures {
+            'notify::data': GObject.Object.Notify;
+            'notify::length': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2142,14 +2325,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMCharacterData.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMCharacterData.SignalSignatures>(
             signal: K,
             callback: DOMCharacterData.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMCharacterData.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMCharacterData.SignalSignatures[K]>
+            ...args: DOMCharacterData.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2597,7 +2783,16 @@ export namespace WebKit2WebExtension {
 
     namespace DOMClientRect {
         // Signal signatures
-        interface SignalSignatures extends DOMObject.SignalSignatures {}
+        interface SignalSignatures extends DOMObject.SignalSignatures {
+            'notify::bottom': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::left': GObject.Object.Notify;
+            'notify::right': GObject.Object.Notify;
+            'notify::top': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2635,14 +2830,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMClientRect.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMClientRect.SignalSignatures>(
             signal: K,
             callback: DOMClientRect.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMClientRect.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMClientRect.SignalSignatures[K]>
+            ...args: DOMClientRect.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2680,7 +2878,11 @@ export namespace WebKit2WebExtension {
 
     namespace DOMClientRectList {
         // Signal signatures
-        interface SignalSignatures extends DOMObject.SignalSignatures {}
+        interface SignalSignatures extends DOMObject.SignalSignatures {
+            'notify::length': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2708,14 +2910,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMClientRectList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMClientRectList.SignalSignatures>(
             signal: K,
             callback: DOMClientRectList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMClientRectList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMClientRectList.SignalSignatures[K]>
+            ...args: DOMClientRectList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2734,7 +2939,38 @@ export namespace WebKit2WebExtension {
 
     namespace DOMComment {
         // Signal signatures
-        interface SignalSignatures extends DOMCharacterData.SignalSignatures {}
+        interface SignalSignatures extends DOMCharacterData.SignalSignatures {
+            'notify::data': GObject.Object.Notify;
+            'notify::length': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2756,14 +2992,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMComment.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMComment.SignalSignatures>(
             signal: K,
             callback: DOMComment.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMComment.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMComment.SignalSignatures[K]>
+            ...args: DOMComment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -3213,7 +3452,10 @@ export namespace WebKit2WebExtension {
 
     namespace DOMDOMImplementation {
         // Signal signatures
-        interface SignalSignatures extends DOMObject.SignalSignatures {}
+        interface SignalSignatures extends DOMObject.SignalSignatures {
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3235,14 +3477,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMDOMImplementation.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMDOMImplementation.SignalSignatures>(
             signal: K,
             callback: DOMDOMImplementation.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMDOMImplementation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMDOMImplementation.SignalSignatures[K]>
+            ...args: DOMDOMImplementation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3259,7 +3504,31 @@ export namespace WebKit2WebExtension {
 
     namespace DOMDOMSelection {
         // Signal signatures
-        interface SignalSignatures extends DOMObject.SignalSignatures {}
+        interface SignalSignatures extends DOMObject.SignalSignatures {
+            'notify::anchor-node': GObject.Object.Notify;
+            'notify::anchor-node': GObject.Object.Notify;
+            'notify::anchor-offset': GObject.Object.Notify;
+            'notify::anchor-offset': GObject.Object.Notify;
+            'notify::base-node': GObject.Object.Notify;
+            'notify::base-node': GObject.Object.Notify;
+            'notify::base-offset': GObject.Object.Notify;
+            'notify::base-offset': GObject.Object.Notify;
+            'notify::extent-node': GObject.Object.Notify;
+            'notify::extent-node': GObject.Object.Notify;
+            'notify::extent-offset': GObject.Object.Notify;
+            'notify::extent-offset': GObject.Object.Notify;
+            'notify::focus-node': GObject.Object.Notify;
+            'notify::focus-node': GObject.Object.Notify;
+            'notify::focus-offset': GObject.Object.Notify;
+            'notify::focus-offset': GObject.Object.Notify;
+            'notify::is-collapsed': GObject.Object.Notify;
+            'notify::is-collapsed': GObject.Object.Notify;
+            'notify::range-count': GObject.Object.Notify;
+            'notify::range-count': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3327,14 +3596,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMDOMSelection.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMDOMSelection.SignalSignatures>(
             signal: K,
             callback: DOMDOMSelection.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMDOMSelection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMDOMSelection.SignalSignatures[K]>
+            ...args: DOMDOMSelection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3367,7 +3639,12 @@ export namespace WebKit2WebExtension {
 
     namespace DOMDOMTokenList {
         // Signal signatures
-        interface SignalSignatures extends DOMObject.SignalSignatures {}
+        interface SignalSignatures extends DOMObject.SignalSignatures {
+            'notify::length': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3398,14 +3675,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMDOMTokenList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMDOMTokenList.SignalSignatures>(
             signal: K,
             callback: DOMDOMTokenList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMDOMTokenList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMDOMTokenList.SignalSignatures[K]>
+            ...args: DOMDOMTokenList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3420,7 +3700,54 @@ export namespace WebKit2WebExtension {
 
     namespace DOMDOMWindow {
         // Signal signatures
-        interface SignalSignatures extends DOMObject.SignalSignatures {}
+        interface SignalSignatures extends DOMObject.SignalSignatures {
+            'notify::closed': GObject.Object.Notify;
+            'notify::default-status': GObject.Object.Notify;
+            'notify::default-status': GObject.Object.Notify;
+            'notify::device-pixel-ratio': GObject.Object.Notify;
+            'notify::device-pixel-ratio': GObject.Object.Notify;
+            'notify::document': GObject.Object.Notify;
+            'notify::frame-element': GObject.Object.Notify;
+            'notify::frame-element': GObject.Object.Notify;
+            'notify::frames': GObject.Object.Notify;
+            'notify::inner-height': GObject.Object.Notify;
+            'notify::inner-height': GObject.Object.Notify;
+            'notify::inner-width': GObject.Object.Notify;
+            'notify::inner-width': GObject.Object.Notify;
+            'notify::length': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::offscreen-buffering': GObject.Object.Notify;
+            'notify::offscreen-buffering': GObject.Object.Notify;
+            'notify::opener': GObject.Object.Notify;
+            'notify::orientation': GObject.Object.Notify;
+            'notify::outer-height': GObject.Object.Notify;
+            'notify::outer-height': GObject.Object.Notify;
+            'notify::outer-width': GObject.Object.Notify;
+            'notify::outer-width': GObject.Object.Notify;
+            'notify::page-x-offset': GObject.Object.Notify;
+            'notify::page-xoffset': GObject.Object.Notify;
+            'notify::page-y-offset': GObject.Object.Notify;
+            'notify::page-yoffset': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::screen-left': GObject.Object.Notify;
+            'notify::screen-left': GObject.Object.Notify;
+            'notify::screen-top': GObject.Object.Notify;
+            'notify::screen-top': GObject.Object.Notify;
+            'notify::screen-x': GObject.Object.Notify;
+            'notify::screen-x': GObject.Object.Notify;
+            'notify::screen-y': GObject.Object.Notify;
+            'notify::screen-y': GObject.Object.Notify;
+            'notify::scroll-x': GObject.Object.Notify;
+            'notify::scroll-x': GObject.Object.Notify;
+            'notify::scroll-y': GObject.Object.Notify;
+            'notify::scroll-y': GObject.Object.Notify;
+            'notify::self': GObject.Object.Notify;
+            'notify::status': GObject.Object.Notify;
+            'notify::top': GObject.Object.Notify;
+            'notify::window': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3538,14 +3865,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMDOMWindow.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMDOMWindow.SignalSignatures>(
             signal: K,
             callback: DOMDOMWindow.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMDOMWindow.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMDOMWindow.SignalSignatures[K]>
+            ...args: DOMDOMWindow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4063,7 +4393,116 @@ export namespace WebKit2WebExtension {
 
     namespace DOMDocument {
         // Signal signatures
-        interface SignalSignatures extends DOMNode.SignalSignatures {}
+        interface SignalSignatures extends DOMNode.SignalSignatures {
+            'notify::active-element': GObject.Object.Notify;
+            'notify::active-element': GObject.Object.Notify;
+            'notify::anchors': GObject.Object.Notify;
+            'notify::applets': GObject.Object.Notify;
+            'notify::body': GObject.Object.Notify;
+            'notify::character-set': GObject.Object.Notify;
+            'notify::character-set': GObject.Object.Notify;
+            'notify::charset': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::compat-mode': GObject.Object.Notify;
+            'notify::compat-mode': GObject.Object.Notify;
+            'notify::content-type': GObject.Object.Notify;
+            'notify::content-type': GObject.Object.Notify;
+            'notify::cookie': GObject.Object.Notify;
+            'notify::current-script': GObject.Object.Notify;
+            'notify::current-script': GObject.Object.Notify;
+            'notify::default-view': GObject.Object.Notify;
+            'notify::default-view': GObject.Object.Notify;
+            'notify::design-mode': GObject.Object.Notify;
+            'notify::design-mode': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::doctype': GObject.Object.Notify;
+            'notify::document-element': GObject.Object.Notify;
+            'notify::document-element': GObject.Object.Notify;
+            'notify::document-uri': GObject.Object.Notify;
+            'notify::document-uri': GObject.Object.Notify;
+            'notify::domain': GObject.Object.Notify;
+            'notify::embeds': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::forms': GObject.Object.Notify;
+            'notify::head': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::images': GObject.Object.Notify;
+            'notify::implementation': GObject.Object.Notify;
+            'notify::input-encoding': GObject.Object.Notify;
+            'notify::input-encoding': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-modified': GObject.Object.Notify;
+            'notify::last-modified': GObject.Object.Notify;
+            'notify::links': GObject.Object.Notify;
+            'notify::origin': GObject.Object.Notify;
+            'notify::plugins': GObject.Object.Notify;
+            'notify::pointer-lock-element': GObject.Object.Notify;
+            'notify::pointer-lock-element': GObject.Object.Notify;
+            'notify::preferred-stylesheet-set': GObject.Object.Notify;
+            'notify::preferred-stylesheet-set': GObject.Object.Notify;
+            'notify::ready-state': GObject.Object.Notify;
+            'notify::ready-state': GObject.Object.Notify;
+            'notify::referrer': GObject.Object.Notify;
+            'notify::scripts': GObject.Object.Notify;
+            'notify::scrolling-element': GObject.Object.Notify;
+            'notify::scrolling-element': GObject.Object.Notify;
+            'notify::selected-stylesheet-set': GObject.Object.Notify;
+            'notify::selected-stylesheet-set': GObject.Object.Notify;
+            'notify::style-sheets': GObject.Object.Notify;
+            'notify::style-sheets': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::url': GObject.Object.Notify;
+            'notify::visibility-state': GObject.Object.Notify;
+            'notify::visibility-state': GObject.Object.Notify;
+            'notify::webkit-current-full-screen-element': GObject.Object.Notify;
+            'notify::webkit-current-full-screen-element': GObject.Object.Notify;
+            'notify::webkit-full-screen-keyboard-input-allowed': GObject.Object.Notify;
+            'notify::webkit-full-screen-keyboard-input-allowed': GObject.Object.Notify;
+            'notify::webkit-fullscreen-element': GObject.Object.Notify;
+            'notify::webkit-fullscreen-element': GObject.Object.Notify;
+            'notify::webkit-fullscreen-enabled': GObject.Object.Notify;
+            'notify::webkit-fullscreen-enabled': GObject.Object.Notify;
+            'notify::webkit-is-full-screen': GObject.Object.Notify;
+            'notify::webkit-is-full-screen': GObject.Object.Notify;
+            'notify::xml-encoding': GObject.Object.Notify;
+            'notify::xml-encoding': GObject.Object.Notify;
+            'notify::xml-standalone': GObject.Object.Notify;
+            'notify::xml-standalone': GObject.Object.Notify;
+            'notify::xml-version': GObject.Object.Notify;
+            'notify::xml-version': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4263,14 +4702,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMDocument.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMDocument.SignalSignatures>(
             signal: K,
             callback: DOMDocument.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMDocument.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMDocument.SignalSignatures[K]>
+            ...args: DOMDocument.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4867,7 +5309,43 @@ export namespace WebKit2WebExtension {
 
     namespace DOMDocumentFragment {
         // Signal signatures
-        interface SignalSignatures extends DOMNode.SignalSignatures {}
+        interface SignalSignatures extends DOMNode.SignalSignatures {
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4907,14 +5385,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMDocumentFragment.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMDocumentFragment.SignalSignatures>(
             signal: K,
             callback: DOMDocumentFragment.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMDocumentFragment.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMDocumentFragment.SignalSignatures[K]>
+            ...args: DOMDocumentFragment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5380,7 +5861,45 @@ export namespace WebKit2WebExtension {
 
     namespace DOMDocumentType {
         // Signal signatures
-        interface SignalSignatures extends DOMNode.SignalSignatures {}
+        interface SignalSignatures extends DOMNode.SignalSignatures {
+            'notify::entities': GObject.Object.Notify;
+            'notify::internal-subset': GObject.Object.Notify;
+            'notify::internal-subset': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::notations': GObject.Object.Notify;
+            'notify::public-id': GObject.Object.Notify;
+            'notify::public-id': GObject.Object.Notify;
+            'notify::system-id': GObject.Object.Notify;
+            'notify::system-id': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5424,14 +5943,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMDocumentType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMDocumentType.SignalSignatures>(
             signal: K,
             callback: DOMDocumentType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMDocumentType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMDocumentType.SignalSignatures[K]>
+            ...args: DOMDocumentType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5896,7 +6418,93 @@ export namespace WebKit2WebExtension {
 
     namespace DOMElement {
         // Signal signatures
-        interface SignalSignatures extends DOMNode.SignalSignatures {}
+        interface SignalSignatures extends DOMNode.SignalSignatures {
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6047,14 +6655,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMElement.SignalSignatures>(
             signal: K,
             callback: DOMElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMElement.SignalSignatures[K]>
+            ...args: DOMElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -6626,7 +7237,36 @@ export namespace WebKit2WebExtension {
 
     namespace DOMEntityReference {
         // Signal signatures
-        interface SignalSignatures extends DOMNode.SignalSignatures {}
+        interface SignalSignatures extends DOMNode.SignalSignatures {
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6648,14 +7288,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMEntityReference.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMEntityReference.SignalSignatures>(
             signal: K,
             callback: DOMEntityReference.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMEntityReference.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMEntityReference.SignalSignatures[K]>
+            ...args: DOMEntityReference.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         add_event_listener(event_name: string, handler: GObject.Callback, use_capture: boolean): boolean;
@@ -7111,7 +7754,26 @@ export namespace WebKit2WebExtension {
 
     namespace DOMEvent {
         // Signal signatures
-        interface SignalSignatures extends DOMObject.SignalSignatures {}
+        interface SignalSignatures extends DOMObject.SignalSignatures {
+            'notify::bubbles': GObject.Object.Notify;
+            'notify::cancel-bubble': GObject.Object.Notify;
+            'notify::cancel-bubble': GObject.Object.Notify;
+            'notify::cancelable': GObject.Object.Notify;
+            'notify::current-target': GObject.Object.Notify;
+            'notify::current-target': GObject.Object.Notify;
+            'notify::event-phase': GObject.Object.Notify;
+            'notify::event-phase': GObject.Object.Notify;
+            'notify::return-value': GObject.Object.Notify;
+            'notify::return-value': GObject.Object.Notify;
+            'notify::src-element': GObject.Object.Notify;
+            'notify::src-element': GObject.Object.Notify;
+            'notify::target': GObject.Object.Notify;
+            'notify::time-stamp': GObject.Object.Notify;
+            'notify::time-stamp': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -7170,14 +7832,17 @@ export namespace WebKit2WebExtension {
         // Signals
 
         connect<K extends keyof DOMEvent.SignalSignatures>(signal: K, callback: DOMEvent.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMEvent.SignalSignatures>(
             signal: K,
             callback: DOMEvent.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMEvent.SignalSignatures[K]>
+            ...args: DOMEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -7200,7 +7865,12 @@ export namespace WebKit2WebExtension {
 
     namespace DOMFile {
         // Signal signatures
-        interface SignalSignatures extends DOMBlob.SignalSignatures {}
+        interface SignalSignatures extends DOMBlob.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -7225,14 +7895,17 @@ export namespace WebKit2WebExtension {
         // Signals
 
         connect<K extends keyof DOMFile.SignalSignatures>(signal: K, callback: DOMFile.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMFile.SignalSignatures>(
             signal: K,
             callback: DOMFile.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMFile.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMFile.SignalSignatures[K]>
+            ...args: DOMFile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -7241,7 +7914,11 @@ export namespace WebKit2WebExtension {
 
     namespace DOMFileList {
         // Signal signatures
-        interface SignalSignatures extends DOMObject.SignalSignatures {}
+        interface SignalSignatures extends DOMObject.SignalSignatures {
+            'notify::length': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -7269,14 +7946,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMFileList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMFileList.SignalSignatures>(
             signal: K,
             callback: DOMFileList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMFileList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMFileList.SignalSignatures[K]>
+            ...args: DOMFileList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -7286,7 +7966,131 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLAnchorElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::charset': GObject.Object.Notify;
+            'notify::coords': GObject.Object.Notify;
+            'notify::hash': GObject.Object.Notify;
+            'notify::host': GObject.Object.Notify;
+            'notify::hostname': GObject.Object.Notify;
+            'notify::href': GObject.Object.Notify;
+            'notify::hreflang': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::pathname': GObject.Object.Notify;
+            'notify::port': GObject.Object.Notify;
+            'notify::protocol': GObject.Object.Notify;
+            'notify::rel': GObject.Object.Notify;
+            'notify::rev': GObject.Object.Notify;
+            'notify::search': GObject.Object.Notify;
+            'notify::shape': GObject.Object.Notify;
+            'notify::target': GObject.Object.Notify;
+            'notify::text': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -7366,14 +8170,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLAnchorElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLAnchorElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLAnchorElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLAnchorElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLAnchorElement.SignalSignatures[K]>
+            ...args: DOMHTMLAnchorElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -7858,7 +8665,125 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLAppletElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::align': GObject.Object.Notify;
+            'notify::alt': GObject.Object.Notify;
+            'notify::archive': GObject.Object.Notify;
+            'notify::code': GObject.Object.Notify;
+            'notify::code-base': GObject.Object.Notify;
+            'notify::code-base': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::hspace': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::object': GObject.Object.Notify;
+            'notify::vspace': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -7920,14 +8845,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLAppletElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLAppletElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLAppletElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLAppletElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLAppletElement.SignalSignatures[K]>
+            ...args: DOMHTMLAppletElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -8398,7 +9326,127 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLAreaElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::alt': GObject.Object.Notify;
+            'notify::coords': GObject.Object.Notify;
+            'notify::hash': GObject.Object.Notify;
+            'notify::host': GObject.Object.Notify;
+            'notify::hostname': GObject.Object.Notify;
+            'notify::href': GObject.Object.Notify;
+            'notify::no-href': GObject.Object.Notify;
+            'notify::no-href': GObject.Object.Notify;
+            'notify::pathname': GObject.Object.Notify;
+            'notify::port': GObject.Object.Notify;
+            'notify::protocol': GObject.Object.Notify;
+            'notify::search': GObject.Object.Notify;
+            'notify::shape': GObject.Object.Notify;
+            'notify::target': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8466,14 +9514,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLAreaElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLAreaElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLAreaElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLAreaElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLAreaElement.SignalSignatures[K]>
+            ...args: DOMHTMLAreaElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -8948,7 +9999,114 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLBRElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::clear': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8977,14 +10135,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLBRElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLBRElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLBRElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLBRElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLBRElement.SignalSignatures[K]>
+            ...args: DOMHTMLBRElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -9435,7 +10596,115 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLBaseElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::href': GObject.Object.Notify;
+            'notify::target': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -9467,14 +10736,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLBaseElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLBaseElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLBaseElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLBaseElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLBaseElement.SignalSignatures[K]>
+            ...args: DOMHTMLBaseElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -9927,7 +11199,113 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLBaseFontElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -9949,14 +11327,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLBaseFontElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLBaseFontElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLBaseFontElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLBaseFontElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLBaseFontElement.SignalSignatures[K]>
+            ...args: DOMHTMLBaseFontElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -10435,7 +11816,122 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLBodyElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::a-link': GObject.Object.Notify;
+            'notify::a-link': GObject.Object.Notify;
+            'notify::background': GObject.Object.Notify;
+            'notify::bg-color': GObject.Object.Notify;
+            'notify::bg-color': GObject.Object.Notify;
+            'notify::link': GObject.Object.Notify;
+            'notify::text': GObject.Object.Notify;
+            'notify::v-link': GObject.Object.Notify;
+            'notify::v-link': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10488,14 +11984,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLBodyElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLBodyElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLBodyElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLBodyElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLBodyElement.SignalSignatures[K]>
+            ...args: DOMHTMLBodyElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -10956,7 +12455,121 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLButtonElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::autofocus': GObject.Object.Notify;
+            'notify::disabled': GObject.Object.Notify;
+            'notify::form': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+            'notify::will-validate': GObject.Object.Notify;
+            'notify::will-validate': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11003,14 +12616,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLButtonElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLButtonElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLButtonElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLButtonElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLButtonElement.SignalSignatures[K]>
+            ...args: DOMHTMLButtonElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -11471,7 +13087,115 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLCanvasElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::height': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11503,14 +13227,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLCanvasElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLCanvasElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLCanvasElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLCanvasElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLCanvasElement.SignalSignatures[K]>
+            ...args: DOMHTMLCanvasElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -11963,7 +13690,11 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLCollection {
         // Signal signatures
-        interface SignalSignatures extends DOMObject.SignalSignatures {}
+        interface SignalSignatures extends DOMObject.SignalSignatures {
+            'notify::length': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11991,14 +13722,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLCollection.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLCollection.SignalSignatures>(
             signal: K,
             callback: DOMHTMLCollection.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLCollection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLCollection.SignalSignatures[K]>
+            ...args: DOMHTMLCollection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -12009,7 +13743,114 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLDListElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::compact': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12038,14 +13879,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLDListElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLDListElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLDListElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLDListElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLDListElement.SignalSignatures[K]>
+            ...args: DOMHTMLDListElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -12496,7 +14340,114 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLDirectoryElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::compact': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12525,14 +14476,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLDirectoryElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLDirectoryElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLDirectoryElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLDirectoryElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLDirectoryElement.SignalSignatures[K]>
+            ...args: DOMHTMLDirectoryElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -12983,7 +14937,114 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLDivElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::align': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13012,14 +15073,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLDivElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLDivElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLDivElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLDivElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLDivElement.SignalSignatures[K]>
+            ...args: DOMHTMLDivElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -13470,7 +15534,128 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLDocument {
         // Signal signatures
-        interface SignalSignatures extends DOMDocument.SignalSignatures {}
+        interface SignalSignatures extends DOMDocument.SignalSignatures {
+            'notify::alink-color': GObject.Object.Notify;
+            'notify::alink-color': GObject.Object.Notify;
+            'notify::bg-color': GObject.Object.Notify;
+            'notify::bg-color': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::fg-color': GObject.Object.Notify;
+            'notify::fg-color': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::link-color': GObject.Object.Notify;
+            'notify::link-color': GObject.Object.Notify;
+            'notify::vlink-color': GObject.Object.Notify;
+            'notify::vlink-color': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::active-element': GObject.Object.Notify;
+            'notify::active-element': GObject.Object.Notify;
+            'notify::anchors': GObject.Object.Notify;
+            'notify::applets': GObject.Object.Notify;
+            'notify::body': GObject.Object.Notify;
+            'notify::character-set': GObject.Object.Notify;
+            'notify::character-set': GObject.Object.Notify;
+            'notify::charset': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::compat-mode': GObject.Object.Notify;
+            'notify::compat-mode': GObject.Object.Notify;
+            'notify::content-type': GObject.Object.Notify;
+            'notify::content-type': GObject.Object.Notify;
+            'notify::cookie': GObject.Object.Notify;
+            'notify::current-script': GObject.Object.Notify;
+            'notify::current-script': GObject.Object.Notify;
+            'notify::default-view': GObject.Object.Notify;
+            'notify::default-view': GObject.Object.Notify;
+            'notify::design-mode': GObject.Object.Notify;
+            'notify::design-mode': GObject.Object.Notify;
+            'notify::doctype': GObject.Object.Notify;
+            'notify::document-element': GObject.Object.Notify;
+            'notify::document-element': GObject.Object.Notify;
+            'notify::document-uri': GObject.Object.Notify;
+            'notify::document-uri': GObject.Object.Notify;
+            'notify::domain': GObject.Object.Notify;
+            'notify::embeds': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::forms': GObject.Object.Notify;
+            'notify::head': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::images': GObject.Object.Notify;
+            'notify::implementation': GObject.Object.Notify;
+            'notify::input-encoding': GObject.Object.Notify;
+            'notify::input-encoding': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-modified': GObject.Object.Notify;
+            'notify::last-modified': GObject.Object.Notify;
+            'notify::links': GObject.Object.Notify;
+            'notify::origin': GObject.Object.Notify;
+            'notify::plugins': GObject.Object.Notify;
+            'notify::pointer-lock-element': GObject.Object.Notify;
+            'notify::pointer-lock-element': GObject.Object.Notify;
+            'notify::preferred-stylesheet-set': GObject.Object.Notify;
+            'notify::preferred-stylesheet-set': GObject.Object.Notify;
+            'notify::ready-state': GObject.Object.Notify;
+            'notify::ready-state': GObject.Object.Notify;
+            'notify::referrer': GObject.Object.Notify;
+            'notify::scripts': GObject.Object.Notify;
+            'notify::scrolling-element': GObject.Object.Notify;
+            'notify::scrolling-element': GObject.Object.Notify;
+            'notify::selected-stylesheet-set': GObject.Object.Notify;
+            'notify::selected-stylesheet-set': GObject.Object.Notify;
+            'notify::style-sheets': GObject.Object.Notify;
+            'notify::style-sheets': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::url': GObject.Object.Notify;
+            'notify::visibility-state': GObject.Object.Notify;
+            'notify::visibility-state': GObject.Object.Notify;
+            'notify::webkit-current-full-screen-element': GObject.Object.Notify;
+            'notify::webkit-current-full-screen-element': GObject.Object.Notify;
+            'notify::webkit-full-screen-keyboard-input-allowed': GObject.Object.Notify;
+            'notify::webkit-full-screen-keyboard-input-allowed': GObject.Object.Notify;
+            'notify::webkit-fullscreen-element': GObject.Object.Notify;
+            'notify::webkit-fullscreen-element': GObject.Object.Notify;
+            'notify::webkit-fullscreen-enabled': GObject.Object.Notify;
+            'notify::webkit-fullscreen-enabled': GObject.Object.Notify;
+            'notify::webkit-is-full-screen': GObject.Object.Notify;
+            'notify::webkit-is-full-screen': GObject.Object.Notify;
+            'notify::xml-encoding': GObject.Object.Notify;
+            'notify::xml-encoding': GObject.Object.Notify;
+            'notify::xml-standalone': GObject.Object.Notify;
+            'notify::xml-standalone': GObject.Object.Notify;
+            'notify::xml-version': GObject.Object.Notify;
+            'notify::xml-version': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13533,14 +15718,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLDocument.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLDocument.SignalSignatures>(
             signal: K,
             callback: DOMHTMLDocument.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLDocument.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLDocument.SignalSignatures[K]>
+            ...args: DOMHTMLDocument.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -14013,7 +16201,113 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLElement {
         // Signal signatures
-        interface SignalSignatures extends DOMElement.SignalSignatures {}
+        interface SignalSignatures extends DOMElement.SignalSignatures {
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -14097,14 +16391,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLElement.SignalSignatures[K]>
+            ...args: DOMHTMLElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -14586,7 +16883,119 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLEmbedElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::align': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::src': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -14630,14 +17039,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLEmbedElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLEmbedElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLEmbedElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLEmbedElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLEmbedElement.SignalSignatures[K]>
+            ...args: DOMHTMLEmbedElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -15098,7 +17510,114 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLFieldSetElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::form': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -15126,14 +17645,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLFieldSetElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLFieldSetElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLFieldSetElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLFieldSetElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLFieldSetElement.SignalSignatures[K]>
+            ...args: DOMHTMLFieldSetElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -15583,7 +18105,116 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLFontElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::color': GObject.Object.Notify;
+            'notify::face': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -15618,14 +18249,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLFontElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLFontElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLFontElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLFontElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLFontElement.SignalSignatures[K]>
+            ...args: DOMHTMLFontElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -16080,7 +18714,123 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLFormElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::accept-charset': GObject.Object.Notify;
+            'notify::accept-charset': GObject.Object.Notify;
+            'notify::action': GObject.Object.Notify;
+            'notify::elements': GObject.Object.Notify;
+            'notify::encoding': GObject.Object.Notify;
+            'notify::enctype': GObject.Object.Notify;
+            'notify::length': GObject.Object.Notify;
+            'notify::method': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::target': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -16134,14 +18884,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLFormElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLFormElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLFormElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLFormElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLFormElement.SignalSignatures[K]>
+            ...args: DOMHTMLFormElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -16608,7 +19361,132 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLFrameElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::content-document': GObject.Object.Notify;
+            'notify::content-document': GObject.Object.Notify;
+            'notify::content-window': GObject.Object.Notify;
+            'notify::content-window': GObject.Object.Notify;
+            'notify::frame-border': GObject.Object.Notify;
+            'notify::frame-border': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::long-desc': GObject.Object.Notify;
+            'notify::long-desc': GObject.Object.Notify;
+            'notify::margin-height': GObject.Object.Notify;
+            'notify::margin-height': GObject.Object.Notify;
+            'notify::margin-width': GObject.Object.Notify;
+            'notify::margin-width': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::no-resize': GObject.Object.Notify;
+            'notify::no-resize': GObject.Object.Notify;
+            'notify::scrolling': GObject.Object.Notify;
+            'notify::src': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -16685,14 +19563,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLFrameElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLFrameElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLFrameElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLFrameElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLFrameElement.SignalSignatures[K]>
+            ...args: DOMHTMLFrameElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -17161,7 +20042,115 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLFrameSetElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::cols': GObject.Object.Notify;
+            'notify::rows': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17193,14 +20182,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLFrameSetElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLFrameSetElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLFrameSetElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLFrameSetElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLFrameSetElement.SignalSignatures[K]>
+            ...args: DOMHTMLFrameSetElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -17653,7 +20645,118 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLHRElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::align': GObject.Object.Notify;
+            'notify::no-shade': GObject.Object.Notify;
+            'notify::no-shade': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17694,14 +20797,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLHRElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLHRElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLHRElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLHRElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLHRElement.SignalSignatures[K]>
+            ...args: DOMHTMLHRElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -18158,7 +21264,114 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLHeadElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::profile': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -18187,14 +21400,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLHeadElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLHeadElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLHeadElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLHeadElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLHeadElement.SignalSignatures[K]>
+            ...args: DOMHTMLHeadElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -18645,7 +21861,114 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLHeadingElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::align': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -18674,14 +21997,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLHeadingElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLHeadingElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLHeadingElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLHeadingElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLHeadingElement.SignalSignatures[K]>
+            ...args: DOMHTMLHeadingElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -19132,7 +22458,114 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLHtmlElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::version': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -19161,14 +22594,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLHtmlElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLHtmlElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLHtmlElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLHtmlElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLHtmlElement.SignalSignatures[K]>
+            ...args: DOMHTMLHtmlElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -19619,7 +23055,131 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLIFrameElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::align': GObject.Object.Notify;
+            'notify::content-document': GObject.Object.Notify;
+            'notify::content-document': GObject.Object.Notify;
+            'notify::content-window': GObject.Object.Notify;
+            'notify::content-window': GObject.Object.Notify;
+            'notify::frame-border': GObject.Object.Notify;
+            'notify::frame-border': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::long-desc': GObject.Object.Notify;
+            'notify::long-desc': GObject.Object.Notify;
+            'notify::margin-height': GObject.Object.Notify;
+            'notify::margin-height': GObject.Object.Notify;
+            'notify::margin-width': GObject.Object.Notify;
+            'notify::margin-width': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::scrolling': GObject.Object.Notify;
+            'notify::src': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -19695,14 +23255,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLIFrameElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLIFrameElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLIFrameElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLIFrameElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLIFrameElement.SignalSignatures[K]>
+            ...args: DOMHTMLIFrameElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -20173,7 +23736,136 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLImageElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::align': GObject.Object.Notify;
+            'notify::alt': GObject.Object.Notify;
+            'notify::border': GObject.Object.Notify;
+            'notify::complete': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::hspace': GObject.Object.Notify;
+            'notify::is-map': GObject.Object.Notify;
+            'notify::is-map': GObject.Object.Notify;
+            'notify::long-desc': GObject.Object.Notify;
+            'notify::long-desc': GObject.Object.Notify;
+            'notify::lowsrc': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::natural-height': GObject.Object.Notify;
+            'notify::natural-height': GObject.Object.Notify;
+            'notify::natural-width': GObject.Object.Notify;
+            'notify::natural-width': GObject.Object.Notify;
+            'notify::src': GObject.Object.Notify;
+            'notify::use-map': GObject.Object.Notify;
+            'notify::use-map': GObject.Object.Notify;
+            'notify::vspace': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::x': GObject.Object.Notify;
+            'notify::y': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -20261,14 +23953,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLImageElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLImageElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLImageElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLImageElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLImageElement.SignalSignatures[K]>
+            ...args: DOMHTMLImageElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -20748,7 +24443,143 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLInputElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::accept': GObject.Object.Notify;
+            'notify::align': GObject.Object.Notify;
+            'notify::alt': GObject.Object.Notify;
+            'notify::autofocus': GObject.Object.Notify;
+            'notify::capture': GObject.Object.Notify;
+            'notify::checked': GObject.Object.Notify;
+            'notify::default-checked': GObject.Object.Notify;
+            'notify::default-checked': GObject.Object.Notify;
+            'notify::default-value': GObject.Object.Notify;
+            'notify::default-value': GObject.Object.Notify;
+            'notify::disabled': GObject.Object.Notify;
+            'notify::files': GObject.Object.Notify;
+            'notify::form': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::indeterminate': GObject.Object.Notify;
+            'notify::max-length': GObject.Object.Notify;
+            'notify::max-length': GObject.Object.Notify;
+            'notify::multiple': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::src': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+            'notify::use-map': GObject.Object.Notify;
+            'notify::use-map': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::will-validate': GObject.Object.Notify;
+            'notify::will-validate': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -20860,14 +24691,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLInputElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLInputElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLInputElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLInputElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLInputElement.SignalSignatures[K]>
+            ...args: DOMHTMLInputElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -21368,7 +25202,115 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLLIElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::type': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -21400,14 +25342,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLLIElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLLIElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLLIElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLLIElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLLIElement.SignalSignatures[K]>
+            ...args: DOMHTMLLIElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -21860,7 +25805,116 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLLabelElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::form': GObject.Object.Notify;
+            'notify::html-for': GObject.Object.Notify;
+            'notify::html-for': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -21894,14 +25948,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLLabelElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLLabelElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLLabelElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLLabelElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLLabelElement.SignalSignatures[K]>
+            ...args: DOMHTMLLabelElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -22353,7 +26410,115 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLLegendElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::align': GObject.Object.Notify;
+            'notify::form': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -22384,14 +26549,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLLegendElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLLegendElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLLegendElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLLegendElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLLegendElement.SignalSignatures[K]>
+            ...args: DOMHTMLLegendElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -22843,7 +27011,124 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLLinkElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::charset': GObject.Object.Notify;
+            'notify::disabled': GObject.Object.Notify;
+            'notify::href': GObject.Object.Notify;
+            'notify::hreflang': GObject.Object.Notify;
+            'notify::media': GObject.Object.Notify;
+            'notify::rel': GObject.Object.Notify;
+            'notify::rev': GObject.Object.Notify;
+            'notify::sheet': GObject.Object.Notify;
+            'notify::sizes': GObject.Object.Notify;
+            'notify::target': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -22900,14 +27185,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLLinkElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLLinkElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLLinkElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLLinkElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLLinkElement.SignalSignatures[K]>
+            ...args: DOMHTMLLinkElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -23377,7 +27665,115 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLMapElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::areas': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -23408,14 +27804,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLMapElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLMapElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLMapElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLMapElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLMapElement.SignalSignatures[K]>
+            ...args: DOMHTMLMapElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -23867,7 +28266,113 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLMarqueeElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -23889,14 +28394,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLMarqueeElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLMarqueeElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLMarqueeElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLMarqueeElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLMarqueeElement.SignalSignatures[K]>
+            ...args: DOMHTMLMarqueeElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -24347,7 +28855,114 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLMenuElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::compact': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -24376,14 +28991,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLMenuElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLMenuElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLMenuElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLMenuElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLMenuElement.SignalSignatures[K]>
+            ...args: DOMHTMLMenuElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -24834,7 +29452,118 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLMetaElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::content': GObject.Object.Notify;
+            'notify::http-equiv': GObject.Object.Notify;
+            'notify::http-equiv': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::scheme': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -24875,14 +29604,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLMetaElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLMetaElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLMetaElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLMetaElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLMetaElement.SignalSignatures[K]>
+            ...args: DOMHTMLMetaElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -25339,7 +30071,116 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLModElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::cite': GObject.Object.Notify;
+            'notify::date-time': GObject.Object.Notify;
+            'notify::date-time': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -25374,14 +30215,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLModElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLModElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLModElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLModElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLModElement.SignalSignatures[K]>
+            ...args: DOMHTMLModElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -25834,7 +30678,116 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLOListElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::compact': GObject.Object.Notify;
+            'notify::start': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -25869,14 +30822,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLOListElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLOListElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLOListElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLOListElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLOListElement.SignalSignatures[K]>
+            ...args: DOMHTMLOListElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -26331,7 +31287,135 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLObjectElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::align': GObject.Object.Notify;
+            'notify::archive': GObject.Object.Notify;
+            'notify::border': GObject.Object.Notify;
+            'notify::code': GObject.Object.Notify;
+            'notify::code-base': GObject.Object.Notify;
+            'notify::code-base': GObject.Object.Notify;
+            'notify::code-type': GObject.Object.Notify;
+            'notify::code-type': GObject.Object.Notify;
+            'notify::content-document': GObject.Object.Notify;
+            'notify::content-document': GObject.Object.Notify;
+            'notify::data': GObject.Object.Notify;
+            'notify::declare': GObject.Object.Notify;
+            'notify::form': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::hspace': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::standby': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+            'notify::use-map': GObject.Object.Notify;
+            'notify::use-map': GObject.Object.Notify;
+            'notify::vspace': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -26420,14 +31504,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLObjectElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLObjectElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLObjectElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLObjectElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLObjectElement.SignalSignatures[K]>
+            ...args: DOMHTMLObjectElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -26891,7 +31978,115 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLOptGroupElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::disabled': GObject.Object.Notify;
+            'notify::label': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -26923,14 +32118,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLOptGroupElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLOptGroupElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLOptGroupElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLOptGroupElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLOptGroupElement.SignalSignatures[K]>
+            ...args: DOMHTMLOptGroupElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -27383,7 +32581,122 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLOptionElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::default-selected': GObject.Object.Notify;
+            'notify::default-selected': GObject.Object.Notify;
+            'notify::disabled': GObject.Object.Notify;
+            'notify::form': GObject.Object.Notify;
+            'notify::index': GObject.Object.Notify;
+            'notify::label': GObject.Object.Notify;
+            'notify::selected': GObject.Object.Notify;
+            'notify::text': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -27433,14 +32746,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLOptionElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLOptionElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLOptionElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLOptionElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLOptionElement.SignalSignatures[K]>
+            ...args: DOMHTMLOptionElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -27902,7 +33218,13 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLOptionsCollection {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLCollection.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLCollection.SignalSignatures {
+            'notify::length': GObject.Object.Notify;
+            'notify::selected-index': GObject.Object.Notify;
+            'notify::selected-index': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -27936,14 +33258,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLOptionsCollection.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLOptionsCollection.SignalSignatures>(
             signal: K,
             callback: DOMHTMLOptionsCollection.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLOptionsCollection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLOptionsCollection.SignalSignatures[K]>
+            ...args: DOMHTMLOptionsCollection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -27955,7 +33280,114 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLParagraphElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::align': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -27984,14 +33416,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLParagraphElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLParagraphElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLParagraphElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLParagraphElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLParagraphElement.SignalSignatures[K]>
+            ...args: DOMHTMLParagraphElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -28442,7 +33877,118 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLParamElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+            'notify::value-type': GObject.Object.Notify;
+            'notify::value-type': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -28483,14 +34029,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLParamElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLParamElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLParamElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLParamElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLParamElement.SignalSignatures[K]>
+            ...args: DOMHTMLParamElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -28947,7 +34496,115 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLPreElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::width': GObject.Object.Notify;
+            'notify::wrap': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -28979,14 +34636,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLPreElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLPreElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLPreElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLPreElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLPreElement.SignalSignatures[K]>
+            ...args: DOMHTMLPreElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -29439,7 +35099,114 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLQuoteElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::cite': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -29468,14 +35235,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLQuoteElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLQuoteElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLQuoteElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLQuoteElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLQuoteElement.SignalSignatures[K]>
+            ...args: DOMHTMLQuoteElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -29926,7 +35696,121 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLScriptElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::charset': GObject.Object.Notify;
+            'notify::defer': GObject.Object.Notify;
+            'notify::event': GObject.Object.Notify;
+            'notify::html-for': GObject.Object.Notify;
+            'notify::html-for': GObject.Object.Notify;
+            'notify::src': GObject.Object.Notify;
+            'notify::text': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -29976,14 +35860,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLScriptElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLScriptElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLScriptElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLScriptElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLScriptElement.SignalSignatures[K]>
+            ...args: DOMHTMLScriptElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -30446,7 +36333,127 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLSelectElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::autofocus': GObject.Object.Notify;
+            'notify::disabled': GObject.Object.Notify;
+            'notify::form': GObject.Object.Notify;
+            'notify::length': GObject.Object.Notify;
+            'notify::multiple': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::options': GObject.Object.Notify;
+            'notify::selected-index': GObject.Object.Notify;
+            'notify::selected-index': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+            'notify::will-validate': GObject.Object.Notify;
+            'notify::will-validate': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -30509,14 +36516,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLSelectElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLSelectElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLSelectElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLSelectElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLSelectElement.SignalSignatures[K]>
+            ...args: DOMHTMLSelectElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -30991,7 +37001,117 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLStyleElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::disabled': GObject.Object.Notify;
+            'notify::media': GObject.Object.Notify;
+            'notify::sheet': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -31028,14 +37148,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLStyleElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLStyleElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLStyleElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLStyleElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLStyleElement.SignalSignatures[K]>
+            ...args: DOMHTMLStyleElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -31491,7 +37614,114 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLTableCaptionElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::align': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -31520,14 +37750,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLTableCaptionElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLTableCaptionElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLTableCaptionElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLTableCaptionElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLTableCaptionElement.SignalSignatures[K]>
+            ...args: DOMHTMLTableCaptionElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -31978,7 +38211,135 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLTableCellElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::abbr': GObject.Object.Notify;
+            'notify::align': GObject.Object.Notify;
+            'notify::axis': GObject.Object.Notify;
+            'notify::bg-color': GObject.Object.Notify;
+            'notify::bg-color': GObject.Object.Notify;
+            'notify::cell-index': GObject.Object.Notify;
+            'notify::cell-index': GObject.Object.Notify;
+            'notify::ch': GObject.Object.Notify;
+            'notify::ch-off': GObject.Object.Notify;
+            'notify::ch-off': GObject.Object.Notify;
+            'notify::col-span': GObject.Object.Notify;
+            'notify::col-span': GObject.Object.Notify;
+            'notify::headers': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::no-wrap': GObject.Object.Notify;
+            'notify::no-wrap': GObject.Object.Notify;
+            'notify::row-span': GObject.Object.Notify;
+            'notify::row-span': GObject.Object.Notify;
+            'notify::scope': GObject.Object.Notify;
+            'notify::v-align': GObject.Object.Notify;
+            'notify::v-align': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -32068,14 +38429,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLTableCellElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLTableCellElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLTableCellElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLTableCellElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLTableCellElement.SignalSignatures[K]>
+            ...args: DOMHTMLTableCellElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -32553,7 +38917,121 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLTableColElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::align': GObject.Object.Notify;
+            'notify::ch': GObject.Object.Notify;
+            'notify::ch-off': GObject.Object.Notify;
+            'notify::ch-off': GObject.Object.Notify;
+            'notify::span': GObject.Object.Notify;
+            'notify::v-align': GObject.Object.Notify;
+            'notify::v-align': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -32603,14 +39081,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLTableColElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLTableColElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLTableColElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLTableColElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLTableColElement.SignalSignatures[K]>
+            ...args: DOMHTMLTableColElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -33071,7 +39552,132 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLTableElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::align': GObject.Object.Notify;
+            'notify::bg-color': GObject.Object.Notify;
+            'notify::bg-color': GObject.Object.Notify;
+            'notify::border': GObject.Object.Notify;
+            'notify::caption': GObject.Object.Notify;
+            'notify::cell-padding': GObject.Object.Notify;
+            'notify::cell-padding': GObject.Object.Notify;
+            'notify::cell-spacing': GObject.Object.Notify;
+            'notify::cell-spacing': GObject.Object.Notify;
+            'notify::rows': GObject.Object.Notify;
+            'notify::rules': GObject.Object.Notify;
+            'notify::summary': GObject.Object.Notify;
+            'notify::t-bodies': GObject.Object.Notify;
+            'notify::t-bodies': GObject.Object.Notify;
+            'notify::t-foot': GObject.Object.Notify;
+            'notify::t-foot': GObject.Object.Notify;
+            'notify::t-head': GObject.Object.Notify;
+            'notify::t-head': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -33146,14 +39752,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLTableElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLTableElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLTableElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLTableElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLTableElement.SignalSignatures[K]>
+            ...args: DOMHTMLTableElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -33634,7 +40243,126 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLTableRowElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::align': GObject.Object.Notify;
+            'notify::bg-color': GObject.Object.Notify;
+            'notify::bg-color': GObject.Object.Notify;
+            'notify::cells': GObject.Object.Notify;
+            'notify::ch': GObject.Object.Notify;
+            'notify::ch-off': GObject.Object.Notify;
+            'notify::ch-off': GObject.Object.Notify;
+            'notify::row-index': GObject.Object.Notify;
+            'notify::row-index': GObject.Object.Notify;
+            'notify::section-row-index': GObject.Object.Notify;
+            'notify::section-row-index': GObject.Object.Notify;
+            'notify::v-align': GObject.Object.Notify;
+            'notify::v-align': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -33694,14 +40422,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLTableRowElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLTableRowElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLTableRowElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLTableRowElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLTableRowElement.SignalSignatures[K]>
+            ...args: DOMHTMLTableRowElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -34165,7 +40896,120 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLTableSectionElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::align': GObject.Object.Notify;
+            'notify::ch': GObject.Object.Notify;
+            'notify::ch-off': GObject.Object.Notify;
+            'notify::ch-off': GObject.Object.Notify;
+            'notify::rows': GObject.Object.Notify;
+            'notify::v-align': GObject.Object.Notify;
+            'notify::v-align': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -34211,14 +41055,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLTableSectionElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLTableSectionElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLTableSectionElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLTableSectionElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLTableSectionElement.SignalSignatures[K]>
+            ...args: DOMHTMLTableSectionElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -34678,7 +41525,131 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLTextAreaElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::autofocus': GObject.Object.Notify;
+            'notify::cols': GObject.Object.Notify;
+            'notify::default-value': GObject.Object.Notify;
+            'notify::default-value': GObject.Object.Notify;
+            'notify::disabled': GObject.Object.Notify;
+            'notify::form': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::rows': GObject.Object.Notify;
+            'notify::selection-end': GObject.Object.Notify;
+            'notify::selection-end': GObject.Object.Notify;
+            'notify::selection-start': GObject.Object.Notify;
+            'notify::selection-start': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+            'notify::will-validate': GObject.Object.Notify;
+            'notify::will-validate': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -34754,14 +41725,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLTextAreaElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLTextAreaElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLTextAreaElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLTextAreaElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLTextAreaElement.SignalSignatures[K]>
+            ...args: DOMHTMLTextAreaElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -35236,7 +42210,114 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLTitleElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::text': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -35265,14 +42346,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLTitleElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLTitleElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLTitleElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLTitleElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLTitleElement.SignalSignatures[K]>
+            ...args: DOMHTMLTitleElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -35723,7 +42807,115 @@ export namespace WebKit2WebExtension {
 
     namespace DOMHTMLUListElement {
         // Signal signatures
-        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {}
+        interface SignalSignatures extends DOMHTMLElement.SignalSignatures {
+            'notify::compact': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::access-key': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::content-editable': GObject.Object.Notify;
+            'notify::dir': GObject.Object.Notify;
+            'notify::draggable': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::inner-text': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::is-content-editable': GObject.Object.Notify;
+            'notify::lang': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::outer-text': GObject.Object.Notify;
+            'notify::spellcheck': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::tab-index': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::translate': GObject.Object.Notify;
+            'notify::webkitdropzone': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-height': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-left': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-top': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::client-width': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::inner-html': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-height': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-left': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-parent': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-top': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::offset-width': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::outer-html': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-height': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-left': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-top': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::scroll-width': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::webkit-region-overset': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -35755,14 +42947,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMHTMLUListElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMHTMLUListElement.SignalSignatures>(
             signal: K,
             callback: DOMHTMLUListElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMHTMLUListElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMHTMLUListElement.SignalSignatures[K]>
+            ...args: DOMHTMLUListElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -36215,7 +43410,54 @@ export namespace WebKit2WebExtension {
 
     namespace DOMKeyboardEvent {
         // Signal signatures
-        interface SignalSignatures extends DOMUIEvent.SignalSignatures {}
+        interface SignalSignatures extends DOMUIEvent.SignalSignatures {
+            'notify::alt-graph-key': GObject.Object.Notify;
+            'notify::alt-graph-key': GObject.Object.Notify;
+            'notify::alt-key': GObject.Object.Notify;
+            'notify::alt-key': GObject.Object.Notify;
+            'notify::ctrl-key': GObject.Object.Notify;
+            'notify::ctrl-key': GObject.Object.Notify;
+            'notify::key-identifier': GObject.Object.Notify;
+            'notify::key-identifier': GObject.Object.Notify;
+            'notify::key-location': GObject.Object.Notify;
+            'notify::key-location': GObject.Object.Notify;
+            'notify::meta-key': GObject.Object.Notify;
+            'notify::meta-key': GObject.Object.Notify;
+            'notify::shift-key': GObject.Object.Notify;
+            'notify::shift-key': GObject.Object.Notify;
+            'notify::char-code': GObject.Object.Notify;
+            'notify::char-code': GObject.Object.Notify;
+            'notify::detail': GObject.Object.Notify;
+            'notify::key-code': GObject.Object.Notify;
+            'notify::key-code': GObject.Object.Notify;
+            'notify::layer-x': GObject.Object.Notify;
+            'notify::layer-x': GObject.Object.Notify;
+            'notify::layer-y': GObject.Object.Notify;
+            'notify::layer-y': GObject.Object.Notify;
+            'notify::page-x': GObject.Object.Notify;
+            'notify::page-x': GObject.Object.Notify;
+            'notify::page-y': GObject.Object.Notify;
+            'notify::page-y': GObject.Object.Notify;
+            'notify::view': GObject.Object.Notify;
+            'notify::bubbles': GObject.Object.Notify;
+            'notify::cancel-bubble': GObject.Object.Notify;
+            'notify::cancel-bubble': GObject.Object.Notify;
+            'notify::cancelable': GObject.Object.Notify;
+            'notify::current-target': GObject.Object.Notify;
+            'notify::current-target': GObject.Object.Notify;
+            'notify::event-phase': GObject.Object.Notify;
+            'notify::event-phase': GObject.Object.Notify;
+            'notify::return-value': GObject.Object.Notify;
+            'notify::return-value': GObject.Object.Notify;
+            'notify::src-element': GObject.Object.Notify;
+            'notify::src-element': GObject.Object.Notify;
+            'notify::target': GObject.Object.Notify;
+            'notify::time-stamp': GObject.Object.Notify;
+            'notify::time-stamp': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -36269,14 +43511,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMKeyboardEvent.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMKeyboardEvent.SignalSignatures>(
             signal: K,
             callback: DOMKeyboardEvent.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMKeyboardEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMKeyboardEvent.SignalSignatures[K]>
+            ...args: DOMKeyboardEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -36305,7 +43550,13 @@ export namespace WebKit2WebExtension {
 
     namespace DOMMediaList {
         // Signal signatures
-        interface SignalSignatures extends DOMObject.SignalSignatures {}
+        interface SignalSignatures extends DOMObject.SignalSignatures {
+            'notify::length': GObject.Object.Notify;
+            'notify::media-text': GObject.Object.Notify;
+            'notify::media-text': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -36339,14 +43590,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMMediaList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMMediaList.SignalSignatures>(
             signal: K,
             callback: DOMMediaList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMMediaList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMMediaList.SignalSignatures[K]>
+            ...args: DOMMediaList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -36360,7 +43614,69 @@ export namespace WebKit2WebExtension {
 
     namespace DOMMouseEvent {
         // Signal signatures
-        interface SignalSignatures extends DOMUIEvent.SignalSignatures {}
+        interface SignalSignatures extends DOMUIEvent.SignalSignatures {
+            'notify::alt-key': GObject.Object.Notify;
+            'notify::alt-key': GObject.Object.Notify;
+            'notify::button': GObject.Object.Notify;
+            'notify::client-x': GObject.Object.Notify;
+            'notify::client-x': GObject.Object.Notify;
+            'notify::client-y': GObject.Object.Notify;
+            'notify::client-y': GObject.Object.Notify;
+            'notify::ctrl-key': GObject.Object.Notify;
+            'notify::ctrl-key': GObject.Object.Notify;
+            'notify::from-element': GObject.Object.Notify;
+            'notify::from-element': GObject.Object.Notify;
+            'notify::meta-key': GObject.Object.Notify;
+            'notify::meta-key': GObject.Object.Notify;
+            'notify::offset-x': GObject.Object.Notify;
+            'notify::offset-x': GObject.Object.Notify;
+            'notify::offset-y': GObject.Object.Notify;
+            'notify::offset-y': GObject.Object.Notify;
+            'notify::related-target': GObject.Object.Notify;
+            'notify::related-target': GObject.Object.Notify;
+            'notify::screen-x': GObject.Object.Notify;
+            'notify::screen-x': GObject.Object.Notify;
+            'notify::screen-y': GObject.Object.Notify;
+            'notify::screen-y': GObject.Object.Notify;
+            'notify::shift-key': GObject.Object.Notify;
+            'notify::shift-key': GObject.Object.Notify;
+            'notify::to-element': GObject.Object.Notify;
+            'notify::to-element': GObject.Object.Notify;
+            'notify::x': GObject.Object.Notify;
+            'notify::y': GObject.Object.Notify;
+            'notify::char-code': GObject.Object.Notify;
+            'notify::char-code': GObject.Object.Notify;
+            'notify::detail': GObject.Object.Notify;
+            'notify::key-code': GObject.Object.Notify;
+            'notify::key-code': GObject.Object.Notify;
+            'notify::layer-x': GObject.Object.Notify;
+            'notify::layer-x': GObject.Object.Notify;
+            'notify::layer-y': GObject.Object.Notify;
+            'notify::layer-y': GObject.Object.Notify;
+            'notify::page-x': GObject.Object.Notify;
+            'notify::page-x': GObject.Object.Notify;
+            'notify::page-y': GObject.Object.Notify;
+            'notify::page-y': GObject.Object.Notify;
+            'notify::view': GObject.Object.Notify;
+            'notify::bubbles': GObject.Object.Notify;
+            'notify::cancel-bubble': GObject.Object.Notify;
+            'notify::cancel-bubble': GObject.Object.Notify;
+            'notify::cancelable': GObject.Object.Notify;
+            'notify::current-target': GObject.Object.Notify;
+            'notify::current-target': GObject.Object.Notify;
+            'notify::event-phase': GObject.Object.Notify;
+            'notify::event-phase': GObject.Object.Notify;
+            'notify::return-value': GObject.Object.Notify;
+            'notify::return-value': GObject.Object.Notify;
+            'notify::src-element': GObject.Object.Notify;
+            'notify::src-element': GObject.Object.Notify;
+            'notify::target': GObject.Object.Notify;
+            'notify::time-stamp': GObject.Object.Notify;
+            'notify::time-stamp': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -36444,14 +43760,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMMouseEvent.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMMouseEvent.SignalSignatures>(
             signal: K,
             callback: DOMMouseEvent.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMMouseEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMMouseEvent.SignalSignatures[K]>
+            ...args: DOMMouseEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -36492,7 +43811,11 @@ export namespace WebKit2WebExtension {
 
     namespace DOMNamedNodeMap {
         // Signal signatures
-        interface SignalSignatures extends DOMObject.SignalSignatures {}
+        interface SignalSignatures extends DOMObject.SignalSignatures {
+            'notify::length': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -36520,14 +43843,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMNamedNodeMap.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMNamedNodeMap.SignalSignatures>(
             signal: K,
             callback: DOMNamedNodeMap.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMNamedNodeMap.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMNamedNodeMap.SignalSignatures[K]>
+            ...args: DOMNamedNodeMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -36543,7 +43869,36 @@ export namespace WebKit2WebExtension {
 
     namespace DOMNode {
         // Signal signatures
-        interface SignalSignatures extends DOMObject.SignalSignatures {}
+        interface SignalSignatures extends DOMObject.SignalSignatures {
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -36622,14 +43977,17 @@ export namespace WebKit2WebExtension {
         // Signals
 
         connect<K extends keyof DOMNode.SignalSignatures>(signal: K, callback: DOMNode.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMNode.SignalSignatures>(
             signal: K,
             callback: DOMNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMNode.SignalSignatures[K]>
+            ...args: DOMNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -37131,7 +44489,18 @@ export namespace WebKit2WebExtension {
 
     namespace DOMNodeIterator {
         // Signal signatures
-        interface SignalSignatures extends DOMObject.SignalSignatures {}
+        interface SignalSignatures extends DOMObject.SignalSignatures {
+            'notify::filter': GObject.Object.Notify;
+            'notify::pointer-before-reference-node': GObject.Object.Notify;
+            'notify::pointer-before-reference-node': GObject.Object.Notify;
+            'notify::reference-node': GObject.Object.Notify;
+            'notify::reference-node': GObject.Object.Notify;
+            'notify::root': GObject.Object.Notify;
+            'notify::what-to-show': GObject.Object.Notify;
+            'notify::what-to-show': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -37173,14 +44542,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMNodeIterator.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMNodeIterator.SignalSignatures>(
             signal: K,
             callback: DOMNodeIterator.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMNodeIterator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMNodeIterator.SignalSignatures[K]>
+            ...args: DOMNodeIterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -37201,7 +44573,11 @@ export namespace WebKit2WebExtension {
 
     namespace DOMNodeList {
         // Signal signatures
-        interface SignalSignatures extends DOMObject.SignalSignatures {}
+        interface SignalSignatures extends DOMObject.SignalSignatures {
+            'notify::length': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -37229,14 +44605,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMNodeList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMNodeList.SignalSignatures>(
             signal: K,
             callback: DOMNodeList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMNodeList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMNodeList.SignalSignatures[K]>
+            ...args: DOMNodeList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -37246,7 +44625,10 @@ export namespace WebKit2WebExtension {
 
     namespace DOMObject {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -37277,19 +44659,55 @@ export namespace WebKit2WebExtension {
         // Signals
 
         connect<K extends keyof DOMObject.SignalSignatures>(signal: K, callback: DOMObject.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMObject.SignalSignatures>(
             signal: K,
             callback: DOMObject.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMObject.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMObject.SignalSignatures[K]>
+            ...args: DOMObject.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace DOMProcessingInstruction {
         // Signal signatures
-        interface SignalSignatures extends DOMCharacterData.SignalSignatures {}
+        interface SignalSignatures extends DOMCharacterData.SignalSignatures {
+            'notify::sheet': GObject.Object.Notify;
+            'notify::target': GObject.Object.Notify;
+            'notify::data': GObject.Object.Notify;
+            'notify::length': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -37319,14 +44737,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMProcessingInstruction.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMProcessingInstruction.SignalSignatures>(
             signal: K,
             callback: DOMProcessingInstruction.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMProcessingInstruction.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMProcessingInstruction.SignalSignatures[K]>
+            ...args: DOMProcessingInstruction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -37781,7 +45202,22 @@ export namespace WebKit2WebExtension {
 
     namespace DOMRange {
         // Signal signatures
-        interface SignalSignatures extends DOMObject.SignalSignatures {}
+        interface SignalSignatures extends DOMObject.SignalSignatures {
+            'notify::collapsed': GObject.Object.Notify;
+            'notify::common-ancestor-container': GObject.Object.Notify;
+            'notify::common-ancestor-container': GObject.Object.Notify;
+            'notify::end-container': GObject.Object.Notify;
+            'notify::end-container': GObject.Object.Notify;
+            'notify::end-offset': GObject.Object.Notify;
+            'notify::end-offset': GObject.Object.Notify;
+            'notify::start-container': GObject.Object.Notify;
+            'notify::start-container': GObject.Object.Notify;
+            'notify::start-offset': GObject.Object.Notify;
+            'notify::start-offset': GObject.Object.Notify;
+            'notify::text': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -37828,14 +45264,17 @@ export namespace WebKit2WebExtension {
         // Signals
 
         connect<K extends keyof DOMRange.SignalSignatures>(signal: K, callback: DOMRange.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMRange.SignalSignatures>(
             signal: K,
             callback: DOMRange.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMRange.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMRange.SignalSignatures[K]>
+            ...args: DOMRange.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -37874,7 +45313,19 @@ export namespace WebKit2WebExtension {
 
     namespace DOMStyleSheet {
         // Signal signatures
-        interface SignalSignatures extends DOMObject.SignalSignatures {}
+        interface SignalSignatures extends DOMObject.SignalSignatures {
+            'notify::disabled': GObject.Object.Notify;
+            'notify::href': GObject.Object.Notify;
+            'notify::media': GObject.Object.Notify;
+            'notify::owner-node': GObject.Object.Notify;
+            'notify::owner-node': GObject.Object.Notify;
+            'notify::parent-style-sheet': GObject.Object.Notify;
+            'notify::parent-style-sheet': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -37919,14 +45370,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMStyleSheet.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMStyleSheet.SignalSignatures>(
             signal: K,
             callback: DOMStyleSheet.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMStyleSheet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMStyleSheet.SignalSignatures[K]>
+            ...args: DOMStyleSheet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -37942,7 +45396,11 @@ export namespace WebKit2WebExtension {
 
     namespace DOMStyleSheetList {
         // Signal signatures
-        interface SignalSignatures extends DOMObject.SignalSignatures {}
+        interface SignalSignatures extends DOMObject.SignalSignatures {
+            'notify::length': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -37970,14 +45428,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMStyleSheetList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMStyleSheetList.SignalSignatures>(
             signal: K,
             callback: DOMStyleSheetList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMStyleSheetList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMStyleSheetList.SignalSignatures[K]>
+            ...args: DOMStyleSheetList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -37987,7 +45448,40 @@ export namespace WebKit2WebExtension {
 
     namespace DOMText {
         // Signal signatures
-        interface SignalSignatures extends DOMCharacterData.SignalSignatures {}
+        interface SignalSignatures extends DOMCharacterData.SignalSignatures {
+            'notify::whole-text': GObject.Object.Notify;
+            'notify::whole-text': GObject.Object.Notify;
+            'notify::data': GObject.Object.Notify;
+            'notify::length': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -38014,14 +45508,17 @@ export namespace WebKit2WebExtension {
         // Signals
 
         connect<K extends keyof DOMText.SignalSignatures>(signal: K, callback: DOMText.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMText.SignalSignatures>(
             signal: K,
             callback: DOMText.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMText.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMText.SignalSignatures[K]>
+            ...args: DOMText.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -38477,7 +45974,16 @@ export namespace WebKit2WebExtension {
 
     namespace DOMTreeWalker {
         // Signal signatures
-        interface SignalSignatures extends DOMObject.SignalSignatures {}
+        interface SignalSignatures extends DOMObject.SignalSignatures {
+            'notify::current-node': GObject.Object.Notify;
+            'notify::current-node': GObject.Object.Notify;
+            'notify::filter': GObject.Object.Notify;
+            'notify::root': GObject.Object.Notify;
+            'notify::what-to-show': GObject.Object.Notify;
+            'notify::what-to-show': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -38515,14 +46021,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMTreeWalker.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMTreeWalker.SignalSignatures>(
             signal: K,
             callback: DOMTreeWalker.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMTreeWalker.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMTreeWalker.SignalSignatures[K]>
+            ...args: DOMTreeWalker.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -38547,7 +46056,40 @@ export namespace WebKit2WebExtension {
 
     namespace DOMUIEvent {
         // Signal signatures
-        interface SignalSignatures extends DOMEvent.SignalSignatures {}
+        interface SignalSignatures extends DOMEvent.SignalSignatures {
+            'notify::char-code': GObject.Object.Notify;
+            'notify::char-code': GObject.Object.Notify;
+            'notify::detail': GObject.Object.Notify;
+            'notify::key-code': GObject.Object.Notify;
+            'notify::key-code': GObject.Object.Notify;
+            'notify::layer-x': GObject.Object.Notify;
+            'notify::layer-x': GObject.Object.Notify;
+            'notify::layer-y': GObject.Object.Notify;
+            'notify::layer-y': GObject.Object.Notify;
+            'notify::page-x': GObject.Object.Notify;
+            'notify::page-x': GObject.Object.Notify;
+            'notify::page-y': GObject.Object.Notify;
+            'notify::page-y': GObject.Object.Notify;
+            'notify::view': GObject.Object.Notify;
+            'notify::bubbles': GObject.Object.Notify;
+            'notify::cancel-bubble': GObject.Object.Notify;
+            'notify::cancel-bubble': GObject.Object.Notify;
+            'notify::cancelable': GObject.Object.Notify;
+            'notify::current-target': GObject.Object.Notify;
+            'notify::current-target': GObject.Object.Notify;
+            'notify::event-phase': GObject.Object.Notify;
+            'notify::event-phase': GObject.Object.Notify;
+            'notify::return-value': GObject.Object.Notify;
+            'notify::return-value': GObject.Object.Notify;
+            'notify::src-element': GObject.Object.Notify;
+            'notify::src-element': GObject.Object.Notify;
+            'notify::target': GObject.Object.Notify;
+            'notify::time-stamp': GObject.Object.Notify;
+            'notify::time-stamp': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -38601,14 +46143,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMUIEvent.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMUIEvent.SignalSignatures>(
             signal: K,
             callback: DOMUIEvent.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMUIEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMUIEvent.SignalSignatures[K]>
+            ...args: DOMUIEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -38625,7 +46170,75 @@ export namespace WebKit2WebExtension {
 
     namespace DOMWheelEvent {
         // Signal signatures
-        interface SignalSignatures extends DOMMouseEvent.SignalSignatures {}
+        interface SignalSignatures extends DOMMouseEvent.SignalSignatures {
+            'notify::wheel-delta': GObject.Object.Notify;
+            'notify::wheel-delta': GObject.Object.Notify;
+            'notify::wheel-delta-x': GObject.Object.Notify;
+            'notify::wheel-delta-x': GObject.Object.Notify;
+            'notify::wheel-delta-y': GObject.Object.Notify;
+            'notify::wheel-delta-y': GObject.Object.Notify;
+            'notify::alt-key': GObject.Object.Notify;
+            'notify::alt-key': GObject.Object.Notify;
+            'notify::button': GObject.Object.Notify;
+            'notify::client-x': GObject.Object.Notify;
+            'notify::client-x': GObject.Object.Notify;
+            'notify::client-y': GObject.Object.Notify;
+            'notify::client-y': GObject.Object.Notify;
+            'notify::ctrl-key': GObject.Object.Notify;
+            'notify::ctrl-key': GObject.Object.Notify;
+            'notify::from-element': GObject.Object.Notify;
+            'notify::from-element': GObject.Object.Notify;
+            'notify::meta-key': GObject.Object.Notify;
+            'notify::meta-key': GObject.Object.Notify;
+            'notify::offset-x': GObject.Object.Notify;
+            'notify::offset-x': GObject.Object.Notify;
+            'notify::offset-y': GObject.Object.Notify;
+            'notify::offset-y': GObject.Object.Notify;
+            'notify::related-target': GObject.Object.Notify;
+            'notify::related-target': GObject.Object.Notify;
+            'notify::screen-x': GObject.Object.Notify;
+            'notify::screen-x': GObject.Object.Notify;
+            'notify::screen-y': GObject.Object.Notify;
+            'notify::screen-y': GObject.Object.Notify;
+            'notify::shift-key': GObject.Object.Notify;
+            'notify::shift-key': GObject.Object.Notify;
+            'notify::to-element': GObject.Object.Notify;
+            'notify::to-element': GObject.Object.Notify;
+            'notify::x': GObject.Object.Notify;
+            'notify::y': GObject.Object.Notify;
+            'notify::char-code': GObject.Object.Notify;
+            'notify::char-code': GObject.Object.Notify;
+            'notify::detail': GObject.Object.Notify;
+            'notify::key-code': GObject.Object.Notify;
+            'notify::key-code': GObject.Object.Notify;
+            'notify::layer-x': GObject.Object.Notify;
+            'notify::layer-x': GObject.Object.Notify;
+            'notify::layer-y': GObject.Object.Notify;
+            'notify::layer-y': GObject.Object.Notify;
+            'notify::page-x': GObject.Object.Notify;
+            'notify::page-x': GObject.Object.Notify;
+            'notify::page-y': GObject.Object.Notify;
+            'notify::page-y': GObject.Object.Notify;
+            'notify::view': GObject.Object.Notify;
+            'notify::bubbles': GObject.Object.Notify;
+            'notify::cancel-bubble': GObject.Object.Notify;
+            'notify::cancel-bubble': GObject.Object.Notify;
+            'notify::cancelable': GObject.Object.Notify;
+            'notify::current-target': GObject.Object.Notify;
+            'notify::current-target': GObject.Object.Notify;
+            'notify::event-phase': GObject.Object.Notify;
+            'notify::event-phase': GObject.Object.Notify;
+            'notify::return-value': GObject.Object.Notify;
+            'notify::return-value': GObject.Object.Notify;
+            'notify::src-element': GObject.Object.Notify;
+            'notify::src-element': GObject.Object.Notify;
+            'notify::target': GObject.Object.Notify;
+            'notify::time-stamp': GObject.Object.Notify;
+            'notify::time-stamp': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -38663,14 +46276,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMWheelEvent.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMWheelEvent.SignalSignatures>(
             signal: K,
             callback: DOMWheelEvent.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMWheelEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMWheelEvent.SignalSignatures[K]>
+            ...args: DOMWheelEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -38694,7 +46310,10 @@ export namespace WebKit2WebExtension {
 
     namespace DOMXPathExpression {
         // Signal signatures
-        interface SignalSignatures extends DOMObject.SignalSignatures {}
+        interface SignalSignatures extends DOMObject.SignalSignatures {
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -38716,14 +46335,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMXPathExpression.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMXPathExpression.SignalSignatures>(
             signal: K,
             callback: DOMXPathExpression.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMXPathExpression.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMXPathExpression.SignalSignatures[K]>
+            ...args: DOMXPathExpression.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -38732,7 +46354,24 @@ export namespace WebKit2WebExtension {
 
     namespace DOMXPathResult {
         // Signal signatures
-        interface SignalSignatures extends DOMObject.SignalSignatures {}
+        interface SignalSignatures extends DOMObject.SignalSignatures {
+            'notify::boolean-value': GObject.Object.Notify;
+            'notify::boolean-value': GObject.Object.Notify;
+            'notify::invalid-iterator-state': GObject.Object.Notify;
+            'notify::invalid-iterator-state': GObject.Object.Notify;
+            'notify::number-value': GObject.Object.Notify;
+            'notify::number-value': GObject.Object.Notify;
+            'notify::result-type': GObject.Object.Notify;
+            'notify::result-type': GObject.Object.Notify;
+            'notify::single-node-value': GObject.Object.Notify;
+            'notify::single-node-value': GObject.Object.Notify;
+            'notify::snapshot-length': GObject.Object.Notify;
+            'notify::snapshot-length': GObject.Object.Notify;
+            'notify::string-value': GObject.Object.Notify;
+            'notify::string-value': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+            'notify::core-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -38786,14 +46425,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: DOMXPathResult.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DOMXPathResult.SignalSignatures>(
             signal: K,
             callback: DOMXPathResult.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DOMXPathResult.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DOMXPathResult.SignalSignatures[K]>
+            ...args: DOMXPathResult.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -38835,8 +46477,14 @@ export namespace WebKit2WebExtension {
         // Signals
 
         connect<K extends keyof Frame.SignalSignatures>(signal: K, callback: Frame.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Frame.SignalSignatures>(signal: K, callback: Frame.SignalSignatures[K]): number;
-        emit<K extends keyof Frame.SignalSignatures>(signal: K, ...args: Parameters<Frame.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Frame.SignalSignatures>(
+            signal: K,
+            ...args: Frame.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -38888,7 +46536,19 @@ export namespace WebKit2WebExtension {
 
     namespace HitTestResult {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::context': GObject.Object.Notify;
+            'notify::image-uri': GObject.Object.Notify;
+            'notify::image-uri': GObject.Object.Notify;
+            'notify::link-label': GObject.Object.Notify;
+            'notify::link-label': GObject.Object.Notify;
+            'notify::link-title': GObject.Object.Notify;
+            'notify::link-title': GObject.Object.Notify;
+            'notify::link-uri': GObject.Object.Notify;
+            'notify::link-uri': GObject.Object.Notify;
+            'notify::media-uri': GObject.Object.Notify;
+            'notify::media-uri': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -39002,14 +46662,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: HitTestResult.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HitTestResult.SignalSignatures>(
             signal: K,
             callback: HitTestResult.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HitTestResult.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HitTestResult.SignalSignatures[K]>
+            ...args: HitTestResult.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -39117,14 +46780,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: ScriptWorld.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ScriptWorld.SignalSignatures>(
             signal: K,
             callback: ScriptWorld.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ScriptWorld.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ScriptWorld.SignalSignatures[K]>
+            ...args: ScriptWorld.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -39147,7 +46813,9 @@ export namespace WebKit2WebExtension {
 
     namespace URIRequest {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::uri': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -39188,14 +46856,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: URIRequest.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof URIRequest.SignalSignatures>(
             signal: K,
             callback: URIRequest.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof URIRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<URIRequest.SignalSignatures[K]>
+            ...args: URIRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -39223,7 +46894,19 @@ export namespace WebKit2WebExtension {
 
     namespace URIResponse {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::content-length': GObject.Object.Notify;
+            'notify::content-length': GObject.Object.Notify;
+            'notify::http-headers': GObject.Object.Notify;
+            'notify::http-headers': GObject.Object.Notify;
+            'notify::mime-type': GObject.Object.Notify;
+            'notify::mime-type': GObject.Object.Notify;
+            'notify::status-code': GObject.Object.Notify;
+            'notify::status-code': GObject.Object.Notify;
+            'notify::suggested-filename': GObject.Object.Notify;
+            'notify::suggested-filename': GObject.Object.Notify;
+            'notify::uri': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -39311,14 +46994,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: URIResponse.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof URIResponse.SignalSignatures>(
             signal: K,
             callback: URIResponse.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof URIResponse.SignalSignatures>(
             signal: K,
-            ...args: Parameters<URIResponse.SignalSignatures[K]>
+            ...args: URIResponse.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -39367,7 +47053,12 @@ export namespace WebKit2WebExtension {
 
     namespace UserMessage {
         // Signal signatures
-        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {}
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
+            'notify::fd-list': GObject.Object.Notify;
+            'notify::fd-list': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parameters': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -39433,14 +47124,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: UserMessage.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UserMessage.SignalSignatures>(
             signal: K,
             callback: UserMessage.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UserMessage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UserMessage.SignalSignatures[K]>
+            ...args: UserMessage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -39513,14 +47207,17 @@ export namespace WebKit2WebExtension {
         // Signals
 
         connect<K extends keyof WebEditor.SignalSignatures>(signal: K, callback: WebEditor.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WebEditor.SignalSignatures>(
             signal: K,
             callback: WebEditor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebEditor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebEditor.SignalSignatures[K]>
+            ...args: WebEditor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -39641,14 +47338,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: WebExtension.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WebExtension.SignalSignatures>(
             signal: K,
             callback: WebExtension.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebExtension.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebExtension.SignalSignatures[K]>
+            ...args: WebExtension.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -39751,14 +47451,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: WebFormManager.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WebFormManager.SignalSignatures>(
             signal: K,
             callback: WebFormManager.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebFormManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebFormManager.SignalSignatures[K]>
+            ...args: WebFormManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -39784,7 +47487,20 @@ export namespace WebKit2WebExtension {
 
     namespace WebHitTestResult {
         // Signal signatures
-        interface SignalSignatures extends HitTestResult.SignalSignatures {}
+        interface SignalSignatures extends HitTestResult.SignalSignatures {
+            'notify::node': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
+            'notify::image-uri': GObject.Object.Notify;
+            'notify::image-uri': GObject.Object.Notify;
+            'notify::link-label': GObject.Object.Notify;
+            'notify::link-label': GObject.Object.Notify;
+            'notify::link-title': GObject.Object.Notify;
+            'notify::link-title': GObject.Object.Notify;
+            'notify::link-uri': GObject.Object.Notify;
+            'notify::link-uri': GObject.Object.Notify;
+            'notify::media-uri': GObject.Object.Notify;
+            'notify::media-uri': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -39821,14 +47537,17 @@ export namespace WebKit2WebExtension {
             signal: K,
             callback: WebHitTestResult.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WebHitTestResult.SignalSignatures>(
             signal: K,
             callback: WebHitTestResult.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebHitTestResult.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebHitTestResult.SignalSignatures[K]>
+            ...args: WebHitTestResult.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -39853,7 +47572,7 @@ export namespace WebKit2WebExtension {
         }
 
         interface ContextMenu {
-            (_source: WebPage, context_menu: ContextMenu, hit_test_result: WebHitTestResult): boolean;
+            (_source: WebPage, context_menu: ContextMenu, hit_test_result: WebHitTestResult): boolean | void;
         }
 
         interface DocumentLoaded {
@@ -39869,11 +47588,11 @@ export namespace WebKit2WebExtension {
         }
 
         interface SendRequest {
-            (_source: WebPage, request: URIRequest, redirected_response: URIResponse): boolean;
+            (_source: WebPage, request: URIRequest, redirected_response: URIResponse): boolean | void;
         }
 
         interface UserMessageReceived {
-            (_source: WebPage, message: UserMessage): boolean;
+            (_source: WebPage, message: UserMessage): boolean | void;
         }
 
         interface WillSubmitForm {
@@ -39898,6 +47617,7 @@ export namespace WebKit2WebExtension {
             'send-request': SendRequest;
             'user-message-received': UserMessageReceived;
             'will-submit-form': WillSubmitForm;
+            'notify::uri': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -39929,14 +47649,17 @@ export namespace WebKit2WebExtension {
         // Signals
 
         connect<K extends keyof WebPage.SignalSignatures>(signal: K, callback: WebPage.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WebPage.SignalSignatures>(
             signal: K,
             callback: WebPage.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebPage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebPage.SignalSignatures[K]>
+            ...args: WebPage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

@@ -148,8 +148,14 @@ export namespace PangoOT {
         // Signals
 
         connect<K extends keyof Info.SignalSignatures>(signal: K, callback: Info.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Info.SignalSignatures>(signal: K, callback: Info.SignalSignatures[K]): number;
-        emit<K extends keyof Info.SignalSignatures>(signal: K, ...args: Parameters<Info.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Info.SignalSignatures>(
+            signal: K,
+            ...args: Info.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -282,14 +288,17 @@ export namespace PangoOT {
         // Signals
 
         connect<K extends keyof Ruleset.SignalSignatures>(signal: K, callback: Ruleset.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Ruleset.SignalSignatures>(
             signal: K,
             callback: Ruleset.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Ruleset.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Ruleset.SignalSignatures[K]>
+            ...args: Ruleset.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 

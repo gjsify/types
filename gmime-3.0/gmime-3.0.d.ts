@@ -1735,14 +1735,17 @@ export namespace GMime {
             signal: K,
             callback: ApplicationPkcs7Mime.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ApplicationPkcs7Mime.SignalSignatures>(
             signal: K,
             callback: ApplicationPkcs7Mime.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ApplicationPkcs7Mime.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ApplicationPkcs7Mime.SignalSignatures[K]>
+            ...args: ApplicationPkcs7Mime.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1836,14 +1839,17 @@ export namespace GMime {
             signal: K,
             callback: AutocryptHeader.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AutocryptHeader.SignalSignatures>(
             signal: K,
             callback: AutocryptHeader.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AutocryptHeader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AutocryptHeader.SignalSignatures[K]>
+            ...args: AutocryptHeader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1972,14 +1978,17 @@ export namespace GMime {
             signal: K,
             callback: AutocryptHeaderList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AutocryptHeaderList.SignalSignatures>(
             signal: K,
             callback: AutocryptHeaderList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AutocryptHeaderList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AutocryptHeaderList.SignalSignatures[K]>
+            ...args: AutocryptHeaderList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2064,14 +2073,17 @@ export namespace GMime {
             signal: K,
             callback: Certificate.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Certificate.SignalSignatures>(
             signal: K,
             callback: Certificate.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Certificate.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Certificate.SignalSignatures[K]>
+            ...args: Certificate.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2276,14 +2288,17 @@ export namespace GMime {
             signal: K,
             callback: CertificateList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CertificateList.SignalSignatures>(
             signal: K,
             callback: CertificateList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CertificateList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CertificateList.SignalSignatures[K]>
+            ...args: CertificateList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2385,14 +2400,17 @@ export namespace GMime {
             signal: K,
             callback: ContentDisposition.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ContentDisposition.SignalSignatures>(
             signal: K,
             callback: ContentDisposition.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ContentDisposition.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContentDisposition.SignalSignatures[K]>
+            ...args: ContentDisposition.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2487,14 +2505,17 @@ export namespace GMime {
             signal: K,
             callback: ContentType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ContentType.SignalSignatures>(
             signal: K,
             callback: ContentType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ContentType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContentType.SignalSignatures[K]>
+            ...args: ContentType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2603,14 +2624,17 @@ export namespace GMime {
             signal: K,
             callback: CryptoContext.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CryptoContext.SignalSignatures>(
             signal: K,
             callback: CryptoContext.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CryptoContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CryptoContext.SignalSignatures[K]>
+            ...args: CryptoContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -2886,14 +2910,17 @@ export namespace GMime {
             signal: K,
             callback: DataWrapper.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DataWrapper.SignalSignatures>(
             signal: K,
             callback: DataWrapper.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DataWrapper.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataWrapper.SignalSignatures[K]>
+            ...args: DataWrapper.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -2976,14 +3003,17 @@ export namespace GMime {
             signal: K,
             callback: DecryptResult.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DecryptResult.SignalSignatures>(
             signal: K,
             callback: DecryptResult.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DecryptResult.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DecryptResult.SignalSignatures[K]>
+            ...args: DecryptResult.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3076,8 +3106,14 @@ export namespace GMime {
         // Signals
 
         connect<K extends keyof Filter.SignalSignatures>(signal: K, callback: Filter.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Filter.SignalSignatures>(signal: K, callback: Filter.SignalSignatures[K]): number;
-        emit<K extends keyof Filter.SignalSignatures>(signal: K, ...args: Parameters<Filter.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Filter.SignalSignatures>(
+            signal: K,
+            ...args: Filter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -3172,14 +3208,17 @@ export namespace GMime {
             signal: K,
             callback: FilterBasic.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FilterBasic.SignalSignatures>(
             signal: K,
             callback: FilterBasic.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FilterBasic.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FilterBasic.SignalSignatures[K]>
+            ...args: FilterBasic.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace FilterBest {
@@ -3227,14 +3266,17 @@ export namespace GMime {
             signal: K,
             callback: FilterBest.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FilterBest.SignalSignatures>(
             signal: K,
             callback: FilterBest.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FilterBest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FilterBest.SignalSignatures[K]>
+            ...args: FilterBest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3290,14 +3332,17 @@ export namespace GMime {
             signal: K,
             callback: FilterCharset.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FilterCharset.SignalSignatures>(
             signal: K,
             callback: FilterCharset.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FilterCharset.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FilterCharset.SignalSignatures[K]>
+            ...args: FilterCharset.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace FilterChecksum {
@@ -3333,14 +3378,17 @@ export namespace GMime {
             signal: K,
             callback: FilterChecksum.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FilterChecksum.SignalSignatures>(
             signal: K,
             callback: FilterChecksum.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FilterChecksum.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FilterChecksum.SignalSignatures[K]>
+            ...args: FilterChecksum.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3392,14 +3440,17 @@ export namespace GMime {
             signal: K,
             callback: FilterDos2Unix.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FilterDos2Unix.SignalSignatures>(
             signal: K,
             callback: FilterDos2Unix.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FilterDos2Unix.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FilterDos2Unix.SignalSignatures[K]>
+            ...args: FilterDos2Unix.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace FilterEnriched {
@@ -3438,14 +3489,17 @@ export namespace GMime {
             signal: K,
             callback: FilterEnriched.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FilterEnriched.SignalSignatures>(
             signal: K,
             callback: FilterEnriched.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FilterEnriched.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FilterEnriched.SignalSignatures[K]>
+            ...args: FilterEnriched.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace FilterFrom {
@@ -3483,14 +3537,17 @@ export namespace GMime {
             signal: K,
             callback: FilterFrom.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FilterFrom.SignalSignatures>(
             signal: K,
             callback: FilterFrom.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FilterFrom.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FilterFrom.SignalSignatures[K]>
+            ...args: FilterFrom.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace FilterGZip {
@@ -3529,14 +3586,17 @@ export namespace GMime {
             signal: K,
             callback: FilterGZip.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FilterGZip.SignalSignatures>(
             signal: K,
             callback: FilterGZip.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FilterGZip.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FilterGZip.SignalSignatures[K]>
+            ...args: FilterGZip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3601,14 +3661,17 @@ export namespace GMime {
             signal: K,
             callback: FilterHTML.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FilterHTML.SignalSignatures>(
             signal: K,
             callback: FilterHTML.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FilterHTML.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FilterHTML.SignalSignatures[K]>
+            ...args: FilterHTML.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace FilterOpenPGP {
@@ -3644,14 +3707,17 @@ export namespace GMime {
             signal: K,
             callback: FilterOpenPGP.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FilterOpenPGP.SignalSignatures>(
             signal: K,
             callback: FilterOpenPGP.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FilterOpenPGP.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FilterOpenPGP.SignalSignatures[K]>
+            ...args: FilterOpenPGP.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3706,14 +3772,17 @@ export namespace GMime {
             signal: K,
             callback: FilterSmtpData.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FilterSmtpData.SignalSignatures>(
             signal: K,
             callback: FilterSmtpData.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FilterSmtpData.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FilterSmtpData.SignalSignatures[K]>
+            ...args: FilterSmtpData.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace FilterStrip {
@@ -3749,14 +3818,17 @@ export namespace GMime {
             signal: K,
             callback: FilterStrip.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FilterStrip.SignalSignatures>(
             signal: K,
             callback: FilterStrip.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FilterStrip.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FilterStrip.SignalSignatures[K]>
+            ...args: FilterStrip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace FilterUnix2Dos {
@@ -3794,14 +3866,17 @@ export namespace GMime {
             signal: K,
             callback: FilterUnix2Dos.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FilterUnix2Dos.SignalSignatures>(
             signal: K,
             callback: FilterUnix2Dos.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FilterUnix2Dos.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FilterUnix2Dos.SignalSignatures[K]>
+            ...args: FilterUnix2Dos.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace FilterWindows {
@@ -3841,14 +3916,17 @@ export namespace GMime {
             signal: K,
             callback: FilterWindows.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FilterWindows.SignalSignatures>(
             signal: K,
             callback: FilterWindows.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FilterWindows.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FilterWindows.SignalSignatures[K]>
+            ...args: FilterWindows.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3903,14 +3981,17 @@ export namespace GMime {
             signal: K,
             callback: FilterYenc.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FilterYenc.SignalSignatures>(
             signal: K,
             callback: FilterYenc.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FilterYenc.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FilterYenc.SignalSignatures[K]>
+            ...args: FilterYenc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3965,14 +4046,17 @@ export namespace GMime {
             signal: K,
             callback: GpgContext.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GpgContext.SignalSignatures>(
             signal: K,
             callback: GpgContext.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GpgContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GpgContext.SignalSignatures[K]>
+            ...args: GpgContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Header {
@@ -3999,8 +4083,14 @@ export namespace GMime {
         // Signals
 
         connect<K extends keyof Header.SignalSignatures>(signal: K, callback: Header.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Header.SignalSignatures>(signal: K, callback: Header.SignalSignatures[K]): number;
-        emit<K extends keyof Header.SignalSignatures>(signal: K, ...args: Parameters<Header.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Header.SignalSignatures>(
+            signal: K,
+            ...args: Header.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4150,14 +4240,17 @@ export namespace GMime {
             signal: K,
             callback: HeaderList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HeaderList.SignalSignatures>(
             signal: K,
             callback: HeaderList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HeaderList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HeaderList.SignalSignatures[K]>
+            ...args: HeaderList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4282,14 +4375,17 @@ export namespace GMime {
             signal: K,
             callback: InternetAddress.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InternetAddress.SignalSignatures>(
             signal: K,
             callback: InternetAddress.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InternetAddress.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InternetAddress.SignalSignatures[K]>
+            ...args: InternetAddress.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -4363,14 +4459,17 @@ export namespace GMime {
             signal: K,
             callback: InternetAddressGroup.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InternetAddressGroup.SignalSignatures>(
             signal: K,
             callback: InternetAddressGroup.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InternetAddressGroup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InternetAddressGroup.SignalSignatures[K]>
+            ...args: InternetAddressGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4427,14 +4526,17 @@ export namespace GMime {
             signal: K,
             callback: InternetAddressList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InternetAddressList.SignalSignatures>(
             signal: K,
             callback: InternetAddressList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InternetAddressList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InternetAddressList.SignalSignatures[K]>
+            ...args: InternetAddressList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -4577,14 +4679,17 @@ export namespace GMime {
             signal: K,
             callback: InternetAddressMailbox.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InternetAddressMailbox.SignalSignatures>(
             signal: K,
             callback: InternetAddressMailbox.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InternetAddressMailbox.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InternetAddressMailbox.SignalSignatures[K]>
+            ...args: InternetAddressMailbox.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4642,14 +4747,17 @@ export namespace GMime {
         // Signals
 
         connect<K extends keyof Message.SignalSignatures>(signal: K, callback: Message.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Message.SignalSignatures>(
             signal: K,
             callback: Message.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Message.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Message.SignalSignatures[K]>
+            ...args: Message.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4911,14 +5019,17 @@ export namespace GMime {
             signal: K,
             callback: MessagePart.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MessagePart.SignalSignatures>(
             signal: K,
             callback: MessagePart.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MessagePart.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MessagePart.SignalSignatures[K]>
+            ...args: MessagePart.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4973,14 +5084,17 @@ export namespace GMime {
             signal: K,
             callback: MessagePartial.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MessagePartial.SignalSignatures>(
             signal: K,
             callback: MessagePartial.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MessagePartial.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MessagePartial.SignalSignatures[K]>
+            ...args: MessagePartial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -5047,14 +5161,17 @@ export namespace GMime {
         // Signals
 
         connect<K extends keyof Multipart.SignalSignatures>(signal: K, callback: Multipart.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Multipart.SignalSignatures>(
             signal: K,
             callback: Multipart.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Multipart.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Multipart.SignalSignatures[K]>
+            ...args: Multipart.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -5255,14 +5372,17 @@ export namespace GMime {
             signal: K,
             callback: MultipartEncrypted.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MultipartEncrypted.SignalSignatures>(
             signal: K,
             callback: MultipartEncrypted.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MultipartEncrypted.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MultipartEncrypted.SignalSignatures[K]>
+            ...args: MultipartEncrypted.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -5341,14 +5461,17 @@ export namespace GMime {
             signal: K,
             callback: MultipartSigned.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MultipartSigned.SignalSignatures>(
             signal: K,
             callback: MultipartSigned.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MultipartSigned.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MultipartSigned.SignalSignatures[K]>
+            ...args: MultipartSigned.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -5409,8 +5532,14 @@ export namespace GMime {
         // Signals
 
         connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
-        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            ...args: Object.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -5684,8 +5813,14 @@ export namespace GMime {
         // Signals
 
         connect<K extends keyof Param.SignalSignatures>(signal: K, callback: Param.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Param.SignalSignatures>(signal: K, callback: Param.SignalSignatures[K]): number;
-        emit<K extends keyof Param.SignalSignatures>(signal: K, ...args: Parameters<Param.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Param.SignalSignatures>(
+            signal: K,
+            ...args: Param.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5762,14 +5897,17 @@ export namespace GMime {
         // Signals
 
         connect<K extends keyof ParamList.SignalSignatures>(signal: K, callback: ParamList.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ParamList.SignalSignatures>(
             signal: K,
             callback: ParamList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ParamList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ParamList.SignalSignatures[K]>
+            ...args: ParamList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -5862,8 +6000,14 @@ export namespace GMime {
         // Signals
 
         connect<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
-        emit<K extends keyof Parser.SignalSignatures>(signal: K, ...args: Parameters<Parser.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Parser.SignalSignatures>(
+            signal: K,
+            ...args: Parser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -6023,8 +6167,14 @@ export namespace GMime {
         // Signals
 
         connect<K extends keyof Part.SignalSignatures>(signal: K, callback: Part.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Part.SignalSignatures>(signal: K, callback: Part.SignalSignatures[K]): number;
-        emit<K extends keyof Part.SignalSignatures>(signal: K, ...args: Parameters<Part.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Part.SignalSignatures>(
+            signal: K,
+            ...args: Part.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -6213,14 +6363,17 @@ export namespace GMime {
             signal: K,
             callback: Pkcs7Context.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Pkcs7Context.SignalSignatures>(
             signal: K,
             callback: Pkcs7Context.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Pkcs7Context.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Pkcs7Context.SignalSignatures[K]>
+            ...args: Pkcs7Context.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Signature {
@@ -6257,14 +6410,17 @@ export namespace GMime {
         // Signals
 
         connect<K extends keyof Signature.SignalSignatures>(signal: K, callback: Signature.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Signature.SignalSignatures>(
             signal: K,
             callback: Signature.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Signature.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Signature.SignalSignatures[K]>
+            ...args: Signature.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -6356,14 +6512,17 @@ export namespace GMime {
             signal: K,
             callback: SignatureList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SignatureList.SignalSignatures>(
             signal: K,
             callback: SignatureList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SignatureList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SignatureList.SignalSignatures[K]>
+            ...args: SignatureList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -6454,8 +6613,14 @@ export namespace GMime {
         // Signals
 
         connect<K extends keyof Stream.SignalSignatures>(signal: K, callback: Stream.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Stream.SignalSignatures>(signal: K, callback: Stream.SignalSignatures[K]): number;
-        emit<K extends keyof Stream.SignalSignatures>(signal: K, ...args: Parameters<Stream.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Stream.SignalSignatures>(
+            signal: K,
+            ...args: Stream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -6672,14 +6837,17 @@ export namespace GMime {
             signal: K,
             callback: StreamBuffer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StreamBuffer.SignalSignatures>(
             signal: K,
             callback: StreamBuffer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StreamBuffer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StreamBuffer.SignalSignatures[K]>
+            ...args: StreamBuffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace StreamCat {
@@ -6714,14 +6882,17 @@ export namespace GMime {
         // Signals
 
         connect<K extends keyof StreamCat.SignalSignatures>(signal: K, callback: StreamCat.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StreamCat.SignalSignatures>(
             signal: K,
             callback: StreamCat.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StreamCat.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StreamCat.SignalSignatures[K]>
+            ...args: StreamCat.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -6770,14 +6941,17 @@ export namespace GMime {
             signal: K,
             callback: StreamFile.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StreamFile.SignalSignatures>(
             signal: K,
             callback: StreamFile.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StreamFile.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StreamFile.SignalSignatures[K]>
+            ...args: StreamFile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -6841,14 +7015,17 @@ export namespace GMime {
             signal: K,
             callback: StreamFilter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StreamFilter.SignalSignatures>(
             signal: K,
             callback: StreamFilter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StreamFilter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StreamFilter.SignalSignatures[K]>
+            ...args: StreamFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -6917,14 +7094,17 @@ export namespace GMime {
         // Signals
 
         connect<K extends keyof StreamFs.SignalSignatures>(signal: K, callback: StreamFs.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StreamFs.SignalSignatures>(
             signal: K,
             callback: StreamFs.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StreamFs.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StreamFs.SignalSignatures[K]>
+            ...args: StreamFs.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -6992,14 +7172,17 @@ export namespace GMime {
         // Signals
 
         connect<K extends keyof StreamGIO.SignalSignatures>(signal: K, callback: StreamGIO.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StreamGIO.SignalSignatures>(
             signal: K,
             callback: StreamGIO.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StreamGIO.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StreamGIO.SignalSignatures[K]>
+            ...args: StreamGIO.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -7054,14 +7237,17 @@ export namespace GMime {
         // Signals
 
         connect<K extends keyof StreamMem.SignalSignatures>(signal: K, callback: StreamMem.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StreamMem.SignalSignatures>(
             signal: K,
             callback: StreamMem.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StreamMem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StreamMem.SignalSignatures[K]>
+            ...args: StreamMem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -7135,14 +7321,17 @@ export namespace GMime {
             signal: K,
             callback: StreamMmap.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StreamMmap.SignalSignatures>(
             signal: K,
             callback: StreamMmap.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StreamMmap.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StreamMmap.SignalSignatures[K]>
+            ...args: StreamMmap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -7197,14 +7386,17 @@ export namespace GMime {
             signal: K,
             callback: StreamNull.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StreamNull.SignalSignatures>(
             signal: K,
             callback: StreamNull.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StreamNull.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StreamNull.SignalSignatures[K]>
+            ...args: StreamNull.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -7260,14 +7452,17 @@ export namespace GMime {
             signal: K,
             callback: StreamPipe.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StreamPipe.SignalSignatures>(
             signal: K,
             callback: StreamPipe.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StreamPipe.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StreamPipe.SignalSignatures[K]>
+            ...args: StreamPipe.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -7318,14 +7513,17 @@ export namespace GMime {
         // Signals
 
         connect<K extends keyof TextPart.SignalSignatures>(signal: K, callback: TextPart.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TextPart.SignalSignatures>(
             signal: K,
             callback: TextPart.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TextPart.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TextPart.SignalSignatures[K]>
+            ...args: TextPart.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

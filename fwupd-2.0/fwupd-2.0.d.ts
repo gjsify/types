@@ -1108,6 +1108,20 @@ export namespace Fwupd {
             'device-changed': DeviceChanged;
             'device-removed': DeviceRemoved;
             'status-changed': StatusChanged;
+            'notify::daemon-version': GObject.Object.Notify;
+            'notify::daemon-version': GObject.Object.Notify;
+            'notify::host-machine-id': GObject.Object.Notify;
+            'notify::host-machine-id': GObject.Object.Notify;
+            'notify::host-product': GObject.Object.Notify;
+            'notify::host-product': GObject.Object.Notify;
+            'notify::host-security-id': GObject.Object.Notify;
+            'notify::host-security-id': GObject.Object.Notify;
+            'notify::interactive': GObject.Object.Notify;
+            'notify::percentage': GObject.Object.Notify;
+            'notify::soup-session': GObject.Object.Notify;
+            'notify::soup-session': GObject.Object.Notify;
+            'notify::status': GObject.Object.Notify;
+            'notify::tainted': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1205,8 +1219,14 @@ export namespace Fwupd {
         // Signals
 
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -3290,7 +3310,16 @@ export namespace Fwupd {
 
     namespace Device {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::flags': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::protocol': GObject.Object.Notify;
+            'notify::status': GObject.Object.Notify;
+            'notify::update-state': GObject.Object.Notify;
+            'notify::update-state': GObject.Object.Notify;
+            'notify::version-format': GObject.Object.Notify;
+            'notify::version-format': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3339,8 +3368,14 @@ export namespace Fwupd {
         // Signals
 
         connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
-        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            ...args: Device.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -3822,7 +3857,10 @@ export namespace Fwupd {
 
     namespace Plugin {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::flags': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3853,8 +3891,14 @@ export namespace Fwupd {
         // Signals
 
         connect<K extends keyof Plugin.SignalSignatures>(signal: K, callback: Plugin.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Plugin.SignalSignatures>(signal: K, callback: Plugin.SignalSignatures[K]): number;
-        emit<K extends keyof Plugin.SignalSignatures>(signal: K, ...args: Parameters<Plugin.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Plugin.SignalSignatures>(
+            signal: K,
+            ...args: Plugin.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -3952,14 +3996,17 @@ export namespace Fwupd {
         // Signals
 
         connect<K extends keyof Release.SignalSignatures>(signal: K, callback: Release.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Release.SignalSignatures>(
             signal: K,
             callback: Release.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Release.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Release.SignalSignatures[K]>
+            ...args: Release.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -4363,7 +4410,16 @@ export namespace Fwupd {
 
     namespace Remote {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::approval-required': GObject.Object.Notify;
+            'notify::approval-required': GObject.Object.Notify;
+            'notify::automatic-reports': GObject.Object.Notify;
+            'notify::automatic-reports': GObject.Object.Notify;
+            'notify::automatic-security-reports': GObject.Object.Notify;
+            'notify::automatic-security-reports': GObject.Object.Notify;
+            'notify::enabled': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4438,8 +4494,14 @@ export namespace Fwupd {
         // Signals
 
         connect<K extends keyof Remote.SignalSignatures>(signal: K, callback: Remote.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Remote.SignalSignatures>(signal: K, callback: Remote.SignalSignatures[K]): number;
-        emit<K extends keyof Remote.SignalSignatures>(signal: K, ...args: Parameters<Remote.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Remote.SignalSignatures>(
+            signal: K,
+            ...args: Remote.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -4681,14 +4743,17 @@ export namespace Fwupd {
             signal: K,
             callback: SecurityAttr.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SecurityAttr.SignalSignatures>(
             signal: K,
             callback: SecurityAttr.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SecurityAttr.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SecurityAttr.SignalSignatures[K]>
+            ...args: SecurityAttr.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 

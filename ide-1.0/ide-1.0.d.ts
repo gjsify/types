@@ -984,7 +984,39 @@ export namespace Ide {
     }
     namespace Application {
         // Signal signatures
-        interface SignalSignatures extends Dazzle.Application.SignalSignatures {}
+        interface SignalSignatures extends Dazzle.Application.SignalSignatures {
+            'notify::menu-manager': GObject.Object.Notify;
+            'notify::menu-manager': GObject.Object.Notify;
+            'notify::shortcut-manager': GObject.Object.Notify;
+            'notify::shortcut-manager': GObject.Object.Notify;
+            'notify::theme-manager': GObject.Object.Notify;
+            'notify::theme-manager': GObject.Object.Notify;
+            'notify::active-window': GObject.Object.Notify;
+            'notify::active-window': GObject.Object.Notify;
+            'notify::app-menu': GObject.Object.Notify;
+            'notify::app-menu': GObject.Object.Notify;
+            'notify::menubar': GObject.Object.Notify;
+            'notify::register-session': GObject.Object.Notify;
+            'notify::register-session': GObject.Object.Notify;
+            'notify::screensaver-active': GObject.Object.Notify;
+            'notify::screensaver-active': GObject.Object.Notify;
+            'notify::action-group': GObject.Object.Notify;
+            'notify::action-group': GObject.Object.Notify;
+            'notify::application-id': GObject.Object.Notify;
+            'notify::application-id': GObject.Object.Notify;
+            'notify::flags': GObject.Object.Notify;
+            'notify::inactivity-timeout': GObject.Object.Notify;
+            'notify::inactivity-timeout': GObject.Object.Notify;
+            'notify::is-busy': GObject.Object.Notify;
+            'notify::is-busy': GObject.Object.Notify;
+            'notify::is-registered': GObject.Object.Notify;
+            'notify::is-registered': GObject.Object.Notify;
+            'notify::is-remote': GObject.Object.Notify;
+            'notify::is-remote': GObject.Object.Notify;
+            'notify::resource-base-path': GObject.Object.Notify;
+            'notify::resource-base-path': GObject.Object.Notify;
+            'notify::version': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1011,14 +1043,17 @@ export namespace Ide {
             signal: K,
             callback: Application.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Application.SignalSignatures>(
             signal: K,
             callback: Application.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Application.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Application.SignalSignatures[K]>
+            ...args: Application.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1555,7 +1590,11 @@ export namespace Ide {
 
     namespace BackForwardItem {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::mark': GObject.Object.Notify;
+            'notify::uri': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1597,14 +1636,17 @@ export namespace Ide {
             signal: K,
             callback: BackForwardItem.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BackForwardItem.SignalSignatures>(
             signal: K,
             callback: BackForwardItem.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BackForwardItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BackForwardItem.SignalSignatures[K]>
+            ...args: BackForwardItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1631,6 +1673,13 @@ export namespace Ide {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
             'navigate-to': NavigateTo;
+            'notify::can-go-backward': GObject.Object.Notify;
+            'notify::can-go-backward': GObject.Object.Notify;
+            'notify::can-go-forward': GObject.Object.Notify;
+            'notify::can-go-forward': GObject.Object.Notify;
+            'notify::current-item': GObject.Object.Notify;
+            'notify::current-item': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1669,14 +1718,17 @@ export namespace Ide {
             signal: K,
             callback: BackForwardList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BackForwardList.SignalSignatures>(
             signal: K,
             callback: BackForwardList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BackForwardList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BackForwardList.SignalSignatures[K]>
+            ...args: BackForwardList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1738,6 +1790,48 @@ export namespace Ide {
             loaded: Loaded;
             saved: Saved;
             'symbol-resolver-loaded': SymbolResolverLoaded;
+            'notify::busy': GObject.Object.Notify;
+            'notify::changed-on-volume': GObject.Object.Notify;
+            'notify::changed-on-volume': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
+            'notify::file': GObject.Object.Notify;
+            'notify::has-diagnostics': GObject.Object.Notify;
+            'notify::has-diagnostics': GObject.Object.Notify;
+            'notify::highlight-diagnostics': GObject.Object.Notify;
+            'notify::highlight-diagnostics': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::style-scheme-name': GObject.Object.Notify;
+            'notify::style-scheme-name': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::can-redo': GObject.Object.Notify;
+            'notify::can-redo': GObject.Object.Notify;
+            'notify::can-undo': GObject.Object.Notify;
+            'notify::can-undo': GObject.Object.Notify;
+            'notify::highlight-matching-brackets': GObject.Object.Notify;
+            'notify::highlight-matching-brackets': GObject.Object.Notify;
+            'notify::highlight-syntax': GObject.Object.Notify;
+            'notify::highlight-syntax': GObject.Object.Notify;
+            'notify::implicit-trailing-newline': GObject.Object.Notify;
+            'notify::implicit-trailing-newline': GObject.Object.Notify;
+            'notify::language': GObject.Object.Notify;
+            'notify::max-undo-levels': GObject.Object.Notify;
+            'notify::max-undo-levels': GObject.Object.Notify;
+            'notify::style-scheme': GObject.Object.Notify;
+            'notify::style-scheme': GObject.Object.Notify;
+            'notify::undo-manager': GObject.Object.Notify;
+            'notify::undo-manager': GObject.Object.Notify;
+            'notify::copy-target-list': GObject.Object.Notify;
+            'notify::copy-target-list': GObject.Object.Notify;
+            'notify::cursor-position': GObject.Object.Notify;
+            'notify::cursor-position': GObject.Object.Notify;
+            'notify::has-selection': GObject.Object.Notify;
+            'notify::has-selection': GObject.Object.Notify;
+            'notify::paste-target-list': GObject.Object.Notify;
+            'notify::paste-target-list': GObject.Object.Notify;
+            'notify::tag-table': GObject.Object.Notify;
+            'notify::tag-table': GObject.Object.Notify;
+            'notify::text': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1795,8 +1889,14 @@ export namespace Ide {
         // Signals
 
         connect<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
-        emit<K extends keyof Buffer.SignalSignatures>(signal: K, ...args: Parameters<Buffer.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Buffer.SignalSignatures>(
+            signal: K,
+            ...args: Buffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -2012,6 +2112,8 @@ export namespace Ide {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
             changed: Changed;
+            'notify::buffer': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -2040,14 +2142,17 @@ export namespace Ide {
             signal: K,
             callback: BufferChangeMonitor.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BufferChangeMonitor.SignalSignatures>(
             signal: K,
             callback: BufferChangeMonitor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BufferChangeMonitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BufferChangeMonitor.SignalSignatures[K]>
+            ...args: BufferChangeMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -2107,6 +2212,15 @@ export namespace Ide {
             'create-buffer': CreateBuffer;
             'load-buffer': LoadBuffer;
             'save-buffer': SaveBuffer;
+            'notify::auto-save': GObject.Object.Notify;
+            'notify::auto-save': GObject.Object.Notify;
+            'notify::auto-save-timeout': GObject.Object.Notify;
+            'notify::auto-save-timeout': GObject.Object.Notify;
+            'notify::focus-buffer': GObject.Object.Notify;
+            'notify::focus-buffer': GObject.Object.Notify;
+            'notify::minimum-word-size': GObject.Object.Notify;
+            'notify::minimum-word-size': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -2159,14 +2273,17 @@ export namespace Ide {
             signal: K,
             callback: BufferManager.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BufferManager.SignalSignatures>(
             signal: K,
             callback: BufferManager.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BufferManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BufferManager.SignalSignatures[K]>
+            ...args: BufferManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2959,6 +3076,18 @@ export namespace Ide {
             'build-failed': BuildFailed;
             'build-finished': BuildFinished;
             'build-started': BuildStarted;
+            'notify::busy': GObject.Object.Notify;
+            'notify::can-build': GObject.Object.Notify;
+            'notify::can-build': GObject.Object.Notify;
+            'notify::has-diagnostics': GObject.Object.Notify;
+            'notify::has-diagnostics': GObject.Object.Notify;
+            'notify::last-build-time': GObject.Object.Notify;
+            'notify::last-build-time': GObject.Object.Notify;
+            'notify::message': GObject.Object.Notify;
+            'notify::pipeline': GObject.Object.Notify;
+            'notify::running-time': GObject.Object.Notify;
+            'notify::running-time': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -3069,14 +3198,17 @@ export namespace Ide {
             signal: K,
             callback: BuildManager.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BuildManager.SignalSignatures>(
             signal: K,
             callback: BuildManager.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BuildManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BuildManager.SignalSignatures[K]>
+            ...args: BuildManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4175,6 +4307,11 @@ export namespace Ide {
             diagnostic: Diagnostic;
             finished: Finished;
             started: Started;
+            'notify::busy': GObject.Object.Notify;
+            'notify::configuration': GObject.Object.Notify;
+            'notify::message': GObject.Object.Notify;
+            'notify::phase': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -4253,14 +4390,17 @@ export namespace Ide {
             signal: K,
             callback: BuildPipeline.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BuildPipeline.SignalSignatures>(
             signal: K,
             callback: BuildPipeline.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BuildPipeline.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BuildPipeline.SignalSignatures[K]>
+            ...args: BuildPipeline.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4999,7 +5139,7 @@ export namespace Ide {
         // Signal callback interfaces
 
         interface Chain {
-            (_source: BuildStage, object: BuildStage): boolean;
+            (_source: BuildStage, object: BuildStage): boolean | void;
         }
 
         interface Query {
@@ -5015,6 +5155,15 @@ export namespace Ide {
             chain: Chain;
             query: Query;
             reap: Reap;
+            'notify::check-stdout': GObject.Object.Notify;
+            'notify::check-stdout': GObject.Object.Notify;
+            'notify::completed': GObject.Object.Notify;
+            'notify::disabled': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::stdout-path': GObject.Object.Notify;
+            'notify::stdout-path': GObject.Object.Notify;
+            'notify::transient': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -5125,14 +5274,17 @@ export namespace Ide {
             signal: K,
             callback: BuildStage.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BuildStage.SignalSignatures>(
             signal: K,
             callback: BuildStage.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BuildStage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BuildStage.SignalSignatures[K]>
+            ...args: BuildStage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -5219,7 +5371,22 @@ export namespace Ide {
 
     namespace BuildStageLauncher {
         // Signal signatures
-        interface SignalSignatures extends BuildStage.SignalSignatures {}
+        interface SignalSignatures extends BuildStage.SignalSignatures {
+            'notify::clean-launcher': GObject.Object.Notify;
+            'notify::clean-launcher': GObject.Object.Notify;
+            'notify::ignore-exit-status': GObject.Object.Notify;
+            'notify::ignore-exit-status': GObject.Object.Notify;
+            'notify::launcher': GObject.Object.Notify;
+            'notify::check-stdout': GObject.Object.Notify;
+            'notify::check-stdout': GObject.Object.Notify;
+            'notify::completed': GObject.Object.Notify;
+            'notify::disabled': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::stdout-path': GObject.Object.Notify;
+            'notify::stdout-path': GObject.Object.Notify;
+            'notify::transient': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5262,14 +5429,17 @@ export namespace Ide {
             signal: K,
             callback: BuildStageLauncher.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BuildStageLauncher.SignalSignatures>(
             signal: K,
             callback: BuildStageLauncher.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BuildStageLauncher.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BuildStageLauncher.SignalSignatures[K]>
+            ...args: BuildStageLauncher.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5296,7 +5466,17 @@ export namespace Ide {
 
     namespace BuildStageMkdirs {
         // Signal signatures
-        interface SignalSignatures extends BuildStage.SignalSignatures {}
+        interface SignalSignatures extends BuildStage.SignalSignatures {
+            'notify::check-stdout': GObject.Object.Notify;
+            'notify::check-stdout': GObject.Object.Notify;
+            'notify::completed': GObject.Object.Notify;
+            'notify::disabled': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::stdout-path': GObject.Object.Notify;
+            'notify::stdout-path': GObject.Object.Notify;
+            'notify::transient': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5320,14 +5500,17 @@ export namespace Ide {
             signal: K,
             callback: BuildStageMkdirs.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BuildStageMkdirs.SignalSignatures>(
             signal: K,
             callback: BuildStageMkdirs.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BuildStageMkdirs.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BuildStageMkdirs.SignalSignatures[K]>
+            ...args: BuildStageMkdirs.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5336,7 +5519,20 @@ export namespace Ide {
 
     namespace BuildStageTransfer {
         // Signal signatures
-        interface SignalSignatures extends BuildStage.SignalSignatures {}
+        interface SignalSignatures extends BuildStage.SignalSignatures {
+            'notify::disable-when-metered': GObject.Object.Notify;
+            'notify::disable-when-metered': GObject.Object.Notify;
+            'notify::transfer': GObject.Object.Notify;
+            'notify::check-stdout': GObject.Object.Notify;
+            'notify::check-stdout': GObject.Object.Notify;
+            'notify::completed': GObject.Object.Notify;
+            'notify::disabled': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::stdout-path': GObject.Object.Notify;
+            'notify::stdout-path': GObject.Object.Notify;
+            'notify::transient': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5372,19 +5568,49 @@ export namespace Ide {
             signal: K,
             callback: BuildStageTransfer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BuildStageTransfer.SignalSignatures>(
             signal: K,
             callback: BuildStageTransfer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BuildStageTransfer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BuildStageTransfer.SignalSignatures[K]>
+            ...args: BuildStageTransfer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace BuildconfigConfiguration {
         // Signal signatures
-        interface SignalSignatures extends Configuration.SignalSignatures {}
+        interface SignalSignatures extends Configuration.SignalSignatures {
+            'notify::postbuild': GObject.Object.Notify;
+            'notify::prebuild': GObject.Object.Notify;
+            'notify::app-id': GObject.Object.Notify;
+            'notify::app-id': GObject.Object.Notify;
+            'notify::build-commands': GObject.Object.Notify;
+            'notify::build-commands': GObject.Object.Notify;
+            'notify::config-opts': GObject.Object.Notify;
+            'notify::config-opts': GObject.Object.Notify;
+            'notify::debug': GObject.Object.Notify;
+            'notify::device': GObject.Object.Notify;
+            'notify::device-id': GObject.Object.Notify;
+            'notify::device-id': GObject.Object.Notify;
+            'notify::dirty': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::environ': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::parallelism': GObject.Object.Notify;
+            'notify::post-install-commands': GObject.Object.Notify;
+            'notify::post-install-commands': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::ready': GObject.Object.Notify;
+            'notify::runtime': GObject.Object.Notify;
+            'notify::runtime-id': GObject.Object.Notify;
+            'notify::runtime-id': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5416,14 +5642,17 @@ export namespace Ide {
             signal: K,
             callback: BuildconfigConfiguration.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BuildconfigConfiguration.SignalSignatures>(
             signal: K,
             callback: BuildconfigConfiguration.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BuildconfigConfiguration.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BuildconfigConfiguration.SignalSignatures[K]>
+            ...args: BuildconfigConfiguration.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5457,14 +5686,17 @@ export namespace Ide {
             signal: K,
             callback: BuildconfigConfigurationProvider.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BuildconfigConfigurationProvider.SignalSignatures>(
             signal: K,
             callback: BuildconfigConfigurationProvider.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BuildconfigConfigurationProvider.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BuildconfigConfigurationProvider.SignalSignatures[K]>
+            ...args: BuildconfigConfigurationProvider.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5967,14 +6199,17 @@ export namespace Ide {
             signal: K,
             callback: CompletionItem.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CompletionItem.SignalSignatures>(
             signal: K,
             callback: CompletionItem.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CompletionItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CompletionItem.SignalSignatures[K]>
+            ...args: CompletionItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -6003,7 +6238,9 @@ export namespace Ide {
 
     namespace CompletionResults {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::query': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6033,14 +6270,17 @@ export namespace Ide {
             signal: K,
             callback: CompletionResults.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CompletionResults.SignalSignatures>(
             signal: K,
             callback: CompletionResults.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CompletionResults.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CompletionResults.SignalSignatures[K]>
+            ...args: CompletionResults.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -6058,7 +6298,20 @@ export namespace Ide {
 
     namespace CompletionWords {
         // Signal signatures
-        interface SignalSignatures extends GtkSource.CompletionWords.SignalSignatures {}
+        interface SignalSignatures extends GtkSource.CompletionWords.SignalSignatures {
+            'notify::activation': GObject.Object.Notify;
+            'notify::icon': GObject.Object.Notify;
+            'notify::interactive-delay': GObject.Object.Notify;
+            'notify::interactive-delay': GObject.Object.Notify;
+            'notify::minimum-word-size': GObject.Object.Notify;
+            'notify::minimum-word-size': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::priority': GObject.Object.Notify;
+            'notify::proposals-batch-size': GObject.Object.Notify;
+            'notify::proposals-batch-size': GObject.Object.Notify;
+            'notify::scan-batch-size': GObject.Object.Notify;
+            'notify::scan-batch-size': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6082,14 +6335,17 @@ export namespace Ide {
             signal: K,
             callback: CompletionWords.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CompletionWords.SignalSignatures>(
             signal: K,
             callback: CompletionWords.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CompletionWords.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CompletionWords.SignalSignatures[K]>
+            ...args: CompletionWords.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -6780,6 +7036,30 @@ export namespace Ide {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
             changed: Changed;
+            'notify::app-id': GObject.Object.Notify;
+            'notify::app-id': GObject.Object.Notify;
+            'notify::build-commands': GObject.Object.Notify;
+            'notify::build-commands': GObject.Object.Notify;
+            'notify::config-opts': GObject.Object.Notify;
+            'notify::config-opts': GObject.Object.Notify;
+            'notify::debug': GObject.Object.Notify;
+            'notify::device': GObject.Object.Notify;
+            'notify::device-id': GObject.Object.Notify;
+            'notify::device-id': GObject.Object.Notify;
+            'notify::dirty': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::environ': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::parallelism': GObject.Object.Notify;
+            'notify::post-install-commands': GObject.Object.Notify;
+            'notify::post-install-commands': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::ready': GObject.Object.Notify;
+            'notify::runtime': GObject.Object.Notify;
+            'notify::runtime-id': GObject.Object.Notify;
+            'notify::runtime-id': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -6874,14 +7154,17 @@ export namespace Ide {
             signal: K,
             callback: Configuration.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Configuration.SignalSignatures>(
             signal: K,
             callback: Configuration.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Configuration.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Configuration.SignalSignatures[K]>
+            ...args: Configuration.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -7013,6 +7296,10 @@ export namespace Ide {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
             invalidate: Invalidate;
+            'notify::current': GObject.Object.Notify;
+            'notify::current-display-name': GObject.Object.Notify;
+            'notify::current-display-name': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -7052,14 +7339,17 @@ export namespace Ide {
             signal: K,
             callback: ConfigurationManager.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConfigurationManager.SignalSignatures>(
             signal: K,
             callback: ConfigurationManager.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConfigurationManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConfigurationManager.SignalSignatures[K]>
+            ...args: ConfigurationManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -7837,6 +8127,30 @@ export namespace Ide {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             loaded: Loaded;
+            'notify::back-forward-list': GObject.Object.Notify;
+            'notify::back-forward-list': GObject.Object.Notify;
+            'notify::buffer-manager': GObject.Object.Notify;
+            'notify::buffer-manager': GObject.Object.Notify;
+            'notify::build-system': GObject.Object.Notify;
+            'notify::build-system': GObject.Object.Notify;
+            'notify::configuration-manager': GObject.Object.Notify;
+            'notify::configuration-manager': GObject.Object.Notify;
+            'notify::device-manager': GObject.Object.Notify;
+            'notify::device-manager': GObject.Object.Notify;
+            'notify::project': GObject.Object.Notify;
+            'notify::project-file': GObject.Object.Notify;
+            'notify::project-file': GObject.Object.Notify;
+            'notify::root-build-dir': GObject.Object.Notify;
+            'notify::root-build-dir': GObject.Object.Notify;
+            'notify::runtime-manager': GObject.Object.Notify;
+            'notify::runtime-manager': GObject.Object.Notify;
+            'notify::search-engine': GObject.Object.Notify;
+            'notify::search-engine': GObject.Object.Notify;
+            'notify::snippets-manager': GObject.Object.Notify;
+            'notify::snippets-manager': GObject.Object.Notify;
+            'notify::unsaved-files': GObject.Object.Notify;
+            'notify::unsaved-files': GObject.Object.Notify;
+            'notify::vcs': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -7917,14 +8231,17 @@ export namespace Ide {
         // Signals
 
         connect<K extends keyof Context.SignalSignatures>(signal: K, callback: Context.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Context.SignalSignatures>(
             signal: K,
             callback: Context.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Context.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Context.SignalSignatures[K]>
+            ...args: Context.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -8789,7 +9106,10 @@ export namespace Ide {
 
     namespace Cursor {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::ide-source-view': GObject.Object.Notify;
+            'notify::ide-source-view': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8818,8 +9138,14 @@ export namespace Ide {
         // Signals
 
         connect<K extends keyof Cursor.SignalSignatures>(signal: K, callback: Cursor.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Cursor.SignalSignatures>(signal: K, callback: Cursor.SignalSignatures[K]): number;
-        emit<K extends keyof Cursor.SignalSignatures>(signal: K, ...args: Parameters<Cursor.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Cursor.SignalSignatures>(
+            signal: K,
+            ...args: Cursor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -8831,7 +9157,14 @@ export namespace Ide {
 
     namespace Device {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::display-name': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::system-type': GObject.Object.Notify;
+            'notify::system-type': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8867,8 +9200,14 @@ export namespace Ide {
         // Signals
 
         connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
-        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            ...args: Device.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -8928,6 +9267,8 @@ export namespace Ide {
         interface SignalSignatures extends Object.SignalSignatures {
             'device-added': DeviceAdded;
             'device-removed': DeviceRemoved;
+            'notify::settled': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -8958,14 +9299,17 @@ export namespace Ide {
             signal: K,
             callback: DeviceManager.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceManager.SignalSignatures>(
             signal: K,
             callback: DeviceManager.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceManager.SignalSignatures[K]>
+            ...args: DeviceManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -9530,6 +9874,8 @@ export namespace Ide {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
             changed: Changed;
+            'notify::busy': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -9558,14 +9904,17 @@ export namespace Ide {
             signal: K,
             callback: DiagnosticsManager.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DiagnosticsManager.SignalSignatures>(
             signal: K,
             callback: DiagnosticsManager.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DiagnosticsManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DiagnosticsManager.SignalSignatures[K]>
+            ...args: DiagnosticsManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -10117,7 +10466,11 @@ export namespace Ide {
 
     namespace DirectoryBuildSystem {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::project-file': GObject.Object.Notify;
+            'notify::project-file': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10150,14 +10503,17 @@ export namespace Ide {
             signal: K,
             callback: DirectoryBuildSystem.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DirectoryBuildSystem.SignalSignatures>(
             signal: K,
             callback: DirectoryBuildSystem.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DirectoryBuildSystem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DirectoryBuildSystem.SignalSignatures[K]>
+            ...args: DirectoryBuildSystem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get context(): Context;
@@ -10878,7 +11234,13 @@ export namespace Ide {
 
     namespace DirectoryVcs {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::context': GObject.Object.Notify;
+            'notify::branch-name': GObject.Object.Notify;
+            'notify::branch-name': GObject.Object.Notify;
+            'notify::working-directory': GObject.Object.Notify;
+            'notify::working-directory': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10903,14 +11265,17 @@ export namespace Ide {
             signal: K,
             callback: DirectoryVcs.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DirectoryVcs.SignalSignatures>(
             signal: K,
             callback: DirectoryVcs.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DirectoryVcs.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DirectoryVcs.SignalSignatures[K]>
+            ...args: DirectoryVcs.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get branch_name(): string;
@@ -11644,7 +12009,18 @@ export namespace Ide {
 
     namespace Doap {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::bug-database': GObject.Object.Notify;
+            'notify::bug-database': GObject.Object.Notify;
+            'notify::category': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::download-page': GObject.Object.Notify;
+            'notify::download-page': GObject.Object.Notify;
+            'notify::homepage': GObject.Object.Notify;
+            'notify::languages': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::shortdesc': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11699,8 +12075,14 @@ export namespace Ide {
         // Signals
 
         connect<K extends keyof Doap.SignalSignatures>(signal: K, callback: Doap.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Doap.SignalSignatures>(signal: K, callback: Doap.SignalSignatures[K]): number;
-        emit<K extends keyof Doap.SignalSignatures>(signal: K, ...args: Parameters<Doap.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Doap.SignalSignatures>(
+            signal: K,
+            ...args: Doap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -11719,7 +12101,10 @@ export namespace Ide {
 
     namespace DoapPerson {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::email': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11753,14 +12138,17 @@ export namespace Ide {
             signal: K,
             callback: DoapPerson.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DoapPerson.SignalSignatures>(
             signal: K,
             callback: DoapPerson.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DoapPerson.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DoapPerson.SignalSignatures[K]>
+            ...args: DoapPerson.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -11785,6 +12173,82 @@ export namespace Ide {
         interface SignalSignatures extends Dazzle.DockOverlay.SignalSignatures {
             'view-added': ViewAdded;
             'view-removed': ViewRemoved;
+            'notify::active-view': GObject.Object.Notify;
+            'notify::active-view': GObject.Object.Notify;
+            'notify::above-child': GObject.Object.Notify;
+            'notify::above-child': GObject.Object.Notify;
+            'notify::visible-window': GObject.Object.Notify;
+            'notify::visible-window': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::child': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::events': GObject.Object.Notify;
+            'notify::expand': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::halign': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::hexpand': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::margin': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::sensitive': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::valign': GObject.Object.Notify;
+            'notify::vexpand': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::window': GObject.Object.Notify;
+            'notify::manager': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -11824,14 +12288,17 @@ export namespace Ide {
             signal: K,
             callback: EditorPerspective.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof EditorPerspective.SignalSignatures>(
             signal: K,
             callback: EditorPerspective.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof EditorPerspective.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EditorPerspective.SignalSignatures[K]>
+            ...args: EditorPerspective.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -16789,6 +17256,86 @@ export namespace Ide {
         // Signal signatures
         interface SignalSignatures extends LayoutView.SignalSignatures {
             'request-documentation': RequestDocumentation;
+            'notify::document': GObject.Object.Notify;
+            'notify::can-split': GObject.Object.Notify;
+            'notify::can-split': GObject.Object.Notify;
+            'notify::modified': GObject.Object.Notify;
+            'notify::special-title': GObject.Object.Notify;
+            'notify::special-title': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::baseline-position': GObject.Object.Notify;
+            'notify::baseline-position': GObject.Object.Notify;
+            'notify::homogeneous': GObject.Object.Notify;
+            'notify::spacing': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::child': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::events': GObject.Object.Notify;
+            'notify::expand': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::halign': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::hexpand': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::margin': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::sensitive': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::valign': GObject.Object.Notify;
+            'notify::vexpand': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::window': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -16821,14 +17368,17 @@ export namespace Ide {
             signal: K,
             callback: EditorView.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof EditorView.SignalSignatures>(
             signal: K,
             callback: EditorView.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof EditorView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EditorView.SignalSignatures[K]>
+            ...args: EditorView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -17313,14 +17863,17 @@ export namespace Ide {
             signal: K,
             callback: Environment.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Environment.SignalSignatures>(
             signal: K,
             callback: Environment.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Environment.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Environment.SignalSignatures[K]>
+            ...args: Environment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -17878,7 +18431,10 @@ export namespace Ide {
 
     namespace EnvironmentVariable {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::key': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17912,14 +18468,17 @@ export namespace Ide {
             signal: K,
             callback: EnvironmentVariable.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof EnvironmentVariable.SignalSignatures>(
             signal: K,
             callback: EnvironmentVariable.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof EnvironmentVariable.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EnvironmentVariable.SignalSignatures[K]>
+            ...args: EnvironmentVariable.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -17931,7 +18490,15 @@ export namespace Ide {
 
     namespace ExtensionAdapter {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::engine': GObject.Object.Notify;
+            'notify::extension': GObject.Object.Notify;
+            'notify::interface-type': GObject.Object.Notify;
+            'notify::interface-type': GObject.Object.Notify;
+            'notify::key': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17979,14 +18546,17 @@ export namespace Ide {
             signal: K,
             callback: ExtensionAdapter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExtensionAdapter.SignalSignatures>(
             signal: K,
             callback: ExtensionAdapter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExtensionAdapter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExtensionAdapter.SignalSignatures[K]>
+            ...args: ExtensionAdapter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -18022,6 +18592,12 @@ export namespace Ide {
         interface SignalSignatures extends Object.SignalSignatures {
             'extension-added': ExtensionAdded;
             'extension-removed': ExtensionRemoved;
+            'notify::engine': GObject.Object.Notify;
+            'notify::interface-type': GObject.Object.Notify;
+            'notify::interface-type': GObject.Object.Notify;
+            'notify::key': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -18068,14 +18644,17 @@ export namespace Ide {
             signal: K,
             callback: ExtensionSetAdapter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExtensionSetAdapter.SignalSignatures>(
             signal: K,
             callback: ExtensionSetAdapter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExtensionSetAdapter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExtensionSetAdapter.SignalSignatures[K]>
+            ...args: ExtensionSetAdapter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -18099,7 +18678,16 @@ export namespace Ide {
 
     namespace File {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::file': GObject.Object.Notify;
+            'notify::is-temporary': GObject.Object.Notify;
+            'notify::is-temporary': GObject.Object.Notify;
+            'notify::language': GObject.Object.Notify;
+            'notify::path': GObject.Object.Notify;
+            'notify::temporary-id': GObject.Object.Notify;
+            'notify::temporary-id': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -18140,8 +18728,14 @@ export namespace Ide {
         // Signals
 
         connect<K extends keyof File.SignalSignatures>(signal: K, callback: File.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof File.SignalSignatures>(signal: K, callback: File.SignalSignatures[K]): number;
-        emit<K extends keyof File.SignalSignatures>(signal: K, ...args: Parameters<File.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof File.SignalSignatures>(
+            signal: K,
+            ...args: File.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -18200,7 +18794,50 @@ export namespace Ide {
 
     namespace FileSettings {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::encoding': GObject.Object.Notify;
+            'notify::encoding-set': GObject.Object.Notify;
+            'notify::encoding-set': GObject.Object.Notify;
+            'notify::file': GObject.Object.Notify;
+            'notify::indent-style': GObject.Object.Notify;
+            'notify::indent-style': GObject.Object.Notify;
+            'notify::indent-style-set': GObject.Object.Notify;
+            'notify::indent-style-set': GObject.Object.Notify;
+            'notify::indent-width': GObject.Object.Notify;
+            'notify::indent-width': GObject.Object.Notify;
+            'notify::indent-width-set': GObject.Object.Notify;
+            'notify::indent-width-set': GObject.Object.Notify;
+            'notify::insert-trailing-newline': GObject.Object.Notify;
+            'notify::insert-trailing-newline': GObject.Object.Notify;
+            'notify::insert-trailing-newline-set': GObject.Object.Notify;
+            'notify::insert-trailing-newline-set': GObject.Object.Notify;
+            'notify::newline-type': GObject.Object.Notify;
+            'notify::newline-type': GObject.Object.Notify;
+            'notify::newline-type-set': GObject.Object.Notify;
+            'notify::newline-type-set': GObject.Object.Notify;
+            'notify::overwrite-braces': GObject.Object.Notify;
+            'notify::overwrite-braces': GObject.Object.Notify;
+            'notify::overwrite-braces-set': GObject.Object.Notify;
+            'notify::overwrite-braces-set': GObject.Object.Notify;
+            'notify::right-margin-position': GObject.Object.Notify;
+            'notify::right-margin-position': GObject.Object.Notify;
+            'notify::right-margin-position-set': GObject.Object.Notify;
+            'notify::right-margin-position-set': GObject.Object.Notify;
+            'notify::settled': GObject.Object.Notify;
+            'notify::show-right-margin': GObject.Object.Notify;
+            'notify::show-right-margin': GObject.Object.Notify;
+            'notify::show-right-margin-set': GObject.Object.Notify;
+            'notify::show-right-margin-set': GObject.Object.Notify;
+            'notify::tab-width': GObject.Object.Notify;
+            'notify::tab-width': GObject.Object.Notify;
+            'notify::tab-width-set': GObject.Object.Notify;
+            'notify::tab-width-set': GObject.Object.Notify;
+            'notify::trim-trailing-whitespace': GObject.Object.Notify;
+            'notify::trim-trailing-whitespace': GObject.Object.Notify;
+            'notify::trim-trailing-whitespace-set': GObject.Object.Notify;
+            'notify::trim-trailing-whitespace-set': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -18350,14 +18987,17 @@ export namespace Ide {
             signal: K,
             callback: FileSettings.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FileSettings.SignalSignatures>(
             signal: K,
             callback: FileSettings.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FileSettings.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileSettings.SignalSignatures[K]>
+            ...args: FileSettings.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -18391,7 +19031,12 @@ export namespace Ide {
 
     namespace FormatterOptions {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::insert-spaces': GObject.Object.Notify;
+            'notify::insert-spaces': GObject.Object.Notify;
+            'notify::tab-width': GObject.Object.Notify;
+            'notify::tab-width': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -18431,14 +19076,17 @@ export namespace Ide {
             signal: K,
             callback: FormatterOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FormatterOptions.SignalSignatures>(
             signal: K,
             callback: FormatterOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FormatterOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FormatterOptions.SignalSignatures[K]>
+            ...args: FormatterOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -18450,7 +19098,11 @@ export namespace Ide {
 
     namespace HighlightEngine {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::buffer': GObject.Object.Notify;
+            'notify::highlighter': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -18482,14 +19134,17 @@ export namespace Ide {
             signal: K,
             callback: HighlightEngine.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HighlightEngine.SignalSignatures>(
             signal: K,
             callback: HighlightEngine.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HighlightEngine.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HighlightEngine.SignalSignatures[K]>
+            ...args: HighlightEngine.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -18539,7 +19194,7 @@ export namespace Ide {
         }
 
         interface SupportsLanguage {
-            (_source: LangservClient, object: string): boolean;
+            (_source: LangservClient, object: string): boolean | void;
         }
 
         // Signal signatures
@@ -18547,6 +19202,12 @@ export namespace Ide {
             notification: Notification;
             'published-diagnostics': PublishedDiagnostics;
             'supports-language': SupportsLanguage;
+            'notify::io-stream': GObject.Object.Notify;
+            'notify::io-stream': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
+            'notification::io-stream': Notification;
+            'notification::io-stream': Notification;
+            'notification::context': Notification;
         }
 
         // Constructor properties interface
@@ -18579,14 +19240,17 @@ export namespace Ide {
             signal: K,
             callback: LangservClient.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LangservClient.SignalSignatures>(
             signal: K,
             callback: LangservClient.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LangservClient.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LangservClient.SignalSignatures[K]>
+            ...args: LangservClient.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -18696,7 +19360,10 @@ export namespace Ide {
 
     namespace LangservCompletionProvider {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::client': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -18731,14 +19398,17 @@ export namespace Ide {
             signal: K,
             callback: LangservCompletionProvider.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LangservCompletionProvider.SignalSignatures>(
             signal: K,
             callback: LangservCompletionProvider.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LangservCompletionProvider.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LangservCompletionProvider.SignalSignatures[K]>
+            ...args: LangservCompletionProvider.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -19432,7 +20102,10 @@ export namespace Ide {
 
     namespace LangservDiagnosticProvider {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::client': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -19461,14 +20134,17 @@ export namespace Ide {
             signal: K,
             callback: LangservDiagnosticProvider.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LangservDiagnosticProvider.SignalSignatures>(
             signal: K,
             callback: LangservDiagnosticProvider.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LangservDiagnosticProvider.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LangservDiagnosticProvider.SignalSignatures[K]>
+            ...args: LangservDiagnosticProvider.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -19550,7 +20226,10 @@ export namespace Ide {
 
     namespace LangservFormatter {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::client': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -19579,14 +20258,17 @@ export namespace Ide {
             signal: K,
             callback: LangservFormatter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LangservFormatter.SignalSignatures>(
             signal: K,
             callback: LangservFormatter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LangservFormatter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LangservFormatter.SignalSignatures[K]>
+            ...args: LangservFormatter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -20097,7 +20779,10 @@ export namespace Ide {
 
     namespace LangservHighlighter {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::client': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -20126,14 +20811,17 @@ export namespace Ide {
             signal: K,
             callback: LangservHighlighter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LangservHighlighter.SignalSignatures>(
             signal: K,
             callback: LangservHighlighter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LangservHighlighter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LangservHighlighter.SignalSignatures[K]>
+            ...args: LangservHighlighter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -20205,7 +20893,11 @@ export namespace Ide {
 
     namespace LangservRenameProvider {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::buffer': GObject.Object.Notify;
+            'notify::client': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -20236,14 +20928,17 @@ export namespace Ide {
             signal: K,
             callback: LangservRenameProvider.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LangservRenameProvider.SignalSignatures>(
             signal: K,
             callback: LangservRenameProvider.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LangservRenameProvider.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LangservRenameProvider.SignalSignatures[K]>
+            ...args: LangservRenameProvider.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -20369,7 +21064,14 @@ export namespace Ide {
 
     namespace LangservSymbolNode {
         // Signal signatures
-        interface SignalSignatures extends SymbolNode.SignalSignatures {}
+        interface SignalSignatures extends SymbolNode.SignalSignatures {
+            'notify::flags': GObject.Object.Notify;
+            'notify::kind': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::use-markup': GObject.Object.Notify;
+            'notify::use-markup': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -20402,14 +21104,17 @@ export namespace Ide {
             signal: K,
             callback: LangservSymbolNode.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LangservSymbolNode.SignalSignatures>(
             signal: K,
             callback: LangservSymbolNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LangservSymbolNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LangservSymbolNode.SignalSignatures[K]>
+            ...args: LangservSymbolNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -20419,7 +21124,10 @@ export namespace Ide {
 
     namespace LangservSymbolResolver {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::client': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -20448,14 +21156,17 @@ export namespace Ide {
             signal: K,
             callback: LangservSymbolResolver.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LangservSymbolResolver.SignalSignatures>(
             signal: K,
             callback: LangservSymbolResolver.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LangservSymbolResolver.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LangservSymbolResolver.SignalSignatures[K]>
+            ...args: LangservSymbolResolver.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -20678,14 +21389,17 @@ export namespace Ide {
             signal: K,
             callback: LangservSymbolTree.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LangservSymbolTree.SignalSignatures>(
             signal: K,
             callback: LangservSymbolTree.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LangservSymbolTree.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LangservSymbolTree.SignalSignatures[K]>
+            ...args: LangservSymbolTree.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -21157,7 +21871,88 @@ export namespace Ide {
 
     namespace Layout {
         // Signal signatures
-        interface SignalSignatures extends Dazzle.DockBin.SignalSignatures {}
+        interface SignalSignatures extends Dazzle.DockBin.SignalSignatures {
+            'notify::active-view': GObject.Object.Notify;
+            'notify::active-view': GObject.Object.Notify;
+            'notify::bottom-visible': GObject.Object.Notify;
+            'notify::bottom-visible': GObject.Object.Notify;
+            'notify::left-visible': GObject.Object.Notify;
+            'notify::left-visible': GObject.Object.Notify;
+            'notify::right-visible': GObject.Object.Notify;
+            'notify::right-visible': GObject.Object.Notify;
+            'notify::top-visible': GObject.Object.Notify;
+            'notify::top-visible': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::child': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::events': GObject.Object.Notify;
+            'notify::expand': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::halign': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::hexpand': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::margin': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::sensitive': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::valign': GObject.Object.Notify;
+            'notify::vexpand': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::window': GObject.Object.Notify;
+            'notify::manager': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -21189,8 +21984,14 @@ export namespace Ide {
         // Signals
 
         connect<K extends keyof Layout.SignalSignatures>(signal: K, callback: Layout.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Layout.SignalSignatures>(signal: K, callback: Layout.SignalSignatures[K]): number;
-        emit<K extends keyof Layout.SignalSignatures>(signal: K, ...args: Parameters<Layout.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Layout.SignalSignatures>(
+            signal: K,
+            ...args: Layout.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -25986,6 +26787,75 @@ export namespace Ide {
         // Signal signatures
         interface SignalSignatures extends Gtk.Bin.SignalSignatures {
             empty: Empty;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::child': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::events': GObject.Object.Notify;
+            'notify::expand': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::halign': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::hexpand': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::margin': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::sensitive': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::valign': GObject.Object.Notify;
+            'notify::vexpand': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::window': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -26013,14 +26883,17 @@ export namespace Ide {
             signal: K,
             callback: LayoutGrid.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LayoutGrid.SignalSignatures>(
             signal: K,
             callback: LayoutGrid.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LayoutGrid.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LayoutGrid.SignalSignatures[K]>
+            ...args: LayoutGrid.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -26489,7 +27362,89 @@ export namespace Ide {
 
     namespace LayoutPane {
         // Signal signatures
-        interface SignalSignatures extends Dazzle.DockBinEdge.SignalSignatures {}
+        interface SignalSignatures extends Dazzle.DockBinEdge.SignalSignatures {
+            'notify::edge': GObject.Object.Notify;
+            'notify::child-revealed': GObject.Object.Notify;
+            'notify::child-revealed': GObject.Object.Notify;
+            'notify::position': GObject.Object.Notify;
+            'notify::position-set': GObject.Object.Notify;
+            'notify::position-set': GObject.Object.Notify;
+            'notify::reveal-child': GObject.Object.Notify;
+            'notify::reveal-child': GObject.Object.Notify;
+            'notify::transition-duration': GObject.Object.Notify;
+            'notify::transition-duration': GObject.Object.Notify;
+            'notify::transition-type': GObject.Object.Notify;
+            'notify::transition-type': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::child': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::events': GObject.Object.Notify;
+            'notify::expand': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::halign': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::hexpand': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::margin': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::sensitive': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::valign': GObject.Object.Notify;
+            'notify::vexpand': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::window': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -26515,14 +27470,17 @@ export namespace Ide {
             signal: K,
             callback: LayoutPane.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LayoutPane.SignalSignatures>(
             signal: K,
             callback: LayoutPane.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LayoutPane.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LayoutPane.SignalSignatures[K]>
+            ...args: LayoutPane.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get app_paintable(): boolean;
@@ -30957,6 +31915,77 @@ export namespace Ide {
         interface SignalSignatures extends Gtk.Bin.SignalSignatures {
             empty: Empty;
             split: Split;
+            'notify::active-view': GObject.Object.Notify;
+            'notify::active-view': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::child': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::events': GObject.Object.Notify;
+            'notify::expand': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::halign': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::hexpand': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::margin': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::sensitive': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::valign': GObject.Object.Notify;
+            'notify::vexpand': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::window': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -30994,14 +32023,17 @@ export namespace Ide {
             signal: K,
             callback: LayoutStack.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LayoutStack.SignalSignatures>(
             signal: K,
             callback: LayoutStack.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LayoutStack.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LayoutStack.SignalSignatures[K]>
+            ...args: LayoutStack.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -31455,7 +32487,88 @@ export namespace Ide {
 
     namespace LayoutView {
         // Signal signatures
-        interface SignalSignatures extends Gtk.Box.SignalSignatures {}
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {
+            'notify::can-split': GObject.Object.Notify;
+            'notify::can-split': GObject.Object.Notify;
+            'notify::modified': GObject.Object.Notify;
+            'notify::special-title': GObject.Object.Notify;
+            'notify::special-title': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::baseline-position': GObject.Object.Notify;
+            'notify::baseline-position': GObject.Object.Notify;
+            'notify::homogeneous': GObject.Object.Notify;
+            'notify::spacing': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::child': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::events': GObject.Object.Notify;
+            'notify::expand': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::halign': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::hexpand': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::margin': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::sensitive': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::valign': GObject.Object.Notify;
+            'notify::vexpand': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::window': GObject.Object.Notify;
+            'notify::orientation': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -31497,14 +32610,17 @@ export namespace Ide {
             signal: K,
             callback: LayoutView.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LayoutView.SignalSignatures>(
             signal: K,
             callback: LayoutView.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LayoutView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LayoutView.SignalSignatures[K]>
+            ...args: LayoutView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -32034,7 +33150,14 @@ export namespace Ide {
 
     namespace LocalDevice {
         // Signal signatures
-        interface SignalSignatures extends Device.SignalSignatures {}
+        interface SignalSignatures extends Device.SignalSignatures {
+            'notify::display-name': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::system-type': GObject.Object.Notify;
+            'notify::system-type': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -32056,14 +33179,17 @@ export namespace Ide {
             signal: K,
             callback: LocalDevice.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LocalDevice.SignalSignatures>(
             signal: K,
             callback: LocalDevice.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LocalDevice.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LocalDevice.SignalSignatures[K]>
+            ...args: LocalDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Object {
@@ -32076,6 +33202,7 @@ export namespace Ide {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             destroy: Destroy;
+            'notify::context': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -32103,8 +33230,14 @@ export namespace Ide {
         // Signals
 
         connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
-        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            ...args: Object.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -32149,7 +33282,82 @@ export namespace Ide {
 
     namespace OmniBar {
         // Signal signatures
-        interface SignalSignatures extends Gtk.Box.SignalSignatures {}
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {
+            'notify::baseline-position': GObject.Object.Notify;
+            'notify::baseline-position': GObject.Object.Notify;
+            'notify::homogeneous': GObject.Object.Notify;
+            'notify::spacing': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::child': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::events': GObject.Object.Notify;
+            'notify::expand': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::halign': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::hexpand': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::margin': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::sensitive': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::valign': GObject.Object.Notify;
+            'notify::vexpand': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::window': GObject.Object.Notify;
+            'notify::orientation': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -32174,14 +33382,17 @@ export namespace Ide {
         // Signals
 
         connect<K extends keyof OmniBar.SignalSignatures>(signal: K, callback: OmniBar.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OmniBar.SignalSignatures>(
             signal: K,
             callback: OmniBar.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OmniBar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OmniBar.SignalSignatures[K]>
+            ...args: OmniBar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         /**
@@ -32657,6 +33868,81 @@ export namespace Ide {
         interface SignalSignatures extends Gtk.Box.SignalSignatures {
             activate: Activate;
             'result-activated': ResultActivated;
+            'notify::context': GObject.Object.Notify;
+            'notify::baseline-position': GObject.Object.Notify;
+            'notify::baseline-position': GObject.Object.Notify;
+            'notify::homogeneous': GObject.Object.Notify;
+            'notify::spacing': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::child': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::events': GObject.Object.Notify;
+            'notify::expand': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::halign': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::hexpand': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::margin': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::sensitive': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::valign': GObject.Object.Notify;
+            'notify::vexpand': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::window': GObject.Object.Notify;
+            'notify::orientation': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -32690,14 +33976,17 @@ export namespace Ide {
             signal: K,
             callback: OmniSearchDisplay.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OmniSearchDisplay.SignalSignatures>(
             signal: K,
             callback: OmniSearchDisplay.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OmniSearchDisplay.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OmniSearchDisplay.SignalSignatures[K]>
+            ...args: OmniSearchDisplay.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -33186,6 +34475,166 @@ export namespace Ide {
             'clear-search': ClearSearch;
             'move-next-result': MoveNextResult;
             'move-previous-result': MovePreviousResult;
+            'notify::activates-default': GObject.Object.Notify;
+            'notify::activates-default': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::buffer': GObject.Object.Notify;
+            'notify::caps-lock-warning': GObject.Object.Notify;
+            'notify::caps-lock-warning': GObject.Object.Notify;
+            'notify::completion': GObject.Object.Notify;
+            'notify::cursor-position': GObject.Object.Notify;
+            'notify::cursor-position': GObject.Object.Notify;
+            'notify::editable': GObject.Object.Notify;
+            'notify::enable-emoji-completion': GObject.Object.Notify;
+            'notify::enable-emoji-completion': GObject.Object.Notify;
+            'notify::has-frame': GObject.Object.Notify;
+            'notify::has-frame': GObject.Object.Notify;
+            'notify::im-module': GObject.Object.Notify;
+            'notify::im-module': GObject.Object.Notify;
+            'notify::inner-border': GObject.Object.Notify;
+            'notify::inner-border': GObject.Object.Notify;
+            'notify::input-hints': GObject.Object.Notify;
+            'notify::input-hints': GObject.Object.Notify;
+            'notify::input-purpose': GObject.Object.Notify;
+            'notify::input-purpose': GObject.Object.Notify;
+            'notify::invisible-char': GObject.Object.Notify;
+            'notify::invisible-char': GObject.Object.Notify;
+            'notify::invisible-char-set': GObject.Object.Notify;
+            'notify::invisible-char-set': GObject.Object.Notify;
+            'notify::max-length': GObject.Object.Notify;
+            'notify::max-length': GObject.Object.Notify;
+            'notify::max-width-chars': GObject.Object.Notify;
+            'notify::max-width-chars': GObject.Object.Notify;
+            'notify::overwrite-mode': GObject.Object.Notify;
+            'notify::overwrite-mode': GObject.Object.Notify;
+            'notify::placeholder-text': GObject.Object.Notify;
+            'notify::placeholder-text': GObject.Object.Notify;
+            'notify::populate-all': GObject.Object.Notify;
+            'notify::populate-all': GObject.Object.Notify;
+            'notify::primary-icon-activatable': GObject.Object.Notify;
+            'notify::primary-icon-activatable': GObject.Object.Notify;
+            'notify::primary-icon-gicon': GObject.Object.Notify;
+            'notify::primary-icon-gicon': GObject.Object.Notify;
+            'notify::primary-icon-name': GObject.Object.Notify;
+            'notify::primary-icon-name': GObject.Object.Notify;
+            'notify::primary-icon-pixbuf': GObject.Object.Notify;
+            'notify::primary-icon-pixbuf': GObject.Object.Notify;
+            'notify::primary-icon-sensitive': GObject.Object.Notify;
+            'notify::primary-icon-sensitive': GObject.Object.Notify;
+            'notify::primary-icon-stock': GObject.Object.Notify;
+            'notify::primary-icon-stock': GObject.Object.Notify;
+            'notify::primary-icon-storage-type': GObject.Object.Notify;
+            'notify::primary-icon-storage-type': GObject.Object.Notify;
+            'notify::primary-icon-tooltip-markup': GObject.Object.Notify;
+            'notify::primary-icon-tooltip-markup': GObject.Object.Notify;
+            'notify::primary-icon-tooltip-text': GObject.Object.Notify;
+            'notify::primary-icon-tooltip-text': GObject.Object.Notify;
+            'notify::progress-fraction': GObject.Object.Notify;
+            'notify::progress-fraction': GObject.Object.Notify;
+            'notify::progress-pulse-step': GObject.Object.Notify;
+            'notify::progress-pulse-step': GObject.Object.Notify;
+            'notify::scroll-offset': GObject.Object.Notify;
+            'notify::scroll-offset': GObject.Object.Notify;
+            'notify::secondary-icon-activatable': GObject.Object.Notify;
+            'notify::secondary-icon-activatable': GObject.Object.Notify;
+            'notify::secondary-icon-gicon': GObject.Object.Notify;
+            'notify::secondary-icon-gicon': GObject.Object.Notify;
+            'notify::secondary-icon-name': GObject.Object.Notify;
+            'notify::secondary-icon-name': GObject.Object.Notify;
+            'notify::secondary-icon-pixbuf': GObject.Object.Notify;
+            'notify::secondary-icon-pixbuf': GObject.Object.Notify;
+            'notify::secondary-icon-sensitive': GObject.Object.Notify;
+            'notify::secondary-icon-sensitive': GObject.Object.Notify;
+            'notify::secondary-icon-stock': GObject.Object.Notify;
+            'notify::secondary-icon-stock': GObject.Object.Notify;
+            'notify::secondary-icon-storage-type': GObject.Object.Notify;
+            'notify::secondary-icon-storage-type': GObject.Object.Notify;
+            'notify::secondary-icon-tooltip-markup': GObject.Object.Notify;
+            'notify::secondary-icon-tooltip-markup': GObject.Object.Notify;
+            'notify::secondary-icon-tooltip-text': GObject.Object.Notify;
+            'notify::secondary-icon-tooltip-text': GObject.Object.Notify;
+            'notify::selection-bound': GObject.Object.Notify;
+            'notify::selection-bound': GObject.Object.Notify;
+            'notify::shadow-type': GObject.Object.Notify;
+            'notify::shadow-type': GObject.Object.Notify;
+            'notify::show-emoji-icon': GObject.Object.Notify;
+            'notify::show-emoji-icon': GObject.Object.Notify;
+            'notify::tabs': GObject.Object.Notify;
+            'notify::text': GObject.Object.Notify;
+            'notify::text-length': GObject.Object.Notify;
+            'notify::text-length': GObject.Object.Notify;
+            'notify::truncate-multiline': GObject.Object.Notify;
+            'notify::truncate-multiline': GObject.Object.Notify;
+            'notify::visibility': GObject.Object.Notify;
+            'notify::width-chars': GObject.Object.Notify;
+            'notify::width-chars': GObject.Object.Notify;
+            'notify::xalign': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::events': GObject.Object.Notify;
+            'notify::expand': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::halign': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::hexpand': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::margin': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::sensitive': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::valign': GObject.Object.Notify;
+            'notify::vexpand': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::window': GObject.Object.Notify;
+            'notify::editing-canceled': GObject.Object.Notify;
+            'notify::editing-canceled': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -33218,14 +34667,17 @@ export namespace Ide {
             signal: K,
             callback: OmniSearchEntry.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OmniSearchEntry.SignalSignatures>(
             signal: K,
             callback: OmniSearchEntry.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OmniSearchEntry.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OmniSearchEntry.SignalSignatures[K]>
+            ...args: OmniSearchEntry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -37779,6 +39231,81 @@ export namespace Ide {
         interface SignalSignatures extends Gtk.Box.SignalSignatures {
             'result-activated': ResultActivated;
             'result-selected': ResultSelected;
+            'notify::provider': GObject.Object.Notify;
+            'notify::baseline-position': GObject.Object.Notify;
+            'notify::baseline-position': GObject.Object.Notify;
+            'notify::homogeneous': GObject.Object.Notify;
+            'notify::spacing': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::child': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::events': GObject.Object.Notify;
+            'notify::expand': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::halign': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::hexpand': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::margin': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::sensitive': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::valign': GObject.Object.Notify;
+            'notify::vexpand': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::window': GObject.Object.Notify;
+            'notify::orientation': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -37811,14 +39338,17 @@ export namespace Ide {
             signal: K,
             callback: OmniSearchGroup.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OmniSearchGroup.SignalSignatures>(
             signal: K,
             callback: OmniSearchGroup.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OmniSearchGroup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OmniSearchGroup.SignalSignatures[K]>
+            ...args: OmniSearchGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -38297,7 +39827,82 @@ export namespace Ide {
 
     namespace OmniSearchRow {
         // Signal signatures
-        interface SignalSignatures extends Gtk.ListBoxRow.SignalSignatures {}
+        interface SignalSignatures extends Gtk.ListBoxRow.SignalSignatures {
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::result': GObject.Object.Notify;
+            'notify::activatable': GObject.Object.Notify;
+            'notify::selectable': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::child': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::events': GObject.Object.Notify;
+            'notify::expand': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::halign': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::hexpand': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::margin': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::sensitive': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::valign': GObject.Object.Notify;
+            'notify::vexpand': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::window': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -38333,14 +39938,17 @@ export namespace Ide {
             signal: K,
             callback: OmniSearchRow.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OmniSearchRow.SignalSignatures>(
             signal: K,
             callback: OmniSearchRow.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OmniSearchRow.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OmniSearchRow.SignalSignatures[K]>
+            ...args: OmniSearchRow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -38791,7 +40399,16 @@ export namespace Ide {
 
     namespace PkconTransfer {
         // Signal signatures
-        interface SignalSignatures extends Transfer.SignalSignatures {}
+        interface SignalSignatures extends Transfer.SignalSignatures {
+            'notify::packages': GObject.Object.Notify;
+            'notify::active': GObject.Object.Notify;
+            'notify::completed': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::progress': GObject.Object.Notify;
+            'notify::status': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -38821,19 +40438,96 @@ export namespace Ide {
             signal: K,
             callback: PkconTransfer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PkconTransfer.SignalSignatures>(
             signal: K,
             callback: PkconTransfer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PkconTransfer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PkconTransfer.SignalSignatures[K]>
+            ...args: PkconTransfer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace PreferencesPerspective {
         // Signal signatures
-        interface SignalSignatures extends Dazzle.PreferencesView.SignalSignatures {}
+        interface SignalSignatures extends Dazzle.PreferencesView.SignalSignatures {
+            'notify::show-search-entry': GObject.Object.Notify;
+            'notify::show-search-entry': GObject.Object.Notify;
+            'notify::use-sidebar': GObject.Object.Notify;
+            'notify::use-sidebar': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::child': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::events': GObject.Object.Notify;
+            'notify::expand': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::halign': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::hexpand': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::margin': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::sensitive': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::valign': GObject.Object.Notify;
+            'notify::vexpand': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::window': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -38863,14 +40557,17 @@ export namespace Ide {
             signal: K,
             callback: PreferencesPerspective.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PreferencesPerspective.SignalSignatures>(
             signal: K,
             callback: PreferencesPerspective.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PreferencesPerspective.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PreferencesPerspective.SignalSignatures[K]>
+            ...args: PreferencesPerspective.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         add_custom(
@@ -39626,7 +41323,11 @@ export namespace Ide {
 
     namespace Progress {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::completed': GObject.Object.Notify;
+            'notify::fraction': GObject.Object.Notify;
+            'notify::message': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -39659,14 +41360,17 @@ export namespace Ide {
         // Signals
 
         connect<K extends keyof Progress.SignalSignatures>(signal: K, callback: Progress.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Progress.SignalSignatures>(
             signal: K,
             callback: Progress.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Progress.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Progress.SignalSignatures[K]>
+            ...args: Progress.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -39711,6 +41415,10 @@ export namespace Ide {
         interface SignalSignatures extends Object.SignalSignatures {
             'file-renamed': FileRenamed;
             'file-trashed': FileTrashed;
+            'notify::id': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::root': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -39740,14 +41448,17 @@ export namespace Ide {
         // Signals
 
         connect<K extends keyof Project.SignalSignatures>(signal: K, callback: Project.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Project.SignalSignatures>(
             signal: K,
             callback: Project.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Project.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Project.SignalSignatures[K]>
+            ...args: Project.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -39829,7 +41540,10 @@ export namespace Ide {
 
     namespace ProjectEdit {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::range': GObject.Object.Notify;
+            'notify::replacement': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -39863,14 +41577,17 @@ export namespace Ide {
             signal: K,
             callback: ProjectEdit.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ProjectEdit.SignalSignatures>(
             signal: K,
             callback: ProjectEdit.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ProjectEdit.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProjectEdit.SignalSignatures[K]>
+            ...args: ProjectEdit.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -39886,7 +41603,17 @@ export namespace Ide {
 
     namespace ProjectFile {
         // Signal signatures
-        interface SignalSignatures extends ProjectItem.SignalSignatures {}
+        interface SignalSignatures extends ProjectItem.SignalSignatures {
+            'notify::file': GObject.Object.Notify;
+            'notify::file-info': GObject.Object.Notify;
+            'notify::file-info': GObject.Object.Notify;
+            'notify::is-directory': GObject.Object.Notify;
+            'notify::is-directory': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::path': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -39930,14 +41657,17 @@ export namespace Ide {
             signal: K,
             callback: ProjectFile.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ProjectFile.SignalSignatures>(
             signal: K,
             callback: ProjectFile.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ProjectFile.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProjectFile.SignalSignatures[K]>
+            ...args: ProjectFile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -39959,7 +41689,10 @@ export namespace Ide {
 
     namespace ProjectFiles {
         // Signal signatures
-        interface SignalSignatures extends ProjectItem.SignalSignatures {}
+        interface SignalSignatures extends ProjectItem.SignalSignatures {
+            'notify::parent': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -39981,14 +41714,17 @@ export namespace Ide {
             signal: K,
             callback: ProjectFiles.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ProjectFiles.SignalSignatures>(
             signal: K,
             callback: ProjectFiles.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ProjectFiles.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProjectFiles.SignalSignatures[K]>
+            ...args: ProjectFiles.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -40011,7 +41747,21 @@ export namespace Ide {
 
     namespace ProjectInfo {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::build-system-name': GObject.Object.Notify;
+            'notify::build-system-name': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::directory': GObject.Object.Notify;
+            'notify::doap': GObject.Object.Notify;
+            'notify::file': GObject.Object.Notify;
+            'notify::is-recent': GObject.Object.Notify;
+            'notify::is-recent': GObject.Object.Notify;
+            'notify::languages': GObject.Object.Notify;
+            'notify::last-modified-at': GObject.Object.Notify;
+            'notify::last-modified-at': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::priority': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -40080,14 +41830,17 @@ export namespace Ide {
             signal: K,
             callback: ProjectInfo.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ProjectInfo.SignalSignatures>(
             signal: K,
             callback: ProjectInfo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ProjectInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProjectInfo.SignalSignatures[K]>
+            ...args: ProjectInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -40124,7 +41877,10 @@ export namespace Ide {
 
     namespace ProjectItem {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::parent': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -40153,14 +41909,17 @@ export namespace Ide {
             signal: K,
             callback: ProjectItem.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ProjectItem.SignalSignatures>(
             signal: K,
             callback: ProjectItem.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ProjectItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProjectItem.SignalSignatures[K]>
+            ...args: ProjectItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -40207,14 +41966,17 @@ export namespace Ide {
             signal: K,
             callback: RecentProjects.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RecentProjects.SignalSignatures>(
             signal: K,
             callback: RecentProjects.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RecentProjects.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RecentProjects.SignalSignatures[K]>
+            ...args: RecentProjects.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -40780,7 +42542,82 @@ export namespace Ide {
 
     namespace RunButton {
         // Signal signatures
-        interface SignalSignatures extends Gtk.Box.SignalSignatures {}
+        interface SignalSignatures extends Gtk.Box.SignalSignatures {
+            'notify::baseline-position': GObject.Object.Notify;
+            'notify::baseline-position': GObject.Object.Notify;
+            'notify::homogeneous': GObject.Object.Notify;
+            'notify::spacing': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::child': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::events': GObject.Object.Notify;
+            'notify::expand': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::halign': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::hexpand': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::margin': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::sensitive': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::valign': GObject.Object.Notify;
+            'notify::vexpand': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::window': GObject.Object.Notify;
+            'notify::orientation': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -40805,14 +42642,17 @@ export namespace Ide {
         // Signals
 
         connect<K extends keyof RunButton.SignalSignatures>(signal: K, callback: RunButton.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RunButton.SignalSignatures>(
             signal: K,
             callback: RunButton.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RunButton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RunButton.SignalSignatures[K]>
+            ...args: RunButton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         /**
@@ -41288,6 +43128,11 @@ export namespace Ide {
         interface SignalSignatures extends Object.SignalSignatures {
             run: Run;
             stopped: Stopped;
+            'notify::build-target': GObject.Object.Notify;
+            'notify::build-target': GObject.Object.Notify;
+            'notify::busy': GObject.Object.Notify;
+            'notify::handler': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -41327,14 +43172,17 @@ export namespace Ide {
             signal: K,
             callback: RunManager.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RunManager.SignalSignatures>(
             signal: K,
             callback: RunManager.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RunManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RunManager.SignalSignatures[K]>
+            ...args: RunManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -42355,6 +44203,14 @@ export namespace Ide {
         interface SignalSignatures extends Object.SignalSignatures {
             exited: Exited;
             spawned: Spawned;
+            'notify::argv': GObject.Object.Notify;
+            'notify::clear-env': GObject.Object.Notify;
+            'notify::clear-env': GObject.Object.Notify;
+            'notify::environment': GObject.Object.Notify;
+            'notify::failed': GObject.Object.Notify;
+            'notify::run-on-host': GObject.Object.Notify;
+            'notify::run-on-host': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -42414,8 +44270,14 @@ export namespace Ide {
         // Signals
 
         connect<K extends keyof Runner.SignalSignatures>(signal: K, callback: Runner.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Runner.SignalSignatures>(signal: K, callback: Runner.SignalSignatures[K]): number;
-        emit<K extends keyof Runner.SignalSignatures>(signal: K, ...args: Parameters<Runner.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Runner.SignalSignatures>(
+            signal: K,
+            ...args: Runner.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -42486,7 +44348,12 @@ export namespace Ide {
 
     namespace Runtime {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::display-name': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -42520,14 +44387,17 @@ export namespace Ide {
         // Signals
 
         connect<K extends keyof Runtime.SignalSignatures>(signal: K, callback: Runtime.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Runtime.SignalSignatures>(
             signal: K,
             callback: Runtime.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Runtime.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Runtime.SignalSignatures[K]>
+            ...args: Runtime.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -42593,7 +44463,9 @@ export namespace Ide {
 
     namespace RuntimeManager {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::context': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -42621,14 +44493,17 @@ export namespace Ide {
             signal: K,
             callback: RuntimeManager.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RuntimeManager.SignalSignatures>(
             signal: K,
             callback: RuntimeManager.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RuntimeManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RuntimeManager.SignalSignatures[K]>
+            ...args: RuntimeManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -43337,6 +45212,7 @@ export namespace Ide {
             'count-set': CountSet;
             'result-added': ResultAdded;
             'result-removed': ResultRemoved;
+            'notify::context': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -43359,14 +45235,17 @@ export namespace Ide {
             signal: K,
             callback: SearchContext.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SearchContext.SignalSignatures>(
             signal: K,
             callback: SearchContext.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SearchContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SearchContext.SignalSignatures[K]>
+            ...args: SearchContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -43386,7 +45265,9 @@ export namespace Ide {
 
     namespace SearchEngine {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::context': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -43408,14 +45289,17 @@ export namespace Ide {
             signal: K,
             callback: SearchEngine.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SearchEngine.SignalSignatures>(
             signal: K,
             callback: SearchEngine.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SearchEngine.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SearchEngine.SignalSignatures[K]>
+            ...args: SearchEngine.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -43431,7 +45315,13 @@ export namespace Ide {
 
     namespace SearchResult {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::provider': GObject.Object.Notify;
+            'notify::score': GObject.Object.Notify;
+            'notify::subtitle': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -43468,14 +45358,17 @@ export namespace Ide {
             signal: K,
             callback: SearchResult.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SearchResult.SignalSignatures>(
             signal: K,
             callback: SearchResult.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SearchResult.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SearchResult.SignalSignatures[K]>
+            ...args: SearchResult.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -43505,6 +45398,20 @@ export namespace Ide {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
             changed: Changed;
+            'notify::ignore-project-settings': GObject.Object.Notify;
+            'notify::ignore-project-settings': GObject.Object.Notify;
+            'notify::relative-path': GObject.Object.Notify;
+            'notify::relative-path': GObject.Object.Notify;
+            'notify::schema-id': GObject.Object.Notify;
+            'notify::schema-id': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
+            'changed::ignore-project-settings': Changed;
+            'changed::ignore-project-settings': Changed;
+            'changed::relative-path': Changed;
+            'changed::relative-path': Changed;
+            'changed::schema-id': Changed;
+            'changed::schema-id': Changed;
+            'changed::context': Changed;
         }
 
         // Constructor properties interface
@@ -43549,14 +45456,17 @@ export namespace Ide {
         // Signals
 
         connect<K extends keyof Settings.SignalSignatures>(signal: K, callback: Settings.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Settings.SignalSignatures>(
             signal: K,
             callback: Settings.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Settings.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Settings.SignalSignatures[K]>
+            ...args: Settings.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -43616,6 +45526,144 @@ export namespace Ide {
         interface SignalSignatures extends GtkSource.Map.SignalSignatures {
             'hide-map': HideMap;
             'show-map': ShowMap;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::view': GObject.Object.Notify;
+            'notify::auto-indent': GObject.Object.Notify;
+            'notify::auto-indent': GObject.Object.Notify;
+            'notify::background-pattern': GObject.Object.Notify;
+            'notify::background-pattern': GObject.Object.Notify;
+            'notify::completion': GObject.Object.Notify;
+            'notify::draw-spaces': GObject.Object.Notify;
+            'notify::draw-spaces': GObject.Object.Notify;
+            'notify::highlight-current-line': GObject.Object.Notify;
+            'notify::highlight-current-line': GObject.Object.Notify;
+            'notify::indent-on-tab': GObject.Object.Notify;
+            'notify::indent-on-tab': GObject.Object.Notify;
+            'notify::indent-width': GObject.Object.Notify;
+            'notify::indent-width': GObject.Object.Notify;
+            'notify::insert-spaces-instead-of-tabs': GObject.Object.Notify;
+            'notify::insert-spaces-instead-of-tabs': GObject.Object.Notify;
+            'notify::right-margin-position': GObject.Object.Notify;
+            'notify::right-margin-position': GObject.Object.Notify;
+            'notify::show-line-marks': GObject.Object.Notify;
+            'notify::show-line-marks': GObject.Object.Notify;
+            'notify::show-line-numbers': GObject.Object.Notify;
+            'notify::show-line-numbers': GObject.Object.Notify;
+            'notify::show-right-margin': GObject.Object.Notify;
+            'notify::show-right-margin': GObject.Object.Notify;
+            'notify::smart-backspace': GObject.Object.Notify;
+            'notify::smart-backspace': GObject.Object.Notify;
+            'notify::smart-home-end': GObject.Object.Notify;
+            'notify::smart-home-end': GObject.Object.Notify;
+            'notify::space-drawer': GObject.Object.Notify;
+            'notify::space-drawer': GObject.Object.Notify;
+            'notify::tab-width': GObject.Object.Notify;
+            'notify::tab-width': GObject.Object.Notify;
+            'notify::accepts-tab': GObject.Object.Notify;
+            'notify::accepts-tab': GObject.Object.Notify;
+            'notify::bottom-margin': GObject.Object.Notify;
+            'notify::bottom-margin': GObject.Object.Notify;
+            'notify::buffer': GObject.Object.Notify;
+            'notify::cursor-visible': GObject.Object.Notify;
+            'notify::cursor-visible': GObject.Object.Notify;
+            'notify::editable': GObject.Object.Notify;
+            'notify::im-module': GObject.Object.Notify;
+            'notify::im-module': GObject.Object.Notify;
+            'notify::indent': GObject.Object.Notify;
+            'notify::input-hints': GObject.Object.Notify;
+            'notify::input-hints': GObject.Object.Notify;
+            'notify::input-purpose': GObject.Object.Notify;
+            'notify::input-purpose': GObject.Object.Notify;
+            'notify::justification': GObject.Object.Notify;
+            'notify::left-margin': GObject.Object.Notify;
+            'notify::left-margin': GObject.Object.Notify;
+            'notify::monospace': GObject.Object.Notify;
+            'notify::overwrite': GObject.Object.Notify;
+            'notify::pixels-above-lines': GObject.Object.Notify;
+            'notify::pixels-above-lines': GObject.Object.Notify;
+            'notify::pixels-below-lines': GObject.Object.Notify;
+            'notify::pixels-below-lines': GObject.Object.Notify;
+            'notify::pixels-inside-wrap': GObject.Object.Notify;
+            'notify::pixels-inside-wrap': GObject.Object.Notify;
+            'notify::populate-all': GObject.Object.Notify;
+            'notify::populate-all': GObject.Object.Notify;
+            'notify::right-margin': GObject.Object.Notify;
+            'notify::right-margin': GObject.Object.Notify;
+            'notify::tabs': GObject.Object.Notify;
+            'notify::top-margin': GObject.Object.Notify;
+            'notify::top-margin': GObject.Object.Notify;
+            'notify::wrap-mode': GObject.Object.Notify;
+            'notify::wrap-mode': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::child': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::events': GObject.Object.Notify;
+            'notify::expand': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::halign': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::hexpand': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::margin': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::sensitive': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::valign': GObject.Object.Notify;
+            'notify::vexpand': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::window': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -43639,14 +45687,17 @@ export namespace Ide {
         // Signals
 
         connect<K extends keyof SourceMap.SignalSignatures>(signal: K, callback: SourceMap.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceMap.SignalSignatures>(
             signal: K,
             callback: SourceMap.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceMap.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceMap.SignalSignatures[K]>
+            ...args: SourceMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -44092,7 +46143,20 @@ export namespace Ide {
 
     namespace SourceSnippet {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::buffer': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::language': GObject.Object.Notify;
+            'notify::mark-begin': GObject.Object.Notify;
+            'notify::mark-begin': GObject.Object.Notify;
+            'notify::mark-end': GObject.Object.Notify;
+            'notify::mark-end': GObject.Object.Notify;
+            'notify::snippet-text': GObject.Object.Notify;
+            'notify::snippet-text': GObject.Object.Notify;
+            'notify::tab-stop': GObject.Object.Notify;
+            'notify::tab-stop': GObject.Object.Notify;
+            'notify::trigger': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -44149,14 +46213,17 @@ export namespace Ide {
             signal: K,
             callback: SourceSnippet.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceSnippet.SignalSignatures>(
             signal: K,
             callback: SourceSnippet.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceSnippet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceSnippet.SignalSignatures[K]>
+            ...args: SourceSnippet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -44181,7 +46248,15 @@ export namespace Ide {
 
     namespace SourceSnippetChunk {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::context': GObject.Object.Notify;
+            'notify::spec': GObject.Object.Notify;
+            'notify::tab-stop': GObject.Object.Notify;
+            'notify::tab-stop': GObject.Object.Notify;
+            'notify::text': GObject.Object.Notify;
+            'notify::text-set': GObject.Object.Notify;
+            'notify::text-set': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -44230,14 +46305,17 @@ export namespace Ide {
             signal: K,
             callback: SourceSnippetChunk.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceSnippetChunk.SignalSignatures>(
             signal: K,
             callback: SourceSnippetChunk.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceSnippetChunk.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceSnippetChunk.SignalSignatures[K]>
+            ...args: SourceSnippetChunk.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -44305,14 +46383,17 @@ export namespace Ide {
             signal: K,
             callback: SourceSnippetContext.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceSnippetContext.SignalSignatures>(
             signal: K,
             callback: SourceSnippetContext.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceSnippetContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceSnippetContext.SignalSignatures[K]>
+            ...args: SourceSnippetContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -44354,14 +46435,17 @@ export namespace Ide {
             signal: K,
             callback: SourceSnippets.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceSnippets.SignalSignatures>(
             signal: K,
             callback: SourceSnippets.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceSnippets.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceSnippets.SignalSignatures[K]>
+            ...args: SourceSnippets.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -44396,14 +46480,17 @@ export namespace Ide {
             signal: K,
             callback: SourceSnippetsManager.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceSnippetsManager.SignalSignatures>(
             signal: K,
             callback: SourceSnippetsManager.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceSnippetsManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceSnippetsManager.SignalSignatures[K]>
+            ...args: SourceSnippetsManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -44706,6 +46793,184 @@ export namespace Ide {
             'set-search-text': SetSearchText;
             sort: Sort;
             'swap-selection-bounds': SwapSelectionBounds;
+            'notify::back-forward-list': GObject.Object.Notify;
+            'notify::back-forward-list': GObject.Object.Notify;
+            'notify::count': GObject.Object.Notify;
+            'notify::enable-word-completion': GObject.Object.Notify;
+            'notify::enable-word-completion': GObject.Object.Notify;
+            'notify::file-settings': GObject.Object.Notify;
+            'notify::file-settings': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::font-name': GObject.Object.Notify;
+            'notify::font-name': GObject.Object.Notify;
+            'notify::indent-style': GObject.Object.Notify;
+            'notify::indent-style': GObject.Object.Notify;
+            'notify::indenter': GObject.Object.Notify;
+            'notify::insert-matching-brace': GObject.Object.Notify;
+            'notify::insert-matching-brace': GObject.Object.Notify;
+            'notify::mode-display-name': GObject.Object.Notify;
+            'notify::mode-display-name': GObject.Object.Notify;
+            'notify::overscroll': GObject.Object.Notify;
+            'notify::overwrite-braces': GObject.Object.Notify;
+            'notify::overwrite-braces': GObject.Object.Notify;
+            'notify::rubberband-search': GObject.Object.Notify;
+            'notify::rubberband-search': GObject.Object.Notify;
+            'notify::scroll-offset': GObject.Object.Notify;
+            'notify::scroll-offset': GObject.Object.Notify;
+            'notify::search-context': GObject.Object.Notify;
+            'notify::search-context': GObject.Object.Notify;
+            'notify::search-direction': GObject.Object.Notify;
+            'notify::search-direction': GObject.Object.Notify;
+            'notify::show-grid-lines': GObject.Object.Notify;
+            'notify::show-grid-lines': GObject.Object.Notify;
+            'notify::show-line-changes': GObject.Object.Notify;
+            'notify::show-line-changes': GObject.Object.Notify;
+            'notify::show-line-diagnostics': GObject.Object.Notify;
+            'notify::show-line-diagnostics': GObject.Object.Notify;
+            'notify::show-search-bubbles': GObject.Object.Notify;
+            'notify::show-search-bubbles': GObject.Object.Notify;
+            'notify::show-search-shadow': GObject.Object.Notify;
+            'notify::show-search-shadow': GObject.Object.Notify;
+            'notify::snippet-completion': GObject.Object.Notify;
+            'notify::snippet-completion': GObject.Object.Notify;
+            'notify::spell-checking': GObject.Object.Notify;
+            'notify::spell-checking': GObject.Object.Notify;
+            'notify::auto-indent': GObject.Object.Notify;
+            'notify::auto-indent': GObject.Object.Notify;
+            'notify::background-pattern': GObject.Object.Notify;
+            'notify::background-pattern': GObject.Object.Notify;
+            'notify::completion': GObject.Object.Notify;
+            'notify::draw-spaces': GObject.Object.Notify;
+            'notify::draw-spaces': GObject.Object.Notify;
+            'notify::highlight-current-line': GObject.Object.Notify;
+            'notify::highlight-current-line': GObject.Object.Notify;
+            'notify::indent-on-tab': GObject.Object.Notify;
+            'notify::indent-on-tab': GObject.Object.Notify;
+            'notify::indent-width': GObject.Object.Notify;
+            'notify::indent-width': GObject.Object.Notify;
+            'notify::insert-spaces-instead-of-tabs': GObject.Object.Notify;
+            'notify::insert-spaces-instead-of-tabs': GObject.Object.Notify;
+            'notify::right-margin-position': GObject.Object.Notify;
+            'notify::right-margin-position': GObject.Object.Notify;
+            'notify::show-line-marks': GObject.Object.Notify;
+            'notify::show-line-marks': GObject.Object.Notify;
+            'notify::show-line-numbers': GObject.Object.Notify;
+            'notify::show-line-numbers': GObject.Object.Notify;
+            'notify::show-right-margin': GObject.Object.Notify;
+            'notify::show-right-margin': GObject.Object.Notify;
+            'notify::smart-backspace': GObject.Object.Notify;
+            'notify::smart-backspace': GObject.Object.Notify;
+            'notify::smart-home-end': GObject.Object.Notify;
+            'notify::smart-home-end': GObject.Object.Notify;
+            'notify::space-drawer': GObject.Object.Notify;
+            'notify::space-drawer': GObject.Object.Notify;
+            'notify::tab-width': GObject.Object.Notify;
+            'notify::tab-width': GObject.Object.Notify;
+            'notify::accepts-tab': GObject.Object.Notify;
+            'notify::accepts-tab': GObject.Object.Notify;
+            'notify::bottom-margin': GObject.Object.Notify;
+            'notify::bottom-margin': GObject.Object.Notify;
+            'notify::buffer': GObject.Object.Notify;
+            'notify::cursor-visible': GObject.Object.Notify;
+            'notify::cursor-visible': GObject.Object.Notify;
+            'notify::editable': GObject.Object.Notify;
+            'notify::im-module': GObject.Object.Notify;
+            'notify::im-module': GObject.Object.Notify;
+            'notify::indent': GObject.Object.Notify;
+            'notify::input-hints': GObject.Object.Notify;
+            'notify::input-hints': GObject.Object.Notify;
+            'notify::input-purpose': GObject.Object.Notify;
+            'notify::input-purpose': GObject.Object.Notify;
+            'notify::justification': GObject.Object.Notify;
+            'notify::left-margin': GObject.Object.Notify;
+            'notify::left-margin': GObject.Object.Notify;
+            'notify::monospace': GObject.Object.Notify;
+            'notify::overwrite': GObject.Object.Notify;
+            'notify::pixels-above-lines': GObject.Object.Notify;
+            'notify::pixels-above-lines': GObject.Object.Notify;
+            'notify::pixels-below-lines': GObject.Object.Notify;
+            'notify::pixels-below-lines': GObject.Object.Notify;
+            'notify::pixels-inside-wrap': GObject.Object.Notify;
+            'notify::pixels-inside-wrap': GObject.Object.Notify;
+            'notify::populate-all': GObject.Object.Notify;
+            'notify::populate-all': GObject.Object.Notify;
+            'notify::right-margin': GObject.Object.Notify;
+            'notify::right-margin': GObject.Object.Notify;
+            'notify::tabs': GObject.Object.Notify;
+            'notify::top-margin': GObject.Object.Notify;
+            'notify::top-margin': GObject.Object.Notify;
+            'notify::wrap-mode': GObject.Object.Notify;
+            'notify::wrap-mode': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::child': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::events': GObject.Object.Notify;
+            'notify::expand': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::halign': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::hexpand': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::margin': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::sensitive': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::valign': GObject.Object.Notify;
+            'notify::vexpand': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::window': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -44866,14 +47131,17 @@ export namespace Ide {
             signal: K,
             callback: SourceView.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceView.SignalSignatures>(
             signal: K,
             callback: SourceView.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceView.SignalSignatures[K]>
+            ...args: SourceView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -45911,6 +48179,70 @@ export namespace Ide {
             'toggle-cursor-visible': ToggleCursorVisible;
             'toggle-overwrite': ToggleOverwrite;
             undo: Undo;
+            'notify::name': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::events': GObject.Object.Notify;
+            'notify::expand': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::halign': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::hexpand': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::margin': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::sensitive': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::valign': GObject.Object.Notify;
+            'notify::vexpand': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::window': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -45942,14 +48274,17 @@ export namespace Ide {
             signal: K,
             callback: SourceViewMode.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceViewMode.SignalSignatures>(
             signal: K,
             callback: SourceViewMode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceViewMode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceViewMode.SignalSignatures[K]>
+            ...args: SourceViewMode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -46574,7 +48909,15 @@ export namespace Ide {
 
     namespace SubprocessLauncher {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::clean-env': GObject.Object.Notify;
+            'notify::clean-env': GObject.Object.Notify;
+            'notify::cwd': GObject.Object.Notify;
+            'notify::environ': GObject.Object.Notify;
+            'notify::flags': GObject.Object.Notify;
+            'notify::run-on-host': GObject.Object.Notify;
+            'notify::run-on-host': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -46623,14 +48966,17 @@ export namespace Ide {
             signal: K,
             callback: SubprocessLauncher.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SubprocessLauncher.SignalSignatures>(
             signal: K,
             callback: SubprocessLauncher.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SubprocessLauncher.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SubprocessLauncher.SignalSignatures[K]>
+            ...args: SubprocessLauncher.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -46703,11 +49049,11 @@ export namespace Ide {
         }
 
         interface Supervise {
-            (_source: SubprocessSupervisor, object: SubprocessLauncher): boolean;
+            (_source: SubprocessSupervisor, object: SubprocessLauncher): boolean | void;
         }
 
         interface Unsupervise {
-            (_source: SubprocessSupervisor, object: SubprocessLauncher): boolean;
+            (_source: SubprocessSupervisor, object: SubprocessLauncher): boolean | void;
         }
 
         // Signal signatures
@@ -46739,14 +49085,17 @@ export namespace Ide {
             signal: K,
             callback: SubprocessSupervisor.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SubprocessSupervisor.SignalSignatures>(
             signal: K,
             callback: SubprocessSupervisor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SubprocessSupervisor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SubprocessSupervisor.SignalSignatures[K]>
+            ...args: SubprocessSupervisor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -46770,7 +49119,14 @@ export namespace Ide {
 
     namespace SymbolNode {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::flags': GObject.Object.Notify;
+            'notify::kind': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::use-markup': GObject.Object.Notify;
+            'notify::use-markup': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -46811,14 +49167,17 @@ export namespace Ide {
             signal: K,
             callback: SymbolNode.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SymbolNode.SignalSignatures>(
             signal: K,
             callback: SymbolNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SymbolNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SymbolNode.SignalSignatures[K]>
+            ...args: SymbolNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -46854,7 +49213,9 @@ export namespace Ide {
 
     namespace TemplateBase {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::locator': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -46889,14 +49250,17 @@ export namespace Ide {
             signal: K,
             callback: TemplateBase.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TemplateBase.SignalSignatures>(
             signal: K,
             callback: TemplateBase.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TemplateBase.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TemplateBase.SignalSignatures[K]>
+            ...args: TemplateBase.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -46920,7 +49284,15 @@ export namespace Ide {
 
     namespace Transfer {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::active': GObject.Object.Notify;
+            'notify::completed': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::progress': GObject.Object.Notify;
+            'notify::status': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -46962,14 +49334,17 @@ export namespace Ide {
         // Signals
 
         connect<K extends keyof Transfer.SignalSignatures>(signal: K, callback: Transfer.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Transfer.SignalSignatures>(
             signal: K,
             callback: Transfer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Transfer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Transfer.SignalSignatures[K]>
+            ...args: Transfer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -47004,7 +49379,94 @@ export namespace Ide {
 
     namespace TransferButton {
         // Signal signatures
-        interface SignalSignatures extends Dazzle.ProgressButton.SignalSignatures {}
+        interface SignalSignatures extends Dazzle.ProgressButton.SignalSignatures {
+            'notify::transfer': GObject.Object.Notify;
+            'notify::progress': GObject.Object.Notify;
+            'notify::show-progress': GObject.Object.Notify;
+            'notify::show-progress': GObject.Object.Notify;
+            'notify::always-show-image': GObject.Object.Notify;
+            'notify::always-show-image': GObject.Object.Notify;
+            'notify::image': GObject.Object.Notify;
+            'notify::image-position': GObject.Object.Notify;
+            'notify::image-position': GObject.Object.Notify;
+            'notify::label': GObject.Object.Notify;
+            'notify::relief': GObject.Object.Notify;
+            'notify::use-stock': GObject.Object.Notify;
+            'notify::use-stock': GObject.Object.Notify;
+            'notify::use-underline': GObject.Object.Notify;
+            'notify::use-underline': GObject.Object.Notify;
+            'notify::xalign': GObject.Object.Notify;
+            'notify::yalign': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::child': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::events': GObject.Object.Notify;
+            'notify::expand': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::halign': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::hexpand': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::margin': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::sensitive': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::valign': GObject.Object.Notify;
+            'notify::vexpand': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::window': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -47045,14 +49507,17 @@ export namespace Ide {
             signal: K,
             callback: TransferButton.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TransferButton.SignalSignatures>(
             signal: K,
             callback: TransferButton.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TransferButton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TransferButton.SignalSignatures[K]>
+            ...args: TransferButton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get app_paintable(): boolean;
@@ -51350,6 +53815,10 @@ export namespace Ide {
             'all-transfers-completed': AllTransfersCompleted;
             'transfer-completed': TransferCompleted;
             'transfer-failed': TransferFailed;
+            'notify::has-active': GObject.Object.Notify;
+            'notify::has-active': GObject.Object.Notify;
+            'notify::progress': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -51394,14 +53863,17 @@ export namespace Ide {
             signal: K,
             callback: TransferManager.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TransferManager.SignalSignatures>(
             signal: K,
             callback: TransferManager.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TransferManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TransferManager.SignalSignatures[K]>
+            ...args: TransferManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -52001,6 +54473,78 @@ export namespace Ide {
         // Signal signatures
         interface SignalSignatures extends Gtk.ListBoxRow.SignalSignatures {
             cancelled: Cancelled;
+            'notify::transfer': GObject.Object.Notify;
+            'notify::activatable': GObject.Object.Notify;
+            'notify::selectable': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::child': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::events': GObject.Object.Notify;
+            'notify::expand': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::halign': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::hexpand': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::margin': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::sensitive': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::valign': GObject.Object.Notify;
+            'notify::vexpand': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::window': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -52033,14 +54577,17 @@ export namespace Ide {
             signal: K,
             callback: TransferRow.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TransferRow.SignalSignatures>(
             signal: K,
             callback: TransferRow.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TransferRow.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TransferRow.SignalSignatures[K]>
+            ...args: TransferRow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -52491,7 +55038,103 @@ export namespace Ide {
 
     namespace TransfersButton {
         // Signal signatures
-        interface SignalSignatures extends Gtk.MenuButton.SignalSignatures {}
+        interface SignalSignatures extends Gtk.MenuButton.SignalSignatures {
+            'notify::align-widget': GObject.Object.Notify;
+            'notify::align-widget': GObject.Object.Notify;
+            'notify::direction': GObject.Object.Notify;
+            'notify::menu-model': GObject.Object.Notify;
+            'notify::menu-model': GObject.Object.Notify;
+            'notify::popover': GObject.Object.Notify;
+            'notify::popup': GObject.Object.Notify;
+            'notify::use-popover': GObject.Object.Notify;
+            'notify::use-popover': GObject.Object.Notify;
+            'notify::active': GObject.Object.Notify;
+            'notify::draw-indicator': GObject.Object.Notify;
+            'notify::draw-indicator': GObject.Object.Notify;
+            'notify::inconsistent': GObject.Object.Notify;
+            'notify::always-show-image': GObject.Object.Notify;
+            'notify::always-show-image': GObject.Object.Notify;
+            'notify::image': GObject.Object.Notify;
+            'notify::image-position': GObject.Object.Notify;
+            'notify::image-position': GObject.Object.Notify;
+            'notify::label': GObject.Object.Notify;
+            'notify::relief': GObject.Object.Notify;
+            'notify::use-stock': GObject.Object.Notify;
+            'notify::use-stock': GObject.Object.Notify;
+            'notify::use-underline': GObject.Object.Notify;
+            'notify::use-underline': GObject.Object.Notify;
+            'notify::xalign': GObject.Object.Notify;
+            'notify::yalign': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::child': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::events': GObject.Object.Notify;
+            'notify::expand': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::halign': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::hexpand': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::margin': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::sensitive': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::valign': GObject.Object.Notify;
+            'notify::vexpand': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::window': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -52523,14 +55166,17 @@ export namespace Ide {
             signal: K,
             callback: TransfersButton.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TransfersButton.SignalSignatures>(
             signal: K,
             callback: TransfersButton.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TransfersButton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TransfersButton.SignalSignatures[K]>
+            ...args: TransfersButton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get app_paintable(): boolean;
@@ -56814,7 +59460,73 @@ export namespace Ide {
 
     namespace TransfersProgressIcon {
         // Signal signatures
-        interface SignalSignatures extends Gtk.DrawingArea.SignalSignatures {}
+        interface SignalSignatures extends Gtk.DrawingArea.SignalSignatures {
+            'notify::progress': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::events': GObject.Object.Notify;
+            'notify::expand': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::halign': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::hexpand': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::margin': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::sensitive': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::valign': GObject.Object.Notify;
+            'notify::vexpand': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::window': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -56848,14 +59560,17 @@ export namespace Ide {
             signal: K,
             callback: TransfersProgressIcon.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TransfersProgressIcon.SignalSignatures>(
             signal: K,
             callback: TransfersProgressIcon.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TransfersProgressIcon.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TransfersProgressIcon.SignalSignatures[K]>
+            ...args: TransfersProgressIcon.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -57306,7 +60021,9 @@ export namespace Ide {
 
     namespace UnsavedFiles {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::context': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -57328,14 +60045,17 @@ export namespace Ide {
             signal: K,
             callback: UnsavedFiles.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UnsavedFiles.SignalSignatures>(
             signal: K,
             callback: UnsavedFiles.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UnsavedFiles.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UnsavedFiles.SignalSignatures[K]>
+            ...args: UnsavedFiles.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -57399,6 +60119,139 @@ export namespace Ide {
             action: Action;
             'set-perspective': SetPerspective;
             unload: Unload;
+            'notify::context': GObject.Object.Notify;
+            'notify::disable-greeter': GObject.Object.Notify;
+            'notify::disable-greeter': GObject.Object.Notify;
+            'notify::visible-perspective': GObject.Object.Notify;
+            'notify::visible-perspective': GObject.Object.Notify;
+            'notify::visible-perspective-name': GObject.Object.Notify;
+            'notify::visible-perspective-name': GObject.Object.Notify;
+            'notify::show-menubar': GObject.Object.Notify;
+            'notify::show-menubar': GObject.Object.Notify;
+            'notify::accept-focus': GObject.Object.Notify;
+            'notify::accept-focus': GObject.Object.Notify;
+            'notify::application': GObject.Object.Notify;
+            'notify::attached-to': GObject.Object.Notify;
+            'notify::attached-to': GObject.Object.Notify;
+            'notify::decorated': GObject.Object.Notify;
+            'notify::default-height': GObject.Object.Notify;
+            'notify::default-height': GObject.Object.Notify;
+            'notify::default-width': GObject.Object.Notify;
+            'notify::default-width': GObject.Object.Notify;
+            'notify::deletable': GObject.Object.Notify;
+            'notify::destroy-with-parent': GObject.Object.Notify;
+            'notify::destroy-with-parent': GObject.Object.Notify;
+            'notify::focus-on-map': GObject.Object.Notify;
+            'notify::focus-on-map': GObject.Object.Notify;
+            'notify::focus-visible': GObject.Object.Notify;
+            'notify::focus-visible': GObject.Object.Notify;
+            'notify::gravity': GObject.Object.Notify;
+            'notify::has-resize-grip': GObject.Object.Notify;
+            'notify::has-resize-grip': GObject.Object.Notify;
+            'notify::has-toplevel-focus': GObject.Object.Notify;
+            'notify::has-toplevel-focus': GObject.Object.Notify;
+            'notify::hide-titlebar-when-maximized': GObject.Object.Notify;
+            'notify::hide-titlebar-when-maximized': GObject.Object.Notify;
+            'notify::icon': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::is-active': GObject.Object.Notify;
+            'notify::is-active': GObject.Object.Notify;
+            'notify::is-maximized': GObject.Object.Notify;
+            'notify::is-maximized': GObject.Object.Notify;
+            'notify::mnemonics-visible': GObject.Object.Notify;
+            'notify::mnemonics-visible': GObject.Object.Notify;
+            'notify::modal': GObject.Object.Notify;
+            'notify::resizable': GObject.Object.Notify;
+            'notify::resize-grip-visible': GObject.Object.Notify;
+            'notify::resize-grip-visible': GObject.Object.Notify;
+            'notify::role': GObject.Object.Notify;
+            'notify::screen': GObject.Object.Notify;
+            'notify::skip-pager-hint': GObject.Object.Notify;
+            'notify::skip-pager-hint': GObject.Object.Notify;
+            'notify::skip-taskbar-hint': GObject.Object.Notify;
+            'notify::skip-taskbar-hint': GObject.Object.Notify;
+            'notify::startup-id': GObject.Object.Notify;
+            'notify::startup-id': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::transient-for': GObject.Object.Notify;
+            'notify::transient-for': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+            'notify::type-hint': GObject.Object.Notify;
+            'notify::type-hint': GObject.Object.Notify;
+            'notify::urgency-hint': GObject.Object.Notify;
+            'notify::urgency-hint': GObject.Object.Notify;
+            'notify::window-position': GObject.Object.Notify;
+            'notify::window-position': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::child': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::events': GObject.Object.Notify;
+            'notify::expand': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::halign': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::hexpand': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::margin': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::sensitive': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::valign': GObject.Object.Notify;
+            'notify::vexpand': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::window': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -57493,14 +60346,17 @@ export namespace Ide {
         // Signals
 
         connect<K extends keyof Workbench.SignalSignatures>(signal: K, callback: Workbench.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Workbench.SignalSignatures>(
             signal: K,
             callback: Workbench.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Workbench.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Workbench.SignalSignatures[K]>
+            ...args: Workbench.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -58600,7 +61456,90 @@ export namespace Ide {
 
     namespace WorkbenchHeaderBar {
         // Signal signatures
-        interface SignalSignatures extends Gtk.HeaderBar.SignalSignatures {}
+        interface SignalSignatures extends Gtk.HeaderBar.SignalSignatures {
+            'notify::custom-title': GObject.Object.Notify;
+            'notify::custom-title': GObject.Object.Notify;
+            'notify::decoration-layout': GObject.Object.Notify;
+            'notify::decoration-layout': GObject.Object.Notify;
+            'notify::decoration-layout-set': GObject.Object.Notify;
+            'notify::decoration-layout-set': GObject.Object.Notify;
+            'notify::has-subtitle': GObject.Object.Notify;
+            'notify::has-subtitle': GObject.Object.Notify;
+            'notify::show-close-button': GObject.Object.Notify;
+            'notify::show-close-button': GObject.Object.Notify;
+            'notify::spacing': GObject.Object.Notify;
+            'notify::subtitle': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::child': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::events': GObject.Object.Notify;
+            'notify::expand': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::halign': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::hexpand': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::margin': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::sensitive': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::valign': GObject.Object.Notify;
+            'notify::vexpand': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::window': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -58627,14 +61566,17 @@ export namespace Ide {
             signal: K,
             callback: WorkbenchHeaderBar.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WorkbenchHeaderBar.SignalSignatures>(
             signal: K,
             callback: WorkbenchHeaderBar.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WorkbenchHeaderBar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WorkbenchHeaderBar.SignalSignatures[K]>
+            ...args: WorkbenchHeaderBar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -59087,7 +62029,89 @@ export namespace Ide {
 
     namespace WorkbenchMessage {
         // Signal signatures
-        interface SignalSignatures extends Gtk.InfoBar.SignalSignatures {}
+        interface SignalSignatures extends Gtk.InfoBar.SignalSignatures {
+            'notify::id': GObject.Object.Notify;
+            'notify::subtitle': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::message-type': GObject.Object.Notify;
+            'notify::message-type': GObject.Object.Notify;
+            'notify::revealed': GObject.Object.Notify;
+            'notify::show-close-button': GObject.Object.Notify;
+            'notify::show-close-button': GObject.Object.Notify;
+            'notify::baseline-position': GObject.Object.Notify;
+            'notify::baseline-position': GObject.Object.Notify;
+            'notify::homogeneous': GObject.Object.Notify;
+            'notify::spacing': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::child': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::events': GObject.Object.Notify;
+            'notify::expand': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::halign': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::hexpand': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::margin': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::sensitive': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::valign': GObject.Object.Notify;
+            'notify::vexpand': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::window': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -59128,14 +62152,17 @@ export namespace Ide {
             signal: K,
             callback: WorkbenchMessage.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WorkbenchMessage.SignalSignatures>(
             signal: K,
             callback: WorkbenchMessage.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WorkbenchMessage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WorkbenchMessage.SignalSignatures[K]>
+            ...args: WorkbenchMessage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

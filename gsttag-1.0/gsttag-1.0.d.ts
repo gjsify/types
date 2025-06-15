@@ -853,7 +853,10 @@ export namespace GstTag {
     }
     namespace TagDemux {
         // Signal signatures
-        interface SignalSignatures extends Gst.Element.SignalSignatures {}
+        interface SignalSignatures extends Gst.Element.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -907,14 +910,17 @@ export namespace GstTag {
         // Signals
 
         connect<K extends keyof TagDemux.SignalSignatures>(signal: K, callback: TagDemux.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TagDemux.SignalSignatures>(
             signal: K,
             callback: TagDemux.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TagDemux.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TagDemux.SignalSignatures[K]>
+            ...args: TagDemux.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -925,7 +931,10 @@ export namespace GstTag {
 
     namespace TagMux {
         // Signal signatures
-        interface SignalSignatures extends Gst.Element.SignalSignatures {}
+        interface SignalSignatures extends Gst.Element.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -964,8 +973,14 @@ export namespace GstTag {
         // Signals
 
         connect<K extends keyof TagMux.SignalSignatures>(signal: K, callback: TagMux.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TagMux.SignalSignatures>(signal: K, callback: TagMux.SignalSignatures[K]): number;
-        emit<K extends keyof TagMux.SignalSignatures>(signal: K, ...args: Parameters<TagMux.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof TagMux.SignalSignatures>(
+            signal: K,
+            ...args: TagMux.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 

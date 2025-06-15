@@ -40,7 +40,7 @@ export namespace GUPnPIgd {
         // Signal callback interfaces
 
         interface ContextAvailable {
-            (_source: SimpleIgd, context: GObject.Object): boolean;
+            (_source: SimpleIgd, context: GObject.Object): boolean | void;
         }
 
         interface ErrorMappingPort {
@@ -73,6 +73,10 @@ export namespace GUPnPIgd {
             'context-available': ContextAvailable;
             'error-mapping-port': ErrorMappingPort;
             'mapped-external-port': MappedExternalPort;
+            'notify::main-context': GObject.Object.Notify;
+            'notify::main-context': GObject.Object.Notify;
+            'error-mapping-port::main-context': ErrorMappingPort;
+            'error-mapping-port::main-context': ErrorMappingPort;
         }
 
         // Constructor properties interface
@@ -105,14 +109,17 @@ export namespace GUPnPIgd {
         // Signals
 
         connect<K extends keyof SimpleIgd.SignalSignatures>(signal: K, callback: SimpleIgd.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SimpleIgd.SignalSignatures>(
             signal: K,
             callback: SimpleIgd.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SimpleIgd.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SimpleIgd.SignalSignatures[K]>
+            ...args: SimpleIgd.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -174,7 +181,10 @@ export namespace GUPnPIgd {
 
     namespace SimpleIgdThread {
         // Signal signatures
-        interface SignalSignatures extends SimpleIgd.SignalSignatures {}
+        interface SignalSignatures extends SimpleIgd.SignalSignatures {
+            'notify::main-context': GObject.Object.Notify;
+            'notify::main-context': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -201,14 +211,17 @@ export namespace GUPnPIgd {
             signal: K,
             callback: SimpleIgdThread.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SimpleIgdThread.SignalSignatures>(
             signal: K,
             callback: SimpleIgdThread.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SimpleIgdThread.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SimpleIgdThread.SignalSignatures[K]>
+            ...args: SimpleIgdThread.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     type SimpleIgdClass = typeof SimpleIgd;

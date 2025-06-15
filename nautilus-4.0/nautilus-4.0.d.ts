@@ -64,7 +64,18 @@ export namespace Nautilus {
     ): void;
     namespace Column {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::attribute': GObject.Object.Notify;
+            'notify::attribute-q': GObject.Object.Notify;
+            'notify::attribute-q': GObject.Object.Notify;
+            'notify::default-sort-order': GObject.Object.Notify;
+            'notify::default-sort-order': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::label': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::xalign': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -153,8 +164,14 @@ export namespace Nautilus {
         // Signals
 
         connect<K extends keyof Column.SignalSignatures>(signal: K, callback: Column.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Column.SignalSignatures>(signal: K, callback: Column.SignalSignatures[K]): number;
-        emit<K extends keyof Column.SignalSignatures>(signal: K, ...args: Parameters<Column.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Column.SignalSignatures>(
+            signal: K,
+            ...args: Column.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Menu {
@@ -180,8 +197,14 @@ export namespace Nautilus {
         // Signals
 
         connect<K extends keyof Menu.SignalSignatures>(signal: K, callback: Menu.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Menu.SignalSignatures>(signal: K, callback: Menu.SignalSignatures[K]): number;
-        emit<K extends keyof Menu.SignalSignatures>(signal: K, ...args: Parameters<Menu.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Menu.SignalSignatures>(
+            signal: K,
+            ...args: Menu.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -199,6 +222,13 @@ export namespace Nautilus {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             activate: Activate;
+            'notify::icon': GObject.Object.Notify;
+            'notify::label': GObject.Object.Notify;
+            'notify::menu': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::priority': GObject.Object.Notify;
+            'notify::sensitive': GObject.Object.Notify;
+            'notify::tip': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -244,14 +274,17 @@ export namespace Nautilus {
         // Signals
 
         connect<K extends keyof MenuItem.SignalSignatures>(signal: K, callback: MenuItem.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MenuItem.SignalSignatures>(
             signal: K,
             callback: MenuItem.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MenuItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MenuItem.SignalSignatures[K]>
+            ...args: MenuItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -279,7 +312,10 @@ export namespace Nautilus {
 
     namespace PropertiesItem {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -311,14 +347,17 @@ export namespace Nautilus {
             signal: K,
             callback: PropertiesItem.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PropertiesItem.SignalSignatures>(
             signal: K,
             callback: PropertiesItem.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PropertiesItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PropertiesItem.SignalSignatures[K]>
+            ...args: PropertiesItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -328,7 +367,10 @@ export namespace Nautilus {
 
     namespace PropertiesModel {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::model': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -361,14 +403,17 @@ export namespace Nautilus {
             signal: K,
             callback: PropertiesModel.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PropertiesModel.SignalSignatures>(
             signal: K,
             callback: PropertiesModel.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PropertiesModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PropertiesModel.SignalSignatures[K]>
+            ...args: PropertiesModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

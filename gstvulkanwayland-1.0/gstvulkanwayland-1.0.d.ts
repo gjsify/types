@@ -26,7 +26,10 @@ export namespace GstVulkanWayland {
 
     namespace VulkanDisplayWayland {
         // Signal signatures
-        interface SignalSignatures extends GstVulkan.VulkanDisplay.SignalSignatures {}
+        interface SignalSignatures extends GstVulkan.VulkanDisplay.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -67,14 +70,17 @@ export namespace GstVulkanWayland {
             signal: K,
             callback: VulkanDisplayWayland.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VulkanDisplayWayland.SignalSignatures>(
             signal: K,
             callback: VulkanDisplayWayland.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VulkanDisplayWayland.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VulkanDisplayWayland.SignalSignatures[K]>
+            ...args: VulkanDisplayWayland.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     type VulkanDisplayWaylandClass = typeof VulkanDisplayWayland;

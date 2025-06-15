@@ -632,6 +632,13 @@ export namespace GWeather {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             updated: Updated;
+            'notify::application-id': GObject.Object.Notify;
+            'notify::application-id': GObject.Object.Notify;
+            'notify::contact-info': GObject.Object.Notify;
+            'notify::contact-info': GObject.Object.Notify;
+            'notify::enabled-providers': GObject.Object.Notify;
+            'notify::enabled-providers': GObject.Object.Notify;
+            'notify::location': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -717,8 +724,14 @@ export namespace GWeather {
         // Signals
 
         connect<K extends keyof Info.SignalSignatures>(signal: K, callback: Info.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Info.SignalSignatures>(signal: K, callback: Info.SignalSignatures[K]): number;
-        emit<K extends keyof Info.SignalSignatures>(signal: K, ...args: Parameters<Info.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Info.SignalSignatures>(
+            signal: K,
+            ...args: Info.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -894,14 +907,17 @@ export namespace GWeather {
         // Signals
 
         connect<K extends keyof Location.SignalSignatures>(signal: K, callback: Location.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Location.SignalSignatures>(
             signal: K,
             callback: Location.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Location.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Location.SignalSignatures[K]>
+            ...args: Location.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 

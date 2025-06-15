@@ -420,7 +420,9 @@ export namespace Tsparql {
     }
     namespace Batch {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::connection': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -467,8 +469,14 @@ export namespace Tsparql {
         // Signals
 
         connect<K extends keyof Batch.SignalSignatures>(signal: K, callback: Batch.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Batch.SignalSignatures>(signal: K, callback: Batch.SignalSignatures[K]): number;
-        emit<K extends keyof Batch.SignalSignatures>(signal: K, ...args: Parameters<Batch.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Batch.SignalSignatures>(
+            signal: K,
+            ...args: Batch.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -586,7 +594,15 @@ export namespace Tsparql {
 
     namespace Endpoint {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::allowed-graphs': GObject.Object.Notify;
+            'notify::allowed-graphs': GObject.Object.Notify;
+            'notify::allowed-services': GObject.Object.Notify;
+            'notify::allowed-services': GObject.Object.Notify;
+            'notify::readonly': GObject.Object.Notify;
+            'notify::sparql-connection': GObject.Object.Notify;
+            'notify::sparql-connection': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -687,14 +703,17 @@ export namespace Tsparql {
         // Signals
 
         connect<K extends keyof Endpoint.SignalSignatures>(signal: K, callback: Endpoint.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Endpoint.SignalSignatures>(
             signal: K,
             callback: Endpoint.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Endpoint.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Endpoint.SignalSignatures[K]>
+            ...args: Endpoint.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -775,12 +794,23 @@ export namespace Tsparql {
         // Signal callback interfaces
 
         interface BlockCall {
-            (_source: EndpointDBus, object: string): boolean;
+            (_source: EndpointDBus, object: string): boolean | void;
         }
 
         // Signal signatures
         interface SignalSignatures extends Endpoint.SignalSignatures {
             'block-call': BlockCall;
+            'notify::dbus-connection': GObject.Object.Notify;
+            'notify::dbus-connection': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'notify::allowed-graphs': GObject.Object.Notify;
+            'notify::allowed-graphs': GObject.Object.Notify;
+            'notify::allowed-services': GObject.Object.Notify;
+            'notify::allowed-services': GObject.Object.Notify;
+            'notify::readonly': GObject.Object.Notify;
+            'notify::sparql-connection': GObject.Object.Notify;
+            'notify::sparql-connection': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -877,14 +907,17 @@ export namespace Tsparql {
             signal: K,
             callback: EndpointDBus.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof EndpointDBus.SignalSignatures>(
             signal: K,
             callback: EndpointDBus.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof EndpointDBus.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EndpointDBus.SignalSignatures[K]>
+            ...args: EndpointDBus.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -1417,12 +1450,23 @@ export namespace Tsparql {
         // Signal callback interfaces
 
         interface BlockRemoteAddress {
-            (_source: EndpointHttp, address: Gio.SocketAddress): boolean;
+            (_source: EndpointHttp, address: Gio.SocketAddress): boolean | void;
         }
 
         // Signal signatures
         interface SignalSignatures extends Endpoint.SignalSignatures {
             'block-remote-address': BlockRemoteAddress;
+            'notify::http-certificate': GObject.Object.Notify;
+            'notify::http-certificate': GObject.Object.Notify;
+            'notify::http-port': GObject.Object.Notify;
+            'notify::http-port': GObject.Object.Notify;
+            'notify::allowed-graphs': GObject.Object.Notify;
+            'notify::allowed-graphs': GObject.Object.Notify;
+            'notify::allowed-services': GObject.Object.Notify;
+            'notify::allowed-services': GObject.Object.Notify;
+            'notify::readonly': GObject.Object.Notify;
+            'notify::sparql-connection': GObject.Object.Notify;
+            'notify::sparql-connection': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1517,14 +1561,17 @@ export namespace Tsparql {
             signal: K,
             callback: EndpointHttp.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof EndpointHttp.SignalSignatures>(
             signal: K,
             callback: EndpointHttp.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof EndpointHttp.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EndpointHttp.SignalSignatures[K]>
+            ...args: EndpointHttp.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -2092,14 +2139,17 @@ export namespace Tsparql {
             signal: K,
             callback: NamespaceManager.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NamespaceManager.SignalSignatures>(
             signal: K,
             callback: NamespaceManager.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NamespaceManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NamespaceManager.SignalSignatures[K]>
+            ...args: NamespaceManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2180,6 +2230,7 @@ export namespace Tsparql {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             events: Events;
+            'notify::connection': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -2241,14 +2292,17 @@ export namespace Tsparql {
         // Signals
 
         connect<K extends keyof Notifier.SignalSignatures>(signal: K, callback: Notifier.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Notifier.SignalSignatures>(
             signal: K,
             callback: Notifier.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Notifier.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Notifier.SignalSignatures[K]>
+            ...args: Notifier.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2292,7 +2346,9 @@ export namespace Tsparql {
 
     namespace Resource {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::identifier': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2355,14 +2411,17 @@ export namespace Tsparql {
         // Signals
 
         connect<K extends keyof Resource.SignalSignatures>(signal: K, callback: Resource.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Resource.SignalSignatures>(
             signal: K,
             callback: Resource.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Resource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Resource.SignalSignatures[K]>
+            ...args: Resource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2865,14 +2924,17 @@ export namespace Tsparql {
             signal: K,
             callback: SparqlConnection.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SparqlConnection.SignalSignatures>(
             signal: K,
             callback: SparqlConnection.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SparqlConnection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SparqlConnection.SignalSignatures[K]>
+            ...args: SparqlConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -3585,7 +3647,11 @@ export namespace Tsparql {
 
     namespace SparqlCursor {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::connection': GObject.Object.Notify;
+            'notify::n-columns': GObject.Object.Notify;
+            'notify::n-columns': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3653,14 +3719,17 @@ export namespace Tsparql {
             signal: K,
             callback: SparqlCursor.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SparqlCursor.SignalSignatures>(
             signal: K,
             callback: SparqlCursor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SparqlCursor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SparqlCursor.SignalSignatures[K]>
+            ...args: SparqlCursor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3841,7 +3910,10 @@ export namespace Tsparql {
 
     namespace SparqlStatement {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::connection': GObject.Object.Notify;
+            'notify::sparql': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3909,14 +3981,17 @@ export namespace Tsparql {
             signal: K,
             callback: SparqlStatement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SparqlStatement.SignalSignatures>(
             signal: K,
             callback: SparqlStatement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SparqlStatement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SparqlStatement.SignalSignatures[K]>
+            ...args: SparqlStatement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

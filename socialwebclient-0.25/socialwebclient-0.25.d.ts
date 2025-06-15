@@ -69,8 +69,14 @@ export namespace SocialWebClient {
         // Signals
 
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -99,6 +105,8 @@ export namespace SocialWebClient {
             'contacts-added': ContactsAdded;
             'contacts-changed': ContactsChanged;
             'contacts-removed': ContactsRemoved;
+            'notify::object-path': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -129,14 +137,17 @@ export namespace SocialWebClient {
             signal: K,
             callback: ClientContactView.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientContactView.SignalSignatures>(
             signal: K,
             callback: ClientContactView.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientContactView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientContactView.SignalSignatures[K]>
+            ...args: ClientContactView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -166,6 +177,8 @@ export namespace SocialWebClient {
             'items-added': ItemsAdded;
             'items-changed': ItemsChanged;
             'items-removed': ItemsRemoved;
+            'notify::object-path': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -196,14 +209,17 @@ export namespace SocialWebClient {
             signal: K,
             callback: ClientItemView.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientItemView.SignalSignatures>(
             signal: K,
             callback: ClientItemView.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientItemView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientItemView.SignalSignatures[K]>
+            ...args: ClientItemView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -239,14 +255,17 @@ export namespace SocialWebClient {
             signal: K,
             callback: ClientLastfm.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientLastfm.SignalSignatures>(
             signal: K,
             callback: ClientLastfm.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientLastfm.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientLastfm.SignalSignatures[K]>
+            ...args: ClientLastfm.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -318,14 +337,17 @@ export namespace SocialWebClient {
             signal: K,
             callback: ClientService.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientService.SignalSignatures>(
             signal: K,
             callback: ClientService.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientService.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientService.SignalSignatures[K]>
+            ...args: ClientService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 

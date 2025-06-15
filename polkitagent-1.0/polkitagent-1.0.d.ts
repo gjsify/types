@@ -83,14 +83,17 @@ export namespace PolkitAgent {
         // Signals
 
         connect<K extends keyof Listener.SignalSignatures>(signal: K, callback: Listener.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Listener.SignalSignatures>(
             signal: K,
             callback: Listener.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Listener.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Listener.SignalSignatures[K]>
+            ...args: Listener.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -337,6 +340,8 @@ export namespace PolkitAgent {
             request: Request;
             'show-error': ShowError;
             'show-info': ShowInfo;
+            'notify::cookie': GObject.Object.Notify;
+            'notify::identity': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -396,14 +401,17 @@ export namespace PolkitAgent {
         // Signals
 
         connect<K extends keyof Session.SignalSignatures>(signal: K, callback: Session.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Session.SignalSignatures>(
             signal: K,
             callback: Session.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Session.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Session.SignalSignatures[K]>
+            ...args: Session.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -460,14 +468,17 @@ export namespace PolkitAgent {
             signal: K,
             callback: TextListener.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TextListener.SignalSignatures>(
             signal: K,
             callback: TextListener.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TextListener.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TextListener.SignalSignatures[K]>
+            ...args: TextListener.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**

@@ -40,7 +40,10 @@ export namespace Parquet {
     const VERSION_TAG: string;
     namespace ArrowFileReader {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::arrow-file-reader': GObject.Object.Notify;
+            'notify::arrow-file-reader': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -74,14 +77,17 @@ export namespace Parquet {
             signal: K,
             callback: ArrowFileReader.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ArrowFileReader.SignalSignatures>(
             signal: K,
             callback: ArrowFileReader.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ArrowFileReader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ArrowFileReader.SignalSignatures[K]>
+            ...args: ArrowFileReader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -95,7 +101,10 @@ export namespace Parquet {
 
     namespace ArrowFileWriter {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::arrow-file-writer': GObject.Object.Notify;
+            'notify::arrow-file-writer': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -137,14 +146,17 @@ export namespace Parquet {
             signal: K,
             callback: ArrowFileWriter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ArrowFileWriter.SignalSignatures>(
             signal: K,
             callback: ArrowFileWriter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ArrowFileWriter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ArrowFileWriter.SignalSignatures[K]>
+            ...args: ArrowFileWriter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -178,14 +190,17 @@ export namespace Parquet {
             signal: K,
             callback: WriterProperties.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WriterProperties.SignalSignatures>(
             signal: K,
             callback: WriterProperties.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WriterProperties.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WriterProperties.SignalSignatures[K]>
+            ...args: WriterProperties.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

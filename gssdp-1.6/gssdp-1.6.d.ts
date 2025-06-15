@@ -89,6 +89,29 @@ export namespace GSSDP {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'message-received': MessageReceived;
+            'notify::active': GObject.Object.Notify;
+            'notify::address': GObject.Object.Notify;
+            'notify::address-family': GObject.Object.Notify;
+            'notify::address-family': GObject.Object.Notify;
+            'notify::boot-id': GObject.Object.Notify;
+            'notify::boot-id': GObject.Object.Notify;
+            'notify::config-id': GObject.Object.Notify;
+            'notify::config-id': GObject.Object.Notify;
+            'notify::host-ip': GObject.Object.Notify;
+            'notify::host-ip': GObject.Object.Notify;
+            'notify::host-mask': GObject.Object.Notify;
+            'notify::host-mask': GObject.Object.Notify;
+            'notify::interface': GObject.Object.Notify;
+            'notify::msearch-port': GObject.Object.Notify;
+            'notify::msearch-port': GObject.Object.Notify;
+            'notify::network': GObject.Object.Notify;
+            'notify::port': GObject.Object.Notify;
+            'notify::server-id': GObject.Object.Notify;
+            'notify::server-id': GObject.Object.Notify;
+            'notify::socket-ttl': GObject.Object.Notify;
+            'notify::socket-ttl': GObject.Object.Notify;
+            'notify::uda-version': GObject.Object.Notify;
+            'notify::uda-version': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -294,8 +317,14 @@ export namespace GSSDP {
         // Signals
 
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -952,6 +981,10 @@ export namespace GSSDP {
             'resource-available': ResourceAvailable;
             'resource-unavailable': ResourceUnavailable;
             'resource-update': ResourceUpdate;
+            'notify::active': GObject.Object.Notify;
+            'notify::client': GObject.Object.Notify;
+            'notify::mx': GObject.Object.Notify;
+            'notify::target': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1017,14 +1050,17 @@ export namespace GSSDP {
             signal: K,
             callback: ResourceBrowser.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ResourceBrowser.SignalSignatures>(
             signal: K,
             callback: ResourceBrowser.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ResourceBrowser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ResourceBrowser.SignalSignatures[K]>
+            ...args: ResourceBrowser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1078,7 +1114,14 @@ export namespace GSSDP {
 
     namespace ResourceGroup {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::available': GObject.Object.Notify;
+            'notify::client': GObject.Object.Notify;
+            'notify::max-age': GObject.Object.Notify;
+            'notify::max-age': GObject.Object.Notify;
+            'notify::message-delay': GObject.Object.Notify;
+            'notify::message-delay': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1150,14 +1193,17 @@ export namespace GSSDP {
             signal: K,
             callback: ResourceGroup.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ResourceGroup.SignalSignatures>(
             signal: K,
             callback: ResourceGroup.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ResourceGroup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ResourceGroup.SignalSignatures[K]>
+            ...args: ResourceGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

@@ -558,6 +558,110 @@ export namespace GooCanvas {
         // Signal signatures
         interface SignalSignatures extends Gtk.Container.SignalSignatures {
             'item-created': ItemCreated;
+            'notify::anchor': GObject.Object.Notify;
+            'notify::automatic-bounds': GObject.Object.Notify;
+            'notify::automatic-bounds': GObject.Object.Notify;
+            'notify::background-color': GObject.Object.Notify;
+            'notify::background-color': GObject.Object.Notify;
+            'notify::background-color-gdk-rgba': GObject.Object.Notify;
+            'notify::background-color-gdk-rgba': GObject.Object.Notify;
+            'notify::background-color-rgb': GObject.Object.Notify;
+            'notify::background-color-rgb': GObject.Object.Notify;
+            'notify::bounds-from-origin': GObject.Object.Notify;
+            'notify::bounds-from-origin': GObject.Object.Notify;
+            'notify::bounds-padding': GObject.Object.Notify;
+            'notify::bounds-padding': GObject.Object.Notify;
+            'notify::clear-background': GObject.Object.Notify;
+            'notify::clear-background': GObject.Object.Notify;
+            'notify::integer-layout': GObject.Object.Notify;
+            'notify::integer-layout': GObject.Object.Notify;
+            'notify::redraw-when-scrolled': GObject.Object.Notify;
+            'notify::redraw-when-scrolled': GObject.Object.Notify;
+            'notify::resolution-x': GObject.Object.Notify;
+            'notify::resolution-x': GObject.Object.Notify;
+            'notify::resolution-y': GObject.Object.Notify;
+            'notify::resolution-y': GObject.Object.Notify;
+            'notify::scale': GObject.Object.Notify;
+            'notify::scale-x': GObject.Object.Notify;
+            'notify::scale-x': GObject.Object.Notify;
+            'notify::scale-y': GObject.Object.Notify;
+            'notify::scale-y': GObject.Object.Notify;
+            'notify::units': GObject.Object.Notify;
+            'notify::x1': GObject.Object.Notify;
+            'notify::x2': GObject.Object.Notify;
+            'notify::y1': GObject.Object.Notify;
+            'notify::y2': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::child': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::events': GObject.Object.Notify;
+            'notify::expand': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::halign': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::hexpand': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::margin': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::sensitive': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::valign': GObject.Object.Notify;
+            'notify::vexpand': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::window': GObject.Object.Notify;
+            'notify::hscroll-policy': GObject.Object.Notify;
+            'notify::vscroll-policy': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -805,8 +909,14 @@ export namespace GooCanvas {
         // Signals
 
         connect<K extends keyof Canvas.SignalSignatures>(signal: K, callback: Canvas.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Canvas.SignalSignatures>(signal: K, callback: Canvas.SignalSignatures[K]): number;
-        emit<K extends keyof Canvas.SignalSignatures>(signal: K, ...args: Parameters<Canvas.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Canvas.SignalSignatures>(
+            signal: K,
+            ...args: Canvas.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1823,19 +1933,90 @@ export namespace GooCanvas {
             signal: K,
             callback: CanvasAccessibleFactory.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CanvasAccessibleFactory.SignalSignatures>(
             signal: K,
             callback: CanvasAccessibleFactory.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CanvasAccessibleFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CanvasAccessibleFactory.SignalSignatures[K]>
+            ...args: CanvasAccessibleFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace CanvasEllipse {
         // Signal signatures
-        interface SignalSignatures extends CanvasItemSimple.SignalSignatures {}
+        interface SignalSignatures extends CanvasItemSimple.SignalSignatures {
+            'notify::center-x': GObject.Object.Notify;
+            'notify::center-x': GObject.Object.Notify;
+            'notify::center-y': GObject.Object.Notify;
+            'notify::center-y': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::radius-x': GObject.Object.Notify;
+            'notify::radius-x': GObject.Object.Notify;
+            'notify::radius-y': GObject.Object.Notify;
+            'notify::radius-y': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::x': GObject.Object.Notify;
+            'notify::y': GObject.Object.Notify;
+            'notify::antialias': GObject.Object.Notify;
+            'notify::clip-fill-rule': GObject.Object.Notify;
+            'notify::clip-fill-rule': GObject.Object.Notify;
+            'notify::clip-path': GObject.Object.Notify;
+            'notify::clip-path': GObject.Object.Notify;
+            'notify::fill-color': GObject.Object.Notify;
+            'notify::fill-color': GObject.Object.Notify;
+            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
+            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
+            'notify::fill-color-rgba': GObject.Object.Notify;
+            'notify::fill-color-rgba': GObject.Object.Notify;
+            'notify::fill-pattern': GObject.Object.Notify;
+            'notify::fill-pattern': GObject.Object.Notify;
+            'notify::fill-pixbuf': GObject.Object.Notify;
+            'notify::fill-pixbuf': GObject.Object.Notify;
+            'notify::fill-rule': GObject.Object.Notify;
+            'notify::fill-rule': GObject.Object.Notify;
+            'notify::font': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::hint-metrics': GObject.Object.Notify;
+            'notify::hint-metrics': GObject.Object.Notify;
+            'notify::line-cap': GObject.Object.Notify;
+            'notify::line-cap': GObject.Object.Notify;
+            'notify::line-dash': GObject.Object.Notify;
+            'notify::line-dash': GObject.Object.Notify;
+            'notify::line-join': GObject.Object.Notify;
+            'notify::line-join': GObject.Object.Notify;
+            'notify::line-join-miter-limit': GObject.Object.Notify;
+            'notify::line-join-miter-limit': GObject.Object.Notify;
+            'notify::line-width': GObject.Object.Notify;
+            'notify::line-width': GObject.Object.Notify;
+            'notify::operator': GObject.Object.Notify;
+            'notify::stroke-color': GObject.Object.Notify;
+            'notify::stroke-color': GObject.Object.Notify;
+            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
+            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
+            'notify::stroke-color-rgba': GObject.Object.Notify;
+            'notify::stroke-color-rgba': GObject.Object.Notify;
+            'notify::stroke-pattern': GObject.Object.Notify;
+            'notify::stroke-pattern': GObject.Object.Notify;
+            'notify::stroke-pixbuf': GObject.Object.Notify;
+            'notify::stroke-pixbuf': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::pointer-events': GObject.Object.Notify;
+            'notify::pointer-events': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::tooltip': GObject.Object.Notify;
+            'notify::transform': GObject.Object.Notify;
+            'notify::visibility': GObject.Object.Notify;
+            'notify::visibility-threshold': GObject.Object.Notify;
+            'notify::visibility-threshold': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1921,14 +2102,17 @@ export namespace GooCanvas {
             signal: K,
             callback: CanvasEllipse.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CanvasEllipse.SignalSignatures>(
             signal: K,
             callback: CanvasEllipse.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CanvasEllipse.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CanvasEllipse.SignalSignatures[K]>
+            ...args: CanvasEllipse.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get can_focus(): boolean;
@@ -3039,7 +3223,75 @@ export namespace GooCanvas {
 
     namespace CanvasEllipseModel {
         // Signal signatures
-        interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures {}
+        interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures {
+            'notify::center-x': GObject.Object.Notify;
+            'notify::center-x': GObject.Object.Notify;
+            'notify::center-y': GObject.Object.Notify;
+            'notify::center-y': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::radius-x': GObject.Object.Notify;
+            'notify::radius-x': GObject.Object.Notify;
+            'notify::radius-y': GObject.Object.Notify;
+            'notify::radius-y': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::x': GObject.Object.Notify;
+            'notify::y': GObject.Object.Notify;
+            'notify::antialias': GObject.Object.Notify;
+            'notify::clip-fill-rule': GObject.Object.Notify;
+            'notify::clip-fill-rule': GObject.Object.Notify;
+            'notify::clip-path': GObject.Object.Notify;
+            'notify::clip-path': GObject.Object.Notify;
+            'notify::fill-color': GObject.Object.Notify;
+            'notify::fill-color': GObject.Object.Notify;
+            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
+            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
+            'notify::fill-color-rgba': GObject.Object.Notify;
+            'notify::fill-color-rgba': GObject.Object.Notify;
+            'notify::fill-pattern': GObject.Object.Notify;
+            'notify::fill-pattern': GObject.Object.Notify;
+            'notify::fill-pixbuf': GObject.Object.Notify;
+            'notify::fill-pixbuf': GObject.Object.Notify;
+            'notify::fill-rule': GObject.Object.Notify;
+            'notify::fill-rule': GObject.Object.Notify;
+            'notify::font': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::hint-metrics': GObject.Object.Notify;
+            'notify::hint-metrics': GObject.Object.Notify;
+            'notify::line-cap': GObject.Object.Notify;
+            'notify::line-cap': GObject.Object.Notify;
+            'notify::line-dash': GObject.Object.Notify;
+            'notify::line-dash': GObject.Object.Notify;
+            'notify::line-join': GObject.Object.Notify;
+            'notify::line-join': GObject.Object.Notify;
+            'notify::line-join-miter-limit': GObject.Object.Notify;
+            'notify::line-join-miter-limit': GObject.Object.Notify;
+            'notify::line-width': GObject.Object.Notify;
+            'notify::line-width': GObject.Object.Notify;
+            'notify::operator': GObject.Object.Notify;
+            'notify::stroke-color': GObject.Object.Notify;
+            'notify::stroke-color': GObject.Object.Notify;
+            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
+            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
+            'notify::stroke-color-rgba': GObject.Object.Notify;
+            'notify::stroke-color-rgba': GObject.Object.Notify;
+            'notify::stroke-pattern': GObject.Object.Notify;
+            'notify::stroke-pattern': GObject.Object.Notify;
+            'notify::stroke-pixbuf': GObject.Object.Notify;
+            'notify::stroke-pixbuf': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::pointer-events': GObject.Object.Notify;
+            'notify::pointer-events': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::tooltip': GObject.Object.Notify;
+            'notify::transform': GObject.Object.Notify;
+            'notify::visibility': GObject.Object.Notify;
+            'notify::visibility-threshold': GObject.Object.Notify;
+            'notify::visibility-threshold': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3129,14 +3381,17 @@ export namespace GooCanvas {
             signal: K,
             callback: CanvasEllipseModel.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CanvasEllipseModel.SignalSignatures>(
             signal: K,
             callback: CanvasEllipseModel.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CanvasEllipseModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CanvasEllipseModel.SignalSignatures[K]>
+            ...args: CanvasEllipseModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get can_focus(): boolean;
@@ -3883,7 +4138,117 @@ export namespace GooCanvas {
 
     namespace CanvasGrid {
         // Signal signatures
-        interface SignalSignatures extends CanvasItemSimple.SignalSignatures {}
+        interface SignalSignatures extends CanvasItemSimple.SignalSignatures {
+            'notify::border-color': GObject.Object.Notify;
+            'notify::border-color': GObject.Object.Notify;
+            'notify::border-color-gdk-rgba': GObject.Object.Notify;
+            'notify::border-color-gdk-rgba': GObject.Object.Notify;
+            'notify::border-color-rgba': GObject.Object.Notify;
+            'notify::border-color-rgba': GObject.Object.Notify;
+            'notify::border-pattern': GObject.Object.Notify;
+            'notify::border-pattern': GObject.Object.Notify;
+            'notify::border-pixbuf': GObject.Object.Notify;
+            'notify::border-pixbuf': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::horz-grid-line-color': GObject.Object.Notify;
+            'notify::horz-grid-line-color': GObject.Object.Notify;
+            'notify::horz-grid-line-color-gdk-rgba': GObject.Object.Notify;
+            'notify::horz-grid-line-color-gdk-rgba': GObject.Object.Notify;
+            'notify::horz-grid-line-color-rgba': GObject.Object.Notify;
+            'notify::horz-grid-line-color-rgba': GObject.Object.Notify;
+            'notify::horz-grid-line-pattern': GObject.Object.Notify;
+            'notify::horz-grid-line-pattern': GObject.Object.Notify;
+            'notify::horz-grid-line-pixbuf': GObject.Object.Notify;
+            'notify::horz-grid-line-pixbuf': GObject.Object.Notify;
+            'notify::horz-grid-line-width': GObject.Object.Notify;
+            'notify::horz-grid-line-width': GObject.Object.Notify;
+            'notify::show-horz-grid-lines': GObject.Object.Notify;
+            'notify::show-horz-grid-lines': GObject.Object.Notify;
+            'notify::show-vert-grid-lines': GObject.Object.Notify;
+            'notify::show-vert-grid-lines': GObject.Object.Notify;
+            'notify::vert-grid-line-color': GObject.Object.Notify;
+            'notify::vert-grid-line-color': GObject.Object.Notify;
+            'notify::vert-grid-line-color-gdk-rgba': GObject.Object.Notify;
+            'notify::vert-grid-line-color-gdk-rgba': GObject.Object.Notify;
+            'notify::vert-grid-line-color-rgba': GObject.Object.Notify;
+            'notify::vert-grid-line-color-rgba': GObject.Object.Notify;
+            'notify::vert-grid-line-pattern': GObject.Object.Notify;
+            'notify::vert-grid-line-pattern': GObject.Object.Notify;
+            'notify::vert-grid-line-pixbuf': GObject.Object.Notify;
+            'notify::vert-grid-line-pixbuf': GObject.Object.Notify;
+            'notify::vert-grid-line-width': GObject.Object.Notify;
+            'notify::vert-grid-line-width': GObject.Object.Notify;
+            'notify::vert-grid-lines-on-top': GObject.Object.Notify;
+            'notify::vert-grid-lines-on-top': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::x': GObject.Object.Notify;
+            'notify::x-offset': GObject.Object.Notify;
+            'notify::x-offset': GObject.Object.Notify;
+            'notify::x-step': GObject.Object.Notify;
+            'notify::x-step': GObject.Object.Notify;
+            'notify::y': GObject.Object.Notify;
+            'notify::y-offset': GObject.Object.Notify;
+            'notify::y-offset': GObject.Object.Notify;
+            'notify::y-step': GObject.Object.Notify;
+            'notify::y-step': GObject.Object.Notify;
+            'notify::antialias': GObject.Object.Notify;
+            'notify::clip-fill-rule': GObject.Object.Notify;
+            'notify::clip-fill-rule': GObject.Object.Notify;
+            'notify::clip-path': GObject.Object.Notify;
+            'notify::clip-path': GObject.Object.Notify;
+            'notify::fill-color': GObject.Object.Notify;
+            'notify::fill-color': GObject.Object.Notify;
+            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
+            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
+            'notify::fill-color-rgba': GObject.Object.Notify;
+            'notify::fill-color-rgba': GObject.Object.Notify;
+            'notify::fill-pattern': GObject.Object.Notify;
+            'notify::fill-pattern': GObject.Object.Notify;
+            'notify::fill-pixbuf': GObject.Object.Notify;
+            'notify::fill-pixbuf': GObject.Object.Notify;
+            'notify::fill-rule': GObject.Object.Notify;
+            'notify::fill-rule': GObject.Object.Notify;
+            'notify::font': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::hint-metrics': GObject.Object.Notify;
+            'notify::hint-metrics': GObject.Object.Notify;
+            'notify::line-cap': GObject.Object.Notify;
+            'notify::line-cap': GObject.Object.Notify;
+            'notify::line-dash': GObject.Object.Notify;
+            'notify::line-dash': GObject.Object.Notify;
+            'notify::line-join': GObject.Object.Notify;
+            'notify::line-join': GObject.Object.Notify;
+            'notify::line-join-miter-limit': GObject.Object.Notify;
+            'notify::line-join-miter-limit': GObject.Object.Notify;
+            'notify::line-width': GObject.Object.Notify;
+            'notify::line-width': GObject.Object.Notify;
+            'notify::operator': GObject.Object.Notify;
+            'notify::stroke-color': GObject.Object.Notify;
+            'notify::stroke-color': GObject.Object.Notify;
+            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
+            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
+            'notify::stroke-color-rgba': GObject.Object.Notify;
+            'notify::stroke-color-rgba': GObject.Object.Notify;
+            'notify::stroke-pattern': GObject.Object.Notify;
+            'notify::stroke-pattern': GObject.Object.Notify;
+            'notify::stroke-pixbuf': GObject.Object.Notify;
+            'notify::stroke-pixbuf': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::pointer-events': GObject.Object.Notify;
+            'notify::pointer-events': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::tooltip': GObject.Object.Notify;
+            'notify::transform': GObject.Object.Notify;
+            'notify::visibility': GObject.Object.Notify;
+            'notify::visibility-threshold': GObject.Object.Notify;
+            'notify::visibility-threshold': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4120,14 +4485,17 @@ export namespace GooCanvas {
             signal: K,
             callback: CanvasGrid.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CanvasGrid.SignalSignatures>(
             signal: K,
             callback: CanvasGrid.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CanvasGrid.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CanvasGrid.SignalSignatures[K]>
+            ...args: CanvasGrid.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get can_focus(): boolean;
@@ -5238,7 +5606,117 @@ export namespace GooCanvas {
 
     namespace CanvasGridModel {
         // Signal signatures
-        interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures {}
+        interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures {
+            'notify::border-color': GObject.Object.Notify;
+            'notify::border-color': GObject.Object.Notify;
+            'notify::border-color-gdk-rgba': GObject.Object.Notify;
+            'notify::border-color-gdk-rgba': GObject.Object.Notify;
+            'notify::border-color-rgba': GObject.Object.Notify;
+            'notify::border-color-rgba': GObject.Object.Notify;
+            'notify::border-pattern': GObject.Object.Notify;
+            'notify::border-pattern': GObject.Object.Notify;
+            'notify::border-pixbuf': GObject.Object.Notify;
+            'notify::border-pixbuf': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::horz-grid-line-color': GObject.Object.Notify;
+            'notify::horz-grid-line-color': GObject.Object.Notify;
+            'notify::horz-grid-line-color-gdk-rgba': GObject.Object.Notify;
+            'notify::horz-grid-line-color-gdk-rgba': GObject.Object.Notify;
+            'notify::horz-grid-line-color-rgba': GObject.Object.Notify;
+            'notify::horz-grid-line-color-rgba': GObject.Object.Notify;
+            'notify::horz-grid-line-pattern': GObject.Object.Notify;
+            'notify::horz-grid-line-pattern': GObject.Object.Notify;
+            'notify::horz-grid-line-pixbuf': GObject.Object.Notify;
+            'notify::horz-grid-line-pixbuf': GObject.Object.Notify;
+            'notify::horz-grid-line-width': GObject.Object.Notify;
+            'notify::horz-grid-line-width': GObject.Object.Notify;
+            'notify::show-horz-grid-lines': GObject.Object.Notify;
+            'notify::show-horz-grid-lines': GObject.Object.Notify;
+            'notify::show-vert-grid-lines': GObject.Object.Notify;
+            'notify::show-vert-grid-lines': GObject.Object.Notify;
+            'notify::vert-grid-line-color': GObject.Object.Notify;
+            'notify::vert-grid-line-color': GObject.Object.Notify;
+            'notify::vert-grid-line-color-gdk-rgba': GObject.Object.Notify;
+            'notify::vert-grid-line-color-gdk-rgba': GObject.Object.Notify;
+            'notify::vert-grid-line-color-rgba': GObject.Object.Notify;
+            'notify::vert-grid-line-color-rgba': GObject.Object.Notify;
+            'notify::vert-grid-line-pattern': GObject.Object.Notify;
+            'notify::vert-grid-line-pattern': GObject.Object.Notify;
+            'notify::vert-grid-line-pixbuf': GObject.Object.Notify;
+            'notify::vert-grid-line-pixbuf': GObject.Object.Notify;
+            'notify::vert-grid-line-width': GObject.Object.Notify;
+            'notify::vert-grid-line-width': GObject.Object.Notify;
+            'notify::vert-grid-lines-on-top': GObject.Object.Notify;
+            'notify::vert-grid-lines-on-top': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::x': GObject.Object.Notify;
+            'notify::x-offset': GObject.Object.Notify;
+            'notify::x-offset': GObject.Object.Notify;
+            'notify::x-step': GObject.Object.Notify;
+            'notify::x-step': GObject.Object.Notify;
+            'notify::y': GObject.Object.Notify;
+            'notify::y-offset': GObject.Object.Notify;
+            'notify::y-offset': GObject.Object.Notify;
+            'notify::y-step': GObject.Object.Notify;
+            'notify::y-step': GObject.Object.Notify;
+            'notify::antialias': GObject.Object.Notify;
+            'notify::clip-fill-rule': GObject.Object.Notify;
+            'notify::clip-fill-rule': GObject.Object.Notify;
+            'notify::clip-path': GObject.Object.Notify;
+            'notify::clip-path': GObject.Object.Notify;
+            'notify::fill-color': GObject.Object.Notify;
+            'notify::fill-color': GObject.Object.Notify;
+            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
+            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
+            'notify::fill-color-rgba': GObject.Object.Notify;
+            'notify::fill-color-rgba': GObject.Object.Notify;
+            'notify::fill-pattern': GObject.Object.Notify;
+            'notify::fill-pattern': GObject.Object.Notify;
+            'notify::fill-pixbuf': GObject.Object.Notify;
+            'notify::fill-pixbuf': GObject.Object.Notify;
+            'notify::fill-rule': GObject.Object.Notify;
+            'notify::fill-rule': GObject.Object.Notify;
+            'notify::font': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::hint-metrics': GObject.Object.Notify;
+            'notify::hint-metrics': GObject.Object.Notify;
+            'notify::line-cap': GObject.Object.Notify;
+            'notify::line-cap': GObject.Object.Notify;
+            'notify::line-dash': GObject.Object.Notify;
+            'notify::line-dash': GObject.Object.Notify;
+            'notify::line-join': GObject.Object.Notify;
+            'notify::line-join': GObject.Object.Notify;
+            'notify::line-join-miter-limit': GObject.Object.Notify;
+            'notify::line-join-miter-limit': GObject.Object.Notify;
+            'notify::line-width': GObject.Object.Notify;
+            'notify::line-width': GObject.Object.Notify;
+            'notify::operator': GObject.Object.Notify;
+            'notify::stroke-color': GObject.Object.Notify;
+            'notify::stroke-color': GObject.Object.Notify;
+            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
+            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
+            'notify::stroke-color-rgba': GObject.Object.Notify;
+            'notify::stroke-color-rgba': GObject.Object.Notify;
+            'notify::stroke-pattern': GObject.Object.Notify;
+            'notify::stroke-pattern': GObject.Object.Notify;
+            'notify::stroke-pixbuf': GObject.Object.Notify;
+            'notify::stroke-pixbuf': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::pointer-events': GObject.Object.Notify;
+            'notify::pointer-events': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::tooltip': GObject.Object.Notify;
+            'notify::transform': GObject.Object.Notify;
+            'notify::visibility': GObject.Object.Notify;
+            'notify::visibility-threshold': GObject.Object.Notify;
+            'notify::visibility-threshold': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5463,14 +5941,17 @@ export namespace GooCanvas {
             signal: K,
             callback: CanvasGridModel.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CanvasGridModel.SignalSignatures>(
             signal: K,
             callback: CanvasGridModel.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CanvasGridModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CanvasGridModel.SignalSignatures[K]>
+            ...args: CanvasGridModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get can_focus(): boolean;
@@ -6217,7 +6698,67 @@ export namespace GooCanvas {
 
     namespace CanvasGroup {
         // Signal signatures
-        interface SignalSignatures extends CanvasItemSimple.SignalSignatures {}
+        interface SignalSignatures extends CanvasItemSimple.SignalSignatures {
+            'notify::height': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::x': GObject.Object.Notify;
+            'notify::y': GObject.Object.Notify;
+            'notify::antialias': GObject.Object.Notify;
+            'notify::clip-fill-rule': GObject.Object.Notify;
+            'notify::clip-fill-rule': GObject.Object.Notify;
+            'notify::clip-path': GObject.Object.Notify;
+            'notify::clip-path': GObject.Object.Notify;
+            'notify::fill-color': GObject.Object.Notify;
+            'notify::fill-color': GObject.Object.Notify;
+            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
+            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
+            'notify::fill-color-rgba': GObject.Object.Notify;
+            'notify::fill-color-rgba': GObject.Object.Notify;
+            'notify::fill-pattern': GObject.Object.Notify;
+            'notify::fill-pattern': GObject.Object.Notify;
+            'notify::fill-pixbuf': GObject.Object.Notify;
+            'notify::fill-pixbuf': GObject.Object.Notify;
+            'notify::fill-rule': GObject.Object.Notify;
+            'notify::fill-rule': GObject.Object.Notify;
+            'notify::font': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::hint-metrics': GObject.Object.Notify;
+            'notify::hint-metrics': GObject.Object.Notify;
+            'notify::line-cap': GObject.Object.Notify;
+            'notify::line-cap': GObject.Object.Notify;
+            'notify::line-dash': GObject.Object.Notify;
+            'notify::line-dash': GObject.Object.Notify;
+            'notify::line-join': GObject.Object.Notify;
+            'notify::line-join': GObject.Object.Notify;
+            'notify::line-join-miter-limit': GObject.Object.Notify;
+            'notify::line-join-miter-limit': GObject.Object.Notify;
+            'notify::line-width': GObject.Object.Notify;
+            'notify::line-width': GObject.Object.Notify;
+            'notify::operator': GObject.Object.Notify;
+            'notify::stroke-color': GObject.Object.Notify;
+            'notify::stroke-color': GObject.Object.Notify;
+            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
+            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
+            'notify::stroke-color-rgba': GObject.Object.Notify;
+            'notify::stroke-color-rgba': GObject.Object.Notify;
+            'notify::stroke-pattern': GObject.Object.Notify;
+            'notify::stroke-pattern': GObject.Object.Notify;
+            'notify::stroke-pixbuf': GObject.Object.Notify;
+            'notify::stroke-pixbuf': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::pointer-events': GObject.Object.Notify;
+            'notify::pointer-events': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::tooltip': GObject.Object.Notify;
+            'notify::transform': GObject.Object.Notify;
+            'notify::visibility': GObject.Object.Notify;
+            'notify::visibility-threshold': GObject.Object.Notify;
+            'notify::visibility-threshold': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6284,14 +6825,17 @@ export namespace GooCanvas {
             signal: K,
             callback: CanvasGroup.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CanvasGroup.SignalSignatures>(
             signal: K,
             callback: CanvasGroup.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CanvasGroup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CanvasGroup.SignalSignatures[K]>
+            ...args: CanvasGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get can_focus(): boolean;
@@ -7402,7 +7946,67 @@ export namespace GooCanvas {
 
     namespace CanvasGroupModel {
         // Signal signatures
-        interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures {}
+        interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures {
+            'notify::height': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::x': GObject.Object.Notify;
+            'notify::y': GObject.Object.Notify;
+            'notify::antialias': GObject.Object.Notify;
+            'notify::clip-fill-rule': GObject.Object.Notify;
+            'notify::clip-fill-rule': GObject.Object.Notify;
+            'notify::clip-path': GObject.Object.Notify;
+            'notify::clip-path': GObject.Object.Notify;
+            'notify::fill-color': GObject.Object.Notify;
+            'notify::fill-color': GObject.Object.Notify;
+            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
+            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
+            'notify::fill-color-rgba': GObject.Object.Notify;
+            'notify::fill-color-rgba': GObject.Object.Notify;
+            'notify::fill-pattern': GObject.Object.Notify;
+            'notify::fill-pattern': GObject.Object.Notify;
+            'notify::fill-pixbuf': GObject.Object.Notify;
+            'notify::fill-pixbuf': GObject.Object.Notify;
+            'notify::fill-rule': GObject.Object.Notify;
+            'notify::fill-rule': GObject.Object.Notify;
+            'notify::font': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::hint-metrics': GObject.Object.Notify;
+            'notify::hint-metrics': GObject.Object.Notify;
+            'notify::line-cap': GObject.Object.Notify;
+            'notify::line-cap': GObject.Object.Notify;
+            'notify::line-dash': GObject.Object.Notify;
+            'notify::line-dash': GObject.Object.Notify;
+            'notify::line-join': GObject.Object.Notify;
+            'notify::line-join': GObject.Object.Notify;
+            'notify::line-join-miter-limit': GObject.Object.Notify;
+            'notify::line-join-miter-limit': GObject.Object.Notify;
+            'notify::line-width': GObject.Object.Notify;
+            'notify::line-width': GObject.Object.Notify;
+            'notify::operator': GObject.Object.Notify;
+            'notify::stroke-color': GObject.Object.Notify;
+            'notify::stroke-color': GObject.Object.Notify;
+            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
+            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
+            'notify::stroke-color-rgba': GObject.Object.Notify;
+            'notify::stroke-color-rgba': GObject.Object.Notify;
+            'notify::stroke-pattern': GObject.Object.Notify;
+            'notify::stroke-pattern': GObject.Object.Notify;
+            'notify::stroke-pixbuf': GObject.Object.Notify;
+            'notify::stroke-pixbuf': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::pointer-events': GObject.Object.Notify;
+            'notify::pointer-events': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::tooltip': GObject.Object.Notify;
+            'notify::transform': GObject.Object.Notify;
+            'notify::visibility': GObject.Object.Notify;
+            'notify::visibility-threshold': GObject.Object.Notify;
+            'notify::visibility-threshold': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -7470,14 +8074,17 @@ export namespace GooCanvas {
             signal: K,
             callback: CanvasGroupModel.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CanvasGroupModel.SignalSignatures>(
             signal: K,
             callback: CanvasGroupModel.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CanvasGroupModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CanvasGroupModel.SignalSignatures[K]>
+            ...args: CanvasGroupModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get can_focus(): boolean;
@@ -8224,7 +8831,72 @@ export namespace GooCanvas {
 
     namespace CanvasImage {
         // Signal signatures
-        interface SignalSignatures extends CanvasItemSimple.SignalSignatures {}
+        interface SignalSignatures extends CanvasItemSimple.SignalSignatures {
+            'notify::alpha': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::pattern': GObject.Object.Notify;
+            'notify::pixbuf': GObject.Object.Notify;
+            'notify::scale-to-fit': GObject.Object.Notify;
+            'notify::scale-to-fit': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::x': GObject.Object.Notify;
+            'notify::y': GObject.Object.Notify;
+            'notify::antialias': GObject.Object.Notify;
+            'notify::clip-fill-rule': GObject.Object.Notify;
+            'notify::clip-fill-rule': GObject.Object.Notify;
+            'notify::clip-path': GObject.Object.Notify;
+            'notify::clip-path': GObject.Object.Notify;
+            'notify::fill-color': GObject.Object.Notify;
+            'notify::fill-color': GObject.Object.Notify;
+            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
+            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
+            'notify::fill-color-rgba': GObject.Object.Notify;
+            'notify::fill-color-rgba': GObject.Object.Notify;
+            'notify::fill-pattern': GObject.Object.Notify;
+            'notify::fill-pattern': GObject.Object.Notify;
+            'notify::fill-pixbuf': GObject.Object.Notify;
+            'notify::fill-pixbuf': GObject.Object.Notify;
+            'notify::fill-rule': GObject.Object.Notify;
+            'notify::fill-rule': GObject.Object.Notify;
+            'notify::font': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::hint-metrics': GObject.Object.Notify;
+            'notify::hint-metrics': GObject.Object.Notify;
+            'notify::line-cap': GObject.Object.Notify;
+            'notify::line-cap': GObject.Object.Notify;
+            'notify::line-dash': GObject.Object.Notify;
+            'notify::line-dash': GObject.Object.Notify;
+            'notify::line-join': GObject.Object.Notify;
+            'notify::line-join': GObject.Object.Notify;
+            'notify::line-join-miter-limit': GObject.Object.Notify;
+            'notify::line-join-miter-limit': GObject.Object.Notify;
+            'notify::line-width': GObject.Object.Notify;
+            'notify::line-width': GObject.Object.Notify;
+            'notify::operator': GObject.Object.Notify;
+            'notify::stroke-color': GObject.Object.Notify;
+            'notify::stroke-color': GObject.Object.Notify;
+            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
+            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
+            'notify::stroke-color-rgba': GObject.Object.Notify;
+            'notify::stroke-color-rgba': GObject.Object.Notify;
+            'notify::stroke-pattern': GObject.Object.Notify;
+            'notify::stroke-pattern': GObject.Object.Notify;
+            'notify::stroke-pixbuf': GObject.Object.Notify;
+            'notify::stroke-pixbuf': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::pointer-events': GObject.Object.Notify;
+            'notify::pointer-events': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::tooltip': GObject.Object.Notify;
+            'notify::transform': GObject.Object.Notify;
+            'notify::visibility': GObject.Object.Notify;
+            'notify::visibility-threshold': GObject.Object.Notify;
+            'notify::visibility-threshold': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8300,14 +8972,17 @@ export namespace GooCanvas {
             signal: K,
             callback: CanvasImage.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CanvasImage.SignalSignatures>(
             signal: K,
             callback: CanvasImage.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CanvasImage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CanvasImage.SignalSignatures[K]>
+            ...args: CanvasImage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get can_focus(): boolean;
@@ -9418,7 +10093,72 @@ export namespace GooCanvas {
 
     namespace CanvasImageModel {
         // Signal signatures
-        interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures {}
+        interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures {
+            'notify::alpha': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::pattern': GObject.Object.Notify;
+            'notify::pixbuf': GObject.Object.Notify;
+            'notify::scale-to-fit': GObject.Object.Notify;
+            'notify::scale-to-fit': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::x': GObject.Object.Notify;
+            'notify::y': GObject.Object.Notify;
+            'notify::antialias': GObject.Object.Notify;
+            'notify::clip-fill-rule': GObject.Object.Notify;
+            'notify::clip-fill-rule': GObject.Object.Notify;
+            'notify::clip-path': GObject.Object.Notify;
+            'notify::clip-path': GObject.Object.Notify;
+            'notify::fill-color': GObject.Object.Notify;
+            'notify::fill-color': GObject.Object.Notify;
+            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
+            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
+            'notify::fill-color-rgba': GObject.Object.Notify;
+            'notify::fill-color-rgba': GObject.Object.Notify;
+            'notify::fill-pattern': GObject.Object.Notify;
+            'notify::fill-pattern': GObject.Object.Notify;
+            'notify::fill-pixbuf': GObject.Object.Notify;
+            'notify::fill-pixbuf': GObject.Object.Notify;
+            'notify::fill-rule': GObject.Object.Notify;
+            'notify::fill-rule': GObject.Object.Notify;
+            'notify::font': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::hint-metrics': GObject.Object.Notify;
+            'notify::hint-metrics': GObject.Object.Notify;
+            'notify::line-cap': GObject.Object.Notify;
+            'notify::line-cap': GObject.Object.Notify;
+            'notify::line-dash': GObject.Object.Notify;
+            'notify::line-dash': GObject.Object.Notify;
+            'notify::line-join': GObject.Object.Notify;
+            'notify::line-join': GObject.Object.Notify;
+            'notify::line-join-miter-limit': GObject.Object.Notify;
+            'notify::line-join-miter-limit': GObject.Object.Notify;
+            'notify::line-width': GObject.Object.Notify;
+            'notify::line-width': GObject.Object.Notify;
+            'notify::operator': GObject.Object.Notify;
+            'notify::stroke-color': GObject.Object.Notify;
+            'notify::stroke-color': GObject.Object.Notify;
+            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
+            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
+            'notify::stroke-color-rgba': GObject.Object.Notify;
+            'notify::stroke-color-rgba': GObject.Object.Notify;
+            'notify::stroke-pattern': GObject.Object.Notify;
+            'notify::stroke-pattern': GObject.Object.Notify;
+            'notify::stroke-pixbuf': GObject.Object.Notify;
+            'notify::stroke-pixbuf': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::pointer-events': GObject.Object.Notify;
+            'notify::pointer-events': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::tooltip': GObject.Object.Notify;
+            'notify::transform': GObject.Object.Notify;
+            'notify::visibility': GObject.Object.Notify;
+            'notify::visibility-threshold': GObject.Object.Notify;
+            'notify::visibility-threshold': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -9500,14 +10240,17 @@ export namespace GooCanvas {
             signal: K,
             callback: CanvasImageModel.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CanvasImageModel.SignalSignatures>(
             signal: K,
             callback: CanvasImageModel.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CanvasImageModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CanvasImageModel.SignalSignatures[K]>
+            ...args: CanvasImageModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get can_focus(): boolean;
@@ -10276,19 +11019,78 @@ export namespace GooCanvas {
             signal: K,
             callback: CanvasItemAccessibleFactory.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CanvasItemAccessibleFactory.SignalSignatures>(
             signal: K,
             callback: CanvasItemAccessibleFactory.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CanvasItemAccessibleFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CanvasItemAccessibleFactory.SignalSignatures[K]>
+            ...args: CanvasItemAccessibleFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace CanvasItemModelSimple {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::antialias': GObject.Object.Notify;
+            'notify::clip-fill-rule': GObject.Object.Notify;
+            'notify::clip-fill-rule': GObject.Object.Notify;
+            'notify::clip-path': GObject.Object.Notify;
+            'notify::clip-path': GObject.Object.Notify;
+            'notify::fill-color': GObject.Object.Notify;
+            'notify::fill-color': GObject.Object.Notify;
+            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
+            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
+            'notify::fill-color-rgba': GObject.Object.Notify;
+            'notify::fill-color-rgba': GObject.Object.Notify;
+            'notify::fill-pattern': GObject.Object.Notify;
+            'notify::fill-pattern': GObject.Object.Notify;
+            'notify::fill-pixbuf': GObject.Object.Notify;
+            'notify::fill-pixbuf': GObject.Object.Notify;
+            'notify::fill-rule': GObject.Object.Notify;
+            'notify::fill-rule': GObject.Object.Notify;
+            'notify::font': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::hint-metrics': GObject.Object.Notify;
+            'notify::hint-metrics': GObject.Object.Notify;
+            'notify::line-cap': GObject.Object.Notify;
+            'notify::line-cap': GObject.Object.Notify;
+            'notify::line-dash': GObject.Object.Notify;
+            'notify::line-dash': GObject.Object.Notify;
+            'notify::line-join': GObject.Object.Notify;
+            'notify::line-join': GObject.Object.Notify;
+            'notify::line-join-miter-limit': GObject.Object.Notify;
+            'notify::line-join-miter-limit': GObject.Object.Notify;
+            'notify::line-width': GObject.Object.Notify;
+            'notify::line-width': GObject.Object.Notify;
+            'notify::operator': GObject.Object.Notify;
+            'notify::stroke-color': GObject.Object.Notify;
+            'notify::stroke-color': GObject.Object.Notify;
+            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
+            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
+            'notify::stroke-color-rgba': GObject.Object.Notify;
+            'notify::stroke-color-rgba': GObject.Object.Notify;
+            'notify::stroke-pattern': GObject.Object.Notify;
+            'notify::stroke-pattern': GObject.Object.Notify;
+            'notify::stroke-pixbuf': GObject.Object.Notify;
+            'notify::stroke-pixbuf': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::pointer-events': GObject.Object.Notify;
+            'notify::pointer-events': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::tooltip': GObject.Object.Notify;
+            'notify::transform': GObject.Object.Notify;
+            'notify::visibility': GObject.Object.Notify;
+            'notify::visibility-threshold': GObject.Object.Notify;
+            'notify::visibility-threshold': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10466,14 +11268,17 @@ export namespace GooCanvas {
             signal: K,
             callback: CanvasItemModelSimple.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CanvasItemModelSimple.SignalSignatures>(
             signal: K,
             callback: CanvasItemModelSimple.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CanvasItemModelSimple.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CanvasItemModelSimple.SignalSignatures[K]>
+            ...args: CanvasItemModelSimple.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get can_focus(): boolean;
@@ -11220,7 +12025,63 @@ export namespace GooCanvas {
 
     namespace CanvasItemSimple {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::antialias': GObject.Object.Notify;
+            'notify::clip-fill-rule': GObject.Object.Notify;
+            'notify::clip-fill-rule': GObject.Object.Notify;
+            'notify::clip-path': GObject.Object.Notify;
+            'notify::clip-path': GObject.Object.Notify;
+            'notify::fill-color': GObject.Object.Notify;
+            'notify::fill-color': GObject.Object.Notify;
+            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
+            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
+            'notify::fill-color-rgba': GObject.Object.Notify;
+            'notify::fill-color-rgba': GObject.Object.Notify;
+            'notify::fill-pattern': GObject.Object.Notify;
+            'notify::fill-pattern': GObject.Object.Notify;
+            'notify::fill-pixbuf': GObject.Object.Notify;
+            'notify::fill-pixbuf': GObject.Object.Notify;
+            'notify::fill-rule': GObject.Object.Notify;
+            'notify::fill-rule': GObject.Object.Notify;
+            'notify::font': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::hint-metrics': GObject.Object.Notify;
+            'notify::hint-metrics': GObject.Object.Notify;
+            'notify::line-cap': GObject.Object.Notify;
+            'notify::line-cap': GObject.Object.Notify;
+            'notify::line-dash': GObject.Object.Notify;
+            'notify::line-dash': GObject.Object.Notify;
+            'notify::line-join': GObject.Object.Notify;
+            'notify::line-join': GObject.Object.Notify;
+            'notify::line-join-miter-limit': GObject.Object.Notify;
+            'notify::line-join-miter-limit': GObject.Object.Notify;
+            'notify::line-width': GObject.Object.Notify;
+            'notify::line-width': GObject.Object.Notify;
+            'notify::operator': GObject.Object.Notify;
+            'notify::stroke-color': GObject.Object.Notify;
+            'notify::stroke-color': GObject.Object.Notify;
+            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
+            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
+            'notify::stroke-color-rgba': GObject.Object.Notify;
+            'notify::stroke-color-rgba': GObject.Object.Notify;
+            'notify::stroke-pattern': GObject.Object.Notify;
+            'notify::stroke-pattern': GObject.Object.Notify;
+            'notify::stroke-pixbuf': GObject.Object.Notify;
+            'notify::stroke-pixbuf': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::pointer-events': GObject.Object.Notify;
+            'notify::pointer-events': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::tooltip': GObject.Object.Notify;
+            'notify::transform': GObject.Object.Notify;
+            'notify::visibility': GObject.Object.Notify;
+            'notify::visibility-threshold': GObject.Object.Notify;
+            'notify::visibility-threshold': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11415,14 +12276,17 @@ export namespace GooCanvas {
             signal: K,
             callback: CanvasItemSimple.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CanvasItemSimple.SignalSignatures>(
             signal: K,
             callback: CanvasItemSimple.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CanvasItemSimple.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CanvasItemSimple.SignalSignatures[K]>
+            ...args: CanvasItemSimple.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -12621,7 +13485,68 @@ export namespace GooCanvas {
 
     namespace CanvasPath {
         // Signal signatures
-        interface SignalSignatures extends CanvasItemSimple.SignalSignatures {}
+        interface SignalSignatures extends CanvasItemSimple.SignalSignatures {
+            'notify::data': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::x': GObject.Object.Notify;
+            'notify::y': GObject.Object.Notify;
+            'notify::antialias': GObject.Object.Notify;
+            'notify::clip-fill-rule': GObject.Object.Notify;
+            'notify::clip-fill-rule': GObject.Object.Notify;
+            'notify::clip-path': GObject.Object.Notify;
+            'notify::clip-path': GObject.Object.Notify;
+            'notify::fill-color': GObject.Object.Notify;
+            'notify::fill-color': GObject.Object.Notify;
+            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
+            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
+            'notify::fill-color-rgba': GObject.Object.Notify;
+            'notify::fill-color-rgba': GObject.Object.Notify;
+            'notify::fill-pattern': GObject.Object.Notify;
+            'notify::fill-pattern': GObject.Object.Notify;
+            'notify::fill-pixbuf': GObject.Object.Notify;
+            'notify::fill-pixbuf': GObject.Object.Notify;
+            'notify::fill-rule': GObject.Object.Notify;
+            'notify::fill-rule': GObject.Object.Notify;
+            'notify::font': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::hint-metrics': GObject.Object.Notify;
+            'notify::hint-metrics': GObject.Object.Notify;
+            'notify::line-cap': GObject.Object.Notify;
+            'notify::line-cap': GObject.Object.Notify;
+            'notify::line-dash': GObject.Object.Notify;
+            'notify::line-dash': GObject.Object.Notify;
+            'notify::line-join': GObject.Object.Notify;
+            'notify::line-join': GObject.Object.Notify;
+            'notify::line-join-miter-limit': GObject.Object.Notify;
+            'notify::line-join-miter-limit': GObject.Object.Notify;
+            'notify::line-width': GObject.Object.Notify;
+            'notify::line-width': GObject.Object.Notify;
+            'notify::operator': GObject.Object.Notify;
+            'notify::stroke-color': GObject.Object.Notify;
+            'notify::stroke-color': GObject.Object.Notify;
+            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
+            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
+            'notify::stroke-color-rgba': GObject.Object.Notify;
+            'notify::stroke-color-rgba': GObject.Object.Notify;
+            'notify::stroke-pattern': GObject.Object.Notify;
+            'notify::stroke-pattern': GObject.Object.Notify;
+            'notify::stroke-pixbuf': GObject.Object.Notify;
+            'notify::stroke-pixbuf': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::pointer-events': GObject.Object.Notify;
+            'notify::pointer-events': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::tooltip': GObject.Object.Notify;
+            'notify::transform': GObject.Object.Notify;
+            'notify::visibility': GObject.Object.Notify;
+            'notify::visibility-threshold': GObject.Object.Notify;
+            'notify::visibility-threshold': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12690,14 +13615,17 @@ export namespace GooCanvas {
             signal: K,
             callback: CanvasPath.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CanvasPath.SignalSignatures>(
             signal: K,
             callback: CanvasPath.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CanvasPath.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CanvasPath.SignalSignatures[K]>
+            ...args: CanvasPath.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get can_focus(): boolean;
@@ -13808,7 +14736,68 @@ export namespace GooCanvas {
 
     namespace CanvasPathModel {
         // Signal signatures
-        interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures {}
+        interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures {
+            'notify::data': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::x': GObject.Object.Notify;
+            'notify::y': GObject.Object.Notify;
+            'notify::antialias': GObject.Object.Notify;
+            'notify::clip-fill-rule': GObject.Object.Notify;
+            'notify::clip-fill-rule': GObject.Object.Notify;
+            'notify::clip-path': GObject.Object.Notify;
+            'notify::clip-path': GObject.Object.Notify;
+            'notify::fill-color': GObject.Object.Notify;
+            'notify::fill-color': GObject.Object.Notify;
+            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
+            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
+            'notify::fill-color-rgba': GObject.Object.Notify;
+            'notify::fill-color-rgba': GObject.Object.Notify;
+            'notify::fill-pattern': GObject.Object.Notify;
+            'notify::fill-pattern': GObject.Object.Notify;
+            'notify::fill-pixbuf': GObject.Object.Notify;
+            'notify::fill-pixbuf': GObject.Object.Notify;
+            'notify::fill-rule': GObject.Object.Notify;
+            'notify::fill-rule': GObject.Object.Notify;
+            'notify::font': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::hint-metrics': GObject.Object.Notify;
+            'notify::hint-metrics': GObject.Object.Notify;
+            'notify::line-cap': GObject.Object.Notify;
+            'notify::line-cap': GObject.Object.Notify;
+            'notify::line-dash': GObject.Object.Notify;
+            'notify::line-dash': GObject.Object.Notify;
+            'notify::line-join': GObject.Object.Notify;
+            'notify::line-join': GObject.Object.Notify;
+            'notify::line-join-miter-limit': GObject.Object.Notify;
+            'notify::line-join-miter-limit': GObject.Object.Notify;
+            'notify::line-width': GObject.Object.Notify;
+            'notify::line-width': GObject.Object.Notify;
+            'notify::operator': GObject.Object.Notify;
+            'notify::stroke-color': GObject.Object.Notify;
+            'notify::stroke-color': GObject.Object.Notify;
+            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
+            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
+            'notify::stroke-color-rgba': GObject.Object.Notify;
+            'notify::stroke-color-rgba': GObject.Object.Notify;
+            'notify::stroke-pattern': GObject.Object.Notify;
+            'notify::stroke-pattern': GObject.Object.Notify;
+            'notify::stroke-pixbuf': GObject.Object.Notify;
+            'notify::stroke-pixbuf': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::pointer-events': GObject.Object.Notify;
+            'notify::pointer-events': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::tooltip': GObject.Object.Notify;
+            'notify::transform': GObject.Object.Notify;
+            'notify::visibility': GObject.Object.Notify;
+            'notify::visibility-threshold': GObject.Object.Notify;
+            'notify::visibility-threshold': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13877,14 +14866,17 @@ export namespace GooCanvas {
             signal: K,
             callback: CanvasPathModel.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CanvasPathModel.SignalSignatures>(
             signal: K,
             callback: CanvasPathModel.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CanvasPathModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CanvasPathModel.SignalSignatures[K]>
+            ...args: CanvasPathModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get can_focus(): boolean;
@@ -14631,7 +15623,80 @@ export namespace GooCanvas {
 
     namespace CanvasPolyline {
         // Signal signatures
-        interface SignalSignatures extends CanvasItemSimple.SignalSignatures {}
+        interface SignalSignatures extends CanvasItemSimple.SignalSignatures {
+            'notify::arrow-length': GObject.Object.Notify;
+            'notify::arrow-length': GObject.Object.Notify;
+            'notify::arrow-tip-length': GObject.Object.Notify;
+            'notify::arrow-tip-length': GObject.Object.Notify;
+            'notify::arrow-width': GObject.Object.Notify;
+            'notify::arrow-width': GObject.Object.Notify;
+            'notify::close-path': GObject.Object.Notify;
+            'notify::close-path': GObject.Object.Notify;
+            'notify::end-arrow': GObject.Object.Notify;
+            'notify::end-arrow': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::points': GObject.Object.Notify;
+            'notify::start-arrow': GObject.Object.Notify;
+            'notify::start-arrow': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::x': GObject.Object.Notify;
+            'notify::y': GObject.Object.Notify;
+            'notify::antialias': GObject.Object.Notify;
+            'notify::clip-fill-rule': GObject.Object.Notify;
+            'notify::clip-fill-rule': GObject.Object.Notify;
+            'notify::clip-path': GObject.Object.Notify;
+            'notify::clip-path': GObject.Object.Notify;
+            'notify::fill-color': GObject.Object.Notify;
+            'notify::fill-color': GObject.Object.Notify;
+            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
+            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
+            'notify::fill-color-rgba': GObject.Object.Notify;
+            'notify::fill-color-rgba': GObject.Object.Notify;
+            'notify::fill-pattern': GObject.Object.Notify;
+            'notify::fill-pattern': GObject.Object.Notify;
+            'notify::fill-pixbuf': GObject.Object.Notify;
+            'notify::fill-pixbuf': GObject.Object.Notify;
+            'notify::fill-rule': GObject.Object.Notify;
+            'notify::fill-rule': GObject.Object.Notify;
+            'notify::font': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::hint-metrics': GObject.Object.Notify;
+            'notify::hint-metrics': GObject.Object.Notify;
+            'notify::line-cap': GObject.Object.Notify;
+            'notify::line-cap': GObject.Object.Notify;
+            'notify::line-dash': GObject.Object.Notify;
+            'notify::line-dash': GObject.Object.Notify;
+            'notify::line-join': GObject.Object.Notify;
+            'notify::line-join': GObject.Object.Notify;
+            'notify::line-join-miter-limit': GObject.Object.Notify;
+            'notify::line-join-miter-limit': GObject.Object.Notify;
+            'notify::line-width': GObject.Object.Notify;
+            'notify::line-width': GObject.Object.Notify;
+            'notify::operator': GObject.Object.Notify;
+            'notify::stroke-color': GObject.Object.Notify;
+            'notify::stroke-color': GObject.Object.Notify;
+            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
+            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
+            'notify::stroke-color-rgba': GObject.Object.Notify;
+            'notify::stroke-color-rgba': GObject.Object.Notify;
+            'notify::stroke-pattern': GObject.Object.Notify;
+            'notify::stroke-pattern': GObject.Object.Notify;
+            'notify::stroke-pixbuf': GObject.Object.Notify;
+            'notify::stroke-pixbuf': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::pointer-events': GObject.Object.Notify;
+            'notify::pointer-events': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::tooltip': GObject.Object.Notify;
+            'notify::transform': GObject.Object.Notify;
+            'notify::visibility': GObject.Object.Notify;
+            'notify::visibility-threshold': GObject.Object.Notify;
+            'notify::visibility-threshold': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -14729,14 +15794,17 @@ export namespace GooCanvas {
             signal: K,
             callback: CanvasPolyline.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CanvasPolyline.SignalSignatures>(
             signal: K,
             callback: CanvasPolyline.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CanvasPolyline.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CanvasPolyline.SignalSignatures[K]>
+            ...args: CanvasPolyline.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get can_focus(): boolean;
@@ -15847,7 +16915,80 @@ export namespace GooCanvas {
 
     namespace CanvasPolylineModel {
         // Signal signatures
-        interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures {}
+        interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures {
+            'notify::arrow-length': GObject.Object.Notify;
+            'notify::arrow-length': GObject.Object.Notify;
+            'notify::arrow-tip-length': GObject.Object.Notify;
+            'notify::arrow-tip-length': GObject.Object.Notify;
+            'notify::arrow-width': GObject.Object.Notify;
+            'notify::arrow-width': GObject.Object.Notify;
+            'notify::close-path': GObject.Object.Notify;
+            'notify::close-path': GObject.Object.Notify;
+            'notify::end-arrow': GObject.Object.Notify;
+            'notify::end-arrow': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::points': GObject.Object.Notify;
+            'notify::start-arrow': GObject.Object.Notify;
+            'notify::start-arrow': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::x': GObject.Object.Notify;
+            'notify::y': GObject.Object.Notify;
+            'notify::antialias': GObject.Object.Notify;
+            'notify::clip-fill-rule': GObject.Object.Notify;
+            'notify::clip-fill-rule': GObject.Object.Notify;
+            'notify::clip-path': GObject.Object.Notify;
+            'notify::clip-path': GObject.Object.Notify;
+            'notify::fill-color': GObject.Object.Notify;
+            'notify::fill-color': GObject.Object.Notify;
+            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
+            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
+            'notify::fill-color-rgba': GObject.Object.Notify;
+            'notify::fill-color-rgba': GObject.Object.Notify;
+            'notify::fill-pattern': GObject.Object.Notify;
+            'notify::fill-pattern': GObject.Object.Notify;
+            'notify::fill-pixbuf': GObject.Object.Notify;
+            'notify::fill-pixbuf': GObject.Object.Notify;
+            'notify::fill-rule': GObject.Object.Notify;
+            'notify::fill-rule': GObject.Object.Notify;
+            'notify::font': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::hint-metrics': GObject.Object.Notify;
+            'notify::hint-metrics': GObject.Object.Notify;
+            'notify::line-cap': GObject.Object.Notify;
+            'notify::line-cap': GObject.Object.Notify;
+            'notify::line-dash': GObject.Object.Notify;
+            'notify::line-dash': GObject.Object.Notify;
+            'notify::line-join': GObject.Object.Notify;
+            'notify::line-join': GObject.Object.Notify;
+            'notify::line-join-miter-limit': GObject.Object.Notify;
+            'notify::line-join-miter-limit': GObject.Object.Notify;
+            'notify::line-width': GObject.Object.Notify;
+            'notify::line-width': GObject.Object.Notify;
+            'notify::operator': GObject.Object.Notify;
+            'notify::stroke-color': GObject.Object.Notify;
+            'notify::stroke-color': GObject.Object.Notify;
+            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
+            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
+            'notify::stroke-color-rgba': GObject.Object.Notify;
+            'notify::stroke-color-rgba': GObject.Object.Notify;
+            'notify::stroke-pattern': GObject.Object.Notify;
+            'notify::stroke-pattern': GObject.Object.Notify;
+            'notify::stroke-pixbuf': GObject.Object.Notify;
+            'notify::stroke-pixbuf': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::pointer-events': GObject.Object.Notify;
+            'notify::pointer-events': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::tooltip': GObject.Object.Notify;
+            'notify::transform': GObject.Object.Notify;
+            'notify::visibility': GObject.Object.Notify;
+            'notify::visibility-threshold': GObject.Object.Notify;
+            'notify::visibility-threshold': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -15950,14 +17091,17 @@ export namespace GooCanvas {
             signal: K,
             callback: CanvasPolylineModel.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CanvasPolylineModel.SignalSignatures>(
             signal: K,
             callback: CanvasPolylineModel.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CanvasPolylineModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CanvasPolylineModel.SignalSignatures[K]>
+            ...args: CanvasPolylineModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get can_focus(): boolean;
@@ -16704,7 +17848,71 @@ export namespace GooCanvas {
 
     namespace CanvasRect {
         // Signal signatures
-        interface SignalSignatures extends CanvasItemSimple.SignalSignatures {}
+        interface SignalSignatures extends CanvasItemSimple.SignalSignatures {
+            'notify::height': GObject.Object.Notify;
+            'notify::radius-x': GObject.Object.Notify;
+            'notify::radius-x': GObject.Object.Notify;
+            'notify::radius-y': GObject.Object.Notify;
+            'notify::radius-y': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::x': GObject.Object.Notify;
+            'notify::y': GObject.Object.Notify;
+            'notify::antialias': GObject.Object.Notify;
+            'notify::clip-fill-rule': GObject.Object.Notify;
+            'notify::clip-fill-rule': GObject.Object.Notify;
+            'notify::clip-path': GObject.Object.Notify;
+            'notify::clip-path': GObject.Object.Notify;
+            'notify::fill-color': GObject.Object.Notify;
+            'notify::fill-color': GObject.Object.Notify;
+            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
+            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
+            'notify::fill-color-rgba': GObject.Object.Notify;
+            'notify::fill-color-rgba': GObject.Object.Notify;
+            'notify::fill-pattern': GObject.Object.Notify;
+            'notify::fill-pattern': GObject.Object.Notify;
+            'notify::fill-pixbuf': GObject.Object.Notify;
+            'notify::fill-pixbuf': GObject.Object.Notify;
+            'notify::fill-rule': GObject.Object.Notify;
+            'notify::fill-rule': GObject.Object.Notify;
+            'notify::font': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::hint-metrics': GObject.Object.Notify;
+            'notify::hint-metrics': GObject.Object.Notify;
+            'notify::line-cap': GObject.Object.Notify;
+            'notify::line-cap': GObject.Object.Notify;
+            'notify::line-dash': GObject.Object.Notify;
+            'notify::line-dash': GObject.Object.Notify;
+            'notify::line-join': GObject.Object.Notify;
+            'notify::line-join': GObject.Object.Notify;
+            'notify::line-join-miter-limit': GObject.Object.Notify;
+            'notify::line-join-miter-limit': GObject.Object.Notify;
+            'notify::line-width': GObject.Object.Notify;
+            'notify::line-width': GObject.Object.Notify;
+            'notify::operator': GObject.Object.Notify;
+            'notify::stroke-color': GObject.Object.Notify;
+            'notify::stroke-color': GObject.Object.Notify;
+            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
+            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
+            'notify::stroke-color-rgba': GObject.Object.Notify;
+            'notify::stroke-color-rgba': GObject.Object.Notify;
+            'notify::stroke-pattern': GObject.Object.Notify;
+            'notify::stroke-pattern': GObject.Object.Notify;
+            'notify::stroke-pixbuf': GObject.Object.Notify;
+            'notify::stroke-pixbuf': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::pointer-events': GObject.Object.Notify;
+            'notify::pointer-events': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::tooltip': GObject.Object.Notify;
+            'notify::transform': GObject.Object.Notify;
+            'notify::visibility': GObject.Object.Notify;
+            'notify::visibility-threshold': GObject.Object.Notify;
+            'notify::visibility-threshold': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -16773,14 +17981,17 @@ export namespace GooCanvas {
             signal: K,
             callback: CanvasRect.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CanvasRect.SignalSignatures>(
             signal: K,
             callback: CanvasRect.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CanvasRect.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CanvasRect.SignalSignatures[K]>
+            ...args: CanvasRect.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get can_focus(): boolean;
@@ -17891,7 +19102,71 @@ export namespace GooCanvas {
 
     namespace CanvasRectModel {
         // Signal signatures
-        interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures {}
+        interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures {
+            'notify::height': GObject.Object.Notify;
+            'notify::radius-x': GObject.Object.Notify;
+            'notify::radius-x': GObject.Object.Notify;
+            'notify::radius-y': GObject.Object.Notify;
+            'notify::radius-y': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::x': GObject.Object.Notify;
+            'notify::y': GObject.Object.Notify;
+            'notify::antialias': GObject.Object.Notify;
+            'notify::clip-fill-rule': GObject.Object.Notify;
+            'notify::clip-fill-rule': GObject.Object.Notify;
+            'notify::clip-path': GObject.Object.Notify;
+            'notify::clip-path': GObject.Object.Notify;
+            'notify::fill-color': GObject.Object.Notify;
+            'notify::fill-color': GObject.Object.Notify;
+            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
+            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
+            'notify::fill-color-rgba': GObject.Object.Notify;
+            'notify::fill-color-rgba': GObject.Object.Notify;
+            'notify::fill-pattern': GObject.Object.Notify;
+            'notify::fill-pattern': GObject.Object.Notify;
+            'notify::fill-pixbuf': GObject.Object.Notify;
+            'notify::fill-pixbuf': GObject.Object.Notify;
+            'notify::fill-rule': GObject.Object.Notify;
+            'notify::fill-rule': GObject.Object.Notify;
+            'notify::font': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::hint-metrics': GObject.Object.Notify;
+            'notify::hint-metrics': GObject.Object.Notify;
+            'notify::line-cap': GObject.Object.Notify;
+            'notify::line-cap': GObject.Object.Notify;
+            'notify::line-dash': GObject.Object.Notify;
+            'notify::line-dash': GObject.Object.Notify;
+            'notify::line-join': GObject.Object.Notify;
+            'notify::line-join': GObject.Object.Notify;
+            'notify::line-join-miter-limit': GObject.Object.Notify;
+            'notify::line-join-miter-limit': GObject.Object.Notify;
+            'notify::line-width': GObject.Object.Notify;
+            'notify::line-width': GObject.Object.Notify;
+            'notify::operator': GObject.Object.Notify;
+            'notify::stroke-color': GObject.Object.Notify;
+            'notify::stroke-color': GObject.Object.Notify;
+            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
+            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
+            'notify::stroke-color-rgba': GObject.Object.Notify;
+            'notify::stroke-color-rgba': GObject.Object.Notify;
+            'notify::stroke-pattern': GObject.Object.Notify;
+            'notify::stroke-pattern': GObject.Object.Notify;
+            'notify::stroke-pixbuf': GObject.Object.Notify;
+            'notify::stroke-pixbuf': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::pointer-events': GObject.Object.Notify;
+            'notify::pointer-events': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::tooltip': GObject.Object.Notify;
+            'notify::transform': GObject.Object.Notify;
+            'notify::visibility': GObject.Object.Notify;
+            'notify::visibility-threshold': GObject.Object.Notify;
+            'notify::visibility-threshold': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17965,14 +19240,17 @@ export namespace GooCanvas {
             signal: K,
             callback: CanvasRectModel.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CanvasRectModel.SignalSignatures>(
             signal: K,
             callback: CanvasRectModel.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CanvasRectModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CanvasRectModel.SignalSignatures[K]>
+            ...args: CanvasRectModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get can_focus(): boolean;
@@ -18764,14 +20042,17 @@ export namespace GooCanvas {
             signal: K,
             callback: CanvasStyle.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CanvasStyle.SignalSignatures>(
             signal: K,
             callback: CanvasStyle.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CanvasStyle.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CanvasStyle.SignalSignatures[K]>
+            ...args: CanvasStyle.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -18832,7 +20113,71 @@ export namespace GooCanvas {
 
     namespace CanvasTable {
         // Signal signatures
-        interface SignalSignatures extends CanvasGroup.SignalSignatures {}
+        interface SignalSignatures extends CanvasGroup.SignalSignatures {
+            'notify::column-spacing': GObject.Object.Notify;
+            'notify::column-spacing': GObject.Object.Notify;
+            'notify::homogeneous-columns': GObject.Object.Notify;
+            'notify::homogeneous-columns': GObject.Object.Notify;
+            'notify::homogeneous-rows': GObject.Object.Notify;
+            'notify::homogeneous-rows': GObject.Object.Notify;
+            'notify::horz-grid-line-width': GObject.Object.Notify;
+            'notify::horz-grid-line-width': GObject.Object.Notify;
+            'notify::row-spacing': GObject.Object.Notify;
+            'notify::row-spacing': GObject.Object.Notify;
+            'notify::vert-grid-line-width': GObject.Object.Notify;
+            'notify::vert-grid-line-width': GObject.Object.Notify;
+            'notify::x-border-spacing': GObject.Object.Notify;
+            'notify::x-border-spacing': GObject.Object.Notify;
+            'notify::y-border-spacing': GObject.Object.Notify;
+            'notify::y-border-spacing': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::x': GObject.Object.Notify;
+            'notify::y': GObject.Object.Notify;
+            'notify::antialias': GObject.Object.Notify;
+            'notify::clip-fill-rule': GObject.Object.Notify;
+            'notify::clip-fill-rule': GObject.Object.Notify;
+            'notify::clip-path': GObject.Object.Notify;
+            'notify::clip-path': GObject.Object.Notify;
+            'notify::fill-color': GObject.Object.Notify;
+            'notify::fill-color': GObject.Object.Notify;
+            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
+            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
+            'notify::fill-color-rgba': GObject.Object.Notify;
+            'notify::fill-color-rgba': GObject.Object.Notify;
+            'notify::fill-pattern': GObject.Object.Notify;
+            'notify::fill-pattern': GObject.Object.Notify;
+            'notify::fill-pixbuf': GObject.Object.Notify;
+            'notify::fill-pixbuf': GObject.Object.Notify;
+            'notify::fill-rule': GObject.Object.Notify;
+            'notify::fill-rule': GObject.Object.Notify;
+            'notify::font': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::hint-metrics': GObject.Object.Notify;
+            'notify::hint-metrics': GObject.Object.Notify;
+            'notify::line-cap': GObject.Object.Notify;
+            'notify::line-cap': GObject.Object.Notify;
+            'notify::line-dash': GObject.Object.Notify;
+            'notify::line-dash': GObject.Object.Notify;
+            'notify::line-join': GObject.Object.Notify;
+            'notify::line-join': GObject.Object.Notify;
+            'notify::line-join-miter-limit': GObject.Object.Notify;
+            'notify::line-join-miter-limit': GObject.Object.Notify;
+            'notify::line-width': GObject.Object.Notify;
+            'notify::line-width': GObject.Object.Notify;
+            'notify::operator': GObject.Object.Notify;
+            'notify::stroke-color': GObject.Object.Notify;
+            'notify::stroke-color': GObject.Object.Notify;
+            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
+            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
+            'notify::stroke-color-rgba': GObject.Object.Notify;
+            'notify::stroke-color-rgba': GObject.Object.Notify;
+            'notify::stroke-pattern': GObject.Object.Notify;
+            'notify::stroke-pattern': GObject.Object.Notify;
+            'notify::stroke-pixbuf': GObject.Object.Notify;
+            'notify::stroke-pixbuf': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -18933,14 +20278,17 @@ export namespace GooCanvas {
             signal: K,
             callback: CanvasTable.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CanvasTable.SignalSignatures>(
             signal: K,
             callback: CanvasTable.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CanvasTable.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CanvasTable.SignalSignatures[K]>
+            ...args: CanvasTable.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -19386,7 +20734,71 @@ export namespace GooCanvas {
 
     namespace CanvasTableModel {
         // Signal signatures
-        interface SignalSignatures extends CanvasGroupModel.SignalSignatures {}
+        interface SignalSignatures extends CanvasGroupModel.SignalSignatures {
+            'notify::column-spacing': GObject.Object.Notify;
+            'notify::column-spacing': GObject.Object.Notify;
+            'notify::homogeneous-columns': GObject.Object.Notify;
+            'notify::homogeneous-columns': GObject.Object.Notify;
+            'notify::homogeneous-rows': GObject.Object.Notify;
+            'notify::homogeneous-rows': GObject.Object.Notify;
+            'notify::horz-grid-line-width': GObject.Object.Notify;
+            'notify::horz-grid-line-width': GObject.Object.Notify;
+            'notify::row-spacing': GObject.Object.Notify;
+            'notify::row-spacing': GObject.Object.Notify;
+            'notify::vert-grid-line-width': GObject.Object.Notify;
+            'notify::vert-grid-line-width': GObject.Object.Notify;
+            'notify::x-border-spacing': GObject.Object.Notify;
+            'notify::x-border-spacing': GObject.Object.Notify;
+            'notify::y-border-spacing': GObject.Object.Notify;
+            'notify::y-border-spacing': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::x': GObject.Object.Notify;
+            'notify::y': GObject.Object.Notify;
+            'notify::antialias': GObject.Object.Notify;
+            'notify::clip-fill-rule': GObject.Object.Notify;
+            'notify::clip-fill-rule': GObject.Object.Notify;
+            'notify::clip-path': GObject.Object.Notify;
+            'notify::clip-path': GObject.Object.Notify;
+            'notify::fill-color': GObject.Object.Notify;
+            'notify::fill-color': GObject.Object.Notify;
+            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
+            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
+            'notify::fill-color-rgba': GObject.Object.Notify;
+            'notify::fill-color-rgba': GObject.Object.Notify;
+            'notify::fill-pattern': GObject.Object.Notify;
+            'notify::fill-pattern': GObject.Object.Notify;
+            'notify::fill-pixbuf': GObject.Object.Notify;
+            'notify::fill-pixbuf': GObject.Object.Notify;
+            'notify::fill-rule': GObject.Object.Notify;
+            'notify::fill-rule': GObject.Object.Notify;
+            'notify::font': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::hint-metrics': GObject.Object.Notify;
+            'notify::hint-metrics': GObject.Object.Notify;
+            'notify::line-cap': GObject.Object.Notify;
+            'notify::line-cap': GObject.Object.Notify;
+            'notify::line-dash': GObject.Object.Notify;
+            'notify::line-dash': GObject.Object.Notify;
+            'notify::line-join': GObject.Object.Notify;
+            'notify::line-join': GObject.Object.Notify;
+            'notify::line-join-miter-limit': GObject.Object.Notify;
+            'notify::line-join-miter-limit': GObject.Object.Notify;
+            'notify::line-width': GObject.Object.Notify;
+            'notify::line-width': GObject.Object.Notify;
+            'notify::operator': GObject.Object.Notify;
+            'notify::stroke-color': GObject.Object.Notify;
+            'notify::stroke-color': GObject.Object.Notify;
+            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
+            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
+            'notify::stroke-color-rgba': GObject.Object.Notify;
+            'notify::stroke-color-rgba': GObject.Object.Notify;
+            'notify::stroke-pattern': GObject.Object.Notify;
+            'notify::stroke-pattern': GObject.Object.Notify;
+            'notify::stroke-pixbuf': GObject.Object.Notify;
+            'notify::stroke-pixbuf': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -19491,14 +20903,17 @@ export namespace GooCanvas {
             signal: K,
             callback: CanvasTableModel.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CanvasTableModel.SignalSignatures>(
             signal: K,
             callback: CanvasTableModel.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CanvasTableModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CanvasTableModel.SignalSignatures[K]>
+            ...args: CanvasTableModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -19944,7 +21359,74 @@ export namespace GooCanvas {
 
     namespace CanvasText {
         // Signal signatures
-        interface SignalSignatures extends CanvasItemSimple.SignalSignatures {}
+        interface SignalSignatures extends CanvasItemSimple.SignalSignatures {
+            'notify::alignment': GObject.Object.Notify;
+            'notify::anchor': GObject.Object.Notify;
+            'notify::ellipsize': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::text': GObject.Object.Notify;
+            'notify::use-markup': GObject.Object.Notify;
+            'notify::use-markup': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::wrap': GObject.Object.Notify;
+            'notify::x': GObject.Object.Notify;
+            'notify::y': GObject.Object.Notify;
+            'notify::antialias': GObject.Object.Notify;
+            'notify::clip-fill-rule': GObject.Object.Notify;
+            'notify::clip-fill-rule': GObject.Object.Notify;
+            'notify::clip-path': GObject.Object.Notify;
+            'notify::clip-path': GObject.Object.Notify;
+            'notify::fill-color': GObject.Object.Notify;
+            'notify::fill-color': GObject.Object.Notify;
+            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
+            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
+            'notify::fill-color-rgba': GObject.Object.Notify;
+            'notify::fill-color-rgba': GObject.Object.Notify;
+            'notify::fill-pattern': GObject.Object.Notify;
+            'notify::fill-pattern': GObject.Object.Notify;
+            'notify::fill-pixbuf': GObject.Object.Notify;
+            'notify::fill-pixbuf': GObject.Object.Notify;
+            'notify::fill-rule': GObject.Object.Notify;
+            'notify::fill-rule': GObject.Object.Notify;
+            'notify::font': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::hint-metrics': GObject.Object.Notify;
+            'notify::hint-metrics': GObject.Object.Notify;
+            'notify::line-cap': GObject.Object.Notify;
+            'notify::line-cap': GObject.Object.Notify;
+            'notify::line-dash': GObject.Object.Notify;
+            'notify::line-dash': GObject.Object.Notify;
+            'notify::line-join': GObject.Object.Notify;
+            'notify::line-join': GObject.Object.Notify;
+            'notify::line-join-miter-limit': GObject.Object.Notify;
+            'notify::line-join-miter-limit': GObject.Object.Notify;
+            'notify::line-width': GObject.Object.Notify;
+            'notify::line-width': GObject.Object.Notify;
+            'notify::operator': GObject.Object.Notify;
+            'notify::stroke-color': GObject.Object.Notify;
+            'notify::stroke-color': GObject.Object.Notify;
+            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
+            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
+            'notify::stroke-color-rgba': GObject.Object.Notify;
+            'notify::stroke-color-rgba': GObject.Object.Notify;
+            'notify::stroke-pattern': GObject.Object.Notify;
+            'notify::stroke-pattern': GObject.Object.Notify;
+            'notify::stroke-pixbuf': GObject.Object.Notify;
+            'notify::stroke-pixbuf': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::pointer-events': GObject.Object.Notify;
+            'notify::pointer-events': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::tooltip': GObject.Object.Notify;
+            'notify::transform': GObject.Object.Notify;
+            'notify::visibility': GObject.Object.Notify;
+            'notify::visibility-threshold': GObject.Object.Notify;
+            'notify::visibility-threshold': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -20027,14 +21509,17 @@ export namespace GooCanvas {
             signal: K,
             callback: CanvasText.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CanvasText.SignalSignatures>(
             signal: K,
             callback: CanvasText.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CanvasText.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CanvasText.SignalSignatures[K]>
+            ...args: CanvasText.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -21155,7 +22640,74 @@ export namespace GooCanvas {
 
     namespace CanvasTextModel {
         // Signal signatures
-        interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures {}
+        interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures {
+            'notify::alignment': GObject.Object.Notify;
+            'notify::anchor': GObject.Object.Notify;
+            'notify::ellipsize': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::text': GObject.Object.Notify;
+            'notify::use-markup': GObject.Object.Notify;
+            'notify::use-markup': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::wrap': GObject.Object.Notify;
+            'notify::x': GObject.Object.Notify;
+            'notify::y': GObject.Object.Notify;
+            'notify::antialias': GObject.Object.Notify;
+            'notify::clip-fill-rule': GObject.Object.Notify;
+            'notify::clip-fill-rule': GObject.Object.Notify;
+            'notify::clip-path': GObject.Object.Notify;
+            'notify::clip-path': GObject.Object.Notify;
+            'notify::fill-color': GObject.Object.Notify;
+            'notify::fill-color': GObject.Object.Notify;
+            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
+            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
+            'notify::fill-color-rgba': GObject.Object.Notify;
+            'notify::fill-color-rgba': GObject.Object.Notify;
+            'notify::fill-pattern': GObject.Object.Notify;
+            'notify::fill-pattern': GObject.Object.Notify;
+            'notify::fill-pixbuf': GObject.Object.Notify;
+            'notify::fill-pixbuf': GObject.Object.Notify;
+            'notify::fill-rule': GObject.Object.Notify;
+            'notify::fill-rule': GObject.Object.Notify;
+            'notify::font': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::hint-metrics': GObject.Object.Notify;
+            'notify::hint-metrics': GObject.Object.Notify;
+            'notify::line-cap': GObject.Object.Notify;
+            'notify::line-cap': GObject.Object.Notify;
+            'notify::line-dash': GObject.Object.Notify;
+            'notify::line-dash': GObject.Object.Notify;
+            'notify::line-join': GObject.Object.Notify;
+            'notify::line-join': GObject.Object.Notify;
+            'notify::line-join-miter-limit': GObject.Object.Notify;
+            'notify::line-join-miter-limit': GObject.Object.Notify;
+            'notify::line-width': GObject.Object.Notify;
+            'notify::line-width': GObject.Object.Notify;
+            'notify::operator': GObject.Object.Notify;
+            'notify::stroke-color': GObject.Object.Notify;
+            'notify::stroke-color': GObject.Object.Notify;
+            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
+            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
+            'notify::stroke-color-rgba': GObject.Object.Notify;
+            'notify::stroke-color-rgba': GObject.Object.Notify;
+            'notify::stroke-pattern': GObject.Object.Notify;
+            'notify::stroke-pattern': GObject.Object.Notify;
+            'notify::stroke-pixbuf': GObject.Object.Notify;
+            'notify::stroke-pixbuf': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::pointer-events': GObject.Object.Notify;
+            'notify::pointer-events': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::tooltip': GObject.Object.Notify;
+            'notify::transform': GObject.Object.Notify;
+            'notify::visibility': GObject.Object.Notify;
+            'notify::visibility-threshold': GObject.Object.Notify;
+            'notify::visibility-threshold': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -21238,14 +22790,17 @@ export namespace GooCanvas {
             signal: K,
             callback: CanvasTextModel.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CanvasTextModel.SignalSignatures>(
             signal: K,
             callback: CanvasTextModel.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CanvasTextModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CanvasTextModel.SignalSignatures[K]>
+            ...args: CanvasTextModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get can_focus(): boolean;
@@ -21992,7 +23547,69 @@ export namespace GooCanvas {
 
     namespace CanvasWidget {
         // Signal signatures
-        interface SignalSignatures extends CanvasItemSimple.SignalSignatures {}
+        interface SignalSignatures extends CanvasItemSimple.SignalSignatures {
+            'notify::anchor': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::widget': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::x': GObject.Object.Notify;
+            'notify::y': GObject.Object.Notify;
+            'notify::antialias': GObject.Object.Notify;
+            'notify::clip-fill-rule': GObject.Object.Notify;
+            'notify::clip-fill-rule': GObject.Object.Notify;
+            'notify::clip-path': GObject.Object.Notify;
+            'notify::clip-path': GObject.Object.Notify;
+            'notify::fill-color': GObject.Object.Notify;
+            'notify::fill-color': GObject.Object.Notify;
+            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
+            'notify::fill-color-gdk-rgba': GObject.Object.Notify;
+            'notify::fill-color-rgba': GObject.Object.Notify;
+            'notify::fill-color-rgba': GObject.Object.Notify;
+            'notify::fill-pattern': GObject.Object.Notify;
+            'notify::fill-pattern': GObject.Object.Notify;
+            'notify::fill-pixbuf': GObject.Object.Notify;
+            'notify::fill-pixbuf': GObject.Object.Notify;
+            'notify::fill-rule': GObject.Object.Notify;
+            'notify::fill-rule': GObject.Object.Notify;
+            'notify::font': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::hint-metrics': GObject.Object.Notify;
+            'notify::hint-metrics': GObject.Object.Notify;
+            'notify::line-cap': GObject.Object.Notify;
+            'notify::line-cap': GObject.Object.Notify;
+            'notify::line-dash': GObject.Object.Notify;
+            'notify::line-dash': GObject.Object.Notify;
+            'notify::line-join': GObject.Object.Notify;
+            'notify::line-join': GObject.Object.Notify;
+            'notify::line-join-miter-limit': GObject.Object.Notify;
+            'notify::line-join-miter-limit': GObject.Object.Notify;
+            'notify::line-width': GObject.Object.Notify;
+            'notify::line-width': GObject.Object.Notify;
+            'notify::operator': GObject.Object.Notify;
+            'notify::stroke-color': GObject.Object.Notify;
+            'notify::stroke-color': GObject.Object.Notify;
+            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
+            'notify::stroke-color-gdk-rgba': GObject.Object.Notify;
+            'notify::stroke-color-rgba': GObject.Object.Notify;
+            'notify::stroke-color-rgba': GObject.Object.Notify;
+            'notify::stroke-pattern': GObject.Object.Notify;
+            'notify::stroke-pattern': GObject.Object.Notify;
+            'notify::stroke-pixbuf': GObject.Object.Notify;
+            'notify::stroke-pixbuf': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::pointer-events': GObject.Object.Notify;
+            'notify::pointer-events': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::tooltip': GObject.Object.Notify;
+            'notify::transform': GObject.Object.Notify;
+            'notify::visibility': GObject.Object.Notify;
+            'notify::visibility-threshold': GObject.Object.Notify;
+            'notify::visibility-threshold': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -22065,14 +23682,17 @@ export namespace GooCanvas {
             signal: K,
             callback: CanvasWidget.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CanvasWidget.SignalSignatures>(
             signal: K,
             callback: CanvasWidget.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CanvasWidget.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CanvasWidget.SignalSignatures[K]>
+            ...args: CanvasWidget.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get can_focus(): boolean;
@@ -23205,14 +24825,17 @@ export namespace GooCanvas {
             signal: K,
             callback: CanvasWidgetAccessibleFactory.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CanvasWidgetAccessibleFactory.SignalSignatures>(
             signal: K,
             callback: CanvasWidgetAccessibleFactory.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CanvasWidgetAccessibleFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CanvasWidgetAccessibleFactory.SignalSignatures[K]>
+            ...args: CanvasWidgetAccessibleFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     /**

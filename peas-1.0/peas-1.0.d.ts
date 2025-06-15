@@ -75,6 +75,12 @@ export namespace Peas {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'load-plugin': LoadPlugin;
             'unload-plugin': UnloadPlugin;
+            'notify::loaded-plugins': GObject.Object.Notify;
+            'notify::loaded-plugins': GObject.Object.Notify;
+            'notify::nonglobal-loaders': GObject.Object.Notify;
+            'notify::nonglobal-loaders': GObject.Object.Notify;
+            'notify::plugin-list': GObject.Object.Notify;
+            'notify::plugin-list': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -182,8 +188,14 @@ export namespace Peas {
         // Signals
 
         connect<K extends keyof Engine.SignalSignatures>(signal: K, callback: Engine.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Engine.SignalSignatures>(signal: K, callback: Engine.SignalSignatures[K]): number;
-        emit<K extends keyof Engine.SignalSignatures>(signal: K, ...args: Parameters<Engine.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Engine.SignalSignatures>(
+            signal: K,
+            ...args: Engine.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -359,7 +371,12 @@ export namespace Peas {
 
     namespace ExtensionBase {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::data-dir': GObject.Object.Notify;
+            'notify::data-dir': GObject.Object.Notify;
+            'notify::plugin-info': GObject.Object.Notify;
+            'notify::plugin-info': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -416,14 +433,17 @@ export namespace Peas {
             signal: K,
             callback: ExtensionBase.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExtensionBase.SignalSignatures>(
             signal: K,
             callback: ExtensionBase.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExtensionBase.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExtensionBase.SignalSignatures[K]>
+            ...args: ExtensionBase.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -455,6 +475,11 @@ export namespace Peas {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'extension-added': ExtensionAdded;
             'extension-removed': ExtensionRemoved;
+            'notify::construct-properties': GObject.Object.Notify;
+            'notify::construct-properties': GObject.Object.Notify;
+            'notify::engine': GObject.Object.Notify;
+            'notify::extension-type': GObject.Object.Notify;
+            'notify::extension-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -504,14 +529,17 @@ export namespace Peas {
             signal: K,
             callback: ExtensionSet.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExtensionSet.SignalSignatures>(
             signal: K,
             callback: ExtensionSet.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExtensionSet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExtensionSet.SignalSignatures[K]>
+            ...args: ExtensionSet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1073,7 +1101,15 @@ export namespace Peas {
 
     namespace ObjectModule {
         // Signal signatures
-        interface SignalSignatures extends GObject.TypeModule.SignalSignatures {}
+        interface SignalSignatures extends GObject.TypeModule.SignalSignatures {
+            'notify::local-linkage': GObject.Object.Notify;
+            'notify::local-linkage': GObject.Object.Notify;
+            'notify::module-name': GObject.Object.Notify;
+            'notify::module-name': GObject.Object.Notify;
+            'notify::path': GObject.Object.Notify;
+            'notify::resident': GObject.Object.Notify;
+            'notify::symbol': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1127,14 +1163,17 @@ export namespace Peas {
             signal: K,
             callback: ObjectModule.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ObjectModule.SignalSignatures>(
             signal: K,
             callback: ObjectModule.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ObjectModule.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ObjectModule.SignalSignatures[K]>
+            ...args: ObjectModule.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

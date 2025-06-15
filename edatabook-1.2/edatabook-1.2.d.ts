@@ -433,6 +433,19 @@ export namespace EDataBook {
         interface SignalSignatures extends EBackend.Backend.SignalSignatures {
             closed: Closed;
             shutdown: Shutdown;
+            'notify::cache-dir': GObject.Object.Notify;
+            'notify::cache-dir': GObject.Object.Notify;
+            'notify::proxy-resolver': GObject.Object.Notify;
+            'notify::proxy-resolver': GObject.Object.Notify;
+            'notify::registry': GObject.Object.Notify;
+            'notify::writable': GObject.Object.Notify;
+            'notify::connectable': GObject.Object.Notify;
+            'notify::main-context': GObject.Object.Notify;
+            'notify::main-context': GObject.Object.Notify;
+            'notify::online': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+            'notify::user-prompter': GObject.Object.Notify;
+            'notify::user-prompter': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -478,14 +491,17 @@ export namespace EDataBook {
             signal: K,
             callback: BookBackend.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BookBackend.SignalSignatures>(
             signal: K,
             callback: BookBackend.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BookBackend.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BookBackend.SignalSignatures[K]>
+            ...args: BookBackend.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1550,7 +1566,9 @@ export namespace EDataBook {
 
     namespace BookBackendFactory {
         // Signal signatures
-        interface SignalSignatures extends EBackend.BackendFactory.SignalSignatures {}
+        interface SignalSignatures extends EBackend.BackendFactory.SignalSignatures {
+            'notify::extensible': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1576,14 +1594,17 @@ export namespace EDataBook {
             signal: K,
             callback: BookBackendFactory.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BookBackendFactory.SignalSignatures>(
             signal: K,
             callback: BookBackendFactory.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BookBackendFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BookBackendFactory.SignalSignatures[K]>
+            ...args: BookBackendFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace BookBackendSExp {
@@ -1612,14 +1633,17 @@ export namespace EDataBook {
             signal: K,
             callback: BookBackendSExp.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BookBackendSExp.SignalSignatures>(
             signal: K,
             callback: BookBackendSExp.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BookBackendSExp.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BookBackendSExp.SignalSignatures[K]>
+            ...args: BookBackendSExp.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1668,7 +1692,21 @@ export namespace EDataBook {
 
     namespace BookBackendSync {
         // Signal signatures
-        interface SignalSignatures extends BookBackend.SignalSignatures {}
+        interface SignalSignatures extends BookBackend.SignalSignatures {
+            'notify::cache-dir': GObject.Object.Notify;
+            'notify::cache-dir': GObject.Object.Notify;
+            'notify::proxy-resolver': GObject.Object.Notify;
+            'notify::proxy-resolver': GObject.Object.Notify;
+            'notify::registry': GObject.Object.Notify;
+            'notify::writable': GObject.Object.Notify;
+            'notify::connectable': GObject.Object.Notify;
+            'notify::main-context': GObject.Object.Notify;
+            'notify::main-context': GObject.Object.Notify;
+            'notify::online': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+            'notify::user-prompter': GObject.Object.Notify;
+            'notify::user-prompter': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1694,14 +1732,17 @@ export namespace EDataBook {
             signal: K,
             callback: BookBackendSync.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BookBackendSync.SignalSignatures>(
             signal: K,
             callback: BookBackendSync.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BookBackendSync.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BookBackendSync.SignalSignatures[K]>
+            ...args: BookBackendSync.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1868,6 +1909,7 @@ export namespace EDataBook {
             'categories-changed': CategoriesChanged;
             'dup-contact-revision': DupContactRevision;
             'e164-changed': E164Changed;
+            'notify::locale': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1910,14 +1952,17 @@ export namespace EDataBook {
         // Signals
 
         connect<K extends keyof BookCache.SignalSignatures>(signal: K, callback: BookCache.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BookCache.SignalSignatures>(
             signal: K,
             callback: BookCache.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BookCache.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BookCache.SignalSignatures[K]>
+            ...args: BookCache.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -2817,6 +2862,20 @@ export namespace EDataBook {
         interface SignalSignatures extends BookBackendSync.SignalSignatures {
             'refresh-completed': RefreshCompleted;
             'source-changed': SourceChanged;
+            'notify::cache': GObject.Object.Notify;
+            'notify::cache-dir': GObject.Object.Notify;
+            'notify::cache-dir': GObject.Object.Notify;
+            'notify::proxy-resolver': GObject.Object.Notify;
+            'notify::proxy-resolver': GObject.Object.Notify;
+            'notify::registry': GObject.Object.Notify;
+            'notify::writable': GObject.Object.Notify;
+            'notify::connectable': GObject.Object.Notify;
+            'notify::main-context': GObject.Object.Notify;
+            'notify::main-context': GObject.Object.Notify;
+            'notify::online': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+            'notify::user-prompter': GObject.Object.Notify;
+            'notify::user-prompter': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -2853,14 +2912,17 @@ export namespace EDataBook {
             signal: K,
             callback: BookMetaBackend.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BookMetaBackend.SignalSignatures>(
             signal: K,
             callback: BookMetaBackend.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BookMetaBackend.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BookMetaBackend.SignalSignatures[K]>
+            ...args: BookMetaBackend.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -3488,7 +3550,7 @@ export namespace EDataBook {
                 p2: boolean,
                 p3: GObject.Object,
                 p4?: any | null,
-            ): boolean;
+            ): boolean | void;
         }
 
         interface BeforeRemoveContact {
@@ -3498,7 +3560,7 @@ export namespace EDataBook {
                 p0: string,
                 p1?: Gio.Cancellable | null,
                 p2?: any | null,
-            ): boolean;
+            ): boolean | void;
         }
 
         // Signal signatures
@@ -3547,14 +3609,17 @@ export namespace EDataBook {
             signal: K,
             callback: BookSqlite.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BookSqlite.SignalSignatures>(
             signal: K,
             callback: BookSqlite.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BookSqlite.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BookSqlite.SignalSignatures[K]>
+            ...args: BookSqlite.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -4353,7 +4418,12 @@ export namespace EDataBook {
 
     namespace DataBook {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::backend': GObject.Object.Notify;
+            'notify::connection': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4386,14 +4456,17 @@ export namespace EDataBook {
         // Signals
 
         connect<K extends keyof DataBook.SignalSignatures>(signal: K, callback: DataBook.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DataBook.SignalSignatures>(
             signal: K,
             callback: DataBook.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DataBook.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataBook.SignalSignatures[K]>
+            ...args: DataBook.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -5038,7 +5111,11 @@ export namespace EDataBook {
 
     namespace DataBookCursor {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::backend': GObject.Object.Notify;
+            'notify::position': GObject.Object.Notify;
+            'notify::total': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5073,14 +5150,17 @@ export namespace EDataBook {
             signal: K,
             callback: DataBookCursor.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DataBookCursor.SignalSignatures>(
             signal: K,
             callback: DataBookCursor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DataBookCursor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataBookCursor.SignalSignatures[K]>
+            ...args: DataBookCursor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -5254,7 +5334,14 @@ export namespace EDataBook {
 
     namespace DataBookCursorCache {
         // Signal signatures
-        interface SignalSignatures extends DataBookCursor.SignalSignatures {}
+        interface SignalSignatures extends DataBookCursor.SignalSignatures {
+            'notify::book-cache': GObject.Object.Notify;
+            'notify::book-cache': GObject.Object.Notify;
+            'notify::cursor': GObject.Object.Notify;
+            'notify::backend': GObject.Object.Notify;
+            'notify::position': GObject.Object.Notify;
+            'notify::total': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5296,19 +5383,30 @@ export namespace EDataBook {
             signal: K,
             callback: DataBookCursorCache.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DataBookCursorCache.SignalSignatures>(
             signal: K,
             callback: DataBookCursorCache.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DataBookCursorCache.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataBookCursorCache.SignalSignatures[K]>
+            ...args: DataBookCursorCache.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace DataBookCursorSqlite {
         // Signal signatures
-        interface SignalSignatures extends DataBookCursor.SignalSignatures {}
+        interface SignalSignatures extends DataBookCursor.SignalSignatures {
+            'notify::cursor': GObject.Object.Notify;
+            'notify::ebsql': GObject.Object.Notify;
+            'notify::revision-key': GObject.Object.Notify;
+            'notify::revision-key': GObject.Object.Notify;
+            'notify::backend': GObject.Object.Notify;
+            'notify::position': GObject.Object.Notify;
+            'notify::total': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5353,14 +5451,17 @@ export namespace EDataBook {
             signal: K,
             callback: DataBookCursorSqlite.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DataBookCursorSqlite.SignalSignatures>(
             signal: K,
             callback: DataBookCursorSqlite.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DataBookCursorSqlite.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataBookCursorSqlite.SignalSignatures[K]>
+            ...args: DataBookCursorSqlite.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace DataBookDirect {
@@ -5389,14 +5490,17 @@ export namespace EDataBook {
             signal: K,
             callback: DataBookDirect.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DataBookDirect.SignalSignatures>(
             signal: K,
             callback: DataBookDirect.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DataBookDirect.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataBookDirect.SignalSignatures[K]>
+            ...args: DataBookDirect.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5410,7 +5514,13 @@ export namespace EDataBook {
 
     namespace DataBookFactory {
         // Signal signatures
-        interface SignalSignatures extends EBackend.DataFactory.SignalSignatures {}
+        interface SignalSignatures extends EBackend.DataFactory.SignalSignatures {
+            'notify::backend-per-process': GObject.Object.Notify;
+            'notify::backend-per-process': GObject.Object.Notify;
+            'notify::registry': GObject.Object.Notify;
+            'notify::reload-supported': GObject.Object.Notify;
+            'notify::reload-supported': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5437,14 +5547,17 @@ export namespace EDataBook {
             signal: K,
             callback: DataBookFactory.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DataBookFactory.SignalSignatures>(
             signal: K,
             callback: DataBookFactory.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DataBookFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataBookFactory.SignalSignatures[K]>
+            ...args: DataBookFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -5993,6 +6106,14 @@ export namespace EDataBook {
             'objects-added': ObjectsAdded;
             'objects-modified': ObjectsModified;
             'objects-removed': ObjectsRemoved;
+            'notify::backend': GObject.Object.Notify;
+            'notify::connection': GObject.Object.Notify;
+            'notify::indices': GObject.Object.Notify;
+            'notify::n-total': GObject.Object.Notify;
+            'notify::n-total': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'notify::sexp': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -6045,14 +6166,17 @@ export namespace EDataBook {
             signal: K,
             callback: DataBookView.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DataBookView.SignalSignatures>(
             signal: K,
             callback: DataBookView.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DataBookView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataBookView.SignalSignatures[K]>
+            ...args: DataBookView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -6804,14 +6928,17 @@ export namespace EDataBook {
             signal: K,
             callback: DataBookViewWatcherCache.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DataBookViewWatcherCache.SignalSignatures>(
             signal: K,
             callback: DataBookViewWatcherCache.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DataBookViewWatcherCache.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataBookViewWatcherCache.SignalSignatures[K]>
+            ...args: DataBookViewWatcherCache.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -6864,14 +6991,17 @@ export namespace EDataBook {
             signal: K,
             callback: DataBookViewWatcherMemory.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DataBookViewWatcherMemory.SignalSignatures>(
             signal: K,
             callback: DataBookViewWatcherMemory.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DataBookViewWatcherMemory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataBookViewWatcherMemory.SignalSignatures[K]>
+            ...args: DataBookViewWatcherMemory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -6930,14 +7060,17 @@ export namespace EDataBook {
             signal: K,
             callback: DataBookViewWatcherSqlite.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DataBookViewWatcherSqlite.SignalSignatures>(
             signal: K,
             callback: DataBookViewWatcherSqlite.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DataBookViewWatcherSqlite.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataBookViewWatcherSqlite.SignalSignatures[K]>
+            ...args: DataBookViewWatcherSqlite.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -6962,7 +7095,9 @@ export namespace EDataBook {
 
     namespace SubprocessBookFactory {
         // Signal signatures
-        interface SignalSignatures extends EBackend.SubprocessFactory.SignalSignatures {}
+        interface SignalSignatures extends EBackend.SubprocessFactory.SignalSignatures {
+            'notify::registry': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6986,14 +7121,17 @@ export namespace EDataBook {
             signal: K,
             callback: SubprocessBookFactory.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SubprocessBookFactory.SignalSignatures>(
             signal: K,
             callback: SubprocessBookFactory.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SubprocessBookFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SubprocessBookFactory.SignalSignatures[K]>
+            ...args: SubprocessBookFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -7524,7 +7662,9 @@ export namespace EDataBook {
 
     namespace SystemLocaleWatcher {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::locale': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -7562,14 +7702,17 @@ export namespace EDataBook {
             signal: K,
             callback: SystemLocaleWatcher.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SystemLocaleWatcher.SignalSignatures>(
             signal: K,
             callback: SystemLocaleWatcher.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SystemLocaleWatcher.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SystemLocaleWatcher.SignalSignatures[K]>
+            ...args: SystemLocaleWatcher.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

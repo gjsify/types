@@ -595,7 +595,9 @@ export namespace Gegl {
     }
     namespace AudioFragment {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::string': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -635,14 +637,17 @@ export namespace Gegl {
             signal: K,
             callback: AudioFragment.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AudioFragment.SignalSignatures>(
             signal: K,
             callback: AudioFragment.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AudioFragment.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AudioFragment.SignalSignatures[K]>
+            ...args: AudioFragment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -670,6 +675,33 @@ export namespace Gegl {
         // Signal signatures
         interface SignalSignatures extends TileHandler.SignalSignatures {
             changed: Changed;
+            'notify::abyss-height': GObject.Object.Notify;
+            'notify::abyss-height': GObject.Object.Notify;
+            'notify::abyss-width': GObject.Object.Notify;
+            'notify::abyss-width': GObject.Object.Notify;
+            'notify::abyss-x': GObject.Object.Notify;
+            'notify::abyss-x': GObject.Object.Notify;
+            'notify::abyss-y': GObject.Object.Notify;
+            'notify::abyss-y': GObject.Object.Notify;
+            'notify::backend': GObject.Object.Notify;
+            'notify::format': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::path': GObject.Object.Notify;
+            'notify::pixels': GObject.Object.Notify;
+            'notify::px-size': GObject.Object.Notify;
+            'notify::px-size': GObject.Object.Notify;
+            'notify::shift-x': GObject.Object.Notify;
+            'notify::shift-x': GObject.Object.Notify;
+            'notify::shift-y': GObject.Object.Notify;
+            'notify::shift-y': GObject.Object.Notify;
+            'notify::tile-height': GObject.Object.Notify;
+            'notify::tile-height': GObject.Object.Notify;
+            'notify::tile-width': GObject.Object.Notify;
+            'notify::tile-width': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::x': GObject.Object.Notify;
+            'notify::y': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -754,8 +786,14 @@ export namespace Gegl {
         // Signals
 
         connect<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
-        emit<K extends keyof Buffer.SignalSignatures>(signal: K, ...args: Parameters<Buffer.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Buffer.SignalSignatures>(
+            signal: K,
+            ...args: Buffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -920,7 +958,9 @@ export namespace Gegl {
 
     namespace Color {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::string': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -948,8 +988,14 @@ export namespace Gegl {
         // Signals
 
         connect<K extends keyof Color.SignalSignatures>(signal: K, callback: Color.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Color.SignalSignatures>(signal: K, callback: Color.SignalSignatures[K]): number;
-        emit<K extends keyof Color.SignalSignatures>(signal: K, ...args: Parameters<Color.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Color.SignalSignatures>(
+            signal: K,
+            ...args: Color.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -987,7 +1033,25 @@ export namespace Gegl {
 
     namespace Config {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::application-license': GObject.Object.Notify;
+            'notify::application-license': GObject.Object.Notify;
+            'notify::chunk-size': GObject.Object.Notify;
+            'notify::chunk-size': GObject.Object.Notify;
+            'notify::quality': GObject.Object.Notify;
+            'notify::queue-size': GObject.Object.Notify;
+            'notify::queue-size': GObject.Object.Notify;
+            'notify::swap': GObject.Object.Notify;
+            'notify::threads': GObject.Object.Notify;
+            'notify::tile-cache-size': GObject.Object.Notify;
+            'notify::tile-cache-size': GObject.Object.Notify;
+            'notify::tile-height': GObject.Object.Notify;
+            'notify::tile-height': GObject.Object.Notify;
+            'notify::tile-width': GObject.Object.Notify;
+            'notify::tile-width': GObject.Object.Notify;
+            'notify::use-opencl': GObject.Object.Notify;
+            'notify::use-opencl': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1061,8 +1125,14 @@ export namespace Gegl {
         // Signals
 
         connect<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
-        emit<K extends keyof Config.SignalSignatures>(signal: K, ...args: Parameters<Config.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Config.SignalSignatures>(
+            signal: K,
+            ...args: Config.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Curve {
@@ -1090,8 +1160,14 @@ export namespace Gegl {
         // Signals
 
         connect<K extends keyof Curve.SignalSignatures>(signal: K, callback: Curve.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Curve.SignalSignatures>(signal: K, callback: Curve.SignalSignatures[K]): number;
-        emit<K extends keyof Curve.SignalSignatures>(signal: K, ...args: Parameters<Curve.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Curve.SignalSignatures>(
+            signal: K,
+            ...args: Curve.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1159,6 +1235,15 @@ export namespace Gegl {
             computed: Computed;
             invalidated: Invalidated;
             progress: Progress;
+            'notify::dont-cache': GObject.Object.Notify;
+            'notify::dont-cache': GObject.Object.Notify;
+            'notify::gegl-operation': GObject.Object.Notify;
+            'notify::gegl-operation': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::operation': GObject.Object.Notify;
+            'notify::passthrough': GObject.Object.Notify;
+            'notify::use-opencl': GObject.Object.Notify;
+            'notify::use-opencl': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1217,8 +1302,14 @@ export namespace Gegl {
         // Signals
 
         connect<K extends keyof Node.SignalSignatures>(signal: K, callback: Node.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Node.SignalSignatures>(signal: K, callback: Node.SignalSignatures[K]): number;
-        emit<K extends keyof Node.SignalSignatures>(signal: K, ...args: Parameters<Node.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Node.SignalSignatures>(
+            signal: K,
+            ...args: Node.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1450,14 +1541,17 @@ export namespace Gegl {
         // Signals
 
         connect<K extends keyof Operation.SignalSignatures>(signal: K, callback: Operation.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Operation.SignalSignatures>(
             signal: K,
             callback: Operation.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Operation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Operation.SignalSignatures[K]>
+            ...args: Operation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1507,8 +1601,14 @@ export namespace Gegl {
         // Signals
 
         connect<K extends keyof Path.SignalSignatures>(signal: K, callback: Path.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Path.SignalSignatures>(signal: K, callback: Path.SignalSignatures[K]): number;
-        emit<K extends keyof Path.SignalSignatures>(signal: K, ...args: Parameters<Path.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Path.SignalSignatures>(
+            signal: K,
+            ...args: Path.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1642,7 +1742,12 @@ export namespace Gegl {
 
     namespace Processor {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::chunksize': GObject.Object.Notify;
+            'notify::node': GObject.Object.Notify;
+            'notify::progress': GObject.Object.Notify;
+            'notify::rectangle': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1675,14 +1780,17 @@ export namespace Gegl {
         // Signals
 
         connect<K extends keyof Processor.SignalSignatures>(signal: K, callback: Processor.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Processor.SignalSignatures>(
             signal: K,
             callback: Processor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Processor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Processor.SignalSignatures[K]>
+            ...args: Processor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1711,7 +1819,26 @@ export namespace Gegl {
 
     namespace Stats {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::swap-busy': GObject.Object.Notify;
+            'notify::swap-busy': GObject.Object.Notify;
+            'notify::swap-file-size': GObject.Object.Notify;
+            'notify::swap-file-size': GObject.Object.Notify;
+            'notify::swap-total': GObject.Object.Notify;
+            'notify::swap-total': GObject.Object.Notify;
+            'notify::tile-cache-hits': GObject.Object.Notify;
+            'notify::tile-cache-hits': GObject.Object.Notify;
+            'notify::tile-cache-misses': GObject.Object.Notify;
+            'notify::tile-cache-misses': GObject.Object.Notify;
+            'notify::tile-cache-total': GObject.Object.Notify;
+            'notify::tile-cache-total': GObject.Object.Notify;
+            'notify::tile-cache-total-max': GObject.Object.Notify;
+            'notify::tile-cache-total-max': GObject.Object.Notify;
+            'notify::tile-cache-total-uncloned': GObject.Object.Notify;
+            'notify::tile-cache-total-uncloned': GObject.Object.Notify;
+            'notify::zoom-total': GObject.Object.Notify;
+            'notify::zoom-total': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1770,13 +1897,31 @@ export namespace Gegl {
         // Signals
 
         connect<K extends keyof Stats.SignalSignatures>(signal: K, callback: Stats.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Stats.SignalSignatures>(signal: K, callback: Stats.SignalSignatures[K]): number;
-        emit<K extends keyof Stats.SignalSignatures>(signal: K, ...args: Parameters<Stats.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Stats.SignalSignatures>(
+            signal: K,
+            ...args: Stats.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace TileBackend {
         // Signal signatures
-        interface SignalSignatures extends TileSource.SignalSignatures {}
+        interface SignalSignatures extends TileSource.SignalSignatures {
+            'notify::flush-on-destroy': GObject.Object.Notify;
+            'notify::flush-on-destroy': GObject.Object.Notify;
+            'notify::format': GObject.Object.Notify;
+            'notify::px-size': GObject.Object.Notify;
+            'notify::px-size': GObject.Object.Notify;
+            'notify::tile-height': GObject.Object.Notify;
+            'notify::tile-height': GObject.Object.Notify;
+            'notify::tile-size': GObject.Object.Notify;
+            'notify::tile-size': GObject.Object.Notify;
+            'notify::tile-width': GObject.Object.Notify;
+            'notify::tile-width': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1826,14 +1971,17 @@ export namespace Gegl {
             signal: K,
             callback: TileBackend.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TileBackend.SignalSignatures>(
             signal: K,
             callback: TileBackend.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TileBackend.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TileBackend.SignalSignatures[K]>
+            ...args: TileBackend.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1876,7 +2024,9 @@ export namespace Gegl {
 
     namespace TileHandler {
         // Signal signatures
-        interface SignalSignatures extends TileSource.SignalSignatures {}
+        interface SignalSignatures extends TileSource.SignalSignatures {
+            'notify::source': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1905,14 +2055,17 @@ export namespace Gegl {
             signal: K,
             callback: TileHandler.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TileHandler.SignalSignatures>(
             signal: K,
             callback: TileHandler.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TileHandler.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TileHandler.SignalSignatures[K]>
+            ...args: TileHandler.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1949,14 +2102,17 @@ export namespace Gegl {
             signal: K,
             callback: TileSource.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TileSource.SignalSignatures>(
             signal: K,
             callback: TileSource.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TileSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TileSource.SignalSignatures[K]>
+            ...args: TileSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     type AudioFragmentClass = typeof AudioFragment;

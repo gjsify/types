@@ -171,14 +171,17 @@ export namespace Xkl {
             signal: K,
             callback: ConfigItem.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConfigItem.SignalSignatures>(
             signal: K,
             callback: ConfigItem.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConfigItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConfigItem.SignalSignatures[K]>
+            ...args: ConfigItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -235,14 +238,17 @@ export namespace Xkl {
         // Signals
 
         connect<K extends keyof ConfigRec.SignalSignatures>(signal: K, callback: ConfigRec.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConfigRec.SignalSignatures>(
             signal: K,
             callback: ConfigRec.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConfigRec.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConfigRec.SignalSignatures[K]>
+            ...args: ConfigRec.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -338,7 +344,9 @@ export namespace Xkl {
 
     namespace ConfigRegistry {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::engine': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -366,14 +374,17 @@ export namespace Xkl {
             signal: K,
             callback: ConfigRegistry.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConfigRegistry.SignalSignatures>(
             signal: K,
             callback: ConfigRegistry.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConfigRegistry.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConfigRegistry.SignalSignatures[K]>
+            ...args: ConfigRegistry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -517,6 +528,19 @@ export namespace Xkl {
             'X-new-device': XNewDevice;
             'X-state-changed': XStateChanged;
             'new-toplevel-window': NewToplevelWindow;
+            'notify::backend-name': GObject.Object.Notify;
+            'notify::default-group': GObject.Object.Notify;
+            'notify::default-group': GObject.Object.Notify;
+            'notify::display': GObject.Object.Notify;
+            'notify::features': GObject.Object.Notify;
+            'notify::indicators-handling': GObject.Object.Notify;
+            'notify::indicators-handling': GObject.Object.Notify;
+            'notify::max-num-groups': GObject.Object.Notify;
+            'notify::max-num-groups': GObject.Object.Notify;
+            'notify::num-groups': GObject.Object.Notify;
+            'notify::num-groups': GObject.Object.Notify;
+            'notify::secondary-groups-mask': GObject.Object.Notify;
+            'notify::secondary-groups-mask': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -566,8 +590,14 @@ export namespace Xkl {
         // Signals
 
         connect<K extends keyof Engine.SignalSignatures>(signal: K, callback: Engine.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Engine.SignalSignatures>(signal: K, callback: Engine.SignalSignatures[K]): number;
-        emit<K extends keyof Engine.SignalSignatures>(signal: K, ...args: Parameters<Engine.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Engine.SignalSignatures>(
+            signal: K,
+            ...args: Engine.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 

@@ -311,7 +311,12 @@ export namespace GeocodeGlib {
     function error_quark(): GLib.Quark;
     namespace BoundingBox {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::bottom': GObject.Object.Notify;
+            'notify::left': GObject.Object.Notify;
+            'notify::right': GObject.Object.Notify;
+            'notify::top': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -363,14 +368,17 @@ export namespace GeocodeGlib {
             signal: K,
             callback: BoundingBox.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BoundingBox.SignalSignatures>(
             signal: K,
             callback: BoundingBox.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BoundingBox.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BoundingBox.SignalSignatures[K]>
+            ...args: BoundingBox.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -407,7 +415,13 @@ export namespace GeocodeGlib {
 
     namespace Forward {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::answer-count': GObject.Object.Notify;
+            'notify::answer-count': GObject.Object.Notify;
+            'notify::bounded': GObject.Object.Notify;
+            'notify::search-area': GObject.Object.Notify;
+            'notify::search-area': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -474,14 +488,17 @@ export namespace GeocodeGlib {
         // Signals
 
         connect<K extends keyof Forward.SignalSignatures>(signal: K, callback: Forward.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Forward.SignalSignatures>(
             signal: K,
             callback: Forward.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Forward.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Forward.SignalSignatures[K]>
+            ...args: Forward.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -577,7 +594,15 @@ export namespace GeocodeGlib {
 
     namespace Location {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::accuracy': GObject.Object.Notify;
+            'notify::altitude': GObject.Object.Notify;
+            'notify::crs': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::latitude': GObject.Object.Notify;
+            'notify::longitude': GObject.Object.Notify;
+            'notify::timestamp': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -657,14 +682,17 @@ export namespace GeocodeGlib {
         // Signals
 
         connect<K extends keyof Location.SignalSignatures>(signal: K, callback: Location.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Location.SignalSignatures>(
             signal: K,
             callback: Location.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Location.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Location.SignalSignatures[K]>
+            ...args: Location.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -789,14 +817,17 @@ export namespace GeocodeGlib {
             signal: K,
             callback: MockBackend.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MockBackend.SignalSignatures>(
             signal: K,
             callback: MockBackend.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MockBackend.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MockBackend.SignalSignatures[K]>
+            ...args: MockBackend.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1591,7 +1622,14 @@ export namespace GeocodeGlib {
 
     namespace Nominatim {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::base-url': GObject.Object.Notify;
+            'notify::base-url': GObject.Object.Notify;
+            'notify::maintainer-email-address': GObject.Object.Notify;
+            'notify::maintainer-email-address': GObject.Object.Notify;
+            'notify::user-agent': GObject.Object.Notify;
+            'notify::user-agent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1678,14 +1716,17 @@ export namespace GeocodeGlib {
         // Signals
 
         connect<K extends keyof Nominatim.SignalSignatures>(signal: K, callback: Nominatim.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Nominatim.SignalSignatures>(
             signal: K,
             callback: Nominatim.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Nominatim.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Nominatim.SignalSignatures[K]>
+            ...args: Nominatim.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2432,7 +2473,35 @@ export namespace GeocodeGlib {
 
     namespace Place {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::administrative-area': GObject.Object.Notify;
+            'notify::administrative-area': GObject.Object.Notify;
+            'notify::area': GObject.Object.Notify;
+            'notify::bounding-box': GObject.Object.Notify;
+            'notify::bounding-box': GObject.Object.Notify;
+            'notify::building': GObject.Object.Notify;
+            'notify::continent': GObject.Object.Notify;
+            'notify::country': GObject.Object.Notify;
+            'notify::country-code': GObject.Object.Notify;
+            'notify::country-code': GObject.Object.Notify;
+            'notify::county': GObject.Object.Notify;
+            'notify::icon': GObject.Object.Notify;
+            'notify::location': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::osm-id': GObject.Object.Notify;
+            'notify::osm-id': GObject.Object.Notify;
+            'notify::osm-type': GObject.Object.Notify;
+            'notify::osm-type': GObject.Object.Notify;
+            'notify::place-type': GObject.Object.Notify;
+            'notify::place-type': GObject.Object.Notify;
+            'notify::postal-code': GObject.Object.Notify;
+            'notify::postal-code': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::street': GObject.Object.Notify;
+            'notify::street-address': GObject.Object.Notify;
+            'notify::street-address': GObject.Object.Notify;
+            'notify::town': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2621,8 +2690,14 @@ export namespace GeocodeGlib {
         // Signals
 
         connect<K extends keyof Place.SignalSignatures>(signal: K, callback: Place.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Place.SignalSignatures>(signal: K, callback: Place.SignalSignatures[K]): number;
-        emit<K extends keyof Place.SignalSignatures>(signal: K, ...args: Parameters<Place.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Place.SignalSignatures>(
+            signal: K,
+            ...args: Place.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2836,14 +2911,17 @@ export namespace GeocodeGlib {
         // Signals
 
         connect<K extends keyof Reverse.SignalSignatures>(signal: K, callback: Reverse.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Reverse.SignalSignatures>(
             signal: K,
             callback: Reverse.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Reverse.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Reverse.SignalSignatures[K]>
+            ...args: Reverse.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

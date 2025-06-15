@@ -454,14 +454,17 @@ export namespace Modulemd {
             signal: K,
             callback: BuildConfig.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BuildConfig.SignalSignatures>(
             signal: K,
             callback: BuildConfig.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BuildConfig.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BuildConfig.SignalSignatures[K]>
+            ...args: BuildConfig.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -546,7 +549,10 @@ export namespace Modulemd {
 
     namespace Buildopts {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::rpm-macros': GObject.Object.Notify;
+            'notify::rpm-macros': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -577,14 +583,17 @@ export namespace Modulemd {
         // Signals
 
         connect<K extends keyof Buildopts.SignalSignatures>(signal: K, callback: Buildopts.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Buildopts.SignalSignatures>(
             signal: K,
             callback: Buildopts.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Buildopts.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Buildopts.SignalSignatures[K]>
+            ...args: Buildopts.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -625,7 +634,12 @@ export namespace Modulemd {
 
     namespace Component {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::buildonly': GObject.Object.Notify;
+            'notify::buildorder': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::rationale': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -659,14 +673,17 @@ export namespace Modulemd {
         // Signals
 
         connect<K extends keyof Component.SignalSignatures>(signal: K, callback: Component.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Component.SignalSignatures>(
             signal: K,
             callback: Component.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Component.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Component.SignalSignatures[K]>
+            ...args: Component.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -715,7 +732,14 @@ export namespace Modulemd {
 
     namespace ComponentModule {
         // Signal signatures
-        interface SignalSignatures extends Component.SignalSignatures {}
+        interface SignalSignatures extends Component.SignalSignatures {
+            'notify::ref': GObject.Object.Notify;
+            'notify::repository': GObject.Object.Notify;
+            'notify::buildonly': GObject.Object.Notify;
+            'notify::buildorder': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::rationale': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -749,14 +773,17 @@ export namespace Modulemd {
             signal: K,
             callback: ComponentModule.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ComponentModule.SignalSignatures>(
             signal: K,
             callback: ComponentModule.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ComponentModule.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ComponentModule.SignalSignatures[K]>
+            ...args: ComponentModule.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -768,7 +795,18 @@ export namespace Modulemd {
 
     namespace ComponentRpm {
         // Signal signatures
-        interface SignalSignatures extends Component.SignalSignatures {}
+        interface SignalSignatures extends Component.SignalSignatures {
+            'notify::buildroot': GObject.Object.Notify;
+            'notify::cache': GObject.Object.Notify;
+            'notify::ref': GObject.Object.Notify;
+            'notify::repository': GObject.Object.Notify;
+            'notify::srpm-buildroot': GObject.Object.Notify;
+            'notify::srpm-buildroot': GObject.Object.Notify;
+            'notify::buildonly': GObject.Object.Notify;
+            'notify::buildorder': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::rationale': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -814,14 +852,17 @@ export namespace Modulemd {
             signal: K,
             callback: ComponentRpm.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ComponentRpm.SignalSignatures>(
             signal: K,
             callback: ComponentRpm.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ComponentRpm.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ComponentRpm.SignalSignatures[K]>
+            ...args: ComponentRpm.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -872,7 +913,11 @@ export namespace Modulemd {
 
     namespace Defaults {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::mdversion': GObject.Object.Notify;
+            'notify::module-name': GObject.Object.Notify;
+            'notify::module-name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -903,14 +948,17 @@ export namespace Modulemd {
         // Signals
 
         connect<K extends keyof Defaults.SignalSignatures>(signal: K, callback: Defaults.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Defaults.SignalSignatures>(
             signal: K,
             callback: Defaults.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Defaults.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Defaults.SignalSignatures[K]>
+            ...args: Defaults.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -933,7 +981,11 @@ export namespace Modulemd {
 
     namespace DefaultsV1 {
         // Signal signatures
-        interface SignalSignatures extends Defaults.SignalSignatures {}
+        interface SignalSignatures extends Defaults.SignalSignatures {
+            'notify::mdversion': GObject.Object.Notify;
+            'notify::module-name': GObject.Object.Notify;
+            'notify::module-name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -960,14 +1012,17 @@ export namespace Modulemd {
             signal: K,
             callback: DefaultsV1.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DefaultsV1.SignalSignatures>(
             signal: K,
             callback: DefaultsV1.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DefaultsV1.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DefaultsV1.SignalSignatures[K]>
+            ...args: DefaultsV1.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1031,14 +1086,17 @@ export namespace Modulemd {
             signal: K,
             callback: Dependencies.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Dependencies.SignalSignatures>(
             signal: K,
             callback: Dependencies.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Dependencies.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Dependencies.SignalSignatures[K]>
+            ...args: Dependencies.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1097,7 +1155,10 @@ export namespace Modulemd {
 
     namespace Module {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::module-name': GObject.Object.Notify;
+            'notify::module-name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1124,8 +1185,14 @@ export namespace Modulemd {
         // Signals
 
         connect<K extends keyof Module.SignalSignatures>(signal: K, callback: Module.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Module.SignalSignatures>(signal: K, callback: Module.SignalSignatures[K]): number;
-        emit<K extends keyof Module.SignalSignatures>(signal: K, ...args: Parameters<Module.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Module.SignalSignatures>(
+            signal: K,
+            ...args: Module.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1217,14 +1284,17 @@ export namespace Modulemd {
             signal: K,
             callback: ModuleIndex.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ModuleIndex.SignalSignatures>(
             signal: K,
             callback: ModuleIndex.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ModuleIndex.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ModuleIndex.SignalSignatures[K]>
+            ...args: ModuleIndex.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1356,14 +1426,17 @@ export namespace Modulemd {
             signal: K,
             callback: ModuleIndexMerger.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ModuleIndexMerger.SignalSignatures>(
             signal: K,
             callback: ModuleIndexMerger.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ModuleIndexMerger.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ModuleIndexMerger.SignalSignatures[K]>
+            ...args: ModuleIndexMerger.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1409,7 +1482,16 @@ export namespace Modulemd {
 
     namespace ModuleStream {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::arch': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
+            'notify::mdversion': GObject.Object.Notify;
+            'notify::module-name': GObject.Object.Notify;
+            'notify::module-name': GObject.Object.Notify;
+            'notify::stream-name': GObject.Object.Notify;
+            'notify::stream-name': GObject.Object.Notify;
+            'notify::version': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1456,14 +1538,17 @@ export namespace Modulemd {
             signal: K,
             callback: ModuleStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ModuleStream.SignalSignatures>(
             signal: K,
             callback: ModuleStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ModuleStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ModuleStream.SignalSignatures[K]>
+            ...args: ModuleStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1592,7 +1677,20 @@ export namespace Modulemd {
 
     namespace ModuleStreamV1 {
         // Signal signatures
-        interface SignalSignatures extends ModuleStream.SignalSignatures {}
+        interface SignalSignatures extends ModuleStream.SignalSignatures {
+            'notify::arch': GObject.Object.Notify;
+            'notify::buildopts': GObject.Object.Notify;
+            'notify::community': GObject.Object.Notify;
+            'notify::documentation': GObject.Object.Notify;
+            'notify::tracker': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
+            'notify::mdversion': GObject.Object.Notify;
+            'notify::module-name': GObject.Object.Notify;
+            'notify::module-name': GObject.Object.Notify;
+            'notify::stream-name': GObject.Object.Notify;
+            'notify::stream-name': GObject.Object.Notify;
+            'notify::version': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1638,14 +1736,17 @@ export namespace Modulemd {
             signal: K,
             callback: ModuleStreamV1.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ModuleStreamV1.SignalSignatures>(
             signal: K,
             callback: ModuleStreamV1.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ModuleStreamV1.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ModuleStreamV1.SignalSignatures[K]>
+            ...args: ModuleStreamV1.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1838,7 +1939,22 @@ export namespace Modulemd {
 
     namespace ModuleStreamV2 {
         // Signal signatures
-        interface SignalSignatures extends ModuleStream.SignalSignatures {}
+        interface SignalSignatures extends ModuleStream.SignalSignatures {
+            'notify::arch': GObject.Object.Notify;
+            'notify::buildopts': GObject.Object.Notify;
+            'notify::community': GObject.Object.Notify;
+            'notify::documentation': GObject.Object.Notify;
+            'notify::static-context': GObject.Object.Notify;
+            'notify::static-context': GObject.Object.Notify;
+            'notify::tracker': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
+            'notify::mdversion': GObject.Object.Notify;
+            'notify::module-name': GObject.Object.Notify;
+            'notify::module-name': GObject.Object.Notify;
+            'notify::stream-name': GObject.Object.Notify;
+            'notify::stream-name': GObject.Object.Notify;
+            'notify::version': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1890,14 +2006,17 @@ export namespace Modulemd {
             signal: K,
             callback: ModuleStreamV2.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ModuleStreamV2.SignalSignatures>(
             signal: K,
             callback: ModuleStreamV2.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ModuleStreamV2.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ModuleStreamV2.SignalSignatures[K]>
+            ...args: ModuleStreamV2.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2099,7 +2218,25 @@ export namespace Modulemd {
 
     namespace Obsoletes {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::eol-date': GObject.Object.Notify;
+            'notify::eol-date': GObject.Object.Notify;
+            'notify::mdversion': GObject.Object.Notify;
+            'notify::message': GObject.Object.Notify;
+            'notify::modified': GObject.Object.Notify;
+            'notify::module-context': GObject.Object.Notify;
+            'notify::module-context': GObject.Object.Notify;
+            'notify::module-name': GObject.Object.Notify;
+            'notify::module-name': GObject.Object.Notify;
+            'notify::module-stream': GObject.Object.Notify;
+            'notify::module-stream': GObject.Object.Notify;
+            'notify::obsoleted-by-module-name': GObject.Object.Notify;
+            'notify::obsoleted-by-module-name': GObject.Object.Notify;
+            'notify::obsoleted-by-module-stream': GObject.Object.Notify;
+            'notify::obsoleted-by-module-stream': GObject.Object.Notify;
+            'notify::override-previous': GObject.Object.Notify;
+            'notify::override-previous': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2175,14 +2312,17 @@ export namespace Modulemd {
         // Signals
 
         connect<K extends keyof Obsoletes.SignalSignatures>(signal: K, callback: Obsoletes.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Obsoletes.SignalSignatures>(
             signal: K,
             callback: Obsoletes.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Obsoletes.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Obsoletes.SignalSignatures[K]>
+            ...args: Obsoletes.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2250,14 +2390,17 @@ export namespace Modulemd {
             signal: K,
             callback: PackagerV3.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PackagerV3.SignalSignatures>(
             signal: K,
             callback: PackagerV3.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PackagerV3.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PackagerV3.SignalSignatures[K]>
+            ...args: PackagerV3.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2420,7 +2563,9 @@ export namespace Modulemd {
 
     namespace Profile {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2447,14 +2592,17 @@ export namespace Modulemd {
         // Signals
 
         connect<K extends keyof Profile.SignalSignatures>(signal: K, callback: Profile.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Profile.SignalSignatures>(
             signal: K,
             callback: Profile.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Profile.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Profile.SignalSignatures[K]>
+            ...args: Profile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2491,7 +2639,14 @@ export namespace Modulemd {
 
     namespace RpmMapEntry {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::arch': GObject.Object.Notify;
+            'notify::epoch': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::nevra': GObject.Object.Notify;
+            'notify::release': GObject.Object.Notify;
+            'notify::version': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2536,14 +2691,17 @@ export namespace Modulemd {
             signal: K,
             callback: RpmMapEntry.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RpmMapEntry.SignalSignatures>(
             signal: K,
             callback: RpmMapEntry.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RpmMapEntry.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RpmMapEntry.SignalSignatures[K]>
+            ...args: RpmMapEntry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2565,7 +2723,9 @@ export namespace Modulemd {
 
     namespace ServiceLevel {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2595,14 +2755,17 @@ export namespace Modulemd {
             signal: K,
             callback: ServiceLevel.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ServiceLevel.SignalSignatures>(
             signal: K,
             callback: ServiceLevel.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ServiceLevel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ServiceLevel.SignalSignatures[K]>
+            ...args: ServiceLevel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2656,14 +2819,17 @@ export namespace Modulemd {
             signal: K,
             callback: SubdocumentInfo.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SubdocumentInfo.SignalSignatures>(
             signal: K,
             callback: SubdocumentInfo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SubdocumentInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SubdocumentInfo.SignalSignatures[K]>
+            ...args: SubdocumentInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2673,7 +2839,14 @@ export namespace Modulemd {
 
     namespace Translation {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::modified': GObject.Object.Notify;
+            'notify::module-name': GObject.Object.Notify;
+            'notify::module-name': GObject.Object.Notify;
+            'notify::module-stream': GObject.Object.Notify;
+            'notify::module-stream': GObject.Object.Notify;
+            'notify::version': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2714,14 +2887,17 @@ export namespace Modulemd {
             signal: K,
             callback: Translation.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Translation.SignalSignatures>(
             signal: K,
             callback: Translation.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Translation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Translation.SignalSignatures[K]>
+            ...args: Translation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2745,7 +2921,11 @@ export namespace Modulemd {
 
     namespace TranslationEntry {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::description': GObject.Object.Notify;
+            'notify::locale': GObject.Object.Notify;
+            'notify::summary': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2781,14 +2961,17 @@ export namespace Modulemd {
             signal: K,
             callback: TranslationEntry.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TranslationEntry.SignalSignatures>(
             signal: K,
             callback: TranslationEntry.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TranslationEntry.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TranslationEntry.SignalSignatures[K]>
+            ...args: TranslationEntry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

@@ -274,7 +274,9 @@ export namespace Vda {
     }
     namespace AffectedRows {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::number': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -301,14 +303,17 @@ export namespace Vda {
             signal: K,
             callback: AffectedRows.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AffectedRows.SignalSignatures>(
             signal: K,
             callback: AffectedRows.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AffectedRows.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AffectedRows.SignalSignatures[K]>
+            ...args: AffectedRows.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get number(): number;
@@ -759,7 +764,13 @@ export namespace Vda {
 
     namespace CommandDelete {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::connection': GObject.Object.Notify;
+            'notify::table': GObject.Object.Notify;
+            'notify::allias': GObject.Object.Notify;
+            'notify::condition': GObject.Object.Notify;
+            'notify::parameters': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -799,14 +810,17 @@ export namespace Vda {
             signal: K,
             callback: CommandDelete.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CommandDelete.SignalSignatures>(
             signal: K,
             callback: CommandDelete.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CommandDelete.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CommandDelete.SignalSignatures[K]>
+            ...args: CommandDelete.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get connection(): Connection;
@@ -1310,14 +1324,17 @@ export namespace Vda {
             signal: K,
             callback: CommandInsert.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CommandInsert.SignalSignatures>(
             signal: K,
             callback: CommandInsert.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CommandInsert.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CommandInsert.SignalSignatures[K]>
+            ...args: CommandInsert.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         to_string(): string;
@@ -1771,7 +1788,14 @@ export namespace Vda {
 
     namespace CommandModification {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::connection': GObject.Object.Notify;
+            'notify::table': GObject.Object.Notify;
+            'notify::allias': GObject.Object.Notify;
+            'notify::fields': GObject.Object.Notify;
+            'notify::values': GObject.Object.Notify;
+            'notify::parameters': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1803,14 +1827,17 @@ export namespace Vda {
             signal: K,
             callback: CommandModification.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CommandModification.SignalSignatures>(
             signal: K,
             callback: CommandModification.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CommandModification.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CommandModification.SignalSignatures[K]>
+            ...args: CommandModification.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get connection(): Connection;
@@ -2292,7 +2319,13 @@ export namespace Vda {
 
     namespace CommandSelect {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::connection': GObject.Object.Notify;
+            'notify::condition': GObject.Object.Notify;
+            'notify::parameters': GObject.Object.Notify;
+            'notify::fields': GObject.Object.Notify;
+            'notify::tables': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2325,14 +2358,17 @@ export namespace Vda {
             signal: K,
             callback: CommandSelect.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CommandSelect.SignalSignatures>(
             signal: K,
             callback: CommandSelect.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CommandSelect.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CommandSelect.SignalSignatures[K]>
+            ...args: CommandSelect.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get connection(): Connection;
@@ -2811,7 +2847,9 @@ export namespace Vda {
 
     namespace CommandUpdate {
         // Signal signatures
-        interface SignalSignatures extends CommandModification.SignalSignatures {}
+        interface SignalSignatures extends CommandModification.SignalSignatures {
+            'notify::condition': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2839,14 +2877,17 @@ export namespace Vda {
             signal: K,
             callback: CommandUpdate.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CommandUpdate.SignalSignatures>(
             signal: K,
             callback: CommandUpdate.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CommandUpdate.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CommandUpdate.SignalSignatures[K]>
+            ...args: CommandUpdate.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get condition(): SqlExpression;
@@ -3305,7 +3346,10 @@ export namespace Vda {
 
     namespace ConnectionParameter {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3339,14 +3383,17 @@ export namespace Vda {
             signal: K,
             callback: ConnectionParameter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConnectionParameter.SignalSignatures>(
             signal: K,
             callback: ConnectionParameter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConnectionParameter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConnectionParameter.SignalSignatures[K]>
+            ...args: ConnectionParameter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3358,7 +3405,10 @@ export namespace Vda {
 
     namespace ConnectionParameterDbName {
         // Signal signatures
-        interface SignalSignatures extends ConnectionParameter.SignalSignatures {}
+        interface SignalSignatures extends ConnectionParameter.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3382,19 +3432,25 @@ export namespace Vda {
             signal: K,
             callback: ConnectionParameterDbName.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConnectionParameterDbName.SignalSignatures>(
             signal: K,
             callback: ConnectionParameterDbName.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConnectionParameterDbName.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConnectionParameterDbName.SignalSignatures[K]>
+            ...args: ConnectionParameterDbName.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace ConnectionParameterHost {
         // Signal signatures
-        interface SignalSignatures extends ConnectionParameter.SignalSignatures {}
+        interface SignalSignatures extends ConnectionParameter.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3418,19 +3474,25 @@ export namespace Vda {
             signal: K,
             callback: ConnectionParameterHost.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConnectionParameterHost.SignalSignatures>(
             signal: K,
             callback: ConnectionParameterHost.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConnectionParameterHost.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConnectionParameterHost.SignalSignatures[K]>
+            ...args: ConnectionParameterHost.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace ConnectionParameterPort {
         // Signal signatures
-        interface SignalSignatures extends ConnectionParameter.SignalSignatures {}
+        interface SignalSignatures extends ConnectionParameter.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3454,19 +3516,25 @@ export namespace Vda {
             signal: K,
             callback: ConnectionParameterPort.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConnectionParameterPort.SignalSignatures>(
             signal: K,
             callback: ConnectionParameterPort.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConnectionParameterPort.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConnectionParameterPort.SignalSignatures[K]>
+            ...args: ConnectionParameterPort.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace ConnectionParameterUserName {
         // Signal signatures
-        interface SignalSignatures extends ConnectionParameter.SignalSignatures {}
+        interface SignalSignatures extends ConnectionParameter.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3490,19 +3558,25 @@ export namespace Vda {
             signal: K,
             callback: ConnectionParameterUserName.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConnectionParameterUserName.SignalSignatures>(
             signal: K,
             callback: ConnectionParameterUserName.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConnectionParameterUserName.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConnectionParameterUserName.SignalSignatures[K]>
+            ...args: ConnectionParameterUserName.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace ConnectionParameterPassword {
         // Signal signatures
-        interface SignalSignatures extends ConnectionParameter.SignalSignatures {}
+        interface SignalSignatures extends ConnectionParameter.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3526,19 +3600,43 @@ export namespace Vda {
             signal: K,
             callback: ConnectionParameterPassword.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConnectionParameterPassword.SignalSignatures>(
             signal: K,
             callback: ConnectionParameterPassword.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConnectionParameterPassword.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConnectionParameterPassword.SignalSignatures[K]>
+            ...args: ConnectionParameterPassword.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace ConnectionParameters {
         // Signal signatures
-        interface SignalSignatures extends Gee.HashMap.SignalSignatures {}
+        interface SignalSignatures extends Gee.HashMap.SignalSignatures {
+            'notify::k-type': GObject.Object.Notify;
+            'notify::k-type': GObject.Object.Notify;
+            'notify::k-dup-func': GObject.Object.Notify;
+            'notify::k-dup-func': GObject.Object.Notify;
+            'notify::k-destroy-func': GObject.Object.Notify;
+            'notify::k-destroy-func': GObject.Object.Notify;
+            'notify::v-type': GObject.Object.Notify;
+            'notify::v-type': GObject.Object.Notify;
+            'notify::v-dup-func': GObject.Object.Notify;
+            'notify::v-dup-func': GObject.Object.Notify;
+            'notify::v-destroy-func': GObject.Object.Notify;
+            'notify::v-destroy-func': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::keys': GObject.Object.Notify;
+            'notify::values': GObject.Object.Notify;
+            'notify::entries': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3565,14 +3663,17 @@ export namespace Vda {
             signal: K,
             callback: ConnectionParameters.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConnectionParameters.SignalSignatures>(
             signal: K,
             callback: ConnectionParameters.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConnectionParameters.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConnectionParameters.SignalSignatures[K]>
+            ...args: ConnectionParameters.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -3587,7 +3688,19 @@ export namespace Vda {
 
     namespace Expression {
         // Signal signatures
-        interface SignalSignatures extends Gee.ArrayList.SignalSignatures {}
+        interface SignalSignatures extends Gee.ArrayList.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3617,14 +3730,17 @@ export namespace Vda {
             signal: K,
             callback: Expression.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Expression.SignalSignatures>(
             signal: K,
             callback: Expression.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Expression.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Expression.SignalSignatures[K]>
+            ...args: Expression.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -4180,7 +4296,23 @@ export namespace Vda {
 
     namespace ExpressionField {
         // Signal signatures
-        interface SignalSignatures extends Expression.SignalSignatures {}
+        interface SignalSignatures extends Expression.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::table-ref': GObject.Object.Notify;
+            'notify::table-ref': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::allias': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4209,14 +4341,17 @@ export namespace Vda {
             signal: K,
             callback: ExpressionField.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionField.SignalSignatures>(
             signal: K,
             callback: ExpressionField.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionField.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionField.SignalSignatures[K]>
+            ...args: ExpressionField.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get table_ref(): string;
@@ -4686,7 +4821,21 @@ export namespace Vda {
 
     namespace ExpressionOperator {
         // Signal signatures
-        interface SignalSignatures extends Expression.SignalSignatures {}
+        interface SignalSignatures extends Expression.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::operator-type': GObject.Object.Notify;
+            'notify::operator-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4715,14 +4864,17 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperator.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperator.SignalSignatures>(
             signal: K,
             callback: ExpressionOperator.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperator.SignalSignatures[K]>
+            ...args: ExpressionOperator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get operator_type(): SqlExpressionOperatorType;
@@ -5270,7 +5422,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorGroup {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperator.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperator.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5299,14 +5463,17 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorGroup.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorGroup.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorGroup.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorGroup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorGroup.SignalSignatures[K]>
+            ...args: ExpressionOperatorGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -5754,7 +5921,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorMultiterm {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperator.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperator.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5783,14 +5962,17 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorMultiterm.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorMultiterm.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorMultiterm.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorMultiterm.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorMultiterm.SignalSignatures[K]>
+            ...args: ExpressionOperatorMultiterm.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -6238,7 +6420,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorAnd {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperatorMultiterm.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperatorMultiterm.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6267,14 +6461,17 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorAnd.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorAnd.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorAnd.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorAnd.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorAnd.SignalSignatures[K]>
+            ...args: ExpressionOperatorAnd.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -6722,7 +6919,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorOr {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperatorMultiterm.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperatorMultiterm.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6751,14 +6960,17 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorOr.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorOr.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorOr.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorOr.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorOr.SignalSignatures[K]>
+            ...args: ExpressionOperatorOr.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -7206,7 +7418,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorBinaryterm {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperator.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperator.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -7235,14 +7459,17 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorBinaryterm.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorBinaryterm.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorBinaryterm.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorBinaryterm.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorBinaryterm.SignalSignatures[K]>
+            ...args: ExpressionOperatorBinaryterm.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -7690,7 +7917,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorEq {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -7719,14 +7958,17 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorEq.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorEq.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorEq.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorEq.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorEq.SignalSignatures[K]>
+            ...args: ExpressionOperatorEq.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -8174,7 +8416,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorNotEq {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8203,14 +8457,17 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorNotEq.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorNotEq.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorNotEq.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorNotEq.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorNotEq.SignalSignatures[K]>
+            ...args: ExpressionOperatorNotEq.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -8658,7 +8915,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorDiff {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8687,14 +8956,17 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorDiff.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorDiff.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorDiff.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorDiff.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorDiff.SignalSignatures[K]>
+            ...args: ExpressionOperatorDiff.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -9142,7 +9414,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorGt {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -9171,14 +9455,17 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorGt.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorGt.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorGt.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorGt.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorGt.SignalSignatures[K]>
+            ...args: ExpressionOperatorGt.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -9626,7 +9913,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorLt {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -9655,14 +9954,17 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorLt.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorLt.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorLt.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorLt.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorLt.SignalSignatures[K]>
+            ...args: ExpressionOperatorLt.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -10110,7 +10412,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorGeq {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10139,14 +10453,17 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorGeq.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorGeq.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorGeq.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorGeq.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorGeq.SignalSignatures[K]>
+            ...args: ExpressionOperatorGeq.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -10594,7 +10911,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorLeq {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10623,14 +10952,17 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorLeq.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorLeq.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorLeq.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorLeq.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorLeq.SignalSignatures[K]>
+            ...args: ExpressionOperatorLeq.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -11078,7 +11410,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorRegexp {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11107,14 +11451,17 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorRegexp.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorRegexp.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorRegexp.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorRegexp.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorRegexp.SignalSignatures[K]>
+            ...args: ExpressionOperatorRegexp.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -11562,7 +11909,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorStar {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11591,14 +11950,17 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorStar.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorStar.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorStar.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorStar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorStar.SignalSignatures[K]>
+            ...args: ExpressionOperatorStar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -12046,7 +12408,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorDiv {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12075,14 +12449,17 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorDiv.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorDiv.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorDiv.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorDiv.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorDiv.SignalSignatures[K]>
+            ...args: ExpressionOperatorDiv.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -12530,7 +12907,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorIn {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12559,14 +12948,17 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorIn.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorIn.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorIn.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorIn.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorIn.SignalSignatures[K]>
+            ...args: ExpressionOperatorIn.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -13014,7 +13406,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorNotIn {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13043,14 +13447,17 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorNotIn.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorNotIn.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorNotIn.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorNotIn.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorNotIn.SignalSignatures[K]>
+            ...args: ExpressionOperatorNotIn.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -13498,7 +13905,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorConcatenate {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13527,14 +13946,17 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorConcatenate.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorConcatenate.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorConcatenate.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorConcatenate.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorConcatenate.SignalSignatures[K]>
+            ...args: ExpressionOperatorConcatenate.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -13982,7 +14404,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorSimilarTo {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -14011,14 +14445,17 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorSimilarTo.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorSimilarTo.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorSimilarTo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorSimilarTo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorSimilarTo.SignalSignatures[K]>
+            ...args: ExpressionOperatorSimilarTo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -14466,7 +14903,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorLike {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -14495,14 +14944,17 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorLike.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorLike.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorLike.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorLike.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorLike.SignalSignatures[K]>
+            ...args: ExpressionOperatorLike.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -14950,7 +15402,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorNotLike {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -14979,14 +15443,17 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorNotLike.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorNotLike.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorNotLike.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorNotLike.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorNotLike.SignalSignatures[K]>
+            ...args: ExpressionOperatorNotLike.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -15434,7 +15901,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorIlike {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -15463,14 +15942,17 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorIlike.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorIlike.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorIlike.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorIlike.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorIlike.SignalSignatures[K]>
+            ...args: ExpressionOperatorIlike.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -15918,7 +16400,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorNotIlike {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -15947,14 +16441,17 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorNotIlike.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorNotIlike.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorNotIlike.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorNotIlike.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorNotIlike.SignalSignatures[K]>
+            ...args: ExpressionOperatorNotIlike.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -16402,7 +16899,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorBinaryUnaryterm {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperator.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperator.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -16431,14 +16940,17 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorBinaryUnaryterm.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorBinaryUnaryterm.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorBinaryUnaryterm.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorBinaryUnaryterm.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorBinaryUnaryterm.SignalSignatures[K]>
+            ...args: ExpressionOperatorBinaryUnaryterm.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -16886,7 +17398,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorMinus {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperatorBinaryUnaryterm.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperatorBinaryUnaryterm.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -16915,14 +17439,17 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorMinus.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorMinus.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorMinus.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorMinus.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorMinus.SignalSignatures[K]>
+            ...args: ExpressionOperatorMinus.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -17370,7 +17897,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorPlus {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperatorBinaryUnaryterm.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperatorBinaryUnaryterm.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17399,14 +17938,17 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorPlus.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorPlus.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorPlus.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorPlus.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorPlus.SignalSignatures[K]>
+            ...args: ExpressionOperatorPlus.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -17854,7 +18396,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorInitialUnaryterm {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperator.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperator.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17883,14 +18437,19 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorInitialUnaryterm.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorInitialUnaryterm.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorInitialUnaryterm.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorInitialUnaryterm.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorInitialUnaryterm.SignalSignatures[K]>
+            ...args: ExpressionOperatorInitialUnaryterm.SignalSignatures[K] extends (...args: infer P) => any
+                ? P
+                : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -18338,7 +18897,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorNot {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperatorInitialUnaryterm.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperatorInitialUnaryterm.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -18367,14 +18938,17 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorNot.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorNot.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorNot.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorNot.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorNot.SignalSignatures[K]>
+            ...args: ExpressionOperatorNot.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -18822,7 +19396,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorFinalUnaryterm {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperator.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperator.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -18851,14 +19437,17 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorFinalUnaryterm.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorFinalUnaryterm.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorFinalUnaryterm.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorFinalUnaryterm.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorFinalUnaryterm.SignalSignatures[K]>
+            ...args: ExpressionOperatorFinalUnaryterm.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -19306,7 +19895,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorIs {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperatorFinalUnaryterm.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperatorFinalUnaryterm.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -19335,14 +19936,17 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorIs.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorIs.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorIs.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorIs.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorIs.SignalSignatures[K]>
+            ...args: ExpressionOperatorIs.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -19790,7 +20394,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorIsNot {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperatorIs.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperatorIs.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -19819,14 +20435,17 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorIsNot.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorIsNot.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorIsNot.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorIsNot.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorIsNot.SignalSignatures[K]>
+            ...args: ExpressionOperatorIsNot.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -20274,7 +20893,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorIsNull {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperatorIs.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperatorIs.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -20303,14 +20934,17 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorIsNull.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorIsNull.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorIsNull.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorIsNull.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorIsNull.SignalSignatures[K]>
+            ...args: ExpressionOperatorIsNull.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -20758,7 +21392,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorIsNotNull {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperatorIsNot.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperatorIsNot.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -20787,14 +21433,17 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorIsNotNull.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorIsNotNull.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorIsNotNull.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorIsNotNull.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorIsNotNull.SignalSignatures[K]>
+            ...args: ExpressionOperatorIsNotNull.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -21242,7 +21891,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorIsTrue {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperatorIs.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperatorIs.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -21271,14 +21932,17 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorIsTrue.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorIsTrue.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorIsTrue.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorIsTrue.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorIsTrue.SignalSignatures[K]>
+            ...args: ExpressionOperatorIsTrue.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -21726,7 +22390,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorIsNotTrue {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperatorIsNot.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperatorIsNot.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -21755,14 +22431,17 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorIsNotTrue.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorIsNotTrue.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorIsNotTrue.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorIsNotTrue.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorIsNotTrue.SignalSignatures[K]>
+            ...args: ExpressionOperatorIsNotTrue.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -22210,7 +22889,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorIsFalse {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperatorIs.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperatorIs.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -22239,14 +22930,17 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorIsFalse.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorIsFalse.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorIsFalse.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorIsFalse.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorIsFalse.SignalSignatures[K]>
+            ...args: ExpressionOperatorIsFalse.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -22694,7 +23388,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorIsNotFalse {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperatorIsNot.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperatorIsNot.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -22723,14 +23429,17 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorIsNotFalse.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorIsNotFalse.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorIsNotFalse.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorIsNotFalse.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorIsNotFalse.SignalSignatures[K]>
+            ...args: ExpressionOperatorIsNotFalse.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -23178,7 +23887,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorIsNotUnknown {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperatorIsNot.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperatorIsNot.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -23207,14 +23928,17 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorIsNotUnknown.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorIsNotUnknown.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorIsNotUnknown.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorIsNotUnknown.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorIsNotUnknown.SignalSignatures[K]>
+            ...args: ExpressionOperatorIsNotUnknown.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -23662,7 +24386,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorIsUnknown {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperatorIs.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperatorIs.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -23691,14 +24427,17 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorIsUnknown.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorIsUnknown.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorIsUnknown.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorIsUnknown.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorIsUnknown.SignalSignatures[K]>
+            ...args: ExpressionOperatorIsUnknown.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -24146,7 +24885,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorIsDistinct {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperatorBinaryterm.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -24175,14 +24926,17 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorIsDistinct.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorIsDistinct.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorIsDistinct.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorIsDistinct.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorIsDistinct.SignalSignatures[K]>
+            ...args: ExpressionOperatorIsDistinct.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -24630,7 +25384,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorIsNotDistinct {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperatorIsDistinct.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperatorIsDistinct.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -24659,14 +25425,17 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorIsNotDistinct.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorIsNotDistinct.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorIsNotDistinct.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorIsNotDistinct.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorIsNotDistinct.SignalSignatures[K]>
+            ...args: ExpressionOperatorIsNotDistinct.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -25114,7 +25883,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorIsDistinctFrom {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperatorIsDistinct.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperatorIsDistinct.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -25143,14 +25924,17 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorIsDistinctFrom.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorIsDistinctFrom.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorIsDistinctFrom.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorIsDistinctFrom.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorIsDistinctFrom.SignalSignatures[K]>
+            ...args: ExpressionOperatorIsDistinctFrom.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -25598,7 +26382,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorIsNotDistinctFrom {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperatorIsNotDistinct.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperatorIsNotDistinct.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -25627,14 +26423,19 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorIsNotDistinctFrom.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorIsNotDistinctFrom.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorIsNotDistinctFrom.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorIsNotDistinctFrom.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorIsNotDistinctFrom.SignalSignatures[K]>
+            ...args: ExpressionOperatorIsNotDistinctFrom.SignalSignatures[K] extends (...args: infer P) => any
+                ? P
+                : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -26082,7 +26883,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorThreeterm {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperator.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperator.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -26111,14 +26924,17 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorThreeterm.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorThreeterm.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorThreeterm.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorThreeterm.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorThreeterm.SignalSignatures[K]>
+            ...args: ExpressionOperatorThreeterm.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -26566,7 +27382,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorBetween {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperatorThreeterm.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperatorThreeterm.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -26595,14 +27423,17 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorBetween.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorBetween.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorBetween.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorBetween.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorBetween.SignalSignatures[K]>
+            ...args: ExpressionOperatorBetween.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -27050,7 +27881,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorBetweenAnd {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperatorBetween.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperatorBetween.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -27079,14 +27922,17 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorBetweenAnd.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorBetweenAnd.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorBetweenAnd.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorBetweenAnd.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorBetweenAnd.SignalSignatures[K]>
+            ...args: ExpressionOperatorBetweenAnd.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -27534,7 +28380,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorNotBetween {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperatorBetween.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperatorBetween.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -27563,14 +28421,17 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorNotBetween.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorNotBetween.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorNotBetween.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorNotBetween.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorNotBetween.SignalSignatures[K]>
+            ...args: ExpressionOperatorNotBetween.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -28018,7 +28879,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorNotBetweenAnd {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperatorNotBetween.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperatorNotBetween.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -28047,14 +28920,17 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorNotBetweenAnd.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorNotBetweenAnd.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorNotBetweenAnd.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorNotBetweenAnd.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorNotBetweenAnd.SignalSignatures[K]>
+            ...args: ExpressionOperatorNotBetweenAnd.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -28502,7 +29378,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorBetweenSymmetric {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperatorBetween.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperatorBetween.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -28531,14 +29419,19 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorBetweenSymmetric.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorBetweenSymmetric.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorBetweenSymmetric.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorBetweenSymmetric.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorBetweenSymmetric.SignalSignatures[K]>
+            ...args: ExpressionOperatorBetweenSymmetric.SignalSignatures[K] extends (...args: infer P) => any
+                ? P
+                : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -28986,7 +29879,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorBetweenSymmetricAnd {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperatorBetweenSymmetric.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperatorBetweenSymmetric.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -29015,14 +29920,19 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorBetweenSymmetricAnd.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorBetweenSymmetricAnd.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorBetweenSymmetricAnd.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorBetweenSymmetricAnd.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorBetweenSymmetricAnd.SignalSignatures[K]>
+            ...args: ExpressionOperatorBetweenSymmetricAnd.SignalSignatures[K] extends (...args: infer P) => any
+                ? P
+                : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -29470,7 +30380,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorNotBetweenSymmetric {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperatorBetweenSymmetric.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperatorBetweenSymmetric.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -29499,14 +30421,19 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorNotBetweenSymmetric.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorNotBetweenSymmetric.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorNotBetweenSymmetric.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorNotBetweenSymmetric.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorNotBetweenSymmetric.SignalSignatures[K]>
+            ...args: ExpressionOperatorNotBetweenSymmetric.SignalSignatures[K] extends (...args: infer P) => any
+                ? P
+                : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -29954,7 +30881,19 @@ export namespace Vda {
 
     namespace ExpressionOperatorNotBetweenSymmetricAnd {
         // Signal signatures
-        interface SignalSignatures extends ExpressionOperatorNotBetweenSymmetric.SignalSignatures {}
+        interface SignalSignatures extends ExpressionOperatorNotBetweenSymmetric.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -29983,14 +30922,19 @@ export namespace Vda {
             signal: K,
             callback: ExpressionOperatorNotBetweenSymmetricAnd.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionOperatorNotBetweenSymmetricAnd.SignalSignatures>(
             signal: K,
             callback: ExpressionOperatorNotBetweenSymmetricAnd.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionOperatorNotBetweenSymmetricAnd.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionOperatorNotBetweenSymmetricAnd.SignalSignatures[K]>
+            ...args: ExpressionOperatorNotBetweenSymmetricAnd.SignalSignatures[K] extends (...args: infer P) => any
+                ? P
+                : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -30438,7 +31382,21 @@ export namespace Vda {
 
     namespace ExpressionValue {
         // Signal signatures
-        interface SignalSignatures extends Expression.SignalSignatures {}
+        interface SignalSignatures extends Expression.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::connection': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -30467,14 +31425,17 @@ export namespace Vda {
             signal: K,
             callback: ExpressionValue.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionValue.SignalSignatures>(
             signal: K,
             callback: ExpressionValue.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionValue.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionValue.SignalSignatures[K]>
+            ...args: ExpressionValue.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get connection(): Connection;
@@ -30938,7 +31899,22 @@ export namespace Vda {
 
     namespace ExpressionValueParameter {
         // Signal signatures
-        interface SignalSignatures extends ExpressionValue.SignalSignatures {}
+        interface SignalSignatures extends ExpressionValue.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::parameters': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::gtype': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -30967,14 +31943,17 @@ export namespace Vda {
             signal: K,
             callback: ExpressionValueParameter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionValueParameter.SignalSignatures>(
             signal: K,
             callback: ExpressionValueParameter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionValueParameter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionValueParameter.SignalSignatures[K]>
+            ...args: ExpressionValueParameter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get parameters(): SqlParameters;
@@ -31444,7 +32423,19 @@ export namespace Vda {
 
     namespace HashList {
         // Signal signatures
-        interface SignalSignatures extends Gee.ArrayList.SignalSignatures {}
+        interface SignalSignatures extends Gee.ArrayList.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -31471,14 +32462,17 @@ export namespace Vda {
         // Signals
 
         connect<K extends keyof HashList.SignalSignatures>(signal: K, callback: HashList.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HashList.SignalSignatures>(
             signal: K,
             callback: HashList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HashList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HashList.SignalSignatures[K]>
+            ...args: HashList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -32034,7 +33028,11 @@ export namespace Vda {
 
     namespace InvalidQuery {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::message': GObject.Object.Notify;
+            'notify::sql': GObject.Object.Notify;
+            'notify::connection': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -32065,14 +33063,17 @@ export namespace Vda {
             signal: K,
             callback: InvalidQuery.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InvalidQuery.SignalSignatures>(
             signal: K,
             callback: InvalidQuery.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InvalidQuery.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InvalidQuery.SignalSignatures[K]>
+            ...args: InvalidQuery.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -32545,7 +33546,11 @@ export namespace Vda {
 
     namespace InvalidPreparedQuery {
         // Signal signatures
-        interface SignalSignatures extends InvalidQuery.SignalSignatures {}
+        interface SignalSignatures extends InvalidQuery.SignalSignatures {
+            'notify::message': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parameters': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -32569,14 +33574,17 @@ export namespace Vda {
             signal: K,
             callback: InvalidPreparedQuery.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InvalidPreparedQuery.SignalSignatures>(
             signal: K,
             callback: InvalidPreparedQuery.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InvalidPreparedQuery.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InvalidPreparedQuery.SignalSignatures[K]>
+            ...args: InvalidPreparedQuery.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get name(): string;
@@ -33030,7 +34038,9 @@ export namespace Vda {
 
     namespace InvalidResult {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::message': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -33061,14 +34071,17 @@ export namespace Vda {
             signal: K,
             callback: InvalidResult.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InvalidResult.SignalSignatures>(
             signal: K,
             callback: InvalidResult.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InvalidResult.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InvalidResult.SignalSignatures[K]>
+            ...args: InvalidResult.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -33519,7 +34532,28 @@ export namespace Vda {
 
     namespace Parameters {
         // Signal signatures
-        interface SignalSignatures extends Gee.HashMap.SignalSignatures {}
+        interface SignalSignatures extends Gee.HashMap.SignalSignatures {
+            'notify::k-type': GObject.Object.Notify;
+            'notify::k-type': GObject.Object.Notify;
+            'notify::k-dup-func': GObject.Object.Notify;
+            'notify::k-dup-func': GObject.Object.Notify;
+            'notify::k-destroy-func': GObject.Object.Notify;
+            'notify::k-destroy-func': GObject.Object.Notify;
+            'notify::v-type': GObject.Object.Notify;
+            'notify::v-type': GObject.Object.Notify;
+            'notify::v-dup-func': GObject.Object.Notify;
+            'notify::v-dup-func': GObject.Object.Notify;
+            'notify::v-destroy-func': GObject.Object.Notify;
+            'notify::v-destroy-func': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::keys': GObject.Object.Notify;
+            'notify::values': GObject.Object.Notify;
+            'notify::entries': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -33543,14 +34577,17 @@ export namespace Vda {
             signal: K,
             callback: Parameters.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Parameters.SignalSignatures>(
             signal: K,
             callback: Parameters.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Parameters.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Parameters.SignalSignatures[K]>
+            ...args: Parameters.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         set_value(name: string, val: GObject.Value | any): void;
@@ -34029,8 +35066,14 @@ export namespace Vda {
         // Signals
 
         connect<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
-        emit<K extends keyof Parser.SignalSignatures>(signal: K, ...args: Parameters<Parser.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Parser.SignalSignatures>(
+            signal: K,
+            ...args: Parser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         parse(str: string, cnc: Connection): SqlCommandParametrized;
@@ -34478,7 +35521,10 @@ export namespace Vda {
 
     namespace TableReference {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::allias': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -34502,14 +35548,17 @@ export namespace Vda {
             signal: K,
             callback: TableReference.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TableReference.SignalSignatures>(
             signal: K,
             callback: TableReference.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TableReference.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TableReference.SignalSignatures[K]>
+            ...args: TableReference.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get name(): string;
@@ -34969,7 +36018,9 @@ export namespace Vda {
 
     namespace Value {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -34993,8 +36044,14 @@ export namespace Vda {
         // Signals
 
         connect<K extends keyof Value.SignalSignatures>(signal: K, callback: Value.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Value.SignalSignatures>(signal: K, callback: Value.SignalSignatures[K]): number;
-        emit<K extends keyof Value.SignalSignatures>(signal: K, ...args: Parameters<Value.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Value.SignalSignatures>(
+            signal: K,
+            ...args: Value.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -35490,14 +36547,17 @@ export namespace Vda {
         // Signals
 
         connect<K extends keyof ValueNull.SignalSignatures>(signal: K, callback: ValueNull.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueNull.SignalSignatures>(
             signal: K,
             callback: ValueNull.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueNull.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueNull.SignalSignatures[K]>
+            ...args: ValueNull.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -35967,14 +37027,17 @@ export namespace Vda {
             signal: K,
             callback: ValueString.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueString.SignalSignatures>(
             signal: K,
             callback: ValueString.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueString.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueString.SignalSignatures[K]>
+            ...args: ValueString.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -36420,7 +37483,9 @@ export namespace Vda {
 
     namespace ValueXml {
         // Signal signatures
-        interface SignalSignatures extends ValueString.SignalSignatures {}
+        interface SignalSignatures extends ValueString.SignalSignatures {
+            'notify::document': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -36441,14 +37506,17 @@ export namespace Vda {
         // Signals
 
         connect<K extends keyof ValueXml.SignalSignatures>(signal: K, callback: ValueXml.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueXml.SignalSignatures>(
             signal: K,
             callback: ValueXml.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueXml.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueXml.SignalSignatures[K]>
+            ...args: ValueXml.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get document(): GXml.DomDocument;
@@ -36899,7 +37967,9 @@ export namespace Vda {
 
     namespace ValueJson {
         // Signal signatures
-        interface SignalSignatures extends ValueString.SignalSignatures {}
+        interface SignalSignatures extends ValueString.SignalSignatures {
+            'notify::document': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -36920,14 +37990,17 @@ export namespace Vda {
         // Signals
 
         connect<K extends keyof ValueJson.SignalSignatures>(signal: K, callback: ValueJson.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueJson.SignalSignatures>(
             signal: K,
             callback: ValueJson.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueJson.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueJson.SignalSignatures[K]>
+            ...args: ValueJson.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get document(): Json.Node;
@@ -37399,14 +38472,17 @@ export namespace Vda {
         // Signals
 
         connect<K extends keyof ValueText.SignalSignatures>(signal: K, callback: ValueText.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueText.SignalSignatures>(
             signal: K,
             callback: ValueText.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueText.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueText.SignalSignatures[K]>
+            ...args: ValueText.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -37873,14 +38949,17 @@ export namespace Vda {
         // Signals
 
         connect<K extends keyof ValueName.SignalSignatures>(signal: K, callback: ValueName.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueName.SignalSignatures>(
             signal: K,
             callback: ValueName.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueName.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueName.SignalSignatures[K]>
+            ...args: ValueName.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -38347,14 +39426,17 @@ export namespace Vda {
         // Signals
 
         connect<K extends keyof ValueBool.SignalSignatures>(signal: K, callback: ValueBool.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueBool.SignalSignatures>(
             signal: K,
             callback: ValueBool.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueBool.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueBool.SignalSignatures[K]>
+            ...args: ValueBool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -38821,14 +39903,17 @@ export namespace Vda {
         // Signals
 
         connect<K extends keyof ValueBit.SignalSignatures>(signal: K, callback: ValueBit.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueBit.SignalSignatures>(
             signal: K,
             callback: ValueBit.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueBit.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueBit.SignalSignatures[K]>
+            ...args: ValueBit.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -39274,7 +40359,9 @@ export namespace Vda {
 
     namespace ValueInteger {
         // Signal signatures
-        interface SignalSignatures extends Value.SignalSignatures {}
+        interface SignalSignatures extends Value.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -39301,14 +40388,17 @@ export namespace Vda {
             signal: K,
             callback: ValueInteger.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueInteger.SignalSignatures>(
             signal: K,
             callback: ValueInteger.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueInteger.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueInteger.SignalSignatures[K]>
+            ...args: ValueInteger.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get name(): string;
@@ -39794,14 +40884,17 @@ export namespace Vda {
         // Signals
 
         connect<K extends keyof ValueByte.SignalSignatures>(signal: K, callback: ValueByte.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueByte.SignalSignatures>(
             signal: K,
             callback: ValueByte.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueByte.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueByte.SignalSignatures[K]>
+            ...args: ValueByte.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -40268,14 +41361,17 @@ export namespace Vda {
         // Signals
 
         connect<K extends keyof ValueInt2.SignalSignatures>(signal: K, callback: ValueInt2.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueInt2.SignalSignatures>(
             signal: K,
             callback: ValueInt2.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueInt2.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueInt2.SignalSignatures[K]>
+            ...args: ValueInt2.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -40742,14 +41838,17 @@ export namespace Vda {
         // Signals
 
         connect<K extends keyof ValueInt4.SignalSignatures>(signal: K, callback: ValueInt4.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueInt4.SignalSignatures>(
             signal: K,
             callback: ValueInt4.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueInt4.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueInt4.SignalSignatures[K]>
+            ...args: ValueInt4.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -41216,14 +42315,17 @@ export namespace Vda {
         // Signals
 
         connect<K extends keyof ValueInt8.SignalSignatures>(signal: K, callback: ValueInt8.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueInt8.SignalSignatures>(
             signal: K,
             callback: ValueInt8.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueInt8.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueInt8.SignalSignatures[K]>
+            ...args: ValueInt8.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -41669,7 +42771,9 @@ export namespace Vda {
 
     namespace ValueUnsignedInteger {
         // Signal signatures
-        interface SignalSignatures extends Value.SignalSignatures {}
+        interface SignalSignatures extends Value.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -41696,14 +42800,17 @@ export namespace Vda {
             signal: K,
             callback: ValueUnsignedInteger.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueUnsignedInteger.SignalSignatures>(
             signal: K,
             callback: ValueUnsignedInteger.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueUnsignedInteger.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueUnsignedInteger.SignalSignatures[K]>
+            ...args: ValueUnsignedInteger.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get name(): string;
@@ -42194,14 +43301,17 @@ export namespace Vda {
             signal: K,
             callback: ValueUnsignedByte.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueUnsignedByte.SignalSignatures>(
             signal: K,
             callback: ValueUnsignedByte.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueUnsignedByte.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueUnsignedByte.SignalSignatures[K]>
+            ...args: ValueUnsignedByte.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -42673,14 +43783,17 @@ export namespace Vda {
             signal: K,
             callback: ValueUnsignedInt2.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueUnsignedInt2.SignalSignatures>(
             signal: K,
             callback: ValueUnsignedInt2.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueUnsignedInt2.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueUnsignedInt2.SignalSignatures[K]>
+            ...args: ValueUnsignedInt2.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -43152,14 +44265,17 @@ export namespace Vda {
             signal: K,
             callback: ValueUnsignedInt4.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueUnsignedInt4.SignalSignatures>(
             signal: K,
             callback: ValueUnsignedInt4.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueUnsignedInt4.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueUnsignedInt4.SignalSignatures[K]>
+            ...args: ValueUnsignedInt4.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -43631,14 +44747,17 @@ export namespace Vda {
             signal: K,
             callback: ValueUnsignedInt8.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueUnsignedInt8.SignalSignatures>(
             signal: K,
             callback: ValueUnsignedInt8.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueUnsignedInt8.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueUnsignedInt8.SignalSignatures[K]>
+            ...args: ValueUnsignedInt8.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -44105,14 +45224,17 @@ export namespace Vda {
         // Signals
 
         connect<K extends keyof ValueOid.SignalSignatures>(signal: K, callback: ValueOid.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueOid.SignalSignatures>(
             signal: K,
             callback: ValueOid.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueOid.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueOid.SignalSignatures[K]>
+            ...args: ValueOid.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -44582,14 +45704,17 @@ export namespace Vda {
             signal: K,
             callback: ValueNumeric.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueNumeric.SignalSignatures>(
             signal: K,
             callback: ValueNumeric.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueNumeric.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueNumeric.SignalSignatures[K]>
+            ...args: ValueNumeric.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -45083,14 +46208,17 @@ export namespace Vda {
             signal: K,
             callback: ValueFloat.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueFloat.SignalSignatures>(
             signal: K,
             callback: ValueFloat.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueFloat.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueFloat.SignalSignatures[K]>
+            ...args: ValueFloat.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         get_float(): number;
@@ -45562,14 +46690,17 @@ export namespace Vda {
             signal: K,
             callback: ValueDouble.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueDouble.SignalSignatures>(
             signal: K,
             callback: ValueDouble.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueDouble.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueDouble.SignalSignatures[K]>
+            ...args: ValueDouble.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -46039,14 +47170,17 @@ export namespace Vda {
             signal: K,
             callback: ValueMoney.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueMoney.SignalSignatures>(
             signal: K,
             callback: ValueMoney.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueMoney.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueMoney.SignalSignatures[K]>
+            ...args: ValueMoney.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         locale(): string;
@@ -46524,14 +47658,17 @@ export namespace Vda {
             signal: K,
             callback: ValueTimestamp.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueTimestamp.SignalSignatures>(
             signal: K,
             callback: ValueTimestamp.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueTimestamp.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueTimestamp.SignalSignatures[K]>
+            ...args: ValueTimestamp.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -47027,14 +48164,17 @@ export namespace Vda {
             signal: K,
             callback: ValueTimestampNtz.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueTimestampNtz.SignalSignatures>(
             signal: K,
             callback: ValueTimestampNtz.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueTimestampNtz.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueTimestampNtz.SignalSignatures[K]>
+            ...args: ValueTimestampNtz.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -47501,14 +48641,17 @@ export namespace Vda {
         // Signals
 
         connect<K extends keyof ValueTime.SignalSignatures>(signal: K, callback: ValueTime.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueTime.SignalSignatures>(
             signal: K,
             callback: ValueTime.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueTime.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueTime.SignalSignatures[K]>
+            ...args: ValueTime.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -47978,14 +49121,17 @@ export namespace Vda {
             signal: K,
             callback: ValueTimeNtz.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueTimeNtz.SignalSignatures>(
             signal: K,
             callback: ValueTimeNtz.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueTimeNtz.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueTimeNtz.SignalSignatures[K]>
+            ...args: ValueTimeNtz.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -48456,14 +49602,17 @@ export namespace Vda {
         // Signals
 
         connect<K extends keyof ValueDate.SignalSignatures>(signal: K, callback: ValueDate.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueDate.SignalSignatures>(
             signal: K,
             callback: ValueDate.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueDate.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueDate.SignalSignatures[K]>
+            ...args: ValueDate.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         get_date(): GLib.Date;
@@ -48913,7 +50062,9 @@ export namespace Vda {
 
     namespace ValueBinary {
         // Signal signatures
-        interface SignalSignatures extends Value.SignalSignatures {}
+        interface SignalSignatures extends Value.SignalSignatures {
+            'notify::size': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -48941,14 +50092,17 @@ export namespace Vda {
             signal: K,
             callback: ValueBinary.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueBinary.SignalSignatures>(
             signal: K,
             callback: ValueBinary.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueBinary.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueBinary.SignalSignatures[K]>
+            ...args: ValueBinary.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get size(): number;
@@ -49405,7 +50559,11 @@ export namespace Vda {
 
     namespace ValueMathExp {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::parameters': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::math': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -49440,14 +50598,17 @@ export namespace Vda {
             signal: K,
             callback: ValueMathExp.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueMathExp.SignalSignatures>(
             signal: K,
             callback: ValueMathExp.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueMathExp.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueMathExp.SignalSignatures[K]>
+            ...args: ValueMathExp.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

@@ -274,14 +274,17 @@ export namespace GnomeDesktop {
             signal: K,
             callback: DesktopThumbnailFactory.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DesktopThumbnailFactory.SignalSignatures>(
             signal: K,
             callback: DesktopThumbnailFactory.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DesktopThumbnailFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DesktopThumbnailFactory.SignalSignatures[K]>
+            ...args: DesktopThumbnailFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -521,14 +524,17 @@ export namespace GnomeDesktop {
             signal: K,
             callback: IdleMonitor.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof IdleMonitor.SignalSignatures>(
             signal: K,
             callback: IdleMonitor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof IdleMonitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IdleMonitor.SignalSignatures[K]>
+            ...args: IdleMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1093,8 +1099,14 @@ export namespace GnomeDesktop {
         // Signals
 
         connect<K extends keyof PnpIds.SignalSignatures>(signal: K, callback: PnpIds.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PnpIds.SignalSignatures>(signal: K, callback: PnpIds.SignalSignatures[K]): number;
-        emit<K extends keyof PnpIds.SignalSignatures>(signal: K, ...args: Parameters<PnpIds.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof PnpIds.SignalSignatures>(
+            signal: K,
+            ...args: PnpIds.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1108,7 +1120,14 @@ export namespace GnomeDesktop {
 
     namespace WallClock {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::clock': GObject.Object.Notify;
+            'notify::force-seconds': GObject.Object.Notify;
+            'notify::force-seconds': GObject.Object.Notify;
+            'notify::time-only': GObject.Object.Notify;
+            'notify::time-only': GObject.Object.Notify;
+            'notify::timezone': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1177,14 +1196,17 @@ export namespace GnomeDesktop {
         // Signals
 
         connect<K extends keyof WallClock.SignalSignatures>(signal: K, callback: WallClock.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WallClock.SignalSignatures>(
             signal: K,
             callback: WallClock.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WallClock.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WallClock.SignalSignatures[K]>
+            ...args: WallClock.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1243,14 +1265,17 @@ export namespace GnomeDesktop {
         // Signals
 
         connect<K extends keyof XkbInfo.SignalSignatures>(signal: K, callback: XkbInfo.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XkbInfo.SignalSignatures>(
             signal: K,
             callback: XkbInfo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XkbInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XkbInfo.SignalSignatures[K]>
+            ...args: XkbInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

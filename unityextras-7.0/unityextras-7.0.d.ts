@@ -64,14 +64,17 @@ export namespace UnityExtras {
             signal: K,
             callback: PreviewPlayer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PreviewPlayer.SignalSignatures>(
             signal: K,
             callback: PreviewPlayer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PreviewPlayer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PreviewPlayer.SignalSignatures[K]>
+            ...args: PreviewPlayer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

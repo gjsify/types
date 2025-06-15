@@ -24,7 +24,9 @@ export namespace Plasma {
 
     namespace Client {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::client': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -51,8 +53,14 @@ export namespace Plasma {
         // Signals
 
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -65,7 +73,10 @@ export namespace Plasma {
 
     namespace ClientCreateOptions {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::gpu-device': GObject.Object.Notify;
+            'notify::gpu-device': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -99,14 +110,17 @@ export namespace Plasma {
             signal: K,
             callback: ClientCreateOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientCreateOptions.SignalSignatures>(
             signal: K,
             callback: ClientCreateOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientCreateOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientCreateOptions.SignalSignatures[K]>
+            ...args: ClientCreateOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -116,7 +130,10 @@ export namespace Plasma {
 
     namespace ClientOptions {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::n-retries': GObject.Object.Notify;
+            'notify::n-retries': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -150,14 +167,17 @@ export namespace Plasma {
             signal: K,
             callback: ClientOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientOptions.SignalSignatures>(
             signal: K,
             callback: ClientOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientOptions.SignalSignatures[K]>
+            ...args: ClientOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -167,7 +187,18 @@ export namespace Plasma {
 
     namespace CreatedObject {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::client': GObject.Object.Notify;
+            'notify::data': GObject.Object.Notify;
+            'notify::gpu-device': GObject.Object.Notify;
+            'notify::gpu-device': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::metadata': GObject.Object.Notify;
+            'notify::raw-data': GObject.Object.Notify;
+            'notify::raw-data': GObject.Object.Notify;
+            'notify::raw-metadata': GObject.Object.Notify;
+            'notify::raw-metadata': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -189,14 +220,17 @@ export namespace Plasma {
             signal: K,
             callback: CreatedObject.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CreatedObject.SignalSignatures>(
             signal: K,
             callback: CreatedObject.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CreatedObject.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CreatedObject.SignalSignatures[K]>
+            ...args: CreatedObject.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -216,7 +250,18 @@ export namespace Plasma {
 
     namespace Object {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::client': GObject.Object.Notify;
+            'notify::data': GObject.Object.Notify;
+            'notify::gpu-device': GObject.Object.Notify;
+            'notify::gpu-device': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::metadata': GObject.Object.Notify;
+            'notify::raw-data': GObject.Object.Notify;
+            'notify::raw-data': GObject.Object.Notify;
+            'notify::raw-metadata': GObject.Object.Notify;
+            'notify::raw-metadata': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -259,8 +304,14 @@ export namespace Plasma {
         // Signals
 
         connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
-        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            ...args: Object.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace ObjectID {
@@ -286,14 +337,17 @@ export namespace Plasma {
         // Signals
 
         connect<K extends keyof ObjectID.SignalSignatures>(signal: K, callback: ObjectID.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ObjectID.SignalSignatures>(
             signal: K,
             callback: ObjectID.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ObjectID.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ObjectID.SignalSignatures[K]>
+            ...args: ObjectID.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -303,7 +357,18 @@ export namespace Plasma {
 
     namespace ReferredObject {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::client': GObject.Object.Notify;
+            'notify::data': GObject.Object.Notify;
+            'notify::gpu-device': GObject.Object.Notify;
+            'notify::gpu-device': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::metadata': GObject.Object.Notify;
+            'notify::raw-data': GObject.Object.Notify;
+            'notify::raw-data': GObject.Object.Notify;
+            'notify::raw-metadata': GObject.Object.Notify;
+            'notify::raw-metadata': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -325,14 +390,17 @@ export namespace Plasma {
             signal: K,
             callback: ReferredObject.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ReferredObject.SignalSignatures>(
             signal: K,
             callback: ReferredObject.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ReferredObject.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ReferredObject.SignalSignatures[K]>
+            ...args: ReferredObject.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

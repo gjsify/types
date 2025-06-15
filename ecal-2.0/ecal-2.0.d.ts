@@ -1557,6 +1557,17 @@ export namespace ECal {
         // Signal signatures
         interface SignalSignatures extends EDataServer.Client.SignalSignatures {
             'free-busy-data': FreeBusyData;
+            'notify::default-timezone': GObject.Object.Notify;
+            'notify::default-timezone': GObject.Object.Notify;
+            'notify::source-type': GObject.Object.Notify;
+            'notify::source-type': GObject.Object.Notify;
+            'notify::capabilities': GObject.Object.Notify;
+            'notify::main-context': GObject.Object.Notify;
+            'notify::main-context': GObject.Object.Notify;
+            'notify::online': GObject.Object.Notify;
+            'notify::opened': GObject.Object.Notify;
+            'notify::readonly': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1598,8 +1609,14 @@ export namespace ECal {
         // Signals
 
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -4018,6 +4035,10 @@ export namespace ECal {
             'objects-modified': ObjectsModified;
             'objects-removed': ObjectsRemoved;
             progress: Progress;
+            'notify::client': GObject.Object.Notify;
+            'notify::connection': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -4068,14 +4089,17 @@ export namespace ECal {
             signal: K,
             callback: ClientView.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientView.SignalSignatures>(
             signal: K,
             callback: ClientView.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientView.SignalSignatures[K]>
+            ...args: ClientView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -4691,14 +4715,17 @@ export namespace ECal {
         // Signals
 
         connect<K extends keyof Component.SignalSignatures>(signal: K, callback: Component.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Component.SignalSignatures>(
             signal: K,
             callback: Component.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Component.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Component.SignalSignatures[K]>
+            ...args: Component.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5378,6 +5405,11 @@ export namespace ECal {
             changed: Changed;
             'format-time': FormatTime;
             triggered: Triggered;
+            'notify::default-zone': GObject.Object.Notify;
+            'notify::default-zone': GObject.Object.Notify;
+            'notify::registry': GObject.Object.Notify;
+            'notify::timers-enabled': GObject.Object.Notify;
+            'notify::timers-enabled': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -5447,14 +5479,17 @@ export namespace ECal {
             signal: K,
             callback: ReminderWatcher.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ReminderWatcher.SignalSignatures>(
             signal: K,
             callback: ReminderWatcher.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ReminderWatcher.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ReminderWatcher.SignalSignatures[K]>
+            ...args: ReminderWatcher.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 

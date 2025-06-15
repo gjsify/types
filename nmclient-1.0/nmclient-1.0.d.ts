@@ -1234,7 +1234,26 @@ export namespace NMClient {
     }
     namespace AccessPoint {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::bssid': GObject.Object.Notify;
+            'notify::flags': GObject.Object.Notify;
+            'notify::frequency': GObject.Object.Notify;
+            'notify::hw-address': GObject.Object.Notify;
+            'notify::hw-address': GObject.Object.Notify;
+            'notify::last-seen': GObject.Object.Notify;
+            'notify::last-seen': GObject.Object.Notify;
+            'notify::max-bitrate': GObject.Object.Notify;
+            'notify::max-bitrate': GObject.Object.Notify;
+            'notify::mode': GObject.Object.Notify;
+            'notify::rsn-flags': GObject.Object.Notify;
+            'notify::rsn-flags': GObject.Object.Notify;
+            'notify::ssid': GObject.Object.Notify;
+            'notify::strength': GObject.Object.Notify;
+            'notify::wpa-flags': GObject.Object.Notify;
+            'notify::wpa-flags': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1351,14 +1370,17 @@ export namespace NMClient {
             signal: K,
             callback: AccessPoint.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AccessPoint.SignalSignatures>(
             signal: K,
             callback: AccessPoint.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AccessPoint.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AccessPoint.SignalSignatures[K]>
+            ...args: AccessPoint.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2172,7 +2194,30 @@ export namespace NMClient {
 
     namespace ActiveConnection {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::connection': GObject.Object.Notify;
+            'notify::default': GObject.Object.Notify;
+            'notify::default6': GObject.Object.Notify;
+            'notify::devices': GObject.Object.Notify;
+            'notify::dhcp4-config': GObject.Object.Notify;
+            'notify::dhcp4-config': GObject.Object.Notify;
+            'notify::dhcp6-config': GObject.Object.Notify;
+            'notify::dhcp6-config': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::ip4-config': GObject.Object.Notify;
+            'notify::ip4-config': GObject.Object.Notify;
+            'notify::ip6-config': GObject.Object.Notify;
+            'notify::ip6-config': GObject.Object.Notify;
+            'notify::master': GObject.Object.Notify;
+            'notify::specific-object': GObject.Object.Notify;
+            'notify::specific-object': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+            'notify::uuid': GObject.Object.Notify;
+            'notify::vpn': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2300,14 +2345,17 @@ export namespace NMClient {
             signal: K,
             callback: ActiveConnection.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ActiveConnection.SignalSignatures>(
             signal: K,
             callback: ActiveConnection.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ActiveConnection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ActiveConnection.SignalSignatures[K]>
+            ...args: ActiveConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3151,6 +3199,37 @@ export namespace NMClient {
             'device-added': DeviceAdded;
             'device-removed': DeviceRemoved;
             'permission-changed': PermissionChanged;
+            'notify::activating-connection': GObject.Object.Notify;
+            'notify::activating-connection': GObject.Object.Notify;
+            'notify::active-connections': GObject.Object.Notify;
+            'notify::active-connections': GObject.Object.Notify;
+            'notify::all-devices': GObject.Object.Notify;
+            'notify::all-devices': GObject.Object.Notify;
+            'notify::connectivity': GObject.Object.Notify;
+            'notify::devices': GObject.Object.Notify;
+            'notify::manager-running': GObject.Object.Notify;
+            'notify::manager-running': GObject.Object.Notify;
+            'notify::networking-enabled': GObject.Object.Notify;
+            'notify::networking-enabled': GObject.Object.Notify;
+            'notify::primary-connection': GObject.Object.Notify;
+            'notify::primary-connection': GObject.Object.Notify;
+            'notify::startup': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::version': GObject.Object.Notify;
+            'notify::wimax-enabled': GObject.Object.Notify;
+            'notify::wimax-enabled': GObject.Object.Notify;
+            'notify::wimax-hardware-enabled': GObject.Object.Notify;
+            'notify::wimax-hardware-enabled': GObject.Object.Notify;
+            'notify::wireless-enabled': GObject.Object.Notify;
+            'notify::wireless-enabled': GObject.Object.Notify;
+            'notify::wireless-hardware-enabled': GObject.Object.Notify;
+            'notify::wireless-hardware-enabled': GObject.Object.Notify;
+            'notify::wwan-enabled': GObject.Object.Notify;
+            'notify::wwan-enabled': GObject.Object.Notify;
+            'notify::wwan-hardware-enabled': GObject.Object.Notify;
+            'notify::wwan-hardware-enabled': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -3341,8 +3420,14 @@ export namespace NMClient {
         // Signals
 
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -4372,7 +4457,11 @@ export namespace NMClient {
 
     namespace DHCP4Config {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::options': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4408,14 +4497,17 @@ export namespace NMClient {
             signal: K,
             callback: DHCP4Config.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DHCP4Config.SignalSignatures>(
             signal: K,
             callback: DHCP4Config.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DHCP4Config.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DHCP4Config.SignalSignatures[K]>
+            ...args: DHCP4Config.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5159,7 +5251,11 @@ export namespace NMClient {
 
     namespace DHCP6Config {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::options': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5195,14 +5291,17 @@ export namespace NMClient {
             signal: K,
             callback: DHCP6Config.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DHCP6Config.SignalSignatures>(
             signal: K,
             callback: DHCP6Config.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DHCP6Config.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DHCP6Config.SignalSignatures[K]>
+            ...args: DHCP6Config.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5954,6 +6053,43 @@ export namespace NMClient {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
             'state-changed': StateChanged;
+            'notify::active-connection': GObject.Object.Notify;
+            'notify::active-connection': GObject.Object.Notify;
+            'notify::autoconnect': GObject.Object.Notify;
+            'notify::available-connections': GObject.Object.Notify;
+            'notify::available-connections': GObject.Object.Notify;
+            'notify::capabilities': GObject.Object.Notify;
+            'notify::device-type': GObject.Object.Notify;
+            'notify::device-type': GObject.Object.Notify;
+            'notify::dhcp4-config': GObject.Object.Notify;
+            'notify::dhcp4-config': GObject.Object.Notify;
+            'notify::dhcp6-config': GObject.Object.Notify;
+            'notify::dhcp6-config': GObject.Object.Notify;
+            'notify::driver': GObject.Object.Notify;
+            'notify::driver-version': GObject.Object.Notify;
+            'notify::driver-version': GObject.Object.Notify;
+            'notify::firmware-missing': GObject.Object.Notify;
+            'notify::firmware-missing': GObject.Object.Notify;
+            'notify::firmware-version': GObject.Object.Notify;
+            'notify::firmware-version': GObject.Object.Notify;
+            'notify::interface': GObject.Object.Notify;
+            'notify::ip-interface': GObject.Object.Notify;
+            'notify::ip-interface': GObject.Object.Notify;
+            'notify::ip4-config': GObject.Object.Notify;
+            'notify::ip4-config': GObject.Object.Notify;
+            'notify::ip6-config': GObject.Object.Notify;
+            'notify::ip6-config': GObject.Object.Notify;
+            'notify::managed': GObject.Object.Notify;
+            'notify::mtu': GObject.Object.Notify;
+            'notify::physical-port-id': GObject.Object.Notify;
+            'notify::physical-port-id': GObject.Object.Notify;
+            'notify::product': GObject.Object.Notify;
+            'notify::real': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::udi': GObject.Object.Notify;
+            'notify::vendor': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -6171,8 +6307,14 @@ export namespace NMClient {
         // Signals
 
         connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
-        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            ...args: Device.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -7177,7 +7319,46 @@ export namespace NMClient {
 
     namespace DeviceAdsl {
         // Signal signatures
-        interface SignalSignatures extends Device.SignalSignatures {}
+        interface SignalSignatures extends Device.SignalSignatures {
+            'notify::carrier': GObject.Object.Notify;
+            'notify::active-connection': GObject.Object.Notify;
+            'notify::active-connection': GObject.Object.Notify;
+            'notify::autoconnect': GObject.Object.Notify;
+            'notify::available-connections': GObject.Object.Notify;
+            'notify::available-connections': GObject.Object.Notify;
+            'notify::capabilities': GObject.Object.Notify;
+            'notify::device-type': GObject.Object.Notify;
+            'notify::device-type': GObject.Object.Notify;
+            'notify::dhcp4-config': GObject.Object.Notify;
+            'notify::dhcp4-config': GObject.Object.Notify;
+            'notify::dhcp6-config': GObject.Object.Notify;
+            'notify::dhcp6-config': GObject.Object.Notify;
+            'notify::driver': GObject.Object.Notify;
+            'notify::driver-version': GObject.Object.Notify;
+            'notify::driver-version': GObject.Object.Notify;
+            'notify::firmware-missing': GObject.Object.Notify;
+            'notify::firmware-missing': GObject.Object.Notify;
+            'notify::firmware-version': GObject.Object.Notify;
+            'notify::firmware-version': GObject.Object.Notify;
+            'notify::interface': GObject.Object.Notify;
+            'notify::ip-interface': GObject.Object.Notify;
+            'notify::ip-interface': GObject.Object.Notify;
+            'notify::ip4-config': GObject.Object.Notify;
+            'notify::ip4-config': GObject.Object.Notify;
+            'notify::ip6-config': GObject.Object.Notify;
+            'notify::ip6-config': GObject.Object.Notify;
+            'notify::managed': GObject.Object.Notify;
+            'notify::mtu': GObject.Object.Notify;
+            'notify::physical-port-id': GObject.Object.Notify;
+            'notify::physical-port-id': GObject.Object.Notify;
+            'notify::product': GObject.Object.Notify;
+            'notify::real': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::udi': GObject.Object.Notify;
+            'notify::vendor': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -7213,14 +7394,17 @@ export namespace NMClient {
             signal: K,
             callback: DeviceAdsl.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceAdsl.SignalSignatures>(
             signal: K,
             callback: DeviceAdsl.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceAdsl.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceAdsl.SignalSignatures[K]>
+            ...args: DeviceAdsl.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -7875,7 +8059,49 @@ export namespace NMClient {
 
     namespace DeviceBond {
         // Signal signatures
-        interface SignalSignatures extends Device.SignalSignatures {}
+        interface SignalSignatures extends Device.SignalSignatures {
+            'notify::carrier': GObject.Object.Notify;
+            'notify::hw-address': GObject.Object.Notify;
+            'notify::hw-address': GObject.Object.Notify;
+            'notify::slaves': GObject.Object.Notify;
+            'notify::active-connection': GObject.Object.Notify;
+            'notify::active-connection': GObject.Object.Notify;
+            'notify::autoconnect': GObject.Object.Notify;
+            'notify::available-connections': GObject.Object.Notify;
+            'notify::available-connections': GObject.Object.Notify;
+            'notify::capabilities': GObject.Object.Notify;
+            'notify::device-type': GObject.Object.Notify;
+            'notify::device-type': GObject.Object.Notify;
+            'notify::dhcp4-config': GObject.Object.Notify;
+            'notify::dhcp4-config': GObject.Object.Notify;
+            'notify::dhcp6-config': GObject.Object.Notify;
+            'notify::dhcp6-config': GObject.Object.Notify;
+            'notify::driver': GObject.Object.Notify;
+            'notify::driver-version': GObject.Object.Notify;
+            'notify::driver-version': GObject.Object.Notify;
+            'notify::firmware-missing': GObject.Object.Notify;
+            'notify::firmware-missing': GObject.Object.Notify;
+            'notify::firmware-version': GObject.Object.Notify;
+            'notify::firmware-version': GObject.Object.Notify;
+            'notify::interface': GObject.Object.Notify;
+            'notify::ip-interface': GObject.Object.Notify;
+            'notify::ip-interface': GObject.Object.Notify;
+            'notify::ip4-config': GObject.Object.Notify;
+            'notify::ip4-config': GObject.Object.Notify;
+            'notify::ip6-config': GObject.Object.Notify;
+            'notify::ip6-config': GObject.Object.Notify;
+            'notify::managed': GObject.Object.Notify;
+            'notify::mtu': GObject.Object.Notify;
+            'notify::physical-port-id': GObject.Object.Notify;
+            'notify::physical-port-id': GObject.Object.Notify;
+            'notify::product': GObject.Object.Notify;
+            'notify::real': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::udi': GObject.Object.Notify;
+            'notify::vendor': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -7926,14 +8152,17 @@ export namespace NMClient {
             signal: K,
             callback: DeviceBond.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceBond.SignalSignatures>(
             signal: K,
             callback: DeviceBond.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceBond.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceBond.SignalSignatures[K]>
+            ...args: DeviceBond.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -8598,7 +8827,49 @@ export namespace NMClient {
 
     namespace DeviceBridge {
         // Signal signatures
-        interface SignalSignatures extends Device.SignalSignatures {}
+        interface SignalSignatures extends Device.SignalSignatures {
+            'notify::carrier': GObject.Object.Notify;
+            'notify::hw-address': GObject.Object.Notify;
+            'notify::hw-address': GObject.Object.Notify;
+            'notify::slaves': GObject.Object.Notify;
+            'notify::active-connection': GObject.Object.Notify;
+            'notify::active-connection': GObject.Object.Notify;
+            'notify::autoconnect': GObject.Object.Notify;
+            'notify::available-connections': GObject.Object.Notify;
+            'notify::available-connections': GObject.Object.Notify;
+            'notify::capabilities': GObject.Object.Notify;
+            'notify::device-type': GObject.Object.Notify;
+            'notify::device-type': GObject.Object.Notify;
+            'notify::dhcp4-config': GObject.Object.Notify;
+            'notify::dhcp4-config': GObject.Object.Notify;
+            'notify::dhcp6-config': GObject.Object.Notify;
+            'notify::dhcp6-config': GObject.Object.Notify;
+            'notify::driver': GObject.Object.Notify;
+            'notify::driver-version': GObject.Object.Notify;
+            'notify::driver-version': GObject.Object.Notify;
+            'notify::firmware-missing': GObject.Object.Notify;
+            'notify::firmware-missing': GObject.Object.Notify;
+            'notify::firmware-version': GObject.Object.Notify;
+            'notify::firmware-version': GObject.Object.Notify;
+            'notify::interface': GObject.Object.Notify;
+            'notify::ip-interface': GObject.Object.Notify;
+            'notify::ip-interface': GObject.Object.Notify;
+            'notify::ip4-config': GObject.Object.Notify;
+            'notify::ip4-config': GObject.Object.Notify;
+            'notify::ip6-config': GObject.Object.Notify;
+            'notify::ip6-config': GObject.Object.Notify;
+            'notify::managed': GObject.Object.Notify;
+            'notify::mtu': GObject.Object.Notify;
+            'notify::physical-port-id': GObject.Object.Notify;
+            'notify::physical-port-id': GObject.Object.Notify;
+            'notify::product': GObject.Object.Notify;
+            'notify::real': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::udi': GObject.Object.Notify;
+            'notify::vendor': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8649,14 +8920,17 @@ export namespace NMClient {
             signal: K,
             callback: DeviceBridge.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceBridge.SignalSignatures>(
             signal: K,
             callback: DeviceBridge.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceBridge.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceBridge.SignalSignatures[K]>
+            ...args: DeviceBridge.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -9321,7 +9595,50 @@ export namespace NMClient {
 
     namespace DeviceBt {
         // Signal signatures
-        interface SignalSignatures extends Device.SignalSignatures {}
+        interface SignalSignatures extends Device.SignalSignatures {
+            'notify::bt-capabilities': GObject.Object.Notify;
+            'notify::bt-capabilities': GObject.Object.Notify;
+            'notify::hw-address': GObject.Object.Notify;
+            'notify::hw-address': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::active-connection': GObject.Object.Notify;
+            'notify::active-connection': GObject.Object.Notify;
+            'notify::autoconnect': GObject.Object.Notify;
+            'notify::available-connections': GObject.Object.Notify;
+            'notify::available-connections': GObject.Object.Notify;
+            'notify::capabilities': GObject.Object.Notify;
+            'notify::device-type': GObject.Object.Notify;
+            'notify::device-type': GObject.Object.Notify;
+            'notify::dhcp4-config': GObject.Object.Notify;
+            'notify::dhcp4-config': GObject.Object.Notify;
+            'notify::dhcp6-config': GObject.Object.Notify;
+            'notify::dhcp6-config': GObject.Object.Notify;
+            'notify::driver': GObject.Object.Notify;
+            'notify::driver-version': GObject.Object.Notify;
+            'notify::driver-version': GObject.Object.Notify;
+            'notify::firmware-missing': GObject.Object.Notify;
+            'notify::firmware-missing': GObject.Object.Notify;
+            'notify::firmware-version': GObject.Object.Notify;
+            'notify::firmware-version': GObject.Object.Notify;
+            'notify::interface': GObject.Object.Notify;
+            'notify::ip-interface': GObject.Object.Notify;
+            'notify::ip-interface': GObject.Object.Notify;
+            'notify::ip4-config': GObject.Object.Notify;
+            'notify::ip4-config': GObject.Object.Notify;
+            'notify::ip6-config': GObject.Object.Notify;
+            'notify::ip6-config': GObject.Object.Notify;
+            'notify::managed': GObject.Object.Notify;
+            'notify::mtu': GObject.Object.Notify;
+            'notify::physical-port-id': GObject.Object.Notify;
+            'notify::physical-port-id': GObject.Object.Notify;
+            'notify::product': GObject.Object.Notify;
+            'notify::real': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::udi': GObject.Object.Notify;
+            'notify::vendor': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -9374,14 +9691,17 @@ export namespace NMClient {
         // Signals
 
         connect<K extends keyof DeviceBt.SignalSignatures>(signal: K, callback: DeviceBt.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceBt.SignalSignatures>(
             signal: K,
             callback: DeviceBt.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceBt.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceBt.SignalSignatures[K]>
+            ...args: DeviceBt.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -10048,7 +10368,51 @@ export namespace NMClient {
 
     namespace DeviceEthernet {
         // Signal signatures
-        interface SignalSignatures extends Device.SignalSignatures {}
+        interface SignalSignatures extends Device.SignalSignatures {
+            'notify::carrier': GObject.Object.Notify;
+            'notify::hw-address': GObject.Object.Notify;
+            'notify::hw-address': GObject.Object.Notify;
+            'notify::perm-hw-address': GObject.Object.Notify;
+            'notify::perm-hw-address': GObject.Object.Notify;
+            'notify::speed': GObject.Object.Notify;
+            'notify::active-connection': GObject.Object.Notify;
+            'notify::active-connection': GObject.Object.Notify;
+            'notify::autoconnect': GObject.Object.Notify;
+            'notify::available-connections': GObject.Object.Notify;
+            'notify::available-connections': GObject.Object.Notify;
+            'notify::capabilities': GObject.Object.Notify;
+            'notify::device-type': GObject.Object.Notify;
+            'notify::device-type': GObject.Object.Notify;
+            'notify::dhcp4-config': GObject.Object.Notify;
+            'notify::dhcp4-config': GObject.Object.Notify;
+            'notify::dhcp6-config': GObject.Object.Notify;
+            'notify::dhcp6-config': GObject.Object.Notify;
+            'notify::driver': GObject.Object.Notify;
+            'notify::driver-version': GObject.Object.Notify;
+            'notify::driver-version': GObject.Object.Notify;
+            'notify::firmware-missing': GObject.Object.Notify;
+            'notify::firmware-missing': GObject.Object.Notify;
+            'notify::firmware-version': GObject.Object.Notify;
+            'notify::firmware-version': GObject.Object.Notify;
+            'notify::interface': GObject.Object.Notify;
+            'notify::ip-interface': GObject.Object.Notify;
+            'notify::ip-interface': GObject.Object.Notify;
+            'notify::ip4-config': GObject.Object.Notify;
+            'notify::ip4-config': GObject.Object.Notify;
+            'notify::ip6-config': GObject.Object.Notify;
+            'notify::ip6-config': GObject.Object.Notify;
+            'notify::managed': GObject.Object.Notify;
+            'notify::mtu': GObject.Object.Notify;
+            'notify::physical-port-id': GObject.Object.Notify;
+            'notify::physical-port-id': GObject.Object.Notify;
+            'notify::product': GObject.Object.Notify;
+            'notify::real': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::udi': GObject.Object.Notify;
+            'notify::vendor': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10109,14 +10473,17 @@ export namespace NMClient {
             signal: K,
             callback: DeviceEthernet.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceEthernet.SignalSignatures>(
             signal: K,
             callback: DeviceEthernet.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceEthernet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceEthernet.SignalSignatures[K]>
+            ...args: DeviceEthernet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -10786,7 +11153,49 @@ export namespace NMClient {
 
     namespace DeviceGeneric {
         // Signal signatures
-        interface SignalSignatures extends Device.SignalSignatures {}
+        interface SignalSignatures extends Device.SignalSignatures {
+            'notify::hw-address': GObject.Object.Notify;
+            'notify::hw-address': GObject.Object.Notify;
+            'notify::type-description': GObject.Object.Notify;
+            'notify::type-description': GObject.Object.Notify;
+            'notify::active-connection': GObject.Object.Notify;
+            'notify::active-connection': GObject.Object.Notify;
+            'notify::autoconnect': GObject.Object.Notify;
+            'notify::available-connections': GObject.Object.Notify;
+            'notify::available-connections': GObject.Object.Notify;
+            'notify::capabilities': GObject.Object.Notify;
+            'notify::device-type': GObject.Object.Notify;
+            'notify::device-type': GObject.Object.Notify;
+            'notify::dhcp4-config': GObject.Object.Notify;
+            'notify::dhcp4-config': GObject.Object.Notify;
+            'notify::dhcp6-config': GObject.Object.Notify;
+            'notify::dhcp6-config': GObject.Object.Notify;
+            'notify::driver': GObject.Object.Notify;
+            'notify::driver-version': GObject.Object.Notify;
+            'notify::driver-version': GObject.Object.Notify;
+            'notify::firmware-missing': GObject.Object.Notify;
+            'notify::firmware-missing': GObject.Object.Notify;
+            'notify::firmware-version': GObject.Object.Notify;
+            'notify::firmware-version': GObject.Object.Notify;
+            'notify::interface': GObject.Object.Notify;
+            'notify::ip-interface': GObject.Object.Notify;
+            'notify::ip-interface': GObject.Object.Notify;
+            'notify::ip4-config': GObject.Object.Notify;
+            'notify::ip4-config': GObject.Object.Notify;
+            'notify::ip6-config': GObject.Object.Notify;
+            'notify::ip6-config': GObject.Object.Notify;
+            'notify::managed': GObject.Object.Notify;
+            'notify::mtu': GObject.Object.Notify;
+            'notify::physical-port-id': GObject.Object.Notify;
+            'notify::physical-port-id': GObject.Object.Notify;
+            'notify::product': GObject.Object.Notify;
+            'notify::real': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::udi': GObject.Object.Notify;
+            'notify::vendor': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10839,14 +11248,17 @@ export namespace NMClient {
             signal: K,
             callback: DeviceGeneric.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceGeneric.SignalSignatures>(
             signal: K,
             callback: DeviceGeneric.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceGeneric.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceGeneric.SignalSignatures[K]>
+            ...args: DeviceGeneric.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -11501,7 +11913,48 @@ export namespace NMClient {
 
     namespace DeviceInfiniband {
         // Signal signatures
-        interface SignalSignatures extends Device.SignalSignatures {}
+        interface SignalSignatures extends Device.SignalSignatures {
+            'notify::carrier': GObject.Object.Notify;
+            'notify::hw-address': GObject.Object.Notify;
+            'notify::hw-address': GObject.Object.Notify;
+            'notify::active-connection': GObject.Object.Notify;
+            'notify::active-connection': GObject.Object.Notify;
+            'notify::autoconnect': GObject.Object.Notify;
+            'notify::available-connections': GObject.Object.Notify;
+            'notify::available-connections': GObject.Object.Notify;
+            'notify::capabilities': GObject.Object.Notify;
+            'notify::device-type': GObject.Object.Notify;
+            'notify::device-type': GObject.Object.Notify;
+            'notify::dhcp4-config': GObject.Object.Notify;
+            'notify::dhcp4-config': GObject.Object.Notify;
+            'notify::dhcp6-config': GObject.Object.Notify;
+            'notify::dhcp6-config': GObject.Object.Notify;
+            'notify::driver': GObject.Object.Notify;
+            'notify::driver-version': GObject.Object.Notify;
+            'notify::driver-version': GObject.Object.Notify;
+            'notify::firmware-missing': GObject.Object.Notify;
+            'notify::firmware-missing': GObject.Object.Notify;
+            'notify::firmware-version': GObject.Object.Notify;
+            'notify::firmware-version': GObject.Object.Notify;
+            'notify::interface': GObject.Object.Notify;
+            'notify::ip-interface': GObject.Object.Notify;
+            'notify::ip-interface': GObject.Object.Notify;
+            'notify::ip4-config': GObject.Object.Notify;
+            'notify::ip4-config': GObject.Object.Notify;
+            'notify::ip6-config': GObject.Object.Notify;
+            'notify::ip6-config': GObject.Object.Notify;
+            'notify::managed': GObject.Object.Notify;
+            'notify::mtu': GObject.Object.Notify;
+            'notify::physical-port-id': GObject.Object.Notify;
+            'notify::physical-port-id': GObject.Object.Notify;
+            'notify::product': GObject.Object.Notify;
+            'notify::real': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::udi': GObject.Object.Notify;
+            'notify::vendor': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11547,14 +12000,17 @@ export namespace NMClient {
             signal: K,
             callback: DeviceInfiniband.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceInfiniband.SignalSignatures>(
             signal: K,
             callback: DeviceInfiniband.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceInfiniband.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceInfiniband.SignalSignatures[K]>
+            ...args: DeviceInfiniband.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -12214,7 +12670,49 @@ export namespace NMClient {
 
     namespace DeviceModem {
         // Signal signatures
-        interface SignalSignatures extends Device.SignalSignatures {}
+        interface SignalSignatures extends Device.SignalSignatures {
+            'notify::current-capabilities': GObject.Object.Notify;
+            'notify::current-capabilities': GObject.Object.Notify;
+            'notify::modem-capabilities': GObject.Object.Notify;
+            'notify::modem-capabilities': GObject.Object.Notify;
+            'notify::active-connection': GObject.Object.Notify;
+            'notify::active-connection': GObject.Object.Notify;
+            'notify::autoconnect': GObject.Object.Notify;
+            'notify::available-connections': GObject.Object.Notify;
+            'notify::available-connections': GObject.Object.Notify;
+            'notify::capabilities': GObject.Object.Notify;
+            'notify::device-type': GObject.Object.Notify;
+            'notify::device-type': GObject.Object.Notify;
+            'notify::dhcp4-config': GObject.Object.Notify;
+            'notify::dhcp4-config': GObject.Object.Notify;
+            'notify::dhcp6-config': GObject.Object.Notify;
+            'notify::dhcp6-config': GObject.Object.Notify;
+            'notify::driver': GObject.Object.Notify;
+            'notify::driver-version': GObject.Object.Notify;
+            'notify::driver-version': GObject.Object.Notify;
+            'notify::firmware-missing': GObject.Object.Notify;
+            'notify::firmware-missing': GObject.Object.Notify;
+            'notify::firmware-version': GObject.Object.Notify;
+            'notify::firmware-version': GObject.Object.Notify;
+            'notify::interface': GObject.Object.Notify;
+            'notify::ip-interface': GObject.Object.Notify;
+            'notify::ip-interface': GObject.Object.Notify;
+            'notify::ip4-config': GObject.Object.Notify;
+            'notify::ip4-config': GObject.Object.Notify;
+            'notify::ip6-config': GObject.Object.Notify;
+            'notify::ip6-config': GObject.Object.Notify;
+            'notify::managed': GObject.Object.Notify;
+            'notify::mtu': GObject.Object.Notify;
+            'notify::physical-port-id': GObject.Object.Notify;
+            'notify::physical-port-id': GObject.Object.Notify;
+            'notify::product': GObject.Object.Notify;
+            'notify::real': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::udi': GObject.Object.Notify;
+            'notify::vendor': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12271,14 +12769,17 @@ export namespace NMClient {
             signal: K,
             callback: DeviceModem.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceModem.SignalSignatures>(
             signal: K,
             callback: DeviceModem.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceModem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceModem.SignalSignatures[K]>
+            ...args: DeviceModem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -12942,7 +13443,50 @@ export namespace NMClient {
 
     namespace DeviceOlpcMesh {
         // Signal signatures
-        interface SignalSignatures extends Device.SignalSignatures {}
+        interface SignalSignatures extends Device.SignalSignatures {
+            'notify::active-channel': GObject.Object.Notify;
+            'notify::active-channel': GObject.Object.Notify;
+            'notify::companion': GObject.Object.Notify;
+            'notify::hw-address': GObject.Object.Notify;
+            'notify::hw-address': GObject.Object.Notify;
+            'notify::active-connection': GObject.Object.Notify;
+            'notify::active-connection': GObject.Object.Notify;
+            'notify::autoconnect': GObject.Object.Notify;
+            'notify::available-connections': GObject.Object.Notify;
+            'notify::available-connections': GObject.Object.Notify;
+            'notify::capabilities': GObject.Object.Notify;
+            'notify::device-type': GObject.Object.Notify;
+            'notify::device-type': GObject.Object.Notify;
+            'notify::dhcp4-config': GObject.Object.Notify;
+            'notify::dhcp4-config': GObject.Object.Notify;
+            'notify::dhcp6-config': GObject.Object.Notify;
+            'notify::dhcp6-config': GObject.Object.Notify;
+            'notify::driver': GObject.Object.Notify;
+            'notify::driver-version': GObject.Object.Notify;
+            'notify::driver-version': GObject.Object.Notify;
+            'notify::firmware-missing': GObject.Object.Notify;
+            'notify::firmware-missing': GObject.Object.Notify;
+            'notify::firmware-version': GObject.Object.Notify;
+            'notify::firmware-version': GObject.Object.Notify;
+            'notify::interface': GObject.Object.Notify;
+            'notify::ip-interface': GObject.Object.Notify;
+            'notify::ip-interface': GObject.Object.Notify;
+            'notify::ip4-config': GObject.Object.Notify;
+            'notify::ip4-config': GObject.Object.Notify;
+            'notify::ip6-config': GObject.Object.Notify;
+            'notify::ip6-config': GObject.Object.Notify;
+            'notify::managed': GObject.Object.Notify;
+            'notify::mtu': GObject.Object.Notify;
+            'notify::physical-port-id': GObject.Object.Notify;
+            'notify::physical-port-id': GObject.Object.Notify;
+            'notify::product': GObject.Object.Notify;
+            'notify::real': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::udi': GObject.Object.Notify;
+            'notify::vendor': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12998,14 +13542,17 @@ export namespace NMClient {
             signal: K,
             callback: DeviceOlpcMesh.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceOlpcMesh.SignalSignatures>(
             signal: K,
             callback: DeviceOlpcMesh.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceOlpcMesh.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceOlpcMesh.SignalSignatures[K]>
+            ...args: DeviceOlpcMesh.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -13670,7 +14217,49 @@ export namespace NMClient {
 
     namespace DeviceTeam {
         // Signal signatures
-        interface SignalSignatures extends Device.SignalSignatures {}
+        interface SignalSignatures extends Device.SignalSignatures {
+            'notify::carrier': GObject.Object.Notify;
+            'notify::hw-address': GObject.Object.Notify;
+            'notify::hw-address': GObject.Object.Notify;
+            'notify::slaves': GObject.Object.Notify;
+            'notify::active-connection': GObject.Object.Notify;
+            'notify::active-connection': GObject.Object.Notify;
+            'notify::autoconnect': GObject.Object.Notify;
+            'notify::available-connections': GObject.Object.Notify;
+            'notify::available-connections': GObject.Object.Notify;
+            'notify::capabilities': GObject.Object.Notify;
+            'notify::device-type': GObject.Object.Notify;
+            'notify::device-type': GObject.Object.Notify;
+            'notify::dhcp4-config': GObject.Object.Notify;
+            'notify::dhcp4-config': GObject.Object.Notify;
+            'notify::dhcp6-config': GObject.Object.Notify;
+            'notify::dhcp6-config': GObject.Object.Notify;
+            'notify::driver': GObject.Object.Notify;
+            'notify::driver-version': GObject.Object.Notify;
+            'notify::driver-version': GObject.Object.Notify;
+            'notify::firmware-missing': GObject.Object.Notify;
+            'notify::firmware-missing': GObject.Object.Notify;
+            'notify::firmware-version': GObject.Object.Notify;
+            'notify::firmware-version': GObject.Object.Notify;
+            'notify::interface': GObject.Object.Notify;
+            'notify::ip-interface': GObject.Object.Notify;
+            'notify::ip-interface': GObject.Object.Notify;
+            'notify::ip4-config': GObject.Object.Notify;
+            'notify::ip4-config': GObject.Object.Notify;
+            'notify::ip6-config': GObject.Object.Notify;
+            'notify::ip6-config': GObject.Object.Notify;
+            'notify::managed': GObject.Object.Notify;
+            'notify::mtu': GObject.Object.Notify;
+            'notify::physical-port-id': GObject.Object.Notify;
+            'notify::physical-port-id': GObject.Object.Notify;
+            'notify::product': GObject.Object.Notify;
+            'notify::real': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::udi': GObject.Object.Notify;
+            'notify::vendor': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13721,14 +14310,17 @@ export namespace NMClient {
             signal: K,
             callback: DeviceTeam.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceTeam.SignalSignatures>(
             signal: K,
             callback: DeviceTeam.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceTeam.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceTeam.SignalSignatures[K]>
+            ...args: DeviceTeam.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -14393,7 +14985,51 @@ export namespace NMClient {
 
     namespace DeviceVlan {
         // Signal signatures
-        interface SignalSignatures extends Device.SignalSignatures {}
+        interface SignalSignatures extends Device.SignalSignatures {
+            'notify::carrier': GObject.Object.Notify;
+            'notify::hw-address': GObject.Object.Notify;
+            'notify::hw-address': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::vlan-id': GObject.Object.Notify;
+            'notify::vlan-id': GObject.Object.Notify;
+            'notify::active-connection': GObject.Object.Notify;
+            'notify::active-connection': GObject.Object.Notify;
+            'notify::autoconnect': GObject.Object.Notify;
+            'notify::available-connections': GObject.Object.Notify;
+            'notify::available-connections': GObject.Object.Notify;
+            'notify::capabilities': GObject.Object.Notify;
+            'notify::device-type': GObject.Object.Notify;
+            'notify::device-type': GObject.Object.Notify;
+            'notify::dhcp4-config': GObject.Object.Notify;
+            'notify::dhcp4-config': GObject.Object.Notify;
+            'notify::dhcp6-config': GObject.Object.Notify;
+            'notify::dhcp6-config': GObject.Object.Notify;
+            'notify::driver': GObject.Object.Notify;
+            'notify::driver-version': GObject.Object.Notify;
+            'notify::driver-version': GObject.Object.Notify;
+            'notify::firmware-missing': GObject.Object.Notify;
+            'notify::firmware-missing': GObject.Object.Notify;
+            'notify::firmware-version': GObject.Object.Notify;
+            'notify::firmware-version': GObject.Object.Notify;
+            'notify::interface': GObject.Object.Notify;
+            'notify::ip-interface': GObject.Object.Notify;
+            'notify::ip-interface': GObject.Object.Notify;
+            'notify::ip4-config': GObject.Object.Notify;
+            'notify::ip4-config': GObject.Object.Notify;
+            'notify::ip6-config': GObject.Object.Notify;
+            'notify::ip6-config': GObject.Object.Notify;
+            'notify::managed': GObject.Object.Notify;
+            'notify::mtu': GObject.Object.Notify;
+            'notify::physical-port-id': GObject.Object.Notify;
+            'notify::physical-port-id': GObject.Object.Notify;
+            'notify::product': GObject.Object.Notify;
+            'notify::real': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::udi': GObject.Object.Notify;
+            'notify::vendor': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -14454,14 +15090,17 @@ export namespace NMClient {
             signal: K,
             callback: DeviceVlan.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceVlan.SignalSignatures>(
             signal: K,
             callback: DeviceVlan.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceVlan.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceVlan.SignalSignatures[K]>
+            ...args: DeviceVlan.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -15136,6 +15775,55 @@ export namespace NMClient {
         interface SignalSignatures extends Device.SignalSignatures {
             'access-point-added': AccessPointAdded;
             'access-point-removed': AccessPointRemoved;
+            'notify::access-points': GObject.Object.Notify;
+            'notify::access-points': GObject.Object.Notify;
+            'notify::active-access-point': GObject.Object.Notify;
+            'notify::active-access-point': GObject.Object.Notify;
+            'notify::bitrate': GObject.Object.Notify;
+            'notify::hw-address': GObject.Object.Notify;
+            'notify::hw-address': GObject.Object.Notify;
+            'notify::mode': GObject.Object.Notify;
+            'notify::perm-hw-address': GObject.Object.Notify;
+            'notify::perm-hw-address': GObject.Object.Notify;
+            'notify::wireless-capabilities': GObject.Object.Notify;
+            'notify::wireless-capabilities': GObject.Object.Notify;
+            'notify::active-connection': GObject.Object.Notify;
+            'notify::active-connection': GObject.Object.Notify;
+            'notify::autoconnect': GObject.Object.Notify;
+            'notify::available-connections': GObject.Object.Notify;
+            'notify::available-connections': GObject.Object.Notify;
+            'notify::capabilities': GObject.Object.Notify;
+            'notify::device-type': GObject.Object.Notify;
+            'notify::device-type': GObject.Object.Notify;
+            'notify::dhcp4-config': GObject.Object.Notify;
+            'notify::dhcp4-config': GObject.Object.Notify;
+            'notify::dhcp6-config': GObject.Object.Notify;
+            'notify::dhcp6-config': GObject.Object.Notify;
+            'notify::driver': GObject.Object.Notify;
+            'notify::driver-version': GObject.Object.Notify;
+            'notify::driver-version': GObject.Object.Notify;
+            'notify::firmware-missing': GObject.Object.Notify;
+            'notify::firmware-missing': GObject.Object.Notify;
+            'notify::firmware-version': GObject.Object.Notify;
+            'notify::firmware-version': GObject.Object.Notify;
+            'notify::interface': GObject.Object.Notify;
+            'notify::ip-interface': GObject.Object.Notify;
+            'notify::ip-interface': GObject.Object.Notify;
+            'notify::ip4-config': GObject.Object.Notify;
+            'notify::ip4-config': GObject.Object.Notify;
+            'notify::ip6-config': GObject.Object.Notify;
+            'notify::ip6-config': GObject.Object.Notify;
+            'notify::managed': GObject.Object.Notify;
+            'notify::mtu': GObject.Object.Notify;
+            'notify::physical-port-id': GObject.Object.Notify;
+            'notify::physical-port-id': GObject.Object.Notify;
+            'notify::product': GObject.Object.Notify;
+            'notify::real': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::udi': GObject.Object.Notify;
+            'notify::vendor': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -15227,14 +15915,17 @@ export namespace NMClient {
             signal: K,
             callback: DeviceWifi.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceWifi.SignalSignatures>(
             signal: K,
             callback: DeviceWifi.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceWifi.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceWifi.SignalSignatures[K]>
+            ...args: DeviceWifi.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -15952,6 +16643,55 @@ export namespace NMClient {
         interface SignalSignatures extends Device.SignalSignatures {
             'nsp-added': NspAdded;
             'nsp-removed': NspRemoved;
+            'notify::active-nsp': GObject.Object.Notify;
+            'notify::active-nsp': GObject.Object.Notify;
+            'notify::bsid': GObject.Object.Notify;
+            'notify::center-frequency': GObject.Object.Notify;
+            'notify::center-frequency': GObject.Object.Notify;
+            'notify::cinr': GObject.Object.Notify;
+            'notify::hw-address': GObject.Object.Notify;
+            'notify::hw-address': GObject.Object.Notify;
+            'notify::nsps': GObject.Object.Notify;
+            'notify::rssi': GObject.Object.Notify;
+            'notify::tx-power': GObject.Object.Notify;
+            'notify::tx-power': GObject.Object.Notify;
+            'notify::active-connection': GObject.Object.Notify;
+            'notify::active-connection': GObject.Object.Notify;
+            'notify::autoconnect': GObject.Object.Notify;
+            'notify::available-connections': GObject.Object.Notify;
+            'notify::available-connections': GObject.Object.Notify;
+            'notify::capabilities': GObject.Object.Notify;
+            'notify::device-type': GObject.Object.Notify;
+            'notify::device-type': GObject.Object.Notify;
+            'notify::dhcp4-config': GObject.Object.Notify;
+            'notify::dhcp4-config': GObject.Object.Notify;
+            'notify::dhcp6-config': GObject.Object.Notify;
+            'notify::dhcp6-config': GObject.Object.Notify;
+            'notify::driver': GObject.Object.Notify;
+            'notify::driver-version': GObject.Object.Notify;
+            'notify::driver-version': GObject.Object.Notify;
+            'notify::firmware-missing': GObject.Object.Notify;
+            'notify::firmware-missing': GObject.Object.Notify;
+            'notify::firmware-version': GObject.Object.Notify;
+            'notify::firmware-version': GObject.Object.Notify;
+            'notify::interface': GObject.Object.Notify;
+            'notify::ip-interface': GObject.Object.Notify;
+            'notify::ip-interface': GObject.Object.Notify;
+            'notify::ip4-config': GObject.Object.Notify;
+            'notify::ip4-config': GObject.Object.Notify;
+            'notify::ip6-config': GObject.Object.Notify;
+            'notify::ip6-config': GObject.Object.Notify;
+            'notify::managed': GObject.Object.Notify;
+            'notify::mtu': GObject.Object.Notify;
+            'notify::physical-port-id': GObject.Object.Notify;
+            'notify::physical-port-id': GObject.Object.Notify;
+            'notify::product': GObject.Object.Notify;
+            'notify::real': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::udi': GObject.Object.Notify;
+            'notify::vendor': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -16057,14 +16797,17 @@ export namespace NMClient {
             signal: K,
             callback: DeviceWimax.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceWimax.SignalSignatures>(
             signal: K,
             callback: DeviceWimax.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceWimax.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceWimax.SignalSignatures[K]>
+            ...args: DeviceWimax.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -16774,7 +17517,18 @@ export namespace NMClient {
 
     namespace IP4Config {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::addresses': GObject.Object.Notify;
+            'notify::domains': GObject.Object.Notify;
+            'notify::gateway': GObject.Object.Notify;
+            'notify::nameservers': GObject.Object.Notify;
+            'notify::routes': GObject.Object.Notify;
+            'notify::searches': GObject.Object.Notify;
+            'notify::wins-servers': GObject.Object.Notify;
+            'notify::wins-servers': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -16842,14 +17596,17 @@ export namespace NMClient {
         // Signals
 
         connect<K extends keyof IP4Config.SignalSignatures>(signal: K, callback: IP4Config.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof IP4Config.SignalSignatures>(
             signal: K,
             callback: IP4Config.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof IP4Config.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IP4Config.SignalSignatures[K]>
+            ...args: IP4Config.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -17617,7 +18374,16 @@ export namespace NMClient {
 
     namespace IP6Config {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::addresses': GObject.Object.Notify;
+            'notify::domains': GObject.Object.Notify;
+            'notify::gateway': GObject.Object.Notify;
+            'notify::nameservers': GObject.Object.Notify;
+            'notify::routes': GObject.Object.Notify;
+            'notify::searches': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17680,14 +18446,17 @@ export namespace NMClient {
         // Signals
 
         connect<K extends keyof IP6Config.SignalSignatures>(signal: K, callback: IP6Config.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof IP6Config.SignalSignatures>(
             signal: K,
             callback: IP6Config.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof IP6Config.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IP6Config.SignalSignatures[K]>
+            ...args: IP6Config.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -18464,6 +19233,8 @@ export namespace NMClient {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'object-creation-failed': ObjectCreationFailed;
+            'notify::dbus-path': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -18494,8 +19265,14 @@ export namespace NMClient {
         // Signals
 
         connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
-        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            ...args: Object.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -19260,6 +20037,10 @@ export namespace NMClient {
             removed: Removed;
             updated: Updated;
             visible: Visible;
+            'notify::dbus-path': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+            'notify::unsaved': GObject.Object.Notify;
+            'notify::path': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -19307,14 +20088,17 @@ export namespace NMClient {
             signal: K,
             callback: RemoteConnection.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RemoteConnection.SignalSignatures>(
             signal: K,
             callback: RemoteConnection.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RemoteConnection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RemoteConnection.SignalSignatures[K]>
+            ...args: RemoteConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -20097,6 +20881,11 @@ export namespace NMClient {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'connections-read': ConnectionsRead;
             'new-connection': NewConnection;
+            'notify::can-modify': GObject.Object.Notify;
+            'notify::can-modify': GObject.Object.Notify;
+            'notify::hostname': GObject.Object.Notify;
+            'notify::service-running': GObject.Object.Notify;
+            'notify::service-running': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -20159,14 +20948,17 @@ export namespace NMClient {
             signal: K,
             callback: RemoteSettings.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RemoteSettings.SignalSignatures>(
             signal: K,
             callback: RemoteSettings.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RemoteSettings.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RemoteSettings.SignalSignatures[K]>
+            ...args: RemoteSettings.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -21007,6 +21799,11 @@ export namespace NMClient {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'registration-result': RegistrationResult;
+            'notify::auto-register': GObject.Object.Notify;
+            'notify::auto-register': GObject.Object.Notify;
+            'notify::capabilities': GObject.Object.Notify;
+            'notify::identifier': GObject.Object.Notify;
+            'notify::registered': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -21079,14 +21876,17 @@ export namespace NMClient {
             signal: K,
             callback: SecretAgent.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SecretAgent.SignalSignatures>(
             signal: K,
             callback: SecretAgent.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SecretAgent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SecretAgent.SignalSignatures[K]>
+            ...args: SecretAgent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -21202,6 +22002,31 @@ export namespace NMClient {
         // Signal signatures
         interface SignalSignatures extends ActiveConnection.SignalSignatures {
             'vpn-state-changed': VpnStateChanged;
+            'notify::banner': GObject.Object.Notify;
+            'notify::vpn-state': GObject.Object.Notify;
+            'notify::vpn-state': GObject.Object.Notify;
+            'notify::connection': GObject.Object.Notify;
+            'notify::default': GObject.Object.Notify;
+            'notify::default6': GObject.Object.Notify;
+            'notify::devices': GObject.Object.Notify;
+            'notify::dhcp4-config': GObject.Object.Notify;
+            'notify::dhcp4-config': GObject.Object.Notify;
+            'notify::dhcp6-config': GObject.Object.Notify;
+            'notify::dhcp6-config': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::ip4-config': GObject.Object.Notify;
+            'notify::ip4-config': GObject.Object.Notify;
+            'notify::ip6-config': GObject.Object.Notify;
+            'notify::ip6-config': GObject.Object.Notify;
+            'notify::master': GObject.Object.Notify;
+            'notify::specific-object': GObject.Object.Notify;
+            'notify::specific-object': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+            'notify::uuid': GObject.Object.Notify;
+            'notify::vpn': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -21248,14 +22073,17 @@ export namespace NMClient {
             signal: K,
             callback: VPNConnection.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VPNConnection.SignalSignatures>(
             signal: K,
             callback: VPNConnection.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VPNConnection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VPNConnection.SignalSignatures[K]>
+            ...args: VPNConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -21920,7 +22748,15 @@ export namespace NMClient {
 
     namespace WimaxNsp {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::network-type': GObject.Object.Notify;
+            'notify::network-type': GObject.Object.Notify;
+            'notify::signal-quality': GObject.Object.Notify;
+            'notify::signal-quality': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -21973,14 +22809,17 @@ export namespace NMClient {
         // Signals
 
         connect<K extends keyof WimaxNsp.SignalSignatures>(signal: K, callback: WimaxNsp.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WimaxNsp.SignalSignatures>(
             signal: K,
             callback: WimaxNsp.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WimaxNsp.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WimaxNsp.SignalSignatures[K]>
+            ...args: WimaxNsp.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

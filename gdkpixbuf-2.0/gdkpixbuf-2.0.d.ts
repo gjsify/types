@@ -331,7 +331,21 @@ export namespace GdkPixbuf {
     }
     namespace Pixbuf {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::bits-per-sample': GObject.Object.Notify;
+            'notify::bits-per-sample': GObject.Object.Notify;
+            'notify::colorspace': GObject.Object.Notify;
+            'notify::has-alpha': GObject.Object.Notify;
+            'notify::has-alpha': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::n-channels': GObject.Object.Notify;
+            'notify::n-channels': GObject.Object.Notify;
+            'notify::pixel-bytes': GObject.Object.Notify;
+            'notify::pixel-bytes': GObject.Object.Notify;
+            'notify::pixels': GObject.Object.Notify;
+            'notify::rowstride': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -632,8 +646,14 @@ export namespace GdkPixbuf {
         // Signals
 
         connect<K extends keyof Pixbuf.SignalSignatures>(signal: K, callback: Pixbuf.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Pixbuf.SignalSignatures>(signal: K, callback: Pixbuf.SignalSignatures[K]): number;
-        emit<K extends keyof Pixbuf.SignalSignatures>(signal: K, ...args: Parameters<Pixbuf.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Pixbuf.SignalSignatures>(
+            signal: K,
+            ...args: Pixbuf.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1918,14 +1938,17 @@ export namespace GdkPixbuf {
             signal: K,
             callback: PixbufAnimation.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PixbufAnimation.SignalSignatures>(
             signal: K,
             callback: PixbufAnimation.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PixbufAnimation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PixbufAnimation.SignalSignatures[K]>
+            ...args: PixbufAnimation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2124,14 +2147,17 @@ export namespace GdkPixbuf {
             signal: K,
             callback: PixbufAnimationIter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PixbufAnimationIter.SignalSignatures>(
             signal: K,
             callback: PixbufAnimationIter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PixbufAnimationIter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PixbufAnimationIter.SignalSignatures[K]>
+            ...args: PixbufAnimationIter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -2372,14 +2398,17 @@ export namespace GdkPixbuf {
             signal: K,
             callback: PixbufLoader.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PixbufLoader.SignalSignatures>(
             signal: K,
             callback: PixbufLoader.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PixbufLoader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PixbufLoader.SignalSignatures[K]>
+            ...args: PixbufLoader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -2499,19 +2528,24 @@ export namespace GdkPixbuf {
             signal: K,
             callback: PixbufNonAnim.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PixbufNonAnim.SignalSignatures>(
             signal: K,
             callback: PixbufNonAnim.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PixbufNonAnim.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PixbufNonAnim.SignalSignatures[K]>
+            ...args: PixbufNonAnim.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace PixbufSimpleAnim {
         // Signal signatures
-        interface SignalSignatures extends PixbufAnimation.SignalSignatures {}
+        interface SignalSignatures extends PixbufAnimation.SignalSignatures {
+            'notify::loop': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2548,14 +2582,17 @@ export namespace GdkPixbuf {
             signal: K,
             callback: PixbufSimpleAnim.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PixbufSimpleAnim.SignalSignatures>(
             signal: K,
             callback: PixbufSimpleAnim.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PixbufSimpleAnim.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PixbufSimpleAnim.SignalSignatures[K]>
+            ...args: PixbufSimpleAnim.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2602,14 +2639,17 @@ export namespace GdkPixbuf {
             signal: K,
             callback: PixbufSimpleAnimIter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PixbufSimpleAnimIter.SignalSignatures>(
             signal: K,
             callback: PixbufSimpleAnimIter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PixbufSimpleAnimIter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PixbufSimpleAnimIter.SignalSignatures[K]>
+            ...args: PixbufSimpleAnimIter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     type PixbufAnimationClass = typeof PixbufAnimation;

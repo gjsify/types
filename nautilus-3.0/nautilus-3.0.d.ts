@@ -73,7 +73,17 @@ export namespace Nautilus {
     ): void;
     namespace Column {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::attribute': GObject.Object.Notify;
+            'notify::attribute-q': GObject.Object.Notify;
+            'notify::attribute-q': GObject.Object.Notify;
+            'notify::default-sort-order': GObject.Object.Notify;
+            'notify::default-sort-order': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::label': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::xalign': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -122,8 +132,14 @@ export namespace Nautilus {
         // Signals
 
         connect<K extends keyof Column.SignalSignatures>(signal: K, callback: Column.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Column.SignalSignatures>(signal: K, callback: Column.SignalSignatures[K]): number;
-        emit<K extends keyof Column.SignalSignatures>(signal: K, ...args: Parameters<Column.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Column.SignalSignatures>(
+            signal: K,
+            ...args: Column.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Menu {
@@ -149,8 +165,14 @@ export namespace Nautilus {
         // Signals
 
         connect<K extends keyof Menu.SignalSignatures>(signal: K, callback: Menu.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Menu.SignalSignatures>(signal: K, callback: Menu.SignalSignatures[K]): number;
-        emit<K extends keyof Menu.SignalSignatures>(signal: K, ...args: Parameters<Menu.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Menu.SignalSignatures>(
+            signal: K,
+            ...args: Menu.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -168,6 +190,13 @@ export namespace Nautilus {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             activate: Activate;
+            'notify::icon': GObject.Object.Notify;
+            'notify::label': GObject.Object.Notify;
+            'notify::menu': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::priority': GObject.Object.Notify;
+            'notify::sensitive': GObject.Object.Notify;
+            'notify::tip': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -213,14 +242,17 @@ export namespace Nautilus {
         // Signals
 
         connect<K extends keyof MenuItem.SignalSignatures>(signal: K, callback: MenuItem.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MenuItem.SignalSignatures>(
             signal: K,
             callback: MenuItem.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MenuItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MenuItem.SignalSignatures[K]>
+            ...args: MenuItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -248,7 +280,11 @@ export namespace Nautilus {
 
     namespace PropertyPage {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::label': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::page': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -284,14 +320,17 @@ export namespace Nautilus {
             signal: K,
             callback: PropertyPage.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PropertyPage.SignalSignatures>(
             signal: K,
             callback: PropertyPage.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PropertyPage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PropertyPage.SignalSignatures[K]>
+            ...args: PropertyPage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     type ColumnClass = typeof Column;

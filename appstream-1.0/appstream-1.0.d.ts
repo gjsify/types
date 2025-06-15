@@ -2796,14 +2796,17 @@ export namespace AppStream {
         // Signals
 
         connect<K extends keyof Agreement.SignalSignatures>(signal: K, callback: Agreement.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Agreement.SignalSignatures>(
             signal: K,
             callback: Agreement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Agreement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Agreement.SignalSignatures[K]>
+            ...args: Agreement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2866,14 +2869,17 @@ export namespace AppStream {
             signal: K,
             callback: AgreementSection.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AgreementSection.SignalSignatures>(
             signal: K,
             callback: AgreementSection.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AgreementSection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AgreementSection.SignalSignatures[K]>
+            ...args: AgreementSection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2946,14 +2952,17 @@ export namespace AppStream {
         // Signals
 
         connect<K extends keyof Artifact.SignalSignatures>(signal: K, callback: Artifact.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Artifact.SignalSignatures>(
             signal: K,
             callback: Artifact.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Artifact.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Artifact.SignalSignatures[K]>
+            ...args: Artifact.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3061,14 +3070,17 @@ export namespace AppStream {
         // Signals
 
         connect<K extends keyof Branding.SignalSignatures>(signal: K, callback: Branding.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Branding.SignalSignatures>(
             signal: K,
             callback: Branding.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Branding.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Branding.SignalSignatures[K]>
+            ...args: Branding.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3120,8 +3132,14 @@ export namespace AppStream {
         // Signals
 
         connect<K extends keyof Bundle.SignalSignatures>(signal: K, callback: Bundle.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Bundle.SignalSignatures>(signal: K, callback: Bundle.SignalSignatures[K]): number;
-        emit<K extends keyof Bundle.SignalSignatures>(signal: K, ...args: Parameters<Bundle.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Bundle.SignalSignatures>(
+            signal: K,
+            ...args: Bundle.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3149,7 +3167,13 @@ export namespace AppStream {
 
     namespace Category {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::children': GObject.Object.Notify;
+            'notify::icon': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::summary': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3187,14 +3211,17 @@ export namespace AppStream {
         // Signals
 
         connect<K extends keyof Category.SignalSignatures>(signal: K, callback: Category.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Category.SignalSignatures>(
             signal: K,
             callback: Category.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Category.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Category.SignalSignatures[K]>
+            ...args: Category.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3300,14 +3327,17 @@ export namespace AppStream {
         // Signals
 
         connect<K extends keyof Checksum.SignalSignatures>(signal: K, callback: Checksum.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Checksum.SignalSignatures>(
             signal: K,
             callback: Checksum.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Checksum.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Checksum.SignalSignatures[K]>
+            ...args: Checksum.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3335,7 +3365,23 @@ export namespace AppStream {
 
     namespace Component {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::categories': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::icons': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::keywords': GObject.Object.Notify;
+            'notify::kind': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::pkgnames': GObject.Object.Notify;
+            'notify::project-group': GObject.Object.Notify;
+            'notify::project-group': GObject.Object.Notify;
+            'notify::project-license': GObject.Object.Notify;
+            'notify::project-license': GObject.Object.Notify;
+            'notify::screenshots': GObject.Object.Notify;
+            'notify::summary': GObject.Object.Notify;
+            'notify::urls': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3446,14 +3492,17 @@ export namespace AppStream {
         // Signals
 
         connect<K extends keyof Component.SignalSignatures>(signal: K, callback: Component.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Component.SignalSignatures>(
             signal: K,
             callback: Component.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Component.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Component.SignalSignatures[K]>
+            ...args: Component.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4225,7 +4274,9 @@ export namespace AppStream {
 
     namespace ComponentBox {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::flags': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4257,14 +4308,17 @@ export namespace AppStream {
             signal: K,
             callback: ComponentBox.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ComponentBox.SignalSignatures>(
             signal: K,
             callback: ComponentBox.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ComponentBox.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ComponentBox.SignalSignatures[K]>
+            ...args: ComponentBox.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4349,14 +4403,17 @@ export namespace AppStream {
             signal: K,
             callback: ContentRating.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ContentRating.SignalSignatures>(
             signal: K,
             callback: ContentRating.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ContentRating.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContentRating.SignalSignatures[K]>
+            ...args: ContentRating.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -4472,14 +4529,17 @@ export namespace AppStream {
         // Signals
 
         connect<K extends keyof Context.SignalSignatures>(signal: K, callback: Context.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Context.SignalSignatures>(
             signal: K,
             callback: Context.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Context.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Context.SignalSignatures[K]>
+            ...args: Context.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4556,14 +4616,17 @@ export namespace AppStream {
         // Signals
 
         connect<K extends keyof Developer.SignalSignatures>(signal: K, callback: Developer.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Developer.SignalSignatures>(
             signal: K,
             callback: Developer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Developer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Developer.SignalSignatures[K]>
+            ...args: Developer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4613,8 +4676,14 @@ export namespace AppStream {
         // Signals
 
         connect<K extends keyof Icon.SignalSignatures>(signal: K, callback: Icon.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Icon.SignalSignatures>(signal: K, callback: Icon.SignalSignatures[K]): number;
-        emit<K extends keyof Icon.SignalSignatures>(signal: K, ...args: Parameters<Icon.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Icon.SignalSignatures>(
+            signal: K,
+            ...args: Icon.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4694,8 +4763,14 @@ export namespace AppStream {
         // Signals
 
         connect<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
-        emit<K extends keyof Image.SignalSignatures>(signal: K, ...args: Parameters<Image.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Image.SignalSignatures>(
+            signal: K,
+            ...args: Image.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4784,8 +4859,14 @@ export namespace AppStream {
         // Signals
 
         connect<K extends keyof Issue.SignalSignatures>(signal: K, callback: Issue.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Issue.SignalSignatures>(signal: K, callback: Issue.SignalSignatures[K]): number;
-        emit<K extends keyof Issue.SignalSignatures>(signal: K, ...args: Parameters<Issue.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Issue.SignalSignatures>(
+            signal: K,
+            ...args: Issue.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4848,14 +4929,17 @@ export namespace AppStream {
             signal: K,
             callback: Launchable.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Launchable.SignalSignatures>(
             signal: K,
             callback: Launchable.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Launchable.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Launchable.SignalSignatures[K]>
+            ...args: Launchable.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4906,14 +4990,17 @@ export namespace AppStream {
         // Signals
 
         connect<K extends keyof Metadata.SignalSignatures>(signal: K, callback: Metadata.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Metadata.SignalSignatures>(
             signal: K,
             callback: Metadata.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Metadata.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Metadata.SignalSignatures[K]>
+            ...args: Metadata.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -5164,8 +5251,14 @@ export namespace AppStream {
         // Signals
 
         connect<K extends keyof Pool.SignalSignatures>(signal: K, callback: Pool.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Pool.SignalSignatures>(signal: K, callback: Pool.SignalSignatures[K]): number;
-        emit<K extends keyof Pool.SignalSignatures>(signal: K, ...args: Parameters<Pool.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Pool.SignalSignatures>(
+            signal: K,
+            ...args: Pool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -5387,14 +5480,17 @@ export namespace AppStream {
         // Signals
 
         connect<K extends keyof Provided.SignalSignatures>(signal: K, callback: Provided.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Provided.SignalSignatures>(
             signal: K,
             callback: Provided.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Provided.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Provided.SignalSignatures[K]>
+            ...args: Provided.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5450,14 +5546,17 @@ export namespace AppStream {
         // Signals
 
         connect<K extends keyof Reference.SignalSignatures>(signal: K, callback: Reference.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Reference.SignalSignatures>(
             signal: K,
             callback: Reference.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Reference.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Reference.SignalSignatures[K]>
+            ...args: Reference.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5521,14 +5620,17 @@ export namespace AppStream {
         // Signals
 
         connect<K extends keyof Relation.SignalSignatures>(signal: K, callback: Relation.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Relation.SignalSignatures>(
             signal: K,
             callback: Relation.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Relation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Relation.SignalSignatures[K]>
+            ...args: Relation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -5698,14 +5800,17 @@ export namespace AppStream {
             signal: K,
             callback: RelationCheckResult.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RelationCheckResult.SignalSignatures>(
             signal: K,
             callback: RelationCheckResult.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RelationCheckResult.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RelationCheckResult.SignalSignatures[K]>
+            ...args: RelationCheckResult.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5772,14 +5877,17 @@ export namespace AppStream {
         // Signals
 
         connect<K extends keyof Release.SignalSignatures>(signal: K, callback: Release.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Release.SignalSignatures>(
             signal: K,
             callback: Release.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Release.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Release.SignalSignatures[K]>
+            ...args: Release.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5967,14 +6075,17 @@ export namespace AppStream {
             signal: K,
             callback: ReleaseList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ReleaseList.SignalSignatures>(
             signal: K,
             callback: ReleaseList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ReleaseList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ReleaseList.SignalSignatures[K]>
+            ...args: ReleaseList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -6063,7 +6174,21 @@ export namespace AppStream {
 
     namespace Review {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::date': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::flags': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::locale': GObject.Object.Notify;
+            'notify::priority': GObject.Object.Notify;
+            'notify::rating': GObject.Object.Notify;
+            'notify::reviewer-id': GObject.Object.Notify;
+            'notify::reviewer-id': GObject.Object.Notify;
+            'notify::reviewer-name': GObject.Object.Notify;
+            'notify::reviewer-name': GObject.Object.Notify;
+            'notify::summary': GObject.Object.Notify;
+            'notify::version': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6131,8 +6256,14 @@ export namespace AppStream {
         // Signals
 
         connect<K extends keyof Review.SignalSignatures>(signal: K, callback: Review.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Review.SignalSignatures>(signal: K, callback: Review.SignalSignatures[K]): number;
-        emit<K extends keyof Review.SignalSignatures>(signal: K, ...args: Parameters<Review.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Review.SignalSignatures>(
+            signal: K,
+            ...args: Review.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -6305,14 +6436,17 @@ export namespace AppStream {
             signal: K,
             callback: Screenshot.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Screenshot.SignalSignatures>(
             signal: K,
             callback: Screenshot.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Screenshot.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Screenshot.SignalSignatures[K]>
+            ...args: Screenshot.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -6445,14 +6579,17 @@ export namespace AppStream {
         // Signals
 
         connect<K extends keyof Suggested.SignalSignatures>(signal: K, callback: Suggested.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Suggested.SignalSignatures>(
             signal: K,
             callback: Suggested.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Suggested.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Suggested.SignalSignatures[K]>
+            ...args: Suggested.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -6512,14 +6649,17 @@ export namespace AppStream {
             signal: K,
             callback: SystemInfo.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SystemInfo.SignalSignatures>(
             signal: K,
             callback: SystemInfo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SystemInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SystemInfo.SignalSignatures[K]>
+            ...args: SystemInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -6659,14 +6799,17 @@ export namespace AppStream {
             signal: K,
             callback: Translation.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Translation.SignalSignatures>(
             signal: K,
             callback: Translation.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Translation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Translation.SignalSignatures[K]>
+            ...args: Translation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -6727,14 +6870,17 @@ export namespace AppStream {
         // Signals
 
         connect<K extends keyof Validator.SignalSignatures>(signal: K, callback: Validator.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Validator.SignalSignatures>(
             signal: K,
             callback: Validator.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Validator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Validator.SignalSignatures[K]>
+            ...args: Validator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -6880,14 +7026,17 @@ export namespace AppStream {
             signal: K,
             callback: ValidatorIssue.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValidatorIssue.SignalSignatures>(
             signal: K,
             callback: ValidatorIssue.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValidatorIssue.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValidatorIssue.SignalSignatures[K]>
+            ...args: ValidatorIssue.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -6993,8 +7142,14 @@ export namespace AppStream {
         // Signals
 
         connect<K extends keyof Video.SignalSignatures>(signal: K, callback: Video.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Video.SignalSignatures>(signal: K, callback: Video.SignalSignatures[K]): number;
-        emit<K extends keyof Video.SignalSignatures>(signal: K, ...args: Parameters<Video.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Video.SignalSignatures>(
+            signal: K,
+            ...args: Video.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

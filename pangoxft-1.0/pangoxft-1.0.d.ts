@@ -153,7 +153,10 @@ export namespace PangoXft {
     }
     namespace Font {
         // Signal signatures
-        interface SignalSignatures extends PangoFc.Font.SignalSignatures {}
+        interface SignalSignatures extends PangoFc.Font.SignalSignatures {
+            'notify::fontmap': GObject.Object.Notify;
+            'notify::pattern': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -176,8 +179,14 @@ export namespace PangoXft {
         // Signals
 
         connect<K extends keyof Font.SignalSignatures>(signal: K, callback: Font.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Font.SignalSignatures>(signal: K, callback: Font.SignalSignatures[K]): number;
-        emit<K extends keyof Font.SignalSignatures>(signal: K, ...args: Parameters<Font.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Font.SignalSignatures>(
+            signal: K,
+            ...args: Font.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -214,7 +223,12 @@ export namespace PangoXft {
 
     namespace FontMap {
         // Signal signatures
-        interface SignalSignatures extends PangoFc.FontMap.SignalSignatures {}
+        interface SignalSignatures extends PangoFc.FontMap.SignalSignatures {
+            'notify::item-type': GObject.Object.Notify;
+            'notify::item-type': GObject.Object.Notify;
+            'notify::n-items': GObject.Object.Notify;
+            'notify::n-items': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -240,14 +254,17 @@ export namespace PangoXft {
         // Signals
 
         connect<K extends keyof FontMap.SignalSignatures>(signal: K, callback: FontMap.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FontMap.SignalSignatures>(
             signal: K,
             callback: FontMap.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FontMap.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FontMap.SignalSignatures[K]>
+            ...args: FontMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -787,7 +804,10 @@ export namespace PangoXft {
 
     namespace Renderer {
         // Signal signatures
-        interface SignalSignatures extends Pango.Renderer.SignalSignatures {}
+        interface SignalSignatures extends Pango.Renderer.SignalSignatures {
+            'notify::display': GObject.Object.Notify;
+            'notify::screen': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -822,14 +842,17 @@ export namespace PangoXft {
         // Signals
 
         connect<K extends keyof Renderer.SignalSignatures>(signal: K, callback: Renderer.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Renderer.SignalSignatures>(
             signal: K,
             callback: Renderer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Renderer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Renderer.SignalSignatures[K]>
+            ...args: Renderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 

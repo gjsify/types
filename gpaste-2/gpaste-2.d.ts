@@ -367,6 +367,24 @@ export namespace GPaste {
             'switch-history': SwitchHistory;
             tracking: Tracking;
             update: Update;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -397,8 +415,14 @@ export namespace GPaste {
         // Signals
 
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2107,14 +2131,17 @@ export namespace GPaste {
             signal: K,
             callback: ClientItem.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientItem.SignalSignatures>(
             signal: K,
             callback: ClientItem.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientItem.SignalSignatures[K]>
+            ...args: ClientItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2138,6 +2165,24 @@ export namespace GPaste {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
             'accelerator-activated': AcceleratorActivated;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -2174,14 +2219,17 @@ export namespace GPaste {
             signal: K,
             callback: GnomeShellClient.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GnomeShellClient.SignalSignatures>(
             signal: K,
             callback: GnomeShellClient.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GnomeShellClient.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GnomeShellClient.SignalSignatures[K]>
+            ...args: GnomeShellClient.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -3061,6 +3109,24 @@ export namespace GPaste {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
             'active-changed': ActiveChanged;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -3097,14 +3163,17 @@ export namespace GPaste {
             signal: K,
             callback: ScreensaverClient.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ScreensaverClient.SignalSignatures>(
             signal: K,
             callback: ScreensaverClient.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ScreensaverClient.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ScreensaverClient.SignalSignatures[K]>
+            ...args: ScreensaverClient.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -3919,14 +3988,17 @@ export namespace GPaste {
         // Signals
 
         connect<K extends keyof Settings.SignalSignatures>(signal: K, callback: Settings.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Settings.SignalSignatures>(
             signal: K,
             callback: Settings.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Settings.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Settings.SignalSignatures[K]>
+            ...args: Settings.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

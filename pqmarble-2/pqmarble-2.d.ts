@@ -35,7 +35,9 @@ export namespace PQMarble {
     function add_css_provider_from_resource(resource: string, priority: number, display: Gdk.Display): void;
     namespace Settings {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::schema': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -61,14 +63,17 @@ export namespace PQMarble {
         // Signals
 
         connect<K extends keyof Settings.SignalSignatures>(signal: K, callback: Settings.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Settings.SignalSignatures>(
             signal: K,
             callback: Settings.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Settings.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Settings.SignalSignatures[K]>
+            ...args: Settings.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

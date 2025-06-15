@@ -1184,14 +1184,17 @@ export namespace EBookContacts {
             signal: K,
             callback: BookIndicesUpdater.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BookIndicesUpdater.SignalSignatures>(
             signal: K,
             callback: BookIndicesUpdater.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BookIndicesUpdater.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BookIndicesUpdater.SignalSignatures[K]>
+            ...args: BookIndicesUpdater.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1238,7 +1241,260 @@ export namespace EBookContacts {
 
     namespace Contact {
         // Signal signatures
-        interface SignalSignatures extends VCard.SignalSignatures {}
+        interface SignalSignatures extends VCard.SignalSignatures {
+            'notify::rev': GObject.Object.Notify;
+            'notify::address': GObject.Object.Notify;
+            'notify::address-home': GObject.Object.Notify;
+            'notify::address-home': GObject.Object.Notify;
+            'notify::address-label-home': GObject.Object.Notify;
+            'notify::address-label-home': GObject.Object.Notify;
+            'notify::address-label-other': GObject.Object.Notify;
+            'notify::address-label-other': GObject.Object.Notify;
+            'notify::address-label-work': GObject.Object.Notify;
+            'notify::address-label-work': GObject.Object.Notify;
+            'notify::address-other': GObject.Object.Notify;
+            'notify::address-other': GObject.Object.Notify;
+            'notify::address-work': GObject.Object.Notify;
+            'notify::address-work': GObject.Object.Notify;
+            'notify::anniversary': GObject.Object.Notify;
+            'notify::assistant': GObject.Object.Notify;
+            'notify::assistant-phone': GObject.Object.Notify;
+            'notify::assistant-phone': GObject.Object.Notify;
+            'notify::birth-date': GObject.Object.Notify;
+            'notify::birth-date': GObject.Object.Notify;
+            'notify::blog-url': GObject.Object.Notify;
+            'notify::blog-url': GObject.Object.Notify;
+            'notify::book-uid': GObject.Object.Notify;
+            'notify::book-uid': GObject.Object.Notify;
+            'notify::business-fax': GObject.Object.Notify;
+            'notify::business-fax': GObject.Object.Notify;
+            'notify::business-phone': GObject.Object.Notify;
+            'notify::business-phone': GObject.Object.Notify;
+            'notify::business-phone-2': GObject.Object.Notify;
+            'notify::business-phone2': GObject.Object.Notify;
+            'notify::callback-phone': GObject.Object.Notify;
+            'notify::callback-phone': GObject.Object.Notify;
+            'notify::caluri': GObject.Object.Notify;
+            'notify::car-phone': GObject.Object.Notify;
+            'notify::car-phone': GObject.Object.Notify;
+            'notify::categories': GObject.Object.Notify;
+            'notify::category-list': GObject.Object.Notify;
+            'notify::category-list': GObject.Object.Notify;
+            'notify::company-phone': GObject.Object.Notify;
+            'notify::company-phone': GObject.Object.Notify;
+            'notify::email': GObject.Object.Notify;
+            'notify::email-1': GObject.Object.Notify;
+            'notify::email1': GObject.Object.Notify;
+            'notify::email-2': GObject.Object.Notify;
+            'notify::email2': GObject.Object.Notify;
+            'notify::email-3': GObject.Object.Notify;
+            'notify::email3': GObject.Object.Notify;
+            'notify::email-4': GObject.Object.Notify;
+            'notify::email4': GObject.Object.Notify;
+            'notify::family-name': GObject.Object.Notify;
+            'notify::family-name': GObject.Object.Notify;
+            'notify::fburl': GObject.Object.Notify;
+            'notify::file-as': GObject.Object.Notify;
+            'notify::file-as': GObject.Object.Notify;
+            'notify::full-name': GObject.Object.Notify;
+            'notify::full-name': GObject.Object.Notify;
+            'notify::geo': GObject.Object.Notify;
+            'notify::given-name': GObject.Object.Notify;
+            'notify::given-name': GObject.Object.Notify;
+            'notify::home-fax': GObject.Object.Notify;
+            'notify::home-fax': GObject.Object.Notify;
+            'notify::home-phone': GObject.Object.Notify;
+            'notify::home-phone': GObject.Object.Notify;
+            'notify::home-phone-2': GObject.Object.Notify;
+            'notify::home-phone2': GObject.Object.Notify;
+            'notify::homepage-url': GObject.Object.Notify;
+            'notify::homepage-url': GObject.Object.Notify;
+            'notify::icscalendar': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::im-aim': GObject.Object.Notify;
+            'notify::im-aim': GObject.Object.Notify;
+            'notify::im-aim-home-1': GObject.Object.Notify;
+            'notify::im-aim-home1': GObject.Object.Notify;
+            'notify::im-aim-home-2': GObject.Object.Notify;
+            'notify::im-aim-home2': GObject.Object.Notify;
+            'notify::im-aim-home-3': GObject.Object.Notify;
+            'notify::im-aim-home3': GObject.Object.Notify;
+            'notify::im-aim-work-1': GObject.Object.Notify;
+            'notify::im-aim-work1': GObject.Object.Notify;
+            'notify::im-aim-work-2': GObject.Object.Notify;
+            'notify::im-aim-work2': GObject.Object.Notify;
+            'notify::im-aim-work-3': GObject.Object.Notify;
+            'notify::im-aim-work3': GObject.Object.Notify;
+            'notify::im-gadugadu': GObject.Object.Notify;
+            'notify::im-gadugadu': GObject.Object.Notify;
+            'notify::im-gadugadu-home-1': GObject.Object.Notify;
+            'notify::im-gadugadu-home1': GObject.Object.Notify;
+            'notify::im-gadugadu-home-2': GObject.Object.Notify;
+            'notify::im-gadugadu-home2': GObject.Object.Notify;
+            'notify::im-gadugadu-home-3': GObject.Object.Notify;
+            'notify::im-gadugadu-home3': GObject.Object.Notify;
+            'notify::im-gadugadu-work-1': GObject.Object.Notify;
+            'notify::im-gadugadu-work1': GObject.Object.Notify;
+            'notify::im-gadugadu-work-2': GObject.Object.Notify;
+            'notify::im-gadugadu-work2': GObject.Object.Notify;
+            'notify::im-gadugadu-work-3': GObject.Object.Notify;
+            'notify::im-gadugadu-work3': GObject.Object.Notify;
+            'notify::im-google-talk': GObject.Object.Notify;
+            'notify::im-google-talk': GObject.Object.Notify;
+            'notify::im-google-talk-home-1': GObject.Object.Notify;
+            'notify::im-google-talk-home1': GObject.Object.Notify;
+            'notify::im-google-talk-home-2': GObject.Object.Notify;
+            'notify::im-google-talk-home2': GObject.Object.Notify;
+            'notify::im-google-talk-home-3': GObject.Object.Notify;
+            'notify::im-google-talk-home3': GObject.Object.Notify;
+            'notify::im-google-talk-work-1': GObject.Object.Notify;
+            'notify::im-google-talk-work1': GObject.Object.Notify;
+            'notify::im-google-talk-work-2': GObject.Object.Notify;
+            'notify::im-google-talk-work2': GObject.Object.Notify;
+            'notify::im-google-talk-work-3': GObject.Object.Notify;
+            'notify::im-google-talk-work3': GObject.Object.Notify;
+            'notify::im-groupwise': GObject.Object.Notify;
+            'notify::im-groupwise': GObject.Object.Notify;
+            'notify::im-groupwise-home-1': GObject.Object.Notify;
+            'notify::im-groupwise-home1': GObject.Object.Notify;
+            'notify::im-groupwise-home-2': GObject.Object.Notify;
+            'notify::im-groupwise-home2': GObject.Object.Notify;
+            'notify::im-groupwise-home-3': GObject.Object.Notify;
+            'notify::im-groupwise-home3': GObject.Object.Notify;
+            'notify::im-groupwise-work-1': GObject.Object.Notify;
+            'notify::im-groupwise-work1': GObject.Object.Notify;
+            'notify::im-groupwise-work-2': GObject.Object.Notify;
+            'notify::im-groupwise-work2': GObject.Object.Notify;
+            'notify::im-groupwise-work-3': GObject.Object.Notify;
+            'notify::im-groupwise-work3': GObject.Object.Notify;
+            'notify::im-icq': GObject.Object.Notify;
+            'notify::im-icq': GObject.Object.Notify;
+            'notify::im-icq-home-1': GObject.Object.Notify;
+            'notify::im-icq-home1': GObject.Object.Notify;
+            'notify::im-icq-home-2': GObject.Object.Notify;
+            'notify::im-icq-home2': GObject.Object.Notify;
+            'notify::im-icq-home-3': GObject.Object.Notify;
+            'notify::im-icq-home3': GObject.Object.Notify;
+            'notify::im-icq-work-1': GObject.Object.Notify;
+            'notify::im-icq-work1': GObject.Object.Notify;
+            'notify::im-icq-work-2': GObject.Object.Notify;
+            'notify::im-icq-work2': GObject.Object.Notify;
+            'notify::im-icq-work-3': GObject.Object.Notify;
+            'notify::im-icq-work3': GObject.Object.Notify;
+            'notify::im-jabber': GObject.Object.Notify;
+            'notify::im-jabber': GObject.Object.Notify;
+            'notify::im-jabber-home-1': GObject.Object.Notify;
+            'notify::im-jabber-home1': GObject.Object.Notify;
+            'notify::im-jabber-home-2': GObject.Object.Notify;
+            'notify::im-jabber-home2': GObject.Object.Notify;
+            'notify::im-jabber-home-3': GObject.Object.Notify;
+            'notify::im-jabber-home3': GObject.Object.Notify;
+            'notify::im-jabber-work-1': GObject.Object.Notify;
+            'notify::im-jabber-work1': GObject.Object.Notify;
+            'notify::im-jabber-work-2': GObject.Object.Notify;
+            'notify::im-jabber-work2': GObject.Object.Notify;
+            'notify::im-jabber-work-3': GObject.Object.Notify;
+            'notify::im-jabber-work3': GObject.Object.Notify;
+            'notify::im-matrix': GObject.Object.Notify;
+            'notify::im-matrix': GObject.Object.Notify;
+            'notify::im-matrix-home-1': GObject.Object.Notify;
+            'notify::im-matrix-home1': GObject.Object.Notify;
+            'notify::im-matrix-home-2': GObject.Object.Notify;
+            'notify::im-matrix-home2': GObject.Object.Notify;
+            'notify::im-matrix-home-3': GObject.Object.Notify;
+            'notify::im-matrix-home3': GObject.Object.Notify;
+            'notify::im-matrix-work-1': GObject.Object.Notify;
+            'notify::im-matrix-work1': GObject.Object.Notify;
+            'notify::im-matrix-work-2': GObject.Object.Notify;
+            'notify::im-matrix-work2': GObject.Object.Notify;
+            'notify::im-matrix-work-3': GObject.Object.Notify;
+            'notify::im-matrix-work3': GObject.Object.Notify;
+            'notify::im-msn': GObject.Object.Notify;
+            'notify::im-msn': GObject.Object.Notify;
+            'notify::im-msn-home-1': GObject.Object.Notify;
+            'notify::im-msn-home1': GObject.Object.Notify;
+            'notify::im-msn-home-2': GObject.Object.Notify;
+            'notify::im-msn-home2': GObject.Object.Notify;
+            'notify::im-msn-home-3': GObject.Object.Notify;
+            'notify::im-msn-home3': GObject.Object.Notify;
+            'notify::im-msn-work-1': GObject.Object.Notify;
+            'notify::im-msn-work1': GObject.Object.Notify;
+            'notify::im-msn-work-2': GObject.Object.Notify;
+            'notify::im-msn-work2': GObject.Object.Notify;
+            'notify::im-msn-work-3': GObject.Object.Notify;
+            'notify::im-msn-work3': GObject.Object.Notify;
+            'notify::im-skype': GObject.Object.Notify;
+            'notify::im-skype': GObject.Object.Notify;
+            'notify::im-skype-home-1': GObject.Object.Notify;
+            'notify::im-skype-home1': GObject.Object.Notify;
+            'notify::im-skype-home-2': GObject.Object.Notify;
+            'notify::im-skype-home2': GObject.Object.Notify;
+            'notify::im-skype-home-3': GObject.Object.Notify;
+            'notify::im-skype-home3': GObject.Object.Notify;
+            'notify::im-skype-work-1': GObject.Object.Notify;
+            'notify::im-skype-work1': GObject.Object.Notify;
+            'notify::im-skype-work-2': GObject.Object.Notify;
+            'notify::im-skype-work2': GObject.Object.Notify;
+            'notify::im-skype-work-3': GObject.Object.Notify;
+            'notify::im-skype-work3': GObject.Object.Notify;
+            'notify::im-twitter': GObject.Object.Notify;
+            'notify::im-twitter': GObject.Object.Notify;
+            'notify::im-yahoo': GObject.Object.Notify;
+            'notify::im-yahoo': GObject.Object.Notify;
+            'notify::im-yahoo-home-1': GObject.Object.Notify;
+            'notify::im-yahoo-home1': GObject.Object.Notify;
+            'notify::im-yahoo-home-2': GObject.Object.Notify;
+            'notify::im-yahoo-home2': GObject.Object.Notify;
+            'notify::im-yahoo-home-3': GObject.Object.Notify;
+            'notify::im-yahoo-home3': GObject.Object.Notify;
+            'notify::im-yahoo-work-1': GObject.Object.Notify;
+            'notify::im-yahoo-work1': GObject.Object.Notify;
+            'notify::im-yahoo-work-2': GObject.Object.Notify;
+            'notify::im-yahoo-work2': GObject.Object.Notify;
+            'notify::im-yahoo-work-3': GObject.Object.Notify;
+            'notify::im-yahoo-work3': GObject.Object.Notify;
+            'notify::isdn-phone': GObject.Object.Notify;
+            'notify::isdn-phone': GObject.Object.Notify;
+            'notify::list': GObject.Object.Notify;
+            'notify::list-show-addresses': GObject.Object.Notify;
+            'notify::list-show-addresses': GObject.Object.Notify;
+            'notify::logo': GObject.Object.Notify;
+            'notify::mailer': GObject.Object.Notify;
+            'notify::manager': GObject.Object.Notify;
+            'notify::mobile-phone': GObject.Object.Notify;
+            'notify::mobile-phone': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::name-or-org': GObject.Object.Notify;
+            'notify::name-or-org': GObject.Object.Notify;
+            'notify::nickname': GObject.Object.Notify;
+            'notify::note': GObject.Object.Notify;
+            'notify::office': GObject.Object.Notify;
+            'notify::org': GObject.Object.Notify;
+            'notify::org-unit': GObject.Object.Notify;
+            'notify::org-unit': GObject.Object.Notify;
+            'notify::other-fax': GObject.Object.Notify;
+            'notify::other-fax': GObject.Object.Notify;
+            'notify::other-phone': GObject.Object.Notify;
+            'notify::other-phone': GObject.Object.Notify;
+            'notify::pager': GObject.Object.Notify;
+            'notify::pgp-cert': GObject.Object.Notify;
+            'notify::phone': GObject.Object.Notify;
+            'notify::photo': GObject.Object.Notify;
+            'notify::primary-phone': GObject.Object.Notify;
+            'notify::primary-phone': GObject.Object.Notify;
+            'notify::radio': GObject.Object.Notify;
+            'notify::role': GObject.Object.Notify;
+            'notify::sip': GObject.Object.Notify;
+            'notify::spouse': GObject.Object.Notify;
+            'notify::telex': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::tty': GObject.Object.Notify;
+            'notify::video-url': GObject.Object.Notify;
+            'notify::video-url': GObject.Object.Notify;
+            'notify::wants-html': GObject.Object.Notify;
+            'notify::wants-html': GObject.Object.Notify;
+            'notify::x509-cert': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2021,14 +2277,17 @@ export namespace EBookContacts {
         // Signals
 
         connect<K extends keyof Contact.SignalSignatures>(signal: K, callback: Contact.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Contact.SignalSignatures>(
             signal: K,
             callback: Contact.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Contact.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Contact.SignalSignatures[K]>
+            ...args: Contact.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2132,7 +2391,13 @@ export namespace EBookContacts {
 
     namespace SourceBackendSummarySetup {
         // Signal signatures
-        interface SignalSignatures extends EDataServer.SourceExtension.SignalSignatures {}
+        interface SignalSignatures extends EDataServer.SourceExtension.SignalSignatures {
+            'notify::indexed-fields': GObject.Object.Notify;
+            'notify::indexed-fields': GObject.Object.Notify;
+            'notify::summary-fields': GObject.Object.Notify;
+            'notify::summary-fields': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2174,14 +2439,17 @@ export namespace EBookContacts {
             signal: K,
             callback: SourceBackendSummarySetup.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceBackendSummarySetup.SignalSignatures>(
             signal: K,
             callback: SourceBackendSummarySetup.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceBackendSummarySetup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceBackendSummarySetup.SignalSignatures[K]>
+            ...args: SourceBackendSummarySetup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2256,8 +2524,14 @@ export namespace EBookContacts {
         // Signals
 
         connect<K extends keyof VCard.SignalSignatures>(signal: K, callback: VCard.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VCard.SignalSignatures>(signal: K, callback: VCard.SignalSignatures[K]): number;
-        emit<K extends keyof VCard.SignalSignatures>(signal: K, ...args: Parameters<VCard.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof VCard.SignalSignatures>(
+            signal: K,
+            ...args: VCard.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 

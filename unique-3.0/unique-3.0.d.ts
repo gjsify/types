@@ -81,6 +81,12 @@ export namespace Unique {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'message-received': MessageReceived;
+            'notify::is-running': GObject.Object.Notify;
+            'notify::is-running': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::screen': GObject.Object.Notify;
+            'notify::startup-id': GObject.Object.Notify;
+            'notify::startup-id': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -147,8 +153,14 @@ export namespace Unique {
         // Signals
 
         connect<K extends keyof App.SignalSignatures>(signal: K, callback: App.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof App.SignalSignatures>(signal: K, callback: App.SignalSignatures[K]): number;
-        emit<K extends keyof App.SignalSignatures>(signal: K, ...args: Parameters<App.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof App.SignalSignatures>(
+            signal: K,
+            ...args: App.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -216,14 +228,17 @@ export namespace Unique {
         // Signals
 
         connect<K extends keyof Backend.SignalSignatures>(signal: K, callback: Backend.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Backend.SignalSignatures>(
             signal: K,
             callback: Backend.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Backend.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Backend.SignalSignatures[K]>
+            ...args: Backend.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 

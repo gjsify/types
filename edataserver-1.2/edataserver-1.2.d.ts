@@ -2668,6 +2668,13 @@ export namespace EDataServer {
             'backend-error': BackendError;
             'backend-property-changed': BackendPropertyChanged;
             opened: Opened;
+            'notify::capabilities': GObject.Object.Notify;
+            'notify::main-context': GObject.Object.Notify;
+            'notify::main-context': GObject.Object.Notify;
+            'notify::online': GObject.Object.Notify;
+            'notify::opened': GObject.Object.Notify;
+            'notify::readonly': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -2733,8 +2740,14 @@ export namespace EDataServer {
         // Signals
 
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -3456,7 +3469,9 @@ export namespace EDataServer {
 
     namespace Extension {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::extensible': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3485,14 +3500,17 @@ export namespace EDataServer {
         // Signals
 
         connect<K extends keyof Extension.SignalSignatures>(signal: K, callback: Extension.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Extension.SignalSignatures>(
             signal: K,
             callback: Extension.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Extension.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Extension.SignalSignatures[K]>
+            ...args: Extension.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3505,7 +3523,35 @@ export namespace EDataServer {
 
     namespace GDataSession {
         // Signal signatures
-        interface SignalSignatures extends SoupSession.SignalSignatures {}
+        interface SignalSignatures extends SoupSession.SignalSignatures {
+            'notify::credentials': GObject.Object.Notify;
+            'notify::force-http1': GObject.Object.Notify;
+            'notify::force-http1': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+            'notify::accept-language': GObject.Object.Notify;
+            'notify::accept-language': GObject.Object.Notify;
+            'notify::accept-language-auto': GObject.Object.Notify;
+            'notify::accept-language-auto': GObject.Object.Notify;
+            'notify::idle-timeout': GObject.Object.Notify;
+            'notify::idle-timeout': GObject.Object.Notify;
+            'notify::local-address': GObject.Object.Notify;
+            'notify::local-address': GObject.Object.Notify;
+            'notify::max-conns': GObject.Object.Notify;
+            'notify::max-conns': GObject.Object.Notify;
+            'notify::max-conns-per-host': GObject.Object.Notify;
+            'notify::max-conns-per-host': GObject.Object.Notify;
+            'notify::proxy-resolver': GObject.Object.Notify;
+            'notify::proxy-resolver': GObject.Object.Notify;
+            'notify::remote-connectable': GObject.Object.Notify;
+            'notify::remote-connectable': GObject.Object.Notify;
+            'notify::timeout': GObject.Object.Notify;
+            'notify::tls-database': GObject.Object.Notify;
+            'notify::tls-database': GObject.Object.Notify;
+            'notify::tls-interaction': GObject.Object.Notify;
+            'notify::tls-interaction': GObject.Object.Notify;
+            'notify::user-agent': GObject.Object.Notify;
+            'notify::user-agent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3536,14 +3582,17 @@ export namespace EDataServer {
             signal: K,
             callback: GDataSession.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GDataSession.SignalSignatures>(
             signal: K,
             callback: GDataSession.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GDataSession.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GDataSession.SignalSignatures[K]>
+            ...args: GDataSession.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3720,7 +3769,9 @@ export namespace EDataServer {
 
     namespace Module {
         // Signal signatures
-        interface SignalSignatures extends GObject.TypeModule.SignalSignatures {}
+        interface SignalSignatures extends GObject.TypeModule.SignalSignatures {
+            'notify::filename': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3754,8 +3805,14 @@ export namespace EDataServer {
         // Signals
 
         connect<K extends keyof Module.SignalSignatures>(signal: K, callback: Module.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Module.SignalSignatures>(signal: K, callback: Module.SignalSignatures[K]): number;
-        emit<K extends keyof Module.SignalSignatures>(signal: K, ...args: Parameters<Module.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Module.SignalSignatures>(
+            signal: K,
+            ...args: Module.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -4277,7 +4334,15 @@ export namespace EDataServer {
 
     namespace NetworkMonitor {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::gio-name': GObject.Object.Notify;
+            'notify::gio-name': GObject.Object.Notify;
+            'notify::connectivity': GObject.Object.Notify;
+            'notify::network-available': GObject.Object.Notify;
+            'notify::network-available': GObject.Object.Notify;
+            'notify::network-metered': GObject.Object.Notify;
+            'notify::network-metered': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4322,14 +4387,17 @@ export namespace EDataServer {
             signal: K,
             callback: NetworkMonitor.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NetworkMonitor.SignalSignatures>(
             signal: K,
             callback: NetworkMonitor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NetworkMonitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NetworkMonitor.SignalSignatures[K]>
+            ...args: NetworkMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -5161,7 +5229,9 @@ export namespace EDataServer {
 
     namespace OAuth2ServiceBase {
         // Signal signatures
-        interface SignalSignatures extends Extension.SignalSignatures {}
+        interface SignalSignatures extends Extension.SignalSignatures {
+            'notify::extensible': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5183,19 +5253,24 @@ export namespace EDataServer {
             signal: K,
             callback: OAuth2ServiceBase.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OAuth2ServiceBase.SignalSignatures>(
             signal: K,
             callback: OAuth2ServiceBase.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OAuth2ServiceBase.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OAuth2ServiceBase.SignalSignatures[K]>
+            ...args: OAuth2ServiceBase.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace OAuth2ServiceGoogle {
         // Signal signatures
-        interface SignalSignatures extends OAuth2ServiceBase.SignalSignatures {}
+        interface SignalSignatures extends OAuth2ServiceBase.SignalSignatures {
+            'notify::extensible': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5217,14 +5292,17 @@ export namespace EDataServer {
             signal: K,
             callback: OAuth2ServiceGoogle.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OAuth2ServiceGoogle.SignalSignatures>(
             signal: K,
             callback: OAuth2ServiceGoogle.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OAuth2ServiceGoogle.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OAuth2ServiceGoogle.SignalSignatures[K]>
+            ...args: OAuth2ServiceGoogle.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -6108,7 +6186,9 @@ export namespace EDataServer {
 
     namespace OAuth2ServiceOutlook {
         // Signal signatures
-        interface SignalSignatures extends OAuth2ServiceBase.SignalSignatures {}
+        interface SignalSignatures extends OAuth2ServiceBase.SignalSignatures {
+            'notify::extensible': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6130,14 +6210,17 @@ export namespace EDataServer {
             signal: K,
             callback: OAuth2ServiceOutlook.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OAuth2ServiceOutlook.SignalSignatures>(
             signal: K,
             callback: OAuth2ServiceOutlook.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OAuth2ServiceOutlook.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OAuth2ServiceOutlook.SignalSignatures[K]>
+            ...args: OAuth2ServiceOutlook.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -7021,7 +7104,9 @@ export namespace EDataServer {
 
     namespace OAuth2ServiceYahoo {
         // Signal signatures
-        interface SignalSignatures extends OAuth2ServiceBase.SignalSignatures {}
+        interface SignalSignatures extends OAuth2ServiceBase.SignalSignatures {
+            'notify::extensible': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -7043,14 +7128,17 @@ export namespace EDataServer {
             signal: K,
             callback: OAuth2ServiceYahoo.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OAuth2ServiceYahoo.SignalSignatures>(
             signal: K,
             callback: OAuth2ServiceYahoo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OAuth2ServiceYahoo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OAuth2ServiceYahoo.SignalSignatures[K]>
+            ...args: OAuth2ServiceYahoo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -7962,14 +8050,17 @@ export namespace EDataServer {
             signal: K,
             callback: OAuth2Services.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OAuth2Services.SignalSignatures>(
             signal: K,
             callback: OAuth2Services.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OAuth2Services.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OAuth2Services.SignalSignatures[K]>
+            ...args: OAuth2Services.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -8498,7 +8589,18 @@ export namespace EDataServer {
 
     namespace SoupAuthBearer {
         // Signal signatures
-        interface SignalSignatures extends Soup.Auth.SignalSignatures {}
+        interface SignalSignatures extends Soup.Auth.SignalSignatures {
+            'notify::authority': GObject.Object.Notify;
+            'notify::is-authenticated': GObject.Object.Notify;
+            'notify::is-authenticated': GObject.Object.Notify;
+            'notify::is-cancelled': GObject.Object.Notify;
+            'notify::is-cancelled': GObject.Object.Notify;
+            'notify::is-for-proxy': GObject.Object.Notify;
+            'notify::is-for-proxy': GObject.Object.Notify;
+            'notify::realm': GObject.Object.Notify;
+            'notify::scheme-name': GObject.Object.Notify;
+            'notify::scheme-name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8524,14 +8626,17 @@ export namespace EDataServer {
             signal: K,
             callback: SoupAuthBearer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SoupAuthBearer.SignalSignatures>(
             signal: K,
             callback: SoupAuthBearer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SoupAuthBearer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SoupAuthBearer.SignalSignatures[K]>
+            ...args: SoupAuthBearer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -8551,7 +8656,35 @@ export namespace EDataServer {
 
     namespace SoupSession {
         // Signal signatures
-        interface SignalSignatures extends Soup.Session.SignalSignatures {}
+        interface SignalSignatures extends Soup.Session.SignalSignatures {
+            'notify::credentials': GObject.Object.Notify;
+            'notify::force-http1': GObject.Object.Notify;
+            'notify::force-http1': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+            'notify::accept-language': GObject.Object.Notify;
+            'notify::accept-language': GObject.Object.Notify;
+            'notify::accept-language-auto': GObject.Object.Notify;
+            'notify::accept-language-auto': GObject.Object.Notify;
+            'notify::idle-timeout': GObject.Object.Notify;
+            'notify::idle-timeout': GObject.Object.Notify;
+            'notify::local-address': GObject.Object.Notify;
+            'notify::local-address': GObject.Object.Notify;
+            'notify::max-conns': GObject.Object.Notify;
+            'notify::max-conns': GObject.Object.Notify;
+            'notify::max-conns-per-host': GObject.Object.Notify;
+            'notify::max-conns-per-host': GObject.Object.Notify;
+            'notify::proxy-resolver': GObject.Object.Notify;
+            'notify::proxy-resolver': GObject.Object.Notify;
+            'notify::remote-connectable': GObject.Object.Notify;
+            'notify::remote-connectable': GObject.Object.Notify;
+            'notify::timeout': GObject.Object.Notify;
+            'notify::tls-database': GObject.Object.Notify;
+            'notify::tls-database': GObject.Object.Notify;
+            'notify::tls-interaction': GObject.Object.Notify;
+            'notify::tls-interaction': GObject.Object.Notify;
+            'notify::user-agent': GObject.Object.Notify;
+            'notify::user-agent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8617,14 +8750,17 @@ export namespace EDataServer {
             signal: K,
             callback: SoupSession.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SoupSession.SignalSignatures>(
             signal: K,
             callback: SoupSession.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SoupSession.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SoupSession.SignalSignatures[K]>
+            ...args: SoupSession.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -8954,6 +9090,21 @@ export namespace EDataServer {
             authenticate: Authenticate;
             changed: Changed;
             'credentials-required': CredentialsRequired;
+            'notify::connection-status': GObject.Object.Notify;
+            'notify::connection-status': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::enabled': GObject.Object.Notify;
+            'notify::main-context': GObject.Object.Notify;
+            'notify::main-context': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::remote-creatable': GObject.Object.Notify;
+            'notify::remote-creatable': GObject.Object.Notify;
+            'notify::remote-deletable': GObject.Object.Notify;
+            'notify::remote-deletable': GObject.Object.Notify;
+            'notify::removable': GObject.Object.Notify;
+            'notify::uid': GObject.Object.Notify;
+            'notify::writable': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -9022,8 +9173,14 @@ export namespace EDataServer {
         // Signals
 
         connect<K extends keyof Source.SignalSignatures>(signal: K, callback: Source.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Source.SignalSignatures>(signal: K, callback: Source.SignalSignatures[K]): number;
-        emit<K extends keyof Source.SignalSignatures>(signal: K, ...args: Parameters<Source.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Source.SignalSignatures>(
+            signal: K,
+            ...args: Source.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -11251,7 +11408,12 @@ export namespace EDataServer {
 
     namespace SourceAddressBook {
         // Signal signatures
-        interface SignalSignatures extends SourceBackend.SignalSignatures {}
+        interface SignalSignatures extends SourceBackend.SignalSignatures {
+            'notify::order': GObject.Object.Notify;
+            'notify::backend-name': GObject.Object.Notify;
+            'notify::backend-name': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11284,14 +11446,17 @@ export namespace EDataServer {
             signal: K,
             callback: SourceAddressBook.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceAddressBook.SignalSignatures>(
             signal: K,
             callback: SourceAddressBook.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceAddressBook.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceAddressBook.SignalSignatures[K]>
+            ...args: SourceAddressBook.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -11305,7 +11470,13 @@ export namespace EDataServer {
 
     namespace SourceAlarms {
         // Signal signatures
-        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+        interface SignalSignatures extends SourceExtension.SignalSignatures {
+            'notify::include-me': GObject.Object.Notify;
+            'notify::include-me': GObject.Object.Notify;
+            'notify::last-notified': GObject.Object.Notify;
+            'notify::last-notified': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11347,14 +11518,17 @@ export namespace EDataServer {
             signal: K,
             callback: SourceAlarms.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceAlarms.SignalSignatures>(
             signal: K,
             callback: SourceAlarms.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceAlarms.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceAlarms.SignalSignatures[K]>
+            ...args: SourceAlarms.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -11410,7 +11584,22 @@ export namespace EDataServer {
 
     namespace SourceAuthentication {
         // Signal signatures
-        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+        interface SignalSignatures extends SourceExtension.SignalSignatures {
+            'notify::connectable': GObject.Object.Notify;
+            'notify::credential-name': GObject.Object.Notify;
+            'notify::credential-name': GObject.Object.Notify;
+            'notify::host': GObject.Object.Notify;
+            'notify::is-external': GObject.Object.Notify;
+            'notify::is-external': GObject.Object.Notify;
+            'notify::method': GObject.Object.Notify;
+            'notify::port': GObject.Object.Notify;
+            'notify::proxy-uid': GObject.Object.Notify;
+            'notify::proxy-uid': GObject.Object.Notify;
+            'notify::remember-password': GObject.Object.Notify;
+            'notify::remember-password': GObject.Object.Notify;
+            'notify::user': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11478,14 +11667,17 @@ export namespace EDataServer {
             signal: K,
             callback: SourceAuthentication.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceAuthentication.SignalSignatures>(
             signal: K,
             callback: SourceAuthentication.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceAuthentication.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceAuthentication.SignalSignatures[K]>
+            ...args: SourceAuthentication.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -11665,7 +11857,11 @@ export namespace EDataServer {
 
     namespace SourceAutocomplete {
         // Signal signatures
-        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+        interface SignalSignatures extends SourceExtension.SignalSignatures {
+            'notify::include-me': GObject.Object.Notify;
+            'notify::include-me': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11701,14 +11897,17 @@ export namespace EDataServer {
             signal: K,
             callback: SourceAutocomplete.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceAutocomplete.SignalSignatures>(
             signal: K,
             callback: SourceAutocomplete.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceAutocomplete.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceAutocomplete.SignalSignatures[K]>
+            ...args: SourceAutocomplete.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -11730,7 +11929,10 @@ export namespace EDataServer {
 
     namespace SourceAutoconfig {
         // Signal signatures
-        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+        interface SignalSignatures extends SourceExtension.SignalSignatures {
+            'notify::revision': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11763,14 +11965,17 @@ export namespace EDataServer {
             signal: K,
             callback: SourceAutoconfig.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceAutoconfig.SignalSignatures>(
             signal: K,
             callback: SourceAutoconfig.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceAutoconfig.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceAutoconfig.SignalSignatures[K]>
+            ...args: SourceAutoconfig.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -11813,7 +12018,11 @@ export namespace EDataServer {
 
     namespace SourceBackend {
         // Signal signatures
-        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+        interface SignalSignatures extends SourceExtension.SignalSignatures {
+            'notify::backend-name': GObject.Object.Notify;
+            'notify::backend-name': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11849,14 +12058,17 @@ export namespace EDataServer {
             signal: K,
             callback: SourceBackend.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceBackend.SignalSignatures>(
             signal: K,
             callback: SourceBackend.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceBackend.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceBackend.SignalSignatures[K]>
+            ...args: SourceBackend.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -11886,7 +12098,14 @@ export namespace EDataServer {
 
     namespace SourceCalendar {
         // Signal signatures
-        interface SignalSignatures extends SourceSelectable.SignalSignatures {}
+        interface SignalSignatures extends SourceSelectable.SignalSignatures {
+            'notify::color': GObject.Object.Notify;
+            'notify::order': GObject.Object.Notify;
+            'notify::selected': GObject.Object.Notify;
+            'notify::backend-name': GObject.Object.Notify;
+            'notify::backend-name': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11912,19 +12131,25 @@ export namespace EDataServer {
             signal: K,
             callback: SourceCalendar.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceCalendar.SignalSignatures>(
             signal: K,
             callback: SourceCalendar.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceCalendar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceCalendar.SignalSignatures[K]>
+            ...args: SourceCalendar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace SourceCamel {
         // Signal signatures
-        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+        interface SignalSignatures extends SourceExtension.SignalSignatures {
+            'notify::settings': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11956,14 +12181,17 @@ export namespace EDataServer {
             signal: K,
             callback: SourceCamel.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceCamel.SignalSignatures>(
             signal: K,
             callback: SourceCamel.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceCamel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceCamel.SignalSignatures[K]>
+            ...args: SourceCamel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -12027,7 +12255,24 @@ export namespace EDataServer {
 
     namespace SourceCollection {
         // Signal signatures
-        interface SignalSignatures extends SourceBackend.SignalSignatures {}
+        interface SignalSignatures extends SourceBackend.SignalSignatures {
+            'notify::allow-sources-rename': GObject.Object.Notify;
+            'notify::allow-sources-rename': GObject.Object.Notify;
+            'notify::calendar-enabled': GObject.Object.Notify;
+            'notify::calendar-enabled': GObject.Object.Notify;
+            'notify::calendar-url': GObject.Object.Notify;
+            'notify::calendar-url': GObject.Object.Notify;
+            'notify::contacts-enabled': GObject.Object.Notify;
+            'notify::contacts-enabled': GObject.Object.Notify;
+            'notify::contacts-url': GObject.Object.Notify;
+            'notify::contacts-url': GObject.Object.Notify;
+            'notify::identity': GObject.Object.Notify;
+            'notify::mail-enabled': GObject.Object.Notify;
+            'notify::mail-enabled': GObject.Object.Notify;
+            'notify::backend-name': GObject.Object.Notify;
+            'notify::backend-name': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12096,14 +12341,17 @@ export namespace EDataServer {
             signal: K,
             callback: SourceCollection.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceCollection.SignalSignatures>(
             signal: K,
             callback: SourceCollection.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceCollection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceCollection.SignalSignatures[K]>
+            ...args: SourceCollection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -12259,7 +12507,11 @@ export namespace EDataServer {
 
     namespace SourceContacts {
         // Signal signatures
-        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+        interface SignalSignatures extends SourceExtension.SignalSignatures {
+            'notify::include-me': GObject.Object.Notify;
+            'notify::include-me': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12291,14 +12543,17 @@ export namespace EDataServer {
             signal: K,
             callback: SourceContacts.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceContacts.SignalSignatures>(
             signal: K,
             callback: SourceContacts.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceContacts.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceContacts.SignalSignatures[K]>
+            ...args: SourceContacts.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -12308,7 +12563,9 @@ export namespace EDataServer {
 
     namespace SourceCredentialsProvider {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::registry': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12345,14 +12602,17 @@ export namespace EDataServer {
             signal: K,
             callback: SourceCredentialsProvider.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceCredentialsProvider.SignalSignatures>(
             signal: K,
             callback: SourceCredentialsProvider.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceCredentialsProvider.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceCredentialsProvider.SignalSignatures[K]>
+            ...args: SourceCredentialsProvider.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -13083,7 +13343,9 @@ export namespace EDataServer {
 
     namespace SourceCredentialsProviderImpl {
         // Signal signatures
-        interface SignalSignatures extends Extension.SignalSignatures {}
+        interface SignalSignatures extends Extension.SignalSignatures {
+            'notify::extensible': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13110,14 +13372,17 @@ export namespace EDataServer {
             signal: K,
             callback: SourceCredentialsProviderImpl.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceCredentialsProviderImpl.SignalSignatures>(
             signal: K,
             callback: SourceCredentialsProviderImpl.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceCredentialsProviderImpl.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceCredentialsProviderImpl.SignalSignatures[K]>
+            ...args: SourceCredentialsProviderImpl.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -13245,7 +13510,9 @@ export namespace EDataServer {
 
     namespace SourceCredentialsProviderImplOAuth2 {
         // Signal signatures
-        interface SignalSignatures extends SourceCredentialsProviderImpl.SignalSignatures {}
+        interface SignalSignatures extends SourceCredentialsProviderImpl.SignalSignatures {
+            'notify::extensible': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13270,19 +13537,26 @@ export namespace EDataServer {
             signal: K,
             callback: SourceCredentialsProviderImplOAuth2.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceCredentialsProviderImplOAuth2.SignalSignatures>(
             signal: K,
             callback: SourceCredentialsProviderImplOAuth2.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceCredentialsProviderImplOAuth2.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceCredentialsProviderImplOAuth2.SignalSignatures[K]>
+            ...args: SourceCredentialsProviderImplOAuth2.SignalSignatures[K] extends (...args: infer P) => any
+                ? P
+                : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace SourceCredentialsProviderImplPassword {
         // Signal signatures
-        interface SignalSignatures extends SourceCredentialsProviderImpl.SignalSignatures {}
+        interface SignalSignatures extends SourceCredentialsProviderImpl.SignalSignatures {
+            'notify::extensible': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13307,19 +13581,26 @@ export namespace EDataServer {
             signal: K,
             callback: SourceCredentialsProviderImplPassword.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceCredentialsProviderImplPassword.SignalSignatures>(
             signal: K,
             callback: SourceCredentialsProviderImplPassword.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceCredentialsProviderImplPassword.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceCredentialsProviderImplPassword.SignalSignatures[K]>
+            ...args: SourceCredentialsProviderImplPassword.SignalSignatures[K] extends (...args: infer P) => any
+                ? P
+                : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace SourceExtension {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::source': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13351,14 +13632,17 @@ export namespace EDataServer {
             signal: K,
             callback: SourceExtension.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceExtension.SignalSignatures>(
             signal: K,
             callback: SourceExtension.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceExtension.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceExtension.SignalSignatures[K]>
+            ...args: SourceExtension.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -13392,7 +13676,17 @@ export namespace EDataServer {
 
     namespace SourceGoa {
         // Signal signatures
-        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+        interface SignalSignatures extends SourceExtension.SignalSignatures {
+            'notify::account-id': GObject.Object.Notify;
+            'notify::account-id': GObject.Object.Notify;
+            'notify::address': GObject.Object.Notify;
+            'notify::calendar-url': GObject.Object.Notify;
+            'notify::calendar-url': GObject.Object.Notify;
+            'notify::contacts-url': GObject.Object.Notify;
+            'notify::contacts-url': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13443,14 +13737,17 @@ export namespace EDataServer {
         // Signals
 
         connect<K extends keyof SourceGoa.SignalSignatures>(signal: K, callback: SourceGoa.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceGoa.SignalSignatures>(
             signal: K,
             callback: SourceGoa.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceGoa.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceGoa.SignalSignatures[K]>
+            ...args: SourceGoa.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -13582,7 +13879,18 @@ export namespace EDataServer {
 
     namespace SourceLDAP {
         // Signal signatures
-        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+        interface SignalSignatures extends SourceExtension.SignalSignatures {
+            'notify::authentication': GObject.Object.Notify;
+            'notify::can-browse': GObject.Object.Notify;
+            'notify::can-browse': GObject.Object.Notify;
+            'notify::filter': GObject.Object.Notify;
+            'notify::limit': GObject.Object.Notify;
+            'notify::root-dn': GObject.Object.Notify;
+            'notify::root-dn': GObject.Object.Notify;
+            'notify::scope': GObject.Object.Notify;
+            'notify::security': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13635,14 +13943,17 @@ export namespace EDataServer {
             signal: K,
             callback: SourceLDAP.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceLDAP.SignalSignatures>(
             signal: K,
             callback: SourceLDAP.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceLDAP.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceLDAP.SignalSignatures[K]>
+            ...args: SourceLDAP.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -13666,7 +13977,14 @@ export namespace EDataServer {
 
     namespace SourceLocal {
         // Signal signatures
-        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+        interface SignalSignatures extends SourceExtension.SignalSignatures {
+            'notify::custom-file': GObject.Object.Notify;
+            'notify::custom-file': GObject.Object.Notify;
+            'notify::email-address': GObject.Object.Notify;
+            'notify::email-address': GObject.Object.Notify;
+            'notify::writable': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13707,14 +14025,17 @@ export namespace EDataServer {
             signal: K,
             callback: SourceLocal.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceLocal.SignalSignatures>(
             signal: K,
             callback: SourceLocal.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceLocal.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceLocal.SignalSignatures[K]>
+            ...args: SourceLocal.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -13775,7 +14096,11 @@ export namespace EDataServer {
 
     namespace SourceMDN {
         // Signal signatures
-        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+        interface SignalSignatures extends SourceExtension.SignalSignatures {
+            'notify::response-policy': GObject.Object.Notify;
+            'notify::response-policy': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13808,14 +14133,17 @@ export namespace EDataServer {
         // Signals
 
         connect<K extends keyof SourceMDN.SignalSignatures>(signal: K, callback: SourceMDN.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceMDN.SignalSignatures>(
             signal: K,
             callback: SourceMDN.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceMDN.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceMDN.SignalSignatures[K]>
+            ...args: SourceMDN.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -13835,7 +14163,22 @@ export namespace EDataServer {
 
     namespace SourceMailAccount {
         // Signal signatures
-        interface SignalSignatures extends SourceBackend.SignalSignatures {}
+        interface SignalSignatures extends SourceBackend.SignalSignatures {
+            'notify::archive-folder': GObject.Object.Notify;
+            'notify::archive-folder': GObject.Object.Notify;
+            'notify::builtin': GObject.Object.Notify;
+            'notify::identity-uid': GObject.Object.Notify;
+            'notify::identity-uid': GObject.Object.Notify;
+            'notify::mark-seen': GObject.Object.Notify;
+            'notify::mark-seen': GObject.Object.Notify;
+            'notify::mark-seen-timeout': GObject.Object.Notify;
+            'notify::mark-seen-timeout': GObject.Object.Notify;
+            'notify::needs-initial-setup': GObject.Object.Notify;
+            'notify::needs-initial-setup': GObject.Object.Notify;
+            'notify::backend-name': GObject.Object.Notify;
+            'notify::backend-name': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13898,14 +14241,17 @@ export namespace EDataServer {
             signal: K,
             callback: SourceMailAccount.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceMailAccount.SignalSignatures>(
             signal: K,
             callback: SourceMailAccount.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceMailAccount.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceMailAccount.SignalSignatures[K]>
+            ...args: SourceMailAccount.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -13995,7 +14341,24 @@ export namespace EDataServer {
 
     namespace SourceMailComposition {
         // Signal signatures
-        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+        interface SignalSignatures extends SourceExtension.SignalSignatures {
+            'notify::bcc': GObject.Object.Notify;
+            'notify::cc': GObject.Object.Notify;
+            'notify::drafts-folder': GObject.Object.Notify;
+            'notify::drafts-folder': GObject.Object.Notify;
+            'notify::language': GObject.Object.Notify;
+            'notify::reply-style': GObject.Object.Notify;
+            'notify::reply-style': GObject.Object.Notify;
+            'notify::sign-imip': GObject.Object.Notify;
+            'notify::sign-imip': GObject.Object.Notify;
+            'notify::start-bottom': GObject.Object.Notify;
+            'notify::start-bottom': GObject.Object.Notify;
+            'notify::templates-folder': GObject.Object.Notify;
+            'notify::templates-folder': GObject.Object.Notify;
+            'notify::top-signature': GObject.Object.Notify;
+            'notify::top-signature': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -14070,14 +14433,17 @@ export namespace EDataServer {
             signal: K,
             callback: SourceMailComposition.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceMailComposition.SignalSignatures>(
             signal: K,
             callback: SourceMailComposition.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceMailComposition.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceMailComposition.SignalSignatures[K]>
+            ...args: SourceMailComposition.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -14260,7 +14626,17 @@ export namespace EDataServer {
 
     namespace SourceMailIdentity {
         // Signal signatures
-        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+        interface SignalSignatures extends SourceExtension.SignalSignatures {
+            'notify::address': GObject.Object.Notify;
+            'notify::aliases': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::organization': GObject.Object.Notify;
+            'notify::reply-to': GObject.Object.Notify;
+            'notify::reply-to': GObject.Object.Notify;
+            'notify::signature-uid': GObject.Object.Notify;
+            'notify::signature-uid': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -14314,14 +14690,17 @@ export namespace EDataServer {
             signal: K,
             callback: SourceMailIdentity.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceMailIdentity.SignalSignatures>(
             signal: K,
             callback: SourceMailIdentity.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceMailIdentity.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceMailIdentity.SignalSignatures[K]>
+            ...args: SourceMailIdentity.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -14485,7 +14864,12 @@ export namespace EDataServer {
 
     namespace SourceMailSignature {
         // Signal signatures
-        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+        interface SignalSignatures extends SourceExtension.SignalSignatures {
+            'notify::file': GObject.Object.Notify;
+            'notify::mime-type': GObject.Object.Notify;
+            'notify::mime-type': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -14523,14 +14907,17 @@ export namespace EDataServer {
             signal: K,
             callback: SourceMailSignature.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceMailSignature.SignalSignatures>(
             signal: K,
             callback: SourceMailSignature.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceMailSignature.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceMailSignature.SignalSignatures[K]>
+            ...args: SourceMailSignature.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -14577,7 +14964,17 @@ export namespace EDataServer {
 
     namespace SourceMailSubmission {
         // Signal signatures
-        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+        interface SignalSignatures extends SourceExtension.SignalSignatures {
+            'notify::replies-to-origin-folder': GObject.Object.Notify;
+            'notify::replies-to-origin-folder': GObject.Object.Notify;
+            'notify::sent-folder': GObject.Object.Notify;
+            'notify::sent-folder': GObject.Object.Notify;
+            'notify::transport-uid': GObject.Object.Notify;
+            'notify::transport-uid': GObject.Object.Notify;
+            'notify::use-sent-folder': GObject.Object.Notify;
+            'notify::use-sent-folder': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -14631,14 +15028,17 @@ export namespace EDataServer {
             signal: K,
             callback: SourceMailSubmission.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceMailSubmission.SignalSignatures>(
             signal: K,
             callback: SourceMailSubmission.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceMailSubmission.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceMailSubmission.SignalSignatures[K]>
+            ...args: SourceMailSubmission.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -14708,7 +15108,11 @@ export namespace EDataServer {
 
     namespace SourceMailTransport {
         // Signal signatures
-        interface SignalSignatures extends SourceBackend.SignalSignatures {}
+        interface SignalSignatures extends SourceBackend.SignalSignatures {
+            'notify::backend-name': GObject.Object.Notify;
+            'notify::backend-name': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -14734,19 +15138,29 @@ export namespace EDataServer {
             signal: K,
             callback: SourceMailTransport.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceMailTransport.SignalSignatures>(
             signal: K,
             callback: SourceMailTransport.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceMailTransport.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceMailTransport.SignalSignatures[K]>
+            ...args: SourceMailTransport.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace SourceMemoList {
         // Signal signatures
-        interface SignalSignatures extends SourceSelectable.SignalSignatures {}
+        interface SignalSignatures extends SourceSelectable.SignalSignatures {
+            'notify::color': GObject.Object.Notify;
+            'notify::order': GObject.Object.Notify;
+            'notify::selected': GObject.Object.Notify;
+            'notify::backend-name': GObject.Object.Notify;
+            'notify::backend-name': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -14772,19 +15186,26 @@ export namespace EDataServer {
             signal: K,
             callback: SourceMemoList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceMemoList.SignalSignatures>(
             signal: K,
             callback: SourceMemoList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceMemoList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceMemoList.SignalSignatures[K]>
+            ...args: SourceMemoList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace SourceOffline {
         // Signal signatures
-        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+        interface SignalSignatures extends SourceExtension.SignalSignatures {
+            'notify::stay-synchronized': GObject.Object.Notify;
+            'notify::stay-synchronized': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -14820,14 +15241,17 @@ export namespace EDataServer {
             signal: K,
             callback: SourceOffline.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceOffline.SignalSignatures>(
             signal: K,
             callback: SourceOffline.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceOffline.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceOffline.SignalSignatures[K]>
+            ...args: SourceOffline.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -14849,7 +15273,29 @@ export namespace EDataServer {
 
     namespace SourceOpenPGP {
         // Signal signatures
-        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+        interface SignalSignatures extends SourceExtension.SignalSignatures {
+            'notify::always-trust': GObject.Object.Notify;
+            'notify::always-trust': GObject.Object.Notify;
+            'notify::encrypt-by-default': GObject.Object.Notify;
+            'notify::encrypt-by-default': GObject.Object.Notify;
+            'notify::encrypt-to-self': GObject.Object.Notify;
+            'notify::encrypt-to-self': GObject.Object.Notify;
+            'notify::key-id': GObject.Object.Notify;
+            'notify::key-id': GObject.Object.Notify;
+            'notify::locate-keys': GObject.Object.Notify;
+            'notify::locate-keys': GObject.Object.Notify;
+            'notify::prefer-inline': GObject.Object.Notify;
+            'notify::prefer-inline': GObject.Object.Notify;
+            'notify::send-prefer-encrypt': GObject.Object.Notify;
+            'notify::send-prefer-encrypt': GObject.Object.Notify;
+            'notify::send-public-key': GObject.Object.Notify;
+            'notify::send-public-key': GObject.Object.Notify;
+            'notify::sign-by-default': GObject.Object.Notify;
+            'notify::sign-by-default': GObject.Object.Notify;
+            'notify::signing-algorithm': GObject.Object.Notify;
+            'notify::signing-algorithm': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -14939,14 +15385,17 @@ export namespace EDataServer {
             signal: K,
             callback: SourceOpenPGP.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceOpenPGP.SignalSignatures>(
             signal: K,
             callback: SourceOpenPGP.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceOpenPGP.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceOpenPGP.SignalSignatures[K]>
+            ...args: SourceOpenPGP.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -15093,7 +15542,36 @@ export namespace EDataServer {
 
     namespace SourceProxy {
         // Signal signatures
-        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+        interface SignalSignatures extends SourceExtension.SignalSignatures {
+            'notify::autoconfig-url': GObject.Object.Notify;
+            'notify::autoconfig-url': GObject.Object.Notify;
+            'notify::ftp-host': GObject.Object.Notify;
+            'notify::ftp-host': GObject.Object.Notify;
+            'notify::ftp-port': GObject.Object.Notify;
+            'notify::ftp-port': GObject.Object.Notify;
+            'notify::http-auth-password': GObject.Object.Notify;
+            'notify::http-auth-password': GObject.Object.Notify;
+            'notify::http-auth-user': GObject.Object.Notify;
+            'notify::http-auth-user': GObject.Object.Notify;
+            'notify::http-host': GObject.Object.Notify;
+            'notify::http-host': GObject.Object.Notify;
+            'notify::http-port': GObject.Object.Notify;
+            'notify::http-port': GObject.Object.Notify;
+            'notify::http-use-auth': GObject.Object.Notify;
+            'notify::http-use-auth': GObject.Object.Notify;
+            'notify::https-host': GObject.Object.Notify;
+            'notify::https-host': GObject.Object.Notify;
+            'notify::https-port': GObject.Object.Notify;
+            'notify::https-port': GObject.Object.Notify;
+            'notify::ignore-hosts': GObject.Object.Notify;
+            'notify::ignore-hosts': GObject.Object.Notify;
+            'notify::method': GObject.Object.Notify;
+            'notify::socks-host': GObject.Object.Notify;
+            'notify::socks-host': GObject.Object.Notify;
+            'notify::socks-port': GObject.Object.Notify;
+            'notify::socks-port': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -15204,14 +15682,17 @@ export namespace EDataServer {
             signal: K,
             callback: SourceProxy.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceProxy.SignalSignatures>(
             signal: K,
             callback: SourceProxy.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceProxy.SignalSignatures[K]>
+            ...args: SourceProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -15474,7 +15955,14 @@ export namespace EDataServer {
 
     namespace SourceRefresh {
         // Signal signatures
-        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+        interface SignalSignatures extends SourceExtension.SignalSignatures {
+            'notify::enabled': GObject.Object.Notify;
+            'notify::enabled-on-metered-network': GObject.Object.Notify;
+            'notify::enabled-on-metered-network': GObject.Object.Notify;
+            'notify::interval-minutes': GObject.Object.Notify;
+            'notify::interval-minutes': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -15519,14 +16007,17 @@ export namespace EDataServer {
             signal: K,
             callback: SourceRefresh.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceRefresh.SignalSignatures>(
             signal: K,
             callback: SourceRefresh.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceRefresh.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceRefresh.SignalSignatures[K]>
+            ...args: SourceRefresh.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -15624,6 +16115,18 @@ export namespace EDataServer {
             'source-disabled': SourceDisabled;
             'source-enabled': SourceEnabled;
             'source-removed': SourceRemoved;
+            'notify::default-address-book': GObject.Object.Notify;
+            'notify::default-address-book': GObject.Object.Notify;
+            'notify::default-calendar': GObject.Object.Notify;
+            'notify::default-calendar': GObject.Object.Notify;
+            'notify::default-mail-account': GObject.Object.Notify;
+            'notify::default-mail-account': GObject.Object.Notify;
+            'notify::default-mail-identity': GObject.Object.Notify;
+            'notify::default-mail-identity': GObject.Object.Notify;
+            'notify::default-memo-list': GObject.Object.Notify;
+            'notify::default-memo-list': GObject.Object.Notify;
+            'notify::default-task-list': GObject.Object.Notify;
+            'notify::default-task-list': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -15736,14 +16239,17 @@ export namespace EDataServer {
             signal: K,
             callback: SourceRegistry.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceRegistry.SignalSignatures>(
             signal: K,
             callback: SourceRegistry.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceRegistry.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceRegistry.SignalSignatures[K]>
+            ...args: SourceRegistry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -17074,7 +17580,7 @@ export namespace EDataServer {
         }
 
         interface Filter {
-            (_source: SourceRegistryWatcher, source: Source): boolean;
+            (_source: SourceRegistryWatcher, source: Source): boolean | void;
         }
 
         // Signal signatures
@@ -17082,6 +17588,9 @@ export namespace EDataServer {
             appeared: Appeared;
             disappeared: Disappeared;
             filter: Filter;
+            'notify::extension-name': GObject.Object.Notify;
+            'notify::extension-name': GObject.Object.Notify;
+            'notify::registry': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -17135,14 +17644,17 @@ export namespace EDataServer {
             signal: K,
             callback: SourceRegistryWatcher.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceRegistryWatcher.SignalSignatures>(
             signal: K,
             callback: SourceRegistryWatcher.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceRegistryWatcher.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceRegistryWatcher.SignalSignatures[K]>
+            ...args: SourceRegistryWatcher.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -17168,7 +17680,10 @@ export namespace EDataServer {
 
     namespace SourceResource {
         // Signal signatures
-        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+        interface SignalSignatures extends SourceExtension.SignalSignatures {
+            'notify::identity': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17201,14 +17716,17 @@ export namespace EDataServer {
             signal: K,
             callback: SourceResource.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceResource.SignalSignatures>(
             signal: K,
             callback: SourceResource.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceResource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceResource.SignalSignatures[K]>
+            ...args: SourceResource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -17240,7 +17758,10 @@ export namespace EDataServer {
 
     namespace SourceRevisionGuards {
         // Signal signatures
-        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+        interface SignalSignatures extends SourceExtension.SignalSignatures {
+            'notify::enabled': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17273,14 +17794,17 @@ export namespace EDataServer {
             signal: K,
             callback: SourceRevisionGuards.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceRevisionGuards.SignalSignatures>(
             signal: K,
             callback: SourceRevisionGuards.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceRevisionGuards.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceRevisionGuards.SignalSignatures[K]>
+            ...args: SourceRevisionGuards.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -17300,7 +17824,21 @@ export namespace EDataServer {
 
     namespace SourceSMIME {
         // Signal signatures
-        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+        interface SignalSignatures extends SourceExtension.SignalSignatures {
+            'notify::encrypt-by-default': GObject.Object.Notify;
+            'notify::encrypt-by-default': GObject.Object.Notify;
+            'notify::encrypt-to-self': GObject.Object.Notify;
+            'notify::encrypt-to-self': GObject.Object.Notify;
+            'notify::encryption-certificate': GObject.Object.Notify;
+            'notify::encryption-certificate': GObject.Object.Notify;
+            'notify::sign-by-default': GObject.Object.Notify;
+            'notify::sign-by-default': GObject.Object.Notify;
+            'notify::signing-algorithm': GObject.Object.Notify;
+            'notify::signing-algorithm': GObject.Object.Notify;
+            'notify::signing-certificate': GObject.Object.Notify;
+            'notify::signing-certificate': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17366,14 +17904,17 @@ export namespace EDataServer {
             signal: K,
             callback: SourceSMIME.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceSMIME.SignalSignatures>(
             signal: K,
             callback: SourceSMIME.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceSMIME.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceSMIME.SignalSignatures[K]>
+            ...args: SourceSMIME.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -17479,7 +18020,11 @@ export namespace EDataServer {
 
     namespace SourceSecurity {
         // Signal signatures
-        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+        interface SignalSignatures extends SourceExtension.SignalSignatures {
+            'notify::method': GObject.Object.Notify;
+            'notify::secure': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17515,14 +18060,17 @@ export namespace EDataServer {
             signal: K,
             callback: SourceSecurity.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceSecurity.SignalSignatures>(
             signal: K,
             callback: SourceSecurity.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceSecurity.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceSecurity.SignalSignatures[K]>
+            ...args: SourceSecurity.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -17574,7 +18122,14 @@ export namespace EDataServer {
 
     namespace SourceSelectable {
         // Signal signatures
-        interface SignalSignatures extends SourceBackend.SignalSignatures {}
+        interface SignalSignatures extends SourceBackend.SignalSignatures {
+            'notify::color': GObject.Object.Notify;
+            'notify::order': GObject.Object.Notify;
+            'notify::selected': GObject.Object.Notify;
+            'notify::backend-name': GObject.Object.Notify;
+            'notify::backend-name': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17613,14 +18168,17 @@ export namespace EDataServer {
             signal: K,
             callback: SourceSelectable.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceSelectable.SignalSignatures>(
             signal: K,
             callback: SourceSelectable.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceSelectable.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceSelectable.SignalSignatures[K]>
+            ...args: SourceSelectable.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -17679,7 +18237,14 @@ export namespace EDataServer {
 
     namespace SourceTaskList {
         // Signal signatures
-        interface SignalSignatures extends SourceSelectable.SignalSignatures {}
+        interface SignalSignatures extends SourceSelectable.SignalSignatures {
+            'notify::color': GObject.Object.Notify;
+            'notify::order': GObject.Object.Notify;
+            'notify::selected': GObject.Object.Notify;
+            'notify::backend-name': GObject.Object.Notify;
+            'notify::backend-name': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17705,19 +18270,26 @@ export namespace EDataServer {
             signal: K,
             callback: SourceTaskList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceTaskList.SignalSignatures>(
             signal: K,
             callback: SourceTaskList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceTaskList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceTaskList.SignalSignatures[K]>
+            ...args: SourceTaskList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace SourceUoa {
         // Signal signatures
-        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+        interface SignalSignatures extends SourceExtension.SignalSignatures {
+            'notify::account-id': GObject.Object.Notify;
+            'notify::account-id': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17750,14 +18322,17 @@ export namespace EDataServer {
         // Signals
 
         connect<K extends keyof SourceUoa.SignalSignatures>(signal: K, callback: SourceUoa.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceUoa.SignalSignatures>(
             signal: K,
             callback: SourceUoa.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceUoa.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceUoa.SignalSignatures[K]>
+            ...args: SourceUoa.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -17777,7 +18352,11 @@ export namespace EDataServer {
 
     namespace SourceWeather {
         // Signal signatures
-        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+        interface SignalSignatures extends SourceExtension.SignalSignatures {
+            'notify::location': GObject.Object.Notify;
+            'notify::units': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17809,14 +18388,17 @@ export namespace EDataServer {
             signal: K,
             callback: SourceWeather.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceWeather.SignalSignatures>(
             signal: K,
             callback: SourceWeather.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceWeather.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceWeather.SignalSignatures[K]>
+            ...args: SourceWeather.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -17829,7 +18411,11 @@ export namespace EDataServer {
 
     namespace SourceWebDAVNotes {
         // Signal signatures
-        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+        interface SignalSignatures extends SourceExtension.SignalSignatures {
+            'notify::default-ext': GObject.Object.Notify;
+            'notify::default-ext': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17865,14 +18451,17 @@ export namespace EDataServer {
             signal: K,
             callback: SourceWebDAVNotes.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceWebDAVNotes.SignalSignatures>(
             signal: K,
             callback: SourceWebDAVNotes.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceWebDAVNotes.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceWebDAVNotes.SignalSignatures[K]>
+            ...args: SourceWebDAVNotes.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -17902,7 +18491,26 @@ export namespace EDataServer {
 
     namespace SourceWebdav {
         // Signal signatures
-        interface SignalSignatures extends SourceExtension.SignalSignatures {}
+        interface SignalSignatures extends SourceExtension.SignalSignatures {
+            'notify::avoid-ifmatch': GObject.Object.Notify;
+            'notify::avoid-ifmatch': GObject.Object.Notify;
+            'notify::calendar-auto-schedule': GObject.Object.Notify;
+            'notify::calendar-auto-schedule': GObject.Object.Notify;
+            'notify::color': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::email-address': GObject.Object.Notify;
+            'notify::email-address': GObject.Object.Notify;
+            'notify::order': GObject.Object.Notify;
+            'notify::resource-path': GObject.Object.Notify;
+            'notify::resource-path': GObject.Object.Notify;
+            'notify::resource-query': GObject.Object.Notify;
+            'notify::resource-query': GObject.Object.Notify;
+            'notify::ssl-trust': GObject.Object.Notify;
+            'notify::ssl-trust': GObject.Object.Notify;
+            'notify::uri': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17983,14 +18591,17 @@ export namespace EDataServer {
             signal: K,
             callback: SourceWebdav.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceWebdav.SignalSignatures>(
             signal: K,
             callback: SourceWebdav.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceWebdav.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceWebdav.SignalSignatures[K]>
+            ...args: SourceWebdav.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -18246,7 +18857,35 @@ export namespace EDataServer {
 
     namespace WebDAVSession {
         // Signal signatures
-        interface SignalSignatures extends SoupSession.SignalSignatures {}
+        interface SignalSignatures extends SoupSession.SignalSignatures {
+            'notify::credentials': GObject.Object.Notify;
+            'notify::force-http1': GObject.Object.Notify;
+            'notify::force-http1': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+            'notify::accept-language': GObject.Object.Notify;
+            'notify::accept-language': GObject.Object.Notify;
+            'notify::accept-language-auto': GObject.Object.Notify;
+            'notify::accept-language-auto': GObject.Object.Notify;
+            'notify::idle-timeout': GObject.Object.Notify;
+            'notify::idle-timeout': GObject.Object.Notify;
+            'notify::local-address': GObject.Object.Notify;
+            'notify::local-address': GObject.Object.Notify;
+            'notify::max-conns': GObject.Object.Notify;
+            'notify::max-conns': GObject.Object.Notify;
+            'notify::max-conns-per-host': GObject.Object.Notify;
+            'notify::max-conns-per-host': GObject.Object.Notify;
+            'notify::proxy-resolver': GObject.Object.Notify;
+            'notify::proxy-resolver': GObject.Object.Notify;
+            'notify::remote-connectable': GObject.Object.Notify;
+            'notify::remote-connectable': GObject.Object.Notify;
+            'notify::timeout': GObject.Object.Notify;
+            'notify::tls-database': GObject.Object.Notify;
+            'notify::tls-database': GObject.Object.Notify;
+            'notify::tls-interaction': GObject.Object.Notify;
+            'notify::tls-interaction': GObject.Object.Notify;
+            'notify::user-agent': GObject.Object.Notify;
+            'notify::user-agent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -18277,14 +18916,17 @@ export namespace EDataServer {
             signal: K,
             callback: WebDAVSession.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WebDAVSession.SignalSignatures>(
             signal: K,
             callback: WebDAVSession.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebDAVSession.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebDAVSession.SignalSignatures[K]>
+            ...args: WebDAVSession.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -19121,14 +19763,17 @@ export namespace EDataServer {
             signal: K,
             callback: XmlDocument.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XmlDocument.SignalSignatures>(
             signal: K,
             callback: XmlDocument.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XmlDocument.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XmlDocument.SignalSignatures[K]>
+            ...args: XmlDocument.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

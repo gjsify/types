@@ -379,7 +379,15 @@ export namespace EBackend {
     }
     namespace Backend {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::connectable': GObject.Object.Notify;
+            'notify::main-context': GObject.Object.Notify;
+            'notify::main-context': GObject.Object.Notify;
+            'notify::online': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+            'notify::user-prompter': GObject.Object.Notify;
+            'notify::user-prompter': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -422,14 +430,17 @@ export namespace EBackend {
         // Signals
 
         connect<K extends keyof Backend.SignalSignatures>(signal: K, callback: Backend.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Backend.SignalSignatures>(
             signal: K,
             callback: Backend.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Backend.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Backend.SignalSignatures[K]>
+            ...args: Backend.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -759,7 +770,9 @@ export namespace EBackend {
 
     namespace BackendFactory {
         // Signal signatures
-        interface SignalSignatures extends EDataServer.Extension.SignalSignatures {}
+        interface SignalSignatures extends EDataServer.Extension.SignalSignatures {
+            'notify::extensible': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -785,14 +798,17 @@ export namespace EBackend {
             signal: K,
             callback: BackendFactory.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BackendFactory.SignalSignatures>(
             signal: K,
             callback: BackendFactory.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BackendFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BackendFactory.SignalSignatures[K]>
+            ...args: BackendFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -854,11 +870,11 @@ export namespace EBackend {
                 p3: boolean,
                 p4?: Gio.Cancellable | null,
                 p5?: any | null,
-            ): boolean;
+            ): boolean | void;
         }
 
         interface BeforeRemove {
-            (_source: Cache, object: string, p0?: Gio.Cancellable | null, p1?: any | null): boolean;
+            (_source: Cache, object: string, p0?: Gio.Cancellable | null, p1?: any | null): boolean | void;
         }
 
         interface RevisionChanged {
@@ -893,8 +909,14 @@ export namespace EBackend {
         // Signals
 
         connect<K extends keyof Cache.SignalSignatures>(signal: K, callback: Cache.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Cache.SignalSignatures>(signal: K, callback: Cache.SignalSignatures[K]): number;
-        emit<K extends keyof Cache.SignalSignatures>(signal: K, ...args: Parameters<Cache.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Cache.SignalSignatures>(
+            signal: K,
+            ...args: Cache.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1249,6 +1271,13 @@ export namespace EBackend {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             changed: Changed;
+            'notify::cache': GObject.Object.Notify;
+            'notify::key-column-name': GObject.Object.Notify;
+            'notify::key-column-name': GObject.Object.Notify;
+            'notify::table-name': GObject.Object.Notify;
+            'notify::table-name': GObject.Object.Notify;
+            'notify::value-column-name': GObject.Object.Notify;
+            'notify::value-column-name': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1313,14 +1342,17 @@ export namespace EBackend {
         // Signals
 
         connect<K extends keyof CacheKeys.SignalSignatures>(signal: K, callback: CacheKeys.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CacheKeys.SignalSignatures>(
             signal: K,
             callback: CacheKeys.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CacheKeys.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CacheKeys.SignalSignatures[K]>
+            ...args: CacheKeys.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1420,7 +1452,9 @@ export namespace EBackend {
 
     namespace CacheReaper {
         // Signal signatures
-        interface SignalSignatures extends EDataServer.Extension.SignalSignatures {}
+        interface SignalSignatures extends EDataServer.Extension.SignalSignatures {
+            'notify::extensible': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1444,14 +1478,17 @@ export namespace EBackend {
             signal: K,
             callback: CacheReaper.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CacheReaper.SignalSignatures>(
             signal: K,
             callback: CacheReaper.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CacheReaper.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CacheReaper.SignalSignatures[K]>
+            ...args: CacheReaper.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1959,6 +1996,16 @@ export namespace EBackend {
         interface SignalSignatures extends Backend.SignalSignatures {
             'child-added': ChildAdded;
             'child-removed': ChildRemoved;
+            'notify::proxy-resolver': GObject.Object.Notify;
+            'notify::proxy-resolver': GObject.Object.Notify;
+            'notify::server': GObject.Object.Notify;
+            'notify::connectable': GObject.Object.Notify;
+            'notify::main-context': GObject.Object.Notify;
+            'notify::main-context': GObject.Object.Notify;
+            'notify::online': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+            'notify::user-prompter': GObject.Object.Notify;
+            'notify::user-prompter': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1995,14 +2042,17 @@ export namespace EBackend {
             signal: K,
             callback: CollectionBackend.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CollectionBackend.SignalSignatures>(
             signal: K,
             callback: CollectionBackend.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CollectionBackend.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CollectionBackend.SignalSignatures[K]>
+            ...args: CollectionBackend.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -2482,7 +2532,9 @@ export namespace EBackend {
 
     namespace CollectionBackendFactory {
         // Signal signatures
-        interface SignalSignatures extends BackendFactory.SignalSignatures {}
+        interface SignalSignatures extends BackendFactory.SignalSignatures {
+            'notify::extensible': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2508,14 +2560,17 @@ export namespace EBackend {
             signal: K,
             callback: CollectionBackendFactory.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CollectionBackendFactory.SignalSignatures>(
             signal: K,
             callback: CollectionBackendFactory.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CollectionBackendFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CollectionBackendFactory.SignalSignatures[K]>
+            ...args: CollectionBackendFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -2610,14 +2665,17 @@ export namespace EBackend {
             signal: K,
             callback: DBusServer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DBusServer.SignalSignatures>(
             signal: K,
             callback: DBusServer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DBusServer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DBusServer.SignalSignatures[K]>
+            ...args: DBusServer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -3142,7 +3200,13 @@ export namespace EBackend {
 
     namespace DataFactory {
         // Signal signatures
-        interface SignalSignatures extends DBusServer.SignalSignatures {}
+        interface SignalSignatures extends DBusServer.SignalSignatures {
+            'notify::backend-per-process': GObject.Object.Notify;
+            'notify::backend-per-process': GObject.Object.Notify;
+            'notify::registry': GObject.Object.Notify;
+            'notify::reload-supported': GObject.Object.Notify;
+            'notify::reload-supported': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3185,14 +3249,17 @@ export namespace EBackend {
             signal: K,
             callback: DataFactory.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DataFactory.SignalSignatures>(
             signal: K,
             callback: DataFactory.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DataFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataFactory.SignalSignatures[K]>
+            ...args: DataFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -3845,7 +3912,9 @@ export namespace EBackend {
 
     namespace FileCache {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::filename': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3879,14 +3948,17 @@ export namespace EBackend {
         // Signals
 
         connect<K extends keyof FileCache.SignalSignatures>(signal: K, callback: FileCache.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FileCache.SignalSignatures>(
             signal: K,
             callback: FileCache.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FileCache.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileCache.SignalSignatures[K]>
+            ...args: FileCache.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3960,7 +4032,30 @@ export namespace EBackend {
 
     namespace ServerSideSource {
         // Signal signatures
-        interface SignalSignatures extends EDataServer.Source.SignalSignatures {}
+        interface SignalSignatures extends EDataServer.Source.SignalSignatures {
+            'notify::exported': GObject.Object.Notify;
+            'notify::file': GObject.Object.Notify;
+            'notify::oauth2-support': GObject.Object.Notify;
+            'notify::oauth2-support': GObject.Object.Notify;
+            'notify::remote-creatable': GObject.Object.Notify;
+            'notify::remote-creatable': GObject.Object.Notify;
+            'notify::remote-deletable': GObject.Object.Notify;
+            'notify::remote-deletable': GObject.Object.Notify;
+            'notify::removable': GObject.Object.Notify;
+            'notify::server': GObject.Object.Notify;
+            'notify::writable': GObject.Object.Notify;
+            'notify::write-directory': GObject.Object.Notify;
+            'notify::write-directory': GObject.Object.Notify;
+            'notify::connection-status': GObject.Object.Notify;
+            'notify::connection-status': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::enabled': GObject.Object.Notify;
+            'notify::main-context': GObject.Object.Notify;
+            'notify::main-context': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::uid': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4036,14 +4131,17 @@ export namespace EBackend {
             signal: K,
             callback: ServerSideSource.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ServerSideSource.SignalSignatures>(
             signal: K,
             callback: ServerSideSource.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ServerSideSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ServerSideSource.SignalSignatures[K]>
+            ...args: ServerSideSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -4857,7 +4955,9 @@ export namespace EBackend {
 
     namespace ServerSideSourceCredentialsProvider {
         // Signal signatures
-        interface SignalSignatures extends EDataServer.SourceCredentialsProvider.SignalSignatures {}
+        interface SignalSignatures extends EDataServer.SourceCredentialsProvider.SignalSignatures {
+            'notify::registry': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4893,14 +4993,19 @@ export namespace EBackend {
             signal: K,
             callback: ServerSideSourceCredentialsProvider.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ServerSideSourceCredentialsProvider.SignalSignatures>(
             signal: K,
             callback: ServerSideSourceCredentialsProvider.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ServerSideSourceCredentialsProvider.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ServerSideSourceCredentialsProvider.SignalSignatures[K]>
+            ...args: ServerSideSourceCredentialsProvider.SignalSignatures[K] extends (...args: infer P) => any
+                ? P
+                : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -5388,7 +5493,7 @@ export namespace EBackend {
         }
 
         interface TweakKeyFile {
-            (_source: SourceRegistryServer, key_file: GLib.KeyFile, uid: string): boolean;
+            (_source: SourceRegistryServer, key_file: GLib.KeyFile, uid: string): boolean | void;
         }
 
         // Signal signatures
@@ -5398,6 +5503,11 @@ export namespace EBackend {
             'source-added': SourceAdded;
             'source-removed': SourceRemoved;
             'tweak-key-file': TweakKeyFile;
+            'notify::backend-per-process': GObject.Object.Notify;
+            'notify::backend-per-process': GObject.Object.Notify;
+            'notify::registry': GObject.Object.Notify;
+            'notify::reload-supported': GObject.Object.Notify;
+            'notify::reload-supported': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -5430,14 +5540,17 @@ export namespace EBackend {
             signal: K,
             callback: SourceRegistryServer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceRegistryServer.SignalSignatures>(
             signal: K,
             callback: SourceRegistryServer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceRegistryServer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceRegistryServer.SignalSignatures[K]>
+            ...args: SourceRegistryServer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -6240,7 +6353,9 @@ export namespace EBackend {
 
     namespace SubprocessFactory {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::registry': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6272,14 +6387,17 @@ export namespace EBackend {
             signal: K,
             callback: SubprocessFactory.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SubprocessFactory.SignalSignatures>(
             signal: K,
             callback: SubprocessFactory.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SubprocessFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SubprocessFactory.SignalSignatures[K]>
+            ...args: SubprocessFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -6923,14 +7041,17 @@ export namespace EBackend {
             signal: K,
             callback: UserPrompter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UserPrompter.SignalSignatures>(
             signal: K,
             callback: UserPrompter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UserPrompter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UserPrompter.SignalSignatures[K]>
+            ...args: UserPrompter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -7215,14 +7336,17 @@ export namespace EBackend {
             signal: K,
             callback: UserPrompterServer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UserPrompterServer.SignalSignatures>(
             signal: K,
             callback: UserPrompterServer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UserPrompterServer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UserPrompterServer.SignalSignatures[K]>
+            ...args: UserPrompterServer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -7719,7 +7843,9 @@ export namespace EBackend {
 
     namespace UserPrompterServerExtension {
         // Signal signatures
-        interface SignalSignatures extends EDataServer.Extension.SignalSignatures {}
+        interface SignalSignatures extends EDataServer.Extension.SignalSignatures {
+            'notify::extensible': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -7745,14 +7871,17 @@ export namespace EBackend {
             signal: K,
             callback: UserPrompterServerExtension.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UserPrompterServerExtension.SignalSignatures>(
             signal: K,
             callback: UserPrompterServerExtension.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UserPrompterServerExtension.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UserPrompterServerExtension.SignalSignatures[K]>
+            ...args: UserPrompterServerExtension.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -7813,7 +7942,18 @@ export namespace EBackend {
 
     namespace WebDAVCollectionBackend {
         // Signal signatures
-        interface SignalSignatures extends CollectionBackend.SignalSignatures {}
+        interface SignalSignatures extends CollectionBackend.SignalSignatures {
+            'notify::proxy-resolver': GObject.Object.Notify;
+            'notify::proxy-resolver': GObject.Object.Notify;
+            'notify::server': GObject.Object.Notify;
+            'notify::connectable': GObject.Object.Notify;
+            'notify::main-context': GObject.Object.Notify;
+            'notify::main-context': GObject.Object.Notify;
+            'notify::online': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+            'notify::user-prompter': GObject.Object.Notify;
+            'notify::user-prompter': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -7839,14 +7979,17 @@ export namespace EBackend {
             signal: K,
             callback: WebDAVCollectionBackend.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WebDAVCollectionBackend.SignalSignatures>(
             signal: K,
             callback: WebDAVCollectionBackend.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebDAVCollectionBackend.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebDAVCollectionBackend.SignalSignatures[K]>
+            ...args: WebDAVCollectionBackend.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 

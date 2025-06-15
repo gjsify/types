@@ -154,7 +154,10 @@ export namespace GstVideo {
     function parse_caps_pixel_aspect_ratio(caps: Gst.Caps): [boolean, number, number];
     namespace Filter {
         // Signal signatures
-        interface SignalSignatures extends GstBase.Transform.SignalSignatures {}
+        interface SignalSignatures extends GstBase.Transform.SignalSignatures {
+            'notify::qos': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -178,13 +181,39 @@ export namespace GstVideo {
         // Signals
 
         connect<K extends keyof Filter.SignalSignatures>(signal: K, callback: Filter.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Filter.SignalSignatures>(signal: K, callback: Filter.SignalSignatures[K]): number;
-        emit<K extends keyof Filter.SignalSignatures>(signal: K, ...args: Parameters<Filter.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Filter.SignalSignatures>(
+            signal: K,
+            ...args: Filter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Sink {
         // Signal signatures
-        interface SignalSignatures extends GstBase.Sink.SignalSignatures {}
+        interface SignalSignatures extends GstBase.Sink.SignalSignatures {
+            'notify::show-preroll-frame': GObject.Object.Notify;
+            'notify::show-preroll-frame': GObject.Object.Notify;
+            'notify::async': GObject.Object.Notify;
+            'notify::blocksize': GObject.Object.Notify;
+            'notify::enable-last-buffer': GObject.Object.Notify;
+            'notify::enable-last-buffer': GObject.Object.Notify;
+            'notify::last-buffer': GObject.Object.Notify;
+            'notify::last-buffer': GObject.Object.Notify;
+            'notify::max-lateness': GObject.Object.Notify;
+            'notify::max-lateness': GObject.Object.Notify;
+            'notify::preroll-queue-len': GObject.Object.Notify;
+            'notify::preroll-queue-len': GObject.Object.Notify;
+            'notify::qos': GObject.Object.Notify;
+            'notify::render-delay': GObject.Object.Notify;
+            'notify::render-delay': GObject.Object.Notify;
+            'notify::sync': GObject.Object.Notify;
+            'notify::ts-offset': GObject.Object.Notify;
+            'notify::ts-offset': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -222,8 +251,14 @@ export namespace GstVideo {
         // Signals
 
         connect<K extends keyof Sink.SignalSignatures>(signal: K, callback: Sink.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Sink.SignalSignatures>(signal: K, callback: Sink.SignalSignatures[K]): number;
-        emit<K extends keyof Sink.SignalSignatures>(signal: K, ...args: Parameters<Sink.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Sink.SignalSignatures>(
+            signal: K,
+            ...args: Sink.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 

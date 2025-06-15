@@ -517,6 +517,12 @@ export namespace Libxfce4windowing {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'icon-changed': IconChanged;
+            'notify::class-id': GObject.Object.Notify;
+            'notify::class-id': GObject.Object.Notify;
+            'notify::gicon': GObject.Object.Notify;
+            'notify::instances': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::windows': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -573,14 +579,17 @@ export namespace Libxfce4windowing {
             signal: K,
             callback: Application.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Application.SignalSignatures>(
             signal: K,
             callback: Application.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Application.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Application.SignalSignatures[K]>
+            ...args: Application.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -641,7 +650,16 @@ export namespace Libxfce4windowing {
 
     namespace ApplicationWayland {
         // Signal signatures
-        interface SignalSignatures extends Application.SignalSignatures {}
+        interface SignalSignatures extends Application.SignalSignatures {
+            'notify::app-id': GObject.Object.Notify;
+            'notify::app-id': GObject.Object.Notify;
+            'notify::class-id': GObject.Object.Notify;
+            'notify::class-id': GObject.Object.Notify;
+            'notify::gicon': GObject.Object.Notify;
+            'notify::instances': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::windows': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -671,19 +689,29 @@ export namespace Libxfce4windowing {
             signal: K,
             callback: ApplicationWayland.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ApplicationWayland.SignalSignatures>(
             signal: K,
             callback: ApplicationWayland.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ApplicationWayland.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ApplicationWayland.SignalSignatures[K]>
+            ...args: ApplicationWayland.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace ApplicationX11 {
         // Signal signatures
-        interface SignalSignatures extends Application.SignalSignatures {}
+        interface SignalSignatures extends Application.SignalSignatures {
+            'notify::class-id': GObject.Object.Notify;
+            'notify::class-id': GObject.Object.Notify;
+            'notify::gicon': GObject.Object.Notify;
+            'notify::instances': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::windows': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -705,19 +733,30 @@ export namespace Libxfce4windowing {
             signal: K,
             callback: ApplicationX11.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ApplicationX11.SignalSignatures>(
             signal: K,
             callback: ApplicationX11.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ApplicationX11.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ApplicationX11.SignalSignatures[K]>
+            ...args: ApplicationX11.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace ScreenWayland {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::active-window': GObject.Object.Notify;
+            'notify::active-window': GObject.Object.Notify;
+            'notify::screen': GObject.Object.Notify;
+            'notify::show-desktop': GObject.Object.Notify;
+            'notify::show-desktop': GObject.Object.Notify;
+            'notify::workspace-manager': GObject.Object.Notify;
+            'notify::workspace-manager': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -739,14 +778,17 @@ export namespace Libxfce4windowing {
             signal: K,
             callback: ScreenWayland.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ScreenWayland.SignalSignatures>(
             signal: K,
             callback: ScreenWayland.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ScreenWayland.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ScreenWayland.SignalSignatures[K]>
+            ...args: ScreenWayland.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         /**
@@ -1264,7 +1306,15 @@ export namespace Libxfce4windowing {
 
     namespace ScreenX11 {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::active-window': GObject.Object.Notify;
+            'notify::active-window': GObject.Object.Notify;
+            'notify::screen': GObject.Object.Notify;
+            'notify::show-desktop': GObject.Object.Notify;
+            'notify::show-desktop': GObject.Object.Notify;
+            'notify::workspace-manager': GObject.Object.Notify;
+            'notify::workspace-manager': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1283,14 +1333,17 @@ export namespace Libxfce4windowing {
         // Signals
 
         connect<K extends keyof ScreenX11.SignalSignatures>(signal: K, callback: ScreenX11.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ScreenX11.SignalSignatures>(
             signal: K,
             callback: ScreenX11.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ScreenX11.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ScreenX11.SignalSignatures[K]>
+            ...args: ScreenX11.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         /**
@@ -1856,6 +1909,17 @@ export namespace Libxfce4windowing {
             'state-changed': StateChanged;
             'type-changed': TypeChanged;
             'workspace-changed': WorkspaceChanged;
+            'notify::application': GObject.Object.Notify;
+            'notify::capabilities': GObject.Object.Notify;
+            'notify::class-ids': GObject.Object.Notify;
+            'notify::class-ids': GObject.Object.Notify;
+            'notify::gicon': GObject.Object.Notify;
+            'notify::monitors': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::screen': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+            'notify::workspace': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1931,8 +1995,14 @@ export namespace Libxfce4windowing {
         // Signals
 
         connect<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
-        emit<K extends keyof Window.SignalSignatures>(signal: K, ...args: Parameters<Window.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Window.SignalSignatures>(
+            signal: K,
+            ...args: Window.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2051,7 +2121,20 @@ export namespace Libxfce4windowing {
 
     namespace WindowWayland {
         // Signal signatures
-        interface SignalSignatures extends Window.SignalSignatures {}
+        interface SignalSignatures extends Window.SignalSignatures {
+            'notify::handle': GObject.Object.Notify;
+            'notify::application': GObject.Object.Notify;
+            'notify::capabilities': GObject.Object.Notify;
+            'notify::class-ids': GObject.Object.Notify;
+            'notify::class-ids': GObject.Object.Notify;
+            'notify::gicon': GObject.Object.Notify;
+            'notify::monitors': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::screen': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+            'notify::workspace': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2079,19 +2162,34 @@ export namespace Libxfce4windowing {
             signal: K,
             callback: WindowWayland.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WindowWayland.SignalSignatures>(
             signal: K,
             callback: WindowWayland.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WindowWayland.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WindowWayland.SignalSignatures[K]>
+            ...args: WindowWayland.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace WindowX11 {
         // Signal signatures
-        interface SignalSignatures extends Window.SignalSignatures {}
+        interface SignalSignatures extends Window.SignalSignatures {
+            'notify::application': GObject.Object.Notify;
+            'notify::capabilities': GObject.Object.Notify;
+            'notify::class-ids': GObject.Object.Notify;
+            'notify::class-ids': GObject.Object.Notify;
+            'notify::gicon': GObject.Object.Notify;
+            'notify::monitors': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::screen': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+            'notify::workspace': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2110,19 +2208,25 @@ export namespace Libxfce4windowing {
         // Signals
 
         connect<K extends keyof WindowX11.SignalSignatures>(signal: K, callback: WindowX11.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WindowX11.SignalSignatures>(
             signal: K,
             callback: WindowX11.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WindowX11.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WindowX11.SignalSignatures[K]>
+            ...args: WindowX11.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace WnckIcon {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::wnck-object': GObject.Object.Notify;
+            'notify::wnck-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2153,14 +2257,17 @@ export namespace Libxfce4windowing {
         // Signals
 
         connect<K extends keyof WnckIcon.SignalSignatures>(signal: K, callback: WnckIcon.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WnckIcon.SignalSignatures>(
             signal: K,
             callback: WnckIcon.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WnckIcon.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WnckIcon.SignalSignatures[K]>
+            ...args: WnckIcon.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -2826,7 +2933,18 @@ export namespace Libxfce4windowing {
 
     namespace WorkspaceDummy {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::capabilities': GObject.Object.Notify;
+            'notify::group': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::layout-column': GObject.Object.Notify;
+            'notify::layout-column': GObject.Object.Notify;
+            'notify::layout-row': GObject.Object.Notify;
+            'notify::layout-row': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::number': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2848,14 +2966,17 @@ export namespace Libxfce4windowing {
             signal: K,
             callback: WorkspaceDummy.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WorkspaceDummy.SignalSignatures>(
             signal: K,
             callback: WorkspaceDummy.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WorkspaceDummy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WorkspaceDummy.SignalSignatures[K]>
+            ...args: WorkspaceDummy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         /**
@@ -3442,7 +3563,21 @@ export namespace Libxfce4windowing {
 
     namespace WorkspaceGroupDummy {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::create-workspace-func': GObject.Object.Notify;
+            'notify::create-workspace-func': GObject.Object.Notify;
+            'notify::move-viewport-func': GObject.Object.Notify;
+            'notify::move-viewport-func': GObject.Object.Notify;
+            'notify::set-layout-func': GObject.Object.Notify;
+            'notify::set-layout-func': GObject.Object.Notify;
+            'notify::active-workspace': GObject.Object.Notify;
+            'notify::active-workspace': GObject.Object.Notify;
+            'notify::monitors': GObject.Object.Notify;
+            'notify::screen': GObject.Object.Notify;
+            'notify::workspace-manager': GObject.Object.Notify;
+            'notify::workspace-manager': GObject.Object.Notify;
+            'notify::workspaces': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3486,14 +3621,17 @@ export namespace Libxfce4windowing {
             signal: K,
             callback: WorkspaceGroupDummy.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WorkspaceGroupDummy.SignalSignatures>(
             signal: K,
             callback: WorkspaceGroupDummy.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WorkspaceGroupDummy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WorkspaceGroupDummy.SignalSignatures[K]>
+            ...args: WorkspaceGroupDummy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         /**
@@ -4041,6 +4179,13 @@ export namespace Libxfce4windowing {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             destroyed: Destroyed;
+            'notify::active-workspace': GObject.Object.Notify;
+            'notify::active-workspace': GObject.Object.Notify;
+            'notify::monitors': GObject.Object.Notify;
+            'notify::screen': GObject.Object.Notify;
+            'notify::workspace-manager': GObject.Object.Notify;
+            'notify::workspace-manager': GObject.Object.Notify;
+            'notify::workspaces': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -4063,14 +4208,17 @@ export namespace Libxfce4windowing {
             signal: K,
             callback: WorkspaceGroupWayland.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WorkspaceGroupWayland.SignalSignatures>(
             signal: K,
             callback: WorkspaceGroupWayland.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WorkspaceGroupWayland.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WorkspaceGroupWayland.SignalSignatures[K]>
+            ...args: WorkspaceGroupWayland.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         /**
@@ -4610,7 +4758,9 @@ export namespace Libxfce4windowing {
 
     namespace WorkspaceManagerDummy {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::screen': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4632,14 +4782,17 @@ export namespace Libxfce4windowing {
             signal: K,
             callback: WorkspaceManagerDummy.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WorkspaceManagerDummy.SignalSignatures>(
             signal: K,
             callback: WorkspaceManagerDummy.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WorkspaceManagerDummy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WorkspaceManagerDummy.SignalSignatures[K]>
+            ...args: WorkspaceManagerDummy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         /**
@@ -5102,7 +5255,13 @@ export namespace Libxfce4windowing {
 
     namespace WorkspaceManagerWayland {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::wl-manager': GObject.Object.Notify;
+            'notify::wl-manager': GObject.Object.Notify;
+            'notify::wl-registry': GObject.Object.Notify;
+            'notify::wl-registry': GObject.Object.Notify;
+            'notify::screen': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5136,14 +5295,17 @@ export namespace Libxfce4windowing {
             signal: K,
             callback: WorkspaceManagerWayland.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WorkspaceManagerWayland.SignalSignatures>(
             signal: K,
             callback: WorkspaceManagerWayland.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WorkspaceManagerWayland.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WorkspaceManagerWayland.SignalSignatures[K]>
+            ...args: WorkspaceManagerWayland.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         /**
@@ -5606,7 +5768,9 @@ export namespace Libxfce4windowing {
 
     namespace WorkspaceManagerX11 {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::screen': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5628,14 +5792,17 @@ export namespace Libxfce4windowing {
             signal: K,
             callback: WorkspaceManagerX11.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WorkspaceManagerX11.SignalSignatures>(
             signal: K,
             callback: WorkspaceManagerX11.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WorkspaceManagerX11.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WorkspaceManagerX11.SignalSignatures[K]>
+            ...args: WorkspaceManagerX11.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         /**
@@ -6106,6 +6273,17 @@ export namespace Libxfce4windowing {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             destroyed: Destroyed;
+            'notify::handle': GObject.Object.Notify;
+            'notify::capabilities': GObject.Object.Notify;
+            'notify::group': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::layout-column': GObject.Object.Notify;
+            'notify::layout-column': GObject.Object.Notify;
+            'notify::layout-row': GObject.Object.Notify;
+            'notify::layout-row': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::number': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -6134,14 +6312,17 @@ export namespace Libxfce4windowing {
             signal: K,
             callback: WorkspaceWayland.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WorkspaceWayland.SignalSignatures>(
             signal: K,
             callback: WorkspaceWayland.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WorkspaceWayland.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WorkspaceWayland.SignalSignatures[K]>
+            ...args: WorkspaceWayland.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         /**
@@ -6728,7 +6909,18 @@ export namespace Libxfce4windowing {
 
     namespace WorkspaceX11 {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::capabilities': GObject.Object.Notify;
+            'notify::group': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::layout-column': GObject.Object.Notify;
+            'notify::layout-column': GObject.Object.Notify;
+            'notify::layout-row': GObject.Object.Notify;
+            'notify::layout-row': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::number': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6750,14 +6942,17 @@ export namespace Libxfce4windowing {
             signal: K,
             callback: WorkspaceX11.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WorkspaceX11.SignalSignatures>(
             signal: K,
             callback: WorkspaceX11.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WorkspaceX11.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WorkspaceX11.SignalSignatures[K]>
+            ...args: WorkspaceX11.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         /**

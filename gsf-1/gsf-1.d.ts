@@ -742,8 +742,14 @@ export namespace Gsf {
         // Signals
 
         connect<K extends keyof Blob.SignalSignatures>(signal: K, callback: Blob.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Blob.SignalSignatures>(signal: K, callback: Blob.SignalSignatures[K]): number;
-        emit<K extends keyof Blob.SignalSignatures>(signal: K, ...args: Parameters<Blob.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Blob.SignalSignatures>(
+            signal: K,
+            ...args: Blob.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -789,14 +795,17 @@ export namespace Gsf {
         // Signals
 
         connect<K extends keyof ClipData.SignalSignatures>(signal: K, callback: ClipData.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClipData.SignalSignatures>(
             signal: K,
             callback: ClipData.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClipData.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClipData.SignalSignatures[K]>
+            ...args: ClipData.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -860,14 +869,17 @@ export namespace Gsf {
             signal: K,
             callback: DocMetaData.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DocMetaData.SignalSignatures>(
             signal: K,
             callback: DocMetaData.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DocMetaData.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DocMetaData.SignalSignatures[K]>
+            ...args: DocMetaData.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -942,14 +954,17 @@ export namespace Gsf {
             signal: K,
             callback: DocPropVector.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DocPropVector.SignalSignatures>(
             signal: K,
             callback: DocPropVector.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DocPropVector.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DocPropVector.SignalSignatures[K]>
+            ...args: DocPropVector.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -969,7 +984,15 @@ export namespace Gsf {
 
     namespace Infile {
         // Signal signatures
-        interface SignalSignatures extends Input.SignalSignatures {}
+        interface SignalSignatures extends Input.SignalSignatures {
+            'notify::container': GObject.Object.Notify;
+            'notify::eof': GObject.Object.Notify;
+            'notify::modtime': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::position': GObject.Object.Notify;
+            'notify::remaining': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -991,8 +1014,14 @@ export namespace Gsf {
         // Signals
 
         connect<K extends keyof Infile.SignalSignatures>(signal: K, callback: Infile.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Infile.SignalSignatures>(signal: K, callback: Infile.SignalSignatures[K]): number;
-        emit<K extends keyof Infile.SignalSignatures>(signal: K, ...args: Parameters<Infile.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Infile.SignalSignatures>(
+            signal: K,
+            ...args: Infile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1036,7 +1065,15 @@ export namespace Gsf {
 
     namespace InfileMSOle {
         // Signal signatures
-        interface SignalSignatures extends Infile.SignalSignatures {}
+        interface SignalSignatures extends Infile.SignalSignatures {
+            'notify::container': GObject.Object.Notify;
+            'notify::eof': GObject.Object.Notify;
+            'notify::modtime': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::position': GObject.Object.Notify;
+            'notify::remaining': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1060,14 +1097,17 @@ export namespace Gsf {
             signal: K,
             callback: InfileMSOle.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InfileMSOle.SignalSignatures>(
             signal: K,
             callback: InfileMSOle.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InfileMSOle.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InfileMSOle.SignalSignatures[K]>
+            ...args: InfileMSOle.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1082,7 +1122,15 @@ export namespace Gsf {
 
     namespace InfileMSVBA {
         // Signal signatures
-        interface SignalSignatures extends Infile.SignalSignatures {}
+        interface SignalSignatures extends Infile.SignalSignatures {
+            'notify::container': GObject.Object.Notify;
+            'notify::eof': GObject.Object.Notify;
+            'notify::modtime': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::position': GObject.Object.Notify;
+            'notify::remaining': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1106,14 +1154,17 @@ export namespace Gsf {
             signal: K,
             callback: InfileMSVBA.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InfileMSVBA.SignalSignatures>(
             signal: K,
             callback: InfileMSVBA.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InfileMSVBA.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InfileMSVBA.SignalSignatures[K]>
+            ...args: InfileMSVBA.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1131,7 +1182,15 @@ export namespace Gsf {
 
     namespace InfileStdio {
         // Signal signatures
-        interface SignalSignatures extends Infile.SignalSignatures {}
+        interface SignalSignatures extends Infile.SignalSignatures {
+            'notify::container': GObject.Object.Notify;
+            'notify::eof': GObject.Object.Notify;
+            'notify::modtime': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::position': GObject.Object.Notify;
+            'notify::remaining': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1155,19 +1214,31 @@ export namespace Gsf {
             signal: K,
             callback: InfileStdio.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InfileStdio.SignalSignatures>(
             signal: K,
             callback: InfileStdio.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InfileStdio.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InfileStdio.SignalSignatures[K]>
+            ...args: InfileStdio.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace InfileTar {
         // Signal signatures
-        interface SignalSignatures extends Infile.SignalSignatures {}
+        interface SignalSignatures extends Infile.SignalSignatures {
+            'notify::source': GObject.Object.Notify;
+            'notify::container': GObject.Object.Notify;
+            'notify::eof': GObject.Object.Notify;
+            'notify::modtime': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::position': GObject.Object.Notify;
+            'notify::remaining': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1194,19 +1265,36 @@ export namespace Gsf {
         // Signals
 
         connect<K extends keyof InfileTar.SignalSignatures>(signal: K, callback: InfileTar.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InfileTar.SignalSignatures>(
             signal: K,
             callback: InfileTar.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InfileTar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InfileTar.SignalSignatures[K]>
+            ...args: InfileTar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace InfileZip {
         // Signal signatures
-        interface SignalSignatures extends Infile.SignalSignatures {}
+        interface SignalSignatures extends Infile.SignalSignatures {
+            'notify::compression-level': GObject.Object.Notify;
+            'notify::compression-level': GObject.Object.Notify;
+            'notify::internal-parent': GObject.Object.Notify;
+            'notify::internal-parent': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+            'notify::zip64': GObject.Object.Notify;
+            'notify::container': GObject.Object.Notify;
+            'notify::eof': GObject.Object.Notify;
+            'notify::modtime': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::position': GObject.Object.Notify;
+            'notify::remaining': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1249,19 +1337,30 @@ export namespace Gsf {
         // Signals
 
         connect<K extends keyof InfileZip.SignalSignatures>(signal: K, callback: InfileZip.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InfileZip.SignalSignatures>(
             signal: K,
             callback: InfileZip.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InfileZip.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InfileZip.SignalSignatures[K]>
+            ...args: InfileZip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Input {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::container': GObject.Object.Notify;
+            'notify::eof': GObject.Object.Notify;
+            'notify::modtime': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::position': GObject.Object.Notify;
+            'notify::remaining': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1328,8 +1427,14 @@ export namespace Gsf {
         // Signals
 
         connect<K extends keyof Input.SignalSignatures>(signal: K, callback: Input.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Input.SignalSignatures>(signal: K, callback: Input.SignalSignatures[K]): number;
-        emit<K extends keyof Input.SignalSignatures>(signal: K, ...args: Parameters<Input.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Input.SignalSignatures>(
+            signal: K,
+            ...args: Input.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1448,7 +1553,19 @@ export namespace Gsf {
 
     namespace InputGZip {
         // Signal signatures
-        interface SignalSignatures extends Input.SignalSignatures {}
+        interface SignalSignatures extends Input.SignalSignatures {
+            'notify::raw': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+            'notify::uncompressed-size': GObject.Object.Notify;
+            'notify::uncompressed-size': GObject.Object.Notify;
+            'notify::container': GObject.Object.Notify;
+            'notify::eof': GObject.Object.Notify;
+            'notify::modtime': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::position': GObject.Object.Notify;
+            'notify::remaining': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1481,19 +1598,30 @@ export namespace Gsf {
         // Signals
 
         connect<K extends keyof InputGZip.SignalSignatures>(signal: K, callback: InputGZip.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InputGZip.SignalSignatures>(
             signal: K,
             callback: InputGZip.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InputGZip.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InputGZip.SignalSignatures[K]>
+            ...args: InputGZip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace InputGio {
         // Signal signatures
-        interface SignalSignatures extends Input.SignalSignatures {}
+        interface SignalSignatures extends Input.SignalSignatures {
+            'notify::container': GObject.Object.Notify;
+            'notify::eof': GObject.Object.Notify;
+            'notify::modtime': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::position': GObject.Object.Notify;
+            'notify::remaining': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1518,19 +1646,33 @@ export namespace Gsf {
         // Signals
 
         connect<K extends keyof InputGio.SignalSignatures>(signal: K, callback: InputGio.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InputGio.SignalSignatures>(
             signal: K,
             callback: InputGio.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InputGio.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InputGio.SignalSignatures[K]>
+            ...args: InputGio.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace InputHTTP {
         // Signal signatures
-        interface SignalSignatures extends Input.SignalSignatures {}
+        interface SignalSignatures extends Input.SignalSignatures {
+            'notify::content-type': GObject.Object.Notify;
+            'notify::content-type': GObject.Object.Notify;
+            'notify::url': GObject.Object.Notify;
+            'notify::container': GObject.Object.Notify;
+            'notify::eof': GObject.Object.Notify;
+            'notify::modtime': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::position': GObject.Object.Notify;
+            'notify::remaining': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1561,14 +1703,17 @@ export namespace Gsf {
         // Signals
 
         connect<K extends keyof InputHTTP.SignalSignatures>(signal: K, callback: InputHTTP.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InputHTTP.SignalSignatures>(
             signal: K,
             callback: InputHTTP.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InputHTTP.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InputHTTP.SignalSignatures[K]>
+            ...args: InputHTTP.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1578,7 +1723,15 @@ export namespace Gsf {
 
     namespace InputMemory {
         // Signal signatures
-        interface SignalSignatures extends Input.SignalSignatures {}
+        interface SignalSignatures extends Input.SignalSignatures {
+            'notify::container': GObject.Object.Notify;
+            'notify::eof': GObject.Object.Notify;
+            'notify::modtime': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::position': GObject.Object.Notify;
+            'notify::remaining': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1608,19 +1761,30 @@ export namespace Gsf {
             signal: K,
             callback: InputMemory.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InputMemory.SignalSignatures>(
             signal: K,
             callback: InputMemory.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InputMemory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InputMemory.SignalSignatures[K]>
+            ...args: InputMemory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace InputProxy {
         // Signal signatures
-        interface SignalSignatures extends Input.SignalSignatures {}
+        interface SignalSignatures extends Input.SignalSignatures {
+            'notify::container': GObject.Object.Notify;
+            'notify::eof': GObject.Object.Notify;
+            'notify::modtime': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::position': GObject.Object.Notify;
+            'notify::remaining': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1646,19 +1810,30 @@ export namespace Gsf {
             signal: K,
             callback: InputProxy.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InputProxy.SignalSignatures>(
             signal: K,
             callback: InputProxy.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InputProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InputProxy.SignalSignatures[K]>
+            ...args: InputProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace InputStdio {
         // Signal signatures
-        interface SignalSignatures extends Input.SignalSignatures {}
+        interface SignalSignatures extends Input.SignalSignatures {
+            'notify::container': GObject.Object.Notify;
+            'notify::eof': GObject.Object.Notify;
+            'notify::modtime': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::position': GObject.Object.Notify;
+            'notify::remaining': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1684,19 +1859,30 @@ export namespace Gsf {
             signal: K,
             callback: InputStdio.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InputStdio.SignalSignatures>(
             signal: K,
             callback: InputStdio.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InputStdio.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InputStdio.SignalSignatures[K]>
+            ...args: InputStdio.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace InputTextline {
         // Signal signatures
-        interface SignalSignatures extends Input.SignalSignatures {}
+        interface SignalSignatures extends Input.SignalSignatures {
+            'notify::container': GObject.Object.Notify;
+            'notify::eof': GObject.Object.Notify;
+            'notify::modtime': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::position': GObject.Object.Notify;
+            'notify::remaining': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1720,14 +1906,17 @@ export namespace Gsf {
             signal: K,
             callback: InputTextline.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InputTextline.SignalSignatures>(
             signal: K,
             callback: InputTextline.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InputTextline.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InputTextline.SignalSignatures[K]>
+            ...args: InputTextline.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1749,7 +1938,13 @@ export namespace Gsf {
 
     namespace ODFOut {
         // Signal signatures
-        interface SignalSignatures extends XMLOut.SignalSignatures {}
+        interface SignalSignatures extends XMLOut.SignalSignatures {
+            'notify::odf-version': GObject.Object.Notify;
+            'notify::odf-version': GObject.Object.Notify;
+            'notify::pretty-print': GObject.Object.Notify;
+            'notify::pretty-print': GObject.Object.Notify;
+            'notify::sink': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1781,8 +1976,14 @@ export namespace Gsf {
         // Signals
 
         connect<K extends keyof ODFOut.SignalSignatures>(signal: K, callback: ODFOut.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ODFOut.SignalSignatures>(signal: K, callback: ODFOut.SignalSignatures[K]): number;
-        emit<K extends keyof ODFOut.SignalSignatures>(signal: K, ...args: Parameters<ODFOut.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof ODFOut.SignalSignatures>(
+            signal: K,
+            ...args: ODFOut.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1792,7 +1993,15 @@ export namespace Gsf {
 
     namespace Outfile {
         // Signal signatures
-        interface SignalSignatures extends Output.SignalSignatures {}
+        interface SignalSignatures extends Output.SignalSignatures {
+            'notify::container': GObject.Object.Notify;
+            'notify::is-closed': GObject.Object.Notify;
+            'notify::is-closed': GObject.Object.Notify;
+            'notify::modtime': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::position': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1814,14 +2023,17 @@ export namespace Gsf {
         // Signals
 
         connect<K extends keyof Outfile.SignalSignatures>(signal: K, callback: Outfile.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Outfile.SignalSignatures>(
             signal: K,
             callback: Outfile.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Outfile.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Outfile.SignalSignatures[K]>
+            ...args: Outfile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1840,7 +2052,20 @@ export namespace Gsf {
 
     namespace OutfileMSOle {
         // Signal signatures
-        interface SignalSignatures extends Outfile.SignalSignatures {}
+        interface SignalSignatures extends Outfile.SignalSignatures {
+            'notify::big-block-size': GObject.Object.Notify;
+            'notify::big-block-size': GObject.Object.Notify;
+            'notify::sink': GObject.Object.Notify;
+            'notify::small-block-size': GObject.Object.Notify;
+            'notify::small-block-size': GObject.Object.Notify;
+            'notify::container': GObject.Object.Notify;
+            'notify::is-closed': GObject.Object.Notify;
+            'notify::is-closed': GObject.Object.Notify;
+            'notify::modtime': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::position': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1880,14 +2105,17 @@ export namespace Gsf {
             signal: K,
             callback: OutfileMSOle.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OutfileMSOle.SignalSignatures>(
             signal: K,
             callback: OutfileMSOle.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OutfileMSOle.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OutfileMSOle.SignalSignatures[K]>
+            ...args: OutfileMSOle.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1901,7 +2129,20 @@ export namespace Gsf {
 
     namespace OutfileOpenPkg {
         // Signal signatures
-        interface SignalSignatures extends Outfile.SignalSignatures {}
+        interface SignalSignatures extends Outfile.SignalSignatures {
+            'notify::content-type': GObject.Object.Notify;
+            'notify::content-type': GObject.Object.Notify;
+            'notify::is-dir': GObject.Object.Notify;
+            'notify::is-dir': GObject.Object.Notify;
+            'notify::sink': GObject.Object.Notify;
+            'notify::container': GObject.Object.Notify;
+            'notify::is-closed': GObject.Object.Notify;
+            'notify::is-closed': GObject.Object.Notify;
+            'notify::modtime': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::position': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1939,14 +2180,17 @@ export namespace Gsf {
             signal: K,
             callback: OutfileOpenPkg.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OutfileOpenPkg.SignalSignatures>(
             signal: K,
             callback: OutfileOpenPkg.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OutfileOpenPkg.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OutfileOpenPkg.SignalSignatures[K]>
+            ...args: OutfileOpenPkg.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1974,7 +2218,15 @@ export namespace Gsf {
 
     namespace OutfileStdio {
         // Signal signatures
-        interface SignalSignatures extends Outfile.SignalSignatures {}
+        interface SignalSignatures extends Outfile.SignalSignatures {
+            'notify::container': GObject.Object.Notify;
+            'notify::is-closed': GObject.Object.Notify;
+            'notify::is-closed': GObject.Object.Notify;
+            'notify::modtime': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::position': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1998,19 +2250,38 @@ export namespace Gsf {
             signal: K,
             callback: OutfileStdio.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OutfileStdio.SignalSignatures>(
             signal: K,
             callback: OutfileStdio.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OutfileStdio.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OutfileStdio.SignalSignatures[K]>
+            ...args: OutfileStdio.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace OutfileZip {
         // Signal signatures
-        interface SignalSignatures extends Outfile.SignalSignatures {}
+        interface SignalSignatures extends Outfile.SignalSignatures {
+            'notify::compression-level': GObject.Object.Notify;
+            'notify::compression-level': GObject.Object.Notify;
+            'notify::deflate-level': GObject.Object.Notify;
+            'notify::deflate-level': GObject.Object.Notify;
+            'notify::entry-name': GObject.Object.Notify;
+            'notify::entry-name': GObject.Object.Notify;
+            'notify::sink': GObject.Object.Notify;
+            'notify::zip64': GObject.Object.Notify;
+            'notify::container': GObject.Object.Notify;
+            'notify::is-closed': GObject.Object.Notify;
+            'notify::is-closed': GObject.Object.Notify;
+            'notify::modtime': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::position': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2054,14 +2325,17 @@ export namespace Gsf {
             signal: K,
             callback: OutfileZip.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OutfileZip.SignalSignatures>(
             signal: K,
             callback: OutfileZip.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OutfileZip.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OutfileZip.SignalSignatures[K]>
+            ...args: OutfileZip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2070,7 +2344,15 @@ export namespace Gsf {
 
     namespace Output {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::container': GObject.Object.Notify;
+            'notify::is-closed': GObject.Object.Notify;
+            'notify::is-closed': GObject.Object.Notify;
+            'notify::modtime': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::position': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2143,8 +2425,14 @@ export namespace Gsf {
         // Signals
 
         connect<K extends keyof Output.SignalSignatures>(signal: K, callback: Output.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Output.SignalSignatures>(signal: K, callback: Output.SignalSignatures[K]): number;
-        emit<K extends keyof Output.SignalSignatures>(signal: K, ...args: Parameters<Output.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Output.SignalSignatures>(
+            signal: K,
+            ...args: Output.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2241,7 +2529,15 @@ export namespace Gsf {
 
     namespace OutputBzip {
         // Signal signatures
-        interface SignalSignatures extends Output.SignalSignatures {}
+        interface SignalSignatures extends Output.SignalSignatures {
+            'notify::container': GObject.Object.Notify;
+            'notify::is-closed': GObject.Object.Notify;
+            'notify::is-closed': GObject.Object.Notify;
+            'notify::modtime': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::position': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2265,19 +2561,40 @@ export namespace Gsf {
             signal: K,
             callback: OutputBzip.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OutputBzip.SignalSignatures>(
             signal: K,
             callback: OutputBzip.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OutputBzip.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OutputBzip.SignalSignatures[K]>
+            ...args: OutputBzip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace OutputCsv {
         // Signal signatures
-        interface SignalSignatures extends Output.SignalSignatures {}
+        interface SignalSignatures extends Output.SignalSignatures {
+            'notify::eol': GObject.Object.Notify;
+            'notify::quote': GObject.Object.Notify;
+            'notify::quoting-mode': GObject.Object.Notify;
+            'notify::quoting-mode': GObject.Object.Notify;
+            'notify::quoting-on-whitespace': GObject.Object.Notify;
+            'notify::quoting-on-whitespace': GObject.Object.Notify;
+            'notify::quoting-triggers': GObject.Object.Notify;
+            'notify::quoting-triggers': GObject.Object.Notify;
+            'notify::separator': GObject.Object.Notify;
+            'notify::sink': GObject.Object.Notify;
+            'notify::container': GObject.Object.Notify;
+            'notify::is-closed': GObject.Object.Notify;
+            'notify::is-closed': GObject.Object.Notify;
+            'notify::modtime': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::position': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2339,14 +2656,17 @@ export namespace Gsf {
         // Signals
 
         connect<K extends keyof OutputCsv.SignalSignatures>(signal: K, callback: OutputCsv.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OutputCsv.SignalSignatures>(
             signal: K,
             callback: OutputCsv.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OutputCsv.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OutputCsv.SignalSignatures[K]>
+            ...args: OutputCsv.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2356,7 +2676,19 @@ export namespace Gsf {
 
     namespace OutputGZip {
         // Signal signatures
-        interface SignalSignatures extends Output.SignalSignatures {}
+        interface SignalSignatures extends Output.SignalSignatures {
+            'notify::deflate-level': GObject.Object.Notify;
+            'notify::deflate-level': GObject.Object.Notify;
+            'notify::raw': GObject.Object.Notify;
+            'notify::sink': GObject.Object.Notify;
+            'notify::container': GObject.Object.Notify;
+            'notify::is-closed': GObject.Object.Notify;
+            'notify::is-closed': GObject.Object.Notify;
+            'notify::modtime': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::position': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2394,19 +2726,30 @@ export namespace Gsf {
             signal: K,
             callback: OutputGZip.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OutputGZip.SignalSignatures>(
             signal: K,
             callback: OutputGZip.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OutputGZip.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OutputGZip.SignalSignatures[K]>
+            ...args: OutputGZip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace OutputGio {
         // Signal signatures
-        interface SignalSignatures extends Output.SignalSignatures {}
+        interface SignalSignatures extends Output.SignalSignatures {
+            'notify::container': GObject.Object.Notify;
+            'notify::is-closed': GObject.Object.Notify;
+            'notify::is-closed': GObject.Object.Notify;
+            'notify::modtime': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::position': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2431,19 +2774,30 @@ export namespace Gsf {
         // Signals
 
         connect<K extends keyof OutputGio.SignalSignatures>(signal: K, callback: OutputGio.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OutputGio.SignalSignatures>(
             signal: K,
             callback: OutputGio.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OutputGio.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OutputGio.SignalSignatures[K]>
+            ...args: OutputGio.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace OutputIOChannel {
         // Signal signatures
-        interface SignalSignatures extends Output.SignalSignatures {}
+        interface SignalSignatures extends Output.SignalSignatures {
+            'notify::container': GObject.Object.Notify;
+            'notify::is-closed': GObject.Object.Notify;
+            'notify::is-closed': GObject.Object.Notify;
+            'notify::modtime': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::position': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2467,19 +2821,36 @@ export namespace Gsf {
             signal: K,
             callback: OutputIOChannel.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OutputIOChannel.SignalSignatures>(
             signal: K,
             callback: OutputIOChannel.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OutputIOChannel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OutputIOChannel.SignalSignatures[K]>
+            ...args: OutputIOChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace OutputIconv {
         // Signal signatures
-        interface SignalSignatures extends Output.SignalSignatures {}
+        interface SignalSignatures extends Output.SignalSignatures {
+            'notify::fallback': GObject.Object.Notify;
+            'notify::input-charset': GObject.Object.Notify;
+            'notify::input-charset': GObject.Object.Notify;
+            'notify::output-charset': GObject.Object.Notify;
+            'notify::output-charset': GObject.Object.Notify;
+            'notify::sink': GObject.Object.Notify;
+            'notify::container': GObject.Object.Notify;
+            'notify::is-closed': GObject.Object.Notify;
+            'notify::is-closed': GObject.Object.Notify;
+            'notify::modtime': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::position': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2525,19 +2896,30 @@ export namespace Gsf {
             signal: K,
             callback: OutputIconv.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OutputIconv.SignalSignatures>(
             signal: K,
             callback: OutputIconv.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OutputIconv.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OutputIconv.SignalSignatures[K]>
+            ...args: OutputIconv.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace OutputMemory {
         // Signal signatures
-        interface SignalSignatures extends Output.SignalSignatures {}
+        interface SignalSignatures extends Output.SignalSignatures {
+            'notify::container': GObject.Object.Notify;
+            'notify::is-closed': GObject.Object.Notify;
+            'notify::is-closed': GObject.Object.Notify;
+            'notify::modtime': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::position': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2561,14 +2943,17 @@ export namespace Gsf {
             signal: K,
             callback: OutputMemory.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OutputMemory.SignalSignatures>(
             signal: K,
             callback: OutputMemory.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OutputMemory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OutputMemory.SignalSignatures[K]>
+            ...args: OutputMemory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2578,7 +2963,15 @@ export namespace Gsf {
 
     namespace OutputStdio {
         // Signal signatures
-        interface SignalSignatures extends Output.SignalSignatures {}
+        interface SignalSignatures extends Output.SignalSignatures {
+            'notify::container': GObject.Object.Notify;
+            'notify::is-closed': GObject.Object.Notify;
+            'notify::is-closed': GObject.Object.Notify;
+            'notify::modtime': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::position': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2602,14 +2995,17 @@ export namespace Gsf {
             signal: K,
             callback: OutputStdio.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OutputStdio.SignalSignatures>(
             signal: K,
             callback: OutputStdio.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OutputStdio.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OutputStdio.SignalSignatures[K]>
+            ...args: OutputStdio.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace SharedMemory {
@@ -2648,19 +3044,30 @@ export namespace Gsf {
             signal: K,
             callback: SharedMemory.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SharedMemory.SignalSignatures>(
             signal: K,
             callback: SharedMemory.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SharedMemory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SharedMemory.SignalSignatures[K]>
+            ...args: SharedMemory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace StructuredBlob {
         // Signal signatures
-        interface SignalSignatures extends Infile.SignalSignatures {}
+        interface SignalSignatures extends Infile.SignalSignatures {
+            'notify::container': GObject.Object.Notify;
+            'notify::eof': GObject.Object.Notify;
+            'notify::modtime': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::position': GObject.Object.Notify;
+            'notify::remaining': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2682,14 +3089,17 @@ export namespace Gsf {
             signal: K,
             callback: StructuredBlob.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StructuredBlob.SignalSignatures>(
             signal: K,
             callback: StructuredBlob.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StructuredBlob.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StructuredBlob.SignalSignatures[K]>
+            ...args: StructuredBlob.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2713,7 +3123,11 @@ export namespace Gsf {
 
     namespace XMLOut {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::pretty-print': GObject.Object.Notify;
+            'notify::pretty-print': GObject.Object.Notify;
+            'notify::sink': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2752,8 +3166,14 @@ export namespace Gsf {
         // Signals
 
         connect<K extends keyof XMLOut.SignalSignatures>(signal: K, callback: XMLOut.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XMLOut.SignalSignatures>(signal: K, callback: XMLOut.SignalSignatures[K]): number;
-        emit<K extends keyof XMLOut.SignalSignatures>(signal: K, ...args: Parameters<XMLOut.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof XMLOut.SignalSignatures>(
+            signal: K,
+            ...args: XMLOut.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

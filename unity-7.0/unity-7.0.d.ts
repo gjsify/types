@@ -284,14 +284,17 @@ export namespace Unity {
             signal: K,
             callback: AppInfoManager.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AppInfoManager.SignalSignatures>(
             signal: K,
             callback: AppInfoManager.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AppInfoManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AppInfoManager.SignalSignatures[K]>
+            ...args: AppInfoManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -313,7 +316,13 @@ export namespace Unity {
 
     namespace AnnotatedIcon {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::icon': GObject.Object.Notify;
+            'notify::ribbon': GObject.Object.Notify;
+            'notify::category': GObject.Object.Notify;
+            'notify::size-hint': GObject.Object.Notify;
+            'notify::size-hint': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -356,14 +365,17 @@ export namespace Unity {
             signal: K,
             callback: AnnotatedIcon.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AnnotatedIcon.SignalSignatures>(
             signal: K,
             callback: AnnotatedIcon.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AnnotatedIcon.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AnnotatedIcon.SignalSignatures[K]>
+            ...args: AnnotatedIcon.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -381,7 +393,12 @@ export namespace Unity {
 
     namespace Inspector {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::unity-running': GObject.Object.Notify;
+            'notify::unity-running': GObject.Object.Notify;
+            'notify::unity-bus-name': GObject.Object.Notify;
+            'notify::unity-bus-name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -412,14 +429,17 @@ export namespace Unity {
         // Signals
 
         connect<K extends keyof Inspector.SignalSignatures>(signal: K, callback: Inspector.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Inspector.SignalSignatures>(
             signal: K,
             callback: Inspector.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Inspector.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Inspector.SignalSignatures[K]>
+            ...args: Inspector.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -433,7 +453,18 @@ export namespace Unity {
 
     namespace LauncherEntry {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::app-uri': GObject.Object.Notify;
+            'notify::app-uri': GObject.Object.Notify;
+            'notify::count': GObject.Object.Notify;
+            'notify::count-visible': GObject.Object.Notify;
+            'notify::count-visible': GObject.Object.Notify;
+            'notify::progress': GObject.Object.Notify;
+            'notify::progress-visible': GObject.Object.Notify;
+            'notify::progress-visible': GObject.Object.Notify;
+            'notify::urgent': GObject.Object.Notify;
+            'notify::quicklist': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -489,14 +520,17 @@ export namespace Unity {
             signal: K,
             callback: LauncherEntry.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LauncherEntry.SignalSignatures>(
             signal: K,
             callback: LauncherEntry.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LauncherEntry.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LauncherEntry.SignalSignatures[K]>
+            ...args: LauncherEntry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1022,14 +1056,17 @@ export namespace Unity {
             signal: K,
             callback: LauncherFavorites.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LauncherFavorites.SignalSignatures>(
             signal: K,
             callback: LauncherFavorites.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LauncherFavorites.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LauncherFavorites.SignalSignatures[K]>
+            ...args: LauncherFavorites.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1068,19 +1105,27 @@ export namespace Unity {
             signal: K,
             callback: MetadataProvider.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MetadataProvider.SignalSignatures>(
             signal: K,
             callback: MetadataProvider.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MetadataProvider.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MetadataProvider.SignalSignatures[K]>
+            ...args: MetadataProvider.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace ProgressSourceProvider {
         // Signal signatures
-        interface SignalSignatures extends MetadataProvider.SignalSignatures {}
+        interface SignalSignatures extends MetadataProvider.SignalSignatures {
+            'notify::dbus-name': GObject.Object.Notify;
+            'notify::dbus-name': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1116,14 +1161,17 @@ export namespace Unity {
             signal: K,
             callback: ProgressSourceProvider.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ProgressSourceProvider.SignalSignatures>(
             signal: K,
             callback: ProgressSourceProvider.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ProgressSourceProvider.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProgressSourceProvider.SignalSignatures[K]>
+            ...args: ProgressSourceProvider.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1133,7 +1181,19 @@ export namespace Unity {
 
     namespace Category {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::id': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::icon-hint': GObject.Object.Notify;
+            'notify::icon-hint': GObject.Object.Notify;
+            'notify::default-renderer': GObject.Object.Notify;
+            'notify::default-renderer': GObject.Object.Notify;
+            'notify::content-type': GObject.Object.Notify;
+            'notify::content-type': GObject.Object.Notify;
+            'notify::renderer-hint': GObject.Object.Notify;
+            'notify::renderer-hint': GObject.Object.Notify;
+            'notify::renderer': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1184,14 +1244,17 @@ export namespace Unity {
         // Signals
 
         connect<K extends keyof Category.SignalSignatures>(signal: K, callback: Category.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Category.SignalSignatures>(
             signal: K,
             callback: Category.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Category.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Category.SignalSignatures[K]>
+            ...args: Category.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1217,6 +1280,15 @@ export namespace Unity {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             changed: Changed;
+            'notify::id': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::icon-hint': GObject.Object.Notify;
+            'notify::icon-hint': GObject.Object.Notify;
+            'notify::renderer': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::collapsed': GObject.Object.Notify;
+            'notify::filtering': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1263,8 +1335,14 @@ export namespace Unity {
         // Signals
 
         connect<K extends keyof Filter.SignalSignatures>(signal: K, callback: Filter.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Filter.SignalSignatures>(signal: K, callback: Filter.SignalSignatures[K]): number;
-        emit<K extends keyof Filter.SignalSignatures>(signal: K, ...args: Parameters<Filter.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Filter.SignalSignatures>(
+            signal: K,
+            ...args: Filter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1748,7 +1826,14 @@ export namespace Unity {
 
     namespace FilterOption {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::id': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::icon-hint': GObject.Object.Notify;
+            'notify::icon-hint': GObject.Object.Notify;
+            'notify::active': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1789,14 +1874,17 @@ export namespace Unity {
             signal: K,
             callback: FilterOption.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FilterOption.SignalSignatures>(
             signal: K,
             callback: FilterOption.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FilterOption.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FilterOption.SignalSignatures[K]>
+            ...args: FilterOption.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1809,7 +1897,21 @@ export namespace Unity {
 
     namespace OptionsFilter {
         // Signal signatures
-        interface SignalSignatures extends Filter.SignalSignatures {}
+        interface SignalSignatures extends Filter.SignalSignatures {
+            'notify::sort-type': GObject.Object.Notify;
+            'notify::sort-type': GObject.Object.Notify;
+            'notify::show-all-button': GObject.Object.Notify;
+            'notify::show-all-button': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::icon-hint': GObject.Object.Notify;
+            'notify::icon-hint': GObject.Object.Notify;
+            'notify::renderer': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::collapsed': GObject.Object.Notify;
+            'notify::filtering': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1853,14 +1955,17 @@ export namespace Unity {
             signal: K,
             callback: OptionsFilter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OptionsFilter.SignalSignatures>(
             signal: K,
             callback: OptionsFilter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OptionsFilter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OptionsFilter.SignalSignatures[K]>
+            ...args: OptionsFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1875,7 +1980,21 @@ export namespace Unity {
 
     namespace RadioOptionFilter {
         // Signal signatures
-        interface SignalSignatures extends OptionsFilter.SignalSignatures {}
+        interface SignalSignatures extends OptionsFilter.SignalSignatures {
+            'notify::sort-type': GObject.Object.Notify;
+            'notify::sort-type': GObject.Object.Notify;
+            'notify::show-all-button': GObject.Object.Notify;
+            'notify::show-all-button': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::icon-hint': GObject.Object.Notify;
+            'notify::icon-hint': GObject.Object.Notify;
+            'notify::renderer': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::collapsed': GObject.Object.Notify;
+            'notify::filtering': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1902,14 +2021,17 @@ export namespace Unity {
             signal: K,
             callback: RadioOptionFilter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RadioOptionFilter.SignalSignatures>(
             signal: K,
             callback: RadioOptionFilter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RadioOptionFilter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RadioOptionFilter.SignalSignatures[K]>
+            ...args: RadioOptionFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1918,7 +2040,21 @@ export namespace Unity {
 
     namespace CheckOptionFilter {
         // Signal signatures
-        interface SignalSignatures extends OptionsFilter.SignalSignatures {}
+        interface SignalSignatures extends OptionsFilter.SignalSignatures {
+            'notify::sort-type': GObject.Object.Notify;
+            'notify::sort-type': GObject.Object.Notify;
+            'notify::show-all-button': GObject.Object.Notify;
+            'notify::show-all-button': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::icon-hint': GObject.Object.Notify;
+            'notify::icon-hint': GObject.Object.Notify;
+            'notify::renderer': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::collapsed': GObject.Object.Notify;
+            'notify::filtering': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1945,19 +2081,36 @@ export namespace Unity {
             signal: K,
             callback: CheckOptionFilter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CheckOptionFilter.SignalSignatures>(
             signal: K,
             callback: CheckOptionFilter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CheckOptionFilter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CheckOptionFilter.SignalSignatures[K]>
+            ...args: CheckOptionFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace CheckOptionFilterCompact {
         // Signal signatures
-        interface SignalSignatures extends OptionsFilter.SignalSignatures {}
+        interface SignalSignatures extends OptionsFilter.SignalSignatures {
+            'notify::sort-type': GObject.Object.Notify;
+            'notify::sort-type': GObject.Object.Notify;
+            'notify::show-all-button': GObject.Object.Notify;
+            'notify::show-all-button': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::icon-hint': GObject.Object.Notify;
+            'notify::icon-hint': GObject.Object.Notify;
+            'notify::renderer': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::collapsed': GObject.Object.Notify;
+            'notify::filtering': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1989,19 +2142,33 @@ export namespace Unity {
             signal: K,
             callback: CheckOptionFilterCompact.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CheckOptionFilterCompact.SignalSignatures>(
             signal: K,
             callback: CheckOptionFilterCompact.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CheckOptionFilterCompact.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CheckOptionFilterCompact.SignalSignatures[K]>
+            ...args: CheckOptionFilterCompact.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace RatingsFilter {
         // Signal signatures
-        interface SignalSignatures extends Filter.SignalSignatures {}
+        interface SignalSignatures extends Filter.SignalSignatures {
+            'notify::rating': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::icon-hint': GObject.Object.Notify;
+            'notify::icon-hint': GObject.Object.Notify;
+            'notify::renderer': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::collapsed': GObject.Object.Notify;
+            'notify::filtering': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2032,14 +2199,17 @@ export namespace Unity {
             signal: K,
             callback: RatingsFilter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RatingsFilter.SignalSignatures>(
             signal: K,
             callback: RatingsFilter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RatingsFilter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RatingsFilter.SignalSignatures[K]>
+            ...args: RatingsFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2048,7 +2218,21 @@ export namespace Unity {
 
     namespace MultiRangeFilter {
         // Signal signatures
-        interface SignalSignatures extends OptionsFilter.SignalSignatures {}
+        interface SignalSignatures extends OptionsFilter.SignalSignatures {
+            'notify::sort-type': GObject.Object.Notify;
+            'notify::sort-type': GObject.Object.Notify;
+            'notify::show-all-button': GObject.Object.Notify;
+            'notify::show-all-button': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::icon-hint': GObject.Object.Notify;
+            'notify::icon-hint': GObject.Object.Notify;
+            'notify::renderer': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::collapsed': GObject.Object.Notify;
+            'notify::filtering': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2075,14 +2259,17 @@ export namespace Unity {
             signal: K,
             callback: MultiRangeFilter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MultiRangeFilter.SignalSignatures>(
             signal: K,
             callback: MultiRangeFilter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MultiRangeFilter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MultiRangeFilter.SignalSignatures[K]>
+            ...args: MultiRangeFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2092,7 +2279,18 @@ export namespace Unity {
 
     namespace PreferencesManager {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::remote-content-search': GObject.Object.Notify;
+            'notify::remote-content-search': GObject.Object.Notify;
+            'notify::always-search': GObject.Object.Notify;
+            'notify::always-search': GObject.Object.Notify;
+            'notify::home-lens-priority': GObject.Object.Notify;
+            'notify::home-lens-priority': GObject.Object.Notify;
+            'notify::home-lens-default-view': GObject.Object.Notify;
+            'notify::home-lens-default-view': GObject.Object.Notify;
+            'notify::disabled-scopes': GObject.Object.Notify;
+            'notify::disabled-scopes': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2148,14 +2346,17 @@ export namespace Unity {
             signal: K,
             callback: PreferencesManager.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PreferencesManager.SignalSignatures>(
             signal: K,
             callback: PreferencesManager.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PreferencesManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PreferencesManager.SignalSignatures[K]>
+            ...args: PreferencesManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2185,6 +2386,16 @@ export namespace Unity {
         // Signal signatures
         interface SignalSignatures extends ScopeSearchBase.SignalSignatures {
             finished: Finished;
+            'notify::channel-id': GObject.Object.Notify;
+            'notify::channel-id': GObject.Object.Notify;
+            'notify::search-string': GObject.Object.Notify;
+            'notify::search-string': GObject.Object.Notify;
+            'notify::search-type': GObject.Object.Notify;
+            'notify::search-type': GObject.Object.Notify;
+            'notify::hints': GObject.Object.Notify;
+            'notify::results-model': GObject.Object.Notify;
+            'notify::results-model': GObject.Object.Notify;
+            'notify::owner': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -2231,14 +2442,17 @@ export namespace Unity {
             signal: K,
             callback: DeprecatedScopeSearch.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeprecatedScopeSearch.SignalSignatures>(
             signal: K,
             callback: DeprecatedScopeSearch.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeprecatedScopeSearch.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeprecatedScopeSearch.SignalSignatures[K]>
+            ...args: DeprecatedScopeSearch.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2268,6 +2482,16 @@ export namespace Unity {
         interface SignalSignatures extends DeprecatedScopeSearch.SignalSignatures {
             'transaction-complete': TransactionComplete;
             'category-order-changed': CategoryOrderChanged;
+            'notify::channel-id': GObject.Object.Notify;
+            'notify::channel-id': GObject.Object.Notify;
+            'notify::search-string': GObject.Object.Notify;
+            'notify::search-string': GObject.Object.Notify;
+            'notify::search-type': GObject.Object.Notify;
+            'notify::search-type': GObject.Object.Notify;
+            'notify::hints': GObject.Object.Notify;
+            'notify::results-model': GObject.Object.Notify;
+            'notify::results-model': GObject.Object.Notify;
+            'notify::owner': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -2297,14 +2521,17 @@ export namespace Unity {
             signal: K,
             callback: AggregatedScopeSearch.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AggregatedScopeSearch.SignalSignatures>(
             signal: K,
             callback: AggregatedScopeSearch.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AggregatedScopeSearch.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AggregatedScopeSearch.SignalSignatures[K]>
+            ...args: AggregatedScopeSearch.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2348,7 +2575,15 @@ export namespace Unity {
 
     namespace Preview {
         // Signal signatures
-        interface SignalSignatures extends AbstractPreview.SignalSignatures {}
+        interface SignalSignatures extends AbstractPreview.SignalSignatures {
+            'notify::title': GObject.Object.Notify;
+            'notify::subtitle': GObject.Object.Notify;
+            'notify::description-markup': GObject.Object.Notify;
+            'notify::description-markup': GObject.Object.Notify;
+            'notify::image-source-uri': GObject.Object.Notify;
+            'notify::image-source-uri': GObject.Object.Notify;
+            'notify::image': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2392,14 +2627,17 @@ export namespace Unity {
         // Signals
 
         connect<K extends keyof Preview.SignalSignatures>(signal: K, callback: Preview.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Preview.SignalSignatures>(
             signal: K,
             callback: Preview.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Preview.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Preview.SignalSignatures[K]>
+            ...args: Preview.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2895,6 +3133,16 @@ export namespace Unity {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             activated: Activated;
+            'notify::id': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::extra-text': GObject.Object.Notify;
+            'notify::extra-text': GObject.Object.Notify;
+            'notify::icon-hint': GObject.Object.Notify;
+            'notify::icon-hint': GObject.Object.Notify;
+            'notify::layout-hint': GObject.Object.Notify;
+            'notify::layout-hint': GObject.Object.Notify;
+            'notify::hints': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -2954,14 +3202,17 @@ export namespace Unity {
             signal: K,
             callback: PreviewAction.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PreviewAction.SignalSignatures>(
             signal: K,
             callback: PreviewAction.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PreviewAction.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PreviewAction.SignalSignatures[K]>
+            ...args: PreviewAction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3444,7 +3695,14 @@ export namespace Unity {
 
     namespace InfoHint {
         // Signal signatures
-        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {}
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
+            'notify::id': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::icon-hint': GObject.Object.Notify;
+            'notify::icon-hint': GObject.Object.Notify;
+            'notify::data': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3483,14 +3741,17 @@ export namespace Unity {
         // Signals
 
         connect<K extends keyof InfoHint.SignalSignatures>(signal: K, callback: InfoHint.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InfoHint.SignalSignatures>(
             signal: K,
             callback: InfoHint.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InfoHint.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InfoHint.SignalSignatures[K]>
+            ...args: InfoHint.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3504,7 +3765,15 @@ export namespace Unity {
 
     namespace GenericPreview {
         // Signal signatures
-        interface SignalSignatures extends Preview.SignalSignatures {}
+        interface SignalSignatures extends Preview.SignalSignatures {
+            'notify::title': GObject.Object.Notify;
+            'notify::subtitle': GObject.Object.Notify;
+            'notify::description-markup': GObject.Object.Notify;
+            'notify::description-markup': GObject.Object.Notify;
+            'notify::image-source-uri': GObject.Object.Notify;
+            'notify::image-source-uri': GObject.Object.Notify;
+            'notify::image': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3528,19 +3797,36 @@ export namespace Unity {
             signal: K,
             callback: GenericPreview.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GenericPreview.SignalSignatures>(
             signal: K,
             callback: GenericPreview.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GenericPreview.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GenericPreview.SignalSignatures[K]>
+            ...args: GenericPreview.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace ApplicationPreview {
         // Signal signatures
-        interface SignalSignatures extends Preview.SignalSignatures {}
+        interface SignalSignatures extends Preview.SignalSignatures {
+            'notify::app-icon': GObject.Object.Notify;
+            'notify::app-icon': GObject.Object.Notify;
+            'notify::license': GObject.Object.Notify;
+            'notify::copyright': GObject.Object.Notify;
+            'notify::last-update': GObject.Object.Notify;
+            'notify::last-update': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::subtitle': GObject.Object.Notify;
+            'notify::description-markup': GObject.Object.Notify;
+            'notify::description-markup': GObject.Object.Notify;
+            'notify::image-source-uri': GObject.Object.Notify;
+            'notify::image-source-uri': GObject.Object.Notify;
+            'notify::image': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3592,14 +3878,17 @@ export namespace Unity {
             signal: K,
             callback: ApplicationPreview.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ApplicationPreview.SignalSignatures>(
             signal: K,
             callback: ApplicationPreview.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ApplicationPreview.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ApplicationPreview.SignalSignatures[K]>
+            ...args: ApplicationPreview.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3616,7 +3905,15 @@ export namespace Unity {
 
     namespace MusicPreview {
         // Signal signatures
-        interface SignalSignatures extends Preview.SignalSignatures {}
+        interface SignalSignatures extends Preview.SignalSignatures {
+            'notify::title': GObject.Object.Notify;
+            'notify::subtitle': GObject.Object.Notify;
+            'notify::description-markup': GObject.Object.Notify;
+            'notify::description-markup': GObject.Object.Notify;
+            'notify::image-source-uri': GObject.Object.Notify;
+            'notify::image-source-uri': GObject.Object.Notify;
+            'notify::image': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3640,14 +3937,17 @@ export namespace Unity {
             signal: K,
             callback: MusicPreview.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MusicPreview.SignalSignatures>(
             signal: K,
             callback: MusicPreview.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MusicPreview.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MusicPreview.SignalSignatures[K]>
+            ...args: MusicPreview.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3656,7 +3956,25 @@ export namespace Unity {
 
     namespace PaymentPreview {
         // Signal signatures
-        interface SignalSignatures extends Preview.SignalSignatures {}
+        interface SignalSignatures extends Preview.SignalSignatures {
+            'notify::header': GObject.Object.Notify;
+            'notify::email': GObject.Object.Notify;
+            'notify::payment-method': GObject.Object.Notify;
+            'notify::payment-method': GObject.Object.Notify;
+            'notify::purchase-prize': GObject.Object.Notify;
+            'notify::purchase-prize': GObject.Object.Notify;
+            'notify::purchase-type': GObject.Object.Notify;
+            'notify::purchase-type': GObject.Object.Notify;
+            'notify::preview-type': GObject.Object.Notify;
+            'notify::preview-type': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::subtitle': GObject.Object.Notify;
+            'notify::description-markup': GObject.Object.Notify;
+            'notify::description-markup': GObject.Object.Notify;
+            'notify::image-source-uri': GObject.Object.Notify;
+            'notify::image-source-uri': GObject.Object.Notify;
+            'notify::image': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3722,14 +4040,17 @@ export namespace Unity {
             signal: K,
             callback: PaymentPreview.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PaymentPreview.SignalSignatures>(
             signal: K,
             callback: PaymentPreview.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PaymentPreview.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PaymentPreview.SignalSignatures[K]>
+            ...args: PaymentPreview.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3749,7 +4070,16 @@ export namespace Unity {
 
     namespace MoviePreview {
         // Signal signatures
-        interface SignalSignatures extends Preview.SignalSignatures {}
+        interface SignalSignatures extends Preview.SignalSignatures {
+            'notify::year': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::subtitle': GObject.Object.Notify;
+            'notify::description-markup': GObject.Object.Notify;
+            'notify::description-markup': GObject.Object.Notify;
+            'notify::image-source-uri': GObject.Object.Notify;
+            'notify::image-source-uri': GObject.Object.Notify;
+            'notify::image': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3780,14 +4110,17 @@ export namespace Unity {
             signal: K,
             callback: MoviePreview.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MoviePreview.SignalSignatures>(
             signal: K,
             callback: MoviePreview.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MoviePreview.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MoviePreview.SignalSignatures[K]>
+            ...args: MoviePreview.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3798,7 +4131,18 @@ export namespace Unity {
 
     namespace SocialPreview {
         // Signal signatures
-        interface SignalSignatures extends Preview.SignalSignatures {}
+        interface SignalSignatures extends Preview.SignalSignatures {
+            'notify::avatar': GObject.Object.Notify;
+            'notify::content': GObject.Object.Notify;
+            'notify::sender': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::subtitle': GObject.Object.Notify;
+            'notify::description-markup': GObject.Object.Notify;
+            'notify::description-markup': GObject.Object.Notify;
+            'notify::image-source-uri': GObject.Object.Notify;
+            'notify::image-source-uri': GObject.Object.Notify;
+            'notify::image': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3835,14 +4179,17 @@ export namespace Unity {
             signal: K,
             callback: SocialPreview.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SocialPreview.SignalSignatures>(
             signal: K,
             callback: SocialPreview.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SocialPreview.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SocialPreview.SignalSignatures[K]>
+            ...args: SocialPreview.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3857,7 +4204,12 @@ export namespace Unity {
 
     namespace SocialPreviewComment {
         // Signal signatures
-        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {}
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
+            'notify::id': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::text': GObject.Object.Notify;
+            'notify::time': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3893,14 +4245,17 @@ export namespace Unity {
             signal: K,
             callback: SocialPreviewComment.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SocialPreviewComment.SignalSignatures>(
             signal: K,
             callback: SocialPreviewComment.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SocialPreviewComment.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SocialPreviewComment.SignalSignatures[K]>
+            ...args: SocialPreviewComment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3912,7 +4267,11 @@ export namespace Unity {
 
     namespace ActivationResponse {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::handled': GObject.Object.Notify;
+            'notify::goto-uri': GObject.Object.Notify;
+            'notify::goto-uri': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3956,14 +4315,17 @@ export namespace Unity {
             signal: K,
             callback: ActivationResponse.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ActivationResponse.SignalSignatures>(
             signal: K,
             callback: ActivationResponse.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ActivationResponse.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ActivationResponse.SignalSignatures[K]>
+            ...args: ActivationResponse.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3974,7 +4336,17 @@ export namespace Unity {
 
     namespace AggregatorActivation {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::channel-id': GObject.Object.Notify;
+            'notify::channel-id': GObject.Object.Notify;
+            'notify::scope-id': GObject.Object.Notify;
+            'notify::scope-id': GObject.Object.Notify;
+            'notify::action-type': GObject.Object.Notify;
+            'notify::action-type': GObject.Object.Notify;
+            'notify::scope-result': GObject.Object.Notify;
+            'notify::scope-result': GObject.Object.Notify;
+            'notify::hints': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4034,14 +4406,17 @@ export namespace Unity {
             signal: K,
             callback: AggregatorActivation.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AggregatorActivation.SignalSignatures>(
             signal: K,
             callback: AggregatorActivation.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AggregatorActivation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AggregatorActivation.SignalSignatures[K]>
+            ...args: AggregatorActivation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4079,14 +4454,17 @@ export namespace Unity {
         // Signals
 
         connect<K extends keyof FilterSet.SignalSignatures>(signal: K, callback: FilterSet.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FilterSet.SignalSignatures>(
             signal: K,
             callback: FilterSet.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FilterSet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FilterSet.SignalSignatures[K]>
+            ...args: FilterSet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -4127,14 +4505,17 @@ export namespace Unity {
             signal: K,
             callback: CategorySet.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CategorySet.SignalSignatures>(
             signal: K,
             callback: CategorySet.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CategorySet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CategorySet.SignalSignatures[K]>
+            ...args: CategorySet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -4170,8 +4551,14 @@ export namespace Unity {
         // Signals
 
         connect<K extends keyof Schema.SignalSignatures>(signal: K, callback: Schema.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Schema.SignalSignatures>(signal: K, callback: Schema.SignalSignatures[K]): number;
-        emit<K extends keyof Schema.SignalSignatures>(signal: K, ...args: Parameters<Schema.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Schema.SignalSignatures>(
+            signal: K,
+            ...args: Schema.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -4208,14 +4595,17 @@ export namespace Unity {
             signal: K,
             callback: Cancellable.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Cancellable.SignalSignatures>(
             signal: K,
             callback: Cancellable.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Cancellable.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Cancellable.SignalSignatures[K]>
+            ...args: Cancellable.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -4258,14 +4648,17 @@ export namespace Unity {
             signal: K,
             callback: ScopeSearchBase.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ScopeSearchBase.SignalSignatures>(
             signal: K,
             callback: ScopeSearchBase.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ScopeSearchBase.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ScopeSearchBase.SignalSignatures[K]>
+            ...args: ScopeSearchBase.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -4305,14 +4698,17 @@ export namespace Unity {
         // Signals
 
         connect<K extends keyof ResultSet.SignalSignatures>(signal: K, callback: ResultSet.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ResultSet.SignalSignatures>(
             signal: K,
             callback: ResultSet.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ResultSet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ResultSet.SignalSignatures[K]>
+            ...args: ResultSet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -4351,14 +4747,17 @@ export namespace Unity {
             signal: K,
             callback: AbstractPreview.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AbstractPreview.SignalSignatures>(
             signal: K,
             callback: AbstractPreview.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AbstractPreview.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AbstractPreview.SignalSignatures[K]>
+            ...args: AbstractPreview.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -4398,14 +4797,17 @@ export namespace Unity {
             signal: K,
             callback: ResultPreviewer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ResultPreviewer.SignalSignatures>(
             signal: K,
             callback: ResultPreviewer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ResultPreviewer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ResultPreviewer.SignalSignatures[K]>
+            ...args: ResultPreviewer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -4422,7 +4824,12 @@ export namespace Unity {
 
     namespace SearchMetadata {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::locale': GObject.Object.Notify;
+            'notify::form-factor': GObject.Object.Notify;
+            'notify::form-factor': GObject.Object.Notify;
+            'notify::location': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4458,14 +4865,17 @@ export namespace Unity {
             signal: K,
             callback: SearchMetadata.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SearchMetadata.SignalSignatures>(
             signal: K,
             callback: SearchMetadata.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SearchMetadata.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SearchMetadata.SignalSignatures[K]>
+            ...args: SearchMetadata.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -4513,14 +4923,17 @@ export namespace Unity {
             signal: K,
             callback: GeoCoordinate.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GeoCoordinate.SignalSignatures>(
             signal: K,
             callback: GeoCoordinate.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GeoCoordinate.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GeoCoordinate.SignalSignatures[K]>
+            ...args: GeoCoordinate.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4559,14 +4972,17 @@ export namespace Unity {
             signal: K,
             callback: AbstractScope.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AbstractScope.SignalSignatures>(
             signal: K,
             callback: AbstractScope.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AbstractScope.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AbstractScope.SignalSignatures[K]>
+            ...args: AbstractScope.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -4598,7 +5014,9 @@ export namespace Unity {
 
     namespace ScopeDBusConnector {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::scope': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4628,14 +5046,17 @@ export namespace Unity {
             signal: K,
             callback: ScopeDBusConnector.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ScopeDBusConnector.SignalSignatures>(
             signal: K,
             callback: ScopeDBusConnector.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ScopeDBusConnector.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ScopeDBusConnector.SignalSignatures[K]>
+            ...args: ScopeDBusConnector.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -4659,6 +5080,20 @@ export namespace Unity {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'active-sources-changed': ActiveSourcesChanged;
+            'notify::id': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+            'notify::search-in-global': GObject.Object.Notify;
+            'notify::search-in-global': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::is-master': GObject.Object.Notify;
+            'notify::is-master': GObject.Object.Notify;
+            'notify::search-hint': GObject.Object.Notify;
+            'notify::search-hint': GObject.Object.Notify;
+            'notify::sources': GObject.Object.Notify;
+            'notify::categories': GObject.Object.Notify;
+            'notify::filters': GObject.Object.Notify;
+            'notify::schema': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -4722,14 +5157,17 @@ export namespace Unity {
             signal: K,
             callback: DeprecatedScopeBase.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeprecatedScopeBase.SignalSignatures>(
             signal: K,
             callback: DeprecatedScopeBase.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeprecatedScopeBase.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeprecatedScopeBase.SignalSignatures[K]>
+            ...args: DeprecatedScopeBase.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4783,6 +5221,20 @@ export namespace Unity {
             'preview-uri': PreviewUri;
             'generate-search-key': GenerateSearchKey;
             'search-changed': SearchChanged;
+            'notify::id': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+            'notify::search-in-global': GObject.Object.Notify;
+            'notify::search-in-global': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::is-master': GObject.Object.Notify;
+            'notify::is-master': GObject.Object.Notify;
+            'notify::search-hint': GObject.Object.Notify;
+            'notify::search-hint': GObject.Object.Notify;
+            'notify::sources': GObject.Object.Notify;
+            'notify::categories': GObject.Object.Notify;
+            'notify::filters': GObject.Object.Notify;
+            'notify::schema': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -4807,14 +5259,17 @@ export namespace Unity {
             signal: K,
             callback: DeprecatedScope.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeprecatedScope.SignalSignatures>(
             signal: K,
             callback: DeprecatedScope.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeprecatedScope.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeprecatedScope.SignalSignatures[K]>
+            ...args: DeprecatedScope.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -4841,7 +5296,28 @@ export namespace Unity {
 
     namespace AggregatorScope {
         // Signal signatures
-        interface SignalSignatures extends DeprecatedScopeBase.SignalSignatures {}
+        interface SignalSignatures extends DeprecatedScopeBase.SignalSignatures {
+            'notify::merge-mode': GObject.Object.Notify;
+            'notify::merge-mode': GObject.Object.Notify;
+            'notify::proxy-filter-hints': GObject.Object.Notify;
+            'notify::proxy-filter-hints': GObject.Object.Notify;
+            'notify::automatic-flushing': GObject.Object.Notify;
+            'notify::automatic-flushing': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+            'notify::search-in-global': GObject.Object.Notify;
+            'notify::search-in-global': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::is-master': GObject.Object.Notify;
+            'notify::is-master': GObject.Object.Notify;
+            'notify::search-hint': GObject.Object.Notify;
+            'notify::search-hint': GObject.Object.Notify;
+            'notify::sources': GObject.Object.Notify;
+            'notify::categories': GObject.Object.Notify;
+            'notify::filters': GObject.Object.Notify;
+            'notify::schema': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4885,14 +5361,17 @@ export namespace Unity {
             signal: K,
             callback: AggregatorScope.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AggregatorScope.SignalSignatures>(
             signal: K,
             callback: AggregatorScope.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AggregatorScope.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AggregatorScope.SignalSignatures[K]>
+            ...args: AggregatorScope.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -4928,7 +5407,30 @@ export namespace Unity {
 
     namespace MasterScope {
         // Signal signatures
-        interface SignalSignatures extends AggregatorScope.SignalSignatures {}
+        interface SignalSignatures extends AggregatorScope.SignalSignatures {
+            'notify::no-content-hint': GObject.Object.Notify;
+            'notify::no-content-hint': GObject.Object.Notify;
+            'notify::merge-mode': GObject.Object.Notify;
+            'notify::merge-mode': GObject.Object.Notify;
+            'notify::proxy-filter-hints': GObject.Object.Notify;
+            'notify::proxy-filter-hints': GObject.Object.Notify;
+            'notify::automatic-flushing': GObject.Object.Notify;
+            'notify::automatic-flushing': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+            'notify::search-in-global': GObject.Object.Notify;
+            'notify::search-in-global': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::is-master': GObject.Object.Notify;
+            'notify::is-master': GObject.Object.Notify;
+            'notify::search-hint': GObject.Object.Notify;
+            'notify::search-hint': GObject.Object.Notify;
+            'notify::sources': GObject.Object.Notify;
+            'notify::categories': GObject.Object.Notify;
+            'notify::filters': GObject.Object.Notify;
+            'notify::schema': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4962,14 +5464,17 @@ export namespace Unity {
             signal: K,
             callback: MasterScope.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MasterScope.SignalSignatures>(
             signal: K,
             callback: MasterScope.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MasterScope.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MasterScope.SignalSignatures[K]>
+            ...args: MasterScope.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4979,7 +5484,19 @@ export namespace Unity {
 
     namespace SimpleScope {
         // Signal signatures
-        interface SignalSignatures extends AbstractScope.SignalSignatures {}
+        interface SignalSignatures extends AbstractScope.SignalSignatures {
+            'notify::filter-set': GObject.Object.Notify;
+            'notify::filter-set': GObject.Object.Notify;
+            'notify::category-set': GObject.Object.Notify;
+            'notify::category-set': GObject.Object.Notify;
+            'notify::schema': GObject.Object.Notify;
+            'notify::search-hint': GObject.Object.Notify;
+            'notify::search-hint': GObject.Object.Notify;
+            'notify::group-name': GObject.Object.Notify;
+            'notify::group-name': GObject.Object.Notify;
+            'notify::unique-name': GObject.Object.Notify;
+            'notify::unique-name': GObject.Object.Notify;
+        }
 
         interface SearchRunFunc {
             (search: ScopeSearchBase): void;
@@ -5056,14 +5573,17 @@ export namespace Unity {
             signal: K,
             callback: SimpleScope.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SimpleScope.SignalSignatures>(
             signal: K,
             callback: SimpleScope.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SimpleScope.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SimpleScope.SignalSignatures[K]>
+            ...args: SimpleScope.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5112,14 +5632,17 @@ export namespace Unity {
             signal: K,
             callback: ScopeLoader.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ScopeLoader.SignalSignatures>(
             signal: K,
             callback: ScopeLoader.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ScopeLoader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ScopeLoader.SignalSignatures[K]>
+            ...args: ScopeLoader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -5137,7 +5660,19 @@ export namespace Unity {
 
     namespace TrackMetadata {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::uri': GObject.Object.Notify;
+            'notify::track-no': GObject.Object.Notify;
+            'notify::track-no': GObject.Object.Notify;
+            'notify::artist': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::album': GObject.Object.Notify;
+            'notify::length': GObject.Object.Notify;
+            'notify::art-location': GObject.Object.Notify;
+            'notify::art-location': GObject.Object.Notify;
+            'notify::art-icon': GObject.Object.Notify;
+            'notify::art-icon': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5207,14 +5742,17 @@ export namespace Unity {
             signal: K,
             callback: TrackMetadata.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TrackMetadata.SignalSignatures>(
             signal: K,
             callback: TrackMetadata.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TrackMetadata.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TrackMetadata.SignalSignatures[K]>
+            ...args: TrackMetadata.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5238,7 +5776,17 @@ export namespace Unity {
 
     namespace Playlist {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::id': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::icon': GObject.Object.Notify;
+            'notify::creation-date': GObject.Object.Notify;
+            'notify::creation-date': GObject.Object.Notify;
+            'notify::modification-date': GObject.Object.Notify;
+            'notify::modification-date': GObject.Object.Notify;
+            'notify::last-play-date': GObject.Object.Notify;
+            'notify::last-play-date': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5289,14 +5837,17 @@ export namespace Unity {
         // Signals
 
         connect<K extends keyof Playlist.SignalSignatures>(signal: K, callback: Playlist.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Playlist.SignalSignatures>(
             signal: K,
             callback: Playlist.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Playlist.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Playlist.SignalSignatures[K]>
+            ...args: Playlist.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5343,6 +5894,31 @@ export namespace Unity {
             previous: Previous;
             next: Next;
             'activate-playlist': ActivatePlaylist;
+            'notify::app-info': GObject.Object.Notify;
+            'notify::app-info': GObject.Object.Notify;
+            'notify::desktop-file-name': GObject.Object.Notify;
+            'notify::desktop-file-name': GObject.Object.Notify;
+            'notify::is-blacklisted': GObject.Object.Notify;
+            'notify::is-blacklisted': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::can-go-next': GObject.Object.Notify;
+            'notify::can-go-next': GObject.Object.Notify;
+            'notify::can-go-previous': GObject.Object.Notify;
+            'notify::can-go-previous': GObject.Object.Notify;
+            'notify::can-play': GObject.Object.Notify;
+            'notify::can-play': GObject.Object.Notify;
+            'notify::can-pause': GObject.Object.Notify;
+            'notify::can-pause': GObject.Object.Notify;
+            'notify::current-track': GObject.Object.Notify;
+            'notify::current-track': GObject.Object.Notify;
+            'notify::playback-state': GObject.Object.Notify;
+            'notify::playback-state': GObject.Object.Notify;
+            'notify::current-playlist': GObject.Object.Notify;
+            'notify::current-playlist': GObject.Object.Notify;
+            'notify::track-menu': GObject.Object.Notify;
+            'notify::track-menu': GObject.Object.Notify;
+            'notify::player-menu': GObject.Object.Notify;
+            'notify::player-menu': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -5442,14 +6018,17 @@ export namespace Unity {
             signal: K,
             callback: MusicPlayer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MusicPlayer.SignalSignatures>(
             signal: K,
             callback: MusicPlayer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MusicPlayer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MusicPlayer.SignalSignatures[K]>
+            ...args: MusicPlayer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

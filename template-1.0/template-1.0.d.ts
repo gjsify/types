@@ -158,7 +158,9 @@ export namespace Template {
     }
     namespace Template {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::locator': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -186,14 +188,17 @@ export namespace Template {
         // Signals
 
         connect<K extends keyof Template.SignalSignatures>(signal: K, callback: Template.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Template.SignalSignatures>(
             signal: K,
             callback: Template.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Template.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Template.SignalSignatures[K]>
+            ...args: Template.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -266,14 +271,17 @@ export namespace Template {
             signal: K,
             callback: TemplateLocator.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TemplateLocator.SignalSignatures>(
             signal: K,
             callback: TemplateLocator.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TemplateLocator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TemplateLocator.SignalSignatures[K]>
+            ...args: TemplateLocator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 

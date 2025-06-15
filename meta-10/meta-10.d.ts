@@ -1907,6 +1907,7 @@ export namespace Meta {
             'last-device-changed': LastDeviceChanged;
             'lid-is-closed-changed': LidIsClosedChanged;
             'prepare-shutdown': PrepareShutdown;
+            'notify::context': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1932,14 +1933,17 @@ export namespace Meta {
         // Signals
 
         connect<K extends keyof Backend.SignalSignatures>(signal: K, callback: Backend.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Backend.SignalSignatures>(
             signal: K,
             callback: Backend.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Backend.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Backend.SignalSignatures[K]>
+            ...args: Backend.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2499,6 +2503,8 @@ export namespace Meta {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             changed: Changed;
+            'notify::meta-display': GObject.Object.Notify;
+            'notify::meta-display': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -2536,14 +2542,17 @@ export namespace Meta {
             signal: K,
             callback: Background.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Background.SignalSignatures>(
             signal: K,
             callback: Background.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Background.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Background.SignalSignatures[K]>
+            ...args: Background.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2573,7 +2582,133 @@ export namespace Meta {
 
     namespace BackgroundActor {
         // Signal signatures
-        interface SignalSignatures extends Clutter.Actor.SignalSignatures {}
+        interface SignalSignatures extends Clutter.Actor.SignalSignatures {
+            'notify::meta-display': GObject.Object.Notify;
+            'notify::meta-display': GObject.Object.Notify;
+            'notify::monitor': GObject.Object.Notify;
+            'notify::actions': GObject.Object.Notify;
+            'notify::allocation': GObject.Object.Notify;
+            'notify::background-color': GObject.Object.Notify;
+            'notify::background-color': GObject.Object.Notify;
+            'notify::background-color-set': GObject.Object.Notify;
+            'notify::background-color-set': GObject.Object.Notify;
+            'notify::child-transform': GObject.Object.Notify;
+            'notify::child-transform': GObject.Object.Notify;
+            'notify::child-transform-set': GObject.Object.Notify;
+            'notify::child-transform-set': GObject.Object.Notify;
+            'notify::clip-rect': GObject.Object.Notify;
+            'notify::clip-rect': GObject.Object.Notify;
+            'notify::clip-to-allocation': GObject.Object.Notify;
+            'notify::clip-to-allocation': GObject.Object.Notify;
+            'notify::constraints': GObject.Object.Notify;
+            'notify::content': GObject.Object.Notify;
+            'notify::content-box': GObject.Object.Notify;
+            'notify::content-box': GObject.Object.Notify;
+            'notify::content-gravity': GObject.Object.Notify;
+            'notify::content-gravity': GObject.Object.Notify;
+            'notify::content-repeat': GObject.Object.Notify;
+            'notify::content-repeat': GObject.Object.Notify;
+            'notify::effect': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::fixed-position-set': GObject.Object.Notify;
+            'notify::fixed-position-set': GObject.Object.Notify;
+            'notify::fixed-x': GObject.Object.Notify;
+            'notify::fixed-x': GObject.Object.Notify;
+            'notify::fixed-y': GObject.Object.Notify;
+            'notify::fixed-y': GObject.Object.Notify;
+            'notify::has-clip': GObject.Object.Notify;
+            'notify::has-clip': GObject.Object.Notify;
+            'notify::has-pointer': GObject.Object.Notify;
+            'notify::has-pointer': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::layout-manager': GObject.Object.Notify;
+            'notify::layout-manager': GObject.Object.Notify;
+            'notify::magnification-filter': GObject.Object.Notify;
+            'notify::magnification-filter': GObject.Object.Notify;
+            'notify::mapped': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::min-height': GObject.Object.Notify;
+            'notify::min-height': GObject.Object.Notify;
+            'notify::min-height-set': GObject.Object.Notify;
+            'notify::min-height-set': GObject.Object.Notify;
+            'notify::min-width': GObject.Object.Notify;
+            'notify::min-width': GObject.Object.Notify;
+            'notify::min-width-set': GObject.Object.Notify;
+            'notify::min-width-set': GObject.Object.Notify;
+            'notify::minification-filter': GObject.Object.Notify;
+            'notify::minification-filter': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::natural-height': GObject.Object.Notify;
+            'notify::natural-height': GObject.Object.Notify;
+            'notify::natural-height-set': GObject.Object.Notify;
+            'notify::natural-height-set': GObject.Object.Notify;
+            'notify::natural-width': GObject.Object.Notify;
+            'notify::natural-width': GObject.Object.Notify;
+            'notify::natural-width-set': GObject.Object.Notify;
+            'notify::natural-width-set': GObject.Object.Notify;
+            'notify::offscreen-redirect': GObject.Object.Notify;
+            'notify::offscreen-redirect': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::pivot-point': GObject.Object.Notify;
+            'notify::pivot-point': GObject.Object.Notify;
+            'notify::pivot-point-z': GObject.Object.Notify;
+            'notify::pivot-point-z': GObject.Object.Notify;
+            'notify::position': GObject.Object.Notify;
+            'notify::reactive': GObject.Object.Notify;
+            'notify::realized': GObject.Object.Notify;
+            'notify::request-mode': GObject.Object.Notify;
+            'notify::request-mode': GObject.Object.Notify;
+            'notify::rotation-angle-x': GObject.Object.Notify;
+            'notify::rotation-angle-x': GObject.Object.Notify;
+            'notify::rotation-angle-y': GObject.Object.Notify;
+            'notify::rotation-angle-y': GObject.Object.Notify;
+            'notify::rotation-angle-z': GObject.Object.Notify;
+            'notify::rotation-angle-z': GObject.Object.Notify;
+            'notify::scale-x': GObject.Object.Notify;
+            'notify::scale-x': GObject.Object.Notify;
+            'notify::scale-y': GObject.Object.Notify;
+            'notify::scale-y': GObject.Object.Notify;
+            'notify::scale-z': GObject.Object.Notify;
+            'notify::scale-z': GObject.Object.Notify;
+            'notify::show-on-set-parent': GObject.Object.Notify;
+            'notify::show-on-set-parent': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::text-direction': GObject.Object.Notify;
+            'notify::text-direction': GObject.Object.Notify;
+            'notify::transform': GObject.Object.Notify;
+            'notify::transform-set': GObject.Object.Notify;
+            'notify::transform-set': GObject.Object.Notify;
+            'notify::translation-x': GObject.Object.Notify;
+            'notify::translation-x': GObject.Object.Notify;
+            'notify::translation-y': GObject.Object.Notify;
+            'notify::translation-y': GObject.Object.Notify;
+            'notify::translation-z': GObject.Object.Notify;
+            'notify::translation-z': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::x': GObject.Object.Notify;
+            'notify::x-align': GObject.Object.Notify;
+            'notify::x-align': GObject.Object.Notify;
+            'notify::x-expand': GObject.Object.Notify;
+            'notify::x-expand': GObject.Object.Notify;
+            'notify::y': GObject.Object.Notify;
+            'notify::y-align': GObject.Object.Notify;
+            'notify::y-align': GObject.Object.Notify;
+            'notify::y-expand': GObject.Object.Notify;
+            'notify::y-expand': GObject.Object.Notify;
+            'notify::z-position': GObject.Object.Notify;
+            'notify::z-position': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2623,14 +2758,17 @@ export namespace Meta {
             signal: K,
             callback: BackgroundActor.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BackgroundActor.SignalSignatures>(
             signal: K,
             callback: BackgroundActor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BackgroundActor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BackgroundActor.SignalSignatures[K]>
+            ...args: BackgroundActor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -3380,7 +3518,23 @@ export namespace Meta {
 
     namespace BackgroundContent {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::background': GObject.Object.Notify;
+            'notify::brightness': GObject.Object.Notify;
+            'notify::gradient': GObject.Object.Notify;
+            'notify::gradient-height': GObject.Object.Notify;
+            'notify::gradient-height': GObject.Object.Notify;
+            'notify::gradient-max-darkness': GObject.Object.Notify;
+            'notify::gradient-max-darkness': GObject.Object.Notify;
+            'notify::meta-display': GObject.Object.Notify;
+            'notify::meta-display': GObject.Object.Notify;
+            'notify::monitor': GObject.Object.Notify;
+            'notify::rounded-clip-radius': GObject.Object.Notify;
+            'notify::rounded-clip-radius': GObject.Object.Notify;
+            'notify::vignette': GObject.Object.Notify;
+            'notify::vignette-sharpness': GObject.Object.Notify;
+            'notify::vignette-sharpness': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3453,14 +3607,17 @@ export namespace Meta {
             signal: K,
             callback: BackgroundContent.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BackgroundContent.SignalSignatures>(
             signal: K,
             callback: BackgroundContent.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BackgroundContent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BackgroundContent.SignalSignatures[K]>
+            ...args: BackgroundContent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -3982,7 +4139,130 @@ export namespace Meta {
 
     namespace BackgroundGroup {
         // Signal signatures
-        interface SignalSignatures extends Clutter.Actor.SignalSignatures {}
+        interface SignalSignatures extends Clutter.Actor.SignalSignatures {
+            'notify::actions': GObject.Object.Notify;
+            'notify::allocation': GObject.Object.Notify;
+            'notify::background-color': GObject.Object.Notify;
+            'notify::background-color': GObject.Object.Notify;
+            'notify::background-color-set': GObject.Object.Notify;
+            'notify::background-color-set': GObject.Object.Notify;
+            'notify::child-transform': GObject.Object.Notify;
+            'notify::child-transform': GObject.Object.Notify;
+            'notify::child-transform-set': GObject.Object.Notify;
+            'notify::child-transform-set': GObject.Object.Notify;
+            'notify::clip-rect': GObject.Object.Notify;
+            'notify::clip-rect': GObject.Object.Notify;
+            'notify::clip-to-allocation': GObject.Object.Notify;
+            'notify::clip-to-allocation': GObject.Object.Notify;
+            'notify::constraints': GObject.Object.Notify;
+            'notify::content': GObject.Object.Notify;
+            'notify::content-box': GObject.Object.Notify;
+            'notify::content-box': GObject.Object.Notify;
+            'notify::content-gravity': GObject.Object.Notify;
+            'notify::content-gravity': GObject.Object.Notify;
+            'notify::content-repeat': GObject.Object.Notify;
+            'notify::content-repeat': GObject.Object.Notify;
+            'notify::effect': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::fixed-position-set': GObject.Object.Notify;
+            'notify::fixed-position-set': GObject.Object.Notify;
+            'notify::fixed-x': GObject.Object.Notify;
+            'notify::fixed-x': GObject.Object.Notify;
+            'notify::fixed-y': GObject.Object.Notify;
+            'notify::fixed-y': GObject.Object.Notify;
+            'notify::has-clip': GObject.Object.Notify;
+            'notify::has-clip': GObject.Object.Notify;
+            'notify::has-pointer': GObject.Object.Notify;
+            'notify::has-pointer': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::layout-manager': GObject.Object.Notify;
+            'notify::layout-manager': GObject.Object.Notify;
+            'notify::magnification-filter': GObject.Object.Notify;
+            'notify::magnification-filter': GObject.Object.Notify;
+            'notify::mapped': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::min-height': GObject.Object.Notify;
+            'notify::min-height': GObject.Object.Notify;
+            'notify::min-height-set': GObject.Object.Notify;
+            'notify::min-height-set': GObject.Object.Notify;
+            'notify::min-width': GObject.Object.Notify;
+            'notify::min-width': GObject.Object.Notify;
+            'notify::min-width-set': GObject.Object.Notify;
+            'notify::min-width-set': GObject.Object.Notify;
+            'notify::minification-filter': GObject.Object.Notify;
+            'notify::minification-filter': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::natural-height': GObject.Object.Notify;
+            'notify::natural-height': GObject.Object.Notify;
+            'notify::natural-height-set': GObject.Object.Notify;
+            'notify::natural-height-set': GObject.Object.Notify;
+            'notify::natural-width': GObject.Object.Notify;
+            'notify::natural-width': GObject.Object.Notify;
+            'notify::natural-width-set': GObject.Object.Notify;
+            'notify::natural-width-set': GObject.Object.Notify;
+            'notify::offscreen-redirect': GObject.Object.Notify;
+            'notify::offscreen-redirect': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::pivot-point': GObject.Object.Notify;
+            'notify::pivot-point': GObject.Object.Notify;
+            'notify::pivot-point-z': GObject.Object.Notify;
+            'notify::pivot-point-z': GObject.Object.Notify;
+            'notify::position': GObject.Object.Notify;
+            'notify::reactive': GObject.Object.Notify;
+            'notify::realized': GObject.Object.Notify;
+            'notify::request-mode': GObject.Object.Notify;
+            'notify::request-mode': GObject.Object.Notify;
+            'notify::rotation-angle-x': GObject.Object.Notify;
+            'notify::rotation-angle-x': GObject.Object.Notify;
+            'notify::rotation-angle-y': GObject.Object.Notify;
+            'notify::rotation-angle-y': GObject.Object.Notify;
+            'notify::rotation-angle-z': GObject.Object.Notify;
+            'notify::rotation-angle-z': GObject.Object.Notify;
+            'notify::scale-x': GObject.Object.Notify;
+            'notify::scale-x': GObject.Object.Notify;
+            'notify::scale-y': GObject.Object.Notify;
+            'notify::scale-y': GObject.Object.Notify;
+            'notify::scale-z': GObject.Object.Notify;
+            'notify::scale-z': GObject.Object.Notify;
+            'notify::show-on-set-parent': GObject.Object.Notify;
+            'notify::show-on-set-parent': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::text-direction': GObject.Object.Notify;
+            'notify::text-direction': GObject.Object.Notify;
+            'notify::transform': GObject.Object.Notify;
+            'notify::transform-set': GObject.Object.Notify;
+            'notify::transform-set': GObject.Object.Notify;
+            'notify::translation-x': GObject.Object.Notify;
+            'notify::translation-x': GObject.Object.Notify;
+            'notify::translation-y': GObject.Object.Notify;
+            'notify::translation-y': GObject.Object.Notify;
+            'notify::translation-z': GObject.Object.Notify;
+            'notify::translation-z': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::x': GObject.Object.Notify;
+            'notify::x-align': GObject.Object.Notify;
+            'notify::x-align': GObject.Object.Notify;
+            'notify::x-expand': GObject.Object.Notify;
+            'notify::x-expand': GObject.Object.Notify;
+            'notify::y': GObject.Object.Notify;
+            'notify::y-align': GObject.Object.Notify;
+            'notify::y-align': GObject.Object.Notify;
+            'notify::y-expand': GObject.Object.Notify;
+            'notify::y-expand': GObject.Object.Notify;
+            'notify::z-position': GObject.Object.Notify;
+            'notify::z-position': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4014,14 +4294,17 @@ export namespace Meta {
             signal: K,
             callback: BackgroundGroup.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BackgroundGroup.SignalSignatures>(
             signal: K,
             callback: BackgroundGroup.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BackgroundGroup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BackgroundGroup.SignalSignatures[K]>
+            ...args: BackgroundGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -4804,14 +5087,17 @@ export namespace Meta {
             signal: K,
             callback: BackgroundImage.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BackgroundImage.SignalSignatures>(
             signal: K,
             callback: BackgroundImage.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BackgroundImage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BackgroundImage.SignalSignatures[K]>
+            ...args: BackgroundImage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4855,14 +5141,17 @@ export namespace Meta {
             signal: K,
             callback: BackgroundImageCache.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BackgroundImageCache.SignalSignatures>(
             signal: K,
             callback: BackgroundImageCache.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BackgroundImageCache.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BackgroundImageCache.SignalSignatures[K]>
+            ...args: BackgroundImageCache.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -4905,6 +5194,12 @@ export namespace Meta {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             hit: Hit;
             left: Left;
+            'notify::directions': GObject.Object.Notify;
+            'notify::display': GObject.Object.Notify;
+            'notify::x1': GObject.Object.Notify;
+            'notify::x2': GObject.Object.Notify;
+            'notify::y1': GObject.Object.Notify;
+            'notify::y2': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -4944,14 +5239,17 @@ export namespace Meta {
         // Signals
 
         connect<K extends keyof Barrier.SignalSignatures>(signal: K, callback: Barrier.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Barrier.SignalSignatures>(
             signal: K,
             callback: Barrier.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Barrier.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Barrier.SignalSignatures[K]>
+            ...args: Barrier.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4969,7 +5267,11 @@ export namespace Meta {
 
     namespace Context {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::unsafe-mode': GObject.Object.Notify;
+            'notify::unsafe-mode': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5000,14 +5302,17 @@ export namespace Meta {
         // Signals
 
         connect<K extends keyof Context.SignalSignatures>(signal: K, callback: Context.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Context.SignalSignatures>(
             signal: K,
             callback: Context.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Context.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Context.SignalSignatures[K]>
+            ...args: Context.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5067,6 +5372,7 @@ export namespace Meta {
             'cursor-changed': CursorChanged;
             'position-invalidated': PositionInvalidated;
             'visibility-changed': VisibilityChanged;
+            'notify::backend': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -5095,14 +5401,17 @@ export namespace Meta {
             signal: K,
             callback: CursorTracker.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CursorTracker.SignalSignatures>(
             signal: K,
             callback: CursorTracker.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CursorTracker.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CursorTracker.SignalSignatures[K]>
+            ...args: CursorTracker.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -5157,11 +5466,11 @@ export namespace Meta {
         }
 
         interface InitXserver {
-            (_source: Display, object: Gio.Task): boolean;
+            (_source: Display, object: Gio.Task): boolean | void;
         }
 
         interface ModifiersAcceleratorActivated {
-            (_source: Display): boolean;
+            (_source: Display): boolean | void;
         }
 
         interface OverlayKey {
@@ -5177,7 +5486,7 @@ export namespace Meta {
         }
 
         interface Restart {
-            (_source: Display): boolean;
+            (_source: Display): boolean | void;
         }
 
         interface ShowOsd {
@@ -5196,11 +5505,11 @@ export namespace Meta {
         }
 
         interface ShowResizePopup {
-            (_source: Display, object: boolean, p0: Rectangle, p1: number, p2: number): boolean;
+            (_source: Display, object: boolean, p0: Rectangle, p1: number, p2: number): boolean | void;
         }
 
         interface ShowRestartMessage {
-            (_source: Display, message?: string | null): boolean;
+            (_source: Display, message?: string | null): boolean | void;
         }
 
         interface ShowingDesktopChanged {
@@ -5277,6 +5586,10 @@ export namespace Meta {
             'x11-display-closing': X11DisplayClosing;
             'x11-display-opened': X11DisplayOpened;
             'x11-display-setup': X11DisplaySetup;
+            'notify::compositor-modifiers': GObject.Object.Notify;
+            'notify::compositor-modifiers': GObject.Object.Notify;
+            'notify::focus-window': GObject.Object.Notify;
+            'notify::focus-window': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -5308,14 +5621,17 @@ export namespace Meta {
         // Signals
 
         connect<K extends keyof Display.SignalSignatures>(signal: K, callback: Display.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Display.SignalSignatures>(
             signal: K,
             callback: Display.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Display.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Display.SignalSignatures[K]>
+            ...args: Display.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5577,13 +5893,21 @@ export namespace Meta {
         // Signals
 
         connect<K extends keyof Dnd.SignalSignatures>(signal: K, callback: Dnd.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Dnd.SignalSignatures>(signal: K, callback: Dnd.SignalSignatures[K]): number;
-        emit<K extends keyof Dnd.SignalSignatures>(signal: K, ...args: Parameters<Dnd.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Dnd.SignalSignatures>(
+            signal: K,
+            ...args: Dnd.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace IdleMonitor {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::device': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5614,14 +5938,17 @@ export namespace Meta {
             signal: K,
             callback: IdleMonitor.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof IdleMonitor.SignalSignatures>(
             signal: K,
             callback: IdleMonitor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof IdleMonitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IdleMonitor.SignalSignatures[K]>
+            ...args: IdleMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5639,7 +5966,11 @@ export namespace Meta {
 
     namespace LaunchContext {
         // Signal signatures
-        interface SignalSignatures extends Gio.AppLaunchContext.SignalSignatures {}
+        interface SignalSignatures extends Gio.AppLaunchContext.SignalSignatures {
+            'notify::display': GObject.Object.Notify;
+            'notify::timestamp': GObject.Object.Notify;
+            'notify::workspace': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5673,14 +6004,17 @@ export namespace Meta {
             signal: K,
             callback: LaunchContext.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LaunchContext.SignalSignatures>(
             signal: K,
             callback: LaunchContext.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LaunchContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LaunchContext.SignalSignatures[K]>
+            ...args: LaunchContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5718,6 +6052,11 @@ export namespace Meta {
             'monitors-changed': MonitorsChanged;
             'monitors-changed-internal': MonitorsChangedInternal;
             'power-save-mode-changed': PowerSaveModeChanged;
+            'notify::backend': GObject.Object.Notify;
+            'notify::has-builtin-panel': GObject.Object.Notify;
+            'notify::has-builtin-panel': GObject.Object.Notify;
+            'notify::panel-orientation-managed': GObject.Object.Notify;
+            'notify::panel-orientation-managed': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -5754,14 +6093,17 @@ export namespace Meta {
             signal: K,
             callback: MonitorManager.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MonitorManager.SignalSignatures>(
             signal: K,
             callback: MonitorManager.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MonitorManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MonitorManager.SignalSignatures[K]>
+            ...args: MonitorManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -5805,8 +6147,14 @@ export namespace Meta {
         // Signals
 
         connect<K extends keyof Plugin.SignalSignatures>(signal: K, callback: Plugin.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Plugin.SignalSignatures>(signal: K, callback: Plugin.SignalSignatures[K]): number;
-        emit<K extends keyof Plugin.SignalSignatures>(signal: K, ...args: Parameters<Plugin.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Plugin.SignalSignatures>(
+            signal: K,
+            ...args: Plugin.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -5940,14 +6288,17 @@ export namespace Meta {
             signal: K,
             callback: RemoteAccessController.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RemoteAccessController.SignalSignatures>(
             signal: K,
             callback: RemoteAccessController.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RemoteAccessController.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RemoteAccessController.SignalSignatures[K]>
+            ...args: RemoteAccessController.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5974,6 +6325,8 @@ export namespace Meta {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             stopped: Stopped;
+            'notify::is-recording': GObject.Object.Notify;
+            'notify::is-recording': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -6004,14 +6357,17 @@ export namespace Meta {
             signal: K,
             callback: RemoteAccessHandle.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RemoteAccessHandle.SignalSignatures>(
             signal: K,
             callback: RemoteAccessHandle.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RemoteAccessHandle.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RemoteAccessHandle.SignalSignatures[K]>
+            ...args: RemoteAccessHandle.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -6060,14 +6416,17 @@ export namespace Meta {
         // Signals
 
         connect<K extends keyof Selection.SignalSignatures>(signal: K, callback: Selection.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Selection.SignalSignatures>(
             signal: K,
             callback: Selection.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Selection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Selection.SignalSignatures[K]>
+            ...args: Selection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -6188,14 +6547,17 @@ export namespace Meta {
             signal: K,
             callback: SelectionSource.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SelectionSource.SignalSignatures>(
             signal: K,
             callback: SelectionSource.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SelectionSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SelectionSource.SignalSignatures[K]>
+            ...args: SelectionSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -6273,14 +6635,17 @@ export namespace Meta {
             signal: K,
             callback: SelectionSourceMemory.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SelectionSourceMemory.SignalSignatures>(
             signal: K,
             callback: SelectionSourceMemory.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SelectionSourceMemory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SelectionSourceMemory.SignalSignatures[K]>
+            ...args: SelectionSourceMemory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace ShadowFactory {
@@ -6322,14 +6687,17 @@ export namespace Meta {
             signal: K,
             callback: ShadowFactory.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ShadowFactory.SignalSignatures>(
             signal: K,
             callback: ShadowFactory.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ShadowFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ShadowFactory.SignalSignatures[K]>
+            ...args: ShadowFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -6405,14 +6773,17 @@ export namespace Meta {
             signal: K,
             callback: ShapedTexture.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ShapedTexture.SignalSignatures>(
             signal: K,
             callback: ShapedTexture.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ShapedTexture.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ShapedTexture.SignalSignatures[K]>
+            ...args: ShapedTexture.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -6946,14 +7317,17 @@ export namespace Meta {
             signal: K,
             callback: SoundPlayer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SoundPlayer.SignalSignatures>(
             signal: K,
             callback: SoundPlayer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SoundPlayer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SoundPlayer.SignalSignatures[K]>
+            ...args: SoundPlayer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -6983,6 +7357,132 @@ export namespace Meta {
         // Signal signatures
         interface SignalSignatures extends Clutter.Stage.SignalSignatures {
             'actors-painted': ActorsPainted;
+            'notify::key-focus': GObject.Object.Notify;
+            'notify::key-focus': GObject.Object.Notify;
+            'notify::perspective': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::actions': GObject.Object.Notify;
+            'notify::allocation': GObject.Object.Notify;
+            'notify::background-color': GObject.Object.Notify;
+            'notify::background-color': GObject.Object.Notify;
+            'notify::background-color-set': GObject.Object.Notify;
+            'notify::background-color-set': GObject.Object.Notify;
+            'notify::child-transform': GObject.Object.Notify;
+            'notify::child-transform': GObject.Object.Notify;
+            'notify::child-transform-set': GObject.Object.Notify;
+            'notify::child-transform-set': GObject.Object.Notify;
+            'notify::clip-rect': GObject.Object.Notify;
+            'notify::clip-rect': GObject.Object.Notify;
+            'notify::clip-to-allocation': GObject.Object.Notify;
+            'notify::clip-to-allocation': GObject.Object.Notify;
+            'notify::constraints': GObject.Object.Notify;
+            'notify::content': GObject.Object.Notify;
+            'notify::content-box': GObject.Object.Notify;
+            'notify::content-box': GObject.Object.Notify;
+            'notify::content-gravity': GObject.Object.Notify;
+            'notify::content-gravity': GObject.Object.Notify;
+            'notify::content-repeat': GObject.Object.Notify;
+            'notify::content-repeat': GObject.Object.Notify;
+            'notify::effect': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::fixed-position-set': GObject.Object.Notify;
+            'notify::fixed-position-set': GObject.Object.Notify;
+            'notify::fixed-x': GObject.Object.Notify;
+            'notify::fixed-x': GObject.Object.Notify;
+            'notify::fixed-y': GObject.Object.Notify;
+            'notify::fixed-y': GObject.Object.Notify;
+            'notify::has-clip': GObject.Object.Notify;
+            'notify::has-clip': GObject.Object.Notify;
+            'notify::has-pointer': GObject.Object.Notify;
+            'notify::has-pointer': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::layout-manager': GObject.Object.Notify;
+            'notify::layout-manager': GObject.Object.Notify;
+            'notify::magnification-filter': GObject.Object.Notify;
+            'notify::magnification-filter': GObject.Object.Notify;
+            'notify::mapped': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::min-height': GObject.Object.Notify;
+            'notify::min-height': GObject.Object.Notify;
+            'notify::min-height-set': GObject.Object.Notify;
+            'notify::min-height-set': GObject.Object.Notify;
+            'notify::min-width': GObject.Object.Notify;
+            'notify::min-width': GObject.Object.Notify;
+            'notify::min-width-set': GObject.Object.Notify;
+            'notify::min-width-set': GObject.Object.Notify;
+            'notify::minification-filter': GObject.Object.Notify;
+            'notify::minification-filter': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::natural-height': GObject.Object.Notify;
+            'notify::natural-height': GObject.Object.Notify;
+            'notify::natural-height-set': GObject.Object.Notify;
+            'notify::natural-height-set': GObject.Object.Notify;
+            'notify::natural-width': GObject.Object.Notify;
+            'notify::natural-width': GObject.Object.Notify;
+            'notify::natural-width-set': GObject.Object.Notify;
+            'notify::natural-width-set': GObject.Object.Notify;
+            'notify::offscreen-redirect': GObject.Object.Notify;
+            'notify::offscreen-redirect': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::pivot-point': GObject.Object.Notify;
+            'notify::pivot-point': GObject.Object.Notify;
+            'notify::pivot-point-z': GObject.Object.Notify;
+            'notify::pivot-point-z': GObject.Object.Notify;
+            'notify::position': GObject.Object.Notify;
+            'notify::reactive': GObject.Object.Notify;
+            'notify::realized': GObject.Object.Notify;
+            'notify::request-mode': GObject.Object.Notify;
+            'notify::request-mode': GObject.Object.Notify;
+            'notify::rotation-angle-x': GObject.Object.Notify;
+            'notify::rotation-angle-x': GObject.Object.Notify;
+            'notify::rotation-angle-y': GObject.Object.Notify;
+            'notify::rotation-angle-y': GObject.Object.Notify;
+            'notify::rotation-angle-z': GObject.Object.Notify;
+            'notify::rotation-angle-z': GObject.Object.Notify;
+            'notify::scale-x': GObject.Object.Notify;
+            'notify::scale-x': GObject.Object.Notify;
+            'notify::scale-y': GObject.Object.Notify;
+            'notify::scale-y': GObject.Object.Notify;
+            'notify::scale-z': GObject.Object.Notify;
+            'notify::scale-z': GObject.Object.Notify;
+            'notify::show-on-set-parent': GObject.Object.Notify;
+            'notify::show-on-set-parent': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::text-direction': GObject.Object.Notify;
+            'notify::text-direction': GObject.Object.Notify;
+            'notify::transform': GObject.Object.Notify;
+            'notify::transform-set': GObject.Object.Notify;
+            'notify::transform-set': GObject.Object.Notify;
+            'notify::translation-x': GObject.Object.Notify;
+            'notify::translation-x': GObject.Object.Notify;
+            'notify::translation-y': GObject.Object.Notify;
+            'notify::translation-y': GObject.Object.Notify;
+            'notify::translation-z': GObject.Object.Notify;
+            'notify::translation-z': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::x': GObject.Object.Notify;
+            'notify::x-align': GObject.Object.Notify;
+            'notify::x-align': GObject.Object.Notify;
+            'notify::x-expand': GObject.Object.Notify;
+            'notify::x-expand': GObject.Object.Notify;
+            'notify::y': GObject.Object.Notify;
+            'notify::y-align': GObject.Object.Notify;
+            'notify::y-align': GObject.Object.Notify;
+            'notify::y-expand': GObject.Object.Notify;
+            'notify::y-expand': GObject.Object.Notify;
+            'notify::z-position': GObject.Object.Notify;
+            'notify::z-position': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -7010,8 +7510,14 @@ export namespace Meta {
         // Signals
 
         connect<K extends keyof Stage.SignalSignatures>(signal: K, callback: Stage.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Stage.SignalSignatures>(signal: K, callback: Stage.SignalSignatures[K]): number;
-        emit<K extends keyof Stage.SignalSignatures>(signal: K, ...args: Parameters<Stage.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Stage.SignalSignatures>(
+            signal: K,
+            ...args: Stage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -7469,6 +7975,7 @@ export namespace Meta {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             changed: Changed;
+            'notify::display': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -7497,14 +8004,17 @@ export namespace Meta {
             signal: K,
             callback: StartupNotification.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StartupNotification.SignalSignatures>(
             signal: K,
             callback: StartupNotification.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StartupNotification.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StartupNotification.SignalSignatures[K]>
+            ...args: StartupNotification.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -7535,6 +8045,15 @@ export namespace Meta {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             complete: Complete;
             timeout: Timeout;
+            'notify::application-id': GObject.Object.Notify;
+            'notify::application-id': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::timestamp': GObject.Object.Notify;
+            'notify::wmclass': GObject.Object.Notify;
+            'notify::workspace': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -7579,14 +8098,17 @@ export namespace Meta {
             signal: K,
             callback: StartupSequence.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StartupSequence.SignalSignatures>(
             signal: K,
             callback: StartupSequence.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StartupSequence.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StartupSequence.SignalSignatures[K]>
+            ...args: StartupSequence.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -7639,14 +8161,17 @@ export namespace Meta {
             signal: K,
             callback: WaylandClient.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WaylandClient.SignalSignatures>(
             signal: K,
             callback: WaylandClient.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WaylandClient.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WaylandClient.SignalSignatures[K]>
+            ...args: WaylandClient.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -7719,6 +8244,50 @@ export namespace Meta {
             unmanaged: Unmanaged;
             unmanaging: Unmanaging;
             'workspace-changed': WorkspaceChanged;
+            'notify::above': GObject.Object.Notify;
+            'notify::appears-focused': GObject.Object.Notify;
+            'notify::appears-focused': GObject.Object.Notify;
+            'notify::decorated': GObject.Object.Notify;
+            'notify::demands-attention': GObject.Object.Notify;
+            'notify::demands-attention': GObject.Object.Notify;
+            'notify::fullscreen': GObject.Object.Notify;
+            'notify::gtk-app-menu-object-path': GObject.Object.Notify;
+            'notify::gtk-app-menu-object-path': GObject.Object.Notify;
+            'notify::gtk-application-id': GObject.Object.Notify;
+            'notify::gtk-application-id': GObject.Object.Notify;
+            'notify::gtk-application-object-path': GObject.Object.Notify;
+            'notify::gtk-application-object-path': GObject.Object.Notify;
+            'notify::gtk-menubar-object-path': GObject.Object.Notify;
+            'notify::gtk-menubar-object-path': GObject.Object.Notify;
+            'notify::gtk-unique-bus-name': GObject.Object.Notify;
+            'notify::gtk-unique-bus-name': GObject.Object.Notify;
+            'notify::gtk-window-object-path': GObject.Object.Notify;
+            'notify::gtk-window-object-path': GObject.Object.Notify;
+            'notify::icon': GObject.Object.Notify;
+            'notify::is-alive': GObject.Object.Notify;
+            'notify::is-alive': GObject.Object.Notify;
+            'notify::maximized-horizontally': GObject.Object.Notify;
+            'notify::maximized-horizontally': GObject.Object.Notify;
+            'notify::maximized-vertically': GObject.Object.Notify;
+            'notify::maximized-vertically': GObject.Object.Notify;
+            'notify::mini-icon': GObject.Object.Notify;
+            'notify::mini-icon': GObject.Object.Notify;
+            'notify::minimized': GObject.Object.Notify;
+            'notify::mutter-hints': GObject.Object.Notify;
+            'notify::mutter-hints': GObject.Object.Notify;
+            'notify::on-all-workspaces': GObject.Object.Notify;
+            'notify::on-all-workspaces': GObject.Object.Notify;
+            'notify::resizeable': GObject.Object.Notify;
+            'notify::skip-taskbar': GObject.Object.Notify;
+            'notify::skip-taskbar': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::urgent': GObject.Object.Notify;
+            'notify::user-time': GObject.Object.Notify;
+            'notify::user-time': GObject.Object.Notify;
+            'notify::window-type': GObject.Object.Notify;
+            'notify::window-type': GObject.Object.Notify;
+            'notify::wm-class': GObject.Object.Notify;
+            'notify::wm-class': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -7830,8 +8399,14 @@ export namespace Meta {
         // Signals
 
         connect<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
-        emit<K extends keyof Window.SignalSignatures>(signal: K, ...args: Parameters<Window.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Window.SignalSignatures>(
+            signal: K,
+            ...args: Window.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -8198,6 +8773,130 @@ export namespace Meta {
             'effects-completed': EffectsCompleted;
             'first-frame': FirstFrame;
             thawed: Thawed;
+            'notify::meta-window': GObject.Object.Notify;
+            'notify::meta-window': GObject.Object.Notify;
+            'notify::actions': GObject.Object.Notify;
+            'notify::allocation': GObject.Object.Notify;
+            'notify::background-color': GObject.Object.Notify;
+            'notify::background-color': GObject.Object.Notify;
+            'notify::background-color-set': GObject.Object.Notify;
+            'notify::background-color-set': GObject.Object.Notify;
+            'notify::child-transform': GObject.Object.Notify;
+            'notify::child-transform': GObject.Object.Notify;
+            'notify::child-transform-set': GObject.Object.Notify;
+            'notify::child-transform-set': GObject.Object.Notify;
+            'notify::clip-rect': GObject.Object.Notify;
+            'notify::clip-rect': GObject.Object.Notify;
+            'notify::clip-to-allocation': GObject.Object.Notify;
+            'notify::clip-to-allocation': GObject.Object.Notify;
+            'notify::constraints': GObject.Object.Notify;
+            'notify::content': GObject.Object.Notify;
+            'notify::content-box': GObject.Object.Notify;
+            'notify::content-box': GObject.Object.Notify;
+            'notify::content-gravity': GObject.Object.Notify;
+            'notify::content-gravity': GObject.Object.Notify;
+            'notify::content-repeat': GObject.Object.Notify;
+            'notify::content-repeat': GObject.Object.Notify;
+            'notify::effect': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::fixed-position-set': GObject.Object.Notify;
+            'notify::fixed-position-set': GObject.Object.Notify;
+            'notify::fixed-x': GObject.Object.Notify;
+            'notify::fixed-x': GObject.Object.Notify;
+            'notify::fixed-y': GObject.Object.Notify;
+            'notify::fixed-y': GObject.Object.Notify;
+            'notify::has-clip': GObject.Object.Notify;
+            'notify::has-clip': GObject.Object.Notify;
+            'notify::has-pointer': GObject.Object.Notify;
+            'notify::has-pointer': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::layout-manager': GObject.Object.Notify;
+            'notify::layout-manager': GObject.Object.Notify;
+            'notify::magnification-filter': GObject.Object.Notify;
+            'notify::magnification-filter': GObject.Object.Notify;
+            'notify::mapped': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::min-height': GObject.Object.Notify;
+            'notify::min-height': GObject.Object.Notify;
+            'notify::min-height-set': GObject.Object.Notify;
+            'notify::min-height-set': GObject.Object.Notify;
+            'notify::min-width': GObject.Object.Notify;
+            'notify::min-width': GObject.Object.Notify;
+            'notify::min-width-set': GObject.Object.Notify;
+            'notify::min-width-set': GObject.Object.Notify;
+            'notify::minification-filter': GObject.Object.Notify;
+            'notify::minification-filter': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::natural-height': GObject.Object.Notify;
+            'notify::natural-height': GObject.Object.Notify;
+            'notify::natural-height-set': GObject.Object.Notify;
+            'notify::natural-height-set': GObject.Object.Notify;
+            'notify::natural-width': GObject.Object.Notify;
+            'notify::natural-width': GObject.Object.Notify;
+            'notify::natural-width-set': GObject.Object.Notify;
+            'notify::natural-width-set': GObject.Object.Notify;
+            'notify::offscreen-redirect': GObject.Object.Notify;
+            'notify::offscreen-redirect': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::pivot-point': GObject.Object.Notify;
+            'notify::pivot-point': GObject.Object.Notify;
+            'notify::pivot-point-z': GObject.Object.Notify;
+            'notify::pivot-point-z': GObject.Object.Notify;
+            'notify::position': GObject.Object.Notify;
+            'notify::reactive': GObject.Object.Notify;
+            'notify::realized': GObject.Object.Notify;
+            'notify::request-mode': GObject.Object.Notify;
+            'notify::request-mode': GObject.Object.Notify;
+            'notify::rotation-angle-x': GObject.Object.Notify;
+            'notify::rotation-angle-x': GObject.Object.Notify;
+            'notify::rotation-angle-y': GObject.Object.Notify;
+            'notify::rotation-angle-y': GObject.Object.Notify;
+            'notify::rotation-angle-z': GObject.Object.Notify;
+            'notify::rotation-angle-z': GObject.Object.Notify;
+            'notify::scale-x': GObject.Object.Notify;
+            'notify::scale-x': GObject.Object.Notify;
+            'notify::scale-y': GObject.Object.Notify;
+            'notify::scale-y': GObject.Object.Notify;
+            'notify::scale-z': GObject.Object.Notify;
+            'notify::scale-z': GObject.Object.Notify;
+            'notify::show-on-set-parent': GObject.Object.Notify;
+            'notify::show-on-set-parent': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::text-direction': GObject.Object.Notify;
+            'notify::text-direction': GObject.Object.Notify;
+            'notify::transform': GObject.Object.Notify;
+            'notify::transform-set': GObject.Object.Notify;
+            'notify::transform-set': GObject.Object.Notify;
+            'notify::translation-x': GObject.Object.Notify;
+            'notify::translation-x': GObject.Object.Notify;
+            'notify::translation-y': GObject.Object.Notify;
+            'notify::translation-y': GObject.Object.Notify;
+            'notify::translation-z': GObject.Object.Notify;
+            'notify::translation-z': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::x': GObject.Object.Notify;
+            'notify::x-align': GObject.Object.Notify;
+            'notify::x-align': GObject.Object.Notify;
+            'notify::x-expand': GObject.Object.Notify;
+            'notify::x-expand': GObject.Object.Notify;
+            'notify::y': GObject.Object.Notify;
+            'notify::y-align': GObject.Object.Notify;
+            'notify::y-align': GObject.Object.Notify;
+            'notify::y-expand': GObject.Object.Notify;
+            'notify::y-expand': GObject.Object.Notify;
+            'notify::z-position': GObject.Object.Notify;
+            'notify::z-position': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -8236,14 +8935,17 @@ export namespace Meta {
             signal: K,
             callback: WindowActor.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WindowActor.SignalSignatures>(
             signal: K,
             callback: WindowActor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WindowActor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WindowActor.SignalSignatures[K]>
+            ...args: WindowActor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -9033,7 +9735,130 @@ export namespace Meta {
 
     namespace WindowGroup {
         // Signal signatures
-        interface SignalSignatures extends Clutter.Actor.SignalSignatures {}
+        interface SignalSignatures extends Clutter.Actor.SignalSignatures {
+            'notify::actions': GObject.Object.Notify;
+            'notify::allocation': GObject.Object.Notify;
+            'notify::background-color': GObject.Object.Notify;
+            'notify::background-color': GObject.Object.Notify;
+            'notify::background-color-set': GObject.Object.Notify;
+            'notify::background-color-set': GObject.Object.Notify;
+            'notify::child-transform': GObject.Object.Notify;
+            'notify::child-transform': GObject.Object.Notify;
+            'notify::child-transform-set': GObject.Object.Notify;
+            'notify::child-transform-set': GObject.Object.Notify;
+            'notify::clip-rect': GObject.Object.Notify;
+            'notify::clip-rect': GObject.Object.Notify;
+            'notify::clip-to-allocation': GObject.Object.Notify;
+            'notify::clip-to-allocation': GObject.Object.Notify;
+            'notify::constraints': GObject.Object.Notify;
+            'notify::content': GObject.Object.Notify;
+            'notify::content-box': GObject.Object.Notify;
+            'notify::content-box': GObject.Object.Notify;
+            'notify::content-gravity': GObject.Object.Notify;
+            'notify::content-gravity': GObject.Object.Notify;
+            'notify::content-repeat': GObject.Object.Notify;
+            'notify::content-repeat': GObject.Object.Notify;
+            'notify::effect': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::fixed-position-set': GObject.Object.Notify;
+            'notify::fixed-position-set': GObject.Object.Notify;
+            'notify::fixed-x': GObject.Object.Notify;
+            'notify::fixed-x': GObject.Object.Notify;
+            'notify::fixed-y': GObject.Object.Notify;
+            'notify::fixed-y': GObject.Object.Notify;
+            'notify::has-clip': GObject.Object.Notify;
+            'notify::has-clip': GObject.Object.Notify;
+            'notify::has-pointer': GObject.Object.Notify;
+            'notify::has-pointer': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::layout-manager': GObject.Object.Notify;
+            'notify::layout-manager': GObject.Object.Notify;
+            'notify::magnification-filter': GObject.Object.Notify;
+            'notify::magnification-filter': GObject.Object.Notify;
+            'notify::mapped': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::min-height': GObject.Object.Notify;
+            'notify::min-height': GObject.Object.Notify;
+            'notify::min-height-set': GObject.Object.Notify;
+            'notify::min-height-set': GObject.Object.Notify;
+            'notify::min-width': GObject.Object.Notify;
+            'notify::min-width': GObject.Object.Notify;
+            'notify::min-width-set': GObject.Object.Notify;
+            'notify::min-width-set': GObject.Object.Notify;
+            'notify::minification-filter': GObject.Object.Notify;
+            'notify::minification-filter': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::natural-height': GObject.Object.Notify;
+            'notify::natural-height': GObject.Object.Notify;
+            'notify::natural-height-set': GObject.Object.Notify;
+            'notify::natural-height-set': GObject.Object.Notify;
+            'notify::natural-width': GObject.Object.Notify;
+            'notify::natural-width': GObject.Object.Notify;
+            'notify::natural-width-set': GObject.Object.Notify;
+            'notify::natural-width-set': GObject.Object.Notify;
+            'notify::offscreen-redirect': GObject.Object.Notify;
+            'notify::offscreen-redirect': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::pivot-point': GObject.Object.Notify;
+            'notify::pivot-point': GObject.Object.Notify;
+            'notify::pivot-point-z': GObject.Object.Notify;
+            'notify::pivot-point-z': GObject.Object.Notify;
+            'notify::position': GObject.Object.Notify;
+            'notify::reactive': GObject.Object.Notify;
+            'notify::realized': GObject.Object.Notify;
+            'notify::request-mode': GObject.Object.Notify;
+            'notify::request-mode': GObject.Object.Notify;
+            'notify::rotation-angle-x': GObject.Object.Notify;
+            'notify::rotation-angle-x': GObject.Object.Notify;
+            'notify::rotation-angle-y': GObject.Object.Notify;
+            'notify::rotation-angle-y': GObject.Object.Notify;
+            'notify::rotation-angle-z': GObject.Object.Notify;
+            'notify::rotation-angle-z': GObject.Object.Notify;
+            'notify::scale-x': GObject.Object.Notify;
+            'notify::scale-x': GObject.Object.Notify;
+            'notify::scale-y': GObject.Object.Notify;
+            'notify::scale-y': GObject.Object.Notify;
+            'notify::scale-z': GObject.Object.Notify;
+            'notify::scale-z': GObject.Object.Notify;
+            'notify::show-on-set-parent': GObject.Object.Notify;
+            'notify::show-on-set-parent': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::text-direction': GObject.Object.Notify;
+            'notify::text-direction': GObject.Object.Notify;
+            'notify::transform': GObject.Object.Notify;
+            'notify::transform-set': GObject.Object.Notify;
+            'notify::transform-set': GObject.Object.Notify;
+            'notify::translation-x': GObject.Object.Notify;
+            'notify::translation-x': GObject.Object.Notify;
+            'notify::translation-y': GObject.Object.Notify;
+            'notify::translation-y': GObject.Object.Notify;
+            'notify::translation-z': GObject.Object.Notify;
+            'notify::translation-z': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::x': GObject.Object.Notify;
+            'notify::x-align': GObject.Object.Notify;
+            'notify::x-align': GObject.Object.Notify;
+            'notify::x-expand': GObject.Object.Notify;
+            'notify::x-expand': GObject.Object.Notify;
+            'notify::y': GObject.Object.Notify;
+            'notify::y-align': GObject.Object.Notify;
+            'notify::y-align': GObject.Object.Notify;
+            'notify::y-expand': GObject.Object.Notify;
+            'notify::y-expand': GObject.Object.Notify;
+            'notify::z-position': GObject.Object.Notify;
+            'notify::z-position': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -9063,14 +9888,17 @@ export namespace Meta {
             signal: K,
             callback: WindowGroup.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WindowGroup.SignalSignatures>(
             signal: K,
             callback: WindowGroup.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WindowGroup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WindowGroup.SignalSignatures[K]>
+            ...args: WindowGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -9833,6 +10661,11 @@ export namespace Meta {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'window-added': WindowAdded;
             'window-removed': WindowRemoved;
+            'notify::active': GObject.Object.Notify;
+            'notify::n-windows': GObject.Object.Notify;
+            'notify::n-windows': GObject.Object.Notify;
+            'notify::workspace-index': GObject.Object.Notify;
+            'notify::workspace-index': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -9866,14 +10699,17 @@ export namespace Meta {
         // Signals
 
         connect<K extends keyof Workspace.SignalSignatures>(signal: K, callback: Workspace.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Workspace.SignalSignatures>(
             signal: K,
             callback: Workspace.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Workspace.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Workspace.SignalSignatures[K]>
+            ...args: Workspace.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -9969,6 +10805,12 @@ export namespace Meta {
             'workspace-removed': WorkspaceRemoved;
             'workspace-switched': WorkspaceSwitched;
             'workspaces-reordered': WorkspacesReordered;
+            'notify::layout-columns': GObject.Object.Notify;
+            'notify::layout-columns': GObject.Object.Notify;
+            'notify::layout-rows': GObject.Object.Notify;
+            'notify::layout-rows': GObject.Object.Notify;
+            'notify::n-workspaces': GObject.Object.Notify;
+            'notify::n-workspaces': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -10007,14 +10849,17 @@ export namespace Meta {
             signal: K,
             callback: WorkspaceManager.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WorkspaceManager.SignalSignatures>(
             signal: K,
             callback: WorkspaceManager.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WorkspaceManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WorkspaceManager.SignalSignatures[K]>
+            ...args: WorkspaceManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -10089,14 +10934,17 @@ export namespace Meta {
             signal: K,
             callback: X11Display.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof X11Display.SignalSignatures>(
             signal: K,
             callback: X11Display.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof X11Display.SignalSignatures>(
             signal: K,
-            ...args: Parameters<X11Display.SignalSignatures[K]>
+            ...args: X11Display.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

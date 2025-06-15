@@ -816,14 +816,17 @@ export namespace OSTree {
             signal: K,
             callback: AsyncProgress.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AsyncProgress.SignalSignatures>(
             signal: K,
             callback: AsyncProgress.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AsyncProgress.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AsyncProgress.SignalSignatures[K]>
+            ...args: AsyncProgress.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -871,14 +874,17 @@ export namespace OSTree {
             signal: K,
             callback: BootconfigParser.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BootconfigParser.SignalSignatures>(
             signal: K,
             callback: BootconfigParser.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BootconfigParser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BootconfigParser.SignalSignatures[K]>
+            ...args: BootconfigParser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -901,7 +907,13 @@ export namespace OSTree {
 
     namespace ChecksumInputStream {
         // Signal signatures
-        interface SignalSignatures extends Gio.FilterInputStream.SignalSignatures {}
+        interface SignalSignatures extends Gio.FilterInputStream.SignalSignatures {
+            'notify::checksum': GObject.Object.Notify;
+            'notify::base-stream': GObject.Object.Notify;
+            'notify::base-stream': GObject.Object.Notify;
+            'notify::close-base-stream': GObject.Object.Notify;
+            'notify::close-base-stream': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -931,14 +943,17 @@ export namespace OSTree {
             signal: K,
             callback: ChecksumInputStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ChecksumInputStream.SignalSignatures>(
             signal: K,
             callback: ChecksumInputStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ChecksumInputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ChecksumInputStream.SignalSignatures[K]>
+            ...args: ChecksumInputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Deployment {
@@ -974,14 +989,17 @@ export namespace OSTree {
             signal: K,
             callback: Deployment.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Deployment.SignalSignatures>(
             signal: K,
             callback: Deployment.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Deployment.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Deployment.SignalSignatures[K]>
+            ...args: Deployment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1038,14 +1056,17 @@ export namespace OSTree {
             signal: K,
             callback: GpgVerifyResult.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GpgVerifyResult.SignalSignatures>(
             signal: K,
             callback: GpgVerifyResult.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GpgVerifyResult.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GpgVerifyResult.SignalSignatures[K]>
+            ...args: GpgVerifyResult.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1719,14 +1740,17 @@ export namespace OSTree {
             signal: K,
             callback: MutableTree.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MutableTree.SignalSignatures>(
             signal: K,
             callback: MutableTree.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MutableTree.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MutableTree.SignalSignatures[K]>
+            ...args: MutableTree.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1765,6 +1789,11 @@ export namespace OSTree {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'gpg-verify-result': GpgVerifyResult;
+            'notify::path': GObject.Object.Notify;
+            'notify::remotes-config-dir': GObject.Object.Notify;
+            'notify::remotes-config-dir': GObject.Object.Notify;
+            'notify::sysroot-path': GObject.Object.Notify;
+            'notify::sysroot-path': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1804,8 +1833,14 @@ export namespace OSTree {
         // Signals
 
         connect<K extends keyof Repo.SignalSignatures>(signal: K, callback: Repo.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Repo.SignalSignatures>(signal: K, callback: Repo.SignalSignatures[K]): number;
-        emit<K extends keyof Repo.SignalSignatures>(signal: K, ...args: Parameters<Repo.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Repo.SignalSignatures>(
+            signal: K,
+            ...args: Repo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -3009,14 +3044,17 @@ export namespace OSTree {
         // Signals
 
         connect<K extends keyof RepoFile.SignalSignatures>(signal: K, callback: RepoFile.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RepoFile.SignalSignatures>(
             signal: K,
             callback: RepoFile.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RepoFile.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RepoFile.SignalSignatures[K]>
+            ...args: RepoFile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -8354,7 +8392,9 @@ export namespace OSTree {
 
     namespace SePolicy {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8381,14 +8421,17 @@ export namespace OSTree {
         // Signals
 
         connect<K extends keyof SePolicy.SignalSignatures>(signal: K, callback: SePolicy.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SePolicy.SignalSignatures>(
             signal: K,
             callback: SePolicy.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SePolicy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SePolicy.SignalSignatures[K]>
+            ...args: SePolicy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -8958,7 +9001,9 @@ export namespace OSTree {
 
     namespace Sysroot {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8987,14 +9032,17 @@ export namespace OSTree {
         // Signals
 
         connect<K extends keyof Sysroot.SignalSignatures>(signal: K, callback: Sysroot.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Sysroot.SignalSignatures>(
             signal: K,
             callback: Sysroot.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Sysroot.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Sysroot.SignalSignatures[K]>
+            ...args: Sysroot.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -9236,7 +9284,11 @@ export namespace OSTree {
 
     namespace SysrootUpgrader {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::flags': GObject.Object.Notify;
+            'notify::osname': GObject.Object.Notify;
+            'notify::sysroot': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -9283,14 +9335,17 @@ export namespace OSTree {
             signal: K,
             callback: SysrootUpgrader.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SysrootUpgrader.SignalSignatures>(
             signal: K,
             callback: SysrootUpgrader.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SysrootUpgrader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SysrootUpgrader.SignalSignatures[K]>
+            ...args: SysrootUpgrader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 

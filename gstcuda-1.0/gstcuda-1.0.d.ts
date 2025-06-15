@@ -193,7 +193,10 @@ export namespace GstCuda {
     }
     namespace CudaAllocator {
         // Signal signatures
-        interface SignalSignatures extends Gst.Allocator.SignalSignatures {}
+        interface SignalSignatures extends Gst.Allocator.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -218,14 +221,17 @@ export namespace GstCuda {
             signal: K,
             callback: CudaAllocator.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CudaAllocator.SignalSignatures>(
             signal: K,
             callback: CudaAllocator.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CudaAllocator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CudaAllocator.SignalSignatures[K]>
+            ...args: CudaAllocator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -300,7 +306,10 @@ export namespace GstCuda {
 
     namespace CudaBufferPool {
         // Signal signatures
-        interface SignalSignatures extends Gst.BufferPool.SignalSignatures {}
+        interface SignalSignatures extends Gst.BufferPool.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -331,19 +340,31 @@ export namespace GstCuda {
             signal: K,
             callback: CudaBufferPool.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CudaBufferPool.SignalSignatures>(
             signal: K,
             callback: CudaBufferPool.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CudaBufferPool.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CudaBufferPool.SignalSignatures[K]>
+            ...args: CudaBufferPool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace CudaContext {
         // Signal signatures
-        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            'notify::cuda-device-id': GObject.Object.Notify;
+            'notify::cuda-device-id': GObject.Object.Notify;
+            'notify::os-handle': GObject.Object.Notify;
+            'notify::os-handle': GObject.Object.Notify;
+            'notify::virtual-memory': GObject.Object.Notify;
+            'notify::virtual-memory': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -401,14 +422,17 @@ export namespace GstCuda {
             signal: K,
             callback: CudaContext.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CudaContext.SignalSignatures>(
             signal: K,
             callback: CudaContext.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CudaContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CudaContext.SignalSignatures[K]>
+            ...args: CudaContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -448,7 +472,10 @@ export namespace GstCuda {
 
     namespace CudaPoolAllocator {
         // Signal signatures
-        interface SignalSignatures extends CudaAllocator.SignalSignatures {}
+        interface SignalSignatures extends CudaAllocator.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -487,14 +514,17 @@ export namespace GstCuda {
             signal: K,
             callback: CudaPoolAllocator.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CudaPoolAllocator.SignalSignatures>(
             signal: K,
             callback: CudaPoolAllocator.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CudaPoolAllocator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CudaPoolAllocator.SignalSignatures[K]>
+            ...args: CudaPoolAllocator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

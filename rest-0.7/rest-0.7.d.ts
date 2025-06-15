@@ -284,7 +284,28 @@ export namespace Rest {
     }
     namespace OAuth2Proxy {
         // Signal signatures
-        interface SignalSignatures extends Proxy.SignalSignatures {}
+        interface SignalSignatures extends Proxy.SignalSignatures {
+            'notify::access-token': GObject.Object.Notify;
+            'notify::access-token': GObject.Object.Notify;
+            'notify::auth-endpoint': GObject.Object.Notify;
+            'notify::auth-endpoint': GObject.Object.Notify;
+            'notify::client-id': GObject.Object.Notify;
+            'notify::client-id': GObject.Object.Notify;
+            'notify::binding-required': GObject.Object.Notify;
+            'notify::binding-required': GObject.Object.Notify;
+            'notify::disable-cookies': GObject.Object.Notify;
+            'notify::disable-cookies': GObject.Object.Notify;
+            'notify::password': GObject.Object.Notify;
+            'notify::ssl-ca-file': GObject.Object.Notify;
+            'notify::ssl-ca-file': GObject.Object.Notify;
+            'notify::ssl-strict': GObject.Object.Notify;
+            'notify::ssl-strict': GObject.Object.Notify;
+            'notify::url-format': GObject.Object.Notify;
+            'notify::url-format': GObject.Object.Notify;
+            'notify::user-agent': GObject.Object.Notify;
+            'notify::user-agent': GObject.Object.Notify;
+            'notify::username': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -345,14 +366,17 @@ export namespace Rest {
             signal: K,
             callback: OAuth2Proxy.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OAuth2Proxy.SignalSignatures>(
             signal: K,
             callback: OAuth2Proxy.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OAuth2Proxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OAuth2Proxy.SignalSignatures[K]>
+            ...args: OAuth2Proxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -408,7 +432,9 @@ export namespace Rest {
 
     namespace OAuth2ProxyCall {
         // Signal signatures
-        interface SignalSignatures extends ProxyCall.SignalSignatures {}
+        interface SignalSignatures extends ProxyCall.SignalSignatures {
+            'notify::proxy': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -433,19 +459,48 @@ export namespace Rest {
             signal: K,
             callback: OAuth2ProxyCall.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OAuth2ProxyCall.SignalSignatures>(
             signal: K,
             callback: OAuth2ProxyCall.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OAuth2ProxyCall.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OAuth2ProxyCall.SignalSignatures[K]>
+            ...args: OAuth2ProxyCall.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace OAuthProxy {
         // Signal signatures
-        interface SignalSignatures extends Proxy.SignalSignatures {}
+        interface SignalSignatures extends Proxy.SignalSignatures {
+            'notify::consumer-key': GObject.Object.Notify;
+            'notify::consumer-key': GObject.Object.Notify;
+            'notify::consumer-secret': GObject.Object.Notify;
+            'notify::consumer-secret': GObject.Object.Notify;
+            'notify::signature-host': GObject.Object.Notify;
+            'notify::signature-host': GObject.Object.Notify;
+            'notify::signature-method': GObject.Object.Notify;
+            'notify::signature-method': GObject.Object.Notify;
+            'notify::token': GObject.Object.Notify;
+            'notify::token-secret': GObject.Object.Notify;
+            'notify::token-secret': GObject.Object.Notify;
+            'notify::binding-required': GObject.Object.Notify;
+            'notify::binding-required': GObject.Object.Notify;
+            'notify::disable-cookies': GObject.Object.Notify;
+            'notify::disable-cookies': GObject.Object.Notify;
+            'notify::password': GObject.Object.Notify;
+            'notify::ssl-ca-file': GObject.Object.Notify;
+            'notify::ssl-ca-file': GObject.Object.Notify;
+            'notify::ssl-strict': GObject.Object.Notify;
+            'notify::ssl-strict': GObject.Object.Notify;
+            'notify::url-format': GObject.Object.Notify;
+            'notify::url-format': GObject.Object.Notify;
+            'notify::user-agent': GObject.Object.Notify;
+            'notify::user-agent': GObject.Object.Notify;
+            'notify::username': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -522,14 +577,17 @@ export namespace Rest {
             signal: K,
             callback: OAuthProxy.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OAuthProxy.SignalSignatures>(
             signal: K,
             callback: OAuthProxy.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OAuthProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OAuthProxy.SignalSignatures[K]>
+            ...args: OAuthProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -674,7 +732,9 @@ export namespace Rest {
 
     namespace OAuthProxyCall {
         // Signal signatures
-        interface SignalSignatures extends ProxyCall.SignalSignatures {}
+        interface SignalSignatures extends ProxyCall.SignalSignatures {
+            'notify::proxy': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -699,14 +759,17 @@ export namespace Rest {
             signal: K,
             callback: OAuthProxyCall.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OAuthProxyCall.SignalSignatures>(
             signal: K,
             callback: OAuthProxyCall.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OAuthProxyCall.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OAuthProxyCall.SignalSignatures[K]>
+            ...args: OAuthProxyCall.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -718,12 +781,26 @@ export namespace Rest {
         // Signal callback interfaces
 
         interface Authenticate {
-            (_source: Proxy, auth: ProxyAuth, retrying: boolean): boolean;
+            (_source: Proxy, auth: ProxyAuth, retrying: boolean): boolean | void;
         }
 
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             authenticate: Authenticate;
+            'notify::binding-required': GObject.Object.Notify;
+            'notify::binding-required': GObject.Object.Notify;
+            'notify::disable-cookies': GObject.Object.Notify;
+            'notify::disable-cookies': GObject.Object.Notify;
+            'notify::password': GObject.Object.Notify;
+            'notify::ssl-ca-file': GObject.Object.Notify;
+            'notify::ssl-ca-file': GObject.Object.Notify;
+            'notify::ssl-strict': GObject.Object.Notify;
+            'notify::ssl-strict': GObject.Object.Notify;
+            'notify::url-format': GObject.Object.Notify;
+            'notify::url-format': GObject.Object.Notify;
+            'notify::user-agent': GObject.Object.Notify;
+            'notify::user-agent': GObject.Object.Notify;
+            'notify::username': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -799,8 +876,14 @@ export namespace Rest {
         // Signals
 
         connect<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
-        emit<K extends keyof Proxy.SignalSignatures>(signal: K, ...args: Parameters<Proxy.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Proxy.SignalSignatures>(
+            signal: K,
+            ...args: Proxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -865,14 +948,17 @@ export namespace Rest {
         // Signals
 
         connect<K extends keyof ProxyAuth.SignalSignatures>(signal: K, callback: ProxyAuth.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ProxyAuth.SignalSignatures>(
             signal: K,
             callback: ProxyAuth.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ProxyAuth.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProxyAuth.SignalSignatures[K]>
+            ...args: ProxyAuth.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -898,7 +984,9 @@ export namespace Rest {
 
     namespace ProxyCall {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::proxy': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -926,14 +1014,17 @@ export namespace Rest {
         // Signals
 
         connect<K extends keyof ProxyCall.SignalSignatures>(signal: K, callback: ProxyCall.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ProxyCall.SignalSignatures>(
             signal: K,
             callback: ProxyCall.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ProxyCall.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProxyCall.SignalSignatures[K]>
+            ...args: ProxyCall.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1111,14 +1202,17 @@ export namespace Rest {
         // Signals
 
         connect<K extends keyof XmlParser.SignalSignatures>(signal: K, callback: XmlParser.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XmlParser.SignalSignatures>(
             signal: K,
             callback: XmlParser.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XmlParser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XmlParser.SignalSignatures[K]>
+            ...args: XmlParser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

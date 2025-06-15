@@ -26,7 +26,10 @@ export namespace GstVulkanXCB {
 
     namespace VulkanDisplayXCB {
         // Signal signatures
-        interface SignalSignatures extends GstVulkan.VulkanDisplay.SignalSignatures {}
+        interface SignalSignatures extends GstVulkan.VulkanDisplay.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -57,14 +60,17 @@ export namespace GstVulkanXCB {
             signal: K,
             callback: VulkanDisplayXCB.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VulkanDisplayXCB.SignalSignatures>(
             signal: K,
             callback: VulkanDisplayXCB.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VulkanDisplayXCB.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VulkanDisplayXCB.SignalSignatures[K]>
+            ...args: VulkanDisplayXCB.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     type VulkanDisplayXCBClass = typeof VulkanDisplayXCB;

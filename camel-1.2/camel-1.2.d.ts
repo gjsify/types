@@ -3038,14 +3038,17 @@ export namespace Camel {
         // Signals
 
         connect<K extends keyof Address.SignalSignatures>(signal: K, callback: Address.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Address.SignalSignatures>(
             signal: K,
             callback: Address.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Address.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Address.SignalSignatures[K]>
+            ...args: Address.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -3162,14 +3165,17 @@ export namespace Camel {
         // Signals
 
         connect<K extends keyof BlockFile.SignalSignatures>(signal: K, callback: BlockFile.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BlockFile.SignalSignatures>(
             signal: K,
             callback: BlockFile.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BlockFile.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BlockFile.SignalSignatures[K]>
+            ...args: BlockFile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -3263,8 +3269,14 @@ export namespace Camel {
         // Signals
 
         connect<K extends keyof CertDB.SignalSignatures>(signal: K, callback: CertDB.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CertDB.SignalSignatures>(signal: K, callback: CertDB.SignalSignatures[K]): number;
-        emit<K extends keyof CertDB.SignalSignatures>(signal: K, ...args: Parameters<CertDB.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof CertDB.SignalSignatures>(
+            signal: K,
+            ...args: CertDB.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -3313,7 +3325,9 @@ export namespace Camel {
 
     namespace CipherContext {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::session': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3343,14 +3357,17 @@ export namespace Camel {
             signal: K,
             callback: CipherContext.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CipherContext.SignalSignatures>(
             signal: K,
             callback: CipherContext.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CipherContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CipherContext.SignalSignatures[K]>
+            ...args: CipherContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -3759,8 +3776,14 @@ export namespace Camel {
         // Signals
 
         connect<K extends keyof DB.SignalSignatures>(signal: K, callback: DB.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DB.SignalSignatures>(signal: K, callback: DB.SignalSignatures[K]): number;
-        emit<K extends keyof DB.SignalSignatures>(signal: K, ...args: Parameters<DB.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof DB.SignalSignatures>(
+            signal: K,
+            ...args: DB.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -4027,7 +4050,11 @@ export namespace Camel {
 
     namespace DataCache {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::expire-enabled': GObject.Object.Notify;
+            'notify::expire-enabled': GObject.Object.Notify;
+            'notify::path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4061,14 +4088,17 @@ export namespace Camel {
         // Signals
 
         connect<K extends keyof DataCache.SignalSignatures>(signal: K, callback: DataCache.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DataCache.SignalSignatures>(
             signal: K,
             callback: DataCache.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DataCache.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataCache.SignalSignatures[K]>
+            ...args: DataCache.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4209,14 +4239,17 @@ export namespace Camel {
             signal: K,
             callback: DataWrapper.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DataWrapper.SignalSignatures>(
             signal: K,
             callback: DataWrapper.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DataWrapper.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataWrapper.SignalSignatures[K]>
+            ...args: DataWrapper.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -4848,14 +4881,17 @@ export namespace Camel {
             signal: K,
             callback: FilterDriver.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FilterDriver.SignalSignatures>(
             signal: K,
             callback: FilterDriver.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FilterDriver.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FilterDriver.SignalSignatures[K]>
+            ...args: FilterDriver.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4963,7 +4999,13 @@ export namespace Camel {
 
     namespace FilterInputStream {
         // Signal signatures
-        interface SignalSignatures extends Gio.FilterInputStream.SignalSignatures {}
+        interface SignalSignatures extends Gio.FilterInputStream.SignalSignatures {
+            'notify::filter': GObject.Object.Notify;
+            'notify::base-stream': GObject.Object.Notify;
+            'notify::base-stream': GObject.Object.Notify;
+            'notify::close-base-stream': GObject.Object.Notify;
+            'notify::close-base-stream': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4993,14 +5035,17 @@ export namespace Camel {
             signal: K,
             callback: FilterInputStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FilterInputStream.SignalSignatures>(
             signal: K,
             callback: FilterInputStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FilterInputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FilterInputStream.SignalSignatures[K]>
+            ...args: FilterInputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5013,7 +5058,13 @@ export namespace Camel {
 
     namespace FilterOutputStream {
         // Signal signatures
-        interface SignalSignatures extends Gio.FilterOutputStream.SignalSignatures {}
+        interface SignalSignatures extends Gio.FilterOutputStream.SignalSignatures {
+            'notify::filter': GObject.Object.Notify;
+            'notify::base-stream': GObject.Object.Notify;
+            'notify::base-stream': GObject.Object.Notify;
+            'notify::close-base-stream': GObject.Object.Notify;
+            'notify::close-base-stream': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5043,14 +5094,17 @@ export namespace Camel {
             signal: K,
             callback: FilterOutputStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FilterOutputStream.SignalSignatures>(
             signal: K,
             callback: FilterOutputStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FilterOutputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FilterOutputStream.SignalSignatures[K]>
+            ...args: FilterOutputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5081,6 +5135,19 @@ export namespace Camel {
             changed: Changed;
             deleted: Deleted;
             renamed: Renamed;
+            'notify::description': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::full-name': GObject.Object.Notify;
+            'notify::full-name': GObject.Object.Notify;
+            'notify::mark-seen': GObject.Object.Notify;
+            'notify::mark-seen': GObject.Object.Notify;
+            'notify::mark-seen-timeout': GObject.Object.Notify;
+            'notify::mark-seen-timeout': GObject.Object.Notify;
+            'notify::parent-store': GObject.Object.Notify;
+            'notify::parent-store': GObject.Object.Notify;
+            'notify::state-filename': GObject.Object.Notify;
+            'notify::state-filename': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -5172,8 +5239,14 @@ export namespace Camel {
         // Signals
 
         connect<K extends keyof Folder.SignalSignatures>(signal: K, callback: Folder.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Folder.SignalSignatures>(signal: K, callback: Folder.SignalSignatures[K]): number;
-        emit<K extends keyof Folder.SignalSignatures>(signal: K, ...args: Parameters<Folder.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Folder.SignalSignatures>(
+            signal: K,
+            ...args: Folder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -6314,14 +6387,17 @@ export namespace Camel {
             signal: K,
             callback: FolderSearch.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FolderSearch.SignalSignatures>(
             signal: K,
             callback: FolderSearch.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FolderSearch.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FolderSearch.SignalSignatures[K]>
+            ...args: FolderSearch.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -6437,6 +6513,19 @@ export namespace Camel {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             changed: Changed;
+            'notify::deleted-count': GObject.Object.Notify;
+            'notify::deleted-count': GObject.Object.Notify;
+            'notify::folder': GObject.Object.Notify;
+            'notify::junk-count': GObject.Object.Notify;
+            'notify::junk-count': GObject.Object.Notify;
+            'notify::junk-not-deleted-count': GObject.Object.Notify;
+            'notify::junk-not-deleted-count': GObject.Object.Notify;
+            'notify::saved-count': GObject.Object.Notify;
+            'notify::saved-count': GObject.Object.Notify;
+            'notify::unread-count': GObject.Object.Notify;
+            'notify::unread-count': GObject.Object.Notify;
+            'notify::visible-count': GObject.Object.Notify;
+            'notify::visible-count': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -6530,14 +6619,17 @@ export namespace Camel {
             signal: K,
             callback: FolderSummary.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FolderSummary.SignalSignatures>(
             signal: K,
             callback: FolderSummary.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FolderSummary.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FolderSummary.SignalSignatures[K]>
+            ...args: FolderSummary.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -6817,7 +6909,15 @@ export namespace Camel {
 
     namespace GpgContext {
         // Signal signatures
-        interface SignalSignatures extends CipherContext.SignalSignatures {}
+        interface SignalSignatures extends CipherContext.SignalSignatures {
+            'notify::always-trust': GObject.Object.Notify;
+            'notify::always-trust': GObject.Object.Notify;
+            'notify::locate-keys': GObject.Object.Notify;
+            'notify::locate-keys': GObject.Object.Notify;
+            'notify::prefer-inline': GObject.Object.Notify;
+            'notify::prefer-inline': GObject.Object.Notify;
+            'notify::session': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6863,14 +6963,17 @@ export namespace Camel {
             signal: K,
             callback: GpgContext.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GpgContext.SignalSignatures>(
             signal: K,
             callback: GpgContext.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GpgContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GpgContext.SignalSignatures[K]>
+            ...args: GpgContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -7014,14 +7117,17 @@ export namespace Camel {
             signal: K,
             callback: HTMLParser.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HTMLParser.SignalSignatures>(
             signal: K,
             callback: HTMLParser.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HTMLParser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HTMLParser.SignalSignatures[K]>
+            ...args: HTMLParser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -7071,8 +7177,14 @@ export namespace Camel {
         // Signals
 
         connect<K extends keyof Index.SignalSignatures>(signal: K, callback: Index.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Index.SignalSignatures>(signal: K, callback: Index.SignalSignatures[K]): number;
-        emit<K extends keyof Index.SignalSignatures>(signal: K, ...args: Parameters<Index.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Index.SignalSignatures>(
+            signal: K,
+            ...args: Index.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -7141,14 +7253,17 @@ export namespace Camel {
             signal: K,
             callback: IndexCursor.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof IndexCursor.SignalSignatures>(
             signal: K,
             callback: IndexCursor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof IndexCursor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IndexCursor.SignalSignatures[K]>
+            ...args: IndexCursor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -7186,14 +7301,17 @@ export namespace Camel {
         // Signals
 
         connect<K extends keyof IndexName.SignalSignatures>(signal: K, callback: IndexName.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof IndexName.SignalSignatures>(
             signal: K,
             callback: IndexName.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof IndexName.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IndexName.SignalSignatures[K]>
+            ...args: IndexName.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -7232,14 +7350,17 @@ export namespace Camel {
             signal: K,
             callback: InternetAddress.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InternetAddress.SignalSignatures>(
             signal: K,
             callback: InternetAddress.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InternetAddress.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InternetAddress.SignalSignatures[K]>
+            ...args: InternetAddress.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -7327,14 +7448,17 @@ export namespace Camel {
         // Signals
 
         connect<K extends keyof KeyFile.SignalSignatures>(signal: K, callback: KeyFile.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof KeyFile.SignalSignatures>(
             signal: K,
             callback: KeyFile.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof KeyFile.SignalSignatures>(
             signal: K,
-            ...args: Parameters<KeyFile.SignalSignatures[K]>
+            ...args: KeyFile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -7380,14 +7504,17 @@ export namespace Camel {
         // Signals
 
         connect<K extends keyof KeyTable.SignalSignatures>(signal: K, callback: KeyTable.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof KeyTable.SignalSignatures>(
             signal: K,
             callback: KeyTable.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof KeyTable.SignalSignatures>(
             signal: K,
-            ...args: Parameters<KeyTable.SignalSignatures[K]>
+            ...args: KeyTable.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -7403,7 +7530,19 @@ export namespace Camel {
 
     namespace LocalSettings {
         // Signal signatures
-        interface SignalSignatures extends StoreSettings.SignalSignatures {}
+        interface SignalSignatures extends StoreSettings.SignalSignatures {
+            'notify::filter-all': GObject.Object.Notify;
+            'notify::filter-all': GObject.Object.Notify;
+            'notify::filter-junk': GObject.Object.Notify;
+            'notify::filter-junk': GObject.Object.Notify;
+            'notify::maildir-alt-flag-sep': GObject.Object.Notify;
+            'notify::maildir-alt-flag-sep': GObject.Object.Notify;
+            'notify::path': GObject.Object.Notify;
+            'notify::filter-inbox': GObject.Object.Notify;
+            'notify::filter-inbox': GObject.Object.Notify;
+            'notify::store-changes-interval': GObject.Object.Notify;
+            'notify::store-changes-interval': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -7454,14 +7593,17 @@ export namespace Camel {
             signal: K,
             callback: LocalSettings.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LocalSettings.SignalSignatures>(
             signal: K,
             callback: LocalSettings.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LocalSettings.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LocalSettings.SignalSignatures[K]>
+            ...args: LocalSettings.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -7528,7 +7670,9 @@ export namespace Camel {
 
     namespace Medium {
         // Signal signatures
-        interface SignalSignatures extends DataWrapper.SignalSignatures {}
+        interface SignalSignatures extends DataWrapper.SignalSignatures {
+            'notify::content': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -7554,8 +7698,14 @@ export namespace Camel {
         // Signals
 
         connect<K extends keyof Medium.SignalSignatures>(signal: K, callback: Medium.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Medium.SignalSignatures>(signal: K, callback: Medium.SignalSignatures[K]): number;
-        emit<K extends keyof Medium.SignalSignatures>(signal: K, ...args: Parameters<Medium.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Medium.SignalSignatures>(
+            signal: K,
+            ...args: Medium.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -7674,7 +7824,39 @@ export namespace Camel {
 
     namespace MessageInfo {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::abort-notifications': GObject.Object.Notify;
+            'notify::abort-notifications': GObject.Object.Notify;
+            'notify::cc': GObject.Object.Notify;
+            'notify::date-received': GObject.Object.Notify;
+            'notify::date-received': GObject.Object.Notify;
+            'notify::date-sent': GObject.Object.Notify;
+            'notify::date-sent': GObject.Object.Notify;
+            'notify::dirty': GObject.Object.Notify;
+            'notify::flags': GObject.Object.Notify;
+            'notify::folder-flagged': GObject.Object.Notify;
+            'notify::folder-flagged': GObject.Object.Notify;
+            'notify::folder-flagged-stamp': GObject.Object.Notify;
+            'notify::folder-flagged-stamp': GObject.Object.Notify;
+            'notify::from': GObject.Object.Notify;
+            'notify::headers': GObject.Object.Notify;
+            'notify::message-id': GObject.Object.Notify;
+            'notify::message-id': GObject.Object.Notify;
+            'notify::mlist': GObject.Object.Notify;
+            'notify::preview': GObject.Object.Notify;
+            'notify::references': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::subject': GObject.Object.Notify;
+            'notify::summary': GObject.Object.Notify;
+            'notify::to': GObject.Object.Notify;
+            'notify::uid': GObject.Object.Notify;
+            'notify::user-flags': GObject.Object.Notify;
+            'notify::user-flags': GObject.Object.Notify;
+            'notify::user-headers': GObject.Object.Notify;
+            'notify::user-headers': GObject.Object.Notify;
+            'notify::user-tags': GObject.Object.Notify;
+            'notify::user-tags': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -7919,14 +8101,17 @@ export namespace Camel {
             signal: K,
             callback: MessageInfo.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MessageInfo.SignalSignatures>(
             signal: K,
             callback: MessageInfo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MessageInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MessageInfo.SignalSignatures[K]>
+            ...args: MessageInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -8679,7 +8864,39 @@ export namespace Camel {
 
     namespace MessageInfoBase {
         // Signal signatures
-        interface SignalSignatures extends MessageInfo.SignalSignatures {}
+        interface SignalSignatures extends MessageInfo.SignalSignatures {
+            'notify::abort-notifications': GObject.Object.Notify;
+            'notify::abort-notifications': GObject.Object.Notify;
+            'notify::cc': GObject.Object.Notify;
+            'notify::date-received': GObject.Object.Notify;
+            'notify::date-received': GObject.Object.Notify;
+            'notify::date-sent': GObject.Object.Notify;
+            'notify::date-sent': GObject.Object.Notify;
+            'notify::dirty': GObject.Object.Notify;
+            'notify::flags': GObject.Object.Notify;
+            'notify::folder-flagged': GObject.Object.Notify;
+            'notify::folder-flagged': GObject.Object.Notify;
+            'notify::folder-flagged-stamp': GObject.Object.Notify;
+            'notify::folder-flagged-stamp': GObject.Object.Notify;
+            'notify::from': GObject.Object.Notify;
+            'notify::headers': GObject.Object.Notify;
+            'notify::message-id': GObject.Object.Notify;
+            'notify::message-id': GObject.Object.Notify;
+            'notify::mlist': GObject.Object.Notify;
+            'notify::preview': GObject.Object.Notify;
+            'notify::references': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::subject': GObject.Object.Notify;
+            'notify::summary': GObject.Object.Notify;
+            'notify::to': GObject.Object.Notify;
+            'notify::uid': GObject.Object.Notify;
+            'notify::user-flags': GObject.Object.Notify;
+            'notify::user-flags': GObject.Object.Notify;
+            'notify::user-headers': GObject.Object.Notify;
+            'notify::user-headers': GObject.Object.Notify;
+            'notify::user-tags': GObject.Object.Notify;
+            'notify::user-tags': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8701,14 +8918,17 @@ export namespace Camel {
             signal: K,
             callback: MessageInfoBase.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MessageInfoBase.SignalSignatures>(
             signal: K,
             callback: MessageInfoBase.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MessageInfoBase.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MessageInfoBase.SignalSignatures[K]>
+            ...args: MessageInfoBase.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace MimeFilter {
@@ -8748,14 +8968,17 @@ export namespace Camel {
             signal: K,
             callback: MimeFilter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MimeFilter.SignalSignatures>(
             signal: K,
             callback: MimeFilter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MimeFilter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MimeFilter.SignalSignatures[K]>
+            ...args: MimeFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -8850,14 +9073,17 @@ export namespace Camel {
             signal: K,
             callback: MimeFilterBasic.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MimeFilterBasic.SignalSignatures>(
             signal: K,
             callback: MimeFilterBasic.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MimeFilterBasic.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MimeFilterBasic.SignalSignatures[K]>
+            ...args: MimeFilterBasic.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace MimeFilterBestenc {
@@ -8889,14 +9115,17 @@ export namespace Camel {
             signal: K,
             callback: MimeFilterBestenc.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MimeFilterBestenc.SignalSignatures>(
             signal: K,
             callback: MimeFilterBestenc.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MimeFilterBestenc.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MimeFilterBestenc.SignalSignatures[K]>
+            ...args: MimeFilterBestenc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -8948,14 +9177,17 @@ export namespace Camel {
             signal: K,
             callback: MimeFilterCRLF.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MimeFilterCRLF.SignalSignatures>(
             signal: K,
             callback: MimeFilterCRLF.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MimeFilterCRLF.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MimeFilterCRLF.SignalSignatures[K]>
+            ...args: MimeFilterCRLF.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -8998,14 +9230,17 @@ export namespace Camel {
             signal: K,
             callback: MimeFilterCanon.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MimeFilterCanon.SignalSignatures>(
             signal: K,
             callback: MimeFilterCanon.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MimeFilterCanon.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MimeFilterCanon.SignalSignatures[K]>
+            ...args: MimeFilterCanon.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace MimeFilterCharset {
@@ -9037,14 +9272,17 @@ export namespace Camel {
             signal: K,
             callback: MimeFilterCharset.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MimeFilterCharset.SignalSignatures>(
             signal: K,
             callback: MimeFilterCharset.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MimeFilterCharset.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MimeFilterCharset.SignalSignatures[K]>
+            ...args: MimeFilterCharset.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace MimeFilterEnriched {
@@ -9076,14 +9314,17 @@ export namespace Camel {
             signal: K,
             callback: MimeFilterEnriched.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MimeFilterEnriched.SignalSignatures>(
             signal: K,
             callback: MimeFilterEnriched.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MimeFilterEnriched.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MimeFilterEnriched.SignalSignatures[K]>
+            ...args: MimeFilterEnriched.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace MimeFilterFrom {
@@ -9112,14 +9353,17 @@ export namespace Camel {
             signal: K,
             callback: MimeFilterFrom.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MimeFilterFrom.SignalSignatures>(
             signal: K,
             callback: MimeFilterFrom.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MimeFilterFrom.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MimeFilterFrom.SignalSignatures[K]>
+            ...args: MimeFilterFrom.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace MimeFilterGZip {
@@ -9151,14 +9395,17 @@ export namespace Camel {
             signal: K,
             callback: MimeFilterGZip.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MimeFilterGZip.SignalSignatures>(
             signal: K,
             callback: MimeFilterGZip.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MimeFilterGZip.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MimeFilterGZip.SignalSignatures[K]>
+            ...args: MimeFilterGZip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace MimeFilterHTML {
@@ -9187,14 +9434,17 @@ export namespace Camel {
             signal: K,
             callback: MimeFilterHTML.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MimeFilterHTML.SignalSignatures>(
             signal: K,
             callback: MimeFilterHTML.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MimeFilterHTML.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MimeFilterHTML.SignalSignatures[K]>
+            ...args: MimeFilterHTML.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace MimeFilterIndex {
@@ -9226,14 +9476,17 @@ export namespace Camel {
             signal: K,
             callback: MimeFilterIndex.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MimeFilterIndex.SignalSignatures>(
             signal: K,
             callback: MimeFilterIndex.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MimeFilterIndex.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MimeFilterIndex.SignalSignatures[K]>
+            ...args: MimeFilterIndex.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -9278,14 +9531,17 @@ export namespace Camel {
             signal: K,
             callback: MimeFilterLinewrap.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MimeFilterLinewrap.SignalSignatures>(
             signal: K,
             callback: MimeFilterLinewrap.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MimeFilterLinewrap.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MimeFilterLinewrap.SignalSignatures[K]>
+            ...args: MimeFilterLinewrap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace MimeFilterPgp {
@@ -9314,14 +9570,17 @@ export namespace Camel {
             signal: K,
             callback: MimeFilterPgp.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MimeFilterPgp.SignalSignatures>(
             signal: K,
             callback: MimeFilterPgp.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MimeFilterPgp.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MimeFilterPgp.SignalSignatures[K]>
+            ...args: MimeFilterPgp.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace MimeFilterProgress {
@@ -9353,14 +9612,17 @@ export namespace Camel {
             signal: K,
             callback: MimeFilterProgress.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MimeFilterProgress.SignalSignatures>(
             signal: K,
             callback: MimeFilterProgress.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MimeFilterProgress.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MimeFilterProgress.SignalSignatures[K]>
+            ...args: MimeFilterProgress.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace MimeFilterToHTML {
@@ -9392,14 +9654,17 @@ export namespace Camel {
             signal: K,
             callback: MimeFilterToHTML.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MimeFilterToHTML.SignalSignatures>(
             signal: K,
             callback: MimeFilterToHTML.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MimeFilterToHTML.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MimeFilterToHTML.SignalSignatures[K]>
+            ...args: MimeFilterToHTML.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace MimeFilterWindows {
@@ -9431,14 +9696,17 @@ export namespace Camel {
             signal: K,
             callback: MimeFilterWindows.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MimeFilterWindows.SignalSignatures>(
             signal: K,
             callback: MimeFilterWindows.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MimeFilterWindows.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MimeFilterWindows.SignalSignatures[K]>
+            ...args: MimeFilterWindows.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -9488,14 +9756,17 @@ export namespace Camel {
             signal: K,
             callback: MimeFilterYenc.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MimeFilterYenc.SignalSignatures>(
             signal: K,
             callback: MimeFilterYenc.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MimeFilterYenc.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MimeFilterYenc.SignalSignatures[K]>
+            ...args: MimeFilterYenc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -9523,7 +9794,15 @@ export namespace Camel {
 
     namespace MimeMessage {
         // Signal signatures
-        interface SignalSignatures extends MimePart.SignalSignatures {}
+        interface SignalSignatures extends MimePart.SignalSignatures {
+            'notify::content-id': GObject.Object.Notify;
+            'notify::content-id': GObject.Object.Notify;
+            'notify::content-md5': GObject.Object.Notify;
+            'notify::content-md5': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::disposition': GObject.Object.Notify;
+            'notify::content': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -9547,14 +9826,17 @@ export namespace Camel {
             signal: K,
             callback: MimeMessage.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MimeMessage.SignalSignatures>(
             signal: K,
             callback: MimeMessage.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MimeMessage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MimeMessage.SignalSignatures[K]>
+            ...args: MimeMessage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -9722,14 +10004,17 @@ export namespace Camel {
             signal: K,
             callback: MimeParser.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MimeParser.SignalSignatures>(
             signal: K,
             callback: MimeParser.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MimeParser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MimeParser.SignalSignatures[K]>
+            ...args: MimeParser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -9977,7 +10262,15 @@ export namespace Camel {
 
     namespace MimePart {
         // Signal signatures
-        interface SignalSignatures extends Medium.SignalSignatures {}
+        interface SignalSignatures extends Medium.SignalSignatures {
+            'notify::content-id': GObject.Object.Notify;
+            'notify::content-id': GObject.Object.Notify;
+            'notify::content-md5': GObject.Object.Notify;
+            'notify::content-md5': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::disposition': GObject.Object.Notify;
+            'notify::content': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10020,14 +10313,17 @@ export namespace Camel {
         // Signals
 
         connect<K extends keyof MimePart.SignalSignatures>(signal: K, callback: MimePart.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MimePart.SignalSignatures>(
             signal: K,
             callback: MimePart.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MimePart.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MimePart.SignalSignatures[K]>
+            ...args: MimePart.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -10241,14 +10537,17 @@ export namespace Camel {
         // Signals
 
         connect<K extends keyof Multipart.SignalSignatures>(signal: K, callback: Multipart.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Multipart.SignalSignatures>(
             signal: K,
             callback: Multipart.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Multipart.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Multipart.SignalSignatures[K]>
+            ...args: Multipart.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -10352,14 +10651,17 @@ export namespace Camel {
             signal: K,
             callback: MultipartEncrypted.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MultipartEncrypted.SignalSignatures>(
             signal: K,
             callback: MultipartEncrypted.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MultipartEncrypted.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MultipartEncrypted.SignalSignatures[K]>
+            ...args: MultipartEncrypted.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace MultipartSigned {
@@ -10388,14 +10690,17 @@ export namespace Camel {
             signal: K,
             callback: MultipartSigned.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MultipartSigned.SignalSignatures>(
             signal: K,
             callback: MultipartSigned.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MultipartSigned.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MultipartSigned.SignalSignatures[K]>
+            ...args: MultipartSigned.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -10444,14 +10749,17 @@ export namespace Camel {
             signal: K,
             callback: NNTPAddress.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NNTPAddress.SignalSignatures>(
             signal: K,
             callback: NNTPAddress.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NNTPAddress.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NNTPAddress.SignalSignatures[K]>
+            ...args: NNTPAddress.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -10496,14 +10804,17 @@ export namespace Camel {
             signal: K,
             callback: NullOutputStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NullOutputStream.SignalSignatures>(
             signal: K,
             callback: NullOutputStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NullOutputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NullOutputStream.SignalSignatures[K]>
+            ...args: NullOutputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -10517,7 +10828,10 @@ export namespace Camel {
 
     namespace Object {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::state-filename': GObject.Object.Notify;
+            'notify::state-filename': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10554,8 +10868,14 @@ export namespace Camel {
         // Signals
 
         connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
-        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            ...args: Object.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -10592,7 +10912,23 @@ export namespace Camel {
 
     namespace OfflineFolder {
         // Signal signatures
-        interface SignalSignatures extends Folder.SignalSignatures {}
+        interface SignalSignatures extends Folder.SignalSignatures {
+            'notify::offline-sync': GObject.Object.Notify;
+            'notify::offline-sync': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::full-name': GObject.Object.Notify;
+            'notify::full-name': GObject.Object.Notify;
+            'notify::mark-seen': GObject.Object.Notify;
+            'notify::mark-seen': GObject.Object.Notify;
+            'notify::mark-seen-timeout': GObject.Object.Notify;
+            'notify::mark-seen-timeout': GObject.Object.Notify;
+            'notify::parent-store': GObject.Object.Notify;
+            'notify::parent-store': GObject.Object.Notify;
+            'notify::state-filename': GObject.Object.Notify;
+            'notify::state-filename': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10624,14 +10960,17 @@ export namespace Camel {
             signal: K,
             callback: OfflineFolder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OfflineFolder.SignalSignatures>(
             signal: K,
             callback: OfflineFolder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OfflineFolder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OfflineFolder.SignalSignatures[K]>
+            ...args: OfflineFolder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -10728,7 +11067,20 @@ export namespace Camel {
 
     namespace OfflineSettings {
         // Signal signatures
-        interface SignalSignatures extends StoreSettings.SignalSignatures {}
+        interface SignalSignatures extends StoreSettings.SignalSignatures {
+            'notify::limit-by-age': GObject.Object.Notify;
+            'notify::limit-by-age': GObject.Object.Notify;
+            'notify::limit-unit': GObject.Object.Notify;
+            'notify::limit-unit': GObject.Object.Notify;
+            'notify::limit-value': GObject.Object.Notify;
+            'notify::limit-value': GObject.Object.Notify;
+            'notify::stay-synchronized': GObject.Object.Notify;
+            'notify::stay-synchronized': GObject.Object.Notify;
+            'notify::filter-inbox': GObject.Object.Notify;
+            'notify::filter-inbox': GObject.Object.Notify;
+            'notify::store-changes-interval': GObject.Object.Notify;
+            'notify::store-changes-interval': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10782,14 +11134,17 @@ export namespace Camel {
             signal: K,
             callback: OfflineSettings.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OfflineSettings.SignalSignatures>(
             signal: K,
             callback: OfflineSettings.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OfflineSettings.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OfflineSettings.SignalSignatures[K]>
+            ...args: OfflineSettings.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -10845,7 +11200,22 @@ export namespace Camel {
 
     namespace OfflineStore {
         // Signal signatures
-        interface SignalSignatures extends Store.SignalSignatures {}
+        interface SignalSignatures extends Store.SignalSignatures {
+            'notify::online': GObject.Object.Notify;
+            'notify::connection-status': GObject.Object.Notify;
+            'notify::connection-status': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::password': GObject.Object.Notify;
+            'notify::provider': GObject.Object.Notify;
+            'notify::proxy-resolver': GObject.Object.Notify;
+            'notify::proxy-resolver': GObject.Object.Notify;
+            'notify::session': GObject.Object.Notify;
+            'notify::settings': GObject.Object.Notify;
+            'notify::uid': GObject.Object.Notify;
+            'notify::state-filename': GObject.Object.Notify;
+            'notify::state-filename': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10873,10 +11243,12 @@ export namespace Camel {
             signal: K,
             callback: OfflineStore.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OfflineStore.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OfflineStore.SignalSignatures[K]>
+            ...args: OfflineStore.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -11471,14 +11843,17 @@ export namespace Camel {
         // Signals
 
         connect<K extends keyof Operation.SignalSignatures>(signal: K, callback: Operation.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Operation.SignalSignatures>(
             signal: K,
             callback: Operation.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Operation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Operation.SignalSignatures[K]>
+            ...args: Operation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -11538,14 +11913,17 @@ export namespace Camel {
             signal: K,
             callback: PartitionTable.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PartitionTable.SignalSignatures>(
             signal: K,
             callback: PartitionTable.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PartitionTable.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PartitionTable.SignalSignatures[K]>
+            ...args: PartitionTable.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -11578,8 +11956,14 @@ export namespace Camel {
         // Signals
 
         connect<K extends keyof SExp.SignalSignatures>(signal: K, callback: SExp.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SExp.SignalSignatures>(signal: K, callback: SExp.SignalSignatures[K]): number;
-        emit<K extends keyof SExp.SignalSignatures>(signal: K, ...args: Parameters<SExp.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof SExp.SignalSignatures>(
+            signal: K,
+            ...args: SExp.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -11655,7 +12039,9 @@ export namespace Camel {
 
     namespace SMIMEContext {
         // Signal signatures
-        interface SignalSignatures extends CipherContext.SignalSignatures {}
+        interface SignalSignatures extends CipherContext.SignalSignatures {
+            'notify::session': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11682,14 +12068,17 @@ export namespace Camel {
             signal: K,
             callback: SMIMEContext.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SMIMEContext.SignalSignatures>(
             signal: K,
             callback: SMIMEContext.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SMIMEContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SMIMEContext.SignalSignatures[K]>
+            ...args: SMIMEContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -11700,7 +12089,13 @@ export namespace Camel {
 
     namespace Sasl {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::authenticated': GObject.Object.Notify;
+            'notify::mechanism': GObject.Object.Notify;
+            'notify::service': GObject.Object.Notify;
+            'notify::service-name': GObject.Object.Notify;
+            'notify::service-name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11736,8 +12131,14 @@ export namespace Camel {
         // Signals
 
         connect<K extends keyof Sasl.SignalSignatures>(signal: K, callback: Sasl.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Sasl.SignalSignatures>(signal: K, callback: Sasl.SignalSignatures[K]): number;
-        emit<K extends keyof Sasl.SignalSignatures>(signal: K, ...args: Parameters<Sasl.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Sasl.SignalSignatures>(
+            signal: K,
+            ...args: Sasl.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -11963,7 +12364,13 @@ export namespace Camel {
 
     namespace SaslAnonymous {
         // Signal signatures
-        interface SignalSignatures extends Sasl.SignalSignatures {}
+        interface SignalSignatures extends Sasl.SignalSignatures {
+            'notify::authenticated': GObject.Object.Notify;
+            'notify::mechanism': GObject.Object.Notify;
+            'notify::service': GObject.Object.Notify;
+            'notify::service-name': GObject.Object.Notify;
+            'notify::service-name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11990,19 +12397,28 @@ export namespace Camel {
             signal: K,
             callback: SaslAnonymous.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SaslAnonymous.SignalSignatures>(
             signal: K,
             callback: SaslAnonymous.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SaslAnonymous.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SaslAnonymous.SignalSignatures[K]>
+            ...args: SaslAnonymous.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace SaslCramMd5 {
         // Signal signatures
-        interface SignalSignatures extends Sasl.SignalSignatures {}
+        interface SignalSignatures extends Sasl.SignalSignatures {
+            'notify::authenticated': GObject.Object.Notify;
+            'notify::mechanism': GObject.Object.Notify;
+            'notify::service': GObject.Object.Notify;
+            'notify::service-name': GObject.Object.Notify;
+            'notify::service-name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12024,19 +12440,28 @@ export namespace Camel {
             signal: K,
             callback: SaslCramMd5.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SaslCramMd5.SignalSignatures>(
             signal: K,
             callback: SaslCramMd5.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SaslCramMd5.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SaslCramMd5.SignalSignatures[K]>
+            ...args: SaslCramMd5.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace SaslDigestMd5 {
         // Signal signatures
-        interface SignalSignatures extends Sasl.SignalSignatures {}
+        interface SignalSignatures extends Sasl.SignalSignatures {
+            'notify::authenticated': GObject.Object.Notify;
+            'notify::mechanism': GObject.Object.Notify;
+            'notify::service': GObject.Object.Notify;
+            'notify::service-name': GObject.Object.Notify;
+            'notify::service-name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12058,19 +12483,28 @@ export namespace Camel {
             signal: K,
             callback: SaslDigestMd5.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SaslDigestMd5.SignalSignatures>(
             signal: K,
             callback: SaslDigestMd5.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SaslDigestMd5.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SaslDigestMd5.SignalSignatures[K]>
+            ...args: SaslDigestMd5.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace SaslGssapi {
         // Signal signatures
-        interface SignalSignatures extends Sasl.SignalSignatures {}
+        interface SignalSignatures extends Sasl.SignalSignatures {
+            'notify::authenticated': GObject.Object.Notify;
+            'notify::mechanism': GObject.Object.Notify;
+            'notify::service': GObject.Object.Notify;
+            'notify::service-name': GObject.Object.Notify;
+            'notify::service-name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12092,14 +12526,17 @@ export namespace Camel {
             signal: K,
             callback: SaslGssapi.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SaslGssapi.SignalSignatures>(
             signal: K,
             callback: SaslGssapi.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SaslGssapi.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SaslGssapi.SignalSignatures[K]>
+            ...args: SaslGssapi.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -12119,7 +12556,13 @@ export namespace Camel {
 
     namespace SaslLogin {
         // Signal signatures
-        interface SignalSignatures extends Sasl.SignalSignatures {}
+        interface SignalSignatures extends Sasl.SignalSignatures {
+            'notify::authenticated': GObject.Object.Notify;
+            'notify::mechanism': GObject.Object.Notify;
+            'notify::service': GObject.Object.Notify;
+            'notify::service-name': GObject.Object.Notify;
+            'notify::service-name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12138,19 +12581,28 @@ export namespace Camel {
         // Signals
 
         connect<K extends keyof SaslLogin.SignalSignatures>(signal: K, callback: SaslLogin.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SaslLogin.SignalSignatures>(
             signal: K,
             callback: SaslLogin.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SaslLogin.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SaslLogin.SignalSignatures[K]>
+            ...args: SaslLogin.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace SaslNTLM {
         // Signal signatures
-        interface SignalSignatures extends Sasl.SignalSignatures {}
+        interface SignalSignatures extends Sasl.SignalSignatures {
+            'notify::authenticated': GObject.Object.Notify;
+            'notify::mechanism': GObject.Object.Notify;
+            'notify::service': GObject.Object.Notify;
+            'notify::service-name': GObject.Object.Notify;
+            'notify::service-name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12169,19 +12621,28 @@ export namespace Camel {
         // Signals
 
         connect<K extends keyof SaslNTLM.SignalSignatures>(signal: K, callback: SaslNTLM.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SaslNTLM.SignalSignatures>(
             signal: K,
             callback: SaslNTLM.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SaslNTLM.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SaslNTLM.SignalSignatures[K]>
+            ...args: SaslNTLM.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace SaslPOPB4SMTP {
         // Signal signatures
-        interface SignalSignatures extends Sasl.SignalSignatures {}
+        interface SignalSignatures extends Sasl.SignalSignatures {
+            'notify::authenticated': GObject.Object.Notify;
+            'notify::mechanism': GObject.Object.Notify;
+            'notify::service': GObject.Object.Notify;
+            'notify::service-name': GObject.Object.Notify;
+            'notify::service-name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12203,19 +12664,28 @@ export namespace Camel {
             signal: K,
             callback: SaslPOPB4SMTP.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SaslPOPB4SMTP.SignalSignatures>(
             signal: K,
             callback: SaslPOPB4SMTP.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SaslPOPB4SMTP.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SaslPOPB4SMTP.SignalSignatures[K]>
+            ...args: SaslPOPB4SMTP.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace SaslPlain {
         // Signal signatures
-        interface SignalSignatures extends Sasl.SignalSignatures {}
+        interface SignalSignatures extends Sasl.SignalSignatures {
+            'notify::authenticated': GObject.Object.Notify;
+            'notify::mechanism': GObject.Object.Notify;
+            'notify::service': GObject.Object.Notify;
+            'notify::service-name': GObject.Object.Notify;
+            'notify::service-name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12234,19 +12704,28 @@ export namespace Camel {
         // Signals
 
         connect<K extends keyof SaslPlain.SignalSignatures>(signal: K, callback: SaslPlain.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SaslPlain.SignalSignatures>(
             signal: K,
             callback: SaslPlain.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SaslPlain.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SaslPlain.SignalSignatures[K]>
+            ...args: SaslPlain.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace SaslXOAuth2 {
         // Signal signatures
-        interface SignalSignatures extends Sasl.SignalSignatures {}
+        interface SignalSignatures extends Sasl.SignalSignatures {
+            'notify::authenticated': GObject.Object.Notify;
+            'notify::mechanism': GObject.Object.Notify;
+            'notify::service': GObject.Object.Notify;
+            'notify::service-name': GObject.Object.Notify;
+            'notify::service-name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12268,19 +12747,28 @@ export namespace Camel {
             signal: K,
             callback: SaslXOAuth2.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SaslXOAuth2.SignalSignatures>(
             signal: K,
             callback: SaslXOAuth2.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SaslXOAuth2.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SaslXOAuth2.SignalSignatures[K]>
+            ...args: SaslXOAuth2.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace SaslXOAuth2Google {
         // Signal signatures
-        interface SignalSignatures extends SaslXOAuth2.SignalSignatures {}
+        interface SignalSignatures extends SaslXOAuth2.SignalSignatures {
+            'notify::authenticated': GObject.Object.Notify;
+            'notify::mechanism': GObject.Object.Notify;
+            'notify::service': GObject.Object.Notify;
+            'notify::service-name': GObject.Object.Notify;
+            'notify::service-name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12302,19 +12790,28 @@ export namespace Camel {
             signal: K,
             callback: SaslXOAuth2Google.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SaslXOAuth2Google.SignalSignatures>(
             signal: K,
             callback: SaslXOAuth2Google.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SaslXOAuth2Google.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SaslXOAuth2Google.SignalSignatures[K]>
+            ...args: SaslXOAuth2Google.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace SaslXOAuth2Outlook {
         // Signal signatures
-        interface SignalSignatures extends SaslXOAuth2.SignalSignatures {}
+        interface SignalSignatures extends SaslXOAuth2.SignalSignatures {
+            'notify::authenticated': GObject.Object.Notify;
+            'notify::mechanism': GObject.Object.Notify;
+            'notify::service': GObject.Object.Notify;
+            'notify::service-name': GObject.Object.Notify;
+            'notify::service-name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12336,19 +12833,28 @@ export namespace Camel {
             signal: K,
             callback: SaslXOAuth2Outlook.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SaslXOAuth2Outlook.SignalSignatures>(
             signal: K,
             callback: SaslXOAuth2Outlook.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SaslXOAuth2Outlook.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SaslXOAuth2Outlook.SignalSignatures[K]>
+            ...args: SaslXOAuth2Outlook.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace SaslXOAuth2Yahoo {
         // Signal signatures
-        interface SignalSignatures extends SaslXOAuth2.SignalSignatures {}
+        interface SignalSignatures extends SaslXOAuth2.SignalSignatures {
+            'notify::authenticated': GObject.Object.Notify;
+            'notify::mechanism': GObject.Object.Notify;
+            'notify::service': GObject.Object.Notify;
+            'notify::service-name': GObject.Object.Notify;
+            'notify::service-name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12370,19 +12876,36 @@ export namespace Camel {
             signal: K,
             callback: SaslXOAuth2Yahoo.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SaslXOAuth2Yahoo.SignalSignatures>(
             signal: K,
             callback: SaslXOAuth2Yahoo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SaslXOAuth2Yahoo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SaslXOAuth2Yahoo.SignalSignatures[K]>
+            ...args: SaslXOAuth2Yahoo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Service {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::connection-status': GObject.Object.Notify;
+            'notify::connection-status': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::password': GObject.Object.Notify;
+            'notify::provider': GObject.Object.Notify;
+            'notify::proxy-resolver': GObject.Object.Notify;
+            'notify::proxy-resolver': GObject.Object.Notify;
+            'notify::session': GObject.Object.Notify;
+            'notify::settings': GObject.Object.Notify;
+            'notify::uid': GObject.Object.Notify;
+            'notify::state-filename': GObject.Object.Notify;
+            'notify::state-filename': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12433,14 +12956,17 @@ export namespace Camel {
         // Signals
 
         connect<K extends keyof Service.SignalSignatures>(signal: K, callback: Service.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Service.SignalSignatures>(
             signal: K,
             callback: Service.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Service.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Service.SignalSignatures[K]>
+            ...args: Service.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -13519,6 +14045,17 @@ export namespace Camel {
             'job-finished': JobFinished;
             'job-started': JobStarted;
             'user-alert': UserAlert;
+            'notify::junk-filter': GObject.Object.Notify;
+            'notify::junk-filter': GObject.Object.Notify;
+            'notify::main-context': GObject.Object.Notify;
+            'notify::main-context': GObject.Object.Notify;
+            'notify::network-monitor': GObject.Object.Notify;
+            'notify::network-monitor': GObject.Object.Notify;
+            'notify::online': GObject.Object.Notify;
+            'notify::user-cache-dir': GObject.Object.Notify;
+            'notify::user-cache-dir': GObject.Object.Notify;
+            'notify::user-data-dir': GObject.Object.Notify;
+            'notify::user-data-dir': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -13573,14 +14110,17 @@ export namespace Camel {
         // Signals
 
         connect<K extends keyof Session.SignalSignatures>(signal: K, callback: Session.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Session.SignalSignatures>(
             signal: K,
             callback: Session.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Session.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Session.SignalSignatures[K]>
+            ...args: Session.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -14309,14 +14849,17 @@ export namespace Camel {
         // Signals
 
         connect<K extends keyof Settings.SignalSignatures>(signal: K, callback: Settings.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Settings.SignalSignatures>(
             signal: K,
             callback: Settings.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Settings.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Settings.SignalSignatures[K]>
+            ...args: Settings.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -14397,6 +14940,19 @@ export namespace Camel {
             'folder-info-stale': FolderInfoStale;
             'folder-opened': FolderOpened;
             'folder-renamed': FolderRenamed;
+            'notify::connection-status': GObject.Object.Notify;
+            'notify::connection-status': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::password': GObject.Object.Notify;
+            'notify::provider': GObject.Object.Notify;
+            'notify::proxy-resolver': GObject.Object.Notify;
+            'notify::proxy-resolver': GObject.Object.Notify;
+            'notify::session': GObject.Object.Notify;
+            'notify::settings': GObject.Object.Notify;
+            'notify::uid': GObject.Object.Notify;
+            'notify::state-filename': GObject.Object.Notify;
+            'notify::state-filename': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -14416,7 +14972,12 @@ export namespace Camel {
         // Signals
 
         connect_after<K extends keyof Store.SignalSignatures>(signal: K, callback: Store.SignalSignatures[K]): number;
-        emit<K extends keyof Store.SignalSignatures>(signal: K, ...args: Parameters<Store.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Store.SignalSignatures>(
+            signal: K,
+            ...args: Store.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -15887,7 +16448,12 @@ export namespace Camel {
 
     namespace StoreSettings {
         // Signal signatures
-        interface SignalSignatures extends Settings.SignalSignatures {}
+        interface SignalSignatures extends Settings.SignalSignatures {
+            'notify::filter-inbox': GObject.Object.Notify;
+            'notify::filter-inbox': GObject.Object.Notify;
+            'notify::store-changes-interval': GObject.Object.Notify;
+            'notify::store-changes-interval': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -15929,14 +16495,17 @@ export namespace Camel {
             signal: K,
             callback: StoreSettings.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StoreSettings.SignalSignatures>(
             signal: K,
             callback: StoreSettings.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StoreSettings.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StoreSettings.SignalSignatures[K]>
+            ...args: StoreSettings.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -15994,14 +16563,17 @@ export namespace Camel {
             signal: K,
             callback: StoreSummary.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StoreSummary.SignalSignatures>(
             signal: K,
             callback: StoreSummary.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StoreSummary.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StoreSummary.SignalSignatures[K]>
+            ...args: StoreSummary.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -16115,7 +16687,10 @@ export namespace Camel {
 
     namespace Stream {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::base-stream': GObject.Object.Notify;
+            'notify::base-stream': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -16146,8 +16721,14 @@ export namespace Camel {
         // Signals
 
         connect<K extends keyof Stream.SignalSignatures>(signal: K, callback: Stream.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Stream.SignalSignatures>(signal: K, callback: Stream.SignalSignatures[K]): number;
-        emit<K extends keyof Stream.SignalSignatures>(signal: K, ...args: Parameters<Stream.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Stream.SignalSignatures>(
+            signal: K,
+            ...args: Stream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -16789,7 +17370,10 @@ export namespace Camel {
 
     namespace StreamBuffer {
         // Signal signatures
-        interface SignalSignatures extends Stream.SignalSignatures {}
+        interface SignalSignatures extends Stream.SignalSignatures {
+            'notify::base-stream': GObject.Object.Notify;
+            'notify::base-stream': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -16816,14 +17400,17 @@ export namespace Camel {
             signal: K,
             callback: StreamBuffer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StreamBuffer.SignalSignatures>(
             signal: K,
             callback: StreamBuffer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StreamBuffer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StreamBuffer.SignalSignatures[K]>
+            ...args: StreamBuffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -17400,7 +17987,10 @@ export namespace Camel {
 
     namespace StreamFilter {
         // Signal signatures
-        interface SignalSignatures extends Stream.SignalSignatures {}
+        interface SignalSignatures extends Stream.SignalSignatures {
+            'notify::base-stream': GObject.Object.Notify;
+            'notify::base-stream': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17427,14 +18017,17 @@ export namespace Camel {
             signal: K,
             callback: StreamFilter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StreamFilter.SignalSignatures>(
             signal: K,
             callback: StreamFilter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StreamFilter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StreamFilter.SignalSignatures[K]>
+            ...args: StreamFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -17998,7 +18591,10 @@ export namespace Camel {
 
     namespace StreamFs {
         // Signal signatures
-        interface SignalSignatures extends Stream.SignalSignatures {}
+        interface SignalSignatures extends Stream.SignalSignatures {
+            'notify::base-stream': GObject.Object.Notify;
+            'notify::base-stream': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -18021,14 +18617,17 @@ export namespace Camel {
         // Signals
 
         connect<K extends keyof StreamFs.SignalSignatures>(signal: K, callback: StreamFs.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StreamFs.SignalSignatures>(
             signal: K,
             callback: StreamFs.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StreamFs.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StreamFs.SignalSignatures[K]>
+            ...args: StreamFs.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -18577,7 +19176,10 @@ export namespace Camel {
 
     namespace StreamMem {
         // Signal signatures
-        interface SignalSignatures extends Stream.SignalSignatures {}
+        interface SignalSignatures extends Stream.SignalSignatures {
+            'notify::base-stream': GObject.Object.Notify;
+            'notify::base-stream': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -18602,14 +19204,17 @@ export namespace Camel {
         // Signals
 
         connect<K extends keyof StreamMem.SignalSignatures>(signal: K, callback: StreamMem.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StreamMem.SignalSignatures>(
             signal: K,
             callback: StreamMem.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StreamMem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StreamMem.SignalSignatures[K]>
+            ...args: StreamMem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -19180,7 +19785,10 @@ export namespace Camel {
 
     namespace StreamNull {
         // Signal signatures
-        interface SignalSignatures extends Stream.SignalSignatures {}
+        interface SignalSignatures extends Stream.SignalSignatures {
+            'notify::base-stream': GObject.Object.Notify;
+            'notify::base-stream': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -19204,14 +19812,17 @@ export namespace Camel {
             signal: K,
             callback: StreamNull.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StreamNull.SignalSignatures>(
             signal: K,
             callback: StreamNull.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StreamNull.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StreamNull.SignalSignatures[K]>
+            ...args: StreamNull.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -19761,7 +20372,10 @@ export namespace Camel {
 
     namespace StreamProcess {
         // Signal signatures
-        interface SignalSignatures extends Stream.SignalSignatures {}
+        interface SignalSignatures extends Stream.SignalSignatures {
+            'notify::base-stream': GObject.Object.Notify;
+            'notify::base-stream': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -19785,14 +20399,17 @@ export namespace Camel {
             signal: K,
             callback: StreamProcess.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StreamProcess.SignalSignatures>(
             signal: K,
             callback: StreamProcess.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StreamProcess.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StreamProcess.SignalSignatures[K]>
+            ...args: StreamProcess.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -20363,14 +20980,17 @@ export namespace Camel {
         // Signals
 
         connect<K extends keyof TextIndex.SignalSignatures>(signal: K, callback: TextIndex.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TextIndex.SignalSignatures>(
             signal: K,
             callback: TextIndex.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TextIndex.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TextIndex.SignalSignatures[K]>
+            ...args: TextIndex.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -20409,14 +21029,17 @@ export namespace Camel {
             signal: K,
             callback: TextIndexCursor.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TextIndexCursor.SignalSignatures>(
             signal: K,
             callback: TextIndexCursor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TextIndexCursor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TextIndexCursor.SignalSignatures[K]>
+            ...args: TextIndexCursor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace TextIndexKeyCursor {
@@ -20443,14 +21066,17 @@ export namespace Camel {
             signal: K,
             callback: TextIndexKeyCursor.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TextIndexKeyCursor.SignalSignatures>(
             signal: K,
             callback: TextIndexKeyCursor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TextIndexKeyCursor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TextIndexKeyCursor.SignalSignatures[K]>
+            ...args: TextIndexKeyCursor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace TextIndexName {
@@ -20477,19 +21103,36 @@ export namespace Camel {
             signal: K,
             callback: TextIndexName.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TextIndexName.SignalSignatures>(
             signal: K,
             callback: TextIndexName.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TextIndexName.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TextIndexName.SignalSignatures[K]>
+            ...args: TextIndexName.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Transport {
         // Signal signatures
-        interface SignalSignatures extends Service.SignalSignatures {}
+        interface SignalSignatures extends Service.SignalSignatures {
+            'notify::connection-status': GObject.Object.Notify;
+            'notify::connection-status': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::password': GObject.Object.Notify;
+            'notify::provider': GObject.Object.Notify;
+            'notify::proxy-resolver': GObject.Object.Notify;
+            'notify::proxy-resolver': GObject.Object.Notify;
+            'notify::session': GObject.Object.Notify;
+            'notify::settings': GObject.Object.Notify;
+            'notify::uid': GObject.Object.Notify;
+            'notify::state-filename': GObject.Object.Notify;
+            'notify::state-filename': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -20511,10 +21154,12 @@ export namespace Camel {
             signal: K,
             callback: Transport.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Transport.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Transport.SignalSignatures[K]>
+            ...args: Transport.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -21166,7 +21811,23 @@ export namespace Camel {
 
     namespace VTrashFolder {
         // Signal signatures
-        interface SignalSignatures extends VeeFolder.SignalSignatures {}
+        interface SignalSignatures extends VeeFolder.SignalSignatures {
+            'notify::auto-update': GObject.Object.Notify;
+            'notify::auto-update': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::full-name': GObject.Object.Notify;
+            'notify::full-name': GObject.Object.Notify;
+            'notify::mark-seen': GObject.Object.Notify;
+            'notify::mark-seen': GObject.Object.Notify;
+            'notify::mark-seen-timeout': GObject.Object.Notify;
+            'notify::mark-seen-timeout': GObject.Object.Notify;
+            'notify::parent-store': GObject.Object.Notify;
+            'notify::parent-store': GObject.Object.Notify;
+            'notify::state-filename': GObject.Object.Notify;
+            'notify::state-filename': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -21193,14 +21854,17 @@ export namespace Camel {
             signal: K,
             callback: VTrashFolder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VTrashFolder.SignalSignatures>(
             signal: K,
             callback: VTrashFolder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VTrashFolder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VTrashFolder.SignalSignatures[K]>
+            ...args: VTrashFolder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -21237,14 +21901,17 @@ export namespace Camel {
             signal: K,
             callback: VeeDataCache.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VeeDataCache.SignalSignatures>(
             signal: K,
             callback: VeeDataCache.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VeeDataCache.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VeeDataCache.SignalSignatures[K]>
+            ...args: VeeDataCache.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -21305,7 +21972,23 @@ export namespace Camel {
 
     namespace VeeFolder {
         // Signal signatures
-        interface SignalSignatures extends Folder.SignalSignatures {}
+        interface SignalSignatures extends Folder.SignalSignatures {
+            'notify::auto-update': GObject.Object.Notify;
+            'notify::auto-update': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::full-name': GObject.Object.Notify;
+            'notify::full-name': GObject.Object.Notify;
+            'notify::mark-seen': GObject.Object.Notify;
+            'notify::mark-seen': GObject.Object.Notify;
+            'notify::mark-seen-timeout': GObject.Object.Notify;
+            'notify::mark-seen-timeout': GObject.Object.Notify;
+            'notify::parent-store': GObject.Object.Notify;
+            'notify::parent-store': GObject.Object.Notify;
+            'notify::state-filename': GObject.Object.Notify;
+            'notify::state-filename': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -21336,14 +22019,17 @@ export namespace Camel {
         // Signals
 
         connect<K extends keyof VeeFolder.SignalSignatures>(signal: K, callback: VeeFolder.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VeeFolder.SignalSignatures>(
             signal: K,
             callback: VeeFolder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VeeFolder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VeeFolder.SignalSignatures[K]>
+            ...args: VeeFolder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -21483,7 +22169,39 @@ export namespace Camel {
 
     namespace VeeMessageInfo {
         // Signal signatures
-        interface SignalSignatures extends MessageInfo.SignalSignatures {}
+        interface SignalSignatures extends MessageInfo.SignalSignatures {
+            'notify::abort-notifications': GObject.Object.Notify;
+            'notify::abort-notifications': GObject.Object.Notify;
+            'notify::cc': GObject.Object.Notify;
+            'notify::date-received': GObject.Object.Notify;
+            'notify::date-received': GObject.Object.Notify;
+            'notify::date-sent': GObject.Object.Notify;
+            'notify::date-sent': GObject.Object.Notify;
+            'notify::dirty': GObject.Object.Notify;
+            'notify::flags': GObject.Object.Notify;
+            'notify::folder-flagged': GObject.Object.Notify;
+            'notify::folder-flagged': GObject.Object.Notify;
+            'notify::folder-flagged-stamp': GObject.Object.Notify;
+            'notify::folder-flagged-stamp': GObject.Object.Notify;
+            'notify::from': GObject.Object.Notify;
+            'notify::headers': GObject.Object.Notify;
+            'notify::message-id': GObject.Object.Notify;
+            'notify::message-id': GObject.Object.Notify;
+            'notify::mlist': GObject.Object.Notify;
+            'notify::preview': GObject.Object.Notify;
+            'notify::references': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::subject': GObject.Object.Notify;
+            'notify::summary': GObject.Object.Notify;
+            'notify::to': GObject.Object.Notify;
+            'notify::uid': GObject.Object.Notify;
+            'notify::user-flags': GObject.Object.Notify;
+            'notify::user-flags': GObject.Object.Notify;
+            'notify::user-headers': GObject.Object.Notify;
+            'notify::user-headers': GObject.Object.Notify;
+            'notify::user-tags': GObject.Object.Notify;
+            'notify::user-tags': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -21510,14 +22228,17 @@ export namespace Camel {
             signal: K,
             callback: VeeMessageInfo.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VeeMessageInfo.SignalSignatures>(
             signal: K,
             callback: VeeMessageInfo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VeeMessageInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VeeMessageInfo.SignalSignatures[K]>
+            ...args: VeeMessageInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -21555,14 +22276,17 @@ export namespace Camel {
             signal: K,
             callback: VeeMessageInfoData.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VeeMessageInfoData.SignalSignatures>(
             signal: K,
             callback: VeeMessageInfoData.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VeeMessageInfoData.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VeeMessageInfoData.SignalSignatures[K]>
+            ...args: VeeMessageInfoData.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -21573,7 +22297,23 @@ export namespace Camel {
 
     namespace VeeStore {
         // Signal signatures
-        interface SignalSignatures extends Store.SignalSignatures {}
+        interface SignalSignatures extends Store.SignalSignatures {
+            'notify::unmatched-enabled': GObject.Object.Notify;
+            'notify::unmatched-enabled': GObject.Object.Notify;
+            'notify::connection-status': GObject.Object.Notify;
+            'notify::connection-status': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::password': GObject.Object.Notify;
+            'notify::provider': GObject.Object.Notify;
+            'notify::proxy-resolver': GObject.Object.Notify;
+            'notify::proxy-resolver': GObject.Object.Notify;
+            'notify::session': GObject.Object.Notify;
+            'notify::settings': GObject.Object.Notify;
+            'notify::uid': GObject.Object.Notify;
+            'notify::state-filename': GObject.Object.Notify;
+            'notify::state-filename': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -21607,10 +22347,12 @@ export namespace Camel {
             signal: K,
             callback: VeeStore.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VeeStore.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VeeStore.SignalSignatures[K]>
+            ...args: VeeStore.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -22135,14 +22877,17 @@ export namespace Camel {
             signal: K,
             callback: VeeSubfolderData.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VeeSubfolderData.SignalSignatures>(
             signal: K,
             callback: VeeSubfolderData.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VeeSubfolderData.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VeeSubfolderData.SignalSignatures[K]>
+            ...args: VeeSubfolderData.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -22152,7 +22897,21 @@ export namespace Camel {
 
     namespace VeeSummary {
         // Signal signatures
-        interface SignalSignatures extends FolderSummary.SignalSignatures {}
+        interface SignalSignatures extends FolderSummary.SignalSignatures {
+            'notify::deleted-count': GObject.Object.Notify;
+            'notify::deleted-count': GObject.Object.Notify;
+            'notify::folder': GObject.Object.Notify;
+            'notify::junk-count': GObject.Object.Notify;
+            'notify::junk-count': GObject.Object.Notify;
+            'notify::junk-not-deleted-count': GObject.Object.Notify;
+            'notify::junk-not-deleted-count': GObject.Object.Notify;
+            'notify::saved-count': GObject.Object.Notify;
+            'notify::saved-count': GObject.Object.Notify;
+            'notify::unread-count': GObject.Object.Notify;
+            'notify::unread-count': GObject.Object.Notify;
+            'notify::visible-count': GObject.Object.Notify;
+            'notify::visible-count': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -22176,14 +22935,17 @@ export namespace Camel {
             signal: K,
             callback: VeeSummary.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VeeSummary.SignalSignatures>(
             signal: K,
             callback: VeeSummary.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VeeSummary.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VeeSummary.SignalSignatures[K]>
+            ...args: VeeSummary.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

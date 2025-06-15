@@ -149,6 +149,13 @@ export namespace Accounts {
             deleted: Deleted;
             'display-name-changed': DisplayNameChanged;
             enabled: Enabled;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::enabled': GObject.Object.Notify;
+            'notify::foreign': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::manager': GObject.Object.Notify;
+            'notify::provider': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -207,14 +214,17 @@ export namespace Accounts {
         // Signals
 
         connect<K extends keyof Account.SignalSignatures>(signal: K, callback: Account.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Account.SignalSignatures>(
             signal: K,
             callback: Account.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Account.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Account.SignalSignatures[K]>
+            ...args: Account.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -964,6 +974,9 @@ export namespace Accounts {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             changed: Changed;
             enabled: Enabled;
+            'notify::account': GObject.Object.Notify;
+            'notify::enabled': GObject.Object.Notify;
+            'notify::service': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1014,14 +1027,17 @@ export namespace Accounts {
             signal: K,
             callback: AccountService.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AccountService.SignalSignatures>(
             signal: K,
             callback: AccountService.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AccountService.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AccountService.SignalSignatures[K]>
+            ...args: AccountService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1141,6 +1157,14 @@ export namespace Accounts {
             'account-deleted': AccountDeleted;
             'account-updated': AccountUpdated;
             'enabled-event': EnabledEvent;
+            'notify::abort-on-db-timeout': GObject.Object.Notify;
+            'notify::abort-on-db-timeout': GObject.Object.Notify;
+            'notify::db-timeout': GObject.Object.Notify;
+            'notify::db-timeout': GObject.Object.Notify;
+            'notify::service-type': GObject.Object.Notify;
+            'notify::service-type': GObject.Object.Notify;
+            'notify::use-dbus': GObject.Object.Notify;
+            'notify::use-dbus': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1227,14 +1251,17 @@ export namespace Accounts {
         // Signals
 
         connect<K extends keyof Manager.SignalSignatures>(signal: K, callback: Manager.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Manager.SignalSignatures>(
             signal: K,
             callback: Manager.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Manager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Manager.SignalSignatures[K]>
+            ...args: Manager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 

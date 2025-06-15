@@ -69,6 +69,7 @@ export namespace Caribou {
             'modifiers-changed': ModifiersChanged;
             'group-changed': GroupChanged;
             'config-changed': ConfigChanged;
+            'notify::display': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -97,14 +98,17 @@ export namespace Caribou {
             signal: K,
             callback: DisplayAdapter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DisplayAdapter.SignalSignatures>(
             signal: K,
             callback: DisplayAdapter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DisplayAdapter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DisplayAdapter.SignalSignatures[K]>
+            ...args: DisplayAdapter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -141,7 +145,9 @@ export namespace Caribou {
 
     namespace NullAdapter {
         // Signal signatures
-        interface SignalSignatures extends DisplayAdapter.SignalSignatures {}
+        interface SignalSignatures extends DisplayAdapter.SignalSignatures {
+            'notify::display': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -165,19 +171,24 @@ export namespace Caribou {
             signal: K,
             callback: NullAdapter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NullAdapter.SignalSignatures>(
             signal: K,
             callback: NullAdapter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NullAdapter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NullAdapter.SignalSignatures[K]>
+            ...args: NullAdapter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace XAdapter {
         // Signal signatures
-        interface SignalSignatures extends DisplayAdapter.SignalSignatures {}
+        interface SignalSignatures extends DisplayAdapter.SignalSignatures {
+            'notify::display': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -198,14 +209,17 @@ export namespace Caribou {
         // Signals
 
         connect<K extends keyof XAdapter.SignalSignatures>(signal: K, callback: XAdapter.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XAdapter.SignalSignatures>(
             signal: K,
             callback: XAdapter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XAdapter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XAdapter.SignalSignatures[K]>
+            ...args: XAdapter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace KeyboardModel {
@@ -223,6 +237,12 @@ export namespace Caribou {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'group-added': GroupAdded;
             'group-removed': GroupRemoved;
+            'notify::active-group': GObject.Object.Notify;
+            'notify::active-group': GObject.Object.Notify;
+            'notify::keyboard-type': GObject.Object.Notify;
+            'notify::keyboard-type': GObject.Object.Notify;
+            'notify::keyboard-file': GObject.Object.Notify;
+            'notify::keyboard-file': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -265,14 +285,17 @@ export namespace Caribou {
             signal: K,
             callback: KeyboardModel.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof KeyboardModel.SignalSignatures>(
             signal: K,
             callback: KeyboardModel.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof KeyboardModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<KeyboardModel.SignalSignatures[K]>
+            ...args: KeyboardModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -752,14 +775,17 @@ export namespace Caribou {
             signal: K,
             callback: KeyboardService.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof KeyboardService.SignalSignatures>(
             signal: K,
             callback: KeyboardService.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof KeyboardService.SignalSignatures>(
             signal: K,
-            ...args: Parameters<KeyboardService.SignalSignatures[K]>
+            ...args: KeyboardService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -781,7 +807,10 @@ export namespace Caribou {
 
     namespace GroupModel {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::active-level': GObject.Object.Notify;
+            'notify::active-level': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -820,14 +849,17 @@ export namespace Caribou {
             signal: K,
             callback: GroupModel.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GroupModel.SignalSignatures>(
             signal: K,
             callback: GroupModel.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GroupModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GroupModel.SignalSignatures[K]>
+            ...args: GroupModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1295,6 +1327,7 @@ export namespace Caribou {
         // Signal signatures
         interface SignalSignatures extends ScannableGroup.SignalSignatures {
             'level-toggled': LevelToggled;
+            'notify::mode': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1326,14 +1359,17 @@ export namespace Caribou {
             signal: K,
             callback: LevelModel.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LevelModel.SignalSignatures>(
             signal: K,
             callback: LevelModel.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LevelModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LevelModel.SignalSignatures[K]>
+            ...args: LevelModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1788,7 +1824,12 @@ export namespace Caribou {
 
     namespace RowModel {
         // Signal signatures
-        interface SignalSignatures extends ScannableGroup.SignalSignatures {}
+        interface SignalSignatures extends ScannableGroup.SignalSignatures {
+            'notify::scan-stepping': GObject.Object.Notify;
+            'notify::scan-stepping': GObject.Object.Notify;
+            'notify::scan-selected': GObject.Object.Notify;
+            'notify::scan-selected': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1812,14 +1853,17 @@ export namespace Caribou {
         // Signals
 
         connect<K extends keyof RowModel.SignalSignatures>(signal: K, callback: RowModel.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RowModel.SignalSignatures>(
             signal: K,
             callback: RowModel.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RowModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RowModel.SignalSignatures[K]>
+            ...args: RowModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2304,6 +2348,22 @@ export namespace Caribou {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'key-hold-end': KeyHoldEnd;
             'key-hold': KeyHold;
+            'notify::align': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::toggle': GObject.Object.Notify;
+            'notify::repeatable': GObject.Object.Notify;
+            'notify::is-modifier': GObject.Object.Notify;
+            'notify::is-modifier': GObject.Object.Notify;
+            'notify::show-subkeys': GObject.Object.Notify;
+            'notify::show-subkeys': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::keyval': GObject.Object.Notify;
+            'notify::text': GObject.Object.Notify;
+            'notify::label': GObject.Object.Notify;
+            'notify::scan-stepping': GObject.Object.Notify;
+            'notify::scan-stepping': GObject.Object.Notify;
+            'notify::scan-selected': GObject.Object.Notify;
+            'notify::scan-selected': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -2372,14 +2432,17 @@ export namespace Caribou {
         // Signals
 
         connect<K extends keyof KeyModel.SignalSignatures>(signal: K, callback: KeyModel.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof KeyModel.SignalSignatures>(
             signal: K,
             callback: KeyModel.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof KeyModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<KeyModel.SignalSignatures[K]>
+            ...args: KeyModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2870,7 +2933,12 @@ export namespace Caribou {
 
     namespace ColumnModel {
         // Signal signatures
-        interface SignalSignatures extends ScannableGroup.SignalSignatures {}
+        interface SignalSignatures extends ScannableGroup.SignalSignatures {
+            'notify::scan-stepping': GObject.Object.Notify;
+            'notify::scan-stepping': GObject.Object.Notify;
+            'notify::scan-selected': GObject.Object.Notify;
+            'notify::scan-selected': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2897,14 +2965,17 @@ export namespace Caribou {
             signal: K,
             callback: ColumnModel.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ColumnModel.SignalSignatures>(
             signal: K,
             callback: ColumnModel.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ColumnModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ColumnModel.SignalSignatures[K]>
+            ...args: ColumnModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3377,7 +3448,27 @@ export namespace Caribou {
 
     namespace Scanner {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::bind-settings': GObject.Object.Notify;
+            'notify::bind-settings': GObject.Object.Notify;
+            'notify::scan-grouping': GObject.Object.Notify;
+            'notify::scan-grouping': GObject.Object.Notify;
+            'notify::scan-enabled': GObject.Object.Notify;
+            'notify::scan-enabled': GObject.Object.Notify;
+            'notify::step-time': GObject.Object.Notify;
+            'notify::step-time': GObject.Object.Notify;
+            'notify::switch-device': GObject.Object.Notify;
+            'notify::switch-device': GObject.Object.Notify;
+            'notify::keyboard-key': GObject.Object.Notify;
+            'notify::keyboard-key': GObject.Object.Notify;
+            'notify::mouse-button': GObject.Object.Notify;
+            'notify::mouse-button': GObject.Object.Notify;
+            'notify::scan-cycles': GObject.Object.Notify;
+            'notify::scan-cycles': GObject.Object.Notify;
+            'notify::autorestart': GObject.Object.Notify;
+            'notify::inverse-scanning': GObject.Object.Notify;
+            'notify::inverse-scanning': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3457,14 +3548,17 @@ export namespace Caribou {
         // Signals
 
         connect<K extends keyof Scanner.SignalSignatures>(signal: K, callback: Scanner.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Scanner.SignalSignatures>(
             signal: K,
             callback: Scanner.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Scanner.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Scanner.SignalSignatures[K]>
+            ...args: Scanner.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3493,7 +3587,10 @@ export namespace Caribou {
 
     namespace ScannableGroup {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::scan-grouping': GObject.Object.Notify;
+            'notify::scan-grouping': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3515,14 +3612,17 @@ export namespace Caribou {
             signal: K,
             callback: ScannableGroup.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ScannableGroup.SignalSignatures>(
             signal: K,
             callback: ScannableGroup.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ScannableGroup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ScannableGroup.SignalSignatures[K]>
+            ...args: ScannableGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 

@@ -518,19 +518,34 @@ export namespace GstInterfaces {
             signal: K,
             callback: ColorBalanceChannel.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ColorBalanceChannel.SignalSignatures>(
             signal: K,
             callback: ColorBalanceChannel.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ColorBalanceChannel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ColorBalanceChannel.SignalSignatures[K]>
+            ...args: ColorBalanceChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace MixerOptions {
         // Signal signatures
-        interface SignalSignatures extends MixerTrack.SignalSignatures {}
+        interface SignalSignatures extends MixerTrack.SignalSignatures {
+            'notify::flags': GObject.Object.Notify;
+            'notify::index': GObject.Object.Notify;
+            'notify::label': GObject.Object.Notify;
+            'notify::max-volume': GObject.Object.Notify;
+            'notify::max-volume': GObject.Object.Notify;
+            'notify::min-volume': GObject.Object.Notify;
+            'notify::min-volume': GObject.Object.Notify;
+            'notify::num-channels': GObject.Object.Notify;
+            'notify::num-channels': GObject.Object.Notify;
+            'notify::untranslated-label': GObject.Object.Notify;
+            'notify::untranslated-label': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -556,19 +571,34 @@ export namespace GstInterfaces {
             signal: K,
             callback: MixerOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MixerOptions.SignalSignatures>(
             signal: K,
             callback: MixerOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MixerOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MixerOptions.SignalSignatures[K]>
+            ...args: MixerOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace MixerTrack {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::flags': GObject.Object.Notify;
+            'notify::index': GObject.Object.Notify;
+            'notify::label': GObject.Object.Notify;
+            'notify::max-volume': GObject.Object.Notify;
+            'notify::max-volume': GObject.Object.Notify;
+            'notify::min-volume': GObject.Object.Notify;
+            'notify::min-volume': GObject.Object.Notify;
+            'notify::num-channels': GObject.Object.Notify;
+            'notify::num-channels': GObject.Object.Notify;
+            'notify::untranslated-label': GObject.Object.Notify;
+            'notify::untranslated-label': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -616,14 +646,17 @@ export namespace GstInterfaces {
             signal: K,
             callback: MixerTrack.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MixerTrack.SignalSignatures>(
             signal: K,
             callback: MixerTrack.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MixerTrack.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MixerTrack.SignalSignatures[K]>
+            ...args: MixerTrack.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace TunerChannel {
@@ -673,14 +706,17 @@ export namespace GstInterfaces {
             signal: K,
             callback: TunerChannel.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TunerChannel.SignalSignatures>(
             signal: K,
             callback: TunerChannel.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TunerChannel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TunerChannel.SignalSignatures[K]>
+            ...args: TunerChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace TunerNorm {
@@ -708,14 +744,17 @@ export namespace GstInterfaces {
         // Signals
 
         connect<K extends keyof TunerNorm.SignalSignatures>(signal: K, callback: TunerNorm.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TunerNorm.SignalSignatures>(
             signal: K,
             callback: TunerNorm.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TunerNorm.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TunerNorm.SignalSignatures[K]>
+            ...args: TunerNorm.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     type ColorBalanceChannelClass = typeof ColorBalanceChannel;

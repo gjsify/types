@@ -189,14 +189,17 @@ export namespace PackageKitPlugin {
         // Signals
 
         connect<K extends keyof Backend.SignalSignatures>(signal: K, callback: Backend.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Backend.SignalSignatures>(
             signal: K,
             callback: Backend.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Backend.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Backend.SignalSignatures[K]>
+            ...args: Backend.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -358,14 +361,17 @@ export namespace PackageKitPlugin {
             signal: K,
             callback: BackendJob.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BackendJob.SignalSignatures>(
             signal: K,
             callback: BackendJob.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BackendJob.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BackendJob.SignalSignatures[K]>
+            ...args: BackendJob.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -535,14 +541,17 @@ export namespace PackageKitPlugin {
             signal: K,
             callback: Transaction.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Transaction.SignalSignatures>(
             signal: K,
             callback: Transaction.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Transaction.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Transaction.SignalSignatures[K]>
+            ...args: Transaction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 

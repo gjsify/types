@@ -104,7 +104,9 @@ export namespace GdkX11 {
     function x11_set_sm_client_id(sm_client_id?: string | null): void;
     namespace X11AppLaunchContext {
         // Signal signatures
-        interface SignalSignatures extends Gdk.AppLaunchContext.SignalSignatures {}
+        interface SignalSignatures extends Gdk.AppLaunchContext.SignalSignatures {
+            'notify::display': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -126,19 +128,27 @@ export namespace GdkX11 {
             signal: K,
             callback: X11AppLaunchContext.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof X11AppLaunchContext.SignalSignatures>(
             signal: K,
             callback: X11AppLaunchContext.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof X11AppLaunchContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<X11AppLaunchContext.SignalSignatures[K]>
+            ...args: X11AppLaunchContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace X11DeviceManagerXI2 {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::display': GObject.Object.Notify;
+            'notify::major': GObject.Object.Notify;
+            'notify::minor': GObject.Object.Notify;
+            'notify::opcode': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -172,19 +182,55 @@ export namespace GdkX11 {
             signal: K,
             callback: X11DeviceManagerXI2.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof X11DeviceManagerXI2.SignalSignatures>(
             signal: K,
             callback: X11DeviceManagerXI2.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof X11DeviceManagerXI2.SignalSignatures>(
             signal: K,
-            ...args: Parameters<X11DeviceManagerXI2.SignalSignatures[K]>
+            ...args: X11DeviceManagerXI2.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace X11DeviceXI2 {
         // Signal signatures
-        interface SignalSignatures extends Gdk.Device.SignalSignatures {}
+        interface SignalSignatures extends Gdk.Device.SignalSignatures {
+            'notify::device-id': GObject.Object.Notify;
+            'notify::device-id': GObject.Object.Notify;
+            'notify::active-layout-index': GObject.Object.Notify;
+            'notify::active-layout-index': GObject.Object.Notify;
+            'notify::caps-lock-state': GObject.Object.Notify;
+            'notify::caps-lock-state': GObject.Object.Notify;
+            'notify::direction': GObject.Object.Notify;
+            'notify::display': GObject.Object.Notify;
+            'notify::has-bidi-layouts': GObject.Object.Notify;
+            'notify::has-bidi-layouts': GObject.Object.Notify;
+            'notify::has-cursor': GObject.Object.Notify;
+            'notify::has-cursor': GObject.Object.Notify;
+            'notify::layout-names': GObject.Object.Notify;
+            'notify::layout-names': GObject.Object.Notify;
+            'notify::modifier-state': GObject.Object.Notify;
+            'notify::modifier-state': GObject.Object.Notify;
+            'notify::n-axes': GObject.Object.Notify;
+            'notify::n-axes': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::num-lock-state': GObject.Object.Notify;
+            'notify::num-lock-state': GObject.Object.Notify;
+            'notify::num-touches': GObject.Object.Notify;
+            'notify::num-touches': GObject.Object.Notify;
+            'notify::product-id': GObject.Object.Notify;
+            'notify::product-id': GObject.Object.Notify;
+            'notify::scroll-lock-state': GObject.Object.Notify;
+            'notify::scroll-lock-state': GObject.Object.Notify;
+            'notify::seat': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+            'notify::tool': GObject.Object.Notify;
+            'notify::vendor-id': GObject.Object.Notify;
+            'notify::vendor-id': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -214,26 +260,37 @@ export namespace GdkX11 {
             signal: K,
             callback: X11DeviceXI2.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof X11DeviceXI2.SignalSignatures>(
             signal: K,
             callback: X11DeviceXI2.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof X11DeviceXI2.SignalSignatures>(
             signal: K,
-            ...args: Parameters<X11DeviceXI2.SignalSignatures[K]>
+            ...args: X11DeviceXI2.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace X11Display {
         // Signal callback interfaces
 
         interface Xevent {
-            (_source: X11Display, xevent?: any | null): boolean;
+            (_source: X11Display, xevent?: any | null): boolean | void;
         }
 
         // Signal signatures
         interface SignalSignatures extends Gdk.Display.SignalSignatures {
             xevent: Xevent;
+            'notify::composited': GObject.Object.Notify;
+            'notify::dmabuf-formats': GObject.Object.Notify;
+            'notify::dmabuf-formats': GObject.Object.Notify;
+            'notify::input-shapes': GObject.Object.Notify;
+            'notify::input-shapes': GObject.Object.Notify;
+            'notify::rgba': GObject.Object.Notify;
+            'notify::shadow-width': GObject.Object.Notify;
+            'notify::shadow-width': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -256,14 +313,17 @@ export namespace GdkX11 {
             signal: K,
             callback: X11Display.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof X11Display.SignalSignatures>(
             signal: K,
             callback: X11Display.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof X11Display.SignalSignatures>(
             signal: K,
-            ...args: Parameters<X11Display.SignalSignatures[K]>
+            ...args: X11Display.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -487,7 +547,16 @@ export namespace GdkX11 {
 
     namespace X11Drag {
         // Signal signatures
-        interface SignalSignatures extends Gdk.Drag.SignalSignatures {}
+        interface SignalSignatures extends Gdk.Drag.SignalSignatures {
+            'notify::actions': GObject.Object.Notify;
+            'notify::content': GObject.Object.Notify;
+            'notify::device': GObject.Object.Notify;
+            'notify::display': GObject.Object.Notify;
+            'notify::formats': GObject.Object.Notify;
+            'notify::selected-action': GObject.Object.Notify;
+            'notify::selected-action': GObject.Object.Notify;
+            'notify::surface': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -506,19 +575,30 @@ export namespace GdkX11 {
         // Signals
 
         connect<K extends keyof X11Drag.SignalSignatures>(signal: K, callback: X11Drag.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof X11Drag.SignalSignatures>(
             signal: K,
             callback: X11Drag.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof X11Drag.SignalSignatures>(
             signal: K,
-            ...args: Parameters<X11Drag.SignalSignatures[K]>
+            ...args: X11Drag.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace X11GLContext {
         // Signal signatures
-        interface SignalSignatures extends Gdk.GLContext.SignalSignatures {}
+        interface SignalSignatures extends Gdk.GLContext.SignalSignatures {
+            'notify::allowed-apis': GObject.Object.Notify;
+            'notify::allowed-apis': GObject.Object.Notify;
+            'notify::api': GObject.Object.Notify;
+            'notify::shared-context': GObject.Object.Notify;
+            'notify::shared-context': GObject.Object.Notify;
+            'notify::display': GObject.Object.Notify;
+            'notify::surface': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -540,19 +620,41 @@ export namespace GdkX11 {
             signal: K,
             callback: X11GLContext.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof X11GLContext.SignalSignatures>(
             signal: K,
             callback: X11GLContext.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof X11GLContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<X11GLContext.SignalSignatures[K]>
+            ...args: X11GLContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace X11Monitor {
         // Signal signatures
-        interface SignalSignatures extends Gdk.Monitor.SignalSignatures {}
+        interface SignalSignatures extends Gdk.Monitor.SignalSignatures {
+            'notify::connector': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::display': GObject.Object.Notify;
+            'notify::geometry': GObject.Object.Notify;
+            'notify::height-mm': GObject.Object.Notify;
+            'notify::height-mm': GObject.Object.Notify;
+            'notify::manufacturer': GObject.Object.Notify;
+            'notify::model': GObject.Object.Notify;
+            'notify::refresh-rate': GObject.Object.Notify;
+            'notify::refresh-rate': GObject.Object.Notify;
+            'notify::scale': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::subpixel-layout': GObject.Object.Notify;
+            'notify::subpixel-layout': GObject.Object.Notify;
+            'notify::valid': GObject.Object.Notify;
+            'notify::width-mm': GObject.Object.Notify;
+            'notify::width-mm': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -574,14 +676,17 @@ export namespace GdkX11 {
             signal: K,
             callback: X11Monitor.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof X11Monitor.SignalSignatures>(
             signal: K,
             callback: X11Monitor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof X11Monitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<X11Monitor.SignalSignatures[K]>
+            ...args: X11Monitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -629,14 +734,17 @@ export namespace GdkX11 {
         // Signals
 
         connect<K extends keyof X11Screen.SignalSignatures>(signal: K, callback: X11Screen.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof X11Screen.SignalSignatures>(
             signal: K,
             callback: X11Screen.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof X11Screen.SignalSignatures>(
             signal: K,
-            ...args: Parameters<X11Screen.SignalSignatures[K]>
+            ...args: X11Screen.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -700,7 +808,18 @@ export namespace GdkX11 {
 
     namespace X11Surface {
         // Signal signatures
-        interface SignalSignatures extends Gdk.Surface.SignalSignatures {}
+        interface SignalSignatures extends Gdk.Surface.SignalSignatures {
+            'notify::cursor': GObject.Object.Notify;
+            'notify::display': GObject.Object.Notify;
+            'notify::frame-clock': GObject.Object.Notify;
+            'notify::frame-clock': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::mapped': GObject.Object.Notify;
+            'notify::scale': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -722,14 +841,17 @@ export namespace GdkX11 {
             signal: K,
             callback: X11Surface.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof X11Surface.SignalSignatures>(
             signal: K,
             callback: X11Surface.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof X11Surface.SignalSignatures>(
             signal: K,
-            ...args: Parameters<X11Surface.SignalSignatures[K]>
+            ...args: X11Surface.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 

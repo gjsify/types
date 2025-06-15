@@ -108,7 +108,17 @@ export namespace Guestfs {
     }
     namespace AddDomain {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::allowuuid': GObject.Object.Notify;
+            'notify::cachemode': GObject.Object.Notify;
+            'notify::copyonread': GObject.Object.Notify;
+            'notify::discard': GObject.Object.Notify;
+            'notify::iface': GObject.Object.Notify;
+            'notify::libvirturi': GObject.Object.Notify;
+            'notify::live': GObject.Object.Notify;
+            'notify::readonly': GObject.Object.Notify;
+            'notify::readonlydisk': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -190,19 +200,34 @@ export namespace Guestfs {
         // Signals
 
         connect<K extends keyof AddDomain.SignalSignatures>(signal: K, callback: AddDomain.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AddDomain.SignalSignatures>(
             signal: K,
             callback: AddDomain.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AddDomain.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AddDomain.SignalSignatures[K]>
+            ...args: AddDomain.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace AddDrive {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::cachemode': GObject.Object.Notify;
+            'notify::copyonread': GObject.Object.Notify;
+            'notify::discard': GObject.Object.Notify;
+            'notify::format': GObject.Object.Notify;
+            'notify::iface': GObject.Object.Notify;
+            'notify::label': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::protocol': GObject.Object.Notify;
+            'notify::readonly': GObject.Object.Notify;
+            'notify::secret': GObject.Object.Notify;
+            'notify::username': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -296,19 +321,25 @@ export namespace Guestfs {
         // Signals
 
         connect<K extends keyof AddDrive.SignalSignatures>(signal: K, callback: AddDrive.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AddDrive.SignalSignatures>(
             signal: K,
             callback: AddDrive.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AddDrive.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AddDrive.SignalSignatures[K]>
+            ...args: AddDrive.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace AddDriveScratch {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::label': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -351,19 +382,30 @@ export namespace Guestfs {
             signal: K,
             callback: AddDriveScratch.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AddDriveScratch.SignalSignatures>(
             signal: K,
             callback: AddDriveScratch.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AddDriveScratch.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AddDriveScratch.SignalSignatures[K]>
+            ...args: AddDriveScratch.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace AddLibvirtDom {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::cachemode': GObject.Object.Notify;
+            'notify::copyonread': GObject.Object.Notify;
+            'notify::discard': GObject.Object.Notify;
+            'notify::iface': GObject.Object.Notify;
+            'notify::live': GObject.Object.Notify;
+            'notify::readonly': GObject.Object.Notify;
+            'notify::readonlydisk': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -436,19 +478,24 @@ export namespace Guestfs {
             signal: K,
             callback: AddLibvirtDom.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AddLibvirtDom.SignalSignatures>(
             signal: K,
             callback: AddLibvirtDom.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AddLibvirtDom.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AddLibvirtDom.SignalSignatures[K]>
+            ...args: AddLibvirtDom.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace AugTransform {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::remove': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -485,19 +532,25 @@ export namespace Guestfs {
             signal: K,
             callback: AugTransform.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AugTransform.SignalSignatures>(
             signal: K,
             callback: AugTransform.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AugTransform.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AugTransform.SignalSignatures[K]>
+            ...args: AugTransform.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace BTRFSFilesystemDefragment {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::compress': GObject.Object.Notify;
+            'notify::flush': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -540,19 +593,24 @@ export namespace Guestfs {
             signal: K,
             callback: BTRFSFilesystemDefragment.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BTRFSFilesystemDefragment.SignalSignatures>(
             signal: K,
             callback: BTRFSFilesystemDefragment.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BTRFSFilesystemDefragment.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BTRFSFilesystemDefragment.SignalSignatures[K]>
+            ...args: BTRFSFilesystemDefragment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace BTRFSFilesystemResize {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::size': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -589,19 +647,24 @@ export namespace Guestfs {
             signal: K,
             callback: BTRFSFilesystemResize.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BTRFSFilesystemResize.SignalSignatures>(
             signal: K,
             callback: BTRFSFilesystemResize.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BTRFSFilesystemResize.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BTRFSFilesystemResize.SignalSignatures[K]>
+            ...args: BTRFSFilesystemResize.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace BTRFSImage {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::compresslevel': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -638,19 +701,24 @@ export namespace Guestfs {
             signal: K,
             callback: BTRFSImage.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BTRFSImage.SignalSignatures>(
             signal: K,
             callback: BTRFSImage.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BTRFSImage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BTRFSImage.SignalSignatures[K]>
+            ...args: BTRFSImage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace BTRFSSubvolumeCreate {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::qgroupid': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -687,19 +755,25 @@ export namespace Guestfs {
             signal: K,
             callback: BTRFSSubvolumeCreate.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BTRFSSubvolumeCreate.SignalSignatures>(
             signal: K,
             callback: BTRFSSubvolumeCreate.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BTRFSSubvolumeCreate.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BTRFSSubvolumeCreate.SignalSignatures[K]>
+            ...args: BTRFSSubvolumeCreate.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace BTRFSSubvolumeSnapshot {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::qgroupid': GObject.Object.Notify;
+            'notify::ro': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -742,19 +816,25 @@ export namespace Guestfs {
             signal: K,
             callback: BTRFSSubvolumeSnapshot.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BTRFSSubvolumeSnapshot.SignalSignatures>(
             signal: K,
             callback: BTRFSSubvolumeSnapshot.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BTRFSSubvolumeSnapshot.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BTRFSSubvolumeSnapshot.SignalSignatures[K]>
+            ...args: BTRFSSubvolumeSnapshot.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace BtrfsFsck {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::repair': GObject.Object.Notify;
+            'notify::superblock': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -794,19 +874,24 @@ export namespace Guestfs {
         // Signals
 
         connect<K extends keyof BtrfsFsck.SignalSignatures>(signal: K, callback: BtrfsFsck.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BtrfsFsck.SignalSignatures>(
             signal: K,
             callback: BtrfsFsck.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BtrfsFsck.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BtrfsFsck.SignalSignatures[K]>
+            ...args: BtrfsFsck.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace CompressDeviceOut {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::level': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -843,19 +928,24 @@ export namespace Guestfs {
             signal: K,
             callback: CompressDeviceOut.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CompressDeviceOut.SignalSignatures>(
             signal: K,
             callback: CompressDeviceOut.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CompressDeviceOut.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CompressDeviceOut.SignalSignatures[K]>
+            ...args: CompressDeviceOut.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace CompressOut {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::level': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -892,19 +982,27 @@ export namespace Guestfs {
             signal: K,
             callback: CompressOut.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CompressOut.SignalSignatures>(
             signal: K,
             callback: CompressOut.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CompressOut.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CompressOut.SignalSignatures[K]>
+            ...args: CompressOut.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace CopyAttributes {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::all': GObject.Object.Notify;
+            'notify::mode': GObject.Object.Notify;
+            'notify::ownership': GObject.Object.Notify;
+            'notify::xattributes': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -959,19 +1057,28 @@ export namespace Guestfs {
             signal: K,
             callback: CopyAttributes.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CopyAttributes.SignalSignatures>(
             signal: K,
             callback: CopyAttributes.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CopyAttributes.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CopyAttributes.SignalSignatures[K]>
+            ...args: CopyAttributes.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace CopyDeviceToDevice {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::append': GObject.Object.Notify;
+            'notify::destoffset': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::sparse': GObject.Object.Notify;
+            'notify::srcoffset': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1032,19 +1139,28 @@ export namespace Guestfs {
             signal: K,
             callback: CopyDeviceToDevice.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CopyDeviceToDevice.SignalSignatures>(
             signal: K,
             callback: CopyDeviceToDevice.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CopyDeviceToDevice.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CopyDeviceToDevice.SignalSignatures[K]>
+            ...args: CopyDeviceToDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace CopyDeviceToFile {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::append': GObject.Object.Notify;
+            'notify::destoffset': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::sparse': GObject.Object.Notify;
+            'notify::srcoffset': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1105,19 +1221,28 @@ export namespace Guestfs {
             signal: K,
             callback: CopyDeviceToFile.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CopyDeviceToFile.SignalSignatures>(
             signal: K,
             callback: CopyDeviceToFile.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CopyDeviceToFile.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CopyDeviceToFile.SignalSignatures[K]>
+            ...args: CopyDeviceToFile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace CopyFileToDevice {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::append': GObject.Object.Notify;
+            'notify::destoffset': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::sparse': GObject.Object.Notify;
+            'notify::srcoffset': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1178,19 +1303,28 @@ export namespace Guestfs {
             signal: K,
             callback: CopyFileToDevice.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CopyFileToDevice.SignalSignatures>(
             signal: K,
             callback: CopyFileToDevice.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CopyFileToDevice.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CopyFileToDevice.SignalSignatures[K]>
+            ...args: CopyFileToDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace CopyFileToFile {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::append': GObject.Object.Notify;
+            'notify::destoffset': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::sparse': GObject.Object.Notify;
+            'notify::srcoffset': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1251,19 +1385,24 @@ export namespace Guestfs {
             signal: K,
             callback: CopyFileToFile.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CopyFileToFile.SignalSignatures>(
             signal: K,
             callback: CopyFileToFile.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CopyFileToFile.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CopyFileToFile.SignalSignatures[K]>
+            ...args: CopyFileToFile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace CpioOut {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::format': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1297,19 +1436,28 @@ export namespace Guestfs {
         // Signals
 
         connect<K extends keyof CpioOut.SignalSignatures>(signal: K, callback: CpioOut.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CpioOut.SignalSignatures>(
             signal: K,
             callback: CpioOut.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CpioOut.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CpioOut.SignalSignatures[K]>
+            ...args: CpioOut.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace DiskCreate {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::backingfile': GObject.Object.Notify;
+            'notify::backingformat': GObject.Object.Notify;
+            'notify::clustersize': GObject.Object.Notify;
+            'notify::compat': GObject.Object.Notify;
+            'notify::preallocation': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1370,19 +1518,24 @@ export namespace Guestfs {
             signal: K,
             callback: DiskCreate.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DiskCreate.SignalSignatures>(
             signal: K,
             callback: DiskCreate.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DiskCreate.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DiskCreate.SignalSignatures[K]>
+            ...args: DiskCreate.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace DownloadBlocks {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::unallocated': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1419,19 +1572,25 @@ export namespace Guestfs {
             signal: K,
             callback: DownloadBlocks.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DownloadBlocks.SignalSignatures>(
             signal: K,
             callback: DownloadBlocks.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DownloadBlocks.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DownloadBlocks.SignalSignatures[K]>
+            ...args: DownloadBlocks.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace E2fsck {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::correct': GObject.Object.Notify;
+            'notify::forceall': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1471,13 +1630,23 @@ export namespace Guestfs {
         // Signals
 
         connect<K extends keyof E2fsck.SignalSignatures>(signal: K, callback: E2fsck.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof E2fsck.SignalSignatures>(signal: K, callback: E2fsck.SignalSignatures[K]): number;
-        emit<K extends keyof E2fsck.SignalSignatures>(signal: K, ...args: Parameters<E2fsck.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof E2fsck.SignalSignatures>(
+            signal: K,
+            ...args: E2fsck.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Fstrim {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::length': GObject.Object.Notify;
+            'notify::minimumfreeextent': GObject.Object.Notify;
+            'notify::offset': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1523,13 +1692,21 @@ export namespace Guestfs {
         // Signals
 
         connect<K extends keyof Fstrim.SignalSignatures>(signal: K, callback: Fstrim.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Fstrim.SignalSignatures>(signal: K, callback: Fstrim.SignalSignatures[K]): number;
-        emit<K extends keyof Fstrim.SignalSignatures>(signal: K, ...args: Parameters<Fstrim.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Fstrim.SignalSignatures>(
+            signal: K,
+            ...args: Fstrim.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace GlobExpand {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::directoryslash': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1566,19 +1743,27 @@ export namespace Guestfs {
             signal: K,
             callback: GlobExpand.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GlobExpand.SignalSignatures>(
             signal: K,
             callback: GlobExpand.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GlobExpand.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GlobExpand.SignalSignatures[K]>
+            ...args: GlobExpand.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Grep {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::compressed': GObject.Object.Notify;
+            'notify::extended': GObject.Object.Notify;
+            'notify::fixed': GObject.Object.Notify;
+            'notify::insensitive': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1630,13 +1815,24 @@ export namespace Guestfs {
         // Signals
 
         connect<K extends keyof Grep.SignalSignatures>(signal: K, callback: Grep.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Grep.SignalSignatures>(signal: K, callback: Grep.SignalSignatures[K]): number;
-        emit<K extends keyof Grep.SignalSignatures>(signal: K, ...args: Parameters<Grep.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Grep.SignalSignatures>(
+            signal: K,
+            ...args: Grep.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace HivexOpen {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::debug': GObject.Object.Notify;
+            'notify::unsafe': GObject.Object.Notify;
+            'notify::verbose': GObject.Object.Notify;
+            'notify::write': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1688,19 +1884,25 @@ export namespace Guestfs {
         // Signals
 
         connect<K extends keyof HivexOpen.SignalSignatures>(signal: K, callback: HivexOpen.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HivexOpen.SignalSignatures>(
             signal: K,
             callback: HivexOpen.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HivexOpen.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HivexOpen.SignalSignatures[K]>
+            ...args: HivexOpen.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace InspectGetIcon {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::favicon': GObject.Object.Notify;
+            'notify::highquality': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1743,19 +1945,27 @@ export namespace Guestfs {
             signal: K,
             callback: InspectGetIcon.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InspectGetIcon.SignalSignatures>(
             signal: K,
             callback: InspectGetIcon.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InspectGetIcon.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InspectGetIcon.SignalSignatures[K]>
+            ...args: InspectGetIcon.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace InternalTest {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::obool': GObject.Object.Notify;
+            'notify::oint': GObject.Object.Notify;
+            'notify::oint64': GObject.Object.Notify;
+            'notify::ostring': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1810,19 +2020,86 @@ export namespace Guestfs {
             signal: K,
             callback: InternalTest.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InternalTest.SignalSignatures>(
             signal: K,
             callback: InternalTest.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InternalTest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InternalTest.SignalSignatures[K]>
+            ...args: InternalTest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace InternalTest63Optargs {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::opt1': GObject.Object.Notify;
+            'notify::opt10': GObject.Object.Notify;
+            'notify::opt11': GObject.Object.Notify;
+            'notify::opt12': GObject.Object.Notify;
+            'notify::opt13': GObject.Object.Notify;
+            'notify::opt14': GObject.Object.Notify;
+            'notify::opt15': GObject.Object.Notify;
+            'notify::opt16': GObject.Object.Notify;
+            'notify::opt17': GObject.Object.Notify;
+            'notify::opt18': GObject.Object.Notify;
+            'notify::opt19': GObject.Object.Notify;
+            'notify::opt2': GObject.Object.Notify;
+            'notify::opt20': GObject.Object.Notify;
+            'notify::opt21': GObject.Object.Notify;
+            'notify::opt22': GObject.Object.Notify;
+            'notify::opt23': GObject.Object.Notify;
+            'notify::opt24': GObject.Object.Notify;
+            'notify::opt25': GObject.Object.Notify;
+            'notify::opt26': GObject.Object.Notify;
+            'notify::opt27': GObject.Object.Notify;
+            'notify::opt28': GObject.Object.Notify;
+            'notify::opt29': GObject.Object.Notify;
+            'notify::opt3': GObject.Object.Notify;
+            'notify::opt30': GObject.Object.Notify;
+            'notify::opt31': GObject.Object.Notify;
+            'notify::opt32': GObject.Object.Notify;
+            'notify::opt33': GObject.Object.Notify;
+            'notify::opt34': GObject.Object.Notify;
+            'notify::opt35': GObject.Object.Notify;
+            'notify::opt36': GObject.Object.Notify;
+            'notify::opt37': GObject.Object.Notify;
+            'notify::opt38': GObject.Object.Notify;
+            'notify::opt39': GObject.Object.Notify;
+            'notify::opt4': GObject.Object.Notify;
+            'notify::opt40': GObject.Object.Notify;
+            'notify::opt41': GObject.Object.Notify;
+            'notify::opt42': GObject.Object.Notify;
+            'notify::opt43': GObject.Object.Notify;
+            'notify::opt44': GObject.Object.Notify;
+            'notify::opt45': GObject.Object.Notify;
+            'notify::opt46': GObject.Object.Notify;
+            'notify::opt47': GObject.Object.Notify;
+            'notify::opt48': GObject.Object.Notify;
+            'notify::opt49': GObject.Object.Notify;
+            'notify::opt5': GObject.Object.Notify;
+            'notify::opt50': GObject.Object.Notify;
+            'notify::opt51': GObject.Object.Notify;
+            'notify::opt52': GObject.Object.Notify;
+            'notify::opt53': GObject.Object.Notify;
+            'notify::opt54': GObject.Object.Notify;
+            'notify::opt55': GObject.Object.Notify;
+            'notify::opt56': GObject.Object.Notify;
+            'notify::opt57': GObject.Object.Notify;
+            'notify::opt58': GObject.Object.Notify;
+            'notify::opt59': GObject.Object.Notify;
+            'notify::opt6': GObject.Object.Notify;
+            'notify::opt60': GObject.Object.Notify;
+            'notify::opt61': GObject.Object.Notify;
+            'notify::opt62': GObject.Object.Notify;
+            'notify::opt63': GObject.Object.Notify;
+            'notify::opt7': GObject.Object.Notify;
+            'notify::opt8': GObject.Object.Notify;
+            'notify::opt9': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2231,19 +2508,24 @@ export namespace Guestfs {
             signal: K,
             callback: InternalTest63Optargs.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InternalTest63Optargs.SignalSignatures>(
             signal: K,
             callback: InternalTest63Optargs.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InternalTest63Optargs.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InternalTest63Optargs.SignalSignatures[K]>
+            ...args: InternalTest63Optargs.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace InternalTestOnlyOptargs {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::test': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2280,19 +2562,24 @@ export namespace Guestfs {
             signal: K,
             callback: InternalTestOnlyOptargs.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InternalTestOnlyOptargs.SignalSignatures>(
             signal: K,
             callback: InternalTestOnlyOptargs.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InternalTestOnlyOptargs.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InternalTestOnlyOptargs.SignalSignatures[K]>
+            ...args: InternalTestOnlyOptargs.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace IsBlockdev {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::followsymlinks': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2329,19 +2616,24 @@ export namespace Guestfs {
             signal: K,
             callback: IsBlockdev.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof IsBlockdev.SignalSignatures>(
             signal: K,
             callback: IsBlockdev.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof IsBlockdev.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IsBlockdev.SignalSignatures[K]>
+            ...args: IsBlockdev.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace IsChardev {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::followsymlinks': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2375,19 +2667,24 @@ export namespace Guestfs {
         // Signals
 
         connect<K extends keyof IsChardev.SignalSignatures>(signal: K, callback: IsChardev.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof IsChardev.SignalSignatures>(
             signal: K,
             callback: IsChardev.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof IsChardev.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IsChardev.SignalSignatures[K]>
+            ...args: IsChardev.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace IsDir {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::followsymlinks': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2421,13 +2718,21 @@ export namespace Guestfs {
         // Signals
 
         connect<K extends keyof IsDir.SignalSignatures>(signal: K, callback: IsDir.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof IsDir.SignalSignatures>(signal: K, callback: IsDir.SignalSignatures[K]): number;
-        emit<K extends keyof IsDir.SignalSignatures>(signal: K, ...args: Parameters<IsDir.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof IsDir.SignalSignatures>(
+            signal: K,
+            ...args: IsDir.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace IsFifo {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::followsymlinks': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2461,13 +2766,21 @@ export namespace Guestfs {
         // Signals
 
         connect<K extends keyof IsFifo.SignalSignatures>(signal: K, callback: IsFifo.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof IsFifo.SignalSignatures>(signal: K, callback: IsFifo.SignalSignatures[K]): number;
-        emit<K extends keyof IsFifo.SignalSignatures>(signal: K, ...args: Parameters<IsFifo.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof IsFifo.SignalSignatures>(
+            signal: K,
+            ...args: IsFifo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace IsFile {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::followsymlinks': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2501,13 +2814,21 @@ export namespace Guestfs {
         // Signals
 
         connect<K extends keyof IsFile.SignalSignatures>(signal: K, callback: IsFile.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof IsFile.SignalSignatures>(signal: K, callback: IsFile.SignalSignatures[K]): number;
-        emit<K extends keyof IsFile.SignalSignatures>(signal: K, ...args: Parameters<IsFile.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof IsFile.SignalSignatures>(
+            signal: K,
+            ...args: IsFile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace IsSocket {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::followsymlinks': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2541,19 +2862,28 @@ export namespace Guestfs {
         // Signals
 
         connect<K extends keyof IsSocket.SignalSignatures>(signal: K, callback: IsSocket.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof IsSocket.SignalSignatures>(
             signal: K,
             callback: IsSocket.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof IsSocket.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IsSocket.SignalSignatures[K]>
+            ...args: IsSocket.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace MDCreate {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::chunk': GObject.Object.Notify;
+            'notify::level': GObject.Object.Notify;
+            'notify::missingbitmap': GObject.Object.Notify;
+            'notify::nrdevices': GObject.Object.Notify;
+            'notify::spare': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2611,19 +2941,61 @@ export namespace Guestfs {
         // Signals
 
         connect<K extends keyof MDCreate.SignalSignatures>(signal: K, callback: MDCreate.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MDCreate.SignalSignatures>(
             signal: K,
             callback: MDCreate.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MDCreate.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MDCreate.SignalSignatures[K]>
+            ...args: MDCreate.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Mke2fs {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::blockscount': GObject.Object.Notify;
+            'notify::blocksize': GObject.Object.Notify;
+            'notify::blockspergroup': GObject.Object.Notify;
+            'notify::bytesperinode': GObject.Object.Notify;
+            'notify::creatoros': GObject.Object.Notify;
+            'notify::discard': GObject.Object.Notify;
+            'notify::extent': GObject.Object.Notify;
+            'notify::filetype': GObject.Object.Notify;
+            'notify::flexbg': GObject.Object.Notify;
+            'notify::forcecreate': GObject.Object.Notify;
+            'notify::fragsize': GObject.Object.Notify;
+            'notify::fstype': GObject.Object.Notify;
+            'notify::hasjournal': GObject.Object.Notify;
+            'notify::inodesize': GObject.Object.Notify;
+            'notify::journaldev': GObject.Object.Notify;
+            'notify::journaldevice': GObject.Object.Notify;
+            'notify::journalsize': GObject.Object.Notify;
+            'notify::label': GObject.Object.Notify;
+            'notify::largefile': GObject.Object.Notify;
+            'notify::lastmounteddir': GObject.Object.Notify;
+            'notify::lazyitableinit': GObject.Object.Notify;
+            'notify::lazyjournalinit': GObject.Object.Notify;
+            'notify::maxonlineresize': GObject.Object.Notify;
+            'notify::mmpupdateinterval': GObject.Object.Notify;
+            'notify::numberofgroups': GObject.Object.Notify;
+            'notify::numberofinodes': GObject.Object.Notify;
+            'notify::quota': GObject.Object.Notify;
+            'notify::quotatype': GObject.Object.Notify;
+            'notify::reservedblockspercentage': GObject.Object.Notify;
+            'notify::resizeinode': GObject.Object.Notify;
+            'notify::sparsesuper': GObject.Object.Notify;
+            'notify::stridesize': GObject.Object.Notify;
+            'notify::stripewidth': GObject.Object.Notify;
+            'notify::testfs': GObject.Object.Notify;
+            'notify::uninitbg': GObject.Object.Notify;
+            'notify::usagetype': GObject.Object.Notify;
+            'notify::uuid': GObject.Object.Notify;
+            'notify::writesbandgrouponly': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2879,13 +3251,25 @@ export namespace Guestfs {
         // Signals
 
         connect<K extends keyof Mke2fs.SignalSignatures>(signal: K, callback: Mke2fs.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Mke2fs.SignalSignatures>(signal: K, callback: Mke2fs.SignalSignatures[K]): number;
-        emit<K extends keyof Mke2fs.SignalSignatures>(signal: K, ...args: Parameters<Mke2fs.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Mke2fs.SignalSignatures>(
+            signal: K,
+            ...args: Mke2fs.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Mkfs {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::blocksize': GObject.Object.Notify;
+            'notify::features': GObject.Object.Notify;
+            'notify::inode': GObject.Object.Notify;
+            'notify::label': GObject.Object.Notify;
+            'notify::sectorsize': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2943,13 +3327,28 @@ export namespace Guestfs {
         // Signals
 
         connect<K extends keyof Mkfs.SignalSignatures>(signal: K, callback: Mkfs.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Mkfs.SignalSignatures>(signal: K, callback: Mkfs.SignalSignatures[K]): number;
-        emit<K extends keyof Mkfs.SignalSignatures>(signal: K, ...args: Parameters<Mkfs.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Mkfs.SignalSignatures>(
+            signal: K,
+            ...args: Mkfs.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace MkfsBtrfs {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::allocstart': GObject.Object.Notify;
+            'notify::bytecount': GObject.Object.Notify;
+            'notify::datatype': GObject.Object.Notify;
+            'notify::label': GObject.Object.Notify;
+            'notify::leafsize': GObject.Object.Notify;
+            'notify::metadata': GObject.Object.Notify;
+            'notify::nodesize': GObject.Object.Notify;
+            'notify::sectorsize': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3025,19 +3424,24 @@ export namespace Guestfs {
         // Signals
 
         connect<K extends keyof MkfsBtrfs.SignalSignatures>(signal: K, callback: MkfsBtrfs.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MkfsBtrfs.SignalSignatures>(
             signal: K,
             callback: MkfsBtrfs.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MkfsBtrfs.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MkfsBtrfs.SignalSignatures[K]>
+            ...args: MkfsBtrfs.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Mksquashfs {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::compress': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3074,19 +3478,25 @@ export namespace Guestfs {
             signal: K,
             callback: Mksquashfs.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Mksquashfs.SignalSignatures>(
             signal: K,
             callback: Mksquashfs.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Mksquashfs.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Mksquashfs.SignalSignatures[K]>
+            ...args: Mksquashfs.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Mkswap {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::label': GObject.Object.Notify;
+            'notify::uuid': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3126,13 +3536,21 @@ export namespace Guestfs {
         // Signals
 
         connect<K extends keyof Mkswap.SignalSignatures>(signal: K, callback: Mkswap.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Mkswap.SignalSignatures>(signal: K, callback: Mkswap.SignalSignatures[K]): number;
-        emit<K extends keyof Mkswap.SignalSignatures>(signal: K, ...args: Parameters<Mkswap.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Mkswap.SignalSignatures>(
+            signal: K,
+            ...args: Mkswap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Mktemp {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::suffix': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3166,13 +3584,21 @@ export namespace Guestfs {
         // Signals
 
         connect<K extends keyof Mktemp.SignalSignatures>(signal: K, callback: Mktemp.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Mktemp.SignalSignatures>(signal: K, callback: Mktemp.SignalSignatures[K]): number;
-        emit<K extends keyof Mktemp.SignalSignatures>(signal: K, ...args: Parameters<Mktemp.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Mktemp.SignalSignatures>(
+            signal: K,
+            ...args: Mktemp.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Mount9P {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::options': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3206,19 +3632,27 @@ export namespace Guestfs {
         // Signals
 
         connect<K extends keyof Mount9P.SignalSignatures>(signal: K, callback: Mount9P.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Mount9P.SignalSignatures>(
             signal: K,
             callback: Mount9P.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Mount9P.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Mount9P.SignalSignatures[K]>
+            ...args: Mount9P.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace MountLocal {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::cachetimeout': GObject.Object.Notify;
+            'notify::debugcalls': GObject.Object.Notify;
+            'notify::options': GObject.Object.Notify;
+            'notify::readonly': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3273,19 +3707,25 @@ export namespace Guestfs {
             signal: K,
             callback: MountLocal.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MountLocal.SignalSignatures>(
             signal: K,
             callback: MountLocal.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MountLocal.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MountLocal.SignalSignatures[K]>
+            ...args: MountLocal.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace NTFSResizeOpts {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::force': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3328,19 +3768,28 @@ export namespace Guestfs {
             signal: K,
             callback: NTFSResizeOpts.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NTFSResizeOpts.SignalSignatures>(
             signal: K,
             callback: NTFSResizeOpts.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NTFSResizeOpts.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NTFSResizeOpts.SignalSignatures[K]>
+            ...args: NTFSResizeOpts.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace NtfscloneOut {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::force': GObject.Object.Notify;
+            'notify::ignorefscheck': GObject.Object.Notify;
+            'notify::metadataonly': GObject.Object.Notify;
+            'notify::preservetimestamps': GObject.Object.Notify;
+            'notify::rescue': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3401,19 +3850,24 @@ export namespace Guestfs {
             signal: K,
             callback: NtfscloneOut.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NtfscloneOut.SignalSignatures>(
             signal: K,
             callback: NtfscloneOut.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NtfscloneOut.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NtfscloneOut.SignalSignatures[K]>
+            ...args: NtfscloneOut.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Ntfsfix {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::clearbadsectors': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3447,19 +3901,24 @@ export namespace Guestfs {
         // Signals
 
         connect<K extends keyof Ntfsfix.SignalSignatures>(signal: K, callback: Ntfsfix.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Ntfsfix.SignalSignatures>(
             signal: K,
             callback: Ntfsfix.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Ntfsfix.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Ntfsfix.SignalSignatures[K]>
+            ...args: Ntfsfix.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Remount {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::rw': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3493,19 +3952,25 @@ export namespace Guestfs {
         // Signals
 
         connect<K extends keyof Remount.SignalSignatures>(signal: K, callback: Remount.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Remount.SignalSignatures>(
             signal: K,
             callback: Remount.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Remount.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Remount.SignalSignatures[K]>
+            ...args: Remount.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Rsync {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::archive': GObject.Object.Notify;
+            'notify::deletedest': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3545,13 +4010,22 @@ export namespace Guestfs {
         // Signals
 
         connect<K extends keyof Rsync.SignalSignatures>(signal: K, callback: Rsync.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Rsync.SignalSignatures>(signal: K, callback: Rsync.SignalSignatures[K]): number;
-        emit<K extends keyof Rsync.SignalSignatures>(signal: K, ...args: Parameters<Rsync.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Rsync.SignalSignatures>(
+            signal: K,
+            ...args: Rsync.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace RsyncIn {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::archive': GObject.Object.Notify;
+            'notify::deletedest': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3591,19 +4065,25 @@ export namespace Guestfs {
         // Signals
 
         connect<K extends keyof RsyncIn.SignalSignatures>(signal: K, callback: RsyncIn.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RsyncIn.SignalSignatures>(
             signal: K,
             callback: RsyncIn.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RsyncIn.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RsyncIn.SignalSignatures[K]>
+            ...args: RsyncIn.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace RsyncOut {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::archive': GObject.Object.Notify;
+            'notify::deletedest': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3643,19 +4123,24 @@ export namespace Guestfs {
         // Signals
 
         connect<K extends keyof RsyncOut.SignalSignatures>(signal: K, callback: RsyncOut.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RsyncOut.SignalSignatures>(
             signal: K,
             callback: RsyncOut.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RsyncOut.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RsyncOut.SignalSignatures[K]>
+            ...args: RsyncOut.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace SelinuxRelabel {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::force': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3692,14 +4177,17 @@ export namespace Guestfs {
             signal: K,
             callback: SelinuxRelabel.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SelinuxRelabel.SignalSignatures>(
             signal: K,
             callback: SelinuxRelabel.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SelinuxRelabel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SelinuxRelabel.SignalSignatures[K]>
+            ...args: SelinuxRelabel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Session {
@@ -3781,14 +4269,17 @@ export namespace Guestfs {
         // Signals
 
         connect<K extends keyof Session.SignalSignatures>(signal: K, callback: Session.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Session.SignalSignatures>(
             signal: K,
             callback: Session.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Session.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Session.SignalSignatures[K]>
+            ...args: Session.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -14289,7 +14780,9 @@ export namespace Guestfs {
 
     namespace SetE2attrs {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::clear': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -14326,19 +14819,24 @@ export namespace Guestfs {
             signal: K,
             callback: SetE2attrs.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SetE2attrs.SignalSignatures>(
             signal: K,
             callback: SetE2attrs.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SetE2attrs.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SetE2attrs.SignalSignatures[K]>
+            ...args: SetE2attrs.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Syslinux {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::directory': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -14372,19 +14870,27 @@ export namespace Guestfs {
         // Signals
 
         connect<K extends keyof Syslinux.SignalSignatures>(signal: K, callback: Syslinux.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Syslinux.SignalSignatures>(
             signal: K,
             callback: Syslinux.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Syslinux.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Syslinux.SignalSignatures[K]>
+            ...args: Syslinux.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace TarIn {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::acls': GObject.Object.Notify;
+            'notify::compress': GObject.Object.Notify;
+            'notify::selinux': GObject.Object.Notify;
+            'notify::xattrs': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -14436,13 +14942,25 @@ export namespace Guestfs {
         // Signals
 
         connect<K extends keyof TarIn.SignalSignatures>(signal: K, callback: TarIn.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TarIn.SignalSignatures>(signal: K, callback: TarIn.SignalSignatures[K]): number;
-        emit<K extends keyof TarIn.SignalSignatures>(signal: K, ...args: Parameters<TarIn.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof TarIn.SignalSignatures>(
+            signal: K,
+            ...args: TarIn.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace TarOut {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::acls': GObject.Object.Notify;
+            'notify::compress': GObject.Object.Notify;
+            'notify::numericowner': GObject.Object.Notify;
+            'notify::selinux': GObject.Object.Notify;
+            'notify::xattrs': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -14500,13 +15018,30 @@ export namespace Guestfs {
         // Signals
 
         connect<K extends keyof TarOut.SignalSignatures>(signal: K, callback: TarOut.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TarOut.SignalSignatures>(signal: K, callback: TarOut.SignalSignatures[K]): number;
-        emit<K extends keyof TarOut.SignalSignatures>(signal: K, ...args: Parameters<TarOut.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof TarOut.SignalSignatures>(
+            signal: K,
+            ...args: TarOut.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Tune2FS {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::errorbehavior': GObject.Object.Notify;
+            'notify::force': GObject.Object.Notify;
+            'notify::group': GObject.Object.Notify;
+            'notify::intervalbetweenchecks': GObject.Object.Notify;
+            'notify::lastmounteddirectory': GObject.Object.Notify;
+            'notify::maxmountcount': GObject.Object.Notify;
+            'notify::mountcount': GObject.Object.Notify;
+            'notify::reservedblockscount': GObject.Object.Notify;
+            'notify::reservedblockspercentage': GObject.Object.Notify;
+            'notify::user': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -14594,19 +15129,25 @@ export namespace Guestfs {
         // Signals
 
         connect<K extends keyof Tune2FS.SignalSignatures>(signal: K, callback: Tune2FS.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Tune2FS.SignalSignatures>(
             signal: K,
             callback: Tune2FS.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Tune2FS.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Tune2FS.SignalSignatures[K]>
+            ...args: Tune2FS.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Umount {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::force': GObject.Object.Notify;
+            'notify::lazyunmount': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -14646,13 +15187,21 @@ export namespace Guestfs {
         // Signals
 
         connect<K extends keyof Umount.SignalSignatures>(signal: K, callback: Umount.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Umount.SignalSignatures>(signal: K, callback: Umount.SignalSignatures[K]): number;
-        emit<K extends keyof Umount.SignalSignatures>(signal: K, ...args: Parameters<Umount.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Umount.SignalSignatures>(
+            signal: K,
+            ...args: Umount.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace UmountLocal {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::retry': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -14689,19 +15238,30 @@ export namespace Guestfs {
             signal: K,
             callback: UmountLocal.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UmountLocal.SignalSignatures>(
             signal: K,
             callback: UmountLocal.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UmountLocal.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UmountLocal.SignalSignatures[K]>
+            ...args: UmountLocal.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace XfsAdmin {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::extunwritten': GObject.Object.Notify;
+            'notify::imgfile': GObject.Object.Notify;
+            'notify::label': GObject.Object.Notify;
+            'notify::lazycounter': GObject.Object.Notify;
+            'notify::projid32bit': GObject.Object.Notify;
+            'notify::uuid': GObject.Object.Notify;
+            'notify::v2log': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -14771,19 +15331,31 @@ export namespace Guestfs {
         // Signals
 
         connect<K extends keyof XfsAdmin.SignalSignatures>(signal: K, callback: XfsAdmin.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XfsAdmin.SignalSignatures>(
             signal: K,
             callback: XfsAdmin.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XfsAdmin.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XfsAdmin.SignalSignatures[K]>
+            ...args: XfsAdmin.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace XfsGrowfs {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::datasec': GObject.Object.Notify;
+            'notify::datasize': GObject.Object.Notify;
+            'notify::logsec': GObject.Object.Notify;
+            'notify::logsize': GObject.Object.Notify;
+            'notify::maxpct': GObject.Object.Notify;
+            'notify::rtextsize': GObject.Object.Notify;
+            'notify::rtsec': GObject.Object.Notify;
+            'notify::rtsize': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -14859,19 +15431,33 @@ export namespace Guestfs {
         // Signals
 
         connect<K extends keyof XfsGrowfs.SignalSignatures>(signal: K, callback: XfsGrowfs.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XfsGrowfs.SignalSignatures>(
             signal: K,
             callback: XfsGrowfs.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XfsGrowfs.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XfsGrowfs.SignalSignatures[K]>
+            ...args: XfsGrowfs.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace XfsRepair {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::agstride': GObject.Object.Notify;
+            'notify::bhashsize': GObject.Object.Notify;
+            'notify::forcegeometry': GObject.Object.Notify;
+            'notify::forcelogzero': GObject.Object.Notify;
+            'notify::ihashsize': GObject.Object.Notify;
+            'notify::logdev': GObject.Object.Notify;
+            'notify::maxmem': GObject.Object.Notify;
+            'notify::nomodify': GObject.Object.Notify;
+            'notify::noprefetch': GObject.Object.Notify;
+            'notify::rtdev': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -14959,14 +15545,17 @@ export namespace Guestfs {
         // Signals
 
         connect<K extends keyof XfsRepair.SignalSignatures>(signal: K, callback: XfsRepair.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XfsRepair.SignalSignatures>(
             signal: K,
             callback: XfsRepair.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XfsRepair.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XfsRepair.SignalSignatures[K]>
+            ...args: XfsRepair.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     type AddDomainClass = typeof AddDomain;

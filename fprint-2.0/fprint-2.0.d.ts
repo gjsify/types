@@ -366,14 +366,17 @@ export namespace FPrint {
         // Signals
 
         connect<K extends keyof Context.SignalSignatures>(signal: K, callback: Context.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Context.SignalSignatures>(
             signal: K,
             callback: Context.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Context.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Context.SignalSignatures[K]>
+            ...args: Context.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -413,6 +416,29 @@ export namespace FPrint {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             removed: Removed;
+            'notify::device-id': GObject.Object.Notify;
+            'notify::device-id': GObject.Object.Notify;
+            'notify::driver': GObject.Object.Notify;
+            'notify::finger-status': GObject.Object.Notify;
+            'notify::finger-status': GObject.Object.Notify;
+            'notify::fpi-driver-data': GObject.Object.Notify;
+            'notify::fpi-driver-data': GObject.Object.Notify;
+            'notify::fpi-environ': GObject.Object.Notify;
+            'notify::fpi-environ': GObject.Object.Notify;
+            'notify::fpi-udev-data-hidraw': GObject.Object.Notify;
+            'notify::fpi-udev-data-hidraw': GObject.Object.Notify;
+            'notify::fpi-udev-data-spidev': GObject.Object.Notify;
+            'notify::fpi-udev-data-spidev': GObject.Object.Notify;
+            'notify::fpi-usb-device': GObject.Object.Notify;
+            'notify::fpi-usb-device': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::nr-enroll-stages': GObject.Object.Notify;
+            'notify::nr-enroll-stages': GObject.Object.Notify;
+            'notify::open': GObject.Object.Notify;
+            'notify::removed': GObject.Object.Notify;
+            'notify::scan-type': GObject.Object.Notify;
+            'notify::scan-type': GObject.Object.Notify;
+            'notify::temperature': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -482,8 +508,14 @@ export namespace FPrint {
         // Signals
 
         connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
-        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            ...args: Device.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1751,7 +1783,10 @@ export namespace FPrint {
 
     namespace Image {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::height': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1780,8 +1815,14 @@ export namespace FPrint {
         // Signals
 
         connect<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
-        emit<K extends keyof Image.SignalSignatures>(signal: K, ...args: Parameters<Image.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Image.SignalSignatures>(
+            signal: K,
+            ...args: Image.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1861,6 +1902,29 @@ export namespace FPrint {
         // Signal signatures
         interface SignalSignatures extends Device.SignalSignatures {
             'fpi-image-device-state-changed': FpiImageDeviceStateChanged;
+            'notify::device-id': GObject.Object.Notify;
+            'notify::device-id': GObject.Object.Notify;
+            'notify::driver': GObject.Object.Notify;
+            'notify::finger-status': GObject.Object.Notify;
+            'notify::finger-status': GObject.Object.Notify;
+            'notify::fpi-driver-data': GObject.Object.Notify;
+            'notify::fpi-driver-data': GObject.Object.Notify;
+            'notify::fpi-environ': GObject.Object.Notify;
+            'notify::fpi-environ': GObject.Object.Notify;
+            'notify::fpi-udev-data-hidraw': GObject.Object.Notify;
+            'notify::fpi-udev-data-hidraw': GObject.Object.Notify;
+            'notify::fpi-udev-data-spidev': GObject.Object.Notify;
+            'notify::fpi-udev-data-spidev': GObject.Object.Notify;
+            'notify::fpi-usb-device': GObject.Object.Notify;
+            'notify::fpi-usb-device': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::nr-enroll-stages': GObject.Object.Notify;
+            'notify::nr-enroll-stages': GObject.Object.Notify;
+            'notify::open': GObject.Object.Notify;
+            'notify::removed': GObject.Object.Notify;
+            'notify::scan-type': GObject.Object.Notify;
+            'notify::scan-type': GObject.Object.Notify;
+            'notify::temperature': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1883,14 +1947,17 @@ export namespace FPrint {
             signal: K,
             callback: ImageDevice.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ImageDevice.SignalSignatures>(
             signal: K,
             callback: ImageDevice.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ImageDevice.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ImageDevice.SignalSignatures[K]>
+            ...args: ImageDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -2535,7 +2602,23 @@ export namespace FPrint {
 
     namespace Print {
         // Signal signatures
-        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {}
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
+            'notify::description': GObject.Object.Notify;
+            'notify::device-id': GObject.Object.Notify;
+            'notify::device-id': GObject.Object.Notify;
+            'notify::device-stored': GObject.Object.Notify;
+            'notify::device-stored': GObject.Object.Notify;
+            'notify::driver': GObject.Object.Notify;
+            'notify::enroll-date': GObject.Object.Notify;
+            'notify::enroll-date': GObject.Object.Notify;
+            'notify::finger': GObject.Object.Notify;
+            'notify::fpi-data': GObject.Object.Notify;
+            'notify::fpi-data': GObject.Object.Notify;
+            'notify::fpi-prints': GObject.Object.Notify;
+            'notify::fpi-prints': GObject.Object.Notify;
+            'notify::image': GObject.Object.Notify;
+            'notify::username': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2599,8 +2682,14 @@ export namespace FPrint {
         // Signals
 
         connect<K extends keyof Print.SignalSignatures>(signal: K, callback: Print.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Print.SignalSignatures>(signal: K, callback: Print.SignalSignatures[K]): number;
-        emit<K extends keyof Print.SignalSignatures>(signal: K, ...args: Parameters<Print.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Print.SignalSignatures>(
+            signal: K,
+            ...args: Print.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 

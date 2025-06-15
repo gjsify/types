@@ -318,6 +318,18 @@ export namespace TrackerMiner {
         interface SignalSignatures extends Miner.SignalSignatures {
             finished: Finished;
             'items-available': ItemsAvailable;
+            'notify::class-names': GObject.Object.Notify;
+            'notify::class-names': GObject.Object.Notify;
+            'notify::commit-batch-size': GObject.Object.Notify;
+            'notify::commit-batch-size': GObject.Object.Notify;
+            'notify::data-source': GObject.Object.Notify;
+            'notify::data-source': GObject.Object.Notify;
+            'notify::priority-rdf-types': GObject.Object.Notify;
+            'notify::priority-rdf-types': GObject.Object.Notify;
+            'notify::progress': GObject.Object.Notify;
+            'notify::remaining-time': GObject.Object.Notify;
+            'notify::remaining-time': GObject.Object.Notify;
+            'notify::status': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -369,14 +381,17 @@ export namespace TrackerMiner {
         // Signals
 
         connect<K extends keyof Decorator.SignalSignatures>(signal: K, callback: Decorator.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Decorator.SignalSignatures>(
             signal: K,
             callback: Decorator.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Decorator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Decorator.SignalSignatures[K]>
+            ...args: Decorator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1010,7 +1025,20 @@ export namespace TrackerMiner {
 
     namespace DecoratorFS {
         // Signal signatures
-        interface SignalSignatures extends Decorator.SignalSignatures {}
+        interface SignalSignatures extends Decorator.SignalSignatures {
+            'notify::class-names': GObject.Object.Notify;
+            'notify::class-names': GObject.Object.Notify;
+            'notify::commit-batch-size': GObject.Object.Notify;
+            'notify::commit-batch-size': GObject.Object.Notify;
+            'notify::data-source': GObject.Object.Notify;
+            'notify::data-source': GObject.Object.Notify;
+            'notify::priority-rdf-types': GObject.Object.Notify;
+            'notify::priority-rdf-types': GObject.Object.Notify;
+            'notify::progress': GObject.Object.Notify;
+            'notify::remaining-time': GObject.Object.Notify;
+            'notify::remaining-time': GObject.Object.Notify;
+            'notify::status': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1039,14 +1067,17 @@ export namespace TrackerMiner {
             signal: K,
             callback: DecoratorFS.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DecoratorFS.SignalSignatures>(
             signal: K,
             callback: DecoratorFS.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DecoratorFS.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DecoratorFS.SignalSignatures[K]>
+            ...args: DecoratorFS.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1524,6 +1555,9 @@ export namespace TrackerMiner {
             'directory-added': DirectoryAdded;
             'directory-removed': DirectoryRemoved;
             'directory-updated': DirectoryUpdated;
+            'notify::filter-hidden': GObject.Object.Notify;
+            'notify::filter-hidden': GObject.Object.Notify;
+            'notify::root': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1569,14 +1603,17 @@ export namespace TrackerMiner {
             signal: K,
             callback: IndexingTree.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof IndexingTree.SignalSignatures>(
             signal: K,
             callback: IndexingTree.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof IndexingTree.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IndexingTree.SignalSignatures[K]>
+            ...args: IndexingTree.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1771,6 +1808,10 @@ export namespace TrackerMiner {
             resumed: Resumed;
             started: Started;
             stopped: Stopped;
+            'notify::progress': GObject.Object.Notify;
+            'notify::remaining-time': GObject.Object.Notify;
+            'notify::remaining-time': GObject.Object.Notify;
+            'notify::status': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1809,8 +1850,14 @@ export namespace TrackerMiner {
         // Signals
 
         connect<K extends keyof Miner.SignalSignatures>(signal: K, callback: Miner.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Miner.SignalSignatures>(signal: K, callback: Miner.SignalSignatures[K]): number;
-        emit<K extends keyof Miner.SignalSignatures>(signal: K, ...args: Parameters<Miner.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Miner.SignalSignatures>(
+            signal: K,
+            ...args: Miner.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2414,11 +2461,11 @@ export namespace TrackerMiner {
         }
 
         interface ProcessFile {
-            (_source: MinerFS, file: Gio.File, builder: Gio.Task): boolean;
+            (_source: MinerFS, file: Gio.File, builder: Gio.Task): boolean | void;
         }
 
         interface ProcessFileAttributes {
-            (_source: MinerFS, file: Gio.File, builder: Gio.Task): boolean;
+            (_source: MinerFS, file: Gio.File, builder: Gio.Task): boolean | void;
         }
 
         interface RemoveChildren {
@@ -2438,6 +2485,18 @@ export namespace TrackerMiner {
             'process-file-attributes': ProcessFileAttributes;
             'remove-children': RemoveChildren;
             'remove-file': RemoveFile;
+            'notify::data-provider': GObject.Object.Notify;
+            'notify::data-provider': GObject.Object.Notify;
+            'notify::processing-pool-ready-limit': GObject.Object.Notify;
+            'notify::processing-pool-ready-limit': GObject.Object.Notify;
+            'notify::processing-pool-wait-limit': GObject.Object.Notify;
+            'notify::processing-pool-wait-limit': GObject.Object.Notify;
+            'notify::root': GObject.Object.Notify;
+            'notify::throttle': GObject.Object.Notify;
+            'notify::progress': GObject.Object.Notify;
+            'notify::remaining-time': GObject.Object.Notify;
+            'notify::remaining-time': GObject.Object.Notify;
+            'notify::status': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -2485,14 +2544,17 @@ export namespace TrackerMiner {
         // Signals
 
         connect<K extends keyof MinerFS.SignalSignatures>(signal: K, callback: MinerFS.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MinerFS.SignalSignatures>(
             signal: K,
             callback: MinerFS.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MinerFS.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MinerFS.SignalSignatures[K]>
+            ...args: MinerFS.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -3136,7 +3198,7 @@ export namespace TrackerMiner {
         // Signal callback interfaces
 
         interface Connected {
-            (_source: MinerOnline, type: unknown): boolean;
+            (_source: MinerOnline, type: unknown): boolean | void;
         }
 
         interface Disconnected {
@@ -3147,6 +3209,10 @@ export namespace TrackerMiner {
         interface SignalSignatures extends Miner.SignalSignatures {
             connected: Connected;
             disconnected: Disconnected;
+            'notify::progress': GObject.Object.Notify;
+            'notify::remaining-time': GObject.Object.Notify;
+            'notify::remaining-time': GObject.Object.Notify;
+            'notify::status': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -3172,14 +3238,17 @@ export namespace TrackerMiner {
             signal: K,
             callback: MinerOnline.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MinerOnline.SignalSignatures>(
             signal: K,
             callback: MinerOnline.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MinerOnline.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MinerOnline.SignalSignatures[K]>
+            ...args: MinerOnline.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -3723,7 +3792,13 @@ export namespace TrackerMiner {
 
     namespace MinerProxy {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::dbus-connection': GObject.Object.Notify;
+            'notify::dbus-connection': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+            'notify::dbus-path': GObject.Object.Notify;
+            'notify::miner': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3766,14 +3841,17 @@ export namespace TrackerMiner {
             signal: K,
             callback: MinerProxy.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MinerProxy.SignalSignatures>(
             signal: K,
             callback: MinerProxy.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MinerProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MinerProxy.SignalSignatures[K]>
+            ...args: MinerProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**

@@ -434,8 +434,14 @@ export namespace ECalendar {
         // Signals
 
         connect<K extends keyof Cal.SignalSignatures>(signal: K, callback: Cal.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Cal.SignalSignatures>(signal: K, callback: Cal.SignalSignatures[K]): number;
-        emit<K extends keyof Cal.SignalSignatures>(signal: K, ...args: Parameters<Cal.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Cal.SignalSignatures>(
+            signal: K,
+            ...args: Cal.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -677,6 +683,13 @@ export namespace ECalendar {
         // Signal signatures
         interface SignalSignatures extends EDataServer.Client.SignalSignatures {
             'free-busy-data': FreeBusyData;
+            'notify::capabilities': GObject.Object.Notify;
+            'notify::main-context': GObject.Object.Notify;
+            'notify::main-context': GObject.Object.Notify;
+            'notify::online': GObject.Object.Notify;
+            'notify::opened': GObject.Object.Notify;
+            'notify::readonly': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -702,14 +715,17 @@ export namespace ECalendar {
         // Signals
 
         connect<K extends keyof CalClient.SignalSignatures>(signal: K, callback: CalClient.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CalClient.SignalSignatures>(
             signal: K,
             callback: CalClient.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CalClient.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CalClient.SignalSignatures[K]>
+            ...args: CalClient.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1268,6 +1284,8 @@ export namespace ECalendar {
             'objects-modified': ObjectsModified;
             'objects-removed': ObjectsRemoved;
             progress: Progress;
+            'notify::client': GObject.Object.Notify;
+            'notify::view': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1306,14 +1324,17 @@ export namespace ECalendar {
             signal: K,
             callback: CalClientView.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CalClientView.SignalSignatures>(
             signal: K,
             callback: CalClientView.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CalClientView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CalClientView.SignalSignatures[K]>
+            ...args: CalClientView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1393,14 +1414,17 @@ export namespace ECalendar {
             signal: K,
             callback: CalComponent.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CalComponent.SignalSignatures>(
             signal: K,
             callback: CalComponent.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CalComponent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CalComponent.SignalSignatures[K]>
+            ...args: CalComponent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1998,6 +2022,8 @@ export namespace ECalendar {
             'view-complete': ViewComplete;
             'view-done': ViewDone;
             'view-progress': ViewProgress;
+            'notify::client': GObject.Object.Notify;
+            'notify::view': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -2029,14 +2055,17 @@ export namespace ECalendar {
         // Signals
 
         connect<K extends keyof CalView.SignalSignatures>(signal: K, callback: CalView.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CalView.SignalSignatures>(
             signal: K,
             callback: CalView.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CalView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CalView.SignalSignatures[K]>
+            ...args: CalView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 

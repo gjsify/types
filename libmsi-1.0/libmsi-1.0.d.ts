@@ -165,7 +165,11 @@ export namespace Libmsi {
     }
     namespace Database {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::flags': GObject.Object.Notify;
+            'notify::outpath': GObject.Object.Notify;
+            'notify::path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -196,14 +200,17 @@ export namespace Libmsi {
         // Signals
 
         connect<K extends keyof Database.SignalSignatures>(signal: K, callback: Database.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Database.SignalSignatures>(
             signal: K,
             callback: Database.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Database.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Database.SignalSignatures[K]>
+            ...args: Database.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -244,7 +251,10 @@ export namespace Libmsi {
 
     namespace Query {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::database': GObject.Object.Notify;
+            'notify::query': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -273,8 +283,14 @@ export namespace Libmsi {
         // Signals
 
         connect<K extends keyof Query.SignalSignatures>(signal: K, callback: Query.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Query.SignalSignatures>(signal: K, callback: Query.SignalSignatures[K]): number;
-        emit<K extends keyof Query.SignalSignatures>(signal: K, ...args: Parameters<Query.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Query.SignalSignatures>(
+            signal: K,
+            ...args: Query.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -309,7 +325,9 @@ export namespace Libmsi {
 
     namespace Record {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::count': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -336,8 +354,14 @@ export namespace Libmsi {
         // Signals
 
         connect<K extends keyof Record.SignalSignatures>(signal: K, callback: Record.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Record.SignalSignatures>(signal: K, callback: Record.SignalSignatures[K]): number;
-        emit<K extends keyof Record.SignalSignatures>(signal: K, ...args: Parameters<Record.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Record.SignalSignatures>(
+            signal: K,
+            ...args: Record.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -402,7 +426,11 @@ export namespace Libmsi {
 
     namespace SummaryInfo {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::database': GObject.Object.Notify;
+            'notify::update-count': GObject.Object.Notify;
+            'notify::update-count': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -436,14 +464,17 @@ export namespace Libmsi {
             signal: K,
             callback: SummaryInfo.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SummaryInfo.SignalSignatures>(
             signal: K,
             callback: SummaryInfo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SummaryInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SummaryInfo.SignalSignatures[K]>
+            ...args: SummaryInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

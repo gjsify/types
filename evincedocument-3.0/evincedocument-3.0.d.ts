@@ -473,7 +473,15 @@ export namespace EvinceDocument {
     }
     namespace Annotation {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::area': GObject.Object.Notify;
+            'notify::color': GObject.Object.Notify;
+            'notify::contents': GObject.Object.Notify;
+            'notify::modified': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::page': GObject.Object.Notify;
+            'notify::rgba': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -530,14 +538,17 @@ export namespace EvinceDocument {
             signal: K,
             callback: Annotation.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Annotation.SignalSignatures>(
             signal: K,
             callback: Annotation.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Annotation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Annotation.SignalSignatures[K]>
+            ...args: Annotation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -658,7 +669,25 @@ export namespace EvinceDocument {
 
     namespace AnnotationAttachment {
         // Signal signatures
-        interface SignalSignatures extends Annotation.SignalSignatures {}
+        interface SignalSignatures extends Annotation.SignalSignatures {
+            'notify::attachment': GObject.Object.Notify;
+            'notify::area': GObject.Object.Notify;
+            'notify::color': GObject.Object.Notify;
+            'notify::contents': GObject.Object.Notify;
+            'notify::modified': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::page': GObject.Object.Notify;
+            'notify::rgba': GObject.Object.Notify;
+            'notify::can-have-popup': GObject.Object.Notify;
+            'notify::can-have-popup': GObject.Object.Notify;
+            'notify::has-popup': GObject.Object.Notify;
+            'notify::has-popup': GObject.Object.Notify;
+            'notify::label': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::popup-is-open': GObject.Object.Notify;
+            'notify::popup-is-open': GObject.Object.Notify;
+            'notify::rectangle': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -689,14 +718,17 @@ export namespace EvinceDocument {
             signal: K,
             callback: AnnotationAttachment.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AnnotationAttachment.SignalSignatures>(
             signal: K,
             callback: AnnotationAttachment.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AnnotationAttachment.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AnnotationAttachment.SignalSignatures[K]>
+            ...args: AnnotationAttachment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -874,7 +906,27 @@ export namespace EvinceDocument {
 
     namespace AnnotationText {
         // Signal signatures
-        interface SignalSignatures extends Annotation.SignalSignatures {}
+        interface SignalSignatures extends Annotation.SignalSignatures {
+            'notify::icon': GObject.Object.Notify;
+            'notify::is-open': GObject.Object.Notify;
+            'notify::is-open': GObject.Object.Notify;
+            'notify::area': GObject.Object.Notify;
+            'notify::color': GObject.Object.Notify;
+            'notify::contents': GObject.Object.Notify;
+            'notify::modified': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::page': GObject.Object.Notify;
+            'notify::rgba': GObject.Object.Notify;
+            'notify::can-have-popup': GObject.Object.Notify;
+            'notify::can-have-popup': GObject.Object.Notify;
+            'notify::has-popup': GObject.Object.Notify;
+            'notify::has-popup': GObject.Object.Notify;
+            'notify::label': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::popup-is-open': GObject.Object.Notify;
+            'notify::popup-is-open': GObject.Object.Notify;
+            'notify::rectangle': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -911,14 +963,17 @@ export namespace EvinceDocument {
             signal: K,
             callback: AnnotationText.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AnnotationText.SignalSignatures>(
             signal: K,
             callback: AnnotationText.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AnnotationText.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AnnotationText.SignalSignatures[K]>
+            ...args: AnnotationText.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1098,7 +1153,25 @@ export namespace EvinceDocument {
 
     namespace AnnotationTextMarkup {
         // Signal signatures
-        interface SignalSignatures extends Annotation.SignalSignatures {}
+        interface SignalSignatures extends Annotation.SignalSignatures {
+            'notify::type': GObject.Object.Notify;
+            'notify::area': GObject.Object.Notify;
+            'notify::color': GObject.Object.Notify;
+            'notify::contents': GObject.Object.Notify;
+            'notify::modified': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::page': GObject.Object.Notify;
+            'notify::rgba': GObject.Object.Notify;
+            'notify::can-have-popup': GObject.Object.Notify;
+            'notify::can-have-popup': GObject.Object.Notify;
+            'notify::has-popup': GObject.Object.Notify;
+            'notify::has-popup': GObject.Object.Notify;
+            'notify::label': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::popup-is-open': GObject.Object.Notify;
+            'notify::popup-is-open': GObject.Object.Notify;
+            'notify::rectangle': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1135,14 +1208,17 @@ export namespace EvinceDocument {
             signal: K,
             callback: AnnotationTextMarkup.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AnnotationTextMarkup.SignalSignatures>(
             signal: K,
             callback: AnnotationTextMarkup.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AnnotationTextMarkup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AnnotationTextMarkup.SignalSignatures[K]>
+            ...args: AnnotationTextMarkup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1320,7 +1396,14 @@ export namespace EvinceDocument {
 
     namespace Attachment {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::ctime': GObject.Object.Notify;
+            'notify::data': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::mtime': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1371,14 +1454,17 @@ export namespace EvinceDocument {
             signal: K,
             callback: Attachment.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Attachment.SignalSignatures>(
             signal: K,
             callback: Attachment.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Attachment.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Attachment.SignalSignatures[K]>
+            ...args: Attachment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1397,7 +1483,9 @@ export namespace EvinceDocument {
 
     namespace Document {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::modified': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1427,14 +1515,17 @@ export namespace EvinceDocument {
         // Signals
 
         connect<K extends keyof Document.SignalSignatures>(signal: K, callback: Document.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Document.SignalSignatures>(
             signal: K,
             callback: Document.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Document.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Document.SignalSignatures[K]>
+            ...args: Document.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1815,14 +1906,17 @@ export namespace EvinceDocument {
         // Signals
 
         connect<K extends keyof FormField.SignalSignatures>(signal: K, callback: FormField.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FormField.SignalSignatures>(
             signal: K,
             callback: FormField.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FormField.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FormField.SignalSignatures[K]>
+            ...args: FormField.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace FormFieldButton {
@@ -1856,14 +1950,17 @@ export namespace EvinceDocument {
             signal: K,
             callback: FormFieldButton.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FormFieldButton.SignalSignatures>(
             signal: K,
             callback: FormFieldButton.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FormFieldButton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FormFieldButton.SignalSignatures[K]>
+            ...args: FormFieldButton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace FormFieldChoice {
@@ -1902,14 +1999,17 @@ export namespace EvinceDocument {
             signal: K,
             callback: FormFieldChoice.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FormFieldChoice.SignalSignatures>(
             signal: K,
             callback: FormFieldChoice.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FormFieldChoice.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FormFieldChoice.SignalSignatures[K]>
+            ...args: FormFieldChoice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace FormFieldSignature {
@@ -1938,14 +2038,17 @@ export namespace EvinceDocument {
             signal: K,
             callback: FormFieldSignature.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FormFieldSignature.SignalSignatures>(
             signal: K,
             callback: FormFieldSignature.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FormFieldSignature.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FormFieldSignature.SignalSignatures[K]>
+            ...args: FormFieldSignature.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace FormFieldText {
@@ -1985,14 +2088,17 @@ export namespace EvinceDocument {
             signal: K,
             callback: FormFieldText.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FormFieldText.SignalSignatures>(
             signal: K,
             callback: FormFieldText.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FormFieldText.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FormFieldText.SignalSignatures[K]>
+            ...args: FormFieldText.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Image {
@@ -2024,8 +2130,14 @@ export namespace EvinceDocument {
         // Signals
 
         connect<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
-        emit<K extends keyof Image.SignalSignatures>(signal: K, ...args: Parameters<Image.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Image.SignalSignatures>(
+            signal: K,
+            ...args: Image.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2063,8 +2175,14 @@ export namespace EvinceDocument {
         // Signals
 
         connect<K extends keyof Layer.SignalSignatures>(signal: K, callback: Layer.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Layer.SignalSignatures>(signal: K, callback: Layer.SignalSignatures[K]): number;
-        emit<K extends keyof Layer.SignalSignatures>(signal: K, ...args: Parameters<Layer.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Layer.SignalSignatures>(
+            signal: K,
+            ...args: Layer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2074,7 +2192,10 @@ export namespace EvinceDocument {
 
     namespace Link {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::action': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2103,8 +2224,14 @@ export namespace EvinceDocument {
         // Signals
 
         connect<K extends keyof Link.SignalSignatures>(signal: K, callback: Link.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Link.SignalSignatures>(signal: K, callback: Link.SignalSignatures[K]): number;
-        emit<K extends keyof Link.SignalSignatures>(signal: K, ...args: Parameters<Link.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Link.SignalSignatures>(
+            signal: K,
+            ...args: Link.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2114,7 +2241,24 @@ export namespace EvinceDocument {
 
     namespace LinkAction {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::dest': GObject.Object.Notify;
+            'notify::exclude-reset-fields': GObject.Object.Notify;
+            'notify::exclude-reset-fields': GObject.Object.Notify;
+            'notify::filename': GObject.Object.Notify;
+            'notify::hide-list': GObject.Object.Notify;
+            'notify::hide-list': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::params': GObject.Object.Notify;
+            'notify::reset-fields': GObject.Object.Notify;
+            'notify::reset-fields': GObject.Object.Notify;
+            'notify::show-list': GObject.Object.Notify;
+            'notify::show-list': GObject.Object.Notify;
+            'notify::toggle-list': GObject.Object.Notify;
+            'notify::toggle-list': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+            'notify::uri': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2186,14 +2330,17 @@ export namespace EvinceDocument {
             signal: K,
             callback: LinkAction.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LinkAction.SignalSignatures>(
             signal: K,
             callback: LinkAction.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LinkAction.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LinkAction.SignalSignatures[K]>
+            ...args: LinkAction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2218,7 +2365,19 @@ export namespace EvinceDocument {
 
     namespace LinkDest {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::bottom': GObject.Object.Notify;
+            'notify::change': GObject.Object.Notify;
+            'notify::left': GObject.Object.Notify;
+            'notify::named': GObject.Object.Notify;
+            'notify::page': GObject.Object.Notify;
+            'notify::page-label': GObject.Object.Notify;
+            'notify::page-label': GObject.Object.Notify;
+            'notify::right': GObject.Object.Notify;
+            'notify::top': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+            'notify::zoom': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2287,14 +2446,17 @@ export namespace EvinceDocument {
         // Signals
 
         connect<K extends keyof LinkDest.SignalSignatures>(signal: K, callback: LinkDest.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LinkDest.SignalSignatures>(
             signal: K,
             callback: LinkDest.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LinkDest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LinkDest.SignalSignatures[K]>
+            ...args: LinkDest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2342,8 +2504,14 @@ export namespace EvinceDocument {
         // Signals
 
         connect<K extends keyof Media.SignalSignatures>(signal: K, callback: Media.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Media.SignalSignatures>(signal: K, callback: Media.SignalSignatures[K]): number;
-        emit<K extends keyof Media.SignalSignatures>(signal: K, ...args: Parameters<Media.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Media.SignalSignatures>(
+            signal: K,
+            ...args: Media.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2383,8 +2551,14 @@ export namespace EvinceDocument {
         // Signals
 
         connect<K extends keyof Page.SignalSignatures>(signal: K, callback: Page.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Page.SignalSignatures>(signal: K, callback: Page.SignalSignatures[K]): number;
-        emit<K extends keyof Page.SignalSignatures>(signal: K, ...args: Parameters<Page.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Page.SignalSignatures>(
+            signal: K,
+            ...args: Page.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace RenderContext {
@@ -2421,14 +2595,17 @@ export namespace EvinceDocument {
             signal: K,
             callback: RenderContext.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RenderContext.SignalSignatures>(
             signal: K,
             callback: RenderContext.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RenderContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RenderContext.SignalSignatures[K]>
+            ...args: RenderContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2453,7 +2630,17 @@ export namespace EvinceDocument {
 
     namespace TransitionEffect {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::alignment': GObject.Object.Notify;
+            'notify::angle': GObject.Object.Notify;
+            'notify::direction': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::duration-real': GObject.Object.Notify;
+            'notify::duration-real': GObject.Object.Notify;
+            'notify::rectangular': GObject.Object.Notify;
+            'notify::scale': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2506,14 +2693,17 @@ export namespace EvinceDocument {
             signal: K,
             callback: TransitionEffect.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TransitionEffect.SignalSignatures>(
             signal: K,
             callback: TransitionEffect.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TransitionEffect.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TransitionEffect.SignalSignatures[K]>
+            ...args: TransitionEffect.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     type AnnotationAttachmentClass = typeof AnnotationAttachment;

@@ -3704,6 +3704,7 @@ export namespace NetworkManager {
             changed: Changed;
             'secrets-cleared': SecretsCleared;
             'secrets-updated': SecretsUpdated;
+            'notify::path': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -3745,14 +3746,17 @@ export namespace NetworkManager {
             signal: K,
             callback: Connection.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Connection.SignalSignatures>(
             signal: K,
             callback: Connection.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Connection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Connection.SignalSignatures[K]>
+            ...args: Connection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -4122,7 +4126,9 @@ export namespace NetworkManager {
 
     namespace Setting {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4162,14 +4168,17 @@ export namespace NetworkManager {
         // Signals
 
         connect<K extends keyof Setting.SignalSignatures>(signal: K, callback: Setting.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Setting.SignalSignatures>(
             signal: K,
             callback: Setting.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Setting.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Setting.SignalSignatures[K]>
+            ...args: Setting.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -4311,7 +4320,50 @@ export namespace NetworkManager {
 
     namespace Setting8021x {
         // Signal signatures
-        interface SignalSignatures extends Setting.SignalSignatures {}
+        interface SignalSignatures extends Setting.SignalSignatures {
+            'notify::anonymous-identity': GObject.Object.Notify;
+            'notify::anonymous-identity': GObject.Object.Notify;
+            'notify::ca-path': GObject.Object.Notify;
+            'notify::ca-path': GObject.Object.Notify;
+            'notify::identity': GObject.Object.Notify;
+            'notify::pac-file': GObject.Object.Notify;
+            'notify::pac-file': GObject.Object.Notify;
+            'notify::password': GObject.Object.Notify;
+            'notify::password-flags': GObject.Object.Notify;
+            'notify::password-flags': GObject.Object.Notify;
+            'notify::password-raw-flags': GObject.Object.Notify;
+            'notify::password-raw-flags': GObject.Object.Notify;
+            'notify::phase1-fast-provisioning': GObject.Object.Notify;
+            'notify::phase1-fast-provisioning': GObject.Object.Notify;
+            'notify::phase1-peaplabel': GObject.Object.Notify;
+            'notify::phase1-peaplabel': GObject.Object.Notify;
+            'notify::phase1-peapver': GObject.Object.Notify;
+            'notify::phase1-peapver': GObject.Object.Notify;
+            'notify::phase2-auth': GObject.Object.Notify;
+            'notify::phase2-auth': GObject.Object.Notify;
+            'notify::phase2-autheap': GObject.Object.Notify;
+            'notify::phase2-autheap': GObject.Object.Notify;
+            'notify::phase2-ca-path': GObject.Object.Notify;
+            'notify::phase2-ca-path': GObject.Object.Notify;
+            'notify::phase2-private-key-password': GObject.Object.Notify;
+            'notify::phase2-private-key-password': GObject.Object.Notify;
+            'notify::phase2-private-key-password-flags': GObject.Object.Notify;
+            'notify::phase2-private-key-password-flags': GObject.Object.Notify;
+            'notify::phase2-subject-match': GObject.Object.Notify;
+            'notify::phase2-subject-match': GObject.Object.Notify;
+            'notify::pin': GObject.Object.Notify;
+            'notify::pin-flags': GObject.Object.Notify;
+            'notify::pin-flags': GObject.Object.Notify;
+            'notify::private-key-password': GObject.Object.Notify;
+            'notify::private-key-password': GObject.Object.Notify;
+            'notify::private-key-password-flags': GObject.Object.Notify;
+            'notify::private-key-password-flags': GObject.Object.Notify;
+            'notify::subject-match': GObject.Object.Notify;
+            'notify::subject-match': GObject.Object.Notify;
+            'notify::system-ca-certs': GObject.Object.Notify;
+            'notify::system-ca-certs': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4690,14 +4742,17 @@ export namespace NetworkManager {
             signal: K,
             callback: Setting8021x.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Setting8021x.SignalSignatures>(
             signal: K,
             callback: Setting8021x.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Setting8021x.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Setting8021x.SignalSignatures[K]>
+            ...args: Setting8021x.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5168,7 +5223,17 @@ export namespace NetworkManager {
 
     namespace SettingAdsl {
         // Signal signatures
-        interface SignalSignatures extends Setting.SignalSignatures {}
+        interface SignalSignatures extends Setting.SignalSignatures {
+            'notify::encapsulation': GObject.Object.Notify;
+            'notify::password': GObject.Object.Notify;
+            'notify::password-flags': GObject.Object.Notify;
+            'notify::password-flags': GObject.Object.Notify;
+            'notify::protocol': GObject.Object.Notify;
+            'notify::username': GObject.Object.Notify;
+            'notify::vci': GObject.Object.Notify;
+            'notify::vpi': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5244,14 +5309,17 @@ export namespace NetworkManager {
             signal: K,
             callback: SettingAdsl.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingAdsl.SignalSignatures>(
             signal: K,
             callback: SettingAdsl.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingAdsl.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingAdsl.SignalSignatures[K]>
+            ...args: SettingAdsl.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5266,7 +5334,10 @@ export namespace NetworkManager {
 
     namespace SettingBluetooth {
         // Signal signatures
-        interface SignalSignatures extends Setting.SignalSignatures {}
+        interface SignalSignatures extends Setting.SignalSignatures {
+            'notify::type': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5301,14 +5372,17 @@ export namespace NetworkManager {
             signal: K,
             callback: SettingBluetooth.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingBluetooth.SignalSignatures>(
             signal: K,
             callback: SettingBluetooth.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingBluetooth.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingBluetooth.SignalSignatures[K]>
+            ...args: SettingBluetooth.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5328,7 +5402,11 @@ export namespace NetworkManager {
 
     namespace SettingBond {
         // Signal signatures
-        interface SignalSignatures extends Setting.SignalSignatures {}
+        interface SignalSignatures extends Setting.SignalSignatures {
+            'notify::interface-name': GObject.Object.Notify;
+            'notify::interface-name': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5368,14 +5446,17 @@ export namespace NetworkManager {
             signal: K,
             callback: SettingBond.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingBond.SignalSignatures>(
             signal: K,
             callback: SettingBond.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingBond.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingBond.SignalSignatures[K]>
+            ...args: SettingBond.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -5444,7 +5525,21 @@ export namespace NetworkManager {
 
     namespace SettingBridge {
         // Signal signatures
-        interface SignalSignatures extends Setting.SignalSignatures {}
+        interface SignalSignatures extends Setting.SignalSignatures {
+            'notify::ageing-time': GObject.Object.Notify;
+            'notify::ageing-time': GObject.Object.Notify;
+            'notify::forward-delay': GObject.Object.Notify;
+            'notify::forward-delay': GObject.Object.Notify;
+            'notify::hello-time': GObject.Object.Notify;
+            'notify::hello-time': GObject.Object.Notify;
+            'notify::interface-name': GObject.Object.Notify;
+            'notify::interface-name': GObject.Object.Notify;
+            'notify::max-age': GObject.Object.Notify;
+            'notify::max-age': GObject.Object.Notify;
+            'notify::priority': GObject.Object.Notify;
+            'notify::stp': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5546,14 +5641,17 @@ export namespace NetworkManager {
             signal: K,
             callback: SettingBridge.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingBridge.SignalSignatures>(
             signal: K,
             callback: SettingBridge.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingBridge.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingBridge.SignalSignatures[K]>
+            ...args: SettingBridge.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5569,7 +5667,14 @@ export namespace NetworkManager {
 
     namespace SettingBridgePort {
         // Signal signatures
-        interface SignalSignatures extends Setting.SignalSignatures {}
+        interface SignalSignatures extends Setting.SignalSignatures {
+            'notify::hairpin-mode': GObject.Object.Notify;
+            'notify::hairpin-mode': GObject.Object.Notify;
+            'notify::path-cost': GObject.Object.Notify;
+            'notify::path-cost': GObject.Object.Notify;
+            'notify::priority': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5631,14 +5736,17 @@ export namespace NetworkManager {
             signal: K,
             callback: SettingBridgePort.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingBridgePort.SignalSignatures>(
             signal: K,
             callback: SettingBridgePort.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingBridgePort.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingBridgePort.SignalSignatures[K]>
+            ...args: SettingBridgePort.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5649,7 +5757,14 @@ export namespace NetworkManager {
 
     namespace SettingCdma {
         // Signal signatures
-        interface SignalSignatures extends Setting.SignalSignatures {}
+        interface SignalSignatures extends Setting.SignalSignatures {
+            'notify::number': GObject.Object.Notify;
+            'notify::password': GObject.Object.Notify;
+            'notify::password-flags': GObject.Object.Notify;
+            'notify::password-flags': GObject.Object.Notify;
+            'notify::username': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5713,14 +5828,17 @@ export namespace NetworkManager {
             signal: K,
             callback: SettingCdma.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingCdma.SignalSignatures>(
             signal: K,
             callback: SettingCdma.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingCdma.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingCdma.SignalSignatures[K]>
+            ...args: SettingCdma.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5732,7 +5850,24 @@ export namespace NetworkManager {
 
     namespace SettingConnection {
         // Signal signatures
-        interface SignalSignatures extends Setting.SignalSignatures {}
+        interface SignalSignatures extends Setting.SignalSignatures {
+            'notify::autoconnect': GObject.Object.Notify;
+            'notify::gateway-ping-timeout': GObject.Object.Notify;
+            'notify::gateway-ping-timeout': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::interface-name': GObject.Object.Notify;
+            'notify::interface-name': GObject.Object.Notify;
+            'notify::master': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::slave-type': GObject.Object.Notify;
+            'notify::slave-type': GObject.Object.Notify;
+            'notify::timestamp': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+            'notify::uuid': GObject.Object.Notify;
+            'notify::zone': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5912,14 +6047,17 @@ export namespace NetworkManager {
             signal: K,
             callback: SettingConnection.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingConnection.SignalSignatures>(
             signal: K,
             callback: SettingConnection.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingConnection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingConnection.SignalSignatures[K]>
+            ...args: SettingConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -6045,7 +6183,27 @@ export namespace NetworkManager {
 
     namespace SettingDcb {
         // Signal signatures
-        interface SignalSignatures extends Setting.SignalSignatures {}
+        interface SignalSignatures extends Setting.SignalSignatures {
+            'notify::app-fcoe-flags': GObject.Object.Notify;
+            'notify::app-fcoe-flags': GObject.Object.Notify;
+            'notify::app-fcoe-mode': GObject.Object.Notify;
+            'notify::app-fcoe-mode': GObject.Object.Notify;
+            'notify::app-fcoe-priority': GObject.Object.Notify;
+            'notify::app-fcoe-priority': GObject.Object.Notify;
+            'notify::app-fip-flags': GObject.Object.Notify;
+            'notify::app-fip-flags': GObject.Object.Notify;
+            'notify::app-fip-priority': GObject.Object.Notify;
+            'notify::app-fip-priority': GObject.Object.Notify;
+            'notify::app-iscsi-flags': GObject.Object.Notify;
+            'notify::app-iscsi-flags': GObject.Object.Notify;
+            'notify::app-iscsi-priority': GObject.Object.Notify;
+            'notify::app-iscsi-priority': GObject.Object.Notify;
+            'notify::priority-flow-control-flags': GObject.Object.Notify;
+            'notify::priority-flow-control-flags': GObject.Object.Notify;
+            'notify::priority-group-flags': GObject.Object.Notify;
+            'notify::priority-group-flags': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6215,14 +6373,17 @@ export namespace NetworkManager {
             signal: K,
             callback: SettingDcb.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingDcb.SignalSignatures>(
             signal: K,
             callback: SettingDcb.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingDcb.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingDcb.SignalSignatures[K]>
+            ...args: SettingDcb.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -6281,7 +6442,9 @@ export namespace NetworkManager {
 
     namespace SettingGeneric {
         // Signal signatures
-        interface SignalSignatures extends Setting.SignalSignatures {}
+        interface SignalSignatures extends Setting.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6305,19 +6468,41 @@ export namespace NetworkManager {
             signal: K,
             callback: SettingGeneric.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingGeneric.SignalSignatures>(
             signal: K,
             callback: SettingGeneric.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingGeneric.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingGeneric.SignalSignatures[K]>
+            ...args: SettingGeneric.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace SettingGsm {
         // Signal signatures
-        interface SignalSignatures extends Setting.SignalSignatures {}
+        interface SignalSignatures extends Setting.SignalSignatures {
+            'notify::allowed-bands': GObject.Object.Notify;
+            'notify::allowed-bands': GObject.Object.Notify;
+            'notify::apn': GObject.Object.Notify;
+            'notify::home-only': GObject.Object.Notify;
+            'notify::home-only': GObject.Object.Notify;
+            'notify::network-id': GObject.Object.Notify;
+            'notify::network-id': GObject.Object.Notify;
+            'notify::network-type': GObject.Object.Notify;
+            'notify::network-type': GObject.Object.Notify;
+            'notify::number': GObject.Object.Notify;
+            'notify::password': GObject.Object.Notify;
+            'notify::password-flags': GObject.Object.Notify;
+            'notify::password-flags': GObject.Object.Notify;
+            'notify::pin': GObject.Object.Notify;
+            'notify::pin-flags': GObject.Object.Notify;
+            'notify::pin-flags': GObject.Object.Notify;
+            'notify::username': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6492,14 +6677,17 @@ export namespace NetworkManager {
             signal: K,
             callback: SettingGsm.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingGsm.SignalSignatures>(
             signal: K,
             callback: SettingGsm.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingGsm.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingGsm.SignalSignatures[K]>
+            ...args: SettingGsm.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -6518,7 +6706,28 @@ export namespace NetworkManager {
 
     namespace SettingIP4Config {
         // Signal signatures
-        interface SignalSignatures extends Setting.SignalSignatures {}
+        interface SignalSignatures extends Setting.SignalSignatures {
+            'notify::dhcp-client-id': GObject.Object.Notify;
+            'notify::dhcp-client-id': GObject.Object.Notify;
+            'notify::dhcp-hostname': GObject.Object.Notify;
+            'notify::dhcp-hostname': GObject.Object.Notify;
+            'notify::dhcp-send-hostname': GObject.Object.Notify;
+            'notify::dhcp-send-hostname': GObject.Object.Notify;
+            'notify::dhcp-timeout': GObject.Object.Notify;
+            'notify::dhcp-timeout': GObject.Object.Notify;
+            'notify::ignore-auto-dns': GObject.Object.Notify;
+            'notify::ignore-auto-dns': GObject.Object.Notify;
+            'notify::ignore-auto-routes': GObject.Object.Notify;
+            'notify::ignore-auto-routes': GObject.Object.Notify;
+            'notify::may-fail': GObject.Object.Notify;
+            'notify::may-fail': GObject.Object.Notify;
+            'notify::method': GObject.Object.Notify;
+            'notify::never-default': GObject.Object.Notify;
+            'notify::never-default': GObject.Object.Notify;
+            'notify::route-metric': GObject.Object.Notify;
+            'notify::route-metric': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6723,14 +6932,17 @@ export namespace NetworkManager {
             signal: K,
             callback: SettingIP4Config.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingIP4Config.SignalSignatures>(
             signal: K,
             callback: SettingIP4Config.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingIP4Config.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingIP4Config.SignalSignatures[K]>
+            ...args: SettingIP4Config.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -6887,7 +7099,24 @@ export namespace NetworkManager {
 
     namespace SettingIP6Config {
         // Signal signatures
-        interface SignalSignatures extends Setting.SignalSignatures {}
+        interface SignalSignatures extends Setting.SignalSignatures {
+            'notify::dhcp-hostname': GObject.Object.Notify;
+            'notify::dhcp-hostname': GObject.Object.Notify;
+            'notify::ignore-auto-dns': GObject.Object.Notify;
+            'notify::ignore-auto-dns': GObject.Object.Notify;
+            'notify::ignore-auto-routes': GObject.Object.Notify;
+            'notify::ignore-auto-routes': GObject.Object.Notify;
+            'notify::ip6-privacy': GObject.Object.Notify;
+            'notify::ip6-privacy': GObject.Object.Notify;
+            'notify::may-fail': GObject.Object.Notify;
+            'notify::may-fail': GObject.Object.Notify;
+            'notify::method': GObject.Object.Notify;
+            'notify::never-default': GObject.Object.Notify;
+            'notify::never-default': GObject.Object.Notify;
+            'notify::route-metric': GObject.Object.Notify;
+            'notify::route-metric': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -7068,14 +7297,17 @@ export namespace NetworkManager {
             signal: K,
             callback: SettingIP6Config.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingIP6Config.SignalSignatures>(
             signal: K,
             callback: SettingIP6Config.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingIP6Config.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingIP6Config.SignalSignatures[K]>
+            ...args: SettingIP6Config.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -7220,7 +7452,15 @@ export namespace NetworkManager {
 
     namespace SettingInfiniband {
         // Signal signatures
-        interface SignalSignatures extends Setting.SignalSignatures {}
+        interface SignalSignatures extends Setting.SignalSignatures {
+            'notify::mtu': GObject.Object.Notify;
+            'notify::p-key': GObject.Object.Notify;
+            'notify::p-key': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::transport-mode': GObject.Object.Notify;
+            'notify::transport-mode': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -7296,14 +7536,17 @@ export namespace NetworkManager {
             signal: K,
             callback: SettingInfiniband.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingInfiniband.SignalSignatures>(
             signal: K,
             callback: SettingInfiniband.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingInfiniband.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingInfiniband.SignalSignatures[K]>
+            ...args: SettingInfiniband.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -7331,7 +7574,10 @@ export namespace NetworkManager {
 
     namespace SettingOlpcMesh {
         // Signal signatures
-        interface SignalSignatures extends Setting.SignalSignatures {}
+        interface SignalSignatures extends Setting.SignalSignatures {
+            'notify::channel': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -7365,14 +7611,17 @@ export namespace NetworkManager {
             signal: K,
             callback: SettingOlpcMesh.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingOlpcMesh.SignalSignatures>(
             signal: K,
             callback: SettingOlpcMesh.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingOlpcMesh.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingOlpcMesh.SignalSignatures[K]>
+            ...args: SettingOlpcMesh.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -7383,7 +7632,38 @@ export namespace NetworkManager {
 
     namespace SettingPPP {
         // Signal signatures
-        interface SignalSignatures extends Setting.SignalSignatures {}
+        interface SignalSignatures extends Setting.SignalSignatures {
+            'notify::baud': GObject.Object.Notify;
+            'notify::crtscts': GObject.Object.Notify;
+            'notify::lcp-echo-failure': GObject.Object.Notify;
+            'notify::lcp-echo-failure': GObject.Object.Notify;
+            'notify::lcp-echo-interval': GObject.Object.Notify;
+            'notify::lcp-echo-interval': GObject.Object.Notify;
+            'notify::mppe-stateful': GObject.Object.Notify;
+            'notify::mppe-stateful': GObject.Object.Notify;
+            'notify::mru': GObject.Object.Notify;
+            'notify::mtu': GObject.Object.Notify;
+            'notify::no-vj-comp': GObject.Object.Notify;
+            'notify::no-vj-comp': GObject.Object.Notify;
+            'notify::noauth': GObject.Object.Notify;
+            'notify::nobsdcomp': GObject.Object.Notify;
+            'notify::nodeflate': GObject.Object.Notify;
+            'notify::refuse-chap': GObject.Object.Notify;
+            'notify::refuse-chap': GObject.Object.Notify;
+            'notify::refuse-eap': GObject.Object.Notify;
+            'notify::refuse-eap': GObject.Object.Notify;
+            'notify::refuse-mschap': GObject.Object.Notify;
+            'notify::refuse-mschap': GObject.Object.Notify;
+            'notify::refuse-mschapv2': GObject.Object.Notify;
+            'notify::refuse-mschapv2': GObject.Object.Notify;
+            'notify::refuse-pap': GObject.Object.Notify;
+            'notify::refuse-pap': GObject.Object.Notify;
+            'notify::require-mppe': GObject.Object.Notify;
+            'notify::require-mppe': GObject.Object.Notify;
+            'notify::require-mppe-128': GObject.Object.Notify;
+            'notify::require-mppe128': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -7618,14 +7898,17 @@ export namespace NetworkManager {
             signal: K,
             callback: SettingPPP.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingPPP.SignalSignatures>(
             signal: K,
             callback: SettingPPP.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingPPP.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingPPP.SignalSignatures[K]>
+            ...args: SettingPPP.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -7651,7 +7934,14 @@ export namespace NetworkManager {
 
     namespace SettingPPPOE {
         // Signal signatures
-        interface SignalSignatures extends Setting.SignalSignatures {}
+        interface SignalSignatures extends Setting.SignalSignatures {
+            'notify::password': GObject.Object.Notify;
+            'notify::password-flags': GObject.Object.Notify;
+            'notify::password-flags': GObject.Object.Notify;
+            'notify::service': GObject.Object.Notify;
+            'notify::username': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -7712,14 +8002,17 @@ export namespace NetworkManager {
             signal: K,
             callback: SettingPPPOE.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingPPPOE.SignalSignatures>(
             signal: K,
             callback: SettingPPPOE.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingPPPOE.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingPPPOE.SignalSignatures[K]>
+            ...args: SettingPPPOE.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -7731,7 +8024,15 @@ export namespace NetworkManager {
 
     namespace SettingSerial {
         // Signal signatures
-        interface SignalSignatures extends Setting.SignalSignatures {}
+        interface SignalSignatures extends Setting.SignalSignatures {
+            'notify::baud': GObject.Object.Notify;
+            'notify::bits': GObject.Object.Notify;
+            'notify::parity': GObject.Object.Notify;
+            'notify::send-delay': GObject.Object.Notify;
+            'notify::send-delay': GObject.Object.Notify;
+            'notify::stopbits': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -7799,14 +8100,17 @@ export namespace NetworkManager {
             signal: K,
             callback: SettingSerial.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingSerial.SignalSignatures>(
             signal: K,
             callback: SettingSerial.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingSerial.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingSerial.SignalSignatures[K]>
+            ...args: SettingSerial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -7819,7 +8123,12 @@ export namespace NetworkManager {
 
     namespace SettingTeam {
         // Signal signatures
-        interface SignalSignatures extends Setting.SignalSignatures {}
+        interface SignalSignatures extends Setting.SignalSignatures {
+            'notify::config': GObject.Object.Notify;
+            'notify::interface-name': GObject.Object.Notify;
+            'notify::interface-name': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -7868,14 +8177,17 @@ export namespace NetworkManager {
             signal: K,
             callback: SettingTeam.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingTeam.SignalSignatures>(
             signal: K,
             callback: SettingTeam.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingTeam.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingTeam.SignalSignatures[K]>
+            ...args: SettingTeam.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -7885,7 +8197,10 @@ export namespace NetworkManager {
 
     namespace SettingTeamPort {
         // Signal signatures
-        interface SignalSignatures extends Setting.SignalSignatures {}
+        interface SignalSignatures extends Setting.SignalSignatures {
+            'notify::config': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -7922,14 +8237,17 @@ export namespace NetworkManager {
             signal: K,
             callback: SettingTeamPort.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingTeamPort.SignalSignatures>(
             signal: K,
             callback: SettingTeamPort.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingTeamPort.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingTeamPort.SignalSignatures[K]>
+            ...args: SettingTeamPort.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -7938,7 +8256,14 @@ export namespace NetworkManager {
 
     namespace SettingVPN {
         // Signal signatures
-        interface SignalSignatures extends Setting.SignalSignatures {}
+        interface SignalSignatures extends Setting.SignalSignatures {
+            'notify::persistent': GObject.Object.Notify;
+            'notify::service-type': GObject.Object.Notify;
+            'notify::service-type': GObject.Object.Notify;
+            'notify::user-name': GObject.Object.Notify;
+            'notify::user-name': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8012,14 +8337,17 @@ export namespace NetworkManager {
             signal: K,
             callback: SettingVPN.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingVPN.SignalSignatures>(
             signal: K,
             callback: SettingVPN.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingVPN.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingVPN.SignalSignatures[K]>
+            ...args: SettingVPN.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -8102,7 +8430,14 @@ export namespace NetworkManager {
 
     namespace SettingVlan {
         // Signal signatures
-        interface SignalSignatures extends Setting.SignalSignatures {}
+        interface SignalSignatures extends Setting.SignalSignatures {
+            'notify::flags': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::interface-name': GObject.Object.Notify;
+            'notify::interface-name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8177,14 +8512,17 @@ export namespace NetworkManager {
             signal: K,
             callback: SettingVlan.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingVlan.SignalSignatures>(
             signal: K,
             callback: SettingVlan.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingVlan.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingVlan.SignalSignatures[K]>
+            ...args: SettingVlan.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -8271,7 +8609,11 @@ export namespace NetworkManager {
 
     namespace SettingWimax {
         // Signal signatures
-        interface SignalSignatures extends Setting.SignalSignatures {}
+        interface SignalSignatures extends Setting.SignalSignatures {
+            'notify::network-name': GObject.Object.Notify;
+            'notify::network-name': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8313,14 +8655,17 @@ export namespace NetworkManager {
             signal: K,
             callback: SettingWimax.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingWimax.SignalSignatures>(
             signal: K,
             callback: SettingWimax.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingWimax.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingWimax.SignalSignatures[K]>
+            ...args: SettingWimax.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -8340,7 +8685,17 @@ export namespace NetworkManager {
 
     namespace SettingWired {
         // Signal signatures
-        interface SignalSignatures extends Setting.SignalSignatures {}
+        interface SignalSignatures extends Setting.SignalSignatures {
+            'notify::auto-negotiate': GObject.Object.Notify;
+            'notify::auto-negotiate': GObject.Object.Notify;
+            'notify::duplex': GObject.Object.Notify;
+            'notify::mtu': GObject.Object.Notify;
+            'notify::port': GObject.Object.Notify;
+            'notify::s390-nettype': GObject.Object.Notify;
+            'notify::s390-nettype': GObject.Object.Notify;
+            'notify::speed': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8428,14 +8783,17 @@ export namespace NetworkManager {
             signal: K,
             callback: SettingWired.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingWired.SignalSignatures>(
             signal: K,
             callback: SettingWired.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingWired.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingWired.SignalSignatures[K]>
+            ...args: SettingWired.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -8533,7 +8891,19 @@ export namespace NetworkManager {
 
     namespace SettingWireless {
         // Signal signatures
-        interface SignalSignatures extends Setting.SignalSignatures {}
+        interface SignalSignatures extends Setting.SignalSignatures {
+            'notify::band': GObject.Object.Notify;
+            'notify::channel': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::mode': GObject.Object.Notify;
+            'notify::mtu': GObject.Object.Notify;
+            'notify::powersave': GObject.Object.Notify;
+            'notify::rate': GObject.Object.Notify;
+            'notify::security': GObject.Object.Notify;
+            'notify::tx-power': GObject.Object.Notify;
+            'notify::tx-power': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8648,14 +9018,17 @@ export namespace NetworkManager {
             signal: K,
             callback: SettingWireless.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingWireless.SignalSignatures>(
             signal: K,
             callback: SettingWireless.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingWireless.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingWireless.SignalSignatures[K]>
+            ...args: SettingWireless.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -8732,7 +9105,36 @@ export namespace NetworkManager {
 
     namespace SettingWirelessSecurity {
         // Signal signatures
-        interface SignalSignatures extends Setting.SignalSignatures {}
+        interface SignalSignatures extends Setting.SignalSignatures {
+            'notify::auth-alg': GObject.Object.Notify;
+            'notify::auth-alg': GObject.Object.Notify;
+            'notify::key-mgmt': GObject.Object.Notify;
+            'notify::key-mgmt': GObject.Object.Notify;
+            'notify::leap-password': GObject.Object.Notify;
+            'notify::leap-password': GObject.Object.Notify;
+            'notify::leap-password-flags': GObject.Object.Notify;
+            'notify::leap-password-flags': GObject.Object.Notify;
+            'notify::leap-username': GObject.Object.Notify;
+            'notify::leap-username': GObject.Object.Notify;
+            'notify::psk': GObject.Object.Notify;
+            'notify::psk-flags': GObject.Object.Notify;
+            'notify::psk-flags': GObject.Object.Notify;
+            'notify::wep-key-flags': GObject.Object.Notify;
+            'notify::wep-key-flags': GObject.Object.Notify;
+            'notify::wep-key-type': GObject.Object.Notify;
+            'notify::wep-key-type': GObject.Object.Notify;
+            'notify::wep-key0': GObject.Object.Notify;
+            'notify::wep-key0': GObject.Object.Notify;
+            'notify::wep-key1': GObject.Object.Notify;
+            'notify::wep-key1': GObject.Object.Notify;
+            'notify::wep-key2': GObject.Object.Notify;
+            'notify::wep-key2': GObject.Object.Notify;
+            'notify::wep-key3': GObject.Object.Notify;
+            'notify::wep-key3': GObject.Object.Notify;
+            'notify::wep-tx-keyidx': GObject.Object.Notify;
+            'notify::wep-tx-keyidx': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8977,14 +9379,17 @@ export namespace NetworkManager {
             signal: K,
             callback: SettingWirelessSecurity.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingWirelessSecurity.SignalSignatures>(
             signal: K,
             callback: SettingWirelessSecurity.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingWirelessSecurity.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingWirelessSecurity.SignalSignatures[K]>
+            ...args: SettingWirelessSecurity.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

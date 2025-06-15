@@ -1740,14 +1740,17 @@ export namespace GIRepository {
             signal: K,
             callback: Repository.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Repository.SignalSignatures>(
             signal: K,
             callback: Repository.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Repository.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Repository.SignalSignatures[K]>
+            ...args: Repository.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 

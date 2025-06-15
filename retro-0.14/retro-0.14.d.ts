@@ -492,14 +492,17 @@ export namespace Retro {
             signal: K,
             callback: ControllerIterator.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ControllerIterator.SignalSignatures>(
             signal: K,
             callback: ControllerIterator.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ControllerIterator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ControllerIterator.SignalSignatures[K]>
+            ...args: ControllerIterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -522,7 +525,7 @@ export namespace Retro {
         }
 
         interface Message {
-            (_source: Core, message: string, frames: number): boolean;
+            (_source: Core, message: string, frames: number): boolean | void;
         }
 
         interface OptionsSet {
@@ -530,7 +533,7 @@ export namespace Retro {
         }
 
         interface Shutdown {
-            (_source: Core): boolean;
+            (_source: Core): boolean | void;
         }
 
         interface VideoOutput {
@@ -545,6 +548,24 @@ export namespace Retro {
             'options-set': OptionsSet;
             shutdown: Shutdown;
             'video-output': VideoOutput;
+            'notify::api-version': GObject.Object.Notify;
+            'notify::api-version': GObject.Object.Notify;
+            'notify::content-directory': GObject.Object.Notify;
+            'notify::content-directory': GObject.Object.Notify;
+            'notify::filename': GObject.Object.Notify;
+            'notify::frames-per-second': GObject.Object.Notify;
+            'notify::frames-per-second': GObject.Object.Notify;
+            'notify::game-loaded': GObject.Object.Notify;
+            'notify::game-loaded': GObject.Object.Notify;
+            'notify::is-initiated': GObject.Object.Notify;
+            'notify::is-initiated': GObject.Object.Notify;
+            'notify::runahead': GObject.Object.Notify;
+            'notify::save-directory': GObject.Object.Notify;
+            'notify::save-directory': GObject.Object.Notify;
+            'notify::support-no-game': GObject.Object.Notify;
+            'notify::support-no-game': GObject.Object.Notify;
+            'notify::system-directory': GObject.Object.Notify;
+            'notify::system-directory': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -671,8 +692,14 @@ export namespace Retro {
         // Signals
 
         connect<K extends keyof Core.SignalSignatures>(signal: K, callback: Core.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Core.SignalSignatures>(signal: K, callback: Core.SignalSignatures[K]): number;
-        emit<K extends keyof Core.SignalSignatures>(signal: K, ...args: Parameters<Core.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Core.SignalSignatures>(
+            signal: K,
+            ...args: Core.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -871,14 +898,17 @@ export namespace Retro {
             signal: K,
             callback: CoreDescriptor.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CoreDescriptor.SignalSignatures>(
             signal: K,
             callback: CoreDescriptor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CoreDescriptor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CoreDescriptor.SignalSignatures[K]>
+            ...args: CoreDescriptor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -998,7 +1028,85 @@ export namespace Retro {
 
     namespace CoreView {
         // Signal signatures
-        interface SignalSignatures extends Gtk.EventBox.SignalSignatures {}
+        interface SignalSignatures extends Gtk.EventBox.SignalSignatures {
+            'notify::can-grab-pointer': GObject.Object.Notify;
+            'notify::can-grab-pointer': GObject.Object.Notify;
+            'notify::snap-pointer-to-borders': GObject.Object.Notify;
+            'notify::snap-pointer-to-borders': GObject.Object.Notify;
+            'notify::above-child': GObject.Object.Notify;
+            'notify::above-child': GObject.Object.Notify;
+            'notify::visible-window': GObject.Object.Notify;
+            'notify::visible-window': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::child': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::events': GObject.Object.Notify;
+            'notify::expand': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::halign': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::hexpand': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::margin': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::sensitive': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::valign': GObject.Object.Notify;
+            'notify::vexpand': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::window': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1038,14 +1146,17 @@ export namespace Retro {
         // Signals
 
         connect<K extends keyof CoreView.SignalSignatures>(signal: K, callback: CoreView.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CoreView.SignalSignatures>(
             signal: K,
             callback: CoreView.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CoreView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CoreView.SignalSignatures[K]>
+            ...args: CoreView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1612,14 +1723,17 @@ export namespace Retro {
             signal: K,
             callback: KeyJoypadMapping.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof KeyJoypadMapping.SignalSignatures>(
             signal: K,
             callback: KeyJoypadMapping.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof KeyJoypadMapping.SignalSignatures>(
             signal: K,
-            ...args: Parameters<KeyJoypadMapping.SignalSignatures[K]>
+            ...args: KeyJoypadMapping.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1639,7 +1753,11 @@ export namespace Retro {
 
     namespace MainLoop {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::core': GObject.Object.Notify;
+            'notify::speed-rate': GObject.Object.Notify;
+            'notify::speed-rate': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1673,14 +1791,17 @@ export namespace Retro {
         // Signals
 
         connect<K extends keyof MainLoop.SignalSignatures>(signal: K, callback: MainLoop.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MainLoop.SignalSignatures>(
             signal: K,
             callback: MainLoop.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MainLoop.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MainLoop.SignalSignatures[K]>
+            ...args: MainLoop.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1744,14 +1865,17 @@ export namespace Retro {
             signal: K,
             callback: ModuleIterator.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ModuleIterator.SignalSignatures>(
             signal: K,
             callback: ModuleIterator.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ModuleIterator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ModuleIterator.SignalSignatures[K]>
+            ...args: ModuleIterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1794,14 +1918,17 @@ export namespace Retro {
             signal: K,
             callback: ModuleQuery.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ModuleQuery.SignalSignatures>(
             signal: K,
             callback: ModuleQuery.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ModuleQuery.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ModuleQuery.SignalSignatures[K]>
+            ...args: ModuleQuery.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1841,8 +1968,14 @@ export namespace Retro {
         // Signals
 
         connect<K extends keyof Option.SignalSignatures>(signal: K, callback: Option.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Option.SignalSignatures>(signal: K, callback: Option.SignalSignatures[K]): number;
-        emit<K extends keyof Option.SignalSignatures>(signal: K, ...args: Parameters<Option.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Option.SignalSignatures>(
+            signal: K,
+            ...args: Option.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1898,14 +2031,17 @@ export namespace Retro {
             signal: K,
             callback: OptionIterator.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OptionIterator.SignalSignatures>(
             signal: K,
             callback: OptionIterator.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OptionIterator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OptionIterator.SignalSignatures[K]>
+            ...args: OptionIterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

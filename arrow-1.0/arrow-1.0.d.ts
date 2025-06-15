@@ -797,7 +797,9 @@ export namespace Arrow {
     function s3_is_enabled(): boolean;
     namespace AggregateNodeOptions {
         // Signal signatures
-        interface SignalSignatures extends ExecuteNodeOptions.SignalSignatures {}
+        interface SignalSignatures extends ExecuteNodeOptions.SignalSignatures {
+            'notify::options': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -821,19 +823,27 @@ export namespace Arrow {
             signal: K,
             callback: AggregateNodeOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AggregateNodeOptions.SignalSignatures>(
             signal: K,
             callback: AggregateNodeOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AggregateNodeOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AggregateNodeOptions.SignalSignatures[K]>
+            ...args: AggregateNodeOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Aggregation {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::function': GObject.Object.Notify;
+            'notify::input': GObject.Object.Notify;
+            'notify::options': GObject.Object.Notify;
+            'notify::output': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -881,19 +891,31 @@ export namespace Arrow {
             signal: K,
             callback: Aggregation.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Aggregation.SignalSignatures>(
             signal: K,
             callback: Aggregation.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Aggregation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Aggregation.SignalSignatures[K]>
+            ...args: Aggregation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Array {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::array': GObject.Object.Notify;
+            'notify::buffer1': GObject.Object.Notify;
+            'notify::buffer2': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -932,8 +954,14 @@ export namespace Arrow {
         // Signals
 
         connect<K extends keyof Array.SignalSignatures>(signal: K, callback: Array.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Array.SignalSignatures>(signal: K, callback: Array.SignalSignatures[K]): number;
-        emit<K extends keyof Array.SignalSignatures>(signal: K, ...args: Parameters<Array.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Array.SignalSignatures>(
+            signal: K,
+            ...args: Array.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -982,7 +1010,10 @@ export namespace Arrow {
 
     namespace ArrayBuilder {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::array-builder': GObject.Object.Notify;
+            'notify::array-builder': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1012,14 +1043,17 @@ export namespace Arrow {
             signal: K,
             callback: ArrayBuilder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ArrayBuilder.SignalSignatures>(
             signal: K,
             callback: ArrayBuilder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ArrayBuilder.SignalSignatures[K]>
+            ...args: ArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1054,7 +1088,10 @@ export namespace Arrow {
 
     namespace ArrayDatum {
         // Signal signatures
-        interface SignalSignatures extends Datum.SignalSignatures {}
+        interface SignalSignatures extends Datum.SignalSignatures {
+            'notify::value': GObject.Object.Notify;
+            'notify::datum': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1084,19 +1121,24 @@ export namespace Arrow {
             signal: K,
             callback: ArrayDatum.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ArrayDatum.SignalSignatures>(
             signal: K,
             callback: ArrayDatum.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ArrayDatum.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ArrayDatum.SignalSignatures[K]>
+            ...args: ArrayDatum.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace ArraySortOptions {
         // Signal signatures
-        interface SignalSignatures extends FunctionOptions.SignalSignatures {}
+        interface SignalSignatures extends FunctionOptions.SignalSignatures {
+            'notify::order': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1130,14 +1172,17 @@ export namespace Arrow {
             signal: K,
             callback: ArraySortOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ArraySortOptions.SignalSignatures>(
             signal: K,
             callback: ArraySortOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ArraySortOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ArraySortOptions.SignalSignatures[K]>
+            ...args: ArraySortOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1148,7 +1193,12 @@ export namespace Arrow {
 
     namespace BaseBinaryScalar {
         // Signal signatures
-        interface SignalSignatures extends Scalar.SignalSignatures {}
+        interface SignalSignatures extends Scalar.SignalSignatures {
+            'notify::value': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::scalar': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1179,14 +1229,17 @@ export namespace Arrow {
             signal: K,
             callback: BaseBinaryScalar.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BaseBinaryScalar.SignalSignatures>(
             signal: K,
             callback: BaseBinaryScalar.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BaseBinaryScalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BaseBinaryScalar.SignalSignatures[K]>
+            ...args: BaseBinaryScalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1195,7 +1248,12 @@ export namespace Arrow {
 
     namespace BaseListScalar {
         // Signal signatures
-        interface SignalSignatures extends Scalar.SignalSignatures {}
+        interface SignalSignatures extends Scalar.SignalSignatures {
+            'notify::value': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::scalar': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1226,14 +1284,17 @@ export namespace Arrow {
             signal: K,
             callback: BaseListScalar.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BaseListScalar.SignalSignatures>(
             signal: K,
             callback: BaseListScalar.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BaseListScalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BaseListScalar.SignalSignatures[K]>
+            ...args: BaseListScalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1242,7 +1303,16 @@ export namespace Arrow {
 
     namespace BinaryArray {
         // Signal signatures
-        interface SignalSignatures extends Array.SignalSignatures {}
+        interface SignalSignatures extends Array.SignalSignatures {
+            'notify::array': GObject.Object.Notify;
+            'notify::buffer1': GObject.Object.Notify;
+            'notify::buffer2': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1272,14 +1342,17 @@ export namespace Arrow {
             signal: K,
             callback: BinaryArray.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BinaryArray.SignalSignatures>(
             signal: K,
             callback: BinaryArray.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BinaryArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BinaryArray.SignalSignatures[K]>
+            ...args: BinaryArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1291,7 +1364,10 @@ export namespace Arrow {
 
     namespace BinaryArrayBuilder {
         // Signal signatures
-        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {
+            'notify::array-builder': GObject.Object.Notify;
+            'notify::array-builder': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1315,14 +1391,17 @@ export namespace Arrow {
             signal: K,
             callback: BinaryArrayBuilder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BinaryArrayBuilder.SignalSignatures>(
             signal: K,
             callback: BinaryArrayBuilder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BinaryArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BinaryArrayBuilder.SignalSignatures[K]>
+            ...args: BinaryArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1341,7 +1420,10 @@ export namespace Arrow {
 
     namespace BinaryDataType {
         // Signal signatures
-        interface SignalSignatures extends DataType.SignalSignatures {}
+        interface SignalSignatures extends DataType.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1365,19 +1447,25 @@ export namespace Arrow {
             signal: K,
             callback: BinaryDataType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BinaryDataType.SignalSignatures>(
             signal: K,
             callback: BinaryDataType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BinaryDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BinaryDataType.SignalSignatures[K]>
+            ...args: BinaryDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace BinaryDictionaryArrayBuilder {
         // Signal signatures
-        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {
+            'notify::array-builder': GObject.Object.Notify;
+            'notify::array-builder': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1401,14 +1489,17 @@ export namespace Arrow {
             signal: K,
             callback: BinaryDictionaryArrayBuilder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BinaryDictionaryArrayBuilder.SignalSignatures>(
             signal: K,
             callback: BinaryDictionaryArrayBuilder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BinaryDictionaryArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BinaryDictionaryArrayBuilder.SignalSignatures[K]>
+            ...args: BinaryDictionaryArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1433,7 +1524,12 @@ export namespace Arrow {
 
     namespace BinaryScalar {
         // Signal signatures
-        interface SignalSignatures extends BaseBinaryScalar.SignalSignatures {}
+        interface SignalSignatures extends BaseBinaryScalar.SignalSignatures {
+            'notify::value': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::scalar': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1457,19 +1553,31 @@ export namespace Arrow {
             signal: K,
             callback: BinaryScalar.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BinaryScalar.SignalSignatures>(
             signal: K,
             callback: BinaryScalar.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BinaryScalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BinaryScalar.SignalSignatures[K]>
+            ...args: BinaryScalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace BooleanArray {
         // Signal signatures
-        interface SignalSignatures extends PrimitiveArray.SignalSignatures {}
+        interface SignalSignatures extends PrimitiveArray.SignalSignatures {
+            'notify::array': GObject.Object.Notify;
+            'notify::buffer1': GObject.Object.Notify;
+            'notify::buffer2': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1493,14 +1601,17 @@ export namespace Arrow {
             signal: K,
             callback: BooleanArray.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BooleanArray.SignalSignatures>(
             signal: K,
             callback: BooleanArray.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BooleanArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BooleanArray.SignalSignatures[K]>
+            ...args: BooleanArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1514,7 +1625,10 @@ export namespace Arrow {
 
     namespace BooleanArrayBuilder {
         // Signal signatures
-        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {
+            'notify::array-builder': GObject.Object.Notify;
+            'notify::array-builder': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1538,14 +1652,17 @@ export namespace Arrow {
             signal: K,
             callback: BooleanArrayBuilder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BooleanArrayBuilder.SignalSignatures>(
             signal: K,
             callback: BooleanArrayBuilder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BooleanArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BooleanArrayBuilder.SignalSignatures[K]>
+            ...args: BooleanArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1563,7 +1680,10 @@ export namespace Arrow {
 
     namespace BooleanDataType {
         // Signal signatures
-        interface SignalSignatures extends FixedWidthDataType.SignalSignatures {}
+        interface SignalSignatures extends FixedWidthDataType.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1587,19 +1707,26 @@ export namespace Arrow {
             signal: K,
             callback: BooleanDataType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BooleanDataType.SignalSignatures>(
             signal: K,
             callback: BooleanDataType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BooleanDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BooleanDataType.SignalSignatures[K]>
+            ...args: BooleanDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace BooleanScalar {
         // Signal signatures
-        interface SignalSignatures extends Scalar.SignalSignatures {}
+        interface SignalSignatures extends Scalar.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::scalar': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1623,14 +1750,17 @@ export namespace Arrow {
             signal: K,
             callback: BooleanScalar.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BooleanScalar.SignalSignatures>(
             signal: K,
             callback: BooleanScalar.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BooleanScalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BooleanScalar.SignalSignatures[K]>
+            ...args: BooleanScalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1639,7 +1769,11 @@ export namespace Arrow {
 
     namespace Buffer {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::buffer': GObject.Object.Notify;
+            'notify::data': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1672,8 +1806,14 @@ export namespace Arrow {
         // Signals
 
         connect<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
-        emit<K extends keyof Buffer.SignalSignatures>(signal: K, ...args: Parameters<Buffer.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Buffer.SignalSignatures>(
+            signal: K,
+            ...args: Buffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1693,7 +1833,11 @@ export namespace Arrow {
 
     namespace BufferInputStream {
         // Signal signatures
-        interface SignalSignatures extends SeekableInputStream.SignalSignatures {}
+        interface SignalSignatures extends SeekableInputStream.SignalSignatures {
+            'notify::buffer': GObject.Object.Notify;
+            'notify::input-stream': GObject.Object.Notify;
+            'notify::input-stream': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1726,14 +1870,17 @@ export namespace Arrow {
             signal: K,
             callback: BufferInputStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BufferInputStream.SignalSignatures>(
             signal: K,
             callback: BufferInputStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BufferInputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BufferInputStream.SignalSignatures[K]>
+            ...args: BufferInputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2183,7 +2330,10 @@ export namespace Arrow {
 
     namespace BufferOutputStream {
         // Signal signatures
-        interface SignalSignatures extends OutputStream.SignalSignatures {}
+        interface SignalSignatures extends OutputStream.SignalSignatures {
+            'notify::output-stream': GObject.Object.Notify;
+            'notify::output-stream': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2210,14 +2360,17 @@ export namespace Arrow {
             signal: K,
             callback: BufferOutputStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BufferOutputStream.SignalSignatures>(
             signal: K,
             callback: BufferOutputStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BufferOutputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BufferOutputStream.SignalSignatures[K]>
+            ...args: BufferOutputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         close(): boolean;
@@ -2673,7 +2826,35 @@ export namespace Arrow {
 
     namespace CSVReadOptions {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::allow-newlines-in-values': GObject.Object.Notify;
+            'notify::allow-newlines-in-values': GObject.Object.Notify;
+            'notify::allow-null-strings': GObject.Object.Notify;
+            'notify::allow-null-strings': GObject.Object.Notify;
+            'notify::block-size': GObject.Object.Notify;
+            'notify::block-size': GObject.Object.Notify;
+            'notify::check-utf8': GObject.Object.Notify;
+            'notify::check-utf8': GObject.Object.Notify;
+            'notify::delimiter': GObject.Object.Notify;
+            'notify::escape-character': GObject.Object.Notify;
+            'notify::escape-character': GObject.Object.Notify;
+            'notify::generate-column-names': GObject.Object.Notify;
+            'notify::generate-column-names': GObject.Object.Notify;
+            'notify::ignore-empty-lines': GObject.Object.Notify;
+            'notify::ignore-empty-lines': GObject.Object.Notify;
+            'notify::is-double-quoted': GObject.Object.Notify;
+            'notify::is-double-quoted': GObject.Object.Notify;
+            'notify::is-escaped': GObject.Object.Notify;
+            'notify::is-escaped': GObject.Object.Notify;
+            'notify::is-quoted': GObject.Object.Notify;
+            'notify::is-quoted': GObject.Object.Notify;
+            'notify::n-skip-rows': GObject.Object.Notify;
+            'notify::n-skip-rows': GObject.Object.Notify;
+            'notify::quote-character': GObject.Object.Notify;
+            'notify::quote-character': GObject.Object.Notify;
+            'notify::use-threads': GObject.Object.Notify;
+            'notify::use-threads': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2871,14 +3052,17 @@ export namespace Arrow {
             signal: K,
             callback: CSVReadOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CSVReadOptions.SignalSignatures>(
             signal: K,
             callback: CSVReadOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CSVReadOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CSVReadOptions.SignalSignatures[K]>
+            ...args: CSVReadOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2913,7 +3097,11 @@ export namespace Arrow {
 
     namespace CSVReader {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::csv-table-reader': GObject.Object.Notify;
+            'notify::csv-table-reader': GObject.Object.Notify;
+            'notify::input': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2944,14 +3132,17 @@ export namespace Arrow {
         // Signals
 
         connect<K extends keyof CSVReader.SignalSignatures>(signal: K, callback: CSVReader.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CSVReader.SignalSignatures>(
             signal: K,
             callback: CSVReader.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CSVReader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CSVReader.SignalSignatures[K]>
+            ...args: CSVReader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2984,19 +3175,37 @@ export namespace Arrow {
             signal: K,
             callback: CallExpression.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CallExpression.SignalSignatures>(
             signal: K,
             callback: CallExpression.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CallExpression.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CallExpression.SignalSignatures[K]>
+            ...args: CallExpression.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace CastOptions {
         // Signal signatures
-        interface SignalSignatures extends FunctionOptions.SignalSignatures {}
+        interface SignalSignatures extends FunctionOptions.SignalSignatures {
+            'notify::allow-decimal-truncate': GObject.Object.Notify;
+            'notify::allow-decimal-truncate': GObject.Object.Notify;
+            'notify::allow-float-truncate': GObject.Object.Notify;
+            'notify::allow-float-truncate': GObject.Object.Notify;
+            'notify::allow-int-overflow': GObject.Object.Notify;
+            'notify::allow-int-overflow': GObject.Object.Notify;
+            'notify::allow-invalid-utf8': GObject.Object.Notify;
+            'notify::allow-invalid-utf8': GObject.Object.Notify;
+            'notify::allow-time-overflow': GObject.Object.Notify;
+            'notify::allow-time-overflow': GObject.Object.Notify;
+            'notify::allow-time-truncate': GObject.Object.Notify;
+            'notify::allow-time-truncate': GObject.Object.Notify;
+            'notify::to-data-type': GObject.Object.Notify;
+            'notify::to-data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3108,19 +3317,27 @@ export namespace Arrow {
             signal: K,
             callback: CastOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CastOptions.SignalSignatures>(
             signal: K,
             callback: CastOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CastOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CastOptions.SignalSignatures[K]>
+            ...args: CastOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace ChunkedArray {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::chunked-array': GObject.Object.Notify;
+            'notify::chunked-array': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3158,14 +3375,17 @@ export namespace Arrow {
             signal: K,
             callback: ChunkedArray.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ChunkedArray.SignalSignatures>(
             signal: K,
             callback: ChunkedArray.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ChunkedArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ChunkedArray.SignalSignatures[K]>
+            ...args: ChunkedArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3190,7 +3410,10 @@ export namespace Arrow {
 
     namespace ChunkedArrayDatum {
         // Signal signatures
-        interface SignalSignatures extends Datum.SignalSignatures {}
+        interface SignalSignatures extends Datum.SignalSignatures {
+            'notify::value': GObject.Object.Notify;
+            'notify::datum': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3220,19 +3443,24 @@ export namespace Arrow {
             signal: K,
             callback: ChunkedArrayDatum.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ChunkedArrayDatum.SignalSignatures>(
             signal: K,
             callback: ChunkedArrayDatum.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ChunkedArrayDatum.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ChunkedArrayDatum.SignalSignatures[K]>
+            ...args: ChunkedArrayDatum.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Codec {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::codec': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3259,8 +3487,14 @@ export namespace Arrow {
         // Signals
 
         connect<K extends keyof Codec.SignalSignatures>(signal: K, callback: Codec.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Codec.SignalSignatures>(signal: K, callback: Codec.SignalSignatures[K]): number;
-        emit<K extends keyof Codec.SignalSignatures>(signal: K, ...args: Parameters<Codec.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Codec.SignalSignatures>(
+            signal: K,
+            ...args: Codec.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3271,7 +3505,12 @@ export namespace Arrow {
 
     namespace CompressedInputStream {
         // Signal signatures
-        interface SignalSignatures extends InputStream.SignalSignatures {}
+        interface SignalSignatures extends InputStream.SignalSignatures {
+            'notify::codec': GObject.Object.Notify;
+            'notify::raw': GObject.Object.Notify;
+            'notify::input-stream': GObject.Object.Notify;
+            'notify::input-stream': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3306,14 +3545,17 @@ export namespace Arrow {
             signal: K,
             callback: CompressedInputStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CompressedInputStream.SignalSignatures>(
             signal: K,
             callback: CompressedInputStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CompressedInputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CompressedInputStream.SignalSignatures[K]>
+            ...args: CompressedInputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         close(): boolean;
@@ -3769,7 +4011,12 @@ export namespace Arrow {
 
     namespace CompressedOutputStream {
         // Signal signatures
-        interface SignalSignatures extends OutputStream.SignalSignatures {}
+        interface SignalSignatures extends OutputStream.SignalSignatures {
+            'notify::codec': GObject.Object.Notify;
+            'notify::raw': GObject.Object.Notify;
+            'notify::output-stream': GObject.Object.Notify;
+            'notify::output-stream': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3804,14 +4051,17 @@ export namespace Arrow {
             signal: K,
             callback: CompressedOutputStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CompressedOutputStream.SignalSignatures>(
             signal: K,
             callback: CompressedOutputStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CompressedOutputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CompressedOutputStream.SignalSignatures[K]>
+            ...args: CompressedOutputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         close(): boolean;
@@ -4267,7 +4517,9 @@ export namespace Arrow {
 
     namespace CountOptions {
         // Signal signatures
-        interface SignalSignatures extends FunctionOptions.SignalSignatures {}
+        interface SignalSignatures extends FunctionOptions.SignalSignatures {
+            'notify::mode': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4298,19 +4550,25 @@ export namespace Arrow {
             signal: K,
             callback: CountOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CountOptions.SignalSignatures>(
             signal: K,
             callback: CountOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CountOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CountOptions.SignalSignatures[K]>
+            ...args: CountOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace DataType {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4337,14 +4595,17 @@ export namespace Arrow {
         // Signals
 
         connect<K extends keyof DataType.SignalSignatures>(signal: K, callback: DataType.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DataType.SignalSignatures>(
             signal: K,
             callback: DataType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataType.SignalSignatures[K]>
+            ...args: DataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -4361,7 +4622,16 @@ export namespace Arrow {
 
     namespace Date32Array {
         // Signal signatures
-        interface SignalSignatures extends NumericArray.SignalSignatures {}
+        interface SignalSignatures extends NumericArray.SignalSignatures {
+            'notify::array': GObject.Object.Notify;
+            'notify::buffer1': GObject.Object.Notify;
+            'notify::buffer2': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4385,14 +4655,17 @@ export namespace Arrow {
             signal: K,
             callback: Date32Array.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Date32Array.SignalSignatures>(
             signal: K,
             callback: Date32Array.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Date32Array.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Date32Array.SignalSignatures[K]>
+            ...args: Date32Array.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4402,7 +4675,10 @@ export namespace Arrow {
 
     namespace Date32ArrayBuilder {
         // Signal signatures
-        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {
+            'notify::array-builder': GObject.Object.Notify;
+            'notify::array-builder': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4426,14 +4702,17 @@ export namespace Arrow {
             signal: K,
             callback: Date32ArrayBuilder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Date32ArrayBuilder.SignalSignatures>(
             signal: K,
             callback: Date32ArrayBuilder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Date32ArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Date32ArrayBuilder.SignalSignatures[K]>
+            ...args: Date32ArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4451,7 +4730,10 @@ export namespace Arrow {
 
     namespace Date32DataType {
         // Signal signatures
-        interface SignalSignatures extends TemporalDataType.SignalSignatures {}
+        interface SignalSignatures extends TemporalDataType.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4475,19 +4757,26 @@ export namespace Arrow {
             signal: K,
             callback: Date32DataType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Date32DataType.SignalSignatures>(
             signal: K,
             callback: Date32DataType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Date32DataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Date32DataType.SignalSignatures[K]>
+            ...args: Date32DataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Date32Scalar {
         // Signal signatures
-        interface SignalSignatures extends Scalar.SignalSignatures {}
+        interface SignalSignatures extends Scalar.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::scalar': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4511,14 +4800,17 @@ export namespace Arrow {
             signal: K,
             callback: Date32Scalar.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Date32Scalar.SignalSignatures>(
             signal: K,
             callback: Date32Scalar.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Date32Scalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Date32Scalar.SignalSignatures[K]>
+            ...args: Date32Scalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4527,7 +4819,16 @@ export namespace Arrow {
 
     namespace Date64Array {
         // Signal signatures
-        interface SignalSignatures extends NumericArray.SignalSignatures {}
+        interface SignalSignatures extends NumericArray.SignalSignatures {
+            'notify::array': GObject.Object.Notify;
+            'notify::buffer1': GObject.Object.Notify;
+            'notify::buffer2': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4551,14 +4852,17 @@ export namespace Arrow {
             signal: K,
             callback: Date64Array.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Date64Array.SignalSignatures>(
             signal: K,
             callback: Date64Array.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Date64Array.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Date64Array.SignalSignatures[K]>
+            ...args: Date64Array.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4568,7 +4872,10 @@ export namespace Arrow {
 
     namespace Date64ArrayBuilder {
         // Signal signatures
-        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {
+            'notify::array-builder': GObject.Object.Notify;
+            'notify::array-builder': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4592,14 +4899,17 @@ export namespace Arrow {
             signal: K,
             callback: Date64ArrayBuilder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Date64ArrayBuilder.SignalSignatures>(
             signal: K,
             callback: Date64ArrayBuilder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Date64ArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Date64ArrayBuilder.SignalSignatures[K]>
+            ...args: Date64ArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4617,7 +4927,10 @@ export namespace Arrow {
 
     namespace Date64DataType {
         // Signal signatures
-        interface SignalSignatures extends TemporalDataType.SignalSignatures {}
+        interface SignalSignatures extends TemporalDataType.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4641,19 +4954,26 @@ export namespace Arrow {
             signal: K,
             callback: Date64DataType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Date64DataType.SignalSignatures>(
             signal: K,
             callback: Date64DataType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Date64DataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Date64DataType.SignalSignatures[K]>
+            ...args: Date64DataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Date64Scalar {
         // Signal signatures
-        interface SignalSignatures extends Scalar.SignalSignatures {}
+        interface SignalSignatures extends Scalar.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::scalar': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4677,14 +4997,17 @@ export namespace Arrow {
             signal: K,
             callback: Date64Scalar.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Date64Scalar.SignalSignatures>(
             signal: K,
             callback: Date64Scalar.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Date64Scalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Date64Scalar.SignalSignatures[K]>
+            ...args: Date64Scalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4693,7 +5016,9 @@ export namespace Arrow {
 
     namespace Datum {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::datum': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4718,8 +5043,14 @@ export namespace Arrow {
         // Signals
 
         connect<K extends keyof Datum.SignalSignatures>(signal: K, callback: Datum.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Datum.SignalSignatures>(signal: K, callback: Datum.SignalSignatures[K]): number;
-        emit<K extends keyof Datum.SignalSignatures>(signal: K, ...args: Parameters<Datum.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Datum.SignalSignatures>(
+            signal: K,
+            ...args: Datum.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4733,7 +5064,10 @@ export namespace Arrow {
 
     namespace DayMillisecond {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::day': GObject.Object.Notify;
+            'notify::millisecond': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4773,14 +5107,17 @@ export namespace Arrow {
             signal: K,
             callback: DayMillisecond.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DayMillisecond.SignalSignatures>(
             signal: K,
             callback: DayMillisecond.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DayMillisecond.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DayMillisecond.SignalSignatures[K]>
+            ...args: DayMillisecond.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4790,7 +5127,16 @@ export namespace Arrow {
 
     namespace DayTimeIntervalArray {
         // Signal signatures
-        interface SignalSignatures extends PrimitiveArray.SignalSignatures {}
+        interface SignalSignatures extends PrimitiveArray.SignalSignatures {
+            'notify::array': GObject.Object.Notify;
+            'notify::buffer1': GObject.Object.Notify;
+            'notify::buffer2': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4814,14 +5160,17 @@ export namespace Arrow {
             signal: K,
             callback: DayTimeIntervalArray.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DayTimeIntervalArray.SignalSignatures>(
             signal: K,
             callback: DayTimeIntervalArray.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DayTimeIntervalArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DayTimeIntervalArray.SignalSignatures[K]>
+            ...args: DayTimeIntervalArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4831,7 +5180,10 @@ export namespace Arrow {
 
     namespace DayTimeIntervalArrayBuilder {
         // Signal signatures
-        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {
+            'notify::array-builder': GObject.Object.Notify;
+            'notify::array-builder': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4855,14 +5207,17 @@ export namespace Arrow {
             signal: K,
             callback: DayTimeIntervalArrayBuilder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DayTimeIntervalArrayBuilder.SignalSignatures>(
             signal: K,
             callback: DayTimeIntervalArrayBuilder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DayTimeIntervalArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DayTimeIntervalArrayBuilder.SignalSignatures[K]>
+            ...args: DayTimeIntervalArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4879,7 +5234,10 @@ export namespace Arrow {
 
     namespace DayTimeIntervalDataType {
         // Signal signatures
-        interface SignalSignatures extends IntervalDataType.SignalSignatures {}
+        interface SignalSignatures extends IntervalDataType.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4903,19 +5261,26 @@ export namespace Arrow {
             signal: K,
             callback: DayTimeIntervalDataType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DayTimeIntervalDataType.SignalSignatures>(
             signal: K,
             callback: DayTimeIntervalDataType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DayTimeIntervalDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DayTimeIntervalDataType.SignalSignatures[K]>
+            ...args: DayTimeIntervalDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace DayTimeIntervalScalar {
         // Signal signatures
-        interface SignalSignatures extends Scalar.SignalSignatures {}
+        interface SignalSignatures extends Scalar.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::scalar': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4939,14 +5304,17 @@ export namespace Arrow {
             signal: K,
             callback: DayTimeIntervalScalar.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DayTimeIntervalScalar.SignalSignatures>(
             signal: K,
             callback: DayTimeIntervalScalar.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DayTimeIntervalScalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DayTimeIntervalScalar.SignalSignatures[K]>
+            ...args: DayTimeIntervalScalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4955,7 +5323,9 @@ export namespace Arrow {
 
     namespace Decimal128 {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::decimal128': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4987,14 +5357,17 @@ export namespace Arrow {
             signal: K,
             callback: Decimal128.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Decimal128.SignalSignatures>(
             signal: K,
             callback: Decimal128.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Decimal128.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Decimal128.SignalSignatures[K]>
+            ...args: Decimal128.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5026,7 +5399,16 @@ export namespace Arrow {
 
     namespace Decimal128Array {
         // Signal signatures
-        interface SignalSignatures extends FixedSizeBinaryArray.SignalSignatures {}
+        interface SignalSignatures extends FixedSizeBinaryArray.SignalSignatures {
+            'notify::array': GObject.Object.Notify;
+            'notify::buffer1': GObject.Object.Notify;
+            'notify::buffer2': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5048,14 +5430,17 @@ export namespace Arrow {
             signal: K,
             callback: Decimal128Array.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Decimal128Array.SignalSignatures>(
             signal: K,
             callback: Decimal128Array.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Decimal128Array.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Decimal128Array.SignalSignatures[K]>
+            ...args: Decimal128Array.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5067,7 +5452,10 @@ export namespace Arrow {
 
     namespace Decimal128ArrayBuilder {
         // Signal signatures
-        interface SignalSignatures extends FixedSizeBinaryArrayBuilder.SignalSignatures {}
+        interface SignalSignatures extends FixedSizeBinaryArrayBuilder.SignalSignatures {
+            'notify::array-builder': GObject.Object.Notify;
+            'notify::array-builder': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5091,14 +5479,17 @@ export namespace Arrow {
             signal: K,
             callback: Decimal128ArrayBuilder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Decimal128ArrayBuilder.SignalSignatures>(
             signal: K,
             callback: Decimal128ArrayBuilder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Decimal128ArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Decimal128ArrayBuilder.SignalSignatures[K]>
+            ...args: Decimal128ArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5120,7 +5511,10 @@ export namespace Arrow {
 
     namespace Decimal128DataType {
         // Signal signatures
-        interface SignalSignatures extends DecimalDataType.SignalSignatures {}
+        interface SignalSignatures extends DecimalDataType.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5147,14 +5541,17 @@ export namespace Arrow {
             signal: K,
             callback: Decimal128DataType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Decimal128DataType.SignalSignatures>(
             signal: K,
             callback: Decimal128DataType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Decimal128DataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Decimal128DataType.SignalSignatures[K]>
+            ...args: Decimal128DataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -5163,7 +5560,12 @@ export namespace Arrow {
 
     namespace Decimal128Scalar {
         // Signal signatures
-        interface SignalSignatures extends Scalar.SignalSignatures {}
+        interface SignalSignatures extends Scalar.SignalSignatures {
+            'notify::value': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::scalar': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5196,14 +5598,17 @@ export namespace Arrow {
             signal: K,
             callback: Decimal128Scalar.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Decimal128Scalar.SignalSignatures>(
             signal: K,
             callback: Decimal128Scalar.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Decimal128Scalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Decimal128Scalar.SignalSignatures[K]>
+            ...args: Decimal128Scalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5212,7 +5617,9 @@ export namespace Arrow {
 
     namespace Decimal256 {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::decimal256': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5244,14 +5651,17 @@ export namespace Arrow {
             signal: K,
             callback: Decimal256.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Decimal256.SignalSignatures>(
             signal: K,
             callback: Decimal256.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Decimal256.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Decimal256.SignalSignatures[K]>
+            ...args: Decimal256.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5281,7 +5691,16 @@ export namespace Arrow {
 
     namespace Decimal256Array {
         // Signal signatures
-        interface SignalSignatures extends FixedSizeBinaryArray.SignalSignatures {}
+        interface SignalSignatures extends FixedSizeBinaryArray.SignalSignatures {
+            'notify::array': GObject.Object.Notify;
+            'notify::buffer1': GObject.Object.Notify;
+            'notify::buffer2': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5303,14 +5722,17 @@ export namespace Arrow {
             signal: K,
             callback: Decimal256Array.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Decimal256Array.SignalSignatures>(
             signal: K,
             callback: Decimal256Array.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Decimal256Array.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Decimal256Array.SignalSignatures[K]>
+            ...args: Decimal256Array.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5322,7 +5744,10 @@ export namespace Arrow {
 
     namespace Decimal256ArrayBuilder {
         // Signal signatures
-        interface SignalSignatures extends FixedSizeBinaryArrayBuilder.SignalSignatures {}
+        interface SignalSignatures extends FixedSizeBinaryArrayBuilder.SignalSignatures {
+            'notify::array-builder': GObject.Object.Notify;
+            'notify::array-builder': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5346,14 +5771,17 @@ export namespace Arrow {
             signal: K,
             callback: Decimal256ArrayBuilder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Decimal256ArrayBuilder.SignalSignatures>(
             signal: K,
             callback: Decimal256ArrayBuilder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Decimal256ArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Decimal256ArrayBuilder.SignalSignatures[K]>
+            ...args: Decimal256ArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5374,7 +5802,10 @@ export namespace Arrow {
 
     namespace Decimal256DataType {
         // Signal signatures
-        interface SignalSignatures extends DecimalDataType.SignalSignatures {}
+        interface SignalSignatures extends DecimalDataType.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5401,14 +5832,17 @@ export namespace Arrow {
             signal: K,
             callback: Decimal256DataType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Decimal256DataType.SignalSignatures>(
             signal: K,
             callback: Decimal256DataType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Decimal256DataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Decimal256DataType.SignalSignatures[K]>
+            ...args: Decimal256DataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -5417,7 +5851,12 @@ export namespace Arrow {
 
     namespace Decimal256Scalar {
         // Signal signatures
-        interface SignalSignatures extends Scalar.SignalSignatures {}
+        interface SignalSignatures extends Scalar.SignalSignatures {
+            'notify::value': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::scalar': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5450,14 +5889,17 @@ export namespace Arrow {
             signal: K,
             callback: Decimal256Scalar.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Decimal256Scalar.SignalSignatures>(
             signal: K,
             callback: Decimal256Scalar.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Decimal256Scalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Decimal256Scalar.SignalSignatures[K]>
+            ...args: Decimal256Scalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5466,7 +5908,10 @@ export namespace Arrow {
 
     namespace DecimalDataType {
         // Signal signatures
-        interface SignalSignatures extends FixedSizeBinaryDataType.SignalSignatures {}
+        interface SignalSignatures extends FixedSizeBinaryDataType.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5493,14 +5938,17 @@ export namespace Arrow {
             signal: K,
             callback: DecimalDataType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DecimalDataType.SignalSignatures>(
             signal: K,
             callback: DecimalDataType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DecimalDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DecimalDataType.SignalSignatures[K]>
+            ...args: DecimalDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5510,7 +5958,20 @@ export namespace Arrow {
 
     namespace DenseUnionArray {
         // Signal signatures
-        interface SignalSignatures extends UnionArray.SignalSignatures {}
+        interface SignalSignatures extends UnionArray.SignalSignatures {
+            'notify::value-offsets': GObject.Object.Notify;
+            'notify::value-offsets': GObject.Object.Notify;
+            'notify::type-ids': GObject.Object.Notify;
+            'notify::type-ids': GObject.Object.Notify;
+            'notify::array': GObject.Object.Notify;
+            'notify::buffer1': GObject.Object.Notify;
+            'notify::buffer2': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5549,14 +6010,17 @@ export namespace Arrow {
             signal: K,
             callback: DenseUnionArray.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DenseUnionArray.SignalSignatures>(
             signal: K,
             callback: DenseUnionArray.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DenseUnionArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DenseUnionArray.SignalSignatures[K]>
+            ...args: DenseUnionArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5565,7 +6029,10 @@ export namespace Arrow {
 
     namespace DenseUnionArrayBuilder {
         // Signal signatures
-        interface SignalSignatures extends UnionArrayBuilder.SignalSignatures {}
+        interface SignalSignatures extends UnionArrayBuilder.SignalSignatures {
+            'notify::array-builder': GObject.Object.Notify;
+            'notify::array-builder': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5589,19 +6056,25 @@ export namespace Arrow {
             signal: K,
             callback: DenseUnionArrayBuilder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DenseUnionArrayBuilder.SignalSignatures>(
             signal: K,
             callback: DenseUnionArrayBuilder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DenseUnionArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DenseUnionArrayBuilder.SignalSignatures[K]>
+            ...args: DenseUnionArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace DenseUnionDataType {
         // Signal signatures
-        interface SignalSignatures extends UnionDataType.SignalSignatures {}
+        interface SignalSignatures extends UnionDataType.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5625,19 +6098,27 @@ export namespace Arrow {
             signal: K,
             callback: DenseUnionDataType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DenseUnionDataType.SignalSignatures>(
             signal: K,
             callback: DenseUnionDataType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DenseUnionDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DenseUnionDataType.SignalSignatures[K]>
+            ...args: DenseUnionDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace DenseUnionScalar {
         // Signal signatures
-        interface SignalSignatures extends UnionScalar.SignalSignatures {}
+        interface SignalSignatures extends UnionScalar.SignalSignatures {
+            'notify::value': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::scalar': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5661,19 +6142,33 @@ export namespace Arrow {
             signal: K,
             callback: DenseUnionScalar.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DenseUnionScalar.SignalSignatures>(
             signal: K,
             callback: DenseUnionScalar.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DenseUnionScalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DenseUnionScalar.SignalSignatures[K]>
+            ...args: DenseUnionScalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace DictionaryArray {
         // Signal signatures
-        interface SignalSignatures extends Array.SignalSignatures {}
+        interface SignalSignatures extends Array.SignalSignatures {
+            'notify::dictionary': GObject.Object.Notify;
+            'notify::indices': GObject.Object.Notify;
+            'notify::array': GObject.Object.Notify;
+            'notify::buffer1': GObject.Object.Notify;
+            'notify::buffer2': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5705,14 +6200,17 @@ export namespace Arrow {
             signal: K,
             callback: DictionaryArray.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DictionaryArray.SignalSignatures>(
             signal: K,
             callback: DictionaryArray.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DictionaryArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DictionaryArray.SignalSignatures[K]>
+            ...args: DictionaryArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5723,7 +6221,10 @@ export namespace Arrow {
 
     namespace DictionaryDataType {
         // Signal signatures
-        interface SignalSignatures extends FixedWidthDataType.SignalSignatures {}
+        interface SignalSignatures extends FixedWidthDataType.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5747,14 +6248,17 @@ export namespace Arrow {
             signal: K,
             callback: DictionaryDataType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DictionaryDataType.SignalSignatures>(
             signal: K,
             callback: DictionaryDataType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DictionaryDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DictionaryDataType.SignalSignatures[K]>
+            ...args: DictionaryDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5765,7 +6269,16 @@ export namespace Arrow {
 
     namespace DoubleArray {
         // Signal signatures
-        interface SignalSignatures extends NumericArray.SignalSignatures {}
+        interface SignalSignatures extends NumericArray.SignalSignatures {
+            'notify::array': GObject.Object.Notify;
+            'notify::buffer1': GObject.Object.Notify;
+            'notify::buffer2': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5789,14 +6302,17 @@ export namespace Arrow {
             signal: K,
             callback: DoubleArray.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DoubleArray.SignalSignatures>(
             signal: K,
             callback: DoubleArray.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DoubleArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DoubleArray.SignalSignatures[K]>
+            ...args: DoubleArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5807,7 +6323,10 @@ export namespace Arrow {
 
     namespace DoubleArrayBuilder {
         // Signal signatures
-        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {
+            'notify::array-builder': GObject.Object.Notify;
+            'notify::array-builder': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5831,14 +6350,17 @@ export namespace Arrow {
             signal: K,
             callback: DoubleArrayBuilder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DoubleArrayBuilder.SignalSignatures>(
             signal: K,
             callback: DoubleArrayBuilder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DoubleArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DoubleArrayBuilder.SignalSignatures[K]>
+            ...args: DoubleArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5856,7 +6378,10 @@ export namespace Arrow {
 
     namespace DoubleDataType {
         // Signal signatures
-        interface SignalSignatures extends FloatingPointDataType.SignalSignatures {}
+        interface SignalSignatures extends FloatingPointDataType.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5880,19 +6405,26 @@ export namespace Arrow {
             signal: K,
             callback: DoubleDataType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DoubleDataType.SignalSignatures>(
             signal: K,
             callback: DoubleDataType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DoubleDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DoubleDataType.SignalSignatures[K]>
+            ...args: DoubleDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace DoubleScalar {
         // Signal signatures
-        interface SignalSignatures extends Scalar.SignalSignatures {}
+        interface SignalSignatures extends Scalar.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::scalar': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5916,14 +6448,17 @@ export namespace Arrow {
             signal: K,
             callback: DoubleScalar.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DoubleScalar.SignalSignatures>(
             signal: K,
             callback: DoubleScalar.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DoubleScalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DoubleScalar.SignalSignatures[K]>
+            ...args: DoubleScalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5932,7 +6467,13 @@ export namespace Arrow {
 
     namespace EqualOptions {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::absolute-tolerance': GObject.Object.Notify;
+            'notify::absolute-tolerance': GObject.Object.Notify;
+            'notify::approx': GObject.Object.Notify;
+            'notify::nans-equal': GObject.Object.Notify;
+            'notify::nans-equal': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5992,14 +6533,17 @@ export namespace Arrow {
             signal: K,
             callback: EqualOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof EqualOptions.SignalSignatures>(
             signal: K,
             callback: EqualOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof EqualOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EqualOptions.SignalSignatures[K]>
+            ...args: EqualOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -6032,19 +6576,25 @@ export namespace Arrow {
             signal: K,
             callback: ExecuteContext.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExecuteContext.SignalSignatures>(
             signal: K,
             callback: ExecuteContext.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExecuteContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExecuteContext.SignalSignatures[K]>
+            ...args: ExecuteContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace ExecuteNode {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::node': GObject.Object.Notify;
+            'notify::options': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6074,14 +6624,17 @@ export namespace Arrow {
             signal: K,
             callback: ExecuteNode.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExecuteNode.SignalSignatures>(
             signal: K,
             callback: ExecuteNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExecuteNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExecuteNode.SignalSignatures[K]>
+            ...args: ExecuteNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -6091,7 +6644,9 @@ export namespace Arrow {
 
     namespace ExecuteNodeOptions {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::options': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6119,19 +6674,24 @@ export namespace Arrow {
             signal: K,
             callback: ExecuteNodeOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExecuteNodeOptions.SignalSignatures>(
             signal: K,
             callback: ExecuteNodeOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExecuteNodeOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExecuteNodeOptions.SignalSignatures[K]>
+            ...args: ExecuteNodeOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace ExecutePlan {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::plan': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6161,14 +6721,17 @@ export namespace Arrow {
             signal: K,
             callback: ExecutePlan.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExecutePlan.SignalSignatures>(
             signal: K,
             callback: ExecutePlan.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExecutePlan.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExecutePlan.SignalSignatures[K]>
+            ...args: ExecutePlan.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -6262,14 +6825,17 @@ export namespace Arrow {
             signal: K,
             callback: Expression.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Expression.SignalSignatures>(
             signal: K,
             callback: Expression.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Expression.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Expression.SignalSignatures[K]>
+            ...args: Expression.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -6279,7 +6845,17 @@ export namespace Arrow {
 
     namespace ExtensionArray {
         // Signal signatures
-        interface SignalSignatures extends Array.SignalSignatures {}
+        interface SignalSignatures extends Array.SignalSignatures {
+            'notify::storage': GObject.Object.Notify;
+            'notify::array': GObject.Object.Notify;
+            'notify::buffer1': GObject.Object.Notify;
+            'notify::buffer2': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6307,14 +6883,17 @@ export namespace Arrow {
             signal: K,
             callback: ExtensionArray.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExtensionArray.SignalSignatures>(
             signal: K,
             callback: ExtensionArray.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExtensionArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExtensionArray.SignalSignatures[K]>
+            ...args: ExtensionArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -6323,7 +6902,12 @@ export namespace Arrow {
 
     namespace ExtensionDataType {
         // Signal signatures
-        interface SignalSignatures extends DataType.SignalSignatures {}
+        interface SignalSignatures extends DataType.SignalSignatures {
+            'notify::storage-data-type': GObject.Object.Notify;
+            'notify::storage-data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6353,14 +6937,17 @@ export namespace Arrow {
             signal: K,
             callback: ExtensionDataType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExtensionDataType.SignalSignatures>(
             signal: K,
             callback: ExtensionDataType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExtensionDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExtensionDataType.SignalSignatures[K]>
+            ...args: ExtensionDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -6394,7 +6981,9 @@ export namespace Arrow {
 
     namespace ExtensionDataTypeRegistry {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::registry': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6422,14 +7011,17 @@ export namespace Arrow {
             signal: K,
             callback: ExtensionDataTypeRegistry.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExtensionDataTypeRegistry.SignalSignatures>(
             signal: K,
             callback: ExtensionDataTypeRegistry.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExtensionDataTypeRegistry.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExtensionDataTypeRegistry.SignalSignatures[K]>
+            ...args: ExtensionDataTypeRegistry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -6455,7 +7047,11 @@ export namespace Arrow {
 
     namespace ExtensionScalar {
         // Signal signatures
-        interface SignalSignatures extends Scalar.SignalSignatures {}
+        interface SignalSignatures extends Scalar.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::scalar': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6477,19 +7073,25 @@ export namespace Arrow {
             signal: K,
             callback: ExtensionScalar.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExtensionScalar.SignalSignatures>(
             signal: K,
             callback: ExtensionScalar.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExtensionScalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExtensionScalar.SignalSignatures[K]>
+            ...args: ExtensionScalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace FeatherFileReader {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::feather-reader': GObject.Object.Notify;
+            'notify::feather-reader': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6521,14 +7123,17 @@ export namespace Arrow {
             signal: K,
             callback: FeatherFileReader.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FeatherFileReader.SignalSignatures>(
             signal: K,
             callback: FeatherFileReader.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FeatherFileReader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FeatherFileReader.SignalSignatures[K]>
+            ...args: FeatherFileReader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -6540,7 +7145,9 @@ export namespace Arrow {
 
     namespace FeatherWriteProperties {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::compression': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6581,19 +7188,26 @@ export namespace Arrow {
             signal: K,
             callback: FeatherWriteProperties.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FeatherWriteProperties.SignalSignatures>(
             signal: K,
             callback: FeatherWriteProperties.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FeatherWriteProperties.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FeatherWriteProperties.SignalSignatures[K]>
+            ...args: FeatherWriteProperties.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Field {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::field': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6626,8 +7240,14 @@ export namespace Arrow {
         // Signals
 
         connect<K extends keyof Field.SignalSignatures>(signal: K, callback: Field.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Field.SignalSignatures>(signal: K, callback: Field.SignalSignatures[K]): number;
-        emit<K extends keyof Field.SignalSignatures>(signal: K, ...args: Parameters<Field.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Field.SignalSignatures>(
+            signal: K,
+            ...args: Field.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -6675,19 +7295,32 @@ export namespace Arrow {
             signal: K,
             callback: FieldExpression.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FieldExpression.SignalSignatures>(
             signal: K,
             callback: FieldExpression.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FieldExpression.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FieldExpression.SignalSignatures[K]>
+            ...args: FieldExpression.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace FileInfo {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::base-name': GObject.Object.Notify;
+            'notify::base-name': GObject.Object.Notify;
+            'notify::dir-name': GObject.Object.Notify;
+            'notify::dir-name': GObject.Object.Notify;
+            'notify::extension': GObject.Object.Notify;
+            'notify::mtime': GObject.Object.Notify;
+            'notify::path': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6762,14 +7395,17 @@ export namespace Arrow {
         // Signals
 
         connect<K extends keyof FileInfo.SignalSignatures>(signal: K, callback: FileInfo.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FileInfo.SignalSignatures>(
             signal: K,
             callback: FileInfo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FileInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileInfo.SignalSignatures[K]>
+            ...args: FileInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -6781,7 +7417,10 @@ export namespace Arrow {
 
     namespace FileInputStream {
         // Signal signatures
-        interface SignalSignatures extends SeekableInputStream.SignalSignatures {}
+        interface SignalSignatures extends SeekableInputStream.SignalSignatures {
+            'notify::input-stream': GObject.Object.Notify;
+            'notify::input-stream': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6810,14 +7449,17 @@ export namespace Arrow {
             signal: K,
             callback: FileInputStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FileInputStream.SignalSignatures>(
             signal: K,
             callback: FileInputStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FileInputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileInputStream.SignalSignatures[K]>
+            ...args: FileInputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -7267,7 +7909,10 @@ export namespace Arrow {
 
     namespace FileOutputStream {
         // Signal signatures
-        interface SignalSignatures extends OutputStream.SignalSignatures {}
+        interface SignalSignatures extends OutputStream.SignalSignatures {
+            'notify::output-stream': GObject.Object.Notify;
+            'notify::output-stream': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -7294,14 +7939,17 @@ export namespace Arrow {
             signal: K,
             callback: FileOutputStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FileOutputStream.SignalSignatures>(
             signal: K,
             callback: FileOutputStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FileOutputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileOutputStream.SignalSignatures[K]>
+            ...args: FileOutputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         close(): boolean;
@@ -7757,7 +8405,15 @@ export namespace Arrow {
 
     namespace FileSelector {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::allow-not-found': GObject.Object.Notify;
+            'notify::allow-not-found': GObject.Object.Notify;
+            'notify::base-dir': GObject.Object.Notify;
+            'notify::base-dir': GObject.Object.Notify;
+            'notify::max-recursion': GObject.Object.Notify;
+            'notify::max-recursion': GObject.Object.Notify;
+            'notify::recursive': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -7831,19 +8487,25 @@ export namespace Arrow {
             signal: K,
             callback: FileSelector.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FileSelector.SignalSignatures>(
             signal: K,
             callback: FileSelector.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FileSelector.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileSelector.SignalSignatures[K]>
+            ...args: FileSelector.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace FileSystem {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::file-system': GObject.Object.Notify;
+            'notify::file-system': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -7873,14 +8535,17 @@ export namespace Arrow {
             signal: K,
             callback: FileSystem.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FileSystem.SignalSignatures>(
             signal: K,
             callback: FileSystem.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FileSystem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileSystem.SignalSignatures[K]>
+            ...args: FileSystem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -8008,7 +8673,9 @@ export namespace Arrow {
 
     namespace FilterNodeOptions {
         // Signal signatures
-        interface SignalSignatures extends ExecuteNodeOptions.SignalSignatures {}
+        interface SignalSignatures extends ExecuteNodeOptions.SignalSignatures {
+            'notify::options': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8032,19 +8699,25 @@ export namespace Arrow {
             signal: K,
             callback: FilterNodeOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FilterNodeOptions.SignalSignatures>(
             signal: K,
             callback: FilterNodeOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FilterNodeOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FilterNodeOptions.SignalSignatures[K]>
+            ...args: FilterNodeOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace FilterOptions {
         // Signal signatures
-        interface SignalSignatures extends FunctionOptions.SignalSignatures {}
+        interface SignalSignatures extends FunctionOptions.SignalSignatures {
+            'notify::null-selection-behavior': GObject.Object.Notify;
+            'notify::null-selection-behavior': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8084,19 +8757,31 @@ export namespace Arrow {
             signal: K,
             callback: FilterOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FilterOptions.SignalSignatures>(
             signal: K,
             callback: FilterOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FilterOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FilterOptions.SignalSignatures[K]>
+            ...args: FilterOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace FixedSizeBinaryArray {
         // Signal signatures
-        interface SignalSignatures extends PrimitiveArray.SignalSignatures {}
+        interface SignalSignatures extends PrimitiveArray.SignalSignatures {
+            'notify::array': GObject.Object.Notify;
+            'notify::buffer1': GObject.Object.Notify;
+            'notify::buffer2': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8126,14 +8811,17 @@ export namespace Arrow {
             signal: K,
             callback: FixedSizeBinaryArray.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FixedSizeBinaryArray.SignalSignatures>(
             signal: K,
             callback: FixedSizeBinaryArray.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FixedSizeBinaryArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FixedSizeBinaryArray.SignalSignatures[K]>
+            ...args: FixedSizeBinaryArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -8144,7 +8832,10 @@ export namespace Arrow {
 
     namespace FixedSizeBinaryArrayBuilder {
         // Signal signatures
-        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {
+            'notify::array-builder': GObject.Object.Notify;
+            'notify::array-builder': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8168,14 +8859,17 @@ export namespace Arrow {
             signal: K,
             callback: FixedSizeBinaryArrayBuilder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FixedSizeBinaryArrayBuilder.SignalSignatures>(
             signal: K,
             callback: FixedSizeBinaryArrayBuilder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FixedSizeBinaryArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FixedSizeBinaryArrayBuilder.SignalSignatures[K]>
+            ...args: FixedSizeBinaryArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -8204,7 +8898,10 @@ export namespace Arrow {
 
     namespace FixedSizeBinaryDataType {
         // Signal signatures
-        interface SignalSignatures extends FixedWidthDataType.SignalSignatures {}
+        interface SignalSignatures extends FixedWidthDataType.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8228,14 +8925,17 @@ export namespace Arrow {
             signal: K,
             callback: FixedSizeBinaryDataType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FixedSizeBinaryDataType.SignalSignatures>(
             signal: K,
             callback: FixedSizeBinaryDataType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FixedSizeBinaryDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FixedSizeBinaryDataType.SignalSignatures[K]>
+            ...args: FixedSizeBinaryDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -8244,7 +8944,12 @@ export namespace Arrow {
 
     namespace FixedSizeBinaryScalar {
         // Signal signatures
-        interface SignalSignatures extends BaseBinaryScalar.SignalSignatures {}
+        interface SignalSignatures extends BaseBinaryScalar.SignalSignatures {
+            'notify::value': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::scalar': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8268,19 +8973,25 @@ export namespace Arrow {
             signal: K,
             callback: FixedSizeBinaryScalar.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FixedSizeBinaryScalar.SignalSignatures>(
             signal: K,
             callback: FixedSizeBinaryScalar.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FixedSizeBinaryScalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FixedSizeBinaryScalar.SignalSignatures[K]>
+            ...args: FixedSizeBinaryScalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace FixedWidthDataType {
         // Signal signatures
-        interface SignalSignatures extends DataType.SignalSignatures {}
+        interface SignalSignatures extends DataType.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8302,14 +9013,17 @@ export namespace Arrow {
             signal: K,
             callback: FixedWidthDataType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FixedWidthDataType.SignalSignatures>(
             signal: K,
             callback: FixedWidthDataType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FixedWidthDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FixedWidthDataType.SignalSignatures[K]>
+            ...args: FixedWidthDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -8318,7 +9032,16 @@ export namespace Arrow {
 
     namespace FloatArray {
         // Signal signatures
-        interface SignalSignatures extends NumericArray.SignalSignatures {}
+        interface SignalSignatures extends NumericArray.SignalSignatures {
+            'notify::array': GObject.Object.Notify;
+            'notify::buffer1': GObject.Object.Notify;
+            'notify::buffer2': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8342,14 +9065,17 @@ export namespace Arrow {
             signal: K,
             callback: FloatArray.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FloatArray.SignalSignatures>(
             signal: K,
             callback: FloatArray.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FloatArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FloatArray.SignalSignatures[K]>
+            ...args: FloatArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -8360,7 +9086,10 @@ export namespace Arrow {
 
     namespace FloatArrayBuilder {
         // Signal signatures
-        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {
+            'notify::array-builder': GObject.Object.Notify;
+            'notify::array-builder': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8384,14 +9113,17 @@ export namespace Arrow {
             signal: K,
             callback: FloatArrayBuilder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FloatArrayBuilder.SignalSignatures>(
             signal: K,
             callback: FloatArrayBuilder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FloatArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FloatArrayBuilder.SignalSignatures[K]>
+            ...args: FloatArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -8409,7 +9141,10 @@ export namespace Arrow {
 
     namespace FloatDataType {
         // Signal signatures
-        interface SignalSignatures extends FloatingPointDataType.SignalSignatures {}
+        interface SignalSignatures extends FloatingPointDataType.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8433,19 +9168,26 @@ export namespace Arrow {
             signal: K,
             callback: FloatDataType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FloatDataType.SignalSignatures>(
             signal: K,
             callback: FloatDataType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FloatDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FloatDataType.SignalSignatures[K]>
+            ...args: FloatDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace FloatScalar {
         // Signal signatures
-        interface SignalSignatures extends Scalar.SignalSignatures {}
+        interface SignalSignatures extends Scalar.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::scalar': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8469,14 +9211,17 @@ export namespace Arrow {
             signal: K,
             callback: FloatScalar.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FloatScalar.SignalSignatures>(
             signal: K,
             callback: FloatScalar.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FloatScalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FloatScalar.SignalSignatures[K]>
+            ...args: FloatScalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -8485,7 +9230,10 @@ export namespace Arrow {
 
     namespace FloatingPointDataType {
         // Signal signatures
-        interface SignalSignatures extends NumericDataType.SignalSignatures {}
+        interface SignalSignatures extends NumericDataType.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8507,19 +9255,24 @@ export namespace Arrow {
             signal: K,
             callback: FloatingPointDataType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FloatingPointDataType.SignalSignatures>(
             signal: K,
             callback: FloatingPointDataType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FloatingPointDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FloatingPointDataType.SignalSignatures[K]>
+            ...args: FloatingPointDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Function {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::function': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8544,14 +9297,17 @@ export namespace Arrow {
         // Signals
 
         connect<K extends keyof Function.SignalSignatures>(signal: K, callback: Function.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Function.SignalSignatures>(
             signal: K,
             callback: Function.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Function.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Function.SignalSignatures[K]>
+            ...args: Function.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -8571,7 +9327,9 @@ export namespace Arrow {
 
     namespace FunctionDoc {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::doc': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8599,14 +9357,17 @@ export namespace Arrow {
             signal: K,
             callback: FunctionDoc.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FunctionDoc.SignalSignatures>(
             signal: K,
             callback: FunctionDoc.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FunctionDoc.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FunctionDoc.SignalSignatures[K]>
+            ...args: FunctionDoc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -8640,14 +9401,17 @@ export namespace Arrow {
             signal: K,
             callback: FunctionOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FunctionOptions.SignalSignatures>(
             signal: K,
             callback: FunctionOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FunctionOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FunctionOptions.SignalSignatures[K]>
+            ...args: FunctionOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -8657,7 +9421,10 @@ export namespace Arrow {
 
     namespace GCSFileSystem {
         // Signal signatures
-        interface SignalSignatures extends FileSystem.SignalSignatures {}
+        interface SignalSignatures extends FileSystem.SignalSignatures {
+            'notify::file-system': GObject.Object.Notify;
+            'notify::file-system': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8679,19 +9446,26 @@ export namespace Arrow {
             signal: K,
             callback: GCSFileSystem.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GCSFileSystem.SignalSignatures>(
             signal: K,
             callback: GCSFileSystem.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GCSFileSystem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GCSFileSystem.SignalSignatures[K]>
+            ...args: GCSFileSystem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace GIOInputStream {
         // Signal signatures
-        interface SignalSignatures extends SeekableInputStream.SignalSignatures {}
+        interface SignalSignatures extends SeekableInputStream.SignalSignatures {
+            'notify::raw': GObject.Object.Notify;
+            'notify::input-stream': GObject.Object.Notify;
+            'notify::input-stream': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8724,14 +9498,17 @@ export namespace Arrow {
             signal: K,
             callback: GIOInputStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GIOInputStream.SignalSignatures>(
             signal: K,
             callback: GIOInputStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GIOInputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GIOInputStream.SignalSignatures[K]>
+            ...args: GIOInputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -9181,7 +9958,11 @@ export namespace Arrow {
 
     namespace GIOOutputStream {
         // Signal signatures
-        interface SignalSignatures extends OutputStream.SignalSignatures {}
+        interface SignalSignatures extends OutputStream.SignalSignatures {
+            'notify::raw': GObject.Object.Notify;
+            'notify::output-stream': GObject.Object.Notify;
+            'notify::output-stream': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -9214,14 +9995,17 @@ export namespace Arrow {
             signal: K,
             callback: GIOOutputStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GIOOutputStream.SignalSignatures>(
             signal: K,
             callback: GIOOutputStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GIOOutputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GIOOutputStream.SignalSignatures[K]>
+            ...args: GIOOutputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -9681,7 +10465,10 @@ export namespace Arrow {
 
     namespace HDFSFileSystem {
         // Signal signatures
-        interface SignalSignatures extends FileSystem.SignalSignatures {}
+        interface SignalSignatures extends FileSystem.SignalSignatures {
+            'notify::file-system': GObject.Object.Notify;
+            'notify::file-system': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -9703,19 +10490,31 @@ export namespace Arrow {
             signal: K,
             callback: HDFSFileSystem.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HDFSFileSystem.SignalSignatures>(
             signal: K,
             callback: HDFSFileSystem.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HDFSFileSystem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HDFSFileSystem.SignalSignatures[K]>
+            ...args: HDFSFileSystem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace HalfFloatArray {
         // Signal signatures
-        interface SignalSignatures extends NumericArray.SignalSignatures {}
+        interface SignalSignatures extends NumericArray.SignalSignatures {
+            'notify::array': GObject.Object.Notify;
+            'notify::buffer1': GObject.Object.Notify;
+            'notify::buffer2': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -9739,14 +10538,17 @@ export namespace Arrow {
             signal: K,
             callback: HalfFloatArray.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HalfFloatArray.SignalSignatures>(
             signal: K,
             callback: HalfFloatArray.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HalfFloatArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HalfFloatArray.SignalSignatures[K]>
+            ...args: HalfFloatArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -9756,7 +10558,10 @@ export namespace Arrow {
 
     namespace HalfFloatArrayBuilder {
         // Signal signatures
-        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {
+            'notify::array-builder': GObject.Object.Notify;
+            'notify::array-builder': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -9780,14 +10585,17 @@ export namespace Arrow {
             signal: K,
             callback: HalfFloatArrayBuilder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HalfFloatArrayBuilder.SignalSignatures>(
             signal: K,
             callback: HalfFloatArrayBuilder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HalfFloatArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HalfFloatArrayBuilder.SignalSignatures[K]>
+            ...args: HalfFloatArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -9804,7 +10612,10 @@ export namespace Arrow {
 
     namespace HalfFloatDataType {
         // Signal signatures
-        interface SignalSignatures extends FloatingPointDataType.SignalSignatures {}
+        interface SignalSignatures extends FloatingPointDataType.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -9828,19 +10639,26 @@ export namespace Arrow {
             signal: K,
             callback: HalfFloatDataType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HalfFloatDataType.SignalSignatures>(
             signal: K,
             callback: HalfFloatDataType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HalfFloatDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HalfFloatDataType.SignalSignatures[K]>
+            ...args: HalfFloatDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace HalfFloatScalar {
         // Signal signatures
-        interface SignalSignatures extends Scalar.SignalSignatures {}
+        interface SignalSignatures extends Scalar.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::scalar': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -9864,14 +10682,17 @@ export namespace Arrow {
             signal: K,
             callback: HalfFloatScalar.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HalfFloatScalar.SignalSignatures>(
             signal: K,
             callback: HalfFloatScalar.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HalfFloatScalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HalfFloatScalar.SignalSignatures[K]>
+            ...args: HalfFloatScalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -9880,7 +10701,9 @@ export namespace Arrow {
 
     namespace HashJoinNodeOptions {
         // Signal signatures
-        interface SignalSignatures extends ExecuteNodeOptions.SignalSignatures {}
+        interface SignalSignatures extends ExecuteNodeOptions.SignalSignatures {
+            'notify::options': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -9904,14 +10727,17 @@ export namespace Arrow {
             signal: K,
             callback: HashJoinNodeOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HashJoinNodeOptions.SignalSignatures>(
             signal: K,
             callback: HashJoinNodeOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HashJoinNodeOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HashJoinNodeOptions.SignalSignatures[K]>
+            ...args: HashJoinNodeOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -9921,7 +10747,9 @@ export namespace Arrow {
 
     namespace ISO8601TimestampParser {
         // Signal signatures
-        interface SignalSignatures extends TimestampParser.SignalSignatures {}
+        interface SignalSignatures extends TimestampParser.SignalSignatures {
+            'notify::parser': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -9945,19 +10773,24 @@ export namespace Arrow {
             signal: K,
             callback: ISO8601TimestampParser.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ISO8601TimestampParser.SignalSignatures>(
             signal: K,
             callback: ISO8601TimestampParser.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ISO8601TimestampParser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ISO8601TimestampParser.SignalSignatures[K]>
+            ...args: ISO8601TimestampParser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace IndexOptions {
         // Signal signatures
-        interface SignalSignatures extends FunctionOptions.SignalSignatures {}
+        interface SignalSignatures extends FunctionOptions.SignalSignatures {
+            'notify::value': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -9991,19 +10824,25 @@ export namespace Arrow {
             signal: K,
             callback: IndexOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof IndexOptions.SignalSignatures>(
             signal: K,
             callback: IndexOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof IndexOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IndexOptions.SignalSignatures[K]>
+            ...args: IndexOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace InputStream {
         // Signal signatures
-        interface SignalSignatures extends Gio.InputStream.SignalSignatures {}
+        interface SignalSignatures extends Gio.InputStream.SignalSignatures {
+            'notify::input-stream': GObject.Object.Notify;
+            'notify::input-stream': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10036,14 +10875,17 @@ export namespace Arrow {
             signal: K,
             callback: InputStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InputStream.SignalSignatures>(
             signal: K,
             callback: InputStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InputStream.SignalSignatures[K]>
+            ...args: InputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -10506,7 +11348,16 @@ export namespace Arrow {
 
     namespace Int16Array {
         // Signal signatures
-        interface SignalSignatures extends NumericArray.SignalSignatures {}
+        interface SignalSignatures extends NumericArray.SignalSignatures {
+            'notify::array': GObject.Object.Notify;
+            'notify::buffer1': GObject.Object.Notify;
+            'notify::buffer2': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10530,14 +11381,17 @@ export namespace Arrow {
             signal: K,
             callback: Int16Array.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Int16Array.SignalSignatures>(
             signal: K,
             callback: Int16Array.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Int16Array.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Int16Array.SignalSignatures[K]>
+            ...args: Int16Array.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -10548,7 +11402,10 @@ export namespace Arrow {
 
     namespace Int16ArrayBuilder {
         // Signal signatures
-        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {
+            'notify::array-builder': GObject.Object.Notify;
+            'notify::array-builder': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10572,14 +11429,17 @@ export namespace Arrow {
             signal: K,
             callback: Int16ArrayBuilder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Int16ArrayBuilder.SignalSignatures>(
             signal: K,
             callback: Int16ArrayBuilder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Int16ArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Int16ArrayBuilder.SignalSignatures[K]>
+            ...args: Int16ArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -10597,7 +11457,10 @@ export namespace Arrow {
 
     namespace Int16DataType {
         // Signal signatures
-        interface SignalSignatures extends IntegerDataType.SignalSignatures {}
+        interface SignalSignatures extends IntegerDataType.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10621,19 +11484,26 @@ export namespace Arrow {
             signal: K,
             callback: Int16DataType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Int16DataType.SignalSignatures>(
             signal: K,
             callback: Int16DataType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Int16DataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Int16DataType.SignalSignatures[K]>
+            ...args: Int16DataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Int16Scalar {
         // Signal signatures
-        interface SignalSignatures extends Scalar.SignalSignatures {}
+        interface SignalSignatures extends Scalar.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::scalar': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10657,14 +11527,17 @@ export namespace Arrow {
             signal: K,
             callback: Int16Scalar.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Int16Scalar.SignalSignatures>(
             signal: K,
             callback: Int16Scalar.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Int16Scalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Int16Scalar.SignalSignatures[K]>
+            ...args: Int16Scalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -10673,7 +11546,16 @@ export namespace Arrow {
 
     namespace Int32Array {
         // Signal signatures
-        interface SignalSignatures extends NumericArray.SignalSignatures {}
+        interface SignalSignatures extends NumericArray.SignalSignatures {
+            'notify::array': GObject.Object.Notify;
+            'notify::buffer1': GObject.Object.Notify;
+            'notify::buffer2': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10697,14 +11579,17 @@ export namespace Arrow {
             signal: K,
             callback: Int32Array.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Int32Array.SignalSignatures>(
             signal: K,
             callback: Int32Array.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Int32Array.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Int32Array.SignalSignatures[K]>
+            ...args: Int32Array.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -10715,7 +11600,10 @@ export namespace Arrow {
 
     namespace Int32ArrayBuilder {
         // Signal signatures
-        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {
+            'notify::array-builder': GObject.Object.Notify;
+            'notify::array-builder': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10739,14 +11627,17 @@ export namespace Arrow {
             signal: K,
             callback: Int32ArrayBuilder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Int32ArrayBuilder.SignalSignatures>(
             signal: K,
             callback: Int32ArrayBuilder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Int32ArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Int32ArrayBuilder.SignalSignatures[K]>
+            ...args: Int32ArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -10764,7 +11655,10 @@ export namespace Arrow {
 
     namespace Int32DataType {
         // Signal signatures
-        interface SignalSignatures extends IntegerDataType.SignalSignatures {}
+        interface SignalSignatures extends IntegerDataType.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10788,19 +11682,26 @@ export namespace Arrow {
             signal: K,
             callback: Int32DataType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Int32DataType.SignalSignatures>(
             signal: K,
             callback: Int32DataType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Int32DataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Int32DataType.SignalSignatures[K]>
+            ...args: Int32DataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Int32Scalar {
         // Signal signatures
-        interface SignalSignatures extends Scalar.SignalSignatures {}
+        interface SignalSignatures extends Scalar.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::scalar': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10824,14 +11725,17 @@ export namespace Arrow {
             signal: K,
             callback: Int32Scalar.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Int32Scalar.SignalSignatures>(
             signal: K,
             callback: Int32Scalar.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Int32Scalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Int32Scalar.SignalSignatures[K]>
+            ...args: Int32Scalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -10840,7 +11744,16 @@ export namespace Arrow {
 
     namespace Int64Array {
         // Signal signatures
-        interface SignalSignatures extends NumericArray.SignalSignatures {}
+        interface SignalSignatures extends NumericArray.SignalSignatures {
+            'notify::array': GObject.Object.Notify;
+            'notify::buffer1': GObject.Object.Notify;
+            'notify::buffer2': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10864,14 +11777,17 @@ export namespace Arrow {
             signal: K,
             callback: Int64Array.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Int64Array.SignalSignatures>(
             signal: K,
             callback: Int64Array.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Int64Array.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Int64Array.SignalSignatures[K]>
+            ...args: Int64Array.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -10882,7 +11798,10 @@ export namespace Arrow {
 
     namespace Int64ArrayBuilder {
         // Signal signatures
-        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {
+            'notify::array-builder': GObject.Object.Notify;
+            'notify::array-builder': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10906,14 +11825,17 @@ export namespace Arrow {
             signal: K,
             callback: Int64ArrayBuilder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Int64ArrayBuilder.SignalSignatures>(
             signal: K,
             callback: Int64ArrayBuilder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Int64ArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Int64ArrayBuilder.SignalSignatures[K]>
+            ...args: Int64ArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -10931,7 +11853,10 @@ export namespace Arrow {
 
     namespace Int64DataType {
         // Signal signatures
-        interface SignalSignatures extends IntegerDataType.SignalSignatures {}
+        interface SignalSignatures extends IntegerDataType.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10955,19 +11880,26 @@ export namespace Arrow {
             signal: K,
             callback: Int64DataType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Int64DataType.SignalSignatures>(
             signal: K,
             callback: Int64DataType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Int64DataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Int64DataType.SignalSignatures[K]>
+            ...args: Int64DataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Int64Scalar {
         // Signal signatures
-        interface SignalSignatures extends Scalar.SignalSignatures {}
+        interface SignalSignatures extends Scalar.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::scalar': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10991,14 +11923,17 @@ export namespace Arrow {
             signal: K,
             callback: Int64Scalar.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Int64Scalar.SignalSignatures>(
             signal: K,
             callback: Int64Scalar.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Int64Scalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Int64Scalar.SignalSignatures[K]>
+            ...args: Int64Scalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -11007,7 +11942,16 @@ export namespace Arrow {
 
     namespace Int8Array {
         // Signal signatures
-        interface SignalSignatures extends NumericArray.SignalSignatures {}
+        interface SignalSignatures extends NumericArray.SignalSignatures {
+            'notify::array': GObject.Object.Notify;
+            'notify::buffer1': GObject.Object.Notify;
+            'notify::buffer2': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11028,14 +11972,17 @@ export namespace Arrow {
         // Signals
 
         connect<K extends keyof Int8Array.SignalSignatures>(signal: K, callback: Int8Array.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Int8Array.SignalSignatures>(
             signal: K,
             callback: Int8Array.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Int8Array.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Int8Array.SignalSignatures[K]>
+            ...args: Int8Array.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -11046,7 +11993,10 @@ export namespace Arrow {
 
     namespace Int8ArrayBuilder {
         // Signal signatures
-        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {
+            'notify::array-builder': GObject.Object.Notify;
+            'notify::array-builder': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11070,14 +12020,17 @@ export namespace Arrow {
             signal: K,
             callback: Int8ArrayBuilder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Int8ArrayBuilder.SignalSignatures>(
             signal: K,
             callback: Int8ArrayBuilder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Int8ArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Int8ArrayBuilder.SignalSignatures[K]>
+            ...args: Int8ArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -11095,7 +12048,10 @@ export namespace Arrow {
 
     namespace Int8DataType {
         // Signal signatures
-        interface SignalSignatures extends IntegerDataType.SignalSignatures {}
+        interface SignalSignatures extends IntegerDataType.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11119,19 +12075,26 @@ export namespace Arrow {
             signal: K,
             callback: Int8DataType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Int8DataType.SignalSignatures>(
             signal: K,
             callback: Int8DataType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Int8DataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Int8DataType.SignalSignatures[K]>
+            ...args: Int8DataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Int8Scalar {
         // Signal signatures
-        interface SignalSignatures extends Scalar.SignalSignatures {}
+        interface SignalSignatures extends Scalar.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::scalar': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11155,14 +12118,17 @@ export namespace Arrow {
             signal: K,
             callback: Int8Scalar.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Int8Scalar.SignalSignatures>(
             signal: K,
             callback: Int8Scalar.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Int8Scalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Int8Scalar.SignalSignatures[K]>
+            ...args: Int8Scalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -11171,7 +12137,10 @@ export namespace Arrow {
 
     namespace IntArrayBuilder {
         // Signal signatures
-        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {
+            'notify::array-builder': GObject.Object.Notify;
+            'notify::array-builder': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11195,14 +12164,17 @@ export namespace Arrow {
             signal: K,
             callback: IntArrayBuilder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof IntArrayBuilder.SignalSignatures>(
             signal: K,
             callback: IntArrayBuilder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof IntArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IntArrayBuilder.SignalSignatures[K]>
+            ...args: IntArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -11220,7 +12192,10 @@ export namespace Arrow {
 
     namespace IntegerDataType {
         // Signal signatures
-        interface SignalSignatures extends NumericDataType.SignalSignatures {}
+        interface SignalSignatures extends NumericDataType.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11242,14 +12217,17 @@ export namespace Arrow {
             signal: K,
             callback: IntegerDataType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof IntegerDataType.SignalSignatures>(
             signal: K,
             callback: IntegerDataType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof IntegerDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IntegerDataType.SignalSignatures[K]>
+            ...args: IntegerDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -11258,7 +12236,10 @@ export namespace Arrow {
 
     namespace IntervalDataType {
         // Signal signatures
-        interface SignalSignatures extends TemporalDataType.SignalSignatures {}
+        interface SignalSignatures extends TemporalDataType.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11280,14 +12261,17 @@ export namespace Arrow {
             signal: K,
             callback: IntervalDataType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof IntervalDataType.SignalSignatures>(
             signal: K,
             callback: IntervalDataType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof IntervalDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IntervalDataType.SignalSignatures[K]>
+            ...args: IntervalDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -11296,7 +12280,17 @@ export namespace Arrow {
 
     namespace JSONReadOptions {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::allow-newlines-in-values': GObject.Object.Notify;
+            'notify::allow-newlines-in-values': GObject.Object.Notify;
+            'notify::block-size': GObject.Object.Notify;
+            'notify::block-size': GObject.Object.Notify;
+            'notify::schema': GObject.Object.Notify;
+            'notify::unexpected-field-behavior': GObject.Object.Notify;
+            'notify::unexpected-field-behavior': GObject.Object.Notify;
+            'notify::use-threads': GObject.Object.Notify;
+            'notify::use-threads': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11382,19 +12376,26 @@ export namespace Arrow {
             signal: K,
             callback: JSONReadOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof JSONReadOptions.SignalSignatures>(
             signal: K,
             callback: JSONReadOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof JSONReadOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<JSONReadOptions.SignalSignatures[K]>
+            ...args: JSONReadOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace JSONReader {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::input': GObject.Object.Notify;
+            'notify::json-table-reader': GObject.Object.Notify;
+            'notify::json-table-reader': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11428,14 +12429,17 @@ export namespace Arrow {
             signal: K,
             callback: JSONReader.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof JSONReader.SignalSignatures>(
             signal: K,
             callback: JSONReader.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof JSONReader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<JSONReader.SignalSignatures[K]>
+            ...args: JSONReader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -11444,7 +12448,16 @@ export namespace Arrow {
 
     namespace LargeBinaryArray {
         // Signal signatures
-        interface SignalSignatures extends Array.SignalSignatures {}
+        interface SignalSignatures extends Array.SignalSignatures {
+            'notify::array': GObject.Object.Notify;
+            'notify::buffer1': GObject.Object.Notify;
+            'notify::buffer2': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11474,14 +12487,17 @@ export namespace Arrow {
             signal: K,
             callback: LargeBinaryArray.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LargeBinaryArray.SignalSignatures>(
             signal: K,
             callback: LargeBinaryArray.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LargeBinaryArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LargeBinaryArray.SignalSignatures[K]>
+            ...args: LargeBinaryArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -11493,7 +12509,10 @@ export namespace Arrow {
 
     namespace LargeBinaryArrayBuilder {
         // Signal signatures
-        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {
+            'notify::array-builder': GObject.Object.Notify;
+            'notify::array-builder': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11517,14 +12536,17 @@ export namespace Arrow {
             signal: K,
             callback: LargeBinaryArrayBuilder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LargeBinaryArrayBuilder.SignalSignatures>(
             signal: K,
             callback: LargeBinaryArrayBuilder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LargeBinaryArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LargeBinaryArrayBuilder.SignalSignatures[K]>
+            ...args: LargeBinaryArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -11542,7 +12564,10 @@ export namespace Arrow {
 
     namespace LargeBinaryDataType {
         // Signal signatures
-        interface SignalSignatures extends DataType.SignalSignatures {}
+        interface SignalSignatures extends DataType.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11566,19 +12591,27 @@ export namespace Arrow {
             signal: K,
             callback: LargeBinaryDataType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LargeBinaryDataType.SignalSignatures>(
             signal: K,
             callback: LargeBinaryDataType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LargeBinaryDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LargeBinaryDataType.SignalSignatures[K]>
+            ...args: LargeBinaryDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace LargeBinaryScalar {
         // Signal signatures
-        interface SignalSignatures extends BaseBinaryScalar.SignalSignatures {}
+        interface SignalSignatures extends BaseBinaryScalar.SignalSignatures {
+            'notify::value': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::scalar': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11602,19 +12635,33 @@ export namespace Arrow {
             signal: K,
             callback: LargeBinaryScalar.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LargeBinaryScalar.SignalSignatures>(
             signal: K,
             callback: LargeBinaryScalar.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LargeBinaryScalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LargeBinaryScalar.SignalSignatures[K]>
+            ...args: LargeBinaryScalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace LargeListArray {
         // Signal signatures
-        interface SignalSignatures extends Array.SignalSignatures {}
+        interface SignalSignatures extends Array.SignalSignatures {
+            'notify::raw-values': GObject.Object.Notify;
+            'notify::raw-values': GObject.Object.Notify;
+            'notify::array': GObject.Object.Notify;
+            'notify::buffer1': GObject.Object.Notify;
+            'notify::buffer2': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11653,14 +12700,17 @@ export namespace Arrow {
             signal: K,
             callback: LargeListArray.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LargeListArray.SignalSignatures>(
             signal: K,
             callback: LargeListArray.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LargeListArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LargeListArray.SignalSignatures[K]>
+            ...args: LargeListArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -11676,7 +12726,10 @@ export namespace Arrow {
 
     namespace LargeListArrayBuilder {
         // Signal signatures
-        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {
+            'notify::array-builder': GObject.Object.Notify;
+            'notify::array-builder': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11700,14 +12753,17 @@ export namespace Arrow {
             signal: K,
             callback: LargeListArrayBuilder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LargeListArrayBuilder.SignalSignatures>(
             signal: K,
             callback: LargeListArrayBuilder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LargeListArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LargeListArrayBuilder.SignalSignatures[K]>
+            ...args: LargeListArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -11717,7 +12773,10 @@ export namespace Arrow {
 
     namespace LargeListDataType {
         // Signal signatures
-        interface SignalSignatures extends DataType.SignalSignatures {}
+        interface SignalSignatures extends DataType.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11741,14 +12800,17 @@ export namespace Arrow {
             signal: K,
             callback: LargeListDataType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LargeListDataType.SignalSignatures>(
             signal: K,
             callback: LargeListDataType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LargeListDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LargeListDataType.SignalSignatures[K]>
+            ...args: LargeListDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -11757,7 +12819,12 @@ export namespace Arrow {
 
     namespace LargeListScalar {
         // Signal signatures
-        interface SignalSignatures extends BaseListScalar.SignalSignatures {}
+        interface SignalSignatures extends BaseListScalar.SignalSignatures {
+            'notify::value': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::scalar': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11781,19 +12848,31 @@ export namespace Arrow {
             signal: K,
             callback: LargeListScalar.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LargeListScalar.SignalSignatures>(
             signal: K,
             callback: LargeListScalar.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LargeListScalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LargeListScalar.SignalSignatures[K]>
+            ...args: LargeListScalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace LargeStringArray {
         // Signal signatures
-        interface SignalSignatures extends LargeBinaryArray.SignalSignatures {}
+        interface SignalSignatures extends LargeBinaryArray.SignalSignatures {
+            'notify::array': GObject.Object.Notify;
+            'notify::buffer1': GObject.Object.Notify;
+            'notify::buffer2': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11823,14 +12902,17 @@ export namespace Arrow {
             signal: K,
             callback: LargeStringArray.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LargeStringArray.SignalSignatures>(
             signal: K,
             callback: LargeStringArray.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LargeStringArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LargeStringArray.SignalSignatures[K]>
+            ...args: LargeStringArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -11839,7 +12921,10 @@ export namespace Arrow {
 
     namespace LargeStringArrayBuilder {
         // Signal signatures
-        interface SignalSignatures extends LargeBinaryArrayBuilder.SignalSignatures {}
+        interface SignalSignatures extends LargeBinaryArrayBuilder.SignalSignatures {
+            'notify::array-builder': GObject.Object.Notify;
+            'notify::array-builder': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11863,14 +12948,17 @@ export namespace Arrow {
             signal: K,
             callback: LargeStringArrayBuilder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LargeStringArrayBuilder.SignalSignatures>(
             signal: K,
             callback: LargeStringArrayBuilder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LargeStringArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LargeStringArrayBuilder.SignalSignatures[K]>
+            ...args: LargeStringArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -11888,7 +12976,10 @@ export namespace Arrow {
 
     namespace LargeStringDataType {
         // Signal signatures
-        interface SignalSignatures extends DataType.SignalSignatures {}
+        interface SignalSignatures extends DataType.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11912,19 +13003,27 @@ export namespace Arrow {
             signal: K,
             callback: LargeStringDataType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LargeStringDataType.SignalSignatures>(
             signal: K,
             callback: LargeStringDataType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LargeStringDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LargeStringDataType.SignalSignatures[K]>
+            ...args: LargeStringDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace LargeStringScalar {
         // Signal signatures
-        interface SignalSignatures extends BaseBinaryScalar.SignalSignatures {}
+        interface SignalSignatures extends BaseBinaryScalar.SignalSignatures {
+            'notify::value': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::scalar': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11948,19 +13047,33 @@ export namespace Arrow {
             signal: K,
             callback: LargeStringScalar.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LargeStringScalar.SignalSignatures>(
             signal: K,
             callback: LargeStringScalar.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LargeStringScalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LargeStringScalar.SignalSignatures[K]>
+            ...args: LargeStringScalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace ListArray {
         // Signal signatures
-        interface SignalSignatures extends Array.SignalSignatures {}
+        interface SignalSignatures extends Array.SignalSignatures {
+            'notify::raw-values': GObject.Object.Notify;
+            'notify::raw-values': GObject.Object.Notify;
+            'notify::array': GObject.Object.Notify;
+            'notify::buffer1': GObject.Object.Notify;
+            'notify::buffer2': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11996,14 +13109,17 @@ export namespace Arrow {
         // Signals
 
         connect<K extends keyof ListArray.SignalSignatures>(signal: K, callback: ListArray.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ListArray.SignalSignatures>(
             signal: K,
             callback: ListArray.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ListArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ListArray.SignalSignatures[K]>
+            ...args: ListArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -12019,7 +13135,10 @@ export namespace Arrow {
 
     namespace ListArrayBuilder {
         // Signal signatures
-        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {
+            'notify::array-builder': GObject.Object.Notify;
+            'notify::array-builder': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12043,14 +13162,17 @@ export namespace Arrow {
             signal: K,
             callback: ListArrayBuilder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ListArrayBuilder.SignalSignatures>(
             signal: K,
             callback: ListArrayBuilder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ListArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ListArrayBuilder.SignalSignatures[K]>
+            ...args: ListArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -12061,7 +13183,10 @@ export namespace Arrow {
 
     namespace ListDataType {
         // Signal signatures
-        interface SignalSignatures extends DataType.SignalSignatures {}
+        interface SignalSignatures extends DataType.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12085,14 +13210,17 @@ export namespace Arrow {
             signal: K,
             callback: ListDataType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ListDataType.SignalSignatures>(
             signal: K,
             callback: ListDataType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ListDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ListDataType.SignalSignatures[K]>
+            ...args: ListDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -12102,7 +13230,12 @@ export namespace Arrow {
 
     namespace ListScalar {
         // Signal signatures
-        interface SignalSignatures extends BaseListScalar.SignalSignatures {}
+        interface SignalSignatures extends BaseListScalar.SignalSignatures {
+            'notify::value': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::scalar': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12126,14 +13259,17 @@ export namespace Arrow {
             signal: K,
             callback: ListScalar.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ListScalar.SignalSignatures>(
             signal: K,
             callback: ListScalar.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ListScalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ListScalar.SignalSignatures[K]>
+            ...args: ListScalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace LiteralExpression {
@@ -12162,19 +13298,25 @@ export namespace Arrow {
             signal: K,
             callback: LiteralExpression.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LiteralExpression.SignalSignatures>(
             signal: K,
             callback: LiteralExpression.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LiteralExpression.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LiteralExpression.SignalSignatures[K]>
+            ...args: LiteralExpression.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace LocalFileSystem {
         // Signal signatures
-        interface SignalSignatures extends FileSystem.SignalSignatures {}
+        interface SignalSignatures extends FileSystem.SignalSignatures {
+            'notify::file-system': GObject.Object.Notify;
+            'notify::file-system': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12198,19 +13340,25 @@ export namespace Arrow {
             signal: K,
             callback: LocalFileSystem.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LocalFileSystem.SignalSignatures>(
             signal: K,
             callback: LocalFileSystem.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LocalFileSystem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LocalFileSystem.SignalSignatures[K]>
+            ...args: LocalFileSystem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace LocalFileSystemOptions {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::use-mmap': GObject.Object.Notify;
+            'notify::use-mmap': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12252,19 +13400,36 @@ export namespace Arrow {
             signal: K,
             callback: LocalFileSystemOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LocalFileSystemOptions.SignalSignatures>(
             signal: K,
             callback: LocalFileSystemOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LocalFileSystemOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LocalFileSystemOptions.SignalSignatures[K]>
+            ...args: LocalFileSystemOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace MapArray {
         // Signal signatures
-        interface SignalSignatures extends ListArray.SignalSignatures {}
+        interface SignalSignatures extends ListArray.SignalSignatures {
+            'notify::items': GObject.Object.Notify;
+            'notify::keys': GObject.Object.Notify;
+            'notify::offsets': GObject.Object.Notify;
+            'notify::raw-values': GObject.Object.Notify;
+            'notify::raw-values': GObject.Object.Notify;
+            'notify::array': GObject.Object.Notify;
+            'notify::buffer1': GObject.Object.Notify;
+            'notify::buffer2': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12298,14 +13463,17 @@ export namespace Arrow {
         // Signals
 
         connect<K extends keyof MapArray.SignalSignatures>(signal: K, callback: MapArray.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MapArray.SignalSignatures>(
             signal: K,
             callback: MapArray.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MapArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MapArray.SignalSignatures[K]>
+            ...args: MapArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -12315,7 +13483,10 @@ export namespace Arrow {
 
     namespace MapArrayBuilder {
         // Signal signatures
-        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {
+            'notify::array-builder': GObject.Object.Notify;
+            'notify::array-builder': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12339,14 +13510,17 @@ export namespace Arrow {
             signal: K,
             callback: MapArrayBuilder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MapArrayBuilder.SignalSignatures>(
             signal: K,
             callback: MapArrayBuilder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MapArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MapArrayBuilder.SignalSignatures[K]>
+            ...args: MapArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -12366,7 +13540,10 @@ export namespace Arrow {
 
     namespace MapDataType {
         // Signal signatures
-        interface SignalSignatures extends ListDataType.SignalSignatures {}
+        interface SignalSignatures extends ListDataType.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12393,14 +13570,17 @@ export namespace Arrow {
             signal: K,
             callback: MapDataType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MapDataType.SignalSignatures>(
             signal: K,
             callback: MapDataType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MapDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MapDataType.SignalSignatures[K]>
+            ...args: MapDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -12410,7 +13590,12 @@ export namespace Arrow {
 
     namespace MapScalar {
         // Signal signatures
-        interface SignalSignatures extends BaseListScalar.SignalSignatures {}
+        interface SignalSignatures extends BaseListScalar.SignalSignatures {
+            'notify::value': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::scalar': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12431,19 +13616,26 @@ export namespace Arrow {
         // Signals
 
         connect<K extends keyof MapScalar.SignalSignatures>(signal: K, callback: MapScalar.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MapScalar.SignalSignatures>(
             signal: K,
             callback: MapScalar.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MapScalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MapScalar.SignalSignatures[K]>
+            ...args: MapScalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace MatchSubstringOptions {
         // Signal signatures
-        interface SignalSignatures extends FunctionOptions.SignalSignatures {}
+        interface SignalSignatures extends FunctionOptions.SignalSignatures {
+            'notify::ignore-case': GObject.Object.Notify;
+            'notify::ignore-case': GObject.Object.Notify;
+            'notify::pattern': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12490,19 +13682,25 @@ export namespace Arrow {
             signal: K,
             callback: MatchSubstringOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MatchSubstringOptions.SignalSignatures>(
             signal: K,
             callback: MatchSubstringOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MatchSubstringOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MatchSubstringOptions.SignalSignatures[K]>
+            ...args: MatchSubstringOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace MemoryMappedInputStream {
         // Signal signatures
-        interface SignalSignatures extends SeekableInputStream.SignalSignatures {}
+        interface SignalSignatures extends SeekableInputStream.SignalSignatures {
+            'notify::input-stream': GObject.Object.Notify;
+            'notify::input-stream': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12529,14 +13727,17 @@ export namespace Arrow {
             signal: K,
             callback: MemoryMappedInputStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MemoryMappedInputStream.SignalSignatures>(
             signal: K,
             callback: MemoryMappedInputStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MemoryMappedInputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MemoryMappedInputStream.SignalSignatures[K]>
+            ...args: MemoryMappedInputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -12982,7 +14183,10 @@ export namespace Arrow {
 
     namespace MemoryPool {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::memory-pool': GObject.Object.Notify;
+            'notify::memory-pool': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13012,14 +14216,17 @@ export namespace Arrow {
             signal: K,
             callback: MemoryPool.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MemoryPool.SignalSignatures>(
             signal: K,
             callback: MemoryPool.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MemoryPool.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MemoryPool.SignalSignatures[K]>
+            ...args: MemoryPool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -13038,7 +14245,10 @@ export namespace Arrow {
 
     namespace MockFileSystem {
         // Signal signatures
-        interface SignalSignatures extends FileSystem.SignalSignatures {}
+        interface SignalSignatures extends FileSystem.SignalSignatures {
+            'notify::file-system': GObject.Object.Notify;
+            'notify::file-system': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13060,19 +14270,26 @@ export namespace Arrow {
             signal: K,
             callback: MockFileSystem.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MockFileSystem.SignalSignatures>(
             signal: K,
             callback: MockFileSystem.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MockFileSystem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MockFileSystem.SignalSignatures[K]>
+            ...args: MockFileSystem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace MonthDayNano {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::day': GObject.Object.Notify;
+            'notify::month': GObject.Object.Notify;
+            'notify::nanosecond': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13118,14 +14335,17 @@ export namespace Arrow {
             signal: K,
             callback: MonthDayNano.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MonthDayNano.SignalSignatures>(
             signal: K,
             callback: MonthDayNano.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MonthDayNano.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MonthDayNano.SignalSignatures[K]>
+            ...args: MonthDayNano.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -13134,7 +14354,16 @@ export namespace Arrow {
 
     namespace MonthDayNanoIntervalArray {
         // Signal signatures
-        interface SignalSignatures extends PrimitiveArray.SignalSignatures {}
+        interface SignalSignatures extends PrimitiveArray.SignalSignatures {
+            'notify::array': GObject.Object.Notify;
+            'notify::buffer1': GObject.Object.Notify;
+            'notify::buffer2': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13163,14 +14392,17 @@ export namespace Arrow {
             signal: K,
             callback: MonthDayNanoIntervalArray.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MonthDayNanoIntervalArray.SignalSignatures>(
             signal: K,
             callback: MonthDayNanoIntervalArray.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MonthDayNanoIntervalArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MonthDayNanoIntervalArray.SignalSignatures[K]>
+            ...args: MonthDayNanoIntervalArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -13180,7 +14412,10 @@ export namespace Arrow {
 
     namespace MonthDayNanoIntervalArrayBuilder {
         // Signal signatures
-        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {
+            'notify::array-builder': GObject.Object.Notify;
+            'notify::array-builder': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13204,14 +14439,17 @@ export namespace Arrow {
             signal: K,
             callback: MonthDayNanoIntervalArrayBuilder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MonthDayNanoIntervalArrayBuilder.SignalSignatures>(
             signal: K,
             callback: MonthDayNanoIntervalArrayBuilder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MonthDayNanoIntervalArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MonthDayNanoIntervalArrayBuilder.SignalSignatures[K]>
+            ...args: MonthDayNanoIntervalArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -13228,7 +14466,10 @@ export namespace Arrow {
 
     namespace MonthDayNanoIntervalDataType {
         // Signal signatures
-        interface SignalSignatures extends IntervalDataType.SignalSignatures {}
+        interface SignalSignatures extends IntervalDataType.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13252,19 +14493,26 @@ export namespace Arrow {
             signal: K,
             callback: MonthDayNanoIntervalDataType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MonthDayNanoIntervalDataType.SignalSignatures>(
             signal: K,
             callback: MonthDayNanoIntervalDataType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MonthDayNanoIntervalDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MonthDayNanoIntervalDataType.SignalSignatures[K]>
+            ...args: MonthDayNanoIntervalDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace MonthDayNanoIntervalScalar {
         // Signal signatures
-        interface SignalSignatures extends Scalar.SignalSignatures {}
+        interface SignalSignatures extends Scalar.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::scalar': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13288,14 +14536,17 @@ export namespace Arrow {
             signal: K,
             callback: MonthDayNanoIntervalScalar.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MonthDayNanoIntervalScalar.SignalSignatures>(
             signal: K,
             callback: MonthDayNanoIntervalScalar.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MonthDayNanoIntervalScalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MonthDayNanoIntervalScalar.SignalSignatures[K]>
+            ...args: MonthDayNanoIntervalScalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -13304,7 +14555,16 @@ export namespace Arrow {
 
     namespace MonthIntervalArray {
         // Signal signatures
-        interface SignalSignatures extends NumericArray.SignalSignatures {}
+        interface SignalSignatures extends NumericArray.SignalSignatures {
+            'notify::array': GObject.Object.Notify;
+            'notify::buffer1': GObject.Object.Notify;
+            'notify::buffer2': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13328,14 +14588,17 @@ export namespace Arrow {
             signal: K,
             callback: MonthIntervalArray.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MonthIntervalArray.SignalSignatures>(
             signal: K,
             callback: MonthIntervalArray.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MonthIntervalArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MonthIntervalArray.SignalSignatures[K]>
+            ...args: MonthIntervalArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -13345,7 +14608,10 @@ export namespace Arrow {
 
     namespace MonthIntervalArrayBuilder {
         // Signal signatures
-        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {
+            'notify::array-builder': GObject.Object.Notify;
+            'notify::array-builder': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13369,14 +14635,17 @@ export namespace Arrow {
             signal: K,
             callback: MonthIntervalArrayBuilder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MonthIntervalArrayBuilder.SignalSignatures>(
             signal: K,
             callback: MonthIntervalArrayBuilder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MonthIntervalArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MonthIntervalArrayBuilder.SignalSignatures[K]>
+            ...args: MonthIntervalArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -13393,7 +14662,10 @@ export namespace Arrow {
 
     namespace MonthIntervalDataType {
         // Signal signatures
-        interface SignalSignatures extends IntervalDataType.SignalSignatures {}
+        interface SignalSignatures extends IntervalDataType.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13417,19 +14689,26 @@ export namespace Arrow {
             signal: K,
             callback: MonthIntervalDataType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MonthIntervalDataType.SignalSignatures>(
             signal: K,
             callback: MonthIntervalDataType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MonthIntervalDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MonthIntervalDataType.SignalSignatures[K]>
+            ...args: MonthIntervalDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace MonthIntervalScalar {
         // Signal signatures
-        interface SignalSignatures extends Scalar.SignalSignatures {}
+        interface SignalSignatures extends Scalar.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::scalar': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13453,14 +14732,17 @@ export namespace Arrow {
             signal: K,
             callback: MonthIntervalScalar.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MonthIntervalScalar.SignalSignatures>(
             signal: K,
             callback: MonthIntervalScalar.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MonthIntervalScalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MonthIntervalScalar.SignalSignatures[K]>
+            ...args: MonthIntervalScalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -13469,7 +14751,11 @@ export namespace Arrow {
 
     namespace MutableBuffer {
         // Signal signatures
-        interface SignalSignatures extends Buffer.SignalSignatures {}
+        interface SignalSignatures extends Buffer.SignalSignatures {
+            'notify::buffer': GObject.Object.Notify;
+            'notify::data': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13495,14 +14781,17 @@ export namespace Arrow {
             signal: K,
             callback: MutableBuffer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MutableBuffer.SignalSignatures>(
             signal: K,
             callback: MutableBuffer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MutableBuffer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MutableBuffer.SignalSignatures[K]>
+            ...args: MutableBuffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -13514,7 +14803,16 @@ export namespace Arrow {
 
     namespace NullArray {
         // Signal signatures
-        interface SignalSignatures extends Array.SignalSignatures {}
+        interface SignalSignatures extends Array.SignalSignatures {
+            'notify::array': GObject.Object.Notify;
+            'notify::buffer1': GObject.Object.Notify;
+            'notify::buffer2': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13535,19 +14833,25 @@ export namespace Arrow {
         // Signals
 
         connect<K extends keyof NullArray.SignalSignatures>(signal: K, callback: NullArray.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NullArray.SignalSignatures>(
             signal: K,
             callback: NullArray.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NullArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NullArray.SignalSignatures[K]>
+            ...args: NullArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace NullArrayBuilder {
         // Signal signatures
-        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {
+            'notify::array-builder': GObject.Object.Notify;
+            'notify::array-builder': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13571,19 +14875,25 @@ export namespace Arrow {
             signal: K,
             callback: NullArrayBuilder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NullArrayBuilder.SignalSignatures>(
             signal: K,
             callback: NullArrayBuilder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NullArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NullArrayBuilder.SignalSignatures[K]>
+            ...args: NullArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace NullDataType {
         // Signal signatures
-        interface SignalSignatures extends DataType.SignalSignatures {}
+        interface SignalSignatures extends DataType.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13607,19 +14917,26 @@ export namespace Arrow {
             signal: K,
             callback: NullDataType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NullDataType.SignalSignatures>(
             signal: K,
             callback: NullDataType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NullDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NullDataType.SignalSignatures[K]>
+            ...args: NullDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace NullScalar {
         // Signal signatures
-        interface SignalSignatures extends Scalar.SignalSignatures {}
+        interface SignalSignatures extends Scalar.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::scalar': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13643,19 +14960,31 @@ export namespace Arrow {
             signal: K,
             callback: NullScalar.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NullScalar.SignalSignatures>(
             signal: K,
             callback: NullScalar.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NullScalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NullScalar.SignalSignatures[K]>
+            ...args: NullScalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace NumericArray {
         // Signal signatures
-        interface SignalSignatures extends PrimitiveArray.SignalSignatures {}
+        interface SignalSignatures extends PrimitiveArray.SignalSignatures {
+            'notify::array': GObject.Object.Notify;
+            'notify::buffer1': GObject.Object.Notify;
+            'notify::buffer2': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13677,14 +15006,17 @@ export namespace Arrow {
             signal: K,
             callback: NumericArray.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NumericArray.SignalSignatures>(
             signal: K,
             callback: NumericArray.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NumericArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NumericArray.SignalSignatures[K]>
+            ...args: NumericArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -13693,7 +15025,10 @@ export namespace Arrow {
 
     namespace NumericDataType {
         // Signal signatures
-        interface SignalSignatures extends FixedWidthDataType.SignalSignatures {}
+        interface SignalSignatures extends FixedWidthDataType.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13715,19 +15050,26 @@ export namespace Arrow {
             signal: K,
             callback: NumericDataType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NumericDataType.SignalSignatures>(
             signal: K,
             callback: NumericDataType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NumericDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NumericDataType.SignalSignatures[K]>
+            ...args: NumericDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace ORCFileReader {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::input': GObject.Object.Notify;
+            'notify::orc-file-reader': GObject.Object.Notify;
+            'notify::orc-file-reader': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13761,14 +15103,17 @@ export namespace Arrow {
             signal: K,
             callback: ORCFileReader.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ORCFileReader.SignalSignatures>(
             signal: K,
             callback: ORCFileReader.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ORCFileReader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ORCFileReader.SignalSignatures[K]>
+            ...args: ORCFileReader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -13785,7 +15130,10 @@ export namespace Arrow {
 
     namespace OutputStream {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::output-stream': GObject.Object.Notify;
+            'notify::output-stream': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13818,14 +15166,17 @@ export namespace Arrow {
             signal: K,
             callback: OutputStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OutputStream.SignalSignatures>(
             signal: K,
             callback: OutputStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OutputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OutputStream.SignalSignatures[K]>
+            ...args: OutputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -14287,7 +15638,16 @@ export namespace Arrow {
 
     namespace PrimitiveArray {
         // Signal signatures
-        interface SignalSignatures extends Array.SignalSignatures {}
+        interface SignalSignatures extends Array.SignalSignatures {
+            'notify::array': GObject.Object.Notify;
+            'notify::buffer1': GObject.Object.Notify;
+            'notify::buffer2': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -14309,14 +15669,17 @@ export namespace Arrow {
             signal: K,
             callback: PrimitiveArray.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PrimitiveArray.SignalSignatures>(
             signal: K,
             callback: PrimitiveArray.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PrimitiveArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PrimitiveArray.SignalSignatures[K]>
+            ...args: PrimitiveArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -14326,7 +15689,9 @@ export namespace Arrow {
 
     namespace ProjectNodeOptions {
         // Signal signatures
-        interface SignalSignatures extends ExecuteNodeOptions.SignalSignatures {}
+        interface SignalSignatures extends ExecuteNodeOptions.SignalSignatures {
+            'notify::options': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -14350,19 +15715,28 @@ export namespace Arrow {
             signal: K,
             callback: ProjectNodeOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ProjectNodeOptions.SignalSignatures>(
             signal: K,
             callback: ProjectNodeOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ProjectNodeOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProjectNodeOptions.SignalSignatures[K]>
+            ...args: ProjectNodeOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace QuantileOptions {
         // Signal signatures
-        interface SignalSignatures extends FunctionOptions.SignalSignatures {}
+        interface SignalSignatures extends FunctionOptions.SignalSignatures {
+            'notify::interpolation': GObject.Object.Notify;
+            'notify::min-count': GObject.Object.Notify;
+            'notify::min-count': GObject.Object.Notify;
+            'notify::skip-nulls': GObject.Object.Notify;
+            'notify::skip-nulls': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -14423,14 +15797,17 @@ export namespace Arrow {
             signal: K,
             callback: QuantileOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof QuantileOptions.SignalSignatures>(
             signal: K,
             callback: QuantileOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof QuantileOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<QuantileOptions.SignalSignatures[K]>
+            ...args: QuantileOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -14441,7 +15818,11 @@ export namespace Arrow {
 
     namespace RankOptions {
         // Signal signatures
-        interface SignalSignatures extends FunctionOptions.SignalSignatures {}
+        interface SignalSignatures extends FunctionOptions.SignalSignatures {
+            'notify::null-placement': GObject.Object.Notify;
+            'notify::null-placement': GObject.Object.Notify;
+            'notify::tiebreaker': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -14487,14 +15868,17 @@ export namespace Arrow {
             signal: K,
             callback: RankOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RankOptions.SignalSignatures>(
             signal: K,
             callback: RankOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RankOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RankOptions.SignalSignatures[K]>
+            ...args: RankOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -14516,7 +15900,12 @@ export namespace Arrow {
 
     namespace ReadOptions {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::max-recursion-depth': GObject.Object.Notify;
+            'notify::max-recursion-depth': GObject.Object.Notify;
+            'notify::use-threads': GObject.Object.Notify;
+            'notify::use-threads': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -14568,14 +15957,17 @@ export namespace Arrow {
             signal: K,
             callback: ReadOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ReadOptions.SignalSignatures>(
             signal: K,
             callback: ReadOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ReadOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ReadOptions.SignalSignatures[K]>
+            ...args: ReadOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -14585,7 +15977,10 @@ export namespace Arrow {
 
     namespace RecordBatch {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::record-batch': GObject.Object.Notify;
+            'notify::record-batch': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -14617,14 +16012,17 @@ export namespace Arrow {
             signal: K,
             callback: RecordBatch.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RecordBatch.SignalSignatures>(
             signal: K,
             callback: RecordBatch.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RecordBatch.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RecordBatch.SignalSignatures[K]>
+            ...args: RecordBatch.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -14652,7 +16050,10 @@ export namespace Arrow {
 
     namespace RecordBatchBuilder {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::record-batch-builder': GObject.Object.Notify;
+            'notify::record-batch-builder': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -14684,14 +16085,17 @@ export namespace Arrow {
             signal: K,
             callback: RecordBatchBuilder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RecordBatchBuilder.SignalSignatures>(
             signal: K,
             callback: RecordBatchBuilder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RecordBatchBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RecordBatchBuilder.SignalSignatures[K]>
+            ...args: RecordBatchBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -14707,7 +16111,10 @@ export namespace Arrow {
 
     namespace RecordBatchDatum {
         // Signal signatures
-        interface SignalSignatures extends Datum.SignalSignatures {}
+        interface SignalSignatures extends Datum.SignalSignatures {
+            'notify::value': GObject.Object.Notify;
+            'notify::datum': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -14737,19 +16144,25 @@ export namespace Arrow {
             signal: K,
             callback: RecordBatchDatum.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RecordBatchDatum.SignalSignatures>(
             signal: K,
             callback: RecordBatchDatum.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RecordBatchDatum.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RecordBatchDatum.SignalSignatures[K]>
+            ...args: RecordBatchDatum.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace RecordBatchFileReader {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::record-batch-file-reader': GObject.Object.Notify;
+            'notify::record-batch-file-reader': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -14781,14 +16194,17 @@ export namespace Arrow {
             signal: K,
             callback: RecordBatchFileReader.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RecordBatchFileReader.SignalSignatures>(
             signal: K,
             callback: RecordBatchFileReader.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RecordBatchFileReader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RecordBatchFileReader.SignalSignatures[K]>
+            ...args: RecordBatchFileReader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -14801,7 +16217,10 @@ export namespace Arrow {
 
     namespace RecordBatchFileWriter {
         // Signal signatures
-        interface SignalSignatures extends RecordBatchStreamWriter.SignalSignatures {}
+        interface SignalSignatures extends RecordBatchStreamWriter.SignalSignatures {
+            'notify::record-batch-writer': GObject.Object.Notify;
+            'notify::record-batch-writer': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -14825,19 +16244,24 @@ export namespace Arrow {
             signal: K,
             callback: RecordBatchFileWriter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RecordBatchFileWriter.SignalSignatures>(
             signal: K,
             callback: RecordBatchFileWriter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RecordBatchFileWriter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RecordBatchFileWriter.SignalSignatures[K]>
+            ...args: RecordBatchFileWriter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace RecordBatchIterator {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::iterator': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -14867,14 +16291,17 @@ export namespace Arrow {
             signal: K,
             callback: RecordBatchIterator.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RecordBatchIterator.SignalSignatures>(
             signal: K,
             callback: RecordBatchIterator.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RecordBatchIterator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RecordBatchIterator.SignalSignatures[K]>
+            ...args: RecordBatchIterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -14885,7 +16312,11 @@ export namespace Arrow {
 
     namespace RecordBatchReader {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::record-batch-reader': GObject.Object.Notify;
+            'notify::record-batch-reader': GObject.Object.Notify;
+            'notify::sources': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -14919,14 +16350,17 @@ export namespace Arrow {
             signal: K,
             callback: RecordBatchReader.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RecordBatchReader.SignalSignatures>(
             signal: K,
             callback: RecordBatchReader.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RecordBatchReader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RecordBatchReader.SignalSignatures[K]>
+            ...args: RecordBatchReader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -14945,7 +16379,11 @@ export namespace Arrow {
 
     namespace RecordBatchStreamReader {
         // Signal signatures
-        interface SignalSignatures extends RecordBatchReader.SignalSignatures {}
+        interface SignalSignatures extends RecordBatchReader.SignalSignatures {
+            'notify::record-batch-reader': GObject.Object.Notify;
+            'notify::record-batch-reader': GObject.Object.Notify;
+            'notify::sources': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -14972,19 +16410,25 @@ export namespace Arrow {
             signal: K,
             callback: RecordBatchStreamReader.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RecordBatchStreamReader.SignalSignatures>(
             signal: K,
             callback: RecordBatchStreamReader.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RecordBatchStreamReader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RecordBatchStreamReader.SignalSignatures[K]>
+            ...args: RecordBatchStreamReader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace RecordBatchStreamWriter {
         // Signal signatures
-        interface SignalSignatures extends RecordBatchWriter.SignalSignatures {}
+        interface SignalSignatures extends RecordBatchWriter.SignalSignatures {
+            'notify::record-batch-writer': GObject.Object.Notify;
+            'notify::record-batch-writer': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -15008,19 +16452,25 @@ export namespace Arrow {
             signal: K,
             callback: RecordBatchStreamWriter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RecordBatchStreamWriter.SignalSignatures>(
             signal: K,
             callback: RecordBatchStreamWriter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RecordBatchStreamWriter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RecordBatchStreamWriter.SignalSignatures[K]>
+            ...args: RecordBatchStreamWriter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace RecordBatchWriter {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::record-batch-writer': GObject.Object.Notify;
+            'notify::record-batch-writer': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -15050,14 +16500,17 @@ export namespace Arrow {
             signal: K,
             callback: RecordBatchWriter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RecordBatchWriter.SignalSignatures>(
             signal: K,
             callback: RecordBatchWriter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RecordBatchWriter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RecordBatchWriter.SignalSignatures[K]>
+            ...args: RecordBatchWriter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -15068,7 +16521,11 @@ export namespace Arrow {
 
     namespace ResizableBuffer {
         // Signal signatures
-        interface SignalSignatures extends MutableBuffer.SignalSignatures {}
+        interface SignalSignatures extends MutableBuffer.SignalSignatures {
+            'notify::buffer': GObject.Object.Notify;
+            'notify::data': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -15095,14 +16552,17 @@ export namespace Arrow {
             signal: K,
             callback: ResizableBuffer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ResizableBuffer.SignalSignatures>(
             signal: K,
             callback: ResizableBuffer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ResizableBuffer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ResizableBuffer.SignalSignatures[K]>
+            ...args: ResizableBuffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -15112,7 +16572,11 @@ export namespace Arrow {
 
     namespace RoundOptions {
         // Signal signatures
-        interface SignalSignatures extends FunctionOptions.SignalSignatures {}
+        interface SignalSignatures extends FunctionOptions.SignalSignatures {
+            'notify::mode': GObject.Object.Notify;
+            'notify::n-digits': GObject.Object.Notify;
+            'notify::n-digits': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -15158,19 +16622,25 @@ export namespace Arrow {
             signal: K,
             callback: RoundOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RoundOptions.SignalSignatures>(
             signal: K,
             callback: RoundOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RoundOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RoundOptions.SignalSignatures[K]>
+            ...args: RoundOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace RoundToMultipleOptions {
         // Signal signatures
-        interface SignalSignatures extends FunctionOptions.SignalSignatures {}
+        interface SignalSignatures extends FunctionOptions.SignalSignatures {
+            'notify::mode': GObject.Object.Notify;
+            'notify::multiple': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -15215,19 +16685,25 @@ export namespace Arrow {
             signal: K,
             callback: RoundToMultipleOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RoundToMultipleOptions.SignalSignatures>(
             signal: K,
             callback: RoundToMultipleOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RoundToMultipleOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RoundToMultipleOptions.SignalSignatures[K]>
+            ...args: RoundToMultipleOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace RunEndEncodeOptions {
         // Signal signatures
-        interface SignalSignatures extends FunctionOptions.SignalSignatures {}
+        interface SignalSignatures extends FunctionOptions.SignalSignatures {
+            'notify::run-end-data-type': GObject.Object.Notify;
+            'notify::run-end-data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -15267,19 +16743,34 @@ export namespace Arrow {
             signal: K,
             callback: RunEndEncodeOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RunEndEncodeOptions.SignalSignatures>(
             signal: K,
             callback: RunEndEncodeOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RunEndEncodeOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RunEndEncodeOptions.SignalSignatures[K]>
+            ...args: RunEndEncodeOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace RunEndEncodedArray {
         // Signal signatures
-        interface SignalSignatures extends Array.SignalSignatures {}
+        interface SignalSignatures extends Array.SignalSignatures {
+            'notify::run-ends': GObject.Object.Notify;
+            'notify::run-ends': GObject.Object.Notify;
+            'notify::values': GObject.Object.Notify;
+            'notify::array': GObject.Object.Notify;
+            'notify::buffer1': GObject.Object.Notify;
+            'notify::buffer2': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -15319,14 +16810,17 @@ export namespace Arrow {
             signal: K,
             callback: RunEndEncodedArray.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RunEndEncodedArray.SignalSignatures>(
             signal: K,
             callback: RunEndEncodedArray.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RunEndEncodedArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RunEndEncodedArray.SignalSignatures[K]>
+            ...args: RunEndEncodedArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -15341,7 +16835,10 @@ export namespace Arrow {
 
     namespace RunEndEncodedDataType {
         // Signal signatures
-        interface SignalSignatures extends FixedWidthDataType.SignalSignatures {}
+        interface SignalSignatures extends FixedWidthDataType.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -15365,14 +16862,17 @@ export namespace Arrow {
             signal: K,
             callback: RunEndEncodedDataType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RunEndEncodedDataType.SignalSignatures>(
             signal: K,
             callback: RunEndEncodedDataType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RunEndEncodedDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RunEndEncodedDataType.SignalSignatures[K]>
+            ...args: RunEndEncodedDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -15382,7 +16882,10 @@ export namespace Arrow {
 
     namespace S3FileSystem {
         // Signal signatures
-        interface SignalSignatures extends FileSystem.SignalSignatures {}
+        interface SignalSignatures extends FileSystem.SignalSignatures {
+            'notify::file-system': GObject.Object.Notify;
+            'notify::file-system': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -15404,19 +16907,25 @@ export namespace Arrow {
             signal: K,
             callback: S3FileSystem.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof S3FileSystem.SignalSignatures>(
             signal: K,
             callback: S3FileSystem.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof S3FileSystem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<S3FileSystem.SignalSignatures[K]>
+            ...args: S3FileSystem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace S3GlobalOptions {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::log-level': GObject.Object.Notify;
+            'notify::log-level': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -15456,19 +16965,26 @@ export namespace Arrow {
             signal: K,
             callback: S3GlobalOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof S3GlobalOptions.SignalSignatures>(
             signal: K,
             callback: S3GlobalOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof S3GlobalOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<S3GlobalOptions.SignalSignatures[K]>
+            ...args: S3GlobalOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Scalar {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::scalar': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -15503,8 +17019,14 @@ export namespace Arrow {
         // Signals
 
         connect<K extends keyof Scalar.SignalSignatures>(signal: K, callback: Scalar.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Scalar.SignalSignatures>(signal: K, callback: Scalar.SignalSignatures[K]): number;
-        emit<K extends keyof Scalar.SignalSignatures>(signal: K, ...args: Parameters<Scalar.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Scalar.SignalSignatures>(
+            signal: K,
+            ...args: Scalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -15522,7 +17044,12 @@ export namespace Arrow {
 
     namespace ScalarAggregateOptions {
         // Signal signatures
-        interface SignalSignatures extends FunctionOptions.SignalSignatures {}
+        interface SignalSignatures extends FunctionOptions.SignalSignatures {
+            'notify::min-count': GObject.Object.Notify;
+            'notify::min-count': GObject.Object.Notify;
+            'notify::skip-nulls': GObject.Object.Notify;
+            'notify::skip-nulls': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -15574,19 +17101,25 @@ export namespace Arrow {
             signal: K,
             callback: ScalarAggregateOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ScalarAggregateOptions.SignalSignatures>(
             signal: K,
             callback: ScalarAggregateOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ScalarAggregateOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ScalarAggregateOptions.SignalSignatures[K]>
+            ...args: ScalarAggregateOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace ScalarDatum {
         // Signal signatures
-        interface SignalSignatures extends Datum.SignalSignatures {}
+        interface SignalSignatures extends Datum.SignalSignatures {
+            'notify::value': GObject.Object.Notify;
+            'notify::datum': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -15616,19 +17149,24 @@ export namespace Arrow {
             signal: K,
             callback: ScalarDatum.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ScalarDatum.SignalSignatures>(
             signal: K,
             callback: ScalarDatum.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ScalarDatum.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ScalarDatum.SignalSignatures[K]>
+            ...args: ScalarDatum.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Schema {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::schema': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -15655,8 +17193,14 @@ export namespace Arrow {
         // Signals
 
         connect<K extends keyof Schema.SignalSignatures>(signal: K, callback: Schema.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Schema.SignalSignatures>(signal: K, callback: Schema.SignalSignatures[K]): number;
-        emit<K extends keyof Schema.SignalSignatures>(signal: K, ...args: Parameters<Schema.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Schema.SignalSignatures>(
+            signal: K,
+            ...args: Schema.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -15683,7 +17227,10 @@ export namespace Arrow {
 
     namespace SeekableInputStream {
         // Signal signatures
-        interface SignalSignatures extends InputStream.SignalSignatures {}
+        interface SignalSignatures extends InputStream.SignalSignatures {
+            'notify::input-stream': GObject.Object.Notify;
+            'notify::input-stream': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -15708,14 +17255,17 @@ export namespace Arrow {
             signal: K,
             callback: SeekableInputStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SeekableInputStream.SignalSignatures>(
             signal: K,
             callback: SeekableInputStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SeekableInputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SeekableInputStream.SignalSignatures[K]>
+            ...args: SeekableInputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -16179,7 +17729,12 @@ export namespace Arrow {
 
     namespace SetLookupOptions {
         // Signal signatures
-        interface SignalSignatures extends FunctionOptions.SignalSignatures {}
+        interface SignalSignatures extends FunctionOptions.SignalSignatures {
+            'notify::skip-nulls': GObject.Object.Notify;
+            'notify::skip-nulls': GObject.Object.Notify;
+            'notify::value-set': GObject.Object.Notify;
+            'notify::value-set': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -16231,19 +17786,24 @@ export namespace Arrow {
             signal: K,
             callback: SetLookupOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SetLookupOptions.SignalSignatures>(
             signal: K,
             callback: SetLookupOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SetLookupOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SetLookupOptions.SignalSignatures[K]>
+            ...args: SetLookupOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace SinkNodeOptions {
         // Signal signatures
-        interface SignalSignatures extends ExecuteNodeOptions.SignalSignatures {}
+        interface SignalSignatures extends ExecuteNodeOptions.SignalSignatures {
+            'notify::options': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -16267,14 +17827,17 @@ export namespace Arrow {
             signal: K,
             callback: SinkNodeOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SinkNodeOptions.SignalSignatures>(
             signal: K,
             callback: SinkNodeOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SinkNodeOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SinkNodeOptions.SignalSignatures[K]>
+            ...args: SinkNodeOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -16283,7 +17846,12 @@ export namespace Arrow {
 
     namespace SlowFileSystem {
         // Signal signatures
-        interface SignalSignatures extends FileSystem.SignalSignatures {}
+        interface SignalSignatures extends FileSystem.SignalSignatures {
+            'notify::base-file-system': GObject.Object.Notify;
+            'notify::base-file-system': GObject.Object.Notify;
+            'notify::file-system': GObject.Object.Notify;
+            'notify::file-system': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -16321,19 +17889,25 @@ export namespace Arrow {
             signal: K,
             callback: SlowFileSystem.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SlowFileSystem.SignalSignatures>(
             signal: K,
             callback: SlowFileSystem.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SlowFileSystem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SlowFileSystem.SignalSignatures[K]>
+            ...args: SlowFileSystem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace SortKey {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::order': GObject.Object.Notify;
+            'notify::target': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -16372,14 +17946,17 @@ export namespace Arrow {
         // Signals
 
         connect<K extends keyof SortKey.SignalSignatures>(signal: K, callback: SortKey.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SortKey.SignalSignatures>(
             signal: K,
             callback: SortKey.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SortKey.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SortKey.SignalSignatures[K]>
+            ...args: SortKey.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -16412,14 +17989,17 @@ export namespace Arrow {
             signal: K,
             callback: SortOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SortOptions.SignalSignatures>(
             signal: K,
             callback: SortOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SortOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SortOptions.SignalSignatures[K]>
+            ...args: SortOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -16441,7 +18021,12 @@ export namespace Arrow {
 
     namespace SourceNodeOptions {
         // Signal signatures
-        interface SignalSignatures extends ExecuteNodeOptions.SignalSignatures {}
+        interface SignalSignatures extends ExecuteNodeOptions.SignalSignatures {
+            'notify::reader': GObject.Object.Notify;
+            'notify::record-batch': GObject.Object.Notify;
+            'notify::record-batch': GObject.Object.Notify;
+            'notify::options': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -16479,19 +18064,33 @@ export namespace Arrow {
             signal: K,
             callback: SourceNodeOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceNodeOptions.SignalSignatures>(
             signal: K,
             callback: SourceNodeOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceNodeOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceNodeOptions.SignalSignatures[K]>
+            ...args: SourceNodeOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace SparseUnionArray {
         // Signal signatures
-        interface SignalSignatures extends UnionArray.SignalSignatures {}
+        interface SignalSignatures extends UnionArray.SignalSignatures {
+            'notify::type-ids': GObject.Object.Notify;
+            'notify::type-ids': GObject.Object.Notify;
+            'notify::array': GObject.Object.Notify;
+            'notify::buffer1': GObject.Object.Notify;
+            'notify::buffer2': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -16517,19 +18116,25 @@ export namespace Arrow {
             signal: K,
             callback: SparseUnionArray.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SparseUnionArray.SignalSignatures>(
             signal: K,
             callback: SparseUnionArray.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SparseUnionArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SparseUnionArray.SignalSignatures[K]>
+            ...args: SparseUnionArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace SparseUnionArrayBuilder {
         // Signal signatures
-        interface SignalSignatures extends UnionArrayBuilder.SignalSignatures {}
+        interface SignalSignatures extends UnionArrayBuilder.SignalSignatures {
+            'notify::array-builder': GObject.Object.Notify;
+            'notify::array-builder': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -16553,19 +18158,25 @@ export namespace Arrow {
             signal: K,
             callback: SparseUnionArrayBuilder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SparseUnionArrayBuilder.SignalSignatures>(
             signal: K,
             callback: SparseUnionArrayBuilder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SparseUnionArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SparseUnionArrayBuilder.SignalSignatures[K]>
+            ...args: SparseUnionArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace SparseUnionDataType {
         // Signal signatures
-        interface SignalSignatures extends UnionDataType.SignalSignatures {}
+        interface SignalSignatures extends UnionDataType.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -16589,19 +18200,27 @@ export namespace Arrow {
             signal: K,
             callback: SparseUnionDataType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SparseUnionDataType.SignalSignatures>(
             signal: K,
             callback: SparseUnionDataType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SparseUnionDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SparseUnionDataType.SignalSignatures[K]>
+            ...args: SparseUnionDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace SparseUnionScalar {
         // Signal signatures
-        interface SignalSignatures extends UnionScalar.SignalSignatures {}
+        interface SignalSignatures extends UnionScalar.SignalSignatures {
+            'notify::value': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::scalar': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -16625,19 +18244,27 @@ export namespace Arrow {
             signal: K,
             callback: SparseUnionScalar.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SparseUnionScalar.SignalSignatures>(
             signal: K,
             callback: SparseUnionScalar.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SparseUnionScalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SparseUnionScalar.SignalSignatures[K]>
+            ...args: SparseUnionScalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace SplitPatternOptions {
         // Signal signatures
-        interface SignalSignatures extends FunctionOptions.SignalSignatures {}
+        interface SignalSignatures extends FunctionOptions.SignalSignatures {
+            'notify::max-splits': GObject.Object.Notify;
+            'notify::max-splits': GObject.Object.Notify;
+            'notify::pattern': GObject.Object.Notify;
+            'notify::reverse': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -16684,19 +18311,25 @@ export namespace Arrow {
             signal: K,
             callback: SplitPatternOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SplitPatternOptions.SignalSignatures>(
             signal: K,
             callback: SplitPatternOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SplitPatternOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SplitPatternOptions.SignalSignatures[K]>
+            ...args: SplitPatternOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace StrftimeOptions {
         // Signal signatures
-        interface SignalSignatures extends FunctionOptions.SignalSignatures {}
+        interface SignalSignatures extends FunctionOptions.SignalSignatures {
+            'notify::format': GObject.Object.Notify;
+            'notify::locale': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -16736,19 +18369,31 @@ export namespace Arrow {
             signal: K,
             callback: StrftimeOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StrftimeOptions.SignalSignatures>(
             signal: K,
             callback: StrftimeOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StrftimeOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StrftimeOptions.SignalSignatures[K]>
+            ...args: StrftimeOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace StringArray {
         // Signal signatures
-        interface SignalSignatures extends BinaryArray.SignalSignatures {}
+        interface SignalSignatures extends BinaryArray.SignalSignatures {
+            'notify::array': GObject.Object.Notify;
+            'notify::buffer1': GObject.Object.Notify;
+            'notify::buffer2': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -16778,14 +18423,17 @@ export namespace Arrow {
             signal: K,
             callback: StringArray.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StringArray.SignalSignatures>(
             signal: K,
             callback: StringArray.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StringArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StringArray.SignalSignatures[K]>
+            ...args: StringArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -16794,7 +18442,10 @@ export namespace Arrow {
 
     namespace StringArrayBuilder {
         // Signal signatures
-        interface SignalSignatures extends BinaryArrayBuilder.SignalSignatures {}
+        interface SignalSignatures extends BinaryArrayBuilder.SignalSignatures {
+            'notify::array-builder': GObject.Object.Notify;
+            'notify::array-builder': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -16818,14 +18469,17 @@ export namespace Arrow {
             signal: K,
             callback: StringArrayBuilder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StringArrayBuilder.SignalSignatures>(
             signal: K,
             callback: StringArrayBuilder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StringArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StringArrayBuilder.SignalSignatures[K]>
+            ...args: StringArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -16846,7 +18500,10 @@ export namespace Arrow {
 
     namespace StringDataType {
         // Signal signatures
-        interface SignalSignatures extends DataType.SignalSignatures {}
+        interface SignalSignatures extends DataType.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -16870,19 +18527,25 @@ export namespace Arrow {
             signal: K,
             callback: StringDataType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StringDataType.SignalSignatures>(
             signal: K,
             callback: StringDataType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StringDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StringDataType.SignalSignatures[K]>
+            ...args: StringDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace StringDictionaryArrayBuilder {
         // Signal signatures
-        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {
+            'notify::array-builder': GObject.Object.Notify;
+            'notify::array-builder': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -16906,14 +18569,17 @@ export namespace Arrow {
             signal: K,
             callback: StringDictionaryArrayBuilder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StringDictionaryArrayBuilder.SignalSignatures>(
             signal: K,
             callback: StringDictionaryArrayBuilder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StringDictionaryArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StringDictionaryArrayBuilder.SignalSignatures[K]>
+            ...args: StringDictionaryArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -16937,7 +18603,12 @@ export namespace Arrow {
 
     namespace StringScalar {
         // Signal signatures
-        interface SignalSignatures extends BaseBinaryScalar.SignalSignatures {}
+        interface SignalSignatures extends BaseBinaryScalar.SignalSignatures {
+            'notify::value': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::scalar': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -16961,19 +18632,27 @@ export namespace Arrow {
             signal: K,
             callback: StringScalar.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StringScalar.SignalSignatures>(
             signal: K,
             callback: StringScalar.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StringScalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StringScalar.SignalSignatures[K]>
+            ...args: StringScalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace StrptimeOptions {
         // Signal signatures
-        interface SignalSignatures extends FunctionOptions.SignalSignatures {}
+        interface SignalSignatures extends FunctionOptions.SignalSignatures {
+            'notify::error-is-null': GObject.Object.Notify;
+            'notify::error-is-null': GObject.Object.Notify;
+            'notify::format': GObject.Object.Notify;
+            'notify::unit': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17025,19 +18704,24 @@ export namespace Arrow {
             signal: K,
             callback: StrptimeOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StrptimeOptions.SignalSignatures>(
             signal: K,
             callback: StrptimeOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StrptimeOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StrptimeOptions.SignalSignatures[K]>
+            ...args: StrptimeOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace StrptimeTimestampParser {
         // Signal signatures
-        interface SignalSignatures extends TimestampParser.SignalSignatures {}
+        interface SignalSignatures extends TimestampParser.SignalSignatures {
+            'notify::parser': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17061,14 +18745,17 @@ export namespace Arrow {
             signal: K,
             callback: StrptimeTimestampParser.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StrptimeTimestampParser.SignalSignatures>(
             signal: K,
             callback: StrptimeTimestampParser.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StrptimeTimestampParser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StrptimeTimestampParser.SignalSignatures[K]>
+            ...args: StrptimeTimestampParser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -17077,7 +18764,16 @@ export namespace Arrow {
 
     namespace StructArray {
         // Signal signatures
-        interface SignalSignatures extends Array.SignalSignatures {}
+        interface SignalSignatures extends Array.SignalSignatures {
+            'notify::array': GObject.Object.Notify;
+            'notify::buffer1': GObject.Object.Notify;
+            'notify::buffer2': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17107,14 +18803,17 @@ export namespace Arrow {
             signal: K,
             callback: StructArray.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StructArray.SignalSignatures>(
             signal: K,
             callback: StructArray.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StructArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StructArray.SignalSignatures[K]>
+            ...args: StructArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -17125,7 +18824,10 @@ export namespace Arrow {
 
     namespace StructArrayBuilder {
         // Signal signatures
-        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {
+            'notify::array-builder': GObject.Object.Notify;
+            'notify::array-builder': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17149,14 +18851,17 @@ export namespace Arrow {
             signal: K,
             callback: StructArrayBuilder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StructArrayBuilder.SignalSignatures>(
             signal: K,
             callback: StructArrayBuilder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StructArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StructArrayBuilder.SignalSignatures[K]>
+            ...args: StructArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -17168,7 +18873,10 @@ export namespace Arrow {
 
     namespace StructDataType {
         // Signal signatures
-        interface SignalSignatures extends DataType.SignalSignatures {}
+        interface SignalSignatures extends DataType.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17192,14 +18900,17 @@ export namespace Arrow {
             signal: K,
             callback: StructDataType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StructDataType.SignalSignatures>(
             signal: K,
             callback: StructDataType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StructDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StructDataType.SignalSignatures[K]>
+            ...args: StructDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -17212,7 +18923,10 @@ export namespace Arrow {
 
     namespace StructFieldOptions {
         // Signal signatures
-        interface SignalSignatures extends FunctionOptions.SignalSignatures {}
+        interface SignalSignatures extends FunctionOptions.SignalSignatures {
+            'notify::field-ref': GObject.Object.Notify;
+            'notify::field-ref': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17244,14 +18958,17 @@ export namespace Arrow {
             signal: K,
             callback: StructFieldOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StructFieldOptions.SignalSignatures>(
             signal: K,
             callback: StructFieldOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StructFieldOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StructFieldOptions.SignalSignatures[K]>
+            ...args: StructFieldOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -17260,7 +18977,11 @@ export namespace Arrow {
 
     namespace StructScalar {
         // Signal signatures
-        interface SignalSignatures extends Scalar.SignalSignatures {}
+        interface SignalSignatures extends Scalar.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::scalar': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17284,14 +19005,17 @@ export namespace Arrow {
             signal: K,
             callback: StructScalar.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StructScalar.SignalSignatures>(
             signal: K,
             callback: StructScalar.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StructScalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StructScalar.SignalSignatures[K]>
+            ...args: StructScalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -17300,7 +19024,12 @@ export namespace Arrow {
 
     namespace SubTreeFileSystem {
         // Signal signatures
-        interface SignalSignatures extends FileSystem.SignalSignatures {}
+        interface SignalSignatures extends FileSystem.SignalSignatures {
+            'notify::base-file-system': GObject.Object.Notify;
+            'notify::base-file-system': GObject.Object.Notify;
+            'notify::file-system': GObject.Object.Notify;
+            'notify::file-system': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17332,19 +19061,24 @@ export namespace Arrow {
             signal: K,
             callback: SubTreeFileSystem.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SubTreeFileSystem.SignalSignatures>(
             signal: K,
             callback: SubTreeFileSystem.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SubTreeFileSystem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SubTreeFileSystem.SignalSignatures[K]>
+            ...args: SubTreeFileSystem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Table {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::table': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17375,8 +19109,14 @@ export namespace Arrow {
         // Signals
 
         connect<K extends keyof Table.SignalSignatures>(signal: K, callback: Table.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Table.SignalSignatures>(signal: K, callback: Table.SignalSignatures[K]): number;
-        emit<K extends keyof Table.SignalSignatures>(signal: K, ...args: Parameters<Table.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Table.SignalSignatures>(
+            signal: K,
+            ...args: Table.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -17409,7 +19149,11 @@ export namespace Arrow {
 
     namespace TableBatchReader {
         // Signal signatures
-        interface SignalSignatures extends RecordBatchReader.SignalSignatures {}
+        interface SignalSignatures extends RecordBatchReader.SignalSignatures {
+            'notify::record-batch-reader': GObject.Object.Notify;
+            'notify::record-batch-reader': GObject.Object.Notify;
+            'notify::sources': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17436,14 +19180,17 @@ export namespace Arrow {
             signal: K,
             callback: TableBatchReader.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TableBatchReader.SignalSignatures>(
             signal: K,
             callback: TableBatchReader.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TableBatchReader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TableBatchReader.SignalSignatures[K]>
+            ...args: TableBatchReader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -17459,7 +19206,12 @@ export namespace Arrow {
 
     namespace TableConcatenateOptions {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::promote-nullability': GObject.Object.Notify;
+            'notify::promote-nullability': GObject.Object.Notify;
+            'notify::unify-schemas': GObject.Object.Notify;
+            'notify::unify-schemas': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17533,19 +19285,25 @@ export namespace Arrow {
             signal: K,
             callback: TableConcatenateOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TableConcatenateOptions.SignalSignatures>(
             signal: K,
             callback: TableConcatenateOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TableConcatenateOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TableConcatenateOptions.SignalSignatures[K]>
+            ...args: TableConcatenateOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace TableDatum {
         // Signal signatures
-        interface SignalSignatures extends Datum.SignalSignatures {}
+        interface SignalSignatures extends Datum.SignalSignatures {
+            'notify::value': GObject.Object.Notify;
+            'notify::datum': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17575,14 +19333,17 @@ export namespace Arrow {
             signal: K,
             callback: TableDatum.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TableDatum.SignalSignatures>(
             signal: K,
             callback: TableDatum.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TableDatum.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TableDatum.SignalSignatures[K]>
+            ...args: TableDatum.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace TakeOptions {
@@ -17611,19 +19372,25 @@ export namespace Arrow {
             signal: K,
             callback: TakeOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TakeOptions.SignalSignatures>(
             signal: K,
             callback: TakeOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TakeOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TakeOptions.SignalSignatures[K]>
+            ...args: TakeOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace TemporalDataType {
         // Signal signatures
-        interface SignalSignatures extends FixedWidthDataType.SignalSignatures {}
+        interface SignalSignatures extends FixedWidthDataType.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17645,19 +19412,25 @@ export namespace Arrow {
             signal: K,
             callback: TemporalDataType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TemporalDataType.SignalSignatures>(
             signal: K,
             callback: TemporalDataType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TemporalDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TemporalDataType.SignalSignatures[K]>
+            ...args: TemporalDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Tensor {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::buffer': GObject.Object.Notify;
+            'notify::tensor': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17692,8 +19465,14 @@ export namespace Arrow {
         // Signals
 
         connect<K extends keyof Tensor.SignalSignatures>(signal: K, callback: Tensor.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Tensor.SignalSignatures>(signal: K, callback: Tensor.SignalSignatures[K]): number;
-        emit<K extends keyof Tensor.SignalSignatures>(signal: K, ...args: Parameters<Tensor.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Tensor.SignalSignatures>(
+            signal: K,
+            ...args: Tensor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -17714,7 +19493,16 @@ export namespace Arrow {
 
     namespace Time32Array {
         // Signal signatures
-        interface SignalSignatures extends NumericArray.SignalSignatures {}
+        interface SignalSignatures extends NumericArray.SignalSignatures {
+            'notify::array': GObject.Object.Notify;
+            'notify::buffer1': GObject.Object.Notify;
+            'notify::buffer2': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17744,14 +19532,17 @@ export namespace Arrow {
             signal: K,
             callback: Time32Array.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Time32Array.SignalSignatures>(
             signal: K,
             callback: Time32Array.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Time32Array.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Time32Array.SignalSignatures[K]>
+            ...args: Time32Array.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -17761,7 +19552,10 @@ export namespace Arrow {
 
     namespace Time32ArrayBuilder {
         // Signal signatures
-        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {
+            'notify::array-builder': GObject.Object.Notify;
+            'notify::array-builder': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17785,14 +19579,17 @@ export namespace Arrow {
             signal: K,
             callback: Time32ArrayBuilder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Time32ArrayBuilder.SignalSignatures>(
             signal: K,
             callback: Time32ArrayBuilder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Time32ArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Time32ArrayBuilder.SignalSignatures[K]>
+            ...args: Time32ArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -17810,7 +19607,10 @@ export namespace Arrow {
 
     namespace Time32DataType {
         // Signal signatures
-        interface SignalSignatures extends TimeDataType.SignalSignatures {}
+        interface SignalSignatures extends TimeDataType.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17834,19 +19634,26 @@ export namespace Arrow {
             signal: K,
             callback: Time32DataType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Time32DataType.SignalSignatures>(
             signal: K,
             callback: Time32DataType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Time32DataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Time32DataType.SignalSignatures[K]>
+            ...args: Time32DataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Time32Scalar {
         // Signal signatures
-        interface SignalSignatures extends Scalar.SignalSignatures {}
+        interface SignalSignatures extends Scalar.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::scalar': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17870,14 +19677,17 @@ export namespace Arrow {
             signal: K,
             callback: Time32Scalar.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Time32Scalar.SignalSignatures>(
             signal: K,
             callback: Time32Scalar.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Time32Scalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Time32Scalar.SignalSignatures[K]>
+            ...args: Time32Scalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -17886,7 +19696,16 @@ export namespace Arrow {
 
     namespace Time64Array {
         // Signal signatures
-        interface SignalSignatures extends NumericArray.SignalSignatures {}
+        interface SignalSignatures extends NumericArray.SignalSignatures {
+            'notify::array': GObject.Object.Notify;
+            'notify::buffer1': GObject.Object.Notify;
+            'notify::buffer2': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17916,14 +19735,17 @@ export namespace Arrow {
             signal: K,
             callback: Time64Array.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Time64Array.SignalSignatures>(
             signal: K,
             callback: Time64Array.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Time64Array.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Time64Array.SignalSignatures[K]>
+            ...args: Time64Array.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -17933,7 +19755,10 @@ export namespace Arrow {
 
     namespace Time64ArrayBuilder {
         // Signal signatures
-        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {
+            'notify::array-builder': GObject.Object.Notify;
+            'notify::array-builder': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17957,14 +19782,17 @@ export namespace Arrow {
             signal: K,
             callback: Time64ArrayBuilder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Time64ArrayBuilder.SignalSignatures>(
             signal: K,
             callback: Time64ArrayBuilder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Time64ArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Time64ArrayBuilder.SignalSignatures[K]>
+            ...args: Time64ArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -17982,7 +19810,10 @@ export namespace Arrow {
 
     namespace Time64DataType {
         // Signal signatures
-        interface SignalSignatures extends TimeDataType.SignalSignatures {}
+        interface SignalSignatures extends TimeDataType.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -18006,19 +19837,26 @@ export namespace Arrow {
             signal: K,
             callback: Time64DataType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Time64DataType.SignalSignatures>(
             signal: K,
             callback: Time64DataType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Time64DataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Time64DataType.SignalSignatures[K]>
+            ...args: Time64DataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Time64Scalar {
         // Signal signatures
-        interface SignalSignatures extends Scalar.SignalSignatures {}
+        interface SignalSignatures extends Scalar.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::scalar': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -18042,14 +19880,17 @@ export namespace Arrow {
             signal: K,
             callback: Time64Scalar.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Time64Scalar.SignalSignatures>(
             signal: K,
             callback: Time64Scalar.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Time64Scalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Time64Scalar.SignalSignatures[K]>
+            ...args: Time64Scalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -18058,7 +19899,10 @@ export namespace Arrow {
 
     namespace TimeDataType {
         // Signal signatures
-        interface SignalSignatures extends TemporalDataType.SignalSignatures {}
+        interface SignalSignatures extends TemporalDataType.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -18080,14 +19924,17 @@ export namespace Arrow {
             signal: K,
             callback: TimeDataType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TimeDataType.SignalSignatures>(
             signal: K,
             callback: TimeDataType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TimeDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TimeDataType.SignalSignatures[K]>
+            ...args: TimeDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -18096,7 +19943,16 @@ export namespace Arrow {
 
     namespace TimestampArray {
         // Signal signatures
-        interface SignalSignatures extends NumericArray.SignalSignatures {}
+        interface SignalSignatures extends NumericArray.SignalSignatures {
+            'notify::array': GObject.Object.Notify;
+            'notify::buffer1': GObject.Object.Notify;
+            'notify::buffer2': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -18126,14 +19982,17 @@ export namespace Arrow {
             signal: K,
             callback: TimestampArray.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TimestampArray.SignalSignatures>(
             signal: K,
             callback: TimestampArray.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TimestampArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TimestampArray.SignalSignatures[K]>
+            ...args: TimestampArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -18143,7 +20002,10 @@ export namespace Arrow {
 
     namespace TimestampArrayBuilder {
         // Signal signatures
-        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {
+            'notify::array-builder': GObject.Object.Notify;
+            'notify::array-builder': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -18167,14 +20029,17 @@ export namespace Arrow {
             signal: K,
             callback: TimestampArrayBuilder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TimestampArrayBuilder.SignalSignatures>(
             signal: K,
             callback: TimestampArrayBuilder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TimestampArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TimestampArrayBuilder.SignalSignatures[K]>
+            ...args: TimestampArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -18192,7 +20057,12 @@ export namespace Arrow {
 
     namespace TimestampDataType {
         // Signal signatures
-        interface SignalSignatures extends TemporalDataType.SignalSignatures {}
+        interface SignalSignatures extends TemporalDataType.SignalSignatures {
+            'notify::time-zone': GObject.Object.Notify;
+            'notify::time-zone': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -18230,14 +20100,17 @@ export namespace Arrow {
             signal: K,
             callback: TimestampDataType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TimestampDataType.SignalSignatures>(
             signal: K,
             callback: TimestampDataType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TimestampDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TimestampDataType.SignalSignatures[K]>
+            ...args: TimestampDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -18246,7 +20119,9 @@ export namespace Arrow {
 
     namespace TimestampParser {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::parser': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -18274,14 +20149,17 @@ export namespace Arrow {
             signal: K,
             callback: TimestampParser.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TimestampParser.SignalSignatures>(
             signal: K,
             callback: TimestampParser.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TimestampParser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TimestampParser.SignalSignatures[K]>
+            ...args: TimestampParser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -18290,7 +20168,11 @@ export namespace Arrow {
 
     namespace TimestampScalar {
         // Signal signatures
-        interface SignalSignatures extends Scalar.SignalSignatures {}
+        interface SignalSignatures extends Scalar.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::scalar': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -18314,14 +20196,17 @@ export namespace Arrow {
             signal: K,
             callback: TimestampScalar.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TimestampScalar.SignalSignatures>(
             signal: K,
             callback: TimestampScalar.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TimestampScalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TimestampScalar.SignalSignatures[K]>
+            ...args: TimestampScalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -18330,7 +20215,16 @@ export namespace Arrow {
 
     namespace UInt16Array {
         // Signal signatures
-        interface SignalSignatures extends NumericArray.SignalSignatures {}
+        interface SignalSignatures extends NumericArray.SignalSignatures {
+            'notify::array': GObject.Object.Notify;
+            'notify::buffer1': GObject.Object.Notify;
+            'notify::buffer2': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -18354,14 +20248,17 @@ export namespace Arrow {
             signal: K,
             callback: UInt16Array.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UInt16Array.SignalSignatures>(
             signal: K,
             callback: UInt16Array.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UInt16Array.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UInt16Array.SignalSignatures[K]>
+            ...args: UInt16Array.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -18372,7 +20269,10 @@ export namespace Arrow {
 
     namespace UInt16ArrayBuilder {
         // Signal signatures
-        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {
+            'notify::array-builder': GObject.Object.Notify;
+            'notify::array-builder': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -18396,14 +20296,17 @@ export namespace Arrow {
             signal: K,
             callback: UInt16ArrayBuilder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UInt16ArrayBuilder.SignalSignatures>(
             signal: K,
             callback: UInt16ArrayBuilder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UInt16ArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UInt16ArrayBuilder.SignalSignatures[K]>
+            ...args: UInt16ArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -18421,7 +20324,10 @@ export namespace Arrow {
 
     namespace UInt16DataType {
         // Signal signatures
-        interface SignalSignatures extends IntegerDataType.SignalSignatures {}
+        interface SignalSignatures extends IntegerDataType.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -18445,19 +20351,26 @@ export namespace Arrow {
             signal: K,
             callback: UInt16DataType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UInt16DataType.SignalSignatures>(
             signal: K,
             callback: UInt16DataType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UInt16DataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UInt16DataType.SignalSignatures[K]>
+            ...args: UInt16DataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace UInt16Scalar {
         // Signal signatures
-        interface SignalSignatures extends Scalar.SignalSignatures {}
+        interface SignalSignatures extends Scalar.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::scalar': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -18481,14 +20394,17 @@ export namespace Arrow {
             signal: K,
             callback: UInt16Scalar.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UInt16Scalar.SignalSignatures>(
             signal: K,
             callback: UInt16Scalar.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UInt16Scalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UInt16Scalar.SignalSignatures[K]>
+            ...args: UInt16Scalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -18497,7 +20413,16 @@ export namespace Arrow {
 
     namespace UInt32Array {
         // Signal signatures
-        interface SignalSignatures extends NumericArray.SignalSignatures {}
+        interface SignalSignatures extends NumericArray.SignalSignatures {
+            'notify::array': GObject.Object.Notify;
+            'notify::buffer1': GObject.Object.Notify;
+            'notify::buffer2': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -18521,14 +20446,17 @@ export namespace Arrow {
             signal: K,
             callback: UInt32Array.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UInt32Array.SignalSignatures>(
             signal: K,
             callback: UInt32Array.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UInt32Array.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UInt32Array.SignalSignatures[K]>
+            ...args: UInt32Array.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -18539,7 +20467,10 @@ export namespace Arrow {
 
     namespace UInt32ArrayBuilder {
         // Signal signatures
-        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {
+            'notify::array-builder': GObject.Object.Notify;
+            'notify::array-builder': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -18563,14 +20494,17 @@ export namespace Arrow {
             signal: K,
             callback: UInt32ArrayBuilder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UInt32ArrayBuilder.SignalSignatures>(
             signal: K,
             callback: UInt32ArrayBuilder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UInt32ArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UInt32ArrayBuilder.SignalSignatures[K]>
+            ...args: UInt32ArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -18588,7 +20522,10 @@ export namespace Arrow {
 
     namespace UInt32DataType {
         // Signal signatures
-        interface SignalSignatures extends IntegerDataType.SignalSignatures {}
+        interface SignalSignatures extends IntegerDataType.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -18612,19 +20549,26 @@ export namespace Arrow {
             signal: K,
             callback: UInt32DataType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UInt32DataType.SignalSignatures>(
             signal: K,
             callback: UInt32DataType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UInt32DataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UInt32DataType.SignalSignatures[K]>
+            ...args: UInt32DataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace UInt32Scalar {
         // Signal signatures
-        interface SignalSignatures extends Scalar.SignalSignatures {}
+        interface SignalSignatures extends Scalar.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::scalar': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -18648,14 +20592,17 @@ export namespace Arrow {
             signal: K,
             callback: UInt32Scalar.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UInt32Scalar.SignalSignatures>(
             signal: K,
             callback: UInt32Scalar.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UInt32Scalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UInt32Scalar.SignalSignatures[K]>
+            ...args: UInt32Scalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -18664,7 +20611,16 @@ export namespace Arrow {
 
     namespace UInt64Array {
         // Signal signatures
-        interface SignalSignatures extends NumericArray.SignalSignatures {}
+        interface SignalSignatures extends NumericArray.SignalSignatures {
+            'notify::array': GObject.Object.Notify;
+            'notify::buffer1': GObject.Object.Notify;
+            'notify::buffer2': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -18688,14 +20644,17 @@ export namespace Arrow {
             signal: K,
             callback: UInt64Array.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UInt64Array.SignalSignatures>(
             signal: K,
             callback: UInt64Array.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UInt64Array.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UInt64Array.SignalSignatures[K]>
+            ...args: UInt64Array.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -18706,7 +20665,10 @@ export namespace Arrow {
 
     namespace UInt64ArrayBuilder {
         // Signal signatures
-        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {
+            'notify::array-builder': GObject.Object.Notify;
+            'notify::array-builder': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -18730,14 +20692,17 @@ export namespace Arrow {
             signal: K,
             callback: UInt64ArrayBuilder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UInt64ArrayBuilder.SignalSignatures>(
             signal: K,
             callback: UInt64ArrayBuilder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UInt64ArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UInt64ArrayBuilder.SignalSignatures[K]>
+            ...args: UInt64ArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -18755,7 +20720,10 @@ export namespace Arrow {
 
     namespace UInt64DataType {
         // Signal signatures
-        interface SignalSignatures extends IntegerDataType.SignalSignatures {}
+        interface SignalSignatures extends IntegerDataType.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -18779,19 +20747,26 @@ export namespace Arrow {
             signal: K,
             callback: UInt64DataType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UInt64DataType.SignalSignatures>(
             signal: K,
             callback: UInt64DataType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UInt64DataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UInt64DataType.SignalSignatures[K]>
+            ...args: UInt64DataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace UInt64Scalar {
         // Signal signatures
-        interface SignalSignatures extends Scalar.SignalSignatures {}
+        interface SignalSignatures extends Scalar.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::scalar': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -18815,14 +20790,17 @@ export namespace Arrow {
             signal: K,
             callback: UInt64Scalar.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UInt64Scalar.SignalSignatures>(
             signal: K,
             callback: UInt64Scalar.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UInt64Scalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UInt64Scalar.SignalSignatures[K]>
+            ...args: UInt64Scalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -18831,7 +20809,16 @@ export namespace Arrow {
 
     namespace UInt8Array {
         // Signal signatures
-        interface SignalSignatures extends NumericArray.SignalSignatures {}
+        interface SignalSignatures extends NumericArray.SignalSignatures {
+            'notify::array': GObject.Object.Notify;
+            'notify::buffer1': GObject.Object.Notify;
+            'notify::buffer2': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -18855,14 +20842,17 @@ export namespace Arrow {
             signal: K,
             callback: UInt8Array.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UInt8Array.SignalSignatures>(
             signal: K,
             callback: UInt8Array.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UInt8Array.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UInt8Array.SignalSignatures[K]>
+            ...args: UInt8Array.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -18873,7 +20863,10 @@ export namespace Arrow {
 
     namespace UInt8ArrayBuilder {
         // Signal signatures
-        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {
+            'notify::array-builder': GObject.Object.Notify;
+            'notify::array-builder': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -18897,14 +20890,17 @@ export namespace Arrow {
             signal: K,
             callback: UInt8ArrayBuilder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UInt8ArrayBuilder.SignalSignatures>(
             signal: K,
             callback: UInt8ArrayBuilder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UInt8ArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UInt8ArrayBuilder.SignalSignatures[K]>
+            ...args: UInt8ArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -18922,7 +20918,10 @@ export namespace Arrow {
 
     namespace UInt8DataType {
         // Signal signatures
-        interface SignalSignatures extends IntegerDataType.SignalSignatures {}
+        interface SignalSignatures extends IntegerDataType.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -18946,19 +20945,26 @@ export namespace Arrow {
             signal: K,
             callback: UInt8DataType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UInt8DataType.SignalSignatures>(
             signal: K,
             callback: UInt8DataType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UInt8DataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UInt8DataType.SignalSignatures[K]>
+            ...args: UInt8DataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace UInt8Scalar {
         // Signal signatures
-        interface SignalSignatures extends Scalar.SignalSignatures {}
+        interface SignalSignatures extends Scalar.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::scalar': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -18982,14 +20988,17 @@ export namespace Arrow {
             signal: K,
             callback: UInt8Scalar.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UInt8Scalar.SignalSignatures>(
             signal: K,
             callback: UInt8Scalar.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UInt8Scalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UInt8Scalar.SignalSignatures[K]>
+            ...args: UInt8Scalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -18998,7 +21007,10 @@ export namespace Arrow {
 
     namespace UIntArrayBuilder {
         // Signal signatures
-        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {
+            'notify::array-builder': GObject.Object.Notify;
+            'notify::array-builder': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -19022,14 +21034,17 @@ export namespace Arrow {
             signal: K,
             callback: UIntArrayBuilder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UIntArrayBuilder.SignalSignatures>(
             signal: K,
             callback: UIntArrayBuilder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UIntArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UIntArrayBuilder.SignalSignatures[K]>
+            ...args: UIntArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -19047,7 +21062,9 @@ export namespace Arrow {
 
     namespace UTF8NormalizeOptions {
         // Signal signatures
-        interface SignalSignatures extends FunctionOptions.SignalSignatures {}
+        interface SignalSignatures extends FunctionOptions.SignalSignatures {
+            'notify::form': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -19081,19 +21098,33 @@ export namespace Arrow {
             signal: K,
             callback: UTF8NormalizeOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UTF8NormalizeOptions.SignalSignatures>(
             signal: K,
             callback: UTF8NormalizeOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UTF8NormalizeOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UTF8NormalizeOptions.SignalSignatures[K]>
+            ...args: UTF8NormalizeOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace UnionArray {
         // Signal signatures
-        interface SignalSignatures extends Array.SignalSignatures {}
+        interface SignalSignatures extends Array.SignalSignatures {
+            'notify::type-ids': GObject.Object.Notify;
+            'notify::type-ids': GObject.Object.Notify;
+            'notify::array': GObject.Object.Notify;
+            'notify::buffer1': GObject.Object.Notify;
+            'notify::buffer2': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::null-bitmap': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+            'notify::value-data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -19123,14 +21154,17 @@ export namespace Arrow {
             signal: K,
             callback: UnionArray.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UnionArray.SignalSignatures>(
             signal: K,
             callback: UnionArray.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UnionArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UnionArray.SignalSignatures[K]>
+            ...args: UnionArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -19141,7 +21175,10 @@ export namespace Arrow {
 
     namespace UnionArrayBuilder {
         // Signal signatures
-        interface SignalSignatures extends ArrayBuilder.SignalSignatures {}
+        interface SignalSignatures extends ArrayBuilder.SignalSignatures {
+            'notify::array-builder': GObject.Object.Notify;
+            'notify::array-builder': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -19163,14 +21200,17 @@ export namespace Arrow {
             signal: K,
             callback: UnionArrayBuilder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UnionArrayBuilder.SignalSignatures>(
             signal: K,
             callback: UnionArrayBuilder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UnionArrayBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UnionArrayBuilder.SignalSignatures[K]>
+            ...args: UnionArrayBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -19194,7 +21234,10 @@ export namespace Arrow {
 
     namespace UnionDataType {
         // Signal signatures
-        interface SignalSignatures extends DataType.SignalSignatures {}
+        interface SignalSignatures extends DataType.SignalSignatures {
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -19216,14 +21259,17 @@ export namespace Arrow {
             signal: K,
             callback: UnionDataType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UnionDataType.SignalSignatures>(
             signal: K,
             callback: UnionDataType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UnionDataType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UnionDataType.SignalSignatures[K]>
+            ...args: UnionDataType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -19235,7 +21281,12 @@ export namespace Arrow {
 
     namespace UnionScalar {
         // Signal signatures
-        interface SignalSignatures extends Scalar.SignalSignatures {}
+        interface SignalSignatures extends Scalar.SignalSignatures {
+            'notify::value': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::data-type': GObject.Object.Notify;
+            'notify::scalar': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -19266,14 +21317,17 @@ export namespace Arrow {
             signal: K,
             callback: UnionScalar.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UnionScalar.SignalSignatures>(
             signal: K,
             callback: UnionScalar.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UnionScalar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UnionScalar.SignalSignatures[K]>
+            ...args: UnionScalar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -19283,7 +21337,13 @@ export namespace Arrow {
 
     namespace VarianceOptions {
         // Signal signatures
-        interface SignalSignatures extends FunctionOptions.SignalSignatures {}
+        interface SignalSignatures extends FunctionOptions.SignalSignatures {
+            'notify::ddof': GObject.Object.Notify;
+            'notify::min-count': GObject.Object.Notify;
+            'notify::min-count': GObject.Object.Notify;
+            'notify::skip-nulls': GObject.Object.Notify;
+            'notify::skip-nulls': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -19341,19 +21401,33 @@ export namespace Arrow {
             signal: K,
             callback: VarianceOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VarianceOptions.SignalSignatures>(
             signal: K,
             callback: VarianceOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VarianceOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VarianceOptions.SignalSignatures[K]>
+            ...args: VarianceOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace WriteOptions {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::alignment': GObject.Object.Notify;
+            'notify::allow-64bit': GObject.Object.Notify;
+            'notify::allow64bit': GObject.Object.Notify;
+            'notify::codec': GObject.Object.Notify;
+            'notify::max-recursion-depth': GObject.Object.Notify;
+            'notify::max-recursion-depth': GObject.Object.Notify;
+            'notify::use-threads': GObject.Object.Notify;
+            'notify::use-threads': GObject.Object.Notify;
+            'notify::write-legacy-ipc-format': GObject.Object.Notify;
+            'notify::write-legacy-ipc-format': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -19450,14 +21524,17 @@ export namespace Arrow {
             signal: K,
             callback: WriteOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WriteOptions.SignalSignatures>(
             signal: K,
             callback: WriteOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WriteOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WriteOptions.SignalSignatures[K]>
+            ...args: WriteOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     type AggregateNodeOptionsClass = typeof AggregateNodeOptions;

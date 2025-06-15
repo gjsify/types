@@ -201,7 +201,10 @@ export namespace GstVa {
     function va_memory_peek_display(mem: Gst.Memory): VaDisplay;
     namespace VaAllocator {
         // Signal signatures
-        interface SignalSignatures extends Gst.Allocator.SignalSignatures {}
+        interface SignalSignatures extends Gst.Allocator.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -231,14 +234,17 @@ export namespace GstVa {
             signal: K,
             callback: VaAllocator.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VaAllocator.SignalSignatures>(
             signal: K,
             callback: VaAllocator.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VaAllocator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VaAllocator.SignalSignatures[K]>
+            ...args: VaAllocator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -294,7 +300,13 @@ export namespace GstVa {
 
     namespace VaDisplay {
         // Signal signatures
-        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            'notify::description': GObject.Object.Notify;
+            'notify::va-display': GObject.Object.Notify;
+            'notify::va-display': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -334,14 +346,17 @@ export namespace GstVa {
         // Signals
 
         connect<K extends keyof VaDisplay.SignalSignatures>(signal: K, callback: VaDisplay.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VaDisplay.SignalSignatures>(
             signal: K,
             callback: VaDisplay.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VaDisplay.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VaDisplay.SignalSignatures[K]>
+            ...args: VaDisplay.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -380,7 +395,14 @@ export namespace GstVa {
 
     namespace VaDisplayDrm {
         // Signal signatures
-        interface SignalSignatures extends VaDisplay.SignalSignatures {}
+        interface SignalSignatures extends VaDisplay.SignalSignatures {
+            'notify::path': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::va-display': GObject.Object.Notify;
+            'notify::va-display': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -413,19 +435,28 @@ export namespace GstVa {
             signal: K,
             callback: VaDisplayDrm.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VaDisplayDrm.SignalSignatures>(
             signal: K,
             callback: VaDisplayDrm.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VaDisplayDrm.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VaDisplayDrm.SignalSignatures[K]>
+            ...args: VaDisplayDrm.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace VaDisplayWrapped {
         // Signal signatures
-        interface SignalSignatures extends VaDisplay.SignalSignatures {}
+        interface SignalSignatures extends VaDisplay.SignalSignatures {
+            'notify::description': GObject.Object.Notify;
+            'notify::va-display': GObject.Object.Notify;
+            'notify::va-display': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -453,19 +484,25 @@ export namespace GstVa {
             signal: K,
             callback: VaDisplayWrapped.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VaDisplayWrapped.SignalSignatures>(
             signal: K,
             callback: VaDisplayWrapped.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VaDisplayWrapped.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VaDisplayWrapped.SignalSignatures[K]>
+            ...args: VaDisplayWrapped.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace VaDmabufAllocator {
         // Signal signatures
-        interface SignalSignatures extends Gst.Allocator.SignalSignatures {}
+        interface SignalSignatures extends Gst.Allocator.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -494,14 +531,17 @@ export namespace GstVa {
             signal: K,
             callback: VaDmabufAllocator.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VaDmabufAllocator.SignalSignatures>(
             signal: K,
             callback: VaDmabufAllocator.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VaDmabufAllocator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VaDmabufAllocator.SignalSignatures[K]>
+            ...args: VaDmabufAllocator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -545,7 +585,10 @@ export namespace GstVa {
 
     namespace VaPool {
         // Signal signatures
-        interface SignalSignatures extends Gst.BufferPool.SignalSignatures {}
+        interface SignalSignatures extends Gst.BufferPool.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -579,8 +622,14 @@ export namespace GstVa {
         // Signals
 
         connect<K extends keyof VaPool.SignalSignatures>(signal: K, callback: VaPool.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VaPool.SignalSignatures>(signal: K, callback: VaPool.SignalSignatures[K]): number;
-        emit<K extends keyof VaPool.SignalSignatures>(signal: K, ...args: Parameters<VaPool.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof VaPool.SignalSignatures>(
+            signal: K,
+            ...args: VaPool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 

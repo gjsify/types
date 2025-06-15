@@ -83,7 +83,37 @@ export namespace MPID {
     function enable_debug(debug: boolean): void;
     namespace Device {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::access-protocols': GObject.Object.Notify;
+            'notify::access-protocols': GObject.Object.Notify;
+            'notify::audio-folders': GObject.Object.Notify;
+            'notify::audio-folders': GObject.Object.Notify;
+            'notify::drive-type': GObject.Object.Notify;
+            'notify::drive-type': GObject.Object.Notify;
+            'notify::error': GObject.Object.Notify;
+            'notify::folder-depth': GObject.Object.Notify;
+            'notify::folder-depth': GObject.Object.Notify;
+            'notify::fs-uuid': GObject.Object.Notify;
+            'notify::fs-uuid': GObject.Object.Notify;
+            'notify::input-formats': GObject.Object.Notify;
+            'notify::input-formats': GObject.Object.Notify;
+            'notify::input-path': GObject.Object.Notify;
+            'notify::input-path': GObject.Object.Notify;
+            'notify::model': GObject.Object.Notify;
+            'notify::mpi-file': GObject.Object.Notify;
+            'notify::mpi-file': GObject.Object.Notify;
+            'notify::output-formats': GObject.Object.Notify;
+            'notify::output-formats': GObject.Object.Notify;
+            'notify::playlist-formats': GObject.Object.Notify;
+            'notify::playlist-formats': GObject.Object.Notify;
+            'notify::playlist-path': GObject.Object.Notify;
+            'notify::playlist-path': GObject.Object.Notify;
+            'notify::requires-eject': GObject.Object.Notify;
+            'notify::requires-eject': GObject.Object.Notify;
+            'notify::serial': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+            'notify::vendor': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -264,8 +294,14 @@ export namespace MPID {
         // Signals
 
         connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
-        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            ...args: Device.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     type DeviceClass = typeof Device;

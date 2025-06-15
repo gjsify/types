@@ -192,7 +192,9 @@ export namespace GPlugin {
     }
     namespace FileSource {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::manager': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -226,14 +228,17 @@ export namespace GPlugin {
             signal: K,
             callback: FileSource.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FileSource.SignalSignatures>(
             signal: K,
             callback: FileSource.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FileSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileSource.SignalSignatures[K]>
+            ...args: FileSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -707,7 +712,9 @@ export namespace GPlugin {
 
     namespace Loader {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::id': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -738,8 +745,14 @@ export namespace GPlugin {
         // Signals
 
         connect<K extends keyof Loader.SignalSignatures>(signal: K, callback: Loader.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Loader.SignalSignatures>(signal: K, callback: Loader.SignalSignatures[K]): number;
-        emit<K extends keyof Loader.SignalSignatures>(signal: K, ...args: Parameters<Loader.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Loader.SignalSignatures>(
+            signal: K,
+            ...args: Loader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -815,7 +828,7 @@ export namespace GPlugin {
         }
 
         interface LoadingPlugin {
-            (_source: Manager, plugin: GObject.Object, error?: any | null): boolean;
+            (_source: Manager, plugin: GObject.Object, error?: any | null): boolean | void;
         }
 
         interface UnloadPluginFailed {
@@ -827,7 +840,7 @@ export namespace GPlugin {
         }
 
         interface UnloadingPlugin {
-            (_source: Manager, plugin: GObject.Object, error?: any | null): boolean;
+            (_source: Manager, plugin: GObject.Object, error?: any | null): boolean | void;
         }
 
         // Signal signatures
@@ -864,14 +877,17 @@ export namespace GPlugin {
         // Signals
 
         connect<K extends keyof Manager.SignalSignatures>(signal: K, callback: Manager.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Manager.SignalSignatures>(
             signal: K,
             callback: Manager.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Manager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Manager.SignalSignatures[K]>
+            ...args: Manager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1043,7 +1059,40 @@ export namespace GPlugin {
 
     namespace PluginInfo {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::abi-version': GObject.Object.Notify;
+            'notify::abi-version': GObject.Object.Notify;
+            'notify::authors': GObject.Object.Notify;
+            'notify::auto-load': GObject.Object.Notify;
+            'notify::auto-load': GObject.Object.Notify;
+            'notify::bind-global': GObject.Object.Notify;
+            'notify::bind-global': GObject.Object.Notify;
+            'notify::category': GObject.Object.Notify;
+            'notify::dependencies': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::discriminator': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::internal': GObject.Object.Notify;
+            'notify::license-id': GObject.Object.Notify;
+            'notify::license-id': GObject.Object.Notify;
+            'notify::license-text': GObject.Object.Notify;
+            'notify::license-text': GObject.Object.Notify;
+            'notify::license-url': GObject.Object.Notify;
+            'notify::license-url': GObject.Object.Notify;
+            'notify::load-on-query': GObject.Object.Notify;
+            'notify::load-on-query': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::priority': GObject.Object.Notify;
+            'notify::provides': GObject.Object.Notify;
+            'notify::settings-schema': GObject.Object.Notify;
+            'notify::settings-schema': GObject.Object.Notify;
+            'notify::summary': GObject.Object.Notify;
+            'notify::unloadable': GObject.Object.Notify;
+            'notify::version': GObject.Object.Notify;
+            'notify::website': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1342,14 +1391,17 @@ export namespace GPlugin {
             signal: K,
             callback: PluginInfo.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PluginInfo.SignalSignatures>(
             signal: K,
             callback: PluginInfo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PluginInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PluginInfo.SignalSignatures[K]>
+            ...args: PluginInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

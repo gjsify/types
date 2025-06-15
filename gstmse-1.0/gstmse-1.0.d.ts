@@ -199,6 +199,16 @@ export namespace GstMse {
             'on-source-close': OnSourceClose;
             'on-source-ended': OnSourceEnded;
             'on-source-open': OnSourceOpen;
+            'notify::active-source-buffers': GObject.Object.Notify;
+            'notify::active-source-buffers': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::position': GObject.Object.Notify;
+            'notify::ready-state': GObject.Object.Notify;
+            'notify::ready-state': GObject.Object.Notify;
+            'notify::source-buffers': GObject.Object.Notify;
+            'notify::source-buffers': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -296,14 +306,17 @@ export namespace GstMse {
             signal: K,
             callback: MediaSource.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MediaSource.SignalSignatures>(
             signal: K,
             callback: MediaSource.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MediaSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaSource.SignalSignatures[K]>
+            ...args: MediaSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -441,7 +454,20 @@ export namespace GstMse {
 
     namespace MseSrc {
         // Signal signatures
-        interface SignalSignatures extends Gst.Element.SignalSignatures {}
+        interface SignalSignatures extends Gst.Element.SignalSignatures {
+            'notify::duration': GObject.Object.Notify;
+            'notify::n-audio': GObject.Object.Notify;
+            'notify::n-audio': GObject.Object.Notify;
+            'notify::n-text': GObject.Object.Notify;
+            'notify::n-text': GObject.Object.Notify;
+            'notify::n-video': GObject.Object.Notify;
+            'notify::n-video': GObject.Object.Notify;
+            'notify::position': GObject.Object.Notify;
+            'notify::ready-state': GObject.Object.Notify;
+            'notify::ready-state': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -541,8 +567,14 @@ export namespace GstMse {
         // Signals
 
         connect<K extends keyof MseSrc.SignalSignatures>(signal: K, callback: MseSrc.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MseSrc.SignalSignatures>(signal: K, callback: MseSrc.SignalSignatures[K]): number;
-        emit<K extends keyof MseSrc.SignalSignatures>(signal: K, ...args: Parameters<MseSrc.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof MseSrc.SignalSignatures>(
+            signal: K,
+            ...args: MseSrc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1051,7 +1083,14 @@ export namespace GstMse {
 
     namespace MseSrcPad {
         // Signal signatures
-        interface SignalSignatures extends Gst.Pad.SignalSignatures {}
+        interface SignalSignatures extends Gst.Pad.SignalSignatures {
+            'notify::caps': GObject.Object.Notify;
+            'notify::direction': GObject.Object.Notify;
+            'notify::offset': GObject.Object.Notify;
+            'notify::template': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1070,14 +1109,17 @@ export namespace GstMse {
         // Signals
 
         connect<K extends keyof MseSrcPad.SignalSignatures>(signal: K, callback: MseSrcPad.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MseSrcPad.SignalSignatures>(
             signal: K,
             callback: MseSrcPad.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MseSrcPad.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MseSrcPad.SignalSignatures[K]>
+            ...args: MseSrcPad.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace SourceBuffer {
@@ -1110,6 +1152,20 @@ export namespace GstMse {
             'on-update': OnUpdate;
             'on-update-end': OnUpdateEnd;
             'on-update-start': OnUpdateStart;
+            'notify::append-mode': GObject.Object.Notify;
+            'notify::append-mode': GObject.Object.Notify;
+            'notify::append-window-end': GObject.Object.Notify;
+            'notify::append-window-end': GObject.Object.Notify;
+            'notify::append-window-start': GObject.Object.Notify;
+            'notify::append-window-start': GObject.Object.Notify;
+            'notify::buffered': GObject.Object.Notify;
+            'notify::content-type': GObject.Object.Notify;
+            'notify::content-type': GObject.Object.Notify;
+            'notify::timestamp-offset': GObject.Object.Notify;
+            'notify::timestamp-offset': GObject.Object.Notify;
+            'notify::updating': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1268,14 +1324,17 @@ export namespace GstMse {
             signal: K,
             callback: SourceBuffer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceBuffer.SignalSignatures>(
             signal: K,
             callback: SourceBuffer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceBuffer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceBuffer.SignalSignatures[K]>
+            ...args: SourceBuffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1415,6 +1474,9 @@ export namespace GstMse {
         interface SignalSignatures extends Gst.Object.SignalSignatures {
             'on-sourcebuffer-added': OnSourcebufferAdded;
             'on-sourcebuffer-removed': OnSourcebufferRemoved;
+            'notify::length': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1459,14 +1521,17 @@ export namespace GstMse {
             signal: K,
             callback: SourceBufferList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceBufferList.SignalSignatures>(
             signal: K,
             callback: SourceBufferList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceBufferList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceBufferList.SignalSignatures[K]>
+            ...args: SourceBufferList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

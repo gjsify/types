@@ -134,7 +134,9 @@ export namespace GstTag {
     function to_vorbis_tag(gst_tag: string): string;
     namespace Demux {
         // Signal signatures
-        interface SignalSignatures extends Gst.Element.SignalSignatures {}
+        interface SignalSignatures extends Gst.Element.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -161,8 +163,14 @@ export namespace GstTag {
         // Signals
 
         connect<K extends keyof Demux.SignalSignatures>(signal: K, callback: Demux.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Demux.SignalSignatures>(signal: K, callback: Demux.SignalSignatures[K]): number;
-        emit<K extends keyof Demux.SignalSignatures>(signal: K, ...args: Parameters<Demux.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Demux.SignalSignatures>(
+            signal: K,
+            ...args: Demux.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 

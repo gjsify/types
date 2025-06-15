@@ -384,14 +384,17 @@ export namespace gSignon {
             signal: K,
             callback: AuthService.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AuthService.SignalSignatures>(
             signal: K,
             callback: AuthService.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AuthService.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AuthService.SignalSignatures[K]>
+            ...args: AuthService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -453,6 +456,7 @@ export namespace gSignon {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'state-changed': StateChanged;
+            'notify::identity': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -488,14 +492,17 @@ export namespace gSignon {
             signal: K,
             callback: AuthSession.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AuthSession.SignalSignatures>(
             signal: K,
             callback: AuthSession.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AuthSession.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AuthSession.SignalSignatures[K]>
+            ...args: AuthSession.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -629,6 +636,9 @@ export namespace gSignon {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             removed: Removed;
             signout: Signout;
+            'notify::app-ctx': GObject.Object.Notify;
+            'notify::app-ctx': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -669,14 +679,17 @@ export namespace gSignon {
         // Signals
 
         connect<K extends keyof Identity.SignalSignatures>(signal: K, callback: Identity.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Identity.SignalSignatures>(
             signal: K,
             callback: Identity.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Identity.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Identity.SignalSignatures[K]>
+            ...args: Identity.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

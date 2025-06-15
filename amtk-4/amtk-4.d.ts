@@ -244,14 +244,17 @@ export namespace Amtk {
             signal: K,
             callback: ActionInfoCentralStore.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ActionInfoCentralStore.SignalSignatures>(
             signal: K,
             callback: ActionInfoCentralStore.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ActionInfoCentralStore.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ActionInfoCentralStore.SignalSignatures[K]>
+            ...args: ActionInfoCentralStore.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -288,14 +291,17 @@ export namespace Amtk {
             signal: K,
             callback: ActionInfoStore.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ActionInfoStore.SignalSignatures>(
             signal: K,
             callback: ActionInfoStore.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ActionInfoStore.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ActionInfoStore.SignalSignatures[K]>
+            ...args: ActionInfoStore.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -333,7 +339,11 @@ export namespace Amtk {
 
     namespace ApplicationWindow {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::application-window': GObject.Object.Notify;
+            'notify::application-window': GObject.Object.Notify;
+            'notify::statusbar': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -375,14 +385,17 @@ export namespace Amtk {
             signal: K,
             callback: ApplicationWindow.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ApplicationWindow.SignalSignatures>(
             signal: K,
             callback: ApplicationWindow.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ApplicationWindow.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ApplicationWindow.SignalSignatures[K]>
+            ...args: ApplicationWindow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -452,7 +465,11 @@ export namespace Amtk {
 
     namespace Factory {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::application': GObject.Object.Notify;
+            'notify::default-flags': GObject.Object.Notify;
+            'notify::default-flags': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -497,14 +514,17 @@ export namespace Amtk {
         // Signals
 
         connect<K extends keyof Factory.SignalSignatures>(signal: K, callback: Factory.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Factory.SignalSignatures>(
             signal: K,
             callback: Factory.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Factory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Factory.SignalSignatures[K]>
+            ...args: Factory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -607,6 +627,8 @@ export namespace Amtk {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'menu-item-deselected': MenuItemDeselected;
             'menu-item-selected': MenuItemSelected;
+            'notify::menu-shell': GObject.Object.Notify;
+            'notify::menu-shell': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -640,14 +662,17 @@ export namespace Amtk {
         // Signals
 
         connect<K extends keyof MenuShell.SignalSignatures>(signal: K, callback: MenuShell.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MenuShell.SignalSignatures>(
             signal: K,
             callback: MenuShell.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MenuShell.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MenuShell.SignalSignatures[K]>
+            ...args: MenuShell.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 

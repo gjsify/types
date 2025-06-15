@@ -4737,7 +4737,9 @@ export namespace Gdk {
     }
     namespace AppLaunchContext {
         // Signal signatures
-        interface SignalSignatures extends Gio.AppLaunchContext.SignalSignatures {}
+        interface SignalSignatures extends Gio.AppLaunchContext.SignalSignatures {
+            'notify::display': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4789,14 +4791,17 @@ export namespace Gdk {
             signal: K,
             callback: AppLaunchContext.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AppLaunchContext.SignalSignatures>(
             signal: K,
             callback: AppLaunchContext.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AppLaunchContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AppLaunchContext.SignalSignatures[K]>
+            ...args: AppLaunchContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4884,14 +4889,17 @@ export namespace Gdk {
             signal: K,
             callback: ButtonEvent.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ButtonEvent.SignalSignatures>(
             signal: K,
             callback: ButtonEvent.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ButtonEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ButtonEvent.SignalSignatures[K]>
+            ...args: ButtonEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4904,7 +4912,10 @@ export namespace Gdk {
 
     namespace CairoContext {
         // Signal signatures
-        interface SignalSignatures extends DrawContext.SignalSignatures {}
+        interface SignalSignatures extends DrawContext.SignalSignatures {
+            'notify::display': GObject.Object.Notify;
+            'notify::surface': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4933,14 +4944,17 @@ export namespace Gdk {
             signal: K,
             callback: CairoContext.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CairoContext.SignalSignatures>(
             signal: K,
             callback: CairoContext.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CairoContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CairoContext.SignalSignatures[K]>
+            ...args: CairoContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4960,7 +4974,15 @@ export namespace Gdk {
 
     namespace CicpParams {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::color-primaries': GObject.Object.Notify;
+            'notify::color-primaries': GObject.Object.Notify;
+            'notify::matrix-coefficients': GObject.Object.Notify;
+            'notify::matrix-coefficients': GObject.Object.Notify;
+            'notify::range': GObject.Object.Notify;
+            'notify::transfer-function': GObject.Object.Notify;
+            'notify::transfer-function': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5103,14 +5125,17 @@ export namespace Gdk {
             signal: K,
             callback: CicpParams.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CicpParams.SignalSignatures>(
             signal: K,
             callback: CicpParams.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CicpParams.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CicpParams.SignalSignatures[K]>
+            ...args: CicpParams.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5177,6 +5202,10 @@ export namespace Gdk {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             changed: Changed;
+            'notify::content': GObject.Object.Notify;
+            'notify::display': GObject.Object.Notify;
+            'notify::formats': GObject.Object.Notify;
+            'notify::local': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -5239,14 +5268,17 @@ export namespace Gdk {
         // Signals
 
         connect<K extends keyof Clipboard.SignalSignatures>(signal: K, callback: Clipboard.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Clipboard.SignalSignatures>(
             signal: K,
             callback: Clipboard.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Clipboard.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Clipboard.SignalSignatures[K]>
+            ...args: Clipboard.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5607,14 +5639,17 @@ export namespace Gdk {
             signal: K,
             callback: ContentDeserializer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ContentDeserializer.SignalSignatures>(
             signal: K,
             callback: ContentDeserializer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ContentDeserializer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContentDeserializer.SignalSignatures[K]>
+            ...args: ContentDeserializer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -6175,6 +6210,9 @@ export namespace Gdk {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'content-changed': ContentChanged;
+            'notify::formats': GObject.Object.Notify;
+            'notify::storable-formats': GObject.Object.Notify;
+            'notify::storable-formats': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -6233,14 +6271,17 @@ export namespace Gdk {
             signal: K,
             callback: ContentProvider.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ContentProvider.SignalSignatures>(
             signal: K,
             callback: ContentProvider.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ContentProvider.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContentProvider.SignalSignatures[K]>
+            ...args: ContentProvider.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -6446,14 +6487,17 @@ export namespace Gdk {
             signal: K,
             callback: ContentSerializer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ContentSerializer.SignalSignatures>(
             signal: K,
             callback: ContentSerializer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ContentSerializer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContentSerializer.SignalSignatures[K]>
+            ...args: ContentSerializer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -7025,14 +7069,17 @@ export namespace Gdk {
             signal: K,
             callback: CrossingEvent.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CrossingEvent.SignalSignatures>(
             signal: K,
             callback: CrossingEvent.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CrossingEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CrossingEvent.SignalSignatures[K]>
+            ...args: CrossingEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -7055,7 +7102,15 @@ export namespace Gdk {
 
     namespace Cursor {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::fallback': GObject.Object.Notify;
+            'notify::hotspot-x': GObject.Object.Notify;
+            'notify::hotspot-x': GObject.Object.Notify;
+            'notify::hotspot-y': GObject.Object.Notify;
+            'notify::hotspot-y': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::texture': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -7164,8 +7219,14 @@ export namespace Gdk {
         // Signals
 
         connect<K extends keyof Cursor.SignalSignatures>(signal: K, callback: Cursor.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Cursor.SignalSignatures>(signal: K, callback: Cursor.SignalSignatures[K]): number;
-        emit<K extends keyof Cursor.SignalSignatures>(signal: K, ...args: Parameters<Cursor.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Cursor.SignalSignatures>(
+            signal: K,
+            ...args: Cursor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -7236,14 +7297,17 @@ export namespace Gdk {
         // Signals
 
         connect<K extends keyof DNDEvent.SignalSignatures>(signal: K, callback: DNDEvent.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DNDEvent.SignalSignatures>(
             signal: K,
             callback: DNDEvent.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DNDEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DNDEvent.SignalSignatures[K]>
+            ...args: DNDEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -7275,14 +7339,17 @@ export namespace Gdk {
             signal: K,
             callback: DeleteEvent.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeleteEvent.SignalSignatures>(
             signal: K,
             callback: DeleteEvent.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeleteEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeleteEvent.SignalSignatures[K]>
+            ...args: DeleteEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Device {
@@ -7300,6 +7367,36 @@ export namespace Gdk {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             changed: Changed;
             'tool-changed': ToolChanged;
+            'notify::active-layout-index': GObject.Object.Notify;
+            'notify::active-layout-index': GObject.Object.Notify;
+            'notify::caps-lock-state': GObject.Object.Notify;
+            'notify::caps-lock-state': GObject.Object.Notify;
+            'notify::direction': GObject.Object.Notify;
+            'notify::display': GObject.Object.Notify;
+            'notify::has-bidi-layouts': GObject.Object.Notify;
+            'notify::has-bidi-layouts': GObject.Object.Notify;
+            'notify::has-cursor': GObject.Object.Notify;
+            'notify::has-cursor': GObject.Object.Notify;
+            'notify::layout-names': GObject.Object.Notify;
+            'notify::layout-names': GObject.Object.Notify;
+            'notify::modifier-state': GObject.Object.Notify;
+            'notify::modifier-state': GObject.Object.Notify;
+            'notify::n-axes': GObject.Object.Notify;
+            'notify::n-axes': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::num-lock-state': GObject.Object.Notify;
+            'notify::num-lock-state': GObject.Object.Notify;
+            'notify::num-touches': GObject.Object.Notify;
+            'notify::num-touches': GObject.Object.Notify;
+            'notify::product-id': GObject.Object.Notify;
+            'notify::product-id': GObject.Object.Notify;
+            'notify::scroll-lock-state': GObject.Object.Notify;
+            'notify::scroll-lock-state': GObject.Object.Notify;
+            'notify::seat': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+            'notify::tool': GObject.Object.Notify;
+            'notify::vendor-id': GObject.Object.Notify;
+            'notify::vendor-id': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -7528,8 +7625,14 @@ export namespace Gdk {
         // Signals
 
         connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
-        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            ...args: Device.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -7688,7 +7791,14 @@ export namespace Gdk {
 
     namespace DeviceTool {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::axes': GObject.Object.Notify;
+            'notify::hardware-id': GObject.Object.Notify;
+            'notify::hardware-id': GObject.Object.Notify;
+            'notify::serial': GObject.Object.Notify;
+            'notify::tool-type': GObject.Object.Notify;
+            'notify::tool-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -7747,14 +7857,17 @@ export namespace Gdk {
             signal: K,
             callback: DeviceTool.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceTool.SignalSignatures>(
             signal: K,
             callback: DeviceTool.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceTool.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceTool.SignalSignatures[K]>
+            ...args: DeviceTool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -7823,6 +7936,14 @@ export namespace Gdk {
             'seat-added': SeatAdded;
             'seat-removed': SeatRemoved;
             'setting-changed': SettingChanged;
+            'notify::composited': GObject.Object.Notify;
+            'notify::dmabuf-formats': GObject.Object.Notify;
+            'notify::dmabuf-formats': GObject.Object.Notify;
+            'notify::input-shapes': GObject.Object.Notify;
+            'notify::input-shapes': GObject.Object.Notify;
+            'notify::rgba': GObject.Object.Notify;
+            'notify::shadow-width': GObject.Object.Notify;
+            'notify::shadow-width': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -7902,14 +8023,17 @@ export namespace Gdk {
         // Signals
 
         connect<K extends keyof Display.SignalSignatures>(signal: K, callback: Display.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Display.SignalSignatures>(
             signal: K,
             callback: Display.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Display.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Display.SignalSignatures[K]>
+            ...args: Display.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -8230,6 +8354,8 @@ export namespace Gdk {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'display-opened': DisplayOpened;
+            'notify::default-display': GObject.Object.Notify;
+            'notify::default-display': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -8313,14 +8439,17 @@ export namespace Gdk {
             signal: K,
             callback: DisplayManager.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DisplayManager.SignalSignatures>(
             signal: K,
             callback: DisplayManager.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DisplayManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DisplayManager.SignalSignatures[K]>
+            ...args: DisplayManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -8364,7 +8493,12 @@ export namespace Gdk {
 
     namespace DmabufTexture {
         // Signal signatures
-        interface SignalSignatures extends Texture.SignalSignatures {}
+        interface SignalSignatures extends Texture.SignalSignatures {
+            'notify::color-state': GObject.Object.Notify;
+            'notify::color-state': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8398,14 +8532,17 @@ export namespace Gdk {
             signal: K,
             callback: DmabufTexture.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DmabufTexture.SignalSignatures>(
             signal: K,
             callback: DmabufTexture.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DmabufTexture.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DmabufTexture.SignalSignatures[K]>
+            ...args: DmabufTexture.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -9187,7 +9324,22 @@ export namespace Gdk {
 
     namespace DmabufTextureBuilder {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::color-state': GObject.Object.Notify;
+            'notify::color-state': GObject.Object.Notify;
+            'notify::display': GObject.Object.Notify;
+            'notify::fourcc': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::modifier': GObject.Object.Notify;
+            'notify::n-planes': GObject.Object.Notify;
+            'notify::n-planes': GObject.Object.Notify;
+            'notify::premultiplied': GObject.Object.Notify;
+            'notify::update-region': GObject.Object.Notify;
+            'notify::update-region': GObject.Object.Notify;
+            'notify::update-texture': GObject.Object.Notify;
+            'notify::update-texture': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -9365,14 +9517,17 @@ export namespace Gdk {
             signal: K,
             callback: DmabufTextureBuilder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DmabufTextureBuilder.SignalSignatures>(
             signal: K,
             callback: DmabufTextureBuilder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DmabufTextureBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DmabufTextureBuilder.SignalSignatures[K]>
+            ...args: DmabufTextureBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -9595,6 +9750,14 @@ export namespace Gdk {
             cancel: Cancel;
             'dnd-finished': DndFinished;
             'drop-performed': DropPerformed;
+            'notify::actions': GObject.Object.Notify;
+            'notify::content': GObject.Object.Notify;
+            'notify::device': GObject.Object.Notify;
+            'notify::display': GObject.Object.Notify;
+            'notify::formats': GObject.Object.Notify;
+            'notify::selected-action': GObject.Object.Notify;
+            'notify::selected-action': GObject.Object.Notify;
+            'notify::surface': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -9673,8 +9836,14 @@ export namespace Gdk {
         // Signals
 
         connect<K extends keyof Drag.SignalSignatures>(signal: K, callback: Drag.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Drag.SignalSignatures>(signal: K, callback: Drag.SignalSignatures[K]): number;
-        emit<K extends keyof Drag.SignalSignatures>(signal: K, ...args: Parameters<Drag.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Drag.SignalSignatures>(
+            signal: K,
+            ...args: Drag.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -9785,7 +9954,10 @@ export namespace Gdk {
 
     namespace DrawContext {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::display': GObject.Object.Notify;
+            'notify::surface': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -9832,14 +10004,17 @@ export namespace Gdk {
             signal: K,
             callback: DrawContext.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DrawContext.SignalSignatures>(
             signal: K,
             callback: DrawContext.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DrawContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DrawContext.SignalSignatures[K]>
+            ...args: DrawContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -9917,7 +10092,14 @@ export namespace Gdk {
 
     namespace Drop {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::actions': GObject.Object.Notify;
+            'notify::device': GObject.Object.Notify;
+            'notify::display': GObject.Object.Notify;
+            'notify::drag': GObject.Object.Notify;
+            'notify::formats': GObject.Object.Notify;
+            'notify::surface': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -9986,8 +10168,14 @@ export namespace Gdk {
         // Signals
 
         connect<K extends keyof Drop.SignalSignatures>(signal: K, callback: Drop.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Drop.SignalSignatures>(signal: K, callback: Drop.SignalSignatures[K]): number;
-        emit<K extends keyof Drop.SignalSignatures>(signal: K, ...args: Parameters<Drop.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Drop.SignalSignatures>(
+            signal: K,
+            ...args: Drop.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -10203,8 +10391,14 @@ export namespace Gdk {
         // Signals
 
         connect<K extends keyof Event.SignalSignatures>(signal: K, callback: Event.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Event.SignalSignatures>(signal: K, callback: Event.SignalSignatures[K]): number;
-        emit<K extends keyof Event.SignalSignatures>(signal: K, ...args: Parameters<Event.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Event.SignalSignatures>(
+            signal: K,
+            ...args: Event.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -10393,14 +10587,17 @@ export namespace Gdk {
             signal: K,
             callback: FocusEvent.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FocusEvent.SignalSignatures>(
             signal: K,
             callback: FocusEvent.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FocusEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FocusEvent.SignalSignatures[K]>
+            ...args: FocusEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -10508,14 +10705,17 @@ export namespace Gdk {
             signal: K,
             callback: FrameClock.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FrameClock.SignalSignatures>(
             signal: K,
             callback: FrameClock.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FrameClock.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FrameClock.SignalSignatures[K]>
+            ...args: FrameClock.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -10616,7 +10816,15 @@ export namespace Gdk {
 
     namespace GLContext {
         // Signal signatures
-        interface SignalSignatures extends DrawContext.SignalSignatures {}
+        interface SignalSignatures extends DrawContext.SignalSignatures {
+            'notify::allowed-apis': GObject.Object.Notify;
+            'notify::allowed-apis': GObject.Object.Notify;
+            'notify::api': GObject.Object.Notify;
+            'notify::shared-context': GObject.Object.Notify;
+            'notify::shared-context': GObject.Object.Notify;
+            'notify::display': GObject.Object.Notify;
+            'notify::surface': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10722,14 +10930,17 @@ export namespace Gdk {
         // Signals
 
         connect<K extends keyof GLContext.SignalSignatures>(signal: K, callback: GLContext.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLContext.SignalSignatures>(
             signal: K,
             callback: GLContext.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLContext.SignalSignatures[K]>
+            ...args: GLContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -10929,7 +11140,12 @@ export namespace Gdk {
 
     namespace GLTexture {
         // Signal signatures
-        interface SignalSignatures extends Texture.SignalSignatures {}
+        interface SignalSignatures extends Texture.SignalSignatures {
+            'notify::color-state': GObject.Object.Notify;
+            'notify::color-state': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10957,14 +11173,17 @@ export namespace Gdk {
         // Signals
 
         connect<K extends keyof GLTexture.SignalSignatures>(signal: K, callback: GLTexture.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLTexture.SignalSignatures>(
             signal: K,
             callback: GLTexture.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLTexture.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLTexture.SignalSignatures[K]>
+            ...args: GLTexture.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -11757,7 +11976,22 @@ export namespace Gdk {
 
     namespace GLTextureBuilder {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::color-state': GObject.Object.Notify;
+            'notify::color-state': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
+            'notify::format': GObject.Object.Notify;
+            'notify::has-mipmap': GObject.Object.Notify;
+            'notify::has-mipmap': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::sync': GObject.Object.Notify;
+            'notify::update-region': GObject.Object.Notify;
+            'notify::update-region': GObject.Object.Notify;
+            'notify::update-texture': GObject.Object.Notify;
+            'notify::update-texture': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11883,14 +12117,17 @@ export namespace Gdk {
             signal: K,
             callback: GLTextureBuilder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLTextureBuilder.SignalSignatures>(
             signal: K,
             callback: GLTextureBuilder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLTextureBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLTextureBuilder.SignalSignatures[K]>
+            ...args: GLTextureBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -12091,14 +12328,17 @@ export namespace Gdk {
             signal: K,
             callback: GrabBrokenEvent.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GrabBrokenEvent.SignalSignatures>(
             signal: K,
             callback: GrabBrokenEvent.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GrabBrokenEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GrabBrokenEvent.SignalSignatures[K]>
+            ...args: GrabBrokenEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -12132,14 +12372,17 @@ export namespace Gdk {
         // Signals
 
         connect<K extends keyof KeyEvent.SignalSignatures>(signal: K, callback: KeyEvent.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof KeyEvent.SignalSignatures>(
             signal: K,
             callback: KeyEvent.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof KeyEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<KeyEvent.SignalSignatures[K]>
+            ...args: KeyEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -12199,7 +12442,12 @@ export namespace Gdk {
 
     namespace MemoryTexture {
         // Signal signatures
-        interface SignalSignatures extends Texture.SignalSignatures {}
+        interface SignalSignatures extends Texture.SignalSignatures {
+            'notify::color-state': GObject.Object.Notify;
+            'notify::color-state': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12236,14 +12484,17 @@ export namespace Gdk {
             signal: K,
             callback: MemoryTexture.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MemoryTexture.SignalSignatures>(
             signal: K,
             callback: MemoryTexture.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MemoryTexture.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MemoryTexture.SignalSignatures[K]>
+            ...args: MemoryTexture.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -13025,7 +13276,19 @@ export namespace Gdk {
 
     namespace MemoryTextureBuilder {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::bytes': GObject.Object.Notify;
+            'notify::color-state': GObject.Object.Notify;
+            'notify::color-state': GObject.Object.Notify;
+            'notify::format': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::stride': GObject.Object.Notify;
+            'notify::update-region': GObject.Object.Notify;
+            'notify::update-region': GObject.Object.Notify;
+            'notify::update-texture': GObject.Object.Notify;
+            'notify::update-texture': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13135,14 +13398,17 @@ export namespace Gdk {
             signal: K,
             callback: MemoryTextureBuilder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MemoryTextureBuilder.SignalSignatures>(
             signal: K,
             callback: MemoryTextureBuilder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MemoryTextureBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MemoryTextureBuilder.SignalSignatures[K]>
+            ...args: MemoryTextureBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -13279,6 +13545,24 @@ export namespace Gdk {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             invalidate: Invalidate;
+            'notify::connector': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::display': GObject.Object.Notify;
+            'notify::geometry': GObject.Object.Notify;
+            'notify::height-mm': GObject.Object.Notify;
+            'notify::height-mm': GObject.Object.Notify;
+            'notify::manufacturer': GObject.Object.Notify;
+            'notify::model': GObject.Object.Notify;
+            'notify::refresh-rate': GObject.Object.Notify;
+            'notify::refresh-rate': GObject.Object.Notify;
+            'notify::scale': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::subpixel-layout': GObject.Object.Notify;
+            'notify::subpixel-layout': GObject.Object.Notify;
+            'notify::valid': GObject.Object.Notify;
+            'notify::width-mm': GObject.Object.Notify;
+            'notify::width-mm': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -13406,14 +13690,17 @@ export namespace Gdk {
         // Signals
 
         connect<K extends keyof Monitor.SignalSignatures>(signal: K, callback: Monitor.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Monitor.SignalSignatures>(
             signal: K,
             callback: Monitor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Monitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Monitor.SignalSignatures[K]>
+            ...args: Monitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -13541,14 +13828,17 @@ export namespace Gdk {
             signal: K,
             callback: MotionEvent.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MotionEvent.SignalSignatures>(
             signal: K,
             callback: MotionEvent.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MotionEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MotionEvent.SignalSignatures[K]>
+            ...args: MotionEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace PadEvent {
@@ -13569,14 +13859,17 @@ export namespace Gdk {
         // Signals
 
         connect<K extends keyof PadEvent.SignalSignatures>(signal: K, callback: PadEvent.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PadEvent.SignalSignatures>(
             signal: K,
             callback: PadEvent.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PadEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PadEvent.SignalSignatures[K]>
+            ...args: PadEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -13617,14 +13910,17 @@ export namespace Gdk {
             signal: K,
             callback: ProximityEvent.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ProximityEvent.SignalSignatures>(
             signal: K,
             callback: ProximityEvent.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ProximityEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProximityEvent.SignalSignatures[K]>
+            ...args: ProximityEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace ScrollEvent {
@@ -13648,14 +13944,17 @@ export namespace Gdk {
             signal: K,
             callback: ScrollEvent.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ScrollEvent.SignalSignatures>(
             signal: K,
             callback: ScrollEvent.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ScrollEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ScrollEvent.SignalSignatures[K]>
+            ...args: ScrollEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -13722,6 +14021,7 @@ export namespace Gdk {
             'device-removed': DeviceRemoved;
             'tool-added': ToolAdded;
             'tool-removed': ToolRemoved;
+            'notify::display': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -13753,8 +14053,14 @@ export namespace Gdk {
         // Signals
 
         connect<K extends keyof Seat.SignalSignatures>(signal: K, callback: Seat.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Seat.SignalSignatures>(signal: K, callback: Seat.SignalSignatures[K]): number;
-        emit<K extends keyof Seat.SignalSignatures>(signal: K, ...args: Parameters<Seat.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Seat.SignalSignatures>(
+            signal: K,
+            ...args: Seat.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -13817,14 +14123,17 @@ export namespace Gdk {
         // Signals
 
         connect<K extends keyof Snapshot.SignalSignatures>(signal: K, callback: Snapshot.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Snapshot.SignalSignatures>(
             signal: K,
             callback: Snapshot.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Snapshot.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Snapshot.SignalSignatures[K]>
+            ...args: Snapshot.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Surface {
@@ -13835,7 +14144,7 @@ export namespace Gdk {
         }
 
         interface Event {
-            (_source: Surface, event: Event): boolean;
+            (_source: Surface, event: Event): boolean | void;
         }
 
         interface Layout {
@@ -13847,7 +14156,7 @@ export namespace Gdk {
         }
 
         interface Render {
-            (_source: Surface, region: cairo.Region): boolean;
+            (_source: Surface, region: cairo.Region): boolean | void;
         }
 
         // Signal signatures
@@ -13857,6 +14166,16 @@ export namespace Gdk {
             layout: Layout;
             'leave-monitor': LeaveMonitor;
             render: Render;
+            'notify::cursor': GObject.Object.Notify;
+            'notify::display': GObject.Object.Notify;
+            'notify::frame-clock': GObject.Object.Notify;
+            'notify::frame-clock': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::mapped': GObject.Object.Notify;
+            'notify::scale': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -13952,14 +14271,17 @@ export namespace Gdk {
         // Signals
 
         connect<K extends keyof Surface.SignalSignatures>(signal: K, callback: Surface.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Surface.SignalSignatures>(
             signal: K,
             callback: Surface.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Surface.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Surface.SignalSignatures[K]>
+            ...args: Surface.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -14227,7 +14549,12 @@ export namespace Gdk {
 
     namespace Texture {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::color-state': GObject.Object.Notify;
+            'notify::color-state': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -14312,14 +14639,17 @@ export namespace Gdk {
         // Signals
 
         connect<K extends keyof Texture.SignalSignatures>(signal: K, callback: Texture.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Texture.SignalSignatures>(
             signal: K,
             callback: Texture.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Texture.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Texture.SignalSignatures[K]>
+            ...args: Texture.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -15232,14 +15562,17 @@ export namespace Gdk {
             signal: K,
             callback: TouchEvent.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TouchEvent.SignalSignatures>(
             signal: K,
             callback: TouchEvent.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TouchEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TouchEvent.SignalSignatures[K]>
+            ...args: TouchEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -15276,14 +15609,17 @@ export namespace Gdk {
             signal: K,
             callback: TouchpadEvent.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TouchpadEvent.SignalSignatures>(
             signal: K,
             callback: TouchpadEvent.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TouchpadEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TouchpadEvent.SignalSignatures[K]>
+            ...args: TouchpadEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -15323,6 +15659,8 @@ export namespace Gdk {
         // Signal signatures
         interface SignalSignatures extends DrawContext.SignalSignatures {
             'images-updated': ImagesUpdated;
+            'notify::display': GObject.Object.Notify;
+            'notify::surface': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -15355,14 +15693,17 @@ export namespace Gdk {
             signal: K,
             callback: VulkanContext.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VulkanContext.SignalSignatures>(
             signal: K,
             callback: VulkanContext.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VulkanContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VulkanContext.SignalSignatures[K]>
+            ...args: VulkanContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**

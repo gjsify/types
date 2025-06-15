@@ -25,7 +25,10 @@ export namespace GstGLWayland {
 
     namespace GLDisplayWayland {
         // Signal signatures
-        interface SignalSignatures extends GstGL.GLDisplay.SignalSignatures {}
+        interface SignalSignatures extends GstGL.GLDisplay.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -66,14 +69,17 @@ export namespace GstGLWayland {
             signal: K,
             callback: GLDisplayWayland.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLDisplayWayland.SignalSignatures>(
             signal: K,
             callback: GLDisplayWayland.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLDisplayWayland.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLDisplayWayland.SignalSignatures[K]>
+            ...args: GLDisplayWayland.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     type GLDisplayWaylandClass = typeof GLDisplayWayland;

@@ -1170,7 +1170,16 @@ export namespace ICalGLib {
     }
     namespace Array {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::always-destroy': GObject.Object.Notify;
+            'notify::always-destroy': GObject.Object.Notify;
+            'notify::is-global-memory': GObject.Object.Notify;
+            'notify::is-global-memory': GObject.Object.Notify;
+            'notify::native': GObject.Object.Notify;
+            'notify::native-destroy-func': GObject.Object.Notify;
+            'notify::native-destroy-func': GObject.Object.Notify;
+            'notify::owner': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1192,8 +1201,14 @@ export namespace ICalGLib {
         // Signals
 
         connect<K extends keyof Array.SignalSignatures>(signal: K, callback: Array.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Array.SignalSignatures>(signal: K, callback: Array.SignalSignatures[K]): number;
-        emit<K extends keyof Array.SignalSignatures>(signal: K, ...args: Parameters<Array.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Array.SignalSignatures>(
+            signal: K,
+            ...args: Array.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1216,7 +1231,16 @@ export namespace ICalGLib {
 
     namespace Attach {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::always-destroy': GObject.Object.Notify;
+            'notify::always-destroy': GObject.Object.Notify;
+            'notify::is-global-memory': GObject.Object.Notify;
+            'notify::is-global-memory': GObject.Object.Notify;
+            'notify::native': GObject.Object.Notify;
+            'notify::native-destroy-func': GObject.Object.Notify;
+            'notify::native-destroy-func': GObject.Object.Notify;
+            'notify::owner': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1244,8 +1268,14 @@ export namespace ICalGLib {
         // Signals
 
         connect<K extends keyof Attach.SignalSignatures>(signal: K, callback: Attach.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Attach.SignalSignatures>(signal: K, callback: Attach.SignalSignatures[K]): number;
-        emit<K extends keyof Attach.SignalSignatures>(signal: K, ...args: Parameters<Attach.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Attach.SignalSignatures>(
+            signal: K,
+            ...args: Attach.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1270,7 +1300,16 @@ export namespace ICalGLib {
 
     namespace CompIter {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::always-destroy': GObject.Object.Notify;
+            'notify::always-destroy': GObject.Object.Notify;
+            'notify::is-global-memory': GObject.Object.Notify;
+            'notify::is-global-memory': GObject.Object.Notify;
+            'notify::native': GObject.Object.Notify;
+            'notify::native-destroy-func': GObject.Object.Notify;
+            'notify::native-destroy-func': GObject.Object.Notify;
+            'notify::owner': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1292,14 +1331,17 @@ export namespace ICalGLib {
         // Signals
 
         connect<K extends keyof CompIter.SignalSignatures>(signal: K, callback: CompIter.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CompIter.SignalSignatures>(
             signal: K,
             callback: CompIter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CompIter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CompIter.SignalSignatures[K]>
+            ...args: CompIter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1322,7 +1364,16 @@ export namespace ICalGLib {
 
     namespace Component {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::always-destroy': GObject.Object.Notify;
+            'notify::always-destroy': GObject.Object.Notify;
+            'notify::is-global-memory': GObject.Object.Notify;
+            'notify::is-global-memory': GObject.Object.Notify;
+            'notify::native': GObject.Object.Notify;
+            'notify::native-destroy-func': GObject.Object.Notify;
+            'notify::native-destroy-func': GObject.Object.Notify;
+            'notify::owner': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1382,14 +1433,17 @@ export namespace ICalGLib {
         // Signals
 
         connect<K extends keyof Component.SignalSignatures>(signal: K, callback: Component.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Component.SignalSignatures>(
             signal: K,
             callback: Component.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Component.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Component.SignalSignatures[K]>
+            ...args: Component.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1738,7 +1792,16 @@ export namespace ICalGLib {
 
     namespace Datetimeperiod {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::always-destroy': GObject.Object.Notify;
+            'notify::always-destroy': GObject.Object.Notify;
+            'notify::is-global-memory': GObject.Object.Notify;
+            'notify::is-global-memory': GObject.Object.Notify;
+            'notify::native': GObject.Object.Notify;
+            'notify::native-destroy-func': GObject.Object.Notify;
+            'notify::native-destroy-func': GObject.Object.Notify;
+            'notify::owner': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1765,14 +1828,17 @@ export namespace ICalGLib {
             signal: K,
             callback: Datetimeperiod.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Datetimeperiod.SignalSignatures>(
             signal: K,
             callback: Datetimeperiod.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Datetimeperiod.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Datetimeperiod.SignalSignatures[K]>
+            ...args: Datetimeperiod.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1800,7 +1866,16 @@ export namespace ICalGLib {
 
     namespace Duration {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::always-destroy': GObject.Object.Notify;
+            'notify::always-destroy': GObject.Object.Notify;
+            'notify::is-global-memory': GObject.Object.Notify;
+            'notify::is-global-memory': GObject.Object.Notify;
+            'notify::native': GObject.Object.Notify;
+            'notify::native-destroy-func': GObject.Object.Notify;
+            'notify::native-destroy-func': GObject.Object.Notify;
+            'notify::owner': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1830,14 +1905,17 @@ export namespace ICalGLib {
         // Signals
 
         connect<K extends keyof Duration.SignalSignatures>(signal: K, callback: Duration.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Duration.SignalSignatures>(
             signal: K,
             callback: Duration.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Duration.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Duration.SignalSignatures[K]>
+            ...args: Duration.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1925,7 +2003,16 @@ export namespace ICalGLib {
 
     namespace Geo {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::always-destroy': GObject.Object.Notify;
+            'notify::always-destroy': GObject.Object.Notify;
+            'notify::is-global-memory': GObject.Object.Notify;
+            'notify::is-global-memory': GObject.Object.Notify;
+            'notify::native': GObject.Object.Notify;
+            'notify::native-destroy-func': GObject.Object.Notify;
+            'notify::native-destroy-func': GObject.Object.Notify;
+            'notify::owner': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1949,8 +2036,14 @@ export namespace ICalGLib {
         // Signals
 
         connect<K extends keyof Geo.SignalSignatures>(signal: K, callback: Geo.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Geo.SignalSignatures>(signal: K, callback: Geo.SignalSignatures[K]): number;
-        emit<K extends keyof Geo.SignalSignatures>(signal: K, ...args: Parameters<Geo.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Geo.SignalSignatures>(
+            signal: K,
+            ...args: Geo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1983,7 +2076,16 @@ export namespace ICalGLib {
 
     namespace Object {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::always-destroy': GObject.Object.Notify;
+            'notify::always-destroy': GObject.Object.Notify;
+            'notify::is-global-memory': GObject.Object.Notify;
+            'notify::is-global-memory': GObject.Object.Notify;
+            'notify::native': GObject.Object.Notify;
+            'notify::native-destroy-func': GObject.Object.Notify;
+            'notify::native-destroy-func': GObject.Object.Notify;
+            'notify::owner': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2059,8 +2161,14 @@ export namespace ICalGLib {
         // Signals
 
         connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
-        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            ...args: Object.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2135,7 +2243,16 @@ export namespace ICalGLib {
 
     namespace Parameter {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::always-destroy': GObject.Object.Notify;
+            'notify::always-destroy': GObject.Object.Notify;
+            'notify::is-global-memory': GObject.Object.Notify;
+            'notify::is-global-memory': GObject.Object.Notify;
+            'notify::native': GObject.Object.Notify;
+            'notify::native-destroy-func': GObject.Object.Notify;
+            'notify::native-destroy-func': GObject.Object.Notify;
+            'notify::owner': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2263,14 +2380,17 @@ export namespace ICalGLib {
         // Signals
 
         connect<K extends keyof Parameter.SignalSignatures>(signal: K, callback: Parameter.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Parameter.SignalSignatures>(
             signal: K,
             callback: Parameter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Parameter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Parameter.SignalSignatures[K]>
+            ...args: Parameter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2477,7 +2597,16 @@ export namespace ICalGLib {
 
     namespace Parser {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::always-destroy': GObject.Object.Notify;
+            'notify::always-destroy': GObject.Object.Notify;
+            'notify::is-global-memory': GObject.Object.Notify;
+            'notify::is-global-memory': GObject.Object.Notify;
+            'notify::native': GObject.Object.Notify;
+            'notify::native-destroy-func': GObject.Object.Notify;
+            'notify::native-destroy-func': GObject.Object.Notify;
+            'notify::owner': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2501,8 +2630,14 @@ export namespace ICalGLib {
         // Signals
 
         connect<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
-        emit<K extends keyof Parser.SignalSignatures>(signal: K, ...args: Parameters<Parser.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Parser.SignalSignatures>(
+            signal: K,
+            ...args: Parser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2554,7 +2689,16 @@ export namespace ICalGLib {
 
     namespace Period {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::always-destroy': GObject.Object.Notify;
+            'notify::always-destroy': GObject.Object.Notify;
+            'notify::is-global-memory': GObject.Object.Notify;
+            'notify::is-global-memory': GObject.Object.Notify;
+            'notify::native': GObject.Object.Notify;
+            'notify::native-destroy-func': GObject.Object.Notify;
+            'notify::native-destroy-func': GObject.Object.Notify;
+            'notify::owner': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2580,8 +2724,14 @@ export namespace ICalGLib {
         // Signals
 
         connect<K extends keyof Period.SignalSignatures>(signal: K, callback: Period.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Period.SignalSignatures>(signal: K, callback: Period.SignalSignatures[K]): number;
-        emit<K extends keyof Period.SignalSignatures>(signal: K, ...args: Parameters<Period.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Period.SignalSignatures>(
+            signal: K,
+            ...args: Period.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2634,7 +2784,16 @@ export namespace ICalGLib {
 
     namespace Property {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::always-destroy': GObject.Object.Notify;
+            'notify::always-destroy': GObject.Object.Notify;
+            'notify::is-global-memory': GObject.Object.Notify;
+            'notify::is-global-memory': GObject.Object.Notify;
+            'notify::native': GObject.Object.Notify;
+            'notify::native-destroy-func': GObject.Object.Notify;
+            'notify::native-destroy-func': GObject.Object.Notify;
+            'notify::owner': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2888,14 +3047,17 @@ export namespace ICalGLib {
         // Signals
 
         connect<K extends keyof Property.SignalSignatures>(signal: K, callback: Property.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Property.SignalSignatures>(
             signal: K,
             callback: Property.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Property.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Property.SignalSignatures[K]>
+            ...args: Property.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -4249,7 +4411,16 @@ export namespace ICalGLib {
 
     namespace RecurIterator {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::always-destroy': GObject.Object.Notify;
+            'notify::always-destroy': GObject.Object.Notify;
+            'notify::is-global-memory': GObject.Object.Notify;
+            'notify::is-global-memory': GObject.Object.Notify;
+            'notify::native': GObject.Object.Notify;
+            'notify::native-destroy-func': GObject.Object.Notify;
+            'notify::native-destroy-func': GObject.Object.Notify;
+            'notify::owner': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4276,14 +4447,17 @@ export namespace ICalGLib {
             signal: K,
             callback: RecurIterator.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RecurIterator.SignalSignatures>(
             signal: K,
             callback: RecurIterator.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RecurIterator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RecurIterator.SignalSignatures[K]>
+            ...args: RecurIterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4304,7 +4478,16 @@ export namespace ICalGLib {
 
     namespace Recurrence {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::always-destroy': GObject.Object.Notify;
+            'notify::always-destroy': GObject.Object.Notify;
+            'notify::is-global-memory': GObject.Object.Notify;
+            'notify::is-global-memory': GObject.Object.Notify;
+            'notify::native': GObject.Object.Notify;
+            'notify::native-destroy-func': GObject.Object.Notify;
+            'notify::native-destroy-func': GObject.Object.Notify;
+            'notify::owner': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4333,14 +4516,17 @@ export namespace ICalGLib {
             signal: K,
             callback: Recurrence.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Recurrence.SignalSignatures>(
             signal: K,
             callback: Recurrence.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Recurrence.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Recurrence.SignalSignatures[K]>
+            ...args: Recurrence.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -4671,7 +4857,16 @@ export namespace ICalGLib {
 
     namespace Reqstat {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::always-destroy': GObject.Object.Notify;
+            'notify::always-destroy': GObject.Object.Notify;
+            'notify::is-global-memory': GObject.Object.Notify;
+            'notify::is-global-memory': GObject.Object.Notify;
+            'notify::native': GObject.Object.Notify;
+            'notify::native-destroy-func': GObject.Object.Notify;
+            'notify::native-destroy-func': GObject.Object.Notify;
+            'notify::owner': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4695,14 +4890,17 @@ export namespace ICalGLib {
         // Signals
 
         connect<K extends keyof Reqstat.SignalSignatures>(signal: K, callback: Reqstat.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Reqstat.SignalSignatures>(
             signal: K,
             callback: Reqstat.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Reqstat.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Reqstat.SignalSignatures[K]>
+            ...args: Reqstat.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4735,7 +4933,16 @@ export namespace ICalGLib {
 
     namespace Time {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::always-destroy': GObject.Object.Notify;
+            'notify::always-destroy': GObject.Object.Notify;
+            'notify::is-global-memory': GObject.Object.Notify;
+            'notify::is-global-memory': GObject.Object.Notify;
+            'notify::native': GObject.Object.Notify;
+            'notify::native-destroy-func': GObject.Object.Notify;
+            'notify::native-destroy-func': GObject.Object.Notify;
+            'notify::owner': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4773,8 +4980,14 @@ export namespace ICalGLib {
         // Signals
 
         connect<K extends keyof Time.SignalSignatures>(signal: K, callback: Time.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Time.SignalSignatures>(signal: K, callback: Time.SignalSignatures[K]): number;
-        emit<K extends keyof Time.SignalSignatures>(signal: K, ...args: Parameters<Time.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Time.SignalSignatures>(
+            signal: K,
+            ...args: Time.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -5051,7 +5264,16 @@ export namespace ICalGLib {
 
     namespace TimeSpan {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::always-destroy': GObject.Object.Notify;
+            'notify::always-destroy': GObject.Object.Notify;
+            'notify::is-global-memory': GObject.Object.Notify;
+            'notify::is-global-memory': GObject.Object.Notify;
+            'notify::native': GObject.Object.Notify;
+            'notify::native-destroy-func': GObject.Object.Notify;
+            'notify::native-destroy-func': GObject.Object.Notify;
+            'notify::owner': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5077,14 +5299,17 @@ export namespace ICalGLib {
         // Signals
 
         connect<K extends keyof TimeSpan.SignalSignatures>(signal: K, callback: TimeSpan.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TimeSpan.SignalSignatures>(
             signal: K,
             callback: TimeSpan.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TimeSpan.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TimeSpan.SignalSignatures[K]>
+            ...args: TimeSpan.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5139,7 +5364,16 @@ export namespace ICalGLib {
 
     namespace Timezone {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::always-destroy': GObject.Object.Notify;
+            'notify::always-destroy': GObject.Object.Notify;
+            'notify::is-global-memory': GObject.Object.Notify;
+            'notify::is-global-memory': GObject.Object.Notify;
+            'notify::native': GObject.Object.Notify;
+            'notify::native-destroy-func': GObject.Object.Notify;
+            'notify::native-destroy-func': GObject.Object.Notify;
+            'notify::owner': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5165,14 +5399,17 @@ export namespace ICalGLib {
         // Signals
 
         connect<K extends keyof Timezone.SignalSignatures>(signal: K, callback: Timezone.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Timezone.SignalSignatures>(
             signal: K,
             callback: Timezone.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Timezone.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Timezone.SignalSignatures[K]>
+            ...args: Timezone.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -5342,7 +5579,16 @@ export namespace ICalGLib {
 
     namespace Trigger {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::always-destroy': GObject.Object.Notify;
+            'notify::always-destroy': GObject.Object.Notify;
+            'notify::is-global-memory': GObject.Object.Notify;
+            'notify::is-global-memory': GObject.Object.Notify;
+            'notify::native': GObject.Object.Notify;
+            'notify::native-destroy-func': GObject.Object.Notify;
+            'notify::native-destroy-func': GObject.Object.Notify;
+            'notify::owner': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5368,14 +5614,17 @@ export namespace ICalGLib {
         // Signals
 
         connect<K extends keyof Trigger.SignalSignatures>(signal: K, callback: Trigger.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Trigger.SignalSignatures>(
             signal: K,
             callback: Trigger.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Trigger.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Trigger.SignalSignatures[K]>
+            ...args: Trigger.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5413,7 +5662,16 @@ export namespace ICalGLib {
 
     namespace Value {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::always-destroy': GObject.Object.Notify;
+            'notify::always-destroy': GObject.Object.Notify;
+            'notify::is-global-memory': GObject.Object.Notify;
+            'notify::is-global-memory': GObject.Object.Notify;
+            'notify::native': GObject.Object.Notify;
+            'notify::native-destroy-func': GObject.Object.Notify;
+            'notify::native-destroy-func': GObject.Object.Notify;
+            'notify::owner': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5509,8 +5767,14 @@ export namespace ICalGLib {
         // Signals
 
         connect<K extends keyof Value.SignalSignatures>(signal: K, callback: Value.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Value.SignalSignatures>(signal: K, callback: Value.SignalSignatures[K]): number;
-        emit<K extends keyof Value.SignalSignatures>(signal: K, ...args: Parameters<Value.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Value.SignalSignatures>(
+            signal: K,
+            ...args: Value.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 

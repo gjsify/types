@@ -186,8 +186,14 @@ export namespace SugarExt {
         // Signals
 
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -326,14 +332,17 @@ export namespace SugarExt {
             signal: K,
             callback: ClientXSMP.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientXSMP.SignalSignatures>(
             signal: K,
             callback: ClientXSMP.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientXSMP.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientXSMP.SignalSignatures[K]>
+            ...args: ClientXSMP.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace CursorTracker {
@@ -362,14 +371,17 @@ export namespace SugarExt {
             signal: K,
             callback: CursorTracker.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CursorTracker.SignalSignatures>(
             signal: K,
             callback: CursorTracker.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CursorTracker.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CursorTracker.SignalSignatures[K]>
+            ...args: CursorTracker.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace GestureGrabber {
@@ -398,14 +410,17 @@ export namespace SugarExt {
             signal: K,
             callback: GestureGrabber.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GestureGrabber.SignalSignatures>(
             signal: K,
             callback: GestureGrabber.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GestureGrabber.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GestureGrabber.SignalSignatures[K]>
+            ...args: GestureGrabber.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -441,8 +456,14 @@ export namespace SugarExt {
         // Signals
 
         connect<K extends keyof Grid.SignalSignatures>(signal: K, callback: Grid.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Grid.SignalSignatures>(signal: K, callback: Grid.SignalSignatures[K]): number;
-        emit<K extends keyof Grid.SignalSignatures>(signal: K, ...args: Parameters<Grid.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Grid.SignalSignatures>(
+            signal: K,
+            ...args: Grid.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -456,11 +477,11 @@ export namespace SugarExt {
         // Signal callback interfaces
 
         interface KeyPressed {
-            (_source: KeyGrabber, object: number, p0: number, p1: number): boolean;
+            (_source: KeyGrabber, object: number, p0: number, p1: number): boolean | void;
         }
 
         interface KeyReleased {
-            (_source: KeyGrabber, object: number, p0: number, p1: number): boolean;
+            (_source: KeyGrabber, object: number, p0: number, p1: number): boolean | void;
         }
 
         // Signal signatures
@@ -495,14 +516,17 @@ export namespace SugarExt {
             signal: K,
             callback: KeyGrabber.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof KeyGrabber.SignalSignatures>(
             signal: K,
             callback: KeyGrabber.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof KeyGrabber.SignalSignatures>(
             signal: K,
-            ...args: Parameters<KeyGrabber.SignalSignatures[K]>
+            ...args: KeyGrabber.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -549,14 +573,17 @@ export namespace SugarExt {
         // Signals
 
         connect<K extends keyof Session.SignalSignatures>(signal: K, callback: Session.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Session.SignalSignatures>(
             signal: K,
             callback: Session.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Session.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Session.SignalSignatures[K]>
+            ...args: Session.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -602,8 +629,14 @@ export namespace SugarExt {
         // Signals
 
         connect<K extends keyof Volume.SignalSignatures>(signal: K, callback: Volume.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Volume.SignalSignatures>(signal: K, callback: Volume.SignalSignatures[K]): number;
-        emit<K extends keyof Volume.SignalSignatures>(signal: K, ...args: Parameters<Volume.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Volume.SignalSignatures>(
+            signal: K,
+            ...args: Volume.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -652,14 +685,17 @@ export namespace SugarExt {
             signal: K,
             callback: VolumeAlsa.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VolumeAlsa.SignalSignatures>(
             signal: K,
             callback: VolumeAlsa.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VolumeAlsa.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VolumeAlsa.SignalSignatures[K]>
+            ...args: VolumeAlsa.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     type ClientClass = typeof Client;

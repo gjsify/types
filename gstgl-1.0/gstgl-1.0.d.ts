@@ -1043,7 +1043,12 @@ export namespace GstGL {
     }
     namespace GLBaseFilter {
         // Signal signatures
-        interface SignalSignatures extends GstBase.BaseTransform.SignalSignatures {}
+        interface SignalSignatures extends GstBase.BaseTransform.SignalSignatures {
+            'notify::context': GObject.Object.Notify;
+            'notify::qos': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1081,14 +1086,17 @@ export namespace GstGL {
             signal: K,
             callback: GLBaseFilter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLBaseFilter.SignalSignatures>(
             signal: K,
             callback: GLBaseFilter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLBaseFilter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLBaseFilter.SignalSignatures[K]>
+            ...args: GLBaseFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1104,7 +1112,10 @@ export namespace GstGL {
 
     namespace GLBaseMemoryAllocator {
         // Signal signatures
-        interface SignalSignatures extends Gst.Allocator.SignalSignatures {}
+        interface SignalSignatures extends Gst.Allocator.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1129,14 +1140,17 @@ export namespace GstGL {
             signal: K,
             callback: GLBaseMemoryAllocator.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLBaseMemoryAllocator.SignalSignatures>(
             signal: K,
             callback: GLBaseMemoryAllocator.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLBaseMemoryAllocator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLBaseMemoryAllocator.SignalSignatures[K]>
+            ...args: GLBaseMemoryAllocator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1147,7 +1161,22 @@ export namespace GstGL {
 
     namespace GLBaseMixer {
         // Signal signatures
-        interface SignalSignatures extends GstVideo.VideoAggregator.SignalSignatures {}
+        interface SignalSignatures extends GstVideo.VideoAggregator.SignalSignatures {
+            'notify::context': GObject.Object.Notify;
+            'notify::force-live': GObject.Object.Notify;
+            'notify::force-live': GObject.Object.Notify;
+            'notify::emit-signals': GObject.Object.Notify;
+            'notify::emit-signals': GObject.Object.Notify;
+            'notify::latency': GObject.Object.Notify;
+            'notify::min-upstream-latency': GObject.Object.Notify;
+            'notify::min-upstream-latency': GObject.Object.Notify;
+            'notify::start-time': GObject.Object.Notify;
+            'notify::start-time': GObject.Object.Notify;
+            'notify::start-time-selection': GObject.Object.Notify;
+            'notify::start-time-selection': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1187,14 +1216,17 @@ export namespace GstGL {
             signal: K,
             callback: GLBaseMixer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLBaseMixer.SignalSignatures>(
             signal: K,
             callback: GLBaseMixer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLBaseMixer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLBaseMixer.SignalSignatures[K]>
+            ...args: GLBaseMixer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1214,7 +1246,21 @@ export namespace GstGL {
 
     namespace GLBaseMixerPad {
         // Signal signatures
-        interface SignalSignatures extends GstVideo.VideoAggregatorPad.SignalSignatures {}
+        interface SignalSignatures extends GstVideo.VideoAggregatorPad.SignalSignatures {
+            'notify::max-last-buffer-repeat': GObject.Object.Notify;
+            'notify::max-last-buffer-repeat': GObject.Object.Notify;
+            'notify::repeat-after-eos': GObject.Object.Notify;
+            'notify::repeat-after-eos': GObject.Object.Notify;
+            'notify::zorder': GObject.Object.Notify;
+            'notify::emit-signals': GObject.Object.Notify;
+            'notify::emit-signals': GObject.Object.Notify;
+            'notify::caps': GObject.Object.Notify;
+            'notify::direction': GObject.Object.Notify;
+            'notify::offset': GObject.Object.Notify;
+            'notify::template': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1236,19 +1282,35 @@ export namespace GstGL {
             signal: K,
             callback: GLBaseMixerPad.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLBaseMixerPad.SignalSignatures>(
             signal: K,
             callback: GLBaseMixerPad.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLBaseMixerPad.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLBaseMixerPad.SignalSignatures[K]>
+            ...args: GLBaseMixerPad.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace GLBaseSrc {
         // Signal signatures
-        interface SignalSignatures extends GstBase.PushSrc.SignalSignatures {}
+        interface SignalSignatures extends GstBase.PushSrc.SignalSignatures {
+            'notify::timestamp-offset': GObject.Object.Notify;
+            'notify::timestamp-offset': GObject.Object.Notify;
+            'notify::automatic-eos': GObject.Object.Notify;
+            'notify::automatic-eos': GObject.Object.Notify;
+            'notify::blocksize': GObject.Object.Notify;
+            'notify::do-timestamp': GObject.Object.Notify;
+            'notify::do-timestamp': GObject.Object.Notify;
+            'notify::num-buffers': GObject.Object.Notify;
+            'notify::num-buffers': GObject.Object.Notify;
+            'notify::typefind': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1289,14 +1351,17 @@ export namespace GstGL {
         // Signals
 
         connect<K extends keyof GLBaseSrc.SignalSignatures>(signal: K, callback: GLBaseSrc.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLBaseSrc.SignalSignatures>(
             signal: K,
             callback: GLBaseSrc.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLBaseSrc.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLBaseSrc.SignalSignatures[K]>
+            ...args: GLBaseSrc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1307,7 +1372,10 @@ export namespace GstGL {
 
     namespace GLBufferAllocator {
         // Signal signatures
-        interface SignalSignatures extends GLBaseMemoryAllocator.SignalSignatures {}
+        interface SignalSignatures extends GLBaseMemoryAllocator.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1332,19 +1400,25 @@ export namespace GstGL {
             signal: K,
             callback: GLBufferAllocator.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLBufferAllocator.SignalSignatures>(
             signal: K,
             callback: GLBufferAllocator.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLBufferAllocator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLBufferAllocator.SignalSignatures[K]>
+            ...args: GLBufferAllocator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace GLBufferPool {
         // Signal signatures
-        interface SignalSignatures extends Gst.BufferPool.SignalSignatures {}
+        interface SignalSignatures extends Gst.BufferPool.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1386,14 +1460,17 @@ export namespace GstGL {
             signal: K,
             callback: GLBufferPool.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLBufferPool.SignalSignatures>(
             signal: K,
             callback: GLBufferPool.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLBufferPool.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLBufferPool.SignalSignatures[K]>
+            ...args: GLBufferPool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1409,7 +1486,10 @@ export namespace GstGL {
 
     namespace GLColorConvert {
         // Signal signatures
-        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1444,14 +1524,17 @@ export namespace GstGL {
             signal: K,
             callback: GLColorConvert.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLColorConvert.SignalSignatures>(
             signal: K,
             callback: GLColorConvert.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLColorConvert.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLColorConvert.SignalSignatures[K]>
+            ...args: GLColorConvert.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1502,7 +1585,10 @@ export namespace GstGL {
 
     namespace GLContext {
         // Signal signatures
-        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1551,14 +1637,17 @@ export namespace GstGL {
         // Signals
 
         connect<K extends keyof GLContext.SignalSignatures>(signal: K, callback: GLContext.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLContext.SignalSignatures>(
             signal: K,
             callback: GLContext.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLContext.SignalSignatures[K]>
+            ...args: GLContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1871,6 +1960,8 @@ export namespace GstGL {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
             'create-context': CreateContext;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1916,14 +2007,17 @@ export namespace GstGL {
         // Signals
 
         connect<K extends keyof GLDisplay.SignalSignatures>(signal: K, callback: GLDisplay.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLDisplay.SignalSignatures>(
             signal: K,
             callback: GLDisplay.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLDisplay.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLDisplay.SignalSignatures[K]>
+            ...args: GLDisplay.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1993,7 +2087,12 @@ export namespace GstGL {
 
     namespace GLFilter {
         // Signal signatures
-        interface SignalSignatures extends GLBaseFilter.SignalSignatures {}
+        interface SignalSignatures extends GLBaseFilter.SignalSignatures {
+            'notify::context': GObject.Object.Notify;
+            'notify::qos': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2022,14 +2121,17 @@ export namespace GstGL {
         // Signals
 
         connect<K extends keyof GLFilter.SignalSignatures>(signal: K, callback: GLFilter.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLFilter.SignalSignatures>(
             signal: K,
             callback: GLFilter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLFilter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLFilter.SignalSignatures[K]>
+            ...args: GLFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2085,7 +2187,10 @@ export namespace GstGL {
 
     namespace GLFramebuffer {
         // Signal signatures
-        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2123,14 +2228,17 @@ export namespace GstGL {
             signal: K,
             callback: GLFramebuffer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLFramebuffer.SignalSignatures>(
             signal: K,
             callback: GLFramebuffer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLFramebuffer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLFramebuffer.SignalSignatures[K]>
+            ...args: GLFramebuffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2175,7 +2283,10 @@ export namespace GstGL {
 
     namespace GLMemoryAllocator {
         // Signal signatures
-        interface SignalSignatures extends GLBaseMemoryAllocator.SignalSignatures {}
+        interface SignalSignatures extends GLBaseMemoryAllocator.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2200,14 +2311,17 @@ export namespace GstGL {
             signal: K,
             callback: GLMemoryAllocator.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLMemoryAllocator.SignalSignatures>(
             signal: K,
             callback: GLMemoryAllocator.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLMemoryAllocator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLMemoryAllocator.SignalSignatures[K]>
+            ...args: GLMemoryAllocator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2216,7 +2330,10 @@ export namespace GstGL {
 
     namespace GLMemoryPBOAllocator {
         // Signal signatures
-        interface SignalSignatures extends GLMemoryAllocator.SignalSignatures {}
+        interface SignalSignatures extends GLMemoryAllocator.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2241,19 +2358,37 @@ export namespace GstGL {
             signal: K,
             callback: GLMemoryPBOAllocator.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLMemoryPBOAllocator.SignalSignatures>(
             signal: K,
             callback: GLMemoryPBOAllocator.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLMemoryPBOAllocator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLMemoryPBOAllocator.SignalSignatures[K]>
+            ...args: GLMemoryPBOAllocator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace GLMixer {
         // Signal signatures
-        interface SignalSignatures extends GLBaseMixer.SignalSignatures {}
+        interface SignalSignatures extends GLBaseMixer.SignalSignatures {
+            'notify::context': GObject.Object.Notify;
+            'notify::force-live': GObject.Object.Notify;
+            'notify::force-live': GObject.Object.Notify;
+            'notify::emit-signals': GObject.Object.Notify;
+            'notify::emit-signals': GObject.Object.Notify;
+            'notify::latency': GObject.Object.Notify;
+            'notify::min-upstream-latency': GObject.Object.Notify;
+            'notify::min-upstream-latency': GObject.Object.Notify;
+            'notify::start-time': GObject.Object.Notify;
+            'notify::start-time': GObject.Object.Notify;
+            'notify::start-time-selection': GObject.Object.Notify;
+            'notify::start-time-selection': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2275,14 +2410,17 @@ export namespace GstGL {
         // Signals
 
         connect<K extends keyof GLMixer.SignalSignatures>(signal: K, callback: GLMixer.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLMixer.SignalSignatures>(
             signal: K,
             callback: GLMixer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLMixer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLMixer.SignalSignatures[K]>
+            ...args: GLMixer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2319,7 +2457,21 @@ export namespace GstGL {
 
     namespace GLMixerPad {
         // Signal signatures
-        interface SignalSignatures extends GLBaseMixerPad.SignalSignatures {}
+        interface SignalSignatures extends GLBaseMixerPad.SignalSignatures {
+            'notify::max-last-buffer-repeat': GObject.Object.Notify;
+            'notify::max-last-buffer-repeat': GObject.Object.Notify;
+            'notify::repeat-after-eos': GObject.Object.Notify;
+            'notify::repeat-after-eos': GObject.Object.Notify;
+            'notify::zorder': GObject.Object.Notify;
+            'notify::emit-signals': GObject.Object.Notify;
+            'notify::emit-signals': GObject.Object.Notify;
+            'notify::caps': GObject.Object.Notify;
+            'notify::direction': GObject.Object.Notify;
+            'notify::offset': GObject.Object.Notify;
+            'notify::template': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2345,19 +2497,26 @@ export namespace GstGL {
             signal: K,
             callback: GLMixerPad.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLMixerPad.SignalSignatures>(
             signal: K,
             callback: GLMixerPad.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLMixerPad.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLMixerPad.SignalSignatures[K]>
+            ...args: GLMixerPad.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace GLOverlayCompositor {
         // Signal signatures
-        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            'notify::yinvert': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2391,14 +2550,17 @@ export namespace GstGL {
             signal: K,
             callback: GLOverlayCompositor.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLOverlayCompositor.SignalSignatures>(
             signal: K,
             callback: GLOverlayCompositor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLOverlayCompositor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLOverlayCompositor.SignalSignatures[K]>
+            ...args: GLOverlayCompositor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2413,7 +2575,10 @@ export namespace GstGL {
 
     namespace GLRenderbufferAllocator {
         // Signal signatures
-        interface SignalSignatures extends GLBaseMemoryAllocator.SignalSignatures {}
+        interface SignalSignatures extends GLBaseMemoryAllocator.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2438,19 +2603,25 @@ export namespace GstGL {
             signal: K,
             callback: GLRenderbufferAllocator.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLRenderbufferAllocator.SignalSignatures>(
             signal: K,
             callback: GLRenderbufferAllocator.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLRenderbufferAllocator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLRenderbufferAllocator.SignalSignatures[K]>
+            ...args: GLRenderbufferAllocator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace GLSLStage {
         // Signal signatures
-        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2494,14 +2665,17 @@ export namespace GstGL {
         // Signals
 
         connect<K extends keyof GLSLStage.SignalSignatures>(signal: K, callback: GLSLStage.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLSLStage.SignalSignatures>(
             signal: K,
             callback: GLSLStage.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLSLStage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLSLStage.SignalSignatures[K]>
+            ...args: GLSLStage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2521,7 +2695,11 @@ export namespace GstGL {
 
     namespace GLShader {
         // Signal signatures
-        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            'notify::linked': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2554,14 +2732,17 @@ export namespace GstGL {
         // Signals
 
         connect<K extends keyof GLShader.SignalSignatures>(signal: K, callback: GLShader.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLShader.SignalSignatures>(
             signal: K,
             callback: GLShader.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLShader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLShader.SignalSignatures[K]>
+            ...args: GLShader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2859,7 +3040,10 @@ export namespace GstGL {
 
     namespace GLUpload {
         // Signal signatures
-        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2889,14 +3073,17 @@ export namespace GstGL {
         // Signals
 
         connect<K extends keyof GLUpload.SignalSignatures>(signal: K, callback: GLUpload.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLUpload.SignalSignatures>(
             signal: K,
             callback: GLUpload.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLUpload.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLUpload.SignalSignatures[K]>
+            ...args: GLUpload.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2936,7 +3123,20 @@ export namespace GstGL {
 
     namespace GLViewConvert {
         // Signal signatures
-        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            'notify::downmix-mode': GObject.Object.Notify;
+            'notify::downmix-mode': GObject.Object.Notify;
+            'notify::input-flags-override': GObject.Object.Notify;
+            'notify::input-flags-override': GObject.Object.Notify;
+            'notify::input-mode-override': GObject.Object.Notify;
+            'notify::input-mode-override': GObject.Object.Notify;
+            'notify::output-flags-override': GObject.Object.Notify;
+            'notify::output-flags-override': GObject.Object.Notify;
+            'notify::output-mode-override': GObject.Object.Notify;
+            'notify::output-mode-override': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3009,14 +3209,17 @@ export namespace GstGL {
             signal: K,
             callback: GLViewConvert.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLViewConvert.SignalSignatures>(
             signal: K,
             callback: GLViewConvert.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLViewConvert.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLViewConvert.SignalSignatures[K]>
+            ...args: GLViewConvert.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3098,6 +3301,8 @@ export namespace GstGL {
             'mouse-event': MouseEvent;
             'scroll-event': ScrollEvent;
             'window-handle-changed': WindowHandleChanged;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -3123,14 +3328,17 @@ export namespace GstGL {
         // Signals
 
         connect<K extends keyof GLWindow.SignalSignatures>(signal: K, callback: GLWindow.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLWindow.SignalSignatures>(
             signal: K,
             callback: GLWindow.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLWindow.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLWindow.SignalSignatures[K]>
+            ...args: GLWindow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 

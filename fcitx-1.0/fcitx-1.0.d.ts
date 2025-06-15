@@ -78,6 +78,7 @@ export namespace Fcitx {
             'forward-key': ForwardKey;
             'update-client-side-ui': UpdateClientSideUi;
             'update-formatted-preedit': UpdateFormattedPreedit;
+            'notify::connection': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -110,8 +111,14 @@ export namespace Fcitx {
         // Signals
 
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -276,14 +283,17 @@ export namespace Fcitx {
             signal: K,
             callback: Connection.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Connection.SignalSignatures>(
             signal: K,
             callback: Connection.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Connection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Connection.SignalSignatures[K]>
+            ...args: Connection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -309,6 +319,26 @@ export namespace Fcitx {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
             'imlist-changed': ImlistChanged;
+            'notify::current-im': GObject.Object.Notify;
+            'notify::current-im': GObject.Object.Notify;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -364,14 +394,17 @@ export namespace Fcitx {
             signal: K,
             callback: InputMethod.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InputMethod.SignalSignatures>(
             signal: K,
             callback: InputMethod.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InputMethod.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InputMethod.SignalSignatures[K]>
+            ...args: InputMethod.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1214,7 +1247,26 @@ export namespace Fcitx {
 
     namespace Kbd {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1250,8 +1302,14 @@ export namespace Fcitx {
         // Signals
 
         connect<K extends keyof Kbd.SignalSignatures>(signal: K, callback: Kbd.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Kbd.SignalSignatures>(signal: K, callback: Kbd.SignalSignatures[K]): number;
-        emit<K extends keyof Kbd.SignalSignatures>(signal: K, ...args: Parameters<Kbd.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Kbd.SignalSignatures>(
+            signal: K,
+            ...args: Kbd.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

@@ -168,6 +168,14 @@ export namespace UPowerGlib {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'device-added': DeviceAdded;
             'device-removed': DeviceRemoved;
+            'notify::daemon-version': GObject.Object.Notify;
+            'notify::daemon-version': GObject.Object.Notify;
+            'notify::lid-is-closed': GObject.Object.Notify;
+            'notify::lid-is-closed': GObject.Object.Notify;
+            'notify::lid-is-present': GObject.Object.Notify;
+            'notify::lid-is-present': GObject.Object.Notify;
+            'notify::on-battery': GObject.Object.Notify;
+            'notify::on-battery': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -233,8 +241,14 @@ export namespace UPowerGlib {
         // Signals
 
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -283,7 +297,34 @@ export namespace UPowerGlib {
 
     namespace ClientGlueProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::daemon-version': GObject.Object.Notify;
+            'notify::daemon-version': GObject.Object.Notify;
+            'notify::lid-is-closed': GObject.Object.Notify;
+            'notify::lid-is-closed': GObject.Object.Notify;
+            'notify::lid-is-present': GObject.Object.Notify;
+            'notify::lid-is-present': GObject.Object.Notify;
+            'notify::on-battery': GObject.Object.Notify;
+            'notify::on-battery': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -345,14 +386,17 @@ export namespace UPowerGlib {
             signal: K,
             callback: ClientGlueProxy.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientGlueProxy.SignalSignatures>(
             signal: K,
             callback: ClientGlueProxy.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientGlueProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientGlueProxy.SignalSignatures[K]>
+            ...args: ClientGlueProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1413,7 +1457,18 @@ export namespace UPowerGlib {
 
     namespace ClientGlueSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::daemon-version': GObject.Object.Notify;
+            'notify::daemon-version': GObject.Object.Notify;
+            'notify::lid-is-closed': GObject.Object.Notify;
+            'notify::lid-is-closed': GObject.Object.Notify;
+            'notify::lid-is-present': GObject.Object.Notify;
+            'notify::lid-is-present': GObject.Object.Notify;
+            'notify::on-battery': GObject.Object.Notify;
+            'notify::on-battery': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1443,14 +1498,17 @@ export namespace UPowerGlib {
             signal: K,
             callback: ClientGlueSkeleton.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientGlueSkeleton.SignalSignatures>(
             signal: K,
             callback: ClientGlueSkeleton.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientGlueSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientGlueSkeleton.SignalSignatures[K]>
+            ...args: ClientGlueSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         /**
@@ -2174,7 +2232,51 @@ export namespace UPowerGlib {
 
     namespace Device {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::capacity': GObject.Object.Notify;
+            'notify::energy': GObject.Object.Notify;
+            'notify::energy-empty': GObject.Object.Notify;
+            'notify::energy-empty': GObject.Object.Notify;
+            'notify::energy-full': GObject.Object.Notify;
+            'notify::energy-full': GObject.Object.Notify;
+            'notify::energy-full-design': GObject.Object.Notify;
+            'notify::energy-full-design': GObject.Object.Notify;
+            'notify::energy-rate': GObject.Object.Notify;
+            'notify::energy-rate': GObject.Object.Notify;
+            'notify::has-history': GObject.Object.Notify;
+            'notify::has-history': GObject.Object.Notify;
+            'notify::has-statistics': GObject.Object.Notify;
+            'notify::has-statistics': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::is-present': GObject.Object.Notify;
+            'notify::is-present': GObject.Object.Notify;
+            'notify::is-rechargeable': GObject.Object.Notify;
+            'notify::is-rechargeable': GObject.Object.Notify;
+            'notify::kind': GObject.Object.Notify;
+            'notify::luminosity': GObject.Object.Notify;
+            'notify::model': GObject.Object.Notify;
+            'notify::native-path': GObject.Object.Notify;
+            'notify::native-path': GObject.Object.Notify;
+            'notify::online': GObject.Object.Notify;
+            'notify::percentage': GObject.Object.Notify;
+            'notify::power-supply': GObject.Object.Notify;
+            'notify::power-supply': GObject.Object.Notify;
+            'notify::serial': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::technology': GObject.Object.Notify;
+            'notify::temperature': GObject.Object.Notify;
+            'notify::time-to-empty': GObject.Object.Notify;
+            'notify::time-to-empty': GObject.Object.Notify;
+            'notify::time-to-full': GObject.Object.Notify;
+            'notify::time-to-full': GObject.Object.Notify;
+            'notify::update-time': GObject.Object.Notify;
+            'notify::update-time': GObject.Object.Notify;
+            'notify::vendor': GObject.Object.Notify;
+            'notify::voltage': GObject.Object.Notify;
+            'notify::warning-level': GObject.Object.Notify;
+            'notify::warning-level': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2464,8 +2566,14 @@ export namespace UPowerGlib {
         // Signals
 
         connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
-        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            ...args: Device.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2561,7 +2669,69 @@ export namespace UPowerGlib {
 
     namespace DeviceGlueProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::capacity': GObject.Object.Notify;
+            'notify::energy': GObject.Object.Notify;
+            'notify::energy-empty': GObject.Object.Notify;
+            'notify::energy-empty': GObject.Object.Notify;
+            'notify::energy-full': GObject.Object.Notify;
+            'notify::energy-full': GObject.Object.Notify;
+            'notify::energy-full-design': GObject.Object.Notify;
+            'notify::energy-full-design': GObject.Object.Notify;
+            'notify::energy-rate': GObject.Object.Notify;
+            'notify::energy-rate': GObject.Object.Notify;
+            'notify::has-history': GObject.Object.Notify;
+            'notify::has-history': GObject.Object.Notify;
+            'notify::has-statistics': GObject.Object.Notify;
+            'notify::has-statistics': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::is-present': GObject.Object.Notify;
+            'notify::is-present': GObject.Object.Notify;
+            'notify::is-rechargeable': GObject.Object.Notify;
+            'notify::is-rechargeable': GObject.Object.Notify;
+            'notify::luminosity': GObject.Object.Notify;
+            'notify::model': GObject.Object.Notify;
+            'notify::native-path': GObject.Object.Notify;
+            'notify::native-path': GObject.Object.Notify;
+            'notify::online': GObject.Object.Notify;
+            'notify::percentage': GObject.Object.Notify;
+            'notify::power-supply': GObject.Object.Notify;
+            'notify::power-supply': GObject.Object.Notify;
+            'notify::serial': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::technology': GObject.Object.Notify;
+            'notify::temperature': GObject.Object.Notify;
+            'notify::time-to-empty': GObject.Object.Notify;
+            'notify::time-to-empty': GObject.Object.Notify;
+            'notify::time-to-full': GObject.Object.Notify;
+            'notify::time-to-full': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+            'notify::update-time': GObject.Object.Notify;
+            'notify::update-time': GObject.Object.Notify;
+            'notify::vendor': GObject.Object.Notify;
+            'notify::voltage': GObject.Object.Notify;
+            'notify::warning-level': GObject.Object.Notify;
+            'notify::warning-level': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2623,14 +2793,17 @@ export namespace UPowerGlib {
             signal: K,
             callback: DeviceGlueProxy.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceGlueProxy.SignalSignatures>(
             signal: K,
             callback: DeviceGlueProxy.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceGlueProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceGlueProxy.SignalSignatures[K]>
+            ...args: DeviceGlueProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -3959,7 +4132,53 @@ export namespace UPowerGlib {
 
     namespace DeviceGlueSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::capacity': GObject.Object.Notify;
+            'notify::energy': GObject.Object.Notify;
+            'notify::energy-empty': GObject.Object.Notify;
+            'notify::energy-empty': GObject.Object.Notify;
+            'notify::energy-full': GObject.Object.Notify;
+            'notify::energy-full': GObject.Object.Notify;
+            'notify::energy-full-design': GObject.Object.Notify;
+            'notify::energy-full-design': GObject.Object.Notify;
+            'notify::energy-rate': GObject.Object.Notify;
+            'notify::energy-rate': GObject.Object.Notify;
+            'notify::has-history': GObject.Object.Notify;
+            'notify::has-history': GObject.Object.Notify;
+            'notify::has-statistics': GObject.Object.Notify;
+            'notify::has-statistics': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::is-present': GObject.Object.Notify;
+            'notify::is-present': GObject.Object.Notify;
+            'notify::is-rechargeable': GObject.Object.Notify;
+            'notify::is-rechargeable': GObject.Object.Notify;
+            'notify::luminosity': GObject.Object.Notify;
+            'notify::model': GObject.Object.Notify;
+            'notify::native-path': GObject.Object.Notify;
+            'notify::native-path': GObject.Object.Notify;
+            'notify::online': GObject.Object.Notify;
+            'notify::percentage': GObject.Object.Notify;
+            'notify::power-supply': GObject.Object.Notify;
+            'notify::power-supply': GObject.Object.Notify;
+            'notify::serial': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::technology': GObject.Object.Notify;
+            'notify::temperature': GObject.Object.Notify;
+            'notify::time-to-empty': GObject.Object.Notify;
+            'notify::time-to-empty': GObject.Object.Notify;
+            'notify::time-to-full': GObject.Object.Notify;
+            'notify::time-to-full': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+            'notify::update-time': GObject.Object.Notify;
+            'notify::update-time': GObject.Object.Notify;
+            'notify::vendor': GObject.Object.Notify;
+            'notify::voltage': GObject.Object.Notify;
+            'notify::warning-level': GObject.Object.Notify;
+            'notify::warning-level': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3989,14 +4208,17 @@ export namespace UPowerGlib {
             signal: K,
             callback: DeviceGlueSkeleton.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceGlueSkeleton.SignalSignatures>(
             signal: K,
             callback: DeviceGlueSkeleton.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceGlueSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceGlueSkeleton.SignalSignatures[K]>
+            ...args: DeviceGlueSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         /**
@@ -4988,7 +5210,11 @@ export namespace UPowerGlib {
 
     namespace HistoryItem {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::state': GObject.Object.Notify;
+            'notify::time': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5025,14 +5251,17 @@ export namespace UPowerGlib {
             signal: K,
             callback: HistoryItem.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HistoryItem.SignalSignatures>(
             signal: K,
             callback: HistoryItem.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HistoryItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HistoryItem.SignalSignatures[K]>
+            ...args: HistoryItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5080,7 +5309,10 @@ export namespace UPowerGlib {
 
     namespace StatsItem {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::accuracy': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5111,14 +5343,17 @@ export namespace UPowerGlib {
         // Signals
 
         connect<K extends keyof StatsItem.SignalSignatures>(signal: K, callback: StatsItem.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StatsItem.SignalSignatures>(
             signal: K,
             callback: StatsItem.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StatsItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StatsItem.SignalSignatures[K]>
+            ...args: StatsItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5144,7 +5379,15 @@ export namespace UPowerGlib {
 
     namespace WakeupItem {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::cmdline': GObject.Object.Notify;
+            'notify::details': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::is-userspace': GObject.Object.Notify;
+            'notify::is-userspace': GObject.Object.Notify;
+            'notify::old': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5193,14 +5436,17 @@ export namespace UPowerGlib {
             signal: K,
             callback: WakeupItem.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WakeupItem.SignalSignatures>(
             signal: K,
             callback: WakeupItem.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WakeupItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WakeupItem.SignalSignatures[K]>
+            ...args: WakeupItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5302,14 +5548,17 @@ export namespace UPowerGlib {
         // Signals
 
         connect<K extends keyof Wakeups.SignalSignatures>(signal: K, callback: Wakeups.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Wakeups.SignalSignatures>(
             signal: K,
             callback: Wakeups.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Wakeups.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Wakeups.SignalSignatures[K]>
+            ...args: Wakeups.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -5345,7 +5594,28 @@ export namespace UPowerGlib {
 
     namespace WakeupsGlueProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::has-capability': GObject.Object.Notify;
+            'notify::has-capability': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5407,14 +5677,17 @@ export namespace UPowerGlib {
             signal: K,
             callback: WakeupsGlueProxy.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WakeupsGlueProxy.SignalSignatures>(
             signal: K,
             callback: WakeupsGlueProxy.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WakeupsGlueProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WakeupsGlueProxy.SignalSignatures[K]>
+            ...args: WakeupsGlueProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -6368,7 +6641,12 @@ export namespace UPowerGlib {
 
     namespace WakeupsGlueSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::has-capability': GObject.Object.Notify;
+            'notify::has-capability': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6398,14 +6676,17 @@ export namespace UPowerGlib {
             signal: K,
             callback: WakeupsGlueSkeleton.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WakeupsGlueSkeleton.SignalSignatures>(
             signal: K,
             callback: WakeupsGlueSkeleton.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WakeupsGlueSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WakeupsGlueSkeleton.SignalSignatures[K]>
+            ...args: WakeupsGlueSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         /**

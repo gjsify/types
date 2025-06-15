@@ -237,6 +237,20 @@ export namespace GnomeBluetooth {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'device-added': DeviceAdded;
             'device-removed': DeviceRemoved;
+            'notify::default-adapter': GObject.Object.Notify;
+            'notify::default-adapter': GObject.Object.Notify;
+            'notify::default-adapter-address': GObject.Object.Notify;
+            'notify::default-adapter-address': GObject.Object.Notify;
+            'notify::default-adapter-name': GObject.Object.Notify;
+            'notify::default-adapter-name': GObject.Object.Notify;
+            'notify::default-adapter-powered': GObject.Object.Notify;
+            'notify::default-adapter-powered': GObject.Object.Notify;
+            'notify::default-adapter-setup-mode': GObject.Object.Notify;
+            'notify::default-adapter-setup-mode': GObject.Object.Notify;
+            'notify::default-adapter-state': GObject.Object.Notify;
+            'notify::default-adapter-state': GObject.Object.Notify;
+            'notify::num-adapters': GObject.Object.Notify;
+            'notify::num-adapters': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -338,8 +352,14 @@ export namespace GnomeBluetooth {
         // Signals
 
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -429,7 +449,27 @@ export namespace GnomeBluetooth {
 
     namespace Device {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::address': GObject.Object.Notify;
+            'notify::alias': GObject.Object.Notify;
+            'notify::battery-level': GObject.Object.Notify;
+            'notify::battery-level': GObject.Object.Notify;
+            'notify::battery-percentage': GObject.Object.Notify;
+            'notify::battery-percentage': GObject.Object.Notify;
+            'notify::battery-type': GObject.Object.Notify;
+            'notify::battery-type': GObject.Object.Notify;
+            'notify::connectable': GObject.Object.Notify;
+            'notify::connected': GObject.Object.Notify;
+            'notify::icon': GObject.Object.Notify;
+            'notify::legacy-pairing': GObject.Object.Notify;
+            'notify::legacy-pairing': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::paired': GObject.Object.Notify;
+            'notify::proxy': GObject.Object.Notify;
+            'notify::trusted': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+            'notify::uuids': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -508,8 +548,14 @@ export namespace GnomeBluetooth {
         // Signals
 
         connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
-        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            ...args: Device.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

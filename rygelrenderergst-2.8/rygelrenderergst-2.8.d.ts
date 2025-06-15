@@ -44,7 +44,35 @@ export namespace RygelRendererGst {
 
     namespace PlaybinPlayer {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::playbin': GObject.Object.Notify;
+            'notify::supported-profiles': GObject.Object.Notify;
+            'notify::supported-profiles': GObject.Object.Notify;
+            'notify::playback-state': GObject.Object.Notify;
+            'notify::playback-state': GObject.Object.Notify;
+            'notify::allowed-playback-speeds': GObject.Object.Notify;
+            'notify::allowed-playback-speeds': GObject.Object.Notify;
+            'notify::playback-speed': GObject.Object.Notify;
+            'notify::playback-speed': GObject.Object.Notify;
+            'notify::uri': GObject.Object.Notify;
+            'notify::volume': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::metadata': GObject.Object.Notify;
+            'notify::mime-type': GObject.Object.Notify;
+            'notify::mime-type': GObject.Object.Notify;
+            'notify::can-seek': GObject.Object.Notify;
+            'notify::can-seek': GObject.Object.Notify;
+            'notify::can-seek-bytes': GObject.Object.Notify;
+            'notify::can-seek-bytes': GObject.Object.Notify;
+            'notify::content-features': GObject.Object.Notify;
+            'notify::content-features': GObject.Object.Notify;
+            'notify::position': GObject.Object.Notify;
+            'notify::byte-position': GObject.Object.Notify;
+            'notify::byte-position': GObject.Object.Notify;
+            'notify::user-agent': GObject.Object.Notify;
+            'notify::user-agent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -77,14 +105,17 @@ export namespace RygelRendererGst {
             signal: K,
             callback: PlaybinPlayer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PlaybinPlayer.SignalSignatures>(
             signal: K,
             callback: PlaybinPlayer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PlaybinPlayer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PlaybinPlayer.SignalSignatures[K]>
+            ...args: PlaybinPlayer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -636,7 +667,12 @@ export namespace RygelRendererGst {
 
     namespace PlaybinRenderer {
         // Signal signatures
-        interface SignalSignatures extends RygelRenderer.MediaRenderer.SignalSignatures {}
+        interface SignalSignatures extends RygelRenderer.MediaRenderer.SignalSignatures {
+            'notify::player': GObject.Object.Notify;
+            'notify::plugin': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::capabilities': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -660,14 +696,17 @@ export namespace RygelRendererGst {
             signal: K,
             callback: PlaybinRenderer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PlaybinRenderer.SignalSignatures>(
             signal: K,
             callback: PlaybinRenderer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PlaybinRenderer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PlaybinRenderer.SignalSignatures[K]>
+            ...args: PlaybinRenderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

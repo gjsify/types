@@ -34,6 +34,24 @@ export namespace Bump {
         // Signal signatures
         interface SignalSignatures extends Gee.PriorityQueue.SignalSignatures {
             'consumer-shortage': ConsumerShortage;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::waiting-threads': GObject.Object.Notify;
+            'notify::waiting-threads': GObject.Object.Notify;
+            'notify::capacity': GObject.Object.Notify;
+            'notify::remaining-capacity': GObject.Object.Notify;
+            'notify::remaining-capacity': GObject.Object.Notify;
+            'notify::is-full': GObject.Object.Notify;
+            'notify::is-full': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -87,14 +105,17 @@ export namespace Bump {
             signal: K,
             callback: AsyncPriorityQueue.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AsyncPriorityQueue.SignalSignatures>(
             signal: K,
             callback: AsyncPriorityQueue.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AsyncPriorityQueue.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AsyncPriorityQueue.SignalSignatures[K]>
+            ...args: AsyncPriorityQueue.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -106,7 +127,15 @@ export namespace Bump {
 
     namespace Claim {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::active': GObject.Object.Notify;
+            'notify::time-acquired': GObject.Object.Notify;
+            'notify::time-acquired': GObject.Object.Notify;
+            'notify::time-released': GObject.Object.Notify;
+            'notify::time-released': GObject.Object.Notify;
+            'notify::duration-held': GObject.Object.Notify;
+            'notify::duration-held': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -152,8 +181,14 @@ export namespace Bump {
         // Signals
 
         connect<K extends keyof Claim.SignalSignatures>(signal: K, callback: Claim.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Claim.SignalSignatures>(signal: K, callback: Claim.SignalSignatures[K]): number;
-        emit<K extends keyof Claim.SignalSignatures>(signal: K, ...args: Parameters<Claim.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Claim.SignalSignatures>(
+            signal: K,
+            ...args: Claim.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -642,7 +677,18 @@ export namespace Bump {
 
     namespace Event {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::t-type': GObject.Object.Notify;
+            'notify::t-type': GObject.Object.Notify;
+            'notify::t-dup-func': GObject.Object.Notify;
+            'notify::t-dup-func': GObject.Object.Notify;
+            'notify::t-destroy-func': GObject.Object.Notify;
+            'notify::t-destroy-func': GObject.Object.Notify;
+            'notify::pool': GObject.Object.Notify;
+            'notify::auto-reset': GObject.Object.Notify;
+            'notify::auto-reset': GObject.Object.Notify;
+            'notify::triggered': GObject.Object.Notify;
+        }
 
         interface Callback {
             (
@@ -701,8 +747,14 @@ export namespace Bump {
         // Signals
 
         connect<K extends keyof Event.SignalSignatures>(signal: K, callback: Event.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Event.SignalSignatures>(signal: K, callback: Event.SignalSignatures[K]): number;
-        emit<K extends keyof Event.SignalSignatures>(signal: K, ...args: Parameters<Event.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Event.SignalSignatures>(
+            signal: K,
+            ...args: Event.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -775,7 +827,14 @@ export namespace Bump {
 
     namespace Factory {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -810,14 +869,17 @@ export namespace Bump {
         // Signals
 
         connect<K extends keyof Factory.SignalSignatures>(signal: K, callback: Factory.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Factory.SignalSignatures>(
             signal: K,
             callback: Factory.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Factory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Factory.SignalSignatures[K]>
+            ...args: Factory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -898,7 +960,24 @@ export namespace Bump {
 
     namespace Lazy {
         // Signal signatures
-        interface SignalSignatures extends Factory.SignalSignatures {}
+        interface SignalSignatures extends Factory.SignalSignatures {
+            'notify::t-type': GObject.Object.Notify;
+            'notify::t-type': GObject.Object.Notify;
+            'notify::t-dup-func': GObject.Object.Notify;
+            'notify::t-dup-func': GObject.Object.Notify;
+            'notify::t-destroy-func': GObject.Object.Notify;
+            'notify::t-destroy-func': GObject.Object.Notify;
+            'notify::pool': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+            'notify::is-initialized': GObject.Object.Notify;
+            'notify::is-initialized': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -943,8 +1022,14 @@ export namespace Bump {
         // Signals
 
         connect<K extends keyof Lazy.SignalSignatures>(signal: K, callback: Lazy.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Lazy.SignalSignatures>(signal: K, callback: Lazy.SignalSignatures[K]): number;
-        emit<K extends keyof Lazy.SignalSignatures>(signal: K, ...args: Parameters<Lazy.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Lazy.SignalSignatures>(
+            signal: K,
+            ...args: Lazy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -955,7 +1040,23 @@ export namespace Bump {
 
     namespace ResourceClaim {
         // Signal signatures
-        interface SignalSignatures extends Claim.SignalSignatures {}
+        interface SignalSignatures extends Claim.SignalSignatures {
+            'notify::t-type': GObject.Object.Notify;
+            'notify::t-type': GObject.Object.Notify;
+            'notify::t-dup-func': GObject.Object.Notify;
+            'notify::t-dup-func': GObject.Object.Notify;
+            'notify::t-destroy-func': GObject.Object.Notify;
+            'notify::t-destroy-func': GObject.Object.Notify;
+            'notify::pool': GObject.Object.Notify;
+            'notify::resource': GObject.Object.Notify;
+            'notify::active': GObject.Object.Notify;
+            'notify::time-acquired': GObject.Object.Notify;
+            'notify::time-acquired': GObject.Object.Notify;
+            'notify::time-released': GObject.Object.Notify;
+            'notify::time-released': GObject.Object.Notify;
+            'notify::duration-held': GObject.Object.Notify;
+            'notify::duration-held': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1002,14 +1103,17 @@ export namespace Bump {
             signal: K,
             callback: ResourceClaim.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ResourceClaim.SignalSignatures>(
             signal: K,
             callback: ResourceClaim.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ResourceClaim.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ResourceClaim.SignalSignatures[K]>
+            ...args: ResourceClaim.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1019,7 +1123,31 @@ export namespace Bump {
 
     namespace ResourcePool {
         // Signal signatures
-        interface SignalSignatures extends Factory.SignalSignatures {}
+        interface SignalSignatures extends Factory.SignalSignatures {
+            'notify::t-type': GObject.Object.Notify;
+            'notify::t-type': GObject.Object.Notify;
+            'notify::t-dup-func': GObject.Object.Notify;
+            'notify::t-dup-func': GObject.Object.Notify;
+            'notify::t-destroy-func': GObject.Object.Notify;
+            'notify::t-destroy-func': GObject.Object.Notify;
+            'notify::max-resources': GObject.Object.Notify;
+            'notify::max-resources': GObject.Object.Notify;
+            'notify::max-idle-time': GObject.Object.Notify;
+            'notify::max-idle-time': GObject.Object.Notify;
+            'notify::num-resources': GObject.Object.Notify;
+            'notify::num-resources': GObject.Object.Notify;
+            'notify::idle-resources': GObject.Object.Notify;
+            'notify::idle-resources': GObject.Object.Notify;
+            'notify::active-resources': GObject.Object.Notify;
+            'notify::active-resources': GObject.Object.Notify;
+            'notify::pool': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+        }
 
         interface Callback {
             (
@@ -1095,14 +1223,17 @@ export namespace Bump {
             signal: K,
             callback: ResourcePool.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ResourcePool.SignalSignatures>(
             signal: K,
             callback: ResourcePool.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ResourcePool.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ResourcePool.SignalSignatures[K]>
+            ...args: ResourcePool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1190,7 +1321,12 @@ export namespace Bump {
 
     namespace Semaphore {
         // Signal signatures
-        interface SignalSignatures extends TaskQueue.SignalSignatures {}
+        interface SignalSignatures extends TaskQueue.SignalSignatures {
+            'notify::max-claims': GObject.Object.Notify;
+            'notify::max-claims': GObject.Object.Notify;
+            'notify::claims': GObject.Object.Notify;
+            'notify::pool': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1227,14 +1363,17 @@ export namespace Bump {
         // Signals
 
         connect<K extends keyof Semaphore.SignalSignatures>(signal: K, callback: Semaphore.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Semaphore.SignalSignatures>(
             signal: K,
             callback: Semaphore.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Semaphore.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Semaphore.SignalSignatures[K]>
+            ...args: Semaphore.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1274,7 +1413,16 @@ export namespace Bump {
 
     namespace SemaphoreClaim {
         // Signal signatures
-        interface SignalSignatures extends Claim.SignalSignatures {}
+        interface SignalSignatures extends Claim.SignalSignatures {
+            'notify::semaphore': GObject.Object.Notify;
+            'notify::active': GObject.Object.Notify;
+            'notify::time-acquired': GObject.Object.Notify;
+            'notify::time-acquired': GObject.Object.Notify;
+            'notify::time-released': GObject.Object.Notify;
+            'notify::time-released': GObject.Object.Notify;
+            'notify::duration-held': GObject.Object.Notify;
+            'notify::duration-held': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1302,14 +1450,17 @@ export namespace Bump {
             signal: K,
             callback: SemaphoreClaim.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SemaphoreClaim.SignalSignatures>(
             signal: K,
             callback: SemaphoreClaim.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SemaphoreClaim.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SemaphoreClaim.SignalSignatures[K]>
+            ...args: SemaphoreClaim.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1318,7 +1469,9 @@ export namespace Bump {
 
     namespace TaskQueue {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::length': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1342,14 +1495,17 @@ export namespace Bump {
         // Signals
 
         connect<K extends keyof TaskQueue.SignalSignatures>(signal: K, callback: TaskQueue.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TaskQueue.SignalSignatures>(
             signal: K,
             callback: TaskQueue.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TaskQueue.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TaskQueue.SignalSignatures[K]>
+            ...args: TaskQueue.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 

@@ -25,7 +25,13 @@ export namespace SoupGNOME {
     function gnome_features_2_26_get_type(): GObject.GType;
     namespace CookieJarSqlite {
         // Signal signatures
-        interface SignalSignatures extends Soup.CookieJarDB.SignalSignatures {}
+        interface SignalSignatures extends Soup.CookieJarDB.SignalSignatures {
+            'notify::filename': GObject.Object.Notify;
+            'notify::accept-policy': GObject.Object.Notify;
+            'notify::accept-policy': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -52,14 +58,17 @@ export namespace SoupGNOME {
             signal: K,
             callback: CookieJarSqlite.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CookieJarSqlite.SignalSignatures>(
             signal: K,
             callback: CookieJarSqlite.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CookieJarSqlite.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CookieJarSqlite.SignalSignatures[K]>
+            ...args: CookieJarSqlite.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -527,14 +536,17 @@ export namespace SoupGNOME {
             signal: K,
             callback: PasswordManagerGNOME.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PasswordManagerGNOME.SignalSignatures>(
             signal: K,
             callback: PasswordManagerGNOME.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PasswordManagerGNOME.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PasswordManagerGNOME.SignalSignatures[K]>
+            ...args: PasswordManagerGNOME.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -1054,7 +1066,10 @@ export namespace SoupGNOME {
 
     namespace ProxyResolverGNOME {
         // Signal signatures
-        interface SignalSignatures extends Soup.ProxyResolverDefault.SignalSignatures {}
+        interface SignalSignatures extends Soup.ProxyResolverDefault.SignalSignatures {
+            'notify::gproxy-resolver': GObject.Object.Notify;
+            'notify::gproxy-resolver': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1079,14 +1094,17 @@ export namespace SoupGNOME {
             signal: K,
             callback: ProxyResolverGNOME.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ProxyResolverGNOME.SignalSignatures>(
             signal: K,
             callback: ProxyResolverGNOME.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ProxyResolverGNOME.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProxyResolverGNOME.SignalSignatures[K]>
+            ...args: ProxyResolverGNOME.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**

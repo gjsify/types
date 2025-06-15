@@ -34,7 +34,9 @@ export namespace Translit {
     function implement_transliterator(backend: string, type: GObject.GType): void;
     namespace Transliterator {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -65,14 +67,17 @@ export namespace Translit {
             signal: K,
             callback: Transliterator.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Transliterator.SignalSignatures>(
             signal: K,
             callback: Transliterator.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Transliterator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Transliterator.SignalSignatures[K]>
+            ...args: Transliterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 

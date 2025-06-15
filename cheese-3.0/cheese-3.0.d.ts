@@ -121,6 +121,12 @@ export namespace Cheese {
             'photo-taken': PhotoTaken;
             'state-flags-changed': StateFlagsChanged;
             'video-saved': VideoSaved;
+            'notify::device': GObject.Object.Notify;
+            'notify::format': GObject.Object.Notify;
+            'notify::num-camera-devices': GObject.Object.Notify;
+            'notify::num-camera-devices': GObject.Object.Notify;
+            'notify::video-texture': GObject.Object.Notify;
+            'notify::video-texture': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -188,8 +194,14 @@ export namespace Cheese {
         // Signals
 
         connect<K extends keyof Camera.SignalSignatures>(signal: K, callback: Camera.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Camera.SignalSignatures>(signal: K, callback: Camera.SignalSignatures[K]): number;
-        emit<K extends keyof Camera.SignalSignatures>(signal: K, ...args: Parameters<Camera.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Camera.SignalSignatures>(
+            signal: K,
+            ...args: Camera.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -312,7 +324,11 @@ export namespace Cheese {
 
     namespace CameraDevice {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::device': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -358,14 +374,17 @@ export namespace Cheese {
             signal: K,
             callback: CameraDevice.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CameraDevice.SignalSignatures>(
             signal: K,
             callback: CameraDevice.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CameraDevice.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CameraDevice.SignalSignatures[K]>
+            ...args: CameraDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -988,14 +1007,17 @@ export namespace Cheese {
             signal: K,
             callback: CameraDeviceMonitor.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CameraDeviceMonitor.SignalSignatures>(
             signal: K,
             callback: CameraDeviceMonitor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CameraDeviceMonitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CameraDeviceMonitor.SignalSignatures[K]>
+            ...args: CameraDeviceMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1755,7 +1777,13 @@ export namespace Cheese {
 
     namespace Effect {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::control-valve': GObject.Object.Notify;
+            'notify::control-valve': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::pipeline-desc': GObject.Object.Notify;
+            'notify::pipeline-desc': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1812,8 +1840,14 @@ export namespace Cheese {
         // Signals
 
         connect<K extends keyof Effect.SignalSignatures>(signal: K, callback: Effect.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Effect.SignalSignatures>(signal: K, callback: Effect.SignalSignatures[K]): number;
-        emit<K extends keyof Effect.SignalSignatures>(signal: K, ...args: Parameters<Effect.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Effect.SignalSignatures>(
+            signal: K,
+            ...args: Effect.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1880,14 +1914,17 @@ export namespace Cheese {
         // Signals
 
         connect<K extends keyof FileUtil.SignalSignatures>(signal: K, callback: FileUtil.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FileUtil.SignalSignatures>(
             signal: K,
             callback: FileUtil.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FileUtil.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileUtil.SignalSignatures[K]>
+            ...args: FileUtil.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

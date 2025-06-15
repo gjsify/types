@@ -3759,7 +3759,10 @@ export namespace Vips {
     }
     namespace Foreign {
         // Signal signatures
-        interface SignalSignatures extends Operation.SignalSignatures {}
+        interface SignalSignatures extends Operation.SignalSignatures {
+            'notify::description': GObject.Object.Notify;
+            'notify::nickname': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3782,14 +3785,17 @@ export namespace Vips {
         // Signals
 
         connect<K extends keyof Foreign.SignalSignatures>(signal: K, callback: Foreign.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Foreign.SignalSignatures>(
             signal: K,
             callback: Foreign.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Foreign.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Foreign.SignalSignatures[K]>
+            ...args: Foreign.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -3896,7 +3902,20 @@ export namespace Vips {
 
     namespace ForeignLoad {
         // Signal signatures
-        interface SignalSignatures extends Foreign.SignalSignatures {}
+        interface SignalSignatures extends Foreign.SignalSignatures {
+            'notify::access': GObject.Object.Notify;
+            'notify::disc': GObject.Object.Notify;
+            'notify::fail': GObject.Object.Notify;
+            'notify::fail-on': GObject.Object.Notify;
+            'notify::fail-on': GObject.Object.Notify;
+            'notify::flags': GObject.Object.Notify;
+            'notify::memory': GObject.Object.Notify;
+            'notify::out': GObject.Object.Notify;
+            'notify::revalidate': GObject.Object.Notify;
+            'notify::sequential': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::nickname': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3959,14 +3978,17 @@ export namespace Vips {
             signal: K,
             callback: ForeignLoad.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ForeignLoad.SignalSignatures>(
             signal: K,
             callback: ForeignLoad.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ForeignLoad.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ForeignLoad.SignalSignatures[K]>
+            ...args: ForeignLoad.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -3979,7 +4001,17 @@ export namespace Vips {
 
     namespace ForeignSave {
         // Signal signatures
-        interface SignalSignatures extends Foreign.SignalSignatures {}
+        interface SignalSignatures extends Foreign.SignalSignatures {
+            'notify::background': GObject.Object.Notify;
+            'notify::in': GObject.Object.Notify;
+            'notify::keep': GObject.Object.Notify;
+            'notify::page-height': GObject.Object.Notify;
+            'notify::page-height': GObject.Object.Notify;
+            'notify::profile': GObject.Object.Notify;
+            'notify::strip': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::nickname': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4031,14 +4063,17 @@ export namespace Vips {
             signal: K,
             callback: ForeignSave.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ForeignSave.SignalSignatures>(
             signal: K,
             callback: ForeignSave.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ForeignSave.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ForeignSave.SignalSignatures[K]>
+            ...args: ForeignSave.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Image {
@@ -4076,6 +4111,26 @@ export namespace Vips {
             posteval: Posteval;
             preeval: Preeval;
             written: Written;
+            'notify::bands': GObject.Object.Notify;
+            'notify::coding': GObject.Object.Notify;
+            'notify::demand': GObject.Object.Notify;
+            'notify::filename': GObject.Object.Notify;
+            'notify::foreign-buffer': GObject.Object.Notify;
+            'notify::foreign-buffer': GObject.Object.Notify;
+            'notify::format': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::interpretation': GObject.Object.Notify;
+            'notify::kill': GObject.Object.Notify;
+            'notify::mode': GObject.Object.Notify;
+            'notify::sizeof-header': GObject.Object.Notify;
+            'notify::sizeof-header': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::xoffset': GObject.Object.Notify;
+            'notify::xres': GObject.Object.Notify;
+            'notify::yoffset': GObject.Object.Notify;
+            'notify::yres': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::nickname': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -4192,8 +4247,14 @@ export namespace Vips {
         // Signals
 
         connect<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
-        emit<K extends keyof Image.SignalSignatures>(signal: K, ...args: Parameters<Image.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Image.SignalSignatures>(
+            signal: K,
+            ...args: Image.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -4955,7 +5016,10 @@ export namespace Vips {
 
     namespace Interpolate {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::description': GObject.Object.Notify;
+            'notify::nickname': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4983,14 +5047,17 @@ export namespace Vips {
             signal: K,
             callback: Interpolate.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Interpolate.SignalSignatures>(
             signal: K,
             callback: Interpolate.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Interpolate.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Interpolate.SignalSignatures[K]>
+            ...args: Interpolate.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -5063,6 +5130,8 @@ export namespace Vips {
             postbuild: Postbuild;
             postclose: Postclose;
             preclose: Preclose;
+            'notify::description': GObject.Object.Notify;
+            'notify::nickname': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -5103,8 +5172,14 @@ export namespace Vips {
         // Signals
 
         connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
-        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            ...args: Object.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -5226,6 +5301,8 @@ export namespace Vips {
         // Signal signatures
         interface SignalSignatures extends Object.SignalSignatures {
             invalidate: Invalidate;
+            'notify::description': GObject.Object.Notify;
+            'notify::nickname': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -5253,14 +5330,17 @@ export namespace Vips {
         // Signals
 
         connect<K extends keyof Operation.SignalSignatures>(signal: K, callback: Operation.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Operation.SignalSignatures>(
             signal: K,
             callback: Operation.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Operation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Operation.SignalSignatures[K]>
+            ...args: Operation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -5309,7 +5389,10 @@ export namespace Vips {
 
     namespace Region {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::description': GObject.Object.Notify;
+            'notify::nickname': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5342,8 +5425,14 @@ export namespace Vips {
         // Signals
 
         connect<K extends keyof Region.SignalSignatures>(signal: K, callback: Region.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Region.SignalSignatures>(signal: K, callback: Region.SignalSignatures[K]): number;
-        emit<K extends keyof Region.SignalSignatures>(signal: K, ...args: Parameters<Region.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Region.SignalSignatures>(
+            signal: K,
+            ...args: Region.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

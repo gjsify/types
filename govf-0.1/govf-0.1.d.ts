@@ -53,8 +53,14 @@ export namespace Govf {
         // Signals
 
         connect<K extends keyof Disk.SignalSignatures>(signal: K, callback: Disk.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Disk.SignalSignatures>(signal: K, callback: Disk.SignalSignatures[K]): number;
-        emit<K extends keyof Disk.SignalSignatures>(signal: K, ...args: Parameters<Disk.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Disk.SignalSignatures>(
+            signal: K,
+            ...args: Disk.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -123,14 +129,17 @@ export namespace Govf {
         // Signals
 
         connect<K extends keyof Package.SignalSignatures>(signal: K, callback: Package.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Package.SignalSignatures>(
             signal: K,
             callback: Package.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Package.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Package.SignalSignatures[K]>
+            ...args: Package.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 

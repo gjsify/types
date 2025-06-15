@@ -523,7 +523,14 @@ export namespace Farstream {
     }
     namespace Conference {
         // Signal signatures
-        interface SignalSignatures extends Gst.Bin.SignalSignatures {}
+        interface SignalSignatures extends Gst.Bin.SignalSignatures {
+            'notify::async-handling': GObject.Object.Notify;
+            'notify::async-handling': GObject.Object.Notify;
+            'notify::message-forward': GObject.Object.Notify;
+            'notify::message-forward': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -548,14 +555,17 @@ export namespace Farstream {
             signal: K,
             callback: Conference.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Conference.SignalSignatures>(
             signal: K,
             callback: Conference.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Conference.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Conference.SignalSignatures[K]>
+            ...args: Conference.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1139,14 +1149,17 @@ export namespace Farstream {
             signal: K,
             callback: ElementAddedNotifier.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ElementAddedNotifier.SignalSignatures>(
             signal: K,
             callback: ElementAddedNotifier.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ElementAddedNotifier.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ElementAddedNotifier.SignalSignatures[K]>
+            ...args: ElementAddedNotifier.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1220,14 +1233,17 @@ export namespace Farstream {
             signal: K,
             callback: Participant.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Participant.SignalSignatures>(
             signal: K,
             callback: Participant.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Participant.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Participant.SignalSignatures[K]>
+            ...args: Participant.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Plugin {
@@ -1254,8 +1270,14 @@ export namespace Farstream {
         // Signals
 
         connect<K extends keyof Plugin.SignalSignatures>(signal: K, callback: Plugin.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Plugin.SignalSignatures>(signal: K, callback: Plugin.SignalSignatures[K]): number;
-        emit<K extends keyof Plugin.SignalSignatures>(signal: K, ...args: Parameters<Plugin.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Plugin.SignalSignatures>(
+            signal: K,
+            ...args: Plugin.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1753,6 +1775,26 @@ export namespace Farstream {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             error: Error;
+            'notify::allowed-sink-caps': GObject.Object.Notify;
+            'notify::allowed-sink-caps': GObject.Object.Notify;
+            'notify::allowed-src-caps': GObject.Object.Notify;
+            'notify::allowed-src-caps': GObject.Object.Notify;
+            'notify::codec-preferences': GObject.Object.Notify;
+            'notify::codec-preferences': GObject.Object.Notify;
+            'notify::codecs': GObject.Object.Notify;
+            'notify::codecs-without-config': GObject.Object.Notify;
+            'notify::codecs-without-config': GObject.Object.Notify;
+            'notify::conference': GObject.Object.Notify;
+            'notify::current-send-codec': GObject.Object.Notify;
+            'notify::current-send-codec': GObject.Object.Notify;
+            'notify::encryption-parameters': GObject.Object.Notify;
+            'notify::encryption-parameters': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::media-type': GObject.Object.Notify;
+            'notify::media-type': GObject.Object.Notify;
+            'notify::sink-pad': GObject.Object.Notify;
+            'notify::sink-pad': GObject.Object.Notify;
+            'notify::tos': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1968,14 +2010,17 @@ export namespace Farstream {
         // Signals
 
         connect<K extends keyof Session.SignalSignatures>(signal: K, callback: Session.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Session.SignalSignatures>(
             signal: K,
             callback: Session.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Session.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Session.SignalSignatures[K]>
+            ...args: Session.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -2246,6 +2291,17 @@ export namespace Farstream {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             error: Error;
             'src-pad-added': SrcPadAdded;
+            'notify::current-recv-codecs': GObject.Object.Notify;
+            'notify::current-recv-codecs': GObject.Object.Notify;
+            'notify::decryption-parameters': GObject.Object.Notify;
+            'notify::decryption-parameters': GObject.Object.Notify;
+            'notify::direction': GObject.Object.Notify;
+            'notify::negotiated-codecs': GObject.Object.Notify;
+            'notify::negotiated-codecs': GObject.Object.Notify;
+            'notify::participant': GObject.Object.Notify;
+            'notify::remote-codecs': GObject.Object.Notify;
+            'notify::remote-codecs': GObject.Object.Notify;
+            'notify::session': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -2358,8 +2414,14 @@ export namespace Farstream {
         // Signals
 
         connect<K extends keyof Stream.SignalSignatures>(signal: K, callback: Stream.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Stream.SignalSignatures>(signal: K, callback: Stream.SignalSignatures[K]): number;
-        emit<K extends keyof Stream.SignalSignatures>(signal: K, ...args: Parameters<Stream.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Stream.SignalSignatures>(
+            signal: K,
+            ...args: Stream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -2604,6 +2666,11 @@ export namespace Farstream {
             'new-active-candidate-pair': NewActiveCandidatePair;
             'new-local-candidate': NewLocalCandidate;
             'state-changed': StateChanged;
+            'notify::associate-on-source': GObject.Object.Notify;
+            'notify::associate-on-source': GObject.Object.Notify;
+            'notify::preferred-local-candidates': GObject.Object.Notify;
+            'notify::preferred-local-candidates': GObject.Object.Notify;
+            'notify::sending': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -2655,14 +2722,17 @@ export namespace Farstream {
             signal: K,
             callback: StreamTransmitter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StreamTransmitter.SignalSignatures>(
             signal: K,
             callback: StreamTransmitter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StreamTransmitter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StreamTransmitter.SignalSignatures[K]>
+            ...args: StreamTransmitter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -2737,6 +2807,14 @@ export namespace Farstream {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             error: Error;
+            'notify::components': GObject.Object.Notify;
+            'notify::do-timestamp': GObject.Object.Notify;
+            'notify::do-timestamp': GObject.Object.Notify;
+            'notify::gst-sink': GObject.Object.Notify;
+            'notify::gst-sink': GObject.Object.Notify;
+            'notify::gst-src': GObject.Object.Notify;
+            'notify::gst-src': GObject.Object.Notify;
+            'notify::tos': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -2831,14 +2909,17 @@ export namespace Farstream {
             signal: K,
             callback: Transmitter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Transmitter.SignalSignatures>(
             signal: K,
             callback: Transmitter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Transmitter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Transmitter.SignalSignatures[K]>
+            ...args: Transmitter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 

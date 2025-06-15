@@ -104,11 +104,11 @@ export namespace Fep {
         // Signal callback interfaces
 
         interface FilterEvent {
-            (_source: GClient, event?: any | null): boolean;
+            (_source: GClient, event?: any | null): boolean | void;
         }
 
         interface FilterKeyEvent {
-            (_source: GClient, keyval: number, modifiers: number): boolean;
+            (_source: GClient, keyval: number, modifiers: number): boolean | void;
         }
 
         interface Resized {
@@ -120,6 +120,7 @@ export namespace Fep {
             'filter-event': FilterEvent;
             'filter-key-event': FilterKeyEvent;
             resized: Resized;
+            'notify::address': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -147,14 +148,17 @@ export namespace Fep {
         // Signals
 
         connect<K extends keyof GClient.SignalSignatures>(signal: K, callback: GClient.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GClient.SignalSignatures>(
             signal: K,
             callback: GClient.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GClient.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GClient.SignalSignatures[K]>
+            ...args: GClient.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 

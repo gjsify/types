@@ -87,7 +87,23 @@ export namespace TelepathyLogger {
     }
     namespace CallEvent {
         // Signal signatures
-        interface SignalSignatures extends Event.SignalSignatures {}
+        interface SignalSignatures extends Event.SignalSignatures {
+            'notify::detailed-end-reason': GObject.Object.Notify;
+            'notify::detailed-end-reason': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::end-actor': GObject.Object.Notify;
+            'notify::end-actor': GObject.Object.Notify;
+            'notify::end-reason': GObject.Object.Notify;
+            'notify::end-reason': GObject.Object.Notify;
+            'notify::account': GObject.Object.Notify;
+            'notify::account-path': GObject.Object.Notify;
+            'notify::account-path': GObject.Object.Notify;
+            'notify::channel-path': GObject.Object.Notify;
+            'notify::channel-path': GObject.Object.Notify;
+            'notify::receiver': GObject.Object.Notify;
+            'notify::sender': GObject.Object.Notify;
+            'notify::timestamp': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -127,14 +143,17 @@ export namespace TelepathyLogger {
         // Signals
 
         connect<K extends keyof CallEvent.SignalSignatures>(signal: K, callback: CallEvent.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CallEvent.SignalSignatures>(
             signal: K,
             callback: CallEvent.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CallEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CallEvent.SignalSignatures[K]>
+            ...args: CallEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -146,7 +165,13 @@ export namespace TelepathyLogger {
 
     namespace Entity {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::alias': GObject.Object.Notify;
+            'notify::avatar-token': GObject.Object.Notify;
+            'notify::avatar-token': GObject.Object.Notify;
+            'notify::identifier': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -203,8 +228,14 @@ export namespace TelepathyLogger {
         // Signals
 
         connect<K extends keyof Entity.SignalSignatures>(signal: K, callback: Entity.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Entity.SignalSignatures>(signal: K, callback: Entity.SignalSignatures[K]): number;
-        emit<K extends keyof Entity.SignalSignatures>(signal: K, ...args: Parameters<Entity.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Entity.SignalSignatures>(
+            signal: K,
+            ...args: Entity.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -216,7 +247,16 @@ export namespace TelepathyLogger {
 
     namespace Event {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::account': GObject.Object.Notify;
+            'notify::account-path': GObject.Object.Notify;
+            'notify::account-path': GObject.Object.Notify;
+            'notify::channel-path': GObject.Object.Notify;
+            'notify::channel-path': GObject.Object.Notify;
+            'notify::receiver': GObject.Object.Notify;
+            'notify::sender': GObject.Object.Notify;
+            'notify::timestamp': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -258,8 +298,14 @@ export namespace TelepathyLogger {
         // Signals
 
         connect<K extends keyof Event.SignalSignatures>(signal: K, callback: Event.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Event.SignalSignatures>(signal: K, callback: Event.SignalSignatures[K]): number;
-        emit<K extends keyof Event.SignalSignatures>(signal: K, ...args: Parameters<Event.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Event.SignalSignatures>(
+            signal: K,
+            ...args: Event.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -315,14 +361,17 @@ export namespace TelepathyLogger {
             signal: K,
             callback: LogManager.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LogManager.SignalSignatures>(
             signal: K,
             callback: LogManager.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LogManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LogManager.SignalSignatures[K]>
+            ...args: LogManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -569,7 +618,11 @@ export namespace TelepathyLogger {
 
     namespace LogWalker {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::filter': GObject.Object.Notify;
+            'notify::filter-data': GObject.Object.Notify;
+            'notify::filter-data': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -601,14 +654,17 @@ export namespace TelepathyLogger {
         // Signals
 
         connect<K extends keyof LogWalker.SignalSignatures>(signal: K, callback: LogWalker.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LogWalker.SignalSignatures>(
             signal: K,
             callback: LogWalker.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LogWalker.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LogWalker.SignalSignatures[K]>
+            ...args: LogWalker.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -668,7 +724,25 @@ export namespace TelepathyLogger {
 
     namespace TextEvent {
         // Signal signatures
-        interface SignalSignatures extends Event.SignalSignatures {}
+        interface SignalSignatures extends Event.SignalSignatures {
+            'notify::edit-timestamp': GObject.Object.Notify;
+            'notify::edit-timestamp': GObject.Object.Notify;
+            'notify::message': GObject.Object.Notify;
+            'notify::message-token': GObject.Object.Notify;
+            'notify::message-token': GObject.Object.Notify;
+            'notify::message-type': GObject.Object.Notify;
+            'notify::message-type': GObject.Object.Notify;
+            'notify::supersedes-token': GObject.Object.Notify;
+            'notify::supersedes-token': GObject.Object.Notify;
+            'notify::account': GObject.Object.Notify;
+            'notify::account-path': GObject.Object.Notify;
+            'notify::account-path': GObject.Object.Notify;
+            'notify::channel-path': GObject.Object.Notify;
+            'notify::channel-path': GObject.Object.Notify;
+            'notify::receiver': GObject.Object.Notify;
+            'notify::sender': GObject.Object.Notify;
+            'notify::timestamp': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -712,14 +786,17 @@ export namespace TelepathyLogger {
         // Signals
 
         connect<K extends keyof TextEvent.SignalSignatures>(signal: K, callback: TextEvent.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TextEvent.SignalSignatures>(
             signal: K,
             callback: TextEvent.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TextEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TextEvent.SignalSignatures[K]>
+            ...args: TextEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

@@ -40,6 +40,10 @@ export namespace GjsDBus {
             'handle-method-call': HandleMethodCall;
             'handle-property-get': HandlePropertyGet;
             'handle-property-set': HandlePropertySet;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -72,14 +76,17 @@ export namespace GjsDBus {
             signal: K,
             callback: Implementation.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Implementation.SignalSignatures>(
             signal: K,
             callback: Implementation.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Implementation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Implementation.SignalSignatures[K]>
+            ...args: Implementation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

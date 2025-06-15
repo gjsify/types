@@ -492,14 +492,17 @@ export namespace Xmlb {
         // Signals
 
         connect<K extends keyof Builder.SignalSignatures>(signal: K, callback: Builder.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Builder.SignalSignatures>(
             signal: K,
             callback: Builder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Builder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Builder.SignalSignatures[K]>
+            ...args: Builder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -595,14 +598,17 @@ export namespace Xmlb {
             signal: K,
             callback: BuilderFixup.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BuilderFixup.SignalSignatures>(
             signal: K,
             callback: BuilderFixup.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BuilderFixup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BuilderFixup.SignalSignatures[K]>
+            ...args: BuilderFixup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -648,14 +654,17 @@ export namespace Xmlb {
             signal: K,
             callback: BuilderNode.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BuilderNode.SignalSignatures>(
             signal: K,
             callback: BuilderNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BuilderNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BuilderNode.SignalSignatures[K]>
+            ...args: BuilderNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -862,14 +871,17 @@ export namespace Xmlb {
             signal: K,
             callback: BuilderSource.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BuilderSource.SignalSignatures>(
             signal: K,
             callback: BuilderSource.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BuilderSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BuilderSource.SignalSignatures[K]>
+            ...args: BuilderSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -938,14 +950,17 @@ export namespace Xmlb {
             signal: K,
             callback: BuilderSourceCtx.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BuilderSourceCtx.SignalSignatures>(
             signal: K,
             callback: BuilderSourceCtx.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BuilderSourceCtx.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BuilderSourceCtx.SignalSignatures[K]>
+            ...args: BuilderSourceCtx.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -994,14 +1009,17 @@ export namespace Xmlb {
         // Signals
 
         connect<K extends keyof Machine.SignalSignatures>(signal: K, callback: Machine.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Machine.SignalSignatures>(
             signal: K,
             callback: Machine.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Machine.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Machine.SignalSignatures[K]>
+            ...args: Machine.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1186,8 +1204,14 @@ export namespace Xmlb {
         // Signals
 
         connect<K extends keyof Node.SignalSignatures>(signal: K, callback: Node.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Node.SignalSignatures>(signal: K, callback: Node.SignalSignatures[K]): number;
-        emit<K extends keyof Node.SignalSignatures>(signal: K, ...args: Parameters<Node.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Node.SignalSignatures>(
+            signal: K,
+            ...args: Node.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1457,8 +1481,14 @@ export namespace Xmlb {
         // Signals
 
         connect<K extends keyof Query.SignalSignatures>(signal: K, callback: Query.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Query.SignalSignatures>(signal: K, callback: Query.SignalSignatures[K]): number;
-        emit<K extends keyof Query.SignalSignatures>(signal: K, ...args: Parameters<Query.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Query.SignalSignatures>(
+            signal: K,
+            ...args: Query.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1505,7 +1535,12 @@ export namespace Xmlb {
 
     namespace Silo {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::enable-node-cache': GObject.Object.Notify;
+            'notify::enable-node-cache': GObject.Object.Notify;
+            'notify::guid': GObject.Object.Notify;
+            'notify::valid': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1577,8 +1612,14 @@ export namespace Xmlb {
         // Signals
 
         connect<K extends keyof Silo.SignalSignatures>(signal: K, callback: Silo.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Silo.SignalSignatures>(signal: K, callback: Silo.SignalSignatures[K]): number;
-        emit<K extends keyof Silo.SignalSignatures>(signal: K, ...args: Parameters<Silo.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Silo.SignalSignatures>(
+            signal: K,
+            ...args: Silo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

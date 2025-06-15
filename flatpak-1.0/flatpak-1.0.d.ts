@@ -559,7 +559,16 @@ export namespace Flatpak {
     }
     namespace BundleRef {
         // Signal signatures
-        interface SignalSignatures extends Ref.SignalSignatures {}
+        interface SignalSignatures extends Ref.SignalSignatures {
+            'notify::file': GObject.Object.Notify;
+            'notify::arch': GObject.Object.Notify;
+            'notify::branch': GObject.Object.Notify;
+            'notify::collection-id': GObject.Object.Notify;
+            'notify::collection-id': GObject.Object.Notify;
+            'notify::commit': GObject.Object.Notify;
+            'notify::kind': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -589,14 +598,17 @@ export namespace Flatpak {
         // Signals
 
         connect<K extends keyof BundleRef.SignalSignatures>(signal: K, callback: BundleRef.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BundleRef.SignalSignatures>(
             signal: K,
             callback: BundleRef.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BundleRef.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BundleRef.SignalSignatures[K]>
+            ...args: BundleRef.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -670,14 +682,17 @@ export namespace Flatpak {
             signal: K,
             callback: Installation.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Installation.SignalSignatures>(
             signal: K,
             callback: Installation.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Installation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Installation.SignalSignatures[K]>
+            ...args: Installation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1479,7 +1494,41 @@ export namespace Flatpak {
 
     namespace InstalledRef {
         // Signal signatures
-        interface SignalSignatures extends Ref.SignalSignatures {}
+        interface SignalSignatures extends Ref.SignalSignatures {
+            'notify::appdata-content-rating': GObject.Object.Notify;
+            'notify::appdata-content-rating': GObject.Object.Notify;
+            'notify::appdata-content-rating-type': GObject.Object.Notify;
+            'notify::appdata-content-rating-type': GObject.Object.Notify;
+            'notify::appdata-license': GObject.Object.Notify;
+            'notify::appdata-license': GObject.Object.Notify;
+            'notify::appdata-name': GObject.Object.Notify;
+            'notify::appdata-name': GObject.Object.Notify;
+            'notify::appdata-summary': GObject.Object.Notify;
+            'notify::appdata-summary': GObject.Object.Notify;
+            'notify::appdata-version': GObject.Object.Notify;
+            'notify::appdata-version': GObject.Object.Notify;
+            'notify::deploy-dir': GObject.Object.Notify;
+            'notify::deploy-dir': GObject.Object.Notify;
+            'notify::end-of-life': GObject.Object.Notify;
+            'notify::end-of-life': GObject.Object.Notify;
+            'notify::end-of-life-rebase': GObject.Object.Notify;
+            'notify::end-of-life-rebase': GObject.Object.Notify;
+            'notify::installed-size': GObject.Object.Notify;
+            'notify::installed-size': GObject.Object.Notify;
+            'notify::is-current': GObject.Object.Notify;
+            'notify::is-current': GObject.Object.Notify;
+            'notify::latest-commit': GObject.Object.Notify;
+            'notify::latest-commit': GObject.Object.Notify;
+            'notify::origin': GObject.Object.Notify;
+            'notify::subpaths': GObject.Object.Notify;
+            'notify::arch': GObject.Object.Notify;
+            'notify::branch': GObject.Object.Notify;
+            'notify::collection-id': GObject.Object.Notify;
+            'notify::collection-id': GObject.Object.Notify;
+            'notify::commit': GObject.Object.Notify;
+            'notify::kind': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1567,14 +1616,17 @@ export namespace Flatpak {
             signal: K,
             callback: InstalledRef.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InstalledRef.SignalSignatures>(
             signal: K,
             callback: InstalledRef.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InstalledRef.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InstalledRef.SignalSignatures[K]>
+            ...args: InstalledRef.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1693,14 +1745,17 @@ export namespace Flatpak {
         // Signals
 
         connect<K extends keyof Instance.SignalSignatures>(signal: K, callback: Instance.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Instance.SignalSignatures>(
             signal: K,
             callback: Instance.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Instance.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Instance.SignalSignatures[K]>
+            ...args: Instance.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1786,7 +1841,15 @@ export namespace Flatpak {
 
     namespace Ref {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::arch': GObject.Object.Notify;
+            'notify::branch': GObject.Object.Notify;
+            'notify::collection-id': GObject.Object.Notify;
+            'notify::collection-id': GObject.Object.Notify;
+            'notify::commit': GObject.Object.Notify;
+            'notify::kind': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1823,8 +1886,14 @@ export namespace Flatpak {
         // Signals
 
         connect<K extends keyof Ref.SignalSignatures>(signal: K, callback: Ref.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Ref.SignalSignatures>(signal: K, callback: Ref.SignalSignatures[K]): number;
-        emit<K extends keyof Ref.SignalSignatures>(signal: K, ...args: Parameters<Ref.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Ref.SignalSignatures>(
+            signal: K,
+            ...args: Ref.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1883,7 +1952,22 @@ export namespace Flatpak {
 
     namespace RelatedRef {
         // Signal signatures
-        interface SignalSignatures extends Ref.SignalSignatures {}
+        interface SignalSignatures extends Ref.SignalSignatures {
+            'notify::should-autoprune': GObject.Object.Notify;
+            'notify::should-autoprune': GObject.Object.Notify;
+            'notify::should-delete': GObject.Object.Notify;
+            'notify::should-delete': GObject.Object.Notify;
+            'notify::should-download': GObject.Object.Notify;
+            'notify::should-download': GObject.Object.Notify;
+            'notify::subpaths': GObject.Object.Notify;
+            'notify::arch': GObject.Object.Notify;
+            'notify::branch': GObject.Object.Notify;
+            'notify::collection-id': GObject.Object.Notify;
+            'notify::collection-id': GObject.Object.Notify;
+            'notify::commit': GObject.Object.Notify;
+            'notify::kind': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1923,14 +2007,17 @@ export namespace Flatpak {
             signal: K,
             callback: RelatedRef.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RelatedRef.SignalSignatures>(
             signal: K,
             callback: RelatedRef.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RelatedRef.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RelatedRef.SignalSignatures[K]>
+            ...args: RelatedRef.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1944,7 +2031,10 @@ export namespace Flatpak {
 
     namespace Remote {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1989,8 +2079,14 @@ export namespace Flatpak {
         // Signals
 
         connect<K extends keyof Remote.SignalSignatures>(signal: K, callback: Remote.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Remote.SignalSignatures>(signal: K, callback: Remote.SignalSignatures[K]): number;
-        emit<K extends keyof Remote.SignalSignatures>(signal: K, ...args: Parameters<Remote.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Remote.SignalSignatures>(
+            signal: K,
+            ...args: Remote.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2243,7 +2339,26 @@ export namespace Flatpak {
 
     namespace RemoteRef {
         // Signal signatures
-        interface SignalSignatures extends Ref.SignalSignatures {}
+        interface SignalSignatures extends Ref.SignalSignatures {
+            'notify::download-size': GObject.Object.Notify;
+            'notify::download-size': GObject.Object.Notify;
+            'notify::end-of-life': GObject.Object.Notify;
+            'notify::end-of-life': GObject.Object.Notify;
+            'notify::end-of-life-rebase': GObject.Object.Notify;
+            'notify::end-of-life-rebase': GObject.Object.Notify;
+            'notify::installed-size': GObject.Object.Notify;
+            'notify::installed-size': GObject.Object.Notify;
+            'notify::metadata': GObject.Object.Notify;
+            'notify::remote-name': GObject.Object.Notify;
+            'notify::remote-name': GObject.Object.Notify;
+            'notify::arch': GObject.Object.Notify;
+            'notify::branch': GObject.Object.Notify;
+            'notify::collection-id': GObject.Object.Notify;
+            'notify::collection-id': GObject.Object.Notify;
+            'notify::commit': GObject.Object.Notify;
+            'notify::kind': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2288,14 +2403,17 @@ export namespace Flatpak {
         // Signals
 
         connect<K extends keyof RemoteRef.SignalSignatures>(signal: K, callback: RemoteRef.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RemoteRef.SignalSignatures>(
             signal: K,
             callback: RemoteRef.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RemoteRef.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RemoteRef.SignalSignatures[K]>
+            ...args: RemoteRef.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2343,11 +2461,11 @@ export namespace Flatpak {
                 from_id: string,
                 suggested_remote_name: string,
                 url: string,
-            ): boolean;
+            ): boolean | void;
         }
 
         interface BasicAuthStart {
-            (_source: Transaction, remote: string, realm: string, options: GLib.Variant, id: number): boolean;
+            (_source: Transaction, remote: string, realm: string, options: GLib.Variant, id: number): boolean | void;
         }
 
         interface ChooseRemoteForRef {
@@ -2366,7 +2484,7 @@ export namespace Flatpak {
                 reason: string,
                 rebased_to_ref: string,
                 previous_ids: string[],
-            ): boolean;
+            ): boolean | void;
         }
 
         interface InstallAuthenticator {
@@ -2392,15 +2510,15 @@ export namespace Flatpak {
                 operation: TransactionOperation,
                 error: GLib.Error,
                 details: TransactionErrorDetails,
-            ): boolean;
+            ): boolean | void;
         }
 
         interface Ready {
-            (_source: Transaction): boolean;
+            (_source: Transaction): boolean | void;
         }
 
         interface ReadyPreAuth {
-            (_source: Transaction): boolean;
+            (_source: Transaction): boolean | void;
         }
 
         interface WebflowDone {
@@ -2408,7 +2526,7 @@ export namespace Flatpak {
         }
 
         interface WebflowStart {
-            (_source: Transaction, remote: string, url: string, options: GLib.Variant, id: number): boolean;
+            (_source: Transaction, remote: string, url: string, options: GLib.Variant, id: number): boolean | void;
         }
 
         // Signal signatures
@@ -2426,6 +2544,9 @@ export namespace Flatpak {
             'ready-pre-auth': ReadyPreAuth;
             'webflow-done': WebflowDone;
             'webflow-start': WebflowStart;
+            'notify::installation': GObject.Object.Notify;
+            'notify::no-interaction': GObject.Object.Notify;
+            'notify::no-interaction': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -2475,14 +2596,17 @@ export namespace Flatpak {
             signal: K,
             callback: Transaction.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Transaction.SignalSignatures>(
             signal: K,
             callback: Transaction.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Transaction.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Transaction.SignalSignatures[K]>
+            ...args: Transaction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -3419,14 +3543,17 @@ export namespace Flatpak {
             signal: K,
             callback: TransactionOperation.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TransactionOperation.SignalSignatures>(
             signal: K,
             callback: TransactionOperation.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TransactionOperation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TransactionOperation.SignalSignatures[K]>
+            ...args: TransactionOperation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3596,14 +3723,17 @@ export namespace Flatpak {
             signal: K,
             callback: TransactionProgress.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TransactionProgress.SignalSignatures>(
             signal: K,
             callback: TransactionProgress.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TransactionProgress.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TransactionProgress.SignalSignatures[K]>
+            ...args: TransactionProgress.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

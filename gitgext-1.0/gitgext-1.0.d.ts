@@ -85,14 +85,17 @@ export namespace GitgExt {
             signal: K,
             callback: CommandLines.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CommandLines.SignalSignatures>(
             signal: K,
             callback: CommandLines.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CommandLines.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CommandLines.SignalSignatures[K]>
+            ...args: CommandLines.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -145,14 +148,17 @@ export namespace GitgExt {
             signal: K,
             callback: MessageBus.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MessageBus.SignalSignatures>(
             signal: K,
             callback: MessageBus.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MessageBus.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MessageBus.SignalSignatures[K]>
+            ...args: MessageBus.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -179,7 +185,12 @@ export namespace GitgExt {
 
     namespace MessageId {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::object-path': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'notify::method': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -215,14 +226,17 @@ export namespace GitgExt {
         // Signals
 
         connect<K extends keyof MessageId.SignalSignatures>(signal: K, callback: MessageId.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MessageId.SignalSignatures>(
             signal: K,
             callback: MessageId.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MessageId.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MessageId.SignalSignatures[K]>
+            ...args: MessageId.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -242,7 +256,9 @@ export namespace GitgExt {
 
     namespace Message {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::id': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -268,14 +284,17 @@ export namespace GitgExt {
         // Signals
 
         connect<K extends keyof Message.SignalSignatures>(signal: K, callback: Message.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Message.SignalSignatures>(
             signal: K,
             callback: Message.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Message.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Message.SignalSignatures[K]>
+            ...args: Message.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -310,8 +329,14 @@ export namespace GitgExt {
         // Signals
 
         connect<K extends keyof UI.SignalSignatures>(signal: K, callback: UI.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UI.SignalSignatures>(signal: K, callback: UI.SignalSignatures[K]): number;
-        emit<K extends keyof UI.SignalSignatures>(signal: K, ...args: Parameters<UI.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof UI.SignalSignatures>(
+            signal: K,
+            ...args: UI.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace UserQueryResponse {
@@ -345,14 +370,17 @@ export namespace GitgExt {
             signal: K,
             callback: UserQueryResponse.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UserQueryResponse.SignalSignatures>(
             signal: K,
             callback: UserQueryResponse.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UserQueryResponse.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UserQueryResponse.SignalSignatures[K]>
+            ...args: UserQueryResponse.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace UserQuery {
@@ -363,13 +391,23 @@ export namespace GitgExt {
         }
 
         interface Response {
-            (_source: UserQuery, response_type: Gtk.ResponseType): boolean;
+            (_source: UserQuery, response_type: Gtk.ResponseType): boolean | void;
         }
 
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             quit: Quit;
             response: Response;
+            'notify::title': GObject.Object.Notify;
+            'notify::message': GObject.Object.Notify;
+            'notify::message-type': GObject.Object.Notify;
+            'notify::message-type': GObject.Object.Notify;
+            'notify::default-response': GObject.Object.Notify;
+            'notify::default-response': GObject.Object.Notify;
+            'notify::default-is-destructive': GObject.Object.Notify;
+            'notify::default-is-destructive': GObject.Object.Notify;
+            'notify::message-use-markup': GObject.Object.Notify;
+            'notify::message-use-markup': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -425,14 +463,17 @@ export namespace GitgExt {
         // Signals
 
         connect<K extends keyof UserQuery.SignalSignatures>(signal: K, callback: UserQuery.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UserQuery.SignalSignatures>(
             signal: K,
             callback: UserQuery.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UserQuery.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UserQuery.SignalSignatures[K]>
+            ...args: UserQuery.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

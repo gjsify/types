@@ -196,14 +196,17 @@ export namespace Tracker {
             signal: K,
             callback: NamespaceManager.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NamespaceManager.SignalSignatures>(
             signal: K,
             callback: NamespaceManager.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NamespaceManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NamespaceManager.SignalSignatures[K]>
+            ...args: NamespaceManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -266,6 +269,7 @@ export namespace Tracker {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             events: Events;
+            'notify::classes': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -296,14 +300,17 @@ export namespace Tracker {
         // Signals
 
         connect<K extends keyof Notifier.SignalSignatures>(signal: K, callback: Notifier.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Notifier.SignalSignatures>(
             signal: K,
             callback: Notifier.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Notifier.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Notifier.SignalSignatures[K]>
+            ...args: Notifier.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -834,7 +841,9 @@ export namespace Tracker {
 
     namespace Resource {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::identifier': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -870,14 +879,17 @@ export namespace Tracker {
         // Signals
 
         connect<K extends keyof Resource.SignalSignatures>(signal: K, callback: Resource.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Resource.SignalSignatures>(
             signal: K,
             callback: Resource.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Resource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Resource.SignalSignatures[K]>
+            ...args: Resource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1113,7 +1125,11 @@ export namespace Tracker {
 
     namespace SparqlBuilder {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::result': GObject.Object.Notify;
+            'notify::length': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1152,14 +1168,17 @@ export namespace Tracker {
             signal: K,
             callback: SparqlBuilder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SparqlBuilder.SignalSignatures>(
             signal: K,
             callback: SparqlBuilder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SparqlBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SparqlBuilder.SignalSignatures[K]>
+            ...args: SparqlBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1219,14 +1238,17 @@ export namespace Tracker {
             signal: K,
             callback: SparqlConnection.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SparqlConnection.SignalSignatures>(
             signal: K,
             callback: SparqlConnection.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SparqlConnection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SparqlConnection.SignalSignatures[K]>
+            ...args: SparqlConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1400,7 +1422,11 @@ export namespace Tracker {
 
     namespace SparqlCursor {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::connection': GObject.Object.Notify;
+            'notify::n-columns': GObject.Object.Notify;
+            'notify::n-columns': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1433,14 +1459,17 @@ export namespace Tracker {
             signal: K,
             callback: SparqlCursor.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SparqlCursor.SignalSignatures>(
             signal: K,
             callback: SparqlCursor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SparqlCursor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SparqlCursor.SignalSignatures[K]>
+            ...args: SparqlCursor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1484,7 +1513,10 @@ export namespace Tracker {
 
     namespace SparqlStatement {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::sparql': GObject.Object.Notify;
+            'notify::connection': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1516,14 +1548,17 @@ export namespace Tracker {
             signal: K,
             callback: SparqlStatement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SparqlStatement.SignalSignatures>(
             signal: K,
             callback: SparqlStatement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SparqlStatement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SparqlStatement.SignalSignatures[K]>
+            ...args: SparqlStatement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 

@@ -125,14 +125,17 @@ export namespace GstBase {
             signal: K,
             callback: GstAdapter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GstAdapter.SignalSignatures>(
             signal: K,
             callback: GstAdapter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GstAdapter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GstAdapter.SignalSignatures[K]>
+            ...args: GstAdapter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -152,7 +155,9 @@ export namespace GstBase {
 
     namespace GstCollectPads {
         // Signal signatures
-        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -193,14 +198,17 @@ export namespace GstBase {
             signal: K,
             callback: GstCollectPads.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GstCollectPads.SignalSignatures>(
             signal: K,
             callback: GstCollectPads.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GstCollectPads.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GstCollectPads.SignalSignatures[K]>
+            ...args: GstCollectPads.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -239,6 +247,12 @@ export namespace GstBase {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             empty: Empty;
             full: Full;
+            'notify::current-level-bytes': GObject.Object.Notify;
+            'notify::current-level-bytes': GObject.Object.Notify;
+            'notify::current-level-time': GObject.Object.Notify;
+            'notify::current-level-time': GObject.Object.Notify;
+            'notify::current-level-visible': GObject.Object.Notify;
+            'notify::current-level-visible': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -299,14 +313,17 @@ export namespace GstBase {
             signal: K,
             callback: GstDataQueue.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GstDataQueue.SignalSignatures>(
             signal: K,
             callback: GstDataQueue.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GstDataQueue.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GstDataQueue.SignalSignatures[K]>
+            ...args: GstDataQueue.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -323,7 +340,15 @@ export namespace GstBase {
 
     namespace GstPushSrc {
         // Signal signatures
-        interface SignalSignatures extends Src.SignalSignatures {}
+        interface SignalSignatures extends Src.SignalSignatures {
+            'notify::blocksize': GObject.Object.Notify;
+            'notify::do-timestamp': GObject.Object.Notify;
+            'notify::do-timestamp': GObject.Object.Notify;
+            'notify::num-buffers': GObject.Object.Notify;
+            'notify::num-buffers': GObject.Object.Notify;
+            'notify::typefind': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -348,19 +373,40 @@ export namespace GstBase {
             signal: K,
             callback: GstPushSrc.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GstPushSrc.SignalSignatures>(
             signal: K,
             callback: GstPushSrc.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GstPushSrc.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GstPushSrc.SignalSignatures[K]>
+            ...args: GstPushSrc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Sink {
         // Signal signatures
-        interface SignalSignatures extends Gst.Element.SignalSignatures {}
+        interface SignalSignatures extends Gst.Element.SignalSignatures {
+            'notify::async': GObject.Object.Notify;
+            'notify::blocksize': GObject.Object.Notify;
+            'notify::enable-last-buffer': GObject.Object.Notify;
+            'notify::enable-last-buffer': GObject.Object.Notify;
+            'notify::last-buffer': GObject.Object.Notify;
+            'notify::last-buffer': GObject.Object.Notify;
+            'notify::max-lateness': GObject.Object.Notify;
+            'notify::max-lateness': GObject.Object.Notify;
+            'notify::preroll-queue-len': GObject.Object.Notify;
+            'notify::preroll-queue-len': GObject.Object.Notify;
+            'notify::qos': GObject.Object.Notify;
+            'notify::render-delay': GObject.Object.Notify;
+            'notify::render-delay': GObject.Object.Notify;
+            'notify::sync': GObject.Object.Notify;
+            'notify::ts-offset': GObject.Object.Notify;
+            'notify::ts-offset': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -455,8 +501,14 @@ export namespace GstBase {
         // Signals
 
         connect<K extends keyof Sink.SignalSignatures>(signal: K, callback: Sink.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Sink.SignalSignatures>(signal: K, callback: Sink.SignalSignatures[K]): number;
-        emit<K extends keyof Sink.SignalSignatures>(signal: K, ...args: Parameters<Sink.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Sink.SignalSignatures>(
+            signal: K,
+            ...args: Sink.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -487,7 +539,15 @@ export namespace GstBase {
 
     namespace Src {
         // Signal signatures
-        interface SignalSignatures extends Gst.Element.SignalSignatures {}
+        interface SignalSignatures extends Gst.Element.SignalSignatures {
+            'notify::blocksize': GObject.Object.Notify;
+            'notify::do-timestamp': GObject.Object.Notify;
+            'notify::do-timestamp': GObject.Object.Notify;
+            'notify::num-buffers': GObject.Object.Notify;
+            'notify::num-buffers': GObject.Object.Notify;
+            'notify::typefind': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -547,8 +607,14 @@ export namespace GstBase {
         // Signals
 
         connect<K extends keyof Src.SignalSignatures>(signal: K, callback: Src.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Src.SignalSignatures>(signal: K, callback: Src.SignalSignatures[K]): number;
-        emit<K extends keyof Src.SignalSignatures>(signal: K, ...args: Parameters<Src.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Src.SignalSignatures>(
+            signal: K,
+            ...args: Src.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -566,7 +632,10 @@ export namespace GstBase {
 
     namespace Transform {
         // Signal signatures
-        interface SignalSignatures extends Gst.Element.SignalSignatures {}
+        interface SignalSignatures extends Gst.Element.SignalSignatures {
+            'notify::qos': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -610,14 +679,17 @@ export namespace GstBase {
         // Signals
 
         connect<K extends keyof Transform.SignalSignatures>(signal: K, callback: Transform.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Transform.SignalSignatures>(
             signal: K,
             callback: Transform.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Transform.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Transform.SignalSignatures[K]>
+            ...args: Transform.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

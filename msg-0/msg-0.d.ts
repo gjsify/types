@@ -118,14 +118,17 @@ export namespace Msg {
         // Signals
 
         connect<K extends keyof Contact.SignalSignatures>(signal: K, callback: Contact.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Contact.SignalSignatures>(
             signal: K,
             callback: Contact.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Contact.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Contact.SignalSignatures[K]>
+            ...args: Contact.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -159,7 +162,9 @@ export namespace Msg {
 
     namespace ContactService {
         // Signal signatures
-        interface SignalSignatures extends Service.SignalSignatures {}
+        interface SignalSignatures extends Service.SignalSignatures {
+            'notify::authorizer': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -183,14 +188,17 @@ export namespace Msg {
             signal: K,
             callback: ContactService.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ContactService.SignalSignatures>(
             signal: K,
             callback: ContactService.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ContactService.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContactService.SignalSignatures[K]>
+            ...args: ContactService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -246,8 +254,14 @@ export namespace Msg {
         // Signals
 
         connect<K extends keyof Drive.SignalSignatures>(signal: K, callback: Drive.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Drive.SignalSignatures>(signal: K, callback: Drive.SignalSignatures[K]): number;
-        emit<K extends keyof Drive.SignalSignatures>(signal: K, ...args: Parameters<Drive.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Drive.SignalSignatures>(
+            signal: K,
+            ...args: Drive.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -316,14 +330,17 @@ export namespace Msg {
         // Signals
 
         connect<K extends keyof DriveItem.SignalSignatures>(signal: K, callback: DriveItem.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DriveItem.SignalSignatures>(
             signal: K,
             callback: DriveItem.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DriveItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DriveItem.SignalSignatures[K]>
+            ...args: DriveItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -422,14 +439,17 @@ export namespace Msg {
             signal: K,
             callback: DriveItemFile.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DriveItemFile.SignalSignatures>(
             signal: K,
             callback: DriveItemFile.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DriveItemFile.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DriveItemFile.SignalSignatures[K]>
+            ...args: DriveItemFile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -473,19 +493,24 @@ export namespace Msg {
             signal: K,
             callback: DriveItemFolder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DriveItemFolder.SignalSignatures>(
             signal: K,
             callback: DriveItemFolder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DriveItemFolder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DriveItemFolder.SignalSignatures[K]>
+            ...args: DriveItemFolder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace DriveService {
         // Signal signatures
-        interface SignalSignatures extends Service.SignalSignatures {}
+        interface SignalSignatures extends Service.SignalSignatures {
+            'notify::authorizer': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -509,14 +534,17 @@ export namespace Msg {
             signal: K,
             callback: DriveService.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DriveService.SignalSignatures>(
             signal: K,
             callback: DriveService.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DriveService.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DriveService.SignalSignatures[K]>
+            ...args: DriveService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -626,7 +654,10 @@ export namespace Msg {
 
     namespace GoaAuthorizer {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::goa-object': GObject.Object.Notify;
+            'notify::goa-object': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -662,14 +693,17 @@ export namespace Msg {
             signal: K,
             callback: GoaAuthorizer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GoaAuthorizer.SignalSignatures>(
             signal: K,
             callback: GoaAuthorizer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GoaAuthorizer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GoaAuthorizer.SignalSignatures[K]>
+            ...args: GoaAuthorizer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1182,14 +1216,17 @@ export namespace Msg {
             signal: K,
             callback: InputStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InputStream.SignalSignatures>(
             signal: K,
             callback: InputStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InputStream.SignalSignatures[K]>
+            ...args: InputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1778,14 +1815,17 @@ export namespace Msg {
             signal: K,
             callback: MailFolder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MailFolder.SignalSignatures>(
             signal: K,
             callback: MailFolder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MailFolder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MailFolder.SignalSignatures[K]>
+            ...args: MailFolder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1824,14 +1864,17 @@ export namespace Msg {
         // Signals
 
         connect<K extends keyof Message.SignalSignatures>(signal: K, callback: Message.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Message.SignalSignatures>(
             signal: K,
             callback: Message.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Message.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Message.SignalSignatures[K]>
+            ...args: Message.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1844,7 +1887,9 @@ export namespace Msg {
 
     namespace MessageService {
         // Signal signatures
-        interface SignalSignatures extends Service.SignalSignatures {}
+        interface SignalSignatures extends Service.SignalSignatures {
+            'notify::authorizer': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1868,14 +1913,17 @@ export namespace Msg {
             signal: K,
             callback: MessageService.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MessageService.SignalSignatures>(
             signal: K,
             callback: MessageService.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MessageService.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MessageService.SignalSignatures[K]>
+            ...args: MessageService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1916,7 +1964,14 @@ export namespace Msg {
 
     namespace OAuth2Authorizer {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::client-id': GObject.Object.Notify;
+            'notify::client-id': GObject.Object.Notify;
+            'notify::redirect-uri': GObject.Object.Notify;
+            'notify::redirect-uri': GObject.Object.Notify;
+            'notify::refresh-token': GObject.Object.Notify;
+            'notify::refresh-token': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1958,14 +2013,17 @@ export namespace Msg {
             signal: K,
             callback: OAuth2Authorizer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OAuth2Authorizer.SignalSignatures>(
             signal: K,
             callback: OAuth2Authorizer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OAuth2Authorizer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OAuth2Authorizer.SignalSignatures[K]>
+            ...args: OAuth2Authorizer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2456,7 +2514,9 @@ export namespace Msg {
 
     namespace Service {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::authorizer': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2481,14 +2541,17 @@ export namespace Msg {
         // Signals
 
         connect<K extends keyof Service.SignalSignatures>(signal: K, callback: Service.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Service.SignalSignatures>(
             signal: K,
             callback: Service.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Service.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Service.SignalSignatures[K]>
+            ...args: Service.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2590,8 +2653,14 @@ export namespace Msg {
         // Signals
 
         connect<K extends keyof User.SignalSignatures>(signal: K, callback: User.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof User.SignalSignatures>(signal: K, callback: User.SignalSignatures[K]): number;
-        emit<K extends keyof User.SignalSignatures>(signal: K, ...args: Parameters<User.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof User.SignalSignatures>(
+            signal: K,
+            ...args: User.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2600,7 +2669,9 @@ export namespace Msg {
 
     namespace UserService {
         // Signal signatures
-        interface SignalSignatures extends Service.SignalSignatures {}
+        interface SignalSignatures extends Service.SignalSignatures {
+            'notify::authorizer': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2624,14 +2695,17 @@ export namespace Msg {
             signal: K,
             callback: UserService.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UserService.SignalSignatures>(
             signal: K,
             callback: UserService.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UserService.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UserService.SignalSignatures[K]>
+            ...args: UserService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

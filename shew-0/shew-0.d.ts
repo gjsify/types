@@ -32,7 +32,9 @@ export namespace Shew {
 
     namespace ExternalWindow {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::display': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -62,14 +64,17 @@ export namespace Shew {
             signal: K,
             callback: ExternalWindow.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExternalWindow.SignalSignatures>(
             signal: K,
             callback: ExternalWindow.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExternalWindow.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExternalWindow.SignalSignatures[K]>
+            ...args: ExternalWindow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -83,7 +88,9 @@ export namespace Shew {
 
     namespace WindowExporter {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::window': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -113,14 +120,17 @@ export namespace Shew {
             signal: K,
             callback: WindowExporter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WindowExporter.SignalSignatures>(
             signal: K,
             callback: WindowExporter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WindowExporter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WindowExporter.SignalSignatures[K]>
+            ...args: WindowExporter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

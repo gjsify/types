@@ -47,19 +47,24 @@ export namespace ArrowFlight {
             signal: K,
             callback: CallOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CallOptions.SignalSignatures>(
             signal: K,
             callback: CallOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CallOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CallOptions.SignalSignatures[K]>
+            ...args: CallOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Client {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::client': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -86,8 +91,14 @@ export namespace ArrowFlight {
         // Signals
 
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -121,19 +132,24 @@ export namespace ArrowFlight {
             signal: K,
             callback: ClientOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientOptions.SignalSignatures>(
             signal: K,
             callback: ClientOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientOptions.SignalSignatures[K]>
+            ...args: ClientOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace CommandDescriptor {
         // Signal signatures
-        interface SignalSignatures extends Descriptor.SignalSignatures {}
+        interface SignalSignatures extends Descriptor.SignalSignatures {
+            'notify::descriptor': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -157,14 +173,17 @@ export namespace ArrowFlight {
             signal: K,
             callback: CommandDescriptor.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CommandDescriptor.SignalSignatures>(
             signal: K,
             callback: CommandDescriptor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CommandDescriptor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CommandDescriptor.SignalSignatures[K]>
+            ...args: CommandDescriptor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -173,7 +192,9 @@ export namespace ArrowFlight {
 
     namespace Criteria {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::expression': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -204,19 +225,24 @@ export namespace ArrowFlight {
         // Signals
 
         connect<K extends keyof Criteria.SignalSignatures>(signal: K, callback: Criteria.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Criteria.SignalSignatures>(
             signal: K,
             callback: Criteria.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Criteria.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Criteria.SignalSignatures[K]>
+            ...args: Criteria.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace DataStream {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::stream': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -244,19 +270,24 @@ export namespace ArrowFlight {
             signal: K,
             callback: DataStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DataStream.SignalSignatures>(
             signal: K,
             callback: DataStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DataStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataStream.SignalSignatures[K]>
+            ...args: DataStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Descriptor {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::descriptor': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -284,14 +315,17 @@ export namespace ArrowFlight {
             signal: K,
             callback: Descriptor.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Descriptor.SignalSignatures>(
             signal: K,
             callback: Descriptor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Descriptor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Descriptor.SignalSignatures[K]>
+            ...args: Descriptor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -301,7 +335,9 @@ export namespace ArrowFlight {
 
     namespace Endpoint {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::ticket': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -331,14 +367,17 @@ export namespace ArrowFlight {
         // Signals
 
         connect<K extends keyof Endpoint.SignalSignatures>(signal: K, callback: Endpoint.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Endpoint.SignalSignatures>(
             signal: K,
             callback: Endpoint.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Endpoint.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Endpoint.SignalSignatures[K]>
+            ...args: Endpoint.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -348,7 +387,9 @@ export namespace ArrowFlight {
 
     namespace Info {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::info': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -381,8 +422,14 @@ export namespace ArrowFlight {
         // Signals
 
         connect<K extends keyof Info.SignalSignatures>(signal: K, callback: Info.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Info.SignalSignatures>(signal: K, callback: Info.SignalSignatures[K]): number;
-        emit<K extends keyof Info.SignalSignatures>(signal: K, ...args: Parameters<Info.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Info.SignalSignatures>(
+            signal: K,
+            ...args: Info.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -417,14 +464,17 @@ export namespace ArrowFlight {
         // Signals
 
         connect<K extends keyof Location.SignalSignatures>(signal: K, callback: Location.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Location.SignalSignatures>(
             signal: K,
             callback: Location.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Location.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Location.SignalSignatures[K]>
+            ...args: Location.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -435,7 +485,9 @@ export namespace ArrowFlight {
 
     namespace PathDescriptor {
         // Signal signatures
-        interface SignalSignatures extends Descriptor.SignalSignatures {}
+        interface SignalSignatures extends Descriptor.SignalSignatures {
+            'notify::descriptor': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -459,14 +511,17 @@ export namespace ArrowFlight {
             signal: K,
             callback: PathDescriptor.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PathDescriptor.SignalSignatures>(
             signal: K,
             callback: PathDescriptor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PathDescriptor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PathDescriptor.SignalSignatures[K]>
+            ...args: PathDescriptor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -475,7 +530,9 @@ export namespace ArrowFlight {
 
     namespace RecordBatchReader {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::reader': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -503,14 +560,17 @@ export namespace ArrowFlight {
             signal: K,
             callback: RecordBatchReader.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RecordBatchReader.SignalSignatures>(
             signal: K,
             callback: RecordBatchReader.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RecordBatchReader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RecordBatchReader.SignalSignatures[K]>
+            ...args: RecordBatchReader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -520,7 +580,10 @@ export namespace ArrowFlight {
 
     namespace RecordBatchStream {
         // Signal signatures
-        interface SignalSignatures extends DataStream.SignalSignatures {}
+        interface SignalSignatures extends DataStream.SignalSignatures {
+            'notify::reader': GObject.Object.Notify;
+            'notify::stream': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -553,14 +616,17 @@ export namespace ArrowFlight {
             signal: K,
             callback: RecordBatchStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RecordBatchStream.SignalSignatures>(
             signal: K,
             callback: RecordBatchStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RecordBatchStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RecordBatchStream.SignalSignatures[K]>
+            ...args: RecordBatchStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Server {
@@ -584,8 +650,14 @@ export namespace ArrowFlight {
         // Signals
 
         connect<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
-        emit<K extends keyof Server.SignalSignatures>(signal: K, ...args: Parameters<Server.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Server.SignalSignatures>(
+            signal: K,
+            ...args: Server.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -609,7 +681,10 @@ export namespace ArrowFlight {
 
     namespace ServerCallContext {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::call-context': GObject.Object.Notify;
+            'notify::call-context': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -639,19 +714,24 @@ export namespace ArrowFlight {
             signal: K,
             callback: ServerCallContext.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ServerCallContext.SignalSignatures>(
             signal: K,
             callback: ServerCallContext.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ServerCallContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ServerCallContext.SignalSignatures[K]>
+            ...args: ServerCallContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace ServerOptions {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::location': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -681,19 +761,24 @@ export namespace ArrowFlight {
             signal: K,
             callback: ServerOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ServerOptions.SignalSignatures>(
             signal: K,
             callback: ServerOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ServerOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ServerOptions.SignalSignatures[K]>
+            ...args: ServerOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace StreamChunk {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::chunk': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -721,14 +806,17 @@ export namespace ArrowFlight {
             signal: K,
             callback: StreamChunk.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StreamChunk.SignalSignatures>(
             signal: K,
             callback: StreamChunk.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StreamChunk.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StreamChunk.SignalSignatures[K]>
+            ...args: StreamChunk.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -740,7 +828,9 @@ export namespace ArrowFlight {
 
     namespace StreamReader {
         // Signal signatures
-        interface SignalSignatures extends RecordBatchReader.SignalSignatures {}
+        interface SignalSignatures extends RecordBatchReader.SignalSignatures {
+            'notify::reader': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -762,19 +852,24 @@ export namespace ArrowFlight {
             signal: K,
             callback: StreamReader.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StreamReader.SignalSignatures>(
             signal: K,
             callback: StreamReader.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StreamReader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StreamReader.SignalSignatures[K]>
+            ...args: StreamReader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Ticket {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::data': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -806,8 +901,14 @@ export namespace ArrowFlight {
         // Signals
 
         connect<K extends keyof Ticket.SignalSignatures>(signal: K, callback: Ticket.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Ticket.SignalSignatures>(signal: K, callback: Ticket.SignalSignatures[K]): number;
-        emit<K extends keyof Ticket.SignalSignatures>(signal: K, ...args: Parameters<Ticket.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Ticket.SignalSignatures>(
+            signal: K,
+            ...args: Ticket.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

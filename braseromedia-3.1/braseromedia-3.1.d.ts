@@ -189,6 +189,9 @@ export namespace BraseroMedia {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'medium-added': MediumAdded;
             'medium-removed': MediumRemoved;
+            'notify::device': GObject.Object.Notify;
+            'notify::gdrive': GObject.Object.Notify;
+            'notify::udi': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -222,8 +225,14 @@ export namespace BraseroMedia {
         // Signals
 
         connect<K extends keyof Drive.SignalSignatures>(signal: K, callback: Drive.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Drive.SignalSignatures>(signal: K, callback: Drive.SignalSignatures[K]): number;
-        emit<K extends keyof Drive.SignalSignatures>(signal: K, ...args: Parameters<Drive.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Drive.SignalSignatures>(
+            signal: K,
+            ...args: Drive.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -368,6 +377,110 @@ export namespace BraseroMedia {
         // Signal signatures
         interface SignalSignatures extends Gtk.ComboBox.SignalSignatures {
             'drive-changed': DriveChanged;
+            'notify::drive': GObject.Object.Notify;
+            'notify::drive-type': GObject.Object.Notify;
+            'notify::drive-type': GObject.Object.Notify;
+            'notify::active': GObject.Object.Notify;
+            'notify::active-id': GObject.Object.Notify;
+            'notify::active-id': GObject.Object.Notify;
+            'notify::add-tearoffs': GObject.Object.Notify;
+            'notify::add-tearoffs': GObject.Object.Notify;
+            'notify::button-sensitivity': GObject.Object.Notify;
+            'notify::button-sensitivity': GObject.Object.Notify;
+            'notify::cell-area': GObject.Object.Notify;
+            'notify::cell-area': GObject.Object.Notify;
+            'notify::column-span-column': GObject.Object.Notify;
+            'notify::column-span-column': GObject.Object.Notify;
+            'notify::entry-text-column': GObject.Object.Notify;
+            'notify::entry-text-column': GObject.Object.Notify;
+            'notify::has-entry': GObject.Object.Notify;
+            'notify::has-entry': GObject.Object.Notify;
+            'notify::has-frame': GObject.Object.Notify;
+            'notify::has-frame': GObject.Object.Notify;
+            'notify::id-column': GObject.Object.Notify;
+            'notify::id-column': GObject.Object.Notify;
+            'notify::model': GObject.Object.Notify;
+            'notify::popup-fixed-width': GObject.Object.Notify;
+            'notify::popup-fixed-width': GObject.Object.Notify;
+            'notify::popup-shown': GObject.Object.Notify;
+            'notify::popup-shown': GObject.Object.Notify;
+            'notify::row-span-column': GObject.Object.Notify;
+            'notify::row-span-column': GObject.Object.Notify;
+            'notify::tearoff-title': GObject.Object.Notify;
+            'notify::tearoff-title': GObject.Object.Notify;
+            'notify::wrap-width': GObject.Object.Notify;
+            'notify::wrap-width': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::child': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::events': GObject.Object.Notify;
+            'notify::expand': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::halign': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::hexpand': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::margin': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::sensitive': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::valign': GObject.Object.Notify;
+            'notify::vexpand': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::window': GObject.Object.Notify;
+            'notify::editing-canceled': GObject.Object.Notify;
+            'notify::editing-canceled': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -413,14 +526,17 @@ export namespace BraseroMedia {
             signal: K,
             callback: DriveSelection.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DriveSelection.SignalSignatures>(
             signal: K,
             callback: DriveSelection.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DriveSelection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DriveSelection.SignalSignatures[K]>
+            ...args: DriveSelection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -4932,6 +5048,7 @@ export namespace BraseroMedia {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             probed: Probed;
+            'notify::drive': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -4960,8 +5077,14 @@ export namespace BraseroMedia {
         // Signals
 
         connect<K extends keyof Medium.SignalSignatures>(signal: K, callback: Medium.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Medium.SignalSignatures>(signal: K, callback: Medium.SignalSignatures[K]): number;
-        emit<K extends keyof Medium.SignalSignatures>(signal: K, ...args: Parameters<Medium.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Medium.SignalSignatures>(
+            signal: K,
+            ...args: Medium.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5161,14 +5284,17 @@ export namespace BraseroMedia {
             signal: K,
             callback: MediumMonitor.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MediumMonitor.SignalSignatures>(
             signal: K,
             callback: MediumMonitor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MediumMonitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediumMonitor.SignalSignatures[K]>
+            ...args: MediumMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -5208,6 +5334,110 @@ export namespace BraseroMedia {
         // Signal signatures
         interface SignalSignatures extends Gtk.ComboBox.SignalSignatures {
             'medium-changed': MediumChanged;
+            'notify::media-type': GObject.Object.Notify;
+            'notify::media-type': GObject.Object.Notify;
+            'notify::medium': GObject.Object.Notify;
+            'notify::active': GObject.Object.Notify;
+            'notify::active-id': GObject.Object.Notify;
+            'notify::active-id': GObject.Object.Notify;
+            'notify::add-tearoffs': GObject.Object.Notify;
+            'notify::add-tearoffs': GObject.Object.Notify;
+            'notify::button-sensitivity': GObject.Object.Notify;
+            'notify::button-sensitivity': GObject.Object.Notify;
+            'notify::cell-area': GObject.Object.Notify;
+            'notify::cell-area': GObject.Object.Notify;
+            'notify::column-span-column': GObject.Object.Notify;
+            'notify::column-span-column': GObject.Object.Notify;
+            'notify::entry-text-column': GObject.Object.Notify;
+            'notify::entry-text-column': GObject.Object.Notify;
+            'notify::has-entry': GObject.Object.Notify;
+            'notify::has-entry': GObject.Object.Notify;
+            'notify::has-frame': GObject.Object.Notify;
+            'notify::has-frame': GObject.Object.Notify;
+            'notify::id-column': GObject.Object.Notify;
+            'notify::id-column': GObject.Object.Notify;
+            'notify::model': GObject.Object.Notify;
+            'notify::popup-fixed-width': GObject.Object.Notify;
+            'notify::popup-fixed-width': GObject.Object.Notify;
+            'notify::popup-shown': GObject.Object.Notify;
+            'notify::popup-shown': GObject.Object.Notify;
+            'notify::row-span-column': GObject.Object.Notify;
+            'notify::row-span-column': GObject.Object.Notify;
+            'notify::tearoff-title': GObject.Object.Notify;
+            'notify::tearoff-title': GObject.Object.Notify;
+            'notify::wrap-width': GObject.Object.Notify;
+            'notify::wrap-width': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::child': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::events': GObject.Object.Notify;
+            'notify::expand': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::halign': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::hexpand': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::margin': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::sensitive': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::valign': GObject.Object.Notify;
+            'notify::vexpand': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::window': GObject.Object.Notify;
+            'notify::editing-canceled': GObject.Object.Notify;
+            'notify::editing-canceled': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -5253,14 +5483,17 @@ export namespace BraseroMedia {
             signal: K,
             callback: MediumSelection.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MediumSelection.SignalSignatures>(
             signal: K,
             callback: MediumSelection.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MediumSelection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediumSelection.SignalSignatures[K]>
+            ...args: MediumSelection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -9765,7 +9998,9 @@ export namespace BraseroMedia {
 
     namespace Volume {
         // Signal signatures
-        interface SignalSignatures extends Medium.SignalSignatures {}
+        interface SignalSignatures extends Medium.SignalSignatures {
+            'notify::drive': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -9784,8 +10019,14 @@ export namespace BraseroMedia {
         // Signals
 
         connect<K extends keyof Volume.SignalSignatures>(signal: K, callback: Volume.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Volume.SignalSignatures>(signal: K, callback: Volume.SignalSignatures[K]): number;
-        emit<K extends keyof Volume.SignalSignatures>(signal: K, ...args: Parameters<Volume.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Volume.SignalSignatures>(
+            signal: K,
+            ...args: Volume.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

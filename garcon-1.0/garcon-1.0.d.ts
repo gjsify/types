@@ -181,6 +181,8 @@ export namespace Garcon {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'directory-changed': DirectoryChanged;
             'reload-required': ReloadRequired;
+            'notify::directory': GObject.Object.Notify;
+            'notify::file': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -221,8 +223,14 @@ export namespace Garcon {
         // Signals
 
         connect<K extends keyof Menu.SignalSignatures>(signal: K, callback: Menu.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Menu.SignalSignatures>(signal: K, callback: Menu.SignalSignatures[K]): number;
-        emit<K extends keyof Menu.SignalSignatures>(signal: K, ...args: Parameters<Menu.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Menu.SignalSignatures>(
+            signal: K,
+            ...args: Menu.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -765,7 +773,15 @@ export namespace Garcon {
 
     namespace MenuDirectory {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::comment': GObject.Object.Notify;
+            'notify::file': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::no-display': GObject.Object.Notify;
+            'notify::no-display': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -831,14 +847,17 @@ export namespace Garcon {
             signal: K,
             callback: MenuDirectory.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MenuDirectory.SignalSignatures>(
             signal: K,
             callback: MenuDirectory.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MenuDirectory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MenuDirectory.SignalSignatures[K]>
+            ...args: MenuDirectory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -928,6 +947,28 @@ export namespace Garcon {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             changed: Changed;
+            'notify::command': GObject.Object.Notify;
+            'notify::comment': GObject.Object.Notify;
+            'notify::desktop-id': GObject.Object.Notify;
+            'notify::desktop-id': GObject.Object.Notify;
+            'notify::file': GObject.Object.Notify;
+            'notify::generic-name': GObject.Object.Notify;
+            'notify::generic-name': GObject.Object.Notify;
+            'notify::hidden': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::no-display': GObject.Object.Notify;
+            'notify::no-display': GObject.Object.Notify;
+            'notify::path': GObject.Object.Notify;
+            'notify::prefers-non-default-gpu': GObject.Object.Notify;
+            'notify::prefers-non-default-gpu': GObject.Object.Notify;
+            'notify::requires-terminal': GObject.Object.Notify;
+            'notify::requires-terminal': GObject.Object.Notify;
+            'notify::supports-startup-notification': GObject.Object.Notify;
+            'notify::supports-startup-notification': GObject.Object.Notify;
+            'notify::try-exec': GObject.Object.Notify;
+            'notify::try-exec': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1095,14 +1136,17 @@ export namespace Garcon {
         // Signals
 
         connect<K extends keyof MenuItem.SignalSignatures>(signal: K, callback: MenuItem.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MenuItem.SignalSignatures>(
             signal: K,
             callback: MenuItem.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MenuItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MenuItem.SignalSignatures[K]>
+            ...args: MenuItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1599,7 +1643,12 @@ export namespace Garcon {
 
     namespace MenuItemAction {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::command': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1651,14 +1700,17 @@ export namespace Garcon {
             signal: K,
             callback: MenuItemAction.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MenuItemAction.SignalSignatures>(
             signal: K,
             callback: MenuItemAction.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MenuItemAction.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MenuItemAction.SignalSignatures[K]>
+            ...args: MenuItemAction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1704,14 +1756,17 @@ export namespace Garcon {
             signal: K,
             callback: MenuItemCache.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MenuItemCache.SignalSignatures>(
             signal: K,
             callback: MenuItemCache.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MenuItemCache.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MenuItemCache.SignalSignatures[K]>
+            ...args: MenuItemCache.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1747,14 +1802,17 @@ export namespace Garcon {
             signal: K,
             callback: MenuItemPool.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MenuItemPool.SignalSignatures>(
             signal: K,
             callback: MenuItemPool.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MenuItemPool.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MenuItemPool.SignalSignatures[K]>
+            ...args: MenuItemPool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1769,7 +1827,10 @@ export namespace Garcon {
 
     namespace MenuMerger {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::tree-provider': GObject.Object.Notify;
+            'notify::tree-provider': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1801,14 +1862,17 @@ export namespace Garcon {
             signal: K,
             callback: MenuMerger.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MenuMerger.SignalSignatures>(
             signal: K,
             callback: MenuMerger.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MenuMerger.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MenuMerger.SignalSignatures[K]>
+            ...args: MenuMerger.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2260,7 +2324,10 @@ export namespace Garcon {
 
     namespace MenuNode {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2291,14 +2358,17 @@ export namespace Garcon {
         // Signals
 
         connect<K extends keyof MenuNode.SignalSignatures>(signal: K, callback: MenuNode.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MenuNode.SignalSignatures>(
             signal: K,
             callback: MenuNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MenuNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MenuNode.SignalSignatures[K]>
+            ...args: MenuNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2332,7 +2402,9 @@ export namespace Garcon {
 
     namespace MenuParser {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::file': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2362,14 +2434,17 @@ export namespace Garcon {
             signal: K,
             callback: MenuParser.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MenuParser.SignalSignatures>(
             signal: K,
             callback: MenuParser.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MenuParser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MenuParser.SignalSignatures[K]>
+            ...args: MenuParser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2845,14 +2920,17 @@ export namespace Garcon {
             signal: K,
             callback: MenuSeparator.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MenuSeparator.SignalSignatures>(
             signal: K,
             callback: MenuSeparator.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MenuSeparator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MenuSeparator.SignalSignatures[K]>
+            ...args: MenuSeparator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         equal(b: MenuElement): boolean;

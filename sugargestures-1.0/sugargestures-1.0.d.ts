@@ -90,6 +90,8 @@ export namespace SugarGestures {
             began: Began;
             ended: Ended;
             updated: Updated;
+            'notify::state': GObject.Object.Notify;
+            'notify::widget': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -121,14 +123,17 @@ export namespace SugarGestures {
             signal: K,
             callback: EventController.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof EventController.SignalSignatures>(
             signal: K,
             callback: EventController.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof EventController.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EventController.SignalSignatures[K]>
+            ...args: EventController.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -158,6 +163,11 @@ export namespace SugarGestures {
         // Signal signatures
         interface SignalSignatures extends EventController.SignalSignatures {
             pressed: Pressed;
+            'notify::threshold': GObject.Object.Notify;
+            'notify::trigger-delay': GObject.Object.Notify;
+            'notify::trigger-delay': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::widget': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -195,14 +205,17 @@ export namespace SugarGestures {
             signal: K,
             callback: LongPressController.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LongPressController.SignalSignatures>(
             signal: K,
             callback: LongPressController.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LongPressController.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LongPressController.SignalSignatures[K]>
+            ...args: LongPressController.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -219,6 +232,12 @@ export namespace SugarGestures {
         // Signal signatures
         interface SignalSignatures extends TouchController.SignalSignatures {
             'angle-changed': AngleChanged;
+            'notify::max-touches': GObject.Object.Notify;
+            'notify::max-touches': GObject.Object.Notify;
+            'notify::min-touches': GObject.Object.Notify;
+            'notify::min-touches': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::widget': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -247,14 +266,17 @@ export namespace SugarGestures {
             signal: K,
             callback: RotateController.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RotateController.SignalSignatures>(
             signal: K,
             callback: RotateController.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RotateController.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RotateController.SignalSignatures[K]>
+            ...args: RotateController.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -281,6 +303,9 @@ export namespace SugarGestures {
         // Signal signatures
         interface SignalSignatures extends EventController.SignalSignatures {
             'swipe-ended': SwipeEnded;
+            'notify::directions': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::widget': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -311,14 +336,17 @@ export namespace SugarGestures {
             signal: K,
             callback: SwipeController.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SwipeController.SignalSignatures>(
             signal: K,
             callback: SwipeController.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SwipeController.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SwipeController.SignalSignatures[K]>
+            ...args: SwipeController.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -327,7 +355,14 @@ export namespace SugarGestures {
 
     namespace TouchController {
         // Signal signatures
-        interface SignalSignatures extends EventController.SignalSignatures {}
+        interface SignalSignatures extends EventController.SignalSignatures {
+            'notify::max-touches': GObject.Object.Notify;
+            'notify::max-touches': GObject.Object.Notify;
+            'notify::min-touches': GObject.Object.Notify;
+            'notify::min-touches': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::widget': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -365,14 +400,17 @@ export namespace SugarGestures {
             signal: K,
             callback: TouchController.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TouchController.SignalSignatures>(
             signal: K,
             callback: TouchController.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TouchController.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TouchController.SignalSignatures[K]>
+            ...args: TouchController.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -411,6 +449,12 @@ export namespace SugarGestures {
         // Signal signatures
         interface SignalSignatures extends TouchController.SignalSignatures {
             'scale-changed': ScaleChanged;
+            'notify::max-touches': GObject.Object.Notify;
+            'notify::max-touches': GObject.Object.Notify;
+            'notify::min-touches': GObject.Object.Notify;
+            'notify::min-touches': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::widget': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -439,14 +483,17 @@ export namespace SugarGestures {
             signal: K,
             callback: ZoomController.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ZoomController.SignalSignatures>(
             signal: K,
             callback: ZoomController.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ZoomController.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ZoomController.SignalSignatures[K]>
+            ...args: ZoomController.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 

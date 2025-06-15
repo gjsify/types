@@ -144,14 +144,17 @@ export namespace Lasem {
             signal: K,
             callback: DomCharacterData.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomCharacterData.SignalSignatures>(
             signal: K,
             callback: DomCharacterData.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomCharacterData.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomCharacterData.SignalSignatures[K]>
+            ...args: DomCharacterData.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -196,14 +199,17 @@ export namespace Lasem {
             signal: K,
             callback: DomDocument.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomDocument.SignalSignatures>(
             signal: K,
             callback: DomDocument.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomDocument.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomDocument.SignalSignatures[K]>
+            ...args: DomDocument.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -270,14 +276,17 @@ export namespace Lasem {
             signal: K,
             callback: DomDocumentFragment.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomDocumentFragment.SignalSignatures>(
             signal: K,
             callback: DomDocumentFragment.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomDocumentFragment.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomDocumentFragment.SignalSignatures[K]>
+            ...args: DomDocumentFragment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace DomElement {
@@ -308,14 +317,17 @@ export namespace Lasem {
             signal: K,
             callback: DomElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomElement.SignalSignatures>(
             signal: K,
             callback: DomElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomElement.SignalSignatures[K]>
+            ...args: DomElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -368,14 +380,17 @@ export namespace Lasem {
             signal: K,
             callback: DomNamedNodeMap.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomNamedNodeMap.SignalSignatures>(
             signal: K,
             callback: DomNamedNodeMap.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomNamedNodeMap.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomNamedNodeMap.SignalSignatures[K]>
+            ...args: DomNamedNodeMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -421,14 +436,17 @@ export namespace Lasem {
         // Signals
 
         connect<K extends keyof DomNode.SignalSignatures>(signal: K, callback: DomNode.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomNode.SignalSignatures>(
             signal: K,
             callback: DomNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomNode.SignalSignatures[K]>
+            ...args: DomNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -534,14 +552,17 @@ export namespace Lasem {
             signal: K,
             callback: DomNodeList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomNodeList.SignalSignatures>(
             signal: K,
             callback: DomNodeList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomNodeList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomNodeList.SignalSignatures[K]>
+            ...args: DomNodeList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -581,14 +602,17 @@ export namespace Lasem {
         // Signals
 
         connect<K extends keyof DomText.SignalSignatures>(signal: K, callback: DomText.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomText.SignalSignatures>(
             signal: K,
             callback: DomText.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomText.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomText.SignalSignatures[K]>
+            ...args: DomText.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace DomView {
@@ -622,14 +646,17 @@ export namespace Lasem {
         // Signals
 
         connect<K extends keyof DomView.SignalSignatures>(signal: K, callback: DomView.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomView.SignalSignatures>(
             signal: K,
             callback: DomView.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomView.SignalSignatures[K]>
+            ...args: DomView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 

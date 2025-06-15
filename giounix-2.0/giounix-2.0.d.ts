@@ -585,7 +585,9 @@ export namespace GioUnix {
     }
     namespace DesktopAppInfo {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::filename': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -630,14 +632,17 @@ export namespace GioUnix {
             signal: K,
             callback: DesktopAppInfo.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DesktopAppInfo.SignalSignatures>(
             signal: K,
             callback: DesktopAppInfo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DesktopAppInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DesktopAppInfo.SignalSignatures[K]>
+            ...args: DesktopAppInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1779,7 +1784,10 @@ export namespace GioUnix {
 
     namespace FDMessage {
         // Signal signatures
-        interface SignalSignatures extends Gio.SocketControlMessage.SignalSignatures {}
+        interface SignalSignatures extends Gio.SocketControlMessage.SignalSignatures {
+            'notify::fd-list': GObject.Object.Notify;
+            'notify::fd-list': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1831,14 +1839,17 @@ export namespace GioUnix {
         // Signals
 
         connect<K extends keyof FDMessage.SignalSignatures>(signal: K, callback: FDMessage.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FDMessage.SignalSignatures>(
             signal: K,
             callback: FDMessage.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FDMessage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FDMessage.SignalSignatures[K]>
+            ...args: FDMessage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1887,7 +1898,11 @@ export namespace GioUnix {
 
     namespace InputStream {
         // Signal signatures
-        interface SignalSignatures extends Gio.InputStream.SignalSignatures {}
+        interface SignalSignatures extends Gio.InputStream.SignalSignatures {
+            'notify::close-fd': GObject.Object.Notify;
+            'notify::close-fd': GObject.Object.Notify;
+            'notify::fd': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1946,14 +1961,17 @@ export namespace GioUnix {
             signal: K,
             callback: InputStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InputStream.SignalSignatures>(
             signal: K,
             callback: InputStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InputStream.SignalSignatures[K]>
+            ...args: InputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -3335,14 +3353,17 @@ export namespace GioUnix {
             signal: K,
             callback: MountMonitor.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MountMonitor.SignalSignatures>(
             signal: K,
             callback: MountMonitor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MountMonitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MountMonitor.SignalSignatures[K]>
+            ...args: MountMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -3374,7 +3395,11 @@ export namespace GioUnix {
 
     namespace OutputStream {
         // Signal signatures
-        interface SignalSignatures extends Gio.OutputStream.SignalSignatures {}
+        interface SignalSignatures extends Gio.OutputStream.SignalSignatures {
+            'notify::close-fd': GObject.Object.Notify;
+            'notify::close-fd': GObject.Object.Notify;
+            'notify::fd': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3433,14 +3458,17 @@ export namespace GioUnix {
             signal: K,
             callback: OutputStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OutputStream.SignalSignatures>(
             signal: K,
             callback: OutputStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OutputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OutputStream.SignalSignatures[K]>
+            ...args: OutputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 

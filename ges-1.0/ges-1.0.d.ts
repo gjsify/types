@@ -1232,7 +1232,14 @@ export namespace GES {
     }
     namespace Asset {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::extractable-type': GObject.Object.Notify;
+            'notify::extractable-type': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::proxy': GObject.Object.Notify;
+            'notify::proxy-target': GObject.Object.Notify;
+            'notify::proxy-target': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1422,8 +1429,14 @@ export namespace GES {
         // Signals
 
         connect<K extends keyof Asset.SignalSignatures>(signal: K, callback: Asset.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Asset.SignalSignatures>(signal: K, callback: Asset.SignalSignatures[K]): number;
-        emit<K extends keyof Asset.SignalSignatures>(signal: K, ...args: Parameters<Asset.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Asset.SignalSignatures>(
+            signal: K,
+            ...args: Asset.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2747,7 +2760,27 @@ export namespace GES {
 
     namespace AudioSource {
         // Signal signatures
-        interface SignalSignatures extends Source.SignalSignatures {}
+        interface SignalSignatures extends Source.SignalSignatures {
+            'notify::active': GObject.Object.Notify;
+            'notify::auto-clamp-control-sources': GObject.Object.Notify;
+            'notify::auto-clamp-control-sources': GObject.Object.Notify;
+            'notify::has-internal-source': GObject.Object.Notify;
+            'notify::has-internal-source': GObject.Object.Notify;
+            'notify::track': GObject.Object.Notify;
+            'notify::track-type': GObject.Object.Notify;
+            'notify::track-type': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::priority': GObject.Object.Notify;
+            'notify::serialize': GObject.Object.Notify;
+            'notify::start': GObject.Object.Notify;
+            'notify::timeline': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2781,14 +2814,17 @@ export namespace GES {
             signal: K,
             callback: AudioSource.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AudioSource.SignalSignatures>(
             signal: K,
             callback: AudioSource.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AudioSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AudioSource.SignalSignatures[K]>
+            ...args: AudioSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -3234,7 +3270,27 @@ export namespace GES {
 
     namespace AudioTestSource {
         // Signal signatures
-        interface SignalSignatures extends AudioSource.SignalSignatures {}
+        interface SignalSignatures extends AudioSource.SignalSignatures {
+            'notify::active': GObject.Object.Notify;
+            'notify::auto-clamp-control-sources': GObject.Object.Notify;
+            'notify::auto-clamp-control-sources': GObject.Object.Notify;
+            'notify::has-internal-source': GObject.Object.Notify;
+            'notify::has-internal-source': GObject.Object.Notify;
+            'notify::track': GObject.Object.Notify;
+            'notify::track-type': GObject.Object.Notify;
+            'notify::track-type': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::priority': GObject.Object.Notify;
+            'notify::serialize': GObject.Object.Notify;
+            'notify::start': GObject.Object.Notify;
+            'notify::timeline': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3264,14 +3320,17 @@ export namespace GES {
             signal: K,
             callback: AudioTestSource.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AudioTestSource.SignalSignatures>(
             signal: K,
             callback: AudioTestSource.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AudioTestSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AudioTestSource.SignalSignatures[K]>
+            ...args: AudioTestSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3740,7 +3799,22 @@ export namespace GES {
 
     namespace AudioTrack {
         // Signal signatures
-        interface SignalSignatures extends Track.SignalSignatures {}
+        interface SignalSignatures extends Track.SignalSignatures {
+            'notify::caps': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::mixing': GObject.Object.Notify;
+            'notify::restriction-caps': GObject.Object.Notify;
+            'notify::restriction-caps': GObject.Object.Notify;
+            'notify::track-type': GObject.Object.Notify;
+            'notify::track-type': GObject.Object.Notify;
+            'notify::async-handling': GObject.Object.Notify;
+            'notify::async-handling': GObject.Object.Notify;
+            'notify::message-forward': GObject.Object.Notify;
+            'notify::message-forward': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3787,14 +3861,17 @@ export namespace GES {
             signal: K,
             callback: AudioTrack.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AudioTrack.SignalSignatures>(
             signal: K,
             callback: AudioTrack.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AudioTrack.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AudioTrack.SignalSignatures[K]>
+            ...args: AudioTrack.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -4615,7 +4692,27 @@ export namespace GES {
 
     namespace AudioTransition {
         // Signal signatures
-        interface SignalSignatures extends Transition.SignalSignatures {}
+        interface SignalSignatures extends Transition.SignalSignatures {
+            'notify::active': GObject.Object.Notify;
+            'notify::auto-clamp-control-sources': GObject.Object.Notify;
+            'notify::auto-clamp-control-sources': GObject.Object.Notify;
+            'notify::has-internal-source': GObject.Object.Notify;
+            'notify::has-internal-source': GObject.Object.Notify;
+            'notify::track': GObject.Object.Notify;
+            'notify::track-type': GObject.Object.Notify;
+            'notify::track-type': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::priority': GObject.Object.Notify;
+            'notify::serialize': GObject.Object.Notify;
+            'notify::start': GObject.Object.Notify;
+            'notify::timeline': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4642,14 +4739,17 @@ export namespace GES {
             signal: K,
             callback: AudioTransition.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AudioTransition.SignalSignatures>(
             signal: K,
             callback: AudioTransition.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AudioTransition.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AudioTransition.SignalSignatures[K]>
+            ...args: AudioTransition.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -5095,7 +5195,28 @@ export namespace GES {
 
     namespace AudioUriSource {
         // Signal signatures
-        interface SignalSignatures extends AudioSource.SignalSignatures {}
+        interface SignalSignatures extends AudioSource.SignalSignatures {
+            'notify::uri': GObject.Object.Notify;
+            'notify::active': GObject.Object.Notify;
+            'notify::auto-clamp-control-sources': GObject.Object.Notify;
+            'notify::auto-clamp-control-sources': GObject.Object.Notify;
+            'notify::has-internal-source': GObject.Object.Notify;
+            'notify::has-internal-source': GObject.Object.Notify;
+            'notify::track': GObject.Object.Notify;
+            'notify::track-type': GObject.Object.Notify;
+            'notify::track-type': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::priority': GObject.Object.Notify;
+            'notify::serialize': GObject.Object.Notify;
+            'notify::start': GObject.Object.Notify;
+            'notify::timeline': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5134,14 +5255,17 @@ export namespace GES {
             signal: K,
             callback: AudioUriSource.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AudioUriSource.SignalSignatures>(
             signal: K,
             callback: AudioUriSource.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AudioUriSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AudioUriSource.SignalSignatures[K]>
+            ...args: AudioUriSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -5587,7 +5711,27 @@ export namespace GES {
 
     namespace BaseEffect {
         // Signal signatures
-        interface SignalSignatures extends Operation.SignalSignatures {}
+        interface SignalSignatures extends Operation.SignalSignatures {
+            'notify::active': GObject.Object.Notify;
+            'notify::auto-clamp-control-sources': GObject.Object.Notify;
+            'notify::auto-clamp-control-sources': GObject.Object.Notify;
+            'notify::has-internal-source': GObject.Object.Notify;
+            'notify::has-internal-source': GObject.Object.Notify;
+            'notify::track': GObject.Object.Notify;
+            'notify::track-type': GObject.Object.Notify;
+            'notify::track-type': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::priority': GObject.Object.Notify;
+            'notify::serialize': GObject.Object.Notify;
+            'notify::start': GObject.Object.Notify;
+            'notify::timeline': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5663,14 +5807,17 @@ export namespace GES {
             signal: K,
             callback: BaseEffect.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BaseEffect.SignalSignatures>(
             signal: K,
             callback: BaseEffect.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BaseEffect.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BaseEffect.SignalSignatures[K]>
+            ...args: BaseEffect.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -6170,7 +6317,25 @@ export namespace GES {
 
     namespace BaseEffectClip {
         // Signal signatures
-        interface SignalSignatures extends OperationClip.SignalSignatures {}
+        interface SignalSignatures extends OperationClip.SignalSignatures {
+            'notify::duration-limit': GObject.Object.Notify;
+            'notify::duration-limit': GObject.Object.Notify;
+            'notify::layer': GObject.Object.Notify;
+            'notify::supported-formats': GObject.Object.Notify;
+            'notify::supported-formats': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::priority': GObject.Object.Notify;
+            'notify::serialize': GObject.Object.Notify;
+            'notify::start': GObject.Object.Notify;
+            'notify::timeline': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6209,14 +6374,17 @@ export namespace GES {
             signal: K,
             callback: BaseEffectClip.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BaseEffectClip.SignalSignatures>(
             signal: K,
             callback: BaseEffectClip.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BaseEffectClip.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BaseEffectClip.SignalSignatures[K]>
+            ...args: BaseEffectClip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -6662,7 +6830,25 @@ export namespace GES {
 
     namespace BaseTransitionClip {
         // Signal signatures
-        interface SignalSignatures extends OperationClip.SignalSignatures {}
+        interface SignalSignatures extends OperationClip.SignalSignatures {
+            'notify::duration-limit': GObject.Object.Notify;
+            'notify::duration-limit': GObject.Object.Notify;
+            'notify::layer': GObject.Object.Notify;
+            'notify::supported-formats': GObject.Object.Notify;
+            'notify::supported-formats': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::priority': GObject.Object.Notify;
+            'notify::serialize': GObject.Object.Notify;
+            'notify::start': GObject.Object.Notify;
+            'notify::timeline': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6687,14 +6873,17 @@ export namespace GES {
             signal: K,
             callback: BaseTransitionClip.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BaseTransitionClip.SignalSignatures>(
             signal: K,
             callback: BaseTransitionClip.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BaseTransitionClip.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BaseTransitionClip.SignalSignatures[K]>
+            ...args: BaseTransitionClip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -7162,14 +7351,17 @@ export namespace GES {
             signal: K,
             callback: BaseXmlFormatter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BaseXmlFormatter.SignalSignatures>(
             signal: K,
             callback: BaseXmlFormatter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BaseXmlFormatter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BaseXmlFormatter.SignalSignatures[K]>
+            ...args: BaseXmlFormatter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -7234,7 +7426,25 @@ export namespace GES {
 
     namespace Clip {
         // Signal signatures
-        interface SignalSignatures extends Container.SignalSignatures {}
+        interface SignalSignatures extends Container.SignalSignatures {
+            'notify::duration-limit': GObject.Object.Notify;
+            'notify::duration-limit': GObject.Object.Notify;
+            'notify::layer': GObject.Object.Notify;
+            'notify::supported-formats': GObject.Object.Notify;
+            'notify::supported-formats': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::priority': GObject.Object.Notify;
+            'notify::serialize': GObject.Object.Notify;
+            'notify::start': GObject.Object.Notify;
+            'notify::timeline': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -7502,8 +7712,14 @@ export namespace GES {
         // Signals
 
         connect<K extends keyof Clip.SignalSignatures>(signal: K, callback: Clip.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Clip.SignalSignatures>(signal: K, callback: Clip.SignalSignatures[K]): number;
-        emit<K extends keyof Clip.SignalSignatures>(signal: K, ...args: Parameters<Clip.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Clip.SignalSignatures>(
+            signal: K,
+            ...args: Clip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -8296,7 +8512,16 @@ export namespace GES {
 
     namespace ClipAsset {
         // Signal signatures
-        interface SignalSignatures extends Asset.SignalSignatures {}
+        interface SignalSignatures extends Asset.SignalSignatures {
+            'notify::supported-formats': GObject.Object.Notify;
+            'notify::supported-formats': GObject.Object.Notify;
+            'notify::extractable-type': GObject.Object.Notify;
+            'notify::extractable-type': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::proxy': GObject.Object.Notify;
+            'notify::proxy-target': GObject.Object.Notify;
+            'notify::proxy-target': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8340,14 +8565,17 @@ export namespace GES {
         // Signals
 
         connect<K extends keyof ClipAsset.SignalSignatures>(signal: K, callback: ClipAsset.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClipAsset.SignalSignatures>(
             signal: K,
             callback: ClipAsset.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClipAsset.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClipAsset.SignalSignatures[K]>
+            ...args: ClipAsset.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -9504,14 +9732,17 @@ export namespace GES {
             signal: K,
             callback: CommandLineFormatter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CommandLineFormatter.SignalSignatures>(
             signal: K,
             callback: CommandLineFormatter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CommandLineFormatter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CommandLineFormatter.SignalSignatures[K]>
+            ...args: CommandLineFormatter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -9600,6 +9831,18 @@ export namespace GES {
         interface SignalSignatures extends TimelineElement.SignalSignatures {
             'child-added': ChildAdded;
             'child-removed': ChildRemoved;
+            'notify::height': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::priority': GObject.Object.Notify;
+            'notify::serialize': GObject.Object.Notify;
+            'notify::start': GObject.Object.Notify;
+            'notify::timeline': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -9650,14 +9893,17 @@ export namespace GES {
         // Signals
 
         connect<K extends keyof Container.SignalSignatures>(signal: K, callback: Container.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Container.SignalSignatures>(
             signal: K,
             callback: Container.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Container.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Container.SignalSignatures[K]>
+            ...args: Container.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -10686,6 +10932,9 @@ export namespace GES {
             discovered: Discovered;
             'load-serialized-info': LoadSerializedInfo;
             'source-setup': SourceSetup;
+            'notify::timeout': GObject.Object.Notify;
+            'notify::use-cache': GObject.Object.Notify;
+            'notify::use-cache': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -10724,14 +10973,17 @@ export namespace GES {
             signal: K,
             callback: DiscovererManager.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DiscovererManager.SignalSignatures>(
             signal: K,
             callback: DiscovererManager.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DiscovererManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DiscovererManager.SignalSignatures[K]>
+            ...args: DiscovererManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -10755,7 +11007,29 @@ export namespace GES {
 
     namespace Effect {
         // Signal signatures
-        interface SignalSignatures extends BaseEffect.SignalSignatures {}
+        interface SignalSignatures extends BaseEffect.SignalSignatures {
+            'notify::bin-description': GObject.Object.Notify;
+            'notify::bin-description': GObject.Object.Notify;
+            'notify::active': GObject.Object.Notify;
+            'notify::auto-clamp-control-sources': GObject.Object.Notify;
+            'notify::auto-clamp-control-sources': GObject.Object.Notify;
+            'notify::has-internal-source': GObject.Object.Notify;
+            'notify::has-internal-source': GObject.Object.Notify;
+            'notify::track': GObject.Object.Notify;
+            'notify::track-type': GObject.Object.Notify;
+            'notify::track-type': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::priority': GObject.Object.Notify;
+            'notify::serialize': GObject.Object.Notify;
+            'notify::start': GObject.Object.Notify;
+            'notify::timeline': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10822,8 +11096,14 @@ export namespace GES {
         // Signals
 
         connect<K extends keyof Effect.SignalSignatures>(signal: K, callback: Effect.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Effect.SignalSignatures>(signal: K, callback: Effect.SignalSignatures[K]): number;
-        emit<K extends keyof Effect.SignalSignatures>(signal: K, ...args: Parameters<Effect.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Effect.SignalSignatures>(
+            signal: K,
+            ...args: Effect.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -11273,7 +11553,16 @@ export namespace GES {
 
     namespace EffectAsset {
         // Signal signatures
-        interface SignalSignatures extends TrackElementAsset.SignalSignatures {}
+        interface SignalSignatures extends TrackElementAsset.SignalSignatures {
+            'notify::track-type': GObject.Object.Notify;
+            'notify::track-type': GObject.Object.Notify;
+            'notify::extractable-type': GObject.Object.Notify;
+            'notify::extractable-type': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::proxy': GObject.Object.Notify;
+            'notify::proxy-target': GObject.Object.Notify;
+            'notify::proxy-target': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11303,14 +11592,17 @@ export namespace GES {
             signal: K,
             callback: EffectAsset.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof EffectAsset.SignalSignatures>(
             signal: K,
             callback: EffectAsset.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof EffectAsset.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EffectAsset.SignalSignatures[K]>
+            ...args: EffectAsset.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -11955,7 +12247,29 @@ export namespace GES {
 
     namespace EffectClip {
         // Signal signatures
-        interface SignalSignatures extends BaseEffectClip.SignalSignatures {}
+        interface SignalSignatures extends BaseEffectClip.SignalSignatures {
+            'notify::audio-bin-description': GObject.Object.Notify;
+            'notify::audio-bin-description': GObject.Object.Notify;
+            'notify::video-bin-description': GObject.Object.Notify;
+            'notify::video-bin-description': GObject.Object.Notify;
+            'notify::duration-limit': GObject.Object.Notify;
+            'notify::duration-limit': GObject.Object.Notify;
+            'notify::layer': GObject.Object.Notify;
+            'notify::supported-formats': GObject.Object.Notify;
+            'notify::supported-formats': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::priority': GObject.Object.Notify;
+            'notify::serialize': GObject.Object.Notify;
+            'notify::start': GObject.Object.Notify;
+            'notify::timeline': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12028,14 +12342,17 @@ export namespace GES {
             signal: K,
             callback: EffectClip.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof EffectClip.SignalSignatures>(
             signal: K,
             callback: EffectClip.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof EffectClip.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EffectClip.SignalSignatures[K]>
+            ...args: EffectClip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -12503,14 +12820,17 @@ export namespace GES {
         // Signals
 
         connect<K extends keyof Formatter.SignalSignatures>(signal: K, callback: Formatter.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Formatter.SignalSignatures>(
             signal: K,
             callback: Formatter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Formatter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Formatter.SignalSignatures[K]>
+            ...args: Formatter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -12642,7 +12962,20 @@ export namespace GES {
 
     namespace Group {
         // Signal signatures
-        interface SignalSignatures extends Container.SignalSignatures {}
+        interface SignalSignatures extends Container.SignalSignatures {
+            'notify::duration': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::priority': GObject.Object.Notify;
+            'notify::start': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::serialize': GObject.Object.Notify;
+            'notify::timeline': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12760,8 +13093,14 @@ export namespace GES {
         // Signals
 
         connect<K extends keyof Group.SignalSignatures>(signal: K, callback: Group.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Group.SignalSignatures>(signal: K, callback: Group.SignalSignatures[K]): number;
-        emit<K extends keyof Group.SignalSignatures>(signal: K, ...args: Parameters<Group.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Group.SignalSignatures>(
+            signal: K,
+            ...args: Group.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -13207,7 +13546,28 @@ export namespace GES {
 
     namespace ImageSource {
         // Signal signatures
-        interface SignalSignatures extends VideoSource.SignalSignatures {}
+        interface SignalSignatures extends VideoSource.SignalSignatures {
+            'notify::uri': GObject.Object.Notify;
+            'notify::active': GObject.Object.Notify;
+            'notify::auto-clamp-control-sources': GObject.Object.Notify;
+            'notify::auto-clamp-control-sources': GObject.Object.Notify;
+            'notify::has-internal-source': GObject.Object.Notify;
+            'notify::has-internal-source': GObject.Object.Notify;
+            'notify::track': GObject.Object.Notify;
+            'notify::track-type': GObject.Object.Notify;
+            'notify::track-type': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::priority': GObject.Object.Notify;
+            'notify::serialize': GObject.Object.Notify;
+            'notify::start': GObject.Object.Notify;
+            'notify::timeline': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13246,14 +13606,17 @@ export namespace GES {
             signal: K,
             callback: ImageSource.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ImageSource.SignalSignatures>(
             signal: K,
             callback: ImageSource.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ImageSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ImageSource.SignalSignatures[K]>
+            ...args: ImageSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -13717,6 +14080,9 @@ export namespace GES {
             'active-changed': ActiveChanged;
             'clip-added': ClipAdded;
             'clip-removed': ClipRemoved;
+            'notify::auto-transition': GObject.Object.Notify;
+            'notify::auto-transition': GObject.Object.Notify;
+            'notify::priority': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -13807,8 +14173,14 @@ export namespace GES {
         // Signals
 
         connect<K extends keyof Layer.SignalSignatures>(signal: K, callback: Layer.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Layer.SignalSignatures>(signal: K, callback: Layer.SignalSignatures[K]): number;
-        emit<K extends keyof Layer.SignalSignatures>(signal: K, ...args: Parameters<Layer.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Layer.SignalSignatures>(
+            signal: K,
+            ...args: Layer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -14827,7 +15199,9 @@ export namespace GES {
 
     namespace Marker {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::position': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -14858,8 +15232,14 @@ export namespace GES {
         // Signals
 
         connect<K extends keyof Marker.SignalSignatures>(signal: K, callback: Marker.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Marker.SignalSignatures>(signal: K, callback: Marker.SignalSignatures[K]): number;
-        emit<K extends keyof Marker.SignalSignatures>(signal: K, ...args: Parameters<Marker.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Marker.SignalSignatures>(
+            signal: K,
+            ...args: Marker.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -15694,6 +16074,7 @@ export namespace GES {
             'marker-added': MarkerAdded;
             'marker-moved': MarkerMoved;
             'marker-removed': MarkerRemoved;
+            'notify::flags': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -15731,14 +16112,17 @@ export namespace GES {
             signal: K,
             callback: MarkerList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MarkerList.SignalSignatures>(
             signal: K,
             callback: MarkerList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MarkerList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MarkerList.SignalSignatures[K]>
+            ...args: MarkerList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -15763,7 +16147,28 @@ export namespace GES {
 
     namespace MultiFileSource {
         // Signal signatures
-        interface SignalSignatures extends VideoSource.SignalSignatures {}
+        interface SignalSignatures extends VideoSource.SignalSignatures {
+            'notify::uri': GObject.Object.Notify;
+            'notify::active': GObject.Object.Notify;
+            'notify::auto-clamp-control-sources': GObject.Object.Notify;
+            'notify::auto-clamp-control-sources': GObject.Object.Notify;
+            'notify::has-internal-source': GObject.Object.Notify;
+            'notify::has-internal-source': GObject.Object.Notify;
+            'notify::track': GObject.Object.Notify;
+            'notify::track-type': GObject.Object.Notify;
+            'notify::track-type': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::priority': GObject.Object.Notify;
+            'notify::serialize': GObject.Object.Notify;
+            'notify::start': GObject.Object.Notify;
+            'notify::timeline': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -15816,14 +16221,17 @@ export namespace GES {
             signal: K,
             callback: MultiFileSource.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MultiFileSource.SignalSignatures>(
             signal: K,
             callback: MultiFileSource.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MultiFileSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MultiFileSource.SignalSignatures[K]>
+            ...args: MultiFileSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -16269,7 +16677,27 @@ export namespace GES {
 
     namespace Operation {
         // Signal signatures
-        interface SignalSignatures extends TrackElement.SignalSignatures {}
+        interface SignalSignatures extends TrackElement.SignalSignatures {
+            'notify::active': GObject.Object.Notify;
+            'notify::auto-clamp-control-sources': GObject.Object.Notify;
+            'notify::auto-clamp-control-sources': GObject.Object.Notify;
+            'notify::has-internal-source': GObject.Object.Notify;
+            'notify::has-internal-source': GObject.Object.Notify;
+            'notify::track': GObject.Object.Notify;
+            'notify::track-type': GObject.Object.Notify;
+            'notify::track-type': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::priority': GObject.Object.Notify;
+            'notify::serialize': GObject.Object.Notify;
+            'notify::start': GObject.Object.Notify;
+            'notify::timeline': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -16294,14 +16722,17 @@ export namespace GES {
         // Signals
 
         connect<K extends keyof Operation.SignalSignatures>(signal: K, callback: Operation.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Operation.SignalSignatures>(
             signal: K,
             callback: Operation.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Operation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Operation.SignalSignatures[K]>
+            ...args: Operation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -16747,7 +17178,25 @@ export namespace GES {
 
     namespace OperationClip {
         // Signal signatures
-        interface SignalSignatures extends Clip.SignalSignatures {}
+        interface SignalSignatures extends Clip.SignalSignatures {
+            'notify::duration-limit': GObject.Object.Notify;
+            'notify::duration-limit': GObject.Object.Notify;
+            'notify::layer': GObject.Object.Notify;
+            'notify::supported-formats': GObject.Object.Notify;
+            'notify::supported-formats': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::priority': GObject.Object.Notify;
+            'notify::serialize': GObject.Object.Notify;
+            'notify::start': GObject.Object.Notify;
+            'notify::timeline': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -16775,14 +17224,17 @@ export namespace GES {
             signal: K,
             callback: OperationClip.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OperationClip.SignalSignatures>(
             signal: K,
             callback: OperationClip.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OperationClip.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OperationClip.SignalSignatures[K]>
+            ...args: OperationClip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -17228,7 +17680,25 @@ export namespace GES {
 
     namespace OverlayClip {
         // Signal signatures
-        interface SignalSignatures extends OperationClip.SignalSignatures {}
+        interface SignalSignatures extends OperationClip.SignalSignatures {
+            'notify::duration-limit': GObject.Object.Notify;
+            'notify::duration-limit': GObject.Object.Notify;
+            'notify::layer': GObject.Object.Notify;
+            'notify::supported-formats': GObject.Object.Notify;
+            'notify::supported-formats': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::priority': GObject.Object.Notify;
+            'notify::serialize': GObject.Object.Notify;
+            'notify::start': GObject.Object.Notify;
+            'notify::timeline': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17261,14 +17731,17 @@ export namespace GES {
             signal: K,
             callback: OverlayClip.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OverlayClip.SignalSignatures>(
             signal: K,
             callback: OverlayClip.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OverlayClip.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OverlayClip.SignalSignatures[K]>
+            ...args: OverlayClip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -17714,7 +18187,28 @@ export namespace GES {
 
     namespace Pipeline {
         // Signal signatures
-        interface SignalSignatures extends Gst.Pipeline.SignalSignatures {}
+        interface SignalSignatures extends Gst.Pipeline.SignalSignatures {
+            'notify::audio-filter': GObject.Object.Notify;
+            'notify::audio-filter': GObject.Object.Notify;
+            'notify::audio-sink': GObject.Object.Notify;
+            'notify::audio-sink': GObject.Object.Notify;
+            'notify::mode': GObject.Object.Notify;
+            'notify::timeline': GObject.Object.Notify;
+            'notify::video-filter': GObject.Object.Notify;
+            'notify::video-filter': GObject.Object.Notify;
+            'notify::video-sink': GObject.Object.Notify;
+            'notify::video-sink': GObject.Object.Notify;
+            'notify::auto-flush-bus': GObject.Object.Notify;
+            'notify::auto-flush-bus': GObject.Object.Notify;
+            'notify::delay': GObject.Object.Notify;
+            'notify::latency': GObject.Object.Notify;
+            'notify::async-handling': GObject.Object.Notify;
+            'notify::async-handling': GObject.Object.Notify;
+            'notify::message-forward': GObject.Object.Notify;
+            'notify::message-forward': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17834,14 +18328,17 @@ export namespace GES {
         // Signals
 
         connect<K extends keyof Pipeline.SignalSignatures>(signal: K, callback: Pipeline.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Pipeline.SignalSignatures>(
             signal: K,
             callback: Pipeline.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Pipeline.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Pipeline.SignalSignatures[K]>
+            ...args: Pipeline.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -18502,14 +18999,17 @@ export namespace GES {
             signal: K,
             callback: PitiviFormatter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PitiviFormatter.SignalSignatures>(
             signal: K,
             callback: PitiviFormatter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PitiviFormatter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PitiviFormatter.SignalSignatures[K]>
+            ...args: PitiviFormatter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -18617,6 +19117,13 @@ export namespace GES {
             loaded: Loaded;
             loading: Loading;
             'missing-uri': MissingUri;
+            'notify::uri': GObject.Object.Notify;
+            'notify::extractable-type': GObject.Object.Notify;
+            'notify::extractable-type': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::proxy': GObject.Object.Notify;
+            'notify::proxy-target': GObject.Object.Notify;
+            'notify::proxy-target': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -18689,14 +19196,17 @@ export namespace GES {
         // Signals
 
         connect<K extends keyof Project.SignalSignatures>(signal: K, callback: Project.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Project.SignalSignatures>(
             signal: K,
             callback: Project.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Project.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Project.SignalSignatures[K]>
+            ...args: Project.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -19896,7 +20406,27 @@ export namespace GES {
 
     namespace Source {
         // Signal signatures
-        interface SignalSignatures extends TrackElement.SignalSignatures {}
+        interface SignalSignatures extends TrackElement.SignalSignatures {
+            'notify::active': GObject.Object.Notify;
+            'notify::auto-clamp-control-sources': GObject.Object.Notify;
+            'notify::auto-clamp-control-sources': GObject.Object.Notify;
+            'notify::has-internal-source': GObject.Object.Notify;
+            'notify::has-internal-source': GObject.Object.Notify;
+            'notify::track': GObject.Object.Notify;
+            'notify::track-type': GObject.Object.Notify;
+            'notify::track-type': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::priority': GObject.Object.Notify;
+            'notify::serialize': GObject.Object.Notify;
+            'notify::start': GObject.Object.Notify;
+            'notify::timeline': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -19921,8 +20451,14 @@ export namespace GES {
         // Signals
 
         connect<K extends keyof Source.SignalSignatures>(signal: K, callback: Source.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Source.SignalSignatures>(signal: K, callback: Source.SignalSignatures[K]): number;
-        emit<K extends keyof Source.SignalSignatures>(signal: K, ...args: Parameters<Source.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Source.SignalSignatures>(
+            signal: K,
+            ...args: Source.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -20382,7 +20918,25 @@ export namespace GES {
 
     namespace SourceClip {
         // Signal signatures
-        interface SignalSignatures extends Clip.SignalSignatures {}
+        interface SignalSignatures extends Clip.SignalSignatures {
+            'notify::duration-limit': GObject.Object.Notify;
+            'notify::duration-limit': GObject.Object.Notify;
+            'notify::layer': GObject.Object.Notify;
+            'notify::supported-formats': GObject.Object.Notify;
+            'notify::supported-formats': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::priority': GObject.Object.Notify;
+            'notify::serialize': GObject.Object.Notify;
+            'notify::start': GObject.Object.Notify;
+            'notify::timeline': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -20419,14 +20973,17 @@ export namespace GES {
             signal: K,
             callback: SourceClip.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceClip.SignalSignatures>(
             signal: K,
             callback: SourceClip.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceClip.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceClip.SignalSignatures[K]>
+            ...args: SourceClip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -20872,7 +21429,16 @@ export namespace GES {
 
     namespace SourceClipAsset {
         // Signal signatures
-        interface SignalSignatures extends ClipAsset.SignalSignatures {}
+        interface SignalSignatures extends ClipAsset.SignalSignatures {
+            'notify::supported-formats': GObject.Object.Notify;
+            'notify::supported-formats': GObject.Object.Notify;
+            'notify::extractable-type': GObject.Object.Notify;
+            'notify::extractable-type': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::proxy': GObject.Object.Notify;
+            'notify::proxy-target': GObject.Object.Notify;
+            'notify::proxy-target': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -20901,14 +21467,17 @@ export namespace GES {
             signal: K,
             callback: SourceClipAsset.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SourceClipAsset.SignalSignatures>(
             signal: K,
             callback: SourceClipAsset.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SourceClipAsset.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SourceClipAsset.SignalSignatures[K]>
+            ...args: SourceClipAsset.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -21553,7 +22122,29 @@ export namespace GES {
 
     namespace TestClip {
         // Signal signatures
-        interface SignalSignatures extends SourceClip.SignalSignatures {}
+        interface SignalSignatures extends SourceClip.SignalSignatures {
+            'notify::freq': GObject.Object.Notify;
+            'notify::mute': GObject.Object.Notify;
+            'notify::volume': GObject.Object.Notify;
+            'notify::vpattern': GObject.Object.Notify;
+            'notify::duration-limit': GObject.Object.Notify;
+            'notify::duration-limit': GObject.Object.Notify;
+            'notify::layer': GObject.Object.Notify;
+            'notify::supported-formats': GObject.Object.Notify;
+            'notify::supported-formats': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::priority': GObject.Object.Notify;
+            'notify::serialize': GObject.Object.Notify;
+            'notify::start': GObject.Object.Notify;
+            'notify::timeline': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -21621,14 +22212,17 @@ export namespace GES {
         // Signals
 
         connect<K extends keyof TestClip.SignalSignatures>(signal: K, callback: TestClip.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TestClip.SignalSignatures>(
             signal: K,
             callback: TestClip.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TestClip.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TestClip.SignalSignatures[K]>
+            ...args: TestClip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -22117,7 +22711,27 @@ export namespace GES {
 
     namespace TextOverlay {
         // Signal signatures
-        interface SignalSignatures extends Operation.SignalSignatures {}
+        interface SignalSignatures extends Operation.SignalSignatures {
+            'notify::active': GObject.Object.Notify;
+            'notify::auto-clamp-control-sources': GObject.Object.Notify;
+            'notify::auto-clamp-control-sources': GObject.Object.Notify;
+            'notify::has-internal-source': GObject.Object.Notify;
+            'notify::has-internal-source': GObject.Object.Notify;
+            'notify::track': GObject.Object.Notify;
+            'notify::track-type': GObject.Object.Notify;
+            'notify::track-type': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::priority': GObject.Object.Notify;
+            'notify::serialize': GObject.Object.Notify;
+            'notify::start': GObject.Object.Notify;
+            'notify::timeline': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -22144,14 +22758,17 @@ export namespace GES {
             signal: K,
             callback: TextOverlay.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TextOverlay.SignalSignatures>(
             signal: K,
             callback: TextOverlay.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TextOverlay.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TextOverlay.SignalSignatures[K]>
+            ...args: TextOverlay.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -22671,7 +23288,33 @@ export namespace GES {
 
     namespace TextOverlayClip {
         // Signal signatures
-        interface SignalSignatures extends OverlayClip.SignalSignatures {}
+        interface SignalSignatures extends OverlayClip.SignalSignatures {
+            'notify::color': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::halignment': GObject.Object.Notify;
+            'notify::text': GObject.Object.Notify;
+            'notify::valignment': GObject.Object.Notify;
+            'notify::xpos': GObject.Object.Notify;
+            'notify::ypos': GObject.Object.Notify;
+            'notify::duration-limit': GObject.Object.Notify;
+            'notify::duration-limit': GObject.Object.Notify;
+            'notify::layer': GObject.Object.Notify;
+            'notify::supported-formats': GObject.Object.Notify;
+            'notify::supported-formats': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::priority': GObject.Object.Notify;
+            'notify::serialize': GObject.Object.Notify;
+            'notify::start': GObject.Object.Notify;
+            'notify::timeline': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -22753,14 +23396,17 @@ export namespace GES {
             signal: K,
             callback: TextOverlayClip.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TextOverlayClip.SignalSignatures>(
             signal: K,
             callback: TextOverlayClip.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TextOverlayClip.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TextOverlayClip.SignalSignatures[K]>
+            ...args: TextOverlayClip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -23337,6 +23983,17 @@ export namespace GES {
             'snapping-started': SnappingStarted;
             'track-added': TrackAdded;
             'track-removed': TrackRemoved;
+            'notify::auto-transition': GObject.Object.Notify;
+            'notify::auto-transition': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::snapping-distance': GObject.Object.Notify;
+            'notify::snapping-distance': GObject.Object.Notify;
+            'notify::async-handling': GObject.Object.Notify;
+            'notify::async-handling': GObject.Object.Notify;
+            'notify::message-forward': GObject.Object.Notify;
+            'notify::message-forward': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -23525,14 +24182,17 @@ export namespace GES {
         // Signals
 
         connect<K extends keyof Timeline.SignalSignatures>(signal: K, callback: Timeline.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Timeline.SignalSignatures>(
             signal: K,
             callback: Timeline.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Timeline.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Timeline.SignalSignatures[K]>
+            ...args: Timeline.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -24770,6 +25430,28 @@ export namespace GES {
             'child-property-added': ChildPropertyAdded;
             'child-property-removed': ChildPropertyRemoved;
             'deep-notify': DeepNotify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::priority': GObject.Object.Notify;
+            'notify::serialize': GObject.Object.Notify;
+            'notify::start': GObject.Object.Notify;
+            'notify::timeline': GObject.Object.Notify;
+            'deep-notify::duration': DeepNotify;
+            'deep-notify::in-point': DeepNotify;
+            'deep-notify::in-point': DeepNotify;
+            'deep-notify::max-duration': DeepNotify;
+            'deep-notify::max-duration': DeepNotify;
+            'deep-notify::name': DeepNotify;
+            'deep-notify::parent': DeepNotify;
+            'deep-notify::priority': DeepNotify;
+            'deep-notify::serialize': DeepNotify;
+            'deep-notify::start': DeepNotify;
+            'deep-notify::timeline': DeepNotify;
         }
 
         // Constructor properties interface
@@ -25014,14 +25696,17 @@ export namespace GES {
             signal: K,
             callback: TimelineElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TimelineElement.SignalSignatures>(
             signal: K,
             callback: TimelineElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TimelineElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TimelineElement.SignalSignatures[K]>
+            ...args: TimelineElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -26492,7 +27177,34 @@ export namespace GES {
 
     namespace TitleClip {
         // Signal signatures
-        interface SignalSignatures extends SourceClip.SignalSignatures {}
+        interface SignalSignatures extends SourceClip.SignalSignatures {
+            'notify::background': GObject.Object.Notify;
+            'notify::color': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::halignment': GObject.Object.Notify;
+            'notify::text': GObject.Object.Notify;
+            'notify::valignment': GObject.Object.Notify;
+            'notify::xpos': GObject.Object.Notify;
+            'notify::ypos': GObject.Object.Notify;
+            'notify::duration-limit': GObject.Object.Notify;
+            'notify::duration-limit': GObject.Object.Notify;
+            'notify::layer': GObject.Object.Notify;
+            'notify::supported-formats': GObject.Object.Notify;
+            'notify::supported-formats': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::priority': GObject.Object.Notify;
+            'notify::serialize': GObject.Object.Notify;
+            'notify::start': GObject.Object.Notify;
+            'notify::timeline': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -26578,14 +27290,17 @@ export namespace GES {
         // Signals
 
         connect<K extends keyof TitleClip.SignalSignatures>(signal: K, callback: TitleClip.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TitleClip.SignalSignatures>(
             signal: K,
             callback: TitleClip.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TitleClip.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TitleClip.SignalSignatures[K]>
+            ...args: TitleClip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -27114,7 +27829,27 @@ export namespace GES {
 
     namespace TitleSource {
         // Signal signatures
-        interface SignalSignatures extends VideoSource.SignalSignatures {}
+        interface SignalSignatures extends VideoSource.SignalSignatures {
+            'notify::active': GObject.Object.Notify;
+            'notify::auto-clamp-control-sources': GObject.Object.Notify;
+            'notify::auto-clamp-control-sources': GObject.Object.Notify;
+            'notify::has-internal-source': GObject.Object.Notify;
+            'notify::has-internal-source': GObject.Object.Notify;
+            'notify::track': GObject.Object.Notify;
+            'notify::track-type': GObject.Object.Notify;
+            'notify::track-type': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::priority': GObject.Object.Notify;
+            'notify::serialize': GObject.Object.Notify;
+            'notify::start': GObject.Object.Notify;
+            'notify::timeline': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -27143,14 +27878,17 @@ export namespace GES {
             signal: K,
             callback: TitleSource.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TitleSource.SignalSignatures>(
             signal: K,
             callback: TitleSource.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TitleSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TitleSource.SignalSignatures[K]>
+            ...args: TitleSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -27698,6 +28436,20 @@ export namespace GES {
             commited: Commited;
             'track-element-added': TrackElementAdded;
             'track-element-removed': TrackElementRemoved;
+            'notify::caps': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::mixing': GObject.Object.Notify;
+            'notify::restriction-caps': GObject.Object.Notify;
+            'notify::restriction-caps': GObject.Object.Notify;
+            'notify::track-type': GObject.Object.Notify;
+            'notify::track-type': GObject.Object.Notify;
+            'notify::async-handling': GObject.Object.Notify;
+            'notify::async-handling': GObject.Object.Notify;
+            'notify::message-forward': GObject.Object.Notify;
+            'notify::message-forward': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -27846,8 +28598,14 @@ export namespace GES {
         // Signals
 
         connect<K extends keyof Track.SignalSignatures>(signal: K, callback: Track.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Track.SignalSignatures>(signal: K, callback: Track.SignalSignatures[K]): number;
-        emit<K extends keyof Track.SignalSignatures>(signal: K, ...args: Parameters<Track.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Track.SignalSignatures>(
+            signal: K,
+            ...args: Track.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -28874,6 +29632,25 @@ export namespace GES {
         interface SignalSignatures extends TimelineElement.SignalSignatures {
             'control-binding-added': ControlBindingAdded;
             'control-binding-removed': ControlBindingRemoved;
+            'notify::active': GObject.Object.Notify;
+            'notify::auto-clamp-control-sources': GObject.Object.Notify;
+            'notify::auto-clamp-control-sources': GObject.Object.Notify;
+            'notify::has-internal-source': GObject.Object.Notify;
+            'notify::has-internal-source': GObject.Object.Notify;
+            'notify::track': GObject.Object.Notify;
+            'notify::track-type': GObject.Object.Notify;
+            'notify::track-type': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::priority': GObject.Object.Notify;
+            'notify::serialize': GObject.Object.Notify;
+            'notify::start': GObject.Object.Notify;
+            'notify::timeline': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -29070,14 +29847,17 @@ export namespace GES {
             signal: K,
             callback: TrackElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TrackElement.SignalSignatures>(
             signal: K,
             callback: TrackElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TrackElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TrackElement.SignalSignatures[K]>
+            ...args: TrackElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -30161,7 +30941,16 @@ export namespace GES {
 
     namespace TrackElementAsset {
         // Signal signatures
-        interface SignalSignatures extends Asset.SignalSignatures {}
+        interface SignalSignatures extends Asset.SignalSignatures {
+            'notify::track-type': GObject.Object.Notify;
+            'notify::track-type': GObject.Object.Notify;
+            'notify::extractable-type': GObject.Object.Notify;
+            'notify::extractable-type': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::proxy': GObject.Object.Notify;
+            'notify::proxy-target': GObject.Object.Notify;
+            'notify::proxy-target': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -30197,14 +30986,17 @@ export namespace GES {
             signal: K,
             callback: TrackElementAsset.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TrackElementAsset.SignalSignatures>(
             signal: K,
             callback: TrackElementAsset.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TrackElementAsset.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TrackElementAsset.SignalSignatures[K]>
+            ...args: TrackElementAsset.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -31331,7 +32123,27 @@ export namespace GES {
 
     namespace Transition {
         // Signal signatures
-        interface SignalSignatures extends Operation.SignalSignatures {}
+        interface SignalSignatures extends Operation.SignalSignatures {
+            'notify::active': GObject.Object.Notify;
+            'notify::auto-clamp-control-sources': GObject.Object.Notify;
+            'notify::auto-clamp-control-sources': GObject.Object.Notify;
+            'notify::has-internal-source': GObject.Object.Notify;
+            'notify::has-internal-source': GObject.Object.Notify;
+            'notify::track': GObject.Object.Notify;
+            'notify::track-type': GObject.Object.Notify;
+            'notify::track-type': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::priority': GObject.Object.Notify;
+            'notify::serialize': GObject.Object.Notify;
+            'notify::start': GObject.Object.Notify;
+            'notify::timeline': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -31359,14 +32171,17 @@ export namespace GES {
             signal: K,
             callback: Transition.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Transition.SignalSignatures>(
             signal: K,
             callback: Transition.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Transition.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Transition.SignalSignatures[K]>
+            ...args: Transition.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -31812,7 +32627,26 @@ export namespace GES {
 
     namespace TransitionClip {
         // Signal signatures
-        interface SignalSignatures extends BaseTransitionClip.SignalSignatures {}
+        interface SignalSignatures extends BaseTransitionClip.SignalSignatures {
+            'notify::vtype': GObject.Object.Notify;
+            'notify::duration-limit': GObject.Object.Notify;
+            'notify::duration-limit': GObject.Object.Notify;
+            'notify::layer': GObject.Object.Notify;
+            'notify::supported-formats': GObject.Object.Notify;
+            'notify::supported-formats': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::priority': GObject.Object.Notify;
+            'notify::serialize': GObject.Object.Notify;
+            'notify::start': GObject.Object.Notify;
+            'notify::timeline': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -31865,14 +32699,17 @@ export namespace GES {
             signal: K,
             callback: TransitionClip.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TransitionClip.SignalSignatures>(
             signal: K,
             callback: TransitionClip.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TransitionClip.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TransitionClip.SignalSignatures[K]>
+            ...args: TransitionClip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -32318,7 +33155,29 @@ export namespace GES {
 
     namespace UriClip {
         // Signal signatures
-        interface SignalSignatures extends SourceClip.SignalSignatures {}
+        interface SignalSignatures extends SourceClip.SignalSignatures {
+            'notify::is-image': GObject.Object.Notify;
+            'notify::is-image': GObject.Object.Notify;
+            'notify::mute': GObject.Object.Notify;
+            'notify::supported-formats': GObject.Object.Notify;
+            'notify::supported-formats': GObject.Object.Notify;
+            'notify::uri': GObject.Object.Notify;
+            'notify::duration-limit': GObject.Object.Notify;
+            'notify::duration-limit': GObject.Object.Notify;
+            'notify::layer': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::priority': GObject.Object.Notify;
+            'notify::serialize': GObject.Object.Notify;
+            'notify::start': GObject.Object.Notify;
+            'notify::timeline': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -32381,14 +33240,17 @@ export namespace GES {
         // Signals
 
         connect<K extends keyof UriClip.SignalSignatures>(signal: K, callback: UriClip.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UriClip.SignalSignatures>(
             signal: K,
             callback: UriClip.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UriClip.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UriClip.SignalSignatures[K]>
+            ...args: UriClip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -32857,7 +33719,19 @@ export namespace GES {
 
     namespace UriClipAsset {
         // Signal signatures
-        interface SignalSignatures extends SourceClipAsset.SignalSignatures {}
+        interface SignalSignatures extends SourceClipAsset.SignalSignatures {
+            'notify::duration': GObject.Object.Notify;
+            'notify::is-nested-timeline': GObject.Object.Notify;
+            'notify::is-nested-timeline': GObject.Object.Notify;
+            'notify::supported-formats': GObject.Object.Notify;
+            'notify::supported-formats': GObject.Object.Notify;
+            'notify::extractable-type': GObject.Object.Notify;
+            'notify::extractable-type': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::proxy': GObject.Object.Notify;
+            'notify::proxy-target': GObject.Object.Notify;
+            'notify::proxy-target': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -32903,14 +33777,17 @@ export namespace GES {
             signal: K,
             callback: UriClipAsset.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UriClipAsset.SignalSignatures>(
             signal: K,
             callback: UriClipAsset.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UriClipAsset.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UriClipAsset.SignalSignatures[K]>
+            ...args: UriClipAsset.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -33641,7 +34518,16 @@ export namespace GES {
 
     namespace UriSourceAsset {
         // Signal signatures
-        interface SignalSignatures extends TrackElementAsset.SignalSignatures {}
+        interface SignalSignatures extends TrackElementAsset.SignalSignatures {
+            'notify::track-type': GObject.Object.Notify;
+            'notify::track-type': GObject.Object.Notify;
+            'notify::extractable-type': GObject.Object.Notify;
+            'notify::extractable-type': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::proxy': GObject.Object.Notify;
+            'notify::proxy-target': GObject.Object.Notify;
+            'notify::proxy-target': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -33676,14 +34562,17 @@ export namespace GES {
             signal: K,
             callback: UriSourceAsset.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UriSourceAsset.SignalSignatures>(
             signal: K,
             callback: UriSourceAsset.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UriSourceAsset.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UriSourceAsset.SignalSignatures[K]>
+            ...args: UriSourceAsset.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -34347,7 +35236,27 @@ export namespace GES {
 
     namespace VideoSource {
         // Signal signatures
-        interface SignalSignatures extends Source.SignalSignatures {}
+        interface SignalSignatures extends Source.SignalSignatures {
+            'notify::active': GObject.Object.Notify;
+            'notify::auto-clamp-control-sources': GObject.Object.Notify;
+            'notify::auto-clamp-control-sources': GObject.Object.Notify;
+            'notify::has-internal-source': GObject.Object.Notify;
+            'notify::has-internal-source': GObject.Object.Notify;
+            'notify::track': GObject.Object.Notify;
+            'notify::track-type': GObject.Object.Notify;
+            'notify::track-type': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::priority': GObject.Object.Notify;
+            'notify::serialize': GObject.Object.Notify;
+            'notify::start': GObject.Object.Notify;
+            'notify::timeline': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -34375,14 +35284,17 @@ export namespace GES {
             signal: K,
             callback: VideoSource.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VideoSource.SignalSignatures>(
             signal: K,
             callback: VideoSource.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VideoSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VideoSource.SignalSignatures[K]>
+            ...args: VideoSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -34842,7 +35754,27 @@ export namespace GES {
 
     namespace VideoTestSource {
         // Signal signatures
-        interface SignalSignatures extends VideoSource.SignalSignatures {}
+        interface SignalSignatures extends VideoSource.SignalSignatures {
+            'notify::active': GObject.Object.Notify;
+            'notify::auto-clamp-control-sources': GObject.Object.Notify;
+            'notify::auto-clamp-control-sources': GObject.Object.Notify;
+            'notify::has-internal-source': GObject.Object.Notify;
+            'notify::has-internal-source': GObject.Object.Notify;
+            'notify::track': GObject.Object.Notify;
+            'notify::track-type': GObject.Object.Notify;
+            'notify::track-type': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::priority': GObject.Object.Notify;
+            'notify::serialize': GObject.Object.Notify;
+            'notify::start': GObject.Object.Notify;
+            'notify::timeline': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -34872,14 +35804,17 @@ export namespace GES {
             signal: K,
             callback: VideoTestSource.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VideoTestSource.SignalSignatures>(
             signal: K,
             callback: VideoTestSource.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VideoTestSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VideoTestSource.SignalSignatures[K]>
+            ...args: VideoTestSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -35338,7 +36273,22 @@ export namespace GES {
 
     namespace VideoTrack {
         // Signal signatures
-        interface SignalSignatures extends Track.SignalSignatures {}
+        interface SignalSignatures extends Track.SignalSignatures {
+            'notify::caps': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::mixing': GObject.Object.Notify;
+            'notify::restriction-caps': GObject.Object.Notify;
+            'notify::restriction-caps': GObject.Object.Notify;
+            'notify::track-type': GObject.Object.Notify;
+            'notify::track-type': GObject.Object.Notify;
+            'notify::async-handling': GObject.Object.Notify;
+            'notify::async-handling': GObject.Object.Notify;
+            'notify::message-forward': GObject.Object.Notify;
+            'notify::message-forward': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -35384,14 +36334,17 @@ export namespace GES {
             signal: K,
             callback: VideoTrack.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VideoTrack.SignalSignatures>(
             signal: K,
             callback: VideoTrack.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VideoTrack.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VideoTrack.SignalSignatures[K]>
+            ...args: VideoTrack.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -36212,7 +37165,31 @@ export namespace GES {
 
     namespace VideoTransition {
         // Signal signatures
-        interface SignalSignatures extends Transition.SignalSignatures {}
+        interface SignalSignatures extends Transition.SignalSignatures {
+            'notify::border': GObject.Object.Notify;
+            'notify::invert': GObject.Object.Notify;
+            'notify::transition-type': GObject.Object.Notify;
+            'notify::transition-type': GObject.Object.Notify;
+            'notify::active': GObject.Object.Notify;
+            'notify::auto-clamp-control-sources': GObject.Object.Notify;
+            'notify::auto-clamp-control-sources': GObject.Object.Notify;
+            'notify::has-internal-source': GObject.Object.Notify;
+            'notify::has-internal-source': GObject.Object.Notify;
+            'notify::track': GObject.Object.Notify;
+            'notify::track-type': GObject.Object.Notify;
+            'notify::track-type': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::priority': GObject.Object.Notify;
+            'notify::serialize': GObject.Object.Notify;
+            'notify::start': GObject.Object.Notify;
+            'notify::timeline': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -36261,14 +37238,17 @@ export namespace GES {
             signal: K,
             callback: VideoTransition.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VideoTransition.SignalSignatures>(
             signal: K,
             callback: VideoTransition.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VideoTransition.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VideoTransition.SignalSignatures[K]>
+            ...args: VideoTransition.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -36756,7 +37736,28 @@ export namespace GES {
 
     namespace VideoUriSource {
         // Signal signatures
-        interface SignalSignatures extends VideoSource.SignalSignatures {}
+        interface SignalSignatures extends VideoSource.SignalSignatures {
+            'notify::uri': GObject.Object.Notify;
+            'notify::active': GObject.Object.Notify;
+            'notify::auto-clamp-control-sources': GObject.Object.Notify;
+            'notify::auto-clamp-control-sources': GObject.Object.Notify;
+            'notify::has-internal-source': GObject.Object.Notify;
+            'notify::has-internal-source': GObject.Object.Notify;
+            'notify::track': GObject.Object.Notify;
+            'notify::track-type': GObject.Object.Notify;
+            'notify::track-type': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::in-point': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::max-duration': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::priority': GObject.Object.Notify;
+            'notify::serialize': GObject.Object.Notify;
+            'notify::start': GObject.Object.Notify;
+            'notify::timeline': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -36795,14 +37796,17 @@ export namespace GES {
             signal: K,
             callback: VideoUriSource.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VideoUriSource.SignalSignatures>(
             signal: K,
             callback: VideoUriSource.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VideoUriSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VideoUriSource.SignalSignatures[K]>
+            ...args: VideoUriSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -37270,14 +38274,17 @@ export namespace GES {
             signal: K,
             callback: XmlFormatter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XmlFormatter.SignalSignatures>(
             signal: K,
             callback: XmlFormatter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XmlFormatter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XmlFormatter.SignalSignatures[K]>
+            ...args: XmlFormatter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     type AssetClass = typeof Asset;

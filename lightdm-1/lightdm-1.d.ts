@@ -252,6 +252,36 @@ export namespace LightDM {
             reset: Reset;
             'show-message': ShowMessage;
             'show-prompt': ShowPrompt;
+            'notify::authentication-user': GObject.Object.Notify;
+            'notify::authentication-user': GObject.Object.Notify;
+            'notify::autologin-guest-hint': GObject.Object.Notify;
+            'notify::autologin-guest-hint': GObject.Object.Notify;
+            'notify::autologin-session-hint': GObject.Object.Notify;
+            'notify::autologin-session-hint': GObject.Object.Notify;
+            'notify::autologin-timeout-hint': GObject.Object.Notify;
+            'notify::autologin-timeout-hint': GObject.Object.Notify;
+            'notify::autologin-user-hint': GObject.Object.Notify;
+            'notify::autologin-user-hint': GObject.Object.Notify;
+            'notify::default-session-hint': GObject.Object.Notify;
+            'notify::default-session-hint': GObject.Object.Notify;
+            'notify::has-guest-account-hint': GObject.Object.Notify;
+            'notify::has-guest-account-hint': GObject.Object.Notify;
+            'notify::hide-users-hint': GObject.Object.Notify;
+            'notify::hide-users-hint': GObject.Object.Notify;
+            'notify::in-authentication': GObject.Object.Notify;
+            'notify::in-authentication': GObject.Object.Notify;
+            'notify::is-authenticated': GObject.Object.Notify;
+            'notify::is-authenticated': GObject.Object.Notify;
+            'notify::lock-hint': GObject.Object.Notify;
+            'notify::lock-hint': GObject.Object.Notify;
+            'notify::select-guest-hint': GObject.Object.Notify;
+            'notify::select-guest-hint': GObject.Object.Notify;
+            'notify::select-user-hint': GObject.Object.Notify;
+            'notify::select-user-hint': GObject.Object.Notify;
+            'notify::show-manual-login-hint': GObject.Object.Notify;
+            'notify::show-manual-login-hint': GObject.Object.Notify;
+            'notify::show-remote-login-hint': GObject.Object.Notify;
+            'notify::show-remote-login-hint': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -341,14 +371,17 @@ export namespace LightDM {
         // Signals
 
         connect<K extends keyof Greeter.SignalSignatures>(signal: K, callback: Greeter.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Greeter.SignalSignatures>(
             signal: K,
             callback: Greeter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Greeter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Greeter.SignalSignatures[K]>
+            ...args: Greeter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -682,7 +715,11 @@ export namespace LightDM {
 
     namespace Language {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::code': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::territory': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -715,14 +752,17 @@ export namespace LightDM {
         // Signals
 
         connect<K extends keyof Language.SignalSignatures>(signal: K, callback: Language.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Language.SignalSignatures>(
             signal: K,
             callback: Language.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Language.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Language.SignalSignatures[K]>
+            ...args: Language.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -751,7 +791,12 @@ export namespace LightDM {
 
     namespace Layout {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::description': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::short-description': GObject.Object.Notify;
+            'notify::short-description': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -786,8 +831,14 @@ export namespace LightDM {
         // Signals
 
         connect<K extends keyof Layout.SignalSignatures>(signal: K, callback: Layout.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Layout.SignalSignatures>(signal: K, callback: Layout.SignalSignatures[K]): number;
-        emit<K extends keyof Layout.SignalSignatures>(signal: K, ...args: Parameters<Layout.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Layout.SignalSignatures>(
+            signal: K,
+            ...args: Layout.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -810,7 +861,11 @@ export namespace LightDM {
 
     namespace Session {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::comment': GObject.Object.Notify;
+            'notify::key': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -843,14 +898,17 @@ export namespace LightDM {
         // Signals
 
         connect<K extends keyof Session.SignalSignatures>(signal: K, callback: Session.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Session.SignalSignatures>(
             signal: K,
             callback: Session.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Session.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Session.SignalSignatures[K]>
+            ...args: Session.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -886,6 +944,26 @@ export namespace LightDM {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             changed: Changed;
+            'notify::background': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::has-messages': GObject.Object.Notify;
+            'notify::has-messages': GObject.Object.Notify;
+            'notify::home-directory': GObject.Object.Notify;
+            'notify::home-directory': GObject.Object.Notify;
+            'notify::image': GObject.Object.Notify;
+            'notify::is-locked': GObject.Object.Notify;
+            'notify::is-locked': GObject.Object.Notify;
+            'notify::language': GObject.Object.Notify;
+            'notify::layout': GObject.Object.Notify;
+            'notify::layouts': GObject.Object.Notify;
+            'notify::logged-in': GObject.Object.Notify;
+            'notify::logged-in': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::real-name': GObject.Object.Notify;
+            'notify::real-name': GObject.Object.Notify;
+            'notify::session': GObject.Object.Notify;
+            'notify::uid': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -953,8 +1031,14 @@ export namespace LightDM {
         // Signals
 
         connect<K extends keyof User.SignalSignatures>(signal: K, callback: User.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof User.SignalSignatures>(signal: K, callback: User.SignalSignatures[K]): number;
-        emit<K extends keyof User.SignalSignatures>(signal: K, ...args: Parameters<User.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof User.SignalSignatures>(
+            signal: K,
+            ...args: User.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1054,6 +1138,9 @@ export namespace LightDM {
             'user-added': UserAdded;
             'user-changed': UserChanged;
             'user-removed': UserRemoved;
+            'notify::length': GObject.Object.Notify;
+            'notify::num-users': GObject.Object.Notify;
+            'notify::num-users': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1087,14 +1174,17 @@ export namespace LightDM {
         // Signals
 
         connect<K extends keyof UserList.SignalSignatures>(signal: K, callback: UserList.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UserList.SignalSignatures>(
             signal: K,
             callback: UserList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UserList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UserList.SignalSignatures[K]>
+            ...args: UserList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 

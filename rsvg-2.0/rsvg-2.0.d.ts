@@ -322,7 +322,22 @@ export namespace Rsvg {
     }
     namespace Handle {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::desc': GObject.Object.Notify;
+            'notify::dpi-x': GObject.Object.Notify;
+            'notify::dpi-x': GObject.Object.Notify;
+            'notify::dpi-y': GObject.Object.Notify;
+            'notify::dpi-y': GObject.Object.Notify;
+            'notify::em': GObject.Object.Notify;
+            'notify::ex': GObject.Object.Notify;
+            'notify::flags': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::metadata': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -620,8 +635,14 @@ export namespace Rsvg {
         // Signals
 
         connect<K extends keyof Handle.SignalSignatures>(signal: K, callback: Handle.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Handle.SignalSignatures>(signal: K, callback: Handle.SignalSignatures[K]): number;
-        emit<K extends keyof Handle.SignalSignatures>(signal: K, ...args: Parameters<Handle.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Handle.SignalSignatures>(
+            signal: K,
+            ...args: Handle.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

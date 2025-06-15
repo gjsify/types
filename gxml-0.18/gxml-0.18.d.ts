@@ -353,7 +353,12 @@ export namespace GXml {
     }
     namespace CssSelectorData {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::selector-type': GObject.Object.Notify;
+            'notify::selector-type': GObject.Object.Notify;
+            'notify::data': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -395,14 +400,17 @@ export namespace GXml {
             signal: K,
             callback: CssSelectorData.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CssSelectorData.SignalSignatures>(
             signal: K,
             callback: CssSelectorData.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CssSelectorData.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CssSelectorData.SignalSignatures[K]>
+            ...args: CssSelectorData.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -418,7 +426,9 @@ export namespace GXml {
 
     namespace CssSelectorParser {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::selectors': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -448,14 +458,17 @@ export namespace GXml {
             signal: K,
             callback: CssSelectorParser.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CssSelectorParser.SignalSignatures>(
             signal: K,
             callback: CssSelectorParser.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CssSelectorParser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CssSelectorParser.SignalSignatures[K]>
+            ...args: CssSelectorParser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -494,19 +507,35 @@ export namespace GXml {
             signal: K,
             callback: DomNodeFilter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomNodeFilter.SignalSignatures>(
             signal: K,
             callback: DomNodeFilter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomNodeFilter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomNodeFilter.SignalSignatures[K]>
+            ...args: DomNodeFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace DomElementList {
         // Signal signatures
-        interface SignalSignatures extends Gee.ArrayList.SignalSignatures {}
+        interface SignalSignatures extends Gee.ArrayList.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::length': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -530,14 +559,17 @@ export namespace GXml {
             signal: K,
             callback: DomElementList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomElementList.SignalSignatures>(
             signal: K,
             callback: DomElementList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomElementList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomElementList.SignalSignatures[K]>
+            ...args: DomElementList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get length(): number;
@@ -1002,7 +1034,10 @@ export namespace GXml {
 
     namespace DomEventInit {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::bubbles': GObject.Object.Notify;
+            'notify::cancelable': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1036,14 +1071,17 @@ export namespace GXml {
             signal: K,
             callback: DomEventInit.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomEventInit.SignalSignatures>(
             signal: K,
             callback: DomEventInit.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomEventInit.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomEventInit.SignalSignatures[K]>
+            ...args: DomEventInit.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1055,7 +1093,11 @@ export namespace GXml {
 
     namespace DomCustomEventInit {
         // Signal signatures
-        interface SignalSignatures extends DomEventInit.SignalSignatures {}
+        interface SignalSignatures extends DomEventInit.SignalSignatures {
+            'notify::detail': GObject.Object.Notify;
+            'notify::bubbles': GObject.Object.Notify;
+            'notify::cancelable': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1086,14 +1128,17 @@ export namespace GXml {
             signal: K,
             callback: DomCustomEventInit.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomCustomEventInit.SignalSignatures>(
             signal: K,
             callback: DomCustomEventInit.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomCustomEventInit.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomCustomEventInit.SignalSignatures[K]>
+            ...args: DomCustomEventInit.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1103,7 +1148,9 @@ export namespace GXml {
 
     namespace DomTimeStamp {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::time': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1134,14 +1181,17 @@ export namespace GXml {
             signal: K,
             callback: DomTimeStamp.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomTimeStamp.SignalSignatures>(
             signal: K,
             callback: DomTimeStamp.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomTimeStamp.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomTimeStamp.SignalSignatures[K]>
+            ...args: DomTimeStamp.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1152,7 +1202,20 @@ export namespace GXml {
 
     namespace DomMutationObserverInit {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::child-list': GObject.Object.Notify;
+            'notify::child-list': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::character-data': GObject.Object.Notify;
+            'notify::character-data': GObject.Object.Notify;
+            'notify::subtree': GObject.Object.Notify;
+            'notify::attribute-old-value': GObject.Object.Notify;
+            'notify::attribute-old-value': GObject.Object.Notify;
+            'notify::character-data-old-value': GObject.Object.Notify;
+            'notify::character-data-old-value': GObject.Object.Notify;
+            'notify::attribute-filter': GObject.Object.Notify;
+            'notify::attribute-filter': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1216,14 +1279,17 @@ export namespace GXml {
             signal: K,
             callback: DomMutationObserverInit.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomMutationObserverInit.SignalSignatures>(
             signal: K,
             callback: DomMutationObserverInit.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomMutationObserverInit.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomMutationObserverInit.SignalSignatures[K]>
+            ...args: DomMutationObserverInit.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1269,14 +1335,17 @@ export namespace GXml {
             signal: K,
             callback: DomErrorName.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DomErrorName.SignalSignatures>(
             signal: K,
             callback: DomErrorName.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DomErrorName.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DomErrorName.SignalSignatures[K]>
+            ...args: DomErrorName.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1286,7 +1355,20 @@ export namespace GXml {
 
     namespace ElementList {
         // Signal signatures
-        interface SignalSignatures extends Gee.ArrayList.SignalSignatures {}
+        interface SignalSignatures extends Gee.ArrayList.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::length': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1310,14 +1392,17 @@ export namespace GXml {
             signal: K,
             callback: ElementList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ElementList.SignalSignatures>(
             signal: K,
             callback: ElementList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ElementList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ElementList.SignalSignatures[K]>
+            ...args: ElementList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get length(): number;
@@ -1782,7 +1867,20 @@ export namespace GXml {
 
     namespace GHtmlDocument {
         // Signal signatures
-        interface SignalSignatures extends GDocument.SignalSignatures {}
+        interface SignalSignatures extends GDocument.SignalSignatures {
+            'notify::default-options': GObject.Object.Notify;
+            'notify::default-options': GObject.Object.Notify;
+            'notify::attrs': GObject.Object.Notify;
+            'notify::children-nodes': GObject.Object.Notify;
+            'notify::children-nodes': GObject.Object.Notify;
+            'notify::namespaces': GObject.Object.Notify;
+            'notify::document': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::type-node': GObject.Object.Notify;
+            'notify::type-node': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1826,14 +1924,17 @@ export namespace GXml {
             signal: K,
             callback: GHtmlDocument.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GHtmlDocument.SignalSignatures>(
             signal: K,
             callback: GHtmlDocument.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GHtmlDocument.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GHtmlDocument.SignalSignatures[K]>
+            ...args: GHtmlDocument.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2289,7 +2390,16 @@ export namespace GXml {
 
     namespace GomAttr {
         // Signal signatures
-        interface SignalSignatures extends GomNode.SignalSignatures {}
+        interface SignalSignatures extends GomNode.SignalSignatures {
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+            'notify::specified': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2321,14 +2431,17 @@ export namespace GXml {
         // Signals
 
         connect<K extends keyof GomAttr.SignalSignatures>(signal: K, callback: GomAttr.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomAttr.SignalSignatures>(
             signal: K,
             callback: GomAttr.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomAttr.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomAttr.SignalSignatures[K]>
+            ...args: GomAttr.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get namespace_uri(): string;
@@ -2799,7 +2912,16 @@ export namespace GXml {
 
     namespace BaseCollection {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::nodes-index': GObject.Object.Notify;
+            'notify::nodes-index': GObject.Object.Notify;
+            'notify::element': GObject.Object.Notify;
+            'notify::items-name': GObject.Object.Notify;
+            'notify::items-name': GObject.Object.Notify;
+            'notify::items-type': GObject.Object.Notify;
+            'notify::items-type': GObject.Object.Notify;
+            'notify::length': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2825,14 +2947,17 @@ export namespace GXml {
             signal: K,
             callback: BaseCollection.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BaseCollection.SignalSignatures>(
             signal: K,
             callback: BaseCollection.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BaseCollection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BaseCollection.SignalSignatures[K]>
+            ...args: BaseCollection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -3384,14 +3509,17 @@ export namespace GXml {
             signal: K,
             callback: GomArrayList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomArrayList.SignalSignatures>(
             signal: K,
             callback: GomArrayList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomArrayList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomArrayList.SignalSignatures[K]>
+            ...args: GomArrayList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -3837,7 +3965,12 @@ export namespace GXml {
 
     namespace GomHashMap {
         // Signal signatures
-        interface SignalSignatures extends BaseCollection.SignalSignatures {}
+        interface SignalSignatures extends BaseCollection.SignalSignatures {
+            'notify::attribute-key': GObject.Object.Notify;
+            'notify::attribute-key': GObject.Object.Notify;
+            'notify::keys-set': GObject.Object.Notify;
+            'notify::keys-set': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3861,14 +3994,17 @@ export namespace GXml {
             signal: K,
             callback: GomHashMap.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomHashMap.SignalSignatures>(
             signal: K,
             callback: GomHashMap.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomHashMap.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomHashMap.SignalSignatures[K]>
+            ...args: GomHashMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4339,7 +4475,14 @@ export namespace GXml {
 
     namespace GomHashPairedMap {
         // Signal signatures
-        interface SignalSignatures extends BaseCollection.SignalSignatures {}
+        interface SignalSignatures extends BaseCollection.SignalSignatures {
+            'notify::attribute-primary-key': GObject.Object.Notify;
+            'notify::attribute-primary-key': GObject.Object.Notify;
+            'notify::attribute-secondary-key': GObject.Object.Notify;
+            'notify::attribute-secondary-key': GObject.Object.Notify;
+            'notify::primary-keys-set': GObject.Object.Notify;
+            'notify::primary-keys-set': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4363,14 +4506,17 @@ export namespace GXml {
             signal: K,
             callback: GomHashPairedMap.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomHashPairedMap.SignalSignatures>(
             signal: K,
             callback: GomHashPairedMap.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomHashPairedMap.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomHashPairedMap.SignalSignatures[K]>
+            ...args: GomHashPairedMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4863,7 +5009,16 @@ export namespace GXml {
 
     namespace GomHashThreeMap {
         // Signal signatures
-        interface SignalSignatures extends BaseCollection.SignalSignatures {}
+        interface SignalSignatures extends BaseCollection.SignalSignatures {
+            'notify::attribute-primary-key': GObject.Object.Notify;
+            'notify::attribute-primary-key': GObject.Object.Notify;
+            'notify::attribute-secondary-key': GObject.Object.Notify;
+            'notify::attribute-secondary-key': GObject.Object.Notify;
+            'notify::attribute-third-key': GObject.Object.Notify;
+            'notify::attribute-third-key': GObject.Object.Notify;
+            'notify::primary-keys-set': GObject.Object.Notify;
+            'notify::primary-keys-set': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4887,14 +5042,17 @@ export namespace GXml {
             signal: K,
             callback: GomHashThreeMap.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomHashThreeMap.SignalSignatures>(
             signal: K,
             callback: GomHashThreeMap.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomHashThreeMap.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomHashThreeMap.SignalSignatures[K]>
+            ...args: GomHashThreeMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5402,7 +5560,29 @@ export namespace GXml {
 
     namespace GomDocument {
         // Signal signatures
-        interface SignalSignatures extends GomNode.SignalSignatures {}
+        interface SignalSignatures extends GomNode.SignalSignatures {
+            'notify::children': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::implementation': GObject.Object.Notify;
+            'notify::url': GObject.Object.Notify;
+            'notify::document-uri': GObject.Object.Notify;
+            'notify::document-uri': GObject.Object.Notify;
+            'notify::origin': GObject.Object.Notify;
+            'notify::compat-mode': GObject.Object.Notify;
+            'notify::compat-mode': GObject.Object.Notify;
+            'notify::character-set': GObject.Object.Notify;
+            'notify::character-set': GObject.Object.Notify;
+            'notify::content-type': GObject.Object.Notify;
+            'notify::content-type': GObject.Object.Notify;
+            'notify::doctype': GObject.Object.Notify;
+            'notify::document-element': GObject.Object.Notify;
+            'notify::document-element': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5441,14 +5621,17 @@ export namespace GXml {
             signal: K,
             callback: GomDocument.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomDocument.SignalSignatures>(
             signal: K,
             callback: GomDocument.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomDocument.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomDocument.SignalSignatures[K]>
+            ...args: GomDocument.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -6038,14 +6221,17 @@ export namespace GXml {
             signal: K,
             callback: GomImplementation.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomImplementation.SignalSignatures>(
             signal: K,
             callback: GomImplementation.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomImplementation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomImplementation.SignalSignatures[K]>
+            ...args: GomImplementation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         create_document_type(qualified_name: string, public_id: string, system_id: string): DomDocumentType;
@@ -6499,7 +6685,13 @@ export namespace GXml {
 
     namespace GomDocumentType {
         // Signal signatures
-        interface SignalSignatures extends GomNode.SignalSignatures {}
+        interface SignalSignatures extends GomNode.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::public-id': GObject.Object.Notify;
+            'notify::public-id': GObject.Object.Notify;
+            'notify::system-id': GObject.Object.Notify;
+            'notify::system-id': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6533,14 +6725,17 @@ export namespace GXml {
             signal: K,
             callback: GomDocumentType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomDocumentType.SignalSignatures>(
             signal: K,
             callback: GomDocumentType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomDocumentType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomDocumentType.SignalSignatures[K]>
+            ...args: GomDocumentType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get name(): string;
@@ -7001,7 +7196,15 @@ export namespace GXml {
 
     namespace GomDocumentFragment {
         // Signal signatures
-        interface SignalSignatures extends GomNode.SignalSignatures {}
+        interface SignalSignatures extends GomNode.SignalSignatures {
+            'notify::children': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -7032,14 +7235,17 @@ export namespace GXml {
             signal: K,
             callback: GomDocumentFragment.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomDocumentFragment.SignalSignatures>(
             signal: K,
             callback: GomDocumentFragment.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomDocumentFragment.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomDocumentFragment.SignalSignatures[K]>
+            ...args: GomDocumentFragment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get children(): DomHTMLCollection;
@@ -7510,7 +7716,35 @@ export namespace GXml {
 
     namespace GomElement {
         // Signal signatures
-        interface SignalSignatures extends GomNode.SignalSignatures {}
+        interface SignalSignatures extends GomNode.SignalSignatures {
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::unparsed': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -7556,14 +7790,17 @@ export namespace GXml {
             signal: K,
             callback: GomElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomElement.SignalSignatures>(
             signal: K,
             callback: GomElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomElement.SignalSignatures[K]>
+            ...args: GomElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -8197,7 +8434,29 @@ export namespace GXml {
 
     namespace GomElementAttributes {
         // Signal signatures
-        interface SignalSignatures extends Gee.HashMap.SignalSignatures {}
+        interface SignalSignatures extends Gee.HashMap.SignalSignatures {
+            'notify::k-type': GObject.Object.Notify;
+            'notify::k-type': GObject.Object.Notify;
+            'notify::k-dup-func': GObject.Object.Notify;
+            'notify::k-dup-func': GObject.Object.Notify;
+            'notify::k-destroy-func': GObject.Object.Notify;
+            'notify::k-destroy-func': GObject.Object.Notify;
+            'notify::v-type': GObject.Object.Notify;
+            'notify::v-type': GObject.Object.Notify;
+            'notify::v-dup-func': GObject.Object.Notify;
+            'notify::v-dup-func': GObject.Object.Notify;
+            'notify::v-destroy-func': GObject.Object.Notify;
+            'notify::v-destroy-func': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::keys': GObject.Object.Notify;
+            'notify::values': GObject.Object.Notify;
+            'notify::entries': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::length': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8224,14 +8483,17 @@ export namespace GXml {
             signal: K,
             callback: GomElementAttributes.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomElementAttributes.SignalSignatures>(
             signal: K,
             callback: GomElementAttributes.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomElementAttributes.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomElementAttributes.SignalSignatures[K]>
+            ...args: GomElementAttributes.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get length(): number;
@@ -8698,7 +8960,34 @@ export namespace GXml {
 
     namespace GomNode {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8722,14 +9011,17 @@ export namespace GXml {
         // Signals
 
         connect<K extends keyof GomNode.SignalSignatures>(signal: K, callback: GomNode.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomNode.SignalSignatures>(
             signal: K,
             callback: GomNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomNode.SignalSignatures[K]>
+            ...args: GomNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get node_type(): DomNodeNodeType;
@@ -9273,7 +9565,20 @@ export namespace GXml {
 
     namespace GomNodeList {
         // Signal signatures
-        interface SignalSignatures extends Gee.ArrayList.SignalSignatures {}
+        interface SignalSignatures extends Gee.ArrayList.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::length': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -9297,14 +9602,17 @@ export namespace GXml {
             signal: K,
             callback: GomNodeList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomNodeList.SignalSignatures>(
             signal: K,
             callback: GomNodeList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomNodeList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomNodeList.SignalSignatures[K]>
+            ...args: GomNodeList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get length(): number;
@@ -9759,7 +10067,9 @@ export namespace GXml {
 
     namespace GomBaseProperty {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::value': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -9788,14 +10098,17 @@ export namespace GXml {
             signal: K,
             callback: GomBaseProperty.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomBaseProperty.SignalSignatures>(
             signal: K,
             callback: GomBaseProperty.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomBaseProperty.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomBaseProperty.SignalSignatures[K]>
+            ...args: GomBaseProperty.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -10253,7 +10566,9 @@ export namespace GXml {
 
     namespace GomString {
         // Signal signatures
-        interface SignalSignatures extends GomBaseProperty.SignalSignatures {}
+        interface SignalSignatures extends GomBaseProperty.SignalSignatures {
+            'notify::value': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10274,19 +10589,24 @@ export namespace GXml {
         // Signals
 
         connect<K extends keyof GomString.SignalSignatures>(signal: K, callback: GomString.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomString.SignalSignatures>(
             signal: K,
             callback: GomString.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomString.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomString.SignalSignatures[K]>
+            ...args: GomString.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace GomArrayString {
         // Signal signatures
-        interface SignalSignatures extends GomBaseProperty.SignalSignatures {}
+        interface SignalSignatures extends GomBaseProperty.SignalSignatures {
+            'notify::value': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10310,14 +10630,17 @@ export namespace GXml {
             signal: K,
             callback: GomArrayString.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomArrayString.SignalSignatures>(
             signal: K,
             callback: GomArrayString.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomArrayString.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomArrayString.SignalSignatures[K]>
+            ...args: GomArrayString.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -10330,7 +10653,12 @@ export namespace GXml {
 
     namespace GomXsdArrayString {
         // Signal signatures
-        interface SignalSignatures extends GomArrayString.SignalSignatures {}
+        interface SignalSignatures extends GomArrayString.SignalSignatures {
+            'notify::simple-type': GObject.Object.Notify;
+            'notify::simple-type': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10367,14 +10695,17 @@ export namespace GXml {
             signal: K,
             callback: GomXsdArrayString.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomXsdArrayString.SignalSignatures>(
             signal: K,
             callback: GomXsdArrayString.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomXsdArrayString.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomXsdArrayString.SignalSignatures[K]>
+            ...args: GomXsdArrayString.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -10387,7 +10718,10 @@ export namespace GXml {
 
     namespace GomDouble {
         // Signal signatures
-        interface SignalSignatures extends GomBaseProperty.SignalSignatures {}
+        interface SignalSignatures extends GomBaseProperty.SignalSignatures {
+            'notify::decimals': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10415,14 +10749,17 @@ export namespace GXml {
         // Signals
 
         connect<K extends keyof GomDouble.SignalSignatures>(signal: K, callback: GomDouble.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomDouble.SignalSignatures>(
             signal: K,
             callback: GomDouble.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomDouble.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomDouble.SignalSignatures[K]>
+            ...args: GomDouble.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -10434,7 +10771,10 @@ export namespace GXml {
 
     namespace GomFloat {
         // Signal signatures
-        interface SignalSignatures extends GomDouble.SignalSignatures {}
+        interface SignalSignatures extends GomDouble.SignalSignatures {
+            'notify::decimals': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10455,14 +10795,17 @@ export namespace GXml {
         // Signals
 
         connect<K extends keyof GomFloat.SignalSignatures>(signal: K, callback: GomFloat.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomFloat.SignalSignatures>(
             signal: K,
             callback: GomFloat.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomFloat.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomFloat.SignalSignatures[K]>
+            ...args: GomFloat.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -10472,7 +10815,9 @@ export namespace GXml {
 
     namespace GomInt {
         // Signal signatures
-        interface SignalSignatures extends GomBaseProperty.SignalSignatures {}
+        interface SignalSignatures extends GomBaseProperty.SignalSignatures {
+            'notify::value': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10493,8 +10838,14 @@ export namespace GXml {
         // Signals
 
         connect<K extends keyof GomInt.SignalSignatures>(signal: K, callback: GomInt.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomInt.SignalSignatures>(signal: K, callback: GomInt.SignalSignatures[K]): number;
-        emit<K extends keyof GomInt.SignalSignatures>(signal: K, ...args: Parameters<GomInt.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof GomInt.SignalSignatures>(
+            signal: K,
+            ...args: GomInt.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -10504,7 +10855,9 @@ export namespace GXml {
 
     namespace GomBoolean {
         // Signal signatures
-        interface SignalSignatures extends GomBaseProperty.SignalSignatures {}
+        interface SignalSignatures extends GomBaseProperty.SignalSignatures {
+            'notify::value': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10528,14 +10881,17 @@ export namespace GXml {
             signal: K,
             callback: GomBoolean.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomBoolean.SignalSignatures>(
             signal: K,
             callback: GomBoolean.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomBoolean.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomBoolean.SignalSignatures[K]>
+            ...args: GomBoolean.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -10545,7 +10901,11 @@ export namespace GXml {
 
     namespace GomEnum {
         // Signal signatures
-        interface SignalSignatures extends GomBaseProperty.SignalSignatures {}
+        interface SignalSignatures extends GomBaseProperty.SignalSignatures {
+            'notify::enum-type': GObject.Object.Notify;
+            'notify::enum-type': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10576,14 +10936,17 @@ export namespace GXml {
         // Signals
 
         connect<K extends keyof GomEnum.SignalSignatures>(signal: K, callback: GomEnum.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomEnum.SignalSignatures>(
             signal: K,
             callback: GomEnum.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomEnum.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomEnum.SignalSignatures[K]>
+            ...args: GomEnum.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -10596,7 +10959,9 @@ export namespace GXml {
 
     namespace GomDate {
         // Signal signatures
-        interface SignalSignatures extends GomBaseProperty.SignalSignatures {}
+        interface SignalSignatures extends GomBaseProperty.SignalSignatures {
+            'notify::value': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10617,14 +10982,17 @@ export namespace GXml {
         // Signals
 
         connect<K extends keyof GomDate.SignalSignatures>(signal: K, callback: GomDate.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomDate.SignalSignatures>(
             signal: K,
             callback: GomDate.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomDate.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomDate.SignalSignatures[K]>
+            ...args: GomDate.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -10634,7 +11002,10 @@ export namespace GXml {
 
     namespace GomDateTime {
         // Signal signatures
-        interface SignalSignatures extends GomBaseProperty.SignalSignatures {}
+        interface SignalSignatures extends GomBaseProperty.SignalSignatures {
+            'notify::format': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10665,14 +11036,17 @@ export namespace GXml {
             signal: K,
             callback: GomDateTime.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomDateTime.SignalSignatures>(
             signal: K,
             callback: GomDateTime.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomDateTime.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomDateTime.SignalSignatures[K]>
+            ...args: GomDateTime.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -10684,7 +11058,17 @@ export namespace GXml {
 
     namespace GomXsdSchema {
         // Signal signatures
-        interface SignalSignatures extends GomElement.SignalSignatures {}
+        interface SignalSignatures extends GomElement.SignalSignatures {
+            'notify::element-definitions': GObject.Object.Notify;
+            'notify::element-definitions': GObject.Object.Notify;
+            'notify::simple-type-definitions': GObject.Object.Notify;
+            'notify::simple-type-definitions': GObject.Object.Notify;
+            'notify::complex-type-definitions': GObject.Object.Notify;
+            'notify::complex-type-definitions': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::unparsed': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10730,14 +11114,17 @@ export namespace GXml {
             signal: K,
             callback: GomXsdSchema.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomXsdSchema.SignalSignatures>(
             signal: K,
             callback: GomXsdSchema.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomXsdSchema.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomXsdSchema.SignalSignatures[K]>
+            ...args: GomXsdSchema.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -10751,7 +11138,17 @@ export namespace GXml {
 
     namespace GomXsdSimpleType {
         // Signal signatures
-        interface SignalSignatures extends GomElement.SignalSignatures {}
+        interface SignalSignatures extends GomElement.SignalSignatures {
+            'notify::final': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::annotation': GObject.Object.Notify;
+            'notify::list': GObject.Object.Notify;
+            'notify::union': GObject.Object.Notify;
+            'notify::restriction': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::unparsed': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10797,14 +11194,17 @@ export namespace GXml {
             signal: K,
             callback: GomXsdSimpleType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomXsdSimpleType.SignalSignatures>(
             signal: K,
             callback: GomXsdSimpleType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomXsdSimpleType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomXsdSimpleType.SignalSignatures[K]>
+            ...args: GomXsdSimpleType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -10824,7 +11224,12 @@ export namespace GXml {
 
     namespace GomXsdTypeDefinition {
         // Signal signatures
-        interface SignalSignatures extends GomElement.SignalSignatures {}
+        interface SignalSignatures extends GomElement.SignalSignatures {
+            'notify::annotation': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::unparsed': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10855,14 +11260,17 @@ export namespace GXml {
             signal: K,
             callback: GomXsdTypeDefinition.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomXsdTypeDefinition.SignalSignatures>(
             signal: K,
             callback: GomXsdTypeDefinition.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomXsdTypeDefinition.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomXsdTypeDefinition.SignalSignatures[K]>
+            ...args: GomXsdTypeDefinition.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -10872,7 +11280,12 @@ export namespace GXml {
 
     namespace GomXsdTypeList {
         // Signal signatures
-        interface SignalSignatures extends GomXsdTypeDefinition.SignalSignatures {}
+        interface SignalSignatures extends GomXsdTypeDefinition.SignalSignatures {
+            'notify::annotation': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::unparsed': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10896,19 +11309,27 @@ export namespace GXml {
             signal: K,
             callback: GomXsdTypeList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomXsdTypeList.SignalSignatures>(
             signal: K,
             callback: GomXsdTypeList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomXsdTypeList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomXsdTypeList.SignalSignatures[K]>
+            ...args: GomXsdTypeList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace GomXsdTypeUnion {
         // Signal signatures
-        interface SignalSignatures extends GomXsdTypeDefinition.SignalSignatures {}
+        interface SignalSignatures extends GomXsdTypeDefinition.SignalSignatures {
+            'notify::annotation': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::unparsed': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10932,19 +11353,33 @@ export namespace GXml {
             signal: K,
             callback: GomXsdTypeUnion.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomXsdTypeUnion.SignalSignatures>(
             signal: K,
             callback: GomXsdTypeUnion.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomXsdTypeUnion.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomXsdTypeUnion.SignalSignatures[K]>
+            ...args: GomXsdTypeUnion.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace GomXsdTypeRestriction {
         // Signal signatures
-        interface SignalSignatures extends GomXsdTypeDefinition.SignalSignatures {}
+        interface SignalSignatures extends GomXsdTypeDefinition.SignalSignatures {
+            'notify::base': GObject.Object.Notify;
+            'notify::simple-type': GObject.Object.Notify;
+            'notify::simple-type': GObject.Object.Notify;
+            'notify::enumerations': GObject.Object.Notify;
+            'notify::white-spaces': GObject.Object.Notify;
+            'notify::white-spaces': GObject.Object.Notify;
+            'notify::annotation': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::unparsed': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10990,14 +11425,17 @@ export namespace GXml {
             signal: K,
             callback: GomXsdTypeRestriction.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomXsdTypeRestriction.SignalSignatures>(
             signal: K,
             callback: GomXsdTypeRestriction.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomXsdTypeRestriction.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomXsdTypeRestriction.SignalSignatures[K]>
+            ...args: GomXsdTypeRestriction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -11013,7 +11451,12 @@ export namespace GXml {
 
     namespace GomXsdTypeRestrictionDef {
         // Signal signatures
-        interface SignalSignatures extends GomElement.SignalSignatures {}
+        interface SignalSignatures extends GomElement.SignalSignatures {
+            'notify::annotation': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::unparsed': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11044,14 +11487,17 @@ export namespace GXml {
             signal: K,
             callback: GomXsdTypeRestrictionDef.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomXsdTypeRestrictionDef.SignalSignatures>(
             signal: K,
             callback: GomXsdTypeRestrictionDef.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomXsdTypeRestrictionDef.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomXsdTypeRestrictionDef.SignalSignatures[K]>
+            ...args: GomXsdTypeRestrictionDef.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -11061,7 +11507,12 @@ export namespace GXml {
 
     namespace GomXsdTypeRestrictionMinExclusive {
         // Signal signatures
-        interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {}
+        interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {
+            'notify::annotation': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::unparsed': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11085,19 +11536,27 @@ export namespace GXml {
             signal: K,
             callback: GomXsdTypeRestrictionMinExclusive.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomXsdTypeRestrictionMinExclusive.SignalSignatures>(
             signal: K,
             callback: GomXsdTypeRestrictionMinExclusive.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomXsdTypeRestrictionMinExclusive.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomXsdTypeRestrictionMinExclusive.SignalSignatures[K]>
+            ...args: GomXsdTypeRestrictionMinExclusive.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace GomXsdTypeRestrictionMinInclusive {
         // Signal signatures
-        interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {}
+        interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {
+            'notify::annotation': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::unparsed': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11121,19 +11580,27 @@ export namespace GXml {
             signal: K,
             callback: GomXsdTypeRestrictionMinInclusive.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomXsdTypeRestrictionMinInclusive.SignalSignatures>(
             signal: K,
             callback: GomXsdTypeRestrictionMinInclusive.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomXsdTypeRestrictionMinInclusive.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomXsdTypeRestrictionMinInclusive.SignalSignatures[K]>
+            ...args: GomXsdTypeRestrictionMinInclusive.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace GomXsdTypeRestrictionMaxExclusive {
         // Signal signatures
-        interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {}
+        interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {
+            'notify::annotation': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::unparsed': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11157,19 +11624,27 @@ export namespace GXml {
             signal: K,
             callback: GomXsdTypeRestrictionMaxExclusive.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomXsdTypeRestrictionMaxExclusive.SignalSignatures>(
             signal: K,
             callback: GomXsdTypeRestrictionMaxExclusive.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomXsdTypeRestrictionMaxExclusive.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomXsdTypeRestrictionMaxExclusive.SignalSignatures[K]>
+            ...args: GomXsdTypeRestrictionMaxExclusive.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace GomXsdTypeRestrictionMaxInclusive {
         // Signal signatures
-        interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {}
+        interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {
+            'notify::annotation': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::unparsed': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11193,19 +11668,27 @@ export namespace GXml {
             signal: K,
             callback: GomXsdTypeRestrictionMaxInclusive.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomXsdTypeRestrictionMaxInclusive.SignalSignatures>(
             signal: K,
             callback: GomXsdTypeRestrictionMaxInclusive.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomXsdTypeRestrictionMaxInclusive.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomXsdTypeRestrictionMaxInclusive.SignalSignatures[K]>
+            ...args: GomXsdTypeRestrictionMaxInclusive.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace GomXsdTypeRestrictionTotalDigits {
         // Signal signatures
-        interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {}
+        interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {
+            'notify::annotation': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::unparsed': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11229,19 +11712,27 @@ export namespace GXml {
             signal: K,
             callback: GomXsdTypeRestrictionTotalDigits.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomXsdTypeRestrictionTotalDigits.SignalSignatures>(
             signal: K,
             callback: GomXsdTypeRestrictionTotalDigits.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomXsdTypeRestrictionTotalDigits.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomXsdTypeRestrictionTotalDigits.SignalSignatures[K]>
+            ...args: GomXsdTypeRestrictionTotalDigits.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace GomXsdTypeRestrictionFractionDigits {
         // Signal signatures
-        interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {}
+        interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {
+            'notify::annotation': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::unparsed': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11265,19 +11756,29 @@ export namespace GXml {
             signal: K,
             callback: GomXsdTypeRestrictionFractionDigits.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomXsdTypeRestrictionFractionDigits.SignalSignatures>(
             signal: K,
             callback: GomXsdTypeRestrictionFractionDigits.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomXsdTypeRestrictionFractionDigits.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomXsdTypeRestrictionFractionDigits.SignalSignatures[K]>
+            ...args: GomXsdTypeRestrictionFractionDigits.SignalSignatures[K] extends (...args: infer P) => any
+                ? P
+                : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace GomXsdTypeRestrictionLength {
         // Signal signatures
-        interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {}
+        interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {
+            'notify::annotation': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::unparsed': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11301,19 +11802,27 @@ export namespace GXml {
             signal: K,
             callback: GomXsdTypeRestrictionLength.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomXsdTypeRestrictionLength.SignalSignatures>(
             signal: K,
             callback: GomXsdTypeRestrictionLength.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomXsdTypeRestrictionLength.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomXsdTypeRestrictionLength.SignalSignatures[K]>
+            ...args: GomXsdTypeRestrictionLength.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace GomXsdTypeRestrictionMinLength {
         // Signal signatures
-        interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {}
+        interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {
+            'notify::annotation': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::unparsed': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11337,19 +11846,27 @@ export namespace GXml {
             signal: K,
             callback: GomXsdTypeRestrictionMinLength.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomXsdTypeRestrictionMinLength.SignalSignatures>(
             signal: K,
             callback: GomXsdTypeRestrictionMinLength.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomXsdTypeRestrictionMinLength.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomXsdTypeRestrictionMinLength.SignalSignatures[K]>
+            ...args: GomXsdTypeRestrictionMinLength.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace GomXsdTypeRestrictionMaxLength {
         // Signal signatures
-        interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {}
+        interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {
+            'notify::annotation': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::unparsed': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11373,19 +11890,28 @@ export namespace GXml {
             signal: K,
             callback: GomXsdTypeRestrictionMaxLength.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomXsdTypeRestrictionMaxLength.SignalSignatures>(
             signal: K,
             callback: GomXsdTypeRestrictionMaxLength.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomXsdTypeRestrictionMaxLength.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomXsdTypeRestrictionMaxLength.SignalSignatures[K]>
+            ...args: GomXsdTypeRestrictionMaxLength.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace GomXsdTypeRestrictionEnumeration {
         // Signal signatures
-        interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {}
+        interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {
+            'notify::value': GObject.Object.Notify;
+            'notify::annotation': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::unparsed': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11416,14 +11942,17 @@ export namespace GXml {
             signal: K,
             callback: GomXsdTypeRestrictionEnumeration.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomXsdTypeRestrictionEnumeration.SignalSignatures>(
             signal: K,
             callback: GomXsdTypeRestrictionEnumeration.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomXsdTypeRestrictionEnumeration.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomXsdTypeRestrictionEnumeration.SignalSignatures[K]>
+            ...args: GomXsdTypeRestrictionEnumeration.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -11433,7 +11962,14 @@ export namespace GXml {
 
     namespace GomXsdTypeRestrictionWhiteSpace {
         // Signal signatures
-        interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {}
+        interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {
+            'notify::fixed': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+            'notify::annotation': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::unparsed': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11467,14 +12003,17 @@ export namespace GXml {
             signal: K,
             callback: GomXsdTypeRestrictionWhiteSpace.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomXsdTypeRestrictionWhiteSpace.SignalSignatures>(
             signal: K,
             callback: GomXsdTypeRestrictionWhiteSpace.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomXsdTypeRestrictionWhiteSpace.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomXsdTypeRestrictionWhiteSpace.SignalSignatures[K]>
+            ...args: GomXsdTypeRestrictionWhiteSpace.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -11486,7 +12025,9 @@ export namespace GXml {
 
     namespace GomXsdTypeRestrictionWhiteSpaceFixed {
         // Signal signatures
-        interface SignalSignatures extends GomBoolean.SignalSignatures {}
+        interface SignalSignatures extends GomBoolean.SignalSignatures {
+            'notify::value': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11510,19 +12051,29 @@ export namespace GXml {
             signal: K,
             callback: GomXsdTypeRestrictionWhiteSpaceFixed.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomXsdTypeRestrictionWhiteSpaceFixed.SignalSignatures>(
             signal: K,
             callback: GomXsdTypeRestrictionWhiteSpaceFixed.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomXsdTypeRestrictionWhiteSpaceFixed.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomXsdTypeRestrictionWhiteSpaceFixed.SignalSignatures[K]>
+            ...args: GomXsdTypeRestrictionWhiteSpaceFixed.SignalSignatures[K] extends (...args: infer P) => any
+                ? P
+                : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace GomXsdTypeRestrictionPattern {
         // Signal signatures
-        interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {}
+        interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {
+            'notify::annotation': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::unparsed': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11546,19 +12097,27 @@ export namespace GXml {
             signal: K,
             callback: GomXsdTypeRestrictionPattern.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomXsdTypeRestrictionPattern.SignalSignatures>(
             signal: K,
             callback: GomXsdTypeRestrictionPattern.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomXsdTypeRestrictionPattern.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomXsdTypeRestrictionPattern.SignalSignatures[K]>
+            ...args: GomXsdTypeRestrictionPattern.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace GomXsdTypeRestrictionAssertion {
         // Signal signatures
-        interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {}
+        interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {
+            'notify::annotation': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::unparsed': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11582,19 +12141,27 @@ export namespace GXml {
             signal: K,
             callback: GomXsdTypeRestrictionAssertion.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomXsdTypeRestrictionAssertion.SignalSignatures>(
             signal: K,
             callback: GomXsdTypeRestrictionAssertion.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomXsdTypeRestrictionAssertion.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomXsdTypeRestrictionAssertion.SignalSignatures[K]>
+            ...args: GomXsdTypeRestrictionAssertion.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace GomXsdTypeRestrictionExplicitTimezone {
         // Signal signatures
-        interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {}
+        interface SignalSignatures extends GomXsdTypeRestrictionDef.SignalSignatures {
+            'notify::annotation': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::unparsed': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11618,19 +12185,42 @@ export namespace GXml {
             signal: K,
             callback: GomXsdTypeRestrictionExplicitTimezone.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomXsdTypeRestrictionExplicitTimezone.SignalSignatures>(
             signal: K,
             callback: GomXsdTypeRestrictionExplicitTimezone.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomXsdTypeRestrictionExplicitTimezone.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomXsdTypeRestrictionExplicitTimezone.SignalSignatures[K]>
+            ...args: GomXsdTypeRestrictionExplicitTimezone.SignalSignatures[K] extends (...args: infer P) => any
+                ? P
+                : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace GomXsdComplexType {
         // Signal signatures
-        interface SignalSignatures extends GomXsdBaseType.SignalSignatures {}
+        interface SignalSignatures extends GomXsdBaseType.SignalSignatures {
+            'notify::abstract': GObject.Object.Notify;
+            'notify::block': GObject.Object.Notify;
+            'notify::final': GObject.Object.Notify;
+            'notify::mixed': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::default-attributes-apply': GObject.Object.Notify;
+            'notify::default-attributes-apply': GObject.Object.Notify;
+            'notify::content-type': GObject.Object.Notify;
+            'notify::content-type': GObject.Object.Notify;
+            'notify::type-attributes': GObject.Object.Notify;
+            'notify::type-attributes': GObject.Object.Notify;
+            'notify::group-attributes': GObject.Object.Notify;
+            'notify::group-attributes': GObject.Object.Notify;
+            'notify::anotation': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::unparsed': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11693,14 +12283,17 @@ export namespace GXml {
             signal: K,
             callback: GomXsdComplexType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomXsdComplexType.SignalSignatures>(
             signal: K,
             callback: GomXsdComplexType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomXsdComplexType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomXsdComplexType.SignalSignatures[K]>
+            ...args: GomXsdComplexType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -11724,7 +12317,12 @@ export namespace GXml {
 
     namespace GomXsdExtension {
         // Signal signatures
-        interface SignalSignatures extends GomElement.SignalSignatures {}
+        interface SignalSignatures extends GomElement.SignalSignatures {
+            'notify::base': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::unparsed': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11755,14 +12353,17 @@ export namespace GXml {
             signal: K,
             callback: GomXsdExtension.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomXsdExtension.SignalSignatures>(
             signal: K,
             callback: GomXsdExtension.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomXsdExtension.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomXsdExtension.SignalSignatures[K]>
+            ...args: GomXsdExtension.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -11772,7 +12373,35 @@ export namespace GXml {
 
     namespace GomXsdElement {
         // Signal signatures
-        interface SignalSignatures extends GomElement.SignalSignatures {}
+        interface SignalSignatures extends GomElement.SignalSignatures {
+            'notify::abstract': GObject.Object.Notify;
+            'notify::block': GObject.Object.Notify;
+            'notify::default': GObject.Object.Notify;
+            'notify::final': GObject.Object.Notify;
+            'notify::fixed': GObject.Object.Notify;
+            'notify::form': GObject.Object.Notify;
+            'notify::max-occurs': GObject.Object.Notify;
+            'notify::max-occurs': GObject.Object.Notify;
+            'notify::min-occurs': GObject.Object.Notify;
+            'notify::min-occurs': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::nillable': GObject.Object.Notify;
+            'notify::ref': GObject.Object.Notify;
+            'notify::substitution-group': GObject.Object.Notify;
+            'notify::substitution-group': GObject.Object.Notify;
+            'notify::target-namespace': GObject.Object.Notify;
+            'notify::target-namespace': GObject.Object.Notify;
+            'notify::object-type': GObject.Object.Notify;
+            'notify::object-type': GObject.Object.Notify;
+            'notify::anotation': GObject.Object.Notify;
+            'notify::simple-type': GObject.Object.Notify;
+            'notify::simple-type': GObject.Object.Notify;
+            'notify::complex-type': GObject.Object.Notify;
+            'notify::complex-type': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::unparsed': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11872,14 +12501,17 @@ export namespace GXml {
             signal: K,
             callback: GomXsdElement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomXsdElement.SignalSignatures>(
             signal: K,
             callback: GomXsdElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomXsdElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomXsdElement.SignalSignatures[K]>
+            ...args: GomXsdElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -11921,7 +12553,11 @@ export namespace GXml {
 
     namespace GomXsdAnnotation {
         // Signal signatures
-        interface SignalSignatures extends GomElement.SignalSignatures {}
+        interface SignalSignatures extends GomElement.SignalSignatures {
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::unparsed': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11945,19 +12581,27 @@ export namespace GXml {
             signal: K,
             callback: GomXsdAnnotation.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomXsdAnnotation.SignalSignatures>(
             signal: K,
             callback: GomXsdAnnotation.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomXsdAnnotation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomXsdAnnotation.SignalSignatures[K]>
+            ...args: GomXsdAnnotation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace GomXsdBaseType {
         // Signal signatures
-        interface SignalSignatures extends GomElement.SignalSignatures {}
+        interface SignalSignatures extends GomElement.SignalSignatures {
+            'notify::anotation': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::unparsed': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11988,14 +12632,17 @@ export namespace GXml {
             signal: K,
             callback: GomXsdBaseType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomXsdBaseType.SignalSignatures>(
             signal: K,
             callback: GomXsdBaseType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomXsdBaseType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomXsdBaseType.SignalSignatures[K]>
+            ...args: GomXsdBaseType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -12005,7 +12652,12 @@ export namespace GXml {
 
     namespace GomXsdBaseContent {
         // Signal signatures
-        interface SignalSignatures extends GomElement.SignalSignatures {}
+        interface SignalSignatures extends GomElement.SignalSignatures {
+            'notify::anotation': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::unparsed': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12036,14 +12688,17 @@ export namespace GXml {
             signal: K,
             callback: GomXsdBaseContent.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomXsdBaseContent.SignalSignatures>(
             signal: K,
             callback: GomXsdBaseContent.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomXsdBaseContent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomXsdBaseContent.SignalSignatures[K]>
+            ...args: GomXsdBaseContent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -12053,7 +12708,12 @@ export namespace GXml {
 
     namespace GomXsdSimpleContent {
         // Signal signatures
-        interface SignalSignatures extends GomXsdBaseContent.SignalSignatures {}
+        interface SignalSignatures extends GomXsdBaseContent.SignalSignatures {
+            'notify::anotation': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::unparsed': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12077,19 +12737,27 @@ export namespace GXml {
             signal: K,
             callback: GomXsdSimpleContent.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomXsdSimpleContent.SignalSignatures>(
             signal: K,
             callback: GomXsdSimpleContent.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomXsdSimpleContent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomXsdSimpleContent.SignalSignatures[K]>
+            ...args: GomXsdSimpleContent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace GomXsdComplexContent {
         // Signal signatures
-        interface SignalSignatures extends GomXsdBaseContent.SignalSignatures {}
+        interface SignalSignatures extends GomXsdBaseContent.SignalSignatures {
+            'notify::anotation': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::unparsed': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12113,19 +12781,27 @@ export namespace GXml {
             signal: K,
             callback: GomXsdComplexContent.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomXsdComplexContent.SignalSignatures>(
             signal: K,
             callback: GomXsdComplexContent.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomXsdComplexContent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomXsdComplexContent.SignalSignatures[K]>
+            ...args: GomXsdComplexContent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace GomXsdOpenContent {
         // Signal signatures
-        interface SignalSignatures extends GomXsdBaseContent.SignalSignatures {}
+        interface SignalSignatures extends GomXsdBaseContent.SignalSignatures {
+            'notify::anotation': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::unparsed': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12149,19 +12825,27 @@ export namespace GXml {
             signal: K,
             callback: GomXsdOpenContent.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomXsdOpenContent.SignalSignatures>(
             signal: K,
             callback: GomXsdOpenContent.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomXsdOpenContent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomXsdOpenContent.SignalSignatures[K]>
+            ...args: GomXsdOpenContent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace GomXsdBaseAttribute {
         // Signal signatures
-        interface SignalSignatures extends GomElement.SignalSignatures {}
+        interface SignalSignatures extends GomElement.SignalSignatures {
+            'notify::anotation': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::unparsed': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12192,14 +12876,17 @@ export namespace GXml {
             signal: K,
             callback: GomXsdBaseAttribute.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomXsdBaseAttribute.SignalSignatures>(
             signal: K,
             callback: GomXsdBaseAttribute.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomXsdBaseAttribute.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomXsdBaseAttribute.SignalSignatures[K]>
+            ...args: GomXsdBaseAttribute.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -12209,7 +12896,12 @@ export namespace GXml {
 
     namespace GomXsdAttribute {
         // Signal signatures
-        interface SignalSignatures extends GomXsdBaseAttribute.SignalSignatures {}
+        interface SignalSignatures extends GomXsdBaseAttribute.SignalSignatures {
+            'notify::anotation': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::unparsed': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12233,19 +12925,27 @@ export namespace GXml {
             signal: K,
             callback: GomXsdAttribute.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomXsdAttribute.SignalSignatures>(
             signal: K,
             callback: GomXsdAttribute.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomXsdAttribute.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomXsdAttribute.SignalSignatures[K]>
+            ...args: GomXsdAttribute.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace GomXsdAttributeGroup {
         // Signal signatures
-        interface SignalSignatures extends GomXsdBaseAttribute.SignalSignatures {}
+        interface SignalSignatures extends GomXsdBaseAttribute.SignalSignatures {
+            'notify::anotation': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::parse-children': GObject.Object.Notify;
+            'notify::unparsed': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12269,19 +12969,24 @@ export namespace GXml {
             signal: K,
             callback: GomXsdAttributeGroup.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomXsdAttributeGroup.SignalSignatures>(
             signal: K,
             callback: GomXsdAttributeGroup.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomXsdAttributeGroup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomXsdAttributeGroup.SignalSignatures[K]>
+            ...args: GomXsdAttributeGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace GomXsdList {
         // Signal signatures
-        interface SignalSignatures extends GomArrayList.SignalSignatures {}
+        interface SignalSignatures extends GomArrayList.SignalSignatures {
+            'notify::length': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12311,14 +13016,17 @@ export namespace GXml {
             signal: K,
             callback: GomXsdList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomXsdList.SignalSignatures>(
             signal: K,
             callback: GomXsdList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomXsdList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomXsdList.SignalSignatures[K]>
+            ...args: GomXsdList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -12329,7 +13037,9 @@ export namespace GXml {
 
     namespace GomXsdListElements {
         // Signal signatures
-        interface SignalSignatures extends GomXsdList.SignalSignatures {}
+        interface SignalSignatures extends GomXsdList.SignalSignatures {
+            'notify::length': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12353,19 +13063,24 @@ export namespace GXml {
             signal: K,
             callback: GomXsdListElements.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomXsdListElements.SignalSignatures>(
             signal: K,
             callback: GomXsdListElements.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomXsdListElements.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomXsdListElements.SignalSignatures[K]>
+            ...args: GomXsdListElements.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace GomXsdListSimpleTypes {
         // Signal signatures
-        interface SignalSignatures extends GomXsdList.SignalSignatures {}
+        interface SignalSignatures extends GomXsdList.SignalSignatures {
+            'notify::length': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12389,19 +13104,24 @@ export namespace GXml {
             signal: K,
             callback: GomXsdListSimpleTypes.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomXsdListSimpleTypes.SignalSignatures>(
             signal: K,
             callback: GomXsdListSimpleTypes.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomXsdListSimpleTypes.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomXsdListSimpleTypes.SignalSignatures[K]>
+            ...args: GomXsdListSimpleTypes.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace GomXsdListComplexTypes {
         // Signal signatures
-        interface SignalSignatures extends GomXsdList.SignalSignatures {}
+        interface SignalSignatures extends GomXsdList.SignalSignatures {
+            'notify::length': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12425,19 +13145,24 @@ export namespace GXml {
             signal: K,
             callback: GomXsdListComplexTypes.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomXsdListComplexTypes.SignalSignatures>(
             signal: K,
             callback: GomXsdListComplexTypes.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomXsdListComplexTypes.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomXsdListComplexTypes.SignalSignatures[K]>
+            ...args: GomXsdListComplexTypes.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace GomXsdListTypeRestrictionEnumerations {
         // Signal signatures
-        interface SignalSignatures extends GomXsdList.SignalSignatures {}
+        interface SignalSignatures extends GomXsdList.SignalSignatures {
+            'notify::length': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12461,19 +13186,26 @@ export namespace GXml {
             signal: K,
             callback: GomXsdListTypeRestrictionEnumerations.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomXsdListTypeRestrictionEnumerations.SignalSignatures>(
             signal: K,
             callback: GomXsdListTypeRestrictionEnumerations.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomXsdListTypeRestrictionEnumerations.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomXsdListTypeRestrictionEnumerations.SignalSignatures[K]>
+            ...args: GomXsdListTypeRestrictionEnumerations.SignalSignatures[K] extends (...args: infer P) => any
+                ? P
+                : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace GomXsdListTypeRestrictionWhiteSpaces {
         // Signal signatures
-        interface SignalSignatures extends GomXsdList.SignalSignatures {}
+        interface SignalSignatures extends GomXsdList.SignalSignatures {
+            'notify::length': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12497,19 +13229,31 @@ export namespace GXml {
             signal: K,
             callback: GomXsdListTypeRestrictionWhiteSpaces.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomXsdListTypeRestrictionWhiteSpaces.SignalSignatures>(
             signal: K,
             callback: GomXsdListTypeRestrictionWhiteSpaces.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomXsdListTypeRestrictionWhiteSpaces.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomXsdListTypeRestrictionWhiteSpaces.SignalSignatures[K]>
+            ...args: GomXsdListTypeRestrictionWhiteSpaces.SignalSignatures[K] extends (...args: infer P) => any
+                ? P
+                : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace GomCharacterData {
         // Signal signatures
-        interface SignalSignatures extends GomNode.SignalSignatures {}
+        interface SignalSignatures extends GomNode.SignalSignatures {
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::data': GObject.Object.Notify;
+            'notify::length': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12537,14 +13281,17 @@ export namespace GXml {
             signal: K,
             callback: GomCharacterData.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomCharacterData.SignalSignatures>(
             signal: K,
             callback: GomCharacterData.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomCharacterData.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomCharacterData.SignalSignatures[K]>
+            ...args: GomCharacterData.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get previous_element_sibling(): DomElement;
@@ -13002,7 +13749,12 @@ export namespace GXml {
 
     namespace GomText {
         // Signal signatures
-        interface SignalSignatures extends GomCharacterData.SignalSignatures {}
+        interface SignalSignatures extends GomCharacterData.SignalSignatures {
+            'notify::whole-text': GObject.Object.Notify;
+            'notify::whole-text': GObject.Object.Notify;
+            'notify::data': GObject.Object.Notify;
+            'notify::length': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13026,14 +13778,17 @@ export namespace GXml {
         // Signals
 
         connect<K extends keyof GomText.SignalSignatures>(signal: K, callback: GomText.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomText.SignalSignatures>(
             signal: K,
             callback: GomText.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomText.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomText.SignalSignatures[K]>
+            ...args: GomText.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get whole_text(): string;
@@ -13069,7 +13824,11 @@ export namespace GXml {
 
     namespace GomProcessingInstruction {
         // Signal signatures
-        interface SignalSignatures extends GomCharacterData.SignalSignatures {}
+        interface SignalSignatures extends GomCharacterData.SignalSignatures {
+            'notify::target': GObject.Object.Notify;
+            'notify::data': GObject.Object.Notify;
+            'notify::length': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13098,14 +13857,17 @@ export namespace GXml {
             signal: K,
             callback: GomProcessingInstruction.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomProcessingInstruction.SignalSignatures>(
             signal: K,
             callback: GomProcessingInstruction.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomProcessingInstruction.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomProcessingInstruction.SignalSignatures[K]>
+            ...args: GomProcessingInstruction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get target(): string;
@@ -13138,7 +13900,10 @@ export namespace GXml {
 
     namespace GomComment {
         // Signal signatures
-        interface SignalSignatures extends GomCharacterData.SignalSignatures {}
+        interface SignalSignatures extends GomCharacterData.SignalSignatures {
+            'notify::data': GObject.Object.Notify;
+            'notify::length': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13165,14 +13930,17 @@ export namespace GXml {
             signal: K,
             callback: GomComment.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GomComment.SignalSignatures>(
             signal: K,
             callback: GomComment.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GomComment.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GomComment.SignalSignatures[K]>
+            ...args: GomComment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get data(): string;
@@ -13202,7 +13970,25 @@ export namespace GXml {
 
     namespace GAttribute {
         // Signal signatures
-        interface SignalSignatures extends GNode.SignalSignatures {}
+        interface SignalSignatures extends GNode.SignalSignatures {
+            'notify::attrs': GObject.Object.Notify;
+            'notify::children-nodes': GObject.Object.Notify;
+            'notify::children-nodes': GObject.Object.Notify;
+            'notify::namespaces': GObject.Object.Notify;
+            'notify::document': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::type-node': GObject.Object.Notify;
+            'notify::type-node': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+            'notify::namespace': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::specified': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13229,14 +14015,17 @@ export namespace GXml {
             signal: K,
             callback: GAttribute.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GAttribute.SignalSignatures>(
             signal: K,
             callback: GAttribute.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GAttribute.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GAttribute.SignalSignatures[K]>
+            ...args: GAttribute.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get namespace(): Namespace;
@@ -13717,7 +14506,19 @@ export namespace GXml {
 
     namespace GCDATA {
         // Signal signatures
-        interface SignalSignatures extends GNode.SignalSignatures {}
+        interface SignalSignatures extends GNode.SignalSignatures {
+            'notify::attrs': GObject.Object.Notify;
+            'notify::children-nodes': GObject.Object.Notify;
+            'notify::children-nodes': GObject.Object.Notify;
+            'notify::namespaces': GObject.Object.Notify;
+            'notify::document': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::type-node': GObject.Object.Notify;
+            'notify::type-node': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+            'notify::str': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13738,8 +14539,14 @@ export namespace GXml {
         // Signals
 
         connect<K extends keyof GCDATA.SignalSignatures>(signal: K, callback: GCDATA.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GCDATA.SignalSignatures>(signal: K, callback: GCDATA.SignalSignatures[K]): number;
-        emit<K extends keyof GCDATA.SignalSignatures>(signal: K, ...args: Parameters<GCDATA.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof GCDATA.SignalSignatures>(
+            signal: K,
+            ...args: GCDATA.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get str(): string;
@@ -14190,7 +14997,21 @@ export namespace GXml {
 
     namespace GCharacterData {
         // Signal signatures
-        interface SignalSignatures extends GNonDocumentChildNode.SignalSignatures {}
+        interface SignalSignatures extends GNonDocumentChildNode.SignalSignatures {
+            'notify::attrs': GObject.Object.Notify;
+            'notify::children-nodes': GObject.Object.Notify;
+            'notify::children-nodes': GObject.Object.Notify;
+            'notify::namespaces': GObject.Object.Notify;
+            'notify::document': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::type-node': GObject.Object.Notify;
+            'notify::type-node': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+            'notify::str': GObject.Object.Notify;
+            'notify::data': GObject.Object.Notify;
+            'notify::length': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -14217,14 +15038,17 @@ export namespace GXml {
             signal: K,
             callback: GCharacterData.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GCharacterData.SignalSignatures>(
             signal: K,
             callback: GCharacterData.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GCharacterData.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GCharacterData.SignalSignatures[K]>
+            ...args: GCharacterData.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get str(): string;
@@ -14678,7 +15502,18 @@ export namespace GXml {
 
     namespace GChildNode {
         // Signal signatures
-        interface SignalSignatures extends GNode.SignalSignatures {}
+        interface SignalSignatures extends GNode.SignalSignatures {
+            'notify::attrs': GObject.Object.Notify;
+            'notify::children-nodes': GObject.Object.Notify;
+            'notify::children-nodes': GObject.Object.Notify;
+            'notify::namespaces': GObject.Object.Notify;
+            'notify::document': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::type-node': GObject.Object.Notify;
+            'notify::type-node': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -14702,14 +15537,17 @@ export namespace GXml {
             signal: K,
             callback: GChildNode.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GChildNode.SignalSignatures>(
             signal: K,
             callback: GChildNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GChildNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GChildNode.SignalSignatures[K]>
+            ...args: GChildNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         remove(): void;
@@ -15157,7 +15995,22 @@ export namespace GXml {
 
     namespace GNonDocumentChildNode {
         // Signal signatures
-        interface SignalSignatures extends GChildNode.SignalSignatures {}
+        interface SignalSignatures extends GChildNode.SignalSignatures {
+            'notify::attrs': GObject.Object.Notify;
+            'notify::children-nodes': GObject.Object.Notify;
+            'notify::children-nodes': GObject.Object.Notify;
+            'notify::namespaces': GObject.Object.Notify;
+            'notify::document': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::type-node': GObject.Object.Notify;
+            'notify::type-node': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::previous-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+            'notify::next-element-sibling': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -15181,14 +16034,17 @@ export namespace GXml {
             signal: K,
             callback: GNonDocumentChildNode.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GNonDocumentChildNode.SignalSignatures>(
             signal: K,
             callback: GNonDocumentChildNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GNonDocumentChildNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GNonDocumentChildNode.SignalSignatures[K]>
+            ...args: GNonDocumentChildNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get previous_element_sibling(): DomElement;
@@ -15644,7 +16500,21 @@ export namespace GXml {
 
     namespace GComment {
         // Signal signatures
-        interface SignalSignatures extends GCharacterData.SignalSignatures {}
+        interface SignalSignatures extends GCharacterData.SignalSignatures {
+            'notify::attrs': GObject.Object.Notify;
+            'notify::children-nodes': GObject.Object.Notify;
+            'notify::children-nodes': GObject.Object.Notify;
+            'notify::namespaces': GObject.Object.Notify;
+            'notify::document': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::type-node': GObject.Object.Notify;
+            'notify::type-node': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+            'notify::str': GObject.Object.Notify;
+            'notify::data': GObject.Object.Notify;
+            'notify::length': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -15671,14 +16541,17 @@ export namespace GXml {
         // Signals
 
         connect<K extends keyof GComment.SignalSignatures>(signal: K, callback: GComment.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GComment.SignalSignatures>(
             signal: K,
             callback: GComment.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GComment.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GComment.SignalSignatures[K]>
+            ...args: GComment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get str(): string;
@@ -16132,7 +17005,47 @@ export namespace GXml {
 
     namespace GDocument {
         // Signal signatures
-        interface SignalSignatures extends GNode.SignalSignatures {}
+        interface SignalSignatures extends GNode.SignalSignatures {
+            'notify::attrs': GObject.Object.Notify;
+            'notify::children-nodes': GObject.Object.Notify;
+            'notify::children-nodes': GObject.Object.Notify;
+            'notify::namespaces': GObject.Object.Notify;
+            'notify::document': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::type-node': GObject.Object.Notify;
+            'notify::type-node': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+            'notify::indent': GObject.Object.Notify;
+            'notify::ns-top': GObject.Object.Notify;
+            'notify::ns-top': GObject.Object.Notify;
+            'notify::prefix-default-ns': GObject.Object.Notify;
+            'notify::prefix-default-ns': GObject.Object.Notify;
+            'notify::backup': GObject.Object.Notify;
+            'notify::root': GObject.Object.Notify;
+            'notify::file': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::implementation': GObject.Object.Notify;
+            'notify::url': GObject.Object.Notify;
+            'notify::document-uri': GObject.Object.Notify;
+            'notify::document-uri': GObject.Object.Notify;
+            'notify::origin': GObject.Object.Notify;
+            'notify::compat-mode': GObject.Object.Notify;
+            'notify::compat-mode': GObject.Object.Notify;
+            'notify::character-set': GObject.Object.Notify;
+            'notify::character-set': GObject.Object.Notify;
+            'notify::content-type': GObject.Object.Notify;
+            'notify::content-type': GObject.Object.Notify;
+            'notify::doctype': GObject.Object.Notify;
+            'notify::document-element': GObject.Object.Notify;
+            'notify::document-element': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -16179,14 +17092,17 @@ export namespace GXml {
         // Signals
 
         connect<K extends keyof GDocument.SignalSignatures>(signal: K, callback: GDocument.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GDocument.SignalSignatures>(
             signal: K,
             callback: GDocument.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GDocument.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GDocument.SignalSignatures[K]>
+            ...args: GDocument.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -16811,14 +17727,17 @@ export namespace GXml {
             signal: K,
             callback: GImplementation.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GImplementation.SignalSignatures>(
             signal: K,
             callback: GImplementation.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GImplementation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GImplementation.SignalSignatures[K]>
+            ...args: GImplementation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         create_document_type(qualified_name: string, public_id: string, system_id: string): DomDocumentType;
@@ -17272,7 +18191,22 @@ export namespace GXml {
 
     namespace GDocumentType {
         // Signal signatures
-        interface SignalSignatures extends GChildNode.SignalSignatures {}
+        interface SignalSignatures extends GChildNode.SignalSignatures {
+            'notify::attrs': GObject.Object.Notify;
+            'notify::children-nodes': GObject.Object.Notify;
+            'notify::children-nodes': GObject.Object.Notify;
+            'notify::namespaces': GObject.Object.Notify;
+            'notify::document': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::type-node': GObject.Object.Notify;
+            'notify::type-node': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+            'notify::public-id': GObject.Object.Notify;
+            'notify::public-id': GObject.Object.Notify;
+            'notify::system-id': GObject.Object.Notify;
+            'notify::system-id': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17304,14 +18238,17 @@ export namespace GXml {
             signal: K,
             callback: GDocumentType.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GDocumentType.SignalSignatures>(
             signal: K,
             callback: GDocumentType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GDocumentType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GDocumentType.SignalSignatures[K]>
+            ...args: GDocumentType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get name(): string;
@@ -17772,7 +18709,18 @@ export namespace GXml {
 
     namespace GDocumentFragment {
         // Signal signatures
-        interface SignalSignatures extends GDocument.SignalSignatures {}
+        interface SignalSignatures extends GDocument.SignalSignatures {
+            'notify::attrs': GObject.Object.Notify;
+            'notify::children-nodes': GObject.Object.Notify;
+            'notify::children-nodes': GObject.Object.Notify;
+            'notify::namespaces': GObject.Object.Notify;
+            'notify::document': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::type-node': GObject.Object.Notify;
+            'notify::type-node': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17799,14 +18747,17 @@ export namespace GXml {
             signal: K,
             callback: GDocumentFragment.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GDocumentFragment.SignalSignatures>(
             signal: K,
             callback: GDocumentFragment.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GDocumentFragment.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GDocumentFragment.SignalSignatures[K]>
+            ...args: GDocumentFragment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -18252,7 +19203,16 @@ export namespace GXml {
 
     namespace GDomNodeIterator {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::root': GObject.Object.Notify;
+            'notify::reference-node': GObject.Object.Notify;
+            'notify::reference-node': GObject.Object.Notify;
+            'notify::pointer-before-reference-node': GObject.Object.Notify;
+            'notify::pointer-before-reference-node': GObject.Object.Notify;
+            'notify::what-to-show': GObject.Object.Notify;
+            'notify::what-to-show': GObject.Object.Notify;
+            'notify::filter': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -18276,14 +19236,17 @@ export namespace GXml {
             signal: K,
             callback: GDomNodeIterator.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GDomNodeIterator.SignalSignatures>(
             signal: K,
             callback: GDomNodeIterator.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GDomNodeIterator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GDomNodeIterator.SignalSignatures[K]>
+            ...args: GDomNodeIterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get root(): DomNode;
@@ -18755,7 +19718,14 @@ export namespace GXml {
 
     namespace GDomTreeWalker {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::root': GObject.Object.Notify;
+            'notify::what-to-show': GObject.Object.Notify;
+            'notify::what-to-show': GObject.Object.Notify;
+            'notify::filter': GObject.Object.Notify;
+            'notify::current-node': GObject.Object.Notify;
+            'notify::current-node': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -18779,14 +19749,17 @@ export namespace GXml {
             signal: K,
             callback: GDomTreeWalker.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GDomTreeWalker.SignalSignatures>(
             signal: K,
             callback: GDomTreeWalker.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GDomTreeWalker.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GDomTreeWalker.SignalSignatures[K]>
+            ...args: GDomTreeWalker.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get root(): DomNode;
@@ -19262,7 +20235,20 @@ export namespace GXml {
 
     namespace GDomTokenList {
         // Signal signatures
-        interface SignalSignatures extends Gee.ArrayList.SignalSignatures {}
+        interface SignalSignatures extends Gee.ArrayList.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::length': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -19289,14 +20275,17 @@ export namespace GXml {
             signal: K,
             callback: GDomTokenList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GDomTokenList.SignalSignatures>(
             signal: K,
             callback: GDomTokenList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GDomTokenList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GDomTokenList.SignalSignatures[K]>
+            ...args: GDomTokenList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -19777,7 +20766,21 @@ export namespace GXml {
 
     namespace GDomSettableTokenList {
         // Signal signatures
-        interface SignalSignatures extends GDomTokenList.SignalSignatures {}
+        interface SignalSignatures extends GDomTokenList.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+            'notify::length': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -19804,14 +20807,17 @@ export namespace GXml {
             signal: K,
             callback: GDomSettableTokenList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GDomSettableTokenList.SignalSignatures>(
             signal: K,
             callback: GDomSettableTokenList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GDomSettableTokenList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GDomSettableTokenList.SignalSignatures[K]>
+            ...args: GDomSettableTokenList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get value(): string;
@@ -19853,7 +20859,20 @@ export namespace GXml {
 
     namespace GDomHTMLCollection {
         // Signal signatures
-        interface SignalSignatures extends Gee.ArrayList.SignalSignatures {}
+        interface SignalSignatures extends Gee.ArrayList.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::length': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -19877,14 +20896,17 @@ export namespace GXml {
             signal: K,
             callback: GDomHTMLCollection.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GDomHTMLCollection.SignalSignatures>(
             signal: K,
             callback: GDomHTMLCollection.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GDomHTMLCollection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GDomHTMLCollection.SignalSignatures[K]>
+            ...args: GDomHTMLCollection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get length(): number;
@@ -20349,7 +21371,23 @@ export namespace GXml {
 
     namespace GDomEvent {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::etype': GObject.Object.Notify;
+            'notify::event-target': GObject.Object.Notify;
+            'notify::event-target': GObject.Object.Notify;
+            'notify::current-target': GObject.Object.Notify;
+            'notify::current-target': GObject.Object.Notify;
+            'notify::bubbles': GObject.Object.Notify;
+            'notify::cancelable': GObject.Object.Notify;
+            'notify::is-trusted': GObject.Object.Notify;
+            'notify::is-trusted': GObject.Object.Notify;
+            'notify::time-stamp': GObject.Object.Notify;
+            'notify::time-stamp': GObject.Object.Notify;
+            'notify::default-prevented': GObject.Object.Notify;
+            'notify::default-prevented': GObject.Object.Notify;
+            'notify::event-phase': GObject.Object.Notify;
+            'notify::event-phase': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -20370,14 +21408,17 @@ export namespace GXml {
         // Signals
 
         connect<K extends keyof GDomEvent.SignalSignatures>(signal: K, callback: GDomEvent.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GDomEvent.SignalSignatures>(
             signal: K,
             callback: GDomEvent.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GDomEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GDomEvent.SignalSignatures[K]>
+            ...args: GDomEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get etype(): string;
@@ -20866,7 +21907,9 @@ export namespace GXml {
 
     namespace GDomCustomEvent {
         // Signal signatures
-        interface SignalSignatures extends GDomEvent.SignalSignatures {}
+        interface SignalSignatures extends GDomEvent.SignalSignatures {
+            'notify::detail': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -20896,14 +21939,17 @@ export namespace GXml {
             signal: K,
             callback: GDomCustomEvent.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GDomCustomEvent.SignalSignatures>(
             signal: K,
             callback: GDomCustomEvent.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GDomCustomEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GDomCustomEvent.SignalSignatures[K]>
+            ...args: GDomCustomEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -20913,7 +21959,19 @@ export namespace GXml {
 
     namespace GDomRange {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::start-container': GObject.Object.Notify;
+            'notify::start-container': GObject.Object.Notify;
+            'notify::start-offset': GObject.Object.Notify;
+            'notify::start-offset': GObject.Object.Notify;
+            'notify::end-container': GObject.Object.Notify;
+            'notify::end-container': GObject.Object.Notify;
+            'notify::end-offset': GObject.Object.Notify;
+            'notify::end-offset': GObject.Object.Notify;
+            'notify::collapsed': GObject.Object.Notify;
+            'notify::common-ancestor-container': GObject.Object.Notify;
+            'notify::common-ancestor-container': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -20934,14 +21992,17 @@ export namespace GXml {
         // Signals
 
         connect<K extends keyof GDomRange.SignalSignatures>(signal: K, callback: GDomRange.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GDomRange.SignalSignatures>(
             signal: K,
             callback: GDomRange.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GDomRange.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GDomRange.SignalSignatures[K]>
+            ...args: GDomRange.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get start_container(): DomNode;
@@ -21454,7 +22515,39 @@ export namespace GXml {
 
     namespace GElement {
         // Signal signatures
-        interface SignalSignatures extends GNonDocumentChildNode.SignalSignatures {}
+        interface SignalSignatures extends GNonDocumentChildNode.SignalSignatures {
+            'notify::attrs': GObject.Object.Notify;
+            'notify::children-nodes': GObject.Object.Notify;
+            'notify::children-nodes': GObject.Object.Notify;
+            'notify::namespaces': GObject.Object.Notify;
+            'notify::document': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::type-node': GObject.Object.Notify;
+            'notify::type-node': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+            'notify::children': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::first-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::last-element-child': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::child-element-count': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::namespace-uri': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::local-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-name': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::class-list': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::content': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -21483,14 +22576,17 @@ export namespace GXml {
         // Signals
 
         connect<K extends keyof GElement.SignalSignatures>(signal: K, callback: GElement.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GElement.SignalSignatures>(
             signal: K,
             callback: GElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GElement.SignalSignatures[K]>
+            ...args: GElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get children(): DomHTMLCollection;
@@ -22043,7 +23139,29 @@ export namespace GXml {
 
     namespace GHashMapAttr {
         // Signal signatures
-        interface SignalSignatures extends Gee.AbstractMap.SignalSignatures {}
+        interface SignalSignatures extends Gee.AbstractMap.SignalSignatures {
+            'notify::k-type': GObject.Object.Notify;
+            'notify::k-type': GObject.Object.Notify;
+            'notify::k-dup-func': GObject.Object.Notify;
+            'notify::k-dup-func': GObject.Object.Notify;
+            'notify::k-destroy-func': GObject.Object.Notify;
+            'notify::k-destroy-func': GObject.Object.Notify;
+            'notify::v-type': GObject.Object.Notify;
+            'notify::v-type': GObject.Object.Notify;
+            'notify::v-dup-func': GObject.Object.Notify;
+            'notify::v-dup-func': GObject.Object.Notify;
+            'notify::v-destroy-func': GObject.Object.Notify;
+            'notify::v-destroy-func': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::keys': GObject.Object.Notify;
+            'notify::values': GObject.Object.Notify;
+            'notify::entries': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::length': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -22067,14 +23185,17 @@ export namespace GXml {
             signal: K,
             callback: GHashMapAttr.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GHashMapAttr.SignalSignatures>(
             signal: K,
             callback: GHashMapAttr.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GHashMapAttr.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GHashMapAttr.SignalSignatures[K]>
+            ...args: GHashMapAttr.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get length(): number;
@@ -22541,7 +23662,24 @@ export namespace GXml {
 
     namespace GHashMapAttrEntry {
         // Signal signatures
-        interface SignalSignatures extends Gee.MapEntry.SignalSignatures {}
+        interface SignalSignatures extends Gee.MapEntry.SignalSignatures {
+            'notify::k-type': GObject.Object.Notify;
+            'notify::k-type': GObject.Object.Notify;
+            'notify::k-dup-func': GObject.Object.Notify;
+            'notify::k-dup-func': GObject.Object.Notify;
+            'notify::k-destroy-func': GObject.Object.Notify;
+            'notify::k-destroy-func': GObject.Object.Notify;
+            'notify::v-type': GObject.Object.Notify;
+            'notify::v-type': GObject.Object.Notify;
+            'notify::v-dup-func': GObject.Object.Notify;
+            'notify::v-dup-func': GObject.Object.Notify;
+            'notify::v-destroy-func': GObject.Object.Notify;
+            'notify::v-destroy-func': GObject.Object.Notify;
+            'notify::key': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -22565,19 +23703,27 @@ export namespace GXml {
             signal: K,
             callback: GHashMapAttrEntry.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GHashMapAttrEntry.SignalSignatures>(
             signal: K,
             callback: GHashMapAttrEntry.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GHashMapAttrEntry.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GHashMapAttrEntry.SignalSignatures[K]>
+            ...args: GHashMapAttrEntry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace GHashMapAttrIterator {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::valid': GObject.Object.Notify;
+            'notify::mutable': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -22601,14 +23747,17 @@ export namespace GXml {
             signal: K,
             callback: GHashMapAttrIterator.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GHashMapAttrIterator.SignalSignatures>(
             signal: K,
             callback: GHashMapAttrIterator.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GHashMapAttrIterator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GHashMapAttrIterator.SignalSignatures[K]>
+            ...args: GHashMapAttrIterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get valid(): boolean;
@@ -23082,7 +24231,20 @@ export namespace GXml {
 
     namespace GListChildren {
         // Signal signatures
-        interface SignalSignatures extends Gee.AbstractBidirList.SignalSignatures {}
+        interface SignalSignatures extends Gee.AbstractBidirList.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::length': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -23109,14 +24271,17 @@ export namespace GXml {
             signal: K,
             callback: GListChildren.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GListChildren.SignalSignatures>(
             signal: K,
             callback: GListChildren.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GListChildren.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GListChildren.SignalSignatures[K]>
+            ...args: GListChildren.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get length(): number;
@@ -23585,7 +24750,11 @@ export namespace GXml {
 
     namespace GListChildrenIterator {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::valid': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -23618,14 +24787,17 @@ export namespace GXml {
             signal: K,
             callback: GListChildrenIterator.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GListChildrenIterator.SignalSignatures>(
             signal: K,
             callback: GListChildrenIterator.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GListChildrenIterator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GListChildrenIterator.SignalSignatures[K]>
+            ...args: GListChildrenIterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get valid(): boolean;
@@ -24133,7 +25305,19 @@ export namespace GXml {
 
     namespace GListNamespaces {
         // Signal signatures
-        interface SignalSignatures extends Gee.AbstractList.SignalSignatures {}
+        interface SignalSignatures extends Gee.AbstractList.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -24157,19 +25341,26 @@ export namespace GXml {
             signal: K,
             callback: GListNamespaces.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GListNamespaces.SignalSignatures>(
             signal: K,
             callback: GListNamespaces.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GListNamespaces.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GListNamespaces.SignalSignatures[K]>
+            ...args: GListNamespaces.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace GListNamespacesIterator {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::valid': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -24197,14 +25388,17 @@ export namespace GXml {
             signal: K,
             callback: GListNamespacesIterator.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GListNamespacesIterator.SignalSignatures>(
             signal: K,
             callback: GListNamespacesIterator.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GListNamespacesIterator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GListNamespacesIterator.SignalSignatures[K]>
+            ...args: GListNamespacesIterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get valid(): boolean;
@@ -24702,7 +25896,10 @@ export namespace GXml {
 
     namespace GNamespace {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::uri': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -24726,14 +25923,17 @@ export namespace GXml {
             signal: K,
             callback: GNamespace.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GNamespace.SignalSignatures>(
             signal: K,
             callback: GNamespace.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GNamespace.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GNamespace.SignalSignatures[K]>
+            ...args: GNamespace.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -25191,7 +26391,44 @@ export namespace GXml {
 
     namespace GNode {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::attrs': GObject.Object.Notify;
+            'notify::children-nodes': GObject.Object.Notify;
+            'notify::children-nodes': GObject.Object.Notify;
+            'notify::namespaces': GObject.Object.Notify;
+            'notify::document': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::type-node': GObject.Object.Notify;
+            'notify::type-node': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::node-name': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::owner-document': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-node': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::parent-element': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::child-nodes': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::node-value': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+            'notify::text-content': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -25239,8 +26476,14 @@ export namespace GXml {
         // Signals
 
         connect<K extends keyof GNode.SignalSignatures>(signal: K, callback: GNode.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GNode.SignalSignatures>(signal: K, callback: GNode.SignalSignatures[K]): number;
-        emit<K extends keyof GNode.SignalSignatures>(signal: K, ...args: Parameters<GNode.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof GNode.SignalSignatures>(
+            signal: K,
+            ...args: GNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -25829,7 +27072,21 @@ export namespace GXml {
 
     namespace GProcessingInstruction {
         // Signal signatures
-        interface SignalSignatures extends GCharacterData.SignalSignatures {}
+        interface SignalSignatures extends GCharacterData.SignalSignatures {
+            'notify::attrs': GObject.Object.Notify;
+            'notify::children-nodes': GObject.Object.Notify;
+            'notify::children-nodes': GObject.Object.Notify;
+            'notify::namespaces': GObject.Object.Notify;
+            'notify::document': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::type-node': GObject.Object.Notify;
+            'notify::type-node': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+            'notify::target': GObject.Object.Notify;
+            'notify::data': GObject.Object.Notify;
+            'notify::length': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -25859,14 +27116,17 @@ export namespace GXml {
             signal: K,
             callback: GProcessingInstruction.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GProcessingInstruction.SignalSignatures>(
             signal: K,
             callback: GProcessingInstruction.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GProcessingInstruction.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GProcessingInstruction.SignalSignatures[K]>
+            ...args: GProcessingInstruction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get target(): string;
@@ -26317,7 +27577,23 @@ export namespace GXml {
 
     namespace GText {
         // Signal signatures
-        interface SignalSignatures extends GCharacterData.SignalSignatures {}
+        interface SignalSignatures extends GCharacterData.SignalSignatures {
+            'notify::attrs': GObject.Object.Notify;
+            'notify::children-nodes': GObject.Object.Notify;
+            'notify::children-nodes': GObject.Object.Notify;
+            'notify::namespaces': GObject.Object.Notify;
+            'notify::document': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::type-node': GObject.Object.Notify;
+            'notify::type-node': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+            'notify::str': GObject.Object.Notify;
+            'notify::whole-text': GObject.Object.Notify;
+            'notify::whole-text': GObject.Object.Notify;
+            'notify::data': GObject.Object.Notify;
+            'notify::length': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -26344,8 +27620,14 @@ export namespace GXml {
         // Signals
 
         connect<K extends keyof GText.SignalSignatures>(signal: K, callback: GText.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GText.SignalSignatures>(signal: K, callback: GText.SignalSignatures[K]): number;
-        emit<K extends keyof GText.SignalSignatures>(signal: K, ...args: Parameters<GText.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof GText.SignalSignatures>(
+            signal: K,
+            ...args: GText.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get str(): string;
@@ -26805,7 +28087,17 @@ export namespace GXml {
 
     namespace GXPathObject {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::object-type': GObject.Object.Notify;
+            'notify::object-type': GObject.Object.Notify;
+            'notify::boolean-value': GObject.Object.Notify;
+            'notify::boolean-value': GObject.Object.Notify;
+            'notify::string-value': GObject.Object.Notify;
+            'notify::string-value': GObject.Object.Notify;
+            'notify::number-value': GObject.Object.Notify;
+            'notify::number-value': GObject.Object.Notify;
+            'notify::nodeset': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -26829,14 +28121,17 @@ export namespace GXml {
             signal: K,
             callback: GXPathObject.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GXPathObject.SignalSignatures>(
             signal: K,
             callback: GXPathObject.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GXPathObject.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GXPathObject.SignalSignatures[K]>
+            ...args: GXPathObject.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get object_type(): XPathObjectType;
@@ -27303,7 +28598,19 @@ export namespace GXml {
 
     namespace NodeList {
         // Signal signatures
-        interface SignalSignatures extends Gee.ArrayList.SignalSignatures {}
+        interface SignalSignatures extends Gee.ArrayList.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -27324,14 +28631,17 @@ export namespace GXml {
         // Signals
 
         connect<K extends keyof NodeList.SignalSignatures>(signal: K, callback: NodeList.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NodeList.SignalSignatures>(
             signal: K,
             callback: NodeList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NodeList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NodeList.SignalSignatures[K]>
+            ...args: NodeList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -27369,14 +28679,17 @@ export namespace GXml {
             signal: K,
             callback: SerializableBool.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SerializableBool.SignalSignatures>(
             signal: K,
             callback: SerializableBool.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SerializableBool.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SerializableBool.SignalSignatures[K]>
+            ...args: SerializableBool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -27842,7 +29155,10 @@ export namespace GXml {
 
     namespace SerializableContainer {
         // Signal signatures
-        interface SignalSignatures extends SerializableObjectModel.SignalSignatures {}
+        interface SignalSignatures extends SerializableObjectModel.SignalSignatures {
+            'notify::ignored-serializable-properties': GObject.Object.Notify;
+            'notify::ignored-serializable-properties': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -27864,14 +29180,17 @@ export namespace GXml {
             signal: K,
             callback: SerializableContainer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SerializableContainer.SignalSignatures>(
             signal: K,
             callback: SerializableContainer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SerializableContainer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SerializableContainer.SignalSignatures[K]>
+            ...args: SerializableContainer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -27908,14 +29227,17 @@ export namespace GXml {
             signal: K,
             callback: SerializableDouble.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SerializableDouble.SignalSignatures>(
             signal: K,
             callback: SerializableDouble.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SerializableDouble.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SerializableDouble.SignalSignatures[K]>
+            ...args: SerializableDouble.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -28410,14 +29732,17 @@ export namespace GXml {
             signal: K,
             callback: SerializableEnum.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SerializableEnum.SignalSignatures>(
             signal: K,
             callback: SerializableEnum.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SerializableEnum.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SerializableEnum.SignalSignatures[K]>
+            ...args: SerializableEnum.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -28910,14 +30235,17 @@ export namespace GXml {
             signal: K,
             callback: SerializableFloat.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SerializableFloat.SignalSignatures>(
             signal: K,
             callback: SerializableFloat.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SerializableFloat.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SerializableFloat.SignalSignatures[K]>
+            ...args: SerializableFloat.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -28927,7 +30255,27 @@ export namespace GXml {
 
     namespace SerializableArrayList {
         // Signal signatures
-        interface SignalSignatures extends Gee.ArrayList.SignalSignatures {}
+        interface SignalSignatures extends Gee.ArrayList.SignalSignatures {
+            'notify::ignored-serializable-properties': GObject.Object.Notify;
+            'notify::ignored-serializable-properties': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::unknown-serializable-properties': GObject.Object.Notify;
+            'notify::unknown-serializable-properties': GObject.Object.Notify;
+            'notify::unknown-serializable-nodes': GObject.Object.Notify;
+            'notify::unknown-serializable-nodes': GObject.Object.Notify;
+            'notify::serialized-xml-node-value': GObject.Object.Notify;
+            'notify::serialized-xml-node-value': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -28964,14 +30312,17 @@ export namespace GXml {
             signal: K,
             callback: SerializableArrayList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SerializableArrayList.SignalSignatures>(
             signal: K,
             callback: SerializableArrayList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SerializableArrayList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SerializableArrayList.SignalSignatures[K]>
+            ...args: SerializableArrayList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -29487,7 +30838,25 @@ export namespace GXml {
 
     namespace SerializableDualKeyMap {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::value-type': GObject.Object.Notify;
+            'notify::value-type': GObject.Object.Notify;
+            'notify::primary-key-type': GObject.Object.Notify;
+            'notify::primary-key-type': GObject.Object.Notify;
+            'notify::secondary-key-type': GObject.Object.Notify;
+            'notify::secondary-key-type': GObject.Object.Notify;
+            'notify::primary-keys': GObject.Object.Notify;
+            'notify::primary-keys': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::ignored-serializable-properties': GObject.Object.Notify;
+            'notify::ignored-serializable-properties': GObject.Object.Notify;
+            'notify::unknown-serializable-properties': GObject.Object.Notify;
+            'notify::unknown-serializable-properties': GObject.Object.Notify;
+            'notify::unknown-serializable-nodes': GObject.Object.Notify;
+            'notify::unknown-serializable-nodes': GObject.Object.Notify;
+            'notify::serialized-xml-node-value': GObject.Object.Notify;
+            'notify::serialized-xml-node-value': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -29550,14 +30919,17 @@ export namespace GXml {
             signal: K,
             callback: SerializableDualKeyMap.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SerializableDualKeyMap.SignalSignatures>(
             signal: K,
             callback: SerializableDualKeyMap.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SerializableDualKeyMap.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SerializableDualKeyMap.SignalSignatures[K]>
+            ...args: SerializableDualKeyMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -30110,7 +31482,36 @@ export namespace GXml {
 
     namespace SerializableHashMap {
         // Signal signatures
-        interface SignalSignatures extends Gee.HashMap.SignalSignatures {}
+        interface SignalSignatures extends Gee.HashMap.SignalSignatures {
+            'notify::ignored-serializable-properties': GObject.Object.Notify;
+            'notify::ignored-serializable-properties': GObject.Object.Notify;
+            'notify::k-type': GObject.Object.Notify;
+            'notify::k-type': GObject.Object.Notify;
+            'notify::k-dup-func': GObject.Object.Notify;
+            'notify::k-dup-func': GObject.Object.Notify;
+            'notify::k-destroy-func': GObject.Object.Notify;
+            'notify::k-destroy-func': GObject.Object.Notify;
+            'notify::v-type': GObject.Object.Notify;
+            'notify::v-type': GObject.Object.Notify;
+            'notify::v-dup-func': GObject.Object.Notify;
+            'notify::v-dup-func': GObject.Object.Notify;
+            'notify::v-destroy-func': GObject.Object.Notify;
+            'notify::v-destroy-func': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::keys': GObject.Object.Notify;
+            'notify::values': GObject.Object.Notify;
+            'notify::entries': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::unknown-serializable-properties': GObject.Object.Notify;
+            'notify::unknown-serializable-properties': GObject.Object.Notify;
+            'notify::unknown-serializable-nodes': GObject.Object.Notify;
+            'notify::unknown-serializable-nodes': GObject.Object.Notify;
+            'notify::serialized-xml-node-value': GObject.Object.Notify;
+            'notify::serialized-xml-node-value': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -30147,14 +31548,17 @@ export namespace GXml {
             signal: K,
             callback: SerializableHashMap.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SerializableHashMap.SignalSignatures>(
             signal: K,
             callback: SerializableHashMap.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SerializableHashMap.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SerializableHashMap.SignalSignatures[K]>
+            ...args: SerializableHashMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -30670,7 +32074,40 @@ export namespace GXml {
 
     namespace SerializableTreeMap {
         // Signal signatures
-        interface SignalSignatures extends Gee.TreeMap.SignalSignatures {}
+        interface SignalSignatures extends Gee.TreeMap.SignalSignatures {
+            'notify::ignored-serializable-properties': GObject.Object.Notify;
+            'notify::ignored-serializable-properties': GObject.Object.Notify;
+            'notify::k-type': GObject.Object.Notify;
+            'notify::k-type': GObject.Object.Notify;
+            'notify::k-dup-func': GObject.Object.Notify;
+            'notify::k-dup-func': GObject.Object.Notify;
+            'notify::k-destroy-func': GObject.Object.Notify;
+            'notify::k-destroy-func': GObject.Object.Notify;
+            'notify::v-type': GObject.Object.Notify;
+            'notify::v-type': GObject.Object.Notify;
+            'notify::v-dup-func': GObject.Object.Notify;
+            'notify::v-dup-func': GObject.Object.Notify;
+            'notify::v-destroy-func': GObject.Object.Notify;
+            'notify::v-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::ascending-keys': GObject.Object.Notify;
+            'notify::ascending-keys': GObject.Object.Notify;
+            'notify::ascending-entries': GObject.Object.Notify;
+            'notify::ascending-entries': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::keys': GObject.Object.Notify;
+            'notify::values': GObject.Object.Notify;
+            'notify::entries': GObject.Object.Notify;
+            'notify::unknown-serializable-properties': GObject.Object.Notify;
+            'notify::unknown-serializable-properties': GObject.Object.Notify;
+            'notify::unknown-serializable-nodes': GObject.Object.Notify;
+            'notify::unknown-serializable-nodes': GObject.Object.Notify;
+            'notify::serialized-xml-node-value': GObject.Object.Notify;
+            'notify::serialized-xml-node-value': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -30707,14 +32144,17 @@ export namespace GXml {
             signal: K,
             callback: SerializableTreeMap.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SerializableTreeMap.SignalSignatures>(
             signal: K,
             callback: SerializableTreeMap.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SerializableTreeMap.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SerializableTreeMap.SignalSignatures[K]>
+            ...args: SerializableTreeMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -31254,14 +32694,17 @@ export namespace GXml {
             signal: K,
             callback: SerializableInt.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SerializableInt.SignalSignatures>(
             signal: K,
             callback: SerializableInt.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SerializableInt.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SerializableInt.SignalSignatures[K]>
+            ...args: SerializableInt.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -31271,7 +32714,16 @@ export namespace GXml {
 
     namespace SerializableObjectModel {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::ignored-serializable-properties': GObject.Object.Notify;
+            'notify::ignored-serializable-properties': GObject.Object.Notify;
+            'notify::unknown-serializable-properties': GObject.Object.Notify;
+            'notify::unknown-serializable-properties': GObject.Object.Notify;
+            'notify::unknown-serializable-nodes': GObject.Object.Notify;
+            'notify::unknown-serializable-nodes': GObject.Object.Notify;
+            'notify::serialized-xml-node-value': GObject.Object.Notify;
+            'notify::serialized-xml-node-value': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -31303,14 +32755,17 @@ export namespace GXml {
             signal: K,
             callback: SerializableObjectModel.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SerializableObjectModel.SignalSignatures>(
             signal: K,
             callback: SerializableObjectModel.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SerializableObjectModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SerializableObjectModel.SignalSignatures[K]>
+            ...args: SerializableObjectModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -31845,14 +33300,17 @@ export namespace GXml {
             signal: K,
             callback: SerializableValueList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SerializableValueList.SignalSignatures>(
             signal: K,
             callback: SerializableValueList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SerializableValueList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SerializableValueList.SignalSignatures[K]>
+            ...args: SerializableValueList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -32331,7 +33789,20 @@ export namespace GXml {
 
     namespace TAttribute {
         // Signal signatures
-        interface SignalSignatures extends TNode.SignalSignatures {}
+        interface SignalSignatures extends TNode.SignalSignatures {
+            'notify::attrs': GObject.Object.Notify;
+            'notify::children-nodes': GObject.Object.Notify;
+            'notify::children-nodes': GObject.Object.Notify;
+            'notify::document': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::namespaces': GObject.Object.Notify;
+            'notify::type-node': GObject.Object.Notify;
+            'notify::type-node': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::namespace': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -32355,14 +33826,17 @@ export namespace GXml {
             signal: K,
             callback: TAttribute.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TAttribute.SignalSignatures>(
             signal: K,
             callback: TAttribute.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TAttribute.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TAttribute.SignalSignatures[K]>
+            ...args: TAttribute.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get namespace(): Namespace;
@@ -32823,7 +34297,19 @@ export namespace GXml {
 
     namespace TCDATA {
         // Signal signatures
-        interface SignalSignatures extends TNode.SignalSignatures {}
+        interface SignalSignatures extends TNode.SignalSignatures {
+            'notify::attrs': GObject.Object.Notify;
+            'notify::children-nodes': GObject.Object.Notify;
+            'notify::children-nodes': GObject.Object.Notify;
+            'notify::document': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::namespaces': GObject.Object.Notify;
+            'notify::type-node': GObject.Object.Notify;
+            'notify::type-node': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::str': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -32844,8 +34330,14 @@ export namespace GXml {
         // Signals
 
         connect<K extends keyof TCDATA.SignalSignatures>(signal: K, callback: TCDATA.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TCDATA.SignalSignatures>(signal: K, callback: TCDATA.SignalSignatures[K]): number;
-        emit<K extends keyof TCDATA.SignalSignatures>(signal: K, ...args: Parameters<TCDATA.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof TCDATA.SignalSignatures>(
+            signal: K,
+            ...args: TCDATA.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get str(): string;
@@ -33296,7 +34788,19 @@ export namespace GXml {
 
     namespace TComment {
         // Signal signatures
-        interface SignalSignatures extends TNode.SignalSignatures {}
+        interface SignalSignatures extends TNode.SignalSignatures {
+            'notify::attrs': GObject.Object.Notify;
+            'notify::children-nodes': GObject.Object.Notify;
+            'notify::children-nodes': GObject.Object.Notify;
+            'notify::document': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::namespaces': GObject.Object.Notify;
+            'notify::type-node': GObject.Object.Notify;
+            'notify::type-node': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::str': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -33317,14 +34821,17 @@ export namespace GXml {
         // Signals
 
         connect<K extends keyof TComment.SignalSignatures>(signal: K, callback: TComment.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TComment.SignalSignatures>(
             signal: K,
             callback: TComment.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TComment.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TComment.SignalSignatures[K]>
+            ...args: TComment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get str(): string;
@@ -33778,7 +35285,26 @@ export namespace GXml {
 
     namespace TDocument {
         // Signal signatures
-        interface SignalSignatures extends TNode.SignalSignatures {}
+        interface SignalSignatures extends TNode.SignalSignatures {
+            'notify::attrs': GObject.Object.Notify;
+            'notify::children-nodes': GObject.Object.Notify;
+            'notify::children-nodes': GObject.Object.Notify;
+            'notify::document': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::namespaces': GObject.Object.Notify;
+            'notify::type-node': GObject.Object.Notify;
+            'notify::type-node': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::indent': GObject.Object.Notify;
+            'notify::ns-top': GObject.Object.Notify;
+            'notify::ns-top': GObject.Object.Notify;
+            'notify::prefix-default-ns': GObject.Object.Notify;
+            'notify::prefix-default-ns': GObject.Object.Notify;
+            'notify::backup': GObject.Object.Notify;
+            'notify::root': GObject.Object.Notify;
+            'notify::file': GObject.Object.Notify;
+        }
 
         interface ReadTypeFunc {
             (node: Node, tr: libxml2.TextReader): TDocumentReadType;
@@ -33823,14 +35349,17 @@ export namespace GXml {
         // Signals
 
         connect<K extends keyof TDocument.SignalSignatures>(signal: K, callback: TDocument.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TDocument.SignalSignatures>(
             signal: K,
             callback: TDocument.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TDocument.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TDocument.SignalSignatures[K]>
+            ...args: TDocument.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -34348,7 +35877,21 @@ export namespace GXml {
 
     namespace TElement {
         // Signal signatures
-        interface SignalSignatures extends TNode.SignalSignatures {}
+        interface SignalSignatures extends TNode.SignalSignatures {
+            'notify::attrs': GObject.Object.Notify;
+            'notify::children-nodes': GObject.Object.Notify;
+            'notify::children-nodes': GObject.Object.Notify;
+            'notify::document': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::namespaces': GObject.Object.Notify;
+            'notify::type-node': GObject.Object.Notify;
+            'notify::type-node': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::tag-name': GObject.Object.Notify;
+            'notify::content': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -34369,14 +35912,17 @@ export namespace GXml {
         // Signals
 
         connect<K extends keyof TElement.SignalSignatures>(signal: K, callback: TElement.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TElement.SignalSignatures>(
             signal: K,
             callback: TElement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TElement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TElement.SignalSignatures[K]>
+            ...args: TElement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get tag_name(): string;
@@ -34848,7 +36394,20 @@ export namespace GXml {
 
     namespace TNamespace {
         // Signal signatures
-        interface SignalSignatures extends TNode.SignalSignatures {}
+        interface SignalSignatures extends TNode.SignalSignatures {
+            'notify::attrs': GObject.Object.Notify;
+            'notify::children-nodes': GObject.Object.Notify;
+            'notify::children-nodes': GObject.Object.Notify;
+            'notify::document': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::namespaces': GObject.Object.Notify;
+            'notify::type-node': GObject.Object.Notify;
+            'notify::type-node': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::uri': GObject.Object.Notify;
+            'notify::prefix': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -34872,14 +36431,17 @@ export namespace GXml {
             signal: K,
             callback: TNamespace.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TNamespace.SignalSignatures>(
             signal: K,
             callback: TNamespace.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TNamespace.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TNamespace.SignalSignatures[K]>
+            ...args: TNamespace.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get uri(): string;
@@ -35333,7 +36895,18 @@ export namespace GXml {
 
     namespace TNode {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::attrs': GObject.Object.Notify;
+            'notify::children-nodes': GObject.Object.Notify;
+            'notify::children-nodes': GObject.Object.Notify;
+            'notify::document': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::namespaces': GObject.Object.Notify;
+            'notify::type-node': GObject.Object.Notify;
+            'notify::type-node': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -35377,8 +36950,14 @@ export namespace GXml {
         // Signals
 
         connect<K extends keyof TNode.SignalSignatures>(signal: K, callback: TNode.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TNode.SignalSignatures>(signal: K, callback: TNode.SignalSignatures[K]): number;
-        emit<K extends keyof TNode.SignalSignatures>(signal: K, ...args: Parameters<TNode.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof TNode.SignalSignatures>(
+            signal: K,
+            ...args: TNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -35866,7 +37445,19 @@ export namespace GXml {
 
     namespace TNodeTChildrenList {
         // Signal signatures
-        interface SignalSignatures extends Gee.AbstractBidirList.SignalSignatures {}
+        interface SignalSignatures extends Gee.AbstractBidirList.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -35890,19 +37481,35 @@ export namespace GXml {
             signal: K,
             callback: TNodeTChildrenList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TNodeTChildrenList.SignalSignatures>(
             signal: K,
             callback: TNodeTChildrenList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TNodeTChildrenList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TNodeTChildrenList.SignalSignatures[K]>
+            ...args: TNodeTChildrenList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace TProcessingInstruction {
         // Signal signatures
-        interface SignalSignatures extends TNode.SignalSignatures {}
+        interface SignalSignatures extends TNode.SignalSignatures {
+            'notify::attrs': GObject.Object.Notify;
+            'notify::children-nodes': GObject.Object.Notify;
+            'notify::children-nodes': GObject.Object.Notify;
+            'notify::document': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::namespaces': GObject.Object.Notify;
+            'notify::type-node': GObject.Object.Notify;
+            'notify::type-node': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::target': GObject.Object.Notify;
+            'notify::data': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -35926,14 +37533,17 @@ export namespace GXml {
             signal: K,
             callback: TProcessingInstruction.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TProcessingInstruction.SignalSignatures>(
             signal: K,
             callback: TProcessingInstruction.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TProcessingInstruction.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TProcessingInstruction.SignalSignatures[K]>
+            ...args: TProcessingInstruction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get target(): string;
@@ -36371,7 +37981,19 @@ export namespace GXml {
 
     namespace TText {
         // Signal signatures
-        interface SignalSignatures extends TNode.SignalSignatures {}
+        interface SignalSignatures extends TNode.SignalSignatures {
+            'notify::attrs': GObject.Object.Notify;
+            'notify::children-nodes': GObject.Object.Notify;
+            'notify::children-nodes': GObject.Object.Notify;
+            'notify::document': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::namespaces': GObject.Object.Notify;
+            'notify::type-node': GObject.Object.Notify;
+            'notify::type-node': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::str': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -36392,8 +38014,14 @@ export namespace GXml {
         // Signals
 
         connect<K extends keyof TText.SignalSignatures>(signal: K, callback: TText.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TText.SignalSignatures>(signal: K, callback: TText.SignalSignatures[K]): number;
-        emit<K extends keyof TText.SignalSignatures>(signal: K, ...args: Parameters<TText.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof TText.SignalSignatures>(
+            signal: K,
+            ...args: TText.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get str(): string;
@@ -36847,7 +38475,11 @@ export namespace GXml {
 
     namespace XParser {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::backup': GObject.Object.Notify;
+            'notify::indent': GObject.Object.Notify;
+            'notify::node': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -36868,14 +38500,17 @@ export namespace GXml {
         // Signals
 
         connect<K extends keyof XParser.SignalSignatures>(signal: K, callback: XParser.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XParser.SignalSignatures>(
             signal: K,
             callback: XParser.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XParser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XParser.SignalSignatures[K]>
+            ...args: XParser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

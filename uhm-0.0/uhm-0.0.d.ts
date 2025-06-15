@@ -55,7 +55,9 @@ export namespace Uhm {
     const MINOR_VERSION: number;
     namespace Resolver {
         // Signal signatures
-        interface SignalSignatures extends Gio.Resolver.SignalSignatures {}
+        interface SignalSignatures extends Gio.Resolver.SignalSignatures {
+            'notify::timeout': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -79,14 +81,17 @@ export namespace Uhm {
         // Signals
 
         connect<K extends keyof Resolver.SignalSignatures>(signal: K, callback: Resolver.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Resolver.SignalSignatures>(
             signal: K,
             callback: Resolver.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Resolver.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Resolver.SignalSignatures[K]>
+            ...args: Resolver.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -122,17 +127,28 @@ export namespace Uhm {
                 expected_message: Soup.Message,
                 actual_message: Soup.Message,
                 actual_client: Soup.ClientContext,
-            ): boolean;
+            ): boolean | void;
         }
 
         interface HandleMessage {
-            (_source: Server, message: Soup.Message, client: Soup.ClientContext): boolean;
+            (_source: Server, message: Soup.Message, client: Soup.ClientContext): boolean | void;
         }
 
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'compare-messages': CompareMessages;
             'handle-message': HandleMessage;
+            'notify::address': GObject.Object.Notify;
+            'notify::enable-logging': GObject.Object.Notify;
+            'notify::enable-logging': GObject.Object.Notify;
+            'notify::enable-online': GObject.Object.Notify;
+            'notify::enable-online': GObject.Object.Notify;
+            'notify::port': GObject.Object.Notify;
+            'notify::resolver': GObject.Object.Notify;
+            'notify::tls-certificate': GObject.Object.Notify;
+            'notify::tls-certificate': GObject.Object.Notify;
+            'notify::trace-directory': GObject.Object.Notify;
+            'notify::trace-directory': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -265,8 +281,14 @@ export namespace Uhm {
         // Signals
 
         connect<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
-        emit<K extends keyof Server.SignalSignatures>(signal: K, ...args: Parameters<Server.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Server.SignalSignatures>(
+            signal: K,
+            ...args: Server.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 

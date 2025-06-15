@@ -38,7 +38,10 @@ export namespace Spelling {
     function init(): void;
     namespace Checker {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::language': GObject.Object.Notify;
+            'notify::provider': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -84,14 +87,17 @@ export namespace Spelling {
         // Signals
 
         connect<K extends keyof Checker.SignalSignatures>(signal: K, callback: Checker.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Checker.SignalSignatures>(
             signal: K,
             callback: Checker.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Checker.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Checker.SignalSignatures[K]>
+            ...args: Checker.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -152,7 +158,9 @@ export namespace Spelling {
 
     namespace Dictionary {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::code': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -186,14 +194,17 @@ export namespace Spelling {
             signal: K,
             callback: Dictionary.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Dictionary.SignalSignatures>(
             signal: K,
             callback: Dictionary.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Dictionary.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Dictionary.SignalSignatures[K]>
+            ...args: Dictionary.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -235,7 +246,11 @@ export namespace Spelling {
 
     namespace Language {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::code': GObject.Object.Notify;
+            'notify::group': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -276,14 +291,17 @@ export namespace Spelling {
         // Signals
 
         connect<K extends keyof Language.SignalSignatures>(signal: K, callback: Language.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Language.SignalSignatures>(
             signal: K,
             callback: Language.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Language.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Language.SignalSignatures[K]>
+            ...args: Language.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -306,7 +324,10 @@ export namespace Spelling {
 
     namespace Provider {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::display-name': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -342,14 +363,17 @@ export namespace Spelling {
         // Signals
 
         connect<K extends keyof Provider.SignalSignatures>(signal: K, callback: Provider.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Provider.SignalSignatures>(
             signal: K,
             callback: Provider.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Provider.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Provider.SignalSignatures[K]>
+            ...args: Provider.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -393,7 +417,12 @@ export namespace Spelling {
 
     namespace TextBufferAdapter {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::buffer': GObject.Object.Notify;
+            'notify::checker': GObject.Object.Notify;
+            'notify::enabled': GObject.Object.Notify;
+            'notify::language': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -448,14 +477,17 @@ export namespace Spelling {
             signal: K,
             callback: TextBufferAdapter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TextBufferAdapter.SignalSignatures>(
             signal: K,
             callback: TextBufferAdapter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TextBufferAdapter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TextBufferAdapter.SignalSignatures[K]>
+            ...args: TextBufferAdapter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

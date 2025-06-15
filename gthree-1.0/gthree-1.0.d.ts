@@ -322,7 +322,20 @@ export namespace Gthree {
     }
     namespace AmbientLight {
         // Signal signatures
-        interface SignalSignatures extends Light.SignalSignatures {}
+        interface SignalSignatures extends Light.SignalSignatures {
+            'notify::color': GObject.Object.Notify;
+            'notify::intensity': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -349,14 +362,17 @@ export namespace Gthree {
             signal: K,
             callback: AmbientLight.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AmbientLight.SignalSignatures>(
             signal: K,
             callback: AmbientLight.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AmbientLight.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AmbientLight.SignalSignatures[K]>
+            ...args: AmbientLight.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace AnimationAction {
@@ -385,14 +401,17 @@ export namespace Gthree {
             signal: K,
             callback: AnimationAction.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AnimationAction.SignalSignatures>(
             signal: K,
             callback: AnimationAction.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AnimationAction.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AnimationAction.SignalSignatures[K]>
+            ...args: AnimationAction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -453,14 +472,17 @@ export namespace Gthree {
             signal: K,
             callback: AnimationClip.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AnimationClip.SignalSignatures>(
             signal: K,
             callback: AnimationClip.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AnimationClip.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AnimationClip.SignalSignatures[K]>
+            ...args: AnimationClip.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -512,14 +534,17 @@ export namespace Gthree {
             signal: K,
             callback: AnimationMixer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AnimationMixer.SignalSignatures>(
             signal: K,
             callback: AnimationMixer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AnimationMixer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AnimationMixer.SignalSignatures[K]>
+            ...args: AnimationMixer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -580,14 +605,17 @@ export namespace Gthree {
         // Signals
 
         connect<K extends keyof Attribute.SignalSignatures>(signal: K, callback: Attribute.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Attribute.SignalSignatures>(
             signal: K,
             callback: Attribute.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Attribute.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Attribute.SignalSignatures[K]>
+            ...args: Attribute.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -677,19 +705,33 @@ export namespace Gthree {
         // Signals
 
         connect<K extends keyof BloomPass.SignalSignatures>(signal: K, callback: BloomPass.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BloomPass.SignalSignatures>(
             signal: K,
             callback: BloomPass.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BloomPass.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BloomPass.SignalSignatures[K]>
+            ...args: BloomPass.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Bone {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -710,13 +752,32 @@ export namespace Gthree {
         // Signals
 
         connect<K extends keyof Bone.SignalSignatures>(signal: K, callback: Bone.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Bone.SignalSignatures>(signal: K, callback: Bone.SignalSignatures[K]): number;
-        emit<K extends keyof Bone.SignalSignatures>(signal: K, ...args: Parameters<Bone.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Bone.SignalSignatures>(
+            signal: K,
+            ...args: Bone.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Camera {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::far': GObject.Object.Notify;
+            'notify::near': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -745,8 +806,14 @@ export namespace Gthree {
         // Signals
 
         connect<K extends keyof Camera.SignalSignatures>(signal: K, callback: Camera.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Camera.SignalSignatures>(signal: K, callback: Camera.SignalSignatures[K]): number;
-        emit<K extends keyof Camera.SignalSignatures>(signal: K, ...args: Parameters<Camera.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Camera.SignalSignatures>(
+            signal: K,
+            ...args: Camera.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -799,14 +866,17 @@ export namespace Gthree {
         // Signals
 
         connect<K extends keyof ClearPass.SignalSignatures>(signal: K, callback: ClearPass.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClearPass.SignalSignatures>(
             signal: K,
             callback: ClearPass.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClearPass.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClearPass.SignalSignatures[K]>
+            ...args: ClearPass.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -839,19 +909,25 @@ export namespace Gthree {
             signal: K,
             callback: ColorKeyframeTrack.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ColorKeyframeTrack.SignalSignatures>(
             signal: K,
             callback: ColorKeyframeTrack.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ColorKeyframeTrack.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ColorKeyframeTrack.SignalSignatures[K]>
+            ...args: ColorKeyframeTrack.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace CubeTexture {
         // Signal signatures
-        interface SignalSignatures extends Texture.SignalSignatures {}
+        interface SignalSignatures extends Texture.SignalSignatures {
+            'notify::pixbuf': GObject.Object.Notify;
+            'notify::surface': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -887,14 +963,17 @@ export namespace Gthree {
             signal: K,
             callback: CubeTexture.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CubeTexture.SignalSignatures>(
             signal: K,
             callback: CubeTexture.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CubeTexture.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CubeTexture.SignalSignatures[K]>
+            ...args: CubeTexture.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace CubicInterpolant {
@@ -923,19 +1002,36 @@ export namespace Gthree {
             signal: K,
             callback: CubicInterpolant.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CubicInterpolant.SignalSignatures>(
             signal: K,
             callback: CubicInterpolant.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CubicInterpolant.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CubicInterpolant.SignalSignatures[K]>
+            ...args: CubicInterpolant.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace DirectionalLight {
         // Signal signatures
-        interface SignalSignatures extends Light.SignalSignatures {}
+        interface SignalSignatures extends Light.SignalSignatures {
+            'notify::target': GObject.Object.Notify;
+            'notify::color': GObject.Object.Notify;
+            'notify::intensity': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -969,14 +1065,17 @@ export namespace Gthree {
             signal: K,
             callback: DirectionalLight.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DirectionalLight.SignalSignatures>(
             signal: K,
             callback: DirectionalLight.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DirectionalLight.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DirectionalLight.SignalSignatures[K]>
+            ...args: DirectionalLight.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1007,14 +1106,17 @@ export namespace Gthree {
             signal: K,
             callback: DirectionalLightShadow.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DirectionalLightShadow.SignalSignatures>(
             signal: K,
             callback: DirectionalLightShadow.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DirectionalLightShadow.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DirectionalLightShadow.SignalSignatures[K]>
+            ...args: DirectionalLightShadow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace DiscreteInterpolant {
@@ -1043,14 +1145,17 @@ export namespace Gthree {
             signal: K,
             callback: DiscreteInterpolant.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DiscreteInterpolant.SignalSignatures>(
             signal: K,
             callback: DiscreteInterpolant.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DiscreteInterpolant.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DiscreteInterpolant.SignalSignatures[K]>
+            ...args: DiscreteInterpolant.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace EffectComposer {
@@ -1079,14 +1184,17 @@ export namespace Gthree {
             signal: K,
             callback: EffectComposer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof EffectComposer.SignalSignatures>(
             signal: K,
             callback: EffectComposer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof EffectComposer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EffectComposer.SignalSignatures[K]>
+            ...args: EffectComposer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1121,8 +1229,14 @@ export namespace Gthree {
         // Signals
 
         connect<K extends keyof Fog.SignalSignatures>(signal: K, callback: Fog.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Fog.SignalSignatures>(signal: K, callback: Fog.SignalSignatures[K]): number;
-        emit<K extends keyof Fog.SignalSignatures>(signal: K, ...args: Parameters<Fog.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Fog.SignalSignatures>(
+            signal: K,
+            ...args: Fog.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1164,14 +1278,17 @@ export namespace Gthree {
             signal: K,
             callback: FullscreenQuadPass.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FullscreenQuadPass.SignalSignatures>(
             signal: K,
             callback: FullscreenQuadPass.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FullscreenQuadPass.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FullscreenQuadPass.SignalSignatures[K]>
+            ...args: FullscreenQuadPass.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1279,14 +1396,17 @@ export namespace Gthree {
         // Signals
 
         connect<K extends keyof Geometry.SignalSignatures>(signal: K, callback: Geometry.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Geometry.SignalSignatures>(
             signal: K,
             callback: Geometry.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Geometry.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Geometry.SignalSignatures[K]>
+            ...args: Geometry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1315,7 +1435,18 @@ export namespace Gthree {
 
     namespace Group {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1336,13 +1467,34 @@ export namespace Gthree {
         // Signals
 
         connect<K extends keyof Group.SignalSignatures>(signal: K, callback: Group.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Group.SignalSignatures>(signal: K, callback: Group.SignalSignatures[K]): number;
-        emit<K extends keyof Group.SignalSignatures>(signal: K, ...args: Parameters<Group.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Group.SignalSignatures>(
+            signal: K,
+            ...args: Group.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace HemisphereLight {
         // Signal signatures
-        interface SignalSignatures extends Light.SignalSignatures {}
+        interface SignalSignatures extends Light.SignalSignatures {
+            'notify::ground-color': GObject.Object.Notify;
+            'notify::ground-color': GObject.Object.Notify;
+            'notify::color': GObject.Object.Notify;
+            'notify::intensity': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1379,14 +1531,17 @@ export namespace Gthree {
             signal: K,
             callback: HemisphereLight.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HemisphereLight.SignalSignatures>(
             signal: K,
             callback: HemisphereLight.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HemisphereLight.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HemisphereLight.SignalSignatures[K]>
+            ...args: HemisphereLight.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Interpolant {
@@ -1413,14 +1568,17 @@ export namespace Gthree {
             signal: K,
             callback: Interpolant.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Interpolant.SignalSignatures>(
             signal: K,
             callback: Interpolant.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Interpolant.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Interpolant.SignalSignatures[K]>
+            ...args: Interpolant.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1463,14 +1621,17 @@ export namespace Gthree {
             signal: K,
             callback: InterpolantSettings.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InterpolantSettings.SignalSignatures>(
             signal: K,
             callback: InterpolantSettings.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InterpolantSettings.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InterpolantSettings.SignalSignatures[K]>
+            ...args: InterpolantSettings.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1504,14 +1665,17 @@ export namespace Gthree {
             signal: K,
             callback: KeyframeTrack.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof KeyframeTrack.SignalSignatures>(
             signal: K,
             callback: KeyframeTrack.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof KeyframeTrack.SignalSignatures>(
             signal: K,
-            ...args: Parameters<KeyframeTrack.SignalSignatures[K]>
+            ...args: KeyframeTrack.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1527,7 +1691,20 @@ export namespace Gthree {
 
     namespace Light {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::color': GObject.Object.Notify;
+            'notify::intensity': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1558,8 +1735,14 @@ export namespace Gthree {
         // Signals
 
         connect<K extends keyof Light.SignalSignatures>(signal: K, callback: Light.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Light.SignalSignatures>(signal: K, callback: Light.SignalSignatures[K]): number;
-        emit<K extends keyof Light.SignalSignatures>(signal: K, ...args: Parameters<Light.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Light.SignalSignatures>(
+            signal: K,
+            ...args: Light.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1597,14 +1780,17 @@ export namespace Gthree {
             signal: K,
             callback: LightShadow.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LightShadow.SignalSignatures>(
             signal: K,
             callback: LightShadow.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LightShadow.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LightShadow.SignalSignatures[K]>
+            ...args: LightShadow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1619,7 +1805,20 @@ export namespace Gthree {
 
     namespace Line {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::geometry': GObject.Object.Notify;
+            'notify::material': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1651,13 +1850,32 @@ export namespace Gthree {
         // Signals
 
         connect<K extends keyof Line.SignalSignatures>(signal: K, callback: Line.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Line.SignalSignatures>(signal: K, callback: Line.SignalSignatures[K]): number;
-        emit<K extends keyof Line.SignalSignatures>(signal: K, ...args: Parameters<Line.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Line.SignalSignatures>(
+            signal: K,
+            ...args: Line.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace LineBasicMaterial {
         // Signal signatures
-        interface SignalSignatures extends Material.SignalSignatures {}
+        interface SignalSignatures extends Material.SignalSignatures {
+            'notify::color': GObject.Object.Notify;
+            'notify::line-width': GObject.Object.Notify;
+            'notify::line-width': GObject.Object.Notify;
+            'notify::alpha-test': GObject.Object.Notify;
+            'notify::alpha-test': GObject.Object.Notify;
+            'notify::clip-intersection': GObject.Object.Notify;
+            'notify::clip-intersection': GObject.Object.Notify;
+            'notify::fog': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::transparent': GObject.Object.Notify;
+            'notify::vertex-colors': GObject.Object.Notify;
+            'notify::vertex-colors': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1694,14 +1912,17 @@ export namespace Gthree {
             signal: K,
             callback: LineBasicMaterial.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LineBasicMaterial.SignalSignatures>(
             signal: K,
             callback: LineBasicMaterial.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LineBasicMaterial.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LineBasicMaterial.SignalSignatures[K]>
+            ...args: LineBasicMaterial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1713,7 +1934,20 @@ export namespace Gthree {
 
     namespace LineSegments {
         // Signal signatures
-        interface SignalSignatures extends Line.SignalSignatures {}
+        interface SignalSignatures extends Line.SignalSignatures {
+            'notify::geometry': GObject.Object.Notify;
+            'notify::material': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1740,14 +1974,17 @@ export namespace Gthree {
             signal: K,
             callback: LineSegments.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LineSegments.SignalSignatures>(
             signal: K,
             callback: LineSegments.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LineSegments.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LineSegments.SignalSignatures[K]>
+            ...args: LineSegments.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace LinearInterpolant {
@@ -1776,14 +2013,17 @@ export namespace Gthree {
             signal: K,
             callback: LinearInterpolant.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LinearInterpolant.SignalSignatures>(
             signal: K,
             callback: LinearInterpolant.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LinearInterpolant.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LinearInterpolant.SignalSignatures[K]>
+            ...args: LinearInterpolant.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Loader {
@@ -1807,8 +2047,14 @@ export namespace Gthree {
         // Signals
 
         connect<K extends keyof Loader.SignalSignatures>(signal: K, callback: Loader.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Loader.SignalSignatures>(signal: K, callback: Loader.SignalSignatures[K]): number;
-        emit<K extends keyof Loader.SignalSignatures>(signal: K, ...args: Parameters<Loader.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Loader.SignalSignatures>(
+            signal: K,
+            ...args: Loader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1823,7 +2069,17 @@ export namespace Gthree {
 
     namespace Material {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::alpha-test': GObject.Object.Notify;
+            'notify::alpha-test': GObject.Object.Notify;
+            'notify::clip-intersection': GObject.Object.Notify;
+            'notify::clip-intersection': GObject.Object.Notify;
+            'notify::fog': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::transparent': GObject.Object.Notify;
+            'notify::vertex-colors': GObject.Object.Notify;
+            'notify::vertex-colors': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1873,14 +2129,17 @@ export namespace Gthree {
         // Signals
 
         connect<K extends keyof Material.SignalSignatures>(signal: K, callback: Material.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Material.SignalSignatures>(
             signal: K,
             callback: Material.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Material.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Material.SignalSignatures[K]>
+            ...args: Material.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1933,7 +2192,20 @@ export namespace Gthree {
 
     namespace Mesh {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::geometry': GObject.Object.Notify;
+            'notify::materials': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1966,8 +2238,14 @@ export namespace Gthree {
         // Signals
 
         connect<K extends keyof Mesh.SignalSignatures>(signal: K, callback: Mesh.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Mesh.SignalSignatures>(signal: K, callback: Mesh.SignalSignatures[K]): number;
-        emit<K extends keyof Mesh.SignalSignatures>(signal: K, ...args: Parameters<Mesh.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Mesh.SignalSignatures>(
+            signal: K,
+            ...args: Mesh.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1982,7 +2260,32 @@ export namespace Gthree {
 
     namespace MeshBasicMaterial {
         // Signal signatures
-        interface SignalSignatures extends MeshMaterial.SignalSignatures {}
+        interface SignalSignatures extends MeshMaterial.SignalSignatures {
+            'notify::color': GObject.Object.Notify;
+            'notify::env-map': GObject.Object.Notify;
+            'notify::env-map': GObject.Object.Notify;
+            'notify::map': GObject.Object.Notify;
+            'notify::reflectivity': GObject.Object.Notify;
+            'notify::refraction-ratio': GObject.Object.Notify;
+            'notify::refraction-ratio': GObject.Object.Notify;
+            'notify::morph-normals': GObject.Object.Notify;
+            'notify::morph-normals': GObject.Object.Notify;
+            'notify::morph-targets': GObject.Object.Notify;
+            'notify::morph-targets': GObject.Object.Notify;
+            'notify::skinning': GObject.Object.Notify;
+            'notify::wireframe': GObject.Object.Notify;
+            'notify::wireframe-line-width': GObject.Object.Notify;
+            'notify::wireframe-line-width': GObject.Object.Notify;
+            'notify::alpha-test': GObject.Object.Notify;
+            'notify::alpha-test': GObject.Object.Notify;
+            'notify::clip-intersection': GObject.Object.Notify;
+            'notify::clip-intersection': GObject.Object.Notify;
+            'notify::fog': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::transparent': GObject.Object.Notify;
+            'notify::vertex-colors': GObject.Object.Notify;
+            'notify::vertex-colors': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2031,14 +2334,17 @@ export namespace Gthree {
             signal: K,
             callback: MeshBasicMaterial.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MeshBasicMaterial.SignalSignatures>(
             signal: K,
             callback: MeshBasicMaterial.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MeshBasicMaterial.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MeshBasicMaterial.SignalSignatures[K]>
+            ...args: MeshBasicMaterial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2056,7 +2362,25 @@ export namespace Gthree {
 
     namespace MeshDepthMaterial {
         // Signal signatures
-        interface SignalSignatures extends MeshMaterial.SignalSignatures {}
+        interface SignalSignatures extends MeshMaterial.SignalSignatures {
+            'notify::morph-normals': GObject.Object.Notify;
+            'notify::morph-normals': GObject.Object.Notify;
+            'notify::morph-targets': GObject.Object.Notify;
+            'notify::morph-targets': GObject.Object.Notify;
+            'notify::skinning': GObject.Object.Notify;
+            'notify::wireframe': GObject.Object.Notify;
+            'notify::wireframe-line-width': GObject.Object.Notify;
+            'notify::wireframe-line-width': GObject.Object.Notify;
+            'notify::alpha-test': GObject.Object.Notify;
+            'notify::alpha-test': GObject.Object.Notify;
+            'notify::clip-intersection': GObject.Object.Notify;
+            'notify::clip-intersection': GObject.Object.Notify;
+            'notify::fog': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::transparent': GObject.Object.Notify;
+            'notify::vertex-colors': GObject.Object.Notify;
+            'notify::vertex-colors': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2080,14 +2404,17 @@ export namespace Gthree {
             signal: K,
             callback: MeshDepthMaterial.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MeshDepthMaterial.SignalSignatures>(
             signal: K,
             callback: MeshDepthMaterial.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MeshDepthMaterial.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MeshDepthMaterial.SignalSignatures[K]>
+            ...args: MeshDepthMaterial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2097,7 +2424,25 @@ export namespace Gthree {
 
     namespace MeshDistanceMaterial {
         // Signal signatures
-        interface SignalSignatures extends MeshMaterial.SignalSignatures {}
+        interface SignalSignatures extends MeshMaterial.SignalSignatures {
+            'notify::morph-normals': GObject.Object.Notify;
+            'notify::morph-normals': GObject.Object.Notify;
+            'notify::morph-targets': GObject.Object.Notify;
+            'notify::morph-targets': GObject.Object.Notify;
+            'notify::skinning': GObject.Object.Notify;
+            'notify::wireframe': GObject.Object.Notify;
+            'notify::wireframe-line-width': GObject.Object.Notify;
+            'notify::wireframe-line-width': GObject.Object.Notify;
+            'notify::alpha-test': GObject.Object.Notify;
+            'notify::alpha-test': GObject.Object.Notify;
+            'notify::clip-intersection': GObject.Object.Notify;
+            'notify::clip-intersection': GObject.Object.Notify;
+            'notify::fog': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::transparent': GObject.Object.Notify;
+            'notify::vertex-colors': GObject.Object.Notify;
+            'notify::vertex-colors': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2121,14 +2466,17 @@ export namespace Gthree {
             signal: K,
             callback: MeshDistanceMaterial.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MeshDistanceMaterial.SignalSignatures>(
             signal: K,
             callback: MeshDistanceMaterial.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MeshDistanceMaterial.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MeshDistanceMaterial.SignalSignatures[K]>
+            ...args: MeshDistanceMaterial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2142,7 +2490,34 @@ export namespace Gthree {
 
     namespace MeshLambertMaterial {
         // Signal signatures
-        interface SignalSignatures extends MeshMaterial.SignalSignatures {}
+        interface SignalSignatures extends MeshMaterial.SignalSignatures {
+            'notify::color': GObject.Object.Notify;
+            'notify::emissive-color': GObject.Object.Notify;
+            'notify::emissive-color': GObject.Object.Notify;
+            'notify::env-map': GObject.Object.Notify;
+            'notify::env-map': GObject.Object.Notify;
+            'notify::map': GObject.Object.Notify;
+            'notify::reflectivity': GObject.Object.Notify;
+            'notify::refraction-ratio': GObject.Object.Notify;
+            'notify::refraction-ratio': GObject.Object.Notify;
+            'notify::morph-normals': GObject.Object.Notify;
+            'notify::morph-normals': GObject.Object.Notify;
+            'notify::morph-targets': GObject.Object.Notify;
+            'notify::morph-targets': GObject.Object.Notify;
+            'notify::skinning': GObject.Object.Notify;
+            'notify::wireframe': GObject.Object.Notify;
+            'notify::wireframe-line-width': GObject.Object.Notify;
+            'notify::wireframe-line-width': GObject.Object.Notify;
+            'notify::alpha-test': GObject.Object.Notify;
+            'notify::alpha-test': GObject.Object.Notify;
+            'notify::clip-intersection': GObject.Object.Notify;
+            'notify::clip-intersection': GObject.Object.Notify;
+            'notify::fog': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::transparent': GObject.Object.Notify;
+            'notify::vertex-colors': GObject.Object.Notify;
+            'notify::vertex-colors': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2197,14 +2572,17 @@ export namespace Gthree {
             signal: K,
             callback: MeshLambertMaterial.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MeshLambertMaterial.SignalSignatures>(
             signal: K,
             callback: MeshLambertMaterial.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MeshLambertMaterial.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MeshLambertMaterial.SignalSignatures[K]>
+            ...args: MeshLambertMaterial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2224,7 +2602,25 @@ export namespace Gthree {
 
     namespace MeshMaterial {
         // Signal signatures
-        interface SignalSignatures extends Material.SignalSignatures {}
+        interface SignalSignatures extends Material.SignalSignatures {
+            'notify::morph-normals': GObject.Object.Notify;
+            'notify::morph-normals': GObject.Object.Notify;
+            'notify::morph-targets': GObject.Object.Notify;
+            'notify::morph-targets': GObject.Object.Notify;
+            'notify::skinning': GObject.Object.Notify;
+            'notify::wireframe': GObject.Object.Notify;
+            'notify::wireframe-line-width': GObject.Object.Notify;
+            'notify::wireframe-line-width': GObject.Object.Notify;
+            'notify::alpha-test': GObject.Object.Notify;
+            'notify::alpha-test': GObject.Object.Notify;
+            'notify::clip-intersection': GObject.Object.Notify;
+            'notify::clip-intersection': GObject.Object.Notify;
+            'notify::fog': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::transparent': GObject.Object.Notify;
+            'notify::vertex-colors': GObject.Object.Notify;
+            'notify::vertex-colors': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2274,14 +2670,17 @@ export namespace Gthree {
             signal: K,
             callback: MeshMaterial.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MeshMaterial.SignalSignatures>(
             signal: K,
             callback: MeshMaterial.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MeshMaterial.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MeshMaterial.SignalSignatures[K]>
+            ...args: MeshMaterial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2299,7 +2698,25 @@ export namespace Gthree {
 
     namespace MeshNormalMaterial {
         // Signal signatures
-        interface SignalSignatures extends MeshMaterial.SignalSignatures {}
+        interface SignalSignatures extends MeshMaterial.SignalSignatures {
+            'notify::morph-normals': GObject.Object.Notify;
+            'notify::morph-normals': GObject.Object.Notify;
+            'notify::morph-targets': GObject.Object.Notify;
+            'notify::morph-targets': GObject.Object.Notify;
+            'notify::skinning': GObject.Object.Notify;
+            'notify::wireframe': GObject.Object.Notify;
+            'notify::wireframe-line-width': GObject.Object.Notify;
+            'notify::wireframe-line-width': GObject.Object.Notify;
+            'notify::alpha-test': GObject.Object.Notify;
+            'notify::alpha-test': GObject.Object.Notify;
+            'notify::clip-intersection': GObject.Object.Notify;
+            'notify::clip-intersection': GObject.Object.Notify;
+            'notify::fog': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::transparent': GObject.Object.Notify;
+            'notify::vertex-colors': GObject.Object.Notify;
+            'notify::vertex-colors': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2323,14 +2740,17 @@ export namespace Gthree {
             signal: K,
             callback: MeshNormalMaterial.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MeshNormalMaterial.SignalSignatures>(
             signal: K,
             callback: MeshNormalMaterial.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MeshNormalMaterial.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MeshNormalMaterial.SignalSignatures[K]>
+            ...args: MeshNormalMaterial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2340,7 +2760,45 @@ export namespace Gthree {
 
     namespace MeshPhongMaterial {
         // Signal signatures
-        interface SignalSignatures extends MeshMaterial.SignalSignatures {}
+        interface SignalSignatures extends MeshMaterial.SignalSignatures {
+            'notify::color': GObject.Object.Notify;
+            'notify::emissive-color': GObject.Object.Notify;
+            'notify::emissive-color': GObject.Object.Notify;
+            'notify::env-map': GObject.Object.Notify;
+            'notify::env-map': GObject.Object.Notify;
+            'notify::flat-shading': GObject.Object.Notify;
+            'notify::flat-shading': GObject.Object.Notify;
+            'notify::map': GObject.Object.Notify;
+            'notify::normal-map': GObject.Object.Notify;
+            'notify::normal-map': GObject.Object.Notify;
+            'notify::normal-scale': GObject.Object.Notify;
+            'notify::normal-scale': GObject.Object.Notify;
+            'notify::reflectivity': GObject.Object.Notify;
+            'notify::refraction-ratio': GObject.Object.Notify;
+            'notify::refraction-ratio': GObject.Object.Notify;
+            'notify::shininess': GObject.Object.Notify;
+            'notify::specular-color': GObject.Object.Notify;
+            'notify::specular-color': GObject.Object.Notify;
+            'notify::specular-map': GObject.Object.Notify;
+            'notify::specular-map': GObject.Object.Notify;
+            'notify::morph-normals': GObject.Object.Notify;
+            'notify::morph-normals': GObject.Object.Notify;
+            'notify::morph-targets': GObject.Object.Notify;
+            'notify::morph-targets': GObject.Object.Notify;
+            'notify::skinning': GObject.Object.Notify;
+            'notify::wireframe': GObject.Object.Notify;
+            'notify::wireframe-line-width': GObject.Object.Notify;
+            'notify::wireframe-line-width': GObject.Object.Notify;
+            'notify::alpha-test': GObject.Object.Notify;
+            'notify::alpha-test': GObject.Object.Notify;
+            'notify::clip-intersection': GObject.Object.Notify;
+            'notify::clip-intersection': GObject.Object.Notify;
+            'notify::fog': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::transparent': GObject.Object.Notify;
+            'notify::vertex-colors': GObject.Object.Notify;
+            'notify::vertex-colors': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2428,14 +2886,17 @@ export namespace Gthree {
             signal: K,
             callback: MeshPhongMaterial.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MeshPhongMaterial.SignalSignatures>(
             signal: K,
             callback: MeshPhongMaterial.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MeshPhongMaterial.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MeshPhongMaterial.SignalSignatures[K]>
+            ...args: MeshPhongMaterial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2467,7 +2928,70 @@ export namespace Gthree {
 
     namespace MeshSpecglosMaterial {
         // Signal signatures
-        interface SignalSignatures extends MeshMaterial.SignalSignatures {}
+        interface SignalSignatures extends MeshMaterial.SignalSignatures {
+            'notify::alpha-map': GObject.Object.Notify;
+            'notify::alpha-map': GObject.Object.Notify;
+            'notify::ao-map': GObject.Object.Notify;
+            'notify::ao-map': GObject.Object.Notify;
+            'notify::ao-map-intensity': GObject.Object.Notify;
+            'notify::ao-map-intensity': GObject.Object.Notify;
+            'notify::bump-map': GObject.Object.Notify;
+            'notify::bump-map': GObject.Object.Notify;
+            'notify::bump-scale': GObject.Object.Notify;
+            'notify::bump-scale': GObject.Object.Notify;
+            'notify::color': GObject.Object.Notify;
+            'notify::displacement-bias': GObject.Object.Notify;
+            'notify::displacement-bias': GObject.Object.Notify;
+            'notify::displacement-map': GObject.Object.Notify;
+            'notify::displacement-map': GObject.Object.Notify;
+            'notify::displacement-scale': GObject.Object.Notify;
+            'notify::displacement-scale': GObject.Object.Notify;
+            'notify::emissive-color': GObject.Object.Notify;
+            'notify::emissive-color': GObject.Object.Notify;
+            'notify::emissive-intensity': GObject.Object.Notify;
+            'notify::emissive-intensity': GObject.Object.Notify;
+            'notify::emissive-map': GObject.Object.Notify;
+            'notify::emissive-map': GObject.Object.Notify;
+            'notify::env-map': GObject.Object.Notify;
+            'notify::env-map': GObject.Object.Notify;
+            'notify::env-map-intensity': GObject.Object.Notify;
+            'notify::env-map-intensity': GObject.Object.Notify;
+            'notify::glossiness': GObject.Object.Notify;
+            'notify::glossiness-map': GObject.Object.Notify;
+            'notify::glossiness-map': GObject.Object.Notify;
+            'notify::light-map': GObject.Object.Notify;
+            'notify::light-map': GObject.Object.Notify;
+            'notify::light-map-intensity': GObject.Object.Notify;
+            'notify::light-map-intensity': GObject.Object.Notify;
+            'notify::map': GObject.Object.Notify;
+            'notify::normal-map': GObject.Object.Notify;
+            'notify::normal-map': GObject.Object.Notify;
+            'notify::normal-scale': GObject.Object.Notify;
+            'notify::normal-scale': GObject.Object.Notify;
+            'notify::refraction-ratio': GObject.Object.Notify;
+            'notify::refraction-ratio': GObject.Object.Notify;
+            'notify::specular-factor': GObject.Object.Notify;
+            'notify::specular-factor': GObject.Object.Notify;
+            'notify::specular-map': GObject.Object.Notify;
+            'notify::specular-map': GObject.Object.Notify;
+            'notify::morph-normals': GObject.Object.Notify;
+            'notify::morph-normals': GObject.Object.Notify;
+            'notify::morph-targets': GObject.Object.Notify;
+            'notify::morph-targets': GObject.Object.Notify;
+            'notify::skinning': GObject.Object.Notify;
+            'notify::wireframe': GObject.Object.Notify;
+            'notify::wireframe-line-width': GObject.Object.Notify;
+            'notify::wireframe-line-width': GObject.Object.Notify;
+            'notify::alpha-test': GObject.Object.Notify;
+            'notify::alpha-test': GObject.Object.Notify;
+            'notify::clip-intersection': GObject.Object.Notify;
+            'notify::clip-intersection': GObject.Object.Notify;
+            'notify::fog': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::transparent': GObject.Object.Notify;
+            'notify::vertex-colors': GObject.Object.Notify;
+            'notify::vertex-colors': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2630,14 +3154,17 @@ export namespace Gthree {
             signal: K,
             callback: MeshSpecglosMaterial.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MeshSpecglosMaterial.SignalSignatures>(
             signal: K,
             callback: MeshSpecglosMaterial.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MeshSpecglosMaterial.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MeshSpecglosMaterial.SignalSignatures[K]>
+            ...args: MeshSpecglosMaterial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2684,7 +3211,69 @@ export namespace Gthree {
 
     namespace MeshStandardMaterial {
         // Signal signatures
-        interface SignalSignatures extends MeshMaterial.SignalSignatures {}
+        interface SignalSignatures extends MeshMaterial.SignalSignatures {
+            'notify::alpha-map': GObject.Object.Notify;
+            'notify::alpha-map': GObject.Object.Notify;
+            'notify::ao-map': GObject.Object.Notify;
+            'notify::ao-map': GObject.Object.Notify;
+            'notify::ao-map-intensity': GObject.Object.Notify;
+            'notify::ao-map-intensity': GObject.Object.Notify;
+            'notify::bump-map': GObject.Object.Notify;
+            'notify::bump-map': GObject.Object.Notify;
+            'notify::bump-scale': GObject.Object.Notify;
+            'notify::bump-scale': GObject.Object.Notify;
+            'notify::color': GObject.Object.Notify;
+            'notify::displacement-bias': GObject.Object.Notify;
+            'notify::displacement-bias': GObject.Object.Notify;
+            'notify::displacement-map': GObject.Object.Notify;
+            'notify::displacement-map': GObject.Object.Notify;
+            'notify::displacement-scale': GObject.Object.Notify;
+            'notify::displacement-scale': GObject.Object.Notify;
+            'notify::emissive-color': GObject.Object.Notify;
+            'notify::emissive-color': GObject.Object.Notify;
+            'notify::emissive-intensity': GObject.Object.Notify;
+            'notify::emissive-intensity': GObject.Object.Notify;
+            'notify::emissive-map': GObject.Object.Notify;
+            'notify::emissive-map': GObject.Object.Notify;
+            'notify::env-map': GObject.Object.Notify;
+            'notify::env-map': GObject.Object.Notify;
+            'notify::env-map-intensity': GObject.Object.Notify;
+            'notify::env-map-intensity': GObject.Object.Notify;
+            'notify::light-map': GObject.Object.Notify;
+            'notify::light-map': GObject.Object.Notify;
+            'notify::light-map-intensity': GObject.Object.Notify;
+            'notify::light-map-intensity': GObject.Object.Notify;
+            'notify::map': GObject.Object.Notify;
+            'notify::metalness': GObject.Object.Notify;
+            'notify::metalness-map': GObject.Object.Notify;
+            'notify::metalness-map': GObject.Object.Notify;
+            'notify::normal-map': GObject.Object.Notify;
+            'notify::normal-map': GObject.Object.Notify;
+            'notify::normal-scale': GObject.Object.Notify;
+            'notify::normal-scale': GObject.Object.Notify;
+            'notify::refraction-ratio': GObject.Object.Notify;
+            'notify::refraction-ratio': GObject.Object.Notify;
+            'notify::roughness': GObject.Object.Notify;
+            'notify::roughness-map': GObject.Object.Notify;
+            'notify::roughness-map': GObject.Object.Notify;
+            'notify::morph-normals': GObject.Object.Notify;
+            'notify::morph-normals': GObject.Object.Notify;
+            'notify::morph-targets': GObject.Object.Notify;
+            'notify::morph-targets': GObject.Object.Notify;
+            'notify::skinning': GObject.Object.Notify;
+            'notify::wireframe': GObject.Object.Notify;
+            'notify::wireframe-line-width': GObject.Object.Notify;
+            'notify::wireframe-line-width': GObject.Object.Notify;
+            'notify::alpha-test': GObject.Object.Notify;
+            'notify::alpha-test': GObject.Object.Notify;
+            'notify::clip-intersection': GObject.Object.Notify;
+            'notify::clip-intersection': GObject.Object.Notify;
+            'notify::fog': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::transparent': GObject.Object.Notify;
+            'notify::vertex-colors': GObject.Object.Notify;
+            'notify::vertex-colors': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2844,14 +3433,17 @@ export namespace Gthree {
             signal: K,
             callback: MeshStandardMaterial.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MeshStandardMaterial.SignalSignatures>(
             signal: K,
             callback: MeshStandardMaterial.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MeshStandardMaterial.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MeshStandardMaterial.SignalSignatures[K]>
+            ...args: MeshStandardMaterial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2898,7 +3490,59 @@ export namespace Gthree {
 
     namespace MeshToonMaterial {
         // Signal signatures
-        interface SignalSignatures extends MeshMaterial.SignalSignatures {}
+        interface SignalSignatures extends MeshMaterial.SignalSignatures {
+            'notify::alpha-map': GObject.Object.Notify;
+            'notify::alpha-map': GObject.Object.Notify;
+            'notify::ao-map': GObject.Object.Notify;
+            'notify::ao-map': GObject.Object.Notify;
+            'notify::ao-map-intensity': GObject.Object.Notify;
+            'notify::ao-map-intensity': GObject.Object.Notify;
+            'notify::bump-map': GObject.Object.Notify;
+            'notify::bump-map': GObject.Object.Notify;
+            'notify::bump-scale': GObject.Object.Notify;
+            'notify::bump-scale': GObject.Object.Notify;
+            'notify::color': GObject.Object.Notify;
+            'notify::displacement-bias': GObject.Object.Notify;
+            'notify::displacement-bias': GObject.Object.Notify;
+            'notify::displacement-map': GObject.Object.Notify;
+            'notify::displacement-map': GObject.Object.Notify;
+            'notify::displacement-scale': GObject.Object.Notify;
+            'notify::displacement-scale': GObject.Object.Notify;
+            'notify::emissive-color': GObject.Object.Notify;
+            'notify::emissive-color': GObject.Object.Notify;
+            'notify::emissive-intensity': GObject.Object.Notify;
+            'notify::emissive-intensity': GObject.Object.Notify;
+            'notify::emissive-map': GObject.Object.Notify;
+            'notify::emissive-map': GObject.Object.Notify;
+            'notify::gradient-map': GObject.Object.Notify;
+            'notify::gradient-map': GObject.Object.Notify;
+            'notify::light-map': GObject.Object.Notify;
+            'notify::light-map': GObject.Object.Notify;
+            'notify::light-map-intensity': GObject.Object.Notify;
+            'notify::light-map-intensity': GObject.Object.Notify;
+            'notify::map': GObject.Object.Notify;
+            'notify::normal-map': GObject.Object.Notify;
+            'notify::normal-map': GObject.Object.Notify;
+            'notify::normal-scale': GObject.Object.Notify;
+            'notify::normal-scale': GObject.Object.Notify;
+            'notify::morph-normals': GObject.Object.Notify;
+            'notify::morph-normals': GObject.Object.Notify;
+            'notify::morph-targets': GObject.Object.Notify;
+            'notify::morph-targets': GObject.Object.Notify;
+            'notify::skinning': GObject.Object.Notify;
+            'notify::wireframe': GObject.Object.Notify;
+            'notify::wireframe-line-width': GObject.Object.Notify;
+            'notify::wireframe-line-width': GObject.Object.Notify;
+            'notify::alpha-test': GObject.Object.Notify;
+            'notify::alpha-test': GObject.Object.Notify;
+            'notify::clip-intersection': GObject.Object.Notify;
+            'notify::clip-intersection': GObject.Object.Notify;
+            'notify::fog': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::transparent': GObject.Object.Notify;
+            'notify::vertex-colors': GObject.Object.Notify;
+            'notify::vertex-colors': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3028,14 +3672,17 @@ export namespace Gthree {
             signal: K,
             callback: MeshToonMaterial.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MeshToonMaterial.SignalSignatures>(
             signal: K,
             callback: MeshToonMaterial.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MeshToonMaterial.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MeshToonMaterial.SignalSignatures[K]>
+            ...args: MeshToonMaterial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3096,14 +3743,17 @@ export namespace Gthree {
             signal: K,
             callback: NumberKeyframeTrack.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NumberKeyframeTrack.SignalSignatures>(
             signal: K,
             callback: NumberKeyframeTrack.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NumberKeyframeTrack.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NumberKeyframeTrack.SignalSignatures[K]>
+            ...args: NumberKeyframeTrack.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Object {
@@ -3121,6 +3771,16 @@ export namespace Gthree {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             destroy: Destroy;
             'parent-set': ParentSet;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -3167,8 +3827,14 @@ export namespace Gthree {
         // Signals
 
         connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
-        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            ...args: Object.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -3249,7 +3915,24 @@ export namespace Gthree {
 
     namespace OrthographicCamera {
         // Signal signatures
-        interface SignalSignatures extends Camera.SignalSignatures {}
+        interface SignalSignatures extends Camera.SignalSignatures {
+            'notify::bottom': GObject.Object.Notify;
+            'notify::left': GObject.Object.Notify;
+            'notify::right': GObject.Object.Notify;
+            'notify::top': GObject.Object.Notify;
+            'notify::far': GObject.Object.Notify;
+            'notify::near': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3299,14 +3982,17 @@ export namespace Gthree {
             signal: K,
             callback: OrthographicCamera.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OrthographicCamera.SignalSignatures>(
             signal: K,
             callback: OrthographicCamera.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OrthographicCamera.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OrthographicCamera.SignalSignatures[K]>
+            ...args: OrthographicCamera.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3350,8 +4036,14 @@ export namespace Gthree {
         // Signals
 
         connect<K extends keyof Pass.SignalSignatures>(signal: K, callback: Pass.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Pass.SignalSignatures>(signal: K, callback: Pass.SignalSignatures[K]): number;
-        emit<K extends keyof Pass.SignalSignatures>(signal: K, ...args: Parameters<Pass.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Pass.SignalSignatures>(
+            signal: K,
+            ...args: Pass.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -3382,7 +4074,22 @@ export namespace Gthree {
 
     namespace PerspectiveCamera {
         // Signal signatures
-        interface SignalSignatures extends Camera.SignalSignatures {}
+        interface SignalSignatures extends Camera.SignalSignatures {
+            'notify::aspect': GObject.Object.Notify;
+            'notify::fov': GObject.Object.Notify;
+            'notify::far': GObject.Object.Notify;
+            'notify::near': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3419,14 +4126,17 @@ export namespace Gthree {
             signal: K,
             callback: PerspectiveCamera.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PerspectiveCamera.SignalSignatures>(
             signal: K,
             callback: PerspectiveCamera.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PerspectiveCamera.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PerspectiveCamera.SignalSignatures[K]>
+            ...args: PerspectiveCamera.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3438,7 +4148,21 @@ export namespace Gthree {
 
     namespace PlaneHelper {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::color': GObject.Object.Notify;
+            'notify::plane': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3478,14 +4202,17 @@ export namespace Gthree {
             signal: K,
             callback: PlaneHelper.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PlaneHelper.SignalSignatures>(
             signal: K,
             callback: PlaneHelper.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PlaneHelper.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PlaneHelper.SignalSignatures[K]>
+            ...args: PlaneHelper.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3499,7 +4226,22 @@ export namespace Gthree {
 
     namespace PointLight {
         // Signal signatures
-        interface SignalSignatures extends Light.SignalSignatures {}
+        interface SignalSignatures extends Light.SignalSignatures {
+            'notify::decay': GObject.Object.Notify;
+            'notify::distance': GObject.Object.Notify;
+            'notify::color': GObject.Object.Notify;
+            'notify::intensity': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3536,14 +4278,17 @@ export namespace Gthree {
             signal: K,
             callback: PointLight.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PointLight.SignalSignatures>(
             signal: K,
             callback: PointLight.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PointLight.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PointLight.SignalSignatures[K]>
+            ...args: PointLight.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3555,7 +4300,20 @@ export namespace Gthree {
 
     namespace Points {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::geometry': GObject.Object.Notify;
+            'notify::material': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3588,8 +4346,14 @@ export namespace Gthree {
         // Signals
 
         connect<K extends keyof Points.SignalSignatures>(signal: K, callback: Points.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Points.SignalSignatures>(signal: K, callback: Points.SignalSignatures[K]): number;
-        emit<K extends keyof Points.SignalSignatures>(signal: K, ...args: Parameters<Points.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Points.SignalSignatures>(
+            signal: K,
+            ...args: Points.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3598,7 +4362,22 @@ export namespace Gthree {
 
     namespace PointsMaterial {
         // Signal signatures
-        interface SignalSignatures extends Material.SignalSignatures {}
+        interface SignalSignatures extends Material.SignalSignatures {
+            'notify::color': GObject.Object.Notify;
+            'notify::map': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::size-attenuation': GObject.Object.Notify;
+            'notify::size-attenuation': GObject.Object.Notify;
+            'notify::alpha-test': GObject.Object.Notify;
+            'notify::alpha-test': GObject.Object.Notify;
+            'notify::clip-intersection': GObject.Object.Notify;
+            'notify::clip-intersection': GObject.Object.Notify;
+            'notify::fog': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::transparent': GObject.Object.Notify;
+            'notify::vertex-colors': GObject.Object.Notify;
+            'notify::vertex-colors': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3641,14 +4420,17 @@ export namespace Gthree {
             signal: K,
             callback: PointsMaterial.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PointsMaterial.SignalSignatures>(
             signal: K,
             callback: PointsMaterial.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PointsMaterial.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PointsMaterial.SignalSignatures[K]>
+            ...args: PointsMaterial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3684,14 +4466,17 @@ export namespace Gthree {
         // Signals
 
         connect<K extends keyof Program.SignalSignatures>(signal: K, callback: Program.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Program.SignalSignatures>(
             signal: K,
             callback: Program.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Program.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Program.SignalSignatures[K]>
+            ...args: Program.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3728,14 +4513,17 @@ export namespace Gthree {
             signal: K,
             callback: QuaternionInterpolant.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof QuaternionInterpolant.SignalSignatures>(
             signal: K,
             callback: QuaternionInterpolant.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof QuaternionInterpolant.SignalSignatures>(
             signal: K,
-            ...args: Parameters<QuaternionInterpolant.SignalSignatures[K]>
+            ...args: QuaternionInterpolant.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace QuaternionKeyframeTrack {
@@ -3764,14 +4552,17 @@ export namespace Gthree {
             signal: K,
             callback: QuaternionKeyframeTrack.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof QuaternionKeyframeTrack.SignalSignatures>(
             signal: K,
             callback: QuaternionKeyframeTrack.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof QuaternionKeyframeTrack.SignalSignatures>(
             signal: K,
-            ...args: Parameters<QuaternionKeyframeTrack.SignalSignatures[K]>
+            ...args: QuaternionKeyframeTrack.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Raycaster {
@@ -3797,14 +4588,17 @@ export namespace Gthree {
         // Signals
 
         connect<K extends keyof Raycaster.SignalSignatures>(signal: K, callback: Raycaster.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Raycaster.SignalSignatures>(
             signal: K,
             callback: Raycaster.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Raycaster.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Raycaster.SignalSignatures[K]>
+            ...args: Raycaster.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3843,14 +4637,17 @@ export namespace Gthree {
             signal: K,
             callback: RenderPass.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RenderPass.SignalSignatures>(
             signal: K,
             callback: RenderPass.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RenderPass.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RenderPass.SignalSignatures[K]>
+            ...args: RenderPass.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3883,14 +4680,17 @@ export namespace Gthree {
             signal: K,
             callback: RenderTarget.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RenderTarget.SignalSignatures>(
             signal: K,
             callback: RenderTarget.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RenderTarget.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RenderTarget.SignalSignatures[K]>
+            ...args: RenderTarget.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3930,14 +4730,17 @@ export namespace Gthree {
         // Signals
 
         connect<K extends keyof Renderer.SignalSignatures>(signal: K, callback: Renderer.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Renderer.SignalSignatures>(
             signal: K,
             callback: Renderer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Renderer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Renderer.SignalSignatures[K]>
+            ...args: Renderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4004,14 +4807,17 @@ export namespace Gthree {
         // Signals
 
         connect<K extends keyof Resource.SignalSignatures>(signal: K, callback: Resource.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Resource.SignalSignatures>(
             signal: K,
             callback: Resource.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Resource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Resource.SignalSignatures[K]>
+            ...args: Resource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -4030,7 +4836,18 @@ export namespace Gthree {
 
     namespace Scene {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4051,8 +4868,14 @@ export namespace Gthree {
         // Signals
 
         connect<K extends keyof Scene.SignalSignatures>(signal: K, callback: Scene.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Scene.SignalSignatures>(signal: K, callback: Scene.SignalSignatures[K]): number;
-        emit<K extends keyof Scene.SignalSignatures>(signal: K, ...args: Parameters<Scene.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Scene.SignalSignatures>(
+            signal: K,
+            ...args: Scene.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4086,8 +4909,14 @@ export namespace Gthree {
         // Signals
 
         connect<K extends keyof Shader.SignalSignatures>(signal: K, callback: Shader.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Shader.SignalSignatures>(signal: K, callback: Shader.SignalSignatures[K]): number;
-        emit<K extends keyof Shader.SignalSignatures>(signal: K, ...args: Parameters<Shader.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Shader.SignalSignatures>(
+            signal: K,
+            ...args: Shader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4102,7 +4931,28 @@ export namespace Gthree {
 
     namespace ShaderMaterial {
         // Signal signatures
-        interface SignalSignatures extends MeshMaterial.SignalSignatures {}
+        interface SignalSignatures extends MeshMaterial.SignalSignatures {
+            'notify::shader': GObject.Object.Notify;
+            'notify::use-lights': GObject.Object.Notify;
+            'notify::use-lights': GObject.Object.Notify;
+            'notify::vertex-colors': GObject.Object.Notify;
+            'notify::vertex-colors': GObject.Object.Notify;
+            'notify::morph-normals': GObject.Object.Notify;
+            'notify::morph-normals': GObject.Object.Notify;
+            'notify::morph-targets': GObject.Object.Notify;
+            'notify::morph-targets': GObject.Object.Notify;
+            'notify::skinning': GObject.Object.Notify;
+            'notify::wireframe': GObject.Object.Notify;
+            'notify::wireframe-line-width': GObject.Object.Notify;
+            'notify::wireframe-line-width': GObject.Object.Notify;
+            'notify::alpha-test': GObject.Object.Notify;
+            'notify::alpha-test': GObject.Object.Notify;
+            'notify::clip-intersection': GObject.Object.Notify;
+            'notify::clip-intersection': GObject.Object.Notify;
+            'notify::fog': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::transparent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4144,14 +4994,17 @@ export namespace Gthree {
             signal: K,
             callback: ShaderMaterial.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ShaderMaterial.SignalSignatures>(
             signal: K,
             callback: ShaderMaterial.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ShaderMaterial.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ShaderMaterial.SignalSignatures[K]>
+            ...args: ShaderMaterial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4189,14 +5042,17 @@ export namespace Gthree {
             signal: K,
             callback: ShaderPass.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ShaderPass.SignalSignatures>(
             signal: K,
             callback: ShaderPass.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ShaderPass.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ShaderPass.SignalSignatures[K]>
+            ...args: ShaderPass.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Skeleton {
@@ -4222,14 +5078,17 @@ export namespace Gthree {
         // Signals
 
         connect<K extends keyof Skeleton.SignalSignatures>(signal: K, callback: Skeleton.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Skeleton.SignalSignatures>(
             signal: K,
             callback: Skeleton.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Skeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Skeleton.SignalSignatures[K]>
+            ...args: Skeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4240,7 +5099,21 @@ export namespace Gthree {
 
     namespace SkeletonHelper {
         // Signal signatures
-        interface SignalSignatures extends LineSegments.SignalSignatures {}
+        interface SignalSignatures extends LineSegments.SignalSignatures {
+            'notify::root': GObject.Object.Notify;
+            'notify::geometry': GObject.Object.Notify;
+            'notify::material': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4273,19 +5146,35 @@ export namespace Gthree {
             signal: K,
             callback: SkeletonHelper.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SkeletonHelper.SignalSignatures>(
             signal: K,
             callback: SkeletonHelper.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SkeletonHelper.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SkeletonHelper.SignalSignatures[K]>
+            ...args: SkeletonHelper.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace SkinnedMesh {
         // Signal signatures
-        interface SignalSignatures extends Mesh.SignalSignatures {}
+        interface SignalSignatures extends Mesh.SignalSignatures {
+            'notify::geometry': GObject.Object.Notify;
+            'notify::materials': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4312,14 +5201,17 @@ export namespace Gthree {
             signal: K,
             callback: SkinnedMesh.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SkinnedMesh.SignalSignatures>(
             signal: K,
             callback: SkinnedMesh.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SkinnedMesh.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SkinnedMesh.SignalSignatures[K]>
+            ...args: SkinnedMesh.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4333,7 +5225,25 @@ export namespace Gthree {
 
     namespace SpotLight {
         // Signal signatures
-        interface SignalSignatures extends Light.SignalSignatures {}
+        interface SignalSignatures extends Light.SignalSignatures {
+            'notify::angle': GObject.Object.Notify;
+            'notify::decay': GObject.Object.Notify;
+            'notify::distance': GObject.Object.Notify;
+            'notify::penumbra': GObject.Object.Notify;
+            'notify::target': GObject.Object.Notify;
+            'notify::color': GObject.Object.Notify;
+            'notify::intensity': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4382,14 +5292,17 @@ export namespace Gthree {
         // Signals
 
         connect<K extends keyof SpotLight.SignalSignatures>(signal: K, callback: SpotLight.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SpotLight.SignalSignatures>(
             signal: K,
             callback: SpotLight.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SpotLight.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SpotLight.SignalSignatures[K]>
+            ...args: SpotLight.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4428,19 +5341,34 @@ export namespace Gthree {
             signal: K,
             callback: SpotLightShadow.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SpotLightShadow.SignalSignatures>(
             signal: K,
             callback: SpotLightShadow.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SpotLightShadow.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SpotLightShadow.SignalSignatures[K]>
+            ...args: SpotLightShadow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Sprite {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::material': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::next-sibling': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::previous-sibling': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4471,8 +5399,14 @@ export namespace Gthree {
         // Signals
 
         connect<K extends keyof Sprite.SignalSignatures>(signal: K, callback: Sprite.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Sprite.SignalSignatures>(signal: K, callback: Sprite.SignalSignatures[K]): number;
-        emit<K extends keyof Sprite.SignalSignatures>(signal: K, ...args: Parameters<Sprite.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Sprite.SignalSignatures>(
+            signal: K,
+            ...args: Sprite.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4483,7 +5417,22 @@ export namespace Gthree {
 
     namespace SpriteMaterial {
         // Signal signatures
-        interface SignalSignatures extends Material.SignalSignatures {}
+        interface SignalSignatures extends Material.SignalSignatures {
+            'notify::color': GObject.Object.Notify;
+            'notify::map': GObject.Object.Notify;
+            'notify::rotation': GObject.Object.Notify;
+            'notify::size-attenuation': GObject.Object.Notify;
+            'notify::size-attenuation': GObject.Object.Notify;
+            'notify::alpha-test': GObject.Object.Notify;
+            'notify::alpha-test': GObject.Object.Notify;
+            'notify::clip-intersection': GObject.Object.Notify;
+            'notify::clip-intersection': GObject.Object.Notify;
+            'notify::fog': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::transparent': GObject.Object.Notify;
+            'notify::vertex-colors': GObject.Object.Notify;
+            'notify::vertex-colors': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4526,14 +5475,17 @@ export namespace Gthree {
             signal: K,
             callback: SpriteMaterial.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SpriteMaterial.SignalSignatures>(
             signal: K,
             callback: SpriteMaterial.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SpriteMaterial.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SpriteMaterial.SignalSignatures[K]>
+            ...args: SpriteMaterial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4548,7 +5500,10 @@ export namespace Gthree {
 
     namespace Texture {
         // Signal signatures
-        interface SignalSignatures extends Resource.SignalSignatures {}
+        interface SignalSignatures extends Resource.SignalSignatures {
+            'notify::pixbuf': GObject.Object.Notify;
+            'notify::surface': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4579,14 +5534,17 @@ export namespace Gthree {
         // Signals
 
         connect<K extends keyof Texture.SignalSignatures>(signal: K, callback: Texture.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Texture.SignalSignatures>(
             signal: K,
             callback: Texture.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Texture.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Texture.SignalSignatures[K]>
+            ...args: Texture.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -4655,14 +5613,17 @@ export namespace Gthree {
         // Signals
 
         connect<K extends keyof Uniforms.SignalSignatures>(signal: K, callback: Uniforms.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Uniforms.SignalSignatures>(
             signal: K,
             callback: Uniforms.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Uniforms.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Uniforms.SignalSignatures[K]>
+            ...args: Uniforms.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4704,14 +5665,17 @@ export namespace Gthree {
             signal: K,
             callback: VectorKeyframeTrack.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VectorKeyframeTrack.SignalSignatures>(
             signal: K,
             callback: VectorKeyframeTrack.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VectorKeyframeTrack.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VectorKeyframeTrack.SignalSignatures[K]>
+            ...args: VectorKeyframeTrack.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     type AmbientLightClass = typeof AmbientLight;

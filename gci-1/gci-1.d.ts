@@ -32,7 +32,9 @@ export namespace GCi {
 
     namespace EntryController {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::entry': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -65,14 +67,17 @@ export namespace GCi {
             signal: K,
             callback: EntryController.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof EntryController.SignalSignatures>(
             signal: K,
             callback: EntryController.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof EntryController.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EntryController.SignalSignatures[K]>
+            ...args: EntryController.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

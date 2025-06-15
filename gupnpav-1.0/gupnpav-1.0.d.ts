@@ -415,14 +415,17 @@ export namespace GUPnPAV {
             signal: K,
             callback: CDSLastChangeParser.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CDSLastChangeParser.SignalSignatures>(
             signal: K,
             callback: CDSLastChangeParser.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CDSLastChangeParser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CDSLastChangeParser.SignalSignatures[K]>
+            ...args: CDSLastChangeParser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -437,7 +440,51 @@ export namespace GUPnPAV {
 
     namespace DIDLLiteContainer {
         // Signal signatures
-        interface SignalSignatures extends DIDLLiteObject.SignalSignatures {}
+        interface SignalSignatures extends DIDLLiteObject.SignalSignatures {
+            'notify::child-count': GObject.Object.Notify;
+            'notify::child-count': GObject.Object.Notify;
+            'notify::container-update-id': GObject.Object.Notify;
+            'notify::container-update-id': GObject.Object.Notify;
+            'notify::searchable': GObject.Object.Notify;
+            'notify::storage-used': GObject.Object.Notify;
+            'notify::storage-used': GObject.Object.Notify;
+            'notify::total-deleted-child-count': GObject.Object.Notify;
+            'notify::total-deleted-child-count': GObject.Object.Notify;
+            'notify::album': GObject.Object.Notify;
+            'notify::album-art': GObject.Object.Notify;
+            'notify::album-art': GObject.Object.Notify;
+            'notify::artist': GObject.Object.Notify;
+            'notify::author': GObject.Object.Notify;
+            'notify::creator': GObject.Object.Notify;
+            'notify::date': GObject.Object.Notify;
+            'notify::dc-namespace': GObject.Object.Notify;
+            'notify::dc-namespace': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::dlna-managed': GObject.Object.Notify;
+            'notify::dlna-managed': GObject.Object.Notify;
+            'notify::dlna-namespace': GObject.Object.Notify;
+            'notify::dlna-namespace': GObject.Object.Notify;
+            'notify::genre': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::parent-id': GObject.Object.Notify;
+            'notify::parent-id': GObject.Object.Notify;
+            'notify::pv-namespace': GObject.Object.Notify;
+            'notify::pv-namespace': GObject.Object.Notify;
+            'notify::restricted': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::track-number': GObject.Object.Notify;
+            'notify::track-number': GObject.Object.Notify;
+            'notify::update-id': GObject.Object.Notify;
+            'notify::update-id': GObject.Object.Notify;
+            'notify::upnp-class': GObject.Object.Notify;
+            'notify::upnp-class': GObject.Object.Notify;
+            'notify::upnp-namespace': GObject.Object.Notify;
+            'notify::upnp-namespace': GObject.Object.Notify;
+            'notify::write-status': GObject.Object.Notify;
+            'notify::write-status': GObject.Object.Notify;
+            'notify::xml-node': GObject.Object.Notify;
+            'notify::xml-node': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -517,14 +564,17 @@ export namespace GUPnPAV {
             signal: K,
             callback: DIDLLiteContainer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DIDLLiteContainer.SignalSignatures>(
             signal: K,
             callback: DIDLLiteContainer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DIDLLiteContainer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DIDLLiteContainer.SignalSignatures[K]>
+            ...args: DIDLLiteContainer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -639,7 +689,12 @@ export namespace GUPnPAV {
 
     namespace DIDLLiteContributor {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::role': GObject.Object.Notify;
+            'notify::xml-node': GObject.Object.Notify;
+            'notify::xml-node': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -687,14 +742,17 @@ export namespace GUPnPAV {
             signal: K,
             callback: DIDLLiteContributor.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DIDLLiteContributor.SignalSignatures>(
             signal: K,
             callback: DIDLLiteContributor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DIDLLiteContributor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DIDLLiteContributor.SignalSignatures[K]>
+            ...args: DIDLLiteContributor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -727,7 +785,15 @@ export namespace GUPnPAV {
 
     namespace DIDLLiteCreateClass {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::content': GObject.Object.Notify;
+            'notify::friendly-name': GObject.Object.Notify;
+            'notify::friendly-name': GObject.Object.Notify;
+            'notify::include-derived': GObject.Object.Notify;
+            'notify::include-derived': GObject.Object.Notify;
+            'notify::xml-node': GObject.Object.Notify;
+            'notify::xml-node': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -793,14 +859,17 @@ export namespace GUPnPAV {
             signal: K,
             callback: DIDLLiteCreateClass.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DIDLLiteCreateClass.SignalSignatures>(
             signal: K,
             callback: DIDLLiteCreateClass.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DIDLLiteCreateClass.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DIDLLiteCreateClass.SignalSignatures[K]>
+            ...args: DIDLLiteCreateClass.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -843,7 +912,16 @@ export namespace GUPnPAV {
 
     namespace DIDLLiteDescriptor {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::content': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::metadata-type': GObject.Object.Notify;
+            'notify::metadata-type': GObject.Object.Notify;
+            'notify::name-space': GObject.Object.Notify;
+            'notify::name-space': GObject.Object.Notify;
+            'notify::xml-node': GObject.Object.Notify;
+            'notify::xml-node': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -917,14 +995,17 @@ export namespace GUPnPAV {
             signal: K,
             callback: DIDLLiteDescriptor.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DIDLLiteDescriptor.SignalSignatures>(
             signal: K,
             callback: DIDLLiteDescriptor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DIDLLiteDescriptor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DIDLLiteDescriptor.SignalSignatures[K]>
+            ...args: DIDLLiteDescriptor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -977,7 +1058,45 @@ export namespace GUPnPAV {
 
     namespace DIDLLiteItem {
         // Signal signatures
-        interface SignalSignatures extends DIDLLiteObject.SignalSignatures {}
+        interface SignalSignatures extends DIDLLiteObject.SignalSignatures {
+            'notify::lifetime': GObject.Object.Notify;
+            'notify::ref-id': GObject.Object.Notify;
+            'notify::ref-id': GObject.Object.Notify;
+            'notify::album': GObject.Object.Notify;
+            'notify::album-art': GObject.Object.Notify;
+            'notify::album-art': GObject.Object.Notify;
+            'notify::artist': GObject.Object.Notify;
+            'notify::author': GObject.Object.Notify;
+            'notify::creator': GObject.Object.Notify;
+            'notify::date': GObject.Object.Notify;
+            'notify::dc-namespace': GObject.Object.Notify;
+            'notify::dc-namespace': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::dlna-managed': GObject.Object.Notify;
+            'notify::dlna-managed': GObject.Object.Notify;
+            'notify::dlna-namespace': GObject.Object.Notify;
+            'notify::dlna-namespace': GObject.Object.Notify;
+            'notify::genre': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::parent-id': GObject.Object.Notify;
+            'notify::parent-id': GObject.Object.Notify;
+            'notify::pv-namespace': GObject.Object.Notify;
+            'notify::pv-namespace': GObject.Object.Notify;
+            'notify::restricted': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::track-number': GObject.Object.Notify;
+            'notify::track-number': GObject.Object.Notify;
+            'notify::update-id': GObject.Object.Notify;
+            'notify::update-id': GObject.Object.Notify;
+            'notify::upnp-class': GObject.Object.Notify;
+            'notify::upnp-class': GObject.Object.Notify;
+            'notify::upnp-namespace': GObject.Object.Notify;
+            'notify::upnp-namespace': GObject.Object.Notify;
+            'notify::write-status': GObject.Object.Notify;
+            'notify::write-status': GObject.Object.Notify;
+            'notify::xml-node': GObject.Object.Notify;
+            'notify::xml-node': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1021,14 +1140,17 @@ export namespace GUPnPAV {
             signal: K,
             callback: DIDLLiteItem.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DIDLLiteItem.SignalSignatures>(
             signal: K,
             callback: DIDLLiteItem.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DIDLLiteItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DIDLLiteItem.SignalSignatures[K]>
+            ...args: DIDLLiteItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1048,7 +1170,42 @@ export namespace GUPnPAV {
 
     namespace DIDLLiteObject {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::album': GObject.Object.Notify;
+            'notify::album-art': GObject.Object.Notify;
+            'notify::album-art': GObject.Object.Notify;
+            'notify::artist': GObject.Object.Notify;
+            'notify::author': GObject.Object.Notify;
+            'notify::creator': GObject.Object.Notify;
+            'notify::date': GObject.Object.Notify;
+            'notify::dc-namespace': GObject.Object.Notify;
+            'notify::dc-namespace': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::dlna-managed': GObject.Object.Notify;
+            'notify::dlna-managed': GObject.Object.Notify;
+            'notify::dlna-namespace': GObject.Object.Notify;
+            'notify::dlna-namespace': GObject.Object.Notify;
+            'notify::genre': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::parent-id': GObject.Object.Notify;
+            'notify::parent-id': GObject.Object.Notify;
+            'notify::pv-namespace': GObject.Object.Notify;
+            'notify::pv-namespace': GObject.Object.Notify;
+            'notify::restricted': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::track-number': GObject.Object.Notify;
+            'notify::track-number': GObject.Object.Notify;
+            'notify::update-id': GObject.Object.Notify;
+            'notify::update-id': GObject.Object.Notify;
+            'notify::upnp-class': GObject.Object.Notify;
+            'notify::upnp-class': GObject.Object.Notify;
+            'notify::upnp-namespace': GObject.Object.Notify;
+            'notify::upnp-namespace': GObject.Object.Notify;
+            'notify::write-status': GObject.Object.Notify;
+            'notify::write-status': GObject.Object.Notify;
+            'notify::xml-node': GObject.Object.Notify;
+            'notify::xml-node': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1276,14 +1433,17 @@ export namespace GUPnPAV {
             signal: K,
             callback: DIDLLiteObject.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DIDLLiteObject.SignalSignatures>(
             signal: K,
             callback: DIDLLiteObject.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DIDLLiteObject.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DIDLLiteObject.SignalSignatures[K]>
+            ...args: DIDLLiteObject.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1674,14 +1834,17 @@ export namespace GUPnPAV {
             signal: K,
             callback: DIDLLiteParser.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DIDLLiteParser.SignalSignatures>(
             signal: K,
             callback: DIDLLiteParser.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DIDLLiteParser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DIDLLiteParser.SignalSignatures[K]>
+            ...args: DIDLLiteParser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1703,7 +1866,44 @@ export namespace GUPnPAV {
 
     namespace DIDLLiteResource {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::audio-channels': GObject.Object.Notify;
+            'notify::audio-channels': GObject.Object.Notify;
+            'notify::bitrate': GObject.Object.Notify;
+            'notify::bits-per-sample': GObject.Object.Notify;
+            'notify::bits-per-sample': GObject.Object.Notify;
+            'notify::cleartext-size': GObject.Object.Notify;
+            'notify::cleartext-size': GObject.Object.Notify;
+            'notify::color-depth': GObject.Object.Notify;
+            'notify::color-depth': GObject.Object.Notify;
+            'notify::dlna-namespace': GObject.Object.Notify;
+            'notify::dlna-namespace': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::import-uri': GObject.Object.Notify;
+            'notify::import-uri': GObject.Object.Notify;
+            'notify::protection': GObject.Object.Notify;
+            'notify::protocol-info': GObject.Object.Notify;
+            'notify::protocol-info': GObject.Object.Notify;
+            'notify::pv-namespace': GObject.Object.Notify;
+            'notify::pv-namespace': GObject.Object.Notify;
+            'notify::sample-freq': GObject.Object.Notify;
+            'notify::sample-freq': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::size64': GObject.Object.Notify;
+            'notify::subtitle-file-type': GObject.Object.Notify;
+            'notify::subtitle-file-type': GObject.Object.Notify;
+            'notify::subtitle-file-uri': GObject.Object.Notify;
+            'notify::subtitle-file-uri': GObject.Object.Notify;
+            'notify::track-total': GObject.Object.Notify;
+            'notify::track-total': GObject.Object.Notify;
+            'notify::update-count': GObject.Object.Notify;
+            'notify::update-count': GObject.Object.Notify;
+            'notify::uri': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::xml-node': GObject.Object.Notify;
+            'notify::xml-node': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1931,14 +2131,17 @@ export namespace GUPnPAV {
             signal: K,
             callback: DIDLLiteResource.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DIDLLiteResource.SignalSignatures>(
             signal: K,
             callback: DIDLLiteResource.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DIDLLiteResource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DIDLLiteResource.SignalSignatures[K]>
+            ...args: DIDLLiteResource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2179,7 +2382,11 @@ export namespace GUPnPAV {
 
     namespace DIDLLiteWriter {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::language': GObject.Object.Notify;
+            'notify::xml-node': GObject.Object.Notify;
+            'notify::xml-node': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2222,14 +2429,17 @@ export namespace GUPnPAV {
             signal: K,
             callback: DIDLLiteWriter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DIDLLiteWriter.SignalSignatures>(
             signal: K,
             callback: DIDLLiteWriter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DIDLLiteWriter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DIDLLiteWriter.SignalSignatures[K]>
+            ...args: DIDLLiteWriter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2276,7 +2486,12 @@ export namespace GUPnPAV {
 
     namespace Feature {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::object-ids': GObject.Object.Notify;
+            'notify::object-ids': GObject.Object.Notify;
+            'notify::version': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2319,14 +2534,17 @@ export namespace GUPnPAV {
         // Signals
 
         connect<K extends keyof Feature.SignalSignatures>(signal: K, callback: Feature.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Feature.SignalSignatures>(
             signal: K,
             callback: Feature.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Feature.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Feature.SignalSignatures[K]>
+            ...args: Feature.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2373,14 +2591,17 @@ export namespace GUPnPAV {
             signal: K,
             callback: FeatureListParser.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FeatureListParser.SignalSignatures>(
             signal: K,
             callback: FeatureListParser.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FeatureListParser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FeatureListParser.SignalSignatures[K]>
+            ...args: FeatureListParser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2419,19 +2640,27 @@ export namespace GUPnPAV {
             signal: K,
             callback: LastChangeParser.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LastChangeParser.SignalSignatures>(
             signal: K,
             callback: LastChangeParser.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LastChangeParser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LastChangeParser.SignalSignatures[K]>
+            ...args: LastChangeParser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace MediaCollection {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::author': GObject.Object.Notify;
+            'notify::data': GObject.Object.Notify;
+            'notify::mutable': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2485,14 +2714,17 @@ export namespace GUPnPAV {
             signal: K,
             callback: MediaCollection.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MediaCollection.SignalSignatures>(
             signal: K,
             callback: MediaCollection.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MediaCollection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaCollection.SignalSignatures[K]>
+            ...args: MediaCollection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2516,7 +2748,22 @@ export namespace GUPnPAV {
 
     namespace ProtocolInfo {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::dlna-conversion': GObject.Object.Notify;
+            'notify::dlna-conversion': GObject.Object.Notify;
+            'notify::dlna-flags': GObject.Object.Notify;
+            'notify::dlna-flags': GObject.Object.Notify;
+            'notify::dlna-operation': GObject.Object.Notify;
+            'notify::dlna-operation': GObject.Object.Notify;
+            'notify::dlna-profile': GObject.Object.Notify;
+            'notify::dlna-profile': GObject.Object.Notify;
+            'notify::mime-type': GObject.Object.Notify;
+            'notify::mime-type': GObject.Object.Notify;
+            'notify::network': GObject.Object.Notify;
+            'notify::play-speeds': GObject.Object.Notify;
+            'notify::play-speeds': GObject.Object.Notify;
+            'notify::protocol': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2632,14 +2879,17 @@ export namespace GUPnPAV {
             signal: K,
             callback: ProtocolInfo.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ProtocolInfo.SignalSignatures>(
             signal: K,
             callback: ProtocolInfo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ProtocolInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProtocolInfo.SignalSignatures[K]>
+            ...args: ProtocolInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2762,7 +3012,7 @@ export namespace GUPnPAV {
                 op: SearchCriteriaOp,
                 value: string,
                 error?: any | null,
-            ): boolean;
+            ): boolean | void;
         }
 
         // Signal signatures
@@ -2796,14 +3046,17 @@ export namespace GUPnPAV {
             signal: K,
             callback: SearchCriteriaParser.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SearchCriteriaParser.SignalSignatures>(
             signal: K,
             callback: SearchCriteriaParser.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SearchCriteriaParser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SearchCriteriaParser.SignalSignatures[K]>
+            ...args: SearchCriteriaParser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 

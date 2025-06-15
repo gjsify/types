@@ -92,6 +92,8 @@ export namespace Qrtr {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'node-added': NodeAdded;
             'node-removed': NodeRemoved;
+            'notify::lookup-timeout': GObject.Object.Notify;
+            'notify::lookup-timeout': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -128,8 +130,14 @@ export namespace Qrtr {
         // Signals
 
         connect<K extends keyof Bus.SignalSignatures>(signal: K, callback: Bus.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Bus.SignalSignatures>(signal: K, callback: Bus.SignalSignatures[K]): number;
-        emit<K extends keyof Bus.SignalSignatures>(signal: K, ...args: Parameters<Bus.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Bus.SignalSignatures>(
+            signal: K,
+            ...args: Bus.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -889,6 +897,10 @@ export namespace Qrtr {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'client-message': ClientMessage;
+            'notify::client-node': GObject.Object.Notify;
+            'notify::client-node': GObject.Object.Notify;
+            'notify::client-port': GObject.Object.Notify;
+            'notify::client-port': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -926,8 +938,14 @@ export namespace Qrtr {
         // Signals
 
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1502,6 +1520,9 @@ export namespace Qrtr {
             'node-removed': NodeRemoved;
             'service-added': ServiceAdded;
             'service-removed': ServiceRemoved;
+            'notify::bus': GObject.Object.Notify;
+            'notify::node-id': GObject.Object.Notify;
+            'notify::node-id': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1535,8 +1556,14 @@ export namespace Qrtr {
         // Signals
 
         connect<K extends keyof Node.SignalSignatures>(signal: K, callback: Node.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Node.SignalSignatures>(signal: K, callback: Node.SignalSignatures[K]): number;
-        emit<K extends keyof Node.SignalSignatures>(signal: K, ...args: Parameters<Node.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Node.SignalSignatures>(
+            signal: K,
+            ...args: Node.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

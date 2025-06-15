@@ -664,6 +664,13 @@ export namespace GWeather {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             updated: Updated;
+            'notify::application-id': GObject.Object.Notify;
+            'notify::application-id': GObject.Object.Notify;
+            'notify::contact-info': GObject.Object.Notify;
+            'notify::contact-info': GObject.Object.Notify;
+            'notify::enabled-providers': GObject.Object.Notify;
+            'notify::enabled-providers': GObject.Object.Notify;
+            'notify::location': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -718,8 +725,14 @@ export namespace GWeather {
         // Signals
 
         connect<K extends keyof Info.SignalSignatures>(signal: K, callback: Info.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Info.SignalSignatures>(signal: K, callback: Info.SignalSignatures[K]): number;
-        emit<K extends keyof Info.SignalSignatures>(signal: K, ...args: Parameters<Info.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Info.SignalSignatures>(
+            signal: K,
+            ...args: Info.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -866,7 +879,170 @@ export namespace GWeather {
 
     namespace LocationEntry {
         // Signal signatures
-        interface SignalSignatures extends Gtk.SearchEntry.SignalSignatures {}
+        interface SignalSignatures extends Gtk.SearchEntry.SignalSignatures {
+            'notify::location': GObject.Object.Notify;
+            'notify::show-named-timezones': GObject.Object.Notify;
+            'notify::show-named-timezones': GObject.Object.Notify;
+            'notify::top': GObject.Object.Notify;
+            'notify::activates-default': GObject.Object.Notify;
+            'notify::activates-default': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::buffer': GObject.Object.Notify;
+            'notify::caps-lock-warning': GObject.Object.Notify;
+            'notify::caps-lock-warning': GObject.Object.Notify;
+            'notify::completion': GObject.Object.Notify;
+            'notify::cursor-position': GObject.Object.Notify;
+            'notify::cursor-position': GObject.Object.Notify;
+            'notify::editable': GObject.Object.Notify;
+            'notify::enable-emoji-completion': GObject.Object.Notify;
+            'notify::enable-emoji-completion': GObject.Object.Notify;
+            'notify::has-frame': GObject.Object.Notify;
+            'notify::has-frame': GObject.Object.Notify;
+            'notify::im-module': GObject.Object.Notify;
+            'notify::im-module': GObject.Object.Notify;
+            'notify::inner-border': GObject.Object.Notify;
+            'notify::inner-border': GObject.Object.Notify;
+            'notify::input-hints': GObject.Object.Notify;
+            'notify::input-hints': GObject.Object.Notify;
+            'notify::input-purpose': GObject.Object.Notify;
+            'notify::input-purpose': GObject.Object.Notify;
+            'notify::invisible-char': GObject.Object.Notify;
+            'notify::invisible-char': GObject.Object.Notify;
+            'notify::invisible-char-set': GObject.Object.Notify;
+            'notify::invisible-char-set': GObject.Object.Notify;
+            'notify::max-length': GObject.Object.Notify;
+            'notify::max-length': GObject.Object.Notify;
+            'notify::max-width-chars': GObject.Object.Notify;
+            'notify::max-width-chars': GObject.Object.Notify;
+            'notify::overwrite-mode': GObject.Object.Notify;
+            'notify::overwrite-mode': GObject.Object.Notify;
+            'notify::placeholder-text': GObject.Object.Notify;
+            'notify::placeholder-text': GObject.Object.Notify;
+            'notify::populate-all': GObject.Object.Notify;
+            'notify::populate-all': GObject.Object.Notify;
+            'notify::primary-icon-activatable': GObject.Object.Notify;
+            'notify::primary-icon-activatable': GObject.Object.Notify;
+            'notify::primary-icon-gicon': GObject.Object.Notify;
+            'notify::primary-icon-gicon': GObject.Object.Notify;
+            'notify::primary-icon-name': GObject.Object.Notify;
+            'notify::primary-icon-name': GObject.Object.Notify;
+            'notify::primary-icon-pixbuf': GObject.Object.Notify;
+            'notify::primary-icon-pixbuf': GObject.Object.Notify;
+            'notify::primary-icon-sensitive': GObject.Object.Notify;
+            'notify::primary-icon-sensitive': GObject.Object.Notify;
+            'notify::primary-icon-stock': GObject.Object.Notify;
+            'notify::primary-icon-stock': GObject.Object.Notify;
+            'notify::primary-icon-storage-type': GObject.Object.Notify;
+            'notify::primary-icon-storage-type': GObject.Object.Notify;
+            'notify::primary-icon-tooltip-markup': GObject.Object.Notify;
+            'notify::primary-icon-tooltip-markup': GObject.Object.Notify;
+            'notify::primary-icon-tooltip-text': GObject.Object.Notify;
+            'notify::primary-icon-tooltip-text': GObject.Object.Notify;
+            'notify::progress-fraction': GObject.Object.Notify;
+            'notify::progress-fraction': GObject.Object.Notify;
+            'notify::progress-pulse-step': GObject.Object.Notify;
+            'notify::progress-pulse-step': GObject.Object.Notify;
+            'notify::scroll-offset': GObject.Object.Notify;
+            'notify::scroll-offset': GObject.Object.Notify;
+            'notify::secondary-icon-activatable': GObject.Object.Notify;
+            'notify::secondary-icon-activatable': GObject.Object.Notify;
+            'notify::secondary-icon-gicon': GObject.Object.Notify;
+            'notify::secondary-icon-gicon': GObject.Object.Notify;
+            'notify::secondary-icon-name': GObject.Object.Notify;
+            'notify::secondary-icon-name': GObject.Object.Notify;
+            'notify::secondary-icon-pixbuf': GObject.Object.Notify;
+            'notify::secondary-icon-pixbuf': GObject.Object.Notify;
+            'notify::secondary-icon-sensitive': GObject.Object.Notify;
+            'notify::secondary-icon-sensitive': GObject.Object.Notify;
+            'notify::secondary-icon-stock': GObject.Object.Notify;
+            'notify::secondary-icon-stock': GObject.Object.Notify;
+            'notify::secondary-icon-storage-type': GObject.Object.Notify;
+            'notify::secondary-icon-storage-type': GObject.Object.Notify;
+            'notify::secondary-icon-tooltip-markup': GObject.Object.Notify;
+            'notify::secondary-icon-tooltip-markup': GObject.Object.Notify;
+            'notify::secondary-icon-tooltip-text': GObject.Object.Notify;
+            'notify::secondary-icon-tooltip-text': GObject.Object.Notify;
+            'notify::selection-bound': GObject.Object.Notify;
+            'notify::selection-bound': GObject.Object.Notify;
+            'notify::shadow-type': GObject.Object.Notify;
+            'notify::shadow-type': GObject.Object.Notify;
+            'notify::show-emoji-icon': GObject.Object.Notify;
+            'notify::show-emoji-icon': GObject.Object.Notify;
+            'notify::tabs': GObject.Object.Notify;
+            'notify::text': GObject.Object.Notify;
+            'notify::text-length': GObject.Object.Notify;
+            'notify::text-length': GObject.Object.Notify;
+            'notify::truncate-multiline': GObject.Object.Notify;
+            'notify::truncate-multiline': GObject.Object.Notify;
+            'notify::visibility': GObject.Object.Notify;
+            'notify::width-chars': GObject.Object.Notify;
+            'notify::width-chars': GObject.Object.Notify;
+            'notify::xalign': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::events': GObject.Object.Notify;
+            'notify::expand': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::halign': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::hexpand': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::margin': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::sensitive': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::valign': GObject.Object.Notify;
+            'notify::vexpand': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::window': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -918,14 +1094,17 @@ export namespace GWeather {
             signal: K,
             callback: LocationEntry.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LocationEntry.SignalSignatures>(
             signal: K,
             callback: LocationEntry.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LocationEntry.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LocationEntry.SignalSignatures[K]>
+            ...args: LocationEntry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5236,7 +5415,111 @@ export namespace GWeather {
 
     namespace TimezoneMenu {
         // Signal signatures
-        interface SignalSignatures extends Gtk.ComboBox.SignalSignatures {}
+        interface SignalSignatures extends Gtk.ComboBox.SignalSignatures {
+            'notify::top': GObject.Object.Notify;
+            'notify::tzid': GObject.Object.Notify;
+            'notify::active': GObject.Object.Notify;
+            'notify::active-id': GObject.Object.Notify;
+            'notify::active-id': GObject.Object.Notify;
+            'notify::add-tearoffs': GObject.Object.Notify;
+            'notify::add-tearoffs': GObject.Object.Notify;
+            'notify::button-sensitivity': GObject.Object.Notify;
+            'notify::button-sensitivity': GObject.Object.Notify;
+            'notify::cell-area': GObject.Object.Notify;
+            'notify::cell-area': GObject.Object.Notify;
+            'notify::column-span-column': GObject.Object.Notify;
+            'notify::column-span-column': GObject.Object.Notify;
+            'notify::entry-text-column': GObject.Object.Notify;
+            'notify::entry-text-column': GObject.Object.Notify;
+            'notify::has-entry': GObject.Object.Notify;
+            'notify::has-entry': GObject.Object.Notify;
+            'notify::has-frame': GObject.Object.Notify;
+            'notify::has-frame': GObject.Object.Notify;
+            'notify::id-column': GObject.Object.Notify;
+            'notify::id-column': GObject.Object.Notify;
+            'notify::model': GObject.Object.Notify;
+            'notify::popup-fixed-width': GObject.Object.Notify;
+            'notify::popup-fixed-width': GObject.Object.Notify;
+            'notify::popup-shown': GObject.Object.Notify;
+            'notify::popup-shown': GObject.Object.Notify;
+            'notify::row-span-column': GObject.Object.Notify;
+            'notify::row-span-column': GObject.Object.Notify;
+            'notify::tearoff-title': GObject.Object.Notify;
+            'notify::tearoff-title': GObject.Object.Notify;
+            'notify::wrap-width': GObject.Object.Notify;
+            'notify::wrap-width': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::child': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::events': GObject.Object.Notify;
+            'notify::expand': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::halign': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::hexpand': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::margin': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::sensitive': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::valign': GObject.Object.Notify;
+            'notify::vexpand': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::window': GObject.Object.Notify;
+            'notify::editing-canceled': GObject.Object.Notify;
+            'notify::editing-canceled': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5283,14 +5566,17 @@ export namespace GWeather {
             signal: K,
             callback: TimezoneMenu.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TimezoneMenu.SignalSignatures>(
             signal: K,
             callback: TimezoneMenu.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TimezoneMenu.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TimezoneMenu.SignalSignatures[K]>
+            ...args: TimezoneMenu.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

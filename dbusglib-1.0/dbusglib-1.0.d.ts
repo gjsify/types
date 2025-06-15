@@ -39,8 +39,14 @@ export namespace DBusGLib {
         // Signals
 
         connect<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
-        emit<K extends keyof Proxy.SignalSignatures>(signal: K, ...args: Parameters<Proxy.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Proxy.SignalSignatures>(
+            signal: K,
+            ...args: Proxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     class Connection {

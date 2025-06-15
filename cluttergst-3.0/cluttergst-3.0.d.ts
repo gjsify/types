@@ -140,7 +140,19 @@ export namespace ClutterGst {
     }
     namespace Aspectratio {
         // Signal signatures
-        interface SignalSignatures extends Content.SignalSignatures {}
+        interface SignalSignatures extends Content.SignalSignatures {
+            'notify::fill-allocation': GObject.Object.Notify;
+            'notify::fill-allocation': GObject.Object.Notify;
+            'notify::paint-borders': GObject.Object.Notify;
+            'notify::paint-borders': GObject.Object.Notify;
+            'notify::frame': GObject.Object.Notify;
+            'notify::paint-frame': GObject.Object.Notify;
+            'notify::paint-frame': GObject.Object.Notify;
+            'notify::paint-overlays': GObject.Object.Notify;
+            'notify::paint-overlays': GObject.Object.Notify;
+            'notify::player': GObject.Object.Notify;
+            'notify::sink': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -199,14 +211,17 @@ export namespace ClutterGst {
             signal: K,
             callback: Aspectratio.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Aspectratio.SignalSignatures>(
             signal: K,
             callback: Aspectratio.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Aspectratio.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Aspectratio.SignalSignatures[K]>
+            ...args: Aspectratio.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -715,6 +730,11 @@ export namespace ClutterGst {
             'photo-taken': PhotoTaken;
             'ready-for-capture': ReadyForCapture;
             'video-saved': VideoSaved;
+            'notify::device': GObject.Object.Notify;
+            'notify::audio-volume': GObject.Object.Notify;
+            'notify::audio-volume': GObject.Object.Notify;
+            'notify::idle': GObject.Object.Notify;
+            'notify::playing': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -750,8 +770,14 @@ export namespace ClutterGst {
         // Signals
 
         connect<K extends keyof Camera.SignalSignatures>(signal: K, callback: Camera.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Camera.SignalSignatures>(signal: K, callback: Camera.SignalSignatures[K]): number;
-        emit<K extends keyof Camera.SignalSignatures>(signal: K, ...args: Parameters<Camera.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Camera.SignalSignatures>(
+            signal: K,
+            ...args: Camera.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1508,6 +1534,10 @@ export namespace ClutterGst {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'capture-resolution-changed': CaptureResolutionChanged;
+            'notify::element-factory': GObject.Object.Notify;
+            'notify::element-factory': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::node': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1560,14 +1590,17 @@ export namespace ClutterGst {
             signal: K,
             callback: CameraDevice.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CameraDevice.SignalSignatures>(
             signal: K,
             callback: CameraDevice.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CameraDevice.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CameraDevice.SignalSignatures[K]>
+            ...args: CameraDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1645,14 +1678,17 @@ export namespace ClutterGst {
             signal: K,
             callback: CameraManager.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CameraManager.SignalSignatures>(
             signal: K,
             callback: CameraManager.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CameraManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CameraManager.SignalSignatures[K]>
+            ...args: CameraManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1683,6 +1719,13 @@ export namespace ClutterGst {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'size-change': SizeChange;
+            'notify::frame': GObject.Object.Notify;
+            'notify::paint-frame': GObject.Object.Notify;
+            'notify::paint-frame': GObject.Object.Notify;
+            'notify::paint-overlays': GObject.Object.Notify;
+            'notify::paint-overlays': GObject.Object.Notify;
+            'notify::player': GObject.Object.Notify;
+            'notify::sink': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1731,14 +1774,17 @@ export namespace ClutterGst {
         // Signals
 
         connect<K extends keyof Content.SignalSignatures>(signal: K, callback: Content.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Content.SignalSignatures>(
             signal: K,
             callback: Content.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Content.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Content.SignalSignatures[K]>
+            ...args: Content.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2243,7 +2289,23 @@ export namespace ClutterGst {
 
     namespace Crop {
         // Signal signatures
-        interface SignalSignatures extends Content.SignalSignatures {}
+        interface SignalSignatures extends Content.SignalSignatures {
+            'notify::cull-backface': GObject.Object.Notify;
+            'notify::cull-backface': GObject.Object.Notify;
+            'notify::input-region': GObject.Object.Notify;
+            'notify::input-region': GObject.Object.Notify;
+            'notify::output-region': GObject.Object.Notify;
+            'notify::output-region': GObject.Object.Notify;
+            'notify::paint-borders': GObject.Object.Notify;
+            'notify::paint-borders': GObject.Object.Notify;
+            'notify::frame': GObject.Object.Notify;
+            'notify::paint-frame': GObject.Object.Notify;
+            'notify::paint-frame': GObject.Object.Notify;
+            'notify::paint-overlays': GObject.Object.Notify;
+            'notify::paint-overlays': GObject.Object.Notify;
+            'notify::player': GObject.Object.Notify;
+            'notify::sink': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2326,8 +2388,14 @@ export namespace ClutterGst {
         // Signals
 
         connect<K extends keyof Crop.SignalSignatures>(signal: K, callback: Crop.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Crop.SignalSignatures>(signal: K, callback: Crop.SignalSignatures[K]): number;
-        emit<K extends keyof Crop.SignalSignatures>(signal: K, ...args: Parameters<Crop.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Crop.SignalSignatures>(
+            signal: K,
+            ...args: Crop.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -2811,12 +2879,41 @@ export namespace ClutterGst {
         // Signal callback interfaces
 
         interface ShouldBuffer {
-            (_source: Playback, query: Gst.Query): boolean;
+            (_source: Playback, query: Gst.Query): boolean | void;
         }
 
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'should-buffer': ShouldBuffer;
+            'notify::audio-stream': GObject.Object.Notify;
+            'notify::audio-stream': GObject.Object.Notify;
+            'notify::audio-streams': GObject.Object.Notify;
+            'notify::audio-streams': GObject.Object.Notify;
+            'notify::buffer-fill': GObject.Object.Notify;
+            'notify::buffer-fill': GObject.Object.Notify;
+            'notify::can-seek': GObject.Object.Notify;
+            'notify::can-seek': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::in-seek': GObject.Object.Notify;
+            'notify::in-seek': GObject.Object.Notify;
+            'notify::progress': GObject.Object.Notify;
+            'notify::seek-flags': GObject.Object.Notify;
+            'notify::seek-flags': GObject.Object.Notify;
+            'notify::subtitle-font-name': GObject.Object.Notify;
+            'notify::subtitle-font-name': GObject.Object.Notify;
+            'notify::subtitle-track': GObject.Object.Notify;
+            'notify::subtitle-track': GObject.Object.Notify;
+            'notify::subtitle-tracks': GObject.Object.Notify;
+            'notify::subtitle-tracks': GObject.Object.Notify;
+            'notify::subtitle-uri': GObject.Object.Notify;
+            'notify::subtitle-uri': GObject.Object.Notify;
+            'notify::uri': GObject.Object.Notify;
+            'notify::user-agent': GObject.Object.Notify;
+            'notify::user-agent': GObject.Object.Notify;
+            'notify::audio-volume': GObject.Object.Notify;
+            'notify::audio-volume': GObject.Object.Notify;
+            'notify::idle': GObject.Object.Notify;
+            'notify::playing': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -2995,14 +3092,17 @@ export namespace ClutterGst {
         // Signals
 
         connect<K extends keyof Playback.SignalSignatures>(signal: K, callback: Playback.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Playback.SignalSignatures>(
             signal: K,
             callback: Playback.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Playback.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Playback.SignalSignatures[K]>
+            ...args: Playback.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -3754,6 +3854,33 @@ export namespace ClutterGst {
             'new-frame': NewFrame;
             'new-overlays': NewOverlays;
             'pipeline-ready': PipelineReady;
+            'notify::update-priority': GObject.Object.Notify;
+            'notify::update-priority': GObject.Object.Notify;
+            'notify::show-preroll-frame': GObject.Object.Notify;
+            'notify::show-preroll-frame': GObject.Object.Notify;
+            'notify::async': GObject.Object.Notify;
+            'notify::blocksize': GObject.Object.Notify;
+            'notify::enable-last-sample': GObject.Object.Notify;
+            'notify::enable-last-sample': GObject.Object.Notify;
+            'notify::last-sample': GObject.Object.Notify;
+            'notify::last-sample': GObject.Object.Notify;
+            'notify::max-bitrate': GObject.Object.Notify;
+            'notify::max-bitrate': GObject.Object.Notify;
+            'notify::max-lateness': GObject.Object.Notify;
+            'notify::max-lateness': GObject.Object.Notify;
+            'notify::processing-deadline': GObject.Object.Notify;
+            'notify::processing-deadline': GObject.Object.Notify;
+            'notify::qos': GObject.Object.Notify;
+            'notify::render-delay': GObject.Object.Notify;
+            'notify::render-delay': GObject.Object.Notify;
+            'notify::stats': GObject.Object.Notify;
+            'notify::sync': GObject.Object.Notify;
+            'notify::throttle-time': GObject.Object.Notify;
+            'notify::throttle-time': GObject.Object.Notify;
+            'notify::ts-offset': GObject.Object.Notify;
+            'notify::ts-offset': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -3792,14 +3919,17 @@ export namespace ClutterGst {
         // Signals
 
         connect<K extends keyof VideoSink.SignalSignatures>(signal: K, callback: VideoSink.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VideoSink.SignalSignatures>(
             signal: K,
             callback: VideoSink.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VideoSink.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VideoSink.SignalSignatures[K]>
+            ...args: VideoSink.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 

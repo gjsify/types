@@ -29,7 +29,23 @@ export namespace RygelRenderer {
 
     namespace MediaRendererPlugin {
         // Signal signatures
-        interface SignalSignatures extends RygelCore.Plugin.SignalSignatures {}
+        interface SignalSignatures extends RygelCore.Plugin.SignalSignatures {
+            'notify::supported-profiles': GObject.Object.Notify;
+            'notify::supported-profiles': GObject.Object.Notify;
+            'notify::capabilities': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::desc-path': GObject.Object.Notify;
+            'notify::desc-path': GObject.Object.Notify;
+            'notify::active': GObject.Object.Notify;
+            'notify::resource-infos': GObject.Object.Notify;
+            'notify::resource-infos': GObject.Object.Notify;
+            'notify::icon-infos': GObject.Object.Notify;
+            'notify::icon-infos': GObject.Object.Notify;
+            'notify::default-icons': GObject.Object.Notify;
+            'notify::default-icons': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -71,14 +87,17 @@ export namespace RygelRenderer {
             signal: K,
             callback: MediaRendererPlugin.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MediaRendererPlugin.SignalSignatures>(
             signal: K,
             callback: MediaRendererPlugin.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MediaRendererPlugin.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaRendererPlugin.SignalSignatures[K]>
+            ...args: MediaRendererPlugin.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -96,7 +115,12 @@ export namespace RygelRenderer {
 
     namespace MediaRenderer {
         // Signal signatures
-        interface SignalSignatures extends RygelCore.MediaDevice.SignalSignatures {}
+        interface SignalSignatures extends RygelCore.MediaDevice.SignalSignatures {
+            'notify::player': GObject.Object.Notify;
+            'notify::plugin': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::capabilities': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -126,14 +150,17 @@ export namespace RygelRenderer {
             signal: K,
             callback: MediaRenderer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MediaRenderer.SignalSignatures>(
             signal: K,
             callback: MediaRenderer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MediaRenderer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaRenderer.SignalSignatures[K]>
+            ...args: MediaRenderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     type MediaRendererPluginClass = typeof MediaRendererPlugin;

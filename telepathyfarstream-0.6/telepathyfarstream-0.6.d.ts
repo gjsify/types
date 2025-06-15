@@ -53,6 +53,11 @@ export namespace TelepathyFarstream {
             'content-removed': ContentRemoved;
             'fs-conference-added': FsConferenceAdded;
             'fs-conference-removed': FsConferenceRemoved;
+            'notify::channel': GObject.Object.Notify;
+            'notify::fs-conferences': GObject.Object.Notify;
+            'notify::fs-conferences': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -94,14 +99,17 @@ export namespace TelepathyFarstream {
         // Signals
 
         connect<K extends keyof Channel.SignalSignatures>(signal: K, callback: Channel.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Channel.SignalSignatures>(
             signal: K,
             callback: Channel.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Channel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Channel.SignalSignatures[K]>
+            ...args: Channel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -779,11 +787,11 @@ export namespace TelepathyFarstream {
         }
 
         interface StartReceiving {
-            (_source: Content, handles: any, handle_count: number): boolean;
+            (_source: Content, handles: any, handle_count: number): boolean | void;
         }
 
         interface StartSending {
-            (_source: Content): boolean;
+            (_source: Content): boolean | void;
         }
 
         interface StopReceiving {
@@ -802,6 +810,18 @@ export namespace TelepathyFarstream {
             'start-sending': StartSending;
             'stop-receiving': StopReceiving;
             'stop-sending': StopSending;
+            'notify::fs-conference': GObject.Object.Notify;
+            'notify::fs-conference': GObject.Object.Notify;
+            'notify::fs-session': GObject.Object.Notify;
+            'notify::fs-session': GObject.Object.Notify;
+            'notify::media-type': GObject.Object.Notify;
+            'notify::media-type': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'notify::sink-pad': GObject.Object.Notify;
+            'notify::sink-pad': GObject.Object.Notify;
+            'notify::tf-channel': GObject.Object.Notify;
+            'notify::tf-channel': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -852,14 +872,17 @@ export namespace TelepathyFarstream {
         // Signals
 
         connect<K extends keyof Content.SignalSignatures>(signal: K, callback: Content.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Content.SignalSignatures>(
             signal: K,
             callback: Content.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Content.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Content.SignalSignatures[K]>
+            ...args: Content.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

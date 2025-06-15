@@ -844,7 +844,10 @@ export namespace Vte {
     }
     namespace Pty {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::fd': GObject.Object.Notify;
+            'notify::flags': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -881,8 +884,14 @@ export namespace Vte {
         // Signals
 
         connect<K extends keyof Pty.SignalSignatures>(signal: K, callback: Pty.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Pty.SignalSignatures>(signal: K, callback: Pty.SignalSignatures[K]): number;
-        emit<K extends keyof Pty.SignalSignatures>(signal: K, ...args: Parameters<Pty.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Pty.SignalSignatures>(
+            signal: K,
+            ...args: Pty.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1692,7 +1701,7 @@ export namespace Vte {
         }
 
         interface TermpropsChanged {
-            (_source: Terminal, props: number[]): boolean;
+            (_source: Terminal, props: number[]): boolean | void;
         }
 
         interface WindowTitleChanged {
@@ -1731,6 +1740,296 @@ export namespace Vte {
             'termprop-changed': TermpropChanged;
             'termprops-changed': TermpropsChanged;
             'window-title-changed': WindowTitleChanged;
+            'notify::allow-bold': GObject.Object.Notify;
+            'notify::allow-bold': GObject.Object.Notify;
+            'notify::allow-hyperlink': GObject.Object.Notify;
+            'notify::allow-hyperlink': GObject.Object.Notify;
+            'notify::audible-bell': GObject.Object.Notify;
+            'notify::audible-bell': GObject.Object.Notify;
+            'notify::backspace-binding': GObject.Object.Notify;
+            'notify::backspace-binding': GObject.Object.Notify;
+            'notify::bold-is-bright': GObject.Object.Notify;
+            'notify::bold-is-bright': GObject.Object.Notify;
+            'notify::cell-height-scale': GObject.Object.Notify;
+            'notify::cell-height-scale': GObject.Object.Notify;
+            'notify::cell-width-scale': GObject.Object.Notify;
+            'notify::cell-width-scale': GObject.Object.Notify;
+            'notify::cjk-ambiguous-width': GObject.Object.Notify;
+            'notify::cjk-ambiguous-width': GObject.Object.Notify;
+            'notify::context-menu': GObject.Object.Notify;
+            'notify::context-menu': GObject.Object.Notify;
+            'notify::context-menu-model': GObject.Object.Notify;
+            'notify::context-menu-model': GObject.Object.Notify;
+            'notify::current-directory-uri': GObject.Object.Notify;
+            'notify::current-directory-uri': GObject.Object.Notify;
+            'notify::current-file-uri': GObject.Object.Notify;
+            'notify::current-file-uri': GObject.Object.Notify;
+            'notify::cursor-blink-mode': GObject.Object.Notify;
+            'notify::cursor-blink-mode': GObject.Object.Notify;
+            'notify::cursor-shape': GObject.Object.Notify;
+            'notify::cursor-shape': GObject.Object.Notify;
+            'notify::delete-binding': GObject.Object.Notify;
+            'notify::delete-binding': GObject.Object.Notify;
+            'notify::enable-a11y': GObject.Object.Notify;
+            'notify::enable-a11y': GObject.Object.Notify;
+            'notify::enable-bidi': GObject.Object.Notify;
+            'notify::enable-bidi': GObject.Object.Notify;
+            'notify::enable-fallback-scrolling': GObject.Object.Notify;
+            'notify::enable-fallback-scrolling': GObject.Object.Notify;
+            'notify::enable-legacy-osc777': GObject.Object.Notify;
+            'notify::enable-legacy-osc777': GObject.Object.Notify;
+            'notify::enable-shaping': GObject.Object.Notify;
+            'notify::enable-shaping': GObject.Object.Notify;
+            'notify::enable-sixel': GObject.Object.Notify;
+            'notify::enable-sixel': GObject.Object.Notify;
+            'notify::encoding': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::font-desc': GObject.Object.Notify;
+            'notify::font-options': GObject.Object.Notify;
+            'notify::font-options': GObject.Object.Notify;
+            'notify::font-scale': GObject.Object.Notify;
+            'notify::font-scale': GObject.Object.Notify;
+            'notify::hyperlink-hover-uri': GObject.Object.Notify;
+            'notify::hyperlink-hover-uri': GObject.Object.Notify;
+            'notify::icon-title': GObject.Object.Notify;
+            'notify::icon-title': GObject.Object.Notify;
+            'notify::input-enabled': GObject.Object.Notify;
+            'notify::input-enabled': GObject.Object.Notify;
+            'notify::pointer-autohide': GObject.Object.Notify;
+            'notify::pointer-autohide': GObject.Object.Notify;
+            'notify::pty': GObject.Object.Notify;
+            'notify::rewrap-on-resize': GObject.Object.Notify;
+            'notify::rewrap-on-resize': GObject.Object.Notify;
+            'notify::scroll-on-insert': GObject.Object.Notify;
+            'notify::scroll-on-insert': GObject.Object.Notify;
+            'notify::scroll-on-keystroke': GObject.Object.Notify;
+            'notify::scroll-on-keystroke': GObject.Object.Notify;
+            'notify::scroll-on-output': GObject.Object.Notify;
+            'notify::scroll-on-output': GObject.Object.Notify;
+            'notify::scroll-unit-is-pixels': GObject.Object.Notify;
+            'notify::scroll-unit-is-pixels': GObject.Object.Notify;
+            'notify::scrollback-lines': GObject.Object.Notify;
+            'notify::scrollback-lines': GObject.Object.Notify;
+            'notify::text-blink-mode': GObject.Object.Notify;
+            'notify::text-blink-mode': GObject.Object.Notify;
+            'notify::window-title': GObject.Object.Notify;
+            'notify::window-title': GObject.Object.Notify;
+            'notify::word-char-exceptions': GObject.Object.Notify;
+            'notify::word-char-exceptions': GObject.Object.Notify;
+            'notify::xalign': GObject.Object.Notify;
+            'notify::xfill': GObject.Object.Notify;
+            'notify::yalign': GObject.Object.Notify;
+            'notify::yfill': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-target': GObject.Object.Notify;
+            'notify::can-target': GObject.Object.Notify;
+            'notify::css-classes': GObject.Object.Notify;
+            'notify::css-classes': GObject.Object.Notify;
+            'notify::css-name': GObject.Object.Notify;
+            'notify::css-name': GObject.Object.Notify;
+            'notify::cursor': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::focusable': GObject.Object.Notify;
+            'notify::halign': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::hexpand': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::layout-manager': GObject.Object.Notify;
+            'notify::layout-manager': GObject.Object.Notify;
+            'notify::limit-events': GObject.Object.Notify;
+            'notify::limit-events': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::overflow': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::root': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::sensitive': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::valign': GObject.Object.Notify;
+            'notify::vexpand': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::accessible-role': GObject.Object.Notify;
+            'notify::accessible-role': GObject.Object.Notify;
+            'notify::hadjustment': GObject.Object.Notify;
+            'notify::hscroll-policy': GObject.Object.Notify;
+            'notify::hscroll-policy': GObject.Object.Notify;
+            'notify::vadjustment': GObject.Object.Notify;
+            'notify::vscroll-policy': GObject.Object.Notify;
+            'notify::vscroll-policy': GObject.Object.Notify;
+            'termprop-changed::allow-bold': TermpropChanged;
+            'termprop-changed::allow-bold': TermpropChanged;
+            'termprop-changed::allow-hyperlink': TermpropChanged;
+            'termprop-changed::allow-hyperlink': TermpropChanged;
+            'termprop-changed::audible-bell': TermpropChanged;
+            'termprop-changed::audible-bell': TermpropChanged;
+            'termprop-changed::backspace-binding': TermpropChanged;
+            'termprop-changed::backspace-binding': TermpropChanged;
+            'termprop-changed::bold-is-bright': TermpropChanged;
+            'termprop-changed::bold-is-bright': TermpropChanged;
+            'termprop-changed::cell-height-scale': TermpropChanged;
+            'termprop-changed::cell-height-scale': TermpropChanged;
+            'termprop-changed::cell-width-scale': TermpropChanged;
+            'termprop-changed::cell-width-scale': TermpropChanged;
+            'termprop-changed::cjk-ambiguous-width': TermpropChanged;
+            'termprop-changed::cjk-ambiguous-width': TermpropChanged;
+            'termprop-changed::context-menu': TermpropChanged;
+            'termprop-changed::context-menu': TermpropChanged;
+            'termprop-changed::context-menu-model': TermpropChanged;
+            'termprop-changed::context-menu-model': TermpropChanged;
+            'termprop-changed::current-directory-uri': TermpropChanged;
+            'termprop-changed::current-directory-uri': TermpropChanged;
+            'termprop-changed::current-file-uri': TermpropChanged;
+            'termprop-changed::current-file-uri': TermpropChanged;
+            'termprop-changed::cursor-blink-mode': TermpropChanged;
+            'termprop-changed::cursor-blink-mode': TermpropChanged;
+            'termprop-changed::cursor-shape': TermpropChanged;
+            'termprop-changed::cursor-shape': TermpropChanged;
+            'termprop-changed::delete-binding': TermpropChanged;
+            'termprop-changed::delete-binding': TermpropChanged;
+            'termprop-changed::enable-a11y': TermpropChanged;
+            'termprop-changed::enable-a11y': TermpropChanged;
+            'termprop-changed::enable-bidi': TermpropChanged;
+            'termprop-changed::enable-bidi': TermpropChanged;
+            'termprop-changed::enable-fallback-scrolling': TermpropChanged;
+            'termprop-changed::enable-fallback-scrolling': TermpropChanged;
+            'termprop-changed::enable-legacy-osc777': TermpropChanged;
+            'termprop-changed::enable-legacy-osc777': TermpropChanged;
+            'termprop-changed::enable-shaping': TermpropChanged;
+            'termprop-changed::enable-shaping': TermpropChanged;
+            'termprop-changed::enable-sixel': TermpropChanged;
+            'termprop-changed::enable-sixel': TermpropChanged;
+            'termprop-changed::encoding': TermpropChanged;
+            'termprop-changed::font-desc': TermpropChanged;
+            'termprop-changed::font-desc': TermpropChanged;
+            'termprop-changed::font-options': TermpropChanged;
+            'termprop-changed::font-options': TermpropChanged;
+            'termprop-changed::font-scale': TermpropChanged;
+            'termprop-changed::font-scale': TermpropChanged;
+            'termprop-changed::hyperlink-hover-uri': TermpropChanged;
+            'termprop-changed::hyperlink-hover-uri': TermpropChanged;
+            'termprop-changed::icon-title': TermpropChanged;
+            'termprop-changed::icon-title': TermpropChanged;
+            'termprop-changed::input-enabled': TermpropChanged;
+            'termprop-changed::input-enabled': TermpropChanged;
+            'termprop-changed::pointer-autohide': TermpropChanged;
+            'termprop-changed::pointer-autohide': TermpropChanged;
+            'termprop-changed::pty': TermpropChanged;
+            'termprop-changed::rewrap-on-resize': TermpropChanged;
+            'termprop-changed::rewrap-on-resize': TermpropChanged;
+            'termprop-changed::scroll-on-insert': TermpropChanged;
+            'termprop-changed::scroll-on-insert': TermpropChanged;
+            'termprop-changed::scroll-on-keystroke': TermpropChanged;
+            'termprop-changed::scroll-on-keystroke': TermpropChanged;
+            'termprop-changed::scroll-on-output': TermpropChanged;
+            'termprop-changed::scroll-on-output': TermpropChanged;
+            'termprop-changed::scroll-unit-is-pixels': TermpropChanged;
+            'termprop-changed::scroll-unit-is-pixels': TermpropChanged;
+            'termprop-changed::scrollback-lines': TermpropChanged;
+            'termprop-changed::scrollback-lines': TermpropChanged;
+            'termprop-changed::text-blink-mode': TermpropChanged;
+            'termprop-changed::text-blink-mode': TermpropChanged;
+            'termprop-changed::window-title': TermpropChanged;
+            'termprop-changed::window-title': TermpropChanged;
+            'termprop-changed::word-char-exceptions': TermpropChanged;
+            'termprop-changed::word-char-exceptions': TermpropChanged;
+            'termprop-changed::xalign': TermpropChanged;
+            'termprop-changed::xfill': TermpropChanged;
+            'termprop-changed::yalign': TermpropChanged;
+            'termprop-changed::yfill': TermpropChanged;
+            'termprop-changed::can-focus': TermpropChanged;
+            'termprop-changed::can-focus': TermpropChanged;
+            'termprop-changed::can-target': TermpropChanged;
+            'termprop-changed::can-target': TermpropChanged;
+            'termprop-changed::css-classes': TermpropChanged;
+            'termprop-changed::css-classes': TermpropChanged;
+            'termprop-changed::css-name': TermpropChanged;
+            'termprop-changed::css-name': TermpropChanged;
+            'termprop-changed::cursor': TermpropChanged;
+            'termprop-changed::focus-on-click': TermpropChanged;
+            'termprop-changed::focus-on-click': TermpropChanged;
+            'termprop-changed::focusable': TermpropChanged;
+            'termprop-changed::halign': TermpropChanged;
+            'termprop-changed::has-default': TermpropChanged;
+            'termprop-changed::has-default': TermpropChanged;
+            'termprop-changed::has-focus': TermpropChanged;
+            'termprop-changed::has-focus': TermpropChanged;
+            'termprop-changed::has-tooltip': TermpropChanged;
+            'termprop-changed::has-tooltip': TermpropChanged;
+            'termprop-changed::height-request': TermpropChanged;
+            'termprop-changed::height-request': TermpropChanged;
+            'termprop-changed::hexpand': TermpropChanged;
+            'termprop-changed::hexpand-set': TermpropChanged;
+            'termprop-changed::hexpand-set': TermpropChanged;
+            'termprop-changed::layout-manager': TermpropChanged;
+            'termprop-changed::layout-manager': TermpropChanged;
+            'termprop-changed::limit-events': TermpropChanged;
+            'termprop-changed::limit-events': TermpropChanged;
+            'termprop-changed::margin-bottom': TermpropChanged;
+            'termprop-changed::margin-bottom': TermpropChanged;
+            'termprop-changed::margin-end': TermpropChanged;
+            'termprop-changed::margin-end': TermpropChanged;
+            'termprop-changed::margin-start': TermpropChanged;
+            'termprop-changed::margin-start': TermpropChanged;
+            'termprop-changed::margin-top': TermpropChanged;
+            'termprop-changed::margin-top': TermpropChanged;
+            'termprop-changed::name': TermpropChanged;
+            'termprop-changed::opacity': TermpropChanged;
+            'termprop-changed::overflow': TermpropChanged;
+            'termprop-changed::parent': TermpropChanged;
+            'termprop-changed::receives-default': TermpropChanged;
+            'termprop-changed::receives-default': TermpropChanged;
+            'termprop-changed::root': TermpropChanged;
+            'termprop-changed::scale-factor': TermpropChanged;
+            'termprop-changed::scale-factor': TermpropChanged;
+            'termprop-changed::sensitive': TermpropChanged;
+            'termprop-changed::tooltip-markup': TermpropChanged;
+            'termprop-changed::tooltip-markup': TermpropChanged;
+            'termprop-changed::tooltip-text': TermpropChanged;
+            'termprop-changed::tooltip-text': TermpropChanged;
+            'termprop-changed::valign': TermpropChanged;
+            'termprop-changed::vexpand': TermpropChanged;
+            'termprop-changed::vexpand-set': TermpropChanged;
+            'termprop-changed::vexpand-set': TermpropChanged;
+            'termprop-changed::visible': TermpropChanged;
+            'termprop-changed::width-request': TermpropChanged;
+            'termprop-changed::width-request': TermpropChanged;
+            'termprop-changed::accessible-role': TermpropChanged;
+            'termprop-changed::accessible-role': TermpropChanged;
+            'termprop-changed::hadjustment': TermpropChanged;
+            'termprop-changed::hscroll-policy': TermpropChanged;
+            'termprop-changed::hscroll-policy': TermpropChanged;
+            'termprop-changed::vadjustment': TermpropChanged;
+            'termprop-changed::vscroll-policy': TermpropChanged;
+            'termprop-changed::vscroll-policy': TermpropChanged;
         }
 
         // Constructor properties interface
@@ -2325,14 +2624,17 @@ export namespace Vte {
         // Signals
 
         connect<K extends keyof Terminal.SignalSignatures>(signal: K, callback: Terminal.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Terminal.SignalSignatures>(
             signal: K,
             callback: Terminal.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Terminal.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Terminal.SignalSignatures[K]>
+            ...args: Terminal.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 

@@ -120,6 +120,10 @@ export namespace Avahi {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'state-changed': StateChanged;
+            'notify::flags': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'state-changed::flags': StateChanged;
+            'state-changed::state': StateChanged;
         }
 
         // Constructor properties interface
@@ -149,8 +153,14 @@ export namespace Avahi {
         // Signals
 
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -168,6 +178,8 @@ export namespace Avahi {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'state-changed': StateChanged;
+            'notify::state': GObject.Object.Notify;
+            'state-changed::state': StateChanged;
         }
 
         // Constructor properties interface
@@ -198,14 +210,17 @@ export namespace Avahi {
             signal: K,
             callback: EntryGroup.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof EntryGroup.SignalSignatures>(
             signal: K,
             callback: EntryGroup.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof EntryGroup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EntryGroup.SignalSignatures[K]>
+            ...args: EntryGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -283,6 +298,12 @@ export namespace Avahi {
             failure: Failure;
             'new-record': NewRecord;
             'removed-record': RemovedRecord;
+            'notify::class': GObject.Object.Notify;
+            'notify::flags': GObject.Object.Notify;
+            'notify::interface': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::protocol': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -338,14 +359,17 @@ export namespace Avahi {
             signal: K,
             callback: RecordBrowser.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RecordBrowser.SignalSignatures>(
             signal: K,
             callback: RecordBrowser.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RecordBrowser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RecordBrowser.SignalSignatures[K]>
+            ...args: RecordBrowser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -398,6 +422,11 @@ export namespace Avahi {
             failure: Failure;
             'new-service': NewService;
             'removed-service': RemovedService;
+            'notify::domain': GObject.Object.Notify;
+            'notify::flags': GObject.Object.Notify;
+            'notify::interface': GObject.Object.Notify;
+            'notify::protocol': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -449,14 +478,17 @@ export namespace Avahi {
             signal: K,
             callback: ServiceBrowser.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ServiceBrowser.SignalSignatures>(
             signal: K,
             callback: ServiceBrowser.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ServiceBrowser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ServiceBrowser.SignalSignatures[K]>
+            ...args: ServiceBrowser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -490,6 +522,13 @@ export namespace Avahi {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             failure: Failure;
             found: Found;
+            'notify::aprotocol': GObject.Object.Notify;
+            'notify::domain': GObject.Object.Notify;
+            'notify::flags': GObject.Object.Notify;
+            'notify::interface': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::protocol': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -547,14 +586,17 @@ export namespace Avahi {
             signal: K,
             callback: ServiceResolver.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ServiceResolver.SignalSignatures>(
             signal: K,
             callback: ServiceResolver.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ServiceResolver.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ServiceResolver.SignalSignatures[K]>
+            ...args: ServiceResolver.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

@@ -163,6 +163,26 @@ export namespace AppIndicator3 {
             'new-label': NewLabel;
             'new-status': NewStatus;
             'scroll-event': ScrollEvent;
+            'notify::attention-icon-desc': GObject.Object.Notify;
+            'notify::attention-icon-desc': GObject.Object.Notify;
+            'notify::attention-icon-name': GObject.Object.Notify;
+            'notify::attention-icon-name': GObject.Object.Notify;
+            'notify::category': GObject.Object.Notify;
+            'notify::connected': GObject.Object.Notify;
+            'notify::icon-desc': GObject.Object.Notify;
+            'notify::icon-desc': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::icon-theme-path': GObject.Object.Notify;
+            'notify::icon-theme-path': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::label': GObject.Object.Notify;
+            'notify::label-guide': GObject.Object.Notify;
+            'notify::label-guide': GObject.Object.Notify;
+            'notify::ordering-index': GObject.Object.Notify;
+            'notify::ordering-index': GObject.Object.Notify;
+            'notify::status': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -364,14 +384,17 @@ export namespace AppIndicator3 {
         // Signals
 
         connect<K extends keyof Indicator.SignalSignatures>(signal: K, callback: Indicator.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Indicator.SignalSignatures>(
             signal: K,
             callback: Indicator.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Indicator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Indicator.SignalSignatures[K]>
+            ...args: Indicator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 

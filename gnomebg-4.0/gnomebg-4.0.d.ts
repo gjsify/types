@@ -65,8 +65,14 @@ export namespace GnomeBG {
         // Signals
 
         connect<K extends keyof BG.SignalSignatures>(signal: K, callback: BG.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BG.SignalSignatures>(signal: K, callback: BG.SignalSignatures[K]): number;
-        emit<K extends keyof BG.SignalSignatures>(signal: K, ...args: Parameters<BG.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof BG.SignalSignatures>(
+            signal: K,
+            ...args: BG.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -125,7 +131,15 @@ export namespace GnomeBG {
 
     namespace BGSlideShow {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::file': GObject.Object.Notify;
+            'notify::has-multiple-sizes': GObject.Object.Notify;
+            'notify::has-multiple-sizes': GObject.Object.Notify;
+            'notify::start-time': GObject.Object.Notify;
+            'notify::start-time': GObject.Object.Notify;
+            'notify::total-duration': GObject.Object.Notify;
+            'notify::total-duration': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -171,14 +185,17 @@ export namespace GnomeBG {
             signal: K,
             callback: BGSlideShow.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BGSlideShow.SignalSignatures>(
             signal: K,
             callback: BGSlideShow.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BGSlideShow.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BGSlideShow.SignalSignatures[K]>
+            ...args: BGSlideShow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

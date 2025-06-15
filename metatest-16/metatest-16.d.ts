@@ -83,6 +83,10 @@ export namespace MetaTest {
             'after-tests': AfterTests;
             'before-tests': BeforeTests;
             'run-tests': RunTests;
+            'notify::name': GObject.Object.Notify;
+            'notify::nick': GObject.Object.Notify;
+            'notify::unsafe-mode': GObject.Object.Notify;
+            'notify::unsafe-mode': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -105,14 +109,17 @@ export namespace MetaTest {
             signal: K,
             callback: ContextTest.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ContextTest.SignalSignatures>(
             signal: K,
             callback: ContextTest.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ContextTest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContextTest.SignalSignatures[K]>
+            ...args: ContextTest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -147,14 +154,17 @@ export namespace MetaTest {
             signal: K,
             callback: TestMonitor.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TestMonitor.SignalSignatures>(
             signal: K,
             callback: TestMonitor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TestMonitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TestMonitor.SignalSignatures[K]>
+            ...args: TestMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

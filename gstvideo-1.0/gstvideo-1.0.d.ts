@@ -4625,14 +4625,17 @@ export namespace GstVideo {
             signal: K,
             callback: ColorBalanceChannel.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ColorBalanceChannel.SignalSignatures>(
             signal: K,
             callback: ColorBalanceChannel.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ColorBalanceChannel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ColorBalanceChannel.SignalSignatures[K]>
+            ...args: ColorBalanceChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -4645,7 +4648,21 @@ export namespace GstVideo {
 
     namespace VideoAggregator {
         // Signal signatures
-        interface SignalSignatures extends GstBase.Aggregator.SignalSignatures {}
+        interface SignalSignatures extends GstBase.Aggregator.SignalSignatures {
+            'notify::force-live': GObject.Object.Notify;
+            'notify::force-live': GObject.Object.Notify;
+            'notify::emit-signals': GObject.Object.Notify;
+            'notify::emit-signals': GObject.Object.Notify;
+            'notify::latency': GObject.Object.Notify;
+            'notify::min-upstream-latency': GObject.Object.Notify;
+            'notify::min-upstream-latency': GObject.Object.Notify;
+            'notify::start-time': GObject.Object.Notify;
+            'notify::start-time': GObject.Object.Notify;
+            'notify::start-time-selection': GObject.Object.Notify;
+            'notify::start-time-selection': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4702,14 +4719,17 @@ export namespace GstVideo {
             signal: K,
             callback: VideoAggregator.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VideoAggregator.SignalSignatures>(
             signal: K,
             callback: VideoAggregator.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VideoAggregator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VideoAggregator.SignalSignatures[K]>
+            ...args: VideoAggregator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -4754,7 +4774,23 @@ export namespace GstVideo {
 
     namespace VideoAggregatorConvertPad {
         // Signal signatures
-        interface SignalSignatures extends VideoAggregatorPad.SignalSignatures {}
+        interface SignalSignatures extends VideoAggregatorPad.SignalSignatures {
+            'notify::converter-config': GObject.Object.Notify;
+            'notify::converter-config': GObject.Object.Notify;
+            'notify::max-last-buffer-repeat': GObject.Object.Notify;
+            'notify::max-last-buffer-repeat': GObject.Object.Notify;
+            'notify::repeat-after-eos': GObject.Object.Notify;
+            'notify::repeat-after-eos': GObject.Object.Notify;
+            'notify::zorder': GObject.Object.Notify;
+            'notify::emit-signals': GObject.Object.Notify;
+            'notify::emit-signals': GObject.Object.Notify;
+            'notify::caps': GObject.Object.Notify;
+            'notify::direction': GObject.Object.Notify;
+            'notify::offset': GObject.Object.Notify;
+            'notify::template': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4791,14 +4827,17 @@ export namespace GstVideo {
             signal: K,
             callback: VideoAggregatorConvertPad.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VideoAggregatorConvertPad.SignalSignatures>(
             signal: K,
             callback: VideoAggregatorConvertPad.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VideoAggregatorConvertPad.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VideoAggregatorConvertPad.SignalSignatures[K]>
+            ...args: VideoAggregatorConvertPad.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -4815,7 +4854,21 @@ export namespace GstVideo {
 
     namespace VideoAggregatorPad {
         // Signal signatures
-        interface SignalSignatures extends GstBase.AggregatorPad.SignalSignatures {}
+        interface SignalSignatures extends GstBase.AggregatorPad.SignalSignatures {
+            'notify::max-last-buffer-repeat': GObject.Object.Notify;
+            'notify::max-last-buffer-repeat': GObject.Object.Notify;
+            'notify::repeat-after-eos': GObject.Object.Notify;
+            'notify::repeat-after-eos': GObject.Object.Notify;
+            'notify::zorder': GObject.Object.Notify;
+            'notify::emit-signals': GObject.Object.Notify;
+            'notify::emit-signals': GObject.Object.Notify;
+            'notify::caps': GObject.Object.Notify;
+            'notify::direction': GObject.Object.Notify;
+            'notify::offset': GObject.Object.Notify;
+            'notify::template': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4856,14 +4909,17 @@ export namespace GstVideo {
             signal: K,
             callback: VideoAggregatorPad.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VideoAggregatorPad.SignalSignatures>(
             signal: K,
             callback: VideoAggregatorPad.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VideoAggregatorPad.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VideoAggregatorPad.SignalSignatures[K]>
+            ...args: VideoAggregatorPad.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -4953,7 +5009,23 @@ export namespace GstVideo {
 
     namespace VideoAggregatorParallelConvertPad {
         // Signal signatures
-        interface SignalSignatures extends VideoAggregatorConvertPad.SignalSignatures {}
+        interface SignalSignatures extends VideoAggregatorConvertPad.SignalSignatures {
+            'notify::converter-config': GObject.Object.Notify;
+            'notify::converter-config': GObject.Object.Notify;
+            'notify::max-last-buffer-repeat': GObject.Object.Notify;
+            'notify::max-last-buffer-repeat': GObject.Object.Notify;
+            'notify::repeat-after-eos': GObject.Object.Notify;
+            'notify::repeat-after-eos': GObject.Object.Notify;
+            'notify::zorder': GObject.Object.Notify;
+            'notify::emit-signals': GObject.Object.Notify;
+            'notify::emit-signals': GObject.Object.Notify;
+            'notify::caps': GObject.Object.Notify;
+            'notify::direction': GObject.Object.Notify;
+            'notify::offset': GObject.Object.Notify;
+            'notify::template': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4980,19 +5052,25 @@ export namespace GstVideo {
             signal: K,
             callback: VideoAggregatorParallelConvertPad.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VideoAggregatorParallelConvertPad.SignalSignatures>(
             signal: K,
             callback: VideoAggregatorParallelConvertPad.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VideoAggregatorParallelConvertPad.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VideoAggregatorParallelConvertPad.SignalSignatures[K]>
+            ...args: VideoAggregatorParallelConvertPad.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace VideoBufferPool {
         // Signal signatures
-        interface SignalSignatures extends Gst.BufferPool.SignalSignatures {}
+        interface SignalSignatures extends Gst.BufferPool.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5020,19 +5098,36 @@ export namespace GstVideo {
             signal: K,
             callback: VideoBufferPool.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VideoBufferPool.SignalSignatures>(
             signal: K,
             callback: VideoBufferPool.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VideoBufferPool.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VideoBufferPool.SignalSignatures[K]>
+            ...args: VideoBufferPool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace VideoDecoder {
         // Signal signatures
-        interface SignalSignatures extends Gst.Element.SignalSignatures {}
+        interface SignalSignatures extends Gst.Element.SignalSignatures {
+            'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
+            'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
+            'notify::automatic-request-sync-points': GObject.Object.Notify;
+            'notify::automatic-request-sync-points': GObject.Object.Notify;
+            'notify::discard-corrupted-frames': GObject.Object.Notify;
+            'notify::discard-corrupted-frames': GObject.Object.Notify;
+            'notify::max-errors': GObject.Object.Notify;
+            'notify::max-errors': GObject.Object.Notify;
+            'notify::min-force-key-unit-interval': GObject.Object.Notify;
+            'notify::min-force-key-unit-interval': GObject.Object.Notify;
+            'notify::qos': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5267,14 +5362,17 @@ export namespace GstVideo {
             signal: K,
             callback: VideoDecoder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VideoDecoder.SignalSignatures>(
             signal: K,
             callback: VideoDecoder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VideoDecoder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VideoDecoder.SignalSignatures[K]>
+            ...args: VideoDecoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -5797,7 +5895,13 @@ export namespace GstVideo {
 
     namespace VideoEncoder {
         // Signal signatures
-        interface SignalSignatures extends Gst.Element.SignalSignatures {}
+        interface SignalSignatures extends Gst.Element.SignalSignatures {
+            'notify::min-force-key-unit-interval': GObject.Object.Notify;
+            'notify::min-force-key-unit-interval': GObject.Object.Notify;
+            'notify::qos': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5900,14 +6004,17 @@ export namespace GstVideo {
             signal: K,
             callback: VideoEncoder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VideoEncoder.SignalSignatures>(
             signal: K,
             callback: VideoEncoder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VideoEncoder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VideoEncoder.SignalSignatures[K]>
+            ...args: VideoEncoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -6803,7 +6910,11 @@ export namespace GstVideo {
 
     namespace VideoFilter {
         // Signal signatures
-        interface SignalSignatures extends GstBase.BaseTransform.SignalSignatures {}
+        interface SignalSignatures extends GstBase.BaseTransform.SignalSignatures {
+            'notify::qos': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6836,14 +6947,17 @@ export namespace GstVideo {
             signal: K,
             callback: VideoFilter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VideoFilter.SignalSignatures>(
             signal: K,
             callback: VideoFilter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VideoFilter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VideoFilter.SignalSignatures[K]>
+            ...args: VideoFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -6889,19 +7003,48 @@ export namespace GstVideo {
             signal: K,
             callback: VideoMultiviewFlagsSet.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VideoMultiviewFlagsSet.SignalSignatures>(
             signal: K,
             callback: VideoMultiviewFlagsSet.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VideoMultiviewFlagsSet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VideoMultiviewFlagsSet.SignalSignatures[K]>
+            ...args: VideoMultiviewFlagsSet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace VideoSink {
         // Signal signatures
-        interface SignalSignatures extends GstBase.BaseSink.SignalSignatures {}
+        interface SignalSignatures extends GstBase.BaseSink.SignalSignatures {
+            'notify::show-preroll-frame': GObject.Object.Notify;
+            'notify::show-preroll-frame': GObject.Object.Notify;
+            'notify::async': GObject.Object.Notify;
+            'notify::blocksize': GObject.Object.Notify;
+            'notify::enable-last-sample': GObject.Object.Notify;
+            'notify::enable-last-sample': GObject.Object.Notify;
+            'notify::last-sample': GObject.Object.Notify;
+            'notify::last-sample': GObject.Object.Notify;
+            'notify::max-bitrate': GObject.Object.Notify;
+            'notify::max-bitrate': GObject.Object.Notify;
+            'notify::max-lateness': GObject.Object.Notify;
+            'notify::max-lateness': GObject.Object.Notify;
+            'notify::processing-deadline': GObject.Object.Notify;
+            'notify::processing-deadline': GObject.Object.Notify;
+            'notify::qos': GObject.Object.Notify;
+            'notify::render-delay': GObject.Object.Notify;
+            'notify::render-delay': GObject.Object.Notify;
+            'notify::stats': GObject.Object.Notify;
+            'notify::sync': GObject.Object.Notify;
+            'notify::throttle-time': GObject.Object.Notify;
+            'notify::throttle-time': GObject.Object.Notify;
+            'notify::ts-offset': GObject.Object.Notify;
+            'notify::ts-offset': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6951,14 +7094,17 @@ export namespace GstVideo {
         // Signals
 
         connect<K extends keyof VideoSink.SignalSignatures>(signal: K, callback: VideoSink.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VideoSink.SignalSignatures>(
             signal: K,
             callback: VideoSink.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VideoSink.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VideoSink.SignalSignatures[K]>
+            ...args: VideoSink.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 

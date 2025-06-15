@@ -120,6 +120,22 @@ export namespace AtrilView {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'page-changed': PageChanged;
+            'notify::continuous': GObject.Object.Notify;
+            'notify::document': GObject.Object.Notify;
+            'notify::dual-odd-left': GObject.Object.Notify;
+            'notify::dual-odd-left': GObject.Object.Notify;
+            'notify::dual-page': GObject.Object.Notify;
+            'notify::dual-page': GObject.Object.Notify;
+            'notify::fullscreen': GObject.Object.Notify;
+            'notify::inverted-colors': GObject.Object.Notify;
+            'notify::inverted-colors': GObject.Object.Notify;
+            'notify::page': GObject.Object.Notify;
+            'notify::page-layout': GObject.Object.Notify;
+            'notify::page-layout': GObject.Object.Notify;
+            'notify::rotation': GObject.Object.Notify;
+            'notify::scale': GObject.Object.Notify;
+            'notify::sizing-mode': GObject.Object.Notify;
+            'notify::sizing-mode': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -198,14 +214,17 @@ export namespace AtrilView {
             signal: K,
             callback: DocumentModel.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DocumentModel.SignalSignatures>(
             signal: K,
             callback: DocumentModel.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DocumentModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DocumentModel.SignalSignatures[K]>
+            ...args: DocumentModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -287,8 +306,14 @@ export namespace AtrilView {
         // Signals
 
         connect<K extends keyof Job.SignalSignatures>(signal: K, callback: Job.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Job.SignalSignatures>(signal: K, callback: Job.SignalSignatures[K]): number;
-        emit<K extends keyof Job.SignalSignatures>(signal: K, ...args: Parameters<Job.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Job.SignalSignatures>(
+            signal: K,
+            ...args: Job.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -341,14 +366,17 @@ export namespace AtrilView {
         // Signals
 
         connect<K extends keyof JobAnnots.SignalSignatures>(signal: K, callback: JobAnnots.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof JobAnnots.SignalSignatures>(
             signal: K,
             callback: JobAnnots.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof JobAnnots.SignalSignatures>(
             signal: K,
-            ...args: Parameters<JobAnnots.SignalSignatures[K]>
+            ...args: JobAnnots.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace JobAttachments {
@@ -381,14 +409,17 @@ export namespace AtrilView {
             signal: K,
             callback: JobAttachments.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof JobAttachments.SignalSignatures>(
             signal: K,
             callback: JobAttachments.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof JobAttachments.SignalSignatures>(
             signal: K,
-            ...args: Parameters<JobAttachments.SignalSignatures[K]>
+            ...args: JobAttachments.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace JobExport {
@@ -419,14 +450,17 @@ export namespace AtrilView {
         // Signals
 
         connect<K extends keyof JobExport.SignalSignatures>(signal: K, callback: JobExport.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof JobExport.SignalSignatures>(
             signal: K,
             callback: JobExport.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof JobExport.SignalSignatures>(
             signal: K,
-            ...args: Parameters<JobExport.SignalSignatures[K]>
+            ...args: JobExport.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -480,14 +514,17 @@ export namespace AtrilView {
         // Signals
 
         connect<K extends keyof JobFind.SignalSignatures>(signal: K, callback: JobFind.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof JobFind.SignalSignatures>(
             signal: K,
             callback: JobFind.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof JobFind.SignalSignatures>(
             signal: K,
-            ...args: Parameters<JobFind.SignalSignatures[K]>
+            ...args: JobFind.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -535,14 +572,17 @@ export namespace AtrilView {
         // Signals
 
         connect<K extends keyof JobFonts.SignalSignatures>(signal: K, callback: JobFonts.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof JobFonts.SignalSignatures>(
             signal: K,
             callback: JobFonts.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof JobFonts.SignalSignatures>(
             signal: K,
-            ...args: Parameters<JobFonts.SignalSignatures[K]>
+            ...args: JobFonts.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -576,14 +616,17 @@ export namespace AtrilView {
         // Signals
 
         connect<K extends keyof JobLayers.SignalSignatures>(signal: K, callback: JobLayers.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof JobLayers.SignalSignatures>(
             signal: K,
             callback: JobLayers.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof JobLayers.SignalSignatures>(
             signal: K,
-            ...args: Parameters<JobLayers.SignalSignatures[K]>
+            ...args: JobLayers.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace JobLinks {
@@ -613,14 +656,17 @@ export namespace AtrilView {
         // Signals
 
         connect<K extends keyof JobLinks.SignalSignatures>(signal: K, callback: JobLinks.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof JobLinks.SignalSignatures>(
             signal: K,
             callback: JobLinks.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof JobLinks.SignalSignatures>(
             signal: K,
-            ...args: Parameters<JobLinks.SignalSignatures[K]>
+            ...args: JobLinks.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace JobLoad {
@@ -651,14 +697,17 @@ export namespace AtrilView {
         // Signals
 
         connect<K extends keyof JobLoad.SignalSignatures>(signal: K, callback: JobLoad.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof JobLoad.SignalSignatures>(
             signal: K,
             callback: JobLoad.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof JobLoad.SignalSignatures>(
             signal: K,
-            ...args: Parameters<JobLoad.SignalSignatures[K]>
+            ...args: JobLoad.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -702,14 +751,17 @@ export namespace AtrilView {
             signal: K,
             callback: JobPageData.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof JobPageData.SignalSignatures>(
             signal: K,
             callback: JobPageData.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof JobPageData.SignalSignatures>(
             signal: K,
-            ...args: Parameters<JobPageData.SignalSignatures[K]>
+            ...args: JobPageData.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace JobPrint {
@@ -739,14 +791,17 @@ export namespace AtrilView {
         // Signals
 
         connect<K extends keyof JobPrint.SignalSignatures>(signal: K, callback: JobPrint.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof JobPrint.SignalSignatures>(
             signal: K,
             callback: JobPrint.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof JobPrint.SignalSignatures>(
             signal: K,
-            ...args: Parameters<JobPrint.SignalSignatures[K]>
+            ...args: JobPrint.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -798,14 +853,17 @@ export namespace AtrilView {
         // Signals
 
         connect<K extends keyof JobRender.SignalSignatures>(signal: K, callback: JobRender.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof JobRender.SignalSignatures>(
             signal: K,
             callback: JobRender.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof JobRender.SignalSignatures>(
             signal: K,
-            ...args: Parameters<JobRender.SignalSignatures[K]>
+            ...args: JobRender.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -845,14 +903,17 @@ export namespace AtrilView {
         // Signals
 
         connect<K extends keyof JobSave.SignalSignatures>(signal: K, callback: JobSave.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof JobSave.SignalSignatures>(
             signal: K,
             callback: JobSave.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof JobSave.SignalSignatures>(
             signal: K,
-            ...args: Parameters<JobSave.SignalSignatures[K]>
+            ...args: JobSave.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace JobThumbnail {
@@ -888,14 +949,17 @@ export namespace AtrilView {
             signal: K,
             callback: JobThumbnail.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof JobThumbnail.SignalSignatures>(
             signal: K,
             callback: JobThumbnail.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof JobThumbnail.SignalSignatures>(
             signal: K,
-            ...args: Parameters<JobThumbnail.SignalSignatures[K]>
+            ...args: JobThumbnail.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace PrintOperation {
@@ -918,6 +982,7 @@ export namespace AtrilView {
             'begin-print': BeginPrint;
             done: Done;
             'status-changed': StatusChanged;
+            'notify::document': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -948,14 +1013,17 @@ export namespace AtrilView {
             signal: K,
             callback: PrintOperation.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PrintOperation.SignalSignatures>(
             signal: K,
             callback: PrintOperation.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PrintOperation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PrintOperation.SignalSignatures[K]>
+            ...args: PrintOperation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1007,7 +1075,7 @@ export namespace AtrilView {
         }
 
         interface MoveCursor {
-            (_source: View, object: Gtk.MovementStep, p0: number, p1: boolean): boolean;
+            (_source: View, object: Gtk.MovementStep, p0: number, p1: boolean): boolean | void;
         }
 
         interface Popup {
@@ -1039,6 +1107,83 @@ export namespace AtrilView {
             scroll: Scroll;
             'selection-changed': SelectionChanged;
             'sync-source': SyncSource;
+            'notify::is-loading': GObject.Object.Notify;
+            'notify::is-loading': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::child': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::events': GObject.Object.Notify;
+            'notify::expand': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::halign': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::hexpand': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::margin': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::sensitive': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::valign': GObject.Object.Notify;
+            'notify::vexpand': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::window': GObject.Object.Notify;
+            'notify::hadjustment': GObject.Object.Notify;
+            'notify::hscroll-policy': GObject.Object.Notify;
+            'notify::hscroll-policy': GObject.Object.Notify;
+            'notify::vadjustment': GObject.Object.Notify;
+            'notify::vscroll-policy': GObject.Object.Notify;
+            'notify::vscroll-policy': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1072,8 +1217,14 @@ export namespace AtrilView {
         // Signals
 
         connect<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
-        emit<K extends keyof View.SignalSignatures>(signal: K, ...args: Parameters<View.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof View.SignalSignatures>(
+            signal: K,
+            ...args: View.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1690,6 +1841,76 @@ export namespace AtrilView {
             'change-page': ChangePage;
             'external-link': ExternalLink;
             finished: Finished;
+            'notify::current-page': GObject.Object.Notify;
+            'notify::current-page': GObject.Object.Notify;
+            'notify::document': GObject.Object.Notify;
+            'notify::inverted-colors': GObject.Object.Notify;
+            'notify::inverted-colors': GObject.Object.Notify;
+            'notify::rotation': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::events': GObject.Object.Notify;
+            'notify::expand': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::halign': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::hexpand': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::margin': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::sensitive': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::valign': GObject.Object.Notify;
+            'notify::vexpand': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::window': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1739,14 +1960,17 @@ export namespace AtrilView {
             signal: K,
             callback: ViewPresentation.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ViewPresentation.SignalSignatures>(
             signal: K,
             callback: ViewPresentation.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ViewPresentation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ViewPresentation.SignalSignatures[K]>
+            ...args: ViewPresentation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2376,7 +2600,77 @@ export namespace AtrilView {
 
     namespace WebView {
         // Signal signatures
-        interface SignalSignatures extends Gtk.Container.SignalSignatures {}
+        interface SignalSignatures extends Gtk.Container.SignalSignatures {
+            'notify::border-width': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::child': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::events': GObject.Object.Notify;
+            'notify::expand': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::halign': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::hexpand': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::margin': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::sensitive': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::valign': GObject.Object.Notify;
+            'notify::vexpand': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::window': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2400,14 +2694,17 @@ export namespace AtrilView {
         // Signals
 
         connect<K extends keyof WebView.SignalSignatures>(signal: K, callback: WebView.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WebView.SignalSignatures>(
             signal: K,
             callback: WebView.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebView.SignalSignatures[K]>
+            ...args: WebView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

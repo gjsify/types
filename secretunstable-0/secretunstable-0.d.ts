@@ -159,7 +159,31 @@ export namespace SecretUnstable {
     }
     namespace Collection {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+            'notify::created': GObject.Object.Notify;
+            'notify::label': GObject.Object.Notify;
+            'notify::locked': GObject.Object.Notify;
+            'notify::modified': GObject.Object.Notify;
+            'notify::service': GObject.Object.Notify;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -239,14 +263,17 @@ export namespace SecretUnstable {
             signal: K,
             callback: Collection.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Collection.SignalSignatures>(
             signal: K,
             callback: Collection.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Collection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Collection.SignalSignatures[K]>
+            ...args: Collection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1566,7 +1593,32 @@ export namespace SecretUnstable {
 
     namespace Item {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+            'notify::attributes': GObject.Object.Notify;
+            'notify::created': GObject.Object.Notify;
+            'notify::label': GObject.Object.Notify;
+            'notify::locked': GObject.Object.Notify;
+            'notify::modified': GObject.Object.Notify;
+            'notify::service': GObject.Object.Notify;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1651,8 +1703,14 @@ export namespace SecretUnstable {
         // Signals
 
         connect<K extends keyof Item.SignalSignatures>(signal: K, callback: Item.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Item.SignalSignatures>(signal: K, callback: Item.SignalSignatures[K]): number;
-        emit<K extends keyof Item.SignalSignatures>(signal: K, ...args: Parameters<Item.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Item.SignalSignatures>(
+            signal: K,
+            ...args: Item.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2900,7 +2958,26 @@ export namespace SecretUnstable {
 
     namespace Prompt {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2927,8 +3004,14 @@ export namespace SecretUnstable {
         // Signals
 
         connect<K extends keyof Prompt.SignalSignatures>(signal: K, callback: Prompt.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Prompt.SignalSignatures>(signal: K, callback: Prompt.SignalSignatures[K]): number;
-        emit<K extends keyof Prompt.SignalSignatures>(signal: K, ...args: Parameters<Prompt.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Prompt.SignalSignatures>(
+            signal: K,
+            ...args: Prompt.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3804,7 +3887,26 @@ export namespace SecretUnstable {
 
     namespace Service {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3830,14 +3932,17 @@ export namespace SecretUnstable {
         // Signals
 
         connect<K extends keyof Service.SignalSignatures>(signal: K, callback: Service.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Service.SignalSignatures>(
             signal: K,
             callback: Service.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Service.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Service.SignalSignatures[K]>
+            ...args: Service.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 

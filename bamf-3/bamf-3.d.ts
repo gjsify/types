@@ -103,6 +103,13 @@ export namespace Bamf {
             'desktop-file-updated': DesktopFileUpdated;
             'window-added': WindowAdded;
             'window-removed': WindowRemoved;
+            'notify::active': GObject.Object.Notify;
+            'notify::path': GObject.Object.Notify;
+            'notify::running': GObject.Object.Notify;
+            'notify::starting': GObject.Object.Notify;
+            'notify::urgent': GObject.Object.Notify;
+            'notify::user-visible': GObject.Object.Notify;
+            'notify::user-visible': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -125,14 +132,17 @@ export namespace Bamf {
             signal: K,
             callback: Application.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Application.SignalSignatures>(
             signal: K,
             callback: Application.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Application.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Application.SignalSignatures[K]>
+            ...args: Application.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -194,14 +204,17 @@ export namespace Bamf {
         // Signals
 
         connect<K extends keyof Control.SignalSignatures>(signal: K, callback: Control.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Control.SignalSignatures>(
             signal: K,
             callback: Control.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Control.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Control.SignalSignatures[K]>
+            ...args: Control.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -264,14 +277,17 @@ export namespace Bamf {
         // Signals
 
         connect<K extends keyof Matcher.SignalSignatures>(signal: K, callback: Matcher.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Matcher.SignalSignatures>(
             signal: K,
             callback: Matcher.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Matcher.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Matcher.SignalSignatures[K]>
+            ...args: Matcher.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -359,7 +375,21 @@ export namespace Bamf {
 
     namespace Tab {
         // Signal signatures
-        interface SignalSignatures extends View.SignalSignatures {}
+        interface SignalSignatures extends View.SignalSignatures {
+            'notify::desktop-id': GObject.Object.Notify;
+            'notify::desktop-id': GObject.Object.Notify;
+            'notify::is-foreground-tab': GObject.Object.Notify;
+            'notify::is-foreground-tab': GObject.Object.Notify;
+            'notify::location': GObject.Object.Notify;
+            'notify::xid': GObject.Object.Notify;
+            'notify::active': GObject.Object.Notify;
+            'notify::path': GObject.Object.Notify;
+            'notify::running': GObject.Object.Notify;
+            'notify::starting': GObject.Object.Notify;
+            'notify::urgent': GObject.Object.Notify;
+            'notify::user-visible': GObject.Object.Notify;
+            'notify::user-visible': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -394,8 +424,14 @@ export namespace Bamf {
         // Signals
 
         connect<K extends keyof Tab.SignalSignatures>(signal: K, callback: Tab.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Tab.SignalSignatures>(signal: K, callback: Tab.SignalSignatures[K]): number;
-        emit<K extends keyof Tab.SignalSignatures>(signal: K, ...args: Parameters<Tab.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Tab.SignalSignatures>(
+            signal: K,
+            ...args: Tab.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -497,6 +533,13 @@ export namespace Bamf {
             'starting-changed': StartingChanged;
             'urgent-changed': UrgentChanged;
             'user-visible-changed': UserVisibleChanged;
+            'notify::active': GObject.Object.Notify;
+            'notify::path': GObject.Object.Notify;
+            'notify::running': GObject.Object.Notify;
+            'notify::starting': GObject.Object.Notify;
+            'notify::urgent': GObject.Object.Notify;
+            'notify::user-visible': GObject.Object.Notify;
+            'notify::user-visible': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -534,8 +577,14 @@ export namespace Bamf {
         // Signals
 
         connect<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
-        emit<K extends keyof View.SignalSignatures>(signal: K, ...args: Parameters<View.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof View.SignalSignatures>(
+            signal: K,
+            ...args: View.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -656,6 +705,13 @@ export namespace Bamf {
         interface SignalSignatures extends View.SignalSignatures {
             'maximized-changed': MaximizedChanged;
             'monitor-changed': MonitorChanged;
+            'notify::active': GObject.Object.Notify;
+            'notify::path': GObject.Object.Notify;
+            'notify::running': GObject.Object.Notify;
+            'notify::starting': GObject.Object.Notify;
+            'notify::urgent': GObject.Object.Notify;
+            'notify::user-visible': GObject.Object.Notify;
+            'notify::user-visible': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -675,8 +731,14 @@ export namespace Bamf {
         // Signals
 
         connect<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Window.SignalSignatures>(signal: K, callback: Window.SignalSignatures[K]): number;
-        emit<K extends keyof Window.SignalSignatures>(signal: K, ...args: Parameters<Window.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Window.SignalSignatures>(
+            signal: K,
+            ...args: Window.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 

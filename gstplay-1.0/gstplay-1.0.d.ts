@@ -259,7 +259,36 @@ export namespace GstPlay {
     function play_state_get_name(state: PlayState | null): string;
     namespace Play {
         // Signal signatures
-        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            'notify::audio-video-offset': GObject.Object.Notify;
+            'notify::audio-video-offset': GObject.Object.Notify;
+            'notify::current-audio-track': GObject.Object.Notify;
+            'notify::current-audio-track': GObject.Object.Notify;
+            'notify::current-subtitle-track': GObject.Object.Notify;
+            'notify::current-subtitle-track': GObject.Object.Notify;
+            'notify::current-video-track': GObject.Object.Notify;
+            'notify::current-video-track': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::media-info': GObject.Object.Notify;
+            'notify::media-info': GObject.Object.Notify;
+            'notify::mute': GObject.Object.Notify;
+            'notify::pipeline': GObject.Object.Notify;
+            'notify::position': GObject.Object.Notify;
+            'notify::rate': GObject.Object.Notify;
+            'notify::subtitle-video-offset': GObject.Object.Notify;
+            'notify::subtitle-video-offset': GObject.Object.Notify;
+            'notify::suburi': GObject.Object.Notify;
+            'notify::uri': GObject.Object.Notify;
+            'notify::video-multiview-flags': GObject.Object.Notify;
+            'notify::video-multiview-flags': GObject.Object.Notify;
+            'notify::video-multiview-mode': GObject.Object.Notify;
+            'notify::video-multiview-mode': GObject.Object.Notify;
+            'notify::video-renderer': GObject.Object.Notify;
+            'notify::video-renderer': GObject.Object.Notify;
+            'notify::volume': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -351,8 +380,14 @@ export namespace GstPlay {
         // Signals
 
         connect<K extends keyof Play.SignalSignatures>(signal: K, callback: Play.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Play.SignalSignatures>(signal: K, callback: Play.SignalSignatures[K]): number;
-        emit<K extends keyof Play.SignalSignatures>(signal: K, ...args: Parameters<Play.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Play.SignalSignatures>(
+            signal: K,
+            ...args: Play.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -659,14 +694,17 @@ export namespace GstPlay {
             signal: K,
             callback: PlayAudioInfo.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PlayAudioInfo.SignalSignatures>(
             signal: K,
             callback: PlayAudioInfo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PlayAudioInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PlayAudioInfo.SignalSignatures[K]>
+            ...args: PlayAudioInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -704,14 +742,17 @@ export namespace GstPlay {
             signal: K,
             callback: PlayMediaInfo.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PlayMediaInfo.SignalSignatures>(
             signal: K,
             callback: PlayMediaInfo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PlayMediaInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PlayMediaInfo.SignalSignatures[K]>
+            ...args: PlayMediaInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -808,6 +849,7 @@ export namespace GstPlay {
             'video-dimensions-changed': VideoDimensionsChanged;
             'volume-changed': VolumeChanged;
             warning: Warning;
+            'notify::play': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -842,14 +884,17 @@ export namespace GstPlay {
             signal: K,
             callback: PlaySignalAdapter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PlaySignalAdapter.SignalSignatures>(
             signal: K,
             callback: PlaySignalAdapter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PlaySignalAdapter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PlaySignalAdapter.SignalSignatures[K]>
+            ...args: PlaySignalAdapter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -885,14 +930,17 @@ export namespace GstPlay {
             signal: K,
             callback: PlayStreamInfo.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PlayStreamInfo.SignalSignatures>(
             signal: K,
             callback: PlayStreamInfo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PlayStreamInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PlayStreamInfo.SignalSignatures[K]>
+            ...args: PlayStreamInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -944,14 +992,17 @@ export namespace GstPlay {
             signal: K,
             callback: PlaySubtitleInfo.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PlaySubtitleInfo.SignalSignatures>(
             signal: K,
             callback: PlaySubtitleInfo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PlaySubtitleInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PlaySubtitleInfo.SignalSignatures[K]>
+            ...args: PlaySubtitleInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -985,14 +1036,17 @@ export namespace GstPlay {
             signal: K,
             callback: PlayVideoInfo.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PlayVideoInfo.SignalSignatures>(
             signal: K,
             callback: PlayVideoInfo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PlayVideoInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PlayVideoInfo.SignalSignatures[K]>
+            ...args: PlayVideoInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1009,7 +1063,12 @@ export namespace GstPlay {
 
     namespace PlayVideoOverlayVideoRenderer {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::video-sink': GObject.Object.Notify;
+            'notify::video-sink': GObject.Object.Notify;
+            'notify::window-handle': GObject.Object.Notify;
+            'notify::window-handle': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1047,14 +1106,17 @@ export namespace GstPlay {
             signal: K,
             callback: PlayVideoOverlayVideoRenderer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PlayVideoOverlayVideoRenderer.SignalSignatures>(
             signal: K,
             callback: PlayVideoOverlayVideoRenderer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PlayVideoOverlayVideoRenderer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PlayVideoOverlayVideoRenderer.SignalSignatures[K]>
+            ...args: PlayVideoOverlayVideoRenderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 

@@ -56,14 +56,17 @@ export namespace UMockdev {
         // Signals
 
         connect<K extends keyof Testbed.SignalSignatures>(signal: K, callback: Testbed.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Testbed.SignalSignatures>(
             signal: K,
             callback: Testbed.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Testbed.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Testbed.SignalSignatures[K]>
+            ...args: Testbed.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -133,14 +136,17 @@ export namespace UMockdev {
         // Signals
 
         connect<K extends keyof IoctlData.SignalSignatures>(signal: K, callback: IoctlData.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof IoctlData.SignalSignatures>(
             signal: K,
             callback: IoctlData.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof IoctlData.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IoctlData.SignalSignatures[K]>
+            ...args: IoctlData.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -155,7 +161,12 @@ export namespace UMockdev {
 
     namespace IoctlClient {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::devnode': GObject.Object.Notify;
+            'notify::request': GObject.Object.Notify;
+            'notify::arg': GObject.Object.Notify;
+            'notify::connected': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -189,14 +200,17 @@ export namespace UMockdev {
             signal: K,
             callback: IoctlClient.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof IoctlClient.SignalSignatures>(
             signal: K,
             callback: IoctlClient.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof IoctlClient.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IoctlClient.SignalSignatures[K]>
+            ...args: IoctlClient.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -245,14 +259,17 @@ export namespace UMockdev {
         // Signals
 
         connect<K extends keyof IoctlBase.SignalSignatures>(signal: K, callback: IoctlBase.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof IoctlBase.SignalSignatures>(
             signal: K,
             callback: IoctlBase.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof IoctlBase.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IoctlBase.SignalSignatures[K]>
+            ...args: IoctlBase.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 

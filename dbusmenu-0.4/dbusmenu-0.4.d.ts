@@ -409,6 +409,12 @@ export namespace Dbusmenu {
             'layout-updated': LayoutUpdated;
             'new-menuitem': NewMenuitem;
             'root-changed': RootChanged;
+            'notify::dbus-name': GObject.Object.Notify;
+            'notify::dbus-name': GObject.Object.Notify;
+            'notify::dbus-object': GObject.Object.Notify;
+            'notify::dbus-object': GObject.Object.Notify;
+            'notify::group-events': GObject.Object.Notify;
+            'notify::group-events': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -452,8 +458,14 @@ export namespace Dbusmenu {
         // Signals
 
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -529,7 +541,7 @@ export namespace Dbusmenu {
         // Signal callback interfaces
 
         interface AboutToShow {
-            (_source: Menuitem): boolean;
+            (_source: Menuitem): boolean | void;
         }
 
         interface ChildAdded {
@@ -545,7 +557,7 @@ export namespace Dbusmenu {
         }
 
         interface Event {
-            (_source: Menuitem, arg1: string, arg2: GLib.Variant, arg3: number): boolean;
+            (_source: Menuitem, arg1: string, arg2: GLib.Variant, arg3: number): boolean | void;
         }
 
         interface ItemActivated {
@@ -575,6 +587,8 @@ export namespace Dbusmenu {
             'property-changed': PropertyChanged;
             realized: Realized;
             'show-to-user': ShowToUser;
+            'notify::id': GObject.Object.Notify;
+            'event::id': Event;
         }
 
         // Constructor properties interface
@@ -612,14 +626,17 @@ export namespace Dbusmenu {
         // Signals
 
         connect<K extends keyof Menuitem.SignalSignatures>(signal: K, callback: Menuitem.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Menuitem.SignalSignatures>(
             signal: K,
             callback: Menuitem.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Menuitem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Menuitem.SignalSignatures[K]>
+            ...args: Menuitem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -965,7 +982,11 @@ export namespace Dbusmenu {
 
     namespace MenuitemProxy {
         // Signal signatures
-        interface SignalSignatures extends Menuitem.SignalSignatures {}
+        interface SignalSignatures extends Menuitem.SignalSignatures {
+            'notify::menu-item': GObject.Object.Notify;
+            'notify::menu-item': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1003,14 +1024,17 @@ export namespace Dbusmenu {
             signal: K,
             callback: MenuitemProxy.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MenuitemProxy.SignalSignatures>(
             signal: K,
             callback: MenuitemProxy.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MenuitemProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MenuitemProxy.SignalSignatures[K]>
+            ...args: MenuitemProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1047,6 +1071,11 @@ export namespace Dbusmenu {
             'item-property-updated': ItemPropertyUpdated;
             'item-updated': ItemUpdated;
             'layout-updated': LayoutUpdated;
+            'notify::dbus-object': GObject.Object.Notify;
+            'notify::dbus-object': GObject.Object.Notify;
+            'notify::root-node': GObject.Object.Notify;
+            'notify::root-node': GObject.Object.Notify;
+            'notify::version': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1088,8 +1117,14 @@ export namespace Dbusmenu {
         // Signals
 
         connect<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
-        emit<K extends keyof Server.SignalSignatures>(signal: K, ...args: Parameters<Server.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Server.SignalSignatures>(
+            signal: K,
+            ...args: Server.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

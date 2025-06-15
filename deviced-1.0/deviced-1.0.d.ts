@@ -51,7 +51,15 @@ export namespace Deviced {
     const VERSION_S: string;
     namespace AppInfo {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::commit-id': GObject.Object.Notify;
+            'notify::commit-id': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::installed-size': GObject.Object.Notify;
+            'notify::installed-size': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::provider': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -95,14 +103,17 @@ export namespace Deviced {
         // Signals
 
         connect<K extends keyof AppInfo.SignalSignatures>(signal: K, callback: AppInfo.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AppInfo.SignalSignatures>(
             signal: K,
             callback: AppInfo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AppInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AppInfo.SignalSignatures[K]>
+            ...args: AppInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Browser {
@@ -120,6 +131,11 @@ export namespace Deviced {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'device-added': DeviceAdded;
             'device-removed': DeviceRemoved;
+            'notify::certificate': GObject.Object.Notify;
+            'notify::enable-ipv4': GObject.Object.Notify;
+            'notify::enable-ipv4': GObject.Object.Notify;
+            'notify::enable-ipv6': GObject.Object.Notify;
+            'notify::enable-ipv6': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -163,14 +179,17 @@ export namespace Deviced {
         // Signals
 
         connect<K extends keyof Browser.SignalSignatures>(signal: K, callback: Browser.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Browser.SignalSignatures>(
             signal: K,
             callback: Browser.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Browser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Browser.SignalSignatures[K]>
+            ...args: Browser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -279,6 +298,18 @@ export namespace Deviced {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             notification: Notification;
             'service-added': ServiceAdded;
+            'notify::arch': GObject.Object.Notify;
+            'notify::kernel': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::system': GObject.Object.Notify;
+            'notify::timeout': GObject.Object.Notify;
+            'notify::triplet': GObject.Object.Notify;
+            'notification::arch': Notification;
+            'notification::kernel': Notification;
+            'notification::name': Notification;
+            'notification::system': Notification;
+            'notification::timeout': Notification;
+            'notification::triplet': Notification;
         }
 
         // Constructor properties interface
@@ -315,8 +346,14 @@ export namespace Deviced {
         // Signals
 
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -856,7 +893,15 @@ export namespace Deviced {
 
     namespace Device {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::kind': GObject.Object.Notify;
+            'notify::machine-id': GObject.Object.Notify;
+            'notify::machine-id': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -899,8 +944,14 @@ export namespace Deviced {
         // Signals
 
         connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
-        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            ...args: Device.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -979,7 +1030,9 @@ export namespace Deviced {
 
     namespace FlatpakService {
         // Signal signatures
-        interface SignalSignatures extends Service.SignalSignatures {}
+        interface SignalSignatures extends Service.SignalSignatures {
+            'notify::client': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1006,14 +1059,17 @@ export namespace Deviced {
             signal: K,
             callback: FlatpakService.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FlatpakService.SignalSignatures>(
             signal: K,
             callback: FlatpakService.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FlatpakService.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FlatpakService.SignalSignatures[K]>
+            ...args: FlatpakService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1033,7 +1089,16 @@ export namespace Deviced {
 
     namespace NetworkClient {
         // Signal signatures
-        interface SignalSignatures extends Client.SignalSignatures {}
+        interface SignalSignatures extends Client.SignalSignatures {
+            'notify::address': GObject.Object.Notify;
+            'notify::certificate': GObject.Object.Notify;
+            'notify::arch': GObject.Object.Notify;
+            'notify::kernel': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::system': GObject.Object.Notify;
+            'notify::timeout': GObject.Object.Notify;
+            'notify::triplet': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1069,14 +1134,17 @@ export namespace Deviced {
             signal: K,
             callback: NetworkClient.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NetworkClient.SignalSignatures>(
             signal: K,
             callback: NetworkClient.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NetworkClient.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NetworkClient.SignalSignatures[K]>
+            ...args: NetworkClient.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1094,7 +1162,17 @@ export namespace Deviced {
 
     namespace NetworkDevice {
         // Signal signatures
-        interface SignalSignatures extends Device.SignalSignatures {}
+        interface SignalSignatures extends Device.SignalSignatures {
+            'notify::address': GObject.Object.Notify;
+            'notify::certificate': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::kind': GObject.Object.Notify;
+            'notify::machine-id': GObject.Object.Notify;
+            'notify::machine-id': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1124,14 +1202,17 @@ export namespace Deviced {
             signal: K,
             callback: NetworkDevice.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NetworkDevice.SignalSignatures>(
             signal: K,
             callback: NetworkDevice.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NetworkDevice.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NetworkDevice.SignalSignatures[K]>
+            ...args: NetworkDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1164,6 +1245,7 @@ export namespace Deviced {
         interface SignalSignatures extends Service.SignalSignatures {
             'process-exited': ProcessExited;
             'process-signaled': ProcessSignaled;
+            'notify::client': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1191,14 +1273,17 @@ export namespace Deviced {
             signal: K,
             callback: ProcessService.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ProcessService.SignalSignatures>(
             signal: K,
             callback: ProcessService.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ProcessService.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProcessService.SignalSignatures[K]>
+            ...args: ProcessService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1357,6 +1442,8 @@ export namespace Deviced {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             notification: Notification;
+            'notify::client': GObject.Object.Notify;
+            'notification::client': Notification;
         }
 
         // Constructor properties interface
@@ -1384,14 +1471,17 @@ export namespace Deviced {
         // Signals
 
         connect<K extends keyof Service.SignalSignatures>(signal: K, callback: Service.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Service.SignalSignatures>(
             signal: K,
             callback: Service.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Service.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Service.SignalSignatures[K]>
+            ...args: Service.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1463,7 +1553,9 @@ export namespace Deviced {
 
     namespace TransferService {
         // Signal signatures
-        interface SignalSignatures extends Service.SignalSignatures {}
+        interface SignalSignatures extends Service.SignalSignatures {
+            'notify::client': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1490,14 +1582,17 @@ export namespace Deviced {
             signal: K,
             callback: TransferService.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TransferService.SignalSignatures>(
             signal: K,
             callback: TransferService.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TransferService.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TransferService.SignalSignatures[K]>
+            ...args: TransferService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

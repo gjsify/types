@@ -23,7 +23,11 @@ export namespace ArrowCUDA {
 
     namespace Buffer {
         // Signal signatures
-        interface SignalSignatures extends Arrow.Buffer.SignalSignatures {}
+        interface SignalSignatures extends Arrow.Buffer.SignalSignatures {
+            'notify::buffer': GObject.Object.Notify;
+            'notify::data': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -51,8 +55,14 @@ export namespace ArrowCUDA {
         // Signals
 
         connect<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
-        emit<K extends keyof Buffer.SignalSignatures>(signal: K, ...args: Parameters<Buffer.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Buffer.SignalSignatures>(
+            signal: K,
+            ...args: Buffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -65,7 +75,11 @@ export namespace ArrowCUDA {
 
     namespace BufferInputStream {
         // Signal signatures
-        interface SignalSignatures extends Arrow.BufferInputStream.SignalSignatures {}
+        interface SignalSignatures extends Arrow.BufferInputStream.SignalSignatures {
+            'notify::buffer': GObject.Object.Notify;
+            'notify::input-stream': GObject.Object.Notify;
+            'notify::input-stream': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -92,14 +106,17 @@ export namespace ArrowCUDA {
             signal: K,
             callback: BufferInputStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BufferInputStream.SignalSignatures>(
             signal: K,
             callback: BufferInputStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BufferInputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BufferInputStream.SignalSignatures[K]>
+            ...args: BufferInputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -545,7 +562,10 @@ export namespace ArrowCUDA {
 
     namespace BufferOutputStream {
         // Signal signatures
-        interface SignalSignatures extends Arrow.OutputStream.SignalSignatures {}
+        interface SignalSignatures extends Arrow.OutputStream.SignalSignatures {
+            'notify::output-stream': GObject.Object.Notify;
+            'notify::output-stream': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -572,14 +592,17 @@ export namespace ArrowCUDA {
             signal: K,
             callback: BufferOutputStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BufferOutputStream.SignalSignatures>(
             signal: K,
             callback: BufferOutputStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BufferOutputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BufferOutputStream.SignalSignatures[K]>
+            ...args: BufferOutputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1041,7 +1064,9 @@ export namespace ArrowCUDA {
 
     namespace Context {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::context': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1066,14 +1091,17 @@ export namespace ArrowCUDA {
         // Signals
 
         connect<K extends keyof Context.SignalSignatures>(signal: K, callback: Context.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Context.SignalSignatures>(
             signal: K,
             callback: Context.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Context.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Context.SignalSignatures[K]>
+            ...args: Context.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1106,14 +1134,17 @@ export namespace ArrowCUDA {
             signal: K,
             callback: DeviceManager.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceManager.SignalSignatures>(
             signal: K,
             callback: DeviceManager.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceManager.SignalSignatures[K]>
+            ...args: DeviceManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1123,7 +1154,11 @@ export namespace ArrowCUDA {
 
     namespace HostBuffer {
         // Signal signatures
-        interface SignalSignatures extends Arrow.MutableBuffer.SignalSignatures {}
+        interface SignalSignatures extends Arrow.MutableBuffer.SignalSignatures {
+            'notify::buffer': GObject.Object.Notify;
+            'notify::data': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1150,19 +1185,25 @@ export namespace ArrowCUDA {
             signal: K,
             callback: HostBuffer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HostBuffer.SignalSignatures>(
             signal: K,
             callback: HostBuffer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HostBuffer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HostBuffer.SignalSignatures[K]>
+            ...args: HostBuffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace IPCMemoryHandle {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::ipc-memory-handle': GObject.Object.Notify;
+            'notify::ipc-memory-handle': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1194,14 +1235,17 @@ export namespace ArrowCUDA {
             signal: K,
             callback: IPCMemoryHandle.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof IPCMemoryHandle.SignalSignatures>(
             signal: K,
             callback: IPCMemoryHandle.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof IPCMemoryHandle.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IPCMemoryHandle.SignalSignatures[K]>
+            ...args: IPCMemoryHandle.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

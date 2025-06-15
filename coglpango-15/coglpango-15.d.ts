@@ -73,7 +73,9 @@ export namespace CoglPango {
     }
     namespace Renderer {
         // Signal signatures
-        interface SignalSignatures extends Pango.Renderer.SignalSignatures {}
+        interface SignalSignatures extends Pango.Renderer.SignalSignatures {
+            'notify::context': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -98,14 +100,17 @@ export namespace CoglPango {
         // Signals
 
         connect<K extends keyof Renderer.SignalSignatures>(signal: K, callback: Renderer.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Renderer.SignalSignatures>(
             signal: K,
             callback: Renderer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Renderer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Renderer.SignalSignatures[K]>
+            ...args: Renderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     type RendererClass = typeof Renderer;

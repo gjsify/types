@@ -105,14 +105,17 @@ export namespace Gom {
         // Signals
 
         connect<K extends keyof Adapter.SignalSignatures>(signal: K, callback: Adapter.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Adapter.SignalSignatures>(
             signal: K,
             callback: Adapter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Adapter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Adapter.SignalSignatures[K]>
+            ...args: Adapter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -177,7 +180,10 @@ export namespace Gom {
 
     namespace Command {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::adapter': GObject.Object.Notify;
+            'notify::sql': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -204,14 +210,17 @@ export namespace Gom {
         // Signals
 
         connect<K extends keyof Command.SignalSignatures>(signal: K, callback: Command.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Command.SignalSignatures>(
             signal: K,
             callback: Command.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Command.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Command.SignalSignatures[K]>
+            ...args: Command.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -232,7 +241,19 @@ export namespace Gom {
 
     namespace CommandBuilder {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::adapter': GObject.Object.Notify;
+            'notify::filter': GObject.Object.Notify;
+            'notify::limit': GObject.Object.Notify;
+            'notify::m2m-table': GObject.Object.Notify;
+            'notify::m2m-table': GObject.Object.Notify;
+            'notify::m2m-type': GObject.Object.Notify;
+            'notify::m2m-type': GObject.Object.Notify;
+            'notify::offset': GObject.Object.Notify;
+            'notify::resource-type': GObject.Object.Notify;
+            'notify::resource-type': GObject.Object.Notify;
+            'notify::sorting': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -286,14 +307,17 @@ export namespace Gom {
             signal: K,
             callback: CommandBuilder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CommandBuilder.SignalSignatures>(
             signal: K,
             callback: CommandBuilder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CommandBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CommandBuilder.SignalSignatures[K]>
+            ...args: CommandBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -340,7 +364,9 @@ export namespace Gom {
 
     namespace Cursor {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::statement': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -365,8 +391,14 @@ export namespace Gom {
         // Signals
 
         connect<K extends keyof Cursor.SignalSignatures>(signal: K, callback: Cursor.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Cursor.SignalSignatures>(signal: K, callback: Cursor.SignalSignatures[K]): number;
-        emit<K extends keyof Cursor.SignalSignatures>(signal: K, ...args: Parameters<Cursor.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Cursor.SignalSignatures>(
+            signal: K,
+            ...args: Cursor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -386,7 +418,10 @@ export namespace Gom {
 
     namespace Filter {
         // Signal signatures
-        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {}
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
+            'notify::mode': GObject.Object.Notify;
+            'notify::sql': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -443,8 +478,14 @@ export namespace Gom {
         // Signals
 
         connect<K extends keyof Filter.SignalSignatures>(signal: K, callback: Filter.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Filter.SignalSignatures>(signal: K, callback: Filter.SignalSignatures[K]): number;
-        emit<K extends keyof Filter.SignalSignatures>(signal: K, ...args: Parameters<Filter.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Filter.SignalSignatures>(
+            signal: K,
+            ...args: Filter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -459,7 +500,9 @@ export namespace Gom {
 
     namespace Repository {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::adapter': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -489,14 +532,17 @@ export namespace Gom {
             signal: K,
             callback: Repository.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Repository.SignalSignatures>(
             signal: K,
             callback: Repository.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Repository.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Repository.SignalSignatures[K]>
+            ...args: Repository.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -672,7 +718,9 @@ export namespace Gom {
 
     namespace Resource {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::repository': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -698,14 +746,17 @@ export namespace Gom {
         // Signals
 
         connect<K extends keyof Resource.SignalSignatures>(signal: K, callback: Resource.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Resource.SignalSignatures>(
             signal: K,
             callback: Resource.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Resource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Resource.SignalSignatures[K]>
+            ...args: Resource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -768,7 +819,20 @@ export namespace Gom {
 
     namespace ResourceGroup {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::count': GObject.Object.Notify;
+            'notify::filter': GObject.Object.Notify;
+            'notify::is-writable': GObject.Object.Notify;
+            'notify::is-writable': GObject.Object.Notify;
+            'notify::m2m-table': GObject.Object.Notify;
+            'notify::m2m-table': GObject.Object.Notify;
+            'notify::m2m-type': GObject.Object.Notify;
+            'notify::m2m-type': GObject.Object.Notify;
+            'notify::repository': GObject.Object.Notify;
+            'notify::resource-type': GObject.Object.Notify;
+            'notify::resource-type': GObject.Object.Notify;
+            'notify::sorting': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -820,14 +884,17 @@ export namespace Gom {
             signal: K,
             callback: ResourceGroup.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ResourceGroup.SignalSignatures>(
             signal: K,
             callback: ResourceGroup.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ResourceGroup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ResourceGroup.SignalSignatures[K]>
+            ...args: ResourceGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -891,14 +958,17 @@ export namespace Gom {
         // Signals
 
         connect<K extends keyof Sorting.SignalSignatures>(signal: K, callback: Sorting.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Sorting.SignalSignatures>(
             signal: K,
             callback: Sorting.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Sorting.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Sorting.SignalSignatures[K]>
+            ...args: Sorting.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

@@ -321,7 +321,19 @@ export namespace GstCheck {
     }
     namespace TestClock {
         // Signal signatures
-        interface SignalSignatures extends Gst.Clock.SignalSignatures {}
+        interface SignalSignatures extends Gst.Clock.SignalSignatures {
+            'notify::clock-type': GObject.Object.Notify;
+            'notify::clock-type': GObject.Object.Notify;
+            'notify::start-time': GObject.Object.Notify;
+            'notify::start-time': GObject.Object.Notify;
+            'notify::timeout': GObject.Object.Notify;
+            'notify::window-size': GObject.Object.Notify;
+            'notify::window-size': GObject.Object.Notify;
+            'notify::window-threshold': GObject.Object.Notify;
+            'notify::window-threshold': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -522,14 +534,17 @@ export namespace GstCheck {
         // Signals
 
         connect<K extends keyof TestClock.SignalSignatures>(signal: K, callback: TestClock.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TestClock.SignalSignatures>(
             signal: K,
             callback: TestClock.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TestClock.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TestClock.SignalSignatures[K]>
+            ...args: TestClock.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 

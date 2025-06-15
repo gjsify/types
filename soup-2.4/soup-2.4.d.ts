@@ -2800,7 +2800,14 @@ export namespace Soup {
     }
     namespace Address {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::family': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::physical': GObject.Object.Notify;
+            'notify::port': GObject.Object.Notify;
+            'notify::protocol': GObject.Object.Notify;
+            'notify::sockaddr': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2841,14 +2848,17 @@ export namespace Soup {
         // Signals
 
         connect<K extends keyof Address.SignalSignatures>(signal: K, callback: Address.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Address.SignalSignatures>(
             signal: K,
             callback: Address.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Address.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Address.SignalSignatures[K]>
+            ...args: Address.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3493,7 +3503,16 @@ export namespace Soup {
 
     namespace Auth {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::host': GObject.Object.Notify;
+            'notify::is-authenticated': GObject.Object.Notify;
+            'notify::is-authenticated': GObject.Object.Notify;
+            'notify::is-for-proxy': GObject.Object.Notify;
+            'notify::is-for-proxy': GObject.Object.Notify;
+            'notify::realm': GObject.Object.Notify;
+            'notify::scheme-name': GObject.Object.Notify;
+            'notify::scheme-name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3544,8 +3563,14 @@ export namespace Soup {
         // Signals
 
         connect<K extends keyof Auth.SignalSignatures>(signal: K, callback: Auth.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Auth.SignalSignatures>(signal: K, callback: Auth.SignalSignatures[K]): number;
-        emit<K extends keyof Auth.SignalSignatures>(signal: K, ...args: Parameters<Auth.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Auth.SignalSignatures>(
+            signal: K,
+            ...args: Auth.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -3681,7 +3706,16 @@ export namespace Soup {
 
     namespace AuthBasic {
         // Signal signatures
-        interface SignalSignatures extends Auth.SignalSignatures {}
+        interface SignalSignatures extends Auth.SignalSignatures {
+            'notify::host': GObject.Object.Notify;
+            'notify::is-authenticated': GObject.Object.Notify;
+            'notify::is-authenticated': GObject.Object.Notify;
+            'notify::is-for-proxy': GObject.Object.Notify;
+            'notify::is-for-proxy': GObject.Object.Notify;
+            'notify::realm': GObject.Object.Notify;
+            'notify::scheme-name': GObject.Object.Notify;
+            'notify::scheme-name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3700,19 +3734,31 @@ export namespace Soup {
         // Signals
 
         connect<K extends keyof AuthBasic.SignalSignatures>(signal: K, callback: AuthBasic.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AuthBasic.SignalSignatures>(
             signal: K,
             callback: AuthBasic.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AuthBasic.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AuthBasic.SignalSignatures[K]>
+            ...args: AuthBasic.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace AuthDigest {
         // Signal signatures
-        interface SignalSignatures extends Auth.SignalSignatures {}
+        interface SignalSignatures extends Auth.SignalSignatures {
+            'notify::host': GObject.Object.Notify;
+            'notify::is-authenticated': GObject.Object.Notify;
+            'notify::is-authenticated': GObject.Object.Notify;
+            'notify::is-for-proxy': GObject.Object.Notify;
+            'notify::is-for-proxy': GObject.Object.Notify;
+            'notify::realm': GObject.Object.Notify;
+            'notify::scheme-name': GObject.Object.Notify;
+            'notify::scheme-name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3734,19 +3780,36 @@ export namespace Soup {
             signal: K,
             callback: AuthDigest.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AuthDigest.SignalSignatures>(
             signal: K,
             callback: AuthDigest.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AuthDigest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AuthDigest.SignalSignatures[K]>
+            ...args: AuthDigest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace AuthDomain {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::add-path': GObject.Object.Notify;
+            'notify::add-path': GObject.Object.Notify;
+            'notify::filter': GObject.Object.Notify;
+            'notify::filter-data': GObject.Object.Notify;
+            'notify::filter-data': GObject.Object.Notify;
+            'notify::generic-auth-callback': GObject.Object.Notify;
+            'notify::generic-auth-callback': GObject.Object.Notify;
+            'notify::generic-auth-data': GObject.Object.Notify;
+            'notify::generic-auth-data': GObject.Object.Notify;
+            'notify::proxy': GObject.Object.Notify;
+            'notify::realm': GObject.Object.Notify;
+            'notify::remove-path': GObject.Object.Notify;
+            'notify::remove-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3814,14 +3877,17 @@ export namespace Soup {
             signal: K,
             callback: AuthDomain.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AuthDomain.SignalSignatures>(
             signal: K,
             callback: AuthDomain.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AuthDomain.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AuthDomain.SignalSignatures[K]>
+            ...args: AuthDomain.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -3940,7 +4006,25 @@ export namespace Soup {
 
     namespace AuthDomainBasic {
         // Signal signatures
-        interface SignalSignatures extends AuthDomain.SignalSignatures {}
+        interface SignalSignatures extends AuthDomain.SignalSignatures {
+            'notify::auth-callback': GObject.Object.Notify;
+            'notify::auth-callback': GObject.Object.Notify;
+            'notify::auth-data': GObject.Object.Notify;
+            'notify::auth-data': GObject.Object.Notify;
+            'notify::add-path': GObject.Object.Notify;
+            'notify::add-path': GObject.Object.Notify;
+            'notify::filter': GObject.Object.Notify;
+            'notify::filter-data': GObject.Object.Notify;
+            'notify::filter-data': GObject.Object.Notify;
+            'notify::generic-auth-callback': GObject.Object.Notify;
+            'notify::generic-auth-callback': GObject.Object.Notify;
+            'notify::generic-auth-data': GObject.Object.Notify;
+            'notify::generic-auth-data': GObject.Object.Notify;
+            'notify::proxy': GObject.Object.Notify;
+            'notify::realm': GObject.Object.Notify;
+            'notify::remove-path': GObject.Object.Notify;
+            'notify::remove-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3990,14 +4074,17 @@ export namespace Soup {
             signal: K,
             callback: AuthDomainBasic.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AuthDomainBasic.SignalSignatures>(
             signal: K,
             callback: AuthDomainBasic.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AuthDomainBasic.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AuthDomainBasic.SignalSignatures[K]>
+            ...args: AuthDomainBasic.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4018,7 +4105,25 @@ export namespace Soup {
 
     namespace AuthDomainDigest {
         // Signal signatures
-        interface SignalSignatures extends AuthDomain.SignalSignatures {}
+        interface SignalSignatures extends AuthDomain.SignalSignatures {
+            'notify::auth-callback': GObject.Object.Notify;
+            'notify::auth-callback': GObject.Object.Notify;
+            'notify::auth-data': GObject.Object.Notify;
+            'notify::auth-data': GObject.Object.Notify;
+            'notify::add-path': GObject.Object.Notify;
+            'notify::add-path': GObject.Object.Notify;
+            'notify::filter': GObject.Object.Notify;
+            'notify::filter-data': GObject.Object.Notify;
+            'notify::filter-data': GObject.Object.Notify;
+            'notify::generic-auth-callback': GObject.Object.Notify;
+            'notify::generic-auth-callback': GObject.Object.Notify;
+            'notify::generic-auth-data': GObject.Object.Notify;
+            'notify::generic-auth-data': GObject.Object.Notify;
+            'notify::proxy': GObject.Object.Notify;
+            'notify::realm': GObject.Object.Notify;
+            'notify::remove-path': GObject.Object.Notify;
+            'notify::remove-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4068,14 +4173,17 @@ export namespace Soup {
             signal: K,
             callback: AuthDomainDigest.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AuthDomainDigest.SignalSignatures>(
             signal: K,
             callback: AuthDomainDigest.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AuthDomainDigest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AuthDomainDigest.SignalSignatures[K]>
+            ...args: AuthDomainDigest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -4148,14 +4256,17 @@ export namespace Soup {
             signal: K,
             callback: AuthManager.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AuthManager.SignalSignatures>(
             signal: K,
             callback: AuthManager.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AuthManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AuthManager.SignalSignatures[K]>
+            ...args: AuthManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -4700,7 +4811,16 @@ export namespace Soup {
 
     namespace AuthNTLM {
         // Signal signatures
-        interface SignalSignatures extends Auth.SignalSignatures {}
+        interface SignalSignatures extends Auth.SignalSignatures {
+            'notify::host': GObject.Object.Notify;
+            'notify::is-authenticated': GObject.Object.Notify;
+            'notify::is-authenticated': GObject.Object.Notify;
+            'notify::is-for-proxy': GObject.Object.Notify;
+            'notify::is-for-proxy': GObject.Object.Notify;
+            'notify::realm': GObject.Object.Notify;
+            'notify::scheme-name': GObject.Object.Notify;
+            'notify::scheme-name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4719,19 +4839,31 @@ export namespace Soup {
         // Signals
 
         connect<K extends keyof AuthNTLM.SignalSignatures>(signal: K, callback: AuthNTLM.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AuthNTLM.SignalSignatures>(
             signal: K,
             callback: AuthNTLM.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AuthNTLM.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AuthNTLM.SignalSignatures[K]>
+            ...args: AuthNTLM.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace AuthNegotiate {
         // Signal signatures
-        interface SignalSignatures extends Auth.SignalSignatures {}
+        interface SignalSignatures extends Auth.SignalSignatures {
+            'notify::host': GObject.Object.Notify;
+            'notify::is-authenticated': GObject.Object.Notify;
+            'notify::is-authenticated': GObject.Object.Notify;
+            'notify::is-for-proxy': GObject.Object.Notify;
+            'notify::is-for-proxy': GObject.Object.Notify;
+            'notify::realm': GObject.Object.Notify;
+            'notify::scheme-name': GObject.Object.Notify;
+            'notify::scheme-name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4753,14 +4885,17 @@ export namespace Soup {
             signal: K,
             callback: AuthNegotiate.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AuthNegotiate.SignalSignatures>(
             signal: K,
             callback: AuthNegotiate.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AuthNegotiate.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AuthNegotiate.SignalSignatures[K]>
+            ...args: AuthNegotiate.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -4775,7 +4910,12 @@ export namespace Soup {
 
     namespace Cache {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::cache-dir': GObject.Object.Notify;
+            'notify::cache-dir': GObject.Object.Notify;
+            'notify::cache-type': GObject.Object.Notify;
+            'notify::cache-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4808,8 +4948,14 @@ export namespace Soup {
         // Signals
 
         connect<K extends keyof Cache.SignalSignatures>(signal: K, callback: Cache.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Cache.SignalSignatures>(signal: K, callback: Cache.SignalSignatures[K]): number;
-        emit<K extends keyof Cache.SignalSignatures>(signal: K, ...args: Parameters<Cache.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Cache.SignalSignatures>(
+            signal: K,
+            ...args: Cache.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -5394,14 +5540,17 @@ export namespace Soup {
             signal: K,
             callback: ContentDecoder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ContentDecoder.SignalSignatures>(
             signal: K,
             callback: ContentDecoder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ContentDecoder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContentDecoder.SignalSignatures[K]>
+            ...args: ContentDecoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -5945,14 +6094,17 @@ export namespace Soup {
             signal: K,
             callback: ContentSniffer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ContentSniffer.SignalSignatures>(
             signal: K,
             callback: ContentSniffer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ContentSniffer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContentSniffer.SignalSignatures[K]>
+            ...args: ContentSniffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -6514,6 +6666,10 @@ export namespace Soup {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             changed: Changed;
+            'notify::accept-policy': GObject.Object.Notify;
+            'notify::accept-policy': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -6555,14 +6711,17 @@ export namespace Soup {
         // Signals
 
         connect<K extends keyof CookieJar.SignalSignatures>(signal: K, callback: CookieJar.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CookieJar.SignalSignatures>(
             signal: K,
             callback: CookieJar.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CookieJar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CookieJar.SignalSignatures[K]>
+            ...args: CookieJar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -7251,7 +7410,13 @@ export namespace Soup {
 
     namespace CookieJarDB {
         // Signal signatures
-        interface SignalSignatures extends CookieJar.SignalSignatures {}
+        interface SignalSignatures extends CookieJar.SignalSignatures {
+            'notify::filename': GObject.Object.Notify;
+            'notify::accept-policy': GObject.Object.Notify;
+            'notify::accept-policy': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -7284,14 +7449,17 @@ export namespace Soup {
             signal: K,
             callback: CookieJarDB.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CookieJarDB.SignalSignatures>(
             signal: K,
             callback: CookieJarDB.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CookieJarDB.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CookieJarDB.SignalSignatures[K]>
+            ...args: CookieJarDB.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -7811,7 +7979,13 @@ export namespace Soup {
 
     namespace CookieJarText {
         // Signal signatures
-        interface SignalSignatures extends CookieJar.SignalSignatures {}
+        interface SignalSignatures extends CookieJar.SignalSignatures {
+            'notify::filename': GObject.Object.Notify;
+            'notify::accept-policy': GObject.Object.Notify;
+            'notify::accept-policy': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -7844,14 +8018,17 @@ export namespace Soup {
             signal: K,
             callback: CookieJarText.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CookieJarText.SignalSignatures>(
             signal: K,
             callback: CookieJarText.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CookieJarText.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CookieJarText.SignalSignatures[K]>
+            ...args: CookieJarText.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -8408,14 +8585,17 @@ export namespace Soup {
             signal: K,
             callback: HSTSEnforcer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HSTSEnforcer.SignalSignatures>(
             signal: K,
             callback: HSTSEnforcer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HSTSEnforcer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HSTSEnforcer.SignalSignatures[K]>
+            ...args: HSTSEnforcer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -8999,7 +9179,9 @@ export namespace Soup {
 
     namespace HSTSEnforcerDB {
         // Signal signatures
-        interface SignalSignatures extends HSTSEnforcer.SignalSignatures {}
+        interface SignalSignatures extends HSTSEnforcer.SignalSignatures {
+            'notify::filename': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -9035,14 +9217,17 @@ export namespace Soup {
             signal: K,
             callback: HSTSEnforcerDB.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HSTSEnforcerDB.SignalSignatures>(
             signal: K,
             callback: HSTSEnforcerDB.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HSTSEnforcerDB.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HSTSEnforcerDB.SignalSignatures[K]>
+            ...args: HSTSEnforcerDB.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -9562,7 +9747,11 @@ export namespace Soup {
 
     namespace Logger {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::level': GObject.Object.Notify;
+            'notify::max-body-size': GObject.Object.Notify;
+            'notify::max-body-size': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -9609,8 +9798,14 @@ export namespace Soup {
         // Signals
 
         connect<K extends keyof Logger.SignalSignatures>(signal: K, callback: Logger.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Logger.SignalSignatures>(signal: K, callback: Logger.SignalSignatures[K]): number;
-        emit<K extends keyof Logger.SignalSignatures>(signal: K, ...args: Parameters<Logger.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Logger.SignalSignatures>(
+            signal: K,
+            ...args: Logger.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -10243,6 +10438,40 @@ export namespace Soup {
             'wrote-chunk': WroteChunk;
             'wrote-headers': WroteHeaders;
             'wrote-informational': WroteInformational;
+            'notify::first-party': GObject.Object.Notify;
+            'notify::first-party': GObject.Object.Notify;
+            'notify::flags': GObject.Object.Notify;
+            'notify::http-version': GObject.Object.Notify;
+            'notify::http-version': GObject.Object.Notify;
+            'notify::is-top-level-navigation': GObject.Object.Notify;
+            'notify::is-top-level-navigation': GObject.Object.Notify;
+            'notify::method': GObject.Object.Notify;
+            'notify::priority': GObject.Object.Notify;
+            'notify::reason-phrase': GObject.Object.Notify;
+            'notify::reason-phrase': GObject.Object.Notify;
+            'notify::request-body': GObject.Object.Notify;
+            'notify::request-body': GObject.Object.Notify;
+            'notify::request-body-data': GObject.Object.Notify;
+            'notify::request-body-data': GObject.Object.Notify;
+            'notify::request-headers': GObject.Object.Notify;
+            'notify::request-headers': GObject.Object.Notify;
+            'notify::response-body': GObject.Object.Notify;
+            'notify::response-body': GObject.Object.Notify;
+            'notify::response-body-data': GObject.Object.Notify;
+            'notify::response-body-data': GObject.Object.Notify;
+            'notify::response-headers': GObject.Object.Notify;
+            'notify::response-headers': GObject.Object.Notify;
+            'notify::server-side': GObject.Object.Notify;
+            'notify::server-side': GObject.Object.Notify;
+            'notify::site-for-cookies': GObject.Object.Notify;
+            'notify::site-for-cookies': GObject.Object.Notify;
+            'notify::status-code': GObject.Object.Notify;
+            'notify::status-code': GObject.Object.Notify;
+            'notify::tls-certificate': GObject.Object.Notify;
+            'notify::tls-certificate': GObject.Object.Notify;
+            'notify::tls-errors': GObject.Object.Notify;
+            'notify::tls-errors': GObject.Object.Notify;
+            'notify::uri': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -10438,14 +10667,17 @@ export namespace Soup {
         // Signals
 
         connect<K extends keyof Message.SignalSignatures>(signal: K, callback: Message.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Message.SignalSignatures>(
             signal: K,
             callback: Message.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Message.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Message.SignalSignatures[K]>
+            ...args: Message.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -10700,7 +10932,13 @@ export namespace Soup {
 
     namespace MultipartInputStream {
         // Signal signatures
-        interface SignalSignatures extends Gio.FilterInputStream.SignalSignatures {}
+        interface SignalSignatures extends Gio.FilterInputStream.SignalSignatures {
+            'notify::message': GObject.Object.Notify;
+            'notify::base-stream': GObject.Object.Notify;
+            'notify::base-stream': GObject.Object.Notify;
+            'notify::close-base-stream': GObject.Object.Notify;
+            'notify::close-base-stream': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10732,14 +10970,17 @@ export namespace Soup {
             signal: K,
             callback: MultipartInputStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MultipartInputStream.SignalSignatures>(
             signal: K,
             callback: MultipartInputStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MultipartInputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MultipartInputStream.SignalSignatures[K]>
+            ...args: MultipartInputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -11686,7 +11927,10 @@ export namespace Soup {
 
     namespace ProxyResolverDefault {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::gproxy-resolver': GObject.Object.Notify;
+            'notify::gproxy-resolver': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11719,14 +11963,17 @@ export namespace Soup {
             signal: K,
             callback: ProxyResolverDefault.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ProxyResolverDefault.SignalSignatures>(
             signal: K,
             callback: ProxyResolverDefault.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ProxyResolverDefault.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProxyResolverDefault.SignalSignatures[K]>
+            ...args: ProxyResolverDefault.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -12291,7 +12538,10 @@ export namespace Soup {
 
     namespace Request {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::session': GObject.Object.Notify;
+            'notify::uri': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12327,14 +12577,17 @@ export namespace Soup {
         // Signals
 
         connect<K extends keyof Request.SignalSignatures>(signal: K, callback: Request.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Request.SignalSignatures>(
             signal: K,
             callback: Request.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Request.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Request.SignalSignatures[K]>
+            ...args: Request.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -12986,7 +13239,10 @@ export namespace Soup {
 
     namespace RequestData {
         // Signal signatures
-        interface SignalSignatures extends Request.SignalSignatures {}
+        interface SignalSignatures extends Request.SignalSignatures {
+            'notify::session': GObject.Object.Notify;
+            'notify::uri': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13008,14 +13264,17 @@ export namespace Soup {
             signal: K,
             callback: RequestData.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RequestData.SignalSignatures>(
             signal: K,
             callback: RequestData.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RequestData.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RequestData.SignalSignatures[K]>
+            ...args: RequestData.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -13546,7 +13805,10 @@ export namespace Soup {
 
     namespace RequestFile {
         // Signal signatures
-        interface SignalSignatures extends Request.SignalSignatures {}
+        interface SignalSignatures extends Request.SignalSignatures {
+            'notify::session': GObject.Object.Notify;
+            'notify::uri': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13568,14 +13830,17 @@ export namespace Soup {
             signal: K,
             callback: RequestFile.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RequestFile.SignalSignatures>(
             signal: K,
             callback: RequestFile.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RequestFile.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RequestFile.SignalSignatures[K]>
+            ...args: RequestFile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -14114,7 +14379,10 @@ export namespace Soup {
 
     namespace RequestHTTP {
         // Signal signatures
-        interface SignalSignatures extends Request.SignalSignatures {}
+        interface SignalSignatures extends Request.SignalSignatures {
+            'notify::session': GObject.Object.Notify;
+            'notify::uri': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -14136,14 +14404,17 @@ export namespace Soup {
             signal: K,
             callback: RequestHTTP.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RequestHTTP.SignalSignatures>(
             signal: K,
             callback: RequestHTTP.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RequestHTTP.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RequestHTTP.SignalSignatures[K]>
+            ...args: RequestHTTP.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -14703,14 +14974,17 @@ export namespace Soup {
         // Signals
 
         connect<K extends keyof Requester.SignalSignatures>(signal: K, callback: Requester.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Requester.SignalSignatures>(
             signal: K,
             callback: Requester.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Requester.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Requester.SignalSignatures[K]>
+            ...args: Requester.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -15258,6 +15532,24 @@ export namespace Soup {
             'request-finished': RequestFinished;
             'request-read': RequestRead;
             'request-started': RequestStarted;
+            'notify::async-context': GObject.Object.Notify;
+            'notify::async-context': GObject.Object.Notify;
+            'notify::http-aliases': GObject.Object.Notify;
+            'notify::http-aliases': GObject.Object.Notify;
+            'notify::https-aliases': GObject.Object.Notify;
+            'notify::https-aliases': GObject.Object.Notify;
+            'notify::interface': GObject.Object.Notify;
+            'notify::port': GObject.Object.Notify;
+            'notify::raw-paths': GObject.Object.Notify;
+            'notify::raw-paths': GObject.Object.Notify;
+            'notify::server-header': GObject.Object.Notify;
+            'notify::server-header': GObject.Object.Notify;
+            'notify::ssl-cert-file': GObject.Object.Notify;
+            'notify::ssl-cert-file': GObject.Object.Notify;
+            'notify::ssl-key-file': GObject.Object.Notify;
+            'notify::ssl-key-file': GObject.Object.Notify;
+            'notify::tls-certificate': GObject.Object.Notify;
+            'notify::tls-certificate': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -15494,8 +15786,14 @@ export namespace Soup {
         // Signals
 
         connect<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
-        emit<K extends keyof Server.SignalSignatures>(signal: K, ...args: Parameters<Server.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Server.SignalSignatures>(
+            signal: K,
+            ...args: Server.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -15909,6 +16207,45 @@ export namespace Soup {
             'request-started': RequestStarted;
             'request-unqueued': RequestUnqueued;
             tunneling: Tunneling;
+            'notify::accept-language': GObject.Object.Notify;
+            'notify::accept-language': GObject.Object.Notify;
+            'notify::accept-language-auto': GObject.Object.Notify;
+            'notify::accept-language-auto': GObject.Object.Notify;
+            'notify::async-context': GObject.Object.Notify;
+            'notify::async-context': GObject.Object.Notify;
+            'notify::http-aliases': GObject.Object.Notify;
+            'notify::http-aliases': GObject.Object.Notify;
+            'notify::https-aliases': GObject.Object.Notify;
+            'notify::https-aliases': GObject.Object.Notify;
+            'notify::idle-timeout': GObject.Object.Notify;
+            'notify::idle-timeout': GObject.Object.Notify;
+            'notify::local-address': GObject.Object.Notify;
+            'notify::local-address': GObject.Object.Notify;
+            'notify::max-conns': GObject.Object.Notify;
+            'notify::max-conns': GObject.Object.Notify;
+            'notify::max-conns-per-host': GObject.Object.Notify;
+            'notify::max-conns-per-host': GObject.Object.Notify;
+            'notify::proxy-resolver': GObject.Object.Notify;
+            'notify::proxy-resolver': GObject.Object.Notify;
+            'notify::proxy-uri': GObject.Object.Notify;
+            'notify::proxy-uri': GObject.Object.Notify;
+            'notify::ssl-ca-file': GObject.Object.Notify;
+            'notify::ssl-ca-file': GObject.Object.Notify;
+            'notify::ssl-strict': GObject.Object.Notify;
+            'notify::ssl-strict': GObject.Object.Notify;
+            'notify::ssl-use-system-ca-file': GObject.Object.Notify;
+            'notify::ssl-use-system-ca-file': GObject.Object.Notify;
+            'notify::timeout': GObject.Object.Notify;
+            'notify::tls-database': GObject.Object.Notify;
+            'notify::tls-database': GObject.Object.Notify;
+            'notify::tls-interaction': GObject.Object.Notify;
+            'notify::tls-interaction': GObject.Object.Notify;
+            'notify::use-ntlm': GObject.Object.Notify;
+            'notify::use-ntlm': GObject.Object.Notify;
+            'notify::use-thread-context': GObject.Object.Notify;
+            'notify::use-thread-context': GObject.Object.Notify;
+            'notify::user-agent': GObject.Object.Notify;
+            'notify::user-agent': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -16499,14 +16836,17 @@ export namespace Soup {
         // Signals
 
         connect<K extends keyof Session.SignalSignatures>(signal: K, callback: Session.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Session.SignalSignatures>(
             signal: K,
             callback: Session.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Session.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Session.SignalSignatures[K]>
+            ...args: Session.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -17122,7 +17462,47 @@ export namespace Soup {
 
     namespace SessionAsync {
         // Signal signatures
-        interface SignalSignatures extends Session.SignalSignatures {}
+        interface SignalSignatures extends Session.SignalSignatures {
+            'notify::accept-language': GObject.Object.Notify;
+            'notify::accept-language': GObject.Object.Notify;
+            'notify::accept-language-auto': GObject.Object.Notify;
+            'notify::accept-language-auto': GObject.Object.Notify;
+            'notify::async-context': GObject.Object.Notify;
+            'notify::async-context': GObject.Object.Notify;
+            'notify::http-aliases': GObject.Object.Notify;
+            'notify::http-aliases': GObject.Object.Notify;
+            'notify::https-aliases': GObject.Object.Notify;
+            'notify::https-aliases': GObject.Object.Notify;
+            'notify::idle-timeout': GObject.Object.Notify;
+            'notify::idle-timeout': GObject.Object.Notify;
+            'notify::local-address': GObject.Object.Notify;
+            'notify::local-address': GObject.Object.Notify;
+            'notify::max-conns': GObject.Object.Notify;
+            'notify::max-conns': GObject.Object.Notify;
+            'notify::max-conns-per-host': GObject.Object.Notify;
+            'notify::max-conns-per-host': GObject.Object.Notify;
+            'notify::proxy-resolver': GObject.Object.Notify;
+            'notify::proxy-resolver': GObject.Object.Notify;
+            'notify::proxy-uri': GObject.Object.Notify;
+            'notify::proxy-uri': GObject.Object.Notify;
+            'notify::ssl-ca-file': GObject.Object.Notify;
+            'notify::ssl-ca-file': GObject.Object.Notify;
+            'notify::ssl-strict': GObject.Object.Notify;
+            'notify::ssl-strict': GObject.Object.Notify;
+            'notify::ssl-use-system-ca-file': GObject.Object.Notify;
+            'notify::ssl-use-system-ca-file': GObject.Object.Notify;
+            'notify::timeout': GObject.Object.Notify;
+            'notify::tls-database': GObject.Object.Notify;
+            'notify::tls-database': GObject.Object.Notify;
+            'notify::tls-interaction': GObject.Object.Notify;
+            'notify::tls-interaction': GObject.Object.Notify;
+            'notify::use-ntlm': GObject.Object.Notify;
+            'notify::use-ntlm': GObject.Object.Notify;
+            'notify::use-thread-context': GObject.Object.Notify;
+            'notify::use-thread-context': GObject.Object.Notify;
+            'notify::user-agent': GObject.Object.Notify;
+            'notify::user-agent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17146,19 +17526,62 @@ export namespace Soup {
             signal: K,
             callback: SessionAsync.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SessionAsync.SignalSignatures>(
             signal: K,
             callback: SessionAsync.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SessionAsync.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SessionAsync.SignalSignatures[K]>
+            ...args: SessionAsync.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace SessionSync {
         // Signal signatures
-        interface SignalSignatures extends Session.SignalSignatures {}
+        interface SignalSignatures extends Session.SignalSignatures {
+            'notify::accept-language': GObject.Object.Notify;
+            'notify::accept-language': GObject.Object.Notify;
+            'notify::accept-language-auto': GObject.Object.Notify;
+            'notify::accept-language-auto': GObject.Object.Notify;
+            'notify::async-context': GObject.Object.Notify;
+            'notify::async-context': GObject.Object.Notify;
+            'notify::http-aliases': GObject.Object.Notify;
+            'notify::http-aliases': GObject.Object.Notify;
+            'notify::https-aliases': GObject.Object.Notify;
+            'notify::https-aliases': GObject.Object.Notify;
+            'notify::idle-timeout': GObject.Object.Notify;
+            'notify::idle-timeout': GObject.Object.Notify;
+            'notify::local-address': GObject.Object.Notify;
+            'notify::local-address': GObject.Object.Notify;
+            'notify::max-conns': GObject.Object.Notify;
+            'notify::max-conns': GObject.Object.Notify;
+            'notify::max-conns-per-host': GObject.Object.Notify;
+            'notify::max-conns-per-host': GObject.Object.Notify;
+            'notify::proxy-resolver': GObject.Object.Notify;
+            'notify::proxy-resolver': GObject.Object.Notify;
+            'notify::proxy-uri': GObject.Object.Notify;
+            'notify::proxy-uri': GObject.Object.Notify;
+            'notify::ssl-ca-file': GObject.Object.Notify;
+            'notify::ssl-ca-file': GObject.Object.Notify;
+            'notify::ssl-strict': GObject.Object.Notify;
+            'notify::ssl-strict': GObject.Object.Notify;
+            'notify::ssl-use-system-ca-file': GObject.Object.Notify;
+            'notify::ssl-use-system-ca-file': GObject.Object.Notify;
+            'notify::timeout': GObject.Object.Notify;
+            'notify::tls-database': GObject.Object.Notify;
+            'notify::tls-database': GObject.Object.Notify;
+            'notify::tls-interaction': GObject.Object.Notify;
+            'notify::tls-interaction': GObject.Object.Notify;
+            'notify::use-ntlm': GObject.Object.Notify;
+            'notify::use-ntlm': GObject.Object.Notify;
+            'notify::use-thread-context': GObject.Object.Notify;
+            'notify::use-thread-context': GObject.Object.Notify;
+            'notify::user-agent': GObject.Object.Notify;
+            'notify::user-agent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17182,14 +17605,17 @@ export namespace Soup {
             signal: K,
             callback: SessionSync.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SessionSync.SignalSignatures>(
             signal: K,
             callback: SessionSync.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SessionSync.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SessionSync.SignalSignatures[K]>
+            ...args: SessionSync.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Socket {
@@ -17222,6 +17648,36 @@ export namespace Soup {
             'new-connection': NewConnection;
             readable: Readable;
             writable: Writable;
+            'notify::async-context': GObject.Object.Notify;
+            'notify::async-context': GObject.Object.Notify;
+            'notify::fd': GObject.Object.Notify;
+            'notify::gsocket': GObject.Object.Notify;
+            'notify::iostream': GObject.Object.Notify;
+            'notify::ipv6-only': GObject.Object.Notify;
+            'notify::ipv6-only': GObject.Object.Notify;
+            'notify::is-server': GObject.Object.Notify;
+            'notify::is-server': GObject.Object.Notify;
+            'notify::local-address': GObject.Object.Notify;
+            'notify::local-address': GObject.Object.Notify;
+            'notify::non-blocking': GObject.Object.Notify;
+            'notify::non-blocking': GObject.Object.Notify;
+            'notify::remote-address': GObject.Object.Notify;
+            'notify::remote-address': GObject.Object.Notify;
+            'notify::ssl-creds': GObject.Object.Notify;
+            'notify::ssl-creds': GObject.Object.Notify;
+            'notify::ssl-fallback': GObject.Object.Notify;
+            'notify::ssl-fallback': GObject.Object.Notify;
+            'notify::ssl-strict': GObject.Object.Notify;
+            'notify::ssl-strict': GObject.Object.Notify;
+            'notify::timeout': GObject.Object.Notify;
+            'notify::tls-certificate': GObject.Object.Notify;
+            'notify::tls-certificate': GObject.Object.Notify;
+            'notify::tls-errors': GObject.Object.Notify;
+            'notify::tls-errors': GObject.Object.Notify;
+            'notify::trusted-certificate': GObject.Object.Notify;
+            'notify::trusted-certificate': GObject.Object.Notify;
+            'notify::use-thread-context': GObject.Object.Notify;
+            'notify::use-thread-context': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -17380,8 +17836,14 @@ export namespace Soup {
         // Signals
 
         connect<K extends keyof Socket.SignalSignatures>(signal: K, callback: Socket.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Socket.SignalSignatures>(signal: K, callback: Socket.SignalSignatures[K]): number;
-        emit<K extends keyof Socket.SignalSignatures>(signal: K, ...args: Parameters<Socket.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Socket.SignalSignatures>(
+            signal: K,
+            ...args: Socket.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -18087,6 +18549,19 @@ export namespace Soup {
             error: Error;
             message: Message;
             pong: Pong;
+            'notify::connection-type': GObject.Object.Notify;
+            'notify::connection-type': GObject.Object.Notify;
+            'notify::extensions': GObject.Object.Notify;
+            'notify::io-stream': GObject.Object.Notify;
+            'notify::io-stream': GObject.Object.Notify;
+            'notify::keepalive-interval': GObject.Object.Notify;
+            'notify::keepalive-interval': GObject.Object.Notify;
+            'notify::max-incoming-payload-size': GObject.Object.Notify;
+            'notify::max-incoming-payload-size': GObject.Object.Notify;
+            'notify::origin': GObject.Object.Notify;
+            'notify::protocol': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::uri': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -18218,14 +18693,17 @@ export namespace Soup {
             signal: K,
             callback: WebsocketConnection.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WebsocketConnection.SignalSignatures>(
             signal: K,
             callback: WebsocketConnection.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebsocketConnection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebsocketConnection.SignalSignatures[K]>
+            ...args: WebsocketConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -18404,14 +18882,17 @@ export namespace Soup {
             signal: K,
             callback: WebsocketExtension.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WebsocketExtension.SignalSignatures>(
             signal: K,
             callback: WebsocketExtension.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebsocketExtension.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebsocketExtension.SignalSignatures[K]>
+            ...args: WebsocketExtension.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -18521,14 +19002,17 @@ export namespace Soup {
             signal: K,
             callback: WebsocketExtensionDeflate.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WebsocketExtensionDeflate.SignalSignatures>(
             signal: K,
             callback: WebsocketExtensionDeflate.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebsocketExtensionDeflate.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebsocketExtensionDeflate.SignalSignatures[K]>
+            ...args: WebsocketExtensionDeflate.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace WebsocketExtensionManager {
@@ -18555,14 +19039,17 @@ export namespace Soup {
             signal: K,
             callback: WebsocketExtensionManager.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WebsocketExtensionManager.SignalSignatures>(
             signal: K,
             callback: WebsocketExtensionManager.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebsocketExtensionManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebsocketExtensionManager.SignalSignatures[K]>
+            ...args: WebsocketExtensionManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**

@@ -1837,14 +1837,17 @@ export namespace ColorHug {
             signal: K,
             callback: DeviceQueue.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceQueue.SignalSignatures>(
             signal: K,
             callback: DeviceQueue.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceQueue.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceQueue.SignalSignatures[K]>
+            ...args: DeviceQueue.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 

@@ -63,6 +63,8 @@ export namespace GtkSpell {
         // Signal signatures
         interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
             'language-changed': LanguageChanged;
+            'notify::decode-language-codes': GObject.Object.Notify;
+            'notify::decode-language-codes': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -97,14 +99,17 @@ export namespace GtkSpell {
         // Signals
 
         connect<K extends keyof Checker.SignalSignatures>(signal: K, callback: Checker.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Checker.SignalSignatures>(
             signal: K,
             callback: Checker.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Checker.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Checker.SignalSignatures[K]>
+            ...args: Checker.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 

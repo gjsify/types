@@ -262,7 +262,33 @@ export namespace Liferea {
     }
     namespace Application {
         // Signal signatures
-        interface SignalSignatures extends Gtk.Application.SignalSignatures {}
+        interface SignalSignatures extends Gtk.Application.SignalSignatures {
+            'notify::active-window': GObject.Object.Notify;
+            'notify::active-window': GObject.Object.Notify;
+            'notify::app-menu': GObject.Object.Notify;
+            'notify::app-menu': GObject.Object.Notify;
+            'notify::menubar': GObject.Object.Notify;
+            'notify::register-session': GObject.Object.Notify;
+            'notify::register-session': GObject.Object.Notify;
+            'notify::screensaver-active': GObject.Object.Notify;
+            'notify::screensaver-active': GObject.Object.Notify;
+            'notify::action-group': GObject.Object.Notify;
+            'notify::action-group': GObject.Object.Notify;
+            'notify::application-id': GObject.Object.Notify;
+            'notify::application-id': GObject.Object.Notify;
+            'notify::flags': GObject.Object.Notify;
+            'notify::inactivity-timeout': GObject.Object.Notify;
+            'notify::inactivity-timeout': GObject.Object.Notify;
+            'notify::is-busy': GObject.Object.Notify;
+            'notify::is-busy': GObject.Object.Notify;
+            'notify::is-registered': GObject.Object.Notify;
+            'notify::is-registered': GObject.Object.Notify;
+            'notify::is-remote': GObject.Object.Notify;
+            'notify::is-remote': GObject.Object.Notify;
+            'notify::resource-base-path': GObject.Object.Notify;
+            'notify::resource-base-path': GObject.Object.Notify;
+            'notify::version': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -287,14 +313,17 @@ export namespace Liferea {
             signal: K,
             callback: Application.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Application.SignalSignatures>(
             signal: K,
             callback: Application.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Application.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Application.SignalSignatures[K]>
+            ...args: Application.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -766,6 +795,7 @@ export namespace Liferea {
             'location-changed': LocationChanged;
             'statusbar-changed': StatusbarChanged;
             'title-changed': TitleChanged;
+            'notify::renderwidget': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -791,14 +821,17 @@ export namespace Liferea {
         // Signals
 
         connect<K extends keyof Browser.SignalSignatures>(signal: K, callback: Browser.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Browser.SignalSignatures>(
             signal: K,
             callback: Browser.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Browser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Browser.SignalSignatures[K]>
+            ...args: Browser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -867,7 +900,11 @@ export namespace Liferea {
 
     namespace BrowserTabs {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::head-lines': GObject.Object.Notify;
+            'notify::head-lines': GObject.Object.Notify;
+            'notify::notebook': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -901,14 +938,17 @@ export namespace Liferea {
             signal: K,
             callback: BrowserTabs.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BrowserTabs.SignalSignatures>(
             signal: K,
             callback: BrowserTabs.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BrowserTabs.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BrowserTabs.SignalSignatures[K]>
+            ...args: BrowserTabs.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -968,14 +1008,17 @@ export namespace Liferea {
         // Signals
 
         connect<K extends keyof FeedList.SignalSignatures>(signal: K, callback: FeedList.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FeedList.SignalSignatures>(
             signal: K,
             callback: FeedList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FeedList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FeedList.SignalSignatures[K]>
+            ...args: FeedList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1051,8 +1094,14 @@ export namespace Liferea {
         // Signals
 
         connect<K extends keyof Item.SignalSignatures>(signal: K, callback: Item.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Item.SignalSignatures>(signal: K, callback: Item.SignalSignatures[K]): number;
-        emit<K extends keyof Item.SignalSignatures>(signal: K, ...args: Parameters<Item.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Item.SignalSignatures>(
+            signal: K,
+            ...args: Item.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1091,14 +1140,17 @@ export namespace Liferea {
         // Signals
 
         connect<K extends keyof ItemList.SignalSignatures>(signal: K, callback: ItemList.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ItemList.SignalSignatures>(
             signal: K,
             callback: ItemList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ItemList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ItemList.SignalSignatures[K]>
+            ...args: ItemList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1138,14 +1190,17 @@ export namespace Liferea {
             signal: K,
             callback: ItemListView.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ItemListView.SignalSignatures>(
             signal: K,
             callback: ItemListView.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ItemListView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ItemListView.SignalSignatures[K]>
+            ...args: ItemListView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1181,7 +1236,12 @@ export namespace Liferea {
 
     namespace ItemView {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::html-view': GObject.Object.Notify;
+            'notify::html-view': GObject.Object.Notify;
+            'notify::item-list-view': GObject.Object.Notify;
+            'notify::item-list-view': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1212,14 +1272,17 @@ export namespace Liferea {
         // Signals
 
         connect<K extends keyof ItemView.SignalSignatures>(signal: K, callback: ItemView.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ItemView.SignalSignatures>(
             signal: K,
             callback: ItemView.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ItemView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ItemView.SignalSignatures[K]>
+            ...args: ItemView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1322,14 +1385,17 @@ export namespace Liferea {
             signal: K,
             callback: NetworkMonitor.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NetworkMonitor.SignalSignatures>(
             signal: K,
             callback: NetworkMonitor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NetworkMonitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NetworkMonitor.SignalSignatures[K]>
+            ...args: NetworkMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1350,7 +1416,17 @@ export namespace Liferea {
 
     namespace Shell {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::browser-tabs': GObject.Object.Notify;
+            'notify::browser-tabs': GObject.Object.Notify;
+            'notify::builder': GObject.Object.Notify;
+            'notify::feed-list': GObject.Object.Notify;
+            'notify::feed-list': GObject.Object.Notify;
+            'notify::item-list': GObject.Object.Notify;
+            'notify::item-list': GObject.Object.Notify;
+            'notify::item-view': GObject.Object.Notify;
+            'notify::item-view': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1391,8 +1467,14 @@ export namespace Liferea {
         // Signals
 
         connect<K extends keyof Shell.SignalSignatures>(signal: K, callback: Shell.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Shell.SignalSignatures>(signal: K, callback: Shell.SignalSignatures[K]): number;
-        emit<K extends keyof Shell.SignalSignatures>(signal: K, ...args: Parameters<Shell.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Shell.SignalSignatures>(
+            signal: K,
+            ...args: Shell.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 

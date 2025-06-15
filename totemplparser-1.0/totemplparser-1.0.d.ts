@@ -290,6 +290,11 @@ export namespace TotemPlParser {
             'entry-parsed': EntryParsed;
             'playlist-ended': PlaylistEnded;
             'playlist-started': PlaylistStarted;
+            'notify::debug': GObject.Object.Notify;
+            'notify::disable-unsafe': GObject.Object.Notify;
+            'notify::disable-unsafe': GObject.Object.Notify;
+            'notify::force': GObject.Object.Notify;
+            'notify::recurse': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -354,8 +359,14 @@ export namespace TotemPlParser {
         // Signals
 
         connect<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
-        emit<K extends keyof Parser.SignalSignatures>(signal: K, ...args: Parameters<Parser.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Parser.SignalSignatures>(
+            signal: K,
+            ...args: Parser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -650,14 +661,17 @@ export namespace TotemPlParser {
         // Signals
 
         connect<K extends keyof Playlist.SignalSignatures>(signal: K, callback: Playlist.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Playlist.SignalSignatures>(
             signal: K,
             callback: Playlist.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Playlist.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Playlist.SignalSignatures[K]>
+            ...args: Playlist.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

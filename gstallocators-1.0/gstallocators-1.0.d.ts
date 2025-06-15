@@ -124,7 +124,14 @@ export namespace GstAllocators {
     }
     namespace DRMDumbAllocator {
         // Signal signatures
-        interface SignalSignatures extends Gst.Allocator.SignalSignatures {}
+        interface SignalSignatures extends Gst.Allocator.SignalSignatures {
+            'notify::drm-device-path': GObject.Object.Notify;
+            'notify::drm-device-path': GObject.Object.Notify;
+            'notify::drm-fd': GObject.Object.Notify;
+            'notify::drm-fd': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -165,14 +172,17 @@ export namespace GstAllocators {
             signal: K,
             callback: DRMDumbAllocator.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DRMDumbAllocator.SignalSignatures>(
             signal: K,
             callback: DRMDumbAllocator.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DRMDumbAllocator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DRMDumbAllocator.SignalSignatures[K]>
+            ...args: DRMDumbAllocator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -198,7 +208,10 @@ export namespace GstAllocators {
 
     namespace DmaBufAllocator {
         // Signal signatures
-        interface SignalSignatures extends FdAllocator.SignalSignatures {}
+        interface SignalSignatures extends FdAllocator.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -225,14 +238,17 @@ export namespace GstAllocators {
             signal: K,
             callback: DmaBufAllocator.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DmaBufAllocator.SignalSignatures>(
             signal: K,
             callback: DmaBufAllocator.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DmaBufAllocator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DmaBufAllocator.SignalSignatures[K]>
+            ...args: DmaBufAllocator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -260,7 +276,10 @@ export namespace GstAllocators {
 
     namespace FdAllocator {
         // Signal signatures
-        interface SignalSignatures extends Gst.Allocator.SignalSignatures {}
+        interface SignalSignatures extends Gst.Allocator.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -287,14 +306,17 @@ export namespace GstAllocators {
             signal: K,
             callback: FdAllocator.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FdAllocator.SignalSignatures>(
             signal: K,
             callback: FdAllocator.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FdAllocator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FdAllocator.SignalSignatures[K]>
+            ...args: FdAllocator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 

@@ -93,7 +93,9 @@ export namespace GnomeRR {
     }
     namespace Config {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::screen': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -120,8 +122,14 @@ export namespace GnomeRR {
         // Signals
 
         connect<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
-        emit<K extends keyof Config.SignalSignatures>(signal: K, ...args: Parameters<Config.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Config.SignalSignatures>(
+            signal: K,
+            ...args: Config.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -166,14 +174,17 @@ export namespace GnomeRR {
             signal: K,
             callback: OutputInfo.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OutputInfo.SignalSignatures>(
             signal: K,
             callback: OutputInfo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OutputInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OutputInfo.SignalSignatures[K]>
+            ...args: OutputInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -240,6 +251,10 @@ export namespace GnomeRR {
             changed: Changed;
             'output-connected': OutputConnected;
             'output-disconnected': OutputDisconnected;
+            'notify::dpms-mode': GObject.Object.Notify;
+            'notify::dpms-mode': GObject.Object.Notify;
+            'notify::gdk-display': GObject.Object.Notify;
+            'notify::gdk-display': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -283,8 +298,14 @@ export namespace GnomeRR {
         // Signals
 
         connect<K extends keyof Screen.SignalSignatures>(signal: K, callback: Screen.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Screen.SignalSignatures>(signal: K, callback: Screen.SignalSignatures[K]): number;
-        emit<K extends keyof Screen.SignalSignatures>(signal: K, ...args: Parameters<Screen.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Screen.SignalSignatures>(
+            signal: K,
+            ...args: Screen.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 

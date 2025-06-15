@@ -443,7 +443,9 @@ export namespace Json {
     }
     namespace Builder {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::immutable': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -516,14 +518,17 @@ export namespace Json {
         // Signals
 
         connect<K extends keyof Builder.SignalSignatures>(signal: K, callback: Builder.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Builder.SignalSignatures>(
             signal: K,
             callback: Builder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Builder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Builder.SignalSignatures[K]>
+            ...args: Builder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -668,7 +673,13 @@ export namespace Json {
 
     namespace Generator {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::indent': GObject.Object.Notify;
+            'notify::indent-char': GObject.Object.Notify;
+            'notify::indent-char': GObject.Object.Notify;
+            'notify::pretty': GObject.Object.Notify;
+            'notify::root': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -733,14 +744,17 @@ export namespace Json {
         // Signals
 
         connect<K extends keyof Generator.SignalSignatures>(signal: K, callback: Generator.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Generator.SignalSignatures>(
             signal: K,
             callback: Generator.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Generator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Generator.SignalSignatures[K]>
+            ...args: Generator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -882,6 +896,8 @@ export namespace Json {
             'object-start': ObjectStart;
             'parse-end': ParseEnd;
             'parse-start': ParseStart;
+            'notify::immutable': GObject.Object.Notify;
+            'notify::strict': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -963,8 +979,14 @@ export namespace Json {
         // Signals
 
         connect<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
-        emit<K extends keyof Parser.SignalSignatures>(signal: K, ...args: Parameters<Parser.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Parser.SignalSignatures>(
+            signal: K,
+            ...args: Parser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1338,8 +1360,14 @@ export namespace Json {
         // Signals
 
         connect<K extends keyof Path.SignalSignatures>(signal: K, callback: Path.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Path.SignalSignatures>(signal: K, callback: Path.SignalSignatures[K]): number;
-        emit<K extends keyof Path.SignalSignatures>(signal: K, ...args: Parameters<Path.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Path.SignalSignatures>(
+            signal: K,
+            ...args: Path.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1379,7 +1407,9 @@ export namespace Json {
 
     namespace Reader {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::root': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1487,8 +1517,14 @@ export namespace Json {
         // Signals
 
         connect<K extends keyof Reader.SignalSignatures>(signal: K, callback: Reader.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Reader.SignalSignatures>(signal: K, callback: Reader.SignalSignatures[K]): number;
-        emit<K extends keyof Reader.SignalSignatures>(signal: K, ...args: Parameters<Reader.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Reader.SignalSignatures>(
+            signal: K,
+            ...args: Reader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

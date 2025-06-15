@@ -344,7 +344,21 @@ export namespace GstCodecs {
     function vp9_seg_feature_active(params: Vp9SegmentationParams, segment_id: number, feature: number): boolean;
     namespace AV1Decoder {
         // Signal signatures
-        interface SignalSignatures extends GstVideo.VideoDecoder.SignalSignatures {}
+        interface SignalSignatures extends GstVideo.VideoDecoder.SignalSignatures {
+            'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
+            'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
+            'notify::automatic-request-sync-points': GObject.Object.Notify;
+            'notify::automatic-request-sync-points': GObject.Object.Notify;
+            'notify::discard-corrupted-frames': GObject.Object.Notify;
+            'notify::discard-corrupted-frames': GObject.Object.Notify;
+            'notify::max-errors': GObject.Object.Notify;
+            'notify::max-errors': GObject.Object.Notify;
+            'notify::min-force-key-unit-interval': GObject.Object.Notify;
+            'notify::min-force-key-unit-interval': GObject.Object.Notify;
+            'notify::qos': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -369,14 +383,17 @@ export namespace GstCodecs {
             signal: K,
             callback: AV1Decoder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AV1Decoder.SignalSignatures>(
             signal: K,
             callback: AV1Decoder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AV1Decoder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AV1Decoder.SignalSignatures[K]>
+            ...args: AV1Decoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -433,7 +450,22 @@ export namespace GstCodecs {
 
     namespace H264Decoder {
         // Signal signatures
-        interface SignalSignatures extends GstVideo.VideoDecoder.SignalSignatures {}
+        interface SignalSignatures extends GstVideo.VideoDecoder.SignalSignatures {
+            'notify::compliance': GObject.Object.Notify;
+            'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
+            'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
+            'notify::automatic-request-sync-points': GObject.Object.Notify;
+            'notify::automatic-request-sync-points': GObject.Object.Notify;
+            'notify::discard-corrupted-frames': GObject.Object.Notify;
+            'notify::discard-corrupted-frames': GObject.Object.Notify;
+            'notify::max-errors': GObject.Object.Notify;
+            'notify::max-errors': GObject.Object.Notify;
+            'notify::min-force-key-unit-interval': GObject.Object.Notify;
+            'notify::min-force-key-unit-interval': GObject.Object.Notify;
+            'notify::qos': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -471,14 +503,17 @@ export namespace GstCodecs {
             signal: K,
             callback: H264Decoder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof H264Decoder.SignalSignatures>(
             signal: K,
             callback: H264Decoder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof H264Decoder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<H264Decoder.SignalSignatures[K]>
+            ...args: H264Decoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -565,7 +600,21 @@ export namespace GstCodecs {
 
     namespace H265Decoder {
         // Signal signatures
-        interface SignalSignatures extends GstVideo.VideoDecoder.SignalSignatures {}
+        interface SignalSignatures extends GstVideo.VideoDecoder.SignalSignatures {
+            'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
+            'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
+            'notify::automatic-request-sync-points': GObject.Object.Notify;
+            'notify::automatic-request-sync-points': GObject.Object.Notify;
+            'notify::discard-corrupted-frames': GObject.Object.Notify;
+            'notify::discard-corrupted-frames': GObject.Object.Notify;
+            'notify::max-errors': GObject.Object.Notify;
+            'notify::max-errors': GObject.Object.Notify;
+            'notify::min-force-key-unit-interval': GObject.Object.Notify;
+            'notify::min-force-key-unit-interval': GObject.Object.Notify;
+            'notify::qos': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -590,14 +639,17 @@ export namespace GstCodecs {
             signal: K,
             callback: H265Decoder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof H265Decoder.SignalSignatures>(
             signal: K,
             callback: H265Decoder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof H265Decoder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<H265Decoder.SignalSignatures[K]>
+            ...args: H265Decoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -665,7 +717,21 @@ export namespace GstCodecs {
 
     namespace Mpeg2Decoder {
         // Signal signatures
-        interface SignalSignatures extends GstVideo.VideoDecoder.SignalSignatures {}
+        interface SignalSignatures extends GstVideo.VideoDecoder.SignalSignatures {
+            'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
+            'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
+            'notify::automatic-request-sync-points': GObject.Object.Notify;
+            'notify::automatic-request-sync-points': GObject.Object.Notify;
+            'notify::discard-corrupted-frames': GObject.Object.Notify;
+            'notify::discard-corrupted-frames': GObject.Object.Notify;
+            'notify::max-errors': GObject.Object.Notify;
+            'notify::max-errors': GObject.Object.Notify;
+            'notify::min-force-key-unit-interval': GObject.Object.Notify;
+            'notify::min-force-key-unit-interval': GObject.Object.Notify;
+            'notify::qos': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -690,14 +756,17 @@ export namespace GstCodecs {
             signal: K,
             callback: Mpeg2Decoder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Mpeg2Decoder.SignalSignatures>(
             signal: K,
             callback: Mpeg2Decoder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Mpeg2Decoder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Mpeg2Decoder.SignalSignatures[K]>
+            ...args: Mpeg2Decoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -761,7 +830,21 @@ export namespace GstCodecs {
 
     namespace Vp8Decoder {
         // Signal signatures
-        interface SignalSignatures extends GstVideo.VideoDecoder.SignalSignatures {}
+        interface SignalSignatures extends GstVideo.VideoDecoder.SignalSignatures {
+            'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
+            'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
+            'notify::automatic-request-sync-points': GObject.Object.Notify;
+            'notify::automatic-request-sync-points': GObject.Object.Notify;
+            'notify::discard-corrupted-frames': GObject.Object.Notify;
+            'notify::discard-corrupted-frames': GObject.Object.Notify;
+            'notify::max-errors': GObject.Object.Notify;
+            'notify::max-errors': GObject.Object.Notify;
+            'notify::min-force-key-unit-interval': GObject.Object.Notify;
+            'notify::min-force-key-unit-interval': GObject.Object.Notify;
+            'notify::qos': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -786,14 +869,17 @@ export namespace GstCodecs {
             signal: K,
             callback: Vp8Decoder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Vp8Decoder.SignalSignatures>(
             signal: K,
             callback: Vp8Decoder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Vp8Decoder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Vp8Decoder.SignalSignatures[K]>
+            ...args: Vp8Decoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -811,7 +897,21 @@ export namespace GstCodecs {
 
     namespace Vp9Decoder {
         // Signal signatures
-        interface SignalSignatures extends GstVideo.VideoDecoder.SignalSignatures {}
+        interface SignalSignatures extends GstVideo.VideoDecoder.SignalSignatures {
+            'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
+            'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
+            'notify::automatic-request-sync-points': GObject.Object.Notify;
+            'notify::automatic-request-sync-points': GObject.Object.Notify;
+            'notify::discard-corrupted-frames': GObject.Object.Notify;
+            'notify::discard-corrupted-frames': GObject.Object.Notify;
+            'notify::max-errors': GObject.Object.Notify;
+            'notify::max-errors': GObject.Object.Notify;
+            'notify::min-force-key-unit-interval': GObject.Object.Notify;
+            'notify::min-force-key-unit-interval': GObject.Object.Notify;
+            'notify::qos': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -836,14 +936,17 @@ export namespace GstCodecs {
             signal: K,
             callback: Vp9Decoder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Vp9Decoder.SignalSignatures>(
             signal: K,
             callback: Vp9Decoder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Vp9Decoder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Vp9Decoder.SignalSignatures[K]>
+            ...args: Vp9Decoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 

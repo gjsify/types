@@ -398,7 +398,10 @@ export namespace GstVulkan {
     }
     namespace VulkanBufferMemoryAllocator {
         // Signal signatures
-        interface SignalSignatures extends Gst.Allocator.SignalSignatures {}
+        interface SignalSignatures extends Gst.Allocator.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -423,19 +426,25 @@ export namespace GstVulkan {
             signal: K,
             callback: VulkanBufferMemoryAllocator.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VulkanBufferMemoryAllocator.SignalSignatures>(
             signal: K,
             callback: VulkanBufferMemoryAllocator.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VulkanBufferMemoryAllocator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VulkanBufferMemoryAllocator.SignalSignatures[K]>
+            ...args: VulkanBufferMemoryAllocator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace VulkanBufferPool {
         // Signal signatures
-        interface SignalSignatures extends Gst.BufferPool.SignalSignatures {}
+        interface SignalSignatures extends Gst.BufferPool.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -470,19 +479,25 @@ export namespace GstVulkan {
             signal: K,
             callback: VulkanBufferPool.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VulkanBufferPool.SignalSignatures>(
             signal: K,
             callback: VulkanBufferPool.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VulkanBufferPool.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VulkanBufferPool.SignalSignatures[K]>
+            ...args: VulkanBufferPool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace VulkanCommandPool {
         // Signal signatures
-        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -508,14 +523,17 @@ export namespace GstVulkan {
             signal: K,
             callback: VulkanCommandPool.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VulkanCommandPool.SignalSignatures>(
             signal: K,
             callback: VulkanCommandPool.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VulkanCommandPool.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VulkanCommandPool.SignalSignatures[K]>
+            ...args: VulkanCommandPool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -539,7 +557,10 @@ export namespace GstVulkan {
 
     namespace VulkanDescriptorCache {
         // Signal signatures
-        interface SignalSignatures extends VulkanHandlePool.SignalSignatures {}
+        interface SignalSignatures extends VulkanHandlePool.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -567,14 +588,17 @@ export namespace GstVulkan {
             signal: K,
             callback: VulkanDescriptorCache.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VulkanDescriptorCache.SignalSignatures>(
             signal: K,
             callback: VulkanDescriptorCache.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VulkanDescriptorCache.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VulkanDescriptorCache.SignalSignatures[K]>
+            ...args: VulkanDescriptorCache.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -585,7 +609,10 @@ export namespace GstVulkan {
 
     namespace VulkanDescriptorPool {
         // Signal signatures
-        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -613,14 +640,17 @@ export namespace GstVulkan {
             signal: K,
             callback: VulkanDescriptorPool.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VulkanDescriptorPool.SignalSignatures>(
             signal: K,
             callback: VulkanDescriptorPool.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VulkanDescriptorPool.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VulkanDescriptorPool.SignalSignatures[K]>
+            ...args: VulkanDescriptorPool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -631,7 +661,13 @@ export namespace GstVulkan {
 
     namespace VulkanDevice {
         // Signal signatures
-        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            'notify::instance': GObject.Object.Notify;
+            'notify::physical-device': GObject.Object.Notify;
+            'notify::physical-device': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -667,14 +703,17 @@ export namespace GstVulkan {
             signal: K,
             callback: VulkanDevice.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VulkanDevice.SignalSignatures>(
             signal: K,
             callback: VulkanDevice.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VulkanDevice.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VulkanDevice.SignalSignatures[K]>
+            ...args: VulkanDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -720,7 +759,10 @@ export namespace GstVulkan {
 
     namespace VulkanDisplay {
         // Signal signatures
-        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -750,14 +792,17 @@ export namespace GstVulkan {
             signal: K,
             callback: VulkanDisplay.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VulkanDisplay.SignalSignatures>(
             signal: K,
             callback: VulkanDisplay.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VulkanDisplay.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VulkanDisplay.SignalSignatures[K]>
+            ...args: VulkanDisplay.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -809,7 +854,10 @@ export namespace GstVulkan {
 
     namespace VulkanFenceCache {
         // Signal signatures
-        interface SignalSignatures extends VulkanHandlePool.SignalSignatures {}
+        interface SignalSignatures extends VulkanHandlePool.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -833,19 +881,25 @@ export namespace GstVulkan {
             signal: K,
             callback: VulkanFenceCache.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VulkanFenceCache.SignalSignatures>(
             signal: K,
             callback: VulkanFenceCache.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VulkanFenceCache.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VulkanFenceCache.SignalSignatures[K]>
+            ...args: VulkanFenceCache.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace VulkanFullScreenQuad {
         // Signal signatures
-        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -876,14 +930,17 @@ export namespace GstVulkan {
             signal: K,
             callback: VulkanFullScreenQuad.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VulkanFullScreenQuad.SignalSignatures>(
             signal: K,
             callback: VulkanFullScreenQuad.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VulkanFullScreenQuad.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VulkanFullScreenQuad.SignalSignatures[K]>
+            ...args: VulkanFullScreenQuad.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -903,7 +960,10 @@ export namespace GstVulkan {
 
     namespace VulkanHandlePool {
         // Signal signatures
-        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -931,14 +991,17 @@ export namespace GstVulkan {
             signal: K,
             callback: VulkanHandlePool.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VulkanHandlePool.SignalSignatures>(
             signal: K,
             callback: VulkanHandlePool.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VulkanHandlePool.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VulkanHandlePool.SignalSignatures[K]>
+            ...args: VulkanHandlePool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -956,7 +1019,10 @@ export namespace GstVulkan {
 
     namespace VulkanImageBufferPool {
         // Signal signatures
-        interface SignalSignatures extends Gst.BufferPool.SignalSignatures {}
+        interface SignalSignatures extends Gst.BufferPool.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -991,19 +1057,25 @@ export namespace GstVulkan {
             signal: K,
             callback: VulkanImageBufferPool.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VulkanImageBufferPool.SignalSignatures>(
             signal: K,
             callback: VulkanImageBufferPool.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VulkanImageBufferPool.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VulkanImageBufferPool.SignalSignatures[K]>
+            ...args: VulkanImageBufferPool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace VulkanImageMemoryAllocator {
         // Signal signatures
-        interface SignalSignatures extends Gst.Allocator.SignalSignatures {}
+        interface SignalSignatures extends Gst.Allocator.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1028,14 +1100,17 @@ export namespace GstVulkan {
             signal: K,
             callback: VulkanImageMemoryAllocator.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VulkanImageMemoryAllocator.SignalSignatures>(
             signal: K,
             callback: VulkanImageMemoryAllocator.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VulkanImageMemoryAllocator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VulkanImageMemoryAllocator.SignalSignatures[K]>
+            ...args: VulkanImageMemoryAllocator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace VulkanInstance {
@@ -1048,6 +1123,8 @@ export namespace GstVulkan {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
             'create-device': CreateDevice;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1076,14 +1153,17 @@ export namespace GstVulkan {
             signal: K,
             callback: VulkanInstance.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VulkanInstance.SignalSignatures>(
             signal: K,
             callback: VulkanInstance.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VulkanInstance.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VulkanInstance.SignalSignatures[K]>
+            ...args: VulkanInstance.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1119,7 +1199,10 @@ export namespace GstVulkan {
 
     namespace VulkanMemoryAllocator {
         // Signal signatures
-        interface SignalSignatures extends Gst.Allocator.SignalSignatures {}
+        interface SignalSignatures extends Gst.Allocator.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1144,19 +1227,28 @@ export namespace GstVulkan {
             signal: K,
             callback: VulkanMemoryAllocator.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VulkanMemoryAllocator.SignalSignatures>(
             signal: K,
             callback: VulkanMemoryAllocator.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VulkanMemoryAllocator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VulkanMemoryAllocator.SignalSignatures[K]>
+            ...args: VulkanMemoryAllocator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace VulkanPhysicalDevice {
         // Signal signatures
-        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            'notify::device-index': GObject.Object.Notify;
+            'notify::device-index': GObject.Object.Notify;
+            'notify::instance': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1198,14 +1290,17 @@ export namespace GstVulkan {
             signal: K,
             callback: VulkanPhysicalDevice.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VulkanPhysicalDevice.SignalSignatures>(
             signal: K,
             callback: VulkanPhysicalDevice.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VulkanPhysicalDevice.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VulkanPhysicalDevice.SignalSignatures[K]>
+            ...args: VulkanPhysicalDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1218,7 +1313,10 @@ export namespace GstVulkan {
 
     namespace VulkanQueue {
         // Signal signatures
-        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1246,14 +1344,17 @@ export namespace GstVulkan {
             signal: K,
             callback: VulkanQueue.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VulkanQueue.SignalSignatures>(
             signal: K,
             callback: VulkanQueue.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VulkanQueue.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VulkanQueue.SignalSignatures[K]>
+            ...args: VulkanQueue.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1295,7 +1396,14 @@ export namespace GstVulkan {
 
     namespace VulkanSwapper {
         // Signal signatures
-        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            'notify::force-aspect-ratio': GObject.Object.Notify;
+            'notify::force-aspect-ratio': GObject.Object.Notify;
+            'notify::pixel-aspect-ratio': GObject.Object.Notify;
+            'notify::pixel-aspect-ratio': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1342,14 +1450,17 @@ export namespace GstVulkan {
             signal: K,
             callback: VulkanSwapper.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VulkanSwapper.SignalSignatures>(
             signal: K,
             callback: VulkanSwapper.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VulkanSwapper.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VulkanSwapper.SignalSignatures[K]>
+            ...args: VulkanSwapper.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1366,7 +1477,10 @@ export namespace GstVulkan {
 
     namespace VulkanTrashFenceList {
         // Signal signatures
-        interface SignalSignatures extends VulkanTrashList.SignalSignatures {}
+        interface SignalSignatures extends VulkanTrashList.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1390,19 +1504,25 @@ export namespace GstVulkan {
             signal: K,
             callback: VulkanTrashFenceList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VulkanTrashFenceList.SignalSignatures>(
             signal: K,
             callback: VulkanTrashFenceList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VulkanTrashFenceList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VulkanTrashFenceList.SignalSignatures[K]>
+            ...args: VulkanTrashFenceList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace VulkanTrashList {
         // Signal signatures
-        interface SignalSignatures extends VulkanHandlePool.SignalSignatures {}
+        interface SignalSignatures extends VulkanHandlePool.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1424,14 +1544,17 @@ export namespace GstVulkan {
             signal: K,
             callback: VulkanTrashList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VulkanTrashList.SignalSignatures>(
             signal: K,
             callback: VulkanTrashList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VulkanTrashList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VulkanTrashList.SignalSignatures[K]>
+            ...args: VulkanTrashList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1451,7 +1574,11 @@ export namespace GstVulkan {
 
     namespace VulkanVideoFilter {
         // Signal signatures
-        interface SignalSignatures extends GstBase.BaseTransform.SignalSignatures {}
+        interface SignalSignatures extends GstBase.BaseTransform.SignalSignatures {
+            'notify::qos': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1479,21 +1606,24 @@ export namespace GstVulkan {
             signal: K,
             callback: VulkanVideoFilter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VulkanVideoFilter.SignalSignatures>(
             signal: K,
             callback: VulkanVideoFilter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VulkanVideoFilter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VulkanVideoFilter.SignalSignatures[K]>
+            ...args: VulkanVideoFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace VulkanWindow {
         // Signal callback interfaces
 
         interface Close {
-            (_source: VulkanWindow): boolean;
+            (_source: VulkanWindow): boolean | void;
         }
 
         interface Draw {
@@ -1519,6 +1649,9 @@ export namespace GstVulkan {
             'key-event': KeyEvent;
             'mouse-event': MouseEvent;
             resize: Resize;
+            'notify::display': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1553,14 +1686,17 @@ export namespace GstVulkan {
             signal: K,
             callback: VulkanWindow.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VulkanWindow.SignalSignatures>(
             signal: K,
             callback: VulkanWindow.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VulkanWindow.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VulkanWindow.SignalSignatures[K]>
+            ...args: VulkanWindow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 

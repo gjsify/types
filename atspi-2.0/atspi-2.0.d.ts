@@ -2425,14 +2425,17 @@ export namespace Atspi {
             signal: K,
             callback: Accessible.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Accessible.SignalSignatures>(
             signal: K,
             callback: Accessible.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Accessible.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Accessible.SignalSignatures[K]>
+            ...args: Accessible.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -4220,19 +4223,25 @@ export namespace Atspi {
             signal: K,
             callback: Application.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Application.SignalSignatures>(
             signal: K,
             callback: Application.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Application.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Application.SignalSignatures[K]>
+            ...args: Application.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Device {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::app-id': GObject.Object.Notify;
+            'notify::app-id': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4273,8 +4282,14 @@ export namespace Atspi {
         // Signals
 
         connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
-        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            ...args: Device.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -4476,7 +4491,10 @@ export namespace Atspi {
 
     namespace DeviceA11yManager {
         // Signal signatures
-        interface SignalSignatures extends Device.SignalSignatures {}
+        interface SignalSignatures extends Device.SignalSignatures {
+            'notify::app-id': GObject.Object.Notify;
+            'notify::app-id': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4502,19 +4520,25 @@ export namespace Atspi {
             signal: K,
             callback: DeviceA11yManager.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceA11yManager.SignalSignatures>(
             signal: K,
             callback: DeviceA11yManager.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceA11yManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceA11yManager.SignalSignatures[K]>
+            ...args: DeviceA11yManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace DeviceLegacy {
         // Signal signatures
-        interface SignalSignatures extends Device.SignalSignatures {}
+        interface SignalSignatures extends Device.SignalSignatures {
+            'notify::app-id': GObject.Object.Notify;
+            'notify::app-id': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4540,14 +4564,17 @@ export namespace Atspi {
             signal: K,
             callback: DeviceLegacy.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceLegacy.SignalSignatures>(
             signal: K,
             callback: DeviceLegacy.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceLegacy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceLegacy.SignalSignatures[K]>
+            ...args: DeviceLegacy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace DeviceListener {
@@ -4581,14 +4608,17 @@ export namespace Atspi {
             signal: K,
             callback: DeviceListener.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceListener.SignalSignatures>(
             signal: K,
             callback: DeviceListener.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceListener.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceListener.SignalSignatures[K]>
+            ...args: DeviceListener.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -4611,7 +4641,10 @@ export namespace Atspi {
 
     namespace DeviceX11 {
         // Signal signatures
-        interface SignalSignatures extends Device.SignalSignatures {}
+        interface SignalSignatures extends Device.SignalSignatures {
+            'notify::app-id': GObject.Object.Notify;
+            'notify::app-id': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4634,14 +4667,17 @@ export namespace Atspi {
         // Signals
 
         connect<K extends keyof DeviceX11.SignalSignatures>(signal: K, callback: DeviceX11.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceX11.SignalSignatures>(
             signal: K,
             callback: DeviceX11.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceX11.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceX11.SignalSignatures[K]>
+            ...args: DeviceX11.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace EventListener {
@@ -4685,14 +4721,17 @@ export namespace Atspi {
             signal: K,
             callback: EventListener.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof EventListener.SignalSignatures>(
             signal: K,
             callback: EventListener.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof EventListener.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EventListener.SignalSignatures[K]>
+            ...args: EventListener.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -4869,14 +4908,17 @@ export namespace Atspi {
         // Signals
 
         connect<K extends keyof Hyperlink.SignalSignatures>(signal: K, callback: Hyperlink.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Hyperlink.SignalSignatures>(
             signal: K,
             callback: Hyperlink.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Hyperlink.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Hyperlink.SignalSignatures[K]>
+            ...args: Hyperlink.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4974,14 +5016,17 @@ export namespace Atspi {
         // Signals
 
         connect<K extends keyof MatchRule.SignalSignatures>(signal: K, callback: MatchRule.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MatchRule.SignalSignatures>(
             signal: K,
             callback: MatchRule.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MatchRule.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MatchRule.SignalSignatures[K]>
+            ...args: MatchRule.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Object {
@@ -5010,8 +5055,14 @@ export namespace Atspi {
         // Signals
 
         connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
-        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            ...args: Object.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Relation {
@@ -5048,14 +5099,17 @@ export namespace Atspi {
         // Signals
 
         connect<K extends keyof Relation.SignalSignatures>(signal: K, callback: Relation.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Relation.SignalSignatures>(
             signal: K,
             callback: Relation.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Relation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Relation.SignalSignatures[K]>
+            ...args: Relation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5111,14 +5165,17 @@ export namespace Atspi {
         // Signals
 
         connect<K extends keyof StateSet.SignalSignatures>(signal: K, callback: StateSet.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StateSet.SignalSignatures>(
             signal: K,
             callback: StateSet.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StateSet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StateSet.SignalSignatures[K]>
+            ...args: StateSet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

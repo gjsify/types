@@ -127,7 +127,10 @@ export namespace GCab {
     }
     namespace Cabinet {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::reserved': GObject.Object.Notify;
+            'notify::signature': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -161,14 +164,17 @@ export namespace GCab {
         // Signals
 
         connect<K extends keyof Cabinet.SignalSignatures>(signal: K, callback: Cabinet.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Cabinet.SignalSignatures>(
             signal: K,
             callback: Cabinet.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Cabinet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Cabinet.SignalSignatures[K]>
+            ...args: Cabinet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -269,7 +275,11 @@ export namespace GCab {
 
     namespace File {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::bytes': GObject.Object.Notify;
+            'notify::file': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -308,8 +318,14 @@ export namespace GCab {
         // Signals
 
         connect<K extends keyof File.SignalSignatures>(signal: K, callback: File.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof File.SignalSignatures>(signal: K, callback: File.SignalSignatures[K]): number;
-        emit<K extends keyof File.SignalSignatures>(signal: K, ...args: Parameters<File.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof File.SignalSignatures>(
+            signal: K,
+            ...args: File.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -392,7 +408,11 @@ export namespace GCab {
 
     namespace Folder {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::compression': GObject.Object.Notify;
+            'notify::comptype': GObject.Object.Notify;
+            'notify::reserved': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -427,8 +447,14 @@ export namespace GCab {
         // Signals
 
         connect<K extends keyof Folder.SignalSignatures>(signal: K, callback: Folder.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Folder.SignalSignatures>(signal: K, callback: Folder.SignalSignatures[K]): number;
-        emit<K extends keyof Folder.SignalSignatures>(signal: K, ...args: Parameters<Folder.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Folder.SignalSignatures>(
+            signal: K,
+            ...args: Folder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

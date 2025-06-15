@@ -40,7 +40,21 @@ export namespace GstDxva {
     function dxva_codec_to_string(codec: DxvaCodec | null): string;
     namespace DxvaAV1Decoder {
         // Signal signatures
-        interface SignalSignatures extends GstCodecs.AV1Decoder.SignalSignatures {}
+        interface SignalSignatures extends GstCodecs.AV1Decoder.SignalSignatures {
+            'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
+            'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
+            'notify::automatic-request-sync-points': GObject.Object.Notify;
+            'notify::automatic-request-sync-points': GObject.Object.Notify;
+            'notify::discard-corrupted-frames': GObject.Object.Notify;
+            'notify::discard-corrupted-frames': GObject.Object.Notify;
+            'notify::max-errors': GObject.Object.Notify;
+            'notify::max-errors': GObject.Object.Notify;
+            'notify::min-force-key-unit-interval': GObject.Object.Notify;
+            'notify::min-force-key-unit-interval': GObject.Object.Notify;
+            'notify::qos': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -62,14 +76,17 @@ export namespace GstDxva {
             signal: K,
             callback: DxvaAV1Decoder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DxvaAV1Decoder.SignalSignatures>(
             signal: K,
             callback: DxvaAV1Decoder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DxvaAV1Decoder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DxvaAV1Decoder.SignalSignatures[K]>
+            ...args: DxvaAV1Decoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -105,7 +122,22 @@ export namespace GstDxva {
 
     namespace DxvaH264Decoder {
         // Signal signatures
-        interface SignalSignatures extends GstCodecs.H264Decoder.SignalSignatures {}
+        interface SignalSignatures extends GstCodecs.H264Decoder.SignalSignatures {
+            'notify::compliance': GObject.Object.Notify;
+            'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
+            'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
+            'notify::automatic-request-sync-points': GObject.Object.Notify;
+            'notify::automatic-request-sync-points': GObject.Object.Notify;
+            'notify::discard-corrupted-frames': GObject.Object.Notify;
+            'notify::discard-corrupted-frames': GObject.Object.Notify;
+            'notify::max-errors': GObject.Object.Notify;
+            'notify::max-errors': GObject.Object.Notify;
+            'notify::min-force-key-unit-interval': GObject.Object.Notify;
+            'notify::min-force-key-unit-interval': GObject.Object.Notify;
+            'notify::qos': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -127,14 +159,17 @@ export namespace GstDxva {
             signal: K,
             callback: DxvaH264Decoder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DxvaH264Decoder.SignalSignatures>(
             signal: K,
             callback: DxvaH264Decoder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DxvaH264Decoder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DxvaH264Decoder.SignalSignatures[K]>
+            ...args: DxvaH264Decoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -168,7 +203,21 @@ export namespace GstDxva {
 
     namespace DxvaH265Decoder {
         // Signal signatures
-        interface SignalSignatures extends GstCodecs.H265Decoder.SignalSignatures {}
+        interface SignalSignatures extends GstCodecs.H265Decoder.SignalSignatures {
+            'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
+            'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
+            'notify::automatic-request-sync-points': GObject.Object.Notify;
+            'notify::automatic-request-sync-points': GObject.Object.Notify;
+            'notify::discard-corrupted-frames': GObject.Object.Notify;
+            'notify::discard-corrupted-frames': GObject.Object.Notify;
+            'notify::max-errors': GObject.Object.Notify;
+            'notify::max-errors': GObject.Object.Notify;
+            'notify::min-force-key-unit-interval': GObject.Object.Notify;
+            'notify::min-force-key-unit-interval': GObject.Object.Notify;
+            'notify::qos': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -190,14 +239,17 @@ export namespace GstDxva {
             signal: K,
             callback: DxvaH265Decoder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DxvaH265Decoder.SignalSignatures>(
             signal: K,
             callback: DxvaH265Decoder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DxvaH265Decoder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DxvaH265Decoder.SignalSignatures[K]>
+            ...args: DxvaH265Decoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -230,7 +282,21 @@ export namespace GstDxva {
 
     namespace DxvaMpeg2Decoder {
         // Signal signatures
-        interface SignalSignatures extends GstCodecs.Mpeg2Decoder.SignalSignatures {}
+        interface SignalSignatures extends GstCodecs.Mpeg2Decoder.SignalSignatures {
+            'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
+            'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
+            'notify::automatic-request-sync-points': GObject.Object.Notify;
+            'notify::automatic-request-sync-points': GObject.Object.Notify;
+            'notify::discard-corrupted-frames': GObject.Object.Notify;
+            'notify::discard-corrupted-frames': GObject.Object.Notify;
+            'notify::max-errors': GObject.Object.Notify;
+            'notify::max-errors': GObject.Object.Notify;
+            'notify::min-force-key-unit-interval': GObject.Object.Notify;
+            'notify::min-force-key-unit-interval': GObject.Object.Notify;
+            'notify::qos': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -252,14 +318,17 @@ export namespace GstDxva {
             signal: K,
             callback: DxvaMpeg2Decoder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DxvaMpeg2Decoder.SignalSignatures>(
             signal: K,
             callback: DxvaMpeg2Decoder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DxvaMpeg2Decoder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DxvaMpeg2Decoder.SignalSignatures[K]>
+            ...args: DxvaMpeg2Decoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -297,7 +366,21 @@ export namespace GstDxva {
 
     namespace DxvaVp8Decoder {
         // Signal signatures
-        interface SignalSignatures extends GstCodecs.Vp8Decoder.SignalSignatures {}
+        interface SignalSignatures extends GstCodecs.Vp8Decoder.SignalSignatures {
+            'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
+            'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
+            'notify::automatic-request-sync-points': GObject.Object.Notify;
+            'notify::automatic-request-sync-points': GObject.Object.Notify;
+            'notify::discard-corrupted-frames': GObject.Object.Notify;
+            'notify::discard-corrupted-frames': GObject.Object.Notify;
+            'notify::max-errors': GObject.Object.Notify;
+            'notify::max-errors': GObject.Object.Notify;
+            'notify::min-force-key-unit-interval': GObject.Object.Notify;
+            'notify::min-force-key-unit-interval': GObject.Object.Notify;
+            'notify::qos': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -319,14 +402,17 @@ export namespace GstDxva {
             signal: K,
             callback: DxvaVp8Decoder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DxvaVp8Decoder.SignalSignatures>(
             signal: K,
             callback: DxvaVp8Decoder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DxvaVp8Decoder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DxvaVp8Decoder.SignalSignatures[K]>
+            ...args: DxvaVp8Decoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -359,7 +445,21 @@ export namespace GstDxva {
 
     namespace DxvaVp9Decoder {
         // Signal signatures
-        interface SignalSignatures extends GstCodecs.Vp9Decoder.SignalSignatures {}
+        interface SignalSignatures extends GstCodecs.Vp9Decoder.SignalSignatures {
+            'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
+            'notify::automatic-request-sync-point-flags': GObject.Object.Notify;
+            'notify::automatic-request-sync-points': GObject.Object.Notify;
+            'notify::automatic-request-sync-points': GObject.Object.Notify;
+            'notify::discard-corrupted-frames': GObject.Object.Notify;
+            'notify::discard-corrupted-frames': GObject.Object.Notify;
+            'notify::max-errors': GObject.Object.Notify;
+            'notify::max-errors': GObject.Object.Notify;
+            'notify::min-force-key-unit-interval': GObject.Object.Notify;
+            'notify::min-force-key-unit-interval': GObject.Object.Notify;
+            'notify::qos': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -381,14 +481,17 @@ export namespace GstDxva {
             signal: K,
             callback: DxvaVp9Decoder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DxvaVp9Decoder.SignalSignatures>(
             signal: K,
             callback: DxvaVp9Decoder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DxvaVp9Decoder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DxvaVp9Decoder.SignalSignatures[K]>
+            ...args: DxvaVp9Decoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 

@@ -315,7 +315,18 @@ export namespace Gpseq {
     }
     namespace ArraySpliterator {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::estimated-size': GObject.Object.Notify;
+            'notify::estimated-size': GObject.Object.Notify;
+            'notify::is-size-known': GObject.Object.Notify;
+            'notify::is-size-known': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -361,14 +372,17 @@ export namespace Gpseq {
             signal: K,
             callback: ArraySpliterator.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ArraySpliterator.SignalSignatures>(
             signal: K,
             callback: ArraySpliterator.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ArraySpliterator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ArraySpliterator.SignalSignatures[K]>
+            ...args: ArraySpliterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get estimated_size(): number;
@@ -833,7 +847,29 @@ export namespace Gpseq {
 
     namespace ForkJoinTask {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::root': GObject.Object.Notify;
+            'notify::is-root': GObject.Object.Notify;
+            'notify::is-root': GObject.Object.Notify;
+            'notify::threshold': GObject.Object.Notify;
+            'notify::max-depth': GObject.Object.Notify;
+            'notify::max-depth': GObject.Object.Notify;
+            'notify::depth': GObject.Object.Notify;
+            'notify::executor': GObject.Object.Notify;
+            'notify::promise': GObject.Object.Notify;
+            'notify::shared-result': GObject.Object.Notify;
+            'notify::shared-result': GObject.Object.Notify;
+            'notify::is-cancelled': GObject.Object.Notify;
+            'notify::is-cancelled': GObject.Object.Notify;
+            'notify::future': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -900,14 +936,17 @@ export namespace Gpseq {
             signal: K,
             callback: ForkJoinTask.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ForkJoinTask.SignalSignatures>(
             signal: K,
             callback: ForkJoinTask.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ForkJoinTask.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ForkJoinTask.SignalSignatures[K]>
+            ...args: ForkJoinTask.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1403,14 +1442,17 @@ export namespace Gpseq {
             signal: K,
             callback: ForkJoinTaskSharedResult.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ForkJoinTaskSharedResult.SignalSignatures>(
             signal: K,
             callback: ForkJoinTaskSharedResult.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ForkJoinTaskSharedResult.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ForkJoinTaskSharedResult.SignalSignatures[K]>
+            ...args: ForkJoinTaskSharedResult.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1424,7 +1466,15 @@ export namespace Gpseq {
 
     namespace FuncTask {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::future': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1461,14 +1511,17 @@ export namespace Gpseq {
         // Signals
 
         connect<K extends keyof FuncTask.SignalSignatures>(signal: K, callback: FuncTask.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FuncTask.SignalSignatures>(
             signal: K,
             callback: FuncTask.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FuncTask.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FuncTask.SignalSignatures[K]>
+            ...args: FuncTask.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get future(): Future;
@@ -1922,7 +1975,15 @@ export namespace Gpseq {
 
     namespace Future {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::ready': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1962,8 +2023,14 @@ export namespace Gpseq {
         // Signals
 
         connect<K extends keyof Future.SignalSignatures>(signal: K, callback: Future.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Future.SignalSignatures>(signal: K, callback: Future.SignalSignatures[K]): number;
-        emit<K extends keyof Future.SignalSignatures>(signal: K, ...args: Parameters<Future.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Future.SignalSignatures>(
+            signal: K,
+            ...args: Future.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2469,7 +2536,18 @@ export namespace Gpseq {
 
     namespace GenericArraySpliterator {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::estimated-size': GObject.Object.Notify;
+            'notify::estimated-size': GObject.Object.Notify;
+            'notify::is-size-known': GObject.Object.Notify;
+            'notify::is-size-known': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2515,14 +2593,17 @@ export namespace Gpseq {
             signal: K,
             callback: GenericArraySpliterator.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GenericArraySpliterator.SignalSignatures>(
             signal: K,
             callback: GenericArraySpliterator.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GenericArraySpliterator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GenericArraySpliterator.SignalSignatures[K]>
+            ...args: GenericArraySpliterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get estimated_size(): number;
@@ -2987,7 +3068,18 @@ export namespace Gpseq {
 
     namespace IteratorSpliterator {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::estimated-size': GObject.Object.Notify;
+            'notify::estimated-size': GObject.Object.Notify;
+            'notify::is-size-known': GObject.Object.Notify;
+            'notify::is-size-known': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3039,14 +3131,17 @@ export namespace Gpseq {
             signal: K,
             callback: IteratorSpliterator.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof IteratorSpliterator.SignalSignatures>(
             signal: K,
             callback: IteratorSpliterator.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof IteratorSpliterator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IteratorSpliterator.SignalSignatures[K]>
+            ...args: IteratorSpliterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get estimated_size(): number;
@@ -3511,7 +3606,18 @@ export namespace Gpseq {
 
     namespace ListSpliterator {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::estimated-size': GObject.Object.Notify;
+            'notify::estimated-size': GObject.Object.Notify;
+            'notify::is-size-known': GObject.Object.Notify;
+            'notify::is-size-known': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3557,14 +3663,17 @@ export namespace Gpseq {
             signal: K,
             callback: ListSpliterator.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ListSpliterator.SignalSignatures>(
             signal: K,
             callback: ListSpliterator.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ListSpliterator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ListSpliterator.SignalSignatures[K]>
+            ...args: ListSpliterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get estimated_size(): number;
@@ -4029,7 +4138,19 @@ export namespace Gpseq {
 
     namespace Optional {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::value-type': GObject.Object.Notify;
+            'notify::value-type': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+            'notify::is-present': GObject.Object.Notify;
+            'notify::is-present': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4080,14 +4201,17 @@ export namespace Gpseq {
         // Signals
 
         connect<K extends keyof Optional.SignalSignatures>(signal: K, callback: Optional.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Optional.SignalSignatures>(
             signal: K,
             callback: Optional.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Optional.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Optional.SignalSignatures[K]>
+            ...args: Optional.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4125,14 +4249,17 @@ export namespace Gpseq {
         // Signals
 
         connect<K extends keyof Promise.SignalSignatures>(signal: K, callback: Promise.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Promise.SignalSignatures>(
             signal: K,
             callback: Promise.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Promise.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Promise.SignalSignatures[K]>
+            ...args: Promise.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4143,7 +4270,22 @@ export namespace Gpseq {
 
     namespace Seq {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::element-type': GObject.Object.Notify;
+            'notify::element-type': GObject.Object.Notify;
+            'notify::task-env': GObject.Object.Notify;
+            'notify::task-env': GObject.Object.Notify;
+            'notify::is-closed': GObject.Object.Notify;
+            'notify::is-closed': GObject.Object.Notify;
+            'notify::is-parallel': GObject.Object.Notify;
+            'notify::is-parallel': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4201,8 +4343,14 @@ export namespace Gpseq {
         // Signals
 
         connect<K extends keyof Seq.SignalSignatures>(signal: K, callback: Seq.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Seq.SignalSignatures>(signal: K, callback: Seq.SignalSignatures[K]): number;
-        emit<K extends keyof Seq.SignalSignatures>(signal: K, ...args: Parameters<Seq.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Seq.SignalSignatures>(
+            signal: K,
+            ...args: Seq.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -4331,7 +4479,45 @@ export namespace Gpseq {
 
     namespace SpliteratorTask {
         // Signal signatures
-        interface SignalSignatures extends ForkJoinTask.SignalSignatures {}
+        interface SignalSignatures extends ForkJoinTask.SignalSignatures {
+            'notify::r-type': GObject.Object.Notify;
+            'notify::r-type': GObject.Object.Notify;
+            'notify::r-dup-func': GObject.Object.Notify;
+            'notify::r-dup-func': GObject.Object.Notify;
+            'notify::r-destroy-func': GObject.Object.Notify;
+            'notify::r-destroy-func': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::spliterator': GObject.Object.Notify;
+            'notify::left-child': GObject.Object.Notify;
+            'notify::left-child': GObject.Object.Notify;
+            'notify::right-child': GObject.Object.Notify;
+            'notify::right-child': GObject.Object.Notify;
+            'notify::is-leaf': GObject.Object.Notify;
+            'notify::is-leaf': GObject.Object.Notify;
+            'notify::is-leftmost': GObject.Object.Notify;
+            'notify::is-leftmost': GObject.Object.Notify;
+            'notify::empty-result': GObject.Object.Notify;
+            'notify::empty-result': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::root': GObject.Object.Notify;
+            'notify::is-root': GObject.Object.Notify;
+            'notify::is-root': GObject.Object.Notify;
+            'notify::threshold': GObject.Object.Notify;
+            'notify::max-depth': GObject.Object.Notify;
+            'notify::max-depth': GObject.Object.Notify;
+            'notify::depth': GObject.Object.Notify;
+            'notify::executor': GObject.Object.Notify;
+            'notify::promise': GObject.Object.Notify;
+            'notify::shared-result': GObject.Object.Notify;
+            'notify::shared-result': GObject.Object.Notify;
+            'notify::is-cancelled': GObject.Object.Notify;
+            'notify::is-cancelled': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4403,14 +4589,17 @@ export namespace Gpseq {
             signal: K,
             callback: SpliteratorTask.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SpliteratorTask.SignalSignatures>(
             signal: K,
             callback: SpliteratorTask.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SpliteratorTask.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SpliteratorTask.SignalSignatures[K]>
+            ...args: SpliteratorTask.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -4435,7 +4624,15 @@ export namespace Gpseq {
 
     namespace SubArray {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4485,14 +4682,17 @@ export namespace Gpseq {
         // Signals
 
         connect<K extends keyof SubArray.SignalSignatures>(signal: K, callback: SubArray.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SubArray.SignalSignatures>(
             signal: K,
             callback: SubArray.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SubArray.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SubArray.SignalSignatures[K]>
+            ...args: SubArray.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4976,7 +5176,18 @@ export namespace Gpseq {
 
     namespace SubArraySpliterator {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::estimated-size': GObject.Object.Notify;
+            'notify::estimated-size': GObject.Object.Notify;
+            'notify::is-size-known': GObject.Object.Notify;
+            'notify::is-size-known': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5022,14 +5233,17 @@ export namespace Gpseq {
             signal: K,
             callback: SubArraySpliterator.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SubArraySpliterator.SignalSignatures>(
             signal: K,
             callback: SubArraySpliterator.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SubArraySpliterator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SubArraySpliterator.SignalSignatures[K]>
+            ...args: SubArraySpliterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get estimated_size(): number;
@@ -5494,7 +5708,18 @@ export namespace Gpseq {
 
     namespace SupplierSpliterator {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::estimated-size': GObject.Object.Notify;
+            'notify::estimated-size': GObject.Object.Notify;
+            'notify::is-size-known': GObject.Object.Notify;
+            'notify::is-size-known': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5538,14 +5763,17 @@ export namespace Gpseq {
             signal: K,
             callback: SupplierSpliterator.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SupplierSpliterator.SignalSignatures>(
             signal: K,
             callback: SupplierSpliterator.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SupplierSpliterator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SupplierSpliterator.SignalSignatures[K]>
+            ...args: SupplierSpliterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get estimated_size(): number;
@@ -6010,7 +6238,9 @@ export namespace Gpseq {
 
     namespace TaskEnv {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::executor': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6035,14 +6265,17 @@ export namespace Gpseq {
         // Signals
 
         connect<K extends keyof TaskEnv.SignalSignatures>(signal: K, callback: TaskEnv.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TaskEnv.SignalSignatures>(
             signal: K,
             callback: TaskEnv.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TaskEnv.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TaskEnv.SignalSignatures[K]>
+            ...args: TaskEnv.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -6089,14 +6322,17 @@ export namespace Gpseq {
         // Signals
 
         connect<K extends keyof WaitGroup.SignalSignatures>(signal: K, callback: WaitGroup.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WaitGroup.SignalSignatures>(
             signal: K,
             callback: WaitGroup.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WaitGroup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WaitGroup.SignalSignatures[K]>
+            ...args: WaitGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -6110,7 +6346,20 @@ export namespace Gpseq {
 
     namespace WorkerPool {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::max-threads': GObject.Object.Notify;
+            'notify::max-threads': GObject.Object.Notify;
+            'notify::num-threads': GObject.Object.Notify;
+            'notify::num-threads': GObject.Object.Notify;
+            'notify::factory': GObject.Object.Notify;
+            'notify::is-terminating': GObject.Object.Notify;
+            'notify::is-terminating': GObject.Object.Notify;
+            'notify::is-terminated': GObject.Object.Notify;
+            'notify::is-terminated': GObject.Object.Notify;
+            'notify::is-terminating-started': GObject.Object.Notify;
+            'notify::is-terminating-started': GObject.Object.Notify;
+            'notify::parallels': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6164,14 +6413,17 @@ export namespace Gpseq {
             signal: K,
             callback: WorkerPool.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WorkerPool.SignalSignatures>(
             signal: K,
             callback: WorkerPool.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WorkerPool.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WorkerPool.SignalSignatures[K]>
+            ...args: WorkerPool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -6642,7 +6894,17 @@ export namespace Gpseq {
 
     namespace WorkerThread {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::thread': GObject.Object.Notify;
+            'notify::pool': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::is-started': GObject.Object.Notify;
+            'notify::is-started': GObject.Object.Notify;
+            'notify::is-terminated': GObject.Object.Notify;
+            'notify::is-terminated': GObject.Object.Notify;
+            'notify::is-alive': GObject.Object.Notify;
+            'notify::is-alive': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6688,14 +6950,17 @@ export namespace Gpseq {
             signal: K,
             callback: WorkerThread.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WorkerThread.SignalSignatures>(
             signal: K,
             callback: WorkerThread.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WorkerThread.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WorkerThread.SignalSignatures[K]>
+            ...args: WorkerThread.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -6717,7 +6982,17 @@ export namespace Gpseq {
 
     namespace Wrapper {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+            'notify::value-type': GObject.Object.Notify;
+            'notify::value-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6760,14 +7035,17 @@ export namespace Gpseq {
         // Signals
 
         connect<K extends keyof Wrapper.SignalSignatures>(signal: K, callback: Wrapper.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Wrapper.SignalSignatures>(
             signal: K,
             callback: Wrapper.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Wrapper.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Wrapper.SignalSignatures[K]>
+            ...args: Wrapper.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

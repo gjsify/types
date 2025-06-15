@@ -92,11 +92,11 @@ export namespace GstApp {
         }
 
         interface NewSerializedEvent {
-            (_source: AppSink): boolean;
+            (_source: AppSink): boolean | void;
         }
 
         interface ProposeAllocation {
-            (_source: AppSink, query: Gst.Query): boolean;
+            (_source: AppSink, query: Gst.Query): boolean | void;
         }
 
         interface PullPreroll {
@@ -131,6 +131,40 @@ export namespace GstApp {
             'try-pull-object': TryPullObject;
             'try-pull-preroll': TryPullPreroll;
             'try-pull-sample': TryPullSample;
+            'notify::buffer-list': GObject.Object.Notify;
+            'notify::buffer-list': GObject.Object.Notify;
+            'notify::caps': GObject.Object.Notify;
+            'notify::drop': GObject.Object.Notify;
+            'notify::emit-signals': GObject.Object.Notify;
+            'notify::emit-signals': GObject.Object.Notify;
+            'notify::eos': GObject.Object.Notify;
+            'notify::max-buffers': GObject.Object.Notify;
+            'notify::max-buffers': GObject.Object.Notify;
+            'notify::wait-on-eos': GObject.Object.Notify;
+            'notify::wait-on-eos': GObject.Object.Notify;
+            'notify::async': GObject.Object.Notify;
+            'notify::blocksize': GObject.Object.Notify;
+            'notify::enable-last-sample': GObject.Object.Notify;
+            'notify::enable-last-sample': GObject.Object.Notify;
+            'notify::last-sample': GObject.Object.Notify;
+            'notify::last-sample': GObject.Object.Notify;
+            'notify::max-bitrate': GObject.Object.Notify;
+            'notify::max-bitrate': GObject.Object.Notify;
+            'notify::max-lateness': GObject.Object.Notify;
+            'notify::max-lateness': GObject.Object.Notify;
+            'notify::processing-deadline': GObject.Object.Notify;
+            'notify::processing-deadline': GObject.Object.Notify;
+            'notify::qos': GObject.Object.Notify;
+            'notify::render-delay': GObject.Object.Notify;
+            'notify::render-delay': GObject.Object.Notify;
+            'notify::stats': GObject.Object.Notify;
+            'notify::sync': GObject.Object.Notify;
+            'notify::throttle-time': GObject.Object.Notify;
+            'notify::throttle-time': GObject.Object.Notify;
+            'notify::ts-offset': GObject.Object.Notify;
+            'notify::ts-offset': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -229,14 +263,17 @@ export namespace GstApp {
         // Signals
 
         connect<K extends keyof AppSink.SignalSignatures>(signal: K, callback: AppSink.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AppSink.SignalSignatures>(
             signal: K,
             callback: AppSink.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AppSink.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AppSink.SignalSignatures[K]>
+            ...args: AppSink.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -984,7 +1021,7 @@ export namespace GstApp {
         }
 
         interface SeekData {
-            (_source: AppSrc, offset: number): boolean;
+            (_source: AppSrc, offset: number): boolean | void;
         }
 
         // Signal signatures
@@ -996,6 +1033,49 @@ export namespace GstApp {
             'push-buffer-list': PushBufferList;
             'push-sample': PushSample;
             'seek-data': SeekData;
+            'notify::block': GObject.Object.Notify;
+            'notify::caps': GObject.Object.Notify;
+            'notify::current-level-buffers': GObject.Object.Notify;
+            'notify::current-level-buffers': GObject.Object.Notify;
+            'notify::current-level-bytes': GObject.Object.Notify;
+            'notify::current-level-bytes': GObject.Object.Notify;
+            'notify::current-level-time': GObject.Object.Notify;
+            'notify::current-level-time': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::emit-signals': GObject.Object.Notify;
+            'notify::emit-signals': GObject.Object.Notify;
+            'notify::format': GObject.Object.Notify;
+            'notify::handle-segment-change': GObject.Object.Notify;
+            'notify::handle-segment-change': GObject.Object.Notify;
+            'notify::is-live': GObject.Object.Notify;
+            'notify::is-live': GObject.Object.Notify;
+            'notify::leaky-type': GObject.Object.Notify;
+            'notify::leaky-type': GObject.Object.Notify;
+            'notify::max-buffers': GObject.Object.Notify;
+            'notify::max-buffers': GObject.Object.Notify;
+            'notify::max-bytes': GObject.Object.Notify;
+            'notify::max-bytes': GObject.Object.Notify;
+            'notify::max-latency': GObject.Object.Notify;
+            'notify::max-latency': GObject.Object.Notify;
+            'notify::max-time': GObject.Object.Notify;
+            'notify::max-time': GObject.Object.Notify;
+            'notify::min-latency': GObject.Object.Notify;
+            'notify::min-latency': GObject.Object.Notify;
+            'notify::min-percent': GObject.Object.Notify;
+            'notify::min-percent': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::stream-type': GObject.Object.Notify;
+            'notify::stream-type': GObject.Object.Notify;
+            'notify::automatic-eos': GObject.Object.Notify;
+            'notify::automatic-eos': GObject.Object.Notify;
+            'notify::blocksize': GObject.Object.Notify;
+            'notify::do-timestamp': GObject.Object.Notify;
+            'notify::do-timestamp': GObject.Object.Notify;
+            'notify::num-buffers': GObject.Object.Notify;
+            'notify::num-buffers': GObject.Object.Notify;
+            'notify::typefind': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1326,8 +1406,14 @@ export namespace GstApp {
         // Signals
 
         connect<K extends keyof AppSrc.SignalSignatures>(signal: K, callback: AppSrc.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AppSrc.SignalSignatures>(signal: K, callback: AppSrc.SignalSignatures[K]): number;
-        emit<K extends keyof AppSrc.SignalSignatures>(signal: K, ...args: Parameters<AppSrc.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof AppSrc.SignalSignatures>(
+            signal: K,
+            ...args: AppSrc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 

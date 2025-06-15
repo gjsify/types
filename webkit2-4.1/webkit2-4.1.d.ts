@@ -2028,14 +2028,17 @@ export namespace WebKit2 {
             signal: K,
             callback: AuthenticationRequest.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AuthenticationRequest.SignalSignatures>(
             signal: K,
             callback: AuthenticationRequest.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AuthenticationRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AuthenticationRequest.SignalSignatures[K]>
+            ...args: AuthenticationRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2160,6 +2163,8 @@ export namespace WebKit2 {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'create-web-view': CreateWebView;
             'will-close': WillClose;
+            'notify::id': GObject.Object.Notify;
+            'create-web-view::id': CreateWebView;
         }
 
         // Constructor properties interface
@@ -2201,14 +2206,17 @@ export namespace WebKit2 {
             signal: K,
             callback: AutomationSession.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AutomationSession.SignalSignatures>(
             signal: K,
             callback: AutomationSession.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AutomationSession.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AutomationSession.SignalSignatures[K]>
+            ...args: AutomationSession.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2287,14 +2295,17 @@ export namespace WebKit2 {
             signal: K,
             callback: BackForwardList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BackForwardList.SignalSignatures>(
             signal: K,
             callback: BackForwardList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BackForwardList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BackForwardList.SignalSignatures[K]>
+            ...args: BackForwardList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2378,14 +2389,17 @@ export namespace WebKit2 {
             signal: K,
             callback: BackForwardListItem.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BackForwardListItem.SignalSignatures>(
             signal: K,
             callback: BackForwardListItem.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BackForwardListItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BackForwardListItem.SignalSignatures[K]>
+            ...args: BackForwardListItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2446,14 +2460,17 @@ export namespace WebKit2 {
             signal: K,
             callback: ClipboardPermissionRequest.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClipboardPermissionRequest.SignalSignatures>(
             signal: K,
             callback: ClipboardPermissionRequest.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClipboardPermissionRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClipboardPermissionRequest.SignalSignatures[K]>
+            ...args: ClipboardPermissionRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -2923,6 +2940,7 @@ export namespace WebKit2 {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             finished: Finished;
+            'notify::rgba': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -2972,14 +2990,17 @@ export namespace WebKit2 {
             signal: K,
             callback: ColorChooserRequest.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ColorChooserRequest.SignalSignatures>(
             signal: K,
             callback: ColorChooserRequest.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ColorChooserRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ColorChooserRequest.SignalSignatures[K]>
+            ...args: ColorChooserRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3060,14 +3081,17 @@ export namespace WebKit2 {
             signal: K,
             callback: ContextMenu.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ContextMenu.SignalSignatures>(
             signal: K,
             callback: ContextMenu.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ContextMenu.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContextMenu.SignalSignatures[K]>
+            ...args: ContextMenu.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3223,14 +3247,17 @@ export namespace WebKit2 {
             signal: K,
             callback: ContextMenuItem.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ContextMenuItem.SignalSignatures>(
             signal: K,
             callback: ContextMenuItem.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ContextMenuItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContextMenuItem.SignalSignatures[K]>
+            ...args: ContextMenuItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3315,14 +3342,17 @@ export namespace WebKit2 {
             signal: K,
             callback: CookieManager.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CookieManager.SignalSignatures>(
             signal: K,
             callback: CookieManager.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CookieManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CookieManager.SignalSignatures[K]>
+            ...args: CookieManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3707,14 +3737,17 @@ export namespace WebKit2 {
             signal: K,
             callback: DeviceInfoPermissionRequest.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceInfoPermissionRequest.SignalSignatures>(
             signal: K,
             callback: DeviceInfoPermissionRequest.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceInfoPermissionRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceInfoPermissionRequest.SignalSignatures[K]>
+            ...args: DeviceInfoPermissionRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -4182,7 +4215,7 @@ export namespace WebKit2 {
         }
 
         interface DecideDestination {
-            (_source: Download, suggested_filename: string): boolean;
+            (_source: Download, suggested_filename: string): boolean | void;
         }
 
         interface Failed {
@@ -4204,6 +4237,12 @@ export namespace WebKit2 {
             failed: Failed;
             finished: Finished;
             'received-data': ReceivedData;
+            'notify::allow-overwrite': GObject.Object.Notify;
+            'notify::allow-overwrite': GObject.Object.Notify;
+            'notify::destination': GObject.Object.Notify;
+            'notify::estimated-progress': GObject.Object.Notify;
+            'notify::estimated-progress': GObject.Object.Notify;
+            'notify::response': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -4282,14 +4321,17 @@ export namespace WebKit2 {
         // Signals
 
         connect<K extends keyof Download.SignalSignatures>(signal: K, callback: Download.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Download.SignalSignatures>(
             signal: K,
             callback: Download.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Download.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Download.SignalSignatures[K]>
+            ...args: Download.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -4408,6 +4450,8 @@ export namespace WebKit2 {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             changed: Changed;
+            'notify::typing-attributes': GObject.Object.Notify;
+            'notify::typing-attributes': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -4453,14 +4497,17 @@ export namespace WebKit2 {
             signal: K,
             callback: EditorState.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof EditorState.SignalSignatures>(
             signal: K,
             callback: EditorState.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof EditorState.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EditorState.SignalSignatures[K]>
+            ...args: EditorState.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4546,14 +4593,17 @@ export namespace WebKit2 {
             signal: K,
             callback: FaviconDatabase.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FaviconDatabase.SignalSignatures>(
             signal: K,
             callback: FaviconDatabase.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FaviconDatabase.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FaviconDatabase.SignalSignatures[K]>
+            ...args: FaviconDatabase.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4629,7 +4679,15 @@ export namespace WebKit2 {
 
     namespace FileChooserRequest {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::filter': GObject.Object.Notify;
+            'notify::mime-types': GObject.Object.Notify;
+            'notify::mime-types': GObject.Object.Notify;
+            'notify::select-multiple': GObject.Object.Notify;
+            'notify::select-multiple': GObject.Object.Notify;
+            'notify::selected-files': GObject.Object.Notify;
+            'notify::selected-files': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4726,14 +4784,17 @@ export namespace WebKit2 {
             signal: K,
             callback: FileChooserRequest.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FileChooserRequest.SignalSignatures>(
             signal: K,
             callback: FileChooserRequest.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FileChooserRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileChooserRequest.SignalSignatures[K]>
+            ...args: FileChooserRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4825,6 +4886,12 @@ export namespace WebKit2 {
             'counted-matches': CountedMatches;
             'failed-to-find-text': FailedToFindText;
             'found-text': FoundText;
+            'notify::max-match-count': GObject.Object.Notify;
+            'notify::max-match-count': GObject.Object.Notify;
+            'notify::options': GObject.Object.Notify;
+            'notify::text': GObject.Object.Notify;
+            'notify::web-view': GObject.Object.Notify;
+            'notify::web-view': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -4894,14 +4961,17 @@ export namespace WebKit2 {
             signal: K,
             callback: FindController.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FindController.SignalSignatures>(
             signal: K,
             callback: FindController.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FindController.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FindController.SignalSignatures[K]>
+            ...args: FindController.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5042,14 +5112,17 @@ export namespace WebKit2 {
             signal: K,
             callback: FormSubmissionRequest.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FormSubmissionRequest.SignalSignatures>(
             signal: K,
             callback: FormSubmissionRequest.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FormSubmissionRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FormSubmissionRequest.SignalSignatures[K]>
+            ...args: FormSubmissionRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5085,7 +5158,7 @@ export namespace WebKit2 {
         // Signal callback interfaces
 
         interface Start {
-            (_source: GeolocationManager): boolean;
+            (_source: GeolocationManager): boolean | void;
         }
 
         interface Stop {
@@ -5096,6 +5169,8 @@ export namespace WebKit2 {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             start: Start;
             stop: Stop;
+            'notify::enable-high-accuracy': GObject.Object.Notify;
+            'notify::enable-high-accuracy': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -5146,14 +5221,17 @@ export namespace WebKit2 {
             signal: K,
             callback: GeolocationManager.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GeolocationManager.SignalSignatures>(
             signal: K,
             callback: GeolocationManager.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GeolocationManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GeolocationManager.SignalSignatures[K]>
+            ...args: GeolocationManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5224,14 +5302,17 @@ export namespace WebKit2 {
             signal: K,
             callback: GeolocationPermissionRequest.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GeolocationPermissionRequest.SignalSignatures>(
             signal: K,
             callback: GeolocationPermissionRequest.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GeolocationPermissionRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GeolocationPermissionRequest.SignalSignatures[K]>
+            ...args: GeolocationPermissionRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -5693,7 +5774,19 @@ export namespace WebKit2 {
 
     namespace HitTestResult {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::context': GObject.Object.Notify;
+            'notify::image-uri': GObject.Object.Notify;
+            'notify::image-uri': GObject.Object.Notify;
+            'notify::link-label': GObject.Object.Notify;
+            'notify::link-label': GObject.Object.Notify;
+            'notify::link-title': GObject.Object.Notify;
+            'notify::link-title': GObject.Object.Notify;
+            'notify::link-uri': GObject.Object.Notify;
+            'notify::link-uri': GObject.Object.Notify;
+            'notify::media-uri': GObject.Object.Notify;
+            'notify::media-uri': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5807,14 +5900,17 @@ export namespace WebKit2 {
             signal: K,
             callback: HitTestResult.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HitTestResult.SignalSignatures>(
             signal: K,
             callback: HitTestResult.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HitTestResult.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HitTestResult.SignalSignatures[K]>
+            ...args: HitTestResult.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5916,6 +6012,10 @@ export namespace WebKit2 {
             'preedit-changed': PreeditChanged;
             'preedit-finished': PreeditFinished;
             'preedit-started': PreeditStarted;
+            'notify::input-hints': GObject.Object.Notify;
+            'notify::input-hints': GObject.Object.Notify;
+            'notify::input-purpose': GObject.Object.Notify;
+            'notify::input-purpose': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -5978,14 +6078,17 @@ export namespace WebKit2 {
             signal: K,
             callback: InputMethodContext.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InputMethodContext.SignalSignatures>(
             signal: K,
             callback: InputMethodContext.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InputMethodContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InputMethodContext.SignalSignatures[K]>
+            ...args: InputMethodContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -6154,14 +6257,19 @@ export namespace WebKit2 {
             signal: K,
             callback: InstallMissingMediaPluginsPermissionRequest.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InstallMissingMediaPluginsPermissionRequest.SignalSignatures>(
             signal: K,
             callback: InstallMissingMediaPluginsPermissionRequest.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InstallMissingMediaPluginsPermissionRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InstallMissingMediaPluginsPermissionRequest.SignalSignatures[K]>
+            ...args: InstallMissingMediaPluginsPermissionRequest.SignalSignatures[K] extends (...args: infer P) => any
+                ? P
+                : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -6666,14 +6774,17 @@ export namespace WebKit2 {
             signal: K,
             callback: MediaKeySystemPermissionRequest.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MediaKeySystemPermissionRequest.SignalSignatures>(
             signal: K,
             callback: MediaKeySystemPermissionRequest.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MediaKeySystemPermissionRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaKeySystemPermissionRequest.SignalSignatures[K]>
+            ...args: MediaKeySystemPermissionRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -7135,7 +7246,18 @@ export namespace WebKit2 {
 
     namespace NavigationPolicyDecision {
         // Signal signatures
-        interface SignalSignatures extends PolicyDecision.SignalSignatures {}
+        interface SignalSignatures extends PolicyDecision.SignalSignatures {
+            'notify::frame-name': GObject.Object.Notify;
+            'notify::frame-name': GObject.Object.Notify;
+            'notify::modifiers': GObject.Object.Notify;
+            'notify::mouse-button': GObject.Object.Notify;
+            'notify::mouse-button': GObject.Object.Notify;
+            'notify::navigation-action': GObject.Object.Notify;
+            'notify::navigation-action': GObject.Object.Notify;
+            'notify::navigation-type': GObject.Object.Notify;
+            'notify::navigation-type': GObject.Object.Notify;
+            'notify::request': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -7241,14 +7363,17 @@ export namespace WebKit2 {
             signal: K,
             callback: NavigationPolicyDecision.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NavigationPolicyDecision.SignalSignatures>(
             signal: K,
             callback: NavigationPolicyDecision.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NavigationPolicyDecision.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NavigationPolicyDecision.SignalSignatures[K]>
+            ...args: NavigationPolicyDecision.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -7299,6 +7424,10 @@ export namespace WebKit2 {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             clicked: Clicked;
             closed: Closed;
+            'notify::body': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::tag': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -7348,14 +7477,17 @@ export namespace WebKit2 {
             signal: K,
             callback: Notification.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Notification.SignalSignatures>(
             signal: K,
             callback: Notification.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Notification.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Notification.SignalSignatures[K]>
+            ...args: Notification.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -7426,14 +7558,17 @@ export namespace WebKit2 {
             signal: K,
             callback: NotificationPermissionRequest.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NotificationPermissionRequest.SignalSignatures>(
             signal: K,
             callback: NotificationPermissionRequest.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NotificationPermissionRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NotificationPermissionRequest.SignalSignatures[K]>
+            ...args: NotificationPermissionRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -7932,14 +8067,17 @@ export namespace WebKit2 {
             signal: K,
             callback: OptionMenu.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OptionMenu.SignalSignatures>(
             signal: K,
             callback: OptionMenu.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OptionMenu.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OptionMenu.SignalSignatures[K]>
+            ...args: OptionMenu.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -8024,8 +8162,14 @@ export namespace WebKit2 {
         // Signals
 
         connect<K extends keyof Plugin.SignalSignatures>(signal: K, callback: Plugin.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Plugin.SignalSignatures>(signal: K, callback: Plugin.SignalSignatures[K]): number;
-        emit<K extends keyof Plugin.SignalSignatures>(signal: K, ...args: Parameters<Plugin.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Plugin.SignalSignatures>(
+            signal: K,
+            ...args: Plugin.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -8088,14 +8232,17 @@ export namespace WebKit2 {
             signal: K,
             callback: PointerLockPermissionRequest.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PointerLockPermissionRequest.SignalSignatures>(
             signal: K,
             callback: PointerLockPermissionRequest.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PointerLockPermissionRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PointerLockPermissionRequest.SignalSignatures[K]>
+            ...args: PointerLockPermissionRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -8592,14 +8739,17 @@ export namespace WebKit2 {
             signal: K,
             callback: PolicyDecision.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PolicyDecision.SignalSignatures>(
             signal: K,
             callback: PolicyDecision.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PolicyDecision.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PolicyDecision.SignalSignatures[K]>
+            ...args: PolicyDecision.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -8648,6 +8798,8 @@ export namespace WebKit2 {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             apply: Apply;
             update: Update;
+            'notify::title': GObject.Object.Notify;
+            'notify::widget': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -8702,14 +8854,17 @@ export namespace WebKit2 {
             signal: K,
             callback: PrintCustomWidget.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PrintCustomWidget.SignalSignatures>(
             signal: K,
             callback: PrintCustomWidget.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PrintCustomWidget.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PrintCustomWidget.SignalSignatures[K]>
+            ...args: PrintCustomWidget.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -8759,6 +8914,12 @@ export namespace WebKit2 {
             'create-custom-widget': CreateCustomWidget;
             failed: Failed;
             finished: Finished;
+            'notify::page-setup': GObject.Object.Notify;
+            'notify::page-setup': GObject.Object.Notify;
+            'notify::print-settings': GObject.Object.Notify;
+            'notify::print-settings': GObject.Object.Notify;
+            'notify::web-view': GObject.Object.Notify;
+            'notify::web-view': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -8829,14 +8990,17 @@ export namespace WebKit2 {
             signal: K,
             callback: PrintOperation.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PrintOperation.SignalSignatures>(
             signal: K,
             callback: PrintOperation.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PrintOperation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PrintOperation.SignalSignatures[K]>
+            ...args: PrintOperation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -8915,7 +9079,10 @@ export namespace WebKit2 {
 
     namespace ResponsePolicyDecision {
         // Signal signatures
-        interface SignalSignatures extends PolicyDecision.SignalSignatures {}
+        interface SignalSignatures extends PolicyDecision.SignalSignatures {
+            'notify::request': GObject.Object.Notify;
+            'notify::response': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8962,14 +9129,17 @@ export namespace WebKit2 {
             signal: K,
             callback: ResponsePolicyDecision.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ResponsePolicyDecision.SignalSignatures>(
             signal: K,
             callback: ResponsePolicyDecision.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ResponsePolicyDecision.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ResponsePolicyDecision.SignalSignatures[K]>
+            ...args: ResponsePolicyDecision.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -9037,14 +9207,17 @@ export namespace WebKit2 {
             signal: K,
             callback: SecurityManager.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SecurityManager.SignalSignatures>(
             signal: K,
             callback: SecurityManager.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SecurityManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SecurityManager.SignalSignatures[K]>
+            ...args: SecurityManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -9149,7 +9322,134 @@ export namespace WebKit2 {
 
     namespace Settings {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::allow-file-access-from-file-urls': GObject.Object.Notify;
+            'notify::allow-file-access-from-file-urls': GObject.Object.Notify;
+            'notify::allow-modal-dialogs': GObject.Object.Notify;
+            'notify::allow-modal-dialogs': GObject.Object.Notify;
+            'notify::allow-top-navigation-to-data-urls': GObject.Object.Notify;
+            'notify::allow-top-navigation-to-data-urls': GObject.Object.Notify;
+            'notify::allow-universal-access-from-file-urls': GObject.Object.Notify;
+            'notify::allow-universal-access-from-file-urls': GObject.Object.Notify;
+            'notify::auto-load-images': GObject.Object.Notify;
+            'notify::auto-load-images': GObject.Object.Notify;
+            'notify::cursive-font-family': GObject.Object.Notify;
+            'notify::cursive-font-family': GObject.Object.Notify;
+            'notify::default-charset': GObject.Object.Notify;
+            'notify::default-charset': GObject.Object.Notify;
+            'notify::default-font-family': GObject.Object.Notify;
+            'notify::default-font-family': GObject.Object.Notify;
+            'notify::default-font-size': GObject.Object.Notify;
+            'notify::default-font-size': GObject.Object.Notify;
+            'notify::default-monospace-font-size': GObject.Object.Notify;
+            'notify::default-monospace-font-size': GObject.Object.Notify;
+            'notify::disable-web-security': GObject.Object.Notify;
+            'notify::disable-web-security': GObject.Object.Notify;
+            'notify::draw-compositing-indicators': GObject.Object.Notify;
+            'notify::draw-compositing-indicators': GObject.Object.Notify;
+            'notify::enable-2d-canvas-acceleration': GObject.Object.Notify;
+            'notify::enable2d-canvas-acceleration': GObject.Object.Notify;
+            'notify::enable-accelerated-2d-canvas': GObject.Object.Notify;
+            'notify::enable-accelerated2d-canvas': GObject.Object.Notify;
+            'notify::enable-back-forward-navigation-gestures': GObject.Object.Notify;
+            'notify::enable-back-forward-navigation-gestures': GObject.Object.Notify;
+            'notify::enable-caret-browsing': GObject.Object.Notify;
+            'notify::enable-caret-browsing': GObject.Object.Notify;
+            'notify::enable-developer-extras': GObject.Object.Notify;
+            'notify::enable-developer-extras': GObject.Object.Notify;
+            'notify::enable-dns-prefetching': GObject.Object.Notify;
+            'notify::enable-dns-prefetching': GObject.Object.Notify;
+            'notify::enable-encrypted-media': GObject.Object.Notify;
+            'notify::enable-encrypted-media': GObject.Object.Notify;
+            'notify::enable-frame-flattening': GObject.Object.Notify;
+            'notify::enable-frame-flattening': GObject.Object.Notify;
+            'notify::enable-fullscreen': GObject.Object.Notify;
+            'notify::enable-fullscreen': GObject.Object.Notify;
+            'notify::enable-html5-database': GObject.Object.Notify;
+            'notify::enable-html5-database': GObject.Object.Notify;
+            'notify::enable-html5-local-storage': GObject.Object.Notify;
+            'notify::enable-html5-local-storage': GObject.Object.Notify;
+            'notify::enable-hyperlink-auditing': GObject.Object.Notify;
+            'notify::enable-hyperlink-auditing': GObject.Object.Notify;
+            'notify::enable-java': GObject.Object.Notify;
+            'notify::enable-java': GObject.Object.Notify;
+            'notify::enable-javascript': GObject.Object.Notify;
+            'notify::enable-javascript': GObject.Object.Notify;
+            'notify::enable-javascript-markup': GObject.Object.Notify;
+            'notify::enable-javascript-markup': GObject.Object.Notify;
+            'notify::enable-media': GObject.Object.Notify;
+            'notify::enable-media': GObject.Object.Notify;
+            'notify::enable-media-capabilities': GObject.Object.Notify;
+            'notify::enable-media-capabilities': GObject.Object.Notify;
+            'notify::enable-media-stream': GObject.Object.Notify;
+            'notify::enable-media-stream': GObject.Object.Notify;
+            'notify::enable-mediasource': GObject.Object.Notify;
+            'notify::enable-mediasource': GObject.Object.Notify;
+            'notify::enable-mock-capture-devices': GObject.Object.Notify;
+            'notify::enable-mock-capture-devices': GObject.Object.Notify;
+            'notify::enable-offline-web-application-cache': GObject.Object.Notify;
+            'notify::enable-offline-web-application-cache': GObject.Object.Notify;
+            'notify::enable-page-cache': GObject.Object.Notify;
+            'notify::enable-page-cache': GObject.Object.Notify;
+            'notify::enable-plugins': GObject.Object.Notify;
+            'notify::enable-plugins': GObject.Object.Notify;
+            'notify::enable-private-browsing': GObject.Object.Notify;
+            'notify::enable-private-browsing': GObject.Object.Notify;
+            'notify::enable-resizable-text-areas': GObject.Object.Notify;
+            'notify::enable-resizable-text-areas': GObject.Object.Notify;
+            'notify::enable-site-specific-quirks': GObject.Object.Notify;
+            'notify::enable-site-specific-quirks': GObject.Object.Notify;
+            'notify::enable-smooth-scrolling': GObject.Object.Notify;
+            'notify::enable-smooth-scrolling': GObject.Object.Notify;
+            'notify::enable-spatial-navigation': GObject.Object.Notify;
+            'notify::enable-spatial-navigation': GObject.Object.Notify;
+            'notify::enable-tabs-to-links': GObject.Object.Notify;
+            'notify::enable-tabs-to-links': GObject.Object.Notify;
+            'notify::enable-webaudio': GObject.Object.Notify;
+            'notify::enable-webaudio': GObject.Object.Notify;
+            'notify::enable-webgl': GObject.Object.Notify;
+            'notify::enable-webgl': GObject.Object.Notify;
+            'notify::enable-webrtc': GObject.Object.Notify;
+            'notify::enable-webrtc': GObject.Object.Notify;
+            'notify::enable-write-console-messages-to-stdout': GObject.Object.Notify;
+            'notify::enable-write-console-messages-to-stdout': GObject.Object.Notify;
+            'notify::enable-xss-auditor': GObject.Object.Notify;
+            'notify::enable-xss-auditor': GObject.Object.Notify;
+            'notify::fantasy-font-family': GObject.Object.Notify;
+            'notify::fantasy-font-family': GObject.Object.Notify;
+            'notify::hardware-acceleration-policy': GObject.Object.Notify;
+            'notify::hardware-acceleration-policy': GObject.Object.Notify;
+            'notify::javascript-can-access-clipboard': GObject.Object.Notify;
+            'notify::javascript-can-access-clipboard': GObject.Object.Notify;
+            'notify::javascript-can-open-windows-automatically': GObject.Object.Notify;
+            'notify::javascript-can-open-windows-automatically': GObject.Object.Notify;
+            'notify::load-icons-ignoring-image-load-setting': GObject.Object.Notify;
+            'notify::load-icons-ignoring-image-load-setting': GObject.Object.Notify;
+            'notify::media-content-types-requiring-hardware-support': GObject.Object.Notify;
+            'notify::media-content-types-requiring-hardware-support': GObject.Object.Notify;
+            'notify::media-playback-allows-inline': GObject.Object.Notify;
+            'notify::media-playback-allows-inline': GObject.Object.Notify;
+            'notify::media-playback-requires-user-gesture': GObject.Object.Notify;
+            'notify::media-playback-requires-user-gesture': GObject.Object.Notify;
+            'notify::minimum-font-size': GObject.Object.Notify;
+            'notify::minimum-font-size': GObject.Object.Notify;
+            'notify::monospace-font-family': GObject.Object.Notify;
+            'notify::monospace-font-family': GObject.Object.Notify;
+            'notify::pictograph-font-family': GObject.Object.Notify;
+            'notify::pictograph-font-family': GObject.Object.Notify;
+            'notify::print-backgrounds': GObject.Object.Notify;
+            'notify::print-backgrounds': GObject.Object.Notify;
+            'notify::sans-serif-font-family': GObject.Object.Notify;
+            'notify::sans-serif-font-family': GObject.Object.Notify;
+            'notify::serif-font-family': GObject.Object.Notify;
+            'notify::serif-font-family': GObject.Object.Notify;
+            'notify::user-agent': GObject.Object.Notify;
+            'notify::user-agent': GObject.Object.Notify;
+            'notify::webrtc-udp-ports-range': GObject.Object.Notify;
+            'notify::webrtc-udp-ports-range': GObject.Object.Notify;
+            'notify::zoom-text-only': GObject.Object.Notify;
+            'notify::zoom-text-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10218,14 +10518,17 @@ export namespace WebKit2 {
         // Signals
 
         connect<K extends keyof Settings.SignalSignatures>(signal: K, callback: Settings.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Settings.SignalSignatures>(
             signal: K,
             callback: Settings.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Settings.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Settings.SignalSignatures[K]>
+            ...args: Settings.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -10963,7 +11266,9 @@ export namespace WebKit2 {
 
     namespace URIRequest {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::uri': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11004,14 +11309,17 @@ export namespace WebKit2 {
             signal: K,
             callback: URIRequest.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof URIRequest.SignalSignatures>(
             signal: K,
             callback: URIRequest.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof URIRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<URIRequest.SignalSignatures[K]>
+            ...args: URIRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -11039,7 +11347,19 @@ export namespace WebKit2 {
 
     namespace URIResponse {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::content-length': GObject.Object.Notify;
+            'notify::content-length': GObject.Object.Notify;
+            'notify::http-headers': GObject.Object.Notify;
+            'notify::http-headers': GObject.Object.Notify;
+            'notify::mime-type': GObject.Object.Notify;
+            'notify::mime-type': GObject.Object.Notify;
+            'notify::status-code': GObject.Object.Notify;
+            'notify::status-code': GObject.Object.Notify;
+            'notify::suggested-filename': GObject.Object.Notify;
+            'notify::suggested-filename': GObject.Object.Notify;
+            'notify::uri': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11127,14 +11447,17 @@ export namespace WebKit2 {
             signal: K,
             callback: URIResponse.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof URIResponse.SignalSignatures>(
             signal: K,
             callback: URIResponse.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof URIResponse.SignalSignatures>(
             signal: K,
-            ...args: Parameters<URIResponse.SignalSignatures[K]>
+            ...args: URIResponse.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -11217,14 +11540,17 @@ export namespace WebKit2 {
             signal: K,
             callback: URISchemeRequest.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof URISchemeRequest.SignalSignatures>(
             signal: K,
             callback: URISchemeRequest.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof URISchemeRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<URISchemeRequest.SignalSignatures[K]>
+            ...args: URISchemeRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -11284,7 +11610,11 @@ export namespace WebKit2 {
 
     namespace URISchemeResponse {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::stream': GObject.Object.Notify;
+            'notify::stream-length': GObject.Object.Notify;
+            'notify::stream-length': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11341,14 +11671,17 @@ export namespace WebKit2 {
             signal: K,
             callback: URISchemeResponse.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof URISchemeResponse.SignalSignatures>(
             signal: K,
             callback: URISchemeResponse.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof URISchemeResponse.SignalSignatures>(
             signal: K,
-            ...args: Parameters<URISchemeResponse.SignalSignatures[K]>
+            ...args: URISchemeResponse.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -11377,7 +11710,9 @@ export namespace WebKit2 {
 
     namespace UserContentFilterStore {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11427,14 +11762,17 @@ export namespace WebKit2 {
             signal: K,
             callback: UserContentFilterStore.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UserContentFilterStore.SignalSignatures>(
             signal: K,
             callback: UserContentFilterStore.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UserContentFilterStore.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UserContentFilterStore.SignalSignatures[K]>
+            ...args: UserContentFilterStore.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -11736,7 +12074,7 @@ export namespace WebKit2 {
         }
 
         interface ScriptMessageWithReplyReceived {
-            (_source: UserContentManager, value: JavaScriptCore.Value, reply: ScriptMessageReply): boolean;
+            (_source: UserContentManager, value: JavaScriptCore.Value, reply: ScriptMessageReply): boolean | void;
         }
 
         // Signal signatures
@@ -11782,14 +12120,17 @@ export namespace WebKit2 {
             signal: K,
             callback: UserContentManager.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UserContentManager.SignalSignatures>(
             signal: K,
             callback: UserContentManager.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UserContentManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UserContentManager.SignalSignatures[K]>
+            ...args: UserContentManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -11952,7 +12293,12 @@ export namespace WebKit2 {
 
     namespace UserMediaPermissionRequest {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::is-for-audio-device': GObject.Object.Notify;
+            'notify::is-for-audio-device': GObject.Object.Notify;
+            'notify::is-for-video-device': GObject.Object.Notify;
+            'notify::is-for-video-device': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12008,14 +12354,17 @@ export namespace WebKit2 {
             signal: K,
             callback: UserMediaPermissionRequest.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UserMediaPermissionRequest.SignalSignatures>(
             signal: K,
             callback: UserMediaPermissionRequest.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UserMediaPermissionRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UserMediaPermissionRequest.SignalSignatures[K]>
+            ...args: UserMediaPermissionRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -12477,7 +12826,12 @@ export namespace WebKit2 {
 
     namespace UserMessage {
         // Signal signatures
-        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {}
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
+            'notify::fd-list': GObject.Object.Notify;
+            'notify::fd-list': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parameters': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12543,14 +12897,17 @@ export namespace WebKit2 {
             signal: K,
             callback: UserMessage.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UserMessage.SignalSignatures>(
             signal: K,
             callback: UserMessage.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UserMessage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UserMessage.SignalSignatures[K]>
+            ...args: UserMessage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -12600,7 +12957,7 @@ export namespace WebKit2 {
         }
 
         interface UserMessageReceived {
-            (_source: WebContext, message: UserMessage): boolean;
+            (_source: WebContext, message: UserMessage): boolean | void;
         }
 
         // Signal signatures
@@ -12610,6 +12967,18 @@ export namespace WebKit2 {
             'initialize-notification-permissions': InitializeNotificationPermissions;
             'initialize-web-extensions': InitializeWebExtensions;
             'user-message-received': UserMessageReceived;
+            'notify::local-storage-directory': GObject.Object.Notify;
+            'notify::local-storage-directory': GObject.Object.Notify;
+            'notify::memory-pressure-settings': GObject.Object.Notify;
+            'notify::memory-pressure-settings': GObject.Object.Notify;
+            'notify::process-swap-on-cross-site-navigation-enabled': GObject.Object.Notify;
+            'notify::process-swap-on-cross-site-navigation-enabled': GObject.Object.Notify;
+            'notify::time-zone-override': GObject.Object.Notify;
+            'notify::time-zone-override': GObject.Object.Notify;
+            'notify::use-system-appearance-for-scrollbars': GObject.Object.Notify;
+            'notify::use-system-appearance-for-scrollbars': GObject.Object.Notify;
+            'notify::website-data-manager': GObject.Object.Notify;
+            'notify::website-data-manager': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -12765,14 +13134,17 @@ export namespace WebKit2 {
             signal: K,
             callback: WebContext.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WebContext.SignalSignatures>(
             signal: K,
             callback: WebContext.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebContext.SignalSignatures[K]>
+            ...args: WebContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -13249,11 +13621,11 @@ export namespace WebKit2 {
         // Signal callback interfaces
 
         interface Attach {
-            (_source: WebInspector): boolean;
+            (_source: WebInspector): boolean | void;
         }
 
         interface BringToFront {
-            (_source: WebInspector): boolean;
+            (_source: WebInspector): boolean | void;
         }
 
         interface Closed {
@@ -13261,11 +13633,11 @@ export namespace WebKit2 {
         }
 
         interface Detach {
-            (_source: WebInspector): boolean;
+            (_source: WebInspector): boolean | void;
         }
 
         interface OpenWindow {
-            (_source: WebInspector): boolean;
+            (_source: WebInspector): boolean | void;
         }
 
         // Signal signatures
@@ -13275,6 +13647,12 @@ export namespace WebKit2 {
             closed: Closed;
             detach: Detach;
             'open-window': OpenWindow;
+            'notify::attached-height': GObject.Object.Notify;
+            'notify::attached-height': GObject.Object.Notify;
+            'notify::can-attach': GObject.Object.Notify;
+            'notify::can-attach': GObject.Object.Notify;
+            'notify::inspected-uri': GObject.Object.Notify;
+            'notify::inspected-uri': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -13358,14 +13736,17 @@ export namespace WebKit2 {
             signal: K,
             callback: WebInspector.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WebInspector.SignalSignatures>(
             signal: K,
             callback: WebInspector.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebInspector.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebInspector.SignalSignatures[K]>
+            ...args: WebInspector.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -13462,6 +13843,8 @@ export namespace WebKit2 {
             finished: Finished;
             'received-data': ReceivedData;
             'sent-request': SentRequest;
+            'notify::response': GObject.Object.Notify;
+            'notify::uri': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -13512,14 +13895,17 @@ export namespace WebKit2 {
             signal: K,
             callback: WebResource.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WebResource.SignalSignatures>(
             signal: K,
             callback: WebResource.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebResource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebResource.SignalSignatures[K]>
+            ...args: WebResource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -13606,7 +13992,7 @@ export namespace WebKit2 {
         // Signal callback interfaces
 
         interface Authenticate {
-            (_source: WebView, request: AuthenticationRequest): boolean;
+            (_source: WebView, request: AuthenticationRequest): boolean | void;
         }
 
         interface Close {
@@ -13614,7 +14000,12 @@ export namespace WebKit2 {
         }
 
         interface ContextMenu {
-            (_source: WebView, context_menu: ContextMenu, event: Gdk.Event, hit_test_result: HitTestResult): boolean;
+            (
+                _source: WebView,
+                context_menu: ContextMenu,
+                event: Gdk.Event,
+                hit_test_result: HitTestResult,
+            ): boolean | void;
         }
 
         interface ContextMenuDismissed {
@@ -13626,11 +14017,11 @@ export namespace WebKit2 {
         }
 
         interface DecidePolicy {
-            (_source: WebView, decision: PolicyDecision, decision_type: PolicyDecisionType): boolean;
+            (_source: WebView, decision: PolicyDecision, decision_type: PolicyDecisionType): boolean | void;
         }
 
         interface EnterFullscreen {
-            (_source: WebView): boolean;
+            (_source: WebView): boolean | void;
         }
 
         interface InsecureContentDetected {
@@ -13638,7 +14029,7 @@ export namespace WebKit2 {
         }
 
         interface LeaveFullscreen {
-            (_source: WebView): boolean;
+            (_source: WebView): boolean | void;
         }
 
         interface LoadChanged {
@@ -13646,7 +14037,7 @@ export namespace WebKit2 {
         }
 
         interface LoadFailed {
-            (_source: WebView, load_event: LoadEvent, failing_uri: string, error: GLib.Error): boolean;
+            (_source: WebView, load_event: LoadEvent, failing_uri: string, error: GLib.Error): boolean | void;
         }
 
         interface LoadFailedWithTlsErrors {
@@ -13655,7 +14046,7 @@ export namespace WebKit2 {
                 failing_uri: string,
                 certificate: Gio.TlsCertificate,
                 errors: Gio.TlsCertificateFlags,
-            ): boolean;
+            ): boolean | void;
         }
 
         interface MouseTargetChanged {
@@ -13663,15 +14054,15 @@ export namespace WebKit2 {
         }
 
         interface PermissionRequest {
-            (_source: WebView, request: PermissionRequest): boolean;
+            (_source: WebView, request: PermissionRequest): boolean | void;
         }
 
         interface Print {
-            (_source: WebView, print_operation: PrintOperation): boolean;
+            (_source: WebView, print_operation: PrintOperation): boolean | void;
         }
 
         interface QueryPermissionState {
-            (_source: WebView, query: PermissionStateQuery): boolean;
+            (_source: WebView, query: PermissionStateQuery): boolean | void;
         }
 
         interface ReadyToShow {
@@ -13687,23 +14078,23 @@ export namespace WebKit2 {
         }
 
         interface RunColorChooser {
-            (_source: WebView, request: ColorChooserRequest): boolean;
+            (_source: WebView, request: ColorChooserRequest): boolean | void;
         }
 
         interface RunFileChooser {
-            (_source: WebView, request: FileChooserRequest): boolean;
+            (_source: WebView, request: FileChooserRequest): boolean | void;
         }
 
         interface ScriptDialog {
-            (_source: WebView, dialog: ScriptDialog): boolean;
+            (_source: WebView, dialog: ScriptDialog): boolean | void;
         }
 
         interface ShowNotification {
-            (_source: WebView, notification: Notification): boolean;
+            (_source: WebView, notification: Notification): boolean | void;
         }
 
         interface ShowOptionMenu {
-            (_source: WebView, menu: OptionMenu, event: Gdk.Event, rectangle: Gdk.Rectangle): boolean;
+            (_source: WebView, menu: OptionMenu, event: Gdk.Event, rectangle: Gdk.Rectangle): boolean | void;
         }
 
         interface SubmitForm {
@@ -13711,11 +14102,11 @@ export namespace WebKit2 {
         }
 
         interface UserMessageReceived {
-            (_source: WebView, message: UserMessage): boolean;
+            (_source: WebView, message: UserMessage): boolean | void;
         }
 
         interface WebProcessCrashed {
-            (_source: WebView): boolean;
+            (_source: WebView): boolean | void;
         }
 
         interface WebProcessTerminated {
@@ -13752,6 +14143,118 @@ export namespace WebKit2 {
             'user-message-received': UserMessageReceived;
             'web-process-crashed': WebProcessCrashed;
             'web-process-terminated': WebProcessTerminated;
+            'notify::automation-presentation-type': GObject.Object.Notify;
+            'notify::automation-presentation-type': GObject.Object.Notify;
+            'notify::camera-capture-state': GObject.Object.Notify;
+            'notify::camera-capture-state': GObject.Object.Notify;
+            'notify::default-content-security-policy': GObject.Object.Notify;
+            'notify::default-content-security-policy': GObject.Object.Notify;
+            'notify::display-capture-state': GObject.Object.Notify;
+            'notify::display-capture-state': GObject.Object.Notify;
+            'notify::editable': GObject.Object.Notify;
+            'notify::estimated-load-progress': GObject.Object.Notify;
+            'notify::estimated-load-progress': GObject.Object.Notify;
+            'notify::favicon': GObject.Object.Notify;
+            'notify::is-controlled-by-automation': GObject.Object.Notify;
+            'notify::is-controlled-by-automation': GObject.Object.Notify;
+            'notify::is-ephemeral': GObject.Object.Notify;
+            'notify::is-ephemeral': GObject.Object.Notify;
+            'notify::is-loading': GObject.Object.Notify;
+            'notify::is-loading': GObject.Object.Notify;
+            'notify::is-muted': GObject.Object.Notify;
+            'notify::is-muted': GObject.Object.Notify;
+            'notify::is-playing-audio': GObject.Object.Notify;
+            'notify::is-playing-audio': GObject.Object.Notify;
+            'notify::is-web-process-responsive': GObject.Object.Notify;
+            'notify::is-web-process-responsive': GObject.Object.Notify;
+            'notify::microphone-capture-state': GObject.Object.Notify;
+            'notify::microphone-capture-state': GObject.Object.Notify;
+            'notify::page-id': GObject.Object.Notify;
+            'notify::page-id': GObject.Object.Notify;
+            'notify::related-view': GObject.Object.Notify;
+            'notify::related-view': GObject.Object.Notify;
+            'notify::settings': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::uri': GObject.Object.Notify;
+            'notify::user-content-manager': GObject.Object.Notify;
+            'notify::user-content-manager': GObject.Object.Notify;
+            'notify::web-context': GObject.Object.Notify;
+            'notify::web-context': GObject.Object.Notify;
+            'notify::web-extension-mode': GObject.Object.Notify;
+            'notify::web-extension-mode': GObject.Object.Notify;
+            'notify::website-policies': GObject.Object.Notify;
+            'notify::website-policies': GObject.Object.Notify;
+            'notify::zoom-level': GObject.Object.Notify;
+            'notify::zoom-level': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::child': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::events': GObject.Object.Notify;
+            'notify::expand': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::halign': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::hexpand': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::margin': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::sensitive': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::valign': GObject.Object.Notify;
+            'notify::vexpand': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::window': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -14202,14 +14705,17 @@ export namespace WebKit2 {
         // Signals
 
         connect<K extends keyof WebView.SignalSignatures>(signal: K, callback: WebView.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WebView.SignalSignatures>(
             signal: K,
             callback: WebView.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebView.SignalSignatures[K]>
+            ...args: WebView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -16283,7 +16789,77 @@ export namespace WebKit2 {
 
     namespace WebViewBase {
         // Signal signatures
-        interface SignalSignatures extends Gtk.Container.SignalSignatures {}
+        interface SignalSignatures extends Gtk.Container.SignalSignatures {
+            'notify::border-width': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::child': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::events': GObject.Object.Notify;
+            'notify::expand': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::halign': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::hexpand': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::margin': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::sensitive': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::valign': GObject.Object.Notify;
+            'notify::vexpand': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::window': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -16308,14 +16884,17 @@ export namespace WebKit2 {
             signal: K,
             callback: WebViewBase.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WebViewBase.SignalSignatures>(
             signal: K,
             callback: WebViewBase.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebViewBase.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebViewBase.SignalSignatures[K]>
+            ...args: WebViewBase.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -16792,14 +17371,19 @@ export namespace WebKit2 {
             signal: K,
             callback: WebsiteDataAccessPermissionRequest.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WebsiteDataAccessPermissionRequest.SignalSignatures>(
             signal: K,
             callback: WebsiteDataAccessPermissionRequest.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebsiteDataAccessPermissionRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebsiteDataAccessPermissionRequest.SignalSignatures[K]>
+            ...args: WebsiteDataAccessPermissionRequest.SignalSignatures[K] extends (...args: infer P) => any
+                ? P
+                : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -17274,7 +17858,36 @@ export namespace WebKit2 {
 
     namespace WebsiteDataManager {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::base-cache-directory': GObject.Object.Notify;
+            'notify::base-cache-directory': GObject.Object.Notify;
+            'notify::base-data-directory': GObject.Object.Notify;
+            'notify::base-data-directory': GObject.Object.Notify;
+            'notify::disk-cache-directory': GObject.Object.Notify;
+            'notify::disk-cache-directory': GObject.Object.Notify;
+            'notify::dom-cache-directory': GObject.Object.Notify;
+            'notify::dom-cache-directory': GObject.Object.Notify;
+            'notify::hsts-cache-directory': GObject.Object.Notify;
+            'notify::hsts-cache-directory': GObject.Object.Notify;
+            'notify::indexeddb-directory': GObject.Object.Notify;
+            'notify::indexeddb-directory': GObject.Object.Notify;
+            'notify::is-ephemeral': GObject.Object.Notify;
+            'notify::is-ephemeral': GObject.Object.Notify;
+            'notify::itp-directory': GObject.Object.Notify;
+            'notify::itp-directory': GObject.Object.Notify;
+            'notify::local-storage-directory': GObject.Object.Notify;
+            'notify::local-storage-directory': GObject.Object.Notify;
+            'notify::offline-application-cache-directory': GObject.Object.Notify;
+            'notify::offline-application-cache-directory': GObject.Object.Notify;
+            'notify::origin-storage-ratio': GObject.Object.Notify;
+            'notify::origin-storage-ratio': GObject.Object.Notify;
+            'notify::service-worker-registrations-directory': GObject.Object.Notify;
+            'notify::service-worker-registrations-directory': GObject.Object.Notify;
+            'notify::total-storage-ratio': GObject.Object.Notify;
+            'notify::total-storage-ratio': GObject.Object.Notify;
+            'notify::websql-directory': GObject.Object.Notify;
+            'notify::websql-directory': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17476,14 +18089,17 @@ export namespace WebKit2 {
             signal: K,
             callback: WebsiteDataManager.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WebsiteDataManager.SignalSignatures>(
             signal: K,
             callback: WebsiteDataManager.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebsiteDataManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebsiteDataManager.SignalSignatures[K]>
+            ...args: WebsiteDataManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -17847,7 +18463,9 @@ export namespace WebKit2 {
 
     namespace WebsitePolicies {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::autoplay': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17886,14 +18504,17 @@ export namespace WebKit2 {
             signal: K,
             callback: WebsitePolicies.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WebsitePolicies.SignalSignatures>(
             signal: K,
             callback: WebsitePolicies.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebsitePolicies.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebsitePolicies.SignalSignatures[K]>
+            ...args: WebsitePolicies.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -17906,7 +18527,21 @@ export namespace WebKit2 {
 
     namespace WindowProperties {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::fullscreen': GObject.Object.Notify;
+            'notify::geometry': GObject.Object.Notify;
+            'notify::locationbar-visible': GObject.Object.Notify;
+            'notify::locationbar-visible': GObject.Object.Notify;
+            'notify::menubar-visible': GObject.Object.Notify;
+            'notify::menubar-visible': GObject.Object.Notify;
+            'notify::resizable': GObject.Object.Notify;
+            'notify::scrollbars-visible': GObject.Object.Notify;
+            'notify::scrollbars-visible': GObject.Object.Notify;
+            'notify::statusbar-visible': GObject.Object.Notify;
+            'notify::statusbar-visible': GObject.Object.Notify;
+            'notify::toolbar-visible': GObject.Object.Notify;
+            'notify::toolbar-visible': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -18053,14 +18688,17 @@ export namespace WebKit2 {
             signal: K,
             callback: WindowProperties.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WindowProperties.SignalSignatures>(
             signal: K,
             callback: WindowProperties.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WindowProperties.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WindowProperties.SignalSignatures[K]>
+            ...args: WindowProperties.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

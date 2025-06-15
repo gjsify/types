@@ -517,7 +517,19 @@ export namespace GstValidate {
     }
     namespace BinMonitor {
         // Signal signatures
-        interface SignalSignatures extends ElementMonitor.SignalSignatures {}
+        interface SignalSignatures extends ElementMonitor.SignalSignatures {
+            'notify::handles-states': GObject.Object.Notify;
+            'notify::handles-states': GObject.Object.Notify;
+            'notify::object': GObject.Object.Notify;
+            'notify::pipeline': GObject.Object.Notify;
+            'notify::validate-parent': GObject.Object.Notify;
+            'notify::validate-parent': GObject.Object.Notify;
+            'notify::validate-runner': GObject.Object.Notify;
+            'notify::validate-runner': GObject.Object.Notify;
+            'notify::verbosity': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -559,14 +571,17 @@ export namespace GstValidate {
             signal: K,
             callback: BinMonitor.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BinMonitor.SignalSignatures>(
             signal: K,
             callback: BinMonitor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BinMonitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BinMonitor.SignalSignatures[K]>
+            ...args: BinMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1018,7 +1033,17 @@ export namespace GstValidate {
 
     namespace ElementMonitor {
         // Signal signatures
-        interface SignalSignatures extends Monitor.SignalSignatures {}
+        interface SignalSignatures extends Monitor.SignalSignatures {
+            'notify::object': GObject.Object.Notify;
+            'notify::pipeline': GObject.Object.Notify;
+            'notify::validate-parent': GObject.Object.Notify;
+            'notify::validate-parent': GObject.Object.Notify;
+            'notify::validate-runner': GObject.Object.Notify;
+            'notify::validate-runner': GObject.Object.Notify;
+            'notify::verbosity': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1047,14 +1072,17 @@ export namespace GstValidate {
             signal: K,
             callback: ElementMonitor.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ElementMonitor.SignalSignatures>(
             signal: K,
             callback: ElementMonitor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ElementMonitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ElementMonitor.SignalSignatures[K]>
+            ...args: ElementMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get validate_runner(): Runner;
@@ -1553,7 +1581,12 @@ export namespace GstValidate {
 
     namespace MediaDescriptor {
         // Signal signatures
-        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            'notify::validate-runner': GObject.Object.Notify;
+            'notify::validate-runner': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1583,14 +1616,17 @@ export namespace GstValidate {
             signal: K,
             callback: MediaDescriptor.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MediaDescriptor.SignalSignatures>(
             signal: K,
             callback: MediaDescriptor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MediaDescriptor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaDescriptor.SignalSignatures[K]>
+            ...args: MediaDescriptor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2093,7 +2129,12 @@ export namespace GstValidate {
 
     namespace MediaDescriptorParser {
         // Signal signatures
-        interface SignalSignatures extends MediaDescriptor.SignalSignatures {}
+        interface SignalSignatures extends MediaDescriptor.SignalSignatures {
+            'notify::validate-runner': GObject.Object.Notify;
+            'notify::validate-runner': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2119,14 +2160,17 @@ export namespace GstValidate {
             signal: K,
             callback: MediaDescriptorParser.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MediaDescriptorParser.SignalSignatures>(
             signal: K,
             callback: MediaDescriptorParser.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MediaDescriptorParser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaDescriptorParser.SignalSignatures[K]>
+            ...args: MediaDescriptorParser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2633,7 +2677,12 @@ export namespace GstValidate {
 
     namespace MediaDescriptorWriter {
         // Signal signatures
-        interface SignalSignatures extends MediaDescriptor.SignalSignatures {}
+        interface SignalSignatures extends MediaDescriptor.SignalSignatures {
+            'notify::validate-runner': GObject.Object.Notify;
+            'notify::validate-runner': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2664,14 +2713,17 @@ export namespace GstValidate {
             signal: K,
             callback: MediaDescriptorWriter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MediaDescriptorWriter.SignalSignatures>(
             signal: K,
             callback: MediaDescriptorWriter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MediaDescriptorWriter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaDescriptorWriter.SignalSignatures[K]>
+            ...args: MediaDescriptorWriter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3183,7 +3235,17 @@ export namespace GstValidate {
 
     namespace Monitor {
         // Signal signatures
-        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            'notify::object': GObject.Object.Notify;
+            'notify::pipeline': GObject.Object.Notify;
+            'notify::validate-parent': GObject.Object.Notify;
+            'notify::validate-parent': GObject.Object.Notify;
+            'notify::validate-runner': GObject.Object.Notify;
+            'notify::validate-runner': GObject.Object.Notify;
+            'notify::verbosity': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3235,14 +3297,17 @@ export namespace GstValidate {
         // Signals
 
         connect<K extends keyof Monitor.SignalSignatures>(signal: K, callback: Monitor.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Monitor.SignalSignatures>(
             signal: K,
             callback: Monitor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Monitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Monitor.SignalSignatures[K]>
+            ...args: Monitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -3761,7 +3826,12 @@ export namespace GstValidate {
 
     namespace Override {
         // Signal signatures
-        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            'notify::validate-runner': GObject.Object.Notify;
+            'notify::validate-runner': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3790,14 +3860,17 @@ export namespace GstValidate {
         // Signals
 
         connect<K extends keyof Override.SignalSignatures>(signal: K, callback: Override.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Override.SignalSignatures>(
             signal: K,
             callback: Override.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Override.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Override.SignalSignatures[K]>
+            ...args: Override.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -4309,7 +4382,17 @@ export namespace GstValidate {
 
     namespace PadMonitor {
         // Signal signatures
-        interface SignalSignatures extends Monitor.SignalSignatures {}
+        interface SignalSignatures extends Monitor.SignalSignatures {
+            'notify::object': GObject.Object.Notify;
+            'notify::pipeline': GObject.Object.Notify;
+            'notify::validate-parent': GObject.Object.Notify;
+            'notify::validate-parent': GObject.Object.Notify;
+            'notify::validate-runner': GObject.Object.Notify;
+            'notify::validate-runner': GObject.Object.Notify;
+            'notify::verbosity': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4349,14 +4432,17 @@ export namespace GstValidate {
             signal: K,
             callback: PadMonitor.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PadMonitor.SignalSignatures>(
             signal: K,
             callback: PadMonitor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PadMonitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PadMonitor.SignalSignatures[K]>
+            ...args: PadMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get validate_runner(): Runner;
@@ -4855,7 +4941,19 @@ export namespace GstValidate {
 
     namespace PipelineMonitor {
         // Signal signatures
-        interface SignalSignatures extends BinMonitor.SignalSignatures {}
+        interface SignalSignatures extends BinMonitor.SignalSignatures {
+            'notify::handles-states': GObject.Object.Notify;
+            'notify::handles-states': GObject.Object.Notify;
+            'notify::object': GObject.Object.Notify;
+            'notify::pipeline': GObject.Object.Notify;
+            'notify::validate-parent': GObject.Object.Notify;
+            'notify::validate-parent': GObject.Object.Notify;
+            'notify::validate-runner': GObject.Object.Notify;
+            'notify::validate-runner': GObject.Object.Notify;
+            'notify::verbosity': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4884,14 +4982,17 @@ export namespace GstValidate {
             signal: K,
             callback: PipelineMonitor.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PipelineMonitor.SignalSignatures>(
             signal: K,
             callback: PipelineMonitor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PipelineMonitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PipelineMonitor.SignalSignatures[K]>
+            ...args: PipelineMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -5352,6 +5453,9 @@ export namespace GstValidate {
         interface SignalSignatures extends Gst.Tracer.SignalSignatures {
             'report-added': ReportAdded;
             stopping: Stopping;
+            'notify::params': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -5389,8 +5493,14 @@ export namespace GstValidate {
         // Signals
 
         connect<K extends keyof Runner.SignalSignatures>(signal: K, callback: Runner.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Runner.SignalSignatures>(signal: K, callback: Runner.SignalSignatures[K]): number;
-        emit<K extends keyof Runner.SignalSignatures>(signal: K, ...args: Parameters<Runner.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Runner.SignalSignatures>(
+            signal: K,
+            ...args: Runner.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5427,6 +5537,14 @@ export namespace GstValidate {
         interface SignalSignatures extends Gst.Object.SignalSignatures {
             'action-done': ActionDone;
             done: Done;
+            'notify::execute-on-idle': GObject.Object.Notify;
+            'notify::execute-on-idle': GObject.Object.Notify;
+            'notify::handles-states': GObject.Object.Notify;
+            'notify::handles-states': GObject.Object.Notify;
+            'notify::validate-runner': GObject.Object.Notify;
+            'notify::validate-runner': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -5464,14 +5582,17 @@ export namespace GstValidate {
         // Signals
 
         connect<K extends keyof Scenario.SignalSignatures>(signal: K, callback: Scenario.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Scenario.SignalSignatures>(
             signal: K,
             callback: Scenario.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Scenario.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Scenario.SignalSignatures[K]>
+            ...args: Scenario.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 

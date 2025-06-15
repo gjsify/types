@@ -61,7 +61,10 @@ export namespace Sushi {
     function query_supported_document_types(): string[];
     namespace CoverArtFetcher {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::cover': GObject.Object.Notify;
+            'notify::taglist': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -94,19 +97,30 @@ export namespace Sushi {
             signal: K,
             callback: CoverArtFetcher.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CoverArtFetcher.SignalSignatures>(
             signal: K,
             callback: CoverArtFetcher.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CoverArtFetcher.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CoverArtFetcher.SignalSignatures[K]>
+            ...args: CoverArtFetcher.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace FileLoader {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::content-type': GObject.Object.Notify;
+            'notify::content-type': GObject.Object.Notify;
+            'notify::file': GObject.Object.Notify;
+            'notify::icon': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::time': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -149,14 +163,17 @@ export namespace Sushi {
             signal: K,
             callback: FileLoader.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FileLoader.SignalSignatures>(
             signal: K,
             callback: FileLoader.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FileLoader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileLoader.SignalSignatures[K]>
+            ...args: FileLoader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -179,6 +196,71 @@ export namespace Sushi {
         // Signal signatures
         interface SignalSignatures extends Gtk.DrawingArea.SignalSignatures {
             loaded: Loaded;
+            'notify::uri': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::events': GObject.Object.Notify;
+            'notify::expand': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::halign': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::hexpand': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::margin': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::sensitive': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::valign': GObject.Object.Notify;
+            'notify::vexpand': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::window': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -216,14 +298,17 @@ export namespace Sushi {
             signal: K,
             callback: FontWidget.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FontWidget.SignalSignatures>(
             signal: K,
             callback: FontWidget.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FontWidget.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FontWidget.SignalSignatures[K]>
+            ...args: FontWidget.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -669,7 +754,10 @@ export namespace Sushi {
 
     namespace PdfLoader {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::document': GObject.Object.Notify;
+            'notify::uri': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -699,14 +787,17 @@ export namespace Sushi {
         // Signals
 
         connect<K extends keyof PdfLoader.SignalSignatures>(signal: K, callback: PdfLoader.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PdfLoader.SignalSignatures>(
             signal: K,
             callback: PdfLoader.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PdfLoader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PdfLoader.SignalSignatures[K]>
+            ...args: PdfLoader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -716,7 +807,14 @@ export namespace Sushi {
 
     namespace SoundPlayer {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::duration': GObject.Object.Notify;
+            'notify::playing': GObject.Object.Notify;
+            'notify::progress': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::taglist': GObject.Object.Notify;
+            'notify::uri': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -757,14 +855,17 @@ export namespace Sushi {
             signal: K,
             callback: SoundPlayer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SoundPlayer.SignalSignatures>(
             signal: K,
             callback: SoundPlayer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SoundPlayer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SoundPlayer.SignalSignatures[K]>
+            ...args: SoundPlayer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace TextLoader {
@@ -777,6 +878,7 @@ export namespace Sushi {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             loaded: Loaded;
+            'notify::uri': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -808,14 +910,17 @@ export namespace Sushi {
             signal: K,
             callback: TextLoader.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TextLoader.SignalSignatures>(
             signal: K,
             callback: TextLoader.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TextLoader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TextLoader.SignalSignatures[K]>
+            ...args: TextLoader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     type CoverArtFetcherClass = typeof CoverArtFetcher;

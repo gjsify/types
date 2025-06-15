@@ -18898,7 +18898,20 @@ export namespace Qmi {
     }
     namespace Client {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::client-cid': GObject.Object.Notify;
+            'notify::client-cid': GObject.Object.Notify;
+            'notify::client-device': GObject.Object.Notify;
+            'notify::client-device': GObject.Object.Notify;
+            'notify::client-service': GObject.Object.Notify;
+            'notify::client-service': GObject.Object.Notify;
+            'notify::client-valid': GObject.Object.Notify;
+            'notify::client-valid': GObject.Object.Notify;
+            'notify::client-version-major': GObject.Object.Notify;
+            'notify::client-version-major': GObject.Object.Notify;
+            'notify::client-version-minor': GObject.Object.Notify;
+            'notify::client-version-minor': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -18959,8 +18972,14 @@ export namespace Qmi {
         // Signals
 
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -19034,6 +19053,18 @@ export namespace Qmi {
         // Signal signatures
         interface SignalSignatures extends Client.SignalSignatures {
             received: Received;
+            'notify::client-cid': GObject.Object.Notify;
+            'notify::client-cid': GObject.Object.Notify;
+            'notify::client-device': GObject.Object.Notify;
+            'notify::client-device': GObject.Object.Notify;
+            'notify::client-service': GObject.Object.Notify;
+            'notify::client-service': GObject.Object.Notify;
+            'notify::client-valid': GObject.Object.Notify;
+            'notify::client-valid': GObject.Object.Notify;
+            'notify::client-version-major': GObject.Object.Notify;
+            'notify::client-version-major': GObject.Object.Notify;
+            'notify::client-version-minor': GObject.Object.Notify;
+            'notify::client-version-minor': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -19057,14 +19088,17 @@ export namespace Qmi {
         // Signals
 
         connect<K extends keyof ClientAtr.SignalSignatures>(signal: K, callback: ClientAtr.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientAtr.SignalSignatures>(
             signal: K,
             callback: ClientAtr.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientAtr.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientAtr.SignalSignatures[K]>
+            ...args: ClientAtr.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -19135,6 +19169,18 @@ export namespace Qmi {
         // Signal signatures
         interface SignalSignatures extends Client.SignalSignatures {
             'event-report': EventReport;
+            'notify::client-cid': GObject.Object.Notify;
+            'notify::client-cid': GObject.Object.Notify;
+            'notify::client-device': GObject.Object.Notify;
+            'notify::client-device': GObject.Object.Notify;
+            'notify::client-service': GObject.Object.Notify;
+            'notify::client-service': GObject.Object.Notify;
+            'notify::client-valid': GObject.Object.Notify;
+            'notify::client-valid': GObject.Object.Notify;
+            'notify::client-version-major': GObject.Object.Notify;
+            'notify::client-version-major': GObject.Object.Notify;
+            'notify::client-version-minor': GObject.Object.Notify;
+            'notify::client-version-minor': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -19158,14 +19204,17 @@ export namespace Qmi {
         // Signals
 
         connect<K extends keyof ClientDms.SignalSignatures>(signal: K, callback: ClientDms.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientDms.SignalSignatures>(
             signal: K,
             callback: ClientDms.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientDms.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientDms.SignalSignatures[K]>
+            ...args: ClientDms.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -22583,7 +22632,20 @@ export namespace Qmi {
 
     namespace ClientDpm {
         // Signal signatures
-        interface SignalSignatures extends Client.SignalSignatures {}
+        interface SignalSignatures extends Client.SignalSignatures {
+            'notify::client-cid': GObject.Object.Notify;
+            'notify::client-cid': GObject.Object.Notify;
+            'notify::client-device': GObject.Object.Notify;
+            'notify::client-device': GObject.Object.Notify;
+            'notify::client-service': GObject.Object.Notify;
+            'notify::client-service': GObject.Object.Notify;
+            'notify::client-valid': GObject.Object.Notify;
+            'notify::client-valid': GObject.Object.Notify;
+            'notify::client-version-major': GObject.Object.Notify;
+            'notify::client-version-major': GObject.Object.Notify;
+            'notify::client-version-minor': GObject.Object.Notify;
+            'notify::client-version-minor': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -22606,14 +22668,17 @@ export namespace Qmi {
         // Signals
 
         connect<K extends keyof ClientDpm.SignalSignatures>(signal: K, callback: ClientDpm.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientDpm.SignalSignatures>(
             signal: K,
             callback: ClientDpm.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientDpm.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientDpm.SignalSignatures[K]>
+            ...args: ClientDpm.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -22739,6 +22804,18 @@ export namespace Qmi {
         // Signal signatures
         interface SignalSignatures extends Client.SignalSignatures {
             'system-status': SystemStatus;
+            'notify::client-cid': GObject.Object.Notify;
+            'notify::client-cid': GObject.Object.Notify;
+            'notify::client-device': GObject.Object.Notify;
+            'notify::client-device': GObject.Object.Notify;
+            'notify::client-service': GObject.Object.Notify;
+            'notify::client-service': GObject.Object.Notify;
+            'notify::client-valid': GObject.Object.Notify;
+            'notify::client-valid': GObject.Object.Notify;
+            'notify::client-version-major': GObject.Object.Notify;
+            'notify::client-version-major': GObject.Object.Notify;
+            'notify::client-version-minor': GObject.Object.Notify;
+            'notify::client-version-minor': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -22762,14 +22839,17 @@ export namespace Qmi {
         // Signals
 
         connect<K extends keyof ClientDsd.SignalSignatures>(signal: K, callback: ClientDsd.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientDsd.SignalSignatures>(
             signal: K,
             callback: ClientDsd.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientDsd.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientDsd.SignalSignatures[K]>
+            ...args: ClientDsd.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -22997,7 +23077,20 @@ export namespace Qmi {
 
     namespace ClientFox {
         // Signal signatures
-        interface SignalSignatures extends Client.SignalSignatures {}
+        interface SignalSignatures extends Client.SignalSignatures {
+            'notify::client-cid': GObject.Object.Notify;
+            'notify::client-cid': GObject.Object.Notify;
+            'notify::client-device': GObject.Object.Notify;
+            'notify::client-device': GObject.Object.Notify;
+            'notify::client-service': GObject.Object.Notify;
+            'notify::client-service': GObject.Object.Notify;
+            'notify::client-valid': GObject.Object.Notify;
+            'notify::client-valid': GObject.Object.Notify;
+            'notify::client-version-major': GObject.Object.Notify;
+            'notify::client-version-major': GObject.Object.Notify;
+            'notify::client-version-minor': GObject.Object.Notify;
+            'notify::client-version-minor': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -23020,14 +23113,17 @@ export namespace Qmi {
         // Signals
 
         connect<K extends keyof ClientFox.SignalSignatures>(signal: K, callback: ClientFox.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientFox.SignalSignatures>(
             signal: K,
             callback: ClientFox.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientFox.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientFox.SignalSignatures[K]>
+            ...args: ClientFox.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -23090,7 +23186,20 @@ export namespace Qmi {
 
     namespace ClientGas {
         // Signal signatures
-        interface SignalSignatures extends Client.SignalSignatures {}
+        interface SignalSignatures extends Client.SignalSignatures {
+            'notify::client-cid': GObject.Object.Notify;
+            'notify::client-cid': GObject.Object.Notify;
+            'notify::client-device': GObject.Object.Notify;
+            'notify::client-device': GObject.Object.Notify;
+            'notify::client-service': GObject.Object.Notify;
+            'notify::client-service': GObject.Object.Notify;
+            'notify::client-valid': GObject.Object.Notify;
+            'notify::client-valid': GObject.Object.Notify;
+            'notify::client-version-major': GObject.Object.Notify;
+            'notify::client-version-major': GObject.Object.Notify;
+            'notify::client-version-minor': GObject.Object.Notify;
+            'notify::client-version-minor': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -23113,14 +23222,17 @@ export namespace Qmi {
         // Signals
 
         connect<K extends keyof ClientGas.SignalSignatures>(signal: K, callback: ClientGas.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientGas.SignalSignatures>(
             signal: K,
             callback: ClientGas.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientGas.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientGas.SignalSignatures[K]>
+            ...args: ClientGas.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -23348,7 +23460,20 @@ export namespace Qmi {
 
     namespace ClientGms {
         // Signal signatures
-        interface SignalSignatures extends Client.SignalSignatures {}
+        interface SignalSignatures extends Client.SignalSignatures {
+            'notify::client-cid': GObject.Object.Notify;
+            'notify::client-cid': GObject.Object.Notify;
+            'notify::client-device': GObject.Object.Notify;
+            'notify::client-device': GObject.Object.Notify;
+            'notify::client-service': GObject.Object.Notify;
+            'notify::client-service': GObject.Object.Notify;
+            'notify::client-valid': GObject.Object.Notify;
+            'notify::client-valid': GObject.Object.Notify;
+            'notify::client-version-major': GObject.Object.Notify;
+            'notify::client-version-major': GObject.Object.Notify;
+            'notify::client-version-minor': GObject.Object.Notify;
+            'notify::client-version-minor': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -23371,14 +23496,17 @@ export namespace Qmi {
         // Signals
 
         connect<K extends keyof ClientGms.SignalSignatures>(signal: K, callback: ClientGms.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientGms.SignalSignatures>(
             signal: K,
             callback: ClientGms.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientGms.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientGms.SignalSignatures[K]>
+            ...args: ClientGms.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -23584,6 +23712,18 @@ export namespace Qmi {
             'set-nmea-types': SetNmeaTypes;
             'set-operation-mode': SetOperationMode;
             'set-server': SetServer;
+            'notify::client-cid': GObject.Object.Notify;
+            'notify::client-cid': GObject.Object.Notify;
+            'notify::client-device': GObject.Object.Notify;
+            'notify::client-device': GObject.Object.Notify;
+            'notify::client-service': GObject.Object.Notify;
+            'notify::client-service': GObject.Object.Notify;
+            'notify::client-valid': GObject.Object.Notify;
+            'notify::client-valid': GObject.Object.Notify;
+            'notify::client-version-major': GObject.Object.Notify;
+            'notify::client-version-major': GObject.Object.Notify;
+            'notify::client-version-minor': GObject.Object.Notify;
+            'notify::client-version-minor': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -23607,14 +23747,17 @@ export namespace Qmi {
         // Signals
 
         connect<K extends keyof ClientLoc.SignalSignatures>(signal: K, callback: ClientLoc.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientLoc.SignalSignatures>(
             signal: K,
             callback: ClientLoc.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientLoc.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientLoc.SignalSignatures[K]>
+            ...args: ClientLoc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -24485,6 +24628,18 @@ export namespace Qmi {
             'serving-system': ServingSystem;
             'signal-info': SignalInfo;
             'system-info': SystemInfo;
+            'notify::client-cid': GObject.Object.Notify;
+            'notify::client-cid': GObject.Object.Notify;
+            'notify::client-device': GObject.Object.Notify;
+            'notify::client-device': GObject.Object.Notify;
+            'notify::client-service': GObject.Object.Notify;
+            'notify::client-service': GObject.Object.Notify;
+            'notify::client-valid': GObject.Object.Notify;
+            'notify::client-valid': GObject.Object.Notify;
+            'notify::client-version-major': GObject.Object.Notify;
+            'notify::client-version-major': GObject.Object.Notify;
+            'notify::client-version-minor': GObject.Object.Notify;
+            'notify::client-version-minor': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -24508,14 +24663,17 @@ export namespace Qmi {
         // Signals
 
         connect<K extends keyof ClientNas.SignalSignatures>(signal: K, callback: ClientNas.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientNas.SignalSignatures>(
             signal: K,
             callback: ClientNas.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientNas.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientNas.SignalSignatures[K]>
+            ...args: ClientNas.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -26202,6 +26360,18 @@ export namespace Qmi {
         // Signal signatures
         interface SignalSignatures extends Client.SignalSignatures {
             'event-report': EventReport;
+            'notify::client-cid': GObject.Object.Notify;
+            'notify::client-cid': GObject.Object.Notify;
+            'notify::client-device': GObject.Object.Notify;
+            'notify::client-device': GObject.Object.Notify;
+            'notify::client-service': GObject.Object.Notify;
+            'notify::client-service': GObject.Object.Notify;
+            'notify::client-valid': GObject.Object.Notify;
+            'notify::client-valid': GObject.Object.Notify;
+            'notify::client-version-major': GObject.Object.Notify;
+            'notify::client-version-major': GObject.Object.Notify;
+            'notify::client-version-minor': GObject.Object.Notify;
+            'notify::client-version-minor': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -26225,14 +26395,17 @@ export namespace Qmi {
         // Signals
 
         connect<K extends keyof ClientOma.SignalSignatures>(signal: K, callback: ClientOma.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientOma.SignalSignatures>(
             signal: K,
             callback: ClientOma.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientOma.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientOma.SignalSignatures[K]>
+            ...args: ClientOma.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -26680,7 +26853,20 @@ export namespace Qmi {
 
     namespace ClientPbm {
         // Signal signatures
-        interface SignalSignatures extends Client.SignalSignatures {}
+        interface SignalSignatures extends Client.SignalSignatures {
+            'notify::client-cid': GObject.Object.Notify;
+            'notify::client-cid': GObject.Object.Notify;
+            'notify::client-device': GObject.Object.Notify;
+            'notify::client-device': GObject.Object.Notify;
+            'notify::client-service': GObject.Object.Notify;
+            'notify::client-service': GObject.Object.Notify;
+            'notify::client-valid': GObject.Object.Notify;
+            'notify::client-valid': GObject.Object.Notify;
+            'notify::client-version-major': GObject.Object.Notify;
+            'notify::client-version-major': GObject.Object.Notify;
+            'notify::client-version-minor': GObject.Object.Notify;
+            'notify::client-version-minor': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -26703,14 +26889,17 @@ export namespace Qmi {
         // Signals
 
         connect<K extends keyof ClientPbm.SignalSignatures>(signal: K, callback: ClientPbm.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientPbm.SignalSignatures>(
             signal: K,
             callback: ClientPbm.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientPbm.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientPbm.SignalSignatures[K]>
+            ...args: ClientPbm.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -26926,6 +27115,18 @@ export namespace Qmi {
             'load-config': LoadConfig;
             refresh: Refresh;
             'set-selected-config': SetSelectedConfig;
+            'notify::client-cid': GObject.Object.Notify;
+            'notify::client-cid': GObject.Object.Notify;
+            'notify::client-device': GObject.Object.Notify;
+            'notify::client-device': GObject.Object.Notify;
+            'notify::client-service': GObject.Object.Notify;
+            'notify::client-service': GObject.Object.Notify;
+            'notify::client-valid': GObject.Object.Notify;
+            'notify::client-valid': GObject.Object.Notify;
+            'notify::client-version-major': GObject.Object.Notify;
+            'notify::client-version-major': GObject.Object.Notify;
+            'notify::client-version-minor': GObject.Object.Notify;
+            'notify::client-version-minor': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -26949,14 +27150,17 @@ export namespace Qmi {
         // Signals
 
         connect<K extends keyof ClientPdc.SignalSignatures>(signal: K, callback: ClientPdc.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientPdc.SignalSignatures>(
             signal: K,
             callback: ClientPdc.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientPdc.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientPdc.SignalSignatures[K]>
+            ...args: ClientPdc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -27692,6 +27896,18 @@ export namespace Qmi {
         interface SignalSignatures extends Client.SignalSignatures {
             'event-report': EventReport;
             'gps-ready': GpsReady;
+            'notify::client-cid': GObject.Object.Notify;
+            'notify::client-cid': GObject.Object.Notify;
+            'notify::client-device': GObject.Object.Notify;
+            'notify::client-device': GObject.Object.Notify;
+            'notify::client-service': GObject.Object.Notify;
+            'notify::client-service': GObject.Object.Notify;
+            'notify::client-valid': GObject.Object.Notify;
+            'notify::client-valid': GObject.Object.Notify;
+            'notify::client-version-major': GObject.Object.Notify;
+            'notify::client-version-major': GObject.Object.Notify;
+            'notify::client-version-minor': GObject.Object.Notify;
+            'notify::client-version-minor': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -27715,14 +27931,17 @@ export namespace Qmi {
         // Signals
 
         connect<K extends keyof ClientPds.SignalSignatures>(signal: K, callback: ClientPds.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientPds.SignalSignatures>(
             signal: K,
             callback: ClientPds.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientPds.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientPds.SignalSignatures[K]>
+            ...args: ClientPds.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -28293,6 +28512,18 @@ export namespace Qmi {
         interface SignalSignatures extends Client.SignalSignatures {
             'flow-status': FlowStatus;
             'network-status': NetworkStatus;
+            'notify::client-cid': GObject.Object.Notify;
+            'notify::client-cid': GObject.Object.Notify;
+            'notify::client-device': GObject.Object.Notify;
+            'notify::client-device': GObject.Object.Notify;
+            'notify::client-service': GObject.Object.Notify;
+            'notify::client-service': GObject.Object.Notify;
+            'notify::client-valid': GObject.Object.Notify;
+            'notify::client-valid': GObject.Object.Notify;
+            'notify::client-version-major': GObject.Object.Notify;
+            'notify::client-version-major': GObject.Object.Notify;
+            'notify::client-version-minor': GObject.Object.Notify;
+            'notify::client-version-minor': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -28316,14 +28547,17 @@ export namespace Qmi {
         // Signals
 
         connect<K extends keyof ClientQos.SignalSignatures>(signal: K, callback: ClientQos.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientQos.SignalSignatures>(
             signal: K,
             callback: ClientQos.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientQos.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientQos.SignalSignatures[K]>
+            ...args: ClientQos.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -28551,7 +28785,20 @@ export namespace Qmi {
 
     namespace ClientSar {
         // Signal signatures
-        interface SignalSignatures extends Client.SignalSignatures {}
+        interface SignalSignatures extends Client.SignalSignatures {
+            'notify::client-cid': GObject.Object.Notify;
+            'notify::client-cid': GObject.Object.Notify;
+            'notify::client-device': GObject.Object.Notify;
+            'notify::client-device': GObject.Object.Notify;
+            'notify::client-service': GObject.Object.Notify;
+            'notify::client-service': GObject.Object.Notify;
+            'notify::client-valid': GObject.Object.Notify;
+            'notify::client-valid': GObject.Object.Notify;
+            'notify::client-version-major': GObject.Object.Notify;
+            'notify::client-version-major': GObject.Object.Notify;
+            'notify::client-version-minor': GObject.Object.Notify;
+            'notify::client-version-minor': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -28574,14 +28821,17 @@ export namespace Qmi {
         // Signals
 
         connect<K extends keyof ClientSar.SignalSignatures>(signal: K, callback: ClientSar.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientSar.SignalSignatures>(
             signal: K,
             callback: ClientSar.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientSar.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientSar.SignalSignatures[K]>
+            ...args: ClientSar.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -28717,6 +28967,18 @@ export namespace Qmi {
             'card-status': CardStatus;
             refresh: Refresh;
             'slot-status': SlotStatus;
+            'notify::client-cid': GObject.Object.Notify;
+            'notify::client-cid': GObject.Object.Notify;
+            'notify::client-device': GObject.Object.Notify;
+            'notify::client-device': GObject.Object.Notify;
+            'notify::client-service': GObject.Object.Notify;
+            'notify::client-service': GObject.Object.Notify;
+            'notify::client-valid': GObject.Object.Notify;
+            'notify::client-valid': GObject.Object.Notify;
+            'notify::client-version-major': GObject.Object.Notify;
+            'notify::client-version-major': GObject.Object.Notify;
+            'notify::client-version-minor': GObject.Object.Notify;
+            'notify::client-version-minor': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -28740,14 +29002,17 @@ export namespace Qmi {
         // Signals
 
         connect<K extends keyof ClientUim.SignalSignatures>(signal: K, callback: ClientUim.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientUim.SignalSignatures>(
             signal: K,
             callback: ClientUim.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientUim.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientUim.SignalSignatures[K]>
+            ...args: ClientUim.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -29993,6 +30258,18 @@ export namespace Qmi {
             'release-ussd': ReleaseUssd;
             'supplementary-service': SupplementaryService;
             ussd: Ussd;
+            'notify::client-cid': GObject.Object.Notify;
+            'notify::client-cid': GObject.Object.Notify;
+            'notify::client-device': GObject.Object.Notify;
+            'notify::client-device': GObject.Object.Notify;
+            'notify::client-service': GObject.Object.Notify;
+            'notify::client-service': GObject.Object.Notify;
+            'notify::client-valid': GObject.Object.Notify;
+            'notify::client-valid': GObject.Object.Notify;
+            'notify::client-version-major': GObject.Object.Notify;
+            'notify::client-version-major': GObject.Object.Notify;
+            'notify::client-version-minor': GObject.Object.Notify;
+            'notify::client-version-minor': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -30019,14 +30296,17 @@ export namespace Qmi {
             signal: K,
             callback: ClientVoice.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientVoice.SignalSignatures>(
             signal: K,
             callback: ClientVoice.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientVoice.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientVoice.SignalSignatures[K]>
+            ...args: ClientVoice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -30969,7 +31249,20 @@ export namespace Qmi {
 
     namespace ClientWda {
         // Signal signatures
-        interface SignalSignatures extends Client.SignalSignatures {}
+        interface SignalSignatures extends Client.SignalSignatures {
+            'notify::client-cid': GObject.Object.Notify;
+            'notify::client-cid': GObject.Object.Notify;
+            'notify::client-device': GObject.Object.Notify;
+            'notify::client-device': GObject.Object.Notify;
+            'notify::client-service': GObject.Object.Notify;
+            'notify::client-service': GObject.Object.Notify;
+            'notify::client-valid': GObject.Object.Notify;
+            'notify::client-valid': GObject.Object.Notify;
+            'notify::client-version-major': GObject.Object.Notify;
+            'notify::client-version-major': GObject.Object.Notify;
+            'notify::client-version-minor': GObject.Object.Notify;
+            'notify::client-version-minor': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -30992,14 +31285,17 @@ export namespace Qmi {
         // Signals
 
         connect<K extends keyof ClientWda.SignalSignatures>(signal: K, callback: ClientWda.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientWda.SignalSignatures>(
             signal: K,
             callback: ClientWda.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientWda.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientWda.SignalSignatures[K]>
+            ...args: ClientWda.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -31200,6 +31496,18 @@ export namespace Qmi {
             'packet-service-status': PacketServiceStatus;
             'profile-changed': ProfileChanged;
             'set-lte-attach-pdn-list': SetLteAttachPdnList;
+            'notify::client-cid': GObject.Object.Notify;
+            'notify::client-cid': GObject.Object.Notify;
+            'notify::client-device': GObject.Object.Notify;
+            'notify::client-device': GObject.Object.Notify;
+            'notify::client-service': GObject.Object.Notify;
+            'notify::client-service': GObject.Object.Notify;
+            'notify::client-valid': GObject.Object.Notify;
+            'notify::client-valid': GObject.Object.Notify;
+            'notify::client-version-major': GObject.Object.Notify;
+            'notify::client-version-major': GObject.Object.Notify;
+            'notify::client-version-minor': GObject.Object.Notify;
+            'notify::client-version-minor': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -31223,14 +31531,17 @@ export namespace Qmi {
         // Signals
 
         connect<K extends keyof ClientWds.SignalSignatures>(signal: K, callback: ClientWds.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientWds.SignalSignatures>(
             signal: K,
             callback: ClientWds.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientWds.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientWds.SignalSignatures[K]>
+            ...args: ClientWds.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -33197,6 +33508,18 @@ export namespace Qmi {
         interface SignalSignatures extends Client.SignalSignatures {
             'event-report': EventReport;
             'smsc-address': SmscAddress;
+            'notify::client-cid': GObject.Object.Notify;
+            'notify::client-cid': GObject.Object.Notify;
+            'notify::client-device': GObject.Object.Notify;
+            'notify::client-device': GObject.Object.Notify;
+            'notify::client-service': GObject.Object.Notify;
+            'notify::client-service': GObject.Object.Notify;
+            'notify::client-valid': GObject.Object.Notify;
+            'notify::client-valid': GObject.Object.Notify;
+            'notify::client-version-major': GObject.Object.Notify;
+            'notify::client-version-major': GObject.Object.Notify;
+            'notify::client-version-minor': GObject.Object.Notify;
+            'notify::client-version-minor': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -33220,14 +33543,17 @@ export namespace Qmi {
         // Signals
 
         connect<K extends keyof ClientWms.SignalSignatures>(signal: K, callback: ClientWms.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientWms.SignalSignatures>(
             signal: K,
             callback: ClientWms.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientWms.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientWms.SignalSignatures[K]>
+            ...args: ClientWms.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -34018,6 +34344,18 @@ export namespace Qmi {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'device-removed': DeviceRemoved;
             indication: Indication;
+            'notify::device-consecutive-timeouts': GObject.Object.Notify;
+            'notify::device-consecutive-timeouts': GObject.Object.Notify;
+            'notify::device-file': GObject.Object.Notify;
+            'notify::device-file': GObject.Object.Notify;
+            'notify::device-no-file-check': GObject.Object.Notify;
+            'notify::device-no-file-check': GObject.Object.Notify;
+            'notify::device-node': GObject.Object.Notify;
+            'notify::device-node': GObject.Object.Notify;
+            'notify::device-proxy-path': GObject.Object.Notify;
+            'notify::device-proxy-path': GObject.Object.Notify;
+            'notify::device-wwan-iface': GObject.Object.Notify;
+            'notify::device-wwan-iface': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -34076,8 +34414,14 @@ export namespace Qmi {
         // Signals
 
         connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
-        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            ...args: Device.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -35723,7 +36067,10 @@ export namespace Qmi {
 
     namespace Proxy {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::qmi-proxy-n-clients': GObject.Object.Notify;
+            'notify::qmi-proxy-nclients': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -35756,8 +36103,14 @@ export namespace Qmi {
         // Signals
 
         connect<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
-        emit<K extends keyof Proxy.SignalSignatures>(signal: K, ...args: Parameters<Proxy.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Proxy.SignalSignatures>(
+            signal: K,
+            ...args: Proxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

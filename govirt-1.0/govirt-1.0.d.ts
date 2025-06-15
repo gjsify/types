@@ -80,7 +80,25 @@ export namespace GoVirt {
     function rest_call_error_quark(): GLib.Quark;
     namespace Proxy {
         // Signal signatures
-        interface SignalSignatures extends Rest.Proxy.SignalSignatures {}
+        interface SignalSignatures extends Rest.Proxy.SignalSignatures {
+            'notify::admin': GObject.Object.Notify;
+            'notify::ca-cert': GObject.Object.Notify;
+            'notify::ca-cert': GObject.Object.Notify;
+            'notify::binding-required': GObject.Object.Notify;
+            'notify::binding-required': GObject.Object.Notify;
+            'notify::disable-cookies': GObject.Object.Notify;
+            'notify::disable-cookies': GObject.Object.Notify;
+            'notify::password': GObject.Object.Notify;
+            'notify::ssl-ca-file': GObject.Object.Notify;
+            'notify::ssl-ca-file': GObject.Object.Notify;
+            'notify::ssl-strict': GObject.Object.Notify;
+            'notify::ssl-strict': GObject.Object.Notify;
+            'notify::url-format': GObject.Object.Notify;
+            'notify::url-format': GObject.Object.Notify;
+            'notify::user-agent': GObject.Object.Notify;
+            'notify::user-agent': GObject.Object.Notify;
+            'notify::username': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -114,8 +132,14 @@ export namespace GoVirt {
         // Signals
 
         connect<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
-        emit<K extends keyof Proxy.SignalSignatures>(signal: K, ...args: Parameters<Proxy.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Proxy.SignalSignatures>(
+            signal: K,
+            ...args: Proxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -153,7 +177,13 @@ export namespace GoVirt {
 
     namespace Vm {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::display': GObject.Object.Notify;
+            'notify::href': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::uuid': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -193,8 +223,14 @@ export namespace GoVirt {
         // Signals
 
         connect<K extends keyof Vm.SignalSignatures>(signal: K, callback: Vm.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Vm.SignalSignatures>(signal: K, callback: Vm.SignalSignatures[K]): number;
-        emit<K extends keyof Vm.SignalSignatures>(signal: K, ...args: Parameters<Vm.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Vm.SignalSignatures>(
+            signal: K,
+            ...args: Vm.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -229,7 +265,17 @@ export namespace GoVirt {
 
     namespace VmDisplay {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::address': GObject.Object.Notify;
+            'notify::expiry': GObject.Object.Notify;
+            'notify::monitor-count': GObject.Object.Notify;
+            'notify::monitor-count': GObject.Object.Notify;
+            'notify::port': GObject.Object.Notify;
+            'notify::secure-port': GObject.Object.Notify;
+            'notify::secure-port': GObject.Object.Notify;
+            'notify::ticket': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -281,14 +327,17 @@ export namespace GoVirt {
         // Signals
 
         connect<K extends keyof VmDisplay.SignalSignatures>(signal: K, callback: VmDisplay.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VmDisplay.SignalSignatures>(
             signal: K,
             callback: VmDisplay.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VmDisplay.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VmDisplay.SignalSignatures[K]>
+            ...args: VmDisplay.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     type ProxyClass = typeof Proxy;

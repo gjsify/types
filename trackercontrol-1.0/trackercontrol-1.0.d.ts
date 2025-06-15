@@ -75,6 +75,8 @@ export namespace TrackerControl {
             'miner-paused': MinerPaused;
             'miner-progress': MinerProgress;
             'miner-resumed': MinerResumed;
+            'notify::auto-start': GObject.Object.Notify;
+            'notify::auto-start': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -112,14 +114,17 @@ export namespace TrackerControl {
             signal: K,
             callback: MinerManager.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MinerManager.SignalSignatures>(
             signal: K,
             callback: MinerManager.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MinerManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MinerManager.SignalSignatures[K]>
+            ...args: MinerManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 

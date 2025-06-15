@@ -88,7 +88,16 @@ export namespace EBook {
     ): [boolean, string[]];
     namespace BookClient {
         // Signal signatures
-        interface SignalSignatures extends EDataServer.Client.SignalSignatures {}
+        interface SignalSignatures extends EDataServer.Client.SignalSignatures {
+            'notify::locale': GObject.Object.Notify;
+            'notify::capabilities': GObject.Object.Notify;
+            'notify::main-context': GObject.Object.Notify;
+            'notify::main-context': GObject.Object.Notify;
+            'notify::online': GObject.Object.Notify;
+            'notify::opened': GObject.Object.Notify;
+            'notify::readonly': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -128,14 +137,17 @@ export namespace EBook {
             signal: K,
             callback: BookClient.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BookClient.SignalSignatures>(
             signal: K,
             callback: BookClient.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BookClient.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BookClient.SignalSignatures[K]>
+            ...args: BookClient.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1869,6 +1881,16 @@ export namespace EBook {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             refresh: Refresh;
+            'notify::alphabet': GObject.Object.Notify;
+            'notify::client': GObject.Object.Notify;
+            'notify::connection': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'notify::position': GObject.Object.Notify;
+            'notify::sort-fields': GObject.Object.Notify;
+            'notify::sort-fields': GObject.Object.Notify;
+            'notify::total': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -2006,14 +2028,17 @@ export namespace EBook {
             signal: K,
             callback: BookClientCursor.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BookClientCursor.SignalSignatures>(
             signal: K,
             callback: BookClientCursor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BookClientCursor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BookClientCursor.SignalSignatures[K]>
+            ...args: BookClientCursor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -2912,6 +2937,13 @@ export namespace EBook {
             'objects-modified': ObjectsModified;
             'objects-removed': ObjectsRemoved;
             progress: Progress;
+            'notify::client': GObject.Object.Notify;
+            'notify::connection': GObject.Object.Notify;
+            'notify::indices': GObject.Object.Notify;
+            'notify::n-total': GObject.Object.Notify;
+            'notify::n-total': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -2974,14 +3006,17 @@ export namespace EBook {
             signal: K,
             callback: BookClientView.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BookClientView.SignalSignatures>(
             signal: K,
             callback: BookClientView.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BookClientView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BookClientView.SignalSignatures[K]>
+            ...args: BookClientView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -3680,14 +3715,17 @@ export namespace EBook {
             signal: K,
             callback: Destination.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Destination.SignalSignatures>(
             signal: K,
             callback: Destination.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Destination.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Destination.SignalSignatures[K]>
+            ...args: Destination.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 

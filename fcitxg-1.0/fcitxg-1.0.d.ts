@@ -76,6 +76,7 @@ export namespace FcitxG {
             'notify-focus-out': NotifyFocusOut;
             'update-client-side-ui': UpdateClientSideUi;
             'update-formatted-preedit': UpdateFormattedPreedit;
+            'notify::watcher': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -108,8 +109,14 @@ export namespace FcitxG {
         // Signals
 
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -289,14 +296,17 @@ export namespace FcitxG {
         // Signals
 
         connect<K extends keyof Watcher.SignalSignatures>(signal: K, callback: Watcher.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Watcher.SignalSignatures>(
             signal: K,
             callback: Watcher.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Watcher.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Watcher.SignalSignatures[K]>
+            ...args: Watcher.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

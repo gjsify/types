@@ -450,7 +450,25 @@ export namespace Dmap {
     }
     namespace AvConnection {
         // Signal signatures
-        interface SignalSignatures extends Connection.SignalSignatures {}
+        interface SignalSignatures extends Connection.SignalSignatures {
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::database-id': GObject.Object.Notify;
+            'notify::database-id': GObject.Object.Notify;
+            'notify::db': GObject.Object.Notify;
+            'notify::dmap-version': GObject.Object.Notify;
+            'notify::dmap-version': GObject.Object.Notify;
+            'notify::factory': GObject.Object.Notify;
+            'notify::host': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::password': GObject.Object.Notify;
+            'notify::port': GObject.Object.Notify;
+            'notify::revision-number': GObject.Object.Notify;
+            'notify::revision-number': GObject.Object.Notify;
+            'notify::session-id': GObject.Object.Notify;
+            'notify::session-id': GObject.Object.Notify;
+            'notify::username': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -478,19 +496,37 @@ export namespace Dmap {
             signal: K,
             callback: AvConnection.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AvConnection.SignalSignatures>(
             signal: K,
             callback: AvConnection.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AvConnection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AvConnection.SignalSignatures[K]>
+            ...args: AvConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace AvShare {
         // Signal signatures
-        interface SignalSignatures extends Share.SignalSignatures {}
+        interface SignalSignatures extends Share.SignalSignatures {
+            'notify::auth-method': GObject.Object.Notify;
+            'notify::auth-method': GObject.Object.Notify;
+            'notify::container-db': GObject.Object.Notify;
+            'notify::container-db': GObject.Object.Notify;
+            'notify::db': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::password': GObject.Object.Notify;
+            'notify::revision-number': GObject.Object.Notify;
+            'notify::revision-number': GObject.Object.Notify;
+            'notify::server': GObject.Object.Notify;
+            'notify::transcode-mimetype': GObject.Object.Notify;
+            'notify::transcode-mimetype': GObject.Object.Notify;
+            'notify::txt-records': GObject.Object.Notify;
+            'notify::txt-records': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -521,14 +557,17 @@ export namespace Dmap {
         // Signals
 
         connect<K extends keyof AvShare.SignalSignatures>(signal: K, callback: AvShare.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AvShare.SignalSignatures>(
             signal: K,
             callback: AvShare.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AvShare.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AvShare.SignalSignatures[K]>
+            ...args: AvShare.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Connection {
@@ -566,6 +605,23 @@ export namespace Dmap {
             disconnected: Disconnected;
             error: Error;
             'operation-done': OperationDone;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::database-id': GObject.Object.Notify;
+            'notify::database-id': GObject.Object.Notify;
+            'notify::db': GObject.Object.Notify;
+            'notify::dmap-version': GObject.Object.Notify;
+            'notify::dmap-version': GObject.Object.Notify;
+            'notify::factory': GObject.Object.Notify;
+            'notify::host': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::password': GObject.Object.Notify;
+            'notify::port': GObject.Object.Notify;
+            'notify::revision-number': GObject.Object.Notify;
+            'notify::revision-number': GObject.Object.Notify;
+            'notify::session-id': GObject.Object.Notify;
+            'notify::session-id': GObject.Object.Notify;
+            'notify::username': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -636,14 +692,17 @@ export namespace Dmap {
             signal: K,
             callback: Connection.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Connection.SignalSignatures>(
             signal: K,
             callback: Connection.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Connection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Connection.SignalSignatures[K]>
+            ...args: Connection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -693,7 +752,25 @@ export namespace Dmap {
 
     namespace ControlConnection {
         // Signal signatures
-        interface SignalSignatures extends Connection.SignalSignatures {}
+        interface SignalSignatures extends Connection.SignalSignatures {
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::database-id': GObject.Object.Notify;
+            'notify::database-id': GObject.Object.Notify;
+            'notify::db': GObject.Object.Notify;
+            'notify::dmap-version': GObject.Object.Notify;
+            'notify::dmap-version': GObject.Object.Notify;
+            'notify::factory': GObject.Object.Notify;
+            'notify::host': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::password': GObject.Object.Notify;
+            'notify::port': GObject.Object.Notify;
+            'notify::revision-number': GObject.Object.Notify;
+            'notify::revision-number': GObject.Object.Notify;
+            'notify::session-id': GObject.Object.Notify;
+            'notify::session-id': GObject.Object.Notify;
+            'notify::username': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -721,14 +798,17 @@ export namespace Dmap {
             signal: K,
             callback: ControlConnection.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ControlConnection.SignalSignatures>(
             signal: K,
             callback: ControlConnection.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ControlConnection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ControlConnection.SignalSignatures[K]>
+            ...args: ControlConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace ControlShare {
@@ -739,7 +819,7 @@ export namespace Dmap {
         }
 
         interface LookupGuid {
-            (_source: ControlShare, object: string): boolean;
+            (_source: ControlShare, object: string): boolean | void;
         }
 
         interface RemoteFound {
@@ -761,6 +841,23 @@ export namespace Dmap {
             'remote-found': RemoteFound;
             'remote-lost': RemoteLost;
             'remote-paired': RemotePaired;
+            'notify::library-name': GObject.Object.Notify;
+            'notify::library-name': GObject.Object.Notify;
+            'notify::player': GObject.Object.Notify;
+            'notify::auth-method': GObject.Object.Notify;
+            'notify::auth-method': GObject.Object.Notify;
+            'notify::container-db': GObject.Object.Notify;
+            'notify::container-db': GObject.Object.Notify;
+            'notify::db': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::password': GObject.Object.Notify;
+            'notify::revision-number': GObject.Object.Notify;
+            'notify::revision-number': GObject.Object.Notify;
+            'notify::server': GObject.Object.Notify;
+            'notify::transcode-mimetype': GObject.Object.Notify;
+            'notify::transcode-mimetype': GObject.Object.Notify;
+            'notify::txt-records': GObject.Object.Notify;
+            'notify::txt-records': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -801,14 +898,17 @@ export namespace Dmap {
             signal: K,
             callback: ControlShare.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ControlShare.SignalSignatures>(
             signal: K,
             callback: ControlShare.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ControlShare.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ControlShare.SignalSignatures[K]>
+            ...args: ControlShare.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -845,7 +945,25 @@ export namespace Dmap {
 
     namespace ImageConnection {
         // Signal signatures
-        interface SignalSignatures extends Connection.SignalSignatures {}
+        interface SignalSignatures extends Connection.SignalSignatures {
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::base-uri': GObject.Object.Notify;
+            'notify::database-id': GObject.Object.Notify;
+            'notify::database-id': GObject.Object.Notify;
+            'notify::db': GObject.Object.Notify;
+            'notify::dmap-version': GObject.Object.Notify;
+            'notify::dmap-version': GObject.Object.Notify;
+            'notify::factory': GObject.Object.Notify;
+            'notify::host': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::password': GObject.Object.Notify;
+            'notify::port': GObject.Object.Notify;
+            'notify::revision-number': GObject.Object.Notify;
+            'notify::revision-number': GObject.Object.Notify;
+            'notify::session-id': GObject.Object.Notify;
+            'notify::session-id': GObject.Object.Notify;
+            'notify::username': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -873,19 +991,37 @@ export namespace Dmap {
             signal: K,
             callback: ImageConnection.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ImageConnection.SignalSignatures>(
             signal: K,
             callback: ImageConnection.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ImageConnection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ImageConnection.SignalSignatures[K]>
+            ...args: ImageConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace ImageShare {
         // Signal signatures
-        interface SignalSignatures extends Share.SignalSignatures {}
+        interface SignalSignatures extends Share.SignalSignatures {
+            'notify::auth-method': GObject.Object.Notify;
+            'notify::auth-method': GObject.Object.Notify;
+            'notify::container-db': GObject.Object.Notify;
+            'notify::container-db': GObject.Object.Notify;
+            'notify::db': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::password': GObject.Object.Notify;
+            'notify::revision-number': GObject.Object.Notify;
+            'notify::revision-number': GObject.Object.Notify;
+            'notify::server': GObject.Object.Notify;
+            'notify::transcode-mimetype': GObject.Object.Notify;
+            'notify::transcode-mimetype': GObject.Object.Notify;
+            'notify::txt-records': GObject.Object.Notify;
+            'notify::txt-records': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -919,14 +1055,17 @@ export namespace Dmap {
             signal: K,
             callback: ImageShare.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ImageShare.SignalSignatures>(
             signal: K,
             callback: ImageShare.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ImageShare.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ImageShare.SignalSignatures[K]>
+            ...args: ImageShare.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace MdnsBrowser {
@@ -972,14 +1111,17 @@ export namespace Dmap {
             signal: K,
             callback: MdnsBrowser.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MdnsBrowser.SignalSignatures>(
             signal: K,
             callback: MdnsBrowser.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MdnsBrowser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MdnsBrowser.SignalSignatures[K]>
+            ...args: MdnsBrowser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1045,14 +1187,17 @@ export namespace Dmap {
             signal: K,
             callback: MdnsPublisher.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MdnsPublisher.SignalSignatures>(
             signal: K,
             callback: MdnsPublisher.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MdnsPublisher.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MdnsPublisher.SignalSignatures[K]>
+            ...args: MdnsPublisher.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1074,7 +1219,18 @@ export namespace Dmap {
 
     namespace MdnsService {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::host': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::pair': GObject.Object.Notify;
+            'notify::password-protected': GObject.Object.Notify;
+            'notify::password-protected': GObject.Object.Notify;
+            'notify::port': GObject.Object.Notify;
+            'notify::service-name': GObject.Object.Notify;
+            'notify::service-name': GObject.Object.Notify;
+            'notify::transport-protocol': GObject.Object.Notify;
+            'notify::transport-protocol': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1134,14 +1290,17 @@ export namespace Dmap {
             signal: K,
             callback: MdnsService.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MdnsService.SignalSignatures>(
             signal: K,
             callback: MdnsService.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MdnsService.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MdnsService.SignalSignatures[K]>
+            ...args: MdnsService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Share {
@@ -1154,6 +1313,20 @@ export namespace Dmap {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             error: Error;
+            'notify::auth-method': GObject.Object.Notify;
+            'notify::auth-method': GObject.Object.Notify;
+            'notify::container-db': GObject.Object.Notify;
+            'notify::container-db': GObject.Object.Notify;
+            'notify::db': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::password': GObject.Object.Notify;
+            'notify::revision-number': GObject.Object.Notify;
+            'notify::revision-number': GObject.Object.Notify;
+            'notify::server': GObject.Object.Notify;
+            'notify::transcode-mimetype': GObject.Object.Notify;
+            'notify::transcode-mimetype': GObject.Object.Notify;
+            'notify::txt-records': GObject.Object.Notify;
+            'notify::txt-records': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1213,8 +1386,14 @@ export namespace Dmap {
         // Signals
 
         connect<K extends keyof Share.SignalSignatures>(signal: K, callback: Share.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Share.SignalSignatures>(signal: K, callback: Share.SignalSignatures[K]): number;
-        emit<K extends keyof Share.SignalSignatures>(signal: K, ...args: Parameters<Share.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Share.SignalSignatures>(
+            signal: K,
+            ...args: Share.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1308,14 +1487,17 @@ export namespace Dmap {
             signal: K,
             callback: TranscodeStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TranscodeStream.SignalSignatures>(
             signal: K,
             callback: TranscodeStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TranscodeStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TranscodeStream.SignalSignatures[K]>
+            ...args: TranscodeStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 

@@ -2489,8 +2489,14 @@ export namespace Cogl {
         // Signals
 
         connect<K extends keyof Bitmap.SignalSignatures>(signal: K, callback: Bitmap.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Bitmap.SignalSignatures>(signal: K, callback: Bitmap.SignalSignatures[K]): number;
-        emit<K extends keyof Bitmap.SignalSignatures>(signal: K, ...args: Parameters<Bitmap.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Bitmap.SignalSignatures>(
+            signal: K,
+            ...args: Bitmap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2520,8 +2526,14 @@ export namespace Cogl {
         // Signals
 
         connect<K extends keyof Fixed.SignalSignatures>(signal: K, callback: Fixed.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Fixed.SignalSignatures>(signal: K, callback: Fixed.SignalSignatures[K]): number;
-        emit<K extends keyof Fixed.SignalSignatures>(signal: K, ...args: Parameters<Fixed.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Fixed.SignalSignatures>(
+            signal: K,
+            ...args: Fixed.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2563,14 +2575,17 @@ export namespace Cogl {
         // Signals
 
         connect<K extends keyof Offscreen.SignalSignatures>(signal: K, callback: Offscreen.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Offscreen.SignalSignatures>(
             signal: K,
             callback: Offscreen.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Offscreen.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Offscreen.SignalSignatures[K]>
+            ...args: Offscreen.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 

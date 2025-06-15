@@ -1813,7 +1813,42 @@ export namespace Atk {
     }
     namespace GObjectAccessible {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::accessible-component-layer': GObject.Object.Notify;
+            'notify::accessible-component-layer': GObject.Object.Notify;
+            'notify::accessible-component-mdi-zorder': GObject.Object.Notify;
+            'notify::accessible-component-mdi-zorder': GObject.Object.Notify;
+            'notify::accessible-description': GObject.Object.Notify;
+            'notify::accessible-description': GObject.Object.Notify;
+            'notify::accessible-help-text': GObject.Object.Notify;
+            'notify::accessible-help-text': GObject.Object.Notify;
+            'notify::accessible-hypertext-nlinks': GObject.Object.Notify;
+            'notify::accessible-hypertext-nlinks': GObject.Object.Notify;
+            'notify::accessible-id': GObject.Object.Notify;
+            'notify::accessible-id': GObject.Object.Notify;
+            'notify::accessible-name': GObject.Object.Notify;
+            'notify::accessible-name': GObject.Object.Notify;
+            'notify::accessible-parent': GObject.Object.Notify;
+            'notify::accessible-parent': GObject.Object.Notify;
+            'notify::accessible-role': GObject.Object.Notify;
+            'notify::accessible-role': GObject.Object.Notify;
+            'notify::accessible-table-caption': GObject.Object.Notify;
+            'notify::accessible-table-caption': GObject.Object.Notify;
+            'notify::accessible-table-caption-object': GObject.Object.Notify;
+            'notify::accessible-table-caption-object': GObject.Object.Notify;
+            'notify::accessible-table-column-description': GObject.Object.Notify;
+            'notify::accessible-table-column-description': GObject.Object.Notify;
+            'notify::accessible-table-column-header': GObject.Object.Notify;
+            'notify::accessible-table-column-header': GObject.Object.Notify;
+            'notify::accessible-table-row-description': GObject.Object.Notify;
+            'notify::accessible-table-row-description': GObject.Object.Notify;
+            'notify::accessible-table-row-header': GObject.Object.Notify;
+            'notify::accessible-table-row-header': GObject.Object.Notify;
+            'notify::accessible-table-summary': GObject.Object.Notify;
+            'notify::accessible-table-summary': GObject.Object.Notify;
+            'notify::accessible-value': GObject.Object.Notify;
+            'notify::accessible-value': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1843,14 +1878,17 @@ export namespace Atk {
             signal: K,
             callback: GObjectAccessible.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GObjectAccessible.SignalSignatures>(
             signal: K,
             callback: GObjectAccessible.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GObjectAccessible.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GObjectAccessible.SignalSignatures[K]>
+            ...args: GObjectAccessible.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1879,6 +1917,14 @@ export namespace Atk {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'link-activated': LinkActivated;
+            'notify::end-index': GObject.Object.Notify;
+            'notify::end-index': GObject.Object.Notify;
+            'notify::number-of-anchors': GObject.Object.Notify;
+            'notify::number-of-anchors': GObject.Object.Notify;
+            'notify::selected-link': GObject.Object.Notify;
+            'notify::selected-link': GObject.Object.Notify;
+            'notify::start-index': GObject.Object.Notify;
+            'notify::start-index': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1934,14 +1980,17 @@ export namespace Atk {
         // Signals
 
         connect<K extends keyof Hyperlink.SignalSignatures>(signal: K, callback: Hyperlink.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Hyperlink.SignalSignatures>(
             signal: K,
             callback: Hyperlink.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Hyperlink.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Hyperlink.SignalSignatures[K]>
+            ...args: Hyperlink.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -2664,8 +2713,14 @@ export namespace Atk {
         // Signals
 
         connect<K extends keyof Misc.SignalSignatures>(signal: K, callback: Misc.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Misc.SignalSignatures>(signal: K, callback: Misc.SignalSignatures[K]): number;
-        emit<K extends keyof Misc.SignalSignatures>(signal: K, ...args: Parameters<Misc.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Misc.SignalSignatures>(
+            signal: K,
+            ...args: Misc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2721,7 +2776,42 @@ export namespace Atk {
 
     namespace NoOpObject {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::accessible-component-layer': GObject.Object.Notify;
+            'notify::accessible-component-layer': GObject.Object.Notify;
+            'notify::accessible-component-mdi-zorder': GObject.Object.Notify;
+            'notify::accessible-component-mdi-zorder': GObject.Object.Notify;
+            'notify::accessible-description': GObject.Object.Notify;
+            'notify::accessible-description': GObject.Object.Notify;
+            'notify::accessible-help-text': GObject.Object.Notify;
+            'notify::accessible-help-text': GObject.Object.Notify;
+            'notify::accessible-hypertext-nlinks': GObject.Object.Notify;
+            'notify::accessible-hypertext-nlinks': GObject.Object.Notify;
+            'notify::accessible-id': GObject.Object.Notify;
+            'notify::accessible-id': GObject.Object.Notify;
+            'notify::accessible-name': GObject.Object.Notify;
+            'notify::accessible-name': GObject.Object.Notify;
+            'notify::accessible-parent': GObject.Object.Notify;
+            'notify::accessible-parent': GObject.Object.Notify;
+            'notify::accessible-role': GObject.Object.Notify;
+            'notify::accessible-role': GObject.Object.Notify;
+            'notify::accessible-table-caption': GObject.Object.Notify;
+            'notify::accessible-table-caption': GObject.Object.Notify;
+            'notify::accessible-table-caption-object': GObject.Object.Notify;
+            'notify::accessible-table-caption-object': GObject.Object.Notify;
+            'notify::accessible-table-column-description': GObject.Object.Notify;
+            'notify::accessible-table-column-description': GObject.Object.Notify;
+            'notify::accessible-table-column-header': GObject.Object.Notify;
+            'notify::accessible-table-column-header': GObject.Object.Notify;
+            'notify::accessible-table-row-description': GObject.Object.Notify;
+            'notify::accessible-table-row-description': GObject.Object.Notify;
+            'notify::accessible-table-row-header': GObject.Object.Notify;
+            'notify::accessible-table-row-header': GObject.Object.Notify;
+            'notify::accessible-table-summary': GObject.Object.Notify;
+            'notify::accessible-table-summary': GObject.Object.Notify;
+            'notify::accessible-value': GObject.Object.Notify;
+            'notify::accessible-value': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2781,14 +2871,17 @@ export namespace Atk {
             signal: K,
             callback: NoOpObject.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NoOpObject.SignalSignatures>(
             signal: K,
             callback: NoOpObject.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NoOpObject.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NoOpObject.SignalSignatures[K]>
+            ...args: NoOpObject.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get accessible_component_layer(): number;
@@ -5415,14 +5508,17 @@ export namespace Atk {
             signal: K,
             callback: NoOpObjectFactory.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NoOpObjectFactory.SignalSignatures>(
             signal: K,
             callback: NoOpObjectFactory.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NoOpObjectFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NoOpObjectFactory.SignalSignatures[K]>
+            ...args: NoOpObjectFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Object {
@@ -5475,6 +5571,176 @@ export namespace Atk {
             'property-change': PropertyChange;
             'state-change': StateChange;
             'visible-data-changed': VisibleDataChanged;
+            'notify::accessible-component-layer': GObject.Object.Notify;
+            'notify::accessible-component-layer': GObject.Object.Notify;
+            'notify::accessible-component-mdi-zorder': GObject.Object.Notify;
+            'notify::accessible-component-mdi-zorder': GObject.Object.Notify;
+            'notify::accessible-description': GObject.Object.Notify;
+            'notify::accessible-description': GObject.Object.Notify;
+            'notify::accessible-help-text': GObject.Object.Notify;
+            'notify::accessible-help-text': GObject.Object.Notify;
+            'notify::accessible-hypertext-nlinks': GObject.Object.Notify;
+            'notify::accessible-hypertext-nlinks': GObject.Object.Notify;
+            'notify::accessible-id': GObject.Object.Notify;
+            'notify::accessible-id': GObject.Object.Notify;
+            'notify::accessible-name': GObject.Object.Notify;
+            'notify::accessible-name': GObject.Object.Notify;
+            'notify::accessible-parent': GObject.Object.Notify;
+            'notify::accessible-parent': GObject.Object.Notify;
+            'notify::accessible-role': GObject.Object.Notify;
+            'notify::accessible-role': GObject.Object.Notify;
+            'notify::accessible-table-caption': GObject.Object.Notify;
+            'notify::accessible-table-caption': GObject.Object.Notify;
+            'notify::accessible-table-caption-object': GObject.Object.Notify;
+            'notify::accessible-table-caption-object': GObject.Object.Notify;
+            'notify::accessible-table-column-description': GObject.Object.Notify;
+            'notify::accessible-table-column-description': GObject.Object.Notify;
+            'notify::accessible-table-column-header': GObject.Object.Notify;
+            'notify::accessible-table-column-header': GObject.Object.Notify;
+            'notify::accessible-table-row-description': GObject.Object.Notify;
+            'notify::accessible-table-row-description': GObject.Object.Notify;
+            'notify::accessible-table-row-header': GObject.Object.Notify;
+            'notify::accessible-table-row-header': GObject.Object.Notify;
+            'notify::accessible-table-summary': GObject.Object.Notify;
+            'notify::accessible-table-summary': GObject.Object.Notify;
+            'notify::accessible-value': GObject.Object.Notify;
+            'notify::accessible-value': GObject.Object.Notify;
+            'active-descendant-changed::accessible-component-layer': ActiveDescendantChanged;
+            'active-descendant-changed::accessible-component-layer': ActiveDescendantChanged;
+            'active-descendant-changed::accessible-component-mdi-zorder': ActiveDescendantChanged;
+            'active-descendant-changed::accessible-component-mdi-zorder': ActiveDescendantChanged;
+            'active-descendant-changed::accessible-description': ActiveDescendantChanged;
+            'active-descendant-changed::accessible-description': ActiveDescendantChanged;
+            'active-descendant-changed::accessible-help-text': ActiveDescendantChanged;
+            'active-descendant-changed::accessible-help-text': ActiveDescendantChanged;
+            'active-descendant-changed::accessible-hypertext-nlinks': ActiveDescendantChanged;
+            'active-descendant-changed::accessible-hypertext-nlinks': ActiveDescendantChanged;
+            'active-descendant-changed::accessible-id': ActiveDescendantChanged;
+            'active-descendant-changed::accessible-id': ActiveDescendantChanged;
+            'active-descendant-changed::accessible-name': ActiveDescendantChanged;
+            'active-descendant-changed::accessible-name': ActiveDescendantChanged;
+            'active-descendant-changed::accessible-parent': ActiveDescendantChanged;
+            'active-descendant-changed::accessible-parent': ActiveDescendantChanged;
+            'active-descendant-changed::accessible-role': ActiveDescendantChanged;
+            'active-descendant-changed::accessible-role': ActiveDescendantChanged;
+            'active-descendant-changed::accessible-table-caption': ActiveDescendantChanged;
+            'active-descendant-changed::accessible-table-caption': ActiveDescendantChanged;
+            'active-descendant-changed::accessible-table-caption-object': ActiveDescendantChanged;
+            'active-descendant-changed::accessible-table-caption-object': ActiveDescendantChanged;
+            'active-descendant-changed::accessible-table-column-description': ActiveDescendantChanged;
+            'active-descendant-changed::accessible-table-column-description': ActiveDescendantChanged;
+            'active-descendant-changed::accessible-table-column-header': ActiveDescendantChanged;
+            'active-descendant-changed::accessible-table-column-header': ActiveDescendantChanged;
+            'active-descendant-changed::accessible-table-row-description': ActiveDescendantChanged;
+            'active-descendant-changed::accessible-table-row-description': ActiveDescendantChanged;
+            'active-descendant-changed::accessible-table-row-header': ActiveDescendantChanged;
+            'active-descendant-changed::accessible-table-row-header': ActiveDescendantChanged;
+            'active-descendant-changed::accessible-table-summary': ActiveDescendantChanged;
+            'active-descendant-changed::accessible-table-summary': ActiveDescendantChanged;
+            'active-descendant-changed::accessible-value': ActiveDescendantChanged;
+            'active-descendant-changed::accessible-value': ActiveDescendantChanged;
+            'children-changed::accessible-component-layer': ChildrenChanged;
+            'children-changed::accessible-component-layer': ChildrenChanged;
+            'children-changed::accessible-component-mdi-zorder': ChildrenChanged;
+            'children-changed::accessible-component-mdi-zorder': ChildrenChanged;
+            'children-changed::accessible-description': ChildrenChanged;
+            'children-changed::accessible-description': ChildrenChanged;
+            'children-changed::accessible-help-text': ChildrenChanged;
+            'children-changed::accessible-help-text': ChildrenChanged;
+            'children-changed::accessible-hypertext-nlinks': ChildrenChanged;
+            'children-changed::accessible-hypertext-nlinks': ChildrenChanged;
+            'children-changed::accessible-id': ChildrenChanged;
+            'children-changed::accessible-id': ChildrenChanged;
+            'children-changed::accessible-name': ChildrenChanged;
+            'children-changed::accessible-name': ChildrenChanged;
+            'children-changed::accessible-parent': ChildrenChanged;
+            'children-changed::accessible-parent': ChildrenChanged;
+            'children-changed::accessible-role': ChildrenChanged;
+            'children-changed::accessible-role': ChildrenChanged;
+            'children-changed::accessible-table-caption': ChildrenChanged;
+            'children-changed::accessible-table-caption': ChildrenChanged;
+            'children-changed::accessible-table-caption-object': ChildrenChanged;
+            'children-changed::accessible-table-caption-object': ChildrenChanged;
+            'children-changed::accessible-table-column-description': ChildrenChanged;
+            'children-changed::accessible-table-column-description': ChildrenChanged;
+            'children-changed::accessible-table-column-header': ChildrenChanged;
+            'children-changed::accessible-table-column-header': ChildrenChanged;
+            'children-changed::accessible-table-row-description': ChildrenChanged;
+            'children-changed::accessible-table-row-description': ChildrenChanged;
+            'children-changed::accessible-table-row-header': ChildrenChanged;
+            'children-changed::accessible-table-row-header': ChildrenChanged;
+            'children-changed::accessible-table-summary': ChildrenChanged;
+            'children-changed::accessible-table-summary': ChildrenChanged;
+            'children-changed::accessible-value': ChildrenChanged;
+            'children-changed::accessible-value': ChildrenChanged;
+            'property-change::accessible-component-layer': PropertyChange;
+            'property-change::accessible-component-layer': PropertyChange;
+            'property-change::accessible-component-mdi-zorder': PropertyChange;
+            'property-change::accessible-component-mdi-zorder': PropertyChange;
+            'property-change::accessible-description': PropertyChange;
+            'property-change::accessible-description': PropertyChange;
+            'property-change::accessible-help-text': PropertyChange;
+            'property-change::accessible-help-text': PropertyChange;
+            'property-change::accessible-hypertext-nlinks': PropertyChange;
+            'property-change::accessible-hypertext-nlinks': PropertyChange;
+            'property-change::accessible-id': PropertyChange;
+            'property-change::accessible-id': PropertyChange;
+            'property-change::accessible-name': PropertyChange;
+            'property-change::accessible-name': PropertyChange;
+            'property-change::accessible-parent': PropertyChange;
+            'property-change::accessible-parent': PropertyChange;
+            'property-change::accessible-role': PropertyChange;
+            'property-change::accessible-role': PropertyChange;
+            'property-change::accessible-table-caption': PropertyChange;
+            'property-change::accessible-table-caption': PropertyChange;
+            'property-change::accessible-table-caption-object': PropertyChange;
+            'property-change::accessible-table-caption-object': PropertyChange;
+            'property-change::accessible-table-column-description': PropertyChange;
+            'property-change::accessible-table-column-description': PropertyChange;
+            'property-change::accessible-table-column-header': PropertyChange;
+            'property-change::accessible-table-column-header': PropertyChange;
+            'property-change::accessible-table-row-description': PropertyChange;
+            'property-change::accessible-table-row-description': PropertyChange;
+            'property-change::accessible-table-row-header': PropertyChange;
+            'property-change::accessible-table-row-header': PropertyChange;
+            'property-change::accessible-table-summary': PropertyChange;
+            'property-change::accessible-table-summary': PropertyChange;
+            'property-change::accessible-value': PropertyChange;
+            'property-change::accessible-value': PropertyChange;
+            'state-change::accessible-component-layer': StateChange;
+            'state-change::accessible-component-layer': StateChange;
+            'state-change::accessible-component-mdi-zorder': StateChange;
+            'state-change::accessible-component-mdi-zorder': StateChange;
+            'state-change::accessible-description': StateChange;
+            'state-change::accessible-description': StateChange;
+            'state-change::accessible-help-text': StateChange;
+            'state-change::accessible-help-text': StateChange;
+            'state-change::accessible-hypertext-nlinks': StateChange;
+            'state-change::accessible-hypertext-nlinks': StateChange;
+            'state-change::accessible-id': StateChange;
+            'state-change::accessible-id': StateChange;
+            'state-change::accessible-name': StateChange;
+            'state-change::accessible-name': StateChange;
+            'state-change::accessible-parent': StateChange;
+            'state-change::accessible-parent': StateChange;
+            'state-change::accessible-role': StateChange;
+            'state-change::accessible-role': StateChange;
+            'state-change::accessible-table-caption': StateChange;
+            'state-change::accessible-table-caption': StateChange;
+            'state-change::accessible-table-caption-object': StateChange;
+            'state-change::accessible-table-caption-object': StateChange;
+            'state-change::accessible-table-column-description': StateChange;
+            'state-change::accessible-table-column-description': StateChange;
+            'state-change::accessible-table-column-header': StateChange;
+            'state-change::accessible-table-column-header': StateChange;
+            'state-change::accessible-table-row-description': StateChange;
+            'state-change::accessible-table-row-description': StateChange;
+            'state-change::accessible-table-row-header': StateChange;
+            'state-change::accessible-table-row-header': StateChange;
+            'state-change::accessible-table-summary': StateChange;
+            'state-change::accessible-table-summary': StateChange;
+            'state-change::accessible-value': StateChange;
+            'state-change::accessible-value': StateChange;
         }
 
         // Constructor properties interface
@@ -5662,8 +5928,14 @@ export namespace Atk {
         // Signals
 
         connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
-        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            ...args: Object.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -6000,14 +6272,17 @@ export namespace Atk {
             signal: K,
             callback: ObjectFactory.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ObjectFactory.SignalSignatures>(
             signal: K,
             callback: ObjectFactory.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ObjectFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ObjectFactory.SignalSignatures[K]>
+            ...args: ObjectFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -6046,7 +6321,42 @@ export namespace Atk {
 
     namespace Plug {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::accessible-component-layer': GObject.Object.Notify;
+            'notify::accessible-component-layer': GObject.Object.Notify;
+            'notify::accessible-component-mdi-zorder': GObject.Object.Notify;
+            'notify::accessible-component-mdi-zorder': GObject.Object.Notify;
+            'notify::accessible-description': GObject.Object.Notify;
+            'notify::accessible-description': GObject.Object.Notify;
+            'notify::accessible-help-text': GObject.Object.Notify;
+            'notify::accessible-help-text': GObject.Object.Notify;
+            'notify::accessible-hypertext-nlinks': GObject.Object.Notify;
+            'notify::accessible-hypertext-nlinks': GObject.Object.Notify;
+            'notify::accessible-id': GObject.Object.Notify;
+            'notify::accessible-id': GObject.Object.Notify;
+            'notify::accessible-name': GObject.Object.Notify;
+            'notify::accessible-name': GObject.Object.Notify;
+            'notify::accessible-parent': GObject.Object.Notify;
+            'notify::accessible-parent': GObject.Object.Notify;
+            'notify::accessible-role': GObject.Object.Notify;
+            'notify::accessible-role': GObject.Object.Notify;
+            'notify::accessible-table-caption': GObject.Object.Notify;
+            'notify::accessible-table-caption': GObject.Object.Notify;
+            'notify::accessible-table-caption-object': GObject.Object.Notify;
+            'notify::accessible-table-caption-object': GObject.Object.Notify;
+            'notify::accessible-table-column-description': GObject.Object.Notify;
+            'notify::accessible-table-column-description': GObject.Object.Notify;
+            'notify::accessible-table-column-header': GObject.Object.Notify;
+            'notify::accessible-table-column-header': GObject.Object.Notify;
+            'notify::accessible-table-row-description': GObject.Object.Notify;
+            'notify::accessible-table-row-description': GObject.Object.Notify;
+            'notify::accessible-table-row-header': GObject.Object.Notify;
+            'notify::accessible-table-row-header': GObject.Object.Notify;
+            'notify::accessible-table-summary': GObject.Object.Notify;
+            'notify::accessible-table-summary': GObject.Object.Notify;
+            'notify::accessible-value': GObject.Object.Notify;
+            'notify::accessible-value': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6072,8 +6382,14 @@ export namespace Atk {
         // Signals
 
         connect<K extends keyof Plug.SignalSignatures>(signal: K, callback: Plug.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Plug.SignalSignatures>(signal: K, callback: Plug.SignalSignatures[K]): number;
-        emit<K extends keyof Plug.SignalSignatures>(signal: K, ...args: Parameters<Plug.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Plug.SignalSignatures>(
+            signal: K,
+            ...args: Plug.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -6816,14 +7132,17 @@ export namespace Atk {
         // Signals
 
         connect<K extends keyof Registry.SignalSignatures>(signal: K, callback: Registry.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Registry.SignalSignatures>(
             signal: K,
             callback: Registry.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Registry.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Registry.SignalSignatures[K]>
+            ...args: Registry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -6854,7 +7173,11 @@ export namespace Atk {
 
     namespace Relation {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::relation-type': GObject.Object.Notify;
+            'notify::relation-type': GObject.Object.Notify;
+            'notify::target': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6901,14 +7224,17 @@ export namespace Atk {
         // Signals
 
         connect<K extends keyof Relation.SignalSignatures>(signal: K, callback: Relation.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Relation.SignalSignatures>(
             signal: K,
             callback: Relation.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Relation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Relation.SignalSignatures[K]>
+            ...args: Relation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -6979,14 +7305,17 @@ export namespace Atk {
             signal: K,
             callback: RelationSet.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RelationSet.SignalSignatures>(
             signal: K,
             callback: RelationSet.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RelationSet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RelationSet.SignalSignatures[K]>
+            ...args: RelationSet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -7052,7 +7381,42 @@ export namespace Atk {
 
     namespace Socket {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::accessible-component-layer': GObject.Object.Notify;
+            'notify::accessible-component-layer': GObject.Object.Notify;
+            'notify::accessible-component-mdi-zorder': GObject.Object.Notify;
+            'notify::accessible-component-mdi-zorder': GObject.Object.Notify;
+            'notify::accessible-description': GObject.Object.Notify;
+            'notify::accessible-description': GObject.Object.Notify;
+            'notify::accessible-help-text': GObject.Object.Notify;
+            'notify::accessible-help-text': GObject.Object.Notify;
+            'notify::accessible-hypertext-nlinks': GObject.Object.Notify;
+            'notify::accessible-hypertext-nlinks': GObject.Object.Notify;
+            'notify::accessible-id': GObject.Object.Notify;
+            'notify::accessible-id': GObject.Object.Notify;
+            'notify::accessible-name': GObject.Object.Notify;
+            'notify::accessible-name': GObject.Object.Notify;
+            'notify::accessible-parent': GObject.Object.Notify;
+            'notify::accessible-parent': GObject.Object.Notify;
+            'notify::accessible-role': GObject.Object.Notify;
+            'notify::accessible-role': GObject.Object.Notify;
+            'notify::accessible-table-caption': GObject.Object.Notify;
+            'notify::accessible-table-caption': GObject.Object.Notify;
+            'notify::accessible-table-caption-object': GObject.Object.Notify;
+            'notify::accessible-table-caption-object': GObject.Object.Notify;
+            'notify::accessible-table-column-description': GObject.Object.Notify;
+            'notify::accessible-table-column-description': GObject.Object.Notify;
+            'notify::accessible-table-column-header': GObject.Object.Notify;
+            'notify::accessible-table-column-header': GObject.Object.Notify;
+            'notify::accessible-table-row-description': GObject.Object.Notify;
+            'notify::accessible-table-row-description': GObject.Object.Notify;
+            'notify::accessible-table-row-header': GObject.Object.Notify;
+            'notify::accessible-table-row-header': GObject.Object.Notify;
+            'notify::accessible-table-summary': GObject.Object.Notify;
+            'notify::accessible-table-summary': GObject.Object.Notify;
+            'notify::accessible-value': GObject.Object.Notify;
+            'notify::accessible-value': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -7101,8 +7465,14 @@ export namespace Atk {
         // Signals
 
         connect<K extends keyof Socket.SignalSignatures>(signal: K, callback: Socket.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Socket.SignalSignatures>(signal: K, callback: Socket.SignalSignatures[K]): number;
-        emit<K extends keyof Socket.SignalSignatures>(signal: K, ...args: Parameters<Socket.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Socket.SignalSignatures>(
+            signal: K,
+            ...args: Socket.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -7849,14 +8219,17 @@ export namespace Atk {
         // Signals
 
         connect<K extends keyof StateSet.SignalSignatures>(signal: K, callback: StateSet.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StateSet.SignalSignatures>(
             signal: K,
             callback: StateSet.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StateSet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StateSet.SignalSignatures[K]>
+            ...args: StateSet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -7967,8 +8340,14 @@ export namespace Atk {
         // Signals
 
         connect<K extends keyof Util.SignalSignatures>(signal: K, callback: Util.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Util.SignalSignatures>(signal: K, callback: Util.SignalSignatures[K]): number;
-        emit<K extends keyof Util.SignalSignatures>(signal: K, ...args: Parameters<Util.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Util.SignalSignatures>(
+            signal: K,
+            ...args: Util.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     type ActionIface = typeof Action;

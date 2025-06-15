@@ -248,6 +248,18 @@ export namespace Xfconf {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'property-changed': PropertyChanged;
+            'notify::channel-name': GObject.Object.Notify;
+            'notify::channel-name': GObject.Object.Notify;
+            'notify::is-singleton': GObject.Object.Notify;
+            'notify::is-singleton': GObject.Object.Notify;
+            'notify::property-base': GObject.Object.Notify;
+            'notify::property-base': GObject.Object.Notify;
+            'property-changed::channel-name': PropertyChanged;
+            'property-changed::channel-name': PropertyChanged;
+            'property-changed::is-singleton': PropertyChanged;
+            'property-changed::is-singleton': PropertyChanged;
+            'property-changed::property-base': PropertyChanged;
+            'property-changed::property-base': PropertyChanged;
         }
 
         // Constructor properties interface
@@ -314,14 +326,17 @@ export namespace Xfconf {
         // Signals
 
         connect<K extends keyof Channel.SignalSignatures>(signal: K, callback: Channel.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Channel.SignalSignatures>(
             signal: K,
             callback: Channel.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Channel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Channel.SignalSignatures[K]>
+            ...args: Channel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -603,8 +618,14 @@ export namespace Xfconf {
         // Signals
 
         connect<K extends keyof Int16.SignalSignatures>(signal: K, callback: Int16.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Int16.SignalSignatures>(signal: K, callback: Int16.SignalSignatures[K]): number;
-        emit<K extends keyof Int16.SignalSignatures>(signal: K, ...args: Parameters<Int16.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Int16.SignalSignatures>(
+            signal: K,
+            ...args: Int16.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Uint16 {
@@ -622,8 +643,14 @@ export namespace Xfconf {
         // Signals
 
         connect<K extends keyof Uint16.SignalSignatures>(signal: K, callback: Uint16.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Uint16.SignalSignatures>(signal: K, callback: Uint16.SignalSignatures[K]): number;
-        emit<K extends keyof Uint16.SignalSignatures>(signal: K, ...args: Parameters<Uint16.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Uint16.SignalSignatures>(
+            signal: K,
+            ...args: Uint16.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     /**

@@ -282,14 +282,17 @@ export namespace GUsb {
             signal: K,
             callback: BosDescriptor.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BosDescriptor.SignalSignatures>(
             signal: K,
             callback: BosDescriptor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BosDescriptor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BosDescriptor.SignalSignatures[K]>
+            ...args: BosDescriptor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -325,6 +328,10 @@ export namespace GUsb {
             'device-added': DeviceAdded;
             'device-changed': DeviceChanged;
             'device-removed': DeviceRemoved;
+            'notify::debug-level': GObject.Object.Notify;
+            'notify::debug-level': GObject.Object.Notify;
+            'notify::libusb-context': GObject.Object.Notify;
+            'notify::libusb-context': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -360,14 +367,17 @@ export namespace GUsb {
         // Signals
 
         connect<K extends keyof Context.SignalSignatures>(signal: K, callback: Context.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Context.SignalSignatures>(
             signal: K,
             callback: Context.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Context.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Context.SignalSignatures[K]>
+            ...args: Context.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1024,7 +1034,13 @@ export namespace GUsb {
 
     namespace Device {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::context': GObject.Object.Notify;
+            'notify::libusb-device': GObject.Object.Notify;
+            'notify::libusb-device': GObject.Object.Notify;
+            'notify::platform-id': GObject.Object.Notify;
+            'notify::platform-id': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1057,8 +1073,14 @@ export namespace GUsb {
         // Signals
 
         connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
-        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            ...args: Device.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2154,14 +2176,17 @@ export namespace GUsb {
             signal: K,
             callback: DeviceEvent.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceEvent.SignalSignatures>(
             signal: K,
             callback: DeviceEvent.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceEvent.SignalSignatures[K]>
+            ...args: DeviceEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2207,6 +2232,7 @@ export namespace GUsb {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'device-added': DeviceAdded;
             'device-removed': DeviceRemoved;
+            'notify::context': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -2237,14 +2263,17 @@ export namespace GUsb {
             signal: K,
             callback: DeviceList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceList.SignalSignatures>(
             signal: K,
             callback: DeviceList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceList.SignalSignatures[K]>
+            ...args: DeviceList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -2295,14 +2324,17 @@ export namespace GUsb {
         // Signals
 
         connect<K extends keyof Endpoint.SignalSignatures>(signal: K, callback: Endpoint.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Endpoint.SignalSignatures>(
             signal: K,
             callback: Endpoint.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Endpoint.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Endpoint.SignalSignatures[K]>
+            ...args: Endpoint.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2374,14 +2406,17 @@ export namespace GUsb {
         // Signals
 
         connect<K extends keyof Interface.SignalSignatures>(signal: K, callback: Interface.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Interface.SignalSignatures>(
             signal: K,
             callback: Interface.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Interface.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Interface.SignalSignatures[K]>
+            ...args: Interface.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

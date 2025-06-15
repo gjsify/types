@@ -339,6 +339,22 @@ export namespace GnomeAutoar {
             'decide-dest': DecideDest;
             error: Error;
             progress: Progress;
+            'notify::completed-files': GObject.Object.Notify;
+            'notify::completed-files': GObject.Object.Notify;
+            'notify::completed-size': GObject.Object.Notify;
+            'notify::completed-size': GObject.Object.Notify;
+            'notify::create-top-level-directory': GObject.Object.Notify;
+            'notify::create-top-level-directory': GObject.Object.Notify;
+            'notify::files': GObject.Object.Notify;
+            'notify::notify-interval': GObject.Object.Notify;
+            'notify::notify-interval': GObject.Object.Notify;
+            'notify::output-file': GObject.Object.Notify;
+            'notify::output-file': GObject.Object.Notify;
+            'notify::output-is-dest': GObject.Object.Notify;
+            'notify::output-is-dest': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::source-files': GObject.Object.Notify;
+            'notify::source-files': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -411,14 +427,17 @@ export namespace GnomeAutoar {
             signal: K,
             callback: Compressor.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Compressor.SignalSignatures>(
             signal: K,
             callback: Compressor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Compressor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Compressor.SignalSignatures[K]>
+            ...args: Compressor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -579,6 +598,24 @@ export namespace GnomeAutoar {
             progress: Progress;
             'request-passphrase': RequestPassphrase;
             scanned: Scanned;
+            'notify::completed-files': GObject.Object.Notify;
+            'notify::completed-files': GObject.Object.Notify;
+            'notify::completed-size': GObject.Object.Notify;
+            'notify::completed-size': GObject.Object.Notify;
+            'notify::delete-after-extraction': GObject.Object.Notify;
+            'notify::delete-after-extraction': GObject.Object.Notify;
+            'notify::notify-interval': GObject.Object.Notify;
+            'notify::notify-interval': GObject.Object.Notify;
+            'notify::output-file': GObject.Object.Notify;
+            'notify::output-file': GObject.Object.Notify;
+            'notify::output-is-dest': GObject.Object.Notify;
+            'notify::output-is-dest': GObject.Object.Notify;
+            'notify::source-file': GObject.Object.Notify;
+            'notify::source-file': GObject.Object.Notify;
+            'notify::total-files': GObject.Object.Notify;
+            'notify::total-files': GObject.Object.Notify;
+            'notify::total-size': GObject.Object.Notify;
+            'notify::total-size': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -646,14 +683,17 @@ export namespace GnomeAutoar {
         // Signals
 
         connect<K extends keyof Extractor.SignalSignatures>(signal: K, callback: Extractor.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Extractor.SignalSignatures>(
             signal: K,
             callback: Extractor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Extractor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Extractor.SignalSignatures[K]>
+            ...args: Extractor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 

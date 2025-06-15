@@ -427,14 +427,17 @@ export namespace GstRtspServer {
             signal: K,
             callback: RTSPAddressPool.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RTSPAddressPool.SignalSignatures>(
             signal: K,
             callback: RTSPAddressPool.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RTSPAddressPool.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RTSPAddressPool.SignalSignatures[K]>
+            ...args: RTSPAddressPool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -510,7 +513,7 @@ export namespace GstRtspServer {
                 connection: Gio.TlsConnection,
                 peer_cert: Gio.TlsCertificate,
                 errors: Gio.TlsCertificateFlags,
-            ): boolean;
+            ): boolean | void;
         }
 
         // Signal signatures
@@ -540,14 +543,17 @@ export namespace GstRtspServer {
         // Signals
 
         connect<K extends keyof RTSPAuth.SignalSignatures>(signal: K, callback: RTSPAuth.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RTSPAuth.SignalSignatures>(
             signal: K,
             callback: RTSPAuth.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RTSPAuth.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RTSPAuth.SignalSignatures[K]>
+            ...args: RTSPAuth.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -808,6 +814,14 @@ export namespace GstRtspServer {
             'set-parameter-request': SetParameterRequest;
             'setup-request': SetupRequest;
             'teardown-request': TeardownRequest;
+            'notify::drop-backlog': GObject.Object.Notify;
+            'notify::drop-backlog': GObject.Object.Notify;
+            'notify::mount-points': GObject.Object.Notify;
+            'notify::mount-points': GObject.Object.Notify;
+            'notify::post-session-timeout': GObject.Object.Notify;
+            'notify::post-session-timeout': GObject.Object.Notify;
+            'notify::session-pool': GObject.Object.Notify;
+            'notify::session-pool': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -863,14 +877,17 @@ export namespace GstRtspServer {
             signal: K,
             callback: RTSPClient.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RTSPClient.SignalSignatures>(
             signal: K,
             callback: RTSPClient.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RTSPClient.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RTSPClient.SignalSignatures[K]>
+            ...args: RTSPClient.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1086,7 +1103,7 @@ export namespace GstRtspServer {
         // Signal callback interfaces
 
         interface HandleMessage {
-            (_source: RTSPMedia, message: Gst.Message): boolean;
+            (_source: RTSPMedia, message: Gst.Message): boolean | void;
         }
 
         interface NewState {
@@ -1122,6 +1139,56 @@ export namespace GstRtspServer {
             'removed-stream': RemovedStream;
             'target-state': TargetState;
             unprepared: Unprepared;
+            'notify::bind-mcast-address': GObject.Object.Notify;
+            'notify::bind-mcast-address': GObject.Object.Notify;
+            'notify::buffer-size': GObject.Object.Notify;
+            'notify::buffer-size': GObject.Object.Notify;
+            'notify::clock': GObject.Object.Notify;
+            'notify::dscp-qos': GObject.Object.Notify;
+            'notify::dscp-qos': GObject.Object.Notify;
+            'notify::element': GObject.Object.Notify;
+            'notify::eos-shutdown': GObject.Object.Notify;
+            'notify::eos-shutdown': GObject.Object.Notify;
+            'notify::latency': GObject.Object.Notify;
+            'notify::max-mcast-ttl': GObject.Object.Notify;
+            'notify::max-mcast-ttl': GObject.Object.Notify;
+            'notify::profiles': GObject.Object.Notify;
+            'notify::protocols': GObject.Object.Notify;
+            'notify::reusable': GObject.Object.Notify;
+            'notify::shared': GObject.Object.Notify;
+            'notify::stop-on-disconnect': GObject.Object.Notify;
+            'notify::stop-on-disconnect': GObject.Object.Notify;
+            'notify::suspend-mode': GObject.Object.Notify;
+            'notify::suspend-mode': GObject.Object.Notify;
+            'notify::time-provider': GObject.Object.Notify;
+            'notify::time-provider': GObject.Object.Notify;
+            'notify::transport-mode': GObject.Object.Notify;
+            'notify::transport-mode': GObject.Object.Notify;
+            'handle-message::bind-mcast-address': HandleMessage;
+            'handle-message::bind-mcast-address': HandleMessage;
+            'handle-message::buffer-size': HandleMessage;
+            'handle-message::buffer-size': HandleMessage;
+            'handle-message::clock': HandleMessage;
+            'handle-message::dscp-qos': HandleMessage;
+            'handle-message::dscp-qos': HandleMessage;
+            'handle-message::element': HandleMessage;
+            'handle-message::eos-shutdown': HandleMessage;
+            'handle-message::eos-shutdown': HandleMessage;
+            'handle-message::latency': HandleMessage;
+            'handle-message::max-mcast-ttl': HandleMessage;
+            'handle-message::max-mcast-ttl': HandleMessage;
+            'handle-message::profiles': HandleMessage;
+            'handle-message::protocols': HandleMessage;
+            'handle-message::reusable': HandleMessage;
+            'handle-message::shared': HandleMessage;
+            'handle-message::stop-on-disconnect': HandleMessage;
+            'handle-message::stop-on-disconnect': HandleMessage;
+            'handle-message::suspend-mode': HandleMessage;
+            'handle-message::suspend-mode': HandleMessage;
+            'handle-message::time-provider': HandleMessage;
+            'handle-message::time-provider': HandleMessage;
+            'handle-message::transport-mode': HandleMessage;
+            'handle-message::transport-mode': HandleMessage;
         }
 
         // Constructor properties interface
@@ -1227,14 +1294,17 @@ export namespace GstRtspServer {
         // Signals
 
         connect<K extends keyof RTSPMedia.SignalSignatures>(signal: K, callback: RTSPMedia.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RTSPMedia.SignalSignatures>(
             signal: K,
             callback: RTSPMedia.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RTSPMedia.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RTSPMedia.SignalSignatures[K]>
+            ...args: RTSPMedia.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1764,6 +1834,30 @@ export namespace GstRtspServer {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'media-configure': MediaConfigure;
             'media-constructed': MediaConstructed;
+            'notify::bind-mcast-address': GObject.Object.Notify;
+            'notify::bind-mcast-address': GObject.Object.Notify;
+            'notify::buffer-size': GObject.Object.Notify;
+            'notify::buffer-size': GObject.Object.Notify;
+            'notify::clock': GObject.Object.Notify;
+            'notify::dscp-qos': GObject.Object.Notify;
+            'notify::dscp-qos': GObject.Object.Notify;
+            'notify::enable-rtcp': GObject.Object.Notify;
+            'notify::enable-rtcp': GObject.Object.Notify;
+            'notify::eos-shutdown': GObject.Object.Notify;
+            'notify::eos-shutdown': GObject.Object.Notify;
+            'notify::latency': GObject.Object.Notify;
+            'notify::launch': GObject.Object.Notify;
+            'notify::max-mcast-ttl': GObject.Object.Notify;
+            'notify::max-mcast-ttl': GObject.Object.Notify;
+            'notify::profiles': GObject.Object.Notify;
+            'notify::protocols': GObject.Object.Notify;
+            'notify::shared': GObject.Object.Notify;
+            'notify::stop-on-disconnect': GObject.Object.Notify;
+            'notify::stop-on-disconnect': GObject.Object.Notify;
+            'notify::suspend-mode': GObject.Object.Notify;
+            'notify::suspend-mode': GObject.Object.Notify;
+            'notify::transport-mode': GObject.Object.Notify;
+            'notify::transport-mode': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1874,14 +1968,17 @@ export namespace GstRtspServer {
             signal: K,
             callback: RTSPMediaFactory.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RTSPMediaFactory.SignalSignatures>(
             signal: K,
             callback: RTSPMediaFactory.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RTSPMediaFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RTSPMediaFactory.SignalSignatures[K]>
+            ...args: RTSPMediaFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -2187,7 +2284,35 @@ export namespace GstRtspServer {
 
     namespace RTSPMediaFactoryURI {
         // Signal signatures
-        interface SignalSignatures extends RTSPMediaFactory.SignalSignatures {}
+        interface SignalSignatures extends RTSPMediaFactory.SignalSignatures {
+            'notify::uri': GObject.Object.Notify;
+            'notify::use-gstpay': GObject.Object.Notify;
+            'notify::use-gstpay': GObject.Object.Notify;
+            'notify::bind-mcast-address': GObject.Object.Notify;
+            'notify::bind-mcast-address': GObject.Object.Notify;
+            'notify::buffer-size': GObject.Object.Notify;
+            'notify::buffer-size': GObject.Object.Notify;
+            'notify::clock': GObject.Object.Notify;
+            'notify::dscp-qos': GObject.Object.Notify;
+            'notify::dscp-qos': GObject.Object.Notify;
+            'notify::enable-rtcp': GObject.Object.Notify;
+            'notify::enable-rtcp': GObject.Object.Notify;
+            'notify::eos-shutdown': GObject.Object.Notify;
+            'notify::eos-shutdown': GObject.Object.Notify;
+            'notify::latency': GObject.Object.Notify;
+            'notify::launch': GObject.Object.Notify;
+            'notify::max-mcast-ttl': GObject.Object.Notify;
+            'notify::max-mcast-ttl': GObject.Object.Notify;
+            'notify::profiles': GObject.Object.Notify;
+            'notify::protocols': GObject.Object.Notify;
+            'notify::shared': GObject.Object.Notify;
+            'notify::stop-on-disconnect': GObject.Object.Notify;
+            'notify::stop-on-disconnect': GObject.Object.Notify;
+            'notify::suspend-mode': GObject.Object.Notify;
+            'notify::suspend-mode': GObject.Object.Notify;
+            'notify::transport-mode': GObject.Object.Notify;
+            'notify::transport-mode': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2227,14 +2352,17 @@ export namespace GstRtspServer {
             signal: K,
             callback: RTSPMediaFactoryURI.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RTSPMediaFactoryURI.SignalSignatures>(
             signal: K,
             callback: RTSPMediaFactoryURI.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RTSPMediaFactoryURI.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RTSPMediaFactoryURI.SignalSignatures[K]>
+            ...args: RTSPMediaFactoryURI.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2279,14 +2407,17 @@ export namespace GstRtspServer {
             signal: K,
             callback: RTSPMountPoints.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RTSPMountPoints.SignalSignatures>(
             signal: K,
             callback: RTSPMountPoints.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RTSPMountPoints.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RTSPMountPoints.SignalSignatures[K]>
+            ...args: RTSPMountPoints.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -2334,7 +2465,16 @@ export namespace GstRtspServer {
 
     namespace RTSPOnvifClient {
         // Signal signatures
-        interface SignalSignatures extends RTSPClient.SignalSignatures {}
+        interface SignalSignatures extends RTSPClient.SignalSignatures {
+            'notify::drop-backlog': GObject.Object.Notify;
+            'notify::drop-backlog': GObject.Object.Notify;
+            'notify::mount-points': GObject.Object.Notify;
+            'notify::mount-points': GObject.Object.Notify;
+            'notify::post-session-timeout': GObject.Object.Notify;
+            'notify::post-session-timeout': GObject.Object.Notify;
+            'notify::session-pool': GObject.Object.Notify;
+            'notify::session-pool': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2358,19 +2498,48 @@ export namespace GstRtspServer {
             signal: K,
             callback: RTSPOnvifClient.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RTSPOnvifClient.SignalSignatures>(
             signal: K,
             callback: RTSPOnvifClient.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RTSPOnvifClient.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RTSPOnvifClient.SignalSignatures[K]>
+            ...args: RTSPOnvifClient.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace RTSPOnvifMedia {
         // Signal signatures
-        interface SignalSignatures extends RTSPMedia.SignalSignatures {}
+        interface SignalSignatures extends RTSPMedia.SignalSignatures {
+            'notify::bind-mcast-address': GObject.Object.Notify;
+            'notify::bind-mcast-address': GObject.Object.Notify;
+            'notify::buffer-size': GObject.Object.Notify;
+            'notify::buffer-size': GObject.Object.Notify;
+            'notify::clock': GObject.Object.Notify;
+            'notify::dscp-qos': GObject.Object.Notify;
+            'notify::dscp-qos': GObject.Object.Notify;
+            'notify::element': GObject.Object.Notify;
+            'notify::eos-shutdown': GObject.Object.Notify;
+            'notify::eos-shutdown': GObject.Object.Notify;
+            'notify::latency': GObject.Object.Notify;
+            'notify::max-mcast-ttl': GObject.Object.Notify;
+            'notify::max-mcast-ttl': GObject.Object.Notify;
+            'notify::profiles': GObject.Object.Notify;
+            'notify::protocols': GObject.Object.Notify;
+            'notify::reusable': GObject.Object.Notify;
+            'notify::shared': GObject.Object.Notify;
+            'notify::stop-on-disconnect': GObject.Object.Notify;
+            'notify::stop-on-disconnect': GObject.Object.Notify;
+            'notify::suspend-mode': GObject.Object.Notify;
+            'notify::suspend-mode': GObject.Object.Notify;
+            'notify::time-provider': GObject.Object.Notify;
+            'notify::time-provider': GObject.Object.Notify;
+            'notify::transport-mode': GObject.Object.Notify;
+            'notify::transport-mode': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2392,14 +2561,17 @@ export namespace GstRtspServer {
             signal: K,
             callback: RTSPOnvifMedia.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RTSPOnvifMedia.SignalSignatures>(
             signal: K,
             callback: RTSPOnvifMedia.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RTSPOnvifMedia.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RTSPOnvifMedia.SignalSignatures[K]>
+            ...args: RTSPOnvifMedia.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2429,7 +2601,32 @@ export namespace GstRtspServer {
 
     namespace RTSPOnvifMediaFactory {
         // Signal signatures
-        interface SignalSignatures extends RTSPMediaFactory.SignalSignatures {}
+        interface SignalSignatures extends RTSPMediaFactory.SignalSignatures {
+            'notify::bind-mcast-address': GObject.Object.Notify;
+            'notify::bind-mcast-address': GObject.Object.Notify;
+            'notify::buffer-size': GObject.Object.Notify;
+            'notify::buffer-size': GObject.Object.Notify;
+            'notify::clock': GObject.Object.Notify;
+            'notify::dscp-qos': GObject.Object.Notify;
+            'notify::dscp-qos': GObject.Object.Notify;
+            'notify::enable-rtcp': GObject.Object.Notify;
+            'notify::enable-rtcp': GObject.Object.Notify;
+            'notify::eos-shutdown': GObject.Object.Notify;
+            'notify::eos-shutdown': GObject.Object.Notify;
+            'notify::latency': GObject.Object.Notify;
+            'notify::launch': GObject.Object.Notify;
+            'notify::max-mcast-ttl': GObject.Object.Notify;
+            'notify::max-mcast-ttl': GObject.Object.Notify;
+            'notify::profiles': GObject.Object.Notify;
+            'notify::protocols': GObject.Object.Notify;
+            'notify::shared': GObject.Object.Notify;
+            'notify::stop-on-disconnect': GObject.Object.Notify;
+            'notify::stop-on-disconnect': GObject.Object.Notify;
+            'notify::suspend-mode': GObject.Object.Notify;
+            'notify::suspend-mode': GObject.Object.Notify;
+            'notify::transport-mode': GObject.Object.Notify;
+            'notify::transport-mode': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2453,14 +2650,17 @@ export namespace GstRtspServer {
             signal: K,
             callback: RTSPOnvifMediaFactory.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RTSPOnvifMediaFactory.SignalSignatures>(
             signal: K,
             callback: RTSPOnvifMediaFactory.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RTSPOnvifMediaFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RTSPOnvifMediaFactory.SignalSignatures[K]>
+            ...args: RTSPOnvifMediaFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2533,7 +2733,19 @@ export namespace GstRtspServer {
 
     namespace RTSPOnvifServer {
         // Signal signatures
-        interface SignalSignatures extends RTSPServer.SignalSignatures {}
+        interface SignalSignatures extends RTSPServer.SignalSignatures {
+            'notify::address': GObject.Object.Notify;
+            'notify::backlog': GObject.Object.Notify;
+            'notify::bound-port': GObject.Object.Notify;
+            'notify::bound-port': GObject.Object.Notify;
+            'notify::content-length-limit': GObject.Object.Notify;
+            'notify::content-length-limit': GObject.Object.Notify;
+            'notify::mount-points': GObject.Object.Notify;
+            'notify::mount-points': GObject.Object.Notify;
+            'notify::service': GObject.Object.Notify;
+            'notify::session-pool': GObject.Object.Notify;
+            'notify::session-pool': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2557,14 +2769,17 @@ export namespace GstRtspServer {
             signal: K,
             callback: RTSPOnvifServer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RTSPOnvifServer.SignalSignatures>(
             signal: K,
             callback: RTSPOnvifServer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RTSPOnvifServer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RTSPOnvifServer.SignalSignatures[K]>
+            ...args: RTSPOnvifServer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace RTSPServer {
@@ -2577,6 +2792,17 @@ export namespace GstRtspServer {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'client-connected': ClientConnected;
+            'notify::address': GObject.Object.Notify;
+            'notify::backlog': GObject.Object.Notify;
+            'notify::bound-port': GObject.Object.Notify;
+            'notify::bound-port': GObject.Object.Notify;
+            'notify::content-length-limit': GObject.Object.Notify;
+            'notify::content-length-limit': GObject.Object.Notify;
+            'notify::mount-points': GObject.Object.Notify;
+            'notify::mount-points': GObject.Object.Notify;
+            'notify::service': GObject.Object.Notify;
+            'notify::session-pool': GObject.Object.Notify;
+            'notify::session-pool': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -2640,14 +2866,17 @@ export namespace GstRtspServer {
             signal: K,
             callback: RTSPServer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RTSPServer.SignalSignatures>(
             signal: K,
             callback: RTSPServer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RTSPServer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RTSPServer.SignalSignatures[K]>
+            ...args: RTSPServer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2838,7 +3067,14 @@ export namespace GstRtspServer {
 
     namespace RTSPSession {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::extra-timeout': GObject.Object.Notify;
+            'notify::extra-timeout': GObject.Object.Notify;
+            'notify::sessionid': GObject.Object.Notify;
+            'notify::timeout': GObject.Object.Notify;
+            'notify::timeout-always-visible': GObject.Object.Notify;
+            'notify::timeout-always-visible': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2888,14 +3124,17 @@ export namespace GstRtspServer {
             signal: K,
             callback: RTSPSession.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RTSPSession.SignalSignatures>(
             signal: K,
             callback: RTSPSession.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RTSPSession.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RTSPSession.SignalSignatures[K]>
+            ...args: RTSPSession.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3037,14 +3276,17 @@ export namespace GstRtspServer {
             signal: K,
             callback: RTSPSessionMedia.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RTSPSessionMedia.SignalSignatures>(
             signal: K,
             callback: RTSPSessionMedia.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RTSPSessionMedia.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RTSPSessionMedia.SignalSignatures[K]>
+            ...args: RTSPSessionMedia.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3123,6 +3365,8 @@ export namespace GstRtspServer {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'session-removed': SessionRemoved;
+            'notify::max-sessions': GObject.Object.Notify;
+            'notify::max-sessions': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -3161,14 +3405,17 @@ export namespace GstRtspServer {
             signal: K,
             callback: RTSPSessionPool.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RTSPSessionPool.SignalSignatures>(
             signal: K,
             callback: RTSPSessionPool.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RTSPSessionPool.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RTSPSessionPool.SignalSignatures[K]>
+            ...args: RTSPSessionPool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -3265,6 +3512,9 @@ export namespace GstRtspServer {
             'new-rtcp-encoder': NewRtcpEncoder;
             'new-rtp-encoder': NewRtpEncoder;
             'new-rtp-rtcp-decoder': NewRtpRtcpDecoder;
+            'notify::control': GObject.Object.Notify;
+            'notify::profiles': GObject.Object.Notify;
+            'notify::protocols': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -3305,14 +3555,17 @@ export namespace GstRtspServer {
             signal: K,
             callback: RTSPStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RTSPStream.SignalSignatures>(
             signal: K,
             callback: RTSPStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RTSPStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RTSPStream.SignalSignatures[K]>
+            ...args: RTSPStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3861,14 +4114,17 @@ export namespace GstRtspServer {
             signal: K,
             callback: RTSPStreamTransport.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RTSPStreamTransport.SignalSignatures>(
             signal: K,
             callback: RTSPStreamTransport.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RTSPStreamTransport.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RTSPStreamTransport.SignalSignatures[K]>
+            ...args: RTSPStreamTransport.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4002,7 +4258,10 @@ export namespace GstRtspServer {
 
     namespace RTSPThreadPool {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::max-threads': GObject.Object.Notify;
+            'notify::max-threads': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4039,14 +4298,17 @@ export namespace GstRtspServer {
             signal: K,
             callback: RTSPThreadPool.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RTSPThreadPool.SignalSignatures>(
             signal: K,
             callback: RTSPThreadPool.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RTSPThreadPool.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RTSPThreadPool.SignalSignatures[K]>
+            ...args: RTSPThreadPool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 

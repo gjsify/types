@@ -209,7 +209,19 @@ export namespace Folks {
     }
     namespace AbstractFieldDetails {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::t-type': GObject.Object.Notify;
+            'notify::t-type': GObject.Object.Notify;
+            'notify::t-dup-func': GObject.Object.Notify;
+            'notify::t-dup-func': GObject.Object.Notify;
+            'notify::t-destroy-func': GObject.Object.Notify;
+            'notify::t-destroy-func': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+            'notify::value-type': GObject.Object.Notify;
+            'notify::value-type': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::parameters': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -260,14 +272,17 @@ export namespace Folks {
             signal: K,
             callback: AbstractFieldDetails.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AbstractFieldDetails.SignalSignatures>(
             signal: K,
             callback: AbstractFieldDetails.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AbstractFieldDetails.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AbstractFieldDetails.SignalSignatures[K]>
+            ...args: AbstractFieldDetails.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -331,14 +346,17 @@ export namespace Folks {
             signal: K,
             callback: AvatarCache.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AvatarCache.SignalSignatures>(
             signal: K,
             callback: AvatarCache.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AvatarCache.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AvatarCache.SignalSignatures[K]>
+            ...args: AvatarCache.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -375,6 +393,10 @@ export namespace Folks {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'backend-available': BackendAvailable;
+            'notify::enabled-backends': GObject.Object.Notify;
+            'notify::enabled-backends': GObject.Object.Notify;
+            'notify::is-prepared': GObject.Object.Notify;
+            'notify::is-prepared': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -417,14 +439,17 @@ export namespace Folks {
             signal: K,
             callback: BackendStore.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BackendStore.SignalSignatures>(
             signal: K,
             callback: BackendStore.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BackendStore.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BackendStore.SignalSignatures[K]>
+            ...args: BackendStore.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -470,6 +495,13 @@ export namespace Folks {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'persona-store-added': PersonaStoreAdded;
             'persona-store-removed': PersonaStoreRemoved;
+            'notify::is-prepared': GObject.Object.Notify;
+            'notify::is-prepared': GObject.Object.Notify;
+            'notify::is-quiescent': GObject.Object.Notify;
+            'notify::is-quiescent': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::persona-stores': GObject.Object.Notify;
+            'notify::persona-stores': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -507,14 +539,17 @@ export namespace Folks {
         // Signals
 
         connect<K extends keyof Backend.SignalSignatures>(signal: K, callback: Backend.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Backend.SignalSignatures>(
             signal: K,
             callback: Backend.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Backend.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Backend.SignalSignatures[K]>
+            ...args: Backend.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -559,6 +594,10 @@ export namespace Folks {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'print-status': PrintStatus;
+            'notify::colour-enabled': GObject.Object.Notify;
+            'notify::colour-enabled': GObject.Object.Notify;
+            'notify::debug-output-enabled': GObject.Object.Notify;
+            'notify::debug-output-enabled': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -594,8 +633,14 @@ export namespace Folks {
         // Signals
 
         connect<K extends keyof Debug.SignalSignatures>(signal: K, callback: Debug.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Debug.SignalSignatures>(signal: K, callback: Debug.SignalSignatures[K]): number;
-        emit<K extends keyof Debug.SignalSignatures>(signal: K, ...args: Parameters<Debug.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Debug.SignalSignatures>(
+            signal: K,
+            ...args: Debug.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -615,7 +660,19 @@ export namespace Folks {
 
     namespace EmailFieldDetails {
         // Signal signatures
-        interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {}
+        interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {
+            'notify::t-type': GObject.Object.Notify;
+            'notify::t-type': GObject.Object.Notify;
+            'notify::t-dup-func': GObject.Object.Notify;
+            'notify::t-dup-func': GObject.Object.Notify;
+            'notify::t-destroy-func': GObject.Object.Notify;
+            'notify::t-destroy-func': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+            'notify::value-type': GObject.Object.Notify;
+            'notify::value-type': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::parameters': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -639,19 +696,34 @@ export namespace Folks {
             signal: K,
             callback: EmailFieldDetails.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof EmailFieldDetails.SignalSignatures>(
             signal: K,
             callback: EmailFieldDetails.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof EmailFieldDetails.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EmailFieldDetails.SignalSignatures[K]>
+            ...args: EmailFieldDetails.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace ExtendedFieldDetails {
         // Signal signatures
-        interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {}
+        interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {
+            'notify::t-type': GObject.Object.Notify;
+            'notify::t-type': GObject.Object.Notify;
+            'notify::t-dup-func': GObject.Object.Notify;
+            'notify::t-dup-func': GObject.Object.Notify;
+            'notify::t-destroy-func': GObject.Object.Notify;
+            'notify::t-destroy-func': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+            'notify::value-type': GObject.Object.Notify;
+            'notify::value-type': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::parameters': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -675,19 +747,34 @@ export namespace Folks {
             signal: K,
             callback: ExtendedFieldDetails.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExtendedFieldDetails.SignalSignatures>(
             signal: K,
             callback: ExtendedFieldDetails.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExtendedFieldDetails.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExtendedFieldDetails.SignalSignatures[K]>
+            ...args: ExtendedFieldDetails.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace ImFieldDetails {
         // Signal signatures
-        interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {}
+        interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {
+            'notify::t-type': GObject.Object.Notify;
+            'notify::t-type': GObject.Object.Notify;
+            'notify::t-dup-func': GObject.Object.Notify;
+            'notify::t-dup-func': GObject.Object.Notify;
+            'notify::t-destroy-func': GObject.Object.Notify;
+            'notify::t-destroy-func': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+            'notify::value-type': GObject.Object.Notify;
+            'notify::value-type': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::parameters': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -711,14 +798,17 @@ export namespace Folks {
             signal: K,
             callback: ImFieldDetails.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ImFieldDetails.SignalSignatures>(
             signal: K,
             callback: ImFieldDetails.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ImFieldDetails.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ImFieldDetails.SignalSignatures[K]>
+            ...args: ImFieldDetails.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace IndividualAggregator {
@@ -743,6 +833,16 @@ export namespace Folks {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'individuals-changed': IndividualsChanged;
             'individuals-changed-detailed': IndividualsChangedDetailed;
+            'notify::is-prepared': GObject.Object.Notify;
+            'notify::is-prepared': GObject.Object.Notify;
+            'notify::is-quiescent': GObject.Object.Notify;
+            'notify::is-quiescent': GObject.Object.Notify;
+            'notify::primary-store': GObject.Object.Notify;
+            'notify::primary-store': GObject.Object.Notify;
+            'notify::backend-store': GObject.Object.Notify;
+            'notify::backend-store': GObject.Object.Notify;
+            'notify::individuals': GObject.Object.Notify;
+            'notify::user': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -795,14 +895,17 @@ export namespace Folks {
             signal: K,
             callback: IndividualAggregator.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof IndividualAggregator.SignalSignatures>(
             signal: K,
             callback: IndividualAggregator.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof IndividualAggregator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IndividualAggregator.SignalSignatures[K]>
+            ...args: IndividualAggregator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -894,6 +997,60 @@ export namespace Folks {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             removed: Removed;
             'personas-changed': PersonasChanged;
+            'notify::trust-level': GObject.Object.Notify;
+            'notify::trust-level': GObject.Object.Notify;
+            'notify::is-user': GObject.Object.Notify;
+            'notify::is-user': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::personas': GObject.Object.Notify;
+            'notify::alias': GObject.Object.Notify;
+            'notify::avatar': GObject.Object.Notify;
+            'notify::birthday': GObject.Object.Notify;
+            'notify::calendar-event-id': GObject.Object.Notify;
+            'notify::calendar-event-id': GObject.Object.Notify;
+            'notify::email-addresses': GObject.Object.Notify;
+            'notify::email-addresses': GObject.Object.Notify;
+            'notify::is-favourite': GObject.Object.Notify;
+            'notify::is-favourite': GObject.Object.Notify;
+            'notify::gender': GObject.Object.Notify;
+            'notify::groups': GObject.Object.Notify;
+            'notify::im-addresses': GObject.Object.Notify;
+            'notify::im-addresses': GObject.Object.Notify;
+            'notify::im-interaction-count': GObject.Object.Notify;
+            'notify::im-interaction-count': GObject.Object.Notify;
+            'notify::last-im-interaction-datetime': GObject.Object.Notify;
+            'notify::last-im-interaction-datetime': GObject.Object.Notify;
+            'notify::call-interaction-count': GObject.Object.Notify;
+            'notify::call-interaction-count': GObject.Object.Notify;
+            'notify::last-call-interaction-datetime': GObject.Object.Notify;
+            'notify::last-call-interaction-datetime': GObject.Object.Notify;
+            'notify::local-ids': GObject.Object.Notify;
+            'notify::local-ids': GObject.Object.Notify;
+            'notify::location': GObject.Object.Notify;
+            'notify::structured-name': GObject.Object.Notify;
+            'notify::structured-name': GObject.Object.Notify;
+            'notify::full-name': GObject.Object.Notify;
+            'notify::full-name': GObject.Object.Notify;
+            'notify::nickname': GObject.Object.Notify;
+            'notify::notes': GObject.Object.Notify;
+            'notify::presence-type': GObject.Object.Notify;
+            'notify::presence-type': GObject.Object.Notify;
+            'notify::presence-message': GObject.Object.Notify;
+            'notify::presence-message': GObject.Object.Notify;
+            'notify::client-types': GObject.Object.Notify;
+            'notify::client-types': GObject.Object.Notify;
+            'notify::presence-status': GObject.Object.Notify;
+            'notify::presence-status': GObject.Object.Notify;
+            'notify::phone-numbers': GObject.Object.Notify;
+            'notify::phone-numbers': GObject.Object.Notify;
+            'notify::postal-addresses': GObject.Object.Notify;
+            'notify::postal-addresses': GObject.Object.Notify;
+            'notify::roles': GObject.Object.Notify;
+            'notify::urls': GObject.Object.Notify;
+            'notify::web-service-addresses': GObject.Object.Notify;
+            'notify::web-service-addresses': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -988,14 +1145,17 @@ export namespace Folks {
             signal: K,
             callback: Individual.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Individual.SignalSignatures>(
             signal: K,
             callback: Individual.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Individual.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Individual.SignalSignatures[K]>
+            ...args: Individual.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1843,14 +2003,17 @@ export namespace Folks {
         // Signals
 
         connect<K extends keyof Location.SignalSignatures>(signal: K, callback: Location.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Location.SignalSignatures>(
             signal: K,
             callback: Location.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Location.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Location.SignalSignatures[K]>
+            ...args: Location.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1860,7 +2023,16 @@ export namespace Folks {
 
     namespace StructuredName {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::family-name': GObject.Object.Notify;
+            'notify::family-name': GObject.Object.Notify;
+            'notify::given-name': GObject.Object.Notify;
+            'notify::given-name': GObject.Object.Notify;
+            'notify::additional-names': GObject.Object.Notify;
+            'notify::additional-names': GObject.Object.Notify;
+            'notify::prefixes': GObject.Object.Notify;
+            'notify::suffixes': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1920,14 +2092,17 @@ export namespace Folks {
             signal: K,
             callback: StructuredName.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StructuredName.SignalSignatures>(
             signal: K,
             callback: StructuredName.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StructuredName.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StructuredName.SignalSignatures[K]>
+            ...args: StructuredName.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1949,7 +2124,20 @@ export namespace Folks {
 
     namespace NoteFieldDetails {
         // Signal signatures
-        interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {}
+        interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {
+            'notify::uid': GObject.Object.Notify;
+            'notify::t-type': GObject.Object.Notify;
+            'notify::t-type': GObject.Object.Notify;
+            'notify::t-dup-func': GObject.Object.Notify;
+            'notify::t-dup-func': GObject.Object.Notify;
+            'notify::t-destroy-func': GObject.Object.Notify;
+            'notify::t-destroy-func': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+            'notify::value-type': GObject.Object.Notify;
+            'notify::value-type': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::parameters': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1980,14 +2168,17 @@ export namespace Folks {
             signal: K,
             callback: NoteFieldDetails.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NoteFieldDetails.SignalSignatures>(
             signal: K,
             callback: NoteFieldDetails.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NoteFieldDetails.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NoteFieldDetails.SignalSignatures[K]>
+            ...args: NoteFieldDetails.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1997,7 +2188,17 @@ export namespace Folks {
 
     namespace ObjectCache {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::t-type': GObject.Object.Notify;
+            'notify::t-type': GObject.Object.Notify;
+            'notify::t-dup-func': GObject.Object.Notify;
+            'notify::t-dup-func': GObject.Object.Notify;
+            'notify::t-destroy-func': GObject.Object.Notify;
+            'notify::t-destroy-func': GObject.Object.Notify;
+            'notify::type-id': GObject.Object.Notify;
+            'notify::type-id': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2041,14 +2242,17 @@ export namespace Folks {
             signal: K,
             callback: ObjectCache.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ObjectCache.SignalSignatures>(
             signal: K,
             callback: ObjectCache.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ObjectCache.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ObjectCache.SignalSignatures[K]>
+            ...args: ObjectCache.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -2105,6 +2309,34 @@ export namespace Folks {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'personas-changed': PersonasChanged;
             removed: Removed;
+            'notify::type-id': GObject.Object.Notify;
+            'notify::type-id': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::personas': GObject.Object.Notify;
+            'notify::can-add-personas': GObject.Object.Notify;
+            'notify::can-add-personas': GObject.Object.Notify;
+            'notify::can-alias-personas': GObject.Object.Notify;
+            'notify::can-alias-personas': GObject.Object.Notify;
+            'notify::can-group-personas': GObject.Object.Notify;
+            'notify::can-group-personas': GObject.Object.Notify;
+            'notify::can-remove-personas': GObject.Object.Notify;
+            'notify::can-remove-personas': GObject.Object.Notify;
+            'notify::is-prepared': GObject.Object.Notify;
+            'notify::is-prepared': GObject.Object.Notify;
+            'notify::is-quiescent': GObject.Object.Notify;
+            'notify::is-quiescent': GObject.Object.Notify;
+            'notify::is-writeable': GObject.Object.Notify;
+            'notify::is-writeable': GObject.Object.Notify;
+            'notify::trust-level': GObject.Object.Notify;
+            'notify::trust-level': GObject.Object.Notify;
+            'notify::always-writeable-properties': GObject.Object.Notify;
+            'notify::always-writeable-properties': GObject.Object.Notify;
+            'notify::is-primary-store': GObject.Object.Notify;
+            'notify::is-primary-store': GObject.Object.Notify;
+            'notify::is-user-set-default': GObject.Object.Notify;
+            'notify::is-user-set-default': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -2195,14 +2427,17 @@ export namespace Folks {
             signal: K,
             callback: PersonaStore.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PersonaStore.SignalSignatures>(
             signal: K,
             callback: PersonaStore.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PersonaStore.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PersonaStore.SignalSignatures[K]>
+            ...args: PersonaStore.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2285,7 +2520,20 @@ export namespace Folks {
 
     namespace Persona {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::iid': GObject.Object.Notify;
+            'notify::uid': GObject.Object.Notify;
+            'notify::display-id': GObject.Object.Notify;
+            'notify::display-id': GObject.Object.Notify;
+            'notify::is-user': GObject.Object.Notify;
+            'notify::is-user': GObject.Object.Notify;
+            'notify::store': GObject.Object.Notify;
+            'notify::individual': GObject.Object.Notify;
+            'notify::linkable-properties': GObject.Object.Notify;
+            'notify::linkable-properties': GObject.Object.Notify;
+            'notify::writeable-properties': GObject.Object.Notify;
+            'notify::writeable-properties': GObject.Object.Notify;
+        }
 
         interface LinkablePropertyCallback {
             (link: string): void;
@@ -2337,14 +2585,17 @@ export namespace Folks {
         // Signals
 
         connect<K extends keyof Persona.SignalSignatures>(signal: K, callback: Persona.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Persona.SignalSignatures>(
             signal: K,
             callback: Persona.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Persona.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Persona.SignalSignatures[K]>
+            ...args: Persona.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2372,7 +2623,19 @@ export namespace Folks {
 
     namespace PhoneFieldDetails {
         // Signal signatures
-        interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {}
+        interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {
+            'notify::t-type': GObject.Object.Notify;
+            'notify::t-type': GObject.Object.Notify;
+            'notify::t-dup-func': GObject.Object.Notify;
+            'notify::t-dup-func': GObject.Object.Notify;
+            'notify::t-destroy-func': GObject.Object.Notify;
+            'notify::t-destroy-func': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+            'notify::value-type': GObject.Object.Notify;
+            'notify::value-type': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::parameters': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2396,14 +2659,17 @@ export namespace Folks {
             signal: K,
             callback: PhoneFieldDetails.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PhoneFieldDetails.SignalSignatures>(
             signal: K,
             callback: PhoneFieldDetails.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PhoneFieldDetails.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PhoneFieldDetails.SignalSignatures[K]>
+            ...args: PhoneFieldDetails.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2412,7 +2678,20 @@ export namespace Folks {
 
     namespace PostalAddress {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::po-box': GObject.Object.Notify;
+            'notify::po-box': GObject.Object.Notify;
+            'notify::extension': GObject.Object.Notify;
+            'notify::street': GObject.Object.Notify;
+            'notify::locality': GObject.Object.Notify;
+            'notify::region': GObject.Object.Notify;
+            'notify::postal-code': GObject.Object.Notify;
+            'notify::postal-code': GObject.Object.Notify;
+            'notify::country': GObject.Object.Notify;
+            'notify::address-format': GObject.Object.Notify;
+            'notify::address-format': GObject.Object.Notify;
+            'notify::uid': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2486,14 +2765,17 @@ export namespace Folks {
             signal: K,
             callback: PostalAddress.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PostalAddress.SignalSignatures>(
             signal: K,
             callback: PostalAddress.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PostalAddress.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PostalAddress.SignalSignatures[K]>
+            ...args: PostalAddress.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2522,7 +2804,19 @@ export namespace Folks {
 
     namespace PostalAddressFieldDetails {
         // Signal signatures
-        interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {}
+        interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {
+            'notify::t-type': GObject.Object.Notify;
+            'notify::t-type': GObject.Object.Notify;
+            'notify::t-dup-func': GObject.Object.Notify;
+            'notify::t-dup-func': GObject.Object.Notify;
+            'notify::t-destroy-func': GObject.Object.Notify;
+            'notify::t-destroy-func': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+            'notify::value-type': GObject.Object.Notify;
+            'notify::value-type': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::parameters': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2546,14 +2840,17 @@ export namespace Folks {
             signal: K,
             callback: PostalAddressFieldDetails.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PostalAddressFieldDetails.SignalSignatures>(
             signal: K,
             callback: PostalAddressFieldDetails.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PostalAddressFieldDetails.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PostalAddressFieldDetails.SignalSignatures[K]>
+            ...args: PostalAddressFieldDetails.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace PotentialMatch {
@@ -2586,14 +2883,17 @@ export namespace Folks {
             signal: K,
             callback: PotentialMatch.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PotentialMatch.SignalSignatures>(
             signal: K,
             callback: PotentialMatch.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PotentialMatch.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PotentialMatch.SignalSignatures[K]>
+            ...args: PotentialMatch.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2602,7 +2902,10 @@ export namespace Folks {
 
     namespace Query {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::match-fields': GObject.Object.Notify;
+            'notify::match-fields': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2629,8 +2932,14 @@ export namespace Folks {
         // Signals
 
         connect<K extends keyof Query.SignalSignatures>(signal: K, callback: Query.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Query.SignalSignatures>(signal: K, callback: Query.SignalSignatures[K]): number;
-        emit<K extends keyof Query.SignalSignatures>(signal: K, ...args: Parameters<Query.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Query.SignalSignatures>(
+            signal: K,
+            ...args: Query.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -2645,7 +2954,13 @@ export namespace Folks {
 
     namespace Role {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::organisation-name': GObject.Object.Notify;
+            'notify::organisation-name': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::role': GObject.Object.Notify;
+            'notify::uid': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2685,8 +3000,14 @@ export namespace Folks {
         // Signals
 
         connect<K extends keyof Role.SignalSignatures>(signal: K, callback: Role.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Role.SignalSignatures>(signal: K, callback: Role.SignalSignatures[K]): number;
-        emit<K extends keyof Role.SignalSignatures>(signal: K, ...args: Parameters<Role.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Role.SignalSignatures>(
+            signal: K,
+            ...args: Role.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2709,7 +3030,19 @@ export namespace Folks {
 
     namespace RoleFieldDetails {
         // Signal signatures
-        interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {}
+        interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {
+            'notify::t-type': GObject.Object.Notify;
+            'notify::t-type': GObject.Object.Notify;
+            'notify::t-dup-func': GObject.Object.Notify;
+            'notify::t-dup-func': GObject.Object.Notify;
+            'notify::t-destroy-func': GObject.Object.Notify;
+            'notify::t-destroy-func': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+            'notify::value-type': GObject.Object.Notify;
+            'notify::value-type': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::parameters': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2733,14 +3066,17 @@ export namespace Folks {
             signal: K,
             callback: RoleFieldDetails.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RoleFieldDetails.SignalSignatures>(
             signal: K,
             callback: RoleFieldDetails.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RoleFieldDetails.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RoleFieldDetails.SignalSignatures[K]>
+            ...args: RoleFieldDetails.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace SearchView {
@@ -2753,6 +3089,13 @@ export namespace Folks {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'individuals-changed-detailed': IndividualsChangedDetailed;
+            'notify::aggregator': GObject.Object.Notify;
+            'notify::query': GObject.Object.Notify;
+            'notify::individuals': GObject.Object.Notify;
+            'notify::is-prepared': GObject.Object.Notify;
+            'notify::is-prepared': GObject.Object.Notify;
+            'notify::is-quiescent': GObject.Object.Notify;
+            'notify::is-quiescent': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -2796,14 +3139,17 @@ export namespace Folks {
             signal: K,
             callback: SearchView.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SearchView.SignalSignatures>(
             signal: K,
             callback: SearchView.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SearchView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SearchView.SignalSignatures[K]>
+            ...args: SearchView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2829,7 +3175,14 @@ export namespace Folks {
 
     namespace SimpleQuery {
         // Signal signatures
-        interface SignalSignatures extends Query.SignalSignatures {}
+        interface SignalSignatures extends Query.SignalSignatures {
+            'notify::query-string': GObject.Object.Notify;
+            'notify::query-string': GObject.Object.Notify;
+            'notify::query-locale': GObject.Object.Notify;
+            'notify::query-locale': GObject.Object.Notify;
+            'notify::match-fields': GObject.Object.Notify;
+            'notify::match-fields': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2869,14 +3222,17 @@ export namespace Folks {
             signal: K,
             callback: SimpleQuery.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SimpleQuery.SignalSignatures>(
             signal: K,
             callback: SimpleQuery.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SimpleQuery.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SimpleQuery.SignalSignatures[K]>
+            ...args: SimpleQuery.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2888,7 +3244,19 @@ export namespace Folks {
 
     namespace UrlFieldDetails {
         // Signal signatures
-        interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {}
+        interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {
+            'notify::t-type': GObject.Object.Notify;
+            'notify::t-type': GObject.Object.Notify;
+            'notify::t-dup-func': GObject.Object.Notify;
+            'notify::t-dup-func': GObject.Object.Notify;
+            'notify::t-destroy-func': GObject.Object.Notify;
+            'notify::t-destroy-func': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+            'notify::value-type': GObject.Object.Notify;
+            'notify::value-type': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::parameters': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2912,14 +3280,17 @@ export namespace Folks {
             signal: K,
             callback: UrlFieldDetails.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UrlFieldDetails.SignalSignatures>(
             signal: K,
             callback: UrlFieldDetails.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UrlFieldDetails.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UrlFieldDetails.SignalSignatures[K]>
+            ...args: UrlFieldDetails.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Utils {
@@ -2945,8 +3316,14 @@ export namespace Folks {
         // Signals
 
         connect<K extends keyof Utils.SignalSignatures>(signal: K, callback: Utils.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Utils.SignalSignatures>(signal: K, callback: Utils.SignalSignatures[K]): number;
-        emit<K extends keyof Utils.SignalSignatures>(signal: K, ...args: Parameters<Utils.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Utils.SignalSignatures>(
+            signal: K,
+            ...args: Utils.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2958,7 +3335,19 @@ export namespace Folks {
 
     namespace WebServiceFieldDetails {
         // Signal signatures
-        interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {}
+        interface SignalSignatures extends AbstractFieldDetails.SignalSignatures {
+            'notify::t-type': GObject.Object.Notify;
+            'notify::t-type': GObject.Object.Notify;
+            'notify::t-dup-func': GObject.Object.Notify;
+            'notify::t-dup-func': GObject.Object.Notify;
+            'notify::t-destroy-func': GObject.Object.Notify;
+            'notify::t-destroy-func': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+            'notify::value-type': GObject.Object.Notify;
+            'notify::value-type': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::parameters': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2982,14 +3371,17 @@ export namespace Folks {
             signal: K,
             callback: WebServiceFieldDetails.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WebServiceFieldDetails.SignalSignatures>(
             signal: K,
             callback: WebServiceFieldDetails.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebServiceFieldDetails.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebServiceFieldDetails.SignalSignatures[K]>
+            ...args: WebServiceFieldDetails.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     type AbstractFieldDetailsClass = typeof AbstractFieldDetails;

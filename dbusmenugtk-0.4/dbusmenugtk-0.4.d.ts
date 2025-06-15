@@ -111,7 +111,14 @@ export namespace DbusmenuGtk {
     function menuitem_property_set_shortcut_string(menuitem: Dbusmenu.Menuitem, shortcut: string): boolean;
     namespace Client {
         // Signal signatures
-        interface SignalSignatures extends Dbusmenu.Client.SignalSignatures {}
+        interface SignalSignatures extends Dbusmenu.Client.SignalSignatures {
+            'notify::dbus-name': GObject.Object.Notify;
+            'notify::dbus-name': GObject.Object.Notify;
+            'notify::dbus-object': GObject.Object.Notify;
+            'notify::dbus-object': GObject.Object.Notify;
+            'notify::group-events': GObject.Object.Notify;
+            'notify::group-events': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -136,8 +143,14 @@ export namespace DbusmenuGtk {
         // Signals
 
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -183,7 +196,74 @@ export namespace DbusmenuGtk {
 
     namespace Menu {
         // Signal signatures
-        interface SignalSignatures extends Gtk.Menu.SignalSignatures {}
+        interface SignalSignatures extends Gtk.Menu.SignalSignatures {
+            'notify::dbus-name': GObject.Object.Notify;
+            'notify::dbus-name': GObject.Object.Notify;
+            'notify::dbus-object': GObject.Object.Notify;
+            'notify::dbus-object': GObject.Object.Notify;
+            'notify::accel-group': GObject.Object.Notify;
+            'notify::accel-group': GObject.Object.Notify;
+            'notify::accel-path': GObject.Object.Notify;
+            'notify::accel-path': GObject.Object.Notify;
+            'notify::active': GObject.Object.Notify;
+            'notify::attach-widget': GObject.Object.Notify;
+            'notify::attach-widget': GObject.Object.Notify;
+            'notify::monitor': GObject.Object.Notify;
+            'notify::reserve-toggle-size': GObject.Object.Notify;
+            'notify::reserve-toggle-size': GObject.Object.Notify;
+            'notify::tearoff-state': GObject.Object.Notify;
+            'notify::tearoff-state': GObject.Object.Notify;
+            'notify::tearoff-title': GObject.Object.Notify;
+            'notify::tearoff-title': GObject.Object.Notify;
+            'notify::take-focus': GObject.Object.Notify;
+            'notify::take-focus': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::child': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::events': GObject.Object.Notify;
+            'notify::extension-events': GObject.Object.Notify;
+            'notify::extension-events': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::sensitive': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::window': GObject.Object.Notify;
+            'notify::user-data': GObject.Object.Notify;
+            'notify::user-data': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -226,8 +306,14 @@ export namespace DbusmenuGtk {
         // Signals
 
         connect<K extends keyof Menu.SignalSignatures>(signal: K, callback: Menu.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Menu.SignalSignatures>(signal: K, callback: Menu.SignalSignatures[K]): number;
-        emit<K extends keyof Menu.SignalSignatures>(signal: K, ...args: Parameters<Menu.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Menu.SignalSignatures>(
+            signal: K,
+            ...args: Menu.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

@@ -379,7 +379,68 @@ export namespace Goa {
     function todo_override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     namespace AccountProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::attention-needed': GObject.Object.Notify;
+            'notify::attention-needed': GObject.Object.Notify;
+            'notify::calendar-disabled': GObject.Object.Notify;
+            'notify::calendar-disabled': GObject.Object.Notify;
+            'notify::chat-disabled': GObject.Object.Notify;
+            'notify::chat-disabled': GObject.Object.Notify;
+            'notify::contacts-disabled': GObject.Object.Notify;
+            'notify::contacts-disabled': GObject.Object.Notify;
+            'notify::documents-disabled': GObject.Object.Notify;
+            'notify::documents-disabled': GObject.Object.Notify;
+            'notify::files-disabled': GObject.Object.Notify;
+            'notify::files-disabled': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::identity': GObject.Object.Notify;
+            'notify::is-locked': GObject.Object.Notify;
+            'notify::is-locked': GObject.Object.Notify;
+            'notify::is-temporary': GObject.Object.Notify;
+            'notify::is-temporary': GObject.Object.Notify;
+            'notify::mail-disabled': GObject.Object.Notify;
+            'notify::mail-disabled': GObject.Object.Notify;
+            'notify::maps-disabled': GObject.Object.Notify;
+            'notify::maps-disabled': GObject.Object.Notify;
+            'notify::music-disabled': GObject.Object.Notify;
+            'notify::music-disabled': GObject.Object.Notify;
+            'notify::photos-disabled': GObject.Object.Notify;
+            'notify::photos-disabled': GObject.Object.Notify;
+            'notify::presentation-identity': GObject.Object.Notify;
+            'notify::presentation-identity': GObject.Object.Notify;
+            'notify::printers-disabled': GObject.Object.Notify;
+            'notify::printers-disabled': GObject.Object.Notify;
+            'notify::provider-icon': GObject.Object.Notify;
+            'notify::provider-icon': GObject.Object.Notify;
+            'notify::provider-name': GObject.Object.Notify;
+            'notify::provider-name': GObject.Object.Notify;
+            'notify::provider-type': GObject.Object.Notify;
+            'notify::provider-type': GObject.Object.Notify;
+            'notify::read-later-disabled': GObject.Object.Notify;
+            'notify::read-later-disabled': GObject.Object.Notify;
+            'notify::ticketing-disabled': GObject.Object.Notify;
+            'notify::ticketing-disabled': GObject.Object.Notify;
+            'notify::todo-disabled': GObject.Object.Notify;
+            'notify::todo-disabled': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -441,14 +502,17 @@ export namespace Goa {
             signal: K,
             callback: AccountProxy.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AccountProxy.SignalSignatures>(
             signal: K,
             callback: AccountProxy.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AccountProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AccountProxy.SignalSignatures[K]>
+            ...args: AccountProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1681,7 +1745,52 @@ export namespace Goa {
 
     namespace AccountSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::attention-needed': GObject.Object.Notify;
+            'notify::attention-needed': GObject.Object.Notify;
+            'notify::calendar-disabled': GObject.Object.Notify;
+            'notify::calendar-disabled': GObject.Object.Notify;
+            'notify::chat-disabled': GObject.Object.Notify;
+            'notify::chat-disabled': GObject.Object.Notify;
+            'notify::contacts-disabled': GObject.Object.Notify;
+            'notify::contacts-disabled': GObject.Object.Notify;
+            'notify::documents-disabled': GObject.Object.Notify;
+            'notify::documents-disabled': GObject.Object.Notify;
+            'notify::files-disabled': GObject.Object.Notify;
+            'notify::files-disabled': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::identity': GObject.Object.Notify;
+            'notify::is-locked': GObject.Object.Notify;
+            'notify::is-locked': GObject.Object.Notify;
+            'notify::is-temporary': GObject.Object.Notify;
+            'notify::is-temporary': GObject.Object.Notify;
+            'notify::mail-disabled': GObject.Object.Notify;
+            'notify::mail-disabled': GObject.Object.Notify;
+            'notify::maps-disabled': GObject.Object.Notify;
+            'notify::maps-disabled': GObject.Object.Notify;
+            'notify::music-disabled': GObject.Object.Notify;
+            'notify::music-disabled': GObject.Object.Notify;
+            'notify::photos-disabled': GObject.Object.Notify;
+            'notify::photos-disabled': GObject.Object.Notify;
+            'notify::presentation-identity': GObject.Object.Notify;
+            'notify::presentation-identity': GObject.Object.Notify;
+            'notify::printers-disabled': GObject.Object.Notify;
+            'notify::printers-disabled': GObject.Object.Notify;
+            'notify::provider-icon': GObject.Object.Notify;
+            'notify::provider-icon': GObject.Object.Notify;
+            'notify::provider-name': GObject.Object.Notify;
+            'notify::provider-name': GObject.Object.Notify;
+            'notify::provider-type': GObject.Object.Notify;
+            'notify::provider-type': GObject.Object.Notify;
+            'notify::read-later-disabled': GObject.Object.Notify;
+            'notify::read-later-disabled': GObject.Object.Notify;
+            'notify::ticketing-disabled': GObject.Object.Notify;
+            'notify::ticketing-disabled': GObject.Object.Notify;
+            'notify::todo-disabled': GObject.Object.Notify;
+            'notify::todo-disabled': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1711,14 +1820,17 @@ export namespace Goa {
             signal: K,
             callback: AccountSkeleton.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AccountSkeleton.SignalSignatures>(
             signal: K,
             callback: AccountSkeleton.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AccountSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AccountSkeleton.SignalSignatures[K]>
+            ...args: AccountSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         /**
@@ -2614,7 +2726,29 @@ export namespace Goa {
 
     namespace CalendarProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::accept-ssl-errors': GObject.Object.Notify;
+            'notify::accept-ssl-errors': GObject.Object.Notify;
+            'notify::uri': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2676,14 +2810,17 @@ export namespace Goa {
             signal: K,
             callback: CalendarProxy.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CalendarProxy.SignalSignatures>(
             signal: K,
             callback: CalendarProxy.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CalendarProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CalendarProxy.SignalSignatures[K]>
+            ...args: CalendarProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -3523,7 +3660,13 @@ export namespace Goa {
 
     namespace CalendarSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::accept-ssl-errors': GObject.Object.Notify;
+            'notify::accept-ssl-errors': GObject.Object.Notify;
+            'notify::uri': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3553,14 +3696,17 @@ export namespace Goa {
             signal: K,
             callback: CalendarSkeleton.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CalendarSkeleton.SignalSignatures>(
             signal: K,
             callback: CalendarSkeleton.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CalendarSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CalendarSkeleton.SignalSignatures[K]>
+            ...args: CalendarSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         /**
@@ -4063,7 +4209,26 @@ export namespace Goa {
 
     namespace ChatProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4122,14 +4287,17 @@ export namespace Goa {
         // Signals
 
         connect<K extends keyof ChatProxy.SignalSignatures>(signal: K, callback: ChatProxy.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ChatProxy.SignalSignatures>(
             signal: K,
             callback: ChatProxy.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ChatProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ChatProxy.SignalSignatures[K]>
+            ...args: ChatProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -4946,7 +5114,10 @@ export namespace Goa {
 
     namespace ChatSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4976,14 +5147,17 @@ export namespace Goa {
             signal: K,
             callback: ChatSkeleton.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ChatSkeleton.SignalSignatures>(
             signal: K,
             callback: ChatSkeleton.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ChatSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ChatSkeleton.SignalSignatures[K]>
+            ...args: ChatSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -5481,6 +5655,8 @@ export namespace Goa {
             'account-added': AccountAdded;
             'account-changed': AccountChanged;
             'account-removed': AccountRemoved;
+            'notify::object-manager': GObject.Object.Notify;
+            'notify::object-manager': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -5528,8 +5704,14 @@ export namespace Goa {
         // Signals
 
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -6302,7 +6484,29 @@ export namespace Goa {
 
     namespace ContactsProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::accept-ssl-errors': GObject.Object.Notify;
+            'notify::accept-ssl-errors': GObject.Object.Notify;
+            'notify::uri': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6364,14 +6568,17 @@ export namespace Goa {
             signal: K,
             callback: ContactsProxy.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ContactsProxy.SignalSignatures>(
             signal: K,
             callback: ContactsProxy.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ContactsProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContactsProxy.SignalSignatures[K]>
+            ...args: ContactsProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -7211,7 +7418,13 @@ export namespace Goa {
 
     namespace ContactsSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::accept-ssl-errors': GObject.Object.Notify;
+            'notify::accept-ssl-errors': GObject.Object.Notify;
+            'notify::uri': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -7241,14 +7454,17 @@ export namespace Goa {
             signal: K,
             callback: ContactsSkeleton.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ContactsSkeleton.SignalSignatures>(
             signal: K,
             callback: ContactsSkeleton.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ContactsSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContactsSkeleton.SignalSignatures[K]>
+            ...args: ContactsSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         /**
@@ -7751,7 +7967,26 @@ export namespace Goa {
 
     namespace DocumentsProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -7813,14 +8048,17 @@ export namespace Goa {
             signal: K,
             callback: DocumentsProxy.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DocumentsProxy.SignalSignatures>(
             signal: K,
             callback: DocumentsProxy.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DocumentsProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DocumentsProxy.SignalSignatures[K]>
+            ...args: DocumentsProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -8637,7 +8875,10 @@ export namespace Goa {
 
     namespace DocumentsSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8667,14 +8908,17 @@ export namespace Goa {
             signal: K,
             callback: DocumentsSkeleton.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DocumentsSkeleton.SignalSignatures>(
             signal: K,
             callback: DocumentsSkeleton.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DocumentsSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DocumentsSkeleton.SignalSignatures[K]>
+            ...args: DocumentsSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -9154,7 +9398,29 @@ export namespace Goa {
 
     namespace ExchangeProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::accept-ssl-errors': GObject.Object.Notify;
+            'notify::accept-ssl-errors': GObject.Object.Notify;
+            'notify::host': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -9216,14 +9482,17 @@ export namespace Goa {
             signal: K,
             callback: ExchangeProxy.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExchangeProxy.SignalSignatures>(
             signal: K,
             callback: ExchangeProxy.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExchangeProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExchangeProxy.SignalSignatures[K]>
+            ...args: ExchangeProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -10063,7 +10332,13 @@ export namespace Goa {
 
     namespace ExchangeSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::accept-ssl-errors': GObject.Object.Notify;
+            'notify::accept-ssl-errors': GObject.Object.Notify;
+            'notify::host': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10093,14 +10368,17 @@ export namespace Goa {
             signal: K,
             callback: ExchangeSkeleton.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExchangeSkeleton.SignalSignatures>(
             signal: K,
             callback: ExchangeSkeleton.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExchangeSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExchangeSkeleton.SignalSignatures[K]>
+            ...args: ExchangeSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         /**
@@ -10603,7 +10881,29 @@ export namespace Goa {
 
     namespace FilesProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::accept-ssl-errors': GObject.Object.Notify;
+            'notify::accept-ssl-errors': GObject.Object.Notify;
+            'notify::uri': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10665,14 +10965,17 @@ export namespace Goa {
             signal: K,
             callback: FilesProxy.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FilesProxy.SignalSignatures>(
             signal: K,
             callback: FilesProxy.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FilesProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FilesProxy.SignalSignatures[K]>
+            ...args: FilesProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -11512,7 +11815,13 @@ export namespace Goa {
 
     namespace FilesSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::accept-ssl-errors': GObject.Object.Notify;
+            'notify::accept-ssl-errors': GObject.Object.Notify;
+            'notify::uri': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11542,14 +11851,17 @@ export namespace Goa {
             signal: K,
             callback: FilesSkeleton.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FilesSkeleton.SignalSignatures>(
             signal: K,
             callback: FilesSkeleton.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FilesSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FilesSkeleton.SignalSignatures[K]>
+            ...args: FilesSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         /**
@@ -12052,7 +12364,61 @@ export namespace Goa {
 
     namespace MailProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::email-address': GObject.Object.Notify;
+            'notify::email-address': GObject.Object.Notify;
+            'notify::imap-accept-ssl-errors': GObject.Object.Notify;
+            'notify::imap-accept-ssl-errors': GObject.Object.Notify;
+            'notify::imap-host': GObject.Object.Notify;
+            'notify::imap-host': GObject.Object.Notify;
+            'notify::imap-supported': GObject.Object.Notify;
+            'notify::imap-supported': GObject.Object.Notify;
+            'notify::imap-use-ssl': GObject.Object.Notify;
+            'notify::imap-use-ssl': GObject.Object.Notify;
+            'notify::imap-use-tls': GObject.Object.Notify;
+            'notify::imap-use-tls': GObject.Object.Notify;
+            'notify::imap-user-name': GObject.Object.Notify;
+            'notify::imap-user-name': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::smtp-accept-ssl-errors': GObject.Object.Notify;
+            'notify::smtp-accept-ssl-errors': GObject.Object.Notify;
+            'notify::smtp-auth-login': GObject.Object.Notify;
+            'notify::smtp-auth-login': GObject.Object.Notify;
+            'notify::smtp-auth-plain': GObject.Object.Notify;
+            'notify::smtp-auth-plain': GObject.Object.Notify;
+            'notify::smtp-auth-xoauth2': GObject.Object.Notify;
+            'notify::smtp-auth-xoauth2': GObject.Object.Notify;
+            'notify::smtp-host': GObject.Object.Notify;
+            'notify::smtp-host': GObject.Object.Notify;
+            'notify::smtp-supported': GObject.Object.Notify;
+            'notify::smtp-supported': GObject.Object.Notify;
+            'notify::smtp-use-auth': GObject.Object.Notify;
+            'notify::smtp-use-auth': GObject.Object.Notify;
+            'notify::smtp-use-ssl': GObject.Object.Notify;
+            'notify::smtp-use-ssl': GObject.Object.Notify;
+            'notify::smtp-use-tls': GObject.Object.Notify;
+            'notify::smtp-use-tls': GObject.Object.Notify;
+            'notify::smtp-user-name': GObject.Object.Notify;
+            'notify::smtp-user-name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12111,14 +12477,17 @@ export namespace Goa {
         // Signals
 
         connect<K extends keyof MailProxy.SignalSignatures>(signal: K, callback: MailProxy.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MailProxy.SignalSignatures>(
             signal: K,
             callback: MailProxy.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MailProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MailProxy.SignalSignatures[K]>
+            ...args: MailProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -13182,7 +13551,45 @@ export namespace Goa {
 
     namespace MailSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::email-address': GObject.Object.Notify;
+            'notify::email-address': GObject.Object.Notify;
+            'notify::imap-accept-ssl-errors': GObject.Object.Notify;
+            'notify::imap-accept-ssl-errors': GObject.Object.Notify;
+            'notify::imap-host': GObject.Object.Notify;
+            'notify::imap-host': GObject.Object.Notify;
+            'notify::imap-supported': GObject.Object.Notify;
+            'notify::imap-supported': GObject.Object.Notify;
+            'notify::imap-use-ssl': GObject.Object.Notify;
+            'notify::imap-use-ssl': GObject.Object.Notify;
+            'notify::imap-use-tls': GObject.Object.Notify;
+            'notify::imap-use-tls': GObject.Object.Notify;
+            'notify::imap-user-name': GObject.Object.Notify;
+            'notify::imap-user-name': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::smtp-accept-ssl-errors': GObject.Object.Notify;
+            'notify::smtp-accept-ssl-errors': GObject.Object.Notify;
+            'notify::smtp-auth-login': GObject.Object.Notify;
+            'notify::smtp-auth-login': GObject.Object.Notify;
+            'notify::smtp-auth-plain': GObject.Object.Notify;
+            'notify::smtp-auth-plain': GObject.Object.Notify;
+            'notify::smtp-auth-xoauth2': GObject.Object.Notify;
+            'notify::smtp-auth-xoauth2': GObject.Object.Notify;
+            'notify::smtp-host': GObject.Object.Notify;
+            'notify::smtp-host': GObject.Object.Notify;
+            'notify::smtp-supported': GObject.Object.Notify;
+            'notify::smtp-supported': GObject.Object.Notify;
+            'notify::smtp-use-auth': GObject.Object.Notify;
+            'notify::smtp-use-auth': GObject.Object.Notify;
+            'notify::smtp-use-ssl': GObject.Object.Notify;
+            'notify::smtp-use-ssl': GObject.Object.Notify;
+            'notify::smtp-use-tls': GObject.Object.Notify;
+            'notify::smtp-use-tls': GObject.Object.Notify;
+            'notify::smtp-user-name': GObject.Object.Notify;
+            'notify::smtp-user-name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13212,14 +13619,17 @@ export namespace Goa {
             signal: K,
             callback: MailSkeleton.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MailSkeleton.SignalSignatures>(
             signal: K,
             callback: MailSkeleton.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MailSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MailSkeleton.SignalSignatures[K]>
+            ...args: MailSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         /**
@@ -13946,7 +14356,26 @@ export namespace Goa {
 
     namespace ManagerProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -14008,14 +14437,17 @@ export namespace Goa {
             signal: K,
             callback: ManagerProxy.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ManagerProxy.SignalSignatures>(
             signal: K,
             callback: ManagerProxy.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ManagerProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ManagerProxy.SignalSignatures[K]>
+            ...args: ManagerProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -15022,7 +15454,10 @@ export namespace Goa {
 
     namespace ManagerSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -15052,14 +15487,17 @@ export namespace Goa {
             signal: K,
             callback: ManagerSkeleton.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ManagerSkeleton.SignalSignatures>(
             signal: K,
             callback: ManagerSkeleton.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ManagerSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ManagerSkeleton.SignalSignatures[K]>
+            ...args: ManagerSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -15729,7 +16167,26 @@ export namespace Goa {
 
     namespace MapsProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -15788,14 +16245,17 @@ export namespace Goa {
         // Signals
 
         connect<K extends keyof MapsProxy.SignalSignatures>(signal: K, callback: MapsProxy.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MapsProxy.SignalSignatures>(
             signal: K,
             callback: MapsProxy.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MapsProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MapsProxy.SignalSignatures[K]>
+            ...args: MapsProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -16612,7 +17072,10 @@ export namespace Goa {
 
     namespace MapsSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -16642,14 +17105,17 @@ export namespace Goa {
             signal: K,
             callback: MapsSkeleton.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MapsSkeleton.SignalSignatures>(
             signal: K,
             callback: MapsSkeleton.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MapsSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MapsSkeleton.SignalSignatures[K]>
+            ...args: MapsSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -17129,7 +17595,29 @@ export namespace Goa {
 
     namespace MediaServerProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::dlna-supported': GObject.Object.Notify;
+            'notify::dlna-supported': GObject.Object.Notify;
+            'notify::udn': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17191,14 +17679,17 @@ export namespace Goa {
             signal: K,
             callback: MediaServerProxy.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MediaServerProxy.SignalSignatures>(
             signal: K,
             callback: MediaServerProxy.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MediaServerProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaServerProxy.SignalSignatures[K]>
+            ...args: MediaServerProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -18038,7 +18529,13 @@ export namespace Goa {
 
     namespace MediaServerSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::dlna-supported': GObject.Object.Notify;
+            'notify::dlna-supported': GObject.Object.Notify;
+            'notify::udn': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -18068,14 +18565,17 @@ export namespace Goa {
             signal: K,
             callback: MediaServerSkeleton.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MediaServerSkeleton.SignalSignatures>(
             signal: K,
             callback: MediaServerSkeleton.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MediaServerSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaServerSkeleton.SignalSignatures[K]>
+            ...args: MediaServerSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         /**
@@ -18578,7 +19078,26 @@ export namespace Goa {
 
     namespace MusicProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -18640,14 +19159,17 @@ export namespace Goa {
             signal: K,
             callback: MusicProxy.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MusicProxy.SignalSignatures>(
             signal: K,
             callback: MusicProxy.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MusicProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MusicProxy.SignalSignatures[K]>
+            ...args: MusicProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -19464,7 +19986,10 @@ export namespace Goa {
 
     namespace MusicSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -19494,14 +20019,17 @@ export namespace Goa {
             signal: K,
             callback: MusicSkeleton.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MusicSkeleton.SignalSignatures>(
             signal: K,
             callback: MusicSkeleton.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MusicSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MusicSkeleton.SignalSignatures[K]>
+            ...args: MusicSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -19981,7 +20509,30 @@ export namespace Goa {
 
     namespace OAuth2BasedProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::client-id': GObject.Object.Notify;
+            'notify::client-id': GObject.Object.Notify;
+            'notify::client-secret': GObject.Object.Notify;
+            'notify::client-secret': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -20043,14 +20594,17 @@ export namespace Goa {
             signal: K,
             callback: OAuth2BasedProxy.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OAuth2BasedProxy.SignalSignatures>(
             signal: K,
             callback: OAuth2BasedProxy.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OAuth2BasedProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OAuth2BasedProxy.SignalSignatures[K]>
+            ...args: OAuth2BasedProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -20957,7 +21511,14 @@ export namespace Goa {
 
     namespace OAuth2BasedSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::client-id': GObject.Object.Notify;
+            'notify::client-id': GObject.Object.Notify;
+            'notify::client-secret': GObject.Object.Notify;
+            'notify::client-secret': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -20987,14 +21548,17 @@ export namespace Goa {
             signal: K,
             callback: OAuth2BasedSkeleton.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OAuth2BasedSkeleton.SignalSignatures>(
             signal: K,
             callback: OAuth2BasedSkeleton.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OAuth2BasedSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OAuth2BasedSkeleton.SignalSignatures[K]>
+            ...args: OAuth2BasedSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         /**
@@ -21564,7 +22128,30 @@ export namespace Goa {
 
     namespace OAuthBasedProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::consumer-key': GObject.Object.Notify;
+            'notify::consumer-key': GObject.Object.Notify;
+            'notify::consumer-secret': GObject.Object.Notify;
+            'notify::consumer-secret': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -21626,14 +22213,17 @@ export namespace Goa {
             signal: K,
             callback: OAuthBasedProxy.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OAuthBasedProxy.SignalSignatures>(
             signal: K,
             callback: OAuthBasedProxy.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OAuthBasedProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OAuthBasedProxy.SignalSignatures[K]>
+            ...args: OAuthBasedProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -22546,7 +23136,14 @@ export namespace Goa {
 
     namespace OAuthBasedSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::consumer-key': GObject.Object.Notify;
+            'notify::consumer-key': GObject.Object.Notify;
+            'notify::consumer-secret': GObject.Object.Notify;
+            'notify::consumer-secret': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -22576,14 +23173,17 @@ export namespace Goa {
             signal: K,
             callback: OAuthBasedSkeleton.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OAuthBasedSkeleton.SignalSignatures>(
             signal: K,
             callback: OAuthBasedSkeleton.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OAuthBasedSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OAuthBasedSkeleton.SignalSignatures[K]>
+            ...args: OAuthBasedSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         /**
@@ -23159,7 +23759,23 @@ export namespace Goa {
 
     namespace ObjectManagerClient {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusObjectManagerClient.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusObjectManagerClient.SignalSignatures {
+            'notify::bus-type': GObject.Object.Notify;
+            'notify::bus-type': GObject.Object.Notify;
+            'notify::connection': GObject.Object.Notify;
+            'notify::flags': GObject.Object.Notify;
+            'notify::get-proxy-type-destroy-notify': GObject.Object.Notify;
+            'notify::get-proxy-type-destroy-notify': GObject.Object.Notify;
+            'notify::get-proxy-type-func': GObject.Object.Notify;
+            'notify::get-proxy-type-func': GObject.Object.Notify;
+            'notify::get-proxy-type-user-data': GObject.Object.Notify;
+            'notify::get-proxy-type-user-data': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::name-owner': GObject.Object.Notify;
+            'notify::name-owner': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -23220,14 +23836,17 @@ export namespace Goa {
             signal: K,
             callback: ObjectManagerClient.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ObjectManagerClient.SignalSignatures>(
             signal: K,
             callback: ObjectManagerClient.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ObjectManagerClient.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ObjectManagerClient.SignalSignatures[K]>
+            ...args: ObjectManagerClient.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -24089,7 +24708,37 @@ export namespace Goa {
 
     namespace ObjectProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusObjectProxy.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusObjectProxy.SignalSignatures {
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::account': GObject.Object.Notify;
+            'notify::calendar': GObject.Object.Notify;
+            'notify::chat': GObject.Object.Notify;
+            'notify::contacts': GObject.Object.Notify;
+            'notify::documents': GObject.Object.Notify;
+            'notify::exchange': GObject.Object.Notify;
+            'notify::files': GObject.Object.Notify;
+            'notify::mail': GObject.Object.Notify;
+            'notify::manager': GObject.Object.Notify;
+            'notify::maps': GObject.Object.Notify;
+            'notify::media-server': GObject.Object.Notify;
+            'notify::media-server': GObject.Object.Notify;
+            'notify::music': GObject.Object.Notify;
+            'notify::oauth-based': GObject.Object.Notify;
+            'notify::oauth-based': GObject.Object.Notify;
+            'notify::oauth2-based': GObject.Object.Notify;
+            'notify::oauth2-based': GObject.Object.Notify;
+            'notify::password-based': GObject.Object.Notify;
+            'notify::password-based': GObject.Object.Notify;
+            'notify::photos': GObject.Object.Notify;
+            'notify::printers': GObject.Object.Notify;
+            'notify::read-later': GObject.Object.Notify;
+            'notify::read-later': GObject.Object.Notify;
+            'notify::ticketing': GObject.Object.Notify;
+            'notify::todo': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -24119,14 +24768,17 @@ export namespace Goa {
             signal: K,
             callback: ObjectProxy.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ObjectProxy.SignalSignatures>(
             signal: K,
             callback: ObjectProxy.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ObjectProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ObjectProxy.SignalSignatures[K]>
+            ...args: ObjectProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         /**
@@ -24890,7 +25542,35 @@ export namespace Goa {
 
     namespace ObjectSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusObjectSkeleton.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusObjectSkeleton.SignalSignatures {
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::account': GObject.Object.Notify;
+            'notify::calendar': GObject.Object.Notify;
+            'notify::chat': GObject.Object.Notify;
+            'notify::contacts': GObject.Object.Notify;
+            'notify::documents': GObject.Object.Notify;
+            'notify::exchange': GObject.Object.Notify;
+            'notify::files': GObject.Object.Notify;
+            'notify::mail': GObject.Object.Notify;
+            'notify::manager': GObject.Object.Notify;
+            'notify::maps': GObject.Object.Notify;
+            'notify::media-server': GObject.Object.Notify;
+            'notify::media-server': GObject.Object.Notify;
+            'notify::music': GObject.Object.Notify;
+            'notify::oauth-based': GObject.Object.Notify;
+            'notify::oauth-based': GObject.Object.Notify;
+            'notify::oauth2-based': GObject.Object.Notify;
+            'notify::oauth2-based': GObject.Object.Notify;
+            'notify::password-based': GObject.Object.Notify;
+            'notify::password-based': GObject.Object.Notify;
+            'notify::photos': GObject.Object.Notify;
+            'notify::printers': GObject.Object.Notify;
+            'notify::read-later': GObject.Object.Notify;
+            'notify::read-later': GObject.Object.Notify;
+            'notify::ticketing': GObject.Object.Notify;
+            'notify::todo': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -24920,14 +25600,17 @@ export namespace Goa {
             signal: K,
             callback: ObjectSkeleton.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ObjectSkeleton.SignalSignatures>(
             signal: K,
             callback: ObjectSkeleton.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ObjectSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ObjectSkeleton.SignalSignatures[K]>
+            ...args: ObjectSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -25794,7 +26477,26 @@ export namespace Goa {
 
     namespace PasswordBasedProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -25856,14 +26558,17 @@ export namespace Goa {
             signal: K,
             callback: PasswordBasedProxy.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PasswordBasedProxy.SignalSignatures>(
             signal: K,
             callback: PasswordBasedProxy.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PasswordBasedProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PasswordBasedProxy.SignalSignatures[K]>
+            ...args: PasswordBasedProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -26749,7 +27454,10 @@ export namespace Goa {
 
     namespace PasswordBasedSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -26779,14 +27487,17 @@ export namespace Goa {
             signal: K,
             callback: PasswordBasedSkeleton.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PasswordBasedSkeleton.SignalSignatures>(
             signal: K,
             callback: PasswordBasedSkeleton.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PasswordBasedSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PasswordBasedSkeleton.SignalSignatures[K]>
+            ...args: PasswordBasedSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -27335,7 +28046,26 @@ export namespace Goa {
 
     namespace PhotosProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -27397,14 +28127,17 @@ export namespace Goa {
             signal: K,
             callback: PhotosProxy.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PhotosProxy.SignalSignatures>(
             signal: K,
             callback: PhotosProxy.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PhotosProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PhotosProxy.SignalSignatures[K]>
+            ...args: PhotosProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -28221,7 +28954,10 @@ export namespace Goa {
 
     namespace PhotosSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -28251,14 +28987,17 @@ export namespace Goa {
             signal: K,
             callback: PhotosSkeleton.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PhotosSkeleton.SignalSignatures>(
             signal: K,
             callback: PhotosSkeleton.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PhotosSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PhotosSkeleton.SignalSignatures[K]>
+            ...args: PhotosSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -28738,7 +29477,26 @@ export namespace Goa {
 
     namespace PrintersProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -28800,14 +29558,17 @@ export namespace Goa {
             signal: K,
             callback: PrintersProxy.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PrintersProxy.SignalSignatures>(
             signal: K,
             callback: PrintersProxy.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PrintersProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PrintersProxy.SignalSignatures[K]>
+            ...args: PrintersProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -29624,7 +30385,10 @@ export namespace Goa {
 
     namespace PrintersSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -29654,14 +30418,17 @@ export namespace Goa {
             signal: K,
             callback: PrintersSkeleton.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PrintersSkeleton.SignalSignatures>(
             signal: K,
             callback: PrintersSkeleton.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PrintersSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PrintersSkeleton.SignalSignatures[K]>
+            ...args: PrintersSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -30141,7 +30908,26 @@ export namespace Goa {
 
     namespace ReadLaterProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -30203,14 +30989,17 @@ export namespace Goa {
             signal: K,
             callback: ReadLaterProxy.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ReadLaterProxy.SignalSignatures>(
             signal: K,
             callback: ReadLaterProxy.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ReadLaterProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ReadLaterProxy.SignalSignatures[K]>
+            ...args: ReadLaterProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -31027,7 +31816,10 @@ export namespace Goa {
 
     namespace ReadLaterSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -31057,14 +31849,17 @@ export namespace Goa {
             signal: K,
             callback: ReadLaterSkeleton.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ReadLaterSkeleton.SignalSignatures>(
             signal: K,
             callback: ReadLaterSkeleton.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ReadLaterSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ReadLaterSkeleton.SignalSignatures[K]>
+            ...args: ReadLaterSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -31544,7 +32339,27 @@ export namespace Goa {
 
     namespace TicketingProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::details': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -31606,14 +32421,17 @@ export namespace Goa {
             signal: K,
             callback: TicketingProxy.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TicketingProxy.SignalSignatures>(
             signal: K,
             callback: TicketingProxy.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TicketingProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TicketingProxy.SignalSignatures[K]>
+            ...args: TicketingProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -32497,7 +33315,11 @@ export namespace Goa {
 
     namespace TicketingSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::details': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -32527,14 +33349,17 @@ export namespace Goa {
             signal: K,
             callback: TicketingSkeleton.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TicketingSkeleton.SignalSignatures>(
             signal: K,
             callback: TicketingSkeleton.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TicketingSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TicketingSkeleton.SignalSignatures[K]>
+            ...args: TicketingSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         /**
@@ -33081,7 +33906,26 @@ export namespace Goa {
 
     namespace TodoProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -33140,14 +33984,17 @@ export namespace Goa {
         // Signals
 
         connect<K extends keyof TodoProxy.SignalSignatures>(signal: K, callback: TodoProxy.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TodoProxy.SignalSignatures>(
             signal: K,
             callback: TodoProxy.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TodoProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TodoProxy.SignalSignatures[K]>
+            ...args: TodoProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -33964,7 +34811,10 @@ export namespace Goa {
 
     namespace TodoSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -33994,14 +34844,17 @@ export namespace Goa {
             signal: K,
             callback: TodoSkeleton.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TodoSkeleton.SignalSignatures>(
             signal: K,
             callback: TodoSkeleton.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TodoSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TodoSkeleton.SignalSignatures[K]>
+            ...args: TodoSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**

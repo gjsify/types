@@ -173,7 +173,19 @@ export namespace Gee {
     }
     namespace AbstractBidirList {
         // Signal signatures
-        interface SignalSignatures extends AbstractList.SignalSignatures {}
+        interface SignalSignatures extends AbstractList.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -215,14 +227,17 @@ export namespace Gee {
             signal: K,
             callback: AbstractBidirList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AbstractBidirList.SignalSignatures>(
             signal: K,
             callback: AbstractBidirList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AbstractBidirList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AbstractBidirList.SignalSignatures[K]>
+            ...args: AbstractBidirList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -283,7 +298,19 @@ export namespace Gee {
 
     namespace AbstractBidirSortedSet {
         // Signal signatures
-        interface SignalSignatures extends AbstractSortedSet.SignalSignatures {}
+        interface SignalSignatures extends AbstractSortedSet.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -325,14 +352,17 @@ export namespace Gee {
             signal: K,
             callback: AbstractBidirSortedSet.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AbstractBidirSortedSet.SignalSignatures>(
             signal: K,
             callback: AbstractBidirSortedSet.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AbstractBidirSortedSet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AbstractBidirSortedSet.SignalSignatures[K]>
+            ...args: AbstractBidirSortedSet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -389,7 +419,32 @@ export namespace Gee {
 
     namespace AbstractBidirSortedMap {
         // Signal signatures
-        interface SignalSignatures extends AbstractSortedMap.SignalSignatures {}
+        interface SignalSignatures extends AbstractSortedMap.SignalSignatures {
+            'notify::k-type': GObject.Object.Notify;
+            'notify::k-type': GObject.Object.Notify;
+            'notify::k-dup-func': GObject.Object.Notify;
+            'notify::k-dup-func': GObject.Object.Notify;
+            'notify::k-destroy-func': GObject.Object.Notify;
+            'notify::k-destroy-func': GObject.Object.Notify;
+            'notify::v-type': GObject.Object.Notify;
+            'notify::v-type': GObject.Object.Notify;
+            'notify::v-dup-func': GObject.Object.Notify;
+            'notify::v-dup-func': GObject.Object.Notify;
+            'notify::v-destroy-func': GObject.Object.Notify;
+            'notify::v-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::ascending-keys': GObject.Object.Notify;
+            'notify::ascending-keys': GObject.Object.Notify;
+            'notify::ascending-entries': GObject.Object.Notify;
+            'notify::ascending-entries': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::keys': GObject.Object.Notify;
+            'notify::values': GObject.Object.Notify;
+            'notify::entries': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -445,14 +500,17 @@ export namespace Gee {
             signal: K,
             callback: AbstractBidirSortedMap.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AbstractBidirSortedMap.SignalSignatures>(
             signal: K,
             callback: AbstractBidirSortedMap.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AbstractBidirSortedMap.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AbstractBidirSortedMap.SignalSignatures[K]>
+            ...args: AbstractBidirSortedMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -505,7 +563,19 @@ export namespace Gee {
 
     namespace AbstractCollection {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -557,14 +627,17 @@ export namespace Gee {
             signal: K,
             callback: AbstractCollection.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AbstractCollection.SignalSignatures>(
             signal: K,
             callback: AbstractCollection.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AbstractCollection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AbstractCollection.SignalSignatures[K]>
+            ...args: AbstractCollection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1108,7 +1181,19 @@ export namespace Gee {
 
     namespace AbstractList {
         // Signal signatures
-        interface SignalSignatures extends AbstractCollection.SignalSignatures {}
+        interface SignalSignatures extends AbstractCollection.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1150,14 +1235,17 @@ export namespace Gee {
             signal: K,
             callback: AbstractList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AbstractList.SignalSignatures>(
             signal: K,
             callback: AbstractList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AbstractList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AbstractList.SignalSignatures[K]>
+            ...args: AbstractList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1259,7 +1347,28 @@ export namespace Gee {
 
     namespace AbstractMap {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::k-type': GObject.Object.Notify;
+            'notify::k-type': GObject.Object.Notify;
+            'notify::k-dup-func': GObject.Object.Notify;
+            'notify::k-dup-func': GObject.Object.Notify;
+            'notify::k-destroy-func': GObject.Object.Notify;
+            'notify::k-destroy-func': GObject.Object.Notify;
+            'notify::v-type': GObject.Object.Notify;
+            'notify::v-type': GObject.Object.Notify;
+            'notify::v-dup-func': GObject.Object.Notify;
+            'notify::v-dup-func': GObject.Object.Notify;
+            'notify::v-destroy-func': GObject.Object.Notify;
+            'notify::v-destroy-func': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::keys': GObject.Object.Notify;
+            'notify::values': GObject.Object.Notify;
+            'notify::entries': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1329,14 +1438,17 @@ export namespace Gee {
             signal: K,
             callback: AbstractMap.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AbstractMap.SignalSignatures>(
             signal: K,
             callback: AbstractMap.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AbstractMap.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AbstractMap.SignalSignatures[K]>
+            ...args: AbstractMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1879,7 +1991,23 @@ export namespace Gee {
 
     namespace AbstractMultiMap {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::k-type': GObject.Object.Notify;
+            'notify::k-type': GObject.Object.Notify;
+            'notify::k-dup-func': GObject.Object.Notify;
+            'notify::k-dup-func': GObject.Object.Notify;
+            'notify::k-destroy-func': GObject.Object.Notify;
+            'notify::k-destroy-func': GObject.Object.Notify;
+            'notify::v-type': GObject.Object.Notify;
+            'notify::v-type': GObject.Object.Notify;
+            'notify::v-dup-func': GObject.Object.Notify;
+            'notify::v-dup-func': GObject.Object.Notify;
+            'notify::v-destroy-func': GObject.Object.Notify;
+            'notify::v-destroy-func': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1929,14 +2057,17 @@ export namespace Gee {
             signal: K,
             callback: AbstractMultiMap.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AbstractMultiMap.SignalSignatures>(
             signal: K,
             callback: AbstractMultiMap.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AbstractMultiMap.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AbstractMultiMap.SignalSignatures[K]>
+            ...args: AbstractMultiMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -2442,7 +2573,19 @@ export namespace Gee {
 
     namespace AbstractMultiSet {
         // Signal signatures
-        interface SignalSignatures extends AbstractCollection.SignalSignatures {}
+        interface SignalSignatures extends AbstractCollection.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2480,14 +2623,17 @@ export namespace Gee {
             signal: K,
             callback: AbstractMultiSet.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AbstractMultiSet.SignalSignatures>(
             signal: K,
             callback: AbstractMultiSet.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AbstractMultiSet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AbstractMultiSet.SignalSignatures[K]>
+            ...args: AbstractMultiSet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -2567,7 +2713,24 @@ export namespace Gee {
 
     namespace AbstractQueue {
         // Signal signatures
-        interface SignalSignatures extends AbstractCollection.SignalSignatures {}
+        interface SignalSignatures extends AbstractCollection.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::capacity': GObject.Object.Notify;
+            'notify::remaining-capacity': GObject.Object.Notify;
+            'notify::remaining-capacity': GObject.Object.Notify;
+            'notify::is-full': GObject.Object.Notify;
+            'notify::is-full': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2615,14 +2778,17 @@ export namespace Gee {
             signal: K,
             callback: AbstractQueue.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AbstractQueue.SignalSignatures>(
             signal: K,
             callback: AbstractQueue.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AbstractQueue.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AbstractQueue.SignalSignatures[K]>
+            ...args: AbstractQueue.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -2716,7 +2882,19 @@ export namespace Gee {
 
     namespace AbstractSet {
         // Signal signatures
-        interface SignalSignatures extends AbstractCollection.SignalSignatures {}
+        interface SignalSignatures extends AbstractCollection.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2758,14 +2936,17 @@ export namespace Gee {
             signal: K,
             callback: AbstractSet.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AbstractSet.SignalSignatures>(
             signal: K,
             callback: AbstractSet.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AbstractSet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AbstractSet.SignalSignatures[K]>
+            ...args: AbstractSet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -2843,7 +3024,32 @@ export namespace Gee {
 
     namespace AbstractSortedMap {
         // Signal signatures
-        interface SignalSignatures extends AbstractMap.SignalSignatures {}
+        interface SignalSignatures extends AbstractMap.SignalSignatures {
+            'notify::k-type': GObject.Object.Notify;
+            'notify::k-type': GObject.Object.Notify;
+            'notify::k-dup-func': GObject.Object.Notify;
+            'notify::k-dup-func': GObject.Object.Notify;
+            'notify::k-destroy-func': GObject.Object.Notify;
+            'notify::k-destroy-func': GObject.Object.Notify;
+            'notify::v-type': GObject.Object.Notify;
+            'notify::v-type': GObject.Object.Notify;
+            'notify::v-dup-func': GObject.Object.Notify;
+            'notify::v-dup-func': GObject.Object.Notify;
+            'notify::v-destroy-func': GObject.Object.Notify;
+            'notify::v-destroy-func': GObject.Object.Notify;
+            'notify::ascending-keys': GObject.Object.Notify;
+            'notify::ascending-keys': GObject.Object.Notify;
+            'notify::ascending-entries': GObject.Object.Notify;
+            'notify::ascending-entries': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::keys': GObject.Object.Notify;
+            'notify::values': GObject.Object.Notify;
+            'notify::entries': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2905,14 +3111,17 @@ export namespace Gee {
             signal: K,
             callback: AbstractSortedMap.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AbstractSortedMap.SignalSignatures>(
             signal: K,
             callback: AbstractSortedMap.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AbstractSortedMap.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AbstractSortedMap.SignalSignatures[K]>
+            ...args: AbstractSortedMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -3005,7 +3214,19 @@ export namespace Gee {
 
     namespace AbstractSortedSet {
         // Signal signatures
-        interface SignalSignatures extends AbstractSet.SignalSignatures {}
+        interface SignalSignatures extends AbstractSet.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3047,14 +3268,17 @@ export namespace Gee {
             signal: K,
             callback: AbstractSortedSet.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AbstractSortedSet.SignalSignatures>(
             signal: K,
             callback: AbstractSortedSet.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AbstractSortedSet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AbstractSortedSet.SignalSignatures[K]>
+            ...args: AbstractSortedSet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -3107,7 +3331,19 @@ export namespace Gee {
 
     namespace ArrayList {
         // Signal signatures
-        interface SignalSignatures extends AbstractBidirList.SignalSignatures {}
+        interface SignalSignatures extends AbstractBidirList.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3155,14 +3391,17 @@ export namespace Gee {
         // Signals
 
         connect<K extends keyof ArrayList.SignalSignatures>(signal: K, callback: ArrayList.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ArrayList.SignalSignatures>(
             signal: K,
             callback: ArrayList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ArrayList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ArrayList.SignalSignatures[K]>
+            ...args: ArrayList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3172,7 +3411,26 @@ export namespace Gee {
 
     namespace ArrayQueue {
         // Signal signatures
-        interface SignalSignatures extends AbstractQueue.SignalSignatures {}
+        interface SignalSignatures extends AbstractQueue.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::is-empty': GObject.Object.Notify;
+            'notify::is-empty': GObject.Object.Notify;
+            'notify::capacity': GObject.Object.Notify;
+            'notify::remaining-capacity': GObject.Object.Notify;
+            'notify::remaining-capacity': GObject.Object.Notify;
+            'notify::is-full': GObject.Object.Notify;
+            'notify::is-full': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3220,14 +3478,17 @@ export namespace Gee {
             signal: K,
             callback: ArrayQueue.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ArrayQueue.SignalSignatures>(
             signal: K,
             callback: ArrayQueue.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ArrayQueue.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ArrayQueue.SignalSignatures[K]>
+            ...args: ArrayQueue.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3276,7 +3537,21 @@ export namespace Gee {
 
     namespace ConcurrentList {
         // Signal signatures
-        interface SignalSignatures extends AbstractList.SignalSignatures {}
+        interface SignalSignatures extends AbstractList.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::is-empty': GObject.Object.Notify;
+            'notify::is-empty': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3324,14 +3599,17 @@ export namespace Gee {
             signal: K,
             callback: ConcurrentList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConcurrentList.SignalSignatures>(
             signal: K,
             callback: ConcurrentList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConcurrentList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConcurrentList.SignalSignatures[K]>
+            ...args: ConcurrentList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3341,7 +3619,19 @@ export namespace Gee {
 
     namespace ConcurrentSet {
         // Signal signatures
-        interface SignalSignatures extends AbstractSortedSet.SignalSignatures {}
+        interface SignalSignatures extends AbstractSortedSet.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3385,19 +3675,43 @@ export namespace Gee {
             signal: K,
             callback: ConcurrentSet.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConcurrentSet.SignalSignatures>(
             signal: K,
             callback: ConcurrentSet.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConcurrentSet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConcurrentSet.SignalSignatures[K]>
+            ...args: ConcurrentSet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace HashMap {
         // Signal signatures
-        interface SignalSignatures extends AbstractMap.SignalSignatures {}
+        interface SignalSignatures extends AbstractMap.SignalSignatures {
+            'notify::k-type': GObject.Object.Notify;
+            'notify::k-type': GObject.Object.Notify;
+            'notify::k-dup-func': GObject.Object.Notify;
+            'notify::k-dup-func': GObject.Object.Notify;
+            'notify::k-destroy-func': GObject.Object.Notify;
+            'notify::k-destroy-func': GObject.Object.Notify;
+            'notify::v-type': GObject.Object.Notify;
+            'notify::v-type': GObject.Object.Notify;
+            'notify::v-dup-func': GObject.Object.Notify;
+            'notify::v-dup-func': GObject.Object.Notify;
+            'notify::v-destroy-func': GObject.Object.Notify;
+            'notify::v-destroy-func': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::keys': GObject.Object.Notify;
+            'notify::values': GObject.Object.Notify;
+            'notify::entries': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3454,14 +3768,17 @@ export namespace Gee {
         // Signals
 
         connect<K extends keyof HashMap.SignalSignatures>(signal: K, callback: HashMap.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HashMap.SignalSignatures>(
             signal: K,
             callback: HashMap.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HashMap.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HashMap.SignalSignatures[K]>
+            ...args: HashMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3472,7 +3789,20 @@ export namespace Gee {
 
     namespace HashMultiMap {
         // Signal signatures
-        interface SignalSignatures extends AbstractMultiMap.SignalSignatures {}
+        interface SignalSignatures extends AbstractMultiMap.SignalSignatures {
+            'notify::k-type': GObject.Object.Notify;
+            'notify::k-type': GObject.Object.Notify;
+            'notify::k-dup-func': GObject.Object.Notify;
+            'notify::k-dup-func': GObject.Object.Notify;
+            'notify::k-destroy-func': GObject.Object.Notify;
+            'notify::k-destroy-func': GObject.Object.Notify;
+            'notify::v-type': GObject.Object.Notify;
+            'notify::v-type': GObject.Object.Notify;
+            'notify::v-dup-func': GObject.Object.Notify;
+            'notify::v-dup-func': GObject.Object.Notify;
+            'notify::v-destroy-func': GObject.Object.Notify;
+            'notify::v-destroy-func': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3533,14 +3863,17 @@ export namespace Gee {
             signal: K,
             callback: HashMultiMap.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HashMultiMap.SignalSignatures>(
             signal: K,
             callback: HashMultiMap.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HashMultiMap.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HashMultiMap.SignalSignatures[K]>
+            ...args: HashMultiMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3552,7 +3885,19 @@ export namespace Gee {
 
     namespace HashMultiSet {
         // Signal signatures
-        interface SignalSignatures extends AbstractMultiSet.SignalSignatures {}
+        interface SignalSignatures extends AbstractMultiSet.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3604,14 +3949,17 @@ export namespace Gee {
             signal: K,
             callback: HashMultiSet.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HashMultiSet.SignalSignatures>(
             signal: K,
             callback: HashMultiSet.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HashMultiSet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HashMultiSet.SignalSignatures[K]>
+            ...args: HashMultiSet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3621,7 +3969,19 @@ export namespace Gee {
 
     namespace HashSet {
         // Signal signatures
-        interface SignalSignatures extends AbstractSet.SignalSignatures {}
+        interface SignalSignatures extends AbstractSet.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3663,14 +4023,17 @@ export namespace Gee {
         // Signals
 
         connect<K extends keyof HashSet.SignalSignatures>(signal: K, callback: HashSet.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HashSet.SignalSignatures>(
             signal: K,
             callback: HashSet.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HashSet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HashSet.SignalSignatures[K]>
+            ...args: HashSet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3701,8 +4064,14 @@ export namespace Gee {
         // Signals
 
         connect<K extends keyof Lazy.SignalSignatures>(signal: K, callback: Lazy.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Lazy.SignalSignatures>(signal: K, callback: Lazy.SignalSignatures[K]): number;
-        emit<K extends keyof Lazy.SignalSignatures>(signal: K, ...args: Parameters<Lazy.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Lazy.SignalSignatures>(
+            signal: K,
+            ...args: Lazy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3714,7 +4083,24 @@ export namespace Gee {
 
     namespace LinkedList {
         // Signal signatures
-        interface SignalSignatures extends AbstractBidirList.SignalSignatures {}
+        interface SignalSignatures extends AbstractBidirList.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::capacity': GObject.Object.Notify;
+            'notify::remaining-capacity': GObject.Object.Notify;
+            'notify::remaining-capacity': GObject.Object.Notify;
+            'notify::is-full': GObject.Object.Notify;
+            'notify::is-full': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3765,14 +4151,17 @@ export namespace Gee {
             signal: K,
             callback: LinkedList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LinkedList.SignalSignatures>(
             signal: K,
             callback: LinkedList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LinkedList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LinkedList.SignalSignatures[K]>
+            ...args: LinkedList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3822,7 +4211,24 @@ export namespace Gee {
 
     namespace PriorityQueue {
         // Signal signatures
-        interface SignalSignatures extends AbstractQueue.SignalSignatures {}
+        interface SignalSignatures extends AbstractQueue.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::capacity': GObject.Object.Notify;
+            'notify::remaining-capacity': GObject.Object.Notify;
+            'notify::remaining-capacity': GObject.Object.Notify;
+            'notify::is-full': GObject.Object.Notify;
+            'notify::is-full': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3866,14 +4272,17 @@ export namespace Gee {
             signal: K,
             callback: PriorityQueue.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PriorityQueue.SignalSignatures>(
             signal: K,
             callback: PriorityQueue.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PriorityQueue.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PriorityQueue.SignalSignatures[K]>
+            ...args: PriorityQueue.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3903,14 +4312,17 @@ export namespace Gee {
         // Signals
 
         connect<K extends keyof Promise.SignalSignatures>(signal: K, callback: Promise.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Promise.SignalSignatures>(
             signal: K,
             callback: Promise.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Promise.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Promise.SignalSignatures[K]>
+            ...args: Promise.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3921,7 +4333,32 @@ export namespace Gee {
 
     namespace TreeMap {
         // Signal signatures
-        interface SignalSignatures extends AbstractBidirSortedMap.SignalSignatures {}
+        interface SignalSignatures extends AbstractBidirSortedMap.SignalSignatures {
+            'notify::k-type': GObject.Object.Notify;
+            'notify::k-type': GObject.Object.Notify;
+            'notify::k-dup-func': GObject.Object.Notify;
+            'notify::k-dup-func': GObject.Object.Notify;
+            'notify::k-destroy-func': GObject.Object.Notify;
+            'notify::k-destroy-func': GObject.Object.Notify;
+            'notify::v-type': GObject.Object.Notify;
+            'notify::v-type': GObject.Object.Notify;
+            'notify::v-dup-func': GObject.Object.Notify;
+            'notify::v-dup-func': GObject.Object.Notify;
+            'notify::v-destroy-func': GObject.Object.Notify;
+            'notify::v-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::ascending-keys': GObject.Object.Notify;
+            'notify::ascending-keys': GObject.Object.Notify;
+            'notify::ascending-entries': GObject.Object.Notify;
+            'notify::ascending-entries': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::keys': GObject.Object.Notify;
+            'notify::values': GObject.Object.Notify;
+            'notify::entries': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3977,14 +4414,17 @@ export namespace Gee {
         // Signals
 
         connect<K extends keyof TreeMap.SignalSignatures>(signal: K, callback: TreeMap.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TreeMap.SignalSignatures>(
             signal: K,
             callback: TreeMap.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TreeMap.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TreeMap.SignalSignatures[K]>
+            ...args: TreeMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3994,7 +4434,20 @@ export namespace Gee {
 
     namespace TreeMultiMap {
         // Signal signatures
-        interface SignalSignatures extends AbstractMultiMap.SignalSignatures {}
+        interface SignalSignatures extends AbstractMultiMap.SignalSignatures {
+            'notify::k-type': GObject.Object.Notify;
+            'notify::k-type': GObject.Object.Notify;
+            'notify::k-dup-func': GObject.Object.Notify;
+            'notify::k-dup-func': GObject.Object.Notify;
+            'notify::k-destroy-func': GObject.Object.Notify;
+            'notify::k-destroy-func': GObject.Object.Notify;
+            'notify::v-type': GObject.Object.Notify;
+            'notify::v-type': GObject.Object.Notify;
+            'notify::v-dup-func': GObject.Object.Notify;
+            'notify::v-dup-func': GObject.Object.Notify;
+            'notify::v-destroy-func': GObject.Object.Notify;
+            'notify::v-destroy-func': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4053,14 +4506,17 @@ export namespace Gee {
             signal: K,
             callback: TreeMultiMap.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TreeMultiMap.SignalSignatures>(
             signal: K,
             callback: TreeMultiMap.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TreeMultiMap.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TreeMultiMap.SignalSignatures[K]>
+            ...args: TreeMultiMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4070,7 +4526,19 @@ export namespace Gee {
 
     namespace TreeMultiSet {
         // Signal signatures
-        interface SignalSignatures extends AbstractMultiSet.SignalSignatures {}
+        interface SignalSignatures extends AbstractMultiSet.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4114,14 +4582,17 @@ export namespace Gee {
             signal: K,
             callback: TreeMultiSet.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TreeMultiSet.SignalSignatures>(
             signal: K,
             callback: TreeMultiSet.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TreeMultiSet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TreeMultiSet.SignalSignatures[K]>
+            ...args: TreeMultiSet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4130,7 +4601,19 @@ export namespace Gee {
 
     namespace TreeSet {
         // Signal signatures
-        interface SignalSignatures extends AbstractBidirSortedSet.SignalSignatures {}
+        interface SignalSignatures extends AbstractBidirSortedSet.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4171,14 +4654,17 @@ export namespace Gee {
         // Signals
 
         connect<K extends keyof TreeSet.SignalSignatures>(signal: K, callback: TreeSet.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TreeSet.SignalSignatures>(
             signal: K,
             callback: TreeSet.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TreeSet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TreeSet.SignalSignatures[K]>
+            ...args: TreeSet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4187,7 +4673,24 @@ export namespace Gee {
 
     namespace UnrolledLinkedList {
         // Signal signatures
-        interface SignalSignatures extends AbstractBidirList.SignalSignatures {}
+        interface SignalSignatures extends AbstractBidirList.SignalSignatures {
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::capacity': GObject.Object.Notify;
+            'notify::remaining-capacity': GObject.Object.Notify;
+            'notify::remaining-capacity': GObject.Object.Notify;
+            'notify::is-full': GObject.Object.Notify;
+            'notify::is-full': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4238,14 +4741,17 @@ export namespace Gee {
             signal: K,
             callback: UnrolledLinkedList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UnrolledLinkedList.SignalSignatures>(
             signal: K,
             callback: UnrolledLinkedList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UnrolledLinkedList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UnrolledLinkedList.SignalSignatures[K]>
+            ...args: UnrolledLinkedList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4293,7 +4799,24 @@ export namespace Gee {
 
     namespace MapEntry {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::k-type': GObject.Object.Notify;
+            'notify::k-type': GObject.Object.Notify;
+            'notify::k-dup-func': GObject.Object.Notify;
+            'notify::k-dup-func': GObject.Object.Notify;
+            'notify::k-destroy-func': GObject.Object.Notify;
+            'notify::k-destroy-func': GObject.Object.Notify;
+            'notify::v-type': GObject.Object.Notify;
+            'notify::v-type': GObject.Object.Notify;
+            'notify::v-dup-func': GObject.Object.Notify;
+            'notify::v-dup-func': GObject.Object.Notify;
+            'notify::v-destroy-func': GObject.Object.Notify;
+            'notify::v-destroy-func': GObject.Object.Notify;
+            'notify::key': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4349,14 +4872,17 @@ export namespace Gee {
         // Signals
 
         connect<K extends keyof MapEntry.SignalSignatures>(signal: K, callback: MapEntry.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MapEntry.SignalSignatures>(
             signal: K,
             callback: MapEntry.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MapEntry.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MapEntry.SignalSignatures[K]>
+            ...args: MapEntry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 

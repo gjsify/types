@@ -5519,7 +5519,11 @@ export namespace Clutter {
     }
     namespace Action {
         // Signal signatures
-        interface SignalSignatures extends ActorMeta.SignalSignatures {}
+        interface SignalSignatures extends ActorMeta.SignalSignatures {
+            'notify::actor': GObject.Object.Notify;
+            'notify::enabled': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5538,8 +5542,14 @@ export namespace Clutter {
         // Signals
 
         connect<K extends keyof Action.SignalSignatures>(signal: K, callback: Action.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Action.SignalSignatures>(signal: K, callback: Action.SignalSignatures[K]): number;
-        emit<K extends keyof Action.SignalSignatures>(signal: K, ...args: Parameters<Action.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Action.SignalSignatures>(
+            signal: K,
+            ...args: Action.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -5554,15 +5564,15 @@ export namespace Clutter {
         // Signal callback interfaces
 
         interface ButtonPressEvent {
-            (_source: Actor, event: ButtonEvent): boolean;
+            (_source: Actor, event: ButtonEvent): boolean | void;
         }
 
         interface ButtonReleaseEvent {
-            (_source: Actor, event: ButtonEvent): boolean;
+            (_source: Actor, event: ButtonEvent): boolean | void;
         }
 
         interface CapturedEvent {
-            (_source: Actor, event: Event): boolean;
+            (_source: Actor, event: Event): boolean | void;
         }
 
         interface Destroy {
@@ -5570,11 +5580,11 @@ export namespace Clutter {
         }
 
         interface EnterEvent {
-            (_source: Actor, event: CrossingEvent): boolean;
+            (_source: Actor, event: CrossingEvent): boolean | void;
         }
 
         interface Event {
-            (_source: Actor, event: Event): boolean;
+            (_source: Actor, event: Event): boolean | void;
         }
 
         interface Hide {
@@ -5590,19 +5600,19 @@ export namespace Clutter {
         }
 
         interface KeyPressEvent {
-            (_source: Actor, event: KeyEvent): boolean;
+            (_source: Actor, event: KeyEvent): boolean | void;
         }
 
         interface KeyReleaseEvent {
-            (_source: Actor, event: KeyEvent): boolean;
+            (_source: Actor, event: KeyEvent): boolean | void;
         }
 
         interface LeaveEvent {
-            (_source: Actor, event: CrossingEvent): boolean;
+            (_source: Actor, event: CrossingEvent): boolean | void;
         }
 
         interface MotionEvent {
-            (_source: Actor, event: MotionEvent): boolean;
+            (_source: Actor, event: MotionEvent): boolean | void;
         }
 
         interface ParentSet {
@@ -5626,7 +5636,7 @@ export namespace Clutter {
         }
 
         interface ScrollEvent {
-            (_source: Actor, event: ScrollEvent): boolean;
+            (_source: Actor, event: ScrollEvent): boolean | void;
         }
 
         interface Show {
@@ -5638,7 +5648,7 @@ export namespace Clutter {
         }
 
         interface TouchEvent {
-            (_source: Actor, event: Event): boolean;
+            (_source: Actor, event: Event): boolean | void;
         }
 
         interface TransitionStopped {
@@ -5680,6 +5690,372 @@ export namespace Clutter {
             'transition-stopped': TransitionStopped;
             'transitions-completed': TransitionsCompleted;
             unrealize: Unrealize;
+            'notify::actions': GObject.Object.Notify;
+            'notify::allocation': GObject.Object.Notify;
+            'notify::background-color': GObject.Object.Notify;
+            'notify::background-color': GObject.Object.Notify;
+            'notify::background-color-set': GObject.Object.Notify;
+            'notify::background-color-set': GObject.Object.Notify;
+            'notify::child-transform': GObject.Object.Notify;
+            'notify::child-transform': GObject.Object.Notify;
+            'notify::child-transform-set': GObject.Object.Notify;
+            'notify::child-transform-set': GObject.Object.Notify;
+            'notify::clip-rect': GObject.Object.Notify;
+            'notify::clip-rect': GObject.Object.Notify;
+            'notify::clip-to-allocation': GObject.Object.Notify;
+            'notify::clip-to-allocation': GObject.Object.Notify;
+            'notify::constraints': GObject.Object.Notify;
+            'notify::content': GObject.Object.Notify;
+            'notify::content-box': GObject.Object.Notify;
+            'notify::content-box': GObject.Object.Notify;
+            'notify::content-gravity': GObject.Object.Notify;
+            'notify::content-gravity': GObject.Object.Notify;
+            'notify::content-repeat': GObject.Object.Notify;
+            'notify::content-repeat': GObject.Object.Notify;
+            'notify::effect': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::fixed-position-set': GObject.Object.Notify;
+            'notify::fixed-position-set': GObject.Object.Notify;
+            'notify::fixed-x': GObject.Object.Notify;
+            'notify::fixed-x': GObject.Object.Notify;
+            'notify::fixed-y': GObject.Object.Notify;
+            'notify::fixed-y': GObject.Object.Notify;
+            'notify::has-clip': GObject.Object.Notify;
+            'notify::has-clip': GObject.Object.Notify;
+            'notify::has-pointer': GObject.Object.Notify;
+            'notify::has-pointer': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::layout-manager': GObject.Object.Notify;
+            'notify::layout-manager': GObject.Object.Notify;
+            'notify::magnification-filter': GObject.Object.Notify;
+            'notify::magnification-filter': GObject.Object.Notify;
+            'notify::mapped': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::min-height': GObject.Object.Notify;
+            'notify::min-height': GObject.Object.Notify;
+            'notify::min-height-set': GObject.Object.Notify;
+            'notify::min-height-set': GObject.Object.Notify;
+            'notify::min-width': GObject.Object.Notify;
+            'notify::min-width': GObject.Object.Notify;
+            'notify::min-width-set': GObject.Object.Notify;
+            'notify::min-width-set': GObject.Object.Notify;
+            'notify::minification-filter': GObject.Object.Notify;
+            'notify::minification-filter': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::natural-height': GObject.Object.Notify;
+            'notify::natural-height': GObject.Object.Notify;
+            'notify::natural-height-set': GObject.Object.Notify;
+            'notify::natural-height-set': GObject.Object.Notify;
+            'notify::natural-width': GObject.Object.Notify;
+            'notify::natural-width': GObject.Object.Notify;
+            'notify::natural-width-set': GObject.Object.Notify;
+            'notify::natural-width-set': GObject.Object.Notify;
+            'notify::offscreen-redirect': GObject.Object.Notify;
+            'notify::offscreen-redirect': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::pivot-point': GObject.Object.Notify;
+            'notify::pivot-point': GObject.Object.Notify;
+            'notify::pivot-point-z': GObject.Object.Notify;
+            'notify::pivot-point-z': GObject.Object.Notify;
+            'notify::position': GObject.Object.Notify;
+            'notify::reactive': GObject.Object.Notify;
+            'notify::realized': GObject.Object.Notify;
+            'notify::request-mode': GObject.Object.Notify;
+            'notify::request-mode': GObject.Object.Notify;
+            'notify::rotation-angle-x': GObject.Object.Notify;
+            'notify::rotation-angle-x': GObject.Object.Notify;
+            'notify::rotation-angle-y': GObject.Object.Notify;
+            'notify::rotation-angle-y': GObject.Object.Notify;
+            'notify::rotation-angle-z': GObject.Object.Notify;
+            'notify::rotation-angle-z': GObject.Object.Notify;
+            'notify::scale-x': GObject.Object.Notify;
+            'notify::scale-x': GObject.Object.Notify;
+            'notify::scale-y': GObject.Object.Notify;
+            'notify::scale-y': GObject.Object.Notify;
+            'notify::scale-z': GObject.Object.Notify;
+            'notify::scale-z': GObject.Object.Notify;
+            'notify::show-on-set-parent': GObject.Object.Notify;
+            'notify::show-on-set-parent': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::text-direction': GObject.Object.Notify;
+            'notify::text-direction': GObject.Object.Notify;
+            'notify::transform': GObject.Object.Notify;
+            'notify::transform-set': GObject.Object.Notify;
+            'notify::transform-set': GObject.Object.Notify;
+            'notify::translation-x': GObject.Object.Notify;
+            'notify::translation-x': GObject.Object.Notify;
+            'notify::translation-y': GObject.Object.Notify;
+            'notify::translation-y': GObject.Object.Notify;
+            'notify::translation-z': GObject.Object.Notify;
+            'notify::translation-z': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::x': GObject.Object.Notify;
+            'notify::x-align': GObject.Object.Notify;
+            'notify::x-align': GObject.Object.Notify;
+            'notify::x-expand': GObject.Object.Notify;
+            'notify::x-expand': GObject.Object.Notify;
+            'notify::y': GObject.Object.Notify;
+            'notify::y-align': GObject.Object.Notify;
+            'notify::y-align': GObject.Object.Notify;
+            'notify::y-expand': GObject.Object.Notify;
+            'notify::y-expand': GObject.Object.Notify;
+            'notify::z-position': GObject.Object.Notify;
+            'notify::z-position': GObject.Object.Notify;
+            'captured-event::actions': CapturedEvent;
+            'captured-event::allocation': CapturedEvent;
+            'captured-event::background-color': CapturedEvent;
+            'captured-event::background-color': CapturedEvent;
+            'captured-event::background-color-set': CapturedEvent;
+            'captured-event::background-color-set': CapturedEvent;
+            'captured-event::child-transform': CapturedEvent;
+            'captured-event::child-transform': CapturedEvent;
+            'captured-event::child-transform-set': CapturedEvent;
+            'captured-event::child-transform-set': CapturedEvent;
+            'captured-event::clip-rect': CapturedEvent;
+            'captured-event::clip-rect': CapturedEvent;
+            'captured-event::clip-to-allocation': CapturedEvent;
+            'captured-event::clip-to-allocation': CapturedEvent;
+            'captured-event::constraints': CapturedEvent;
+            'captured-event::content': CapturedEvent;
+            'captured-event::content-box': CapturedEvent;
+            'captured-event::content-box': CapturedEvent;
+            'captured-event::content-gravity': CapturedEvent;
+            'captured-event::content-gravity': CapturedEvent;
+            'captured-event::content-repeat': CapturedEvent;
+            'captured-event::content-repeat': CapturedEvent;
+            'captured-event::effect': CapturedEvent;
+            'captured-event::first-child': CapturedEvent;
+            'captured-event::first-child': CapturedEvent;
+            'captured-event::fixed-position-set': CapturedEvent;
+            'captured-event::fixed-position-set': CapturedEvent;
+            'captured-event::fixed-x': CapturedEvent;
+            'captured-event::fixed-x': CapturedEvent;
+            'captured-event::fixed-y': CapturedEvent;
+            'captured-event::fixed-y': CapturedEvent;
+            'captured-event::has-clip': CapturedEvent;
+            'captured-event::has-clip': CapturedEvent;
+            'captured-event::has-pointer': CapturedEvent;
+            'captured-event::has-pointer': CapturedEvent;
+            'captured-event::height': CapturedEvent;
+            'captured-event::last-child': CapturedEvent;
+            'captured-event::last-child': CapturedEvent;
+            'captured-event::layout-manager': CapturedEvent;
+            'captured-event::layout-manager': CapturedEvent;
+            'captured-event::magnification-filter': CapturedEvent;
+            'captured-event::magnification-filter': CapturedEvent;
+            'captured-event::mapped': CapturedEvent;
+            'captured-event::margin-bottom': CapturedEvent;
+            'captured-event::margin-bottom': CapturedEvent;
+            'captured-event::margin-left': CapturedEvent;
+            'captured-event::margin-left': CapturedEvent;
+            'captured-event::margin-right': CapturedEvent;
+            'captured-event::margin-right': CapturedEvent;
+            'captured-event::margin-top': CapturedEvent;
+            'captured-event::margin-top': CapturedEvent;
+            'captured-event::min-height': CapturedEvent;
+            'captured-event::min-height': CapturedEvent;
+            'captured-event::min-height-set': CapturedEvent;
+            'captured-event::min-height-set': CapturedEvent;
+            'captured-event::min-width': CapturedEvent;
+            'captured-event::min-width': CapturedEvent;
+            'captured-event::min-width-set': CapturedEvent;
+            'captured-event::min-width-set': CapturedEvent;
+            'captured-event::minification-filter': CapturedEvent;
+            'captured-event::minification-filter': CapturedEvent;
+            'captured-event::name': CapturedEvent;
+            'captured-event::natural-height': CapturedEvent;
+            'captured-event::natural-height': CapturedEvent;
+            'captured-event::natural-height-set': CapturedEvent;
+            'captured-event::natural-height-set': CapturedEvent;
+            'captured-event::natural-width': CapturedEvent;
+            'captured-event::natural-width': CapturedEvent;
+            'captured-event::natural-width-set': CapturedEvent;
+            'captured-event::natural-width-set': CapturedEvent;
+            'captured-event::offscreen-redirect': CapturedEvent;
+            'captured-event::offscreen-redirect': CapturedEvent;
+            'captured-event::opacity': CapturedEvent;
+            'captured-event::pivot-point': CapturedEvent;
+            'captured-event::pivot-point': CapturedEvent;
+            'captured-event::pivot-point-z': CapturedEvent;
+            'captured-event::pivot-point-z': CapturedEvent;
+            'captured-event::position': CapturedEvent;
+            'captured-event::reactive': CapturedEvent;
+            'captured-event::realized': CapturedEvent;
+            'captured-event::request-mode': CapturedEvent;
+            'captured-event::request-mode': CapturedEvent;
+            'captured-event::rotation-angle-x': CapturedEvent;
+            'captured-event::rotation-angle-x': CapturedEvent;
+            'captured-event::rotation-angle-y': CapturedEvent;
+            'captured-event::rotation-angle-y': CapturedEvent;
+            'captured-event::rotation-angle-z': CapturedEvent;
+            'captured-event::rotation-angle-z': CapturedEvent;
+            'captured-event::scale-x': CapturedEvent;
+            'captured-event::scale-x': CapturedEvent;
+            'captured-event::scale-y': CapturedEvent;
+            'captured-event::scale-y': CapturedEvent;
+            'captured-event::scale-z': CapturedEvent;
+            'captured-event::scale-z': CapturedEvent;
+            'captured-event::show-on-set-parent': CapturedEvent;
+            'captured-event::show-on-set-parent': CapturedEvent;
+            'captured-event::size': CapturedEvent;
+            'captured-event::text-direction': CapturedEvent;
+            'captured-event::text-direction': CapturedEvent;
+            'captured-event::transform': CapturedEvent;
+            'captured-event::transform-set': CapturedEvent;
+            'captured-event::transform-set': CapturedEvent;
+            'captured-event::translation-x': CapturedEvent;
+            'captured-event::translation-x': CapturedEvent;
+            'captured-event::translation-y': CapturedEvent;
+            'captured-event::translation-y': CapturedEvent;
+            'captured-event::translation-z': CapturedEvent;
+            'captured-event::translation-z': CapturedEvent;
+            'captured-event::visible': CapturedEvent;
+            'captured-event::width': CapturedEvent;
+            'captured-event::x': CapturedEvent;
+            'captured-event::x-align': CapturedEvent;
+            'captured-event::x-align': CapturedEvent;
+            'captured-event::x-expand': CapturedEvent;
+            'captured-event::x-expand': CapturedEvent;
+            'captured-event::y': CapturedEvent;
+            'captured-event::y-align': CapturedEvent;
+            'captured-event::y-align': CapturedEvent;
+            'captured-event::y-expand': CapturedEvent;
+            'captured-event::y-expand': CapturedEvent;
+            'captured-event::z-position': CapturedEvent;
+            'captured-event::z-position': CapturedEvent;
+            'transition-stopped::actions': TransitionStopped;
+            'transition-stopped::allocation': TransitionStopped;
+            'transition-stopped::background-color': TransitionStopped;
+            'transition-stopped::background-color': TransitionStopped;
+            'transition-stopped::background-color-set': TransitionStopped;
+            'transition-stopped::background-color-set': TransitionStopped;
+            'transition-stopped::child-transform': TransitionStopped;
+            'transition-stopped::child-transform': TransitionStopped;
+            'transition-stopped::child-transform-set': TransitionStopped;
+            'transition-stopped::child-transform-set': TransitionStopped;
+            'transition-stopped::clip-rect': TransitionStopped;
+            'transition-stopped::clip-rect': TransitionStopped;
+            'transition-stopped::clip-to-allocation': TransitionStopped;
+            'transition-stopped::clip-to-allocation': TransitionStopped;
+            'transition-stopped::constraints': TransitionStopped;
+            'transition-stopped::content': TransitionStopped;
+            'transition-stopped::content-box': TransitionStopped;
+            'transition-stopped::content-box': TransitionStopped;
+            'transition-stopped::content-gravity': TransitionStopped;
+            'transition-stopped::content-gravity': TransitionStopped;
+            'transition-stopped::content-repeat': TransitionStopped;
+            'transition-stopped::content-repeat': TransitionStopped;
+            'transition-stopped::effect': TransitionStopped;
+            'transition-stopped::first-child': TransitionStopped;
+            'transition-stopped::first-child': TransitionStopped;
+            'transition-stopped::fixed-position-set': TransitionStopped;
+            'transition-stopped::fixed-position-set': TransitionStopped;
+            'transition-stopped::fixed-x': TransitionStopped;
+            'transition-stopped::fixed-x': TransitionStopped;
+            'transition-stopped::fixed-y': TransitionStopped;
+            'transition-stopped::fixed-y': TransitionStopped;
+            'transition-stopped::has-clip': TransitionStopped;
+            'transition-stopped::has-clip': TransitionStopped;
+            'transition-stopped::has-pointer': TransitionStopped;
+            'transition-stopped::has-pointer': TransitionStopped;
+            'transition-stopped::height': TransitionStopped;
+            'transition-stopped::last-child': TransitionStopped;
+            'transition-stopped::last-child': TransitionStopped;
+            'transition-stopped::layout-manager': TransitionStopped;
+            'transition-stopped::layout-manager': TransitionStopped;
+            'transition-stopped::magnification-filter': TransitionStopped;
+            'transition-stopped::magnification-filter': TransitionStopped;
+            'transition-stopped::mapped': TransitionStopped;
+            'transition-stopped::margin-bottom': TransitionStopped;
+            'transition-stopped::margin-bottom': TransitionStopped;
+            'transition-stopped::margin-left': TransitionStopped;
+            'transition-stopped::margin-left': TransitionStopped;
+            'transition-stopped::margin-right': TransitionStopped;
+            'transition-stopped::margin-right': TransitionStopped;
+            'transition-stopped::margin-top': TransitionStopped;
+            'transition-stopped::margin-top': TransitionStopped;
+            'transition-stopped::min-height': TransitionStopped;
+            'transition-stopped::min-height': TransitionStopped;
+            'transition-stopped::min-height-set': TransitionStopped;
+            'transition-stopped::min-height-set': TransitionStopped;
+            'transition-stopped::min-width': TransitionStopped;
+            'transition-stopped::min-width': TransitionStopped;
+            'transition-stopped::min-width-set': TransitionStopped;
+            'transition-stopped::min-width-set': TransitionStopped;
+            'transition-stopped::minification-filter': TransitionStopped;
+            'transition-stopped::minification-filter': TransitionStopped;
+            'transition-stopped::name': TransitionStopped;
+            'transition-stopped::natural-height': TransitionStopped;
+            'transition-stopped::natural-height': TransitionStopped;
+            'transition-stopped::natural-height-set': TransitionStopped;
+            'transition-stopped::natural-height-set': TransitionStopped;
+            'transition-stopped::natural-width': TransitionStopped;
+            'transition-stopped::natural-width': TransitionStopped;
+            'transition-stopped::natural-width-set': TransitionStopped;
+            'transition-stopped::natural-width-set': TransitionStopped;
+            'transition-stopped::offscreen-redirect': TransitionStopped;
+            'transition-stopped::offscreen-redirect': TransitionStopped;
+            'transition-stopped::opacity': TransitionStopped;
+            'transition-stopped::pivot-point': TransitionStopped;
+            'transition-stopped::pivot-point': TransitionStopped;
+            'transition-stopped::pivot-point-z': TransitionStopped;
+            'transition-stopped::pivot-point-z': TransitionStopped;
+            'transition-stopped::position': TransitionStopped;
+            'transition-stopped::reactive': TransitionStopped;
+            'transition-stopped::realized': TransitionStopped;
+            'transition-stopped::request-mode': TransitionStopped;
+            'transition-stopped::request-mode': TransitionStopped;
+            'transition-stopped::rotation-angle-x': TransitionStopped;
+            'transition-stopped::rotation-angle-x': TransitionStopped;
+            'transition-stopped::rotation-angle-y': TransitionStopped;
+            'transition-stopped::rotation-angle-y': TransitionStopped;
+            'transition-stopped::rotation-angle-z': TransitionStopped;
+            'transition-stopped::rotation-angle-z': TransitionStopped;
+            'transition-stopped::scale-x': TransitionStopped;
+            'transition-stopped::scale-x': TransitionStopped;
+            'transition-stopped::scale-y': TransitionStopped;
+            'transition-stopped::scale-y': TransitionStopped;
+            'transition-stopped::scale-z': TransitionStopped;
+            'transition-stopped::scale-z': TransitionStopped;
+            'transition-stopped::show-on-set-parent': TransitionStopped;
+            'transition-stopped::show-on-set-parent': TransitionStopped;
+            'transition-stopped::size': TransitionStopped;
+            'transition-stopped::text-direction': TransitionStopped;
+            'transition-stopped::text-direction': TransitionStopped;
+            'transition-stopped::transform': TransitionStopped;
+            'transition-stopped::transform-set': TransitionStopped;
+            'transition-stopped::transform-set': TransitionStopped;
+            'transition-stopped::translation-x': TransitionStopped;
+            'transition-stopped::translation-x': TransitionStopped;
+            'transition-stopped::translation-y': TransitionStopped;
+            'transition-stopped::translation-y': TransitionStopped;
+            'transition-stopped::translation-z': TransitionStopped;
+            'transition-stopped::translation-z': TransitionStopped;
+            'transition-stopped::visible': TransitionStopped;
+            'transition-stopped::width': TransitionStopped;
+            'transition-stopped::x': TransitionStopped;
+            'transition-stopped::x-align': TransitionStopped;
+            'transition-stopped::x-align': TransitionStopped;
+            'transition-stopped::x-expand': TransitionStopped;
+            'transition-stopped::x-expand': TransitionStopped;
+            'transition-stopped::y': TransitionStopped;
+            'transition-stopped::y-align': TransitionStopped;
+            'transition-stopped::y-align': TransitionStopped;
+            'transition-stopped::y-expand': TransitionStopped;
+            'transition-stopped::y-expand': TransitionStopped;
+            'transition-stopped::z-position': TransitionStopped;
+            'transition-stopped::z-position': TransitionStopped;
         }
 
         // Constructor properties interface
@@ -6863,8 +7239,14 @@ export namespace Clutter {
         // Signals
 
         connect<K extends keyof Actor.SignalSignatures>(signal: K, callback: Actor.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Actor.SignalSignatures>(signal: K, callback: Actor.SignalSignatures[K]): number;
-        emit<K extends keyof Actor.SignalSignatures>(signal: K, ...args: Parameters<Actor.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Actor.SignalSignatures>(
+            signal: K,
+            ...args: Actor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -9943,7 +10325,11 @@ export namespace Clutter {
 
     namespace ActorMeta {
         // Signal signatures
-        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {}
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
+            'notify::actor': GObject.Object.Notify;
+            'notify::enabled': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -9983,14 +10369,17 @@ export namespace Clutter {
         // Signals
 
         connect<K extends keyof ActorMeta.SignalSignatures>(signal: K, callback: ActorMeta.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ActorMeta.SignalSignatures>(
             signal: K,
             callback: ActorMeta.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ActorMeta.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ActorMeta.SignalSignatures[K]>
+            ...args: ActorMeta.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -10058,19 +10447,32 @@ export namespace Clutter {
         // Signals
 
         connect<K extends keyof ActorNode.SignalSignatures>(signal: K, callback: ActorNode.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ActorNode.SignalSignatures>(
             signal: K,
             callback: ActorNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ActorNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ActorNode.SignalSignatures[K]>
+            ...args: ActorNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace AlignConstraint {
         // Signal signatures
-        interface SignalSignatures extends Constraint.SignalSignatures {}
+        interface SignalSignatures extends Constraint.SignalSignatures {
+            'notify::align-axis': GObject.Object.Notify;
+            'notify::align-axis': GObject.Object.Notify;
+            'notify::factor': GObject.Object.Notify;
+            'notify::pivot-point': GObject.Object.Notify;
+            'notify::pivot-point': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+            'notify::actor': GObject.Object.Notify;
+            'notify::enabled': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10168,14 +10570,17 @@ export namespace Clutter {
             signal: K,
             callback: AlignConstraint.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AlignConstraint.SignalSignatures>(
             signal: K,
             callback: AlignConstraint.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AlignConstraint.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AlignConstraint.SignalSignatures[K]>
+            ...args: AlignConstraint.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -10281,14 +10686,17 @@ export namespace Clutter {
         // Signals
 
         connect<K extends keyof Backend.SignalSignatures>(signal: K, callback: Backend.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Backend.SignalSignatures>(
             signal: K,
             callback: Backend.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Backend.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Backend.SignalSignatures[K]>
+            ...args: Backend.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -10343,7 +10751,12 @@ export namespace Clutter {
 
     namespace BinLayout {
         // Signal signatures
-        interface SignalSignatures extends LayoutManager.SignalSignatures {}
+        interface SignalSignatures extends LayoutManager.SignalSignatures {
+            'notify::x-align': GObject.Object.Notify;
+            'notify::x-align': GObject.Object.Notify;
+            'notify::y-align': GObject.Object.Notify;
+            'notify::y-align': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10400,19 +10813,29 @@ export namespace Clutter {
         // Signals
 
         connect<K extends keyof BinLayout.SignalSignatures>(signal: K, callback: BinLayout.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BinLayout.SignalSignatures>(
             signal: K,
             callback: BinLayout.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BinLayout.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BinLayout.SignalSignatures[K]>
+            ...args: BinLayout.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace BindConstraint {
         // Signal signatures
-        interface SignalSignatures extends Constraint.SignalSignatures {}
+        interface SignalSignatures extends Constraint.SignalSignatures {
+            'notify::coordinate': GObject.Object.Notify;
+            'notify::offset': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+            'notify::actor': GObject.Object.Notify;
+            'notify::enabled': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10465,14 +10888,17 @@ export namespace Clutter {
             signal: K,
             callback: BindConstraint.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BindConstraint.SignalSignatures>(
             signal: K,
             callback: BindConstraint.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BindConstraint.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BindConstraint.SignalSignatures[K]>
+            ...args: BindConstraint.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -10510,7 +10936,9 @@ export namespace Clutter {
 
     namespace BindingPool {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10547,14 +10975,17 @@ export namespace Clutter {
             signal: K,
             callback: BindingPool.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BindingPool.SignalSignatures>(
             signal: K,
             callback: BindingPool.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BindingPool.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BindingPool.SignalSignatures[K]>
+            ...args: BindingPool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -10741,14 +11172,17 @@ export namespace Clutter {
         // Signals
 
         connect<K extends keyof BlitNode.SignalSignatures>(signal: K, callback: BlitNode.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BlitNode.SignalSignatures>(
             signal: K,
             callback: BlitNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BlitNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BlitNode.SignalSignatures[K]>
+            ...args: BlitNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -10774,7 +11208,11 @@ export namespace Clutter {
 
     namespace BlurEffect {
         // Signal signatures
-        interface SignalSignatures extends OffscreenEffect.SignalSignatures {}
+        interface SignalSignatures extends OffscreenEffect.SignalSignatures {
+            'notify::actor': GObject.Object.Notify;
+            'notify::enabled': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10802,14 +11240,17 @@ export namespace Clutter {
             signal: K,
             callback: BlurEffect.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BlurEffect.SignalSignatures>(
             signal: K,
             callback: BlurEffect.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BlurEffect.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BlurEffect.SignalSignatures[K]>
+            ...args: BlurEffect.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace BlurNode {
@@ -10836,19 +11277,28 @@ export namespace Clutter {
         // Signals
 
         connect<K extends keyof BlurNode.SignalSignatures>(signal: K, callback: BlurNode.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BlurNode.SignalSignatures>(
             signal: K,
             callback: BlurNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BlurNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BlurNode.SignalSignatures[K]>
+            ...args: BlurNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace BoxLayout {
         // Signal signatures
-        interface SignalSignatures extends LayoutManager.SignalSignatures {}
+        interface SignalSignatures extends LayoutManager.SignalSignatures {
+            'notify::homogeneous': GObject.Object.Notify;
+            'notify::orientation': GObject.Object.Notify;
+            'notify::pack-start': GObject.Object.Notify;
+            'notify::pack-start': GObject.Object.Notify;
+            'notify::spacing': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10903,14 +11353,17 @@ export namespace Clutter {
         // Signals
 
         connect<K extends keyof BoxLayout.SignalSignatures>(signal: K, callback: BoxLayout.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BoxLayout.SignalSignatures>(
             signal: K,
             callback: BoxLayout.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BoxLayout.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BoxLayout.SignalSignatures[K]>
+            ...args: BoxLayout.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -10951,7 +11404,13 @@ export namespace Clutter {
 
     namespace BrightnessContrastEffect {
         // Signal signatures
-        interface SignalSignatures extends OffscreenEffect.SignalSignatures {}
+        interface SignalSignatures extends OffscreenEffect.SignalSignatures {
+            'notify::brightness': GObject.Object.Notify;
+            'notify::contrast': GObject.Object.Notify;
+            'notify::actor': GObject.Object.Notify;
+            'notify::enabled': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11007,14 +11466,17 @@ export namespace Clutter {
             signal: K,
             callback: BrightnessContrastEffect.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BrightnessContrastEffect.SignalSignatures>(
             signal: K,
             callback: BrightnessContrastEffect.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BrightnessContrastEffect.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BrightnessContrastEffect.SignalSignatures[K]>
+            ...args: BrightnessContrastEffect.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -11064,12 +11526,16 @@ export namespace Clutter {
         // Signal callback interfaces
 
         interface Draw {
-            (_source: Canvas, cr: cairo.Context, width: number, height: number): boolean;
+            (_source: Canvas, cr: cairo.Context, width: number, height: number): boolean | void;
         }
 
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             draw: Draw;
+            'notify::height': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -11122,8 +11588,14 @@ export namespace Clutter {
         // Signals
 
         connect<K extends keyof Canvas.SignalSignatures>(signal: K, callback: Canvas.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Canvas.SignalSignatures>(signal: K, callback: Canvas.SignalSignatures[K]): number;
-        emit<K extends keyof Canvas.SignalSignatures>(signal: K, ...args: Parameters<Canvas.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Canvas.SignalSignatures>(
+            signal: K,
+            ...args: Canvas.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -11674,7 +12146,10 @@ export namespace Clutter {
 
     namespace ChildMeta {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::actor': GObject.Object.Notify;
+            'notify::container': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11743,14 +12218,17 @@ export namespace Clutter {
         // Signals
 
         connect<K extends keyof ChildMeta.SignalSignatures>(signal: K, callback: ChildMeta.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ChildMeta.SignalSignatures>(
             signal: K,
             callback: ChildMeta.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ChildMeta.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ChildMeta.SignalSignatures[K]>
+            ...args: ChildMeta.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -11774,13 +12252,22 @@ export namespace Clutter {
         }
 
         interface LongPress {
-            (_source: ClickAction, actor: Actor, state: LongPressState): boolean;
+            (_source: ClickAction, actor: Actor, state: LongPressState): boolean | void;
         }
 
         // Signal signatures
         interface SignalSignatures extends Action.SignalSignatures {
             clicked: Clicked;
             'long-press': LongPress;
+            'notify::held': GObject.Object.Notify;
+            'notify::long-press-duration': GObject.Object.Notify;
+            'notify::long-press-duration': GObject.Object.Notify;
+            'notify::long-press-threshold': GObject.Object.Notify;
+            'notify::long-press-threshold': GObject.Object.Notify;
+            'notify::pressed': GObject.Object.Notify;
+            'notify::actor': GObject.Object.Notify;
+            'notify::enabled': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -11859,14 +12346,17 @@ export namespace Clutter {
             signal: K,
             callback: ClickAction.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClickAction.SignalSignatures>(
             signal: K,
             callback: ClickAction.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClickAction.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClickAction.SignalSignatures[K]>
+            ...args: ClickAction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -11923,19 +12413,146 @@ export namespace Clutter {
         // Signals
 
         connect<K extends keyof ClipNode.SignalSignatures>(signal: K, callback: ClipNode.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClipNode.SignalSignatures>(
             signal: K,
             callback: ClipNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClipNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClipNode.SignalSignatures[K]>
+            ...args: ClipNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Clone {
         // Signal signatures
-        interface SignalSignatures extends Actor.SignalSignatures {}
+        interface SignalSignatures extends Actor.SignalSignatures {
+            'notify::source': GObject.Object.Notify;
+            'notify::actions': GObject.Object.Notify;
+            'notify::allocation': GObject.Object.Notify;
+            'notify::background-color': GObject.Object.Notify;
+            'notify::background-color': GObject.Object.Notify;
+            'notify::background-color-set': GObject.Object.Notify;
+            'notify::background-color-set': GObject.Object.Notify;
+            'notify::child-transform': GObject.Object.Notify;
+            'notify::child-transform': GObject.Object.Notify;
+            'notify::child-transform-set': GObject.Object.Notify;
+            'notify::child-transform-set': GObject.Object.Notify;
+            'notify::clip-rect': GObject.Object.Notify;
+            'notify::clip-rect': GObject.Object.Notify;
+            'notify::clip-to-allocation': GObject.Object.Notify;
+            'notify::clip-to-allocation': GObject.Object.Notify;
+            'notify::constraints': GObject.Object.Notify;
+            'notify::content': GObject.Object.Notify;
+            'notify::content-box': GObject.Object.Notify;
+            'notify::content-box': GObject.Object.Notify;
+            'notify::content-gravity': GObject.Object.Notify;
+            'notify::content-gravity': GObject.Object.Notify;
+            'notify::content-repeat': GObject.Object.Notify;
+            'notify::content-repeat': GObject.Object.Notify;
+            'notify::effect': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::fixed-position-set': GObject.Object.Notify;
+            'notify::fixed-position-set': GObject.Object.Notify;
+            'notify::fixed-x': GObject.Object.Notify;
+            'notify::fixed-x': GObject.Object.Notify;
+            'notify::fixed-y': GObject.Object.Notify;
+            'notify::fixed-y': GObject.Object.Notify;
+            'notify::has-clip': GObject.Object.Notify;
+            'notify::has-clip': GObject.Object.Notify;
+            'notify::has-pointer': GObject.Object.Notify;
+            'notify::has-pointer': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::layout-manager': GObject.Object.Notify;
+            'notify::layout-manager': GObject.Object.Notify;
+            'notify::magnification-filter': GObject.Object.Notify;
+            'notify::magnification-filter': GObject.Object.Notify;
+            'notify::mapped': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::min-height': GObject.Object.Notify;
+            'notify::min-height': GObject.Object.Notify;
+            'notify::min-height-set': GObject.Object.Notify;
+            'notify::min-height-set': GObject.Object.Notify;
+            'notify::min-width': GObject.Object.Notify;
+            'notify::min-width': GObject.Object.Notify;
+            'notify::min-width-set': GObject.Object.Notify;
+            'notify::min-width-set': GObject.Object.Notify;
+            'notify::minification-filter': GObject.Object.Notify;
+            'notify::minification-filter': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::natural-height': GObject.Object.Notify;
+            'notify::natural-height': GObject.Object.Notify;
+            'notify::natural-height-set': GObject.Object.Notify;
+            'notify::natural-height-set': GObject.Object.Notify;
+            'notify::natural-width': GObject.Object.Notify;
+            'notify::natural-width': GObject.Object.Notify;
+            'notify::natural-width-set': GObject.Object.Notify;
+            'notify::natural-width-set': GObject.Object.Notify;
+            'notify::offscreen-redirect': GObject.Object.Notify;
+            'notify::offscreen-redirect': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::pivot-point': GObject.Object.Notify;
+            'notify::pivot-point': GObject.Object.Notify;
+            'notify::pivot-point-z': GObject.Object.Notify;
+            'notify::pivot-point-z': GObject.Object.Notify;
+            'notify::position': GObject.Object.Notify;
+            'notify::reactive': GObject.Object.Notify;
+            'notify::realized': GObject.Object.Notify;
+            'notify::request-mode': GObject.Object.Notify;
+            'notify::request-mode': GObject.Object.Notify;
+            'notify::rotation-angle-x': GObject.Object.Notify;
+            'notify::rotation-angle-x': GObject.Object.Notify;
+            'notify::rotation-angle-y': GObject.Object.Notify;
+            'notify::rotation-angle-y': GObject.Object.Notify;
+            'notify::rotation-angle-z': GObject.Object.Notify;
+            'notify::rotation-angle-z': GObject.Object.Notify;
+            'notify::scale-x': GObject.Object.Notify;
+            'notify::scale-x': GObject.Object.Notify;
+            'notify::scale-y': GObject.Object.Notify;
+            'notify::scale-y': GObject.Object.Notify;
+            'notify::scale-z': GObject.Object.Notify;
+            'notify::scale-z': GObject.Object.Notify;
+            'notify::show-on-set-parent': GObject.Object.Notify;
+            'notify::show-on-set-parent': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::text-direction': GObject.Object.Notify;
+            'notify::text-direction': GObject.Object.Notify;
+            'notify::transform': GObject.Object.Notify;
+            'notify::transform-set': GObject.Object.Notify;
+            'notify::transform-set': GObject.Object.Notify;
+            'notify::translation-x': GObject.Object.Notify;
+            'notify::translation-x': GObject.Object.Notify;
+            'notify::translation-y': GObject.Object.Notify;
+            'notify::translation-y': GObject.Object.Notify;
+            'notify::translation-z': GObject.Object.Notify;
+            'notify::translation-z': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::x': GObject.Object.Notify;
+            'notify::x-align': GObject.Object.Notify;
+            'notify::x-align': GObject.Object.Notify;
+            'notify::x-expand': GObject.Object.Notify;
+            'notify::x-expand': GObject.Object.Notify;
+            'notify::y': GObject.Object.Notify;
+            'notify::y-align': GObject.Object.Notify;
+            'notify::y-align': GObject.Object.Notify;
+            'notify::y-expand': GObject.Object.Notify;
+            'notify::y-expand': GObject.Object.Notify;
+            'notify::z-position': GObject.Object.Notify;
+            'notify::z-position': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11981,8 +12598,14 @@ export namespace Clutter {
         // Signals
 
         connect<K extends keyof Clone.SignalSignatures>(signal: K, callback: Clone.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Clone.SignalSignatures>(signal: K, callback: Clone.SignalSignatures[K]): number;
-        emit<K extends keyof Clone.SignalSignatures>(signal: K, ...args: Parameters<Clone.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Clone.SignalSignatures>(
+            signal: K,
+            ...args: Clone.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -12758,19 +13381,27 @@ export namespace Clutter {
         // Signals
 
         connect<K extends keyof ColorNode.SignalSignatures>(signal: K, callback: ColorNode.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ColorNode.SignalSignatures>(
             signal: K,
             callback: ColorNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ColorNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ColorNode.SignalSignatures[K]>
+            ...args: ColorNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace ColorizeEffect {
         // Signal signatures
-        interface SignalSignatures extends OffscreenEffect.SignalSignatures {}
+        interface SignalSignatures extends OffscreenEffect.SignalSignatures {
+            'notify::tint': GObject.Object.Notify;
+            'notify::actor': GObject.Object.Notify;
+            'notify::enabled': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12808,14 +13439,17 @@ export namespace Clutter {
             signal: K,
             callback: ColorizeEffect.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ColorizeEffect.SignalSignatures>(
             signal: K,
             callback: ColorizeEffect.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ColorizeEffect.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ColorizeEffect.SignalSignatures[K]>
+            ...args: ColorizeEffect.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -12832,7 +13466,11 @@ export namespace Clutter {
 
     namespace Constraint {
         // Signal signatures
-        interface SignalSignatures extends ActorMeta.SignalSignatures {}
+        interface SignalSignatures extends ActorMeta.SignalSignatures {
+            'notify::actor': GObject.Object.Notify;
+            'notify::enabled': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12858,14 +13496,17 @@ export namespace Clutter {
             signal: K,
             callback: Constraint.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Constraint.SignalSignatures>(
             signal: K,
             callback: Constraint.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Constraint.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Constraint.SignalSignatures[K]>
+            ...args: Constraint.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -12907,7 +13548,15 @@ export namespace Clutter {
 
     namespace DeformEffect {
         // Signal signatures
-        interface SignalSignatures extends OffscreenEffect.SignalSignatures {}
+        interface SignalSignatures extends OffscreenEffect.SignalSignatures {
+            'notify::x-tiles': GObject.Object.Notify;
+            'notify::x-tiles': GObject.Object.Notify;
+            'notify::y-tiles': GObject.Object.Notify;
+            'notify::y-tiles': GObject.Object.Notify;
+            'notify::actor': GObject.Object.Notify;
+            'notify::enabled': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12965,14 +13614,17 @@ export namespace Clutter {
             signal: K,
             callback: DeformEffect.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeformEffect.SignalSignatures>(
             signal: K,
             callback: DeformEffect.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeformEffect.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeformEffect.SignalSignatures[K]>
+            ...args: DeformEffect.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -13018,7 +13670,12 @@ export namespace Clutter {
 
     namespace DesaturateEffect {
         // Signal signatures
-        interface SignalSignatures extends OffscreenEffect.SignalSignatures {}
+        interface SignalSignatures extends OffscreenEffect.SignalSignatures {
+            'notify::factor': GObject.Object.Notify;
+            'notify::actor': GObject.Object.Notify;
+            'notify::enabled': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13057,14 +13714,17 @@ export namespace Clutter {
             signal: K,
             callback: DesaturateEffect.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DesaturateEffect.SignalSignatures>(
             signal: K,
             callback: DesaturateEffect.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DesaturateEffect.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DesaturateEffect.SignalSignatures[K]>
+            ...args: DesaturateEffect.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -13083,7 +13743,11 @@ export namespace Clutter {
 
     namespace Effect {
         // Signal signatures
-        interface SignalSignatures extends ActorMeta.SignalSignatures {}
+        interface SignalSignatures extends ActorMeta.SignalSignatures {
+            'notify::actor': GObject.Object.Notify;
+            'notify::enabled': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13106,8 +13770,14 @@ export namespace Clutter {
         // Signals
 
         connect<K extends keyof Effect.SignalSignatures>(signal: K, callback: Effect.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Effect.SignalSignatures>(signal: K, callback: Effect.SignalSignatures[K]): number;
-        emit<K extends keyof Effect.SignalSignatures>(signal: K, ...args: Parameters<Effect.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Effect.SignalSignatures>(
+            signal: K,
+            ...args: Effect.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -13190,19 +13860,39 @@ export namespace Clutter {
             signal: K,
             callback: FixedLayout.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FixedLayout.SignalSignatures>(
             signal: K,
             callback: FixedLayout.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FixedLayout.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FixedLayout.SignalSignatures[K]>
+            ...args: FixedLayout.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace FlowLayout {
         // Signal signatures
-        interface SignalSignatures extends LayoutManager.SignalSignatures {}
+        interface SignalSignatures extends LayoutManager.SignalSignatures {
+            'notify::column-spacing': GObject.Object.Notify;
+            'notify::column-spacing': GObject.Object.Notify;
+            'notify::homogeneous': GObject.Object.Notify;
+            'notify::max-column-width': GObject.Object.Notify;
+            'notify::max-column-width': GObject.Object.Notify;
+            'notify::max-row-height': GObject.Object.Notify;
+            'notify::max-row-height': GObject.Object.Notify;
+            'notify::min-column-width': GObject.Object.Notify;
+            'notify::min-column-width': GObject.Object.Notify;
+            'notify::min-row-height': GObject.Object.Notify;
+            'notify::min-row-height': GObject.Object.Notify;
+            'notify::orientation': GObject.Object.Notify;
+            'notify::row-spacing': GObject.Object.Notify;
+            'notify::row-spacing': GObject.Object.Notify;
+            'notify::snap-to-grid': GObject.Object.Notify;
+            'notify::snap-to-grid': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13348,14 +14038,17 @@ export namespace Clutter {
             signal: K,
             callback: FlowLayout.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FlowLayout.SignalSignatures>(
             signal: K,
             callback: FlowLayout.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FlowLayout.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FlowLayout.SignalSignatures[K]>
+            ...args: FlowLayout.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -13468,14 +14161,17 @@ export namespace Clutter {
             signal: K,
             callback: FrameClock.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FrameClock.SignalSignatures>(
             signal: K,
             callback: FrameClock.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FrameClock.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FrameClock.SignalSignatures[K]>
+            ...args: FrameClock.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -13496,7 +14192,7 @@ export namespace Clutter {
         // Signal callback interfaces
 
         interface GestureBegin {
-            (_source: GestureAction, actor: Actor): boolean;
+            (_source: GestureAction, actor: Actor): boolean | void;
         }
 
         interface GestureCancel {
@@ -13508,7 +14204,7 @@ export namespace Clutter {
         }
 
         interface GestureProgress {
-            (_source: GestureAction, actor: Actor): boolean;
+            (_source: GestureAction, actor: Actor): boolean | void;
         }
 
         // Signal signatures
@@ -13517,6 +14213,17 @@ export namespace Clutter {
             'gesture-cancel': GestureCancel;
             'gesture-end': GestureEnd;
             'gesture-progress': GestureProgress;
+            'notify::n-touch-points': GObject.Object.Notify;
+            'notify::n-touch-points': GObject.Object.Notify;
+            'notify::threshold-trigger-distance-x': GObject.Object.Notify;
+            'notify::threshold-trigger-distance-x': GObject.Object.Notify;
+            'notify::threshold-trigger-distance-y': GObject.Object.Notify;
+            'notify::threshold-trigger-distance-y': GObject.Object.Notify;
+            'notify::threshold-trigger-edge': GObject.Object.Notify;
+            'notify::threshold-trigger-edge': GObject.Object.Notify;
+            'notify::actor': GObject.Object.Notify;
+            'notify::enabled': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -13607,14 +14314,17 @@ export namespace Clutter {
             signal: K,
             callback: GestureAction.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GestureAction.SignalSignatures>(
             signal: K,
             callback: GestureAction.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GestureAction.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GestureAction.SignalSignatures[K]>
+            ...args: GestureAction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -13733,7 +14443,17 @@ export namespace Clutter {
 
     namespace GridLayout {
         // Signal signatures
-        interface SignalSignatures extends LayoutManager.SignalSignatures {}
+        interface SignalSignatures extends LayoutManager.SignalSignatures {
+            'notify::column-homogeneous': GObject.Object.Notify;
+            'notify::column-homogeneous': GObject.Object.Notify;
+            'notify::column-spacing': GObject.Object.Notify;
+            'notify::column-spacing': GObject.Object.Notify;
+            'notify::orientation': GObject.Object.Notify;
+            'notify::row-homogeneous': GObject.Object.Notify;
+            'notify::row-homogeneous': GObject.Object.Notify;
+            'notify::row-spacing': GObject.Object.Notify;
+            'notify::row-spacing': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13819,14 +14539,17 @@ export namespace Clutter {
             signal: K,
             callback: GridLayout.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GridLayout.SignalSignatures>(
             signal: K,
             callback: GridLayout.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GridLayout.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GridLayout.SignalSignatures[K]>
+            ...args: GridLayout.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -13987,8 +14710,14 @@ export namespace Clutter {
         // Signals
 
         connect<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
-        emit<K extends keyof Image.SignalSignatures>(signal: K, ...args: Parameters<Image.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Image.SignalSignatures>(
+            signal: K,
+            ...args: Image.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -14590,7 +15319,32 @@ export namespace Clutter {
 
     namespace InputDevice {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::backend': GObject.Object.Notify;
+            'notify::capabilities': GObject.Object.Notify;
+            'notify::device-mode': GObject.Object.Notify;
+            'notify::device-mode': GObject.Object.Notify;
+            'notify::device-node': GObject.Object.Notify;
+            'notify::device-node': GObject.Object.Notify;
+            'notify::device-type': GObject.Object.Notify;
+            'notify::device-type': GObject.Object.Notify;
+            'notify::has-cursor': GObject.Object.Notify;
+            'notify::has-cursor': GObject.Object.Notify;
+            'notify::n-buttons': GObject.Object.Notify;
+            'notify::n-buttons': GObject.Object.Notify;
+            'notify::n-mode-groups': GObject.Object.Notify;
+            'notify::n-mode-groups': GObject.Object.Notify;
+            'notify::n-rings': GObject.Object.Notify;
+            'notify::n-rings': GObject.Object.Notify;
+            'notify::n-strips': GObject.Object.Notify;
+            'notify::n-strips': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::product-id': GObject.Object.Notify;
+            'notify::product-id': GObject.Object.Notify;
+            'notify::seat': GObject.Object.Notify;
+            'notify::vendor-id': GObject.Object.Notify;
+            'notify::vendor-id': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -14704,14 +15458,17 @@ export namespace Clutter {
             signal: K,
             callback: InputDevice.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InputDevice.SignalSignatures>(
             signal: K,
             callback: InputDevice.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InputDevice.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InputDevice.SignalSignatures[K]>
+            ...args: InputDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -14777,7 +15534,12 @@ export namespace Clutter {
 
     namespace InputDeviceTool {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::axes': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::serial': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -14811,14 +15573,17 @@ export namespace Clutter {
             signal: K,
             callback: InputDeviceTool.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InputDeviceTool.SignalSignatures>(
             signal: K,
             callback: InputDeviceTool.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InputDeviceTool.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InputDeviceTool.SignalSignatures[K]>
+            ...args: InputDeviceTool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -14866,14 +15631,17 @@ export namespace Clutter {
             signal: K,
             callback: InputFocus.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InputFocus.SignalSignatures>(
             signal: K,
             callback: InputFocus.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InputFocus.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InputFocus.SignalSignatures[K]>
+            ...args: InputFocus.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -14927,6 +15695,12 @@ export namespace Clutter {
             'delete-surrounding': DeleteSurrounding;
             'input-panel-state': InputPanelState;
             'request-surrounding': RequestSurrounding;
+            'notify::can-show-preedit': GObject.Object.Notify;
+            'notify::can-show-preedit': GObject.Object.Notify;
+            'notify::content-hints': GObject.Object.Notify;
+            'notify::content-hints': GObject.Object.Notify;
+            'notify::content-purpose': GObject.Object.Notify;
+            'notify::content-purpose': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -14971,14 +15745,17 @@ export namespace Clutter {
             signal: K,
             callback: InputMethod.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InputMethod.SignalSignatures>(
             signal: K,
             callback: InputMethod.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InputMethod.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InputMethod.SignalSignatures[K]>
+            ...args: InputMethod.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -15012,7 +15789,12 @@ export namespace Clutter {
 
     namespace Interval {
         // Signal signatures
-        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {}
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
+            'notify::final': GObject.Object.Notify;
+            'notify::initial': GObject.Object.Notify;
+            'notify::value-type': GObject.Object.Notify;
+            'notify::value-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -15067,14 +15849,17 @@ export namespace Clutter {
         // Signals
 
         connect<K extends keyof Interval.SignalSignatures>(signal: K, callback: Interval.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Interval.SignalSignatures>(
             signal: K,
             callback: Interval.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Interval.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Interval.SignalSignatures[K]>
+            ...args: Interval.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -15683,7 +16468,26 @@ export namespace Clutter {
 
     namespace KeyframeTransition {
         // Signal signatures
-        interface SignalSignatures extends PropertyTransition.SignalSignatures {}
+        interface SignalSignatures extends PropertyTransition.SignalSignatures {
+            'notify::property-name': GObject.Object.Notify;
+            'notify::property-name': GObject.Object.Notify;
+            'notify::animatable': GObject.Object.Notify;
+            'notify::interval': GObject.Object.Notify;
+            'notify::remove-on-complete': GObject.Object.Notify;
+            'notify::remove-on-complete': GObject.Object.Notify;
+            'notify::actor': GObject.Object.Notify;
+            'notify::auto-reverse': GObject.Object.Notify;
+            'notify::auto-reverse': GObject.Object.Notify;
+            'notify::delay': GObject.Object.Notify;
+            'notify::direction': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::frame-clock': GObject.Object.Notify;
+            'notify::frame-clock': GObject.Object.Notify;
+            'notify::progress-mode': GObject.Object.Notify;
+            'notify::progress-mode': GObject.Object.Notify;
+            'notify::repeat-count': GObject.Object.Notify;
+            'notify::repeat-count': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -15714,14 +16518,17 @@ export namespace Clutter {
             signal: K,
             callback: KeyframeTransition.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof KeyframeTransition.SignalSignatures>(
             signal: K,
             callback: KeyframeTransition.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof KeyframeTransition.SignalSignatures>(
             signal: K,
-            ...args: Parameters<KeyframeTransition.SignalSignatures[K]>
+            ...args: KeyframeTransition.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -16233,6 +17040,10 @@ export namespace Clutter {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'state-changed': StateChanged;
+            'notify::caps-lock-state': GObject.Object.Notify;
+            'notify::caps-lock-state': GObject.Object.Notify;
+            'notify::num-lock-state': GObject.Object.Notify;
+            'notify::num-lock-state': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -16264,8 +17075,14 @@ export namespace Clutter {
         // Signals
 
         connect<K extends keyof Keymap.SignalSignatures>(signal: K, callback: Keymap.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Keymap.SignalSignatures>(signal: K, callback: Keymap.SignalSignatures[K]): number;
-        emit<K extends keyof Keymap.SignalSignatures>(signal: K, ...args: Parameters<Keymap.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Keymap.SignalSignatures>(
+            signal: K,
+            ...args: Keymap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -16303,14 +17120,17 @@ export namespace Clutter {
         // Signals
 
         connect<K extends keyof LayerNode.SignalSignatures>(signal: K, callback: LayerNode.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LayerNode.SignalSignatures>(
             signal: K,
             callback: LayerNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LayerNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LayerNode.SignalSignatures[K]>
+            ...args: LayerNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace LayoutManager {
@@ -16349,14 +17169,17 @@ export namespace Clutter {
             signal: K,
             callback: LayoutManager.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LayoutManager.SignalSignatures>(
             signal: K,
             callback: LayoutManager.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LayoutManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LayoutManager.SignalSignatures[K]>
+            ...args: LayoutManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -16498,7 +17321,11 @@ export namespace Clutter {
 
     namespace LayoutMeta {
         // Signal signatures
-        interface SignalSignatures extends ChildMeta.SignalSignatures {}
+        interface SignalSignatures extends ChildMeta.SignalSignatures {
+            'notify::manager': GObject.Object.Notify;
+            'notify::actor': GObject.Object.Notify;
+            'notify::container': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -16536,14 +17363,17 @@ export namespace Clutter {
             signal: K,
             callback: LayoutMeta.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LayoutMeta.SignalSignatures>(
             signal: K,
             callback: LayoutMeta.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LayoutMeta.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LayoutMeta.SignalSignatures[K]>
+            ...args: LayoutMeta.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -16556,7 +17386,11 @@ export namespace Clutter {
 
     namespace OffscreenEffect {
         // Signal signatures
-        interface SignalSignatures extends Effect.SignalSignatures {}
+        interface SignalSignatures extends Effect.SignalSignatures {
+            'notify::actor': GObject.Object.Notify;
+            'notify::enabled': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -16582,14 +17416,17 @@ export namespace Clutter {
             signal: K,
             callback: OffscreenEffect.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OffscreenEffect.SignalSignatures>(
             signal: K,
             callback: OffscreenEffect.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OffscreenEffect.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OffscreenEffect.SignalSignatures[K]>
+            ...args: OffscreenEffect.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -16657,7 +17494,18 @@ export namespace Clutter {
 
     namespace PageTurnEffect {
         // Signal signatures
-        interface SignalSignatures extends DeformEffect.SignalSignatures {}
+        interface SignalSignatures extends DeformEffect.SignalSignatures {
+            'notify::angle': GObject.Object.Notify;
+            'notify::period': GObject.Object.Notify;
+            'notify::radius': GObject.Object.Notify;
+            'notify::x-tiles': GObject.Object.Notify;
+            'notify::x-tiles': GObject.Object.Notify;
+            'notify::y-tiles': GObject.Object.Notify;
+            'notify::y-tiles': GObject.Object.Notify;
+            'notify::actor': GObject.Object.Notify;
+            'notify::enabled': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -16708,14 +17556,17 @@ export namespace Clutter {
             signal: K,
             callback: PageTurnEffect.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PageTurnEffect.SignalSignatures>(
             signal: K,
             callback: PageTurnEffect.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PageTurnEffect.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PageTurnEffect.SignalSignatures[K]>
+            ...args: PageTurnEffect.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -16771,14 +17622,17 @@ export namespace Clutter {
         // Signals
 
         connect<K extends keyof PaintNode.SignalSignatures>(signal: K, callback: PaintNode.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PaintNode.SignalSignatures>(
             signal: K,
             callback: PaintNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PaintNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PaintNode.SignalSignatures[K]>
+            ...args: PaintNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -16873,7 +17727,7 @@ export namespace Clutter {
         // Signal callback interfaces
 
         interface Pan {
-            (_source: PanAction, actor: Actor, is_interpolated: boolean): boolean;
+            (_source: PanAction, actor: Actor, is_interpolated: boolean): boolean | void;
         }
 
         interface PanStopped {
@@ -16884,6 +17738,23 @@ export namespace Clutter {
         interface SignalSignatures extends GestureAction.SignalSignatures {
             pan: Pan;
             'pan-stopped': PanStopped;
+            'notify::acceleration-factor': GObject.Object.Notify;
+            'notify::acceleration-factor': GObject.Object.Notify;
+            'notify::deceleration': GObject.Object.Notify;
+            'notify::interpolate': GObject.Object.Notify;
+            'notify::pan-axis': GObject.Object.Notify;
+            'notify::pan-axis': GObject.Object.Notify;
+            'notify::n-touch-points': GObject.Object.Notify;
+            'notify::n-touch-points': GObject.Object.Notify;
+            'notify::threshold-trigger-distance-x': GObject.Object.Notify;
+            'notify::threshold-trigger-distance-x': GObject.Object.Notify;
+            'notify::threshold-trigger-distance-y': GObject.Object.Notify;
+            'notify::threshold-trigger-distance-y': GObject.Object.Notify;
+            'notify::threshold-trigger-edge': GObject.Object.Notify;
+            'notify::threshold-trigger-edge': GObject.Object.Notify;
+            'notify::actor': GObject.Object.Notify;
+            'notify::enabled': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -16960,14 +17831,17 @@ export namespace Clutter {
         // Signals
 
         connect<K extends keyof PanAction.SignalSignatures>(signal: K, callback: PanAction.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PanAction.SignalSignatures>(
             signal: K,
             callback: PanAction.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PanAction.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PanAction.SignalSignatures[K]>
+            ...args: PanAction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -17068,7 +17942,10 @@ export namespace Clutter {
 
     namespace Path {
         // Signal signatures
-        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {}
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
+            'notify::description': GObject.Object.Notify;
+            'notify::length': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17104,8 +17981,14 @@ export namespace Clutter {
         // Signals
 
         connect<K extends keyof Path.SignalSignatures>(signal: K, callback: Path.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Path.SignalSignatures>(signal: K, callback: Path.SignalSignatures[K]): number;
-        emit<K extends keyof Path.SignalSignatures>(signal: K, ...args: Parameters<Path.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Path.SignalSignatures>(
+            signal: K,
+            ...args: Path.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -17299,6 +18182,11 @@ export namespace Clutter {
         // Signal signatures
         interface SignalSignatures extends Constraint.SignalSignatures {
             'node-reached': NodeReached;
+            'notify::offset': GObject.Object.Notify;
+            'notify::path': GObject.Object.Notify;
+            'notify::actor': GObject.Object.Notify;
+            'notify::enabled': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -17343,14 +18231,17 @@ export namespace Clutter {
             signal: K,
             callback: PathConstraint.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PathConstraint.SignalSignatures>(
             signal: K,
             callback: PathConstraint.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PathConstraint.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PathConstraint.SignalSignatures[K]>
+            ...args: PathConstraint.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -17403,19 +18294,41 @@ export namespace Clutter {
             signal: K,
             callback: PipelineNode.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PipelineNode.SignalSignatures>(
             signal: K,
             callback: PipelineNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PipelineNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PipelineNode.SignalSignatures[K]>
+            ...args: PipelineNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace PropertyTransition {
         // Signal signatures
-        interface SignalSignatures extends Transition.SignalSignatures {}
+        interface SignalSignatures extends Transition.SignalSignatures {
+            'notify::property-name': GObject.Object.Notify;
+            'notify::property-name': GObject.Object.Notify;
+            'notify::animatable': GObject.Object.Notify;
+            'notify::interval': GObject.Object.Notify;
+            'notify::remove-on-complete': GObject.Object.Notify;
+            'notify::remove-on-complete': GObject.Object.Notify;
+            'notify::actor': GObject.Object.Notify;
+            'notify::auto-reverse': GObject.Object.Notify;
+            'notify::auto-reverse': GObject.Object.Notify;
+            'notify::delay': GObject.Object.Notify;
+            'notify::direction': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::frame-clock': GObject.Object.Notify;
+            'notify::frame-clock': GObject.Object.Notify;
+            'notify::progress-mode': GObject.Object.Notify;
+            'notify::progress-mode': GObject.Object.Notify;
+            'notify::repeat-count': GObject.Object.Notify;
+            'notify::repeat-count': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17467,14 +18380,17 @@ export namespace Clutter {
             signal: K,
             callback: PropertyTransition.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PropertyTransition.SignalSignatures>(
             signal: K,
             callback: PropertyTransition.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PropertyTransition.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PropertyTransition.SignalSignatures[K]>
+            ...args: PropertyTransition.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -17953,26 +18869,40 @@ export namespace Clutter {
         // Signals
 
         connect<K extends keyof RootNode.SignalSignatures>(signal: K, callback: RootNode.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RootNode.SignalSignatures>(
             signal: K,
             callback: RootNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RootNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RootNode.SignalSignatures[K]>
+            ...args: RootNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace RotateAction {
         // Signal callback interfaces
 
         interface Rotate {
-            (_source: RotateAction, actor: Actor, angle: number): boolean;
+            (_source: RotateAction, actor: Actor, angle: number): boolean | void;
         }
 
         // Signal signatures
         interface SignalSignatures extends GestureAction.SignalSignatures {
             rotate: Rotate;
+            'notify::n-touch-points': GObject.Object.Notify;
+            'notify::n-touch-points': GObject.Object.Notify;
+            'notify::threshold-trigger-distance-x': GObject.Object.Notify;
+            'notify::threshold-trigger-distance-x': GObject.Object.Notify;
+            'notify::threshold-trigger-distance-y': GObject.Object.Notify;
+            'notify::threshold-trigger-distance-y': GObject.Object.Notify;
+            'notify::threshold-trigger-edge': GObject.Object.Notify;
+            'notify::threshold-trigger-edge': GObject.Object.Notify;
+            'notify::actor': GObject.Object.Notify;
+            'notify::enabled': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -18001,19 +18931,28 @@ export namespace Clutter {
             signal: K,
             callback: RotateAction.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RotateAction.SignalSignatures>(
             signal: K,
             callback: RotateAction.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RotateAction.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RotateAction.SignalSignatures[K]>
+            ...args: RotateAction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Script {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::filename': GObject.Object.Notify;
+            'notify::filename-set': GObject.Object.Notify;
+            'notify::filename-set': GObject.Object.Notify;
+            'notify::translation-domain': GObject.Object.Notify;
+            'notify::translation-domain': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -18082,8 +19021,14 @@ export namespace Clutter {
         // Signals
 
         connect<K extends keyof Script.SignalSignatures>(signal: K, callback: Script.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Script.SignalSignatures>(signal: K, callback: Script.SignalSignatures[K]): number;
-        emit<K extends keyof Script.SignalSignatures>(signal: K, ...args: Parameters<Script.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Script.SignalSignatures>(
+            signal: K,
+            ...args: Script.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -18210,7 +19155,132 @@ export namespace Clutter {
 
     namespace ScrollActor {
         // Signal signatures
-        interface SignalSignatures extends Actor.SignalSignatures {}
+        interface SignalSignatures extends Actor.SignalSignatures {
+            'notify::scroll-mode': GObject.Object.Notify;
+            'notify::scroll-mode': GObject.Object.Notify;
+            'notify::actions': GObject.Object.Notify;
+            'notify::allocation': GObject.Object.Notify;
+            'notify::background-color': GObject.Object.Notify;
+            'notify::background-color': GObject.Object.Notify;
+            'notify::background-color-set': GObject.Object.Notify;
+            'notify::background-color-set': GObject.Object.Notify;
+            'notify::child-transform': GObject.Object.Notify;
+            'notify::child-transform': GObject.Object.Notify;
+            'notify::child-transform-set': GObject.Object.Notify;
+            'notify::child-transform-set': GObject.Object.Notify;
+            'notify::clip-rect': GObject.Object.Notify;
+            'notify::clip-rect': GObject.Object.Notify;
+            'notify::clip-to-allocation': GObject.Object.Notify;
+            'notify::clip-to-allocation': GObject.Object.Notify;
+            'notify::constraints': GObject.Object.Notify;
+            'notify::content': GObject.Object.Notify;
+            'notify::content-box': GObject.Object.Notify;
+            'notify::content-box': GObject.Object.Notify;
+            'notify::content-gravity': GObject.Object.Notify;
+            'notify::content-gravity': GObject.Object.Notify;
+            'notify::content-repeat': GObject.Object.Notify;
+            'notify::content-repeat': GObject.Object.Notify;
+            'notify::effect': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::fixed-position-set': GObject.Object.Notify;
+            'notify::fixed-position-set': GObject.Object.Notify;
+            'notify::fixed-x': GObject.Object.Notify;
+            'notify::fixed-x': GObject.Object.Notify;
+            'notify::fixed-y': GObject.Object.Notify;
+            'notify::fixed-y': GObject.Object.Notify;
+            'notify::has-clip': GObject.Object.Notify;
+            'notify::has-clip': GObject.Object.Notify;
+            'notify::has-pointer': GObject.Object.Notify;
+            'notify::has-pointer': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::layout-manager': GObject.Object.Notify;
+            'notify::layout-manager': GObject.Object.Notify;
+            'notify::magnification-filter': GObject.Object.Notify;
+            'notify::magnification-filter': GObject.Object.Notify;
+            'notify::mapped': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::min-height': GObject.Object.Notify;
+            'notify::min-height': GObject.Object.Notify;
+            'notify::min-height-set': GObject.Object.Notify;
+            'notify::min-height-set': GObject.Object.Notify;
+            'notify::min-width': GObject.Object.Notify;
+            'notify::min-width': GObject.Object.Notify;
+            'notify::min-width-set': GObject.Object.Notify;
+            'notify::min-width-set': GObject.Object.Notify;
+            'notify::minification-filter': GObject.Object.Notify;
+            'notify::minification-filter': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::natural-height': GObject.Object.Notify;
+            'notify::natural-height': GObject.Object.Notify;
+            'notify::natural-height-set': GObject.Object.Notify;
+            'notify::natural-height-set': GObject.Object.Notify;
+            'notify::natural-width': GObject.Object.Notify;
+            'notify::natural-width': GObject.Object.Notify;
+            'notify::natural-width-set': GObject.Object.Notify;
+            'notify::natural-width-set': GObject.Object.Notify;
+            'notify::offscreen-redirect': GObject.Object.Notify;
+            'notify::offscreen-redirect': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::pivot-point': GObject.Object.Notify;
+            'notify::pivot-point': GObject.Object.Notify;
+            'notify::pivot-point-z': GObject.Object.Notify;
+            'notify::pivot-point-z': GObject.Object.Notify;
+            'notify::position': GObject.Object.Notify;
+            'notify::reactive': GObject.Object.Notify;
+            'notify::realized': GObject.Object.Notify;
+            'notify::request-mode': GObject.Object.Notify;
+            'notify::request-mode': GObject.Object.Notify;
+            'notify::rotation-angle-x': GObject.Object.Notify;
+            'notify::rotation-angle-x': GObject.Object.Notify;
+            'notify::rotation-angle-y': GObject.Object.Notify;
+            'notify::rotation-angle-y': GObject.Object.Notify;
+            'notify::rotation-angle-z': GObject.Object.Notify;
+            'notify::rotation-angle-z': GObject.Object.Notify;
+            'notify::scale-x': GObject.Object.Notify;
+            'notify::scale-x': GObject.Object.Notify;
+            'notify::scale-y': GObject.Object.Notify;
+            'notify::scale-y': GObject.Object.Notify;
+            'notify::scale-z': GObject.Object.Notify;
+            'notify::scale-z': GObject.Object.Notify;
+            'notify::show-on-set-parent': GObject.Object.Notify;
+            'notify::show-on-set-parent': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::text-direction': GObject.Object.Notify;
+            'notify::text-direction': GObject.Object.Notify;
+            'notify::transform': GObject.Object.Notify;
+            'notify::transform-set': GObject.Object.Notify;
+            'notify::transform-set': GObject.Object.Notify;
+            'notify::translation-x': GObject.Object.Notify;
+            'notify::translation-x': GObject.Object.Notify;
+            'notify::translation-y': GObject.Object.Notify;
+            'notify::translation-y': GObject.Object.Notify;
+            'notify::translation-z': GObject.Object.Notify;
+            'notify::translation-z': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::x': GObject.Object.Notify;
+            'notify::x-align': GObject.Object.Notify;
+            'notify::x-align': GObject.Object.Notify;
+            'notify::x-expand': GObject.Object.Notify;
+            'notify::x-expand': GObject.Object.Notify;
+            'notify::y': GObject.Object.Notify;
+            'notify::y-align': GObject.Object.Notify;
+            'notify::y-align': GObject.Object.Notify;
+            'notify::y-expand': GObject.Object.Notify;
+            'notify::y-expand': GObject.Object.Notify;
+            'notify::z-position': GObject.Object.Notify;
+            'notify::z-position': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -18259,14 +19329,17 @@ export namespace Clutter {
             signal: K,
             callback: ScrollActor.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ScrollActor.SignalSignatures>(
             signal: K,
             callback: ScrollActor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ScrollActor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ScrollActor.SignalSignatures[K]>
+            ...args: ScrollActor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -19079,6 +20152,8 @@ export namespace Clutter {
             'ptr-a11y-dwell-click-type-changed': PtrA11yDwellClickTypeChanged;
             'ptr-a11y-timeout-started': PtrA11yTimeoutStarted;
             'ptr-a11y-timeout-stopped': PtrA11yTimeoutStopped;
+            'notify::touch-mode': GObject.Object.Notify;
+            'notify::touch-mode': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -19114,8 +20189,14 @@ export namespace Clutter {
         // Signals
 
         connect<K extends keyof Seat.SignalSignatures>(signal: K, callback: Seat.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Seat.SignalSignatures>(signal: K, callback: Seat.SignalSignatures[K]): number;
-        emit<K extends keyof Seat.SignalSignatures>(signal: K, ...args: Parameters<Seat.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Seat.SignalSignatures>(
+            signal: K,
+            ...args: Seat.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -19239,7 +20320,35 @@ export namespace Clutter {
 
     namespace Settings {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::backend': GObject.Object.Notify;
+            'notify::dnd-drag-threshold': GObject.Object.Notify;
+            'notify::dnd-drag-threshold': GObject.Object.Notify;
+            'notify::double-click-distance': GObject.Object.Notify;
+            'notify::double-click-distance': GObject.Object.Notify;
+            'notify::double-click-time': GObject.Object.Notify;
+            'notify::double-click-time': GObject.Object.Notify;
+            'notify::font-antialias': GObject.Object.Notify;
+            'notify::font-antialias': GObject.Object.Notify;
+            'notify::font-dpi': GObject.Object.Notify;
+            'notify::font-dpi': GObject.Object.Notify;
+            'notify::font-hint-style': GObject.Object.Notify;
+            'notify::font-hint-style': GObject.Object.Notify;
+            'notify::font-hinting': GObject.Object.Notify;
+            'notify::font-hinting': GObject.Object.Notify;
+            'notify::font-name': GObject.Object.Notify;
+            'notify::font-name': GObject.Object.Notify;
+            'notify::font-subpixel-order': GObject.Object.Notify;
+            'notify::font-subpixel-order': GObject.Object.Notify;
+            'notify::fontconfig-timestamp': GObject.Object.Notify;
+            'notify::fontconfig-timestamp': GObject.Object.Notify;
+            'notify::long-press-duration': GObject.Object.Notify;
+            'notify::long-press-duration': GObject.Object.Notify;
+            'notify::password-hint-time': GObject.Object.Notify;
+            'notify::password-hint-time': GObject.Object.Notify;
+            'notify::unscaled-font-dpi': GObject.Object.Notify;
+            'notify::unscaled-font-dpi': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -19457,14 +20566,17 @@ export namespace Clutter {
         // Signals
 
         connect<K extends keyof Settings.SignalSignatures>(signal: K, callback: Settings.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Settings.SignalSignatures>(
             signal: K,
             callback: Settings.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Settings.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Settings.SignalSignatures[K]>
+            ...args: Settings.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -19476,7 +20588,13 @@ export namespace Clutter {
 
     namespace ShaderEffect {
         // Signal signatures
-        interface SignalSignatures extends OffscreenEffect.SignalSignatures {}
+        interface SignalSignatures extends OffscreenEffect.SignalSignatures {
+            'notify::shader-type': GObject.Object.Notify;
+            'notify::shader-type': GObject.Object.Notify;
+            'notify::actor': GObject.Object.Notify;
+            'notify::enabled': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -19522,14 +20640,17 @@ export namespace Clutter {
             signal: K,
             callback: ShaderEffect.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ShaderEffect.SignalSignatures>(
             signal: K,
             callback: ShaderEffect.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ShaderEffect.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ShaderEffect.SignalSignatures[K]>
+            ...args: ShaderEffect.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -19594,14 +20715,17 @@ export namespace Clutter {
             signal: K,
             callback: ShaderFloat.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ShaderFloat.SignalSignatures>(
             signal: K,
             callback: ShaderFloat.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ShaderFloat.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ShaderFloat.SignalSignatures[K]>
+            ...args: ShaderFloat.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace ShaderInt {
@@ -19619,14 +20743,17 @@ export namespace Clutter {
         // Signals
 
         connect<K extends keyof ShaderInt.SignalSignatures>(signal: K, callback: ShaderInt.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ShaderInt.SignalSignatures>(
             signal: K,
             callback: ShaderInt.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ShaderInt.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ShaderInt.SignalSignatures[K]>
+            ...args: ShaderInt.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace ShaderMatrix {
@@ -19647,19 +20774,32 @@ export namespace Clutter {
             signal: K,
             callback: ShaderMatrix.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ShaderMatrix.SignalSignatures>(
             signal: K,
             callback: ShaderMatrix.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ShaderMatrix.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ShaderMatrix.SignalSignatures[K]>
+            ...args: ShaderMatrix.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace SnapConstraint {
         // Signal signatures
-        interface SignalSignatures extends Constraint.SignalSignatures {}
+        interface SignalSignatures extends Constraint.SignalSignatures {
+            'notify::from-edge': GObject.Object.Notify;
+            'notify::from-edge': GObject.Object.Notify;
+            'notify::offset': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+            'notify::to-edge': GObject.Object.Notify;
+            'notify::to-edge': GObject.Object.Notify;
+            'notify::actor': GObject.Object.Notify;
+            'notify::enabled': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -19728,14 +20868,17 @@ export namespace Clutter {
             signal: K,
             callback: SnapConstraint.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SnapConstraint.SignalSignatures>(
             signal: K,
             callback: SnapConstraint.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SnapConstraint.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SnapConstraint.SignalSignatures[K]>
+            ...args: SnapConstraint.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -19830,6 +20973,132 @@ export namespace Clutter {
             'paint-view': PaintView;
             'prepare-frame': PrepareFrame;
             presented: Presented;
+            'notify::key-focus': GObject.Object.Notify;
+            'notify::key-focus': GObject.Object.Notify;
+            'notify::perspective': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::actions': GObject.Object.Notify;
+            'notify::allocation': GObject.Object.Notify;
+            'notify::background-color': GObject.Object.Notify;
+            'notify::background-color': GObject.Object.Notify;
+            'notify::background-color-set': GObject.Object.Notify;
+            'notify::background-color-set': GObject.Object.Notify;
+            'notify::child-transform': GObject.Object.Notify;
+            'notify::child-transform': GObject.Object.Notify;
+            'notify::child-transform-set': GObject.Object.Notify;
+            'notify::child-transform-set': GObject.Object.Notify;
+            'notify::clip-rect': GObject.Object.Notify;
+            'notify::clip-rect': GObject.Object.Notify;
+            'notify::clip-to-allocation': GObject.Object.Notify;
+            'notify::clip-to-allocation': GObject.Object.Notify;
+            'notify::constraints': GObject.Object.Notify;
+            'notify::content': GObject.Object.Notify;
+            'notify::content-box': GObject.Object.Notify;
+            'notify::content-box': GObject.Object.Notify;
+            'notify::content-gravity': GObject.Object.Notify;
+            'notify::content-gravity': GObject.Object.Notify;
+            'notify::content-repeat': GObject.Object.Notify;
+            'notify::content-repeat': GObject.Object.Notify;
+            'notify::effect': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::fixed-position-set': GObject.Object.Notify;
+            'notify::fixed-position-set': GObject.Object.Notify;
+            'notify::fixed-x': GObject.Object.Notify;
+            'notify::fixed-x': GObject.Object.Notify;
+            'notify::fixed-y': GObject.Object.Notify;
+            'notify::fixed-y': GObject.Object.Notify;
+            'notify::has-clip': GObject.Object.Notify;
+            'notify::has-clip': GObject.Object.Notify;
+            'notify::has-pointer': GObject.Object.Notify;
+            'notify::has-pointer': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::layout-manager': GObject.Object.Notify;
+            'notify::layout-manager': GObject.Object.Notify;
+            'notify::magnification-filter': GObject.Object.Notify;
+            'notify::magnification-filter': GObject.Object.Notify;
+            'notify::mapped': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::min-height': GObject.Object.Notify;
+            'notify::min-height': GObject.Object.Notify;
+            'notify::min-height-set': GObject.Object.Notify;
+            'notify::min-height-set': GObject.Object.Notify;
+            'notify::min-width': GObject.Object.Notify;
+            'notify::min-width': GObject.Object.Notify;
+            'notify::min-width-set': GObject.Object.Notify;
+            'notify::min-width-set': GObject.Object.Notify;
+            'notify::minification-filter': GObject.Object.Notify;
+            'notify::minification-filter': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::natural-height': GObject.Object.Notify;
+            'notify::natural-height': GObject.Object.Notify;
+            'notify::natural-height-set': GObject.Object.Notify;
+            'notify::natural-height-set': GObject.Object.Notify;
+            'notify::natural-width': GObject.Object.Notify;
+            'notify::natural-width': GObject.Object.Notify;
+            'notify::natural-width-set': GObject.Object.Notify;
+            'notify::natural-width-set': GObject.Object.Notify;
+            'notify::offscreen-redirect': GObject.Object.Notify;
+            'notify::offscreen-redirect': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::pivot-point': GObject.Object.Notify;
+            'notify::pivot-point': GObject.Object.Notify;
+            'notify::pivot-point-z': GObject.Object.Notify;
+            'notify::pivot-point-z': GObject.Object.Notify;
+            'notify::position': GObject.Object.Notify;
+            'notify::reactive': GObject.Object.Notify;
+            'notify::realized': GObject.Object.Notify;
+            'notify::request-mode': GObject.Object.Notify;
+            'notify::request-mode': GObject.Object.Notify;
+            'notify::rotation-angle-x': GObject.Object.Notify;
+            'notify::rotation-angle-x': GObject.Object.Notify;
+            'notify::rotation-angle-y': GObject.Object.Notify;
+            'notify::rotation-angle-y': GObject.Object.Notify;
+            'notify::rotation-angle-z': GObject.Object.Notify;
+            'notify::rotation-angle-z': GObject.Object.Notify;
+            'notify::scale-x': GObject.Object.Notify;
+            'notify::scale-x': GObject.Object.Notify;
+            'notify::scale-y': GObject.Object.Notify;
+            'notify::scale-y': GObject.Object.Notify;
+            'notify::scale-z': GObject.Object.Notify;
+            'notify::scale-z': GObject.Object.Notify;
+            'notify::show-on-set-parent': GObject.Object.Notify;
+            'notify::show-on-set-parent': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::text-direction': GObject.Object.Notify;
+            'notify::text-direction': GObject.Object.Notify;
+            'notify::transform': GObject.Object.Notify;
+            'notify::transform-set': GObject.Object.Notify;
+            'notify::transform-set': GObject.Object.Notify;
+            'notify::translation-x': GObject.Object.Notify;
+            'notify::translation-x': GObject.Object.Notify;
+            'notify::translation-y': GObject.Object.Notify;
+            'notify::translation-y': GObject.Object.Notify;
+            'notify::translation-z': GObject.Object.Notify;
+            'notify::translation-z': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::x': GObject.Object.Notify;
+            'notify::x-align': GObject.Object.Notify;
+            'notify::x-align': GObject.Object.Notify;
+            'notify::x-expand': GObject.Object.Notify;
+            'notify::x-expand': GObject.Object.Notify;
+            'notify::y': GObject.Object.Notify;
+            'notify::y-align': GObject.Object.Notify;
+            'notify::y-align': GObject.Object.Notify;
+            'notify::y-expand': GObject.Object.Notify;
+            'notify::y-expand': GObject.Object.Notify;
+            'notify::z-position': GObject.Object.Notify;
+            'notify::z-position': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -19892,8 +21161,14 @@ export namespace Clutter {
         // Signals
 
         connect<K extends keyof Stage.SignalSignatures>(signal: K, callback: Stage.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Stage.SignalSignatures>(signal: K, callback: Stage.SignalSignatures[K]): number;
-        emit<K extends keyof Stage.SignalSignatures>(signal: K, ...args: Parameters<Stage.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Stage.SignalSignatures>(
+            signal: K,
+            ...args: Stage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -20815,6 +22090,8 @@ export namespace Clutter {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'stage-added': StageAdded;
             'stage-removed': StageRemoved;
+            'notify::default-stage': GObject.Object.Notify;
+            'notify::default-stage': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -20854,14 +22131,17 @@ export namespace Clutter {
             signal: K,
             callback: StageManager.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StageManager.SignalSignatures>(
             signal: K,
             callback: StageManager.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StageManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StageManager.SignalSignatures[K]>
+            ...args: StageManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -20896,7 +22176,20 @@ export namespace Clutter {
 
     namespace StageView {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::framebuffer': GObject.Object.Notify;
+            'notify::layout': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::offscreen': GObject.Object.Notify;
+            'notify::refresh-rate': GObject.Object.Notify;
+            'notify::refresh-rate': GObject.Object.Notify;
+            'notify::scale': GObject.Object.Notify;
+            'notify::stage': GObject.Object.Notify;
+            'notify::use-shadowfb': GObject.Object.Notify;
+            'notify::use-shadowfb': GObject.Object.Notify;
+            'notify::vblank-duration-us': GObject.Object.Notify;
+            'notify::vblank-duration-us': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -20948,14 +22241,17 @@ export namespace Clutter {
         // Signals
 
         connect<K extends keyof StageView.SignalSignatures>(signal: K, callback: StageView.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StageView.SignalSignatures>(
             signal: K,
             callback: StageView.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StageView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StageView.SignalSignatures[K]>
+            ...args: StageView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -20997,13 +22293,24 @@ export namespace Clutter {
         }
 
         interface Swipe {
-            (_source: SwipeAction, actor: Actor, direction: SwipeDirection): boolean;
+            (_source: SwipeAction, actor: Actor, direction: SwipeDirection): boolean | void;
         }
 
         // Signal signatures
         interface SignalSignatures extends GestureAction.SignalSignatures {
             swept: Swept;
             swipe: Swipe;
+            'notify::n-touch-points': GObject.Object.Notify;
+            'notify::n-touch-points': GObject.Object.Notify;
+            'notify::threshold-trigger-distance-x': GObject.Object.Notify;
+            'notify::threshold-trigger-distance-x': GObject.Object.Notify;
+            'notify::threshold-trigger-distance-y': GObject.Object.Notify;
+            'notify::threshold-trigger-distance-y': GObject.Object.Notify;
+            'notify::threshold-trigger-edge': GObject.Object.Notify;
+            'notify::threshold-trigger-edge': GObject.Object.Notify;
+            'notify::actor': GObject.Object.Notify;
+            'notify::enabled': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -21032,14 +22339,17 @@ export namespace Clutter {
             signal: K,
             callback: SwipeAction.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SwipeAction.SignalSignatures>(
             signal: K,
             callback: SwipeAction.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SwipeAction.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SwipeAction.SignalSignatures[K]>
+            ...args: SwipeAction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -21056,6 +22366,17 @@ export namespace Clutter {
         // Signal signatures
         interface SignalSignatures extends GestureAction.SignalSignatures {
             tap: Tap;
+            'notify::n-touch-points': GObject.Object.Notify;
+            'notify::n-touch-points': GObject.Object.Notify;
+            'notify::threshold-trigger-distance-x': GObject.Object.Notify;
+            'notify::threshold-trigger-distance-x': GObject.Object.Notify;
+            'notify::threshold-trigger-distance-y': GObject.Object.Notify;
+            'notify::threshold-trigger-distance-y': GObject.Object.Notify;
+            'notify::threshold-trigger-edge': GObject.Object.Notify;
+            'notify::threshold-trigger-edge': GObject.Object.Notify;
+            'notify::actor': GObject.Object.Notify;
+            'notify::enabled': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -21081,14 +22402,17 @@ export namespace Clutter {
         // Signals
 
         connect<K extends keyof TapAction.SignalSignatures>(signal: K, callback: TapAction.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TapAction.SignalSignatures>(
             signal: K,
             callback: TapAction.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TapAction.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TapAction.SignalSignatures[K]>
+            ...args: TapAction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -21130,6 +22454,179 @@ export namespace Clutter {
             'delete-text': DeleteText;
             'insert-text': InsertText;
             'text-changed': TextChanged;
+            'notify::activatable': GObject.Object.Notify;
+            'notify::attributes': GObject.Object.Notify;
+            'notify::buffer': GObject.Object.Notify;
+            'notify::color': GObject.Object.Notify;
+            'notify::cursor-color': GObject.Object.Notify;
+            'notify::cursor-color': GObject.Object.Notify;
+            'notify::cursor-color-set': GObject.Object.Notify;
+            'notify::cursor-color-set': GObject.Object.Notify;
+            'notify::cursor-position': GObject.Object.Notify;
+            'notify::cursor-position': GObject.Object.Notify;
+            'notify::cursor-size': GObject.Object.Notify;
+            'notify::cursor-size': GObject.Object.Notify;
+            'notify::cursor-visible': GObject.Object.Notify;
+            'notify::cursor-visible': GObject.Object.Notify;
+            'notify::editable': GObject.Object.Notify;
+            'notify::ellipsize': GObject.Object.Notify;
+            'notify::font-description': GObject.Object.Notify;
+            'notify::font-description': GObject.Object.Notify;
+            'notify::font-name': GObject.Object.Notify;
+            'notify::font-name': GObject.Object.Notify;
+            'notify::input-hints': GObject.Object.Notify;
+            'notify::input-hints': GObject.Object.Notify;
+            'notify::input-purpose': GObject.Object.Notify;
+            'notify::input-purpose': GObject.Object.Notify;
+            'notify::justify': GObject.Object.Notify;
+            'notify::line-alignment': GObject.Object.Notify;
+            'notify::line-alignment': GObject.Object.Notify;
+            'notify::line-wrap': GObject.Object.Notify;
+            'notify::line-wrap': GObject.Object.Notify;
+            'notify::line-wrap-mode': GObject.Object.Notify;
+            'notify::line-wrap-mode': GObject.Object.Notify;
+            'notify::max-length': GObject.Object.Notify;
+            'notify::max-length': GObject.Object.Notify;
+            'notify::password-char': GObject.Object.Notify;
+            'notify::password-char': GObject.Object.Notify;
+            'notify::position': GObject.Object.Notify;
+            'notify::selectable': GObject.Object.Notify;
+            'notify::selected-text-color': GObject.Object.Notify;
+            'notify::selected-text-color': GObject.Object.Notify;
+            'notify::selected-text-color-set': GObject.Object.Notify;
+            'notify::selected-text-color-set': GObject.Object.Notify;
+            'notify::selection-bound': GObject.Object.Notify;
+            'notify::selection-bound': GObject.Object.Notify;
+            'notify::selection-color': GObject.Object.Notify;
+            'notify::selection-color': GObject.Object.Notify;
+            'notify::selection-color-set': GObject.Object.Notify;
+            'notify::selection-color-set': GObject.Object.Notify;
+            'notify::single-line-mode': GObject.Object.Notify;
+            'notify::single-line-mode': GObject.Object.Notify;
+            'notify::text': GObject.Object.Notify;
+            'notify::use-markup': GObject.Object.Notify;
+            'notify::use-markup': GObject.Object.Notify;
+            'notify::actions': GObject.Object.Notify;
+            'notify::allocation': GObject.Object.Notify;
+            'notify::background-color': GObject.Object.Notify;
+            'notify::background-color': GObject.Object.Notify;
+            'notify::background-color-set': GObject.Object.Notify;
+            'notify::background-color-set': GObject.Object.Notify;
+            'notify::child-transform': GObject.Object.Notify;
+            'notify::child-transform': GObject.Object.Notify;
+            'notify::child-transform-set': GObject.Object.Notify;
+            'notify::child-transform-set': GObject.Object.Notify;
+            'notify::clip-rect': GObject.Object.Notify;
+            'notify::clip-rect': GObject.Object.Notify;
+            'notify::clip-to-allocation': GObject.Object.Notify;
+            'notify::clip-to-allocation': GObject.Object.Notify;
+            'notify::constraints': GObject.Object.Notify;
+            'notify::content': GObject.Object.Notify;
+            'notify::content-box': GObject.Object.Notify;
+            'notify::content-box': GObject.Object.Notify;
+            'notify::content-gravity': GObject.Object.Notify;
+            'notify::content-gravity': GObject.Object.Notify;
+            'notify::content-repeat': GObject.Object.Notify;
+            'notify::content-repeat': GObject.Object.Notify;
+            'notify::effect': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::first-child': GObject.Object.Notify;
+            'notify::fixed-position-set': GObject.Object.Notify;
+            'notify::fixed-position-set': GObject.Object.Notify;
+            'notify::fixed-x': GObject.Object.Notify;
+            'notify::fixed-x': GObject.Object.Notify;
+            'notify::fixed-y': GObject.Object.Notify;
+            'notify::fixed-y': GObject.Object.Notify;
+            'notify::has-clip': GObject.Object.Notify;
+            'notify::has-clip': GObject.Object.Notify;
+            'notify::has-pointer': GObject.Object.Notify;
+            'notify::has-pointer': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::last-child': GObject.Object.Notify;
+            'notify::layout-manager': GObject.Object.Notify;
+            'notify::layout-manager': GObject.Object.Notify;
+            'notify::magnification-filter': GObject.Object.Notify;
+            'notify::magnification-filter': GObject.Object.Notify;
+            'notify::mapped': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::min-height': GObject.Object.Notify;
+            'notify::min-height': GObject.Object.Notify;
+            'notify::min-height-set': GObject.Object.Notify;
+            'notify::min-height-set': GObject.Object.Notify;
+            'notify::min-width': GObject.Object.Notify;
+            'notify::min-width': GObject.Object.Notify;
+            'notify::min-width-set': GObject.Object.Notify;
+            'notify::min-width-set': GObject.Object.Notify;
+            'notify::minification-filter': GObject.Object.Notify;
+            'notify::minification-filter': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::natural-height': GObject.Object.Notify;
+            'notify::natural-height': GObject.Object.Notify;
+            'notify::natural-height-set': GObject.Object.Notify;
+            'notify::natural-height-set': GObject.Object.Notify;
+            'notify::natural-width': GObject.Object.Notify;
+            'notify::natural-width': GObject.Object.Notify;
+            'notify::natural-width-set': GObject.Object.Notify;
+            'notify::natural-width-set': GObject.Object.Notify;
+            'notify::offscreen-redirect': GObject.Object.Notify;
+            'notify::offscreen-redirect': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::pivot-point': GObject.Object.Notify;
+            'notify::pivot-point': GObject.Object.Notify;
+            'notify::pivot-point-z': GObject.Object.Notify;
+            'notify::pivot-point-z': GObject.Object.Notify;
+            'notify::reactive': GObject.Object.Notify;
+            'notify::realized': GObject.Object.Notify;
+            'notify::request-mode': GObject.Object.Notify;
+            'notify::request-mode': GObject.Object.Notify;
+            'notify::rotation-angle-x': GObject.Object.Notify;
+            'notify::rotation-angle-x': GObject.Object.Notify;
+            'notify::rotation-angle-y': GObject.Object.Notify;
+            'notify::rotation-angle-y': GObject.Object.Notify;
+            'notify::rotation-angle-z': GObject.Object.Notify;
+            'notify::rotation-angle-z': GObject.Object.Notify;
+            'notify::scale-x': GObject.Object.Notify;
+            'notify::scale-x': GObject.Object.Notify;
+            'notify::scale-y': GObject.Object.Notify;
+            'notify::scale-y': GObject.Object.Notify;
+            'notify::scale-z': GObject.Object.Notify;
+            'notify::scale-z': GObject.Object.Notify;
+            'notify::show-on-set-parent': GObject.Object.Notify;
+            'notify::show-on-set-parent': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::text-direction': GObject.Object.Notify;
+            'notify::text-direction': GObject.Object.Notify;
+            'notify::transform': GObject.Object.Notify;
+            'notify::transform-set': GObject.Object.Notify;
+            'notify::transform-set': GObject.Object.Notify;
+            'notify::translation-x': GObject.Object.Notify;
+            'notify::translation-x': GObject.Object.Notify;
+            'notify::translation-y': GObject.Object.Notify;
+            'notify::translation-y': GObject.Object.Notify;
+            'notify::translation-z': GObject.Object.Notify;
+            'notify::translation-z': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::x': GObject.Object.Notify;
+            'notify::x-align': GObject.Object.Notify;
+            'notify::x-align': GObject.Object.Notify;
+            'notify::x-expand': GObject.Object.Notify;
+            'notify::x-expand': GObject.Object.Notify;
+            'notify::y': GObject.Object.Notify;
+            'notify::y-align': GObject.Object.Notify;
+            'notify::y-align': GObject.Object.Notify;
+            'notify::y-expand': GObject.Object.Notify;
+            'notify::y-expand': GObject.Object.Notify;
+            'notify::z-position': GObject.Object.Notify;
+            'notify::z-position': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -21539,8 +23036,14 @@ export namespace Clutter {
         // Signals
 
         connect<K extends keyof Text.SignalSignatures>(signal: K, callback: Text.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Text.SignalSignatures>(signal: K, callback: Text.SignalSignatures[K]): number;
-        emit<K extends keyof Text.SignalSignatures>(signal: K, ...args: Parameters<Text.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Text.SignalSignatures>(
+            signal: K,
+            ...args: Text.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -22833,6 +24336,10 @@ export namespace Clutter {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'deleted-text': DeletedText;
             'inserted-text': InsertedText;
+            'notify::length': GObject.Object.Notify;
+            'notify::max-length': GObject.Object.Notify;
+            'notify::max-length': GObject.Object.Notify;
+            'notify::text': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -22889,14 +24396,17 @@ export namespace Clutter {
             signal: K,
             callback: TextBuffer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TextBuffer.SignalSignatures>(
             signal: K,
             callback: TextBuffer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TextBuffer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TextBuffer.SignalSignatures[K]>
+            ...args: TextBuffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -23051,14 +24561,17 @@ export namespace Clutter {
         // Signals
 
         connect<K extends keyof TextNode.SignalSignatures>(signal: K, callback: TextNode.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TextNode.SignalSignatures>(
             signal: K,
             callback: TextNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TextNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TextNode.SignalSignatures[K]>
+            ...args: TextNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace TextureContent {
@@ -23085,14 +24598,17 @@ export namespace Clutter {
             signal: K,
             callback: TextureContent.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TextureContent.SignalSignatures>(
             signal: K,
             callback: TextureContent.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TextureContent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TextureContent.SignalSignatures[K]>
+            ...args: TextureContent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -23646,14 +25162,17 @@ export namespace Clutter {
             signal: K,
             callback: TextureNode.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TextureNode.SignalSignatures>(
             signal: K,
             callback: TextureNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TextureNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TextureNode.SignalSignatures[K]>
+            ...args: TextureNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Timeline {
@@ -23691,6 +25210,30 @@ export namespace Clutter {
             paused: Paused;
             started: Started;
             stopped: Stopped;
+            'notify::actor': GObject.Object.Notify;
+            'notify::auto-reverse': GObject.Object.Notify;
+            'notify::auto-reverse': GObject.Object.Notify;
+            'notify::delay': GObject.Object.Notify;
+            'notify::direction': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::frame-clock': GObject.Object.Notify;
+            'notify::frame-clock': GObject.Object.Notify;
+            'notify::progress-mode': GObject.Object.Notify;
+            'notify::progress-mode': GObject.Object.Notify;
+            'notify::repeat-count': GObject.Object.Notify;
+            'notify::repeat-count': GObject.Object.Notify;
+            'marker-reached::actor': MarkerReached;
+            'marker-reached::auto-reverse': MarkerReached;
+            'marker-reached::auto-reverse': MarkerReached;
+            'marker-reached::delay': MarkerReached;
+            'marker-reached::direction': MarkerReached;
+            'marker-reached::duration': MarkerReached;
+            'marker-reached::frame-clock': MarkerReached;
+            'marker-reached::frame-clock': MarkerReached;
+            'marker-reached::progress-mode': MarkerReached;
+            'marker-reached::progress-mode': MarkerReached;
+            'marker-reached::repeat-count': MarkerReached;
+            'marker-reached::repeat-count': MarkerReached;
         }
 
         // Constructor properties interface
@@ -23808,14 +25351,17 @@ export namespace Clutter {
         // Signals
 
         connect<K extends keyof Timeline.SignalSignatures>(signal: K, callback: Timeline.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Timeline.SignalSignatures>(
             signal: K,
             callback: Timeline.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Timeline.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Timeline.SignalSignatures[K]>
+            ...args: Timeline.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -24665,19 +26211,39 @@ export namespace Clutter {
             signal: K,
             callback: TransformNode.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TransformNode.SignalSignatures>(
             signal: K,
             callback: TransformNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TransformNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TransformNode.SignalSignatures[K]>
+            ...args: TransformNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Transition {
         // Signal signatures
-        interface SignalSignatures extends Timeline.SignalSignatures {}
+        interface SignalSignatures extends Timeline.SignalSignatures {
+            'notify::animatable': GObject.Object.Notify;
+            'notify::interval': GObject.Object.Notify;
+            'notify::remove-on-complete': GObject.Object.Notify;
+            'notify::remove-on-complete': GObject.Object.Notify;
+            'notify::actor': GObject.Object.Notify;
+            'notify::auto-reverse': GObject.Object.Notify;
+            'notify::auto-reverse': GObject.Object.Notify;
+            'notify::delay': GObject.Object.Notify;
+            'notify::direction': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::frame-clock': GObject.Object.Notify;
+            'notify::frame-clock': GObject.Object.Notify;
+            'notify::progress-mode': GObject.Object.Notify;
+            'notify::progress-mode': GObject.Object.Notify;
+            'notify::repeat-count': GObject.Object.Notify;
+            'notify::repeat-count': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -24746,14 +26312,17 @@ export namespace Clutter {
             signal: K,
             callback: Transition.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Transition.SignalSignatures>(
             signal: K,
             callback: Transition.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Transition.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Transition.SignalSignatures[K]>
+            ...args: Transition.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -25350,7 +26919,24 @@ export namespace Clutter {
 
     namespace TransitionGroup {
         // Signal signatures
-        interface SignalSignatures extends Transition.SignalSignatures {}
+        interface SignalSignatures extends Transition.SignalSignatures {
+            'notify::animatable': GObject.Object.Notify;
+            'notify::interval': GObject.Object.Notify;
+            'notify::remove-on-complete': GObject.Object.Notify;
+            'notify::remove-on-complete': GObject.Object.Notify;
+            'notify::actor': GObject.Object.Notify;
+            'notify::auto-reverse': GObject.Object.Notify;
+            'notify::auto-reverse': GObject.Object.Notify;
+            'notify::delay': GObject.Object.Notify;
+            'notify::direction': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::frame-clock': GObject.Object.Notify;
+            'notify::frame-clock': GObject.Object.Notify;
+            'notify::progress-mode': GObject.Object.Notify;
+            'notify::progress-mode': GObject.Object.Notify;
+            'notify::repeat-count': GObject.Object.Notify;
+            'notify::repeat-count': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -25378,14 +26964,17 @@ export namespace Clutter {
             signal: K,
             callback: TransitionGroup.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TransitionGroup.SignalSignatures>(
             signal: K,
             callback: TransitionGroup.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TransitionGroup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TransitionGroup.SignalSignatures[K]>
+            ...args: TransitionGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -25857,7 +27446,11 @@ export namespace Clutter {
 
     namespace VirtualInputDevice {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::device-type': GObject.Object.Notify;
+            'notify::device-type': GObject.Object.Notify;
+            'notify::seat': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -25889,14 +27482,17 @@ export namespace Clutter {
             signal: K,
             callback: VirtualInputDevice.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VirtualInputDevice.SignalSignatures>(
             signal: K,
             callback: VirtualInputDevice.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VirtualInputDevice.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VirtualInputDevice.SignalSignatures[K]>
+            ...args: VirtualInputDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -25947,12 +27543,23 @@ export namespace Clutter {
         // Signal callback interfaces
 
         interface Zoom {
-            (_source: ZoomAction, actor: Actor, focal_point: Graphene.Point, factor: number): boolean;
+            (_source: ZoomAction, actor: Actor, focal_point: Graphene.Point, factor: number): boolean | void;
         }
 
         // Signal signatures
         interface SignalSignatures extends GestureAction.SignalSignatures {
             zoom: Zoom;
+            'notify::n-touch-points': GObject.Object.Notify;
+            'notify::n-touch-points': GObject.Object.Notify;
+            'notify::threshold-trigger-distance-x': GObject.Object.Notify;
+            'notify::threshold-trigger-distance-x': GObject.Object.Notify;
+            'notify::threshold-trigger-distance-y': GObject.Object.Notify;
+            'notify::threshold-trigger-distance-y': GObject.Object.Notify;
+            'notify::threshold-trigger-edge': GObject.Object.Notify;
+            'notify::threshold-trigger-edge': GObject.Object.Notify;
+            'notify::actor': GObject.Object.Notify;
+            'notify::enabled': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -25981,14 +27588,17 @@ export namespace Clutter {
             signal: K,
             callback: ZoomAction.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ZoomAction.SignalSignatures>(
             signal: K,
             callback: ZoomAction.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ZoomAction.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ZoomAction.SignalSignatures[K]>
+            ...args: ZoomAction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

@@ -91,6 +91,20 @@ export namespace EDataCal {
         interface SignalSignatures extends EBackend.Backend.SignalSignatures {
             closed: Closed;
             shutdown: Shutdown;
+            'notify::cache-dir': GObject.Object.Notify;
+            'notify::cache-dir': GObject.Object.Notify;
+            'notify::kind': GObject.Object.Notify;
+            'notify::proxy-resolver': GObject.Object.Notify;
+            'notify::proxy-resolver': GObject.Object.Notify;
+            'notify::registry': GObject.Object.Notify;
+            'notify::writable': GObject.Object.Notify;
+            'notify::connectable': GObject.Object.Notify;
+            'notify::main-context': GObject.Object.Notify;
+            'notify::main-context': GObject.Object.Notify;
+            'notify::online': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+            'notify::user-prompter': GObject.Object.Notify;
+            'notify::user-prompter': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -138,14 +152,17 @@ export namespace EDataCal {
             signal: K,
             callback: CalBackend.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CalBackend.SignalSignatures>(
             signal: K,
             callback: CalBackend.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CalBackend.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CalBackend.SignalSignatures[K]>
+            ...args: CalBackend.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1953,7 +1970,9 @@ export namespace EDataCal {
 
     namespace CalBackendFactory {
         // Signal signatures
-        interface SignalSignatures extends EBackend.BackendFactory.SignalSignatures {}
+        interface SignalSignatures extends EBackend.BackendFactory.SignalSignatures {
+            'notify::extensible': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1979,14 +1998,17 @@ export namespace EDataCal {
             signal: K,
             callback: CalBackendFactory.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CalBackendFactory.SignalSignatures>(
             signal: K,
             callback: CalBackendFactory.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CalBackendFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CalBackendFactory.SignalSignatures[K]>
+            ...args: CalBackendFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace CalBackendSExp {
@@ -2015,14 +2037,17 @@ export namespace EDataCal {
             signal: K,
             callback: CalBackendSExp.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CalBackendSExp.SignalSignatures>(
             signal: K,
             callback: CalBackendSExp.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CalBackendSExp.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CalBackendSExp.SignalSignatures[K]>
+            ...args: CalBackendSExp.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2065,7 +2090,22 @@ export namespace EDataCal {
 
     namespace CalBackendSync {
         // Signal signatures
-        interface SignalSignatures extends CalBackend.SignalSignatures {}
+        interface SignalSignatures extends CalBackend.SignalSignatures {
+            'notify::cache-dir': GObject.Object.Notify;
+            'notify::cache-dir': GObject.Object.Notify;
+            'notify::kind': GObject.Object.Notify;
+            'notify::proxy-resolver': GObject.Object.Notify;
+            'notify::proxy-resolver': GObject.Object.Notify;
+            'notify::registry': GObject.Object.Notify;
+            'notify::writable': GObject.Object.Notify;
+            'notify::connectable': GObject.Object.Notify;
+            'notify::main-context': GObject.Object.Notify;
+            'notify::main-context': GObject.Object.Notify;
+            'notify::online': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+            'notify::user-prompter': GObject.Object.Notify;
+            'notify::user-prompter': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2091,14 +2131,17 @@ export namespace EDataCal {
             signal: K,
             callback: CalBackendSync.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CalBackendSync.SignalSignatures>(
             signal: K,
             callback: CalBackendSync.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CalBackendSync.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CalBackendSync.SignalSignatures[K]>
+            ...args: CalBackendSync.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -2828,14 +2871,17 @@ export namespace EDataCal {
         // Signals
 
         connect<K extends keyof CalCache.SignalSignatures>(signal: K, callback: CalCache.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CalCache.SignalSignatures>(
             signal: K,
             callback: CalCache.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CalCache.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CalCache.SignalSignatures[K]>
+            ...args: CalCache.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -3734,6 +3780,21 @@ export namespace EDataCal {
         interface SignalSignatures extends CalBackendSync.SignalSignatures {
             'refresh-completed': RefreshCompleted;
             'source-changed': SourceChanged;
+            'notify::cache': GObject.Object.Notify;
+            'notify::cache-dir': GObject.Object.Notify;
+            'notify::cache-dir': GObject.Object.Notify;
+            'notify::kind': GObject.Object.Notify;
+            'notify::proxy-resolver': GObject.Object.Notify;
+            'notify::proxy-resolver': GObject.Object.Notify;
+            'notify::registry': GObject.Object.Notify;
+            'notify::writable': GObject.Object.Notify;
+            'notify::connectable': GObject.Object.Notify;
+            'notify::main-context': GObject.Object.Notify;
+            'notify::main-context': GObject.Object.Notify;
+            'notify::online': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+            'notify::user-prompter': GObject.Object.Notify;
+            'notify::user-prompter': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -3770,14 +3831,17 @@ export namespace EDataCal {
             signal: K,
             callback: CalMetaBackend.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CalMetaBackend.SignalSignatures>(
             signal: K,
             callback: CalMetaBackend.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CalMetaBackend.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CalMetaBackend.SignalSignatures[K]>
+            ...args: CalMetaBackend.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -4885,7 +4949,12 @@ export namespace EDataCal {
 
     namespace DataCal {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::backend': GObject.Object.Notify;
+            'notify::connection': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4918,14 +4987,17 @@ export namespace EDataCal {
         // Signals
 
         connect<K extends keyof DataCal.SignalSignatures>(signal: K, callback: DataCal.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DataCal.SignalSignatures>(
             signal: K,
             callback: DataCal.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DataCal.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataCal.SignalSignatures[K]>
+            ...args: DataCal.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5608,7 +5680,13 @@ export namespace EDataCal {
 
     namespace DataCalFactory {
         // Signal signatures
-        interface SignalSignatures extends EBackend.DataFactory.SignalSignatures {}
+        interface SignalSignatures extends EBackend.DataFactory.SignalSignatures {
+            'notify::backend-per-process': GObject.Object.Notify;
+            'notify::backend-per-process': GObject.Object.Notify;
+            'notify::registry': GObject.Object.Notify;
+            'notify::reload-supported': GObject.Object.Notify;
+            'notify::reload-supported': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5635,14 +5713,17 @@ export namespace EDataCal {
             signal: K,
             callback: DataCalFactory.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DataCalFactory.SignalSignatures>(
             signal: K,
             callback: DataCalFactory.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DataCalFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataCalFactory.SignalSignatures[K]>
+            ...args: DataCalFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -6173,7 +6254,13 @@ export namespace EDataCal {
 
     namespace DataCalView {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::backend': GObject.Object.Notify;
+            'notify::connection': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'notify::sexp': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6216,14 +6303,17 @@ export namespace EDataCal {
             signal: K,
             callback: DataCalView.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DataCalView.SignalSignatures>(
             signal: K,
             callback: DataCalView.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DataCalView.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataCalView.SignalSignatures[K]>
+            ...args: DataCalView.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -6908,14 +6998,17 @@ export namespace EDataCal {
             signal: K,
             callback: IntervalTree.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof IntervalTree.SignalSignatures>(
             signal: K,
             callback: IntervalTree.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof IntervalTree.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IntervalTree.SignalSignatures[K]>
+            ...args: IntervalTree.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -6928,7 +7021,9 @@ export namespace EDataCal {
 
     namespace SubprocessCalFactory {
         // Signal signatures
-        interface SignalSignatures extends EBackend.SubprocessFactory.SignalSignatures {}
+        interface SignalSignatures extends EBackend.SubprocessFactory.SignalSignatures {
+            'notify::registry': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6952,14 +7047,17 @@ export namespace EDataCal {
             signal: K,
             callback: SubprocessCalFactory.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SubprocessCalFactory.SignalSignatures>(
             signal: K,
             callback: SubprocessCalFactory.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SubprocessCalFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SubprocessCalFactory.SignalSignatures[K]>
+            ...args: SubprocessCalFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**

@@ -77,14 +77,17 @@ export namespace Anthy {
         // Signals
 
         connect<K extends keyof GContext.SignalSignatures>(signal: K, callback: GContext.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GContext.SignalSignatures>(
             signal: K,
             callback: GContext.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GContext.SignalSignatures[K]>
+            ...args: GContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

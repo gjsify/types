@@ -2134,7 +2134,18 @@ export namespace PackageKitGlib {
     }
     namespace Category {
         // Signal signatures
-        interface SignalSignatures extends Source.SignalSignatures {}
+        interface SignalSignatures extends Source.SignalSignatures {
+            'notify::cat-id': GObject.Object.Notify;
+            'notify::cat-id': GObject.Object.Notify;
+            'notify::icon': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent-id': GObject.Object.Notify;
+            'notify::parent-id': GObject.Object.Notify;
+            'notify::summary': GObject.Object.Notify;
+            'notify::role': GObject.Object.Notify;
+            'notify::transaction-id': GObject.Object.Notify;
+            'notify::transaction-id': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2180,14 +2191,17 @@ export namespace PackageKitGlib {
         // Signals
 
         connect<K extends keyof Category.SignalSignatures>(signal: K, callback: Category.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Category.SignalSignatures>(
             signal: K,
             callback: Category.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Category.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Category.SignalSignatures[K]>
+            ...args: Category.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2245,7 +2259,16 @@ export namespace PackageKitGlib {
 
     namespace Client {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::background': GObject.Object.Notify;
+            'notify::cache-age': GObject.Object.Notify;
+            'notify::cache-age': GObject.Object.Notify;
+            'notify::details-with-deps-size': GObject.Object.Notify;
+            'notify::details-with-deps-size': GObject.Object.Notify;
+            'notify::idle': GObject.Object.Notify;
+            'notify::interactive': GObject.Object.Notify;
+            'notify::locale': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2301,8 +2324,14 @@ export namespace PackageKitGlib {
         // Signals
 
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -3518,14 +3547,17 @@ export namespace PackageKitGlib {
             signal: K,
             callback: ClientHelper.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientHelper.SignalSignatures>(
             signal: K,
             callback: ClientHelper.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientHelper.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientHelper.SignalSignatures[K]>
+            ...args: ClientHelper.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3581,6 +3613,30 @@ export namespace PackageKitGlib {
             'restart-schedule': RestartSchedule;
             'transaction-list-changed': TransactionListChanged;
             'updates-changed': UpdatesChanged;
+            'notify::backend-author': GObject.Object.Notify;
+            'notify::backend-author': GObject.Object.Notify;
+            'notify::backend-description': GObject.Object.Notify;
+            'notify::backend-description': GObject.Object.Notify;
+            'notify::backend-name': GObject.Object.Notify;
+            'notify::backend-name': GObject.Object.Notify;
+            'notify::connected': GObject.Object.Notify;
+            'notify::distro-id': GObject.Object.Notify;
+            'notify::distro-id': GObject.Object.Notify;
+            'notify::filters': GObject.Object.Notify;
+            'notify::groups': GObject.Object.Notify;
+            'notify::locked': GObject.Object.Notify;
+            'notify::mime-types': GObject.Object.Notify;
+            'notify::mime-types': GObject.Object.Notify;
+            'notify::network-state': GObject.Object.Notify;
+            'notify::network-state': GObject.Object.Notify;
+            'notify::provides': GObject.Object.Notify;
+            'notify::roles': GObject.Object.Notify;
+            'notify::version-major': GObject.Object.Notify;
+            'notify::version-major': GObject.Object.Notify;
+            'notify::version-micro': GObject.Object.Notify;
+            'notify::version-micro': GObject.Object.Notify;
+            'notify::version-minor': GObject.Object.Notify;
+            'notify::version-minor': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -3672,14 +3728,17 @@ export namespace PackageKitGlib {
         // Signals
 
         connect<K extends keyof Control.SignalSignatures>(signal: K, callback: Control.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Control.SignalSignatures>(
             signal: K,
             callback: Control.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Control.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Control.SignalSignatures[K]>
+            ...args: Control.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -4056,14 +4115,17 @@ export namespace PackageKitGlib {
         // Signals
 
         connect<K extends keyof Desktop.SignalSignatures>(signal: K, callback: Desktop.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Desktop.SignalSignatures>(
             signal: K,
             callback: Desktop.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Desktop.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Desktop.SignalSignatures[K]>
+            ...args: Desktop.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4097,7 +4159,21 @@ export namespace PackageKitGlib {
 
     namespace Details {
         // Signal signatures
-        interface SignalSignatures extends Source.SignalSignatures {}
+        interface SignalSignatures extends Source.SignalSignatures {
+            'notify::description': GObject.Object.Notify;
+            'notify::download-size': GObject.Object.Notify;
+            'notify::download-size': GObject.Object.Notify;
+            'notify::group': GObject.Object.Notify;
+            'notify::license': GObject.Object.Notify;
+            'notify::package-id': GObject.Object.Notify;
+            'notify::package-id': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::summary': GObject.Object.Notify;
+            'notify::url': GObject.Object.Notify;
+            'notify::role': GObject.Object.Notify;
+            'notify::transaction-id': GObject.Object.Notify;
+            'notify::transaction-id': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4152,14 +4228,17 @@ export namespace PackageKitGlib {
         // Signals
 
         connect<K extends keyof Details.SignalSignatures>(signal: K, callback: Details.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Details.SignalSignatures>(
             signal: K,
             callback: Details.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Details.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Details.SignalSignatures[K]>
+            ...args: Details.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4208,7 +4287,14 @@ export namespace PackageKitGlib {
 
     namespace DistroUpgrade {
         // Signal signatures
-        interface SignalSignatures extends Source.SignalSignatures {}
+        interface SignalSignatures extends Source.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::summary': GObject.Object.Notify;
+            'notify::role': GObject.Object.Notify;
+            'notify::transaction-id': GObject.Object.Notify;
+            'notify::transaction-id': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4245,14 +4331,17 @@ export namespace PackageKitGlib {
             signal: K,
             callback: DistroUpgrade.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DistroUpgrade.SignalSignatures>(
             signal: K,
             callback: DistroUpgrade.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DistroUpgrade.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DistroUpgrade.SignalSignatures[K]>
+            ...args: DistroUpgrade.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4276,7 +4365,13 @@ export namespace PackageKitGlib {
 
     namespace Error {
         // Signal signatures
-        interface SignalSignatures extends Source.SignalSignatures {}
+        interface SignalSignatures extends Source.SignalSignatures {
+            'notify::code': GObject.Object.Notify;
+            'notify::details': GObject.Object.Notify;
+            'notify::role': GObject.Object.Notify;
+            'notify::transaction-id': GObject.Object.Notify;
+            'notify::transaction-id': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4307,8 +4402,14 @@ export namespace PackageKitGlib {
         // Signals
 
         connect<K extends keyof Error.SignalSignatures>(signal: K, callback: Error.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Error.SignalSignatures>(signal: K, callback: Error.SignalSignatures[K]): number;
-        emit<K extends keyof Error.SignalSignatures>(signal: K, ...args: Parameters<Error.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Error.SignalSignatures>(
+            signal: K,
+            ...args: Error.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4326,7 +4427,19 @@ export namespace PackageKitGlib {
 
     namespace EulaRequired {
         // Signal signatures
-        interface SignalSignatures extends Source.SignalSignatures {}
+        interface SignalSignatures extends Source.SignalSignatures {
+            'notify::eula-id': GObject.Object.Notify;
+            'notify::eula-id': GObject.Object.Notify;
+            'notify::license-agreement': GObject.Object.Notify;
+            'notify::license-agreement': GObject.Object.Notify;
+            'notify::package-id': GObject.Object.Notify;
+            'notify::package-id': GObject.Object.Notify;
+            'notify::vendor-name': GObject.Object.Notify;
+            'notify::vendor-name': GObject.Object.Notify;
+            'notify::role': GObject.Object.Notify;
+            'notify::transaction-id': GObject.Object.Notify;
+            'notify::transaction-id': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4402,14 +4515,17 @@ export namespace PackageKitGlib {
             signal: K,
             callback: EulaRequired.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof EulaRequired.SignalSignatures>(
             signal: K,
             callback: EulaRequired.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof EulaRequired.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EulaRequired.SignalSignatures[K]>
+            ...args: EulaRequired.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4437,7 +4553,14 @@ export namespace PackageKitGlib {
 
     namespace Files {
         // Signal signatures
-        interface SignalSignatures extends Source.SignalSignatures {}
+        interface SignalSignatures extends Source.SignalSignatures {
+            'notify::files': GObject.Object.Notify;
+            'notify::package-id': GObject.Object.Notify;
+            'notify::package-id': GObject.Object.Notify;
+            'notify::role': GObject.Object.Notify;
+            'notify::transaction-id': GObject.Object.Notify;
+            'notify::transaction-id': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4471,8 +4594,14 @@ export namespace PackageKitGlib {
         // Signals
 
         connect<K extends keyof Files.SignalSignatures>(signal: K, callback: Files.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Files.SignalSignatures>(signal: K, callback: Files.SignalSignatures[K]): number;
-        emit<K extends keyof Files.SignalSignatures>(signal: K, ...args: Parameters<Files.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Files.SignalSignatures>(
+            signal: K,
+            ...args: Files.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4490,7 +4619,15 @@ export namespace PackageKitGlib {
 
     namespace ItemProgress {
         // Signal signatures
-        interface SignalSignatures extends Source.SignalSignatures {}
+        interface SignalSignatures extends Source.SignalSignatures {
+            'notify::package-id': GObject.Object.Notify;
+            'notify::package-id': GObject.Object.Notify;
+            'notify::percentage': GObject.Object.Notify;
+            'notify::status': GObject.Object.Notify;
+            'notify::role': GObject.Object.Notify;
+            'notify::transaction-id': GObject.Object.Notify;
+            'notify::transaction-id': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4530,14 +4667,17 @@ export namespace PackageKitGlib {
             signal: K,
             callback: ItemProgress.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ItemProgress.SignalSignatures>(
             signal: K,
             callback: ItemProgress.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ItemProgress.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ItemProgress.SignalSignatures[K]>
+            ...args: ItemProgress.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4560,7 +4700,17 @@ export namespace PackageKitGlib {
 
     namespace MediaChangeRequired {
         // Signal signatures
-        interface SignalSignatures extends Source.SignalSignatures {}
+        interface SignalSignatures extends Source.SignalSignatures {
+            'notify::media-id': GObject.Object.Notify;
+            'notify::media-id': GObject.Object.Notify;
+            'notify::media-text': GObject.Object.Notify;
+            'notify::media-text': GObject.Object.Notify;
+            'notify::media-type': GObject.Object.Notify;
+            'notify::media-type': GObject.Object.Notify;
+            'notify::role': GObject.Object.Notify;
+            'notify::transaction-id': GObject.Object.Notify;
+            'notify::transaction-id': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4606,14 +4756,17 @@ export namespace PackageKitGlib {
             signal: K,
             callback: MediaChangeRequired.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MediaChangeRequired.SignalSignatures>(
             signal: K,
             callback: MediaChangeRequired.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MediaChangeRequired.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaChangeRequired.SignalSignatures[K]>
+            ...args: MediaChangeRequired.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Package {
@@ -4626,6 +4779,42 @@ export namespace PackageKitGlib {
         // Signal signatures
         interface SignalSignatures extends Source.SignalSignatures {
             changed: Changed;
+            'notify::description': GObject.Object.Notify;
+            'notify::group': GObject.Object.Notify;
+            'notify::info': GObject.Object.Notify;
+            'notify::license': GObject.Object.Notify;
+            'notify::package-id': GObject.Object.Notify;
+            'notify::package-id': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::summary': GObject.Object.Notify;
+            'notify::update-bugzilla-urls': GObject.Object.Notify;
+            'notify::update-bugzilla-urls': GObject.Object.Notify;
+            'notify::update-changelog': GObject.Object.Notify;
+            'notify::update-changelog': GObject.Object.Notify;
+            'notify::update-cve-urls': GObject.Object.Notify;
+            'notify::update-cve-urls': GObject.Object.Notify;
+            'notify::update-issued': GObject.Object.Notify;
+            'notify::update-issued': GObject.Object.Notify;
+            'notify::update-obsoletes': GObject.Object.Notify;
+            'notify::update-obsoletes': GObject.Object.Notify;
+            'notify::update-restart': GObject.Object.Notify;
+            'notify::update-restart': GObject.Object.Notify;
+            'notify::update-severity': GObject.Object.Notify;
+            'notify::update-severity': GObject.Object.Notify;
+            'notify::update-state': GObject.Object.Notify;
+            'notify::update-state': GObject.Object.Notify;
+            'notify::update-text': GObject.Object.Notify;
+            'notify::update-text': GObject.Object.Notify;
+            'notify::update-updated': GObject.Object.Notify;
+            'notify::update-updated': GObject.Object.Notify;
+            'notify::update-updates': GObject.Object.Notify;
+            'notify::update-updates': GObject.Object.Notify;
+            'notify::update-vendor-urls': GObject.Object.Notify;
+            'notify::update-vendor-urls': GObject.Object.Notify;
+            'notify::url': GObject.Object.Notify;
+            'notify::role': GObject.Object.Notify;
+            'notify::transaction-id': GObject.Object.Notify;
+            'notify::transaction-id': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -4756,14 +4945,17 @@ export namespace PackageKitGlib {
         // Signals
 
         connect<K extends keyof Package.SignalSignatures>(signal: K, callback: Package.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Package.SignalSignatures>(
             signal: K,
             callback: Package.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Package.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Package.SignalSignatures[K]>
+            ...args: Package.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -4970,14 +5162,17 @@ export namespace PackageKitGlib {
             signal: K,
             callback: PackageSack.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PackageSack.SignalSignatures>(
             signal: K,
             callback: PackageSack.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PackageSack.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PackageSack.SignalSignatures[K]>
+            ...args: PackageSack.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -5153,7 +5348,33 @@ export namespace PackageKitGlib {
 
     namespace Progress {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::allow-cancel': GObject.Object.Notify;
+            'notify::allow-cancel': GObject.Object.Notify;
+            'notify::caller-active': GObject.Object.Notify;
+            'notify::caller-active': GObject.Object.Notify;
+            'notify::download-size-remaining': GObject.Object.Notify;
+            'notify::download-size-remaining': GObject.Object.Notify;
+            'notify::elapsed-time': GObject.Object.Notify;
+            'notify::elapsed-time': GObject.Object.Notify;
+            'notify::item-progress': GObject.Object.Notify;
+            'notify::item-progress': GObject.Object.Notify;
+            'notify::package': GObject.Object.Notify;
+            'notify::package-id': GObject.Object.Notify;
+            'notify::package-id': GObject.Object.Notify;
+            'notify::percentage': GObject.Object.Notify;
+            'notify::remaining-time': GObject.Object.Notify;
+            'notify::remaining-time': GObject.Object.Notify;
+            'notify::role': GObject.Object.Notify;
+            'notify::sender': GObject.Object.Notify;
+            'notify::speed': GObject.Object.Notify;
+            'notify::status': GObject.Object.Notify;
+            'notify::transaction-flags': GObject.Object.Notify;
+            'notify::transaction-flags': GObject.Object.Notify;
+            'notify::transaction-id': GObject.Object.Notify;
+            'notify::transaction-id': GObject.Object.Notify;
+            'notify::uid': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5328,14 +5549,17 @@ export namespace PackageKitGlib {
         // Signals
 
         connect<K extends keyof Progress.SignalSignatures>(signal: K, callback: Progress.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Progress.SignalSignatures>(
             signal: K,
             callback: Progress.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Progress.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Progress.SignalSignatures[K]>
+            ...args: Progress.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5519,7 +5743,15 @@ export namespace PackageKitGlib {
 
     namespace RepoDetail {
         // Signal signatures
-        interface SignalSignatures extends Source.SignalSignatures {}
+        interface SignalSignatures extends Source.SignalSignatures {
+            'notify::description': GObject.Object.Notify;
+            'notify::enabled': GObject.Object.Notify;
+            'notify::repo-id': GObject.Object.Notify;
+            'notify::repo-id': GObject.Object.Notify;
+            'notify::role': GObject.Object.Notify;
+            'notify::transaction-id': GObject.Object.Notify;
+            'notify::transaction-id': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5559,14 +5791,17 @@ export namespace PackageKitGlib {
             signal: K,
             callback: RepoDetail.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RepoDetail.SignalSignatures>(
             signal: K,
             callback: RepoDetail.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RepoDetail.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RepoDetail.SignalSignatures[K]>
+            ...args: RepoDetail.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5589,7 +5824,26 @@ export namespace PackageKitGlib {
 
     namespace RepoSignatureRequired {
         // Signal signatures
-        interface SignalSignatures extends Source.SignalSignatures {}
+        interface SignalSignatures extends Source.SignalSignatures {
+            'notify::key-fingerprint': GObject.Object.Notify;
+            'notify::key-fingerprint': GObject.Object.Notify;
+            'notify::key-id': GObject.Object.Notify;
+            'notify::key-id': GObject.Object.Notify;
+            'notify::key-timestamp': GObject.Object.Notify;
+            'notify::key-timestamp': GObject.Object.Notify;
+            'notify::key-url': GObject.Object.Notify;
+            'notify::key-url': GObject.Object.Notify;
+            'notify::key-userid': GObject.Object.Notify;
+            'notify::key-userid': GObject.Object.Notify;
+            'notify::package-id': GObject.Object.Notify;
+            'notify::package-id': GObject.Object.Notify;
+            'notify::repository-name': GObject.Object.Notify;
+            'notify::repository-name': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+            'notify::role': GObject.Object.Notify;
+            'notify::transaction-id': GObject.Object.Notify;
+            'notify::transaction-id': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5662,19 +5916,29 @@ export namespace PackageKitGlib {
             signal: K,
             callback: RepoSignatureRequired.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RepoSignatureRequired.SignalSignatures>(
             signal: K,
             callback: RepoSignatureRequired.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RepoSignatureRequired.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RepoSignatureRequired.SignalSignatures[K]>
+            ...args: RepoSignatureRequired.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace RequireRestart {
         // Signal signatures
-        interface SignalSignatures extends Source.SignalSignatures {}
+        interface SignalSignatures extends Source.SignalSignatures {
+            'notify::package-id': GObject.Object.Notify;
+            'notify::package-id': GObject.Object.Notify;
+            'notify::restart': GObject.Object.Notify;
+            'notify::role': GObject.Object.Notify;
+            'notify::transaction-id': GObject.Object.Notify;
+            'notify::transaction-id': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5711,19 +5975,28 @@ export namespace PackageKitGlib {
             signal: K,
             callback: RequireRestart.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RequireRestart.SignalSignatures>(
             signal: K,
             callback: RequireRestart.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RequireRestart.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RequireRestart.SignalSignatures[K]>
+            ...args: RequireRestart.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Results {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::inputs': GObject.Object.Notify;
+            'notify::progress': GObject.Object.Notify;
+            'notify::role': GObject.Object.Notify;
+            'notify::transaction-flags': GObject.Object.Notify;
+            'notify::transaction-flags': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5772,14 +6045,17 @@ export namespace PackageKitGlib {
         // Signals
 
         connect<K extends keyof Results.SignalSignatures>(signal: K, callback: Results.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Results.SignalSignatures>(
             signal: K,
             callback: Results.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Results.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Results.SignalSignatures[K]>
+            ...args: Results.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5974,7 +6250,11 @@ export namespace PackageKitGlib {
 
     namespace Source {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::role': GObject.Object.Notify;
+            'notify::transaction-id': GObject.Object.Notify;
+            'notify::transaction-id': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6008,13 +6288,37 @@ export namespace PackageKitGlib {
         // Signals
 
         connect<K extends keyof Source.SignalSignatures>(signal: K, callback: Source.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Source.SignalSignatures>(signal: K, callback: Source.SignalSignatures[K]): number;
-        emit<K extends keyof Source.SignalSignatures>(signal: K, ...args: Parameters<Source.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Source.SignalSignatures>(
+            signal: K,
+            ...args: Source.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Task {
         // Signal signatures
-        interface SignalSignatures extends Client.SignalSignatures {}
+        interface SignalSignatures extends Client.SignalSignatures {
+            'notify::allow-downgrade': GObject.Object.Notify;
+            'notify::allow-downgrade': GObject.Object.Notify;
+            'notify::allow-reinstall': GObject.Object.Notify;
+            'notify::allow-reinstall': GObject.Object.Notify;
+            'notify::only-download': GObject.Object.Notify;
+            'notify::only-download': GObject.Object.Notify;
+            'notify::only-trusted': GObject.Object.Notify;
+            'notify::only-trusted': GObject.Object.Notify;
+            'notify::simulate': GObject.Object.Notify;
+            'notify::background': GObject.Object.Notify;
+            'notify::cache-age': GObject.Object.Notify;
+            'notify::cache-age': GObject.Object.Notify;
+            'notify::details-with-deps-size': GObject.Object.Notify;
+            'notify::details-with-deps-size': GObject.Object.Notify;
+            'notify::idle': GObject.Object.Notify;
+            'notify::interactive': GObject.Object.Notify;
+            'notify::locale': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6093,8 +6397,14 @@ export namespace PackageKitGlib {
         // Signals
 
         connect<K extends keyof Task.SignalSignatures>(signal: K, callback: Task.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Task.SignalSignatures>(signal: K, callback: Task.SignalSignatures[K]): number;
-        emit<K extends keyof Task.SignalSignatures>(signal: K, ...args: Parameters<Task.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Task.SignalSignatures>(
+            signal: K,
+            ...args: Task.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -6906,14 +7216,17 @@ export namespace PackageKitGlib {
             signal: K,
             callback: TransactionList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TransactionList.SignalSignatures>(
             signal: K,
             callback: TransactionList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TransactionList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TransactionList.SignalSignatures[K]>
+            ...args: TransactionList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -6931,7 +7244,18 @@ export namespace PackageKitGlib {
 
     namespace TransactionPast {
         // Signal signatures
-        interface SignalSignatures extends Source.SignalSignatures {}
+        interface SignalSignatures extends Source.SignalSignatures {
+            'notify::cmdline': GObject.Object.Notify;
+            'notify::data': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::role': GObject.Object.Notify;
+            'notify::succeeded': GObject.Object.Notify;
+            'notify::tid': GObject.Object.Notify;
+            'notify::timespec': GObject.Object.Notify;
+            'notify::uid': GObject.Object.Notify;
+            'notify::transaction-id': GObject.Object.Notify;
+            'notify::transaction-id': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6983,14 +7307,17 @@ export namespace PackageKitGlib {
             signal: K,
             callback: TransactionPast.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TransactionPast.SignalSignatures>(
             signal: K,
             callback: TransactionPast.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TransactionPast.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TransactionPast.SignalSignatures[K]>
+            ...args: TransactionPast.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -7050,7 +7377,28 @@ export namespace PackageKitGlib {
 
     namespace UpdateDetail {
         // Signal signatures
-        interface SignalSignatures extends Source.SignalSignatures {}
+        interface SignalSignatures extends Source.SignalSignatures {
+            'notify::bugzilla-urls': GObject.Object.Notify;
+            'notify::bugzilla-urls': GObject.Object.Notify;
+            'notify::changelog': GObject.Object.Notify;
+            'notify::cve-urls': GObject.Object.Notify;
+            'notify::cve-urls': GObject.Object.Notify;
+            'notify::issued': GObject.Object.Notify;
+            'notify::obsoletes': GObject.Object.Notify;
+            'notify::package-id': GObject.Object.Notify;
+            'notify::package-id': GObject.Object.Notify;
+            'notify::restart': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::update-text': GObject.Object.Notify;
+            'notify::update-text': GObject.Object.Notify;
+            'notify::updated': GObject.Object.Notify;
+            'notify::updates': GObject.Object.Notify;
+            'notify::vendor-urls': GObject.Object.Notify;
+            'notify::vendor-urls': GObject.Object.Notify;
+            'notify::role': GObject.Object.Notify;
+            'notify::transaction-id': GObject.Object.Notify;
+            'notify::transaction-id': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -7129,14 +7477,17 @@ export namespace PackageKitGlib {
             signal: K,
             callback: UpdateDetail.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UpdateDetail.SignalSignatures>(
             signal: K,
             callback: UpdateDetail.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UpdateDetail.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UpdateDetail.SignalSignatures[K]>
+            ...args: UpdateDetail.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

@@ -507,14 +507,17 @@ export namespace GSystem {
         // Signals
 
         connect<K extends keyof Console.SignalSignatures>(signal: K, callback: Console.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Console.SignalSignatures>(
             signal: K,
             callback: Console.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Console.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Console.SignalSignatures[K]>
+            ...args: Console.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -565,7 +568,9 @@ export namespace GSystem {
 
     namespace Subprocess {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::context': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -617,14 +622,17 @@ export namespace GSystem {
             signal: K,
             callback: Subprocess.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Subprocess.SignalSignatures>(
             signal: K,
             callback: Subprocess.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Subprocess.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Subprocess.SignalSignatures[K]>
+            ...args: Subprocess.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1255,7 +1263,9 @@ export namespace GSystem {
 
     namespace SubprocessContext {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::argv': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1310,14 +1320,17 @@ export namespace GSystem {
             signal: K,
             callback: SubprocessContext.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SubprocessContext.SignalSignatures>(
             signal: K,
             callback: SubprocessContext.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SubprocessContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SubprocessContext.SignalSignatures[K]>
+            ...args: SubprocessContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

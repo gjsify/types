@@ -67,14 +67,17 @@ export namespace GUPnPDLNA {
             signal: K,
             callback: AudioInformation.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AudioInformation.SignalSignatures>(
             signal: K,
             callback: AudioInformation.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AudioInformation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AudioInformation.SignalSignatures[K]>
+            ...args: AudioInformation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace ContainerInformation {
@@ -101,14 +104,17 @@ export namespace GUPnPDLNA {
             signal: K,
             callback: ContainerInformation.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ContainerInformation.SignalSignatures>(
             signal: K,
             callback: ContainerInformation.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ContainerInformation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContainerInformation.SignalSignatures[K]>
+            ...args: ContainerInformation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace ImageInformation {
@@ -135,19 +141,32 @@ export namespace GUPnPDLNA {
             signal: K,
             callback: ImageInformation.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ImageInformation.SignalSignatures>(
             signal: K,
             callback: ImageInformation.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ImageInformation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ImageInformation.SignalSignatures[K]>
+            ...args: ImageInformation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Information {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::audio-information': GObject.Object.Notify;
+            'notify::audio-information': GObject.Object.Notify;
+            'notify::container-information': GObject.Object.Notify;
+            'notify::container-information': GObject.Object.Notify;
+            'notify::image-information': GObject.Object.Notify;
+            'notify::image-information': GObject.Object.Notify;
+            'notify::uri': GObject.Object.Notify;
+            'notify::video-information': GObject.Object.Notify;
+            'notify::video-information': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -218,14 +237,17 @@ export namespace GUPnPDLNA {
             signal: K,
             callback: Information.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Information.SignalSignatures>(
             signal: K,
             callback: Information.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Information.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Information.SignalSignatures[K]>
+            ...args: Information.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -313,14 +335,17 @@ export namespace GUPnPDLNA {
             signal: K,
             callback: MetadataExtractor.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MetadataExtractor.SignalSignatures>(
             signal: K,
             callback: MetadataExtractor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MetadataExtractor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MetadataExtractor.SignalSignatures[K]>
+            ...args: MetadataExtractor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -369,7 +394,19 @@ export namespace GUPnPDLNA {
 
     namespace Profile {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::audio-restrictions': GObject.Object.Notify;
+            'notify::audio-restrictions': GObject.Object.Notify;
+            'notify::container-restrictions': GObject.Object.Notify;
+            'notify::container-restrictions': GObject.Object.Notify;
+            'notify::extended': GObject.Object.Notify;
+            'notify::image-restrictions': GObject.Object.Notify;
+            'notify::image-restrictions': GObject.Object.Notify;
+            'notify::mime': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::video-restrictions': GObject.Object.Notify;
+            'notify::video-restrictions': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -427,14 +464,17 @@ export namespace GUPnPDLNA {
         // Signals
 
         connect<K extends keyof Profile.SignalSignatures>(signal: K, callback: Profile.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Profile.SignalSignatures>(
             signal: K,
             callback: Profile.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Profile.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Profile.SignalSignatures[K]>
+            ...args: Profile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -473,6 +513,10 @@ export namespace GUPnPDLNA {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             done: Done;
+            'notify::extended-mode': GObject.Object.Notify;
+            'notify::extended-mode': GObject.Object.Notify;
+            'notify::relaxed-mode': GObject.Object.Notify;
+            'notify::relaxed-mode': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -525,14 +569,17 @@ export namespace GUPnPDLNA {
             signal: K,
             callback: ProfileGuesser.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ProfileGuesser.SignalSignatures>(
             signal: K,
             callback: ProfileGuesser.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ProfileGuesser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProfileGuesser.SignalSignatures[K]>
+            ...args: ProfileGuesser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -606,14 +653,17 @@ export namespace GUPnPDLNA {
             signal: K,
             callback: VideoInformation.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VideoInformation.SignalSignatures>(
             signal: K,
             callback: VideoInformation.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VideoInformation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VideoInformation.SignalSignatures[K]>
+            ...args: VideoInformation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     type AudioInformationClass = typeof AudioInformation;

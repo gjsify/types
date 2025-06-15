@@ -909,14 +909,17 @@ export namespace Gsk {
         // Signals
 
         connect<K extends keyof BlendNode.SignalSignatures>(signal: K, callback: BlendNode.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BlendNode.SignalSignatures>(
             signal: K,
             callback: BlendNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BlendNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BlendNode.SignalSignatures[K]>
+            ...args: BlendNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -957,14 +960,17 @@ export namespace Gsk {
         // Signals
 
         connect<K extends keyof BlurNode.SignalSignatures>(signal: K, callback: BlurNode.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BlurNode.SignalSignatures>(
             signal: K,
             callback: BlurNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BlurNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BlurNode.SignalSignatures[K]>
+            ...args: BlurNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1003,14 +1009,17 @@ export namespace Gsk {
             signal: K,
             callback: BorderNode.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BorderNode.SignalSignatures>(
             signal: K,
             callback: BorderNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BorderNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BorderNode.SignalSignatures[K]>
+            ...args: BorderNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1033,7 +1042,10 @@ export namespace Gsk {
 
     namespace BroadwayRenderer {
         // Signal signatures
-        interface SignalSignatures extends Renderer.SignalSignatures {}
+        interface SignalSignatures extends Renderer.SignalSignatures {
+            'notify::realized': GObject.Object.Notify;
+            'notify::surface': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1062,14 +1074,17 @@ export namespace Gsk {
             signal: K,
             callback: BroadwayRenderer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BroadwayRenderer.SignalSignatures>(
             signal: K,
             callback: BroadwayRenderer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BroadwayRenderer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BroadwayRenderer.SignalSignatures[K]>
+            ...args: BroadwayRenderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace CairoNode {
@@ -1092,14 +1107,17 @@ export namespace Gsk {
         // Signals
 
         connect<K extends keyof CairoNode.SignalSignatures>(signal: K, callback: CairoNode.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CairoNode.SignalSignatures>(
             signal: K,
             callback: CairoNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CairoNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CairoNode.SignalSignatures[K]>
+            ...args: CairoNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1121,7 +1139,10 @@ export namespace Gsk {
 
     namespace CairoRenderer {
         // Signal signatures
-        interface SignalSignatures extends Renderer.SignalSignatures {}
+        interface SignalSignatures extends Renderer.SignalSignatures {
+            'notify::realized': GObject.Object.Notify;
+            'notify::surface': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1151,14 +1172,17 @@ export namespace Gsk {
             signal: K,
             callback: CairoRenderer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CairoRenderer.SignalSignatures>(
             signal: K,
             callback: CairoRenderer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CairoRenderer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CairoRenderer.SignalSignatures[K]>
+            ...args: CairoRenderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace ClipNode {
@@ -1181,14 +1205,17 @@ export namespace Gsk {
         // Signals
 
         connect<K extends keyof ClipNode.SignalSignatures>(signal: K, callback: ClipNode.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClipNode.SignalSignatures>(
             signal: K,
             callback: ClipNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClipNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClipNode.SignalSignatures[K]>
+            ...args: ClipNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1227,14 +1254,17 @@ export namespace Gsk {
             signal: K,
             callback: ColorMatrixNode.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ColorMatrixNode.SignalSignatures>(
             signal: K,
             callback: ColorMatrixNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ColorMatrixNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ColorMatrixNode.SignalSignatures[K]>
+            ...args: ColorMatrixNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1275,14 +1305,17 @@ export namespace Gsk {
         // Signals
 
         connect<K extends keyof ColorNode.SignalSignatures>(signal: K, callback: ColorNode.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ColorNode.SignalSignatures>(
             signal: K,
             callback: ColorNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ColorNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ColorNode.SignalSignatures[K]>
+            ...args: ColorNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1324,14 +1357,17 @@ export namespace Gsk {
             signal: K,
             callback: ConicGradientNode.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConicGradientNode.SignalSignatures>(
             signal: K,
             callback: ConicGradientNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConicGradientNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConicGradientNode.SignalSignatures[K]>
+            ...args: ConicGradientNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1390,14 +1426,17 @@ export namespace Gsk {
             signal: K,
             callback: ContainerNode.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ContainerNode.SignalSignatures>(
             signal: K,
             callback: ContainerNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ContainerNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContainerNode.SignalSignatures[K]>
+            ...args: ContainerNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1437,14 +1476,17 @@ export namespace Gsk {
             signal: K,
             callback: CrossFadeNode.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CrossFadeNode.SignalSignatures>(
             signal: K,
             callback: CrossFadeNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CrossFadeNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CrossFadeNode.SignalSignatures[K]>
+            ...args: CrossFadeNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1486,14 +1528,17 @@ export namespace Gsk {
         // Signals
 
         connect<K extends keyof DebugNode.SignalSignatures>(signal: K, callback: DebugNode.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DebugNode.SignalSignatures>(
             signal: K,
             callback: DebugNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DebugNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DebugNode.SignalSignatures[K]>
+            ...args: DebugNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1530,14 +1575,17 @@ export namespace Gsk {
         // Signals
 
         connect<K extends keyof FillNode.SignalSignatures>(signal: K, callback: FillNode.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FillNode.SignalSignatures>(
             signal: K,
             callback: FillNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FillNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FillNode.SignalSignatures[K]>
+            ...args: FillNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1561,7 +1609,10 @@ export namespace Gsk {
 
     namespace GLRenderer {
         // Signal signatures
-        interface SignalSignatures extends Renderer.SignalSignatures {}
+        interface SignalSignatures extends Renderer.SignalSignatures {
+            'notify::realized': GObject.Object.Notify;
+            'notify::surface': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1590,19 +1641,25 @@ export namespace Gsk {
             signal: K,
             callback: GLRenderer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLRenderer.SignalSignatures>(
             signal: K,
             callback: GLRenderer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLRenderer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLRenderer.SignalSignatures[K]>
+            ...args: GLRenderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace GLShader {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::resource': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1756,14 +1813,17 @@ export namespace Gsk {
         // Signals
 
         connect<K extends keyof GLShader.SignalSignatures>(signal: K, callback: GLShader.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLShader.SignalSignatures>(
             signal: K,
             callback: GLShader.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLShader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLShader.SignalSignatures[K]>
+            ...args: GLShader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1932,14 +1992,17 @@ export namespace Gsk {
             signal: K,
             callback: GLShaderNode.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GLShaderNode.SignalSignatures>(
             signal: K,
             callback: GLShaderNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GLShaderNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GLShaderNode.SignalSignatures[K]>
+            ...args: GLShaderNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1996,14 +2059,17 @@ export namespace Gsk {
             signal: K,
             callback: InsetShadowNode.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InsetShadowNode.SignalSignatures>(
             signal: K,
             callback: InsetShadowNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InsetShadowNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InsetShadowNode.SignalSignatures[K]>
+            ...args: InsetShadowNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2070,14 +2136,17 @@ export namespace Gsk {
             signal: K,
             callback: LinearGradientNode.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LinearGradientNode.SignalSignatures>(
             signal: K,
             callback: LinearGradientNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LinearGradientNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LinearGradientNode.SignalSignatures[K]>
+            ...args: LinearGradientNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2123,14 +2192,17 @@ export namespace Gsk {
         // Signals
 
         connect<K extends keyof MaskNode.SignalSignatures>(signal: K, callback: MaskNode.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MaskNode.SignalSignatures>(
             signal: K,
             callback: MaskNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MaskNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MaskNode.SignalSignatures[K]>
+            ...args: MaskNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2153,7 +2225,10 @@ export namespace Gsk {
 
     namespace NglRenderer {
         // Signal signatures
-        interface SignalSignatures extends Renderer.SignalSignatures {}
+        interface SignalSignatures extends Renderer.SignalSignatures {
+            'notify::realized': GObject.Object.Notify;
+            'notify::surface': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2182,14 +2257,17 @@ export namespace Gsk {
             signal: K,
             callback: NglRenderer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NglRenderer.SignalSignatures>(
             signal: K,
             callback: NglRenderer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NglRenderer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NglRenderer.SignalSignatures[K]>
+            ...args: NglRenderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace OpacityNode {
@@ -2215,14 +2293,17 @@ export namespace Gsk {
             signal: K,
             callback: OpacityNode.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OpacityNode.SignalSignatures>(
             signal: K,
             callback: OpacityNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OpacityNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OpacityNode.SignalSignatures[K]>
+            ...args: OpacityNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2268,14 +2349,17 @@ export namespace Gsk {
             signal: K,
             callback: OutsetShadowNode.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OutsetShadowNode.SignalSignatures>(
             signal: K,
             callback: OutsetShadowNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OutsetShadowNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OutsetShadowNode.SignalSignatures[K]>
+            ...args: OutsetShadowNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2345,14 +2429,17 @@ export namespace Gsk {
             signal: K,
             callback: RadialGradientNode.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RadialGradientNode.SignalSignatures>(
             signal: K,
             callback: RadialGradientNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RadialGradientNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RadialGradientNode.SignalSignatures[K]>
+            ...args: RadialGradientNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2425,14 +2512,17 @@ export namespace Gsk {
             signal: K,
             callback: RenderNode.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RenderNode.SignalSignatures>(
             signal: K,
             callback: RenderNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RenderNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RenderNode.SignalSignatures[K]>
+            ...args: RenderNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2523,7 +2613,10 @@ export namespace Gsk {
 
     namespace Renderer {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::realized': GObject.Object.Notify;
+            'notify::surface': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2570,14 +2663,17 @@ export namespace Gsk {
         // Signals
 
         connect<K extends keyof Renderer.SignalSignatures>(signal: K, callback: Renderer.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Renderer.SignalSignatures>(
             signal: K,
             callback: Renderer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Renderer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Renderer.SignalSignatures[K]>
+            ...args: Renderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2676,14 +2772,17 @@ export namespace Gsk {
             signal: K,
             callback: RepeatNode.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RepeatNode.SignalSignatures>(
             signal: K,
             callback: RepeatNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RepeatNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RepeatNode.SignalSignatures[K]>
+            ...args: RepeatNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2727,14 +2826,17 @@ export namespace Gsk {
             signal: K,
             callback: RepeatingLinearGradientNode.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RepeatingLinearGradientNode.SignalSignatures>(
             signal: K,
             callback: RepeatingLinearGradientNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RepeatingLinearGradientNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RepeatingLinearGradientNode.SignalSignatures[K]>
+            ...args: RepeatingLinearGradientNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace RepeatingRadialGradientNode {
@@ -2768,14 +2870,17 @@ export namespace Gsk {
             signal: K,
             callback: RepeatingRadialGradientNode.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RepeatingRadialGradientNode.SignalSignatures>(
             signal: K,
             callback: RepeatingRadialGradientNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RepeatingRadialGradientNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RepeatingRadialGradientNode.SignalSignatures[K]>
+            ...args: RepeatingRadialGradientNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace RoundedClipNode {
@@ -2801,14 +2906,17 @@ export namespace Gsk {
             signal: K,
             callback: RoundedClipNode.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RoundedClipNode.SignalSignatures>(
             signal: K,
             callback: RoundedClipNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RoundedClipNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RoundedClipNode.SignalSignatures[K]>
+            ...args: RoundedClipNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2847,14 +2955,17 @@ export namespace Gsk {
             signal: K,
             callback: ShadowNode.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ShadowNode.SignalSignatures>(
             signal: K,
             callback: ShadowNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ShadowNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ShadowNode.SignalSignatures[K]>
+            ...args: ShadowNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2900,14 +3011,17 @@ export namespace Gsk {
             signal: K,
             callback: StrokeNode.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StrokeNode.SignalSignatures>(
             signal: K,
             callback: StrokeNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StrokeNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StrokeNode.SignalSignatures[K]>
+            ...args: StrokeNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2950,14 +3064,17 @@ export namespace Gsk {
             signal: K,
             callback: SubsurfaceNode.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SubsurfaceNode.SignalSignatures>(
             signal: K,
             callback: SubsurfaceNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SubsurfaceNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SubsurfaceNode.SignalSignatures[K]>
+            ...args: SubsurfaceNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2988,14 +3105,17 @@ export namespace Gsk {
         // Signals
 
         connect<K extends keyof TextNode.SignalSignatures>(signal: K, callback: TextNode.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TextNode.SignalSignatures>(
             signal: K,
             callback: TextNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TextNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TextNode.SignalSignatures[K]>
+            ...args: TextNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3057,14 +3177,17 @@ export namespace Gsk {
             signal: K,
             callback: TextureNode.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TextureNode.SignalSignatures>(
             signal: K,
             callback: TextureNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TextureNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TextureNode.SignalSignatures[K]>
+            ...args: TextureNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3098,14 +3221,17 @@ export namespace Gsk {
             signal: K,
             callback: TextureScaleNode.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TextureScaleNode.SignalSignatures>(
             signal: K,
             callback: TextureScaleNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TextureScaleNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TextureScaleNode.SignalSignatures[K]>
+            ...args: TextureScaleNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3144,14 +3270,17 @@ export namespace Gsk {
             signal: K,
             callback: TransformNode.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TransformNode.SignalSignatures>(
             signal: K,
             callback: TransformNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TransformNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TransformNode.SignalSignatures[K]>
+            ...args: TransformNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3169,7 +3298,10 @@ export namespace Gsk {
 
     namespace VulkanRenderer {
         // Signal signatures
-        interface SignalSignatures extends Renderer.SignalSignatures {}
+        interface SignalSignatures extends Renderer.SignalSignatures {
+            'notify::realized': GObject.Object.Notify;
+            'notify::surface': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3198,14 +3330,17 @@ export namespace Gsk {
             signal: K,
             callback: VulkanRenderer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VulkanRenderer.SignalSignatures>(
             signal: K,
             callback: VulkanRenderer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VulkanRenderer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VulkanRenderer.SignalSignatures[K]>
+            ...args: VulkanRenderer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     type BroadwayRendererClass = typeof BroadwayRenderer;

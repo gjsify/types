@@ -161,7 +161,22 @@ export namespace GstTranscoder {
     function transcoder_state_get_name(state: TranscoderState | null): string;
     namespace Transcoder {
         // Signal signatures
-        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            'notify::avoid-reencoding': GObject.Object.Notify;
+            'notify::avoid-reencoding': GObject.Object.Notify;
+            'notify::dest-uri': GObject.Object.Notify;
+            'notify::dest-uri': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::pipeline': GObject.Object.Notify;
+            'notify::position': GObject.Object.Notify;
+            'notify::position-update-interval': GObject.Object.Notify;
+            'notify::position-update-interval': GObject.Object.Notify;
+            'notify::profile': GObject.Object.Notify;
+            'notify::src-uri': GObject.Object.Notify;
+            'notify::src-uri': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -225,14 +240,17 @@ export namespace GstTranscoder {
             signal: K,
             callback: Transcoder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Transcoder.SignalSignatures>(
             signal: K,
             callback: Transcoder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Transcoder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Transcoder.SignalSignatures[K]>
+            ...args: Transcoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -355,6 +373,7 @@ export namespace GstTranscoder {
             'position-updated': PositionUpdated;
             'state-changed': StateChanged;
             warning: Warning;
+            'notify::transcoder': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -389,14 +408,17 @@ export namespace GstTranscoder {
             signal: K,
             callback: TranscoderSignalAdapter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TranscoderSignalAdapter.SignalSignatures>(
             signal: K,
             callback: TranscoderSignalAdapter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TranscoderSignalAdapter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TranscoderSignalAdapter.SignalSignatures[K]>
+            ...args: TranscoderSignalAdapter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

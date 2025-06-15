@@ -461,7 +461,14 @@ export namespace Libosinfo {
     }
     namespace AvatarFormat {
         // Signal signatures
-        interface SignalSignatures extends Entity.SignalSignatures {}
+        interface SignalSignatures extends Entity.SignalSignatures {
+            'notify::alpha': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::mime-types': GObject.Object.Notify;
+            'notify::mime-types': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -514,14 +521,17 @@ export namespace Libosinfo {
             signal: K,
             callback: AvatarFormat.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AvatarFormat.SignalSignatures>(
             signal: K,
             callback: AvatarFormat.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AvatarFormat.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AvatarFormat.SignalSignatures[K]>
+            ...args: AvatarFormat.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -533,7 +543,9 @@ export namespace Libosinfo {
 
     namespace Datamap {
         // Signal signatures
-        interface SignalSignatures extends Entity.SignalSignatures {}
+        interface SignalSignatures extends Entity.SignalSignatures {
+            'notify::id': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -554,14 +566,17 @@ export namespace Libosinfo {
         // Signals
 
         connect<K extends keyof Datamap.SignalSignatures>(signal: K, callback: Datamap.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Datamap.SignalSignatures>(
             signal: K,
             callback: Datamap.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Datamap.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Datamap.SignalSignatures[K]>
+            ...args: Datamap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -586,7 +601,10 @@ export namespace Libosinfo {
 
     namespace DatamapList {
         // Signal signatures
-        interface SignalSignatures extends List.SignalSignatures {}
+        interface SignalSignatures extends List.SignalSignatures {
+            'notify::element-type': GObject.Object.Notify;
+            'notify::element-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -610,14 +628,17 @@ export namespace Libosinfo {
             signal: K,
             callback: DatamapList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DatamapList.SignalSignatures>(
             signal: K,
             callback: DatamapList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DatamapList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DatamapList.SignalSignatures[K]>
+            ...args: DatamapList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Db {
@@ -643,8 +664,14 @@ export namespace Libosinfo {
         // Signals
 
         connect<K extends keyof Db.SignalSignatures>(signal: K, callback: Db.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Db.SignalSignatures>(signal: K, callback: Db.SignalSignatures[K]): number;
-        emit<K extends keyof Db.SignalSignatures>(signal: K, ...args: Parameters<Db.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Db.SignalSignatures>(
+            signal: K,
+            ...args: Db.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -787,7 +814,11 @@ export namespace Libosinfo {
 
     namespace Deployment {
         // Signal signatures
-        interface SignalSignatures extends Entity.SignalSignatures {}
+        interface SignalSignatures extends Entity.SignalSignatures {
+            'notify::os': GObject.Object.Notify;
+            'notify::platform': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -825,14 +856,17 @@ export namespace Libosinfo {
             signal: K,
             callback: Deployment.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Deployment.SignalSignatures>(
             signal: K,
             callback: Deployment.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Deployment.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Deployment.SignalSignatures[K]>
+            ...args: Deployment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -884,7 +918,10 @@ export namespace Libosinfo {
 
     namespace DeploymentList {
         // Signal signatures
-        interface SignalSignatures extends List.SignalSignatures {}
+        interface SignalSignatures extends List.SignalSignatures {
+            'notify::element-type': GObject.Object.Notify;
+            'notify::element-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -908,14 +945,17 @@ export namespace Libosinfo {
             signal: K,
             callback: DeploymentList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeploymentList.SignalSignatures>(
             signal: K,
             callback: DeploymentList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeploymentList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeploymentList.SignalSignatures[K]>
+            ...args: DeploymentList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -950,7 +990,9 @@ export namespace Libosinfo {
 
     namespace Device {
         // Signal signatures
-        interface SignalSignatures extends Entity.SignalSignatures {}
+        interface SignalSignatures extends Entity.SignalSignatures {
+            'notify::id': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -971,8 +1013,14 @@ export namespace Libosinfo {
         // Signals
 
         connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
-        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            ...args: Device.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -988,7 +1036,9 @@ export namespace Libosinfo {
 
     namespace DeviceDriver {
         // Signal signatures
-        interface SignalSignatures extends Entity.SignalSignatures {}
+        interface SignalSignatures extends Entity.SignalSignatures {
+            'notify::id': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1010,14 +1060,17 @@ export namespace Libosinfo {
             signal: K,
             callback: DeviceDriver.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceDriver.SignalSignatures>(
             signal: K,
             callback: DeviceDriver.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceDriver.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceDriver.SignalSignatures[K]>
+            ...args: DeviceDriver.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1055,7 +1108,10 @@ export namespace Libosinfo {
 
     namespace DeviceDriverList {
         // Signal signatures
-        interface SignalSignatures extends List.SignalSignatures {}
+        interface SignalSignatures extends List.SignalSignatures {
+            'notify::element-type': GObject.Object.Notify;
+            'notify::element-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1079,19 +1135,25 @@ export namespace Libosinfo {
             signal: K,
             callback: DeviceDriverList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceDriverList.SignalSignatures>(
             signal: K,
             callback: DeviceDriverList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceDriverList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceDriverList.SignalSignatures[K]>
+            ...args: DeviceDriverList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace DeviceLink {
         // Signal signatures
-        interface SignalSignatures extends Entity.SignalSignatures {}
+        interface SignalSignatures extends Entity.SignalSignatures {
+            'notify::target': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1124,14 +1186,17 @@ export namespace Libosinfo {
             signal: K,
             callback: DeviceLink.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceLink.SignalSignatures>(
             signal: K,
             callback: DeviceLink.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceLink.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceLink.SignalSignatures[K]>
+            ...args: DeviceLink.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1145,7 +1210,10 @@ export namespace Libosinfo {
 
     namespace DeviceLinkFilter {
         // Signal signatures
-        interface SignalSignatures extends Filter.SignalSignatures {}
+        interface SignalSignatures extends Filter.SignalSignatures {
+            'notify::target-filter': GObject.Object.Notify;
+            'notify::target-filter': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1186,14 +1254,17 @@ export namespace Libosinfo {
             signal: K,
             callback: DeviceLinkFilter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceLinkFilter.SignalSignatures>(
             signal: K,
             callback: DeviceLinkFilter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceLinkFilter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceLinkFilter.SignalSignatures[K]>
+            ...args: DeviceLinkFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1207,7 +1278,10 @@ export namespace Libosinfo {
 
     namespace DeviceLinkList {
         // Signal signatures
-        interface SignalSignatures extends List.SignalSignatures {}
+        interface SignalSignatures extends List.SignalSignatures {
+            'notify::element-type': GObject.Object.Notify;
+            'notify::element-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1231,14 +1305,17 @@ export namespace Libosinfo {
             signal: K,
             callback: DeviceLinkList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceLinkList.SignalSignatures>(
             signal: K,
             callback: DeviceLinkList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceLinkList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceLinkList.SignalSignatures[K]>
+            ...args: DeviceLinkList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1279,7 +1356,10 @@ export namespace Libosinfo {
 
     namespace DeviceList {
         // Signal signatures
-        interface SignalSignatures extends List.SignalSignatures {}
+        interface SignalSignatures extends List.SignalSignatures {
+            'notify::element-type': GObject.Object.Notify;
+            'notify::element-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1303,14 +1383,17 @@ export namespace Libosinfo {
             signal: K,
             callback: DeviceList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceList.SignalSignatures>(
             signal: K,
             callback: DeviceList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceList.SignalSignatures[K]>
+            ...args: DeviceList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1345,7 +1428,9 @@ export namespace Libosinfo {
 
     namespace Entity {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::id': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1377,8 +1462,14 @@ export namespace Libosinfo {
         // Signals
 
         connect<K extends keyof Entity.SignalSignatures>(signal: K, callback: Entity.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Entity.SignalSignatures>(signal: K, callback: Entity.SignalSignatures[K]): number;
-        emit<K extends keyof Entity.SignalSignatures>(signal: K, ...args: Parameters<Entity.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Entity.SignalSignatures>(
+            signal: K,
+            ...args: Entity.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1527,8 +1618,14 @@ export namespace Libosinfo {
         // Signals
 
         connect<K extends keyof Filter.SignalSignatures>(signal: K, callback: Filter.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Filter.SignalSignatures>(signal: K, callback: Filter.SignalSignatures[K]): number;
-        emit<K extends keyof Filter.SignalSignatures>(signal: K, ...args: Parameters<Filter.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Filter.SignalSignatures>(
+            signal: K,
+            ...args: Filter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1581,7 +1678,11 @@ export namespace Libosinfo {
 
     namespace Firmware {
         // Signal signatures
-        interface SignalSignatures extends Entity.SignalSignatures {}
+        interface SignalSignatures extends Entity.SignalSignatures {
+            'notify::architecture': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1615,14 +1716,17 @@ export namespace Libosinfo {
         // Signals
 
         connect<K extends keyof Firmware.SignalSignatures>(signal: K, callback: Firmware.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Firmware.SignalSignatures>(
             signal: K,
             callback: Firmware.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Firmware.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Firmware.SignalSignatures[K]>
+            ...args: Firmware.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1645,7 +1749,10 @@ export namespace Libosinfo {
 
     namespace FirmwareList {
         // Signal signatures
-        interface SignalSignatures extends List.SignalSignatures {}
+        interface SignalSignatures extends List.SignalSignatures {
+            'notify::element-type': GObject.Object.Notify;
+            'notify::element-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1669,19 +1776,29 @@ export namespace Libosinfo {
             signal: K,
             callback: FirmwareList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FirmwareList.SignalSignatures>(
             signal: K,
             callback: FirmwareList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FirmwareList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FirmwareList.SignalSignatures[K]>
+            ...args: FirmwareList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Image {
         // Signal signatures
-        interface SignalSignatures extends Entity.SignalSignatures {}
+        interface SignalSignatures extends Entity.SignalSignatures {
+            'notify::architecture': GObject.Object.Notify;
+            'notify::cloud-init': GObject.Object.Notify;
+            'notify::cloud-init': GObject.Object.Notify;
+            'notify::format': GObject.Object.Notify;
+            'notify::url': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1736,8 +1853,14 @@ export namespace Libosinfo {
         // Signals
 
         connect<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Image.SignalSignatures>(signal: K, callback: Image.SignalSignatures[K]): number;
-        emit<K extends keyof Image.SignalSignatures>(signal: K, ...args: Parameters<Image.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Image.SignalSignatures>(
+            signal: K,
+            ...args: Image.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1776,7 +1899,10 @@ export namespace Libosinfo {
 
     namespace ImageList {
         // Signal signatures
-        interface SignalSignatures extends List.SignalSignatures {}
+        interface SignalSignatures extends List.SignalSignatures {
+            'notify::element-type': GObject.Object.Notify;
+            'notify::element-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1797,19 +1923,24 @@ export namespace Libosinfo {
         // Signals
 
         connect<K extends keyof ImageList.SignalSignatures>(signal: K, callback: ImageList.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ImageList.SignalSignatures>(
             signal: K,
             callback: ImageList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ImageList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ImageList.SignalSignatures[K]>
+            ...args: ImageList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace InstallConfig {
         // Signal signatures
-        interface SignalSignatures extends Entity.SignalSignatures {}
+        interface SignalSignatures extends Entity.SignalSignatures {
+            'notify::id': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1833,14 +1964,17 @@ export namespace Libosinfo {
             signal: K,
             callback: InstallConfig.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InstallConfig.SignalSignatures>(
             signal: K,
             callback: InstallConfig.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InstallConfig.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InstallConfig.SignalSignatures[K]>
+            ...args: InstallConfig.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2072,7 +2206,13 @@ export namespace Libosinfo {
 
     namespace InstallConfigParam {
         // Signal signatures
-        interface SignalSignatures extends Entity.SignalSignatures {}
+        interface SignalSignatures extends Entity.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::policy': GObject.Object.Notify;
+            'notify::value-map': GObject.Object.Notify;
+            'notify::value-map': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2124,14 +2264,17 @@ export namespace Libosinfo {
             signal: K,
             callback: InstallConfigParam.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InstallConfigParam.SignalSignatures>(
             signal: K,
             callback: InstallConfigParam.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InstallConfigParam.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InstallConfigParam.SignalSignatures[K]>
+            ...args: InstallConfigParam.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2151,7 +2294,10 @@ export namespace Libosinfo {
 
     namespace InstallConfigParamList {
         // Signal signatures
-        interface SignalSignatures extends List.SignalSignatures {}
+        interface SignalSignatures extends List.SignalSignatures {
+            'notify::element-type': GObject.Object.Notify;
+            'notify::element-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2175,19 +2321,39 @@ export namespace Libosinfo {
             signal: K,
             callback: InstallConfigParamList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InstallConfigParamList.SignalSignatures>(
             signal: K,
             callback: InstallConfigParamList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InstallConfigParamList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InstallConfigParamList.SignalSignatures[K]>
+            ...args: InstallConfigParamList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace InstallScript {
         // Signal signatures
-        interface SignalSignatures extends Entity.SignalSignatures {}
+        interface SignalSignatures extends Entity.SignalSignatures {
+            'notify::avatar-format': GObject.Object.Notify;
+            'notify::avatar-format': GObject.Object.Notify;
+            'notify::installation-source': GObject.Object.Notify;
+            'notify::installation-source': GObject.Object.Notify;
+            'notify::path-format': GObject.Object.Notify;
+            'notify::path-format': GObject.Object.Notify;
+            'notify::preferred-injection-method': GObject.Object.Notify;
+            'notify::preferred-injection-method': GObject.Object.Notify;
+            'notify::product-key-format': GObject.Object.Notify;
+            'notify::product-key-format': GObject.Object.Notify;
+            'notify::profile': GObject.Object.Notify;
+            'notify::template-data': GObject.Object.Notify;
+            'notify::template-data': GObject.Object.Notify;
+            'notify::template-uri': GObject.Object.Notify;
+            'notify::template-uri': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2251,14 +2417,17 @@ export namespace Libosinfo {
             signal: K,
             callback: InstallScript.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InstallScript.SignalSignatures>(
             signal: K,
             callback: InstallScript.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InstallScript.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InstallScript.SignalSignatures[K]>
+            ...args: InstallScript.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2828,7 +2997,10 @@ export namespace Libosinfo {
 
     namespace InstallScriptList {
         // Signal signatures
-        interface SignalSignatures extends List.SignalSignatures {}
+        interface SignalSignatures extends List.SignalSignatures {
+            'notify::element-type': GObject.Object.Notify;
+            'notify::element-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2852,14 +3024,17 @@ export namespace Libosinfo {
             signal: K,
             callback: InstallScriptList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InstallScriptList.SignalSignatures>(
             signal: K,
             callback: InstallScriptList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InstallScriptList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InstallScriptList.SignalSignatures[K]>
+            ...args: InstallScriptList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2894,7 +3069,10 @@ export namespace Libosinfo {
 
     namespace List {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::element-type': GObject.Object.Notify;
+            'notify::element-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2931,8 +3109,14 @@ export namespace Libosinfo {
         // Signals
 
         connect<K extends keyof List.SignalSignatures>(signal: K, callback: List.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof List.SignalSignatures>(signal: K, callback: List.SignalSignatures[K]): number;
-        emit<K extends keyof List.SignalSignatures>(signal: K, ...args: Parameters<List.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof List.SignalSignatures>(
+            signal: K,
+            ...args: List.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3058,8 +3242,14 @@ export namespace Libosinfo {
         // Signals
 
         connect<K extends keyof Loader.SignalSignatures>(signal: K, callback: Loader.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Loader.SignalSignatures>(signal: K, callback: Loader.SignalSignatures[K]): number;
-        emit<K extends keyof Loader.SignalSignatures>(signal: K, ...args: Parameters<Loader.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Loader.SignalSignatures>(
+            signal: K,
+            ...args: Loader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3101,7 +3291,35 @@ export namespace Libosinfo {
 
     namespace Media {
         // Signal signatures
-        interface SignalSignatures extends Entity.SignalSignatures {}
+        interface SignalSignatures extends Entity.SignalSignatures {
+            'notify::application-id': GObject.Object.Notify;
+            'notify::application-id': GObject.Object.Notify;
+            'notify::architecture': GObject.Object.Notify;
+            'notify::eject-after-install': GObject.Object.Notify;
+            'notify::eject-after-install': GObject.Object.Notify;
+            'notify::initrd-path': GObject.Object.Notify;
+            'notify::initrd-path': GObject.Object.Notify;
+            'notify::installer': GObject.Object.Notify;
+            'notify::installer-reboots': GObject.Object.Notify;
+            'notify::installer-reboots': GObject.Object.Notify;
+            'notify::installer-script': GObject.Object.Notify;
+            'notify::installer-script': GObject.Object.Notify;
+            'notify::kernel-path': GObject.Object.Notify;
+            'notify::kernel-path': GObject.Object.Notify;
+            'notify::languages': GObject.Object.Notify;
+            'notify::live': GObject.Object.Notify;
+            'notify::os': GObject.Object.Notify;
+            'notify::publisher-id': GObject.Object.Notify;
+            'notify::publisher-id': GObject.Object.Notify;
+            'notify::system-id': GObject.Object.Notify;
+            'notify::system-id': GObject.Object.Notify;
+            'notify::url': GObject.Object.Notify;
+            'notify::volume-id': GObject.Object.Notify;
+            'notify::volume-id': GObject.Object.Notify;
+            'notify::volume-size': GObject.Object.Notify;
+            'notify::volume-size': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3324,8 +3542,14 @@ export namespace Libosinfo {
         // Signals
 
         connect<K extends keyof Media.SignalSignatures>(signal: K, callback: Media.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Media.SignalSignatures>(signal: K, callback: Media.SignalSignatures[K]): number;
-        emit<K extends keyof Media.SignalSignatures>(signal: K, ...args: Parameters<Media.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Media.SignalSignatures>(
+            signal: K,
+            ...args: Media.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -3531,7 +3755,10 @@ export namespace Libosinfo {
 
     namespace MediaList {
         // Signal signatures
-        interface SignalSignatures extends List.SignalSignatures {}
+        interface SignalSignatures extends List.SignalSignatures {
+            'notify::element-type': GObject.Object.Notify;
+            'notify::element-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3552,14 +3779,17 @@ export namespace Libosinfo {
         // Signals
 
         connect<K extends keyof MediaList.SignalSignatures>(signal: K, callback: MediaList.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MediaList.SignalSignatures>(
             signal: K,
             callback: MediaList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MediaList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaList.SignalSignatures[K]>
+            ...args: MediaList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3594,7 +3824,22 @@ export namespace Libosinfo {
 
     namespace Os {
         // Signal signatures
-        interface SignalSignatures extends Product.SignalSignatures {}
+        interface SignalSignatures extends Product.SignalSignatures {
+            'notify::cloud-image-username': GObject.Object.Notify;
+            'notify::cloud-image-username': GObject.Object.Notify;
+            'notify::distro': GObject.Object.Notify;
+            'notify::family': GObject.Object.Notify;
+            'notify::kernel-url-argument': GObject.Object.Notify;
+            'notify::kernel-url-argument': GObject.Object.Notify;
+            'notify::codename': GObject.Object.Notify;
+            'notify::logo': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::short-id': GObject.Object.Notify;
+            'notify::short-id': GObject.Object.Notify;
+            'notify::vendor': GObject.Object.Notify;
+            'notify::version': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3653,8 +3898,14 @@ export namespace Libosinfo {
         // Signals
 
         connect<K extends keyof Os.SignalSignatures>(signal: K, callback: Os.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Os.SignalSignatures>(signal: K, callback: Os.SignalSignatures[K]): number;
-        emit<K extends keyof Os.SignalSignatures>(signal: K, ...args: Parameters<Os.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Os.SignalSignatures>(
+            signal: K,
+            ...args: Os.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3858,7 +4109,10 @@ export namespace Libosinfo {
 
     namespace OsList {
         // Signal signatures
-        interface SignalSignatures extends ProductList.SignalSignatures {}
+        interface SignalSignatures extends ProductList.SignalSignatures {
+            'notify::element-type': GObject.Object.Notify;
+            'notify::element-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3879,8 +4133,14 @@ export namespace Libosinfo {
         // Signals
 
         connect<K extends keyof OsList.SignalSignatures>(signal: K, callback: OsList.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OsList.SignalSignatures>(signal: K, callback: OsList.SignalSignatures[K]): number;
-        emit<K extends keyof OsList.SignalSignatures>(signal: K, ...args: Parameters<OsList.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof OsList.SignalSignatures>(
+            signal: K,
+            ...args: OsList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3915,7 +4175,10 @@ export namespace Libosinfo {
 
     namespace OsVariant {
         // Signal signatures
-        interface SignalSignatures extends Entity.SignalSignatures {}
+        interface SignalSignatures extends Entity.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3946,14 +4209,17 @@ export namespace Libosinfo {
         // Signals
 
         connect<K extends keyof OsVariant.SignalSignatures>(signal: K, callback: OsVariant.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OsVariant.SignalSignatures>(
             signal: K,
             callback: OsVariant.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OsVariant.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OsVariant.SignalSignatures[K]>
+            ...args: OsVariant.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3966,7 +4232,10 @@ export namespace Libosinfo {
 
     namespace OsVariantList {
         // Signal signatures
-        interface SignalSignatures extends List.SignalSignatures {}
+        interface SignalSignatures extends List.SignalSignatures {
+            'notify::element-type': GObject.Object.Notify;
+            'notify::element-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3990,19 +4259,31 @@ export namespace Libosinfo {
             signal: K,
             callback: OsVariantList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OsVariantList.SignalSignatures>(
             signal: K,
             callback: OsVariantList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OsVariantList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OsVariantList.SignalSignatures[K]>
+            ...args: OsVariantList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Platform {
         // Signal signatures
-        interface SignalSignatures extends Product.SignalSignatures {}
+        interface SignalSignatures extends Product.SignalSignatures {
+            'notify::codename': GObject.Object.Notify;
+            'notify::logo': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::short-id': GObject.Object.Notify;
+            'notify::short-id': GObject.Object.Notify;
+            'notify::vendor': GObject.Object.Notify;
+            'notify::version': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4023,14 +4304,17 @@ export namespace Libosinfo {
         // Signals
 
         connect<K extends keyof Platform.SignalSignatures>(signal: K, callback: Platform.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Platform.SignalSignatures>(
             signal: K,
             callback: Platform.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Platform.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Platform.SignalSignatures[K]>
+            ...args: Platform.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4067,7 +4351,10 @@ export namespace Libosinfo {
 
     namespace PlatformList {
         // Signal signatures
-        interface SignalSignatures extends ProductList.SignalSignatures {}
+        interface SignalSignatures extends ProductList.SignalSignatures {
+            'notify::element-type': GObject.Object.Notify;
+            'notify::element-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4091,14 +4378,17 @@ export namespace Libosinfo {
             signal: K,
             callback: PlatformList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PlatformList.SignalSignatures>(
             signal: K,
             callback: PlatformList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PlatformList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PlatformList.SignalSignatures[K]>
+            ...args: PlatformList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4133,7 +4423,16 @@ export namespace Libosinfo {
 
     namespace Product {
         // Signal signatures
-        interface SignalSignatures extends Entity.SignalSignatures {}
+        interface SignalSignatures extends Entity.SignalSignatures {
+            'notify::codename': GObject.Object.Notify;
+            'notify::logo': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::short-id': GObject.Object.Notify;
+            'notify::short-id': GObject.Object.Notify;
+            'notify::vendor': GObject.Object.Notify;
+            'notify::version': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4191,14 +4490,17 @@ export namespace Libosinfo {
         // Signals
 
         connect<K extends keyof Product.SignalSignatures>(signal: K, callback: Product.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Product.SignalSignatures>(
             signal: K,
             callback: Product.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Product.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Product.SignalSignatures[K]>
+            ...args: Product.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4258,14 +4560,17 @@ export namespace Libosinfo {
             signal: K,
             callback: ProductFilter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ProductFilter.SignalSignatures>(
             signal: K,
             callback: ProductFilter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ProductFilter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProductFilter.SignalSignatures[K]>
+            ...args: ProductFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4300,7 +4605,10 @@ export namespace Libosinfo {
 
     namespace ProductList {
         // Signal signatures
-        interface SignalSignatures extends List.SignalSignatures {}
+        interface SignalSignatures extends List.SignalSignatures {
+            'notify::element-type': GObject.Object.Notify;
+            'notify::element-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4324,14 +4632,17 @@ export namespace Libosinfo {
             signal: K,
             callback: ProductList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ProductList.SignalSignatures>(
             signal: K,
             callback: ProductList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ProductList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProductList.SignalSignatures[K]>
+            ...args: ProductList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4366,7 +4677,15 @@ export namespace Libosinfo {
 
     namespace Resources {
         // Signal signatures
-        interface SignalSignatures extends Entity.SignalSignatures {}
+        interface SignalSignatures extends Entity.SignalSignatures {
+            'notify::architecture': GObject.Object.Notify;
+            'notify::cpu': GObject.Object.Notify;
+            'notify::n-cpus': GObject.Object.Notify;
+            'notify::n-cpus': GObject.Object.Notify;
+            'notify::ram': GObject.Object.Notify;
+            'notify::storage': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4426,14 +4745,17 @@ export namespace Libosinfo {
         // Signals
 
         connect<K extends keyof Resources.SignalSignatures>(signal: K, callback: Resources.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Resources.SignalSignatures>(
             signal: K,
             callback: Resources.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Resources.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Resources.SignalSignatures[K]>
+            ...args: Resources.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4492,7 +4814,10 @@ export namespace Libosinfo {
 
     namespace ResourcesList {
         // Signal signatures
-        interface SignalSignatures extends List.SignalSignatures {}
+        interface SignalSignatures extends List.SignalSignatures {
+            'notify::element-type': GObject.Object.Notify;
+            'notify::element-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4516,14 +4841,17 @@ export namespace Libosinfo {
             signal: K,
             callback: ResourcesList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ResourcesList.SignalSignatures>(
             signal: K,
             callback: ResourcesList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ResourcesList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ResourcesList.SignalSignatures[K]>
+            ...args: ResourcesList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4558,7 +4886,28 @@ export namespace Libosinfo {
 
     namespace Tree {
         // Signal signatures
-        interface SignalSignatures extends Entity.SignalSignatures {}
+        interface SignalSignatures extends Entity.SignalSignatures {
+            'notify::architecture': GObject.Object.Notify;
+            'notify::boot-iso-path': GObject.Object.Notify;
+            'notify::boot-iso-path': GObject.Object.Notify;
+            'notify::has-treeinfo': GObject.Object.Notify;
+            'notify::has-treeinfo': GObject.Object.Notify;
+            'notify::initrd-path': GObject.Object.Notify;
+            'notify::initrd-path': GObject.Object.Notify;
+            'notify::kernel-path': GObject.Object.Notify;
+            'notify::kernel-path': GObject.Object.Notify;
+            'notify::os': GObject.Object.Notify;
+            'notify::treeinfo-arch': GObject.Object.Notify;
+            'notify::treeinfo-arch': GObject.Object.Notify;
+            'notify::treeinfo-family': GObject.Object.Notify;
+            'notify::treeinfo-family': GObject.Object.Notify;
+            'notify::treeinfo-variant': GObject.Object.Notify;
+            'notify::treeinfo-variant': GObject.Object.Notify;
+            'notify::treeinfo-version': GObject.Object.Notify;
+            'notify::treeinfo-version': GObject.Object.Notify;
+            'notify::url': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4700,8 +5049,14 @@ export namespace Libosinfo {
         // Signals
 
         connect<K extends keyof Tree.SignalSignatures>(signal: K, callback: Tree.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Tree.SignalSignatures>(signal: K, callback: Tree.SignalSignatures[K]): number;
-        emit<K extends keyof Tree.SignalSignatures>(signal: K, ...args: Parameters<Tree.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Tree.SignalSignatures>(
+            signal: K,
+            ...args: Tree.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -4828,7 +5183,10 @@ export namespace Libosinfo {
 
     namespace TreeList {
         // Signal signatures
-        interface SignalSignatures extends List.SignalSignatures {}
+        interface SignalSignatures extends List.SignalSignatures {
+            'notify::element-type': GObject.Object.Notify;
+            'notify::element-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4849,14 +5207,17 @@ export namespace Libosinfo {
         // Signals
 
         connect<K extends keyof TreeList.SignalSignatures>(signal: K, callback: TreeList.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TreeList.SignalSignatures>(
             signal: K,
             callback: TreeList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TreeList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TreeList.SignalSignatures[K]>
+            ...args: TreeList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

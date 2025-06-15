@@ -44,7 +44,9 @@ export namespace ArrowDataset {
     }
     namespace CSVFileFormat {
         // Signal signatures
-        interface SignalSignatures extends FileFormat.SignalSignatures {}
+        interface SignalSignatures extends FileFormat.SignalSignatures {
+            'notify::format': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -68,19 +70,24 @@ export namespace ArrowDataset {
             signal: K,
             callback: CSVFileFormat.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CSVFileFormat.SignalSignatures>(
             signal: K,
             callback: CSVFileFormat.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CSVFileFormat.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CSVFileFormat.SignalSignatures[K]>
+            ...args: CSVFileFormat.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Dataset {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::dataset': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -105,14 +112,17 @@ export namespace ArrowDataset {
         // Signals
 
         connect<K extends keyof Dataset.SignalSignatures>(signal: K, callback: Dataset.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Dataset.SignalSignatures>(
             signal: K,
             callback: Dataset.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Dataset.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Dataset.SignalSignatures[K]>
+            ...args: Dataset.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -123,7 +133,10 @@ export namespace ArrowDataset {
 
     namespace DatasetFactory {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::dataset-factory': GObject.Object.Notify;
+            'notify::dataset-factory': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -153,14 +166,17 @@ export namespace ArrowDataset {
             signal: K,
             callback: DatasetFactory.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DatasetFactory.SignalSignatures>(
             signal: K,
             callback: DatasetFactory.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DatasetFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DatasetFactory.SignalSignatures[K]>
+            ...args: DatasetFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -169,7 +185,9 @@ export namespace ArrowDataset {
 
     namespace DirectoryPartitioning {
         // Signal signatures
-        interface SignalSignatures extends KeyValuePartitioning.SignalSignatures {}
+        interface SignalSignatures extends KeyValuePartitioning.SignalSignatures {
+            'notify::partitioning': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -200,19 +218,24 @@ export namespace ArrowDataset {
             signal: K,
             callback: DirectoryPartitioning.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DirectoryPartitioning.SignalSignatures>(
             signal: K,
             callback: DirectoryPartitioning.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DirectoryPartitioning.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DirectoryPartitioning.SignalSignatures[K]>
+            ...args: DirectoryPartitioning.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace FileFormat {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::format': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -240,14 +263,17 @@ export namespace ArrowDataset {
             signal: K,
             callback: FileFormat.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FileFormat.SignalSignatures>(
             signal: K,
             callback: FileFormat.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FileFormat.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileFormat.SignalSignatures[K]>
+            ...args: FileFormat.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -265,7 +291,13 @@ export namespace ArrowDataset {
 
     namespace FileSystemDataset {
         // Signal signatures
-        interface SignalSignatures extends Dataset.SignalSignatures {}
+        interface SignalSignatures extends Dataset.SignalSignatures {
+            'notify::file-system': GObject.Object.Notify;
+            'notify::file-system': GObject.Object.Notify;
+            'notify::format': GObject.Object.Notify;
+            'notify::partitioning': GObject.Object.Notify;
+            'notify::dataset': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -311,14 +343,17 @@ export namespace ArrowDataset {
             signal: K,
             callback: FileSystemDataset.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FileSystemDataset.SignalSignatures>(
             signal: K,
             callback: FileSystemDataset.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FileSystemDataset.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileSystemDataset.SignalSignatures[K]>
+            ...args: FileSystemDataset.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -327,7 +362,16 @@ export namespace ArrowDataset {
 
     namespace FileSystemDatasetFactory {
         // Signal signatures
-        interface SignalSignatures extends DatasetFactory.SignalSignatures {}
+        interface SignalSignatures extends DatasetFactory.SignalSignatures {
+            'notify::file-system': GObject.Object.Notify;
+            'notify::file-system': GObject.Object.Notify;
+            'notify::format': GObject.Object.Notify;
+            'notify::partition-base-dir': GObject.Object.Notify;
+            'notify::partition-base-dir': GObject.Object.Notify;
+            'notify::partitioning': GObject.Object.Notify;
+            'notify::dataset-factory': GObject.Object.Notify;
+            'notify::dataset-factory': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -388,14 +432,17 @@ export namespace ArrowDataset {
             signal: K,
             callback: FileSystemDatasetFactory.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FileSystemDatasetFactory.SignalSignatures>(
             signal: K,
             callback: FileSystemDatasetFactory.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FileSystemDatasetFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileSystemDatasetFactory.SignalSignatures[K]>
+            ...args: FileSystemDatasetFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -407,7 +454,19 @@ export namespace ArrowDataset {
 
     namespace FileSystemDatasetWriteOptions {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::base-dir': GObject.Object.Notify;
+            'notify::base-dir': GObject.Object.Notify;
+            'notify::base-name-template': GObject.Object.Notify;
+            'notify::base-name-template': GObject.Object.Notify;
+            'notify::file-system': GObject.Object.Notify;
+            'notify::file-system': GObject.Object.Notify;
+            'notify::file-write-options': GObject.Object.Notify;
+            'notify::file-write-options': GObject.Object.Notify;
+            'notify::max-partitions': GObject.Object.Notify;
+            'notify::max-partitions': GObject.Object.Notify;
+            'notify::partitioning': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -485,19 +544,24 @@ export namespace ArrowDataset {
             signal: K,
             callback: FileSystemDatasetWriteOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FileSystemDatasetWriteOptions.SignalSignatures>(
             signal: K,
             callback: FileSystemDatasetWriteOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FileSystemDatasetWriteOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileSystemDatasetWriteOptions.SignalSignatures[K]>
+            ...args: FileSystemDatasetWriteOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace FileWriteOptions {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::options': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -525,19 +589,24 @@ export namespace ArrowDataset {
             signal: K,
             callback: FileWriteOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FileWriteOptions.SignalSignatures>(
             signal: K,
             callback: FileWriteOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FileWriteOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileWriteOptions.SignalSignatures[K]>
+            ...args: FileWriteOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace FileWriter {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::writer': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -565,14 +634,17 @@ export namespace ArrowDataset {
             signal: K,
             callback: FileWriter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FileWriter.SignalSignatures>(
             signal: K,
             callback: FileWriter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FileWriter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileWriter.SignalSignatures[K]>
+            ...args: FileWriter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -583,7 +655,9 @@ export namespace ArrowDataset {
 
     namespace Fragment {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::fragment': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -608,19 +682,24 @@ export namespace ArrowDataset {
         // Signals
 
         connect<K extends keyof Fragment.SignalSignatures>(signal: K, callback: Fragment.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Fragment.SignalSignatures>(
             signal: K,
             callback: Fragment.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Fragment.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Fragment.SignalSignatures[K]>
+            ...args: Fragment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace IPCFileFormat {
         // Signal signatures
-        interface SignalSignatures extends FileFormat.SignalSignatures {}
+        interface SignalSignatures extends FileFormat.SignalSignatures {
+            'notify::format': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -644,19 +723,24 @@ export namespace ArrowDataset {
             signal: K,
             callback: IPCFileFormat.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof IPCFileFormat.SignalSignatures>(
             signal: K,
             callback: IPCFileFormat.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof IPCFileFormat.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IPCFileFormat.SignalSignatures[K]>
+            ...args: IPCFileFormat.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace InMemoryFragment {
         // Signal signatures
-        interface SignalSignatures extends Fragment.SignalSignatures {}
+        interface SignalSignatures extends Fragment.SignalSignatures {
+            'notify::fragment': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -680,19 +764,24 @@ export namespace ArrowDataset {
             signal: K,
             callback: InMemoryFragment.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InMemoryFragment.SignalSignatures>(
             signal: K,
             callback: InMemoryFragment.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InMemoryFragment.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InMemoryFragment.SignalSignatures[K]>
+            ...args: InMemoryFragment.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace KeyValuePartitioning {
         // Signal signatures
-        interface SignalSignatures extends Partitioning.SignalSignatures {}
+        interface SignalSignatures extends Partitioning.SignalSignatures {
+            'notify::partitioning': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -714,19 +803,24 @@ export namespace ArrowDataset {
             signal: K,
             callback: KeyValuePartitioning.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof KeyValuePartitioning.SignalSignatures>(
             signal: K,
             callback: KeyValuePartitioning.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof KeyValuePartitioning.SignalSignatures>(
             signal: K,
-            ...args: Parameters<KeyValuePartitioning.SignalSignatures[K]>
+            ...args: KeyValuePartitioning.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace ParquetFileFormat {
         // Signal signatures
-        interface SignalSignatures extends FileFormat.SignalSignatures {}
+        interface SignalSignatures extends FileFormat.SignalSignatures {
+            'notify::format': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -750,19 +844,24 @@ export namespace ArrowDataset {
             signal: K,
             callback: ParquetFileFormat.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ParquetFileFormat.SignalSignatures>(
             signal: K,
             callback: ParquetFileFormat.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ParquetFileFormat.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ParquetFileFormat.SignalSignatures[K]>
+            ...args: ParquetFileFormat.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Partitioning {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::partitioning': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -792,14 +891,17 @@ export namespace ArrowDataset {
             signal: K,
             callback: Partitioning.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Partitioning.SignalSignatures>(
             signal: K,
             callback: Partitioning.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Partitioning.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Partitioning.SignalSignatures[K]>
+            ...args: Partitioning.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -808,7 +910,13 @@ export namespace ArrowDataset {
 
     namespace PartitioningOptions {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::infer-dictionary': GObject.Object.Notify;
+            'notify::infer-dictionary': GObject.Object.Notify;
+            'notify::schema': GObject.Object.Notify;
+            'notify::segment-encoding': GObject.Object.Notify;
+            'notify::segment-encoding': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -878,19 +986,24 @@ export namespace ArrowDataset {
             signal: K,
             callback: PartitioningOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PartitioningOptions.SignalSignatures>(
             signal: K,
             callback: PartitioningOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PartitioningOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PartitioningOptions.SignalSignatures[K]>
+            ...args: PartitioningOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Scanner {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::scanner': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -915,14 +1028,17 @@ export namespace ArrowDataset {
         // Signals
 
         connect<K extends keyof Scanner.SignalSignatures>(signal: K, callback: Scanner.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Scanner.SignalSignatures>(
             signal: K,
             callback: Scanner.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Scanner.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Scanner.SignalSignatures[K]>
+            ...args: Scanner.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -931,7 +1047,10 @@ export namespace ArrowDataset {
 
     namespace ScannerBuilder {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::scanner-builder': GObject.Object.Notify;
+            'notify::scanner-builder': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -965,14 +1084,17 @@ export namespace ArrowDataset {
             signal: K,
             callback: ScannerBuilder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ScannerBuilder.SignalSignatures>(
             signal: K,
             callback: ScannerBuilder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ScannerBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ScannerBuilder.SignalSignatures[K]>
+            ...args: ScannerBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

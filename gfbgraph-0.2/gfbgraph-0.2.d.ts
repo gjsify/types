@@ -40,7 +40,19 @@ export namespace GFBGraph {
     function new_rest_call(authorizer: Authorizer): Rest.ProxyCall;
     namespace Album {
         // Signal signatures
-        interface SignalSignatures extends Node.SignalSignatures {}
+        interface SignalSignatures extends Node.SignalSignatures {
+            'notify::count': GObject.Object.Notify;
+            'notify::cover-photo': GObject.Object.Notify;
+            'notify::cover-photo': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::created-time': GObject.Object.Notify;
+            'notify::created-time': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::link': GObject.Object.Notify;
+            'notify::updated-time': GObject.Object.Notify;
+            'notify::updated-time': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -91,8 +103,14 @@ export namespace GFBGraph {
         // Signals
 
         connect<K extends keyof Album.SignalSignatures>(signal: K, callback: Album.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Album.SignalSignatures>(signal: K, callback: Album.SignalSignatures[K]): number;
-        emit<K extends keyof Album.SignalSignatures>(signal: K, ...args: Parameters<Album.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Album.SignalSignatures>(
+            signal: K,
+            ...args: Album.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -304,14 +322,17 @@ export namespace GFBGraph {
             signal: K,
             callback: GoaAuthorizer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GoaAuthorizer.SignalSignatures>(
             signal: K,
             callback: GoaAuthorizer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GoaAuthorizer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GoaAuthorizer.SignalSignatures[K]>
+            ...args: GoaAuthorizer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -804,7 +825,14 @@ export namespace GFBGraph {
 
     namespace Node {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::created-time': GObject.Object.Notify;
+            'notify::created-time': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::link': GObject.Object.Notify;
+            'notify::updated-time': GObject.Object.Notify;
+            'notify::updated-time': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -855,8 +883,14 @@ export namespace GFBGraph {
         // Signals
 
         connect<K extends keyof Node.SignalSignatures>(signal: K, callback: Node.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Node.SignalSignatures>(signal: K, callback: Node.SignalSignatures[K]): number;
-        emit<K extends keyof Node.SignalSignatures>(signal: K, ...args: Parameters<Node.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Node.SignalSignatures>(
+            signal: K,
+            ...args: Node.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -963,7 +997,19 @@ export namespace GFBGraph {
 
     namespace Photo {
         // Signal signatures
-        interface SignalSignatures extends Node.SignalSignatures {}
+        interface SignalSignatures extends Node.SignalSignatures {
+            'notify::height': GObject.Object.Notify;
+            'notify::images': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::created-time': GObject.Object.Notify;
+            'notify::created-time': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::link': GObject.Object.Notify;
+            'notify::updated-time': GObject.Object.Notify;
+            'notify::updated-time': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1023,8 +1069,14 @@ export namespace GFBGraph {
         // Signals
 
         connect<K extends keyof Photo.SignalSignatures>(signal: K, callback: Photo.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Photo.SignalSignatures>(signal: K, callback: Photo.SignalSignatures[K]): number;
-        emit<K extends keyof Photo.SignalSignatures>(signal: K, ...args: Parameters<Photo.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Photo.SignalSignatures>(
+            signal: K,
+            ...args: Photo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1806,7 +1858,10 @@ export namespace GFBGraph {
 
     namespace SimpleAuthorizer {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::access-token': GObject.Object.Notify;
+            'notify::access-token': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1840,14 +1895,17 @@ export namespace GFBGraph {
             signal: K,
             callback: SimpleAuthorizer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SimpleAuthorizer.SignalSignatures>(
             signal: K,
             callback: SimpleAuthorizer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SimpleAuthorizer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SimpleAuthorizer.SignalSignatures[K]>
+            ...args: SimpleAuthorizer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -2340,7 +2398,16 @@ export namespace GFBGraph {
 
     namespace User {
         // Signal signatures
-        interface SignalSignatures extends Node.SignalSignatures {}
+        interface SignalSignatures extends Node.SignalSignatures {
+            'notify::email': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::created-time': GObject.Object.Notify;
+            'notify::created-time': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::link': GObject.Object.Notify;
+            'notify::updated-time': GObject.Object.Notify;
+            'notify::updated-time': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2379,8 +2446,14 @@ export namespace GFBGraph {
         // Signals
 
         connect<K extends keyof User.SignalSignatures>(signal: K, callback: User.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof User.SignalSignatures>(signal: K, callback: User.SignalSignatures[K]): number;
-        emit<K extends keyof User.SignalSignatures>(signal: K, ...args: Parameters<User.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof User.SignalSignatures>(
+            signal: K,
+            ...args: User.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 

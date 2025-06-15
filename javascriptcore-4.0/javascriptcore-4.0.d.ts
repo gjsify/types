@@ -420,7 +420,11 @@ export namespace JavaScriptCore {
     }
     namespace Class {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::context': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -465,8 +469,14 @@ export namespace JavaScriptCore {
         // Signals
 
         connect<K extends keyof Class.SignalSignatures>(signal: K, callback: Class.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Class.SignalSignatures>(signal: K, callback: Class.SignalSignatures[K]): number;
-        emit<K extends keyof Class.SignalSignatures>(signal: K, ...args: Parameters<Class.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Class.SignalSignatures>(
+            signal: K,
+            ...args: Class.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -600,7 +610,10 @@ export namespace JavaScriptCore {
 
     namespace Context {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::virtual-machine': GObject.Object.Notify;
+            'notify::virtual-machine': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -646,14 +659,17 @@ export namespace JavaScriptCore {
         // Signals
 
         connect<K extends keyof Context.SignalSignatures>(signal: K, callback: Context.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Context.SignalSignatures>(
             signal: K,
             callback: Context.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Context.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Context.SignalSignatures[K]>
+            ...args: Context.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -840,14 +856,17 @@ export namespace JavaScriptCore {
         // Signals
 
         connect<K extends keyof Exception.SignalSignatures>(signal: K, callback: Exception.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Exception.SignalSignatures>(
             signal: K,
             callback: Exception.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Exception.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Exception.SignalSignatures[K]>
+            ...args: Exception.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -896,7 +915,9 @@ export namespace JavaScriptCore {
 
     namespace Value {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::context': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -974,8 +995,14 @@ export namespace JavaScriptCore {
         // Signals
 
         connect<K extends keyof Value.SignalSignatures>(signal: K, callback: Value.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Value.SignalSignatures>(signal: K, callback: Value.SignalSignatures[K]): number;
-        emit<K extends keyof Value.SignalSignatures>(signal: K, ...args: Parameters<Value.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Value.SignalSignatures>(
+            signal: K,
+            ...args: Value.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1333,14 +1360,17 @@ export namespace JavaScriptCore {
             signal: K,
             callback: VirtualMachine.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VirtualMachine.SignalSignatures>(
             signal: K,
             callback: VirtualMachine.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VirtualMachine.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VirtualMachine.SignalSignatures[K]>
+            ...args: VirtualMachine.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace WeakValue {
@@ -1353,6 +1383,7 @@ export namespace JavaScriptCore {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             cleared: Cleared;
+            'notify::value': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1388,14 +1419,17 @@ export namespace JavaScriptCore {
         // Signals
 
         connect<K extends keyof WeakValue.SignalSignatures>(signal: K, callback: WeakValue.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WeakValue.SignalSignatures>(
             signal: K,
             callback: WeakValue.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WeakValue.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WeakValue.SignalSignatures[K]>
+            ...args: WeakValue.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

@@ -1381,7 +1381,9 @@ export namespace Ggit {
     }
     namespace Blame {
         // Signal signatures
-        interface SignalSignatures extends Native.SignalSignatures {}
+        interface SignalSignatures extends Native.SignalSignatures {
+            'notify::native': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1403,8 +1405,14 @@ export namespace Ggit {
         // Signals
 
         connect<K extends keyof Blame.SignalSignatures>(signal: K, callback: Blame.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Blame.SignalSignatures>(signal: K, callback: Blame.SignalSignatures[K]): number;
-        emit<K extends keyof Blame.SignalSignatures>(signal: K, ...args: Parameters<Blame.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Blame.SignalSignatures>(
+            signal: K,
+            ...args: Blame.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1441,7 +1449,9 @@ export namespace Ggit {
 
     namespace Blob {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::native': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1463,8 +1473,14 @@ export namespace Ggit {
         // Signals
 
         connect<K extends keyof Blob.SignalSignatures>(signal: K, callback: Blob.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Blob.SignalSignatures>(signal: K, callback: Blob.SignalSignatures[K]): number;
-        emit<K extends keyof Blob.SignalSignatures>(signal: K, ...args: Parameters<Blob.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Blob.SignalSignatures>(
+            signal: K,
+            ...args: Blob.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1487,7 +1503,9 @@ export namespace Ggit {
 
     namespace BlobOutputStream {
         // Signal signatures
-        interface SignalSignatures extends Gio.OutputStream.SignalSignatures {}
+        interface SignalSignatures extends Gio.OutputStream.SignalSignatures {
+            'notify::repository': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1518,14 +1536,17 @@ export namespace Ggit {
             signal: K,
             callback: BlobOutputStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BlobOutputStream.SignalSignatures>(
             signal: K,
             callback: BlobOutputStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BlobOutputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BlobOutputStream.SignalSignatures[K]>
+            ...args: BlobOutputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1540,7 +1561,9 @@ export namespace Ggit {
 
     namespace Branch {
         // Signal signatures
-        interface SignalSignatures extends Ref.SignalSignatures {}
+        interface SignalSignatures extends Ref.SignalSignatures {
+            'notify::native': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1562,8 +1585,14 @@ export namespace Ggit {
         // Signals
 
         connect<K extends keyof Branch.SignalSignatures>(signal: K, callback: Branch.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Branch.SignalSignatures>(signal: K, callback: Branch.SignalSignatures[K]): number;
-        emit<K extends keyof Branch.SignalSignatures>(signal: K, ...args: Parameters<Branch.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Branch.SignalSignatures>(
+            signal: K,
+            ...args: Branch.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1606,7 +1635,28 @@ export namespace Ggit {
 
     namespace CheckoutOptions {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::ancestor-label': GObject.Object.Notify;
+            'notify::ancestor-label': GObject.Object.Notify;
+            'notify::baseline': GObject.Object.Notify;
+            'notify::dir-mode': GObject.Object.Notify;
+            'notify::dir-mode': GObject.Object.Notify;
+            'notify::disable-filters': GObject.Object.Notify;
+            'notify::disable-filters': GObject.Object.Notify;
+            'notify::file-mode': GObject.Object.Notify;
+            'notify::file-mode': GObject.Object.Notify;
+            'notify::file-open-flags': GObject.Object.Notify;
+            'notify::file-open-flags': GObject.Object.Notify;
+            'notify::notify-flags': GObject.Object.Notify;
+            'notify::notify-flags': GObject.Object.Notify;
+            'notify::our-label': GObject.Object.Notify;
+            'notify::our-label': GObject.Object.Notify;
+            'notify::strategy': GObject.Object.Notify;
+            'notify::target-directory': GObject.Object.Notify;
+            'notify::target-directory': GObject.Object.Notify;
+            'notify::their-label': GObject.Object.Notify;
+            'notify::their-label': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1703,14 +1753,17 @@ export namespace Ggit {
             signal: K,
             callback: CheckoutOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CheckoutOptions.SignalSignatures>(
             signal: K,
             callback: CheckoutOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CheckoutOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CheckoutOptions.SignalSignatures[K]>
+            ...args: CheckoutOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1855,7 +1908,13 @@ export namespace Ggit {
 
     namespace CherryPickOptions {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::checkout-options': GObject.Object.Notify;
+            'notify::checkout-options': GObject.Object.Notify;
+            'notify::mainline': GObject.Object.Notify;
+            'notify::merge-options': GObject.Object.Notify;
+            'notify::merge-options': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1901,14 +1960,17 @@ export namespace Ggit {
             signal: K,
             callback: CherryPickOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CherryPickOptions.SignalSignatures>(
             signal: K,
             callback: CherryPickOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CherryPickOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CherryPickOptions.SignalSignatures[K]>
+            ...args: CherryPickOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1973,14 +2035,17 @@ export namespace Ggit {
             signal: K,
             callback: CloneOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CloneOptions.SignalSignatures>(
             signal: K,
             callback: CloneOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CloneOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CloneOptions.SignalSignatures[K]>
+            ...args: CloneOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -2038,7 +2103,9 @@ export namespace Ggit {
 
     namespace Commit {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::native': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2060,8 +2127,14 @@ export namespace Ggit {
         // Signals
 
         connect<K extends keyof Commit.SignalSignatures>(signal: K, callback: Commit.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Commit.SignalSignatures>(signal: K, callback: Commit.SignalSignatures[K]): number;
-        emit<K extends keyof Commit.SignalSignatures>(signal: K, ...args: Parameters<Commit.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Commit.SignalSignatures>(
+            signal: K,
+            ...args: Commit.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2152,7 +2225,10 @@ export namespace Ggit {
 
     namespace CommitParents {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::commit': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2187,14 +2263,17 @@ export namespace Ggit {
             signal: K,
             callback: CommitParents.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CommitParents.SignalSignatures>(
             signal: K,
             callback: CommitParents.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CommitParents.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CommitParents.SignalSignatures[K]>
+            ...args: CommitParents.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2219,7 +2298,9 @@ export namespace Ggit {
 
     namespace Config {
         // Signal signatures
-        interface SignalSignatures extends Native.SignalSignatures {}
+        interface SignalSignatures extends Native.SignalSignatures {
+            'notify::native': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2247,8 +2328,14 @@ export namespace Ggit {
         // Signals
 
         connect<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
-        emit<K extends keyof Config.SignalSignatures>(signal: K, ...args: Parameters<Config.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Config.SignalSignatures>(
+            signal: K,
+            ...args: Config.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2389,7 +2476,9 @@ export namespace Ggit {
 
     namespace Cred {
         // Signal signatures
-        interface SignalSignatures extends Native.SignalSignatures {}
+        interface SignalSignatures extends Native.SignalSignatures {
+            'notify::native': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2411,13 +2500,23 @@ export namespace Ggit {
         // Signals
 
         connect<K extends keyof Cred.SignalSignatures>(signal: K, callback: Cred.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Cred.SignalSignatures>(signal: K, callback: Cred.SignalSignatures[K]): number;
-        emit<K extends keyof Cred.SignalSignatures>(signal: K, ...args: Parameters<Cred.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Cred.SignalSignatures>(
+            signal: K,
+            ...args: Cred.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace CredPlaintext {
         // Signal signatures
-        interface SignalSignatures extends Cred.SignalSignatures {}
+        interface SignalSignatures extends Cred.SignalSignatures {
+            'notify::password': GObject.Object.Notify;
+            'notify::username': GObject.Object.Notify;
+            'notify::native': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2452,14 +2551,17 @@ export namespace Ggit {
             signal: K,
             callback: CredPlaintext.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CredPlaintext.SignalSignatures>(
             signal: K,
             callback: CredPlaintext.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CredPlaintext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CredPlaintext.SignalSignatures[K]>
+            ...args: CredPlaintext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2995,7 +3097,10 @@ export namespace Ggit {
 
     namespace CredSshInteractive {
         // Signal signatures
-        interface SignalSignatures extends Cred.SignalSignatures {}
+        interface SignalSignatures extends Cred.SignalSignatures {
+            'notify::username': GObject.Object.Notify;
+            'notify::native': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3028,14 +3133,17 @@ export namespace Ggit {
             signal: K,
             callback: CredSshInteractive.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CredSshInteractive.SignalSignatures>(
             signal: K,
             callback: CredSshInteractive.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CredSshInteractive.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CredSshInteractive.SignalSignatures[K]>
+            ...args: CredSshInteractive.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -3574,7 +3682,10 @@ export namespace Ggit {
 
     namespace CredSshKeyFromAgent {
         // Signal signatures
-        interface SignalSignatures extends Cred.SignalSignatures {}
+        interface SignalSignatures extends Cred.SignalSignatures {
+            'notify::username': GObject.Object.Notify;
+            'notify::native': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3607,14 +3718,17 @@ export namespace Ggit {
             signal: K,
             callback: CredSshKeyFromAgent.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CredSshKeyFromAgent.SignalSignatures>(
             signal: K,
             callback: CredSshKeyFromAgent.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CredSshKeyFromAgent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CredSshKeyFromAgent.SignalSignatures[K]>
+            ...args: CredSshKeyFromAgent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4153,7 +4267,10 @@ export namespace Ggit {
 
     namespace Diff {
         // Signal signatures
-        interface SignalSignatures extends Native.SignalSignatures {}
+        interface SignalSignatures extends Native.SignalSignatures {
+            'notify::repository': GObject.Object.Notify;
+            'notify::native': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4215,8 +4332,14 @@ export namespace Ggit {
         // Signals
 
         connect<K extends keyof Diff.SignalSignatures>(signal: K, callback: Diff.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Diff.SignalSignatures>(signal: K, callback: Diff.SignalSignatures[K]): number;
-        emit<K extends keyof Diff.SignalSignatures>(signal: K, ...args: Parameters<Diff.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Diff.SignalSignatures>(
+            signal: K,
+            ...args: Diff.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -4327,7 +4450,18 @@ export namespace Ggit {
 
     namespace DiffFindOptions {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::copy-threshold': GObject.Object.Notify;
+            'notify::copy-threshold': GObject.Object.Notify;
+            'notify::flags': GObject.Object.Notify;
+            'notify::metric': GObject.Object.Notify;
+            'notify::rename-from-rewrite-threshold': GObject.Object.Notify;
+            'notify::rename-from-rewrite-threshold': GObject.Object.Notify;
+            'notify::rename-limit': GObject.Object.Notify;
+            'notify::rename-limit': GObject.Object.Notify;
+            'notify::rename-threshold': GObject.Object.Notify;
+            'notify::rename-threshold': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4391,14 +4525,17 @@ export namespace Ggit {
             signal: K,
             callback: DiffFindOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DiffFindOptions.SignalSignatures>(
             signal: K,
             callback: DiffFindOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DiffFindOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DiffFindOptions.SignalSignatures[K]>
+            ...args: DiffFindOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4466,7 +4603,17 @@ export namespace Ggit {
 
     namespace DiffFormatEmailOptions {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::author': GObject.Object.Notify;
+            'notify::body': GObject.Object.Notify;
+            'notify::flags': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::patch-number': GObject.Object.Notify;
+            'notify::patch-number': GObject.Object.Notify;
+            'notify::summary': GObject.Object.Notify;
+            'notify::total-patches': GObject.Object.Notify;
+            'notify::total-patches': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4521,14 +4668,17 @@ export namespace Ggit {
             signal: K,
             callback: DiffFormatEmailOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DiffFormatEmailOptions.SignalSignatures>(
             signal: K,
             callback: DiffFormatEmailOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DiffFormatEmailOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DiffFormatEmailOptions.SignalSignatures[K]>
+            ...args: DiffFormatEmailOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4606,7 +4756,18 @@ export namespace Ggit {
 
     namespace DiffOptions {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::flags': GObject.Object.Notify;
+            'notify::n-context-lines': GObject.Object.Notify;
+            'notify::n-context-lines': GObject.Object.Notify;
+            'notify::n-interhunk-lines': GObject.Object.Notify;
+            'notify::n-interhunk-lines': GObject.Object.Notify;
+            'notify::new-prefix': GObject.Object.Notify;
+            'notify::new-prefix': GObject.Object.Notify;
+            'notify::old-prefix': GObject.Object.Notify;
+            'notify::old-prefix': GObject.Object.Notify;
+            'notify::pathspec': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4670,14 +4831,17 @@ export namespace Ggit {
             signal: K,
             callback: DiffOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DiffOptions.SignalSignatures>(
             signal: K,
             callback: DiffOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DiffOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DiffOptions.SignalSignatures[K]>
+            ...args: DiffOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4745,7 +4909,10 @@ export namespace Ggit {
 
     namespace Index {
         // Signal signatures
-        interface SignalSignatures extends Native.SignalSignatures {}
+        interface SignalSignatures extends Native.SignalSignatures {
+            'notify::file': GObject.Object.Notify;
+            'notify::native': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4773,8 +4940,14 @@ export namespace Ggit {
         // Signals
 
         connect<K extends keyof Index.SignalSignatures>(signal: K, callback: Index.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Index.SignalSignatures>(signal: K, callback: Index.SignalSignatures[K]): number;
-        emit<K extends keyof Index.SignalSignatures>(signal: K, ...args: Parameters<Index.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Index.SignalSignatures>(
+            signal: K,
+            ...args: Index.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -5404,7 +5577,9 @@ export namespace Ggit {
 
     namespace Mailmap {
         // Signal signatures
-        interface SignalSignatures extends Native.SignalSignatures {}
+        interface SignalSignatures extends Native.SignalSignatures {
+            'notify::native': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5430,14 +5605,17 @@ export namespace Ggit {
         // Signals
 
         connect<K extends keyof Mailmap.SignalSignatures>(signal: K, callback: Mailmap.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Mailmap.SignalSignatures>(
             signal: K,
             callback: Mailmap.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Mailmap.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Mailmap.SignalSignatures[K]>
+            ...args: Mailmap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5476,7 +5654,9 @@ export namespace Ggit {
 
     namespace Native {
         // Signal signatures
-        interface SignalSignatures extends ObjectFactoryBase.SignalSignatures {}
+        interface SignalSignatures extends ObjectFactoryBase.SignalSignatures {
+            'notify::native': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5504,13 +5684,21 @@ export namespace Ggit {
         // Signals
 
         connect<K extends keyof Native.SignalSignatures>(signal: K, callback: Native.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Native.SignalSignatures>(signal: K, callback: Native.SignalSignatures[K]): number;
-        emit<K extends keyof Native.SignalSignatures>(signal: K, ...args: Parameters<Native.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Native.SignalSignatures>(
+            signal: K,
+            ...args: Native.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Object {
         // Signal signatures
-        interface SignalSignatures extends Native.SignalSignatures {}
+        interface SignalSignatures extends Native.SignalSignatures {
+            'notify::native': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5532,8 +5720,14 @@ export namespace Ggit {
         // Signals
 
         connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
-        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            ...args: Object.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5576,14 +5770,17 @@ export namespace Ggit {
             signal: K,
             callback: ObjectFactory.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ObjectFactory.SignalSignatures>(
             signal: K,
             callback: ObjectFactory.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ObjectFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ObjectFactory.SignalSignatures[K]>
+            ...args: ObjectFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -5649,14 +5846,17 @@ export namespace Ggit {
             signal: K,
             callback: ObjectFactoryBase.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ObjectFactoryBase.SignalSignatures>(
             signal: K,
             callback: ObjectFactoryBase.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ObjectFactoryBase.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ObjectFactoryBase.SignalSignatures[K]>
+            ...args: ObjectFactoryBase.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace ProxyOptions {
@@ -5688,19 +5888,25 @@ export namespace Ggit {
             signal: K,
             callback: ProxyOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ProxyOptions.SignalSignatures>(
             signal: K,
             callback: ProxyOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ProxyOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProxyOptions.SignalSignatures[K]>
+            ...args: ProxyOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace PushOptions {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::callbacks': GObject.Object.Notify;
+            'notify::parallelism': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5737,14 +5943,17 @@ export namespace Ggit {
             signal: K,
             callback: PushOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PushOptions.SignalSignatures>(
             signal: K,
             callback: PushOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PushOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PushOptions.SignalSignatures[K]>
+            ...args: PushOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5776,7 +5985,9 @@ export namespace Ggit {
 
     namespace Rebase {
         // Signal signatures
-        interface SignalSignatures extends Native.SignalSignatures {}
+        interface SignalSignatures extends Native.SignalSignatures {
+            'notify::native': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5798,8 +6009,14 @@ export namespace Ggit {
         // Signals
 
         connect<K extends keyof Rebase.SignalSignatures>(signal: K, callback: Rebase.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Rebase.SignalSignatures>(signal: K, callback: Rebase.SignalSignatures[K]): number;
-        emit<K extends keyof Rebase.SignalSignatures>(signal: K, ...args: Parameters<Rebase.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Rebase.SignalSignatures>(
+            signal: K,
+            ...args: Rebase.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5856,7 +6073,9 @@ export namespace Ggit {
 
     namespace Ref {
         // Signal signatures
-        interface SignalSignatures extends Native.SignalSignatures {}
+        interface SignalSignatures extends Native.SignalSignatures {
+            'notify::native': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5878,8 +6097,14 @@ export namespace Ggit {
         // Signals
 
         connect<K extends keyof Ref.SignalSignatures>(signal: K, callback: Ref.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Ref.SignalSignatures>(signal: K, callback: Ref.SignalSignatures[K]): number;
-        emit<K extends keyof Ref.SignalSignatures>(signal: K, ...args: Parameters<Ref.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Ref.SignalSignatures>(
+            signal: K,
+            ...args: Ref.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -6052,7 +6277,9 @@ export namespace Ggit {
 
     namespace Remote {
         // Signal signatures
-        interface SignalSignatures extends Native.SignalSignatures {}
+        interface SignalSignatures extends Native.SignalSignatures {
+            'notify::native': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6078,8 +6305,14 @@ export namespace Ggit {
         // Signals
 
         connect<K extends keyof Remote.SignalSignatures>(signal: K, callback: Remote.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Remote.SignalSignatures>(signal: K, callback: Remote.SignalSignatures[K]): number;
-        emit<K extends keyof Remote.SignalSignatures>(signal: K, ...args: Parameters<Remote.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Remote.SignalSignatures>(
+            signal: K,
+            ...args: Remote.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -6236,14 +6469,17 @@ export namespace Ggit {
             signal: K,
             callback: RemoteCallbacks.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RemoteCallbacks.SignalSignatures>(
             signal: K,
             callback: RemoteCallbacks.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RemoteCallbacks.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RemoteCallbacks.SignalSignatures[K]>
+            ...args: RemoteCallbacks.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -6256,7 +6492,18 @@ export namespace Ggit {
 
     namespace Repository {
         // Signal signatures
-        interface SignalSignatures extends Native.SignalSignatures {}
+        interface SignalSignatures extends Native.SignalSignatures {
+            'notify::clone-options': GObject.Object.Notify;
+            'notify::clone-options': GObject.Object.Notify;
+            'notify::head': GObject.Object.Notify;
+            'notify::init': GObject.Object.Notify;
+            'notify::is-bare': GObject.Object.Notify;
+            'notify::is-bare': GObject.Object.Notify;
+            'notify::location': GObject.Object.Notify;
+            'notify::url': GObject.Object.Notify;
+            'notify::workdir': GObject.Object.Notify;
+            'notify::native': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6306,14 +6553,17 @@ export namespace Ggit {
             signal: K,
             callback: Repository.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Repository.SignalSignatures>(
             signal: K,
             callback: Repository.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Repository.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Repository.SignalSignatures[K]>
+            ...args: Repository.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -7657,7 +7907,10 @@ export namespace Ggit {
 
     namespace RevisionWalker {
         // Signal signatures
-        interface SignalSignatures extends Native.SignalSignatures {}
+        interface SignalSignatures extends Native.SignalSignatures {
+            'notify::repository': GObject.Object.Notify;
+            'notify::native': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -7691,14 +7944,17 @@ export namespace Ggit {
             signal: K,
             callback: RevisionWalker.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RevisionWalker.SignalSignatures>(
             signal: K,
             callback: RevisionWalker.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RevisionWalker.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RevisionWalker.SignalSignatures[K]>
+            ...args: RevisionWalker.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -8336,7 +8592,10 @@ export namespace Ggit {
 
     namespace Signature {
         // Signal signatures
-        interface SignalSignatures extends Native.SignalSignatures {}
+        interface SignalSignatures extends Native.SignalSignatures {
+            'notify::encoding': GObject.Object.Notify;
+            'notify::native': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8368,14 +8627,17 @@ export namespace Ggit {
         // Signals
 
         connect<K extends keyof Signature.SignalSignatures>(signal: K, callback: Signature.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Signature.SignalSignatures>(
             signal: K,
             callback: Signature.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Signature.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Signature.SignalSignatures[K]>
+            ...args: Signature.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -8409,7 +8671,12 @@ export namespace Ggit {
 
     namespace SubmoduleUpdateOptions {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::checkout-options': GObject.Object.Notify;
+            'notify::checkout-options': GObject.Object.Notify;
+            'notify::fetch-options': GObject.Object.Notify;
+            'notify::fetch-options': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8452,14 +8719,17 @@ export namespace Ggit {
             signal: K,
             callback: SubmoduleUpdateOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SubmoduleUpdateOptions.SignalSignatures>(
             signal: K,
             callback: SubmoduleUpdateOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SubmoduleUpdateOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SubmoduleUpdateOptions.SignalSignatures[K]>
+            ...args: SubmoduleUpdateOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -8483,7 +8753,9 @@ export namespace Ggit {
 
     namespace Tag {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::native': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8505,8 +8777,14 @@ export namespace Ggit {
         // Signals
 
         connect<K extends keyof Tag.SignalSignatures>(signal: K, callback: Tag.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Tag.SignalSignatures>(signal: K, callback: Tag.SignalSignatures[K]): number;
-        emit<K extends keyof Tag.SignalSignatures>(signal: K, ...args: Parameters<Tag.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Tag.SignalSignatures>(
+            signal: K,
+            ...args: Tag.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -8553,7 +8831,9 @@ export namespace Ggit {
 
     namespace Tree {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::native': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8575,8 +8855,14 @@ export namespace Ggit {
         // Signals
 
         connect<K extends keyof Tree.SignalSignatures>(signal: K, callback: Tree.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Tree.SignalSignatures>(signal: K, callback: Tree.SignalSignatures[K]): number;
-        emit<K extends keyof Tree.SignalSignatures>(signal: K, ...args: Parameters<Tree.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Tree.SignalSignatures>(
+            signal: K,
+            ...args: Tree.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -8621,7 +8907,9 @@ export namespace Ggit {
 
     namespace TreeBuilder {
         // Signal signatures
-        interface SignalSignatures extends Native.SignalSignatures {}
+        interface SignalSignatures extends Native.SignalSignatures {
+            'notify::native': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8646,14 +8934,17 @@ export namespace Ggit {
             signal: K,
             callback: TreeBuilder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TreeBuilder.SignalSignatures>(
             signal: K,
             callback: TreeBuilder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TreeBuilder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TreeBuilder.SignalSignatures[K]>
+            ...args: TreeBuilder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

@@ -48,14 +48,17 @@ export namespace Grss {
             signal: K,
             callback: FeedAtomFormatter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FeedAtomFormatter.SignalSignatures>(
             signal: K,
             callback: FeedAtomFormatter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FeedAtomFormatter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FeedAtomFormatter.SignalSignatures[K]>
+            ...args: FeedAtomFormatter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace FeedChannel {
@@ -92,14 +95,17 @@ export namespace Grss {
             signal: K,
             callback: FeedChannel.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FeedChannel.SignalSignatures>(
             signal: K,
             callback: FeedChannel.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FeedChannel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FeedChannel.SignalSignatures[K]>
+            ...args: FeedChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -420,14 +426,17 @@ export namespace Grss {
             signal: K,
             callback: FeedEnclosure.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FeedEnclosure.SignalSignatures>(
             signal: K,
             callback: FeedEnclosure.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FeedEnclosure.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FeedEnclosure.SignalSignatures[K]>
+            ...args: FeedEnclosure.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -510,14 +519,17 @@ export namespace Grss {
             signal: K,
             callback: FeedFormatter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FeedFormatter.SignalSignatures>(
             signal: K,
             callback: FeedFormatter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FeedFormatter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FeedFormatter.SignalSignatures[K]>
+            ...args: FeedFormatter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -593,14 +605,17 @@ export namespace Grss {
         // Signals
 
         connect<K extends keyof FeedItem.SignalSignatures>(signal: K, callback: FeedItem.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FeedItem.SignalSignatures>(
             signal: K,
             callback: FeedItem.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FeedItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FeedItem.SignalSignatures[K]>
+            ...args: FeedItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -796,14 +811,17 @@ export namespace Grss {
             signal: K,
             callback: FeedParser.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FeedParser.SignalSignatures>(
             signal: K,
             callback: FeedParser.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FeedParser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FeedParser.SignalSignatures[K]>
+            ...args: FeedParser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -852,14 +870,17 @@ export namespace Grss {
             signal: K,
             callback: FeedRssFormatter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FeedRssFormatter.SignalSignatures>(
             signal: K,
             callback: FeedRssFormatter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FeedRssFormatter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FeedRssFormatter.SignalSignatures[K]>
+            ...args: FeedRssFormatter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace FeedsGroup {
@@ -888,14 +909,17 @@ export namespace Grss {
             signal: K,
             callback: FeedsGroup.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FeedsGroup.SignalSignatures>(
             signal: K,
             callback: FeedsGroup.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FeedsGroup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FeedsGroup.SignalSignatures[K]>
+            ...args: FeedsGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -962,14 +986,17 @@ export namespace Grss {
         // Signals
 
         connect<K extends keyof FeedsPool.SignalSignatures>(signal: K, callback: FeedsPool.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FeedsPool.SignalSignatures>(
             signal: K,
             callback: FeedsPool.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FeedsPool.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FeedsPool.SignalSignatures[K]>
+            ...args: FeedsPool.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1054,14 +1081,17 @@ export namespace Grss {
             signal: K,
             callback: FeedsPublisher.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FeedsPublisher.SignalSignatures>(
             signal: K,
             callback: FeedsPublisher.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FeedsPublisher.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FeedsPublisher.SignalSignatures[K]>
+            ...args: FeedsPublisher.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1146,14 +1176,17 @@ export namespace Grss {
             signal: K,
             callback: FeedsStore.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FeedsStore.SignalSignatures>(
             signal: K,
             callback: FeedsStore.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FeedsStore.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FeedsStore.SignalSignatures[K]>
+            ...args: FeedsStore.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1252,14 +1285,17 @@ export namespace Grss {
             signal: K,
             callback: FeedsSubscriber.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FeedsSubscriber.SignalSignatures>(
             signal: K,
             callback: FeedsSubscriber.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FeedsSubscriber.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FeedsSubscriber.SignalSignatures[K]>
+            ...args: FeedsSubscriber.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 

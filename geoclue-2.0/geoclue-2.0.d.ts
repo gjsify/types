@@ -82,7 +82,36 @@ export namespace Geoclue {
     }
     namespace ClientProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::active': GObject.Object.Notify;
+            'notify::desktop-id': GObject.Object.Notify;
+            'notify::desktop-id': GObject.Object.Notify;
+            'notify::distance-threshold': GObject.Object.Notify;
+            'notify::distance-threshold': GObject.Object.Notify;
+            'notify::location': GObject.Object.Notify;
+            'notify::requested-accuracy-level': GObject.Object.Notify;
+            'notify::requested-accuracy-level': GObject.Object.Notify;
+            'notify::time-threshold': GObject.Object.Notify;
+            'notify::time-threshold': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -144,14 +173,17 @@ export namespace Geoclue {
             signal: K,
             callback: ClientProxy.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientProxy.SignalSignatures>(
             signal: K,
             callback: ClientProxy.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientProxy.SignalSignatures[K]>
+            ...args: ClientProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1244,7 +1276,20 @@ export namespace Geoclue {
 
     namespace ClientSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::active': GObject.Object.Notify;
+            'notify::desktop-id': GObject.Object.Notify;
+            'notify::desktop-id': GObject.Object.Notify;
+            'notify::distance-threshold': GObject.Object.Notify;
+            'notify::distance-threshold': GObject.Object.Notify;
+            'notify::location': GObject.Object.Notify;
+            'notify::requested-accuracy-level': GObject.Object.Notify;
+            'notify::requested-accuracy-level': GObject.Object.Notify;
+            'notify::time-threshold': GObject.Object.Notify;
+            'notify::time-threshold': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1274,14 +1319,17 @@ export namespace Geoclue {
             signal: K,
             callback: ClientSkeleton.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientSkeleton.SignalSignatures>(
             signal: K,
             callback: ClientSkeleton.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientSkeleton.SignalSignatures[K]>
+            ...args: ClientSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         /**
@@ -1948,7 +1996,34 @@ export namespace Geoclue {
 
     namespace LocationProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::accuracy': GObject.Object.Notify;
+            'notify::altitude': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::heading': GObject.Object.Notify;
+            'notify::latitude': GObject.Object.Notify;
+            'notify::longitude': GObject.Object.Notify;
+            'notify::speed': GObject.Object.Notify;
+            'notify::timestamp': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2010,14 +2085,17 @@ export namespace Geoclue {
             signal: K,
             callback: LocationProxy.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LocationProxy.SignalSignatures>(
             signal: K,
             callback: LocationProxy.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LocationProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LocationProxy.SignalSignatures[K]>
+            ...args: LocationProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2892,7 +2970,18 @@ export namespace Geoclue {
 
     namespace LocationSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::accuracy': GObject.Object.Notify;
+            'notify::altitude': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::heading': GObject.Object.Notify;
+            'notify::latitude': GObject.Object.Notify;
+            'notify::longitude': GObject.Object.Notify;
+            'notify::speed': GObject.Object.Notify;
+            'notify::timestamp': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2922,14 +3011,17 @@ export namespace Geoclue {
             signal: K,
             callback: LocationSkeleton.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LocationSkeleton.SignalSignatures>(
             signal: K,
             callback: LocationSkeleton.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LocationSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LocationSkeleton.SignalSignatures[K]>
+            ...args: LocationSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         /**
@@ -3467,7 +3559,30 @@ export namespace Geoclue {
 
     namespace ManagerProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::available-accuracy-level': GObject.Object.Notify;
+            'notify::available-accuracy-level': GObject.Object.Notify;
+            'notify::in-use': GObject.Object.Notify;
+            'notify::in-use': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3529,14 +3644,17 @@ export namespace Geoclue {
             signal: K,
             callback: ManagerProxy.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ManagerProxy.SignalSignatures>(
             signal: K,
             callback: ManagerProxy.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ManagerProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ManagerProxy.SignalSignatures[K]>
+            ...args: ManagerProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -4619,7 +4737,14 @@ export namespace Geoclue {
 
     namespace ManagerSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::available-accuracy-level': GObject.Object.Notify;
+            'notify::available-accuracy-level': GObject.Object.Notify;
+            'notify::in-use': GObject.Object.Notify;
+            'notify::in-use': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4649,14 +4774,17 @@ export namespace Geoclue {
             signal: K,
             callback: ManagerSkeleton.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ManagerSkeleton.SignalSignatures>(
             signal: K,
             callback: ManagerSkeleton.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ManagerSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ManagerSkeleton.SignalSignatures[K]>
+            ...args: ManagerSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         /**
@@ -5402,7 +5530,18 @@ export namespace Geoclue {
 
     namespace Simple {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::accuracy-level': GObject.Object.Notify;
+            'notify::accuracy-level': GObject.Object.Notify;
+            'notify::client': GObject.Object.Notify;
+            'notify::desktop-id': GObject.Object.Notify;
+            'notify::desktop-id': GObject.Object.Notify;
+            'notify::distance-threshold': GObject.Object.Notify;
+            'notify::distance-threshold': GObject.Object.Notify;
+            'notify::location': GObject.Object.Notify;
+            'notify::time-threshold': GObject.Object.Notify;
+            'notify::time-threshold': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5513,8 +5652,14 @@ export namespace Geoclue {
         // Signals
 
         connect<K extends keyof Simple.SignalSignatures>(signal: K, callback: Simple.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Simple.SignalSignatures>(signal: K, callback: Simple.SignalSignatures[K]): number;
-        emit<K extends keyof Simple.SignalSignatures>(signal: K, ...args: Parameters<Simple.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Simple.SignalSignatures>(
+            signal: K,
+            ...args: Simple.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 

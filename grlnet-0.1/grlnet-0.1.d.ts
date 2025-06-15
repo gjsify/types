@@ -46,7 +46,13 @@ export namespace GrlNet {
     }
     namespace Wc {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::cache': GObject.Object.Notify;
+            'notify::cache-size': GObject.Object.Notify;
+            'notify::cache-size': GObject.Object.Notify;
+            'notify::loglevel': GObject.Object.Notify;
+            'notify::throttling': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -86,8 +92,14 @@ export namespace GrlNet {
         // Signals
 
         connect<K extends keyof Wc.SignalSignatures>(signal: K, callback: Wc.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Wc.SignalSignatures>(signal: K, callback: Wc.SignalSignatures[K]): number;
-        emit<K extends keyof Wc.SignalSignatures>(signal: K, ...args: Parameters<Wc.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Wc.SignalSignatures>(
+            signal: K,
+            ...args: Wc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 

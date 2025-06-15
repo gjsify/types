@@ -521,14 +521,17 @@ export namespace GIRepository {
         // Signals
 
         connect<K extends keyof ArgInfo.SignalSignatures>(signal: K, callback: ArgInfo.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ArgInfo.SignalSignatures>(
             signal: K,
             callback: ArgInfo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ArgInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ArgInfo.SignalSignatures[K]>
+            ...args: ArgInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -668,14 +671,17 @@ export namespace GIRepository {
         // Signals
 
         connect<K extends keyof BaseInfo.SignalSignatures>(signal: K, callback: BaseInfo.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BaseInfo.SignalSignatures>(
             signal: K,
             callback: BaseInfo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BaseInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BaseInfo.SignalSignatures[K]>
+            ...args: BaseInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -815,14 +821,17 @@ export namespace GIRepository {
             signal: K,
             callback: CallableInfo.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CallableInfo.SignalSignatures>(
             signal: K,
             callback: CallableInfo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CallableInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CallableInfo.SignalSignatures[K]>
+            ...args: CallableInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -991,14 +1000,17 @@ export namespace GIRepository {
             signal: K,
             callback: CallbackInfo.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CallbackInfo.SignalSignatures>(
             signal: K,
             callback: CallbackInfo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CallbackInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CallbackInfo.SignalSignatures[K]>
+            ...args: CallbackInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace ConstantInfo {
@@ -1026,14 +1038,17 @@ export namespace GIRepository {
             signal: K,
             callback: ConstantInfo.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConstantInfo.SignalSignatures>(
             signal: K,
             callback: ConstantInfo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConstantInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConstantInfo.SignalSignatures[K]>
+            ...args: ConstantInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1068,14 +1083,17 @@ export namespace GIRepository {
         // Signals
 
         connect<K extends keyof EnumInfo.SignalSignatures>(signal: K, callback: EnumInfo.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof EnumInfo.SignalSignatures>(
             signal: K,
             callback: EnumInfo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof EnumInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EnumInfo.SignalSignatures[K]>
+            ...args: EnumInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1148,14 +1166,17 @@ export namespace GIRepository {
         // Signals
 
         connect<K extends keyof FieldInfo.SignalSignatures>(signal: K, callback: FieldInfo.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FieldInfo.SignalSignatures>(
             signal: K,
             callback: FieldInfo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FieldInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FieldInfo.SignalSignatures[K]>
+            ...args: FieldInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1209,14 +1230,17 @@ export namespace GIRepository {
         // Signals
 
         connect<K extends keyof FlagsInfo.SignalSignatures>(signal: K, callback: FlagsInfo.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FlagsInfo.SignalSignatures>(
             signal: K,
             callback: FlagsInfo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FlagsInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FlagsInfo.SignalSignatures[K]>
+            ...args: FlagsInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace FunctionInfo {
@@ -1246,14 +1270,17 @@ export namespace GIRepository {
             signal: K,
             callback: FunctionInfo.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FunctionInfo.SignalSignatures>(
             signal: K,
             callback: FunctionInfo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FunctionInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FunctionInfo.SignalSignatures[K]>
+            ...args: FunctionInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1313,14 +1340,17 @@ export namespace GIRepository {
             signal: K,
             callback: InterfaceInfo.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InterfaceInfo.SignalSignatures>(
             signal: K,
             callback: InterfaceInfo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InterfaceInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InterfaceInfo.SignalSignatures[K]>
+            ...args: InterfaceInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1455,14 +1485,17 @@ export namespace GIRepository {
             signal: K,
             callback: ObjectInfo.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ObjectInfo.SignalSignatures>(
             signal: K,
             callback: ObjectInfo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ObjectInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ObjectInfo.SignalSignatures[K]>
+            ...args: ObjectInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1715,14 +1748,17 @@ export namespace GIRepository {
             signal: K,
             callback: PropertyInfo.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PropertyInfo.SignalSignatures>(
             signal: K,
             callback: PropertyInfo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PropertyInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PropertyInfo.SignalSignatures[K]>
+            ...args: PropertyInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1802,14 +1838,17 @@ export namespace GIRepository {
             signal: K,
             callback: RegisteredTypeInfo.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RegisteredTypeInfo.SignalSignatures>(
             signal: K,
             callback: RegisteredTypeInfo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RegisteredTypeInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RegisteredTypeInfo.SignalSignatures[K]>
+            ...args: RegisteredTypeInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1931,14 +1970,17 @@ export namespace GIRepository {
             signal: K,
             callback: Repository.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Repository.SignalSignatures>(
             signal: K,
             callback: Repository.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Repository.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Repository.SignalSignatures[K]>
+            ...args: Repository.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2280,14 +2322,17 @@ export namespace GIRepository {
             signal: K,
             callback: SignalInfo.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SignalInfo.SignalSignatures>(
             signal: K,
             callback: SignalInfo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SignalInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SignalInfo.SignalSignatures[K]>
+            ...args: SignalInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2338,14 +2383,17 @@ export namespace GIRepository {
             signal: K,
             callback: StructInfo.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StructInfo.SignalSignatures>(
             signal: K,
             callback: StructInfo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StructInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StructInfo.SignalSignatures[K]>
+            ...args: StructInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2452,14 +2500,17 @@ export namespace GIRepository {
         // Signals
 
         connect<K extends keyof TypeInfo.SignalSignatures>(signal: K, callback: TypeInfo.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TypeInfo.SignalSignatures>(
             signal: K,
             callback: TypeInfo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TypeInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TypeInfo.SignalSignatures[K]>
+            ...args: TypeInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2603,14 +2654,17 @@ export namespace GIRepository {
         // Signals
 
         connect<K extends keyof UnionInfo.SignalSignatures>(signal: K, callback: UnionInfo.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UnionInfo.SignalSignatures>(
             signal: K,
             callback: UnionInfo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UnionInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UnionInfo.SignalSignatures[K]>
+            ...args: UnionInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2712,14 +2766,17 @@ export namespace GIRepository {
             signal: K,
             callback: UnresolvedInfo.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UnresolvedInfo.SignalSignatures>(
             signal: K,
             callback: UnresolvedInfo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UnresolvedInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UnresolvedInfo.SignalSignatures[K]>
+            ...args: UnresolvedInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace VFuncInfo {
@@ -2743,14 +2800,17 @@ export namespace GIRepository {
         // Signals
 
         connect<K extends keyof VFuncInfo.SignalSignatures>(signal: K, callback: VFuncInfo.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VFuncInfo.SignalSignatures>(
             signal: K,
             callback: VFuncInfo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VFuncInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VFuncInfo.SignalSignatures[K]>
+            ...args: VFuncInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2815,14 +2875,17 @@ export namespace GIRepository {
         // Signals
 
         connect<K extends keyof ValueInfo.SignalSignatures>(signal: K, callback: ValueInfo.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ValueInfo.SignalSignatures>(
             signal: K,
             callback: ValueInfo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ValueInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ValueInfo.SignalSignatures[K]>
+            ...args: ValueInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

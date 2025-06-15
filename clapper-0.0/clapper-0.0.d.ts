@@ -265,7 +265,24 @@ export namespace Clapper {
     function init_check(argv?: string[] | null): [boolean, string[] | null];
     namespace AudioStream {
         // Signal signatures
-        interface SignalSignatures extends Stream.SignalSignatures {}
+        interface SignalSignatures extends Stream.SignalSignatures {
+            'notify::bitrate': GObject.Object.Notify;
+            'notify::channels': GObject.Object.Notify;
+            'notify::codec': GObject.Object.Notify;
+            'notify::lang-code': GObject.Object.Notify;
+            'notify::lang-code': GObject.Object.Notify;
+            'notify::lang-name': GObject.Object.Notify;
+            'notify::lang-name': GObject.Object.Notify;
+            'notify::sample-format': GObject.Object.Notify;
+            'notify::sample-format': GObject.Object.Notify;
+            'notify::sample-rate': GObject.Object.Notify;
+            'notify::sample-rate': GObject.Object.Notify;
+            'notify::stream-type': GObject.Object.Notify;
+            'notify::stream-type': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -349,14 +366,17 @@ export namespace Clapper {
             signal: K,
             callback: AudioStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AudioStream.SignalSignatures>(
             signal: K,
             callback: AudioStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AudioStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AudioStream.SignalSignatures[K]>
+            ...args: AudioStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -402,7 +422,12 @@ export namespace Clapper {
 
     namespace Discoverer {
         // Signal signatures
-        interface SignalSignatures extends Feature.SignalSignatures {}
+        interface SignalSignatures extends Feature.SignalSignatures {
+            'notify::discovery-mode': GObject.Object.Notify;
+            'notify::discovery-mode': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -461,14 +486,17 @@ export namespace Clapper {
             signal: K,
             callback: Discoverer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Discoverer.SignalSignatures>(
             signal: K,
             callback: Discoverer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Discoverer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Discoverer.SignalSignatures[K]>
+            ...args: Discoverer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -486,7 +514,10 @@ export namespace Clapper {
 
     namespace Feature {
         // Signal signatures
-        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -517,14 +548,17 @@ export namespace Clapper {
         // Signals
 
         connect<K extends keyof Feature.SignalSignatures>(signal: K, callback: Feature.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Feature.SignalSignatures>(
             signal: K,
             callback: Feature.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Feature.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Feature.SignalSignatures[K]>
+            ...args: Feature.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -620,7 +654,10 @@ export namespace Clapper {
 
     namespace Harvest {
         // Signal signatures
-        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -642,14 +679,17 @@ export namespace Clapper {
         // Signals
 
         connect<K extends keyof Harvest.SignalSignatures>(signal: K, callback: Harvest.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Harvest.SignalSignatures>(
             signal: K,
             callback: Harvest.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Harvest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Harvest.SignalSignatures[K]>
+            ...args: Harvest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -715,7 +755,15 @@ export namespace Clapper {
 
     namespace Marker {
         // Signal signatures
-        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            'notify::end': GObject.Object.Notify;
+            'notify::marker-type': GObject.Object.Notify;
+            'notify::marker-type': GObject.Object.Notify;
+            'notify::start': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -803,8 +851,14 @@ export namespace Clapper {
         // Signals
 
         connect<K extends keyof Marker.SignalSignatures>(signal: K, callback: Marker.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Marker.SignalSignatures>(signal: K, callback: Marker.SignalSignatures[K]): number;
-        emit<K extends keyof Marker.SignalSignatures>(signal: K, ...args: Parameters<Marker.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Marker.SignalSignatures>(
+            signal: K,
+            ...args: Marker.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -832,7 +886,20 @@ export namespace Clapper {
 
     namespace MediaItem {
         // Signal signatures
-        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            'notify::cache-location': GObject.Object.Notify;
+            'notify::cache-location': GObject.Object.Notify;
+            'notify::container-format': GObject.Object.Notify;
+            'notify::container-format': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::suburi': GObject.Object.Notify;
+            'notify::timeline': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::uri': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -918,14 +985,17 @@ export namespace Clapper {
         // Signals
 
         connect<K extends keyof MediaItem.SignalSignatures>(signal: K, callback: MediaItem.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MediaItem.SignalSignatures>(
             signal: K,
             callback: MediaItem.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MediaItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaItem.SignalSignatures[K]>
+            ...args: MediaItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -979,7 +1049,19 @@ export namespace Clapper {
 
     namespace Mpris {
         // Signal signatures
-        interface SignalSignatures extends Feature.SignalSignatures {}
+        interface SignalSignatures extends Feature.SignalSignatures {
+            'notify::desktop-entry': GObject.Object.Notify;
+            'notify::desktop-entry': GObject.Object.Notify;
+            'notify::fallback-art-url': GObject.Object.Notify;
+            'notify::fallback-art-url': GObject.Object.Notify;
+            'notify::identity': GObject.Object.Notify;
+            'notify::own-name': GObject.Object.Notify;
+            'notify::own-name': GObject.Object.Notify;
+            'notify::queue-controllable': GObject.Object.Notify;
+            'notify::queue-controllable': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1071,8 +1153,14 @@ export namespace Clapper {
         // Signals
 
         connect<K extends keyof Mpris.SignalSignatures>(signal: K, callback: Mpris.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Mpris.SignalSignatures>(signal: K, callback: Mpris.SignalSignatures[K]): number;
-        emit<K extends keyof Mpris.SignalSignatures>(signal: K, ...args: Parameters<Mpris.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Mpris.SignalSignatures>(
+            signal: K,
+            ...args: Mpris.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1135,6 +1223,57 @@ export namespace Clapper {
             'missing-plugin': MissingPlugin;
             'seek-done': SeekDone;
             warning: Warning;
+            'notify::adaptive-bandwidth': GObject.Object.Notify;
+            'notify::adaptive-bandwidth': GObject.Object.Notify;
+            'notify::adaptive-max-bitrate': GObject.Object.Notify;
+            'notify::adaptive-max-bitrate': GObject.Object.Notify;
+            'notify::adaptive-min-bitrate': GObject.Object.Notify;
+            'notify::adaptive-min-bitrate': GObject.Object.Notify;
+            'notify::adaptive-start-bitrate': GObject.Object.Notify;
+            'notify::adaptive-start-bitrate': GObject.Object.Notify;
+            'notify::audio-enabled': GObject.Object.Notify;
+            'notify::audio-enabled': GObject.Object.Notify;
+            'notify::audio-filter': GObject.Object.Notify;
+            'notify::audio-filter': GObject.Object.Notify;
+            'notify::audio-offset': GObject.Object.Notify;
+            'notify::audio-offset': GObject.Object.Notify;
+            'notify::audio-sink': GObject.Object.Notify;
+            'notify::audio-sink': GObject.Object.Notify;
+            'notify::audio-streams': GObject.Object.Notify;
+            'notify::audio-streams': GObject.Object.Notify;
+            'notify::autoplay': GObject.Object.Notify;
+            'notify::current-audio-decoder': GObject.Object.Notify;
+            'notify::current-audio-decoder': GObject.Object.Notify;
+            'notify::current-video-decoder': GObject.Object.Notify;
+            'notify::current-video-decoder': GObject.Object.Notify;
+            'notify::download-dir': GObject.Object.Notify;
+            'notify::download-dir': GObject.Object.Notify;
+            'notify::download-enabled': GObject.Object.Notify;
+            'notify::download-enabled': GObject.Object.Notify;
+            'notify::mute': GObject.Object.Notify;
+            'notify::position': GObject.Object.Notify;
+            'notify::queue': GObject.Object.Notify;
+            'notify::speed': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::subtitle-font-desc': GObject.Object.Notify;
+            'notify::subtitle-font-desc': GObject.Object.Notify;
+            'notify::subtitle-offset': GObject.Object.Notify;
+            'notify::subtitle-offset': GObject.Object.Notify;
+            'notify::subtitle-streams': GObject.Object.Notify;
+            'notify::subtitle-streams': GObject.Object.Notify;
+            'notify::subtitles-enabled': GObject.Object.Notify;
+            'notify::subtitles-enabled': GObject.Object.Notify;
+            'notify::video-enabled': GObject.Object.Notify;
+            'notify::video-enabled': GObject.Object.Notify;
+            'notify::video-filter': GObject.Object.Notify;
+            'notify::video-filter': GObject.Object.Notify;
+            'notify::video-sink': GObject.Object.Notify;
+            'notify::video-sink': GObject.Object.Notify;
+            'notify::video-streams': GObject.Object.Notify;
+            'notify::video-streams': GObject.Object.Notify;
+            'notify::volume': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1551,8 +1690,14 @@ export namespace Clapper {
         // Signals
 
         connect<K extends keyof Player.SignalSignatures>(signal: K, callback: Player.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Player.SignalSignatures>(signal: K, callback: Player.SignalSignatures[K]): number;
-        emit<K extends keyof Player.SignalSignatures>(signal: K, ...args: Parameters<Player.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Player.SignalSignatures>(
+            signal: K,
+            ...args: Player.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1877,7 +2022,20 @@ export namespace Clapper {
 
     namespace Queue {
         // Signal signatures
-        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            'notify::current-index': GObject.Object.Notify;
+            'notify::current-index': GObject.Object.Notify;
+            'notify::current-item': GObject.Object.Notify;
+            'notify::current-item': GObject.Object.Notify;
+            'notify::gapless': GObject.Object.Notify;
+            'notify::instant': GObject.Object.Notify;
+            'notify::n-items': GObject.Object.Notify;
+            'notify::n-items': GObject.Object.Notify;
+            'notify::progression-mode': GObject.Object.Notify;
+            'notify::progression-mode': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1961,8 +2119,14 @@ export namespace Clapper {
         // Signals
 
         connect<K extends keyof Queue.SignalSignatures>(signal: K, callback: Queue.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Queue.SignalSignatures>(signal: K, callback: Queue.SignalSignatures[K]): number;
-        emit<K extends keyof Queue.SignalSignatures>(signal: K, ...args: Parameters<Queue.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Queue.SignalSignatures>(
+            signal: K,
+            ...args: Queue.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2666,7 +2830,13 @@ export namespace Clapper {
 
     namespace Stream {
         // Signal signatures
-        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            'notify::stream-type': GObject.Object.Notify;
+            'notify::stream-type': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2707,8 +2877,14 @@ export namespace Clapper {
         // Signals
 
         connect<K extends keyof Stream.SignalSignatures>(signal: K, callback: Stream.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Stream.SignalSignatures>(signal: K, callback: Stream.SignalSignatures[K]): number;
-        emit<K extends keyof Stream.SignalSignatures>(signal: K, ...args: Parameters<Stream.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Stream.SignalSignatures>(
+            signal: K,
+            ...args: Stream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -2739,7 +2915,16 @@ export namespace Clapper {
 
     namespace StreamList {
         // Signal signatures
-        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            'notify::current-index': GObject.Object.Notify;
+            'notify::current-index': GObject.Object.Notify;
+            'notify::current-stream': GObject.Object.Notify;
+            'notify::current-stream': GObject.Object.Notify;
+            'notify::n-streams': GObject.Object.Notify;
+            'notify::n-streams': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2802,14 +2987,17 @@ export namespace Clapper {
             signal: K,
             callback: StreamList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StreamList.SignalSignatures>(
             signal: K,
             callback: StreamList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StreamList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StreamList.SignalSignatures[K]>
+            ...args: StreamList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3393,7 +3581,17 @@ export namespace Clapper {
 
     namespace SubtitleStream {
         // Signal signatures
-        interface SignalSignatures extends Stream.SignalSignatures {}
+        interface SignalSignatures extends Stream.SignalSignatures {
+            'notify::lang-code': GObject.Object.Notify;
+            'notify::lang-code': GObject.Object.Notify;
+            'notify::lang-name': GObject.Object.Notify;
+            'notify::lang-name': GObject.Object.Notify;
+            'notify::stream-type': GObject.Object.Notify;
+            'notify::stream-type': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3442,14 +3640,17 @@ export namespace Clapper {
             signal: K,
             callback: SubtitleStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SubtitleStream.SignalSignatures>(
             signal: K,
             callback: SubtitleStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SubtitleStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SubtitleStream.SignalSignatures[K]>
+            ...args: SubtitleStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3470,7 +3671,10 @@ export namespace Clapper {
 
     namespace ThreadedObject {
         // Signal signatures
-        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3495,14 +3699,17 @@ export namespace Clapper {
             signal: K,
             callback: ThreadedObject.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ThreadedObject.SignalSignatures>(
             signal: K,
             callback: ThreadedObject.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ThreadedObject.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ThreadedObject.SignalSignatures[K]>
+            ...args: ThreadedObject.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -3533,7 +3740,12 @@ export namespace Clapper {
 
     namespace Timeline {
         // Signal signatures
-        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            'notify::n-markers': GObject.Object.Notify;
+            'notify::n-markers': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3571,14 +3783,17 @@ export namespace Clapper {
         // Signals
 
         connect<K extends keyof Timeline.SignalSignatures>(signal: K, callback: Timeline.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Timeline.SignalSignatures>(
             signal: K,
             callback: Timeline.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Timeline.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Timeline.SignalSignatures[K]>
+            ...args: Timeline.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4154,7 +4369,20 @@ export namespace Clapper {
 
     namespace VideoStream {
         // Signal signatures
-        interface SignalSignatures extends Stream.SignalSignatures {}
+        interface SignalSignatures extends Stream.SignalSignatures {
+            'notify::bitrate': GObject.Object.Notify;
+            'notify::codec': GObject.Object.Notify;
+            'notify::fps': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::pixel-format': GObject.Object.Notify;
+            'notify::pixel-format': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::stream-type': GObject.Object.Notify;
+            'notify::stream-type': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4218,14 +4446,17 @@ export namespace Clapper {
             signal: K,
             callback: VideoStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VideoStream.SignalSignatures>(
             signal: K,
             callback: VideoStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VideoStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VideoStream.SignalSignatures[K]>
+            ...args: VideoStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

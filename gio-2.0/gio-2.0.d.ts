@@ -7060,14 +7060,17 @@ export namespace Gio {
             signal: K,
             callback: AppInfoMonitor.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AppInfoMonitor.SignalSignatures>(
             signal: K,
             callback: AppInfoMonitor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AppInfoMonitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AppInfoMonitor.SignalSignatures[K]>
+            ...args: AppInfoMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -7138,14 +7141,17 @@ export namespace Gio {
             signal: K,
             callback: AppLaunchContext.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AppLaunchContext.SignalSignatures>(
             signal: K,
             callback: AppLaunchContext.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AppLaunchContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AppLaunchContext.SignalSignatures[K]>
+            ...args: AppLaunchContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -7265,7 +7271,7 @@ export namespace Gio {
         }
 
         interface NameLost {
-            (_source: Application): boolean;
+            (_source: Application): boolean | void;
         }
 
         interface Open {
@@ -7289,6 +7295,22 @@ export namespace Gio {
             open: Open;
             shutdown: Shutdown;
             startup: Startup;
+            'notify::action-group': GObject.Object.Notify;
+            'notify::action-group': GObject.Object.Notify;
+            'notify::application-id': GObject.Object.Notify;
+            'notify::application-id': GObject.Object.Notify;
+            'notify::flags': GObject.Object.Notify;
+            'notify::inactivity-timeout': GObject.Object.Notify;
+            'notify::inactivity-timeout': GObject.Object.Notify;
+            'notify::is-busy': GObject.Object.Notify;
+            'notify::is-busy': GObject.Object.Notify;
+            'notify::is-registered': GObject.Object.Notify;
+            'notify::is-registered': GObject.Object.Notify;
+            'notify::is-remote': GObject.Object.Notify;
+            'notify::is-remote': GObject.Object.Notify;
+            'notify::resource-base-path': GObject.Object.Notify;
+            'notify::resource-base-path': GObject.Object.Notify;
+            'notify::version': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -7535,14 +7557,17 @@ export namespace Gio {
             signal: K,
             callback: Application.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Application.SignalSignatures>(
             signal: K,
             callback: Application.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Application.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Application.SignalSignatures[K]>
+            ...args: Application.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -9305,7 +9330,14 @@ export namespace Gio {
 
     namespace ApplicationCommandLine {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::arguments': GObject.Object.Notify;
+            'notify::is-remote': GObject.Object.Notify;
+            'notify::is-remote': GObject.Object.Notify;
+            'notify::options': GObject.Object.Notify;
+            'notify::platform-data': GObject.Object.Notify;
+            'notify::platform-data': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -9532,14 +9564,17 @@ export namespace Gio {
             signal: K,
             callback: ApplicationCommandLine.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ApplicationCommandLine.SignalSignatures>(
             signal: K,
             callback: ApplicationCommandLine.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ApplicationCommandLine.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ApplicationCommandLine.SignalSignatures[K]>
+            ...args: ApplicationCommandLine.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -9792,7 +9827,14 @@ export namespace Gio {
 
     namespace BufferedInputStream {
         // Signal signatures
-        interface SignalSignatures extends FilterInputStream.SignalSignatures {}
+        interface SignalSignatures extends FilterInputStream.SignalSignatures {
+            'notify::buffer-size': GObject.Object.Notify;
+            'notify::buffer-size': GObject.Object.Notify;
+            'notify::base-stream': GObject.Object.Notify;
+            'notify::base-stream': GObject.Object.Notify;
+            'notify::close-base-stream': GObject.Object.Notify;
+            'notify::close-base-stream': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -9849,14 +9891,17 @@ export namespace Gio {
             signal: K,
             callback: BufferedInputStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BufferedInputStream.SignalSignatures>(
             signal: K,
             callback: BufferedInputStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BufferedInputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BufferedInputStream.SignalSignatures[K]>
+            ...args: BufferedInputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -10595,7 +10640,16 @@ export namespace Gio {
 
     namespace BufferedOutputStream {
         // Signal signatures
-        interface SignalSignatures extends FilterOutputStream.SignalSignatures {}
+        interface SignalSignatures extends FilterOutputStream.SignalSignatures {
+            'notify::auto-grow': GObject.Object.Notify;
+            'notify::auto-grow': GObject.Object.Notify;
+            'notify::buffer-size': GObject.Object.Notify;
+            'notify::buffer-size': GObject.Object.Notify;
+            'notify::base-stream': GObject.Object.Notify;
+            'notify::base-stream': GObject.Object.Notify;
+            'notify::close-base-stream': GObject.Object.Notify;
+            'notify::close-base-stream': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -10664,14 +10718,17 @@ export namespace Gio {
             signal: K,
             callback: BufferedOutputStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BufferedOutputStream.SignalSignatures>(
             signal: K,
             callback: BufferedOutputStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BufferedOutputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BufferedOutputStream.SignalSignatures[K]>
+            ...args: BufferedOutputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -11242,7 +11299,9 @@ export namespace Gio {
 
     namespace BytesIcon {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::bytes': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11279,14 +11338,17 @@ export namespace Gio {
         // Signals
 
         connect<K extends keyof BytesIcon.SignalSignatures>(signal: K, callback: BytesIcon.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BytesIcon.SignalSignatures>(
             signal: K,
             callback: BytesIcon.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BytesIcon.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BytesIcon.SignalSignatures[K]>
+            ...args: BytesIcon.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -11910,14 +11972,17 @@ export namespace Gio {
             signal: K,
             callback: Cancellable.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Cancellable.SignalSignatures>(
             signal: K,
             callback: Cancellable.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Cancellable.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Cancellable.SignalSignatures[K]>
+            ...args: Cancellable.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -12139,7 +12204,14 @@ export namespace Gio {
 
     namespace CharsetConverter {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::from-charset': GObject.Object.Notify;
+            'notify::from-charset': GObject.Object.Notify;
+            'notify::to-charset': GObject.Object.Notify;
+            'notify::to-charset': GObject.Object.Notify;
+            'notify::use-fallback': GObject.Object.Notify;
+            'notify::use-fallback': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12206,14 +12278,17 @@ export namespace Gio {
             signal: K,
             callback: CharsetConverter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CharsetConverter.SignalSignatures>(
             signal: K,
             callback: CharsetConverter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CharsetConverter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CharsetConverter.SignalSignatures[K]>
+            ...args: CharsetConverter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -12965,7 +13040,13 @@ export namespace Gio {
 
     namespace ConverterInputStream {
         // Signal signatures
-        interface SignalSignatures extends FilterInputStream.SignalSignatures {}
+        interface SignalSignatures extends FilterInputStream.SignalSignatures {
+            'notify::converter': GObject.Object.Notify;
+            'notify::base-stream': GObject.Object.Notify;
+            'notify::base-stream': GObject.Object.Notify;
+            'notify::close-base-stream': GObject.Object.Notify;
+            'notify::close-base-stream': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13005,14 +13086,17 @@ export namespace Gio {
             signal: K,
             callback: ConverterInputStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConverterInputStream.SignalSignatures>(
             signal: K,
             callback: ConverterInputStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConverterInputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConverterInputStream.SignalSignatures[K]>
+            ...args: ConverterInputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -13895,7 +13979,13 @@ export namespace Gio {
 
     namespace ConverterOutputStream {
         // Signal signatures
-        interface SignalSignatures extends FilterOutputStream.SignalSignatures {}
+        interface SignalSignatures extends FilterOutputStream.SignalSignatures {
+            'notify::converter': GObject.Object.Notify;
+            'notify::base-stream': GObject.Object.Notify;
+            'notify::base-stream': GObject.Object.Notify;
+            'notify::close-base-stream': GObject.Object.Notify;
+            'notify::close-base-stream': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13935,14 +14025,17 @@ export namespace Gio {
             signal: K,
             callback: ConverterOutputStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConverterOutputStream.SignalSignatures>(
             signal: K,
             callback: ConverterOutputStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConverterOutputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConverterOutputStream.SignalSignatures[K]>
+            ...args: ConverterOutputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -15370,14 +15463,17 @@ export namespace Gio {
             signal: K,
             callback: Credentials.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Credentials.SignalSignatures>(
             signal: K,
             callback: Credentials.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Credentials.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Credentials.SignalSignatures[K]>
+            ...args: Credentials.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -15476,14 +15572,17 @@ export namespace Gio {
             signal: K,
             callback: DBusActionGroup.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DBusActionGroup.SignalSignatures>(
             signal: K,
             callback: DBusActionGroup.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DBusActionGroup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DBusActionGroup.SignalSignatures[K]>
+            ...args: DBusActionGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -16455,11 +16554,11 @@ export namespace Gio {
         // Signal callback interfaces
 
         interface AllowMechanism {
-            (_source: DBusAuthObserver, mechanism: string): boolean;
+            (_source: DBusAuthObserver, mechanism: string): boolean | void;
         }
 
         interface AuthorizeAuthenticatedPeer {
-            (_source: DBusAuthObserver, stream: IOStream, credentials?: Credentials | null): boolean;
+            (_source: DBusAuthObserver, stream: IOStream, credentials?: Credentials | null): boolean | void;
         }
 
         // Signal signatures
@@ -16555,14 +16654,17 @@ export namespace Gio {
             signal: K,
             callback: DBusAuthObserver.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DBusAuthObserver.SignalSignatures>(
             signal: K,
             callback: DBusAuthObserver.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DBusAuthObserver.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DBusAuthObserver.SignalSignatures[K]>
+            ...args: DBusAuthObserver.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -16591,6 +16693,18 @@ export namespace Gio {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             closed: Closed;
+            'notify::address': GObject.Object.Notify;
+            'notify::authentication-observer': GObject.Object.Notify;
+            'notify::authentication-observer': GObject.Object.Notify;
+            'notify::capabilities': GObject.Object.Notify;
+            'notify::closed': GObject.Object.Notify;
+            'notify::exit-on-close': GObject.Object.Notify;
+            'notify::exit-on-close': GObject.Object.Notify;
+            'notify::flags': GObject.Object.Notify;
+            'notify::guid': GObject.Object.Notify;
+            'notify::stream': GObject.Object.Notify;
+            'notify::unique-name': GObject.Object.Notify;
+            'notify::unique-name': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -16800,14 +16914,17 @@ export namespace Gio {
             signal: K,
             callback: DBusConnection.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DBusConnection.SignalSignatures>(
             signal: K,
             callback: DBusConnection.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DBusConnection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DBusConnection.SignalSignatures[K]>
+            ...args: DBusConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -18935,12 +19052,14 @@ export namespace Gio {
         // Signal callback interfaces
 
         interface GAuthorizeMethod {
-            (_source: DBusInterfaceSkeleton, invocation: DBusMethodInvocation): boolean;
+            (_source: DBusInterfaceSkeleton, invocation: DBusMethodInvocation): boolean | void;
         }
 
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'g-authorize-method': GAuthorizeMethod;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -18982,14 +19101,17 @@ export namespace Gio {
             signal: K,
             callback: DBusInterfaceSkeleton.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DBusInterfaceSkeleton.SignalSignatures>(
             signal: K,
             callback: DBusInterfaceSkeleton.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DBusInterfaceSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DBusInterfaceSkeleton.SignalSignatures[K]>
+            ...args: DBusInterfaceSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -19611,14 +19733,17 @@ export namespace Gio {
             signal: K,
             callback: DBusMenuModel.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DBusMenuModel.SignalSignatures>(
             signal: K,
             callback: DBusMenuModel.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DBusMenuModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DBusMenuModel.SignalSignatures[K]>
+            ...args: DBusMenuModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -19640,7 +19765,9 @@ export namespace Gio {
 
     namespace DBusMessage {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::locked': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -19685,14 +19812,17 @@ export namespace Gio {
             signal: K,
             callback: DBusMessage.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DBusMessage.SignalSignatures>(
             signal: K,
             callback: DBusMessage.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DBusMessage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DBusMessage.SignalSignatures[K]>
+            ...args: DBusMessage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -20043,14 +20173,17 @@ export namespace Gio {
             signal: K,
             callback: DBusMethodInvocation.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DBusMethodInvocation.SignalSignatures>(
             signal: K,
             callback: DBusMethodInvocation.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DBusMethodInvocation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DBusMethodInvocation.SignalSignatures[K]>
+            ...args: DBusMethodInvocation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -20247,6 +20380,21 @@ export namespace Gio {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'interface-proxy-properties-changed': InterfaceProxyPropertiesChanged;
             'interface-proxy-signal': InterfaceProxySignal;
+            'notify::bus-type': GObject.Object.Notify;
+            'notify::bus-type': GObject.Object.Notify;
+            'notify::connection': GObject.Object.Notify;
+            'notify::flags': GObject.Object.Notify;
+            'notify::get-proxy-type-destroy-notify': GObject.Object.Notify;
+            'notify::get-proxy-type-destroy-notify': GObject.Object.Notify;
+            'notify::get-proxy-type-func': GObject.Object.Notify;
+            'notify::get-proxy-type-func': GObject.Object.Notify;
+            'notify::get-proxy-type-user-data': GObject.Object.Notify;
+            'notify::get-proxy-type-user-data': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::name-owner': GObject.Object.Notify;
+            'notify::name-owner': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -20474,14 +20622,17 @@ export namespace Gio {
             signal: K,
             callback: DBusObjectManagerClient.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DBusObjectManagerClient.SignalSignatures>(
             signal: K,
             callback: DBusObjectManagerClient.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DBusObjectManagerClient.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DBusObjectManagerClient.SignalSignatures[K]>
+            ...args: DBusObjectManagerClient.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -21395,7 +21546,11 @@ export namespace Gio {
 
     namespace DBusObjectManagerServer {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::connection': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -21462,14 +21617,17 @@ export namespace Gio {
             signal: K,
             callback: DBusObjectManagerServer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DBusObjectManagerServer.SignalSignatures>(
             signal: K,
             callback: DBusObjectManagerServer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DBusObjectManagerServer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DBusObjectManagerServer.SignalSignatures[K]>
+            ...args: DBusObjectManagerServer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -22033,7 +22191,12 @@ export namespace Gio {
 
     namespace DBusObjectProxy {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -22087,14 +22250,17 @@ export namespace Gio {
             signal: K,
             callback: DBusObjectProxy.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DBusObjectProxy.SignalSignatures>(
             signal: K,
             callback: DBusObjectProxy.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DBusObjectProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DBusObjectProxy.SignalSignatures[K]>
+            ...args: DBusObjectProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -22591,12 +22757,18 @@ export namespace Gio {
         // Signal callback interfaces
 
         interface AuthorizeMethod {
-            (_source: DBusObjectSkeleton, _interface: DBusInterfaceSkeleton, invocation: DBusMethodInvocation): boolean;
+            (
+                _source: DBusObjectSkeleton,
+                _interface: DBusInterfaceSkeleton,
+                invocation: DBusMethodInvocation,
+            ): boolean | void;
         }
 
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'authorize-method': AuthorizeMethod;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -22644,14 +22816,17 @@ export namespace Gio {
             signal: K,
             callback: DBusObjectSkeleton.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DBusObjectSkeleton.SignalSignatures>(
             signal: K,
             callback: DBusObjectSkeleton.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DBusObjectSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DBusObjectSkeleton.SignalSignatures[K]>
+            ...args: DBusObjectSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -23198,6 +23373,42 @@ export namespace Gio {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'g-properties-changed': GPropertiesChanged;
             'g-signal': GSignal;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'g-signal::g-bus-type': GSignal;
+            'g-signal::g-bus-type': GSignal;
+            'g-signal::g-connection': GSignal;
+            'g-signal::g-connection': GSignal;
+            'g-signal::g-default-timeout': GSignal;
+            'g-signal::g-default-timeout': GSignal;
+            'g-signal::g-flags': GSignal;
+            'g-signal::g-flags': GSignal;
+            'g-signal::g-interface-info': GSignal;
+            'g-signal::g-interface-info': GSignal;
+            'g-signal::g-interface-name': GSignal;
+            'g-signal::g-interface-name': GSignal;
+            'g-signal::g-name': GSignal;
+            'g-signal::g-name': GSignal;
+            'g-signal::g-name-owner': GSignal;
+            'g-signal::g-name-owner': GSignal;
+            'g-signal::g-object-path': GSignal;
+            'g-signal::g-object-path': GSignal;
         }
 
         // Constructor properties interface
@@ -23468,14 +23679,17 @@ export namespace Gio {
         // Signals
 
         connect<K extends keyof DBusProxy.SignalSignatures>(signal: K, callback: DBusProxy.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DBusProxy.SignalSignatures>(
             signal: K,
             callback: DBusProxy.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DBusProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DBusProxy.SignalSignatures[K]>
+            ...args: DBusProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -24792,12 +25006,20 @@ export namespace Gio {
         // Signal callback interfaces
 
         interface NewConnection {
-            (_source: DBusServer, connection: DBusConnection): boolean;
+            (_source: DBusServer, connection: DBusConnection): boolean | void;
         }
 
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'new-connection': NewConnection;
+            'notify::active': GObject.Object.Notify;
+            'notify::address': GObject.Object.Notify;
+            'notify::authentication-observer': GObject.Object.Notify;
+            'notify::authentication-observer': GObject.Object.Notify;
+            'notify::client-address': GObject.Object.Notify;
+            'notify::client-address': GObject.Object.Notify;
+            'notify::flags': GObject.Object.Notify;
+            'notify::guid': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -24896,14 +25118,17 @@ export namespace Gio {
             signal: K,
             callback: DBusServer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DBusServer.SignalSignatures>(
             signal: K,
             callback: DBusServer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DBusServer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DBusServer.SignalSignatures[K]>
+            ...args: DBusServer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -25469,7 +25694,18 @@ export namespace Gio {
 
     namespace DataInputStream {
         // Signal signatures
-        interface SignalSignatures extends BufferedInputStream.SignalSignatures {}
+        interface SignalSignatures extends BufferedInputStream.SignalSignatures {
+            'notify::byte-order': GObject.Object.Notify;
+            'notify::byte-order': GObject.Object.Notify;
+            'notify::newline-type': GObject.Object.Notify;
+            'notify::newline-type': GObject.Object.Notify;
+            'notify::buffer-size': GObject.Object.Notify;
+            'notify::buffer-size': GObject.Object.Notify;
+            'notify::base-stream': GObject.Object.Notify;
+            'notify::base-stream': GObject.Object.Notify;
+            'notify::close-base-stream': GObject.Object.Notify;
+            'notify::close-base-stream': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -25531,14 +25767,17 @@ export namespace Gio {
             signal: K,
             callback: DataInputStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DataInputStream.SignalSignatures>(
             signal: K,
             callback: DataInputStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DataInputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataInputStream.SignalSignatures[K]>
+            ...args: DataInputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -26485,7 +26724,14 @@ export namespace Gio {
 
     namespace DataOutputStream {
         // Signal signatures
-        interface SignalSignatures extends FilterOutputStream.SignalSignatures {}
+        interface SignalSignatures extends FilterOutputStream.SignalSignatures {
+            'notify::byte-order': GObject.Object.Notify;
+            'notify::byte-order': GObject.Object.Notify;
+            'notify::base-stream': GObject.Object.Notify;
+            'notify::base-stream': GObject.Object.Notify;
+            'notify::close-base-stream': GObject.Object.Notify;
+            'notify::close-base-stream': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -26531,14 +26777,17 @@ export namespace Gio {
             signal: K,
             callback: DataOutputStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DataOutputStream.SignalSignatures>(
             signal: K,
             callback: DataOutputStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DataOutputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataOutputStream.SignalSignatures[K]>
+            ...args: DataOutputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -27154,12 +27403,15 @@ export namespace Gio {
         // Signal callback interfaces
 
         interface Authorize {
-            (_source: DebugControllerDBus, invocation: DBusMethodInvocation): boolean;
+            (_source: DebugControllerDBus, invocation: DBusMethodInvocation): boolean | void;
         }
 
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             authorize: Authorize;
+            'notify::connection': GObject.Object.Notify;
+            'notify::debug-enabled': GObject.Object.Notify;
+            'notify::debug-enabled': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -27312,14 +27564,17 @@ export namespace Gio {
             signal: K,
             callback: DebugControllerDBus.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DebugControllerDBus.SignalSignatures>(
             signal: K,
             callback: DebugControllerDBus.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DebugControllerDBus.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DebugControllerDBus.SignalSignatures[K]>
+            ...args: DebugControllerDBus.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -27904,7 +28159,9 @@ export namespace Gio {
 
     namespace DesktopAppInfo {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::filename': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -27949,14 +28206,17 @@ export namespace Gio {
             signal: K,
             callback: DesktopAppInfo.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DesktopAppInfo.SignalSignatures>(
             signal: K,
             callback: DesktopAppInfo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DesktopAppInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DesktopAppInfo.SignalSignatures[K]>
+            ...args: DesktopAppInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -29094,7 +29354,10 @@ export namespace Gio {
 
     namespace Emblem {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::icon': GObject.Object.Notify;
+            'notify::origin': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -29139,8 +29402,14 @@ export namespace Gio {
         // Signals
 
         connect<K extends keyof Emblem.SignalSignatures>(signal: K, callback: Emblem.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Emblem.SignalSignatures>(signal: K, callback: Emblem.SignalSignatures[K]): number;
-        emit<K extends keyof Emblem.SignalSignatures>(signal: K, ...args: Parameters<Emblem.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Emblem.SignalSignatures>(
+            signal: K,
+            ...args: Emblem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -29661,7 +29930,9 @@ export namespace Gio {
 
     namespace EmblemedIcon {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::gicon': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -29702,14 +29973,17 @@ export namespace Gio {
             signal: K,
             callback: EmblemedIcon.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof EmblemedIcon.SignalSignatures>(
             signal: K,
             callback: EmblemedIcon.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof EmblemedIcon.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EmblemedIcon.SignalSignatures[K]>
+            ...args: EmblemedIcon.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -30239,7 +30513,9 @@ export namespace Gio {
 
     namespace FileEnumerator {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::container': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -30343,14 +30619,17 @@ export namespace Gio {
             signal: K,
             callback: FileEnumerator.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FileEnumerator.SignalSignatures>(
             signal: K,
             callback: FileEnumerator.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FileEnumerator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileEnumerator.SignalSignatures[K]>
+            ...args: FileEnumerator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -30893,7 +31172,13 @@ export namespace Gio {
 
     namespace FileIOStream {
         // Signal signatures
-        interface SignalSignatures extends IOStream.SignalSignatures {}
+        interface SignalSignatures extends IOStream.SignalSignatures {
+            'notify::closed': GObject.Object.Notify;
+            'notify::input-stream': GObject.Object.Notify;
+            'notify::input-stream': GObject.Object.Notify;
+            'notify::output-stream': GObject.Object.Notify;
+            'notify::output-stream': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -30936,14 +31221,17 @@ export namespace Gio {
             signal: K,
             callback: FileIOStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FileIOStream.SignalSignatures>(
             signal: K,
             callback: FileIOStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FileIOStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileIOStream.SignalSignatures[K]>
+            ...args: FileIOStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -31589,7 +31877,9 @@ export namespace Gio {
 
     namespace FileIcon {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::file': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -31628,14 +31918,17 @@ export namespace Gio {
         // Signals
 
         connect<K extends keyof FileIcon.SignalSignatures>(signal: K, callback: FileIcon.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FileIcon.SignalSignatures>(
             signal: K,
             callback: FileIcon.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FileIcon.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileIcon.SignalSignatures[K]>
+            ...args: FileIcon.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -32279,14 +32572,17 @@ export namespace Gio {
         // Signals
 
         connect<K extends keyof FileInfo.SignalSignatures>(signal: K, callback: FileInfo.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FileInfo.SignalSignatures>(
             signal: K,
             callback: FileInfo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FileInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileInfo.SignalSignatures[K]>
+            ...args: FileInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -32873,14 +33169,17 @@ export namespace Gio {
             signal: K,
             callback: FileInputStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FileInputStream.SignalSignatures>(
             signal: K,
             callback: FileInputStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FileInputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileInputStream.SignalSignatures[K]>
+            ...args: FileInputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -33532,6 +33831,9 @@ export namespace Gio {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             changed: Changed;
+            'notify::cancelled': GObject.Object.Notify;
+            'notify::rate-limit': GObject.Object.Notify;
+            'notify::rate-limit': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -33590,14 +33892,17 @@ export namespace Gio {
             signal: K,
             callback: FileMonitor.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FileMonitor.SignalSignatures>(
             signal: K,
             callback: FileMonitor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FileMonitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileMonitor.SignalSignatures[K]>
+            ...args: FileMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -33680,14 +33985,17 @@ export namespace Gio {
             signal: K,
             callback: FileOutputStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FileOutputStream.SignalSignatures>(
             signal: K,
             callback: FileOutputStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FileOutputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileOutputStream.SignalSignatures[K]>
+            ...args: FileOutputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -34370,14 +34678,17 @@ export namespace Gio {
             signal: K,
             callback: FilenameCompleter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FilenameCompleter.SignalSignatures>(
             signal: K,
             callback: FilenameCompleter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FilenameCompleter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FilenameCompleter.SignalSignatures[K]>
+            ...args: FilenameCompleter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -34407,7 +34718,12 @@ export namespace Gio {
 
     namespace FilterInputStream {
         // Signal signatures
-        interface SignalSignatures extends InputStream.SignalSignatures {}
+        interface SignalSignatures extends InputStream.SignalSignatures {
+            'notify::base-stream': GObject.Object.Notify;
+            'notify::base-stream': GObject.Object.Notify;
+            'notify::close-base-stream': GObject.Object.Notify;
+            'notify::close-base-stream': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -34461,14 +34777,17 @@ export namespace Gio {
             signal: K,
             callback: FilterInputStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FilterInputStream.SignalSignatures>(
             signal: K,
             callback: FilterInputStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FilterInputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FilterInputStream.SignalSignatures[K]>
+            ...args: FilterInputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -34492,7 +34811,12 @@ export namespace Gio {
 
     namespace FilterOutputStream {
         // Signal signatures
-        interface SignalSignatures extends OutputStream.SignalSignatures {}
+        interface SignalSignatures extends OutputStream.SignalSignatures {
+            'notify::base-stream': GObject.Object.Notify;
+            'notify::base-stream': GObject.Object.Notify;
+            'notify::close-base-stream': GObject.Object.Notify;
+            'notify::close-base-stream': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -34544,14 +34868,17 @@ export namespace Gio {
             signal: K,
             callback: FilterOutputStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FilterOutputStream.SignalSignatures>(
             signal: K,
             callback: FilterOutputStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FilterOutputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FilterOutputStream.SignalSignatures[K]>
+            ...args: FilterOutputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -34601,14 +34928,17 @@ export namespace Gio {
         // Signals
 
         connect<K extends keyof IOModule.SignalSignatures>(signal: K, callback: IOModule.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof IOModule.SignalSignatures>(
             signal: K,
             callback: IOModule.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof IOModule.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IOModule.SignalSignatures[K]>
+            ...args: IOModule.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -35127,7 +35457,13 @@ export namespace Gio {
 
     namespace IOStream {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::closed': GObject.Object.Notify;
+            'notify::input-stream': GObject.Object.Notify;
+            'notify::input-stream': GObject.Object.Notify;
+            'notify::output-stream': GObject.Object.Notify;
+            'notify::output-stream': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -35225,14 +35561,17 @@ export namespace Gio {
         // Signals
 
         connect<K extends keyof IOStream.SignalSignatures>(signal: K, callback: IOStream.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof IOStream.SignalSignatures>(
             signal: K,
             callback: IOStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof IOStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IOStream.SignalSignatures[K]>
+            ...args: IOStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -35440,7 +35779,30 @@ export namespace Gio {
 
     namespace InetAddress {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::bytes': GObject.Object.Notify;
+            'notify::family': GObject.Object.Notify;
+            'notify::is-any': GObject.Object.Notify;
+            'notify::is-any': GObject.Object.Notify;
+            'notify::is-link-local': GObject.Object.Notify;
+            'notify::is-link-local': GObject.Object.Notify;
+            'notify::is-loopback': GObject.Object.Notify;
+            'notify::is-loopback': GObject.Object.Notify;
+            'notify::is-mc-global': GObject.Object.Notify;
+            'notify::is-mc-global': GObject.Object.Notify;
+            'notify::is-mc-link-local': GObject.Object.Notify;
+            'notify::is-mc-link-local': GObject.Object.Notify;
+            'notify::is-mc-node-local': GObject.Object.Notify;
+            'notify::is-mc-node-local': GObject.Object.Notify;
+            'notify::is-mc-org-local': GObject.Object.Notify;
+            'notify::is-mc-org-local': GObject.Object.Notify;
+            'notify::is-mc-site-local': GObject.Object.Notify;
+            'notify::is-mc-site-local': GObject.Object.Notify;
+            'notify::is-multicast': GObject.Object.Notify;
+            'notify::is-multicast': GObject.Object.Notify;
+            'notify::is-site-local': GObject.Object.Notify;
+            'notify::is-site-local': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -35616,14 +35978,17 @@ export namespace Gio {
             signal: K,
             callback: InetAddress.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InetAddress.SignalSignatures>(
             signal: K,
             callback: InetAddress.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InetAddress.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InetAddress.SignalSignatures[K]>
+            ...args: InetAddress.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -35715,7 +36080,11 @@ export namespace Gio {
 
     namespace InetAddressMask {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::address': GObject.Object.Notify;
+            'notify::family': GObject.Object.Notify;
+            'notify::length': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -35768,14 +36137,17 @@ export namespace Gio {
             signal: K,
             callback: InetAddressMask.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InetAddressMask.SignalSignatures>(
             signal: K,
             callback: InetAddressMask.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InetAddressMask.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InetAddressMask.SignalSignatures[K]>
+            ...args: InetAddressMask.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -36341,7 +36713,14 @@ export namespace Gio {
 
     namespace InetSocketAddress {
         // Signal signatures
-        interface SignalSignatures extends SocketAddress.SignalSignatures {}
+        interface SignalSignatures extends SocketAddress.SignalSignatures {
+            'notify::address': GObject.Object.Notify;
+            'notify::flowinfo': GObject.Object.Notify;
+            'notify::port': GObject.Object.Notify;
+            'notify::scope-id': GObject.Object.Notify;
+            'notify::scope-id': GObject.Object.Notify;
+            'notify::family': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -36403,14 +36782,17 @@ export namespace Gio {
             signal: K,
             callback: InetSocketAddress.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InetSocketAddress.SignalSignatures>(
             signal: K,
             callback: InetSocketAddress.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InetSocketAddress.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InetSocketAddress.SignalSignatures[K]>
+            ...args: InetSocketAddress.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -36969,14 +37351,17 @@ export namespace Gio {
             signal: K,
             callback: InputStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InputStream.SignalSignatures>(
             signal: K,
             callback: InputStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InputStream.SignalSignatures[K]>
+            ...args: InputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -37738,7 +38123,12 @@ export namespace Gio {
 
     namespace ListStore {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::item-type': GObject.Object.Notify;
+            'notify::item-type': GObject.Object.Notify;
+            'notify::n-items': GObject.Object.Notify;
+            'notify::n-items': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -37798,14 +38188,17 @@ export namespace Gio {
         // Signals
 
         connect<K extends keyof ListStore.SignalSignatures>(signal: K, callback: ListStore.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ListStore.SignalSignatures>(
             signal: K,
             callback: ListStore.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ListStore.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ListStore.SignalSignatures[K]>
+            ...args: ListStore.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -38497,14 +38890,17 @@ export namespace Gio {
             signal: K,
             callback: MemoryInputStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MemoryInputStream.SignalSignatures>(
             signal: K,
             callback: MemoryInputStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MemoryInputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MemoryInputStream.SignalSignatures[K]>
+            ...args: MemoryInputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -39931,7 +40327,12 @@ export namespace Gio {
 
     namespace MemoryOutputStream {
         // Signal signatures
-        interface SignalSignatures extends OutputStream.SignalSignatures {}
+        interface SignalSignatures extends OutputStream.SignalSignatures {
+            'notify::data': GObject.Object.Notify;
+            'notify::data-size': GObject.Object.Notify;
+            'notify::data-size': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -39989,14 +40390,17 @@ export namespace Gio {
             signal: K,
             callback: MemoryOutputStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MemoryOutputStream.SignalSignatures>(
             signal: K,
             callback: MemoryOutputStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MemoryOutputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MemoryOutputStream.SignalSignatures[K]>
+            ...args: MemoryOutputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -41963,8 +42367,14 @@ export namespace Gio {
         // Signals
 
         connect<K extends keyof Menu.SignalSignatures>(signal: K, callback: Menu.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Menu.SignalSignatures>(signal: K, callback: Menu.SignalSignatures[K]): number;
-        emit<K extends keyof Menu.SignalSignatures>(signal: K, ...args: Parameters<Menu.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Menu.SignalSignatures>(
+            signal: K,
+            ...args: Menu.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -42138,14 +42548,17 @@ export namespace Gio {
             signal: K,
             callback: MenuAttributeIter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MenuAttributeIter.SignalSignatures>(
             signal: K,
             callback: MenuAttributeIter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MenuAttributeIter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MenuAttributeIter.SignalSignatures[K]>
+            ...args: MenuAttributeIter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -42252,14 +42665,17 @@ export namespace Gio {
         // Signals
 
         connect<K extends keyof MenuItem.SignalSignatures>(signal: K, callback: MenuItem.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MenuItem.SignalSignatures>(
             signal: K,
             callback: MenuItem.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MenuItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MenuItem.SignalSignatures[K]>
+            ...args: MenuItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -42451,14 +42867,17 @@ export namespace Gio {
             signal: K,
             callback: MenuLinkIter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MenuLinkIter.SignalSignatures>(
             signal: K,
             callback: MenuLinkIter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MenuLinkIter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MenuLinkIter.SignalSignatures[K]>
+            ...args: MenuLinkIter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -42678,14 +43097,17 @@ export namespace Gio {
         // Signals
 
         connect<K extends keyof MenuModel.SignalSignatures>(signal: K, callback: MenuModel.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MenuModel.SignalSignatures>(
             signal: K,
             callback: MenuModel.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MenuModel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MenuModel.SignalSignatures[K]>
+            ...args: MenuModel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -42888,6 +43310,18 @@ export namespace Gio {
             reply: Reply;
             'show-processes': ShowProcesses;
             'show-unmount-progress': ShowUnmountProgress;
+            'notify::anonymous': GObject.Object.Notify;
+            'notify::choice': GObject.Object.Notify;
+            'notify::domain': GObject.Object.Notify;
+            'notify::is-tcrypt-hidden-volume': GObject.Object.Notify;
+            'notify::is-tcrypt-hidden-volume': GObject.Object.Notify;
+            'notify::is-tcrypt-system-volume': GObject.Object.Notify;
+            'notify::is-tcrypt-system-volume': GObject.Object.Notify;
+            'notify::password': GObject.Object.Notify;
+            'notify::password-save': GObject.Object.Notify;
+            'notify::password-save': GObject.Object.Notify;
+            'notify::pim': GObject.Object.Notify;
+            'notify::username': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -43026,14 +43460,17 @@ export namespace Gio {
             signal: K,
             callback: MountOperation.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MountOperation.SignalSignatures>(
             signal: K,
             callback: MountOperation.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MountOperation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MountOperation.SignalSignatures[K]>
+            ...args: MountOperation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -43168,7 +43605,9 @@ export namespace Gio {
 
     namespace NativeSocketAddress {
         // Signal signatures
-        interface SignalSignatures extends SocketAddress.SignalSignatures {}
+        interface SignalSignatures extends SocketAddress.SignalSignatures {
+            'notify::family': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -43198,14 +43637,17 @@ export namespace Gio {
             signal: K,
             callback: NativeSocketAddress.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NativeSocketAddress.SignalSignatures>(
             signal: K,
             callback: NativeSocketAddress.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NativeSocketAddress.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NativeSocketAddress.SignalSignatures[K]>
+            ...args: NativeSocketAddress.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -43724,19 +44166,26 @@ export namespace Gio {
             signal: K,
             callback: NativeVolumeMonitor.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NativeVolumeMonitor.SignalSignatures>(
             signal: K,
             callback: NativeVolumeMonitor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NativeVolumeMonitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NativeVolumeMonitor.SignalSignatures[K]>
+            ...args: NativeVolumeMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace NetworkAddress {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::hostname': GObject.Object.Notify;
+            'notify::port': GObject.Object.Notify;
+            'notify::scheme': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -43793,14 +44242,17 @@ export namespace Gio {
             signal: K,
             callback: NetworkAddress.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NetworkAddress.SignalSignatures>(
             signal: K,
             callback: NetworkAddress.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NetworkAddress.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NetworkAddress.SignalSignatures[K]>
+            ...args: NetworkAddress.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -44356,7 +44808,12 @@ export namespace Gio {
 
     namespace NetworkService {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::domain': GObject.Object.Notify;
+            'notify::protocol': GObject.Object.Notify;
+            'notify::scheme': GObject.Object.Notify;
+            'notify::service': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -44416,14 +44873,17 @@ export namespace Gio {
             signal: K,
             callback: NetworkService.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NetworkService.SignalSignatures>(
             signal: K,
             callback: NetworkService.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NetworkService.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NetworkService.SignalSignatures[K]>
+            ...args: NetworkService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -45022,14 +45482,17 @@ export namespace Gio {
             signal: K,
             callback: Notification.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Notification.SignalSignatures>(
             signal: K,
             callback: Notification.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Notification.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Notification.SignalSignatures[K]>
+            ...args: Notification.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -45167,14 +45630,17 @@ export namespace Gio {
             signal: K,
             callback: OutputStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OutputStream.SignalSignatures>(
             signal: K,
             callback: OutputStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OutputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OutputStream.SignalSignatures[K]>
+            ...args: OutputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -46362,7 +46828,13 @@ export namespace Gio {
 
     namespace Permission {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::allowed': GObject.Object.Notify;
+            'notify::can-acquire': GObject.Object.Notify;
+            'notify::can-acquire': GObject.Object.Notify;
+            'notify::can-release': GObject.Object.Notify;
+            'notify::can-release': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -46435,14 +46907,17 @@ export namespace Gio {
             signal: K,
             callback: Permission.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Permission.SignalSignatures>(
             signal: K,
             callback: Permission.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Permission.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Permission.SignalSignatures[K]>
+            ...args: Permission.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -46677,7 +47152,20 @@ export namespace Gio {
 
     namespace PropertyAction {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::enabled': GObject.Object.Notify;
+            'notify::invert-boolean': GObject.Object.Notify;
+            'notify::invert-boolean': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::object': GObject.Object.Notify;
+            'notify::parameter-type': GObject.Object.Notify;
+            'notify::parameter-type': GObject.Object.Notify;
+            'notify::property-name': GObject.Object.Notify;
+            'notify::property-name': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::state-type': GObject.Object.Notify;
+            'notify::state-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -46837,14 +47325,17 @@ export namespace Gio {
             signal: K,
             callback: PropertyAction.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PropertyAction.SignalSignatures>(
             signal: K,
             callback: PropertyAction.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PropertyAction.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PropertyAction.SignalSignatures[K]>
+            ...args: PropertyAction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -47486,7 +47977,24 @@ export namespace Gio {
 
     namespace ProxyAddress {
         // Signal signatures
-        interface SignalSignatures extends InetSocketAddress.SignalSignatures {}
+        interface SignalSignatures extends InetSocketAddress.SignalSignatures {
+            'notify::destination-hostname': GObject.Object.Notify;
+            'notify::destination-hostname': GObject.Object.Notify;
+            'notify::destination-port': GObject.Object.Notify;
+            'notify::destination-port': GObject.Object.Notify;
+            'notify::destination-protocol': GObject.Object.Notify;
+            'notify::destination-protocol': GObject.Object.Notify;
+            'notify::password': GObject.Object.Notify;
+            'notify::protocol': GObject.Object.Notify;
+            'notify::uri': GObject.Object.Notify;
+            'notify::username': GObject.Object.Notify;
+            'notify::address': GObject.Object.Notify;
+            'notify::flowinfo': GObject.Object.Notify;
+            'notify::port': GObject.Object.Notify;
+            'notify::scope-id': GObject.Object.Notify;
+            'notify::scope-id': GObject.Object.Notify;
+            'notify::family': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -47581,14 +48089,17 @@ export namespace Gio {
             signal: K,
             callback: ProxyAddress.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ProxyAddress.SignalSignatures>(
             signal: K,
             callback: ProxyAddress.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ProxyAddress.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProxyAddress.SignalSignatures[K]>
+            ...args: ProxyAddress.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -48077,7 +48588,14 @@ export namespace Gio {
 
     namespace ProxyAddressEnumerator {
         // Signal signatures
-        interface SignalSignatures extends SocketAddressEnumerator.SignalSignatures {}
+        interface SignalSignatures extends SocketAddressEnumerator.SignalSignatures {
+            'notify::connectable': GObject.Object.Notify;
+            'notify::default-port': GObject.Object.Notify;
+            'notify::default-port': GObject.Object.Notify;
+            'notify::proxy-resolver': GObject.Object.Notify;
+            'notify::proxy-resolver': GObject.Object.Notify;
+            'notify::uri': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -48149,14 +48667,17 @@ export namespace Gio {
             signal: K,
             callback: ProxyAddressEnumerator.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ProxyAddressEnumerator.SignalSignatures>(
             signal: K,
             callback: ProxyAddressEnumerator.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ProxyAddressEnumerator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProxyAddressEnumerator.SignalSignatures[K]>
+            ...args: ProxyAddressEnumerator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Resolver {
@@ -48169,6 +48690,7 @@ export namespace Gio {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             reload: Reload;
+            'notify::timeout': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -48228,14 +48750,17 @@ export namespace Gio {
         // Signals
 
         connect<K extends keyof Resolver.SignalSignatures>(signal: K, callback: Resolver.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Resolver.SignalSignatures>(
             signal: K,
             callback: Resolver.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Resolver.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Resolver.SignalSignatures[K]>
+            ...args: Resolver.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -48859,7 +49384,7 @@ export namespace Gio {
         // Signal callback interfaces
 
         interface ChangeEvent {
-            (_source: Settings, keys?: GLib.Quark[] | null): boolean;
+            (_source: Settings, keys?: GLib.Quark[] | null): boolean | void;
         }
 
         interface Changed {
@@ -48867,7 +49392,7 @@ export namespace Gio {
         }
 
         interface WritableChangeEvent {
-            (_source: Settings, key: number): boolean;
+            (_source: Settings, key: number): boolean | void;
         }
 
         interface WritableChanged {
@@ -48880,6 +49405,39 @@ export namespace Gio {
             changed: Changed;
             'writable-change-event': WritableChangeEvent;
             'writable-changed': WritableChanged;
+            'notify::backend': GObject.Object.Notify;
+            'notify::delay-apply': GObject.Object.Notify;
+            'notify::delay-apply': GObject.Object.Notify;
+            'notify::has-unapplied': GObject.Object.Notify;
+            'notify::has-unapplied': GObject.Object.Notify;
+            'notify::path': GObject.Object.Notify;
+            'notify::schema': GObject.Object.Notify;
+            'notify::schema-id': GObject.Object.Notify;
+            'notify::schema-id': GObject.Object.Notify;
+            'notify::settings-schema': GObject.Object.Notify;
+            'notify::settings-schema': GObject.Object.Notify;
+            'changed::backend': Changed;
+            'changed::delay-apply': Changed;
+            'changed::delay-apply': Changed;
+            'changed::has-unapplied': Changed;
+            'changed::has-unapplied': Changed;
+            'changed::path': Changed;
+            'changed::schema': Changed;
+            'changed::schema-id': Changed;
+            'changed::schema-id': Changed;
+            'changed::settings-schema': Changed;
+            'changed::settings-schema': Changed;
+            'writable-changed::backend': WritableChanged;
+            'writable-changed::delay-apply': WritableChanged;
+            'writable-changed::delay-apply': WritableChanged;
+            'writable-changed::has-unapplied': WritableChanged;
+            'writable-changed::has-unapplied': WritableChanged;
+            'writable-changed::path': WritableChanged;
+            'writable-changed::schema': WritableChanged;
+            'writable-changed::schema-id': WritableChanged;
+            'writable-changed::schema-id': WritableChanged;
+            'writable-changed::settings-schema': WritableChanged;
+            'writable-changed::settings-schema': WritableChanged;
         }
 
         // Constructor properties interface
@@ -49388,14 +49946,17 @@ export namespace Gio {
         // Signals
 
         connect<K extends keyof Settings.SignalSignatures>(signal: K, callback: Settings.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Settings.SignalSignatures>(
             signal: K,
             callback: Settings.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Settings.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Settings.SignalSignatures[K]>
+            ...args: Settings.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -50043,14 +50604,17 @@ export namespace Gio {
             signal: K,
             callback: SettingsBackend.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SettingsBackend.SignalSignatures>(
             signal: K,
             callback: SettingsBackend.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SettingsBackend.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SettingsBackend.SignalSignatures[K]>
+            ...args: SettingsBackend.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -50252,6 +50816,13 @@ export namespace Gio {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             activate: Activate;
             'change-state': ChangeState;
+            'notify::enabled': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parameter-type': GObject.Object.Notify;
+            'notify::parameter-type': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::state-type': GObject.Object.Notify;
+            'notify::state-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -50332,14 +50903,17 @@ export namespace Gio {
             signal: K,
             callback: SimpleAction.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SimpleAction.SignalSignatures>(
             signal: K,
             callback: SimpleAction.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SimpleAction.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SimpleAction.SignalSignatures[K]>
+            ...args: SimpleAction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -51049,14 +51623,17 @@ export namespace Gio {
             signal: K,
             callback: SimpleActionGroup.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SimpleActionGroup.SignalSignatures>(
             signal: K,
             callback: SimpleActionGroup.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SimpleActionGroup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SimpleActionGroup.SignalSignatures[K]>
+            ...args: SimpleActionGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -52258,14 +52835,17 @@ export namespace Gio {
             signal: K,
             callback: SimpleAsyncResult.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SimpleAsyncResult.SignalSignatures>(
             signal: K,
             callback: SimpleAsyncResult.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SimpleAsyncResult.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SimpleAsyncResult.SignalSignatures[K]>
+            ...args: SimpleAsyncResult.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -52864,7 +53444,13 @@ export namespace Gio {
 
     namespace SimpleIOStream {
         // Signal signatures
-        interface SignalSignatures extends IOStream.SignalSignatures {}
+        interface SignalSignatures extends IOStream.SignalSignatures {
+            'notify::input-stream': GObject.Object.Notify;
+            'notify::input-stream': GObject.Object.Notify;
+            'notify::output-stream': GObject.Object.Notify;
+            'notify::output-stream': GObject.Object.Notify;
+            'notify::closed': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -52924,19 +53510,28 @@ export namespace Gio {
             signal: K,
             callback: SimpleIOStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SimpleIOStream.SignalSignatures>(
             signal: K,
             callback: SimpleIOStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SimpleIOStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SimpleIOStream.SignalSignatures[K]>
+            ...args: SimpleIOStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace SimplePermission {
         // Signal signatures
-        interface SignalSignatures extends Permission.SignalSignatures {}
+        interface SignalSignatures extends Permission.SignalSignatures {
+            'notify::allowed': GObject.Object.Notify;
+            'notify::can-acquire': GObject.Object.Notify;
+            'notify::can-acquire': GObject.Object.Notify;
+            'notify::can-release': GObject.Object.Notify;
+            'notify::can-release': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -52968,19 +53563,27 @@ export namespace Gio {
             signal: K,
             callback: SimplePermission.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SimplePermission.SignalSignatures>(
             signal: K,
             callback: SimplePermission.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SimplePermission.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SimplePermission.SignalSignatures[K]>
+            ...args: SimplePermission.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace SimpleProxyResolver {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::default-proxy': GObject.Object.Notify;
+            'notify::default-proxy': GObject.Object.Notify;
+            'notify::ignore-hosts': GObject.Object.Notify;
+            'notify::ignore-hosts': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -53118,14 +53721,17 @@ export namespace Gio {
             signal: K,
             callback: SimpleProxyResolver.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SimpleProxyResolver.SignalSignatures>(
             signal: K,
             callback: SimpleProxyResolver.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SimpleProxyResolver.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SimpleProxyResolver.SignalSignatures[K]>
+            ...args: SimpleProxyResolver.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -53726,7 +54332,27 @@ export namespace Gio {
 
     namespace Socket {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::blocking': GObject.Object.Notify;
+            'notify::broadcast': GObject.Object.Notify;
+            'notify::family': GObject.Object.Notify;
+            'notify::fd': GObject.Object.Notify;
+            'notify::keepalive': GObject.Object.Notify;
+            'notify::listen-backlog': GObject.Object.Notify;
+            'notify::listen-backlog': GObject.Object.Notify;
+            'notify::local-address': GObject.Object.Notify;
+            'notify::local-address': GObject.Object.Notify;
+            'notify::multicast-loopback': GObject.Object.Notify;
+            'notify::multicast-loopback': GObject.Object.Notify;
+            'notify::multicast-ttl': GObject.Object.Notify;
+            'notify::multicast-ttl': GObject.Object.Notify;
+            'notify::protocol': GObject.Object.Notify;
+            'notify::remote-address': GObject.Object.Notify;
+            'notify::remote-address': GObject.Object.Notify;
+            'notify::timeout': GObject.Object.Notify;
+            'notify::ttl': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -53934,8 +54560,14 @@ export namespace Gio {
         // Signals
 
         connect<K extends keyof Socket.SignalSignatures>(signal: K, callback: Socket.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Socket.SignalSignatures>(signal: K, callback: Socket.SignalSignatures[K]): number;
-        emit<K extends keyof Socket.SignalSignatures>(signal: K, ...args: Parameters<Socket.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Socket.SignalSignatures>(
+            signal: K,
+            ...args: Socket.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -55635,7 +56267,9 @@ export namespace Gio {
 
     namespace SocketAddress {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::family': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -55674,14 +56308,17 @@ export namespace Gio {
             signal: K,
             callback: SocketAddress.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SocketAddress.SignalSignatures>(
             signal: K,
             callback: SocketAddress.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SocketAddress.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SocketAddress.SignalSignatures[K]>
+            ...args: SocketAddress.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -56268,14 +56905,17 @@ export namespace Gio {
             signal: K,
             callback: SocketAddressEnumerator.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SocketAddressEnumerator.SignalSignatures>(
             signal: K,
             callback: SocketAddressEnumerator.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SocketAddressEnumerator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SocketAddressEnumerator.SignalSignatures[K]>
+            ...args: SocketAddressEnumerator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -56393,6 +57033,19 @@ export namespace Gio {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             event: Event;
+            'notify::enable-proxy': GObject.Object.Notify;
+            'notify::enable-proxy': GObject.Object.Notify;
+            'notify::family': GObject.Object.Notify;
+            'notify::local-address': GObject.Object.Notify;
+            'notify::local-address': GObject.Object.Notify;
+            'notify::protocol': GObject.Object.Notify;
+            'notify::proxy-resolver': GObject.Object.Notify;
+            'notify::proxy-resolver': GObject.Object.Notify;
+            'notify::timeout': GObject.Object.Notify;
+            'notify::tls': GObject.Object.Notify;
+            'notify::tls-validation-flags': GObject.Object.Notify;
+            'notify::tls-validation-flags': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -56544,14 +57197,17 @@ export namespace Gio {
             signal: K,
             callback: SocketClient.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SocketClient.SignalSignatures>(
             signal: K,
             callback: SocketClient.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SocketClient.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SocketClient.SignalSignatures[K]>
+            ...args: SocketClient.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -57099,7 +57755,14 @@ export namespace Gio {
 
     namespace SocketConnection {
         // Signal signatures
-        interface SignalSignatures extends IOStream.SignalSignatures {}
+        interface SignalSignatures extends IOStream.SignalSignatures {
+            'notify::socket': GObject.Object.Notify;
+            'notify::closed': GObject.Object.Notify;
+            'notify::input-stream': GObject.Object.Notify;
+            'notify::input-stream': GObject.Object.Notify;
+            'notify::output-stream': GObject.Object.Notify;
+            'notify::output-stream': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -57148,14 +57811,17 @@ export namespace Gio {
             signal: K,
             callback: SocketConnection.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SocketConnection.SignalSignatures>(
             signal: K,
             callback: SocketConnection.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SocketConnection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SocketConnection.SignalSignatures[K]>
+            ...args: SocketConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -57335,14 +58001,17 @@ export namespace Gio {
             signal: K,
             callback: SocketControlMessage.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SocketControlMessage.SignalSignatures>(
             signal: K,
             callback: SocketControlMessage.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SocketControlMessage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SocketControlMessage.SignalSignatures[K]>
+            ...args: SocketControlMessage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -57429,6 +58098,8 @@ export namespace Gio {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             event: Event;
+            'notify::listen-backlog': GObject.Object.Notify;
+            'notify::listen-backlog': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -57486,14 +58157,17 @@ export namespace Gio {
             signal: K,
             callback: SocketListener.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SocketListener.SignalSignatures>(
             signal: K,
             callback: SocketListener.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SocketListener.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SocketListener.SignalSignatures[K]>
+            ...args: SocketListener.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -57723,12 +58397,19 @@ export namespace Gio {
         // Signal callback interfaces
 
         interface Incoming {
-            (_source: SocketService, connection: SocketConnection, source_object?: GObject.Object | null): boolean;
+            (
+                _source: SocketService,
+                connection: SocketConnection,
+                source_object?: GObject.Object | null,
+            ): boolean | void;
         }
 
         // Signal signatures
         interface SignalSignatures extends SocketListener.SignalSignatures {
             incoming: Incoming;
+            'notify::active': GObject.Object.Notify;
+            'notify::listen-backlog': GObject.Object.Notify;
+            'notify::listen-backlog': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -57791,14 +58472,17 @@ export namespace Gio {
             signal: K,
             callback: SocketService.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SocketService.SignalSignatures>(
             signal: K,
             callback: SocketService.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SocketService.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SocketService.SignalSignatures[K]>
+            ...args: SocketService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -57851,7 +58535,10 @@ export namespace Gio {
 
     namespace Subprocess {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::argv': GObject.Object.Notify;
+            'notify::flags': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -57954,14 +58641,17 @@ export namespace Gio {
             signal: K,
             callback: Subprocess.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Subprocess.SignalSignatures>(
             signal: K,
             callback: Subprocess.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Subprocess.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Subprocess.SignalSignatures[K]>
+            ...args: Subprocess.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -58842,7 +59532,9 @@ export namespace Gio {
 
     namespace SubprocessLauncher {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::flags': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -58885,14 +59577,17 @@ export namespace Gio {
             signal: K,
             callback: SubprocessLauncher.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SubprocessLauncher.SignalSignatures>(
             signal: K,
             callback: SubprocessLauncher.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SubprocessLauncher.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SubprocessLauncher.SignalSignatures[K]>
+            ...args: SubprocessLauncher.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -59125,7 +59820,9 @@ export namespace Gio {
 
     namespace Task {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::completed': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -59700,8 +60397,14 @@ export namespace Gio {
         // Signals
 
         connect<K extends keyof Task.SignalSignatures>(signal: K, callback: Task.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Task.SignalSignatures>(signal: K, callback: Task.SignalSignatures[K]): number;
-        emit<K extends keyof Task.SignalSignatures>(signal: K, ...args: Parameters<Task.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Task.SignalSignatures>(
+            signal: K,
+            ...args: Task.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -60569,7 +61272,16 @@ export namespace Gio {
 
     namespace TcpConnection {
         // Signal signatures
-        interface SignalSignatures extends SocketConnection.SignalSignatures {}
+        interface SignalSignatures extends SocketConnection.SignalSignatures {
+            'notify::graceful-disconnect': GObject.Object.Notify;
+            'notify::graceful-disconnect': GObject.Object.Notify;
+            'notify::socket': GObject.Object.Notify;
+            'notify::closed': GObject.Object.Notify;
+            'notify::input-stream': GObject.Object.Notify;
+            'notify::input-stream': GObject.Object.Notify;
+            'notify::output-stream': GObject.Object.Notify;
+            'notify::output-stream': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -60611,10 +61323,12 @@ export namespace Gio {
             signal: K,
             callback: TcpConnection.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TcpConnection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TcpConnection.SignalSignatures[K]>
+            ...args: TcpConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -60641,7 +61355,18 @@ export namespace Gio {
 
     namespace TcpWrapperConnection {
         // Signal signatures
-        interface SignalSignatures extends TcpConnection.SignalSignatures {}
+        interface SignalSignatures extends TcpConnection.SignalSignatures {
+            'notify::base-io-stream': GObject.Object.Notify;
+            'notify::base-io-stream': GObject.Object.Notify;
+            'notify::graceful-disconnect': GObject.Object.Notify;
+            'notify::graceful-disconnect': GObject.Object.Notify;
+            'notify::socket': GObject.Object.Notify;
+            'notify::closed': GObject.Object.Notify;
+            'notify::input-stream': GObject.Object.Notify;
+            'notify::input-stream': GObject.Object.Notify;
+            'notify::output-stream': GObject.Object.Notify;
+            'notify::output-stream': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -60687,10 +61412,12 @@ export namespace Gio {
             signal: K,
             callback: TcpWrapperConnection.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TcpWrapperConnection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TcpWrapperConnection.SignalSignatures[K]>
+            ...args: TcpWrapperConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -60703,7 +61430,9 @@ export namespace Gio {
 
     namespace TestDBus {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::flags': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -60814,14 +61543,17 @@ export namespace Gio {
         // Signals
 
         connect<K extends keyof TestDBus.SignalSignatures>(signal: K, callback: TestDBus.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TestDBus.SignalSignatures>(
             signal: K,
             callback: TestDBus.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TestDBus.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TestDBus.SignalSignatures[K]>
+            ...args: TestDBus.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -60887,7 +61619,12 @@ export namespace Gio {
 
     namespace ThemedIcon {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::names': GObject.Object.Notify;
+            'notify::use-default-fallbacks': GObject.Object.Notify;
+            'notify::use-default-fallbacks': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -60982,14 +61719,17 @@ export namespace Gio {
             signal: K,
             callback: ThemedIcon.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ThemedIcon.SignalSignatures>(
             signal: K,
             callback: ThemedIcon.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ThemedIcon.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ThemedIcon.SignalSignatures[K]>
+            ...args: ThemedIcon.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -61521,7 +62261,9 @@ export namespace Gio {
 
     namespace ThreadedResolver {
         // Signal signatures
-        interface SignalSignatures extends Resolver.SignalSignatures {}
+        interface SignalSignatures extends Resolver.SignalSignatures {
+            'notify::timeout': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -61547,14 +62289,17 @@ export namespace Gio {
             signal: K,
             callback: ThreadedResolver.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ThreadedResolver.SignalSignatures>(
             signal: K,
             callback: ThreadedResolver.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ThreadedResolver.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ThreadedResolver.SignalSignatures[K]>
+            ...args: ThreadedResolver.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace ThreadedSocketService {
@@ -61565,12 +62310,17 @@ export namespace Gio {
                 _source: ThreadedSocketService,
                 connection: SocketConnection,
                 source_object?: GObject.Object | null,
-            ): boolean;
+            ): boolean | void;
         }
 
         // Signal signatures
         interface SignalSignatures extends SocketService.SignalSignatures {
             run: Run;
+            'notify::max-threads': GObject.Object.Notify;
+            'notify::max-threads': GObject.Object.Notify;
+            'notify::active': GObject.Object.Notify;
+            'notify::listen-backlog': GObject.Object.Notify;
+            'notify::listen-backlog': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -61630,14 +62380,17 @@ export namespace Gio {
             signal: K,
             callback: ThreadedSocketService.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ThreadedSocketService.SignalSignatures>(
             signal: K,
             callback: ThreadedSocketService.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ThreadedSocketService.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ThreadedSocketService.SignalSignatures[K]>
+            ...args: ThreadedSocketService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -61646,7 +62399,35 @@ export namespace Gio {
 
     namespace TlsCertificate {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::certificate': GObject.Object.Notify;
+            'notify::certificate-pem': GObject.Object.Notify;
+            'notify::certificate-pem': GObject.Object.Notify;
+            'notify::dns-names': GObject.Object.Notify;
+            'notify::dns-names': GObject.Object.Notify;
+            'notify::ip-addresses': GObject.Object.Notify;
+            'notify::ip-addresses': GObject.Object.Notify;
+            'notify::issuer': GObject.Object.Notify;
+            'notify::issuer-name': GObject.Object.Notify;
+            'notify::issuer-name': GObject.Object.Notify;
+            'notify::not-valid-after': GObject.Object.Notify;
+            'notify::not-valid-after': GObject.Object.Notify;
+            'notify::not-valid-before': GObject.Object.Notify;
+            'notify::not-valid-before': GObject.Object.Notify;
+            'notify::password': GObject.Object.Notify;
+            'notify::pkcs11-uri': GObject.Object.Notify;
+            'notify::pkcs11-uri': GObject.Object.Notify;
+            'notify::pkcs12-data': GObject.Object.Notify;
+            'notify::pkcs12-data': GObject.Object.Notify;
+            'notify::private-key': GObject.Object.Notify;
+            'notify::private-key': GObject.Object.Notify;
+            'notify::private-key-pem': GObject.Object.Notify;
+            'notify::private-key-pem': GObject.Object.Notify;
+            'notify::private-key-pkcs11-uri': GObject.Object.Notify;
+            'notify::private-key-pkcs11-uri': GObject.Object.Notify;
+            'notify::subject-name': GObject.Object.Notify;
+            'notify::subject-name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -61939,14 +62720,17 @@ export namespace Gio {
             signal: K,
             callback: TlsCertificate.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TlsCertificate.SignalSignatures>(
             signal: K,
             callback: TlsCertificate.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TlsCertificate.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TlsCertificate.SignalSignatures[K]>
+            ...args: TlsCertificate.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -62093,12 +62877,40 @@ export namespace Gio {
         // Signal callback interfaces
 
         interface AcceptCertificate {
-            (_source: TlsConnection, peer_cert: TlsCertificate, errors: TlsCertificateFlags): boolean;
+            (_source: TlsConnection, peer_cert: TlsCertificate, errors: TlsCertificateFlags): boolean | void;
         }
 
         // Signal signatures
         interface SignalSignatures extends IOStream.SignalSignatures {
             'accept-certificate': AcceptCertificate;
+            'notify::advertised-protocols': GObject.Object.Notify;
+            'notify::advertised-protocols': GObject.Object.Notify;
+            'notify::base-io-stream': GObject.Object.Notify;
+            'notify::base-io-stream': GObject.Object.Notify;
+            'notify::certificate': GObject.Object.Notify;
+            'notify::ciphersuite-name': GObject.Object.Notify;
+            'notify::ciphersuite-name': GObject.Object.Notify;
+            'notify::database': GObject.Object.Notify;
+            'notify::interaction': GObject.Object.Notify;
+            'notify::negotiated-protocol': GObject.Object.Notify;
+            'notify::negotiated-protocol': GObject.Object.Notify;
+            'notify::peer-certificate': GObject.Object.Notify;
+            'notify::peer-certificate': GObject.Object.Notify;
+            'notify::peer-certificate-errors': GObject.Object.Notify;
+            'notify::peer-certificate-errors': GObject.Object.Notify;
+            'notify::protocol-version': GObject.Object.Notify;
+            'notify::protocol-version': GObject.Object.Notify;
+            'notify::rehandshake-mode': GObject.Object.Notify;
+            'notify::rehandshake-mode': GObject.Object.Notify;
+            'notify::require-close-notify': GObject.Object.Notify;
+            'notify::require-close-notify': GObject.Object.Notify;
+            'notify::use-system-certdb': GObject.Object.Notify;
+            'notify::use-system-certdb': GObject.Object.Notify;
+            'notify::closed': GObject.Object.Notify;
+            'notify::input-stream': GObject.Object.Notify;
+            'notify::input-stream': GObject.Object.Notify;
+            'notify::output-stream': GObject.Object.Notify;
+            'notify::output-stream': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -62336,14 +63148,17 @@ export namespace Gio {
             signal: K,
             callback: TlsConnection.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TlsConnection.SignalSignatures>(
             signal: K,
             callback: TlsConnection.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TlsConnection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TlsConnection.SignalSignatures[K]>
+            ...args: TlsConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -62758,14 +63573,17 @@ export namespace Gio {
             signal: K,
             callback: TlsDatabase.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TlsDatabase.SignalSignatures>(
             signal: K,
             callback: TlsDatabase.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TlsDatabase.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TlsDatabase.SignalSignatures[K]>
+            ...args: TlsDatabase.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -63505,14 +64323,17 @@ export namespace Gio {
             signal: K,
             callback: TlsInteraction.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TlsInteraction.SignalSignatures>(
             signal: K,
             callback: TlsInteraction.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TlsInteraction.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TlsInteraction.SignalSignatures[K]>
+            ...args: TlsInteraction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -63898,7 +64719,11 @@ export namespace Gio {
 
     namespace TlsPassword {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::description': GObject.Object.Notify;
+            'notify::flags': GObject.Object.Notify;
+            'notify::warning': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -63948,14 +64773,17 @@ export namespace Gio {
             signal: K,
             callback: TlsPassword.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TlsPassword.SignalSignatures>(
             signal: K,
             callback: TlsPassword.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TlsPassword.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TlsPassword.SignalSignatures[K]>
+            ...args: TlsPassword.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -64061,7 +64889,14 @@ export namespace Gio {
 
     namespace UnixConnection {
         // Signal signatures
-        interface SignalSignatures extends SocketConnection.SignalSignatures {}
+        interface SignalSignatures extends SocketConnection.SignalSignatures {
+            'notify::socket': GObject.Object.Notify;
+            'notify::closed': GObject.Object.Notify;
+            'notify::input-stream': GObject.Object.Notify;
+            'notify::input-stream': GObject.Object.Notify;
+            'notify::output-stream': GObject.Object.Notify;
+            'notify::output-stream': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -64097,10 +64932,12 @@ export namespace Gio {
             signal: K,
             callback: UnixConnection.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UnixConnection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UnixConnection.SignalSignatures[K]>
+            ...args: UnixConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -64270,7 +65107,9 @@ export namespace Gio {
 
     namespace UnixCredentialsMessage {
         // Signal signatures
-        interface SignalSignatures extends SocketControlMessage.SignalSignatures {}
+        interface SignalSignatures extends SocketControlMessage.SignalSignatures {
+            'notify::credentials': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -64326,14 +65165,17 @@ export namespace Gio {
             signal: K,
             callback: UnixCredentialsMessage.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UnixCredentialsMessage.SignalSignatures>(
             signal: K,
             callback: UnixCredentialsMessage.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UnixCredentialsMessage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UnixCredentialsMessage.SignalSignatures[K]>
+            ...args: UnixCredentialsMessage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -64395,14 +65237,17 @@ export namespace Gio {
             signal: K,
             callback: UnixFDList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UnixFDList.SignalSignatures>(
             signal: K,
             callback: UnixFDList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UnixFDList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UnixFDList.SignalSignatures[K]>
+            ...args: UnixFDList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -64489,7 +65334,10 @@ export namespace Gio {
 
     namespace UnixFDMessage {
         // Signal signatures
-        interface SignalSignatures extends SocketControlMessage.SignalSignatures {}
+        interface SignalSignatures extends SocketControlMessage.SignalSignatures {
+            'notify::fd-list': GObject.Object.Notify;
+            'notify::fd-list': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -64544,14 +65392,17 @@ export namespace Gio {
             signal: K,
             callback: UnixFDMessage.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UnixFDMessage.SignalSignatures>(
             signal: K,
             callback: UnixFDMessage.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UnixFDMessage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UnixFDMessage.SignalSignatures[K]>
+            ...args: UnixFDMessage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -64600,7 +65451,11 @@ export namespace Gio {
 
     namespace UnixInputStream {
         // Signal signatures
-        interface SignalSignatures extends InputStream.SignalSignatures {}
+        interface SignalSignatures extends InputStream.SignalSignatures {
+            'notify::close-fd': GObject.Object.Notify;
+            'notify::close-fd': GObject.Object.Notify;
+            'notify::fd': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -64659,14 +65514,17 @@ export namespace Gio {
             signal: K,
             callback: UnixInputStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UnixInputStream.SignalSignatures>(
             signal: K,
             callback: UnixInputStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UnixInputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UnixInputStream.SignalSignatures[K]>
+            ...args: UnixInputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -66051,14 +66909,17 @@ export namespace Gio {
             signal: K,
             callback: UnixMountMonitor.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UnixMountMonitor.SignalSignatures>(
             signal: K,
             callback: UnixMountMonitor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UnixMountMonitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UnixMountMonitor.SignalSignatures[K]>
+            ...args: UnixMountMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -66092,7 +66953,11 @@ export namespace Gio {
 
     namespace UnixOutputStream {
         // Signal signatures
-        interface SignalSignatures extends OutputStream.SignalSignatures {}
+        interface SignalSignatures extends OutputStream.SignalSignatures {
+            'notify::close-fd': GObject.Object.Notify;
+            'notify::close-fd': GObject.Object.Notify;
+            'notify::fd': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -66151,14 +67016,17 @@ export namespace Gio {
             signal: K,
             callback: UnixOutputStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UnixOutputStream.SignalSignatures>(
             signal: K,
             callback: UnixOutputStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UnixOutputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UnixOutputStream.SignalSignatures[K]>
+            ...args: UnixOutputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -67980,7 +68848,15 @@ export namespace Gio {
 
     namespace UnixSocketAddress {
         // Signal signatures
-        interface SignalSignatures extends SocketAddress.SignalSignatures {}
+        interface SignalSignatures extends SocketAddress.SignalSignatures {
+            'notify::abstract': GObject.Object.Notify;
+            'notify::address-type': GObject.Object.Notify;
+            'notify::address-type': GObject.Object.Notify;
+            'notify::path': GObject.Object.Notify;
+            'notify::path-as-array': GObject.Object.Notify;
+            'notify::path-as-array': GObject.Object.Notify;
+            'notify::family': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -68063,14 +68939,17 @@ export namespace Gio {
             signal: K,
             callback: UnixSocketAddress.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UnixSocketAddress.SignalSignatures>(
             signal: K,
             callback: UnixSocketAddress.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UnixSocketAddress.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UnixSocketAddress.SignalSignatures[K]>
+            ...args: UnixSocketAddress.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -68626,8 +69505,14 @@ export namespace Gio {
         // Signals
 
         connect<K extends keyof Vfs.SignalSignatures>(signal: K, callback: Vfs.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Vfs.SignalSignatures>(signal: K, callback: Vfs.SignalSignatures[K]): number;
-        emit<K extends keyof Vfs.SignalSignatures>(signal: K, ...args: Parameters<Vfs.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Vfs.SignalSignatures>(
+            signal: K,
+            ...args: Vfs.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -68869,14 +69754,17 @@ export namespace Gio {
             signal: K,
             callback: VolumeMonitor.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof VolumeMonitor.SignalSignatures>(
             signal: K,
             callback: VolumeMonitor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof VolumeMonitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<VolumeMonitor.SignalSignatures[K]>
+            ...args: VolumeMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -69005,7 +69893,12 @@ export namespace Gio {
 
     namespace ZlibCompressor {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::file-info': GObject.Object.Notify;
+            'notify::file-info': GObject.Object.Notify;
+            'notify::format': GObject.Object.Notify;
+            'notify::level': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -69064,14 +69957,17 @@ export namespace Gio {
             signal: K,
             callback: ZlibCompressor.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ZlibCompressor.SignalSignatures>(
             signal: K,
             callback: ZlibCompressor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ZlibCompressor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ZlibCompressor.SignalSignatures[K]>
+            ...args: ZlibCompressor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -69740,7 +70636,11 @@ export namespace Gio {
 
     namespace ZlibDecompressor {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::file-info': GObject.Object.Notify;
+            'notify::file-info': GObject.Object.Notify;
+            'notify::format': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -69793,14 +70693,17 @@ export namespace Gio {
             signal: K,
             callback: ZlibDecompressor.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ZlibDecompressor.SignalSignatures>(
             signal: K,
             callback: ZlibDecompressor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ZlibDecompressor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ZlibDecompressor.SignalSignatures[K]>
+            ...args: ZlibDecompressor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -85923,14 +86826,17 @@ export namespace Gio {
             signal: K,
             callback: DBusExportedObject.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DBusExportedObject.SignalSignatures>(
             signal: K,
             callback: DBusExportedObject.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DBusExportedObject.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DBusExportedObject.SignalSignatures[K]>
+            ...args: DBusExportedObject.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 

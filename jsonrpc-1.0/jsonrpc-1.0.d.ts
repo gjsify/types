@@ -59,7 +59,7 @@ export namespace Jsonrpc {
         }
 
         interface HandleCall {
-            (_source: Client, method: string, id: GLib.Variant, params?: GLib.Variant | null): boolean;
+            (_source: Client, method: string, id: GLib.Variant, params?: GLib.Variant | null): boolean | void;
         }
 
         interface Notification {
@@ -71,6 +71,18 @@ export namespace Jsonrpc {
             failed: Failed;
             'handle-call': HandleCall;
             notification: Notification;
+            'notify::io-stream': GObject.Object.Notify;
+            'notify::io-stream': GObject.Object.Notify;
+            'notify::use-gvariant': GObject.Object.Notify;
+            'notify::use-gvariant': GObject.Object.Notify;
+            'handle-call::io-stream': HandleCall;
+            'handle-call::io-stream': HandleCall;
+            'handle-call::use-gvariant': HandleCall;
+            'handle-call::use-gvariant': HandleCall;
+            'notification::io-stream': Notification;
+            'notification::io-stream': Notification;
+            'notification::use-gvariant': Notification;
+            'notification::use-gvariant': Notification;
         }
 
         // Constructor properties interface
@@ -162,8 +174,14 @@ export namespace Jsonrpc {
         // Signals
 
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -521,7 +539,18 @@ export namespace Jsonrpc {
 
     namespace InputStream {
         // Signal signatures
-        interface SignalSignatures extends Gio.DataInputStream.SignalSignatures {}
+        interface SignalSignatures extends Gio.DataInputStream.SignalSignatures {
+            'notify::byte-order': GObject.Object.Notify;
+            'notify::byte-order': GObject.Object.Notify;
+            'notify::newline-type': GObject.Object.Notify;
+            'notify::newline-type': GObject.Object.Notify;
+            'notify::buffer-size': GObject.Object.Notify;
+            'notify::buffer-size': GObject.Object.Notify;
+            'notify::base-stream': GObject.Object.Notify;
+            'notify::base-stream': GObject.Object.Notify;
+            'notify::close-base-stream': GObject.Object.Notify;
+            'notify::close-base-stream': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -545,14 +574,17 @@ export namespace Jsonrpc {
             signal: K,
             callback: InputStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InputStream.SignalSignatures>(
             signal: K,
             callback: InputStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InputStream.SignalSignatures[K]>
+            ...args: InputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1009,7 +1041,16 @@ export namespace Jsonrpc {
 
     namespace OutputStream {
         // Signal signatures
-        interface SignalSignatures extends Gio.DataOutputStream.SignalSignatures {}
+        interface SignalSignatures extends Gio.DataOutputStream.SignalSignatures {
+            'notify::use-gvariant': GObject.Object.Notify;
+            'notify::use-gvariant': GObject.Object.Notify;
+            'notify::byte-order': GObject.Object.Notify;
+            'notify::byte-order': GObject.Object.Notify;
+            'notify::base-stream': GObject.Object.Notify;
+            'notify::base-stream': GObject.Object.Notify;
+            'notify::close-base-stream': GObject.Object.Notify;
+            'notify::close-base-stream': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1043,14 +1084,17 @@ export namespace Jsonrpc {
             signal: K,
             callback: OutputStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OutputStream.SignalSignatures>(
             signal: K,
             callback: OutputStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OutputStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OutputStream.SignalSignatures[K]>
+            ...args: OutputStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1657,7 +1701,7 @@ export namespace Jsonrpc {
         }
 
         interface HandleCall {
-            (_source: Server, client: Client, method: string, id: GLib.Variant, params: GLib.Variant): boolean;
+            (_source: Server, client: Client, method: string, id: GLib.Variant, params: GLib.Variant): boolean | void;
         }
 
         interface Notification {
@@ -1698,8 +1742,14 @@ export namespace Jsonrpc {
         // Signals
 
         connect<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Server.SignalSignatures>(signal: K, callback: Server.SignalSignatures[K]): number;
-        emit<K extends keyof Server.SignalSignatures>(signal: K, ...args: Parameters<Server.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Server.SignalSignatures>(
+            signal: K,
+            ...args: Server.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 

@@ -25,7 +25,34 @@ export namespace FolksLibsocialweb {
 
     namespace Persona {
         // Signal signatures
-        interface SignalSignatures extends Folks.Persona.SignalSignatures {}
+        interface SignalSignatures extends Folks.Persona.SignalSignatures {
+            'notify::lsw-contact': GObject.Object.Notify;
+            'notify::lsw-contact': GObject.Object.Notify;
+            'notify::iid': GObject.Object.Notify;
+            'notify::uid': GObject.Object.Notify;
+            'notify::display-id': GObject.Object.Notify;
+            'notify::display-id': GObject.Object.Notify;
+            'notify::is-user': GObject.Object.Notify;
+            'notify::is-user': GObject.Object.Notify;
+            'notify::store': GObject.Object.Notify;
+            'notify::individual': GObject.Object.Notify;
+            'notify::linkable-properties': GObject.Object.Notify;
+            'notify::linkable-properties': GObject.Object.Notify;
+            'notify::writeable-properties': GObject.Object.Notify;
+            'notify::writeable-properties': GObject.Object.Notify;
+            'notify::avatar': GObject.Object.Notify;
+            'notify::gender': GObject.Object.Notify;
+            'notify::im-addresses': GObject.Object.Notify;
+            'notify::im-addresses': GObject.Object.Notify;
+            'notify::structured-name': GObject.Object.Notify;
+            'notify::structured-name': GObject.Object.Notify;
+            'notify::full-name': GObject.Object.Notify;
+            'notify::full-name': GObject.Object.Notify;
+            'notify::nickname': GObject.Object.Notify;
+            'notify::urls': GObject.Object.Notify;
+            'notify::web-service-addresses': GObject.Object.Notify;
+            'notify::web-service-addresses': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -70,14 +97,17 @@ export namespace FolksLibsocialweb {
         // Signals
 
         connect<K extends keyof Persona.SignalSignatures>(signal: K, callback: Persona.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Persona.SignalSignatures>(
             signal: K,
             callback: Persona.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Persona.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Persona.SignalSignatures[K]>
+            ...args: Persona.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -653,7 +683,37 @@ export namespace FolksLibsocialweb {
 
     namespace PersonaStore {
         // Signal signatures
-        interface SignalSignatures extends Folks.PersonaStore.SignalSignatures {}
+        interface SignalSignatures extends Folks.PersonaStore.SignalSignatures {
+            'notify::service': GObject.Object.Notify;
+            'notify::type-id': GObject.Object.Notify;
+            'notify::type-id': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::personas': GObject.Object.Notify;
+            'notify::can-add-personas': GObject.Object.Notify;
+            'notify::can-add-personas': GObject.Object.Notify;
+            'notify::can-alias-personas': GObject.Object.Notify;
+            'notify::can-alias-personas': GObject.Object.Notify;
+            'notify::can-group-personas': GObject.Object.Notify;
+            'notify::can-group-personas': GObject.Object.Notify;
+            'notify::can-remove-personas': GObject.Object.Notify;
+            'notify::can-remove-personas': GObject.Object.Notify;
+            'notify::is-prepared': GObject.Object.Notify;
+            'notify::is-prepared': GObject.Object.Notify;
+            'notify::is-quiescent': GObject.Object.Notify;
+            'notify::is-quiescent': GObject.Object.Notify;
+            'notify::is-writeable': GObject.Object.Notify;
+            'notify::is-writeable': GObject.Object.Notify;
+            'notify::trust-level': GObject.Object.Notify;
+            'notify::trust-level': GObject.Object.Notify;
+            'notify::always-writeable-properties': GObject.Object.Notify;
+            'notify::always-writeable-properties': GObject.Object.Notify;
+            'notify::is-primary-store': GObject.Object.Notify;
+            'notify::is-primary-store': GObject.Object.Notify;
+            'notify::is-user-set-default': GObject.Object.Notify;
+            'notify::is-user-set-default': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -683,14 +743,17 @@ export namespace FolksLibsocialweb {
             signal: K,
             callback: PersonaStore.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PersonaStore.SignalSignatures>(
             signal: K,
             callback: PersonaStore.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PersonaStore.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PersonaStore.SignalSignatures[K]>
+            ...args: PersonaStore.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

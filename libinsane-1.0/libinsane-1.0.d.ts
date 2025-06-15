@@ -180,8 +180,14 @@ export namespace Libinsane {
         // Signals
 
         connect<K extends keyof Api.SignalSignatures>(signal: K, callback: Api.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Api.SignalSignatures>(signal: K, callback: Api.SignalSignatures[K]): number;
-        emit<K extends keyof Api.SignalSignatures>(signal: K, ...args: Parameters<Api.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Api.SignalSignatures>(
+            signal: K,
+            ...args: Api.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -218,14 +224,17 @@ export namespace Libinsane {
             signal: K,
             callback: DeviceDescriptor.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceDescriptor.SignalSignatures>(
             signal: K,
             callback: DeviceDescriptor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceDescriptor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceDescriptor.SignalSignatures[K]>
+            ...args: DeviceDescriptor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -261,8 +270,14 @@ export namespace Libinsane {
         // Signals
 
         connect<K extends keyof Item.SignalSignatures>(signal: K, callback: Item.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Item.SignalSignatures>(signal: K, callback: Item.SignalSignatures[K]): number;
-        emit<K extends keyof Item.SignalSignatures>(signal: K, ...args: Parameters<Item.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Item.SignalSignatures>(
+            signal: K,
+            ...args: Item.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -306,14 +321,17 @@ export namespace Libinsane {
             signal: K,
             callback: OptionDescriptor.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OptionDescriptor.SignalSignatures>(
             signal: K,
             callback: OptionDescriptor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OptionDescriptor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OptionDescriptor.SignalSignatures[K]>
+            ...args: OptionDescriptor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -359,14 +377,17 @@ export namespace Libinsane {
             signal: K,
             callback: ScanParameters.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ScanParameters.SignalSignatures>(
             signal: K,
             callback: ScanParameters.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ScanParameters.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ScanParameters.SignalSignatures[K]>
+            ...args: ScanParameters.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -400,14 +421,17 @@ export namespace Libinsane {
             signal: K,
             callback: ScanSession.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ScanSession.SignalSignatures>(
             signal: K,
             callback: ScanSession.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ScanSession.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ScanSession.SignalSignatures[K]>
+            ...args: ScanSession.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

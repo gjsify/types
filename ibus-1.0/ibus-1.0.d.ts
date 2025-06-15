@@ -5467,14 +5467,17 @@ export namespace IBus {
         // Signals
 
         connect<K extends keyof AttrList.SignalSignatures>(signal: K, callback: AttrList.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AttrList.SignalSignatures>(
             signal: K,
             callback: AttrList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AttrList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AttrList.SignalSignatures[K]>
+            ...args: AttrList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5529,14 +5532,17 @@ export namespace IBus {
         // Signals
 
         connect<K extends keyof Attribute.SignalSignatures>(signal: K, callback: Attribute.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Attribute.SignalSignatures>(
             signal: K,
             callback: Attribute.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Attribute.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Attribute.SignalSignatures[K]>
+            ...args: Attribute.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5595,6 +5601,10 @@ export namespace IBus {
             'global-engine-changed': GlobalEngineChanged;
             'global-shortcut-key-responded': GlobalShortcutKeyResponded;
             'name-owner-changed': NameOwnerChanged;
+            'notify::client-only': GObject.Object.Notify;
+            'notify::client-only': GObject.Object.Notify;
+            'notify::connect-async': GObject.Object.Notify;
+            'notify::connect-async': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -5647,8 +5657,14 @@ export namespace IBus {
         // Signals
 
         connect<K extends keyof Bus.SignalSignatures>(signal: K, callback: Bus.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Bus.SignalSignatures>(signal: K, callback: Bus.SignalSignatures[K]): number;
-        emit<K extends keyof Bus.SignalSignatures>(signal: K, ...args: Parameters<Bus.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Bus.SignalSignatures>(
+            signal: K,
+            ...args: Bus.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -6674,7 +6690,17 @@ export namespace IBus {
 
     namespace Component {
         // Signal signatures
-        interface SignalSignatures extends Serializable.SignalSignatures {}
+        interface SignalSignatures extends Serializable.SignalSignatures {
+            'notify::author': GObject.Object.Notify;
+            'notify::command-line': GObject.Object.Notify;
+            'notify::command-line': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::homepage': GObject.Object.Notify;
+            'notify::license': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::textdomain': GObject.Object.Notify;
+            'notify::version': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6772,14 +6798,17 @@ export namespace IBus {
         // Signals
 
         connect<K extends keyof Component.SignalSignatures>(signal: K, callback: Component.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Component.SignalSignatures>(
             signal: K,
             callback: Component.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Component.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Component.SignalSignatures[K]>
+            ...args: Component.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -6875,6 +6904,24 @@ export namespace IBus {
         // Signal signatures
         interface SignalSignatures extends Proxy.SignalSignatures {
             'value-changed': ValueChanged;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -6911,8 +6958,14 @@ export namespace IBus {
         // Signals
 
         connect<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
-        emit<K extends keyof Config.SignalSignatures>(signal: K, ...args: Parameters<Config.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Config.SignalSignatures>(
+            signal: K,
+            ...args: Config.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -7797,7 +7850,11 @@ export namespace IBus {
 
     namespace ConfigService {
         // Signal signatures
-        interface SignalSignatures extends Service.SignalSignatures {}
+        interface SignalSignatures extends Service.SignalSignatures {
+            'notify::connection': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -7927,14 +7984,17 @@ export namespace IBus {
             signal: K,
             callback: ConfigService.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConfigService.SignalSignatures>(
             signal: K,
             callback: ConfigService.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConfigService.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConfigService.SignalSignatures[K]>
+            ...args: ConfigService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -7957,7 +8017,12 @@ export namespace IBus {
 
     namespace EmojiData {
         // Signal signatures
-        interface SignalSignatures extends Serializable.SignalSignatures {}
+        interface SignalSignatures extends Serializable.SignalSignatures {
+            'notify::annotations': GObject.Object.Notify;
+            'notify::category': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::emoji': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8006,14 +8071,17 @@ export namespace IBus {
         // Signals
 
         connect<K extends keyof EmojiData.SignalSignatures>(signal: K, callback: EmojiData.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof EmojiData.SignalSignatures>(
             signal: K,
             callback: EmojiData.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof EmojiData.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EmojiData.SignalSignatures[K]>
+            ...args: EmojiData.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -8115,7 +8183,7 @@ export namespace IBus {
         }
 
         interface ProcessKeyEvent {
-            (_source: Engine, keyval: number, keycode: number, state: number): boolean;
+            (_source: Engine, keyval: number, keycode: number, state: number): boolean | void;
         }
 
         interface PropertyActivate {
@@ -8174,6 +8242,15 @@ export namespace IBus {
             'set-content-type': SetContentType;
             'set-cursor-location': SetCursorLocation;
             'set-surrounding-text': SetSurroundingText;
+            'notify::active-surrounding-text': GObject.Object.Notify;
+            'notify::active-surrounding-text': GObject.Object.Notify;
+            'notify::engine-name': GObject.Object.Notify;
+            'notify::engine-name': GObject.Object.Notify;
+            'notify::has-focus-id': GObject.Object.Notify;
+            'notify::has-focus-id': GObject.Object.Notify;
+            'notify::connection': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -8268,8 +8345,14 @@ export namespace IBus {
         // Signals
 
         connect<K extends keyof Engine.SignalSignatures>(signal: K, callback: Engine.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Engine.SignalSignatures>(signal: K, callback: Engine.SignalSignatures[K]): number;
-        emit<K extends keyof Engine.SignalSignatures>(signal: K, ...args: Parameters<Engine.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Engine.SignalSignatures>(
+            signal: K,
+            ...args: Engine.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -8457,7 +8540,28 @@ export namespace IBus {
 
     namespace EngineDesc {
         // Signal signatures
-        interface SignalSignatures extends Serializable.SignalSignatures {}
+        interface SignalSignatures extends Serializable.SignalSignatures {
+            'notify::author': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::hotkeys': GObject.Object.Notify;
+            'notify::icon': GObject.Object.Notify;
+            'notify::icon-prop-key': GObject.Object.Notify;
+            'notify::icon-prop-key': GObject.Object.Notify;
+            'notify::language': GObject.Object.Notify;
+            'notify::layout': GObject.Object.Notify;
+            'notify::layout-option': GObject.Object.Notify;
+            'notify::layout-option': GObject.Object.Notify;
+            'notify::layout-variant': GObject.Object.Notify;
+            'notify::layout-variant': GObject.Object.Notify;
+            'notify::license': GObject.Object.Notify;
+            'notify::longname': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::rank': GObject.Object.Notify;
+            'notify::setup': GObject.Object.Notify;
+            'notify::symbol': GObject.Object.Notify;
+            'notify::textdomain': GObject.Object.Notify;
+            'notify::version': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8611,14 +8715,17 @@ export namespace IBus {
             signal: K,
             callback: EngineDesc.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof EngineDesc.SignalSignatures>(
             signal: K,
             callback: EngineDesc.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof EngineDesc.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EngineDesc.SignalSignatures[K]>
+            ...args: EngineDesc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -8719,7 +8826,17 @@ export namespace IBus {
 
     namespace EngineSimple {
         // Signal signatures
-        interface SignalSignatures extends Engine.SignalSignatures {}
+        interface SignalSignatures extends Engine.SignalSignatures {
+            'notify::active-surrounding-text': GObject.Object.Notify;
+            'notify::active-surrounding-text': GObject.Object.Notify;
+            'notify::engine-name': GObject.Object.Notify;
+            'notify::engine-name': GObject.Object.Notify;
+            'notify::has-focus-id': GObject.Object.Notify;
+            'notify::has-focus-id': GObject.Object.Notify;
+            'notify::connection': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8746,14 +8863,17 @@ export namespace IBus {
             signal: K,
             callback: EngineSimple.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof EngineSimple.SignalSignatures>(
             signal: K,
             callback: EngineSimple.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof EngineSimple.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EngineSimple.SignalSignatures[K]>
+            ...args: EngineSimple.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -8786,7 +8906,15 @@ export namespace IBus {
 
     namespace ExtensionEvent {
         // Signal signatures
-        interface SignalSignatures extends Serializable.SignalSignatures {}
+        interface SignalSignatures extends Serializable.SignalSignatures {
+            'notify::is-enabled': GObject.Object.Notify;
+            'notify::is-enabled': GObject.Object.Notify;
+            'notify::is-extension': GObject.Object.Notify;
+            'notify::is-extension': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::params': GObject.Object.Notify;
+            'notify::version': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8858,14 +8986,17 @@ export namespace IBus {
             signal: K,
             callback: ExtensionEvent.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExtensionEvent.SignalSignatures>(
             signal: K,
             callback: ExtensionEvent.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExtensionEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExtensionEvent.SignalSignatures[K]>
+            ...args: ExtensionEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -8884,6 +9015,9 @@ export namespace IBus {
         // Signal signatures
         interface SignalSignatures extends Service.SignalSignatures {
             'create-engine': CreateEngine;
+            'notify::connection': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -8915,14 +9049,17 @@ export namespace IBus {
         // Signals
 
         connect<K extends keyof Factory.SignalSignatures>(signal: K, callback: Factory.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Factory.SignalSignatures>(
             signal: K,
             callback: Factory.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Factory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Factory.SignalSignatures[K]>
+            ...args: Factory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -8985,14 +9122,17 @@ export namespace IBus {
             signal: K,
             callback: HotkeyProfile.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HotkeyProfile.SignalSignatures>(
             signal: K,
             callback: HotkeyProfile.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HotkeyProfile.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HotkeyProfile.SignalSignatures[K]>
+            ...args: HotkeyProfile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -9164,6 +9304,24 @@ export namespace IBus {
             'update-preedit-text': UpdatePreeditText;
             'update-preedit-text-with-mode': UpdatePreeditTextWithMode;
             'update-property': UpdateProperty;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -9209,14 +9367,17 @@ export namespace IBus {
             signal: K,
             callback: InputContext.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InputContext.SignalSignatures>(
             signal: K,
             callback: InputContext.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InputContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InputContext.SignalSignatures[K]>
+            ...args: InputContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -10233,8 +10394,14 @@ export namespace IBus {
         // Signals
 
         connect<K extends keyof Keymap.SignalSignatures>(signal: K, callback: Keymap.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Keymap.SignalSignatures>(signal: K, callback: Keymap.SignalSignatures[K]): number;
-        emit<K extends keyof Keymap.SignalSignatures>(signal: K, ...args: Parameters<Keymap.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Keymap.SignalSignatures>(
+            signal: K,
+            ...args: Keymap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -10307,14 +10474,17 @@ export namespace IBus {
             signal: K,
             callback: LookupTable.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LookupTable.SignalSignatures>(
             signal: K,
             callback: LookupTable.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LookupTable.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LookupTable.SignalSignatures[K]>
+            ...args: LookupTable.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -10490,8 +10660,14 @@ export namespace IBus {
         // Signals
 
         connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
-        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            ...args: Object.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -10560,14 +10736,17 @@ export namespace IBus {
             signal: K,
             callback: ObservedPath.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ObservedPath.SignalSignatures>(
             signal: K,
             callback: ObservedPath.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ObservedPath.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ObservedPath.SignalSignatures[K]>
+            ...args: ObservedPath.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -10654,7 +10833,7 @@ export namespace IBus {
         }
 
         interface ProcessKeyEvent {
-            (_source: PanelService, keyval: number, keycode: number, state: number): boolean;
+            (_source: PanelService, keyval: number, keycode: number, state: number): boolean | void;
         }
 
         interface RegisterProperties {
@@ -10749,6 +10928,9 @@ export namespace IBus {
             'update-lookup-table': UpdateLookupTable;
             'update-preedit-text': UpdatePreeditText;
             'update-property': UpdateProperty;
+            'notify::connection': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -10780,14 +10962,17 @@ export namespace IBus {
             signal: K,
             callback: PanelService.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PanelService.SignalSignatures>(
             signal: K,
             callback: PanelService.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PanelService.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PanelService.SignalSignatures[K]>
+            ...args: PanelService.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -10955,14 +11140,17 @@ export namespace IBus {
         // Signals
 
         connect<K extends keyof PropList.SignalSignatures>(signal: K, callback: PropList.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PropList.SignalSignatures>(
             signal: K,
             callback: PropList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PropList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PropList.SignalSignatures[K]>
+            ...args: PropList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -10987,7 +11175,20 @@ export namespace IBus {
 
     namespace Property {
         // Signal signatures
-        interface SignalSignatures extends Serializable.SignalSignatures {}
+        interface SignalSignatures extends Serializable.SignalSignatures {
+            'notify::icon': GObject.Object.Notify;
+            'notify::key': GObject.Object.Notify;
+            'notify::label': GObject.Object.Notify;
+            'notify::prop-type': GObject.Object.Notify;
+            'notify::prop-type': GObject.Object.Notify;
+            'notify::sensitive': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::sub-props': GObject.Object.Notify;
+            'notify::sub-props': GObject.Object.Notify;
+            'notify::symbol': GObject.Object.Notify;
+            'notify::tooltip': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11068,14 +11269,17 @@ export namespace IBus {
         // Signals
 
         connect<K extends keyof Property.SignalSignatures>(signal: K, callback: Property.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Property.SignalSignatures>(
             signal: K,
             callback: Property.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Property.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Property.SignalSignatures[K]>
+            ...args: Property.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -11185,6 +11389,24 @@ export namespace IBus {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
             destroy: Destroy;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -11224,8 +11446,14 @@ export namespace IBus {
         // Signals
 
         connect<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
-        emit<K extends keyof Proxy.SignalSignatures>(signal: K, ...args: Parameters<Proxy.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Proxy.SignalSignatures>(
+            signal: K,
+            ...args: Proxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -12051,14 +12279,17 @@ export namespace IBus {
         // Signals
 
         connect<K extends keyof Registry.SignalSignatures>(signal: K, callback: Registry.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Registry.SignalSignatures>(
             signal: K,
             callback: Registry.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Registry.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Registry.SignalSignatures[K]>
+            ...args: Registry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -12175,14 +12406,17 @@ export namespace IBus {
             signal: K,
             callback: Serializable.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Serializable.SignalSignatures>(
             signal: K,
             callback: Serializable.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Serializable.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Serializable.SignalSignatures[K]>
+            ...args: Serializable.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -12238,7 +12472,11 @@ export namespace IBus {
 
     namespace Service {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::connection': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12285,14 +12523,17 @@ export namespace IBus {
         // Signals
 
         connect<K extends keyof Service.SignalSignatures>(signal: K, callback: Service.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Service.SignalSignatures>(
             signal: K,
             callback: Service.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Service.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Service.SignalSignatures[K]>
+            ...args: Service.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -12428,8 +12669,14 @@ export namespace IBus {
         // Signals
 
         connect<K extends keyof Text.SignalSignatures>(signal: K, callback: Text.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Text.SignalSignatures>(signal: K, callback: Text.SignalSignatures[K]): number;
-        emit<K extends keyof Text.SignalSignatures>(signal: K, ...args: Parameters<Text.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Text.SignalSignatures>(
+            signal: K,
+            ...args: Text.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -12463,7 +12710,11 @@ export namespace IBus {
 
     namespace UnicodeBlock {
         // Signal signatures
-        interface SignalSignatures extends Serializable.SignalSignatures {}
+        interface SignalSignatures extends Serializable.SignalSignatures {
+            'notify::end': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::start': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12505,14 +12756,17 @@ export namespace IBus {
             signal: K,
             callback: UnicodeBlock.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UnicodeBlock.SignalSignatures>(
             signal: K,
             callback: UnicodeBlock.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UnicodeBlock.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UnicodeBlock.SignalSignatures[K]>
+            ...args: UnicodeBlock.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -12545,7 +12799,13 @@ export namespace IBus {
 
     namespace UnicodeData {
         // Signal signatures
-        interface SignalSignatures extends Serializable.SignalSignatures {}
+        interface SignalSignatures extends Serializable.SignalSignatures {
+            'notify::alias': GObject.Object.Notify;
+            'notify::block-name': GObject.Object.Notify;
+            'notify::block-name': GObject.Object.Notify;
+            'notify::code': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12604,14 +12864,17 @@ export namespace IBus {
             signal: K,
             callback: UnicodeData.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UnicodeData.SignalSignatures>(
             signal: K,
             callback: UnicodeData.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UnicodeData.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UnicodeData.SignalSignatures[K]>
+            ...args: UnicodeData.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -12667,7 +12930,36 @@ export namespace IBus {
 
     namespace XEvent {
         // Signal signatures
-        interface SignalSignatures extends Serializable.SignalSignatures {}
+        interface SignalSignatures extends Serializable.SignalSignatures {
+            'notify::event-type': GObject.Object.Notify;
+            'notify::event-type': GObject.Object.Notify;
+            'notify::group': GObject.Object.Notify;
+            'notify::hardware-keycode': GObject.Object.Notify;
+            'notify::hardware-keycode': GObject.Object.Notify;
+            'notify::is-modifier': GObject.Object.Notify;
+            'notify::is-modifier': GObject.Object.Notify;
+            'notify::keyval': GObject.Object.Notify;
+            'notify::length': GObject.Object.Notify;
+            'notify::purpose': GObject.Object.Notify;
+            'notify::root': GObject.Object.Notify;
+            'notify::same-screen': GObject.Object.Notify;
+            'notify::same-screen': GObject.Object.Notify;
+            'notify::send-event': GObject.Object.Notify;
+            'notify::send-event': GObject.Object.Notify;
+            'notify::serial': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::string': GObject.Object.Notify;
+            'notify::subwindow': GObject.Object.Notify;
+            'notify::time': GObject.Object.Notify;
+            'notify::version': GObject.Object.Notify;
+            'notify::window': GObject.Object.Notify;
+            'notify::x': GObject.Object.Notify;
+            'notify::x-root': GObject.Object.Notify;
+            'notify::x-root': GObject.Object.Notify;
+            'notify::y': GObject.Object.Notify;
+            'notify::y-root': GObject.Object.Notify;
+            'notify::y-root': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -12835,8 +13127,14 @@ export namespace IBus {
         // Signals
 
         connect<K extends keyof XEvent.SignalSignatures>(signal: K, callback: XEvent.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XEvent.SignalSignatures>(signal: K, callback: XEvent.SignalSignatures[K]): number;
-        emit<K extends keyof XEvent.SignalSignatures>(signal: K, ...args: Parameters<XEvent.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof XEvent.SignalSignatures>(
+            signal: K,
+            ...args: XEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

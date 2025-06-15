@@ -303,7 +303,38 @@ export namespace GUPnP {
     type UUID = object | null;
     namespace Context {
         // Signal signatures
-        interface SignalSignatures extends GSSDP.Client.SignalSignatures {}
+        interface SignalSignatures extends GSSDP.Client.SignalSignatures {
+            'notify::acl': GObject.Object.Notify;
+            'notify::default-language': GObject.Object.Notify;
+            'notify::default-language': GObject.Object.Notify;
+            'notify::server': GObject.Object.Notify;
+            'notify::session': GObject.Object.Notify;
+            'notify::subscription-timeout': GObject.Object.Notify;
+            'notify::subscription-timeout': GObject.Object.Notify;
+            'notify::active': GObject.Object.Notify;
+            'notify::address': GObject.Object.Notify;
+            'notify::address-family': GObject.Object.Notify;
+            'notify::address-family': GObject.Object.Notify;
+            'notify::boot-id': GObject.Object.Notify;
+            'notify::boot-id': GObject.Object.Notify;
+            'notify::config-id': GObject.Object.Notify;
+            'notify::config-id': GObject.Object.Notify;
+            'notify::host-ip': GObject.Object.Notify;
+            'notify::host-ip': GObject.Object.Notify;
+            'notify::host-mask': GObject.Object.Notify;
+            'notify::host-mask': GObject.Object.Notify;
+            'notify::interface': GObject.Object.Notify;
+            'notify::msearch-port': GObject.Object.Notify;
+            'notify::msearch-port': GObject.Object.Notify;
+            'notify::network': GObject.Object.Notify;
+            'notify::port': GObject.Object.Notify;
+            'notify::server-id': GObject.Object.Notify;
+            'notify::server-id': GObject.Object.Notify;
+            'notify::socket-ttl': GObject.Object.Notify;
+            'notify::socket-ttl': GObject.Object.Notify;
+            'notify::uda-version': GObject.Object.Notify;
+            'notify::uda-version': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -395,14 +426,17 @@ export namespace GUPnP {
         // Signals
 
         connect<K extends keyof Context.SignalSignatures>(signal: K, callback: Context.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Context.SignalSignatures>(
             signal: K,
             callback: Context.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Context.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Context.SignalSignatures[K]>
+            ...args: Context.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1038,7 +1072,10 @@ export namespace GUPnP {
 
     namespace ContextFilter {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::enabled': GObject.Object.Notify;
+            'notify::entries': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1115,14 +1152,17 @@ export namespace GUPnP {
             signal: K,
             callback: ContextFilter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ContextFilter.SignalSignatures>(
             signal: K,
             callback: ContextFilter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ContextFilter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContextFilter.SignalSignatures[K]>
+            ...args: ContextFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1200,6 +1240,12 @@ export namespace GUPnP {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'context-available': ContextAvailable;
             'context-unavailable': ContextUnavailable;
+            'notify::context-filter': GObject.Object.Notify;
+            'notify::context-filter': GObject.Object.Notify;
+            'notify::family': GObject.Object.Notify;
+            'notify::port': GObject.Object.Notify;
+            'notify::uda-version': GObject.Object.Notify;
+            'notify::uda-version': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1274,14 +1320,17 @@ export namespace GUPnP {
             signal: K,
             callback: ContextManager.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ContextManager.SignalSignatures>(
             signal: K,
             callback: ContextManager.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ContextManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContextManager.SignalSignatures[K]>
+            ...args: ContextManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1413,6 +1462,12 @@ export namespace GUPnP {
             'device-proxy-unavailable': DeviceProxyUnavailable;
             'service-proxy-available': ServiceProxyAvailable;
             'service-proxy-unavailable': ServiceProxyUnavailable;
+            'notify::resource-factory': GObject.Object.Notify;
+            'notify::resource-factory': GObject.Object.Notify;
+            'notify::active': GObject.Object.Notify;
+            'notify::client': GObject.Object.Notify;
+            'notify::mx': GObject.Object.Notify;
+            'notify::target': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1465,14 +1520,17 @@ export namespace GUPnP {
             signal: K,
             callback: ControlPoint.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ControlPoint.SignalSignatures>(
             signal: K,
             callback: ControlPoint.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ControlPoint.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ControlPoint.SignalSignatures[K]>
+            ...args: ControlPoint.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1523,7 +1581,21 @@ export namespace GUPnP {
 
     namespace Device {
         // Signal signatures
-        interface SignalSignatures extends DeviceInfo.SignalSignatures {}
+        interface SignalSignatures extends DeviceInfo.SignalSignatures {
+            'notify::root-device': GObject.Object.Notify;
+            'notify::root-device': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
+            'notify::device-type': GObject.Object.Notify;
+            'notify::device-type': GObject.Object.Notify;
+            'notify::document': GObject.Object.Notify;
+            'notify::element': GObject.Object.Notify;
+            'notify::location': GObject.Object.Notify;
+            'notify::resource-factory': GObject.Object.Notify;
+            'notify::resource-factory': GObject.Object.Notify;
+            'notify::udn': GObject.Object.Notify;
+            'notify::url-base': GObject.Object.Notify;
+            'notify::url-base': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1565,13 +1637,31 @@ export namespace GUPnP {
         // Signals
 
         connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
-        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            ...args: Device.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace DeviceInfo {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::context': GObject.Object.Notify;
+            'notify::device-type': GObject.Object.Notify;
+            'notify::device-type': GObject.Object.Notify;
+            'notify::document': GObject.Object.Notify;
+            'notify::element': GObject.Object.Notify;
+            'notify::location': GObject.Object.Notify;
+            'notify::resource-factory': GObject.Object.Notify;
+            'notify::resource-factory': GObject.Object.Notify;
+            'notify::udn': GObject.Object.Notify;
+            'notify::url-base': GObject.Object.Notify;
+            'notify::url-base': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1662,14 +1752,17 @@ export namespace GUPnP {
             signal: K,
             callback: DeviceInfo.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceInfo.SignalSignatures>(
             signal: K,
             callback: DeviceInfo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceInfo.SignalSignatures[K]>
+            ...args: DeviceInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1918,7 +2011,19 @@ export namespace GUPnP {
 
     namespace DeviceProxy {
         // Signal signatures
-        interface SignalSignatures extends DeviceInfo.SignalSignatures {}
+        interface SignalSignatures extends DeviceInfo.SignalSignatures {
+            'notify::context': GObject.Object.Notify;
+            'notify::device-type': GObject.Object.Notify;
+            'notify::device-type': GObject.Object.Notify;
+            'notify::document': GObject.Object.Notify;
+            'notify::element': GObject.Object.Notify;
+            'notify::location': GObject.Object.Notify;
+            'notify::resource-factory': GObject.Object.Notify;
+            'notify::resource-factory': GObject.Object.Notify;
+            'notify::udn': GObject.Object.Notify;
+            'notify::url-base': GObject.Object.Notify;
+            'notify::url-base': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1946,14 +2051,17 @@ export namespace GUPnP {
             signal: K,
             callback: DeviceProxy.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceProxy.SignalSignatures>(
             signal: K,
             callback: DeviceProxy.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceProxy.SignalSignatures[K]>
+            ...args: DeviceProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace ResourceFactory {
@@ -1995,14 +2103,17 @@ export namespace GUPnP {
             signal: K,
             callback: ResourceFactory.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ResourceFactory.SignalSignatures>(
             signal: K,
             callback: ResourceFactory.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ResourceFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ResourceFactory.SignalSignatures[K]>
+            ...args: ResourceFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2057,7 +2168,26 @@ export namespace GUPnP {
 
     namespace RootDevice {
         // Signal signatures
-        interface SignalSignatures extends Device.SignalSignatures {}
+        interface SignalSignatures extends Device.SignalSignatures {
+            'notify::available': GObject.Object.Notify;
+            'notify::description-dir': GObject.Object.Notify;
+            'notify::description-dir': GObject.Object.Notify;
+            'notify::description-path': GObject.Object.Notify;
+            'notify::description-path': GObject.Object.Notify;
+            'notify::root-device': GObject.Object.Notify;
+            'notify::root-device': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
+            'notify::device-type': GObject.Object.Notify;
+            'notify::device-type': GObject.Object.Notify;
+            'notify::document': GObject.Object.Notify;
+            'notify::element': GObject.Object.Notify;
+            'notify::location': GObject.Object.Notify;
+            'notify::resource-factory': GObject.Object.Notify;
+            'notify::resource-factory': GObject.Object.Notify;
+            'notify::udn': GObject.Object.Notify;
+            'notify::url-base': GObject.Object.Notify;
+            'notify::url-base': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2126,14 +2256,17 @@ export namespace GUPnP {
             signal: K,
             callback: RootDevice.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RootDevice.SignalSignatures>(
             signal: K,
             callback: RootDevice.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RootDevice.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RootDevice.SignalSignatures[K]>
+            ...args: RootDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2717,6 +2850,39 @@ export namespace GUPnP {
             'action-invoked': ActionInvoked;
             'notify-failed': NotifyFailed;
             'query-variable': QueryVariable;
+            'notify::root-device': GObject.Object.Notify;
+            'notify::root-device': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
+            'notify::document': GObject.Object.Notify;
+            'notify::element': GObject.Object.Notify;
+            'notify::location': GObject.Object.Notify;
+            'notify::service-type': GObject.Object.Notify;
+            'notify::service-type': GObject.Object.Notify;
+            'notify::udn': GObject.Object.Notify;
+            'notify::url-base': GObject.Object.Notify;
+            'notify::url-base': GObject.Object.Notify;
+            'action-invoked::root-device': ActionInvoked;
+            'action-invoked::root-device': ActionInvoked;
+            'action-invoked::context': ActionInvoked;
+            'action-invoked::document': ActionInvoked;
+            'action-invoked::element': ActionInvoked;
+            'action-invoked::location': ActionInvoked;
+            'action-invoked::service-type': ActionInvoked;
+            'action-invoked::service-type': ActionInvoked;
+            'action-invoked::udn': ActionInvoked;
+            'action-invoked::url-base': ActionInvoked;
+            'action-invoked::url-base': ActionInvoked;
+            'query-variable::root-device': QueryVariable;
+            'query-variable::root-device': QueryVariable;
+            'query-variable::context': QueryVariable;
+            'query-variable::document': QueryVariable;
+            'query-variable::element': QueryVariable;
+            'query-variable::location': QueryVariable;
+            'query-variable::service-type': QueryVariable;
+            'query-variable::service-type': QueryVariable;
+            'query-variable::udn': QueryVariable;
+            'query-variable::url-base': QueryVariable;
+            'query-variable::url-base': QueryVariable;
         }
 
         // Constructor properties interface
@@ -2762,14 +2928,17 @@ export namespace GUPnP {
         // Signals
 
         connect<K extends keyof Service.SignalSignatures>(signal: K, callback: Service.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Service.SignalSignatures>(
             signal: K,
             callback: Service.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Service.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Service.SignalSignatures[K]>
+            ...args: Service.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -2842,7 +3011,17 @@ export namespace GUPnP {
 
     namespace ServiceInfo {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::context': GObject.Object.Notify;
+            'notify::document': GObject.Object.Notify;
+            'notify::element': GObject.Object.Notify;
+            'notify::location': GObject.Object.Notify;
+            'notify::service-type': GObject.Object.Notify;
+            'notify::service-type': GObject.Object.Notify;
+            'notify::udn': GObject.Object.Notify;
+            'notify::url-base': GObject.Object.Notify;
+            'notify::url-base': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2918,14 +3097,17 @@ export namespace GUPnP {
             signal: K,
             callback: ServiceInfo.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ServiceInfo.SignalSignatures>(
             signal: K,
             callback: ServiceInfo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ServiceInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ServiceInfo.SignalSignatures[K]>
+            ...args: ServiceInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3027,7 +3209,9 @@ export namespace GUPnP {
 
     namespace ServiceIntrospection {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::scpd': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3076,14 +3260,17 @@ export namespace GUPnP {
             signal: K,
             callback: ServiceIntrospection.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ServiceIntrospection.SignalSignatures>(
             signal: K,
             callback: ServiceIntrospection.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ServiceIntrospection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ServiceIntrospection.SignalSignatures[K]>
+            ...args: ServiceIntrospection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3659,6 +3846,16 @@ export namespace GUPnP {
         // Signal signatures
         interface SignalSignatures extends ServiceInfo.SignalSignatures {
             'subscription-lost': SubscriptionLost;
+            'notify::subscribed': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
+            'notify::document': GObject.Object.Notify;
+            'notify::element': GObject.Object.Notify;
+            'notify::location': GObject.Object.Notify;
+            'notify::service-type': GObject.Object.Notify;
+            'notify::service-type': GObject.Object.Notify;
+            'notify::udn': GObject.Object.Notify;
+            'notify::url-base': GObject.Object.Notify;
+            'notify::url-base': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -3697,14 +3894,17 @@ export namespace GUPnP {
             signal: K,
             callback: ServiceProxy.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ServiceProxy.SignalSignatures>(
             signal: K,
             callback: ServiceProxy.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ServiceProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ServiceProxy.SignalSignatures[K]>
+            ...args: ServiceProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -3844,7 +4044,10 @@ export namespace GUPnP {
 
     namespace XMLDoc {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::doc': GObject.Object.Notify;
+            'notify::path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3878,8 +4081,14 @@ export namespace GUPnP {
         // Signals
 
         connect<K extends keyof XMLDoc.SignalSignatures>(signal: K, callback: XMLDoc.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XMLDoc.SignalSignatures>(signal: K, callback: XMLDoc.SignalSignatures[K]): number;
-        emit<K extends keyof XMLDoc.SignalSignatures>(signal: K, ...args: Parameters<XMLDoc.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof XMLDoc.SignalSignatures>(
+            signal: K,
+            ...args: XMLDoc.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

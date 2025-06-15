@@ -762,8 +762,14 @@ export namespace Grl {
         // Signals
 
         connect<K extends keyof Caps.SignalSignatures>(signal: K, callback: Caps.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Caps.SignalSignatures>(signal: K, callback: Caps.SignalSignatures[K]): number;
-        emit<K extends keyof Caps.SignalSignatures>(signal: K, ...args: Parameters<Caps.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Caps.SignalSignatures>(
+            signal: K,
+            ...args: Caps.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -821,8 +827,14 @@ export namespace Grl {
         // Signals
 
         connect<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Config.SignalSignatures>(signal: K, callback: Config.SignalSignatures[K]): number;
-        emit<K extends keyof Config.SignalSignatures>(signal: K, ...args: Parameters<Config.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Config.SignalSignatures>(
+            signal: K,
+            ...args: Config.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -959,8 +971,14 @@ export namespace Grl {
         // Signals
 
         connect<K extends keyof Data.SignalSignatures>(signal: K, callback: Data.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Data.SignalSignatures>(signal: K, callback: Data.SignalSignatures[K]): number;
-        emit<K extends keyof Data.SignalSignatures>(signal: K, ...args: Parameters<Data.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Data.SignalSignatures>(
+            signal: K,
+            ...args: Data.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1231,8 +1249,14 @@ export namespace Grl {
         // Signals
 
         connect<K extends keyof Media.SignalSignatures>(signal: K, callback: Media.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Media.SignalSignatures>(signal: K, callback: Media.SignalSignatures[K]): number;
-        emit<K extends keyof Media.SignalSignatures>(signal: K, ...args: Parameters<Media.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Media.SignalSignatures>(
+            signal: K,
+            ...args: Media.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1551,14 +1575,17 @@ export namespace Grl {
             signal: K,
             callback: MediaAudio.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MediaAudio.SignalSignatures>(
             signal: K,
             callback: MediaAudio.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MediaAudio.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaAudio.SignalSignatures[K]>
+            ...args: MediaAudio.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1696,14 +1723,17 @@ export namespace Grl {
         // Signals
 
         connect<K extends keyof MediaBox.SignalSignatures>(signal: K, callback: MediaBox.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MediaBox.SignalSignatures>(
             signal: K,
             callback: MediaBox.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MediaBox.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaBox.SignalSignatures[K]>
+            ...args: MediaBox.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1746,14 +1776,17 @@ export namespace Grl {
             signal: K,
             callback: MediaImage.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MediaImage.SignalSignatures>(
             signal: K,
             callback: MediaImage.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MediaImage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaImage.SignalSignatures[K]>
+            ...args: MediaImage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1850,14 +1883,17 @@ export namespace Grl {
             signal: K,
             callback: MediaVideo.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MediaVideo.SignalSignatures>(
             signal: K,
             callback: MediaVideo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MediaVideo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaVideo.SignalSignatures[K]>
+            ...args: MediaVideo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2010,14 +2046,17 @@ export namespace Grl {
             signal: K,
             callback: OperationOptions.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OperationOptions.SignalSignatures>(
             signal: K,
             callback: OperationOptions.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof OperationOptions.SignalSignatures>(
             signal: K,
-            ...args: Parameters<OperationOptions.SignalSignatures[K]>
+            ...args: OperationOptions.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2126,7 +2165,9 @@ export namespace Grl {
 
     namespace Plugin {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::loaded': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2154,8 +2195,14 @@ export namespace Grl {
         // Signals
 
         connect<K extends keyof Plugin.SignalSignatures>(signal: K, callback: Plugin.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Plugin.SignalSignatures>(signal: K, callback: Plugin.SignalSignatures[K]): number;
-        emit<K extends keyof Plugin.SignalSignatures>(signal: K, ...args: Parameters<Plugin.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Plugin.SignalSignatures>(
+            signal: K,
+            ...args: Plugin.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2273,14 +2320,17 @@ export namespace Grl {
         // Signals
 
         connect<K extends keyof Registry.SignalSignatures>(signal: K, callback: Registry.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Registry.SignalSignatures>(
             signal: K,
             callback: Registry.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Registry.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Registry.SignalSignatures[K]>
+            ...args: Registry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2504,14 +2554,17 @@ export namespace Grl {
             signal: K,
             callback: RelatedKeys.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RelatedKeys.SignalSignatures>(
             signal: K,
             callback: RelatedKeys.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RelatedKeys.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RelatedKeys.SignalSignatures[K]>
+            ...args: RelatedKeys.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2669,6 +2722,22 @@ export namespace Grl {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'content-changed': ContentChanged;
+            'notify::auto-split-threshold': GObject.Object.Notify;
+            'notify::auto-split-threshold': GObject.Object.Notify;
+            'notify::plugin': GObject.Object.Notify;
+            'notify::rank': GObject.Object.Notify;
+            'notify::source-desc': GObject.Object.Notify;
+            'notify::source-desc': GObject.Object.Notify;
+            'notify::source-icon': GObject.Object.Notify;
+            'notify::source-icon': GObject.Object.Notify;
+            'notify::source-id': GObject.Object.Notify;
+            'notify::source-id': GObject.Object.Notify;
+            'notify::source-name': GObject.Object.Notify;
+            'notify::source-name': GObject.Object.Notify;
+            'notify::source-tags': GObject.Object.Notify;
+            'notify::source-tags': GObject.Object.Notify;
+            'notify::supported-media': GObject.Object.Notify;
+            'notify::supported-media': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -2898,8 +2967,14 @@ export namespace Grl {
         // Signals
 
         connect<K extends keyof Source.SignalSignatures>(signal: K, callback: Source.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Source.SignalSignatures>(signal: K, callback: Source.SignalSignatures[K]): number;
-        emit<K extends keyof Source.SignalSignatures>(signal: K, ...args: Parameters<Source.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Source.SignalSignatures>(
+            signal: K,
+            ...args: Source.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 

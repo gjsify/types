@@ -32,7 +32,38 @@ export namespace GdkWayland {
     }
     namespace WaylandDevice {
         // Signal signatures
-        interface SignalSignatures extends Gdk.Device.SignalSignatures {}
+        interface SignalSignatures extends Gdk.Device.SignalSignatures {
+            'notify::active-layout-index': GObject.Object.Notify;
+            'notify::active-layout-index': GObject.Object.Notify;
+            'notify::caps-lock-state': GObject.Object.Notify;
+            'notify::caps-lock-state': GObject.Object.Notify;
+            'notify::direction': GObject.Object.Notify;
+            'notify::display': GObject.Object.Notify;
+            'notify::has-bidi-layouts': GObject.Object.Notify;
+            'notify::has-bidi-layouts': GObject.Object.Notify;
+            'notify::has-cursor': GObject.Object.Notify;
+            'notify::has-cursor': GObject.Object.Notify;
+            'notify::layout-names': GObject.Object.Notify;
+            'notify::layout-names': GObject.Object.Notify;
+            'notify::modifier-state': GObject.Object.Notify;
+            'notify::modifier-state': GObject.Object.Notify;
+            'notify::n-axes': GObject.Object.Notify;
+            'notify::n-axes': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::num-lock-state': GObject.Object.Notify;
+            'notify::num-lock-state': GObject.Object.Notify;
+            'notify::num-touches': GObject.Object.Notify;
+            'notify::num-touches': GObject.Object.Notify;
+            'notify::product-id': GObject.Object.Notify;
+            'notify::product-id': GObject.Object.Notify;
+            'notify::scroll-lock-state': GObject.Object.Notify;
+            'notify::scroll-lock-state': GObject.Object.Notify;
+            'notify::seat': GObject.Object.Notify;
+            'notify::source': GObject.Object.Notify;
+            'notify::tool': GObject.Object.Notify;
+            'notify::vendor-id': GObject.Object.Notify;
+            'notify::vendor-id': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -63,14 +94,17 @@ export namespace GdkWayland {
             signal: K,
             callback: WaylandDevice.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WaylandDevice.SignalSignatures>(
             signal: K,
             callback: WaylandDevice.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WaylandDevice.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WaylandDevice.SignalSignatures[K]>
+            ...args: WaylandDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -95,7 +129,16 @@ export namespace GdkWayland {
 
     namespace WaylandDisplay {
         // Signal signatures
-        interface SignalSignatures extends Gdk.Display.SignalSignatures {}
+        interface SignalSignatures extends Gdk.Display.SignalSignatures {
+            'notify::composited': GObject.Object.Notify;
+            'notify::dmabuf-formats': GObject.Object.Notify;
+            'notify::dmabuf-formats': GObject.Object.Notify;
+            'notify::input-shapes': GObject.Object.Notify;
+            'notify::input-shapes': GObject.Object.Notify;
+            'notify::rgba': GObject.Object.Notify;
+            'notify::shadow-width': GObject.Object.Notify;
+            'notify::shadow-width': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -128,14 +171,17 @@ export namespace GdkWayland {
             signal: K,
             callback: WaylandDisplay.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WaylandDisplay.SignalSignatures>(
             signal: K,
             callback: WaylandDisplay.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WaylandDisplay.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WaylandDisplay.SignalSignatures[K]>
+            ...args: WaylandDisplay.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -180,7 +226,15 @@ export namespace GdkWayland {
 
     namespace WaylandGLContext {
         // Signal signatures
-        interface SignalSignatures extends Gdk.GLContext.SignalSignatures {}
+        interface SignalSignatures extends Gdk.GLContext.SignalSignatures {
+            'notify::allowed-apis': GObject.Object.Notify;
+            'notify::allowed-apis': GObject.Object.Notify;
+            'notify::api': GObject.Object.Notify;
+            'notify::shared-context': GObject.Object.Notify;
+            'notify::shared-context': GObject.Object.Notify;
+            'notify::display': GObject.Object.Notify;
+            'notify::surface': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -205,19 +259,41 @@ export namespace GdkWayland {
             signal: K,
             callback: WaylandGLContext.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WaylandGLContext.SignalSignatures>(
             signal: K,
             callback: WaylandGLContext.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WaylandGLContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WaylandGLContext.SignalSignatures[K]>
+            ...args: WaylandGLContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace WaylandMonitor {
         // Signal signatures
-        interface SignalSignatures extends Gdk.Monitor.SignalSignatures {}
+        interface SignalSignatures extends Gdk.Monitor.SignalSignatures {
+            'notify::connector': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::display': GObject.Object.Notify;
+            'notify::geometry': GObject.Object.Notify;
+            'notify::height-mm': GObject.Object.Notify;
+            'notify::height-mm': GObject.Object.Notify;
+            'notify::manufacturer': GObject.Object.Notify;
+            'notify::model': GObject.Object.Notify;
+            'notify::refresh-rate': GObject.Object.Notify;
+            'notify::refresh-rate': GObject.Object.Notify;
+            'notify::scale': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::subpixel-layout': GObject.Object.Notify;
+            'notify::subpixel-layout': GObject.Object.Notify;
+            'notify::valid': GObject.Object.Notify;
+            'notify::width-mm': GObject.Object.Notify;
+            'notify::width-mm': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -246,19 +322,35 @@ export namespace GdkWayland {
             signal: K,
             callback: WaylandMonitor.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WaylandMonitor.SignalSignatures>(
             signal: K,
             callback: WaylandMonitor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WaylandMonitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WaylandMonitor.SignalSignatures[K]>
+            ...args: WaylandMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace WaylandPopup {
         // Signal signatures
-        interface SignalSignatures extends WaylandSurface.SignalSignatures {}
+        interface SignalSignatures extends WaylandSurface.SignalSignatures {
+            'notify::cursor': GObject.Object.Notify;
+            'notify::display': GObject.Object.Notify;
+            'notify::frame-clock': GObject.Object.Notify;
+            'notify::frame-clock': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::mapped': GObject.Object.Notify;
+            'notify::scale': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::autohide': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -283,14 +375,17 @@ export namespace GdkWayland {
             signal: K,
             callback: WaylandPopup.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WaylandPopup.SignalSignatures>(
             signal: K,
             callback: WaylandPopup.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WaylandPopup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WaylandPopup.SignalSignatures[K]>
+            ...args: WaylandPopup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         /**
@@ -672,7 +767,9 @@ export namespace GdkWayland {
 
     namespace WaylandSeat {
         // Signal signatures
-        interface SignalSignatures extends Gdk.Seat.SignalSignatures {}
+        interface SignalSignatures extends Gdk.Seat.SignalSignatures {
+            'notify::display': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -701,19 +798,33 @@ export namespace GdkWayland {
             signal: K,
             callback: WaylandSeat.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WaylandSeat.SignalSignatures>(
             signal: K,
             callback: WaylandSeat.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WaylandSeat.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WaylandSeat.SignalSignatures[K]>
+            ...args: WaylandSeat.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace WaylandSurface {
         // Signal signatures
-        interface SignalSignatures extends Gdk.Surface.SignalSignatures {}
+        interface SignalSignatures extends Gdk.Surface.SignalSignatures {
+            'notify::cursor': GObject.Object.Notify;
+            'notify::display': GObject.Object.Notify;
+            'notify::frame-clock': GObject.Object.Notify;
+            'notify::frame-clock': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::mapped': GObject.Object.Notify;
+            'notify::scale': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -742,14 +853,17 @@ export namespace GdkWayland {
             signal: K,
             callback: WaylandSurface.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WaylandSurface.SignalSignatures>(
             signal: K,
             callback: WaylandSurface.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WaylandSurface.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WaylandSurface.SignalSignatures[K]>
+            ...args: WaylandSurface.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -761,7 +875,33 @@ export namespace GdkWayland {
 
     namespace WaylandToplevel {
         // Signal signatures
-        interface SignalSignatures extends WaylandSurface.SignalSignatures {}
+        interface SignalSignatures extends WaylandSurface.SignalSignatures {
+            'notify::cursor': GObject.Object.Notify;
+            'notify::display': GObject.Object.Notify;
+            'notify::frame-clock': GObject.Object.Notify;
+            'notify::frame-clock': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::mapped': GObject.Object.Notify;
+            'notify::scale': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::decorated': GObject.Object.Notify;
+            'notify::deletable': GObject.Object.Notify;
+            'notify::fullscreen-mode': GObject.Object.Notify;
+            'notify::fullscreen-mode': GObject.Object.Notify;
+            'notify::icon-list': GObject.Object.Notify;
+            'notify::icon-list': GObject.Object.Notify;
+            'notify::modal': GObject.Object.Notify;
+            'notify::shortcuts-inhibited': GObject.Object.Notify;
+            'notify::shortcuts-inhibited': GObject.Object.Notify;
+            'notify::startup-id': GObject.Object.Notify;
+            'notify::startup-id': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::transient-for': GObject.Object.Notify;
+            'notify::transient-for': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -791,14 +931,17 @@ export namespace GdkWayland {
             signal: K,
             callback: WaylandToplevel.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WaylandToplevel.SignalSignatures>(
             signal: K,
             callback: WaylandToplevel.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WaylandToplevel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WaylandToplevel.SignalSignatures[K]>
+            ...args: WaylandToplevel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

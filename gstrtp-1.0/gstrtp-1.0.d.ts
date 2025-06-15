@@ -957,7 +957,38 @@ export namespace GstRtp {
     }
     namespace RTPBaseAudioPayload {
         // Signal signatures
-        interface SignalSignatures extends RTPBasePayload.SignalSignatures {}
+        interface SignalSignatures extends RTPBasePayload.SignalSignatures {
+            'notify::buffer-list': GObject.Object.Notify;
+            'notify::buffer-list': GObject.Object.Notify;
+            'notify::auto-header-extension': GObject.Object.Notify;
+            'notify::auto-header-extension': GObject.Object.Notify;
+            'notify::max-ptime': GObject.Object.Notify;
+            'notify::max-ptime': GObject.Object.Notify;
+            'notify::min-ptime': GObject.Object.Notify;
+            'notify::min-ptime': GObject.Object.Notify;
+            'notify::mtu': GObject.Object.Notify;
+            'notify::onvif-no-rate-control': GObject.Object.Notify;
+            'notify::onvif-no-rate-control': GObject.Object.Notify;
+            'notify::perfect-rtptime': GObject.Object.Notify;
+            'notify::perfect-rtptime': GObject.Object.Notify;
+            'notify::pt': GObject.Object.Notify;
+            'notify::ptime-multiple': GObject.Object.Notify;
+            'notify::ptime-multiple': GObject.Object.Notify;
+            'notify::scale-rtptime': GObject.Object.Notify;
+            'notify::scale-rtptime': GObject.Object.Notify;
+            'notify::seqnum': GObject.Object.Notify;
+            'notify::seqnum-offset': GObject.Object.Notify;
+            'notify::seqnum-offset': GObject.Object.Notify;
+            'notify::source-info': GObject.Object.Notify;
+            'notify::source-info': GObject.Object.Notify;
+            'notify::ssrc': GObject.Object.Notify;
+            'notify::stats': GObject.Object.Notify;
+            'notify::timestamp': GObject.Object.Notify;
+            'notify::timestamp-offset': GObject.Object.Notify;
+            'notify::timestamp-offset': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1027,14 +1058,17 @@ export namespace GstRtp {
             signal: K,
             callback: RTPBaseAudioPayload.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RTPBaseAudioPayload.SignalSignatures>(
             signal: K,
             callback: RTPBaseAudioPayload.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RTPBaseAudioPayload.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RTPBaseAudioPayload.SignalSignatures[K]>
+            ...args: RTPBaseAudioPayload.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1114,6 +1148,15 @@ export namespace GstRtp {
             'add-extension': AddExtension;
             'clear-extensions': ClearExtensions;
             'request-extension': RequestExtension;
+            'notify::auto-header-extension': GObject.Object.Notify;
+            'notify::auto-header-extension': GObject.Object.Notify;
+            'notify::max-reorder': GObject.Object.Notify;
+            'notify::max-reorder': GObject.Object.Notify;
+            'notify::source-info': GObject.Object.Notify;
+            'notify::source-info': GObject.Object.Notify;
+            'notify::stats': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1218,14 +1261,17 @@ export namespace GstRtp {
             signal: K,
             callback: RTPBaseDepayload.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RTPBaseDepayload.SignalSignatures>(
             signal: K,
             callback: RTPBaseDepayload.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RTPBaseDepayload.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RTPBaseDepayload.SignalSignatures[K]>
+            ...args: RTPBaseDepayload.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1286,6 +1332,34 @@ export namespace GstRtp {
             'add-extension': AddExtension;
             'clear-extensions': ClearExtensions;
             'request-extension': RequestExtension;
+            'notify::auto-header-extension': GObject.Object.Notify;
+            'notify::auto-header-extension': GObject.Object.Notify;
+            'notify::max-ptime': GObject.Object.Notify;
+            'notify::max-ptime': GObject.Object.Notify;
+            'notify::min-ptime': GObject.Object.Notify;
+            'notify::min-ptime': GObject.Object.Notify;
+            'notify::mtu': GObject.Object.Notify;
+            'notify::onvif-no-rate-control': GObject.Object.Notify;
+            'notify::onvif-no-rate-control': GObject.Object.Notify;
+            'notify::perfect-rtptime': GObject.Object.Notify;
+            'notify::perfect-rtptime': GObject.Object.Notify;
+            'notify::pt': GObject.Object.Notify;
+            'notify::ptime-multiple': GObject.Object.Notify;
+            'notify::ptime-multiple': GObject.Object.Notify;
+            'notify::scale-rtptime': GObject.Object.Notify;
+            'notify::scale-rtptime': GObject.Object.Notify;
+            'notify::seqnum': GObject.Object.Notify;
+            'notify::seqnum-offset': GObject.Object.Notify;
+            'notify::seqnum-offset': GObject.Object.Notify;
+            'notify::source-info': GObject.Object.Notify;
+            'notify::source-info': GObject.Object.Notify;
+            'notify::ssrc': GObject.Object.Notify;
+            'notify::stats': GObject.Object.Notify;
+            'notify::timestamp': GObject.Object.Notify;
+            'notify::timestamp-offset': GObject.Object.Notify;
+            'notify::timestamp-offset': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1504,14 +1578,17 @@ export namespace GstRtp {
             signal: K,
             callback: RTPBasePayload.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RTPBasePayload.SignalSignatures>(
             signal: K,
             callback: RTPBasePayload.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RTPBasePayload.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RTPBasePayload.SignalSignatures[K]>
+            ...args: RTPBasePayload.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1603,7 +1680,10 @@ export namespace GstRtp {
 
     namespace RTPHeaderExtension {
         // Signal signatures
-        interface SignalSignatures extends Gst.Element.SignalSignatures {}
+        interface SignalSignatures extends Gst.Element.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1628,14 +1708,17 @@ export namespace GstRtp {
             signal: K,
             callback: RTPHeaderExtension.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RTPHeaderExtension.SignalSignatures>(
             signal: K,
             callback: RTPHeaderExtension.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RTPHeaderExtension.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RTPHeaderExtension.SignalSignatures[K]>
+            ...args: RTPHeaderExtension.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 

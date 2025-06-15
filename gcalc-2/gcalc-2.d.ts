@@ -212,8 +212,14 @@ export namespace GCalc {
         // Signals
 
         connect<K extends keyof Assign.SignalSignatures>(signal: K, callback: Assign.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Assign.SignalSignatures>(signal: K, callback: Assign.SignalSignatures[K]): number;
-        emit<K extends keyof Assign.SignalSignatures>(signal: K, ...args: Parameters<Assign.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Assign.SignalSignatures>(
+            signal: K,
+            ...args: Assign.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         evaluate(): MathExpression;
@@ -684,14 +690,17 @@ export namespace GCalc {
             signal: K,
             callback: Calculator.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Calculator.SignalSignatures>(
             signal: K,
             callback: Calculator.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Calculator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Calculator.SignalSignatures[K]>
+            ...args: Calculator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -760,14 +769,17 @@ export namespace GCalc {
         // Signals
 
         connect<K extends keyof Constant.SignalSignatures>(signal: K, callback: Constant.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Constant.SignalSignatures>(
             signal: K,
             callback: Constant.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Constant.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Constant.SignalSignatures[K]>
+            ...args: Constant.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         add(c: MathConstant): MathConstant;
@@ -1266,14 +1278,17 @@ export namespace GCalc {
         // Signals
 
         connect<K extends keyof Division.SignalSignatures>(signal: K, callback: Division.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Division.SignalSignatures>(
             signal: K,
             callback: Division.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Division.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Division.SignalSignatures[K]>
+            ...args: Division.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -1719,7 +1734,9 @@ export namespace GCalc {
 
     namespace Equation {
         // Signal signatures
-        interface SignalSignatures extends Expression.SignalSignatures {}
+        interface SignalSignatures extends Expression.SignalSignatures {
+            'notify::variables': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1740,14 +1757,17 @@ export namespace GCalc {
         // Signals
 
         connect<K extends keyof Equation.SignalSignatures>(signal: K, callback: Equation.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Equation.SignalSignatures>(
             signal: K,
             callback: Equation.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Equation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Equation.SignalSignatures[K]>
+            ...args: Equation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get variables(): ExpressionHashMap;
@@ -2198,7 +2218,10 @@ export namespace GCalc {
 
     namespace EquationManager {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::equations': GObject.Object.Notify;
+            'notify::functions': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2222,14 +2245,17 @@ export namespace GCalc {
             signal: K,
             callback: EquationManager.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof EquationManager.SignalSignatures>(
             signal: K,
             callback: EquationManager.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof EquationManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EquationManager.SignalSignatures[K]>
+            ...args: EquationManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get equations(): ExpressionContainer;
@@ -2685,7 +2711,10 @@ export namespace GCalc {
 
     namespace ErrorResult {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::expression': GObject.Object.Notify;
+            'notify::message': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2712,14 +2741,17 @@ export namespace GCalc {
             signal: K,
             callback: ErrorResult.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ErrorResult.SignalSignatures>(
             signal: K,
             callback: ErrorResult.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ErrorResult.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ErrorResult.SignalSignatures[K]>
+            ...args: ErrorResult.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get expression(): MathExpression;
@@ -3175,7 +3207,10 @@ export namespace GCalc {
 
     namespace Expression {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::parent': GObject.Object.Notify;
+            'notify::expressions': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3199,14 +3234,17 @@ export namespace GCalc {
             signal: K,
             callback: Expression.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Expression.SignalSignatures>(
             signal: K,
             callback: Expression.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Expression.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Expression.SignalSignatures[K]>
+            ...args: Expression.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -3697,19 +3735,35 @@ export namespace GCalc {
             signal: K,
             callback: ErrorExpression.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ErrorExpression.SignalSignatures>(
             signal: K,
             callback: ErrorExpression.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ErrorExpression.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ErrorExpression.SignalSignatures[K]>
+            ...args: ErrorExpression.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace ExpressionContainer {
         // Signal signatures
-        interface SignalSignatures extends Gee.ArrayList.SignalSignatures {}
+        interface SignalSignatures extends Gee.ArrayList.SignalSignatures {
+            'notify::parent': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-type': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-dup-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::g-destroy-func': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3745,14 +3799,17 @@ export namespace GCalc {
             signal: K,
             callback: ExpressionContainer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionContainer.SignalSignatures>(
             signal: K,
             callback: ExpressionContainer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionContainer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionContainer.SignalSignatures[K]>
+            ...args: ExpressionContainer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4302,7 +4359,29 @@ export namespace GCalc {
 
     namespace ExpressionHashMap {
         // Signal signatures
-        interface SignalSignatures extends Gee.HashMap.SignalSignatures {}
+        interface SignalSignatures extends Gee.HashMap.SignalSignatures {
+            'notify::parent': GObject.Object.Notify;
+            'notify::k-type': GObject.Object.Notify;
+            'notify::k-type': GObject.Object.Notify;
+            'notify::k-dup-func': GObject.Object.Notify;
+            'notify::k-dup-func': GObject.Object.Notify;
+            'notify::k-destroy-func': GObject.Object.Notify;
+            'notify::k-destroy-func': GObject.Object.Notify;
+            'notify::v-type': GObject.Object.Notify;
+            'notify::v-type': GObject.Object.Notify;
+            'notify::v-dup-func': GObject.Object.Notify;
+            'notify::v-dup-func': GObject.Object.Notify;
+            'notify::v-destroy-func': GObject.Object.Notify;
+            'notify::v-destroy-func': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+            'notify::keys': GObject.Object.Notify;
+            'notify::values': GObject.Object.Notify;
+            'notify::entries': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+            'notify::read-only-view': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4333,14 +4412,17 @@ export namespace GCalc {
             signal: K,
             callback: ExpressionHashMap.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ExpressionHashMap.SignalSignatures>(
             signal: K,
             callback: ExpressionHashMap.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ExpressionHashMap.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ExpressionHashMap.SignalSignatures[K]>
+            ...args: ExpressionHashMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4355,7 +4437,14 @@ export namespace GCalc {
 
     namespace Function {
         // Signal signatures
-        interface SignalSignatures extends Expression.SignalSignatures {}
+        interface SignalSignatures extends Expression.SignalSignatures {
+            'notify::param-types': GObject.Object.Notify;
+            'notify::param-types': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::n-params': GObject.Object.Notify;
+            'notify::n-params': GObject.Object.Notify;
+            'notify::closed': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4381,14 +4470,17 @@ export namespace GCalc {
         // Signals
 
         connect<K extends keyof Function.SignalSignatures>(signal: K, callback: Function.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Function.SignalSignatures>(
             signal: K,
             callback: Function.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Function.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Function.SignalSignatures[K]>
+            ...args: Function.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -4896,14 +4988,17 @@ export namespace GCalc {
             signal: K,
             callback: FunctionAcos.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FunctionAcos.SignalSignatures>(
             signal: K,
             callback: FunctionAcos.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FunctionAcos.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FunctionAcos.SignalSignatures[K]>
+            ...args: FunctionAcos.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace FunctionAcosh {
@@ -4932,14 +5027,17 @@ export namespace GCalc {
             signal: K,
             callback: FunctionAcosh.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FunctionAcosh.SignalSignatures>(
             signal: K,
             callback: FunctionAcosh.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FunctionAcosh.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FunctionAcosh.SignalSignatures[K]>
+            ...args: FunctionAcosh.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace FunctionAsin {
@@ -4968,14 +5066,17 @@ export namespace GCalc {
             signal: K,
             callback: FunctionAsin.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FunctionAsin.SignalSignatures>(
             signal: K,
             callback: FunctionAsin.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FunctionAsin.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FunctionAsin.SignalSignatures[K]>
+            ...args: FunctionAsin.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace FunctionAsinh {
@@ -5004,14 +5105,17 @@ export namespace GCalc {
             signal: K,
             callback: FunctionAsinh.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FunctionAsinh.SignalSignatures>(
             signal: K,
             callback: FunctionAsinh.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FunctionAsinh.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FunctionAsinh.SignalSignatures[K]>
+            ...args: FunctionAsinh.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace FunctionAtan {
@@ -5040,14 +5144,17 @@ export namespace GCalc {
             signal: K,
             callback: FunctionAtan.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FunctionAtan.SignalSignatures>(
             signal: K,
             callback: FunctionAtan.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FunctionAtan.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FunctionAtan.SignalSignatures[K]>
+            ...args: FunctionAtan.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace FunctionAtanh {
@@ -5076,14 +5183,17 @@ export namespace GCalc {
             signal: K,
             callback: FunctionAtanh.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FunctionAtanh.SignalSignatures>(
             signal: K,
             callback: FunctionAtanh.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FunctionAtanh.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FunctionAtanh.SignalSignatures[K]>
+            ...args: FunctionAtanh.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace FunctionCos {
@@ -5112,14 +5222,17 @@ export namespace GCalc {
             signal: K,
             callback: FunctionCos.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FunctionCos.SignalSignatures>(
             signal: K,
             callback: FunctionCos.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FunctionCos.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FunctionCos.SignalSignatures[K]>
+            ...args: FunctionCos.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace FunctionCosh {
@@ -5148,14 +5261,17 @@ export namespace GCalc {
             signal: K,
             callback: FunctionCosh.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FunctionCosh.SignalSignatures>(
             signal: K,
             callback: FunctionCosh.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FunctionCosh.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FunctionCosh.SignalSignatures[K]>
+            ...args: FunctionCosh.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace FunctionExp {
@@ -5184,14 +5300,17 @@ export namespace GCalc {
             signal: K,
             callback: FunctionExp.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FunctionExp.SignalSignatures>(
             signal: K,
             callback: FunctionExp.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FunctionExp.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FunctionExp.SignalSignatures[K]>
+            ...args: FunctionExp.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace FunctionLog {
@@ -5220,14 +5339,17 @@ export namespace GCalc {
             signal: K,
             callback: FunctionLog.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FunctionLog.SignalSignatures>(
             signal: K,
             callback: FunctionLog.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FunctionLog.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FunctionLog.SignalSignatures[K]>
+            ...args: FunctionLog.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace FunctionSin {
@@ -5256,14 +5378,17 @@ export namespace GCalc {
             signal: K,
             callback: FunctionSin.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FunctionSin.SignalSignatures>(
             signal: K,
             callback: FunctionSin.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FunctionSin.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FunctionSin.SignalSignatures[K]>
+            ...args: FunctionSin.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace FunctionSinh {
@@ -5292,14 +5417,17 @@ export namespace GCalc {
             signal: K,
             callback: FunctionSinh.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FunctionSinh.SignalSignatures>(
             signal: K,
             callback: FunctionSinh.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FunctionSinh.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FunctionSinh.SignalSignatures[K]>
+            ...args: FunctionSinh.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace FunctionSqrt {
@@ -5328,14 +5456,17 @@ export namespace GCalc {
             signal: K,
             callback: FunctionSqrt.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FunctionSqrt.SignalSignatures>(
             signal: K,
             callback: FunctionSqrt.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FunctionSqrt.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FunctionSqrt.SignalSignatures[K]>
+            ...args: FunctionSqrt.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace FunctionTan {
@@ -5364,14 +5495,17 @@ export namespace GCalc {
             signal: K,
             callback: FunctionTan.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FunctionTan.SignalSignatures>(
             signal: K,
             callback: FunctionTan.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FunctionTan.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FunctionTan.SignalSignatures[K]>
+            ...args: FunctionTan.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace FunctionTanh {
@@ -5400,19 +5534,25 @@ export namespace GCalc {
             signal: K,
             callback: FunctionTanh.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FunctionTanh.SignalSignatures>(
             signal: K,
             callback: FunctionTanh.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FunctionTanh.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FunctionTanh.SignalSignatures[K]>
+            ...args: FunctionTanh.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Group {
         // Signal signatures
-        interface SignalSignatures extends Expression.SignalSignatures {}
+        interface SignalSignatures extends Expression.SignalSignatures {
+            'notify::level': GObject.Object.Notify;
+            'notify::closed': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5433,8 +5573,14 @@ export namespace GCalc {
         // Signals
 
         connect<K extends keyof Group.SignalSignatures>(signal: K, callback: Group.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Group.SignalSignatures>(signal: K, callback: Group.SignalSignatures[K]): number;
-        emit<K extends keyof Group.SignalSignatures>(signal: K, ...args: Parameters<Group.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Group.SignalSignatures>(
+            signal: K,
+            ...args: Group.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get level(): MathGroupLevel;
@@ -5921,8 +6067,14 @@ export namespace GCalc {
         // Signals
 
         connect<K extends keyof Minus.SignalSignatures>(signal: K, callback: Minus.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Minus.SignalSignatures>(signal: K, callback: Minus.SignalSignatures[K]): number;
-        emit<K extends keyof Minus.SignalSignatures>(signal: K, ...args: Parameters<Minus.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Minus.SignalSignatures>(
+            signal: K,
+            ...args: Minus.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -6393,14 +6545,17 @@ export namespace GCalc {
         // Signals
 
         connect<K extends keyof Multiply.SignalSignatures>(signal: K, callback: Multiply.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Multiply.SignalSignatures>(
             signal: K,
             callback: Multiply.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Multiply.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Multiply.SignalSignatures[K]>
+            ...args: Multiply.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -6870,14 +7025,17 @@ export namespace GCalc {
         // Signals
 
         connect<K extends keyof Parameter.SignalSignatures>(signal: K, callback: Parameter.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Parameter.SignalSignatures>(
             signal: K,
             callback: Parameter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Parameter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Parameter.SignalSignatures[K]>
+            ...args: Parameter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         set_value(val?: GObject.Value | null): void;
@@ -7356,8 +7514,14 @@ export namespace GCalc {
         // Signals
 
         connect<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Parser.SignalSignatures>(signal: K, callback: Parser.SignalSignatures[K]): number;
-        emit<K extends keyof Parser.SignalSignatures>(signal: K, ...args: Parameters<Parser.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Parser.SignalSignatures>(
+            signal: K,
+            ...args: Parser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -7393,8 +7557,14 @@ export namespace GCalc {
         // Signals
 
         connect<K extends keyof Plus.SignalSignatures>(signal: K, callback: Plus.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Plus.SignalSignatures>(signal: K, callback: Plus.SignalSignatures[K]): number;
-        emit<K extends keyof Plus.SignalSignatures>(signal: K, ...args: Parameters<Plus.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Plus.SignalSignatures>(
+            signal: K,
+            ...args: Plus.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -7864,14 +8034,17 @@ export namespace GCalc {
             signal: K,
             callback: Polynomial.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Polynomial.SignalSignatures>(
             signal: K,
             callback: Polynomial.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Polynomial.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Polynomial.SignalSignatures[K]>
+            ...args: Polynomial.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         evaluate(): MathExpression;
@@ -8343,8 +8516,14 @@ export namespace GCalc {
         // Signals
 
         connect<K extends keyof Pow.SignalSignatures>(signal: K, callback: Pow.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Pow.SignalSignatures>(signal: K, callback: Pow.SignalSignatures[K]): number;
-        emit<K extends keyof Pow.SignalSignatures>(signal: K, ...args: Parameters<Pow.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Pow.SignalSignatures>(
+            signal: K,
+            ...args: Pow.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -8790,7 +8969,9 @@ export namespace GCalc {
 
     namespace Result {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::expression': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8811,8 +8992,14 @@ export namespace GCalc {
         // Signals
 
         connect<K extends keyof Result.SignalSignatures>(signal: K, callback: Result.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Result.SignalSignatures>(signal: K, callback: Result.SignalSignatures[K]): number;
-        emit<K extends keyof Result.SignalSignatures>(signal: K, ...args: Parameters<Result.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Result.SignalSignatures>(
+            signal: K,
+            ...args: Result.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get expression(): MathExpression;
@@ -9265,7 +9452,10 @@ export namespace GCalc {
 
     namespace Solver {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::equation-manager': GObject.Object.Notify;
+            'notify::equation-manager': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -9296,8 +9486,14 @@ export namespace GCalc {
         // Signals
 
         connect<K extends keyof Solver.SignalSignatures>(signal: K, callback: Solver.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Solver.SignalSignatures>(signal: K, callback: Solver.SignalSignatures[K]): number;
-        emit<K extends keyof Solver.SignalSignatures>(signal: K, ...args: Parameters<Solver.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Solver.SignalSignatures>(
+            signal: K,
+            ...args: Solver.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -9330,8 +9526,14 @@ export namespace GCalc {
         // Signals
 
         connect<K extends keyof Term.SignalSignatures>(signal: K, callback: Term.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Term.SignalSignatures>(signal: K, callback: Term.SignalSignatures[K]): number;
-        emit<K extends keyof Term.SignalSignatures>(signal: K, ...args: Parameters<Term.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Term.SignalSignatures>(
+            signal: K,
+            ...args: Term.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         add(t: MathTerm): MathExpression;
@@ -9805,14 +10007,17 @@ export namespace GCalc {
             signal: K,
             callback: UnitConverter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UnitConverter.SignalSignatures>(
             signal: K,
             callback: UnitConverter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UnitConverter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UnitConverter.SignalSignatures[K]>
+            ...args: UnitConverter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -9821,7 +10026,11 @@ export namespace GCalc {
 
     namespace Variable {
         // Signal signatures
-        interface SignalSignatures extends Expression.SignalSignatures {}
+        interface SignalSignatures extends Expression.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::value': GObject.Object.Notify;
+            'notify::bind': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -9843,14 +10052,17 @@ export namespace GCalc {
         // Signals
 
         connect<K extends keyof Variable.SignalSignatures>(signal: K, callback: Variable.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Variable.SignalSignatures>(
             signal: K,
             callback: Variable.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Variable.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Variable.SignalSignatures[K]>
+            ...args: Variable.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get name(): string;

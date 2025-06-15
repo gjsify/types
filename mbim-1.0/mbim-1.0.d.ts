@@ -5772,6 +5772,14 @@ export namespace Mbim {
             'device-error': DeviceError;
             'device-indicate-status': DeviceIndicateStatus;
             'device-removed': DeviceRemoved;
+            'notify::device-consecutive-timeouts': GObject.Object.Notify;
+            'notify::device-consecutive-timeouts': GObject.Object.Notify;
+            'notify::device-file': GObject.Object.Notify;
+            'notify::device-file': GObject.Object.Notify;
+            'notify::device-in-session': GObject.Object.Notify;
+            'notify::device-in-session': GObject.Object.Notify;
+            'notify::device-transaction-id': GObject.Object.Notify;
+            'notify::device-transaction-id': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -5824,8 +5832,14 @@ export namespace Mbim {
         // Signals
 
         connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
-        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            ...args: Device.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -6985,7 +6999,12 @@ export namespace Mbim {
 
     namespace Proxy {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::mbim-proxy-n-clients': GObject.Object.Notify;
+            'notify::mbim-proxy-nclients': GObject.Object.Notify;
+            'notify::mbim-proxy-n-devices': GObject.Object.Notify;
+            'notify::mbim-proxy-ndevices': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -7022,8 +7041,14 @@ export namespace Mbim {
         // Signals
 
         connect<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
-        emit<K extends keyof Proxy.SignalSignatures>(signal: K, ...args: Parameters<Proxy.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Proxy.SignalSignatures>(
+            signal: K,
+            ...args: Proxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     /**

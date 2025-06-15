@@ -67,7 +67,11 @@ export namespace Gandiva {
     const VERSION_TAG: string;
     namespace AndNode {
         // Signal signatures
-        interface SignalSignatures extends BooleanNode.SignalSignatures {}
+        interface SignalSignatures extends BooleanNode.SignalSignatures {
+            'notify::node': GObject.Object.Notify;
+            'notify::return-type': GObject.Object.Notify;
+            'notify::return-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -88,19 +92,26 @@ export namespace Gandiva {
         // Signals
 
         connect<K extends keyof AndNode.SignalSignatures>(signal: K, callback: AndNode.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AndNode.SignalSignatures>(
             signal: K,
             callback: AndNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AndNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AndNode.SignalSignatures[K]>
+            ...args: AndNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace BinaryLiteralNode {
         // Signal signatures
-        interface SignalSignatures extends LiteralNode.SignalSignatures {}
+        interface SignalSignatures extends LiteralNode.SignalSignatures {
+            'notify::node': GObject.Object.Notify;
+            'notify::return-type': GObject.Object.Notify;
+            'notify::return-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -126,14 +137,17 @@ export namespace Gandiva {
             signal: K,
             callback: BinaryLiteralNode.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BinaryLiteralNode.SignalSignatures>(
             signal: K,
             callback: BinaryLiteralNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BinaryLiteralNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BinaryLiteralNode.SignalSignatures[K]>
+            ...args: BinaryLiteralNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -142,7 +156,11 @@ export namespace Gandiva {
 
     namespace BooleanLiteralNode {
         // Signal signatures
-        interface SignalSignatures extends LiteralNode.SignalSignatures {}
+        interface SignalSignatures extends LiteralNode.SignalSignatures {
+            'notify::node': GObject.Object.Notify;
+            'notify::return-type': GObject.Object.Notify;
+            'notify::return-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -166,14 +184,17 @@ export namespace Gandiva {
             signal: K,
             callback: BooleanLiteralNode.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BooleanLiteralNode.SignalSignatures>(
             signal: K,
             callback: BooleanLiteralNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BooleanLiteralNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BooleanLiteralNode.SignalSignatures[K]>
+            ...args: BooleanLiteralNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -182,7 +203,11 @@ export namespace Gandiva {
 
     namespace BooleanNode {
         // Signal signatures
-        interface SignalSignatures extends Node.SignalSignatures {}
+        interface SignalSignatures extends Node.SignalSignatures {
+            'notify::node': GObject.Object.Notify;
+            'notify::return-type': GObject.Object.Notify;
+            'notify::return-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -204,14 +229,17 @@ export namespace Gandiva {
             signal: K,
             callback: BooleanNode.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BooleanNode.SignalSignatures>(
             signal: K,
             callback: BooleanNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BooleanNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BooleanNode.SignalSignatures[K]>
+            ...args: BooleanNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -220,7 +248,11 @@ export namespace Gandiva {
 
     namespace DoubleLiteralNode {
         // Signal signatures
-        interface SignalSignatures extends LiteralNode.SignalSignatures {}
+        interface SignalSignatures extends LiteralNode.SignalSignatures {
+            'notify::node': GObject.Object.Notify;
+            'notify::return-type': GObject.Object.Notify;
+            'notify::return-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -244,14 +276,17 @@ export namespace Gandiva {
             signal: K,
             callback: DoubleLiteralNode.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DoubleLiteralNode.SignalSignatures>(
             signal: K,
             callback: DoubleLiteralNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DoubleLiteralNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DoubleLiteralNode.SignalSignatures[K]>
+            ...args: DoubleLiteralNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -260,7 +295,13 @@ export namespace Gandiva {
 
     namespace Expression {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::expression': GObject.Object.Notify;
+            'notify::result-field': GObject.Object.Notify;
+            'notify::result-field': GObject.Object.Notify;
+            'notify::root-node': GObject.Object.Notify;
+            'notify::root-node': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -298,14 +339,17 @@ export namespace Gandiva {
             signal: K,
             callback: Expression.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Expression.SignalSignatures>(
             signal: K,
             callback: Expression.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Expression.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Expression.SignalSignatures[K]>
+            ...args: Expression.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -314,7 +358,12 @@ export namespace Gandiva {
 
     namespace FieldNode {
         // Signal signatures
-        interface SignalSignatures extends Node.SignalSignatures {}
+        interface SignalSignatures extends Node.SignalSignatures {
+            'notify::field': GObject.Object.Notify;
+            'notify::node': GObject.Object.Notify;
+            'notify::return-type': GObject.Object.Notify;
+            'notify::return-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -341,19 +390,26 @@ export namespace Gandiva {
         // Signals
 
         connect<K extends keyof FieldNode.SignalSignatures>(signal: K, callback: FieldNode.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FieldNode.SignalSignatures>(
             signal: K,
             callback: FieldNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FieldNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FieldNode.SignalSignatures[K]>
+            ...args: FieldNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace FloatLiteralNode {
         // Signal signatures
-        interface SignalSignatures extends LiteralNode.SignalSignatures {}
+        interface SignalSignatures extends LiteralNode.SignalSignatures {
+            'notify::node': GObject.Object.Notify;
+            'notify::return-type': GObject.Object.Notify;
+            'notify::return-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -377,14 +433,17 @@ export namespace Gandiva {
             signal: K,
             callback: FloatLiteralNode.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FloatLiteralNode.SignalSignatures>(
             signal: K,
             callback: FloatLiteralNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FloatLiteralNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FloatLiteralNode.SignalSignatures[K]>
+            ...args: FloatLiteralNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -393,7 +452,12 @@ export namespace Gandiva {
 
     namespace FunctionNode {
         // Signal signatures
-        interface SignalSignatures extends Node.SignalSignatures {}
+        interface SignalSignatures extends Node.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::node': GObject.Object.Notify;
+            'notify::return-type': GObject.Object.Notify;
+            'notify::return-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -423,14 +487,17 @@ export namespace Gandiva {
             signal: K,
             callback: FunctionNode.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FunctionNode.SignalSignatures>(
             signal: K,
             callback: FunctionNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FunctionNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FunctionNode.SignalSignatures[K]>
+            ...args: FunctionNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -463,14 +530,17 @@ export namespace Gandiva {
             signal: K,
             callback: FunctionRegistry.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FunctionRegistry.SignalSignatures>(
             signal: K,
             callback: FunctionRegistry.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FunctionRegistry.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FunctionRegistry.SignalSignatures[K]>
+            ...args: FunctionRegistry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -480,7 +550,10 @@ export namespace Gandiva {
 
     namespace FunctionSignature {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::function-signature': GObject.Object.Notify;
+            'notify::function-signature': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -516,14 +589,17 @@ export namespace Gandiva {
             signal: K,
             callback: FunctionSignature.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FunctionSignature.SignalSignatures>(
             signal: K,
             callback: FunctionSignature.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FunctionSignature.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FunctionSignature.SignalSignatures[K]>
+            ...args: FunctionSignature.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -536,7 +612,17 @@ export namespace Gandiva {
 
     namespace IfNode {
         // Signal signatures
-        interface SignalSignatures extends Node.SignalSignatures {}
+        interface SignalSignatures extends Node.SignalSignatures {
+            'notify::condition-node': GObject.Object.Notify;
+            'notify::condition-node': GObject.Object.Notify;
+            'notify::else-node': GObject.Object.Notify;
+            'notify::else-node': GObject.Object.Notify;
+            'notify::then-node': GObject.Object.Notify;
+            'notify::then-node': GObject.Object.Notify;
+            'notify::node': GObject.Object.Notify;
+            'notify::return-type': GObject.Object.Notify;
+            'notify::return-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -573,13 +659,23 @@ export namespace Gandiva {
         // Signals
 
         connect<K extends keyof IfNode.SignalSignatures>(signal: K, callback: IfNode.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof IfNode.SignalSignatures>(signal: K, callback: IfNode.SignalSignatures[K]): number;
-        emit<K extends keyof IfNode.SignalSignatures>(signal: K, ...args: Parameters<IfNode.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof IfNode.SignalSignatures>(
+            signal: K,
+            ...args: IfNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Int16LiteralNode {
         // Signal signatures
-        interface SignalSignatures extends LiteralNode.SignalSignatures {}
+        interface SignalSignatures extends LiteralNode.SignalSignatures {
+            'notify::node': GObject.Object.Notify;
+            'notify::return-type': GObject.Object.Notify;
+            'notify::return-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -603,14 +699,17 @@ export namespace Gandiva {
             signal: K,
             callback: Int16LiteralNode.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Int16LiteralNode.SignalSignatures>(
             signal: K,
             callback: Int16LiteralNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Int16LiteralNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Int16LiteralNode.SignalSignatures[K]>
+            ...args: Int16LiteralNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -619,7 +718,11 @@ export namespace Gandiva {
 
     namespace Int32LiteralNode {
         // Signal signatures
-        interface SignalSignatures extends LiteralNode.SignalSignatures {}
+        interface SignalSignatures extends LiteralNode.SignalSignatures {
+            'notify::node': GObject.Object.Notify;
+            'notify::return-type': GObject.Object.Notify;
+            'notify::return-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -643,14 +746,17 @@ export namespace Gandiva {
             signal: K,
             callback: Int32LiteralNode.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Int32LiteralNode.SignalSignatures>(
             signal: K,
             callback: Int32LiteralNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Int32LiteralNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Int32LiteralNode.SignalSignatures[K]>
+            ...args: Int32LiteralNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -659,7 +765,11 @@ export namespace Gandiva {
 
     namespace Int64LiteralNode {
         // Signal signatures
-        interface SignalSignatures extends LiteralNode.SignalSignatures {}
+        interface SignalSignatures extends LiteralNode.SignalSignatures {
+            'notify::node': GObject.Object.Notify;
+            'notify::return-type': GObject.Object.Notify;
+            'notify::return-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -683,14 +793,17 @@ export namespace Gandiva {
             signal: K,
             callback: Int64LiteralNode.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Int64LiteralNode.SignalSignatures>(
             signal: K,
             callback: Int64LiteralNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Int64LiteralNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Int64LiteralNode.SignalSignatures[K]>
+            ...args: Int64LiteralNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -699,7 +812,11 @@ export namespace Gandiva {
 
     namespace Int8LiteralNode {
         // Signal signatures
-        interface SignalSignatures extends LiteralNode.SignalSignatures {}
+        interface SignalSignatures extends LiteralNode.SignalSignatures {
+            'notify::node': GObject.Object.Notify;
+            'notify::return-type': GObject.Object.Notify;
+            'notify::return-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -723,14 +840,17 @@ export namespace Gandiva {
             signal: K,
             callback: Int8LiteralNode.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Int8LiteralNode.SignalSignatures>(
             signal: K,
             callback: Int8LiteralNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Int8LiteralNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Int8LiteralNode.SignalSignatures[K]>
+            ...args: Int8LiteralNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -739,7 +859,11 @@ export namespace Gandiva {
 
     namespace LiteralNode {
         // Signal signatures
-        interface SignalSignatures extends Node.SignalSignatures {}
+        interface SignalSignatures extends Node.SignalSignatures {
+            'notify::node': GObject.Object.Notify;
+            'notify::return-type': GObject.Object.Notify;
+            'notify::return-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -761,19 +885,25 @@ export namespace Gandiva {
             signal: K,
             callback: LiteralNode.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LiteralNode.SignalSignatures>(
             signal: K,
             callback: LiteralNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LiteralNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LiteralNode.SignalSignatures[K]>
+            ...args: LiteralNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace NativeFunction {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::native-function': GObject.Object.Notify;
+            'notify::native-function': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -803,14 +933,17 @@ export namespace Gandiva {
             signal: K,
             callback: NativeFunction.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NativeFunction.SignalSignatures>(
             signal: K,
             callback: NativeFunction.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NativeFunction.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NativeFunction.SignalSignatures[K]>
+            ...args: NativeFunction.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -825,7 +958,11 @@ export namespace Gandiva {
 
     namespace Node {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::node': GObject.Object.Notify;
+            'notify::return-type': GObject.Object.Notify;
+            'notify::return-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -854,8 +991,14 @@ export namespace Gandiva {
         // Signals
 
         connect<K extends keyof Node.SignalSignatures>(signal: K, callback: Node.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Node.SignalSignatures>(signal: K, callback: Node.SignalSignatures[K]): number;
-        emit<K extends keyof Node.SignalSignatures>(signal: K, ...args: Parameters<Node.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Node.SignalSignatures>(
+            signal: K,
+            ...args: Node.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -864,7 +1007,11 @@ export namespace Gandiva {
 
     namespace NullLiteralNode {
         // Signal signatures
-        interface SignalSignatures extends LiteralNode.SignalSignatures {}
+        interface SignalSignatures extends LiteralNode.SignalSignatures {
+            'notify::node': GObject.Object.Notify;
+            'notify::return-type': GObject.Object.Notify;
+            'notify::return-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -888,19 +1035,26 @@ export namespace Gandiva {
             signal: K,
             callback: NullLiteralNode.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NullLiteralNode.SignalSignatures>(
             signal: K,
             callback: NullLiteralNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NullLiteralNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NullLiteralNode.SignalSignatures[K]>
+            ...args: NullLiteralNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace OrNode {
         // Signal signatures
-        interface SignalSignatures extends BooleanNode.SignalSignatures {}
+        interface SignalSignatures extends BooleanNode.SignalSignatures {
+            'notify::node': GObject.Object.Notify;
+            'notify::return-type': GObject.Object.Notify;
+            'notify::return-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -921,13 +1075,21 @@ export namespace Gandiva {
         // Signals
 
         connect<K extends keyof OrNode.SignalSignatures>(signal: K, callback: OrNode.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof OrNode.SignalSignatures>(signal: K, callback: OrNode.SignalSignatures[K]): number;
-        emit<K extends keyof OrNode.SignalSignatures>(signal: K, ...args: Parameters<OrNode.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof OrNode.SignalSignatures>(
+            signal: K,
+            ...args: OrNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Projector {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::projector': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -954,14 +1116,17 @@ export namespace Gandiva {
         // Signals
 
         connect<K extends keyof Projector.SignalSignatures>(signal: K, callback: Projector.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Projector.SignalSignatures>(
             signal: K,
             callback: Projector.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Projector.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Projector.SignalSignatures[K]>
+            ...args: Projector.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -970,7 +1135,11 @@ export namespace Gandiva {
 
     namespace StringLiteralNode {
         // Signal signatures
-        interface SignalSignatures extends LiteralNode.SignalSignatures {}
+        interface SignalSignatures extends LiteralNode.SignalSignatures {
+            'notify::node': GObject.Object.Notify;
+            'notify::return-type': GObject.Object.Notify;
+            'notify::return-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -994,14 +1163,17 @@ export namespace Gandiva {
             signal: K,
             callback: StringLiteralNode.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StringLiteralNode.SignalSignatures>(
             signal: K,
             callback: StringLiteralNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StringLiteralNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StringLiteralNode.SignalSignatures[K]>
+            ...args: StringLiteralNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1010,7 +1182,11 @@ export namespace Gandiva {
 
     namespace UInt16LiteralNode {
         // Signal signatures
-        interface SignalSignatures extends LiteralNode.SignalSignatures {}
+        interface SignalSignatures extends LiteralNode.SignalSignatures {
+            'notify::node': GObject.Object.Notify;
+            'notify::return-type': GObject.Object.Notify;
+            'notify::return-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1034,14 +1210,17 @@ export namespace Gandiva {
             signal: K,
             callback: UInt16LiteralNode.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UInt16LiteralNode.SignalSignatures>(
             signal: K,
             callback: UInt16LiteralNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UInt16LiteralNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UInt16LiteralNode.SignalSignatures[K]>
+            ...args: UInt16LiteralNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1050,7 +1229,11 @@ export namespace Gandiva {
 
     namespace UInt32LiteralNode {
         // Signal signatures
-        interface SignalSignatures extends LiteralNode.SignalSignatures {}
+        interface SignalSignatures extends LiteralNode.SignalSignatures {
+            'notify::node': GObject.Object.Notify;
+            'notify::return-type': GObject.Object.Notify;
+            'notify::return-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1074,14 +1257,17 @@ export namespace Gandiva {
             signal: K,
             callback: UInt32LiteralNode.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UInt32LiteralNode.SignalSignatures>(
             signal: K,
             callback: UInt32LiteralNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UInt32LiteralNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UInt32LiteralNode.SignalSignatures[K]>
+            ...args: UInt32LiteralNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1090,7 +1276,11 @@ export namespace Gandiva {
 
     namespace UInt64LiteralNode {
         // Signal signatures
-        interface SignalSignatures extends LiteralNode.SignalSignatures {}
+        interface SignalSignatures extends LiteralNode.SignalSignatures {
+            'notify::node': GObject.Object.Notify;
+            'notify::return-type': GObject.Object.Notify;
+            'notify::return-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1114,14 +1304,17 @@ export namespace Gandiva {
             signal: K,
             callback: UInt64LiteralNode.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UInt64LiteralNode.SignalSignatures>(
             signal: K,
             callback: UInt64LiteralNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UInt64LiteralNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UInt64LiteralNode.SignalSignatures[K]>
+            ...args: UInt64LiteralNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1130,7 +1323,11 @@ export namespace Gandiva {
 
     namespace UInt8LiteralNode {
         // Signal signatures
-        interface SignalSignatures extends LiteralNode.SignalSignatures {}
+        interface SignalSignatures extends LiteralNode.SignalSignatures {
+            'notify::node': GObject.Object.Notify;
+            'notify::return-type': GObject.Object.Notify;
+            'notify::return-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1154,14 +1351,17 @@ export namespace Gandiva {
             signal: K,
             callback: UInt8LiteralNode.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UInt8LiteralNode.SignalSignatures>(
             signal: K,
             callback: UInt8LiteralNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UInt8LiteralNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UInt8LiteralNode.SignalSignatures[K]>
+            ...args: UInt8LiteralNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

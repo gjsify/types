@@ -35,6 +35,13 @@ export namespace GUPnPDLNA {
         // Signal signatures
         interface SignalSignatures extends GstPbutils.Discoverer.SignalSignatures {
             done: Done;
+            'notify::extended-mode': GObject.Object.Notify;
+            'notify::extended-mode': GObject.Object.Notify;
+            'notify::relaxed-mode': GObject.Object.Notify;
+            'notify::relaxed-mode': GObject.Object.Notify;
+            'notify::timeout': GObject.Object.Notify;
+            'notify::use-cache': GObject.Object.Notify;
+            'notify::use-cache': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -77,14 +84,17 @@ export namespace GUPnPDLNA {
             signal: K,
             callback: Discoverer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Discoverer.SignalSignatures>(
             signal: K,
             callback: Discoverer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Discoverer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Discoverer.SignalSignatures[K]>
+            ...args: Discoverer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -125,7 +135,11 @@ export namespace GUPnPDLNA {
 
     namespace Information {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::info': GObject.Object.Notify;
+            'notify::mime': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -159,14 +173,17 @@ export namespace GUPnPDLNA {
             signal: K,
             callback: Information.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Information.SignalSignatures>(
             signal: K,
             callback: Information.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Information.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Information.SignalSignatures[K]>
+            ...args: Information.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -177,7 +194,13 @@ export namespace GUPnPDLNA {
 
     namespace Profile {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::encoding-profile': GObject.Object.Notify;
+            'notify::encoding-profile': GObject.Object.Notify;
+            'notify::extended': GObject.Object.Notify;
+            'notify::mime': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -214,14 +237,17 @@ export namespace GUPnPDLNA {
         // Signals
 
         connect<K extends keyof Profile.SignalSignatures>(signal: K, callback: Profile.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Profile.SignalSignatures>(
             signal: K,
             callback: Profile.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Profile.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Profile.SignalSignatures[K]>
+            ...args: Profile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

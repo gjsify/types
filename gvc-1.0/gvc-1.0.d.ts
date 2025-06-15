@@ -96,14 +96,17 @@ export namespace Gvc {
             signal: K,
             callback: ChannelMap.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ChannelMap.SignalSignatures>(
             signal: K,
             callback: ChannelMap.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ChannelMap.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ChannelMap.SignalSignatures[K]>
+            ...args: ChannelMap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -120,7 +123,18 @@ export namespace Gvc {
 
     namespace MixerCard {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::human-profile': GObject.Object.Notify;
+            'notify::human-profile': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::index': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::pa-context': GObject.Object.Notify;
+            'notify::pa-context': GObject.Object.Notify;
+            'notify::profile': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -167,14 +181,17 @@ export namespace Gvc {
         // Signals
 
         connect<K extends keyof MixerCard.SignalSignatures>(signal: K, callback: MixerCard.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MixerCard.SignalSignatures>(
             signal: K,
             callback: MixerCard.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MixerCard.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MixerCard.SignalSignatures[K]>
+            ...args: MixerCard.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -278,6 +295,7 @@ export namespace Gvc {
             'stream-added': StreamAdded;
             'stream-changed': StreamChanged;
             'stream-removed': StreamRemoved;
+            'notify::name': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -308,14 +326,17 @@ export namespace Gvc {
             signal: K,
             callback: MixerControl.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MixerControl.SignalSignatures>(
             signal: K,
             callback: MixerControl.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MixerControl.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MixerControl.SignalSignatures[K]>
+            ...args: MixerControl.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -367,7 +388,39 @@ export namespace Gvc {
 
     namespace MixerEventRole {
         // Signal signatures
-        interface SignalSignatures extends MixerStream.SignalSignatures {}
+        interface SignalSignatures extends MixerStream.SignalSignatures {
+            'notify::device': GObject.Object.Notify;
+            'notify::application-id': GObject.Object.Notify;
+            'notify::application-id': GObject.Object.Notify;
+            'notify::can-decibel': GObject.Object.Notify;
+            'notify::can-decibel': GObject.Object.Notify;
+            'notify::card-index': GObject.Object.Notify;
+            'notify::card-index': GObject.Object.Notify;
+            'notify::channel-map': GObject.Object.Notify;
+            'notify::channel-map': GObject.Object.Notify;
+            'notify::decibel': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::form-factor': GObject.Object.Notify;
+            'notify::form-factor': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::index': GObject.Object.Notify;
+            'notify::is-event-stream': GObject.Object.Notify;
+            'notify::is-event-stream': GObject.Object.Notify;
+            'notify::is-muted': GObject.Object.Notify;
+            'notify::is-muted': GObject.Object.Notify;
+            'notify::is-virtual': GObject.Object.Notify;
+            'notify::is-virtual': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::pa-context': GObject.Object.Notify;
+            'notify::pa-context': GObject.Object.Notify;
+            'notify::port': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::sysfs-path': GObject.Object.Notify;
+            'notify::sysfs-path': GObject.Object.Notify;
+            'notify::volume': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -396,19 +449,53 @@ export namespace Gvc {
             signal: K,
             callback: MixerEventRole.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MixerEventRole.SignalSignatures>(
             signal: K,
             callback: MixerEventRole.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MixerEventRole.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MixerEventRole.SignalSignatures[K]>
+            ...args: MixerEventRole.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace MixerSink {
         // Signal signatures
-        interface SignalSignatures extends MixerStream.SignalSignatures {}
+        interface SignalSignatures extends MixerStream.SignalSignatures {
+            'notify::application-id': GObject.Object.Notify;
+            'notify::application-id': GObject.Object.Notify;
+            'notify::can-decibel': GObject.Object.Notify;
+            'notify::can-decibel': GObject.Object.Notify;
+            'notify::card-index': GObject.Object.Notify;
+            'notify::card-index': GObject.Object.Notify;
+            'notify::channel-map': GObject.Object.Notify;
+            'notify::channel-map': GObject.Object.Notify;
+            'notify::decibel': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::form-factor': GObject.Object.Notify;
+            'notify::form-factor': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::index': GObject.Object.Notify;
+            'notify::is-event-stream': GObject.Object.Notify;
+            'notify::is-event-stream': GObject.Object.Notify;
+            'notify::is-muted': GObject.Object.Notify;
+            'notify::is-muted': GObject.Object.Notify;
+            'notify::is-virtual': GObject.Object.Notify;
+            'notify::is-virtual': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::pa-context': GObject.Object.Notify;
+            'notify::pa-context': GObject.Object.Notify;
+            'notify::port': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::sysfs-path': GObject.Object.Notify;
+            'notify::sysfs-path': GObject.Object.Notify;
+            'notify::volume': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -427,19 +514,53 @@ export namespace Gvc {
         // Signals
 
         connect<K extends keyof MixerSink.SignalSignatures>(signal: K, callback: MixerSink.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MixerSink.SignalSignatures>(
             signal: K,
             callback: MixerSink.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MixerSink.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MixerSink.SignalSignatures[K]>
+            ...args: MixerSink.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace MixerSinkInput {
         // Signal signatures
-        interface SignalSignatures extends MixerStream.SignalSignatures {}
+        interface SignalSignatures extends MixerStream.SignalSignatures {
+            'notify::application-id': GObject.Object.Notify;
+            'notify::application-id': GObject.Object.Notify;
+            'notify::can-decibel': GObject.Object.Notify;
+            'notify::can-decibel': GObject.Object.Notify;
+            'notify::card-index': GObject.Object.Notify;
+            'notify::card-index': GObject.Object.Notify;
+            'notify::channel-map': GObject.Object.Notify;
+            'notify::channel-map': GObject.Object.Notify;
+            'notify::decibel': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::form-factor': GObject.Object.Notify;
+            'notify::form-factor': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::index': GObject.Object.Notify;
+            'notify::is-event-stream': GObject.Object.Notify;
+            'notify::is-event-stream': GObject.Object.Notify;
+            'notify::is-muted': GObject.Object.Notify;
+            'notify::is-muted': GObject.Object.Notify;
+            'notify::is-virtual': GObject.Object.Notify;
+            'notify::is-virtual': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::pa-context': GObject.Object.Notify;
+            'notify::pa-context': GObject.Object.Notify;
+            'notify::port': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::sysfs-path': GObject.Object.Notify;
+            'notify::sysfs-path': GObject.Object.Notify;
+            'notify::volume': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -461,19 +582,53 @@ export namespace Gvc {
             signal: K,
             callback: MixerSinkInput.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MixerSinkInput.SignalSignatures>(
             signal: K,
             callback: MixerSinkInput.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MixerSinkInput.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MixerSinkInput.SignalSignatures[K]>
+            ...args: MixerSinkInput.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace MixerSource {
         // Signal signatures
-        interface SignalSignatures extends MixerStream.SignalSignatures {}
+        interface SignalSignatures extends MixerStream.SignalSignatures {
+            'notify::application-id': GObject.Object.Notify;
+            'notify::application-id': GObject.Object.Notify;
+            'notify::can-decibel': GObject.Object.Notify;
+            'notify::can-decibel': GObject.Object.Notify;
+            'notify::card-index': GObject.Object.Notify;
+            'notify::card-index': GObject.Object.Notify;
+            'notify::channel-map': GObject.Object.Notify;
+            'notify::channel-map': GObject.Object.Notify;
+            'notify::decibel': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::form-factor': GObject.Object.Notify;
+            'notify::form-factor': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::index': GObject.Object.Notify;
+            'notify::is-event-stream': GObject.Object.Notify;
+            'notify::is-event-stream': GObject.Object.Notify;
+            'notify::is-muted': GObject.Object.Notify;
+            'notify::is-muted': GObject.Object.Notify;
+            'notify::is-virtual': GObject.Object.Notify;
+            'notify::is-virtual': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::pa-context': GObject.Object.Notify;
+            'notify::pa-context': GObject.Object.Notify;
+            'notify::port': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::sysfs-path': GObject.Object.Notify;
+            'notify::sysfs-path': GObject.Object.Notify;
+            'notify::volume': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -495,19 +650,53 @@ export namespace Gvc {
             signal: K,
             callback: MixerSource.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MixerSource.SignalSignatures>(
             signal: K,
             callback: MixerSource.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MixerSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MixerSource.SignalSignatures[K]>
+            ...args: MixerSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace MixerSourceOutput {
         // Signal signatures
-        interface SignalSignatures extends MixerStream.SignalSignatures {}
+        interface SignalSignatures extends MixerStream.SignalSignatures {
+            'notify::application-id': GObject.Object.Notify;
+            'notify::application-id': GObject.Object.Notify;
+            'notify::can-decibel': GObject.Object.Notify;
+            'notify::can-decibel': GObject.Object.Notify;
+            'notify::card-index': GObject.Object.Notify;
+            'notify::card-index': GObject.Object.Notify;
+            'notify::channel-map': GObject.Object.Notify;
+            'notify::channel-map': GObject.Object.Notify;
+            'notify::decibel': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::form-factor': GObject.Object.Notify;
+            'notify::form-factor': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::index': GObject.Object.Notify;
+            'notify::is-event-stream': GObject.Object.Notify;
+            'notify::is-event-stream': GObject.Object.Notify;
+            'notify::is-muted': GObject.Object.Notify;
+            'notify::is-muted': GObject.Object.Notify;
+            'notify::is-virtual': GObject.Object.Notify;
+            'notify::is-virtual': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::pa-context': GObject.Object.Notify;
+            'notify::pa-context': GObject.Object.Notify;
+            'notify::port': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::sysfs-path': GObject.Object.Notify;
+            'notify::sysfs-path': GObject.Object.Notify;
+            'notify::volume': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -529,19 +718,53 @@ export namespace Gvc {
             signal: K,
             callback: MixerSourceOutput.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MixerSourceOutput.SignalSignatures>(
             signal: K,
             callback: MixerSourceOutput.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MixerSourceOutput.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MixerSourceOutput.SignalSignatures[K]>
+            ...args: MixerSourceOutput.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace MixerStream {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::application-id': GObject.Object.Notify;
+            'notify::application-id': GObject.Object.Notify;
+            'notify::can-decibel': GObject.Object.Notify;
+            'notify::can-decibel': GObject.Object.Notify;
+            'notify::card-index': GObject.Object.Notify;
+            'notify::card-index': GObject.Object.Notify;
+            'notify::channel-map': GObject.Object.Notify;
+            'notify::channel-map': GObject.Object.Notify;
+            'notify::decibel': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::form-factor': GObject.Object.Notify;
+            'notify::form-factor': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::index': GObject.Object.Notify;
+            'notify::is-event-stream': GObject.Object.Notify;
+            'notify::is-event-stream': GObject.Object.Notify;
+            'notify::is-muted': GObject.Object.Notify;
+            'notify::is-muted': GObject.Object.Notify;
+            'notify::is-virtual': GObject.Object.Notify;
+            'notify::is-virtual': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::pa-context': GObject.Object.Notify;
+            'notify::pa-context': GObject.Object.Notify;
+            'notify::port': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::sysfs-path': GObject.Object.Notify;
+            'notify::sysfs-path': GObject.Object.Notify;
+            'notify::volume': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -653,14 +876,17 @@ export namespace Gvc {
             signal: K,
             callback: MixerStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MixerStream.SignalSignatures>(
             signal: K,
             callback: MixerStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MixerStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MixerStream.SignalSignatures[K]>
+            ...args: MixerStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -714,7 +940,20 @@ export namespace Gvc {
 
     namespace MixerUIDevice {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::card': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::origin': GObject.Object.Notify;
+            'notify::port-available': GObject.Object.Notify;
+            'notify::port-available': GObject.Object.Notify;
+            'notify::port-name': GObject.Object.Notify;
+            'notify::port-name': GObject.Object.Notify;
+            'notify::stream-id': GObject.Object.Notify;
+            'notify::stream-id': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -776,14 +1015,17 @@ export namespace Gvc {
             signal: K,
             callback: MixerUIDevice.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MixerUIDevice.SignalSignatures>(
             signal: K,
             callback: MixerUIDevice.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MixerUIDevice.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MixerUIDevice.SignalSignatures[K]>
+            ...args: MixerUIDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

@@ -148,7 +148,11 @@ export namespace Zpj {
     function error_quark(): GLib.Quark;
     namespace AuthorizationDomain {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::scope': GObject.Object.Notify;
+            'notify::service-name': GObject.Object.Notify;
+            'notify::service-name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -180,14 +184,17 @@ export namespace Zpj {
             signal: K,
             callback: AuthorizationDomain.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AuthorizationDomain.SignalSignatures>(
             signal: K,
             callback: AuthorizationDomain.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AuthorizationDomain.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AuthorizationDomain.SignalSignatures[K]>
+            ...args: AuthorizationDomain.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -223,14 +230,17 @@ export namespace Zpj {
             signal: K,
             callback: GoaAuthorizer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GoaAuthorizer.SignalSignatures>(
             signal: K,
             callback: GoaAuthorizer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GoaAuthorizer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GoaAuthorizer.SignalSignatures[K]>
+            ...args: GoaAuthorizer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -800,7 +810,9 @@ export namespace Zpj {
 
     namespace Skydrive {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::authorizer': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -832,14 +844,17 @@ export namespace Zpj {
         // Signals
 
         connect<K extends keyof Skydrive.SignalSignatures>(signal: K, callback: Skydrive.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Skydrive.SignalSignatures>(
             signal: K,
             callback: Skydrive.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Skydrive.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Skydrive.SignalSignatures[K]>
+            ...args: Skydrive.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1229,7 +1244,23 @@ export namespace Zpj {
 
     namespace SkydriveEntry {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::created-time': GObject.Object.Notify;
+            'notify::created-time': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::from-id': GObject.Object.Notify;
+            'notify::from-id': GObject.Object.Notify;
+            'notify::from-name': GObject.Object.Notify;
+            'notify::from-name': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::json': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent-id': GObject.Object.Notify;
+            'notify::parent-id': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+            'notify::updated-time': GObject.Object.Notify;
+            'notify::updated-time': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1289,14 +1320,17 @@ export namespace Zpj {
             signal: K,
             callback: SkydriveEntry.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SkydriveEntry.SignalSignatures>(
             signal: K,
             callback: SkydriveEntry.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SkydriveEntry.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SkydriveEntry.SignalSignatures[K]>
+            ...args: SkydriveEntry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1373,7 +1407,24 @@ export namespace Zpj {
 
     namespace SkydriveFile {
         // Signal signatures
-        interface SignalSignatures extends SkydriveEntry.SignalSignatures {}
+        interface SignalSignatures extends SkydriveEntry.SignalSignatures {
+            'notify::size': GObject.Object.Notify;
+            'notify::created-time': GObject.Object.Notify;
+            'notify::created-time': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::from-id': GObject.Object.Notify;
+            'notify::from-id': GObject.Object.Notify;
+            'notify::from-name': GObject.Object.Notify;
+            'notify::from-name': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::json': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent-id': GObject.Object.Notify;
+            'notify::parent-id': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+            'notify::updated-time': GObject.Object.Notify;
+            'notify::updated-time': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1407,14 +1458,17 @@ export namespace Zpj {
             signal: K,
             callback: SkydriveFile.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SkydriveFile.SignalSignatures>(
             signal: K,
             callback: SkydriveFile.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SkydriveFile.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SkydriveFile.SignalSignatures[K]>
+            ...args: SkydriveFile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1429,7 +1483,23 @@ export namespace Zpj {
 
     namespace SkydriveFolder {
         // Signal signatures
-        interface SignalSignatures extends SkydriveEntry.SignalSignatures {}
+        interface SignalSignatures extends SkydriveEntry.SignalSignatures {
+            'notify::created-time': GObject.Object.Notify;
+            'notify::created-time': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::from-id': GObject.Object.Notify;
+            'notify::from-id': GObject.Object.Notify;
+            'notify::from-name': GObject.Object.Notify;
+            'notify::from-name': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::json': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent-id': GObject.Object.Notify;
+            'notify::parent-id': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+            'notify::updated-time': GObject.Object.Notify;
+            'notify::updated-time': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1457,19 +1527,39 @@ export namespace Zpj {
             signal: K,
             callback: SkydriveFolder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SkydriveFolder.SignalSignatures>(
             signal: K,
             callback: SkydriveFolder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SkydriveFolder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SkydriveFolder.SignalSignatures[K]>
+            ...args: SkydriveFolder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace SkydrivePhoto {
         // Signal signatures
-        interface SignalSignatures extends SkydriveFile.SignalSignatures {}
+        interface SignalSignatures extends SkydriveFile.SignalSignatures {
+            'notify::size': GObject.Object.Notify;
+            'notify::created-time': GObject.Object.Notify;
+            'notify::created-time': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::from-id': GObject.Object.Notify;
+            'notify::from-id': GObject.Object.Notify;
+            'notify::from-name': GObject.Object.Notify;
+            'notify::from-name': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::json': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent-id': GObject.Object.Notify;
+            'notify::parent-id': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+            'notify::updated-time': GObject.Object.Notify;
+            'notify::updated-time': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1497,19 +1587,43 @@ export namespace Zpj {
             signal: K,
             callback: SkydrivePhoto.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SkydrivePhoto.SignalSignatures>(
             signal: K,
             callback: SkydrivePhoto.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SkydrivePhoto.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SkydrivePhoto.SignalSignatures[K]>
+            ...args: SkydrivePhoto.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace SkydriveVideo {
         // Signal signatures
-        interface SignalSignatures extends SkydriveFile.SignalSignatures {}
+        interface SignalSignatures extends SkydriveFile.SignalSignatures {
+            'notify::bitrate': GObject.Object.Notify;
+            'notify::duration': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::created-time': GObject.Object.Notify;
+            'notify::created-time': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::from-id': GObject.Object.Notify;
+            'notify::from-id': GObject.Object.Notify;
+            'notify::from-name': GObject.Object.Notify;
+            'notify::from-name': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::json': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent-id': GObject.Object.Notify;
+            'notify::parent-id': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+            'notify::updated-time': GObject.Object.Notify;
+            'notify::updated-time': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1549,14 +1663,17 @@ export namespace Zpj {
             signal: K,
             callback: SkydriveVideo.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SkydriveVideo.SignalSignatures>(
             signal: K,
             callback: SkydriveVideo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SkydriveVideo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SkydriveVideo.SignalSignatures[K]>
+            ...args: SkydriveVideo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

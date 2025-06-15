@@ -124,7 +124,7 @@ export namespace Epc {
         // Signal callback interfaces
 
         interface Authenticate {
-            (_source: Consumer, object: string): boolean;
+            (_source: Consumer, object: string): boolean | void;
         }
 
         interface PublisherResolved {
@@ -135,6 +135,15 @@ export namespace Epc {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             authenticate: Authenticate;
             'publisher-resolved': PublisherResolved;
+            'notify::application': GObject.Object.Notify;
+            'notify::domain': GObject.Object.Notify;
+            'notify::hostname': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::password': GObject.Object.Notify;
+            'notify::path': GObject.Object.Notify;
+            'notify::port': GObject.Object.Notify;
+            'notify::protocol': GObject.Object.Notify;
+            'notify::username': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -188,14 +197,17 @@ export namespace Epc {
         // Signals
 
         connect<K extends keyof Consumer.SignalSignatures>(signal: K, callback: Consumer.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Consumer.SignalSignatures>(
             signal: K,
             callback: Consumer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Consumer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Consumer.SignalSignatures[K]>
+            ...args: Consumer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -216,7 +228,12 @@ export namespace Epc {
 
     namespace Dispatcher {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::collision-handling': GObject.Object.Notify;
+            'notify::collision-handling': GObject.Object.Notify;
+            'notify::cookie': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -259,14 +276,17 @@ export namespace Epc {
             signal: K,
             callback: Dispatcher.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Dispatcher.SignalSignatures>(
             signal: K,
             callback: Dispatcher.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Dispatcher.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Dispatcher.SignalSignatures[K]>
+            ...args: Dispatcher.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -283,7 +303,26 @@ export namespace Epc {
 
     namespace Publisher {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::application': GObject.Object.Notify;
+            'notify::auth-flags': GObject.Object.Notify;
+            'notify::auth-flags': GObject.Object.Notify;
+            'notify::certificate-file': GObject.Object.Notify;
+            'notify::certificate-file': GObject.Object.Notify;
+            'notify::collision-handling': GObject.Object.Notify;
+            'notify::collision-handling': GObject.Object.Notify;
+            'notify::contents-path': GObject.Object.Notify;
+            'notify::contents-path': GObject.Object.Notify;
+            'notify::private-key-file': GObject.Object.Notify;
+            'notify::private-key-file': GObject.Object.Notify;
+            'notify::protocol': GObject.Object.Notify;
+            'notify::service-cookie': GObject.Object.Notify;
+            'notify::service-cookie': GObject.Object.Notify;
+            'notify::service-domain': GObject.Object.Notify;
+            'notify::service-domain': GObject.Object.Notify;
+            'notify::service-name': GObject.Object.Notify;
+            'notify::service-name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -365,14 +404,17 @@ export namespace Epc {
         // Signals
 
         connect<K extends keyof Publisher.SignalSignatures>(signal: K, callback: Publisher.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Publisher.SignalSignatures>(
             signal: K,
             callback: Publisher.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Publisher.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Publisher.SignalSignatures[K]>
+            ...args: Publisher.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -430,6 +472,12 @@ export namespace Epc {
             'scanning-done': ScanningDone;
             'service-found': ServiceFound;
             'service-removed': ServiceRemoved;
+            'notify::application': GObject.Object.Notify;
+            'notify::domain': GObject.Object.Notify;
+            'notify::service-types': GObject.Object.Notify;
+            'notify::service-types': GObject.Object.Notify;
+            'notify::skip-our-own': GObject.Object.Notify;
+            'notify::skip-our-own': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -475,14 +523,17 @@ export namespace Epc {
             signal: K,
             callback: ServiceMonitor.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ServiceMonitor.SignalSignatures>(
             signal: K,
             callback: ServiceMonitor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ServiceMonitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ServiceMonitor.SignalSignatures[K]>
+            ...args: ServiceMonitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 

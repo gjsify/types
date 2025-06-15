@@ -60,7 +60,17 @@ export namespace CloudProviders {
     function dbus_provider_override_properties(klass: typeof GObject.Object, property_id_begin: number): number;
     namespace Account {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::action-group': GObject.Object.Notify;
+            'notify::action-group': GObject.Object.Notify;
+            'notify::icon': GObject.Object.Notify;
+            'notify::menu-model': GObject.Object.Notify;
+            'notify::menu-model': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::path': GObject.Object.Notify;
+            'notify::status-details': GObject.Object.Notify;
+            'notify::status-details': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -109,14 +119,17 @@ export namespace CloudProviders {
         // Signals
 
         connect<K extends keyof Account.SignalSignatures>(signal: K, callback: Account.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Account.SignalSignatures>(
             signal: K,
             callback: Account.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Account.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Account.SignalSignatures[K]>
+            ...args: Account.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -160,7 +173,20 @@ export namespace CloudProviders {
 
     namespace AccountExporter {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::action-group': GObject.Object.Notify;
+            'notify::action-group': GObject.Object.Notify;
+            'notify::bus-name': GObject.Object.Notify;
+            'notify::bus-name': GObject.Object.Notify;
+            'notify::icon': GObject.Object.Notify;
+            'notify::menu-model': GObject.Object.Notify;
+            'notify::menu-model': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::path': GObject.Object.Notify;
+            'notify::provider': GObject.Object.Notify;
+            'notify::status-details': GObject.Object.Notify;
+            'notify::status-details': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -221,14 +247,17 @@ export namespace CloudProviders {
             signal: K,
             callback: AccountExporter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AccountExporter.SignalSignatures>(
             signal: K,
             callback: AccountExporter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AccountExporter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AccountExporter.SignalSignatures[K]>
+            ...args: AccountExporter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -288,14 +317,17 @@ export namespace CloudProviders {
         // Signals
 
         connect<K extends keyof Collector.SignalSignatures>(signal: K, callback: Collector.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Collector.SignalSignatures>(
             signal: K,
             callback: Collector.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Collector.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Collector.SignalSignatures[K]>
+            ...args: Collector.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -312,7 +344,32 @@ export namespace CloudProviders {
 
     namespace DbusAccountProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::icon': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::path': GObject.Object.Notify;
+            'notify::status': GObject.Object.Notify;
+            'notify::status-details': GObject.Object.Notify;
+            'notify::status-details': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -374,14 +431,17 @@ export namespace CloudProviders {
             signal: K,
             callback: DbusAccountProxy.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DbusAccountProxy.SignalSignatures>(
             signal: K,
             callback: DbusAccountProxy.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DbusAccountProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DbusAccountProxy.SignalSignatures[K]>
+            ...args: DbusAccountProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1242,7 +1302,16 @@ export namespace CloudProviders {
 
     namespace DbusAccountSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::icon': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::path': GObject.Object.Notify;
+            'notify::status': GObject.Object.Notify;
+            'notify::status-details': GObject.Object.Notify;
+            'notify::status-details': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1272,14 +1341,17 @@ export namespace CloudProviders {
             signal: K,
             callback: DbusAccountSkeleton.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DbusAccountSkeleton.SignalSignatures>(
             signal: K,
             callback: DbusAccountSkeleton.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DbusAccountSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DbusAccountSkeleton.SignalSignatures[K]>
+            ...args: DbusAccountSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         /**
@@ -1803,7 +1875,23 @@ export namespace CloudProviders {
 
     namespace DbusObjectManagerClient {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusObjectManagerClient.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusObjectManagerClient.SignalSignatures {
+            'notify::bus-type': GObject.Object.Notify;
+            'notify::bus-type': GObject.Object.Notify;
+            'notify::connection': GObject.Object.Notify;
+            'notify::flags': GObject.Object.Notify;
+            'notify::get-proxy-type-destroy-notify': GObject.Object.Notify;
+            'notify::get-proxy-type-destroy-notify': GObject.Object.Notify;
+            'notify::get-proxy-type-func': GObject.Object.Notify;
+            'notify::get-proxy-type-func': GObject.Object.Notify;
+            'notify::get-proxy-type-user-data': GObject.Object.Notify;
+            'notify::get-proxy-type-user-data': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::name-owner': GObject.Object.Notify;
+            'notify::name-owner': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1864,14 +1952,17 @@ export namespace CloudProviders {
             signal: K,
             callback: DbusObjectManagerClient.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DbusObjectManagerClient.SignalSignatures>(
             signal: K,
             callback: DbusObjectManagerClient.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DbusObjectManagerClient.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DbusObjectManagerClient.SignalSignatures[K]>
+            ...args: DbusObjectManagerClient.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2733,7 +2824,14 @@ export namespace CloudProviders {
 
     namespace DbusObjectProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusObjectProxy.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusObjectProxy.SignalSignatures {
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::account': GObject.Object.Notify;
+            'notify::provider': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2763,14 +2861,17 @@ export namespace CloudProviders {
             signal: K,
             callback: DbusObjectProxy.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DbusObjectProxy.SignalSignatures>(
             signal: K,
             callback: DbusObjectProxy.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DbusObjectProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DbusObjectProxy.SignalSignatures[K]>
+            ...args: DbusObjectProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         /**
@@ -3283,7 +3384,12 @@ export namespace CloudProviders {
 
     namespace DbusObjectSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusObjectSkeleton.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusObjectSkeleton.SignalSignatures {
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::account': GObject.Object.Notify;
+            'notify::provider': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3313,14 +3419,17 @@ export namespace CloudProviders {
             signal: K,
             callback: DbusObjectSkeleton.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DbusObjectSkeleton.SignalSignatures>(
             signal: K,
             callback: DbusObjectSkeleton.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DbusObjectSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DbusObjectSkeleton.SignalSignatures[K]>
+            ...args: DbusObjectSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3846,7 +3955,27 @@ export namespace CloudProviders {
 
     namespace DbusProviderProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-bus-type': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-connection': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-default-timeout': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-info': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-interface-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-name-owner': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::g-object-path': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3908,14 +4037,17 @@ export namespace CloudProviders {
             signal: K,
             callback: DbusProviderProxy.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DbusProviderProxy.SignalSignatures>(
             signal: K,
             callback: DbusProviderProxy.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DbusProviderProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DbusProviderProxy.SignalSignatures[K]>
+            ...args: DbusProviderProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -4741,7 +4873,11 @@ export namespace CloudProviders {
 
     namespace DbusProviderSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {}
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::g-flags': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4771,14 +4907,17 @@ export namespace CloudProviders {
             signal: K,
             callback: DbusProviderSkeleton.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DbusProviderSkeleton.SignalSignatures>(
             signal: K,
             callback: DbusProviderSkeleton.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DbusProviderSkeleton.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DbusProviderSkeleton.SignalSignatures[K]>
+            ...args: DbusProviderSkeleton.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         /**
@@ -5280,6 +5419,7 @@ export namespace CloudProviders {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'accounts-changed': AccountsChanged;
             removed: Removed;
+            'notify::name': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -5312,14 +5452,17 @@ export namespace CloudProviders {
         // Signals
 
         connect<K extends keyof Provider.SignalSignatures>(signal: K, callback: Provider.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Provider.SignalSignatures>(
             signal: K,
             callback: Provider.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Provider.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Provider.SignalSignatures[K]>
+            ...args: Provider.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5329,7 +5472,14 @@ export namespace CloudProviders {
 
     namespace ProviderExporter {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::bus': GObject.Object.Notify;
+            'notify::bus-name': GObject.Object.Notify;
+            'notify::bus-name': GObject.Object.Notify;
+            'notify::bus-path': GObject.Object.Notify;
+            'notify::bus-path': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5375,14 +5525,17 @@ export namespace CloudProviders {
             signal: K,
             callback: ProviderExporter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ProviderExporter.SignalSignatures>(
             signal: K,
             callback: ProviderExporter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ProviderExporter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProviderExporter.SignalSignatures[K]>
+            ...args: ProviderExporter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

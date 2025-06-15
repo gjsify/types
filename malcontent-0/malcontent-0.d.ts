@@ -228,6 +228,7 @@ export namespace Malcontent {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'app-filter-changed': AppFilterChanged;
+            'notify::connection': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -264,14 +265,17 @@ export namespace Malcontent {
         // Signals
 
         connect<K extends keyof Manager.SignalSignatures>(signal: K, callback: Manager.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Manager.SignalSignatures>(
             signal: K,
             callback: Manager.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Manager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Manager.SignalSignatures[K]>
+            ...args: Manager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

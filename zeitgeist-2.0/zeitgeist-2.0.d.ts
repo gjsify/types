@@ -286,6 +286,10 @@ export namespace Zeitgeist {
             'source-disconnected': SourceDisconnected;
             'source-enabled': SourceEnabled;
             'source-registered': SourceRegistered;
+            'notify::proxy-created': GObject.Object.Notify;
+            'notify::proxy-created': GObject.Object.Notify;
+            'notify::is-connected': GObject.Object.Notify;
+            'notify::is-connected': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -310,14 +314,17 @@ export namespace Zeitgeist {
             signal: K,
             callback: DataSourceRegistry.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DataSourceRegistry.SignalSignatures>(
             signal: K,
             callback: DataSourceRegistry.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DataSourceRegistry.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataSourceRegistry.SignalSignatures[K]>
+            ...args: DataSourceRegistry.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -374,7 +381,12 @@ export namespace Zeitgeist {
 
     namespace Index {
         // Signal signatures
-        interface SignalSignatures extends QueuedProxyWrapper.SignalSignatures {}
+        interface SignalSignatures extends QueuedProxyWrapper.SignalSignatures {
+            'notify::proxy-created': GObject.Object.Notify;
+            'notify::proxy-created': GObject.Object.Notify;
+            'notify::is-connected': GObject.Object.Notify;
+            'notify::is-connected': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -395,8 +407,14 @@ export namespace Zeitgeist {
         // Signals
 
         connect<K extends keyof Index.SignalSignatures>(signal: K, callback: Index.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Index.SignalSignatures>(signal: K, callback: Index.SignalSignatures[K]): number;
-        emit<K extends keyof Index.SignalSignatures>(signal: K, ...args: Parameters<Index.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Index.SignalSignatures>(
+            signal: K,
+            ...args: Index.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -467,7 +485,12 @@ export namespace Zeitgeist {
 
     namespace Log {
         // Signal signatures
-        interface SignalSignatures extends QueuedProxyWrapper.SignalSignatures {}
+        interface SignalSignatures extends QueuedProxyWrapper.SignalSignatures {
+            'notify::proxy-created': GObject.Object.Notify;
+            'notify::proxy-created': GObject.Object.Notify;
+            'notify::is-connected': GObject.Object.Notify;
+            'notify::is-connected': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -488,8 +511,14 @@ export namespace Zeitgeist {
         // Signals
 
         connect<K extends keyof Log.SignalSignatures>(signal: K, callback: Log.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Log.SignalSignatures>(signal: K, callback: Log.SignalSignatures[K]): number;
-        emit<K extends keyof Log.SignalSignatures>(signal: K, ...args: Parameters<Log.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Log.SignalSignatures>(
+            signal: K,
+            ...args: Log.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -660,6 +689,10 @@ export namespace Zeitgeist {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'events-inserted': EventsInserted;
             'events-deleted': EventsDeleted;
+            'notify::time-range': GObject.Object.Notify;
+            'notify::time-range': GObject.Object.Notify;
+            'notify::event-templates': GObject.Object.Notify;
+            'notify::event-templates': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -697,14 +730,17 @@ export namespace Zeitgeist {
         // Signals
 
         connect<K extends keyof Monitor.SignalSignatures>(signal: K, callback: Monitor.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Monitor.SignalSignatures>(
             signal: K,
             callback: Monitor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Monitor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Monitor.SignalSignatures[K]>
+            ...args: Monitor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1195,7 +1231,12 @@ export namespace Zeitgeist {
 
     namespace QueuedProxyWrapper {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::proxy-created': GObject.Object.Notify;
+            'notify::proxy-created': GObject.Object.Notify;
+            'notify::is-connected': GObject.Object.Notify;
+            'notify::is-connected': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1233,14 +1274,17 @@ export namespace Zeitgeist {
             signal: K,
             callback: QueuedProxyWrapper.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof QueuedProxyWrapper.SignalSignatures>(
             signal: K,
             callback: QueuedProxyWrapper.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof QueuedProxyWrapper.SignalSignatures>(
             signal: K,
-            ...args: Parameters<QueuedProxyWrapper.SignalSignatures[K]>
+            ...args: QueuedProxyWrapper.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1287,14 +1331,17 @@ export namespace Zeitgeist {
             signal: K,
             callback: QueuedProxyWrapperQueuedMethod.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof QueuedProxyWrapperQueuedMethod.SignalSignatures>(
             signal: K,
             callback: QueuedProxyWrapperQueuedMethod.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof QueuedProxyWrapperQueuedMethod.SignalSignatures>(
             signal: K,
-            ...args: Parameters<QueuedProxyWrapperQueuedMethod.SignalSignatures[K]>
+            ...args: QueuedProxyWrapperQueuedMethod.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1303,7 +1350,17 @@ export namespace Zeitgeist {
 
     namespace DataSource {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::unique-id': GObject.Object.Notify;
+            'notify::unique-id': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::event-templates': GObject.Object.Notify;
+            'notify::event-templates': GObject.Object.Notify;
+            'notify::enabled': GObject.Object.Notify;
+            'notify::running': GObject.Object.Notify;
+            'notify::timestamp': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1362,14 +1419,17 @@ export namespace Zeitgeist {
             signal: K,
             callback: DataSource.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DataSource.SignalSignatures>(
             signal: K,
             callback: DataSource.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DataSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DataSource.SignalSignatures[K]>
+            ...args: DataSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1392,7 +1452,16 @@ export namespace Zeitgeist {
 
     namespace Event {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::id': GObject.Object.Notify;
+            'notify::timestamp': GObject.Object.Notify;
+            'notify::origin': GObject.Object.Notify;
+            'notify::actor': GObject.Object.Notify;
+            'notify::interpretation': GObject.Object.Notify;
+            'notify::manifestation': GObject.Object.Notify;
+            'notify::subjects': GObject.Object.Notify;
+            'notify::payload': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1443,8 +1512,14 @@ export namespace Zeitgeist {
         // Signals
 
         connect<K extends keyof Event.SignalSignatures>(signal: K, callback: Event.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Event.SignalSignatures>(signal: K, callback: Event.SignalSignatures[K]): number;
-        emit<K extends keyof Event.SignalSignatures>(signal: K, ...args: Parameters<Event.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Event.SignalSignatures>(
+            signal: K,
+            ...args: Event.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1476,7 +1551,19 @@ export namespace Zeitgeist {
 
     namespace Subject {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::uri': GObject.Object.Notify;
+            'notify::origin': GObject.Object.Notify;
+            'notify::text': GObject.Object.Notify;
+            'notify::storage': GObject.Object.Notify;
+            'notify::current-uri': GObject.Object.Notify;
+            'notify::current-uri': GObject.Object.Notify;
+            'notify::current-origin': GObject.Object.Notify;
+            'notify::current-origin': GObject.Object.Notify;
+            'notify::mimetype': GObject.Object.Notify;
+            'notify::interpretation': GObject.Object.Notify;
+            'notify::manifestation': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1558,14 +1645,17 @@ export namespace Zeitgeist {
         // Signals
 
         connect<K extends keyof Subject.SignalSignatures>(signal: K, callback: Subject.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Subject.SignalSignatures>(
             signal: K,
             callback: Subject.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Subject.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Subject.SignalSignatures[K]>
+            ...args: Subject.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1593,7 +1683,10 @@ export namespace Zeitgeist {
 
     namespace TimeRange {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::start': GObject.Object.Notify;
+            'notify::end': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1632,14 +1725,17 @@ export namespace Zeitgeist {
         // Signals
 
         connect<K extends keyof TimeRange.SignalSignatures>(signal: K, callback: TimeRange.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TimeRange.SignalSignatures>(
             signal: K,
             callback: TimeRange.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TimeRange.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TimeRange.SignalSignatures[K]>
+            ...args: TimeRange.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1677,14 +1773,17 @@ export namespace Zeitgeist {
             signal: K,
             callback: SimpleResultSet.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SimpleResultSet.SignalSignatures>(
             signal: K,
             callback: SimpleResultSet.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SimpleResultSet.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SimpleResultSet.SignalSignatures[K]>
+            ...args: SimpleResultSet.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         size(): number;

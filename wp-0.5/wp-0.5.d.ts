@@ -534,7 +534,18 @@ export namespace Wp {
     }
     namespace AsyncEventHook {
         // Signal signatures
-        interface SignalSignatures extends InterestEventHook.SignalSignatures {}
+        interface SignalSignatures extends InterestEventHook.SignalSignatures {
+            'notify::execute-step': GObject.Object.Notify;
+            'notify::execute-step': GObject.Object.Notify;
+            'notify::get-next-step': GObject.Object.Notify;
+            'notify::get-next-step': GObject.Object.Notify;
+            'notify::dispatcher': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::runs-after-hooks': GObject.Object.Notify;
+            'notify::runs-after-hooks': GObject.Object.Notify;
+            'notify::runs-before-hooks': GObject.Object.Notify;
+            'notify::runs-before-hooks': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -579,19 +590,43 @@ export namespace Wp {
             signal: K,
             callback: AsyncEventHook.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AsyncEventHook.SignalSignatures>(
             signal: K,
             callback: AsyncEventHook.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AsyncEventHook.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AsyncEventHook.SignalSignatures[K]>
+            ...args: AsyncEventHook.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Client {
         // Signal signatures
-        interface SignalSignatures extends GlobalProxy.SignalSignatures {}
+        interface SignalSignatures extends GlobalProxy.SignalSignatures {
+            'notify::factory-name': GObject.Object.Notify;
+            'notify::factory-name': GObject.Object.Notify;
+            'notify::global-properties': GObject.Object.Notify;
+            'notify::global-properties': GObject.Object.Notify;
+            'notify::permissions': GObject.Object.Notify;
+            'notify::bound-id': GObject.Object.Notify;
+            'notify::bound-id': GObject.Object.Notify;
+            'notify::pw-proxy': GObject.Object.Notify;
+            'notify::pw-proxy': GObject.Object.Notify;
+            'notify::active-features': GObject.Object.Notify;
+            'notify::active-features': GObject.Object.Notify;
+            'notify::core': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::supported-features': GObject.Object.Notify;
+            'notify::supported-features': GObject.Object.Notify;
+            'notify::native-info': GObject.Object.Notify;
+            'notify::native-info': GObject.Object.Notify;
+            'notify::param-info': GObject.Object.Notify;
+            'notify::param-info': GObject.Object.Notify;
+            'notify::properties': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -613,8 +648,14 @@ export namespace Wp {
         // Signals
 
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -868,7 +909,10 @@ export namespace Wp {
 
     namespace Conf {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::properties': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -902,8 +946,14 @@ export namespace Wp {
         // Signals
 
         connect<K extends keyof Conf.SignalSignatures>(signal: K, callback: Conf.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Conf.SignalSignatures>(signal: K, callback: Conf.SignalSignatures[K]): number;
-        emit<K extends keyof Conf.SignalSignatures>(signal: K, ...args: Parameters<Conf.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Conf.SignalSignatures>(
+            signal: K,
+            ...args: Conf.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -961,6 +1011,20 @@ export namespace Wp {
         interface SignalSignatures extends Object.SignalSignatures {
             connected: Connected;
             disconnected: Disconnected;
+            'notify::conf': GObject.Object.Notify;
+            'notify::g-main-context': GObject.Object.Notify;
+            'notify::g-main-context': GObject.Object.Notify;
+            'notify::properties': GObject.Object.Notify;
+            'notify::pw-context': GObject.Object.Notify;
+            'notify::pw-context': GObject.Object.Notify;
+            'notify::pw-core': GObject.Object.Notify;
+            'notify::pw-core': GObject.Object.Notify;
+            'notify::active-features': GObject.Object.Notify;
+            'notify::active-features': GObject.Object.Notify;
+            'notify::core': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::supported-features': GObject.Object.Notify;
+            'notify::supported-features': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1016,8 +1080,14 @@ export namespace Wp {
         // Signals
 
         connect<K extends keyof Core.SignalSignatures>(signal: K, callback: Core.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Core.SignalSignatures>(signal: K, callback: Core.SignalSignatures[K]): number;
-        emit<K extends keyof Core.SignalSignatures>(signal: K, ...args: Parameters<Core.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Core.SignalSignatures>(
+            signal: K,
+            ...args: Core.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1328,7 +1398,28 @@ export namespace Wp {
 
     namespace Device {
         // Signal signatures
-        interface SignalSignatures extends GlobalProxy.SignalSignatures {}
+        interface SignalSignatures extends GlobalProxy.SignalSignatures {
+            'notify::factory-name': GObject.Object.Notify;
+            'notify::factory-name': GObject.Object.Notify;
+            'notify::global-properties': GObject.Object.Notify;
+            'notify::global-properties': GObject.Object.Notify;
+            'notify::permissions': GObject.Object.Notify;
+            'notify::bound-id': GObject.Object.Notify;
+            'notify::bound-id': GObject.Object.Notify;
+            'notify::pw-proxy': GObject.Object.Notify;
+            'notify::pw-proxy': GObject.Object.Notify;
+            'notify::active-features': GObject.Object.Notify;
+            'notify::active-features': GObject.Object.Notify;
+            'notify::core': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::supported-features': GObject.Object.Notify;
+            'notify::supported-features': GObject.Object.Notify;
+            'notify::native-info': GObject.Object.Notify;
+            'notify::native-info': GObject.Object.Notify;
+            'notify::param-info': GObject.Object.Notify;
+            'notify::param-info': GObject.Object.Notify;
+            'notify::properties': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1353,8 +1444,14 @@ export namespace Wp {
         // Signals
 
         connect<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Device.SignalSignatures>(signal: K, callback: Device.SignalSignatures[K]): number;
-        emit<K extends keyof Device.SignalSignatures>(signal: K, ...args: Parameters<Device.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Device.SignalSignatures>(
+            signal: K,
+            ...args: Device.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get native_info(): any;
@@ -1615,14 +1712,17 @@ export namespace Wp {
             signal: K,
             callback: EventDispatcher.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof EventDispatcher.SignalSignatures>(
             signal: K,
             callback: EventDispatcher.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof EventDispatcher.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EventDispatcher.SignalSignatures[K]>
+            ...args: EventDispatcher.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1661,7 +1761,14 @@ export namespace Wp {
 
     namespace EventHook {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::dispatcher': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::runs-after-hooks': GObject.Object.Notify;
+            'notify::runs-after-hooks': GObject.Object.Notify;
+            'notify::runs-before-hooks': GObject.Object.Notify;
+            'notify::runs-before-hooks': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1699,14 +1806,17 @@ export namespace Wp {
         // Signals
 
         connect<K extends keyof EventHook.SignalSignatures>(signal: K, callback: EventHook.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof EventHook.SignalSignatures>(
             signal: K,
             callback: EventHook.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof EventHook.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EventHook.SignalSignatures[K]>
+            ...args: EventHook.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1772,7 +1882,28 @@ export namespace Wp {
 
     namespace Factory {
         // Signal signatures
-        interface SignalSignatures extends GlobalProxy.SignalSignatures {}
+        interface SignalSignatures extends GlobalProxy.SignalSignatures {
+            'notify::factory-name': GObject.Object.Notify;
+            'notify::factory-name': GObject.Object.Notify;
+            'notify::global-properties': GObject.Object.Notify;
+            'notify::global-properties': GObject.Object.Notify;
+            'notify::permissions': GObject.Object.Notify;
+            'notify::bound-id': GObject.Object.Notify;
+            'notify::bound-id': GObject.Object.Notify;
+            'notify::pw-proxy': GObject.Object.Notify;
+            'notify::pw-proxy': GObject.Object.Notify;
+            'notify::active-features': GObject.Object.Notify;
+            'notify::active-features': GObject.Object.Notify;
+            'notify::core': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::supported-features': GObject.Object.Notify;
+            'notify::supported-features': GObject.Object.Notify;
+            'notify::native-info': GObject.Object.Notify;
+            'notify::native-info': GObject.Object.Notify;
+            'notify::param-info': GObject.Object.Notify;
+            'notify::param-info': GObject.Object.Notify;
+            'notify::properties': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1795,14 +1926,17 @@ export namespace Wp {
         // Signals
 
         connect<K extends keyof Factory.SignalSignatures>(signal: K, callback: Factory.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Factory.SignalSignatures>(
             signal: K,
             callback: Factory.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Factory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Factory.SignalSignatures[K]>
+            ...args: Factory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get native_info(): any;
@@ -2038,7 +2172,9 @@ export namespace Wp {
 
     namespace FeatureActivationTransition {
         // Signal signatures
-        interface SignalSignatures extends Transition.SignalSignatures {}
+        interface SignalSignatures extends Transition.SignalSignatures {
+            'notify::completed': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2063,14 +2199,17 @@ export namespace Wp {
             signal: K,
             callback: FeatureActivationTransition.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FeatureActivationTransition.SignalSignatures>(
             signal: K,
             callback: FeatureActivationTransition.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FeatureActivationTransition.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FeatureActivationTransition.SignalSignatures[K]>
+            ...args: FeatureActivationTransition.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2573,7 +2712,23 @@ export namespace Wp {
 
     namespace GlobalProxy {
         // Signal signatures
-        interface SignalSignatures extends Proxy.SignalSignatures {}
+        interface SignalSignatures extends Proxy.SignalSignatures {
+            'notify::factory-name': GObject.Object.Notify;
+            'notify::factory-name': GObject.Object.Notify;
+            'notify::global-properties': GObject.Object.Notify;
+            'notify::global-properties': GObject.Object.Notify;
+            'notify::permissions': GObject.Object.Notify;
+            'notify::bound-id': GObject.Object.Notify;
+            'notify::bound-id': GObject.Object.Notify;
+            'notify::pw-proxy': GObject.Object.Notify;
+            'notify::pw-proxy': GObject.Object.Notify;
+            'notify::active-features': GObject.Object.Notify;
+            'notify::active-features': GObject.Object.Notify;
+            'notify::core': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::supported-features': GObject.Object.Notify;
+            'notify::supported-features': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2612,14 +2767,17 @@ export namespace Wp {
             signal: K,
             callback: GlobalProxy.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof GlobalProxy.SignalSignatures>(
             signal: K,
             callback: GlobalProxy.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof GlobalProxy.SignalSignatures>(
             signal: K,
-            ...args: Parameters<GlobalProxy.SignalSignatures[K]>
+            ...args: GlobalProxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2654,7 +2812,25 @@ export namespace Wp {
 
     namespace ImplMetadata {
         // Signal signatures
-        interface SignalSignatures extends Metadata.SignalSignatures {}
+        interface SignalSignatures extends Metadata.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::properties': GObject.Object.Notify;
+            'notify::factory-name': GObject.Object.Notify;
+            'notify::factory-name': GObject.Object.Notify;
+            'notify::global-properties': GObject.Object.Notify;
+            'notify::global-properties': GObject.Object.Notify;
+            'notify::permissions': GObject.Object.Notify;
+            'notify::bound-id': GObject.Object.Notify;
+            'notify::bound-id': GObject.Object.Notify;
+            'notify::pw-proxy': GObject.Object.Notify;
+            'notify::pw-proxy': GObject.Object.Notify;
+            'notify::active-features': GObject.Object.Notify;
+            'notify::active-features': GObject.Object.Notify;
+            'notify::core': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::supported-features': GObject.Object.Notify;
+            'notify::supported-features': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2692,19 +2868,29 @@ export namespace Wp {
             signal: K,
             callback: ImplMetadata.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ImplMetadata.SignalSignatures>(
             signal: K,
             callback: ImplMetadata.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ImplMetadata.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ImplMetadata.SignalSignatures[K]>
+            ...args: ImplMetadata.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace ImplModule {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::arguments': GObject.Object.Notify;
+            'notify::core': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::properties': GObject.Object.Notify;
+            'notify::pw-impl-module': GObject.Object.Notify;
+            'notify::pw-impl-module': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2746,14 +2932,17 @@ export namespace Wp {
             signal: K,
             callback: ImplModule.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ImplModule.SignalSignatures>(
             signal: K,
             callback: ImplModule.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ImplModule.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ImplModule.SignalSignatures[K]>
+            ...args: ImplModule.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2774,7 +2963,25 @@ export namespace Wp {
 
     namespace ImplNode {
         // Signal signatures
-        interface SignalSignatures extends Proxy.SignalSignatures {}
+        interface SignalSignatures extends Proxy.SignalSignatures {
+            'notify::pw-impl-node': GObject.Object.Notify;
+            'notify::pw-impl-node': GObject.Object.Notify;
+            'notify::bound-id': GObject.Object.Notify;
+            'notify::bound-id': GObject.Object.Notify;
+            'notify::pw-proxy': GObject.Object.Notify;
+            'notify::pw-proxy': GObject.Object.Notify;
+            'notify::active-features': GObject.Object.Notify;
+            'notify::active-features': GObject.Object.Notify;
+            'notify::core': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::supported-features': GObject.Object.Notify;
+            'notify::supported-features': GObject.Object.Notify;
+            'notify::native-info': GObject.Object.Notify;
+            'notify::native-info': GObject.Object.Notify;
+            'notify::param-info': GObject.Object.Notify;
+            'notify::param-info': GObject.Object.Notify;
+            'notify::properties': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2808,14 +3015,17 @@ export namespace Wp {
         // Signals
 
         connect<K extends keyof ImplNode.SignalSignatures>(signal: K, callback: ImplNode.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ImplNode.SignalSignatures>(
             signal: K,
             callback: ImplNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ImplNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ImplNode.SignalSignatures[K]>
+            ...args: ImplNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited properties
         get native_info(): any;
@@ -3051,7 +3261,14 @@ export namespace Wp {
 
     namespace InterestEventHook {
         // Signal signatures
-        interface SignalSignatures extends EventHook.SignalSignatures {}
+        interface SignalSignatures extends EventHook.SignalSignatures {
+            'notify::dispatcher': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::runs-after-hooks': GObject.Object.Notify;
+            'notify::runs-after-hooks': GObject.Object.Notify;
+            'notify::runs-before-hooks': GObject.Object.Notify;
+            'notify::runs-before-hooks': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3076,14 +3293,17 @@ export namespace Wp {
             signal: K,
             callback: InterestEventHook.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InterestEventHook.SignalSignatures>(
             signal: K,
             callback: InterestEventHook.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InterestEventHook.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InterestEventHook.SignalSignatures[K]>
+            ...args: InterestEventHook.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3100,6 +3320,27 @@ export namespace Wp {
         // Signal signatures
         interface SignalSignatures extends GlobalProxy.SignalSignatures {
             'state-changed': StateChanged;
+            'notify::state': GObject.Object.Notify;
+            'notify::factory-name': GObject.Object.Notify;
+            'notify::factory-name': GObject.Object.Notify;
+            'notify::global-properties': GObject.Object.Notify;
+            'notify::global-properties': GObject.Object.Notify;
+            'notify::permissions': GObject.Object.Notify;
+            'notify::bound-id': GObject.Object.Notify;
+            'notify::bound-id': GObject.Object.Notify;
+            'notify::pw-proxy': GObject.Object.Notify;
+            'notify::pw-proxy': GObject.Object.Notify;
+            'notify::active-features': GObject.Object.Notify;
+            'notify::active-features': GObject.Object.Notify;
+            'notify::core': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::supported-features': GObject.Object.Notify;
+            'notify::supported-features': GObject.Object.Notify;
+            'notify::native-info': GObject.Object.Notify;
+            'notify::native-info': GObject.Object.Notify;
+            'notify::param-info': GObject.Object.Notify;
+            'notify::param-info': GObject.Object.Notify;
+            'notify::properties': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -3131,8 +3372,14 @@ export namespace Wp {
         // Signals
 
         connect<K extends keyof Link.SignalSignatures>(signal: K, callback: Link.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Link.SignalSignatures>(signal: K, callback: Link.SignalSignatures[K]): number;
-        emit<K extends keyof Link.SignalSignatures>(signal: K, ...args: Parameters<Link.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Link.SignalSignatures>(
+            signal: K,
+            ...args: Link.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3391,6 +3638,21 @@ export namespace Wp {
         // Signal signatures
         interface SignalSignatures extends GlobalProxy.SignalSignatures {
             changed: Changed;
+            'notify::factory-name': GObject.Object.Notify;
+            'notify::factory-name': GObject.Object.Notify;
+            'notify::global-properties': GObject.Object.Notify;
+            'notify::global-properties': GObject.Object.Notify;
+            'notify::permissions': GObject.Object.Notify;
+            'notify::bound-id': GObject.Object.Notify;
+            'notify::bound-id': GObject.Object.Notify;
+            'notify::pw-proxy': GObject.Object.Notify;
+            'notify::pw-proxy': GObject.Object.Notify;
+            'notify::active-features': GObject.Object.Notify;
+            'notify::active-features': GObject.Object.Notify;
+            'notify::core': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::supported-features': GObject.Object.Notify;
+            'notify::supported-features': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -3414,14 +3676,17 @@ export namespace Wp {
         // Signals
 
         connect<K extends keyof Metadata.SignalSignatures>(signal: K, callback: Metadata.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Metadata.SignalSignatures>(
             signal: K,
             callback: Metadata.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Metadata.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Metadata.SignalSignatures[K]>
+            ...args: Metadata.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3473,6 +3738,35 @@ export namespace Wp {
         interface SignalSignatures extends GlobalProxy.SignalSignatures {
             'ports-changed': PortsChanged;
             'state-changed': StateChanged;
+            'notify::max-input-ports': GObject.Object.Notify;
+            'notify::max-input-ports': GObject.Object.Notify;
+            'notify::max-output-ports': GObject.Object.Notify;
+            'notify::max-output-ports': GObject.Object.Notify;
+            'notify::n-input-ports': GObject.Object.Notify;
+            'notify::n-input-ports': GObject.Object.Notify;
+            'notify::n-output-ports': GObject.Object.Notify;
+            'notify::n-output-ports': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::factory-name': GObject.Object.Notify;
+            'notify::factory-name': GObject.Object.Notify;
+            'notify::global-properties': GObject.Object.Notify;
+            'notify::global-properties': GObject.Object.Notify;
+            'notify::permissions': GObject.Object.Notify;
+            'notify::bound-id': GObject.Object.Notify;
+            'notify::bound-id': GObject.Object.Notify;
+            'notify::pw-proxy': GObject.Object.Notify;
+            'notify::pw-proxy': GObject.Object.Notify;
+            'notify::active-features': GObject.Object.Notify;
+            'notify::active-features': GObject.Object.Notify;
+            'notify::core': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::supported-features': GObject.Object.Notify;
+            'notify::supported-features': GObject.Object.Notify;
+            'notify::native-info': GObject.Object.Notify;
+            'notify::native-info': GObject.Object.Notify;
+            'notify::param-info': GObject.Object.Notify;
+            'notify::param-info': GObject.Object.Notify;
+            'notify::properties': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -3520,8 +3814,14 @@ export namespace Wp {
         // Signals
 
         connect<K extends keyof Node.SignalSignatures>(signal: K, callback: Node.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Node.SignalSignatures>(signal: K, callback: Node.SignalSignatures[K]): number;
-        emit<K extends keyof Node.SignalSignatures>(signal: K, ...args: Parameters<Node.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Node.SignalSignatures>(
+            signal: K,
+            ...args: Node.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3824,7 +4124,14 @@ export namespace Wp {
 
     namespace Object {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::active-features': GObject.Object.Notify;
+            'notify::active-features': GObject.Object.Notify;
+            'notify::core': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::supported-features': GObject.Object.Notify;
+            'notify::supported-features': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3862,8 +4169,14 @@ export namespace Wp {
         // Signals
 
         connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
-        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            ...args: Object.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -4021,6 +4334,7 @@ export namespace Wp {
             'object-added': ObjectAdded;
             'object-removed': ObjectRemoved;
             'objects-changed': ObjectsChanged;
+            'notify::core': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -4062,14 +4376,17 @@ export namespace Wp {
             signal: K,
             callback: ObjectManager.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ObjectManager.SignalSignatures>(
             signal: K,
             callback: ObjectManager.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ObjectManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ObjectManager.SignalSignatures[K]>
+            ...args: ObjectManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4124,7 +4441,15 @@ export namespace Wp {
 
     namespace Plugin {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::active-features': GObject.Object.Notify;
+            'notify::active-features': GObject.Object.Notify;
+            'notify::core': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::supported-features': GObject.Object.Notify;
+            'notify::supported-features': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4154,8 +4479,14 @@ export namespace Wp {
         // Signals
 
         connect<K extends keyof Plugin.SignalSignatures>(signal: K, callback: Plugin.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Plugin.SignalSignatures>(signal: K, callback: Plugin.SignalSignatures[K]): number;
-        emit<K extends keyof Plugin.SignalSignatures>(signal: K, ...args: Parameters<Plugin.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Plugin.SignalSignatures>(
+            signal: K,
+            ...args: Plugin.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -4182,7 +4513,28 @@ export namespace Wp {
 
     namespace Port {
         // Signal signatures
-        interface SignalSignatures extends GlobalProxy.SignalSignatures {}
+        interface SignalSignatures extends GlobalProxy.SignalSignatures {
+            'notify::factory-name': GObject.Object.Notify;
+            'notify::factory-name': GObject.Object.Notify;
+            'notify::global-properties': GObject.Object.Notify;
+            'notify::global-properties': GObject.Object.Notify;
+            'notify::permissions': GObject.Object.Notify;
+            'notify::bound-id': GObject.Object.Notify;
+            'notify::bound-id': GObject.Object.Notify;
+            'notify::pw-proxy': GObject.Object.Notify;
+            'notify::pw-proxy': GObject.Object.Notify;
+            'notify::active-features': GObject.Object.Notify;
+            'notify::active-features': GObject.Object.Notify;
+            'notify::core': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::supported-features': GObject.Object.Notify;
+            'notify::supported-features': GObject.Object.Notify;
+            'notify::native-info': GObject.Object.Notify;
+            'notify::native-info': GObject.Object.Notify;
+            'notify::param-info': GObject.Object.Notify;
+            'notify::param-info': GObject.Object.Notify;
+            'notify::properties': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4205,8 +4557,14 @@ export namespace Wp {
         // Signals
 
         connect<K extends keyof Port.SignalSignatures>(signal: K, callback: Port.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Port.SignalSignatures>(signal: K, callback: Port.SignalSignatures[K]): number;
-        emit<K extends keyof Port.SignalSignatures>(signal: K, ...args: Parameters<Port.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Port.SignalSignatures>(
+            signal: K,
+            ...args: Port.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4476,6 +4834,16 @@ export namespace Wp {
             error: Error;
             'pw-proxy-created': PwProxyCreated;
             'pw-proxy-destroyed': PwProxyDestroyed;
+            'notify::bound-id': GObject.Object.Notify;
+            'notify::bound-id': GObject.Object.Notify;
+            'notify::pw-proxy': GObject.Object.Notify;
+            'notify::pw-proxy': GObject.Object.Notify;
+            'notify::active-features': GObject.Object.Notify;
+            'notify::active-features': GObject.Object.Notify;
+            'notify::core': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::supported-features': GObject.Object.Notify;
+            'notify::supported-features': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -4511,8 +4879,14 @@ export namespace Wp {
         // Signals
 
         connect<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
-        emit<K extends keyof Proxy.SignalSignatures>(signal: K, ...args: Parameters<Proxy.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Proxy.SignalSignatures>(
+            signal: K,
+            ...args: Proxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -4554,7 +4928,15 @@ export namespace Wp {
 
     namespace SessionItem {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::properties': GObject.Object.Notify;
+            'notify::active-features': GObject.Object.Notify;
+            'notify::active-features': GObject.Object.Notify;
+            'notify::core': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::supported-features': GObject.Object.Notify;
+            'notify::supported-features': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4586,14 +4968,17 @@ export namespace Wp {
             signal: K,
             callback: SessionItem.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SessionItem.SignalSignatures>(
             signal: K,
             callback: SessionItem.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SessionItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SessionItem.SignalSignatures[K]>
+            ...args: SessionItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -4698,7 +5083,16 @@ export namespace Wp {
 
     namespace Settings {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::metadata-name': GObject.Object.Notify;
+            'notify::metadata-name': GObject.Object.Notify;
+            'notify::active-features': GObject.Object.Notify;
+            'notify::active-features': GObject.Object.Notify;
+            'notify::core': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::supported-features': GObject.Object.Notify;
+            'notify::supported-features': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4731,14 +5125,17 @@ export namespace Wp {
         // Signals
 
         connect<K extends keyof Settings.SignalSignatures>(signal: K, callback: Settings.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Settings.SignalSignatures>(
             signal: K,
             callback: Settings.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Settings.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Settings.SignalSignatures[K]>
+            ...args: Settings.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -4837,7 +5234,9 @@ export namespace Wp {
 
     namespace SiFactory {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4880,14 +5279,17 @@ export namespace Wp {
         // Signals
 
         connect<K extends keyof SiFactory.SignalSignatures>(signal: K, callback: SiFactory.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SiFactory.SignalSignatures>(
             signal: K,
             callback: SiFactory.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SiFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SiFactory.SignalSignatures[K]>
+            ...args: SiFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -4923,7 +5325,15 @@ export namespace Wp {
 
     namespace SimpleEventHook {
         // Signal signatures
-        interface SignalSignatures extends InterestEventHook.SignalSignatures {}
+        interface SignalSignatures extends InterestEventHook.SignalSignatures {
+            'notify::closure': GObject.Object.Notify;
+            'notify::dispatcher': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::runs-after-hooks': GObject.Object.Notify;
+            'notify::runs-after-hooks': GObject.Object.Notify;
+            'notify::runs-before-hooks': GObject.Object.Notify;
+            'notify::runs-before-hooks': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4956,14 +5366,17 @@ export namespace Wp {
             signal: K,
             callback: SimpleEventHook.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SimpleEventHook.SignalSignatures>(
             signal: K,
             callback: SimpleEventHook.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SimpleEventHook.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SimpleEventHook.SignalSignatures[K]>
+            ...args: SimpleEventHook.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace SpaDevice {
@@ -4981,6 +5394,19 @@ export namespace Wp {
         interface SignalSignatures extends Proxy.SignalSignatures {
             'create-object': CreateObject;
             'object-removed': ObjectRemoved;
+            'notify::properties': GObject.Object.Notify;
+            'notify::spa-device-handle': GObject.Object.Notify;
+            'notify::spa-device-handle': GObject.Object.Notify;
+            'notify::bound-id': GObject.Object.Notify;
+            'notify::bound-id': GObject.Object.Notify;
+            'notify::pw-proxy': GObject.Object.Notify;
+            'notify::pw-proxy': GObject.Object.Notify;
+            'notify::active-features': GObject.Object.Notify;
+            'notify::active-features': GObject.Object.Notify;
+            'notify::core': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::supported-features': GObject.Object.Notify;
+            'notify::supported-features': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -5019,14 +5445,17 @@ export namespace Wp {
         // Signals
 
         connect<K extends keyof SpaDevice.SignalSignatures>(signal: K, callback: SpaDevice.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SpaDevice.SignalSignatures>(
             signal: K,
             callback: SpaDevice.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SpaDevice.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SpaDevice.SignalSignatures[K]>
+            ...args: SpaDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5069,14 +5498,17 @@ export namespace Wp {
         // Signals
 
         connect<K extends keyof SpaType.SignalSignatures>(signal: K, callback: SpaType.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SpaType.SignalSignatures>(
             signal: K,
             callback: SpaType.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SpaType.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SpaType.SignalSignatures[K]>
+            ...args: SpaType.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -5130,7 +5562,10 @@ export namespace Wp {
 
     namespace State {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::timeout': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5163,8 +5598,14 @@ export namespace Wp {
         // Signals
 
         connect<K extends keyof State.SignalSignatures>(signal: K, callback: State.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof State.SignalSignatures>(signal: K, callback: State.SignalSignatures[K]): number;
-        emit<K extends keyof State.SignalSignatures>(signal: K, ...args: Parameters<State.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof State.SignalSignatures>(
+            signal: K,
+            ...args: State.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5210,7 +5651,9 @@ export namespace Wp {
 
     namespace Transition {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::completed': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5257,14 +5700,17 @@ export namespace Wp {
             signal: K,
             callback: Transition.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Transition.SignalSignatures>(
             signal: K,
             callback: Transition.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Transition.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Transition.SignalSignatures[K]>
+            ...args: Transition.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 

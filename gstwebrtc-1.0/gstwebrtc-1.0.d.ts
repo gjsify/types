@@ -616,7 +616,18 @@ export namespace GstWebRTC {
     }
     namespace WebRTCDTLSTransport {
         // Signal signatures
-        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            'notify::certificate': GObject.Object.Notify;
+            'notify::client': GObject.Object.Notify;
+            'notify::remote-certificate': GObject.Object.Notify;
+            'notify::remote-certificate': GObject.Object.Notify;
+            'notify::session-id': GObject.Object.Notify;
+            'notify::session-id': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::transport': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -660,14 +671,17 @@ export namespace GstWebRTC {
             signal: K,
             callback: WebRTCDTLSTransport.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WebRTCDTLSTransport.SignalSignatures>(
             signal: K,
             callback: WebRTCDTLSTransport.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebRTCDTLSTransport.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebRTCDTLSTransport.SignalSignatures[K]>
+            ...args: WebRTCDTLSTransport.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace WebRTCDataChannel {
@@ -720,6 +734,22 @@ export namespace GstWebRTC {
             'on-open': OnOpen;
             'send-data': SendData;
             'send-string': SendString;
+            'notify::buffered-amount': GObject.Object.Notify;
+            'notify::buffered-amount': GObject.Object.Notify;
+            'notify::buffered-amount-low-threshold': GObject.Object.Notify;
+            'notify::buffered-amount-low-threshold': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::label': GObject.Object.Notify;
+            'notify::max-packet-lifetime': GObject.Object.Notify;
+            'notify::max-packet-lifetime': GObject.Object.Notify;
+            'notify::max-retransmits': GObject.Object.Notify;
+            'notify::max-retransmits': GObject.Object.Notify;
+            'notify::negotiated': GObject.Object.Notify;
+            'notify::ordered': GObject.Object.Notify;
+            'notify::priority': GObject.Object.Notify;
+            'notify::protocol': GObject.Object.Notify;
+            'notify::ready-state': GObject.Object.Notify;
+            'notify::ready-state': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -780,14 +810,17 @@ export namespace GstWebRTC {
             signal: K,
             callback: WebRTCDataChannel.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WebRTCDataChannel.SignalSignatures>(
             signal: K,
             callback: WebRTCDataChannel.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebRTCDataChannel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebRTCDataChannel.SignalSignatures[K]>
+            ...args: WebRTCDataChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -823,12 +856,18 @@ export namespace GstWebRTC {
         // Signal callback interfaces
 
         interface AddLocalIpAddress {
-            (_source: WebRTCICE, address: string): boolean;
+            (_source: WebRTCICE, address: string): boolean | void;
         }
 
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
             'add-local-ip-address': AddLocalIpAddress;
+            'notify::max-rtp-port': GObject.Object.Notify;
+            'notify::max-rtp-port': GObject.Object.Notify;
+            'notify::min-rtp-port': GObject.Object.Notify;
+            'notify::min-rtp-port': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -885,14 +924,17 @@ export namespace GstWebRTC {
         // Signals
 
         connect<K extends keyof WebRTCICE.SignalSignatures>(signal: K, callback: WebRTCICE.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WebRTCICE.SignalSignatures>(
             signal: K,
             callback: WebRTCICE.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebRTCICE.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebRTCICE.SignalSignatures[K]>
+            ...args: WebRTCICE.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -956,7 +998,12 @@ export namespace GstWebRTC {
 
     namespace WebRTCICEStream {
         // Signal signatures
-        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            'notify::stream-id': GObject.Object.Notify;
+            'notify::stream-id': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -986,14 +1033,17 @@ export namespace GstWebRTC {
             signal: K,
             callback: WebRTCICEStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WebRTCICEStream.SignalSignatures>(
             signal: K,
             callback: WebRTCICEStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebRTCICEStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebRTCICEStream.SignalSignatures[K]>
+            ...args: WebRTCICEStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1021,6 +1071,12 @@ export namespace GstWebRTC {
         interface SignalSignatures extends Gst.Object.SignalSignatures {
             'on-new-candidate': OnNewCandidate;
             'on-selected-candidate-pair-change': OnSelectedCandidatePairChange;
+            'notify::component': GObject.Object.Notify;
+            'notify::gathering-state': GObject.Object.Notify;
+            'notify::gathering-state': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1061,14 +1117,17 @@ export namespace GstWebRTC {
             signal: K,
             callback: WebRTCICETransport.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WebRTCICETransport.SignalSignatures>(
             signal: K,
             callback: WebRTCICETransport.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebRTCICETransport.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebRTCICETransport.SignalSignatures[K]>
+            ...args: WebRTCICETransport.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1084,7 +1143,11 @@ export namespace GstWebRTC {
 
     namespace WebRTCRTPReceiver {
         // Signal signatures
-        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            'notify::transport': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1120,19 +1183,27 @@ export namespace GstWebRTC {
             signal: K,
             callback: WebRTCRTPReceiver.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WebRTCRTPReceiver.SignalSignatures>(
             signal: K,
             callback: WebRTCRTPReceiver.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebRTCRTPReceiver.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebRTCRTPReceiver.SignalSignatures[K]>
+            ...args: WebRTCRTPReceiver.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace WebRTCRTPSender {
         // Signal signatures
-        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            'notify::priority': GObject.Object.Notify;
+            'notify::transport': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1174,14 +1245,17 @@ export namespace GstWebRTC {
             signal: K,
             callback: WebRTCRTPSender.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WebRTCRTPSender.SignalSignatures>(
             signal: K,
             callback: WebRTCRTPSender.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebRTCRTPSender.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebRTCRTPSender.SignalSignatures[K]>
+            ...args: WebRTCRTPSender.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1196,7 +1270,20 @@ export namespace GstWebRTC {
 
     namespace WebRTCRTPTransceiver {
         // Signal signatures
-        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            'notify::codec-preferences': GObject.Object.Notify;
+            'notify::codec-preferences': GObject.Object.Notify;
+            'notify::current-direction': GObject.Object.Notify;
+            'notify::current-direction': GObject.Object.Notify;
+            'notify::direction': GObject.Object.Notify;
+            'notify::kind': GObject.Object.Notify;
+            'notify::mid': GObject.Object.Notify;
+            'notify::mlineindex': GObject.Object.Notify;
+            'notify::receiver': GObject.Object.Notify;
+            'notify::sender': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1280,19 +1367,31 @@ export namespace GstWebRTC {
             signal: K,
             callback: WebRTCRTPTransceiver.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WebRTCRTPTransceiver.SignalSignatures>(
             signal: K,
             callback: WebRTCRTPTransceiver.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebRTCRTPTransceiver.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebRTCRTPTransceiver.SignalSignatures[K]>
+            ...args: WebRTCRTPTransceiver.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace WebRTCSCTPTransport {
         // Signal signatures
-        interface SignalSignatures extends Gst.Object.SignalSignatures {}
+        interface SignalSignatures extends Gst.Object.SignalSignatures {
+            'notify::max-channels': GObject.Object.Notify;
+            'notify::max-channels': GObject.Object.Notify;
+            'notify::max-message-size': GObject.Object.Notify;
+            'notify::max-message-size': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::transport': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1330,14 +1429,17 @@ export namespace GstWebRTC {
             signal: K,
             callback: WebRTCSCTPTransport.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WebRTCSCTPTransport.SignalSignatures>(
             signal: K,
             callback: WebRTCSCTPTransport.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebRTCSCTPTransport.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebRTCSCTPTransport.SignalSignatures[K]>
+            ...args: WebRTCSCTPTransport.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     type WebRTCDTLSTransportClass = typeof WebRTCDTLSTransport;

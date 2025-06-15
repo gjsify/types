@@ -675,6 +675,59 @@ export namespace Nice {
             'new-selected-pair-full': NewSelectedPairFull;
             'reliable-transport-writable': ReliableTransportWritable;
             'streams-removed': StreamsRemoved;
+            'notify::bytestream-tcp': GObject.Object.Notify;
+            'notify::bytestream-tcp': GObject.Object.Notify;
+            'notify::compatibility': GObject.Object.Notify;
+            'notify::consent-freshness': GObject.Object.Notify;
+            'notify::consent-freshness': GObject.Object.Notify;
+            'notify::controlling-mode': GObject.Object.Notify;
+            'notify::controlling-mode': GObject.Object.Notify;
+            'notify::force-relay': GObject.Object.Notify;
+            'notify::force-relay': GObject.Object.Notify;
+            'notify::full-mode': GObject.Object.Notify;
+            'notify::full-mode': GObject.Object.Notify;
+            'notify::ice-tcp': GObject.Object.Notify;
+            'notify::ice-tcp': GObject.Object.Notify;
+            'notify::ice-trickle': GObject.Object.Notify;
+            'notify::ice-trickle': GObject.Object.Notify;
+            'notify::ice-udp': GObject.Object.Notify;
+            'notify::ice-udp': GObject.Object.Notify;
+            'notify::idle-timeout': GObject.Object.Notify;
+            'notify::idle-timeout': GObject.Object.Notify;
+            'notify::keepalive-conncheck': GObject.Object.Notify;
+            'notify::keepalive-conncheck': GObject.Object.Notify;
+            'notify::main-context': GObject.Object.Notify;
+            'notify::main-context': GObject.Object.Notify;
+            'notify::max-connectivity-checks': GObject.Object.Notify;
+            'notify::max-connectivity-checks': GObject.Object.Notify;
+            'notify::proxy-ip': GObject.Object.Notify;
+            'notify::proxy-ip': GObject.Object.Notify;
+            'notify::proxy-password': GObject.Object.Notify;
+            'notify::proxy-password': GObject.Object.Notify;
+            'notify::proxy-port': GObject.Object.Notify;
+            'notify::proxy-port': GObject.Object.Notify;
+            'notify::proxy-type': GObject.Object.Notify;
+            'notify::proxy-type': GObject.Object.Notify;
+            'notify::proxy-username': GObject.Object.Notify;
+            'notify::proxy-username': GObject.Object.Notify;
+            'notify::reliable': GObject.Object.Notify;
+            'notify::stun-initial-timeout': GObject.Object.Notify;
+            'notify::stun-initial-timeout': GObject.Object.Notify;
+            'notify::stun-max-retransmissions': GObject.Object.Notify;
+            'notify::stun-max-retransmissions': GObject.Object.Notify;
+            'notify::stun-pacing-timer': GObject.Object.Notify;
+            'notify::stun-pacing-timer': GObject.Object.Notify;
+            'notify::stun-reliable-timeout': GObject.Object.Notify;
+            'notify::stun-reliable-timeout': GObject.Object.Notify;
+            'notify::stun-server': GObject.Object.Notify;
+            'notify::stun-server': GObject.Object.Notify;
+            'notify::stun-server-port': GObject.Object.Notify;
+            'notify::stun-server-port': GObject.Object.Notify;
+            'notify::support-renomination': GObject.Object.Notify;
+            'notify::support-renomination': GObject.Object.Notify;
+            'notify::upnp': GObject.Object.Notify;
+            'notify::upnp-timeout': GObject.Object.Notify;
+            'notify::upnp-timeout': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1230,8 +1283,14 @@ export namespace Nice {
         // Signals
 
         connect<K extends keyof Agent.SignalSignatures>(signal: K, callback: Agent.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Agent.SignalSignatures>(signal: K, callback: Agent.SignalSignatures[K]): number;
-        emit<K extends keyof Agent.SignalSignatures>(signal: K, ...args: Parameters<Agent.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Agent.SignalSignatures>(
+            signal: K,
+            ...args: Agent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1939,7 +1998,21 @@ export namespace Nice {
 
     namespace PseudoTcpSocket {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::ack-delay': GObject.Object.Notify;
+            'notify::ack-delay': GObject.Object.Notify;
+            'notify::callbacks': GObject.Object.Notify;
+            'notify::conversation': GObject.Object.Notify;
+            'notify::no-delay': GObject.Object.Notify;
+            'notify::no-delay': GObject.Object.Notify;
+            'notify::rcv-buf': GObject.Object.Notify;
+            'notify::rcv-buf': GObject.Object.Notify;
+            'notify::snd-buf': GObject.Object.Notify;
+            'notify::snd-buf': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::support-fin-ack': GObject.Object.Notify;
+            'notify::support-fin-ack': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2025,14 +2098,17 @@ export namespace Nice {
             signal: K,
             callback: PseudoTcpSocket.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PseudoTcpSocket.SignalSignatures>(
             signal: K,
             callback: PseudoTcpSocket.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PseudoTcpSocket.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PseudoTcpSocket.SignalSignatures[K]>
+            ...args: PseudoTcpSocket.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

@@ -228,7 +228,10 @@ export namespace GObject {
     export type Property<K extends ParamSpec> = K extends ParamSpec<infer T> ? T : any;
 
     // Helper types for type-safe signal handling
-    export type SignalSignatures = { [signal: string]: (...args: any[]) => any };
+    export interface SignalSignatures {
+        /** Fallback for dynamic signals and type compatibility */
+        [signal: string]: (...args: any[]) => any;
+    }
 
     /**
      * Unique symbol for storing signal signatures on constructors
@@ -237,29 +240,46 @@ export namespace GObject {
     export const signalSignaturesSymbol: unique symbol;
 
     /**
-     * Extract signal signatures from a constructor type
+     * Extract signal signatures from a constructor type or instance
+     * Enhanced to work with both symbol property and constructor.SignalSignatures
      */
-    export type SignalsOf<T> = T extends { [signalSignaturesSymbol]: infer S } ? S : never;
+    export type SignalsOf<T> = T extends { constructor: { SignalSignatures: infer S } }
+        ? S
+        : T extends { [signalSignaturesSymbol]: infer S }
+          ? S
+          : never;
 
     /**
-     * Extract signal names from a SignalSignatures type
+     * Extract signal names from any object with function properties
+     * Works with SignalSignatures interfaces without requiring specific base type
      */
-    export type SignalName<T extends SignalSignatures> = keyof T;
+    export type SignalName<T> = T extends { [K in keyof T]: (...args: any[]) => any } ? keyof T : never;
 
     /**
      * Extract callback type for a specific signal
+     * Flexible version that works with any object containing functions
      */
-    export type SignalCallback<T extends SignalSignatures, K extends keyof T> = T[K];
+    export type SignalCallback<T, K extends keyof T> = T extends { [P in K]: infer C }
+        ? C extends (...args: any[]) => any
+            ? C
+            : never
+        : never;
 
     /**
      * Extract parameters for a specific signal callback
+     * Works with any signal signatures object
      */
-    export type SignalParameters<T extends SignalSignatures, K extends keyof T> = Parameters<T[K]>;
+    export type SignalParameters<T, K extends keyof T> = T extends { [P in K]: (...args: infer Args) => any }
+        ? Args
+        : never;
 
     /**
      * Extract return type for a specific signal callback
+     * Works with any signal signatures object
      */
-    export type SignalReturnType<T extends SignalSignatures, K extends keyof T> = ReturnType<T[K]>;
+    export type SignalReturnType<T, K extends keyof T> = T extends { [P in K]: (...args: any[]) => infer R }
+        ? R
+        : never;
 
     // TODO: What about the generated class Closure
     export type TClosure<R = any, P = any> = (...args: P[]) => R;
@@ -2956,7 +2976,15 @@ export namespace GObject {
     }
     namespace Binding {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::flags': Object.Notify;
+            'notify::source': Object.Notify;
+            'notify::source-property': Object.Notify;
+            'notify::source-property': Object.Notify;
+            'notify::target': Object.Notify;
+            'notify::target-property': Object.Notify;
+            'notify::target-property': Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3107,14 +3135,17 @@ export namespace GObject {
         // Signals
 
         connect<K extends keyof Binding.SignalSignatures>(signal: K, callback: Binding.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Binding.SignalSignatures>(
             signal: K,
             callback: Binding.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Binding.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Binding.SignalSignatures[K]>
+            ...args: Binding.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3197,7 +3228,9 @@ export namespace GObject {
 
     namespace BindingGroup {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {}
+        interface SignalSignatures extends Object.SignalSignatures {
+            'notify::source': Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3240,14 +3273,17 @@ export namespace GObject {
             signal: K,
             callback: BindingGroup.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BindingGroup.SignalSignatures>(
             signal: K,
             callback: BindingGroup.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BindingGroup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BindingGroup.SignalSignatures[K]>
+            ...args: BindingGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3358,14 +3394,17 @@ export namespace GObject {
             signal: K,
             callback: InitiallyUnowned.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InitiallyUnowned.SignalSignatures>(
             signal: K,
             callback: InitiallyUnowned.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InitiallyUnowned.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InitiallyUnowned.SignalSignatures[K]>
+            ...args: InitiallyUnowned.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Object {
@@ -3421,8 +3460,14 @@ export namespace GObject {
         // Signals
 
         connect<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Object.SignalSignatures>(signal: K, callback: Object.SignalSignatures[K]): number;
-        emit<K extends keyof Object.SignalSignatures>(signal: K, ...args: Parameters<Object.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Object.SignalSignatures>(
+            signal: K,
+            ...args: Object.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -3967,14 +4012,17 @@ export namespace GObject {
         // Signals
 
         connect<K extends keyof ParamSpec.SignalSignatures>(signal: K, callback: ParamSpec.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ParamSpec.SignalSignatures>(
             signal: K,
             callback: ParamSpec.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ParamSpec.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ParamSpec.SignalSignatures[K]>
+            ...args: ParamSpec.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -4422,6 +4470,9 @@ export namespace GObject {
         interface SignalSignatures extends Object.SignalSignatures {
             bind: Bind;
             unbind: Unbind;
+            'notify::target': Object.Notify;
+            'notify::target-type': Object.Notify;
+            'notify::target-type': Object.Notify;
         }
 
         // Constructor properties interface
@@ -4487,14 +4538,17 @@ export namespace GObject {
             signal: K,
             callback: SignalGroup.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SignalGroup.SignalSignatures>(
             signal: K,
             callback: SignalGroup.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SignalGroup.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SignalGroup.SignalSignatures[K]>
+            ...args: SignalGroup.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4631,14 +4685,17 @@ export namespace GObject {
             signal: K,
             callback: TypeModule.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TypeModule.SignalSignatures>(
             signal: K,
             callback: TypeModule.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TypeModule.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TypeModule.SignalSignatures[K]>
+            ...args: TypeModule.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 

@@ -101,7 +101,11 @@ export namespace Gm {
     ): number;
     namespace Cutout {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::bounds': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -153,8 +157,14 @@ export namespace Gm {
         // Signals
 
         connect<K extends keyof Cutout.SignalSignatures>(signal: K, callback: Cutout.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Cutout.SignalSignatures>(signal: K, callback: Cutout.SignalSignatures[K]): number;
-        emit<K extends keyof Cutout.SignalSignatures>(signal: K, ...args: Parameters<Cutout.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Cutout.SignalSignatures>(
+            signal: K,
+            ...args: Cutout.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -177,7 +187,9 @@ export namespace Gm {
 
     namespace DeviceInfo {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::compatibles': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -219,14 +231,17 @@ export namespace Gm {
             signal: K,
             callback: DeviceInfo.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DeviceInfo.SignalSignatures>(
             signal: K,
             callback: DeviceInfo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DeviceInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DeviceInfo.SignalSignatures[K]>
+            ...args: DeviceInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -240,7 +255,18 @@ export namespace Gm {
 
     namespace DisplayPanel {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::border-radius': GObject.Object.Notify;
+            'notify::border-radius': GObject.Object.Notify;
+            'notify::cutouts': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+            'notify::x-res': GObject.Object.Notify;
+            'notify::x-res': GObject.Object.Notify;
+            'notify::y-res': GObject.Object.Notify;
+            'notify::y-res': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -338,14 +364,17 @@ export namespace Gm {
             signal: K,
             callback: DisplayPanel.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DisplayPanel.SignalSignatures>(
             signal: K,
             callback: DisplayPanel.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DisplayPanel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DisplayPanel.SignalSignatures[K]>
+            ...args: DisplayPanel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

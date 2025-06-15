@@ -342,14 +342,17 @@ export namespace WebKitWebProcessExtension {
             signal: K,
             callback: ContextMenu.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ContextMenu.SignalSignatures>(
             signal: K,
             callback: ContextMenu.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ContextMenu.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContextMenu.SignalSignatures[K]>
+            ...args: ContextMenu.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -503,14 +506,17 @@ export namespace WebKitWebProcessExtension {
             signal: K,
             callback: ContextMenuItem.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ContextMenuItem.SignalSignatures>(
             signal: K,
             callback: ContextMenuItem.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ContextMenuItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContextMenuItem.SignalSignatures[K]>
+            ...args: ContextMenuItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -576,8 +582,14 @@ export namespace WebKitWebProcessExtension {
         // Signals
 
         connect<K extends keyof Frame.SignalSignatures>(signal: K, callback: Frame.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Frame.SignalSignatures>(signal: K, callback: Frame.SignalSignatures[K]): number;
-        emit<K extends keyof Frame.SignalSignatures>(signal: K, ...args: Parameters<Frame.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Frame.SignalSignatures>(
+            signal: K,
+            ...args: Frame.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -614,7 +626,19 @@ export namespace WebKitWebProcessExtension {
 
     namespace HitTestResult {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::context': GObject.Object.Notify;
+            'notify::image-uri': GObject.Object.Notify;
+            'notify::image-uri': GObject.Object.Notify;
+            'notify::link-label': GObject.Object.Notify;
+            'notify::link-label': GObject.Object.Notify;
+            'notify::link-title': GObject.Object.Notify;
+            'notify::link-title': GObject.Object.Notify;
+            'notify::link-uri': GObject.Object.Notify;
+            'notify::link-uri': GObject.Object.Notify;
+            'notify::media-uri': GObject.Object.Notify;
+            'notify::media-uri': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -728,14 +752,17 @@ export namespace WebKitWebProcessExtension {
             signal: K,
             callback: HitTestResult.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HitTestResult.SignalSignatures>(
             signal: K,
             callback: HitTestResult.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HitTestResult.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HitTestResult.SignalSignatures[K]>
+            ...args: HitTestResult.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -843,14 +870,17 @@ export namespace WebKitWebProcessExtension {
             signal: K,
             callback: ScriptWorld.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ScriptWorld.SignalSignatures>(
             signal: K,
             callback: ScriptWorld.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ScriptWorld.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ScriptWorld.SignalSignatures[K]>
+            ...args: ScriptWorld.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -873,7 +903,9 @@ export namespace WebKitWebProcessExtension {
 
     namespace URIRequest {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::uri': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -914,14 +946,17 @@ export namespace WebKitWebProcessExtension {
             signal: K,
             callback: URIRequest.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof URIRequest.SignalSignatures>(
             signal: K,
             callback: URIRequest.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof URIRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<URIRequest.SignalSignatures[K]>
+            ...args: URIRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -949,7 +984,19 @@ export namespace WebKitWebProcessExtension {
 
     namespace URIResponse {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::content-length': GObject.Object.Notify;
+            'notify::content-length': GObject.Object.Notify;
+            'notify::http-headers': GObject.Object.Notify;
+            'notify::http-headers': GObject.Object.Notify;
+            'notify::mime-type': GObject.Object.Notify;
+            'notify::mime-type': GObject.Object.Notify;
+            'notify::status-code': GObject.Object.Notify;
+            'notify::status-code': GObject.Object.Notify;
+            'notify::suggested-filename': GObject.Object.Notify;
+            'notify::suggested-filename': GObject.Object.Notify;
+            'notify::uri': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1037,14 +1084,17 @@ export namespace WebKitWebProcessExtension {
             signal: K,
             callback: URIResponse.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof URIResponse.SignalSignatures>(
             signal: K,
             callback: URIResponse.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof URIResponse.SignalSignatures>(
             signal: K,
-            ...args: Parameters<URIResponse.SignalSignatures[K]>
+            ...args: URIResponse.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1093,7 +1143,12 @@ export namespace WebKitWebProcessExtension {
 
     namespace UserMessage {
         // Signal signatures
-        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {}
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
+            'notify::fd-list': GObject.Object.Notify;
+            'notify::fd-list': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parameters': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1159,14 +1214,17 @@ export namespace WebKitWebProcessExtension {
             signal: K,
             callback: UserMessage.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UserMessage.SignalSignatures>(
             signal: K,
             callback: UserMessage.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UserMessage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UserMessage.SignalSignatures[K]>
+            ...args: UserMessage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1239,14 +1297,17 @@ export namespace WebKitWebProcessExtension {
         // Signals
 
         connect<K extends keyof WebEditor.SignalSignatures>(signal: K, callback: WebEditor.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WebEditor.SignalSignatures>(
             signal: K,
             callback: WebEditor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebEditor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebEditor.SignalSignatures[K]>
+            ...args: WebEditor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1302,14 +1363,17 @@ export namespace WebKitWebProcessExtension {
             signal: K,
             callback: WebFormManager.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WebFormManager.SignalSignatures>(
             signal: K,
             callback: WebFormManager.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebFormManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebFormManager.SignalSignatures[K]>
+            ...args: WebFormManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1363,14 +1427,17 @@ export namespace WebKitWebProcessExtension {
             signal: K,
             callback: WebHitTestResult.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WebHitTestResult.SignalSignatures>(
             signal: K,
             callback: WebHitTestResult.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebHitTestResult.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebHitTestResult.SignalSignatures[K]>
+            ...args: WebHitTestResult.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1464,7 +1531,7 @@ export namespace WebKitWebProcessExtension {
         // Signal callback interfaces
 
         interface ContextMenu {
-            (_source: WebPage, context_menu: ContextMenu, hit_test_result: WebHitTestResult): boolean;
+            (_source: WebPage, context_menu: ContextMenu, hit_test_result: WebHitTestResult): boolean | void;
         }
 
         interface DocumentLoaded {
@@ -1472,11 +1539,11 @@ export namespace WebKitWebProcessExtension {
         }
 
         interface SendRequest {
-            (_source: WebPage, request: URIRequest, redirected_response: URIResponse): boolean;
+            (_source: WebPage, request: URIRequest, redirected_response: URIResponse): boolean | void;
         }
 
         interface UserMessageReceived {
-            (_source: WebPage, message: UserMessage): boolean;
+            (_source: WebPage, message: UserMessage): boolean | void;
         }
 
         // Signal signatures
@@ -1485,6 +1552,7 @@ export namespace WebKitWebProcessExtension {
             'document-loaded': DocumentLoaded;
             'send-request': SendRequest;
             'user-message-received': UserMessageReceived;
+            'notify::uri': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1516,14 +1584,17 @@ export namespace WebKitWebProcessExtension {
         // Signals
 
         connect<K extends keyof WebPage.SignalSignatures>(signal: K, callback: WebPage.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WebPage.SignalSignatures>(
             signal: K,
             callback: WebPage.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebPage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebPage.SignalSignatures[K]>
+            ...args: WebPage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1714,14 +1785,17 @@ export namespace WebKitWebProcessExtension {
             signal: K,
             callback: WebProcessExtension.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof WebProcessExtension.SignalSignatures>(
             signal: K,
             callback: WebProcessExtension.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof WebProcessExtension.SignalSignatures>(
             signal: K,
-            ...args: Parameters<WebProcessExtension.SignalSignatures[K]>
+            ...args: WebProcessExtension.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

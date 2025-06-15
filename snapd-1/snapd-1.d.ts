@@ -829,7 +829,16 @@ export namespace Snapd {
     }
     namespace Alias {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::app-auto': GObject.Object.Notify;
+            'notify::app-auto': GObject.Object.Notify;
+            'notify::app-manual': GObject.Object.Notify;
+            'notify::app-manual': GObject.Object.Notify;
+            'notify::command': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::snap': GObject.Object.Notify;
+            'notify::status': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -873,8 +882,14 @@ export namespace Snapd {
         // Signals
 
         connect<K extends keyof Alias.SignalSignatures>(signal: K, callback: Alias.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Alias.SignalSignatures>(signal: K, callback: Alias.SignalSignatures[K]): number;
-        emit<K extends keyof Alias.SignalSignatures>(signal: K, ...args: Parameters<Alias.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Alias.SignalSignatures>(
+            signal: K,
+            ...args: Alias.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -919,7 +934,19 @@ export namespace Snapd {
 
     namespace App {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::active': GObject.Object.Notify;
+            'notify::aliases': GObject.Object.Notify;
+            'notify::common-id': GObject.Object.Notify;
+            'notify::common-id': GObject.Object.Notify;
+            'notify::daemon-type': GObject.Object.Notify;
+            'notify::daemon-type': GObject.Object.Notify;
+            'notify::desktop-file': GObject.Object.Notify;
+            'notify::desktop-file': GObject.Object.Notify;
+            'notify::enabled': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::snap': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -969,8 +996,14 @@ export namespace Snapd {
         // Signals
 
         connect<K extends keyof App.SignalSignatures>(signal: K, callback: App.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof App.SignalSignatures>(signal: K, callback: App.SignalSignatures[K]): number;
-        emit<K extends keyof App.SignalSignatures>(signal: K, ...args: Parameters<App.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof App.SignalSignatures>(
+            signal: K,
+            ...args: App.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1018,7 +1051,9 @@ export namespace Snapd {
 
     namespace Assertion {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::content': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1051,14 +1086,17 @@ export namespace Snapd {
         // Signals
 
         connect<K extends keyof Assertion.SignalSignatures>(signal: K, callback: Assertion.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Assertion.SignalSignatures>(
             signal: K,
             callback: Assertion.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Assertion.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Assertion.SignalSignatures[K]>
+            ...args: Assertion.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1087,7 +1125,10 @@ export namespace Snapd {
 
     namespace AuthData {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::discharges': GObject.Object.Notify;
+            'notify::macaroon': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1123,14 +1164,17 @@ export namespace Snapd {
         // Signals
 
         connect<K extends keyof AuthData.SignalSignatures>(signal: K, callback: AuthData.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AuthData.SignalSignatures>(
             signal: K,
             callback: AuthData.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AuthData.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AuthData.SignalSignatures[K]>
+            ...args: AuthData.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1148,7 +1192,19 @@ export namespace Snapd {
 
     namespace Change {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::error': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::kind': GObject.Object.Notify;
+            'notify::ready': GObject.Object.Notify;
+            'notify::ready-time': GObject.Object.Notify;
+            'notify::ready-time': GObject.Object.Notify;
+            'notify::spawn-time': GObject.Object.Notify;
+            'notify::spawn-time': GObject.Object.Notify;
+            'notify::status': GObject.Object.Notify;
+            'notify::summary': GObject.Object.Notify;
+            'notify::tasks': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1196,8 +1252,14 @@ export namespace Snapd {
         // Signals
 
         connect<K extends keyof Change.SignalSignatures>(signal: K, callback: Change.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Change.SignalSignatures>(signal: K, callback: Change.SignalSignatures[K]): number;
-        emit<K extends keyof Change.SignalSignatures>(signal: K, ...args: Parameters<Change.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Change.SignalSignatures>(
+            signal: K,
+            ...args: Change.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1250,7 +1312,16 @@ export namespace Snapd {
 
     namespace Channel {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::confinement': GObject.Object.Notify;
+            'notify::epoch': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::released-at': GObject.Object.Notify;
+            'notify::released-at': GObject.Object.Notify;
+            'notify::revision': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::version': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1293,14 +1364,17 @@ export namespace Snapd {
         // Signals
 
         connect<K extends keyof Channel.SignalSignatures>(signal: K, callback: Channel.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Channel.SignalSignatures>(
             signal: K,
             callback: Channel.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Channel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Channel.SignalSignatures[K]>
+            ...args: Channel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1398,8 +1472,14 @@ export namespace Snapd {
         // Signals
 
         connect<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Client.SignalSignatures>(signal: K, callback: Client.SignalSignatures[K]): number;
-        emit<K extends keyof Client.SignalSignatures>(signal: K, ...args: Parameters<Client.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Client.SignalSignatures>(
+            signal: K,
+            ...args: Client.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4484,7 +4564,19 @@ export namespace Snapd {
 
     namespace Connection {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::gadget': GObject.Object.Notify;
+            'notify::interface': GObject.Object.Notify;
+            'notify::manual': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::plug': GObject.Object.Notify;
+            'notify::plug-attrs': GObject.Object.Notify;
+            'notify::plug-attrs': GObject.Object.Notify;
+            'notify::slot': GObject.Object.Notify;
+            'notify::slot-attrs': GObject.Object.Notify;
+            'notify::slot-attrs': GObject.Object.Notify;
+            'notify::snap': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4535,14 +4627,17 @@ export namespace Snapd {
             signal: K,
             callback: Connection.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Connection.SignalSignatures>(
             signal: K,
             callback: Connection.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Connection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Connection.SignalSignatures[K]>
+            ...args: Connection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4619,7 +4714,11 @@ export namespace Snapd {
 
     namespace Icon {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::data': GObject.Object.Notify;
+            'notify::mime-type': GObject.Object.Notify;
+            'notify::mime-type': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4651,8 +4750,14 @@ export namespace Snapd {
         // Signals
 
         connect<K extends keyof Icon.SignalSignatures>(signal: K, callback: Icon.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Icon.SignalSignatures>(signal: K, callback: Icon.SignalSignatures[K]): number;
-        emit<K extends keyof Icon.SignalSignatures>(signal: K, ...args: Parameters<Icon.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Icon.SignalSignatures>(
+            signal: K,
+            ...args: Icon.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4672,7 +4777,14 @@ export namespace Snapd {
 
     namespace Interface {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::doc-url': GObject.Object.Notify;
+            'notify::doc-url': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::plugs': GObject.Object.Notify;
+            'notify::slots': GObject.Object.Notify;
+            'notify::summary': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4710,14 +4822,17 @@ export namespace Snapd {
         // Signals
 
         connect<K extends keyof Interface.SignalSignatures>(signal: K, callback: Interface.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Interface.SignalSignatures>(
             signal: K,
             callback: Interface.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Interface.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Interface.SignalSignatures[K]>
+            ...args: Interface.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4755,7 +4870,10 @@ export namespace Snapd {
 
     namespace Maintenance {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::kind': GObject.Object.Notify;
+            'notify::message': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4788,14 +4906,17 @@ export namespace Snapd {
             signal: K,
             callback: Maintenance.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Maintenance.SignalSignatures>(
             signal: K,
             callback: Maintenance.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Maintenance.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Maintenance.SignalSignatures[K]>
+            ...args: Maintenance.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4813,7 +4934,12 @@ export namespace Snapd {
 
     namespace MarkdownNode {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::children': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::node-type': GObject.Object.Notify;
+            'notify::text': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4851,14 +4977,17 @@ export namespace Snapd {
             signal: K,
             callback: MarkdownNode.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MarkdownNode.SignalSignatures>(
             signal: K,
             callback: MarkdownNode.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MarkdownNode.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MarkdownNode.SignalSignatures[K]>
+            ...args: MarkdownNode.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4910,14 +5039,17 @@ export namespace Snapd {
             signal: K,
             callback: MarkdownParser.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MarkdownParser.SignalSignatures>(
             signal: K,
             callback: MarkdownParser.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MarkdownParser.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MarkdownParser.SignalSignatures[K]>
+            ...args: MarkdownParser.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4944,7 +5076,12 @@ export namespace Snapd {
 
     namespace Media {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::height': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+            'notify::url': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4978,8 +5115,14 @@ export namespace Snapd {
         // Signals
 
         connect<K extends keyof Media.SignalSignatures>(signal: K, callback: Media.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Media.SignalSignatures>(signal: K, callback: Media.SignalSignatures[K]): number;
-        emit<K extends keyof Media.SignalSignatures>(signal: K, ...args: Parameters<Media.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Media.SignalSignatures>(
+            signal: K,
+            ...args: Media.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5007,7 +5150,14 @@ export namespace Snapd {
 
     namespace Plug {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::attributes': GObject.Object.Notify;
+            'notify::connections': GObject.Object.Notify;
+            'notify::interface': GObject.Object.Notify;
+            'notify::label': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::snap': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5045,8 +5195,14 @@ export namespace Snapd {
         // Signals
 
         connect<K extends keyof Plug.SignalSignatures>(signal: K, callback: Plug.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Plug.SignalSignatures>(signal: K, callback: Plug.SignalSignatures[K]): number;
-        emit<K extends keyof Plug.SignalSignatures>(signal: K, ...args: Parameters<Plug.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Plug.SignalSignatures>(
+            signal: K,
+            ...args: Plug.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5101,7 +5257,10 @@ export namespace Snapd {
 
     namespace PlugRef {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::plug': GObject.Object.Notify;
+            'notify::snap': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5131,14 +5290,17 @@ export namespace Snapd {
         // Signals
 
         connect<K extends keyof PlugRef.SignalSignatures>(signal: K, callback: PlugRef.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PlugRef.SignalSignatures>(
             signal: K,
             callback: PlugRef.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PlugRef.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PlugRef.SignalSignatures[K]>
+            ...args: PlugRef.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5156,7 +5318,10 @@ export namespace Snapd {
 
     namespace Price {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::amount': GObject.Object.Notify;
+            'notify::currency': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5186,8 +5351,14 @@ export namespace Snapd {
         // Signals
 
         connect<K extends keyof Price.SignalSignatures>(signal: K, callback: Price.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Price.SignalSignatures>(signal: K, callback: Price.SignalSignatures[K]): number;
-        emit<K extends keyof Price.SignalSignatures>(signal: K, ...args: Parameters<Price.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Price.SignalSignatures>(
+            signal: K,
+            ...args: Price.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5205,7 +5376,11 @@ export namespace Snapd {
 
     namespace Screenshot {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::height': GObject.Object.Notify;
+            'notify::url': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5240,14 +5415,17 @@ export namespace Snapd {
             signal: K,
             callback: Screenshot.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Screenshot.SignalSignatures>(
             signal: K,
             callback: Screenshot.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Screenshot.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Screenshot.SignalSignatures[K]>
+            ...args: Screenshot.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5270,7 +5448,14 @@ export namespace Snapd {
 
     namespace Slot {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::attributes': GObject.Object.Notify;
+            'notify::connections': GObject.Object.Notify;
+            'notify::interface': GObject.Object.Notify;
+            'notify::label': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::snap': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5308,8 +5493,14 @@ export namespace Snapd {
         // Signals
 
         connect<K extends keyof Slot.SignalSignatures>(signal: K, callback: Slot.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Slot.SignalSignatures>(signal: K, callback: Slot.SignalSignatures[K]): number;
-        emit<K extends keyof Slot.SignalSignatures>(signal: K, ...args: Parameters<Slot.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Slot.SignalSignatures>(
+            signal: K,
+            ...args: Slot.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5364,7 +5555,10 @@ export namespace Snapd {
 
     namespace SlotRef {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::slot': GObject.Object.Notify;
+            'notify::snap': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5394,14 +5588,17 @@ export namespace Snapd {
         // Signals
 
         connect<K extends keyof SlotRef.SignalSignatures>(signal: K, callback: SlotRef.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SlotRef.SignalSignatures>(
             signal: K,
             callback: SlotRef.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SlotRef.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SlotRef.SignalSignatures[K]>
+            ...args: SlotRef.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5419,7 +5616,57 @@ export namespace Snapd {
 
     namespace Snap {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::apps': GObject.Object.Notify;
+            'notify::base': GObject.Object.Notify;
+            'notify::broken': GObject.Object.Notify;
+            'notify::channel': GObject.Object.Notify;
+            'notify::channels': GObject.Object.Notify;
+            'notify::common-ids': GObject.Object.Notify;
+            'notify::common-ids': GObject.Object.Notify;
+            'notify::confinement': GObject.Object.Notify;
+            'notify::contact': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::developer': GObject.Object.Notify;
+            'notify::devmode': GObject.Object.Notify;
+            'notify::download-size': GObject.Object.Notify;
+            'notify::download-size': GObject.Object.Notify;
+            'notify::icon': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::install-date': GObject.Object.Notify;
+            'notify::install-date': GObject.Object.Notify;
+            'notify::installed-size': GObject.Object.Notify;
+            'notify::installed-size': GObject.Object.Notify;
+            'notify::jailmode': GObject.Object.Notify;
+            'notify::license': GObject.Object.Notify;
+            'notify::media': GObject.Object.Notify;
+            'notify::mounted-from': GObject.Object.Notify;
+            'notify::mounted-from': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::prices': GObject.Object.Notify;
+            'notify::private': GObject.Object.Notify;
+            'notify::publisher-display-name': GObject.Object.Notify;
+            'notify::publisher-display-name': GObject.Object.Notify;
+            'notify::publisher-id': GObject.Object.Notify;
+            'notify::publisher-id': GObject.Object.Notify;
+            'notify::publisher-username': GObject.Object.Notify;
+            'notify::publisher-username': GObject.Object.Notify;
+            'notify::publisher-validation': GObject.Object.Notify;
+            'notify::publisher-validation': GObject.Object.Notify;
+            'notify::revision': GObject.Object.Notify;
+            'notify::screenshots': GObject.Object.Notify;
+            'notify::snap-type': GObject.Object.Notify;
+            'notify::snap-type': GObject.Object.Notify;
+            'notify::status': GObject.Object.Notify;
+            'notify::summary': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::tracking-channel': GObject.Object.Notify;
+            'notify::tracking-channel': GObject.Object.Notify;
+            'notify::tracks': GObject.Object.Notify;
+            'notify::trymode': GObject.Object.Notify;
+            'notify::version': GObject.Object.Notify;
+            'notify::website': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5543,8 +5790,14 @@ export namespace Snapd {
         // Signals
 
         connect<K extends keyof Snap.SignalSignatures>(signal: K, callback: Snap.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Snap.SignalSignatures>(signal: K, callback: Snap.SignalSignatures[K]): number;
-        emit<K extends keyof Snap.SignalSignatures>(signal: K, ...args: Parameters<Snap.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Snap.SignalSignatures>(
+            signal: K,
+            ...args: Snap.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5756,7 +6009,39 @@ export namespace Snapd {
 
     namespace SystemInformation {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::binaries-directory': GObject.Object.Notify;
+            'notify::binaries-directory': GObject.Object.Notify;
+            'notify::build-id': GObject.Object.Notify;
+            'notify::build-id': GObject.Object.Notify;
+            'notify::confinement': GObject.Object.Notify;
+            'notify::kernel-version': GObject.Object.Notify;
+            'notify::kernel-version': GObject.Object.Notify;
+            'notify::managed': GObject.Object.Notify;
+            'notify::mount-directory': GObject.Object.Notify;
+            'notify::mount-directory': GObject.Object.Notify;
+            'notify::on-classic': GObject.Object.Notify;
+            'notify::on-classic': GObject.Object.Notify;
+            'notify::os-id': GObject.Object.Notify;
+            'notify::os-id': GObject.Object.Notify;
+            'notify::os-version': GObject.Object.Notify;
+            'notify::os-version': GObject.Object.Notify;
+            'notify::refresh-hold': GObject.Object.Notify;
+            'notify::refresh-hold': GObject.Object.Notify;
+            'notify::refresh-last': GObject.Object.Notify;
+            'notify::refresh-last': GObject.Object.Notify;
+            'notify::refresh-next': GObject.Object.Notify;
+            'notify::refresh-next': GObject.Object.Notify;
+            'notify::refresh-schedule': GObject.Object.Notify;
+            'notify::refresh-schedule': GObject.Object.Notify;
+            'notify::refresh-timer': GObject.Object.Notify;
+            'notify::refresh-timer': GObject.Object.Notify;
+            'notify::sandbox-features': GObject.Object.Notify;
+            'notify::sandbox-features': GObject.Object.Notify;
+            'notify::series': GObject.Object.Notify;
+            'notify::store': GObject.Object.Notify;
+            'notify::version': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -5847,14 +6132,17 @@ export namespace Snapd {
             signal: K,
             callback: SystemInformation.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SystemInformation.SignalSignatures>(
             signal: K,
             callback: SystemInformation.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SystemInformation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SystemInformation.SignalSignatures[K]>
+            ...args: SystemInformation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -5954,7 +6242,23 @@ export namespace Snapd {
 
     namespace Task {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::id': GObject.Object.Notify;
+            'notify::kind': GObject.Object.Notify;
+            'notify::progress-done': GObject.Object.Notify;
+            'notify::progress-done': GObject.Object.Notify;
+            'notify::progress-label': GObject.Object.Notify;
+            'notify::progress-label': GObject.Object.Notify;
+            'notify::progress-total': GObject.Object.Notify;
+            'notify::progress-total': GObject.Object.Notify;
+            'notify::ready': GObject.Object.Notify;
+            'notify::ready-time': GObject.Object.Notify;
+            'notify::ready-time': GObject.Object.Notify;
+            'notify::spawn-time': GObject.Object.Notify;
+            'notify::spawn-time': GObject.Object.Notify;
+            'notify::status': GObject.Object.Notify;
+            'notify::summary': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6010,8 +6314,14 @@ export namespace Snapd {
         // Signals
 
         connect<K extends keyof Task.SignalSignatures>(signal: K, callback: Task.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Task.SignalSignatures>(signal: K, callback: Task.SignalSignatures[K]): number;
-        emit<K extends keyof Task.SignalSignatures>(signal: K, ...args: Parameters<Task.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Task.SignalSignatures>(
+            signal: K,
+            ...args: Task.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -6069,7 +6379,15 @@ export namespace Snapd {
 
     namespace UserInformation {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::auth-data': GObject.Object.Notify;
+            'notify::auth-data': GObject.Object.Notify;
+            'notify::email': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::ssh-keys': GObject.Object.Notify;
+            'notify::ssh-keys': GObject.Object.Notify;
+            'notify::username': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -6113,14 +6431,17 @@ export namespace Snapd {
             signal: K,
             callback: UserInformation.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UserInformation.SignalSignatures>(
             signal: K,
             callback: UserInformation.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UserInformation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UserInformation.SignalSignatures[K]>
+            ...args: UserInformation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

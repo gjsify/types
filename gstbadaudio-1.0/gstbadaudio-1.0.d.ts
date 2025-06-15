@@ -82,7 +82,14 @@ export namespace GstBadAudio {
     const NONSTREAM_AUDIO_DECODER_SRC_NAME: string;
     namespace NonstreamAudioDecoder {
         // Signal signatures
-        interface SignalSignatures extends Gst.Element.SignalSignatures {}
+        interface SignalSignatures extends Gst.Element.SignalSignatures {
+            'notify::current-subsong': GObject.Object.Notify;
+            'notify::current-subsong': GObject.Object.Notify;
+            'notify::num-loops': GObject.Object.Notify;
+            'notify::num-loops': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -267,14 +274,17 @@ export namespace GstBadAudio {
             signal: K,
             callback: NonstreamAudioDecoder.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NonstreamAudioDecoder.SignalSignatures>(
             signal: K,
             callback: NonstreamAudioDecoder.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NonstreamAudioDecoder.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NonstreamAudioDecoder.SignalSignatures[K]>
+            ...args: NonstreamAudioDecoder.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -440,14 +450,17 @@ export namespace GstBadAudio {
             signal: K,
             callback: PlanarAudioAdapter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PlanarAudioAdapter.SignalSignatures>(
             signal: K,
             callback: PlanarAudioAdapter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PlanarAudioAdapter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PlanarAudioAdapter.SignalSignatures[K]>
+            ...args: PlanarAudioAdapter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

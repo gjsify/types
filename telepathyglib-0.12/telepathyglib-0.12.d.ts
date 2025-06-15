@@ -4926,6 +4926,75 @@ export namespace TelepathyGLib {
             'avatar-changed': AvatarChanged;
             'presence-changed': PresenceChanged;
             'status-changed': StatusChanged;
+            'notify::automatic-presence-type': GObject.Object.Notify;
+            'notify::automatic-presence-type': GObject.Object.Notify;
+            'notify::automatic-status': GObject.Object.Notify;
+            'notify::automatic-status': GObject.Object.Notify;
+            'notify::automatic-status-message': GObject.Object.Notify;
+            'notify::automatic-status-message': GObject.Object.Notify;
+            'notify::changing-presence': GObject.Object.Notify;
+            'notify::changing-presence': GObject.Object.Notify;
+            'notify::cm-name': GObject.Object.Notify;
+            'notify::cm-name': GObject.Object.Notify;
+            'notify::connect-automatically': GObject.Object.Notify;
+            'notify::connect-automatically': GObject.Object.Notify;
+            'notify::connection': GObject.Object.Notify;
+            'notify::connection-error': GObject.Object.Notify;
+            'notify::connection-error': GObject.Object.Notify;
+            'notify::connection-error-details': GObject.Object.Notify;
+            'notify::connection-error-details': GObject.Object.Notify;
+            'notify::connection-manager': GObject.Object.Notify;
+            'notify::connection-manager': GObject.Object.Notify;
+            'notify::connection-status': GObject.Object.Notify;
+            'notify::connection-status': GObject.Object.Notify;
+            'notify::connection-status-reason': GObject.Object.Notify;
+            'notify::connection-status-reason': GObject.Object.Notify;
+            'notify::current-presence-type': GObject.Object.Notify;
+            'notify::current-presence-type': GObject.Object.Notify;
+            'notify::current-status': GObject.Object.Notify;
+            'notify::current-status': GObject.Object.Notify;
+            'notify::current-status-message': GObject.Object.Notify;
+            'notify::current-status-message': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::enabled': GObject.Object.Notify;
+            'notify::has-been-online': GObject.Object.Notify;
+            'notify::has-been-online': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::nickname': GObject.Object.Notify;
+            'notify::normalized-name': GObject.Object.Notify;
+            'notify::normalized-name': GObject.Object.Notify;
+            'notify::protocol': GObject.Object.Notify;
+            'notify::protocol-name': GObject.Object.Notify;
+            'notify::protocol-name': GObject.Object.Notify;
+            'notify::requested-presence-type': GObject.Object.Notify;
+            'notify::requested-presence-type': GObject.Object.Notify;
+            'notify::requested-status': GObject.Object.Notify;
+            'notify::requested-status': GObject.Object.Notify;
+            'notify::requested-status-message': GObject.Object.Notify;
+            'notify::requested-status-message': GObject.Object.Notify;
+            'notify::service': GObject.Object.Notify;
+            'notify::storage-identifier': GObject.Object.Notify;
+            'notify::storage-identifier': GObject.Object.Notify;
+            'notify::storage-identifier-variant': GObject.Object.Notify;
+            'notify::storage-identifier-variant': GObject.Object.Notify;
+            'notify::storage-provider': GObject.Object.Notify;
+            'notify::storage-provider': GObject.Object.Notify;
+            'notify::storage-restrictions': GObject.Object.Notify;
+            'notify::storage-restrictions': GObject.Object.Notify;
+            'notify::supersedes': GObject.Object.Notify;
+            'notify::uri-schemes': GObject.Object.Notify;
+            'notify::uri-schemes': GObject.Object.Notify;
+            'notify::valid': GObject.Object.Notify;
+            'notify::bus-name': GObject.Object.Notify;
+            'notify::bus-name': GObject.Object.Notify;
+            'notify::dbus-daemon': GObject.Object.Notify;
+            'notify::dbus-daemon': GObject.Object.Notify;
+            'notify::factory': GObject.Object.Notify;
+            'notify::interfaces': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -5850,14 +5919,17 @@ export namespace TelepathyGLib {
         // Signals
 
         connect<K extends keyof Account.SignalSignatures>(signal: K, callback: Account.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Account.SignalSignatures>(
             signal: K,
             callback: Account.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Account.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Account.SignalSignatures[K]>
+            ...args: Account.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -6816,6 +6888,20 @@ export namespace TelepathyGLib {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             're-handled': ReHandled;
+            'notify::account': GObject.Object.Notify;
+            'notify::channel-request': GObject.Object.Notify;
+            'notify::channel-request': GObject.Object.Notify;
+            'notify::request-vardict': GObject.Object.Notify;
+            'notify::request-vardict': GObject.Object.Notify;
+            'notify::user-action-time': GObject.Object.Notify;
+            'notify::user-action-time': GObject.Object.Notify;
+            're-handled::account': ReHandled;
+            're-handled::channel-request': ReHandled;
+            're-handled::channel-request': ReHandled;
+            're-handled::request-vardict': ReHandled;
+            're-handled::request-vardict': ReHandled;
+            're-handled::user-action-time': ReHandled;
+            're-handled::user-action-time': ReHandled;
         }
 
         // Constructor properties interface
@@ -6987,14 +7073,17 @@ export namespace TelepathyGLib {
             signal: K,
             callback: AccountChannelRequest.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AccountChannelRequest.SignalSignatures>(
             signal: K,
             callback: AccountChannelRequest.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AccountChannelRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AccountChannelRequest.SignalSignatures[K]>
+            ...args: AccountChannelRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -7761,6 +7850,14 @@ export namespace TelepathyGLib {
             'account-removed': AccountRemoved;
             'account-validity-changed': AccountValidityChanged;
             'most-available-presence-changed': MostAvailablePresenceChanged;
+            'notify::bus-name': GObject.Object.Notify;
+            'notify::bus-name': GObject.Object.Notify;
+            'notify::dbus-daemon': GObject.Object.Notify;
+            'notify::dbus-daemon': GObject.Object.Notify;
+            'notify::factory': GObject.Object.Notify;
+            'notify::interfaces': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -7802,14 +7899,17 @@ export namespace TelepathyGLib {
             signal: K,
             callback: AccountManager.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AccountManager.SignalSignatures>(
             signal: K,
             callback: AccountManager.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AccountManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AccountManager.SignalSignatures[K]>
+            ...args: AccountManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -8078,7 +8178,42 @@ export namespace TelepathyGLib {
 
     namespace AccountRequest {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::account-manager': GObject.Object.Notify;
+            'notify::account-manager': GObject.Object.Notify;
+            'notify::automatic-presence-type': GObject.Object.Notify;
+            'notify::automatic-presence-type': GObject.Object.Notify;
+            'notify::automatic-status': GObject.Object.Notify;
+            'notify::automatic-status': GObject.Object.Notify;
+            'notify::automatic-status-message': GObject.Object.Notify;
+            'notify::automatic-status-message': GObject.Object.Notify;
+            'notify::avatar': GObject.Object.Notify;
+            'notify::avatar-mime-type': GObject.Object.Notify;
+            'notify::avatar-mime-type': GObject.Object.Notify;
+            'notify::connect-automatically': GObject.Object.Notify;
+            'notify::connect-automatically': GObject.Object.Notify;
+            'notify::connection-manager': GObject.Object.Notify;
+            'notify::connection-manager': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::display-name': GObject.Object.Notify;
+            'notify::enabled': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::nickname': GObject.Object.Notify;
+            'notify::parameters': GObject.Object.Notify;
+            'notify::properties': GObject.Object.Notify;
+            'notify::protocol': GObject.Object.Notify;
+            'notify::requested-presence-type': GObject.Object.Notify;
+            'notify::requested-presence-type': GObject.Object.Notify;
+            'notify::requested-status': GObject.Object.Notify;
+            'notify::requested-status': GObject.Object.Notify;
+            'notify::requested-status-message': GObject.Object.Notify;
+            'notify::requested-status-message': GObject.Object.Notify;
+            'notify::service': GObject.Object.Notify;
+            'notify::storage-provider': GObject.Object.Notify;
+            'notify::storage-provider': GObject.Object.Notify;
+            'notify::supersedes': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8346,14 +8481,17 @@ export namespace TelepathyGLib {
             signal: K,
             callback: AccountRequest.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AccountRequest.SignalSignatures>(
             signal: K,
             callback: AccountRequest.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AccountRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AccountRequest.SignalSignatures[K]>
+            ...args: AccountRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -8507,7 +8645,13 @@ export namespace TelepathyGLib {
 
     namespace AddDispatchOperationContext {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::account': GObject.Object.Notify;
+            'notify::channels': GObject.Object.Notify;
+            'notify::connection': GObject.Object.Notify;
+            'notify::dispatch-operation': GObject.Object.Notify;
+            'notify::dispatch-operation': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8582,14 +8726,17 @@ export namespace TelepathyGLib {
             signal: K,
             callback: AddDispatchOperationContext.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AddDispatchOperationContext.SignalSignatures>(
             signal: K,
             callback: AddDispatchOperationContext.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AddDispatchOperationContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AddDispatchOperationContext.SignalSignatures[K]>
+            ...args: AddDispatchOperationContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -8616,7 +8763,10 @@ export namespace TelepathyGLib {
 
     namespace AutomaticClientFactory {
         // Signal signatures
-        interface SignalSignatures extends SimpleClientFactory.SignalSignatures {}
+        interface SignalSignatures extends SimpleClientFactory.SignalSignatures {
+            'notify::dbus-daemon': GObject.Object.Notify;
+            'notify::dbus-daemon': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -8643,14 +8793,17 @@ export namespace TelepathyGLib {
             signal: K,
             callback: AutomaticClientFactory.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AutomaticClientFactory.SignalSignatures>(
             signal: K,
             callback: AutomaticClientFactory.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AutomaticClientFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AutomaticClientFactory.SignalSignatures[K]>
+            ...args: AutomaticClientFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace AutomaticProxyFactory {
@@ -8682,14 +8835,17 @@ export namespace TelepathyGLib {
             signal: K,
             callback: AutomaticProxyFactory.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof AutomaticProxyFactory.SignalSignatures>(
             signal: K,
             callback: AutomaticProxyFactory.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof AutomaticProxyFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<AutomaticProxyFactory.SignalSignatures[K]>
+            ...args: AutomaticProxyFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -9185,6 +9341,36 @@ export namespace TelepathyGLib {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'request-added': RequestAdded;
             'request-removed': RequestRemoved;
+            'notify::account-manager': GObject.Object.Notify;
+            'notify::account-manager': GObject.Object.Notify;
+            'notify::channel-factory': GObject.Object.Notify;
+            'notify::channel-factory': GObject.Object.Notify;
+            'notify::dbus-daemon': GObject.Object.Notify;
+            'notify::dbus-daemon': GObject.Object.Notify;
+            'notify::factory': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::uniquify-name': GObject.Object.Notify;
+            'notify::uniquify-name': GObject.Object.Notify;
+            'request-added::account-manager': RequestAdded;
+            'request-added::account-manager': RequestAdded;
+            'request-added::channel-factory': RequestAdded;
+            'request-added::channel-factory': RequestAdded;
+            'request-added::dbus-daemon': RequestAdded;
+            'request-added::dbus-daemon': RequestAdded;
+            'request-added::factory': RequestAdded;
+            'request-added::name': RequestAdded;
+            'request-added::uniquify-name': RequestAdded;
+            'request-added::uniquify-name': RequestAdded;
+            'request-removed::account-manager': RequestRemoved;
+            'request-removed::account-manager': RequestRemoved;
+            'request-removed::channel-factory': RequestRemoved;
+            'request-removed::channel-factory': RequestRemoved;
+            'request-removed::dbus-daemon': RequestRemoved;
+            'request-removed::dbus-daemon': RequestRemoved;
+            'request-removed::factory': RequestRemoved;
+            'request-removed::name': RequestRemoved;
+            'request-removed::uniquify-name': RequestRemoved;
+            'request-removed::uniquify-name': RequestRemoved;
         }
 
         // Constructor properties interface
@@ -9342,14 +9528,17 @@ export namespace TelepathyGLib {
             signal: K,
             callback: BaseClient.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BaseClient.SignalSignatures>(
             signal: K,
             callback: BaseClient.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BaseClient.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BaseClient.SignalSignatures[K]>
+            ...args: BaseClient.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -9771,6 +9960,22 @@ export namespace TelepathyGLib {
             'clients-interested': ClientsInterested;
             'clients-uninterested': ClientsUninterested;
             'shutdown-finished': ShutdownFinished;
+            'notify::account-path-suffix': GObject.Object.Notify;
+            'notify::account-path-suffix': GObject.Object.Notify;
+            'notify::has-immortal-handles': GObject.Object.Notify;
+            'notify::has-immortal-handles': GObject.Object.Notify;
+            'clients-interested::account-path-suffix': ClientsInterested;
+            'clients-interested::account-path-suffix': ClientsInterested;
+            'clients-interested::has-immortal-handles': ClientsInterested;
+            'clients-interested::has-immortal-handles': ClientsInterested;
+            'clients-uninterested::account-path-suffix': ClientsUninterested;
+            'clients-uninterested::account-path-suffix': ClientsUninterested;
+            'clients-uninterested::has-immortal-handles': ClientsUninterested;
+            'clients-uninterested::has-immortal-handles': ClientsUninterested;
+            'shutdown-finished::account-path-suffix': ShutdownFinished;
+            'shutdown-finished::account-path-suffix': ShutdownFinished;
+            'shutdown-finished::has-immortal-handles': ShutdownFinished;
+            'shutdown-finished::has-immortal-handles': ShutdownFinished;
         }
 
         // Constructor properties interface
@@ -9841,14 +10046,17 @@ export namespace TelepathyGLib {
             signal: K,
             callback: BaseConnection.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BaseConnection.SignalSignatures>(
             signal: K,
             callback: BaseConnection.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BaseConnection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BaseConnection.SignalSignatures[K]>
+            ...args: BaseConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -10056,14 +10264,17 @@ export namespace TelepathyGLib {
             signal: K,
             callback: BasicProxyFactory.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BasicProxyFactory.SignalSignatures>(
             signal: K,
             callback: BasicProxyFactory.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BasicProxyFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BasicProxyFactory.SignalSignatures[K]>
+            ...args: BasicProxyFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -10580,6 +10791,58 @@ export namespace TelepathyGLib {
             'content-removed': ContentRemoved;
             'members-changed': MembersChanged;
             'state-changed': StateChanged;
+            'notify::contents': GObject.Object.Notify;
+            'notify::flags': GObject.Object.Notify;
+            'notify::hardware-streaming': GObject.Object.Notify;
+            'notify::hardware-streaming': GObject.Object.Notify;
+            'notify::hold-state': GObject.Object.Notify;
+            'notify::hold-state': GObject.Object.Notify;
+            'notify::hold-state-reason': GObject.Object.Notify;
+            'notify::hold-state-reason': GObject.Object.Notify;
+            'notify::initial-audio': GObject.Object.Notify;
+            'notify::initial-audio': GObject.Object.Notify;
+            'notify::initial-audio-name': GObject.Object.Notify;
+            'notify::initial-audio-name': GObject.Object.Notify;
+            'notify::initial-video': GObject.Object.Notify;
+            'notify::initial-video': GObject.Object.Notify;
+            'notify::initial-video-name': GObject.Object.Notify;
+            'notify::initial-video-name': GObject.Object.Notify;
+            'notify::mutable-contents': GObject.Object.Notify;
+            'notify::mutable-contents': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::state-details': GObject.Object.Notify;
+            'notify::state-details': GObject.Object.Notify;
+            'notify::state-reason': GObject.Object.Notify;
+            'notify::state-reason': GObject.Object.Notify;
+            'notify::channel-ready': GObject.Object.Notify;
+            'notify::channel-ready': GObject.Object.Notify;
+            'notify::connection': GObject.Object.Notify;
+            'notify::group-flags': GObject.Object.Notify;
+            'notify::group-flags': GObject.Object.Notify;
+            'notify::group-self-contact': GObject.Object.Notify;
+            'notify::group-self-contact': GObject.Object.Notify;
+            'notify::group-self-handle': GObject.Object.Notify;
+            'notify::group-self-handle': GObject.Object.Notify;
+            'notify::identifier': GObject.Object.Notify;
+            'notify::initiator-contact': GObject.Object.Notify;
+            'notify::initiator-contact': GObject.Object.Notify;
+            'notify::initiator-handle': GObject.Object.Notify;
+            'notify::initiator-handle': GObject.Object.Notify;
+            'notify::initiator-identifier': GObject.Object.Notify;
+            'notify::initiator-identifier': GObject.Object.Notify;
+            'notify::password-needed': GObject.Object.Notify;
+            'notify::password-needed': GObject.Object.Notify;
+            'notify::requested': GObject.Object.Notify;
+            'notify::target-contact': GObject.Object.Notify;
+            'notify::target-contact': GObject.Object.Notify;
+            'notify::bus-name': GObject.Object.Notify;
+            'notify::bus-name': GObject.Object.Notify;
+            'notify::dbus-daemon': GObject.Object.Notify;
+            'notify::dbus-daemon': GObject.Object.Notify;
+            'notify::factory': GObject.Object.Notify;
+            'notify::interfaces': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -10734,14 +10997,17 @@ export namespace TelepathyGLib {
             signal: K,
             callback: CallChannel.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CallChannel.SignalSignatures>(
             signal: K,
             callback: CallChannel.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CallChannel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CallChannel.SignalSignatures[K]>
+            ...args: CallChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -11072,6 +11338,21 @@ export namespace TelepathyGLib {
             removed: Removed;
             'streams-added': StreamsAdded;
             'streams-removed': StreamsRemoved;
+            'notify::channel': GObject.Object.Notify;
+            'notify::connection': GObject.Object.Notify;
+            'notify::disposition': GObject.Object.Notify;
+            'notify::media-type': GObject.Object.Notify;
+            'notify::media-type': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::streams': GObject.Object.Notify;
+            'notify::bus-name': GObject.Object.Notify;
+            'notify::bus-name': GObject.Object.Notify;
+            'notify::dbus-daemon': GObject.Object.Notify;
+            'notify::dbus-daemon': GObject.Object.Notify;
+            'notify::factory': GObject.Object.Notify;
+            'notify::interfaces': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -11140,14 +11421,17 @@ export namespace TelepathyGLib {
             signal: K,
             callback: CallContent.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CallContent.SignalSignatures>(
             signal: K,
             callback: CallContent.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CallContent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CallContent.SignalSignatures[K]>
+            ...args: CallContent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -11271,6 +11555,20 @@ export namespace TelepathyGLib {
         interface SignalSignatures extends Proxy.SignalSignatures {
             'local-sending-state-changed': LocalSendingStateChanged;
             'remote-members-changed': RemoteMembersChanged;
+            'notify::can-request-receiving': GObject.Object.Notify;
+            'notify::can-request-receiving': GObject.Object.Notify;
+            'notify::connection': GObject.Object.Notify;
+            'notify::content': GObject.Object.Notify;
+            'notify::local-sending-state': GObject.Object.Notify;
+            'notify::local-sending-state': GObject.Object.Notify;
+            'notify::bus-name': GObject.Object.Notify;
+            'notify::bus-name': GObject.Object.Notify;
+            'notify::dbus-daemon': GObject.Object.Notify;
+            'notify::dbus-daemon': GObject.Object.Notify;
+            'notify::factory': GObject.Object.Notify;
+            'notify::interfaces': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -11332,14 +11630,17 @@ export namespace TelepathyGLib {
             signal: K,
             callback: CallStream.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CallStream.SignalSignatures>(
             signal: K,
             callback: CallStream.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CallStream.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CallStream.SignalSignatures[K]>
+            ...args: CallStream.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -11464,7 +11765,12 @@ export namespace TelepathyGLib {
 
     namespace Capabilities {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::channel-classes-variant': GObject.Object.Notify;
+            'notify::channel-classes-variant': GObject.Object.Notify;
+            'notify::contact-specific': GObject.Object.Notify;
+            'notify::contact-specific': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -11537,14 +11843,17 @@ export namespace TelepathyGLib {
             signal: K,
             callback: Capabilities.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Capabilities.SignalSignatures>(
             signal: K,
             callback: Capabilities.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Capabilities.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Capabilities.SignalSignatures[K]>
+            ...args: Capabilities.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -11793,6 +12102,180 @@ export namespace TelepathyGLib {
             'group-flags-changed': GroupFlagsChanged;
             'group-members-changed': GroupMembersChanged;
             'group-members-changed-detailed': GroupMembersChangedDetailed;
+            'notify::channel-ready': GObject.Object.Notify;
+            'notify::channel-ready': GObject.Object.Notify;
+            'notify::connection': GObject.Object.Notify;
+            'notify::group-flags': GObject.Object.Notify;
+            'notify::group-flags': GObject.Object.Notify;
+            'notify::group-self-contact': GObject.Object.Notify;
+            'notify::group-self-contact': GObject.Object.Notify;
+            'notify::group-self-handle': GObject.Object.Notify;
+            'notify::group-self-handle': GObject.Object.Notify;
+            'notify::identifier': GObject.Object.Notify;
+            'notify::initiator-contact': GObject.Object.Notify;
+            'notify::initiator-contact': GObject.Object.Notify;
+            'notify::initiator-handle': GObject.Object.Notify;
+            'notify::initiator-handle': GObject.Object.Notify;
+            'notify::initiator-identifier': GObject.Object.Notify;
+            'notify::initiator-identifier': GObject.Object.Notify;
+            'notify::password-needed': GObject.Object.Notify;
+            'notify::password-needed': GObject.Object.Notify;
+            'notify::requested': GObject.Object.Notify;
+            'notify::target-contact': GObject.Object.Notify;
+            'notify::target-contact': GObject.Object.Notify;
+            'notify::bus-name': GObject.Object.Notify;
+            'notify::bus-name': GObject.Object.Notify;
+            'notify::dbus-daemon': GObject.Object.Notify;
+            'notify::dbus-daemon': GObject.Object.Notify;
+            'notify::factory': GObject.Object.Notify;
+            'notify::interfaces': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'chat-state-changed::channel-ready': ChatStateChanged;
+            'chat-state-changed::channel-ready': ChatStateChanged;
+            'chat-state-changed::connection': ChatStateChanged;
+            'chat-state-changed::group-flags': ChatStateChanged;
+            'chat-state-changed::group-flags': ChatStateChanged;
+            'chat-state-changed::group-self-contact': ChatStateChanged;
+            'chat-state-changed::group-self-contact': ChatStateChanged;
+            'chat-state-changed::group-self-handle': ChatStateChanged;
+            'chat-state-changed::group-self-handle': ChatStateChanged;
+            'chat-state-changed::identifier': ChatStateChanged;
+            'chat-state-changed::initiator-contact': ChatStateChanged;
+            'chat-state-changed::initiator-contact': ChatStateChanged;
+            'chat-state-changed::initiator-handle': ChatStateChanged;
+            'chat-state-changed::initiator-handle': ChatStateChanged;
+            'chat-state-changed::initiator-identifier': ChatStateChanged;
+            'chat-state-changed::initiator-identifier': ChatStateChanged;
+            'chat-state-changed::password-needed': ChatStateChanged;
+            'chat-state-changed::password-needed': ChatStateChanged;
+            'chat-state-changed::requested': ChatStateChanged;
+            'chat-state-changed::target-contact': ChatStateChanged;
+            'chat-state-changed::target-contact': ChatStateChanged;
+            'chat-state-changed::bus-name': ChatStateChanged;
+            'chat-state-changed::bus-name': ChatStateChanged;
+            'chat-state-changed::dbus-daemon': ChatStateChanged;
+            'chat-state-changed::dbus-daemon': ChatStateChanged;
+            'chat-state-changed::factory': ChatStateChanged;
+            'chat-state-changed::interfaces': ChatStateChanged;
+            'chat-state-changed::object-path': ChatStateChanged;
+            'chat-state-changed::object-path': ChatStateChanged;
+            'group-contacts-changed::channel-ready': GroupContactsChanged;
+            'group-contacts-changed::channel-ready': GroupContactsChanged;
+            'group-contacts-changed::connection': GroupContactsChanged;
+            'group-contacts-changed::group-flags': GroupContactsChanged;
+            'group-contacts-changed::group-flags': GroupContactsChanged;
+            'group-contacts-changed::group-self-contact': GroupContactsChanged;
+            'group-contacts-changed::group-self-contact': GroupContactsChanged;
+            'group-contacts-changed::group-self-handle': GroupContactsChanged;
+            'group-contacts-changed::group-self-handle': GroupContactsChanged;
+            'group-contacts-changed::identifier': GroupContactsChanged;
+            'group-contacts-changed::initiator-contact': GroupContactsChanged;
+            'group-contacts-changed::initiator-contact': GroupContactsChanged;
+            'group-contacts-changed::initiator-handle': GroupContactsChanged;
+            'group-contacts-changed::initiator-handle': GroupContactsChanged;
+            'group-contacts-changed::initiator-identifier': GroupContactsChanged;
+            'group-contacts-changed::initiator-identifier': GroupContactsChanged;
+            'group-contacts-changed::password-needed': GroupContactsChanged;
+            'group-contacts-changed::password-needed': GroupContactsChanged;
+            'group-contacts-changed::requested': GroupContactsChanged;
+            'group-contacts-changed::target-contact': GroupContactsChanged;
+            'group-contacts-changed::target-contact': GroupContactsChanged;
+            'group-contacts-changed::bus-name': GroupContactsChanged;
+            'group-contacts-changed::bus-name': GroupContactsChanged;
+            'group-contacts-changed::dbus-daemon': GroupContactsChanged;
+            'group-contacts-changed::dbus-daemon': GroupContactsChanged;
+            'group-contacts-changed::factory': GroupContactsChanged;
+            'group-contacts-changed::interfaces': GroupContactsChanged;
+            'group-contacts-changed::object-path': GroupContactsChanged;
+            'group-contacts-changed::object-path': GroupContactsChanged;
+            'group-flags-changed::channel-ready': GroupFlagsChanged;
+            'group-flags-changed::channel-ready': GroupFlagsChanged;
+            'group-flags-changed::connection': GroupFlagsChanged;
+            'group-flags-changed::group-flags': GroupFlagsChanged;
+            'group-flags-changed::group-flags': GroupFlagsChanged;
+            'group-flags-changed::group-self-contact': GroupFlagsChanged;
+            'group-flags-changed::group-self-contact': GroupFlagsChanged;
+            'group-flags-changed::group-self-handle': GroupFlagsChanged;
+            'group-flags-changed::group-self-handle': GroupFlagsChanged;
+            'group-flags-changed::identifier': GroupFlagsChanged;
+            'group-flags-changed::initiator-contact': GroupFlagsChanged;
+            'group-flags-changed::initiator-contact': GroupFlagsChanged;
+            'group-flags-changed::initiator-handle': GroupFlagsChanged;
+            'group-flags-changed::initiator-handle': GroupFlagsChanged;
+            'group-flags-changed::initiator-identifier': GroupFlagsChanged;
+            'group-flags-changed::initiator-identifier': GroupFlagsChanged;
+            'group-flags-changed::password-needed': GroupFlagsChanged;
+            'group-flags-changed::password-needed': GroupFlagsChanged;
+            'group-flags-changed::requested': GroupFlagsChanged;
+            'group-flags-changed::target-contact': GroupFlagsChanged;
+            'group-flags-changed::target-contact': GroupFlagsChanged;
+            'group-flags-changed::bus-name': GroupFlagsChanged;
+            'group-flags-changed::bus-name': GroupFlagsChanged;
+            'group-flags-changed::dbus-daemon': GroupFlagsChanged;
+            'group-flags-changed::dbus-daemon': GroupFlagsChanged;
+            'group-flags-changed::factory': GroupFlagsChanged;
+            'group-flags-changed::interfaces': GroupFlagsChanged;
+            'group-flags-changed::object-path': GroupFlagsChanged;
+            'group-flags-changed::object-path': GroupFlagsChanged;
+            'group-members-changed::channel-ready': GroupMembersChanged;
+            'group-members-changed::channel-ready': GroupMembersChanged;
+            'group-members-changed::connection': GroupMembersChanged;
+            'group-members-changed::group-flags': GroupMembersChanged;
+            'group-members-changed::group-flags': GroupMembersChanged;
+            'group-members-changed::group-self-contact': GroupMembersChanged;
+            'group-members-changed::group-self-contact': GroupMembersChanged;
+            'group-members-changed::group-self-handle': GroupMembersChanged;
+            'group-members-changed::group-self-handle': GroupMembersChanged;
+            'group-members-changed::identifier': GroupMembersChanged;
+            'group-members-changed::initiator-contact': GroupMembersChanged;
+            'group-members-changed::initiator-contact': GroupMembersChanged;
+            'group-members-changed::initiator-handle': GroupMembersChanged;
+            'group-members-changed::initiator-handle': GroupMembersChanged;
+            'group-members-changed::initiator-identifier': GroupMembersChanged;
+            'group-members-changed::initiator-identifier': GroupMembersChanged;
+            'group-members-changed::password-needed': GroupMembersChanged;
+            'group-members-changed::password-needed': GroupMembersChanged;
+            'group-members-changed::requested': GroupMembersChanged;
+            'group-members-changed::target-contact': GroupMembersChanged;
+            'group-members-changed::target-contact': GroupMembersChanged;
+            'group-members-changed::bus-name': GroupMembersChanged;
+            'group-members-changed::bus-name': GroupMembersChanged;
+            'group-members-changed::dbus-daemon': GroupMembersChanged;
+            'group-members-changed::dbus-daemon': GroupMembersChanged;
+            'group-members-changed::factory': GroupMembersChanged;
+            'group-members-changed::interfaces': GroupMembersChanged;
+            'group-members-changed::object-path': GroupMembersChanged;
+            'group-members-changed::object-path': GroupMembersChanged;
+            'group-members-changed-detailed::channel-ready': GroupMembersChangedDetailed;
+            'group-members-changed-detailed::channel-ready': GroupMembersChangedDetailed;
+            'group-members-changed-detailed::connection': GroupMembersChangedDetailed;
+            'group-members-changed-detailed::group-flags': GroupMembersChangedDetailed;
+            'group-members-changed-detailed::group-flags': GroupMembersChangedDetailed;
+            'group-members-changed-detailed::group-self-contact': GroupMembersChangedDetailed;
+            'group-members-changed-detailed::group-self-contact': GroupMembersChangedDetailed;
+            'group-members-changed-detailed::group-self-handle': GroupMembersChangedDetailed;
+            'group-members-changed-detailed::group-self-handle': GroupMembersChangedDetailed;
+            'group-members-changed-detailed::identifier': GroupMembersChangedDetailed;
+            'group-members-changed-detailed::initiator-contact': GroupMembersChangedDetailed;
+            'group-members-changed-detailed::initiator-contact': GroupMembersChangedDetailed;
+            'group-members-changed-detailed::initiator-handle': GroupMembersChangedDetailed;
+            'group-members-changed-detailed::initiator-handle': GroupMembersChangedDetailed;
+            'group-members-changed-detailed::initiator-identifier': GroupMembersChangedDetailed;
+            'group-members-changed-detailed::initiator-identifier': GroupMembersChangedDetailed;
+            'group-members-changed-detailed::password-needed': GroupMembersChangedDetailed;
+            'group-members-changed-detailed::password-needed': GroupMembersChangedDetailed;
+            'group-members-changed-detailed::requested': GroupMembersChangedDetailed;
+            'group-members-changed-detailed::target-contact': GroupMembersChangedDetailed;
+            'group-members-changed-detailed::target-contact': GroupMembersChangedDetailed;
+            'group-members-changed-detailed::bus-name': GroupMembersChangedDetailed;
+            'group-members-changed-detailed::bus-name': GroupMembersChangedDetailed;
+            'group-members-changed-detailed::dbus-daemon': GroupMembersChangedDetailed;
+            'group-members-changed-detailed::dbus-daemon': GroupMembersChangedDetailed;
+            'group-members-changed-detailed::factory': GroupMembersChangedDetailed;
+            'group-members-changed-detailed::interfaces': GroupMembersChangedDetailed;
+            'group-members-changed-detailed::object-path': GroupMembersChangedDetailed;
+            'group-members-changed-detailed::object-path': GroupMembersChangedDetailed;
         }
 
         // Constructor properties interface
@@ -12139,14 +12622,17 @@ export namespace TelepathyGLib {
         // Signals
 
         connect<K extends keyof Channel.SignalSignatures>(signal: K, callback: Channel.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Channel.SignalSignatures>(
             signal: K,
             callback: Channel.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Channel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Channel.SignalSignatures[K]>
+            ...args: Channel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -12723,6 +13209,32 @@ export namespace TelepathyGLib {
         // Signal signatures
         interface SignalSignatures extends Proxy.SignalSignatures {
             'channel-lost': ChannelLost;
+            'notify::account': GObject.Object.Notify;
+            'notify::channels': GObject.Object.Notify;
+            'notify::connection': GObject.Object.Notify;
+            'notify::possible-handlers': GObject.Object.Notify;
+            'notify::possible-handlers': GObject.Object.Notify;
+            'notify::bus-name': GObject.Object.Notify;
+            'notify::bus-name': GObject.Object.Notify;
+            'notify::dbus-daemon': GObject.Object.Notify;
+            'notify::dbus-daemon': GObject.Object.Notify;
+            'notify::factory': GObject.Object.Notify;
+            'notify::interfaces': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'channel-lost::account': ChannelLost;
+            'channel-lost::channels': ChannelLost;
+            'channel-lost::connection': ChannelLost;
+            'channel-lost::possible-handlers': ChannelLost;
+            'channel-lost::possible-handlers': ChannelLost;
+            'channel-lost::bus-name': ChannelLost;
+            'channel-lost::bus-name': ChannelLost;
+            'channel-lost::dbus-daemon': ChannelLost;
+            'channel-lost::dbus-daemon': ChannelLost;
+            'channel-lost::factory': ChannelLost;
+            'channel-lost::interfaces': ChannelLost;
+            'channel-lost::object-path': ChannelLost;
+            'channel-lost::object-path': ChannelLost;
         }
 
         // Constructor properties interface
@@ -12859,14 +13371,17 @@ export namespace TelepathyGLib {
             signal: K,
             callback: ChannelDispatchOperation.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ChannelDispatchOperation.SignalSignatures>(
             signal: K,
             callback: ChannelDispatchOperation.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ChannelDispatchOperation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ChannelDispatchOperation.SignalSignatures[K]>
+            ...args: ChannelDispatchOperation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -13364,7 +13879,16 @@ export namespace TelepathyGLib {
 
     namespace ChannelDispatcher {
         // Signal signatures
-        interface SignalSignatures extends Proxy.SignalSignatures {}
+        interface SignalSignatures extends Proxy.SignalSignatures {
+            'notify::bus-name': GObject.Object.Notify;
+            'notify::bus-name': GObject.Object.Notify;
+            'notify::dbus-daemon': GObject.Object.Notify;
+            'notify::dbus-daemon': GObject.Object.Notify;
+            'notify::factory': GObject.Object.Notify;
+            'notify::interfaces': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -13405,14 +13929,17 @@ export namespace TelepathyGLib {
             signal: K,
             callback: ChannelDispatcher.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ChannelDispatcher.SignalSignatures>(
             signal: K,
             callback: ChannelDispatcher.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ChannelDispatcher.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ChannelDispatcher.SignalSignatures[K]>
+            ...args: ChannelDispatcher.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -13489,6 +14016,63 @@ export namespace TelepathyGLib {
         interface SignalSignatures extends Proxy.SignalSignatures {
             succeeded: Succeeded;
             'succeeded-with-channel': SucceededWithChannel;
+            'notify::account': GObject.Object.Notify;
+            'notify::channel-factory': GObject.Object.Notify;
+            'notify::channel-factory': GObject.Object.Notify;
+            'notify::hints-vardict': GObject.Object.Notify;
+            'notify::hints-vardict': GObject.Object.Notify;
+            'notify::immutable-properties-vardict': GObject.Object.Notify;
+            'notify::immutable-properties-vardict': GObject.Object.Notify;
+            'notify::preferred-handler': GObject.Object.Notify;
+            'notify::preferred-handler': GObject.Object.Notify;
+            'notify::user-action-time': GObject.Object.Notify;
+            'notify::user-action-time': GObject.Object.Notify;
+            'notify::bus-name': GObject.Object.Notify;
+            'notify::bus-name': GObject.Object.Notify;
+            'notify::dbus-daemon': GObject.Object.Notify;
+            'notify::dbus-daemon': GObject.Object.Notify;
+            'notify::factory': GObject.Object.Notify;
+            'notify::interfaces': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'succeeded::account': Succeeded;
+            'succeeded::channel-factory': Succeeded;
+            'succeeded::channel-factory': Succeeded;
+            'succeeded::hints-vardict': Succeeded;
+            'succeeded::hints-vardict': Succeeded;
+            'succeeded::immutable-properties-vardict': Succeeded;
+            'succeeded::immutable-properties-vardict': Succeeded;
+            'succeeded::preferred-handler': Succeeded;
+            'succeeded::preferred-handler': Succeeded;
+            'succeeded::user-action-time': Succeeded;
+            'succeeded::user-action-time': Succeeded;
+            'succeeded::bus-name': Succeeded;
+            'succeeded::bus-name': Succeeded;
+            'succeeded::dbus-daemon': Succeeded;
+            'succeeded::dbus-daemon': Succeeded;
+            'succeeded::factory': Succeeded;
+            'succeeded::interfaces': Succeeded;
+            'succeeded::object-path': Succeeded;
+            'succeeded::object-path': Succeeded;
+            'succeeded-with-channel::account': SucceededWithChannel;
+            'succeeded-with-channel::channel-factory': SucceededWithChannel;
+            'succeeded-with-channel::channel-factory': SucceededWithChannel;
+            'succeeded-with-channel::hints-vardict': SucceededWithChannel;
+            'succeeded-with-channel::hints-vardict': SucceededWithChannel;
+            'succeeded-with-channel::immutable-properties-vardict': SucceededWithChannel;
+            'succeeded-with-channel::immutable-properties-vardict': SucceededWithChannel;
+            'succeeded-with-channel::preferred-handler': SucceededWithChannel;
+            'succeeded-with-channel::preferred-handler': SucceededWithChannel;
+            'succeeded-with-channel::user-action-time': SucceededWithChannel;
+            'succeeded-with-channel::user-action-time': SucceededWithChannel;
+            'succeeded-with-channel::bus-name': SucceededWithChannel;
+            'succeeded-with-channel::bus-name': SucceededWithChannel;
+            'succeeded-with-channel::dbus-daemon': SucceededWithChannel;
+            'succeeded-with-channel::dbus-daemon': SucceededWithChannel;
+            'succeeded-with-channel::factory': SucceededWithChannel;
+            'succeeded-with-channel::interfaces': SucceededWithChannel;
+            'succeeded-with-channel::object-path': SucceededWithChannel;
+            'succeeded-with-channel::object-path': SucceededWithChannel;
         }
 
         // Constructor properties interface
@@ -13660,14 +14244,17 @@ export namespace TelepathyGLib {
             signal: K,
             callback: ChannelRequest.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ChannelRequest.SignalSignatures>(
             signal: K,
             callback: ChannelRequest.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ChannelRequest.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ChannelRequest.SignalSignatures[K]>
+            ...args: ChannelRequest.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -13757,14 +14344,17 @@ export namespace TelepathyGLib {
             signal: K,
             callback: ClientMessage.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ClientMessage.SignalSignatures>(
             signal: K,
             callback: ClientMessage.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ClientMessage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ClientMessage.SignalSignatures[K]>
+            ...args: ClientMessage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace Connection {
@@ -13802,6 +14392,104 @@ export namespace TelepathyGLib {
             'group-renamed': GroupRenamed;
             'groups-created': GroupsCreated;
             'groups-removed': GroupsRemoved;
+            'notify::balance': GObject.Object.Notify;
+            'notify::balance-currency': GObject.Object.Notify;
+            'notify::balance-currency': GObject.Object.Notify;
+            'notify::balance-scale': GObject.Object.Notify;
+            'notify::balance-scale': GObject.Object.Notify;
+            'notify::balance-uri': GObject.Object.Notify;
+            'notify::balance-uri': GObject.Object.Notify;
+            'notify::blocked-contacts': GObject.Object.Notify;
+            'notify::blocked-contacts': GObject.Object.Notify;
+            'notify::can-change-contact-list': GObject.Object.Notify;
+            'notify::can-change-contact-list': GObject.Object.Notify;
+            'notify::can-report-abusive': GObject.Object.Notify;
+            'notify::can-report-abusive': GObject.Object.Notify;
+            'notify::capabilities': GObject.Object.Notify;
+            'notify::cm-name': GObject.Object.Notify;
+            'notify::cm-name': GObject.Object.Notify;
+            'notify::connection-manager-name': GObject.Object.Notify;
+            'notify::connection-manager-name': GObject.Object.Notify;
+            'notify::connection-ready': GObject.Object.Notify;
+            'notify::connection-ready': GObject.Object.Notify;
+            'notify::contact-groups': GObject.Object.Notify;
+            'notify::contact-groups': GObject.Object.Notify;
+            'notify::contact-list-persists': GObject.Object.Notify;
+            'notify::contact-list-persists': GObject.Object.Notify;
+            'notify::contact-list-state': GObject.Object.Notify;
+            'notify::contact-list-state': GObject.Object.Notify;
+            'notify::disjoint-groups': GObject.Object.Notify;
+            'notify::disjoint-groups': GObject.Object.Notify;
+            'notify::group-storage': GObject.Object.Notify;
+            'notify::group-storage': GObject.Object.Notify;
+            'notify::protocol-name': GObject.Object.Notify;
+            'notify::protocol-name': GObject.Object.Notify;
+            'notify::request-uses-message': GObject.Object.Notify;
+            'notify::request-uses-message': GObject.Object.Notify;
+            'notify::self-contact': GObject.Object.Notify;
+            'notify::self-contact': GObject.Object.Notify;
+            'notify::self-handle': GObject.Object.Notify;
+            'notify::self-handle': GObject.Object.Notify;
+            'notify::status': GObject.Object.Notify;
+            'notify::status-reason': GObject.Object.Notify;
+            'notify::status-reason': GObject.Object.Notify;
+            'notify::bus-name': GObject.Object.Notify;
+            'notify::bus-name': GObject.Object.Notify;
+            'notify::dbus-daemon': GObject.Object.Notify;
+            'notify::dbus-daemon': GObject.Object.Notify;
+            'notify::factory': GObject.Object.Notify;
+            'notify::interfaces': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'balance-changed::balance': BalanceChanged;
+            'balance-changed::balance-currency': BalanceChanged;
+            'balance-changed::balance-currency': BalanceChanged;
+            'balance-changed::balance-scale': BalanceChanged;
+            'balance-changed::balance-scale': BalanceChanged;
+            'balance-changed::balance-uri': BalanceChanged;
+            'balance-changed::balance-uri': BalanceChanged;
+            'balance-changed::blocked-contacts': BalanceChanged;
+            'balance-changed::blocked-contacts': BalanceChanged;
+            'balance-changed::can-change-contact-list': BalanceChanged;
+            'balance-changed::can-change-contact-list': BalanceChanged;
+            'balance-changed::can-report-abusive': BalanceChanged;
+            'balance-changed::can-report-abusive': BalanceChanged;
+            'balance-changed::capabilities': BalanceChanged;
+            'balance-changed::cm-name': BalanceChanged;
+            'balance-changed::cm-name': BalanceChanged;
+            'balance-changed::connection-manager-name': BalanceChanged;
+            'balance-changed::connection-manager-name': BalanceChanged;
+            'balance-changed::connection-ready': BalanceChanged;
+            'balance-changed::connection-ready': BalanceChanged;
+            'balance-changed::contact-groups': BalanceChanged;
+            'balance-changed::contact-groups': BalanceChanged;
+            'balance-changed::contact-list-persists': BalanceChanged;
+            'balance-changed::contact-list-persists': BalanceChanged;
+            'balance-changed::contact-list-state': BalanceChanged;
+            'balance-changed::contact-list-state': BalanceChanged;
+            'balance-changed::disjoint-groups': BalanceChanged;
+            'balance-changed::disjoint-groups': BalanceChanged;
+            'balance-changed::group-storage': BalanceChanged;
+            'balance-changed::group-storage': BalanceChanged;
+            'balance-changed::protocol-name': BalanceChanged;
+            'balance-changed::protocol-name': BalanceChanged;
+            'balance-changed::request-uses-message': BalanceChanged;
+            'balance-changed::request-uses-message': BalanceChanged;
+            'balance-changed::self-contact': BalanceChanged;
+            'balance-changed::self-contact': BalanceChanged;
+            'balance-changed::self-handle': BalanceChanged;
+            'balance-changed::self-handle': BalanceChanged;
+            'balance-changed::status': BalanceChanged;
+            'balance-changed::status-reason': BalanceChanged;
+            'balance-changed::status-reason': BalanceChanged;
+            'balance-changed::bus-name': BalanceChanged;
+            'balance-changed::bus-name': BalanceChanged;
+            'balance-changed::dbus-daemon': BalanceChanged;
+            'balance-changed::dbus-daemon': BalanceChanged;
+            'balance-changed::factory': BalanceChanged;
+            'balance-changed::interfaces': BalanceChanged;
+            'balance-changed::object-path': BalanceChanged;
+            'balance-changed::object-path': BalanceChanged;
         }
 
         // Constructor properties interface
@@ -14305,14 +14993,17 @@ export namespace TelepathyGLib {
             signal: K,
             callback: Connection.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Connection.SignalSignatures>(
             signal: K,
             callback: Connection.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Connection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Connection.SignalSignatures[K]>
+            ...args: Connection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -15492,6 +16183,78 @@ export namespace TelepathyGLib {
             activated: Activated;
             exited: Exited;
             'got-info': GotInfo;
+            'notify::always-introspect': GObject.Object.Notify;
+            'notify::always-introspect': GObject.Object.Notify;
+            'notify::cm-name': GObject.Object.Notify;
+            'notify::cm-name': GObject.Object.Notify;
+            'notify::connection-manager': GObject.Object.Notify;
+            'notify::connection-manager': GObject.Object.Notify;
+            'notify::info-source': GObject.Object.Notify;
+            'notify::info-source': GObject.Object.Notify;
+            'notify::manager-file': GObject.Object.Notify;
+            'notify::manager-file': GObject.Object.Notify;
+            'notify::bus-name': GObject.Object.Notify;
+            'notify::bus-name': GObject.Object.Notify;
+            'notify::dbus-daemon': GObject.Object.Notify;
+            'notify::dbus-daemon': GObject.Object.Notify;
+            'notify::factory': GObject.Object.Notify;
+            'notify::interfaces': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'activated::always-introspect': Activated;
+            'activated::always-introspect': Activated;
+            'activated::cm-name': Activated;
+            'activated::cm-name': Activated;
+            'activated::connection-manager': Activated;
+            'activated::connection-manager': Activated;
+            'activated::info-source': Activated;
+            'activated::info-source': Activated;
+            'activated::manager-file': Activated;
+            'activated::manager-file': Activated;
+            'activated::bus-name': Activated;
+            'activated::bus-name': Activated;
+            'activated::dbus-daemon': Activated;
+            'activated::dbus-daemon': Activated;
+            'activated::factory': Activated;
+            'activated::interfaces': Activated;
+            'activated::object-path': Activated;
+            'activated::object-path': Activated;
+            'exited::always-introspect': Exited;
+            'exited::always-introspect': Exited;
+            'exited::cm-name': Exited;
+            'exited::cm-name': Exited;
+            'exited::connection-manager': Exited;
+            'exited::connection-manager': Exited;
+            'exited::info-source': Exited;
+            'exited::info-source': Exited;
+            'exited::manager-file': Exited;
+            'exited::manager-file': Exited;
+            'exited::bus-name': Exited;
+            'exited::bus-name': Exited;
+            'exited::dbus-daemon': Exited;
+            'exited::dbus-daemon': Exited;
+            'exited::factory': Exited;
+            'exited::interfaces': Exited;
+            'exited::object-path': Exited;
+            'exited::object-path': Exited;
+            'got-info::always-introspect': GotInfo;
+            'got-info::always-introspect': GotInfo;
+            'got-info::cm-name': GotInfo;
+            'got-info::cm-name': GotInfo;
+            'got-info::connection-manager': GotInfo;
+            'got-info::connection-manager': GotInfo;
+            'got-info::info-source': GotInfo;
+            'got-info::info-source': GotInfo;
+            'got-info::manager-file': GotInfo;
+            'got-info::manager-file': GotInfo;
+            'got-info::bus-name': GotInfo;
+            'got-info::bus-name': GotInfo;
+            'got-info::dbus-daemon': GotInfo;
+            'got-info::dbus-daemon': GotInfo;
+            'got-info::factory': GotInfo;
+            'got-info::interfaces': GotInfo;
+            'got-info::object-path': GotInfo;
+            'got-info::object-path': GotInfo;
         }
 
         // Constructor properties interface
@@ -15619,14 +16382,17 @@ export namespace TelepathyGLib {
             signal: K,
             callback: ConnectionManager.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConnectionManager.SignalSignatures>(
             signal: K,
             callback: ConnectionManager.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConnectionManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConnectionManager.SignalSignatures[K]>
+            ...args: ConnectionManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -15778,6 +16544,39 @@ export namespace TelepathyGLib {
             'contact-groups-changed': ContactGroupsChanged;
             'presence-changed': PresenceChanged;
             'subscription-states-changed': SubscriptionStatesChanged;
+            'notify::alias': GObject.Object.Notify;
+            'notify::avatar-file': GObject.Object.Notify;
+            'notify::avatar-file': GObject.Object.Notify;
+            'notify::avatar-mime-type': GObject.Object.Notify;
+            'notify::avatar-mime-type': GObject.Object.Notify;
+            'notify::avatar-token': GObject.Object.Notify;
+            'notify::avatar-token': GObject.Object.Notify;
+            'notify::capabilities': GObject.Object.Notify;
+            'notify::client-types': GObject.Object.Notify;
+            'notify::client-types': GObject.Object.Notify;
+            'notify::connection': GObject.Object.Notify;
+            'notify::contact-groups': GObject.Object.Notify;
+            'notify::contact-groups': GObject.Object.Notify;
+            'notify::contact-info': GObject.Object.Notify;
+            'notify::contact-info': GObject.Object.Notify;
+            'notify::handle': GObject.Object.Notify;
+            'notify::identifier': GObject.Object.Notify;
+            'notify::is-blocked': GObject.Object.Notify;
+            'notify::is-blocked': GObject.Object.Notify;
+            'notify::location-vardict': GObject.Object.Notify;
+            'notify::location-vardict': GObject.Object.Notify;
+            'notify::presence-message': GObject.Object.Notify;
+            'notify::presence-message': GObject.Object.Notify;
+            'notify::presence-status': GObject.Object.Notify;
+            'notify::presence-status': GObject.Object.Notify;
+            'notify::presence-type': GObject.Object.Notify;
+            'notify::presence-type': GObject.Object.Notify;
+            'notify::publish-request': GObject.Object.Notify;
+            'notify::publish-request': GObject.Object.Notify;
+            'notify::publish-state': GObject.Object.Notify;
+            'notify::publish-state': GObject.Object.Notify;
+            'notify::subscribe-state': GObject.Object.Notify;
+            'notify::subscribe-state': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -16174,14 +16973,17 @@ export namespace TelepathyGLib {
         // Signals
 
         connect<K extends keyof Contact.SignalSignatures>(signal: K, callback: Contact.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Contact.SignalSignatures>(
             signal: K,
             callback: Contact.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Contact.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Contact.SignalSignatures[K]>
+            ...args: Contact.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -16734,6 +17536,10 @@ export namespace TelepathyGLib {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'search-results-received': SearchResultsReceived;
+            'notify::account': GObject.Object.Notify;
+            'notify::limit': GObject.Object.Notify;
+            'notify::server': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -16801,14 +17607,17 @@ export namespace TelepathyGLib {
             signal: K,
             callback: ContactSearch.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ContactSearch.SignalSignatures>(
             signal: K,
             callback: ContactSearch.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ContactSearch.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContactSearch.SignalSignatures[K]>
+            ...args: ContactSearch.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -17547,7 +18356,9 @@ export namespace TelepathyGLib {
 
     namespace ContactSearchResult {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::identifier': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17580,14 +18391,17 @@ export namespace TelepathyGLib {
             signal: K,
             callback: ContactSearchResult.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ContactSearchResult.SignalSignatures>(
             signal: K,
             callback: ContactSearchResult.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ContactSearchResult.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ContactSearchResult.SignalSignatures[K]>
+            ...args: ContactSearchResult.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -17616,7 +18430,16 @@ export namespace TelepathyGLib {
 
     namespace DBusDaemon {
         // Signal signatures
-        interface SignalSignatures extends Proxy.SignalSignatures {}
+        interface SignalSignatures extends Proxy.SignalSignatures {
+            'notify::bus-name': GObject.Object.Notify;
+            'notify::bus-name': GObject.Object.Notify;
+            'notify::dbus-daemon': GObject.Object.Notify;
+            'notify::dbus-daemon': GObject.Object.Notify;
+            'notify::factory': GObject.Object.Notify;
+            'notify::interfaces': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17642,14 +18465,17 @@ export namespace TelepathyGLib {
             signal: K,
             callback: DBusDaemon.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DBusDaemon.SignalSignatures>(
             signal: K,
             callback: DBusDaemon.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DBusDaemon.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DBusDaemon.SignalSignatures[K]>
+            ...args: DBusDaemon.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -17753,7 +18579,41 @@ export namespace TelepathyGLib {
 
     namespace DBusTubeChannel {
         // Signal signatures
-        interface SignalSignatures extends Channel.SignalSignatures {}
+        interface SignalSignatures extends Channel.SignalSignatures {
+            'notify::parameters-vardict': GObject.Object.Notify;
+            'notify::parameters-vardict': GObject.Object.Notify;
+            'notify::service-name': GObject.Object.Notify;
+            'notify::service-name': GObject.Object.Notify;
+            'notify::channel-ready': GObject.Object.Notify;
+            'notify::channel-ready': GObject.Object.Notify;
+            'notify::connection': GObject.Object.Notify;
+            'notify::group-flags': GObject.Object.Notify;
+            'notify::group-flags': GObject.Object.Notify;
+            'notify::group-self-contact': GObject.Object.Notify;
+            'notify::group-self-contact': GObject.Object.Notify;
+            'notify::group-self-handle': GObject.Object.Notify;
+            'notify::group-self-handle': GObject.Object.Notify;
+            'notify::identifier': GObject.Object.Notify;
+            'notify::initiator-contact': GObject.Object.Notify;
+            'notify::initiator-contact': GObject.Object.Notify;
+            'notify::initiator-handle': GObject.Object.Notify;
+            'notify::initiator-handle': GObject.Object.Notify;
+            'notify::initiator-identifier': GObject.Object.Notify;
+            'notify::initiator-identifier': GObject.Object.Notify;
+            'notify::password-needed': GObject.Object.Notify;
+            'notify::password-needed': GObject.Object.Notify;
+            'notify::requested': GObject.Object.Notify;
+            'notify::target-contact': GObject.Object.Notify;
+            'notify::target-contact': GObject.Object.Notify;
+            'notify::bus-name': GObject.Object.Notify;
+            'notify::bus-name': GObject.Object.Notify;
+            'notify::dbus-daemon': GObject.Object.Notify;
+            'notify::dbus-daemon': GObject.Object.Notify;
+            'notify::factory': GObject.Object.Notify;
+            'notify::interfaces': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -17806,14 +18666,17 @@ export namespace TelepathyGLib {
             signal: K,
             callback: DBusTubeChannel.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DBusTubeChannel.SignalSignatures>(
             signal: K,
             callback: DBusTubeChannel.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DBusTubeChannel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DBusTubeChannel.SignalSignatures[K]>
+            ...args: DBusTubeChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -17918,6 +18781,15 @@ export namespace TelepathyGLib {
         // Signal signatures
         interface SignalSignatures extends Proxy.SignalSignatures {
             'new-debug-message': NewDebugMessage;
+            'notify::enabled': GObject.Object.Notify;
+            'notify::bus-name': GObject.Object.Notify;
+            'notify::bus-name': GObject.Object.Notify;
+            'notify::dbus-daemon': GObject.Object.Notify;
+            'notify::dbus-daemon': GObject.Object.Notify;
+            'notify::factory': GObject.Object.Notify;
+            'notify::interfaces': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -17957,14 +18829,17 @@ export namespace TelepathyGLib {
             signal: K,
             callback: DebugClient.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DebugClient.SignalSignatures>(
             signal: K,
             callback: DebugClient.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DebugClient.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DebugClient.SignalSignatures[K]>
+            ...args: DebugClient.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -18042,7 +18917,13 @@ export namespace TelepathyGLib {
 
     namespace DebugMessage {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::category': GObject.Object.Notify;
+            'notify::domain': GObject.Object.Notify;
+            'notify::level': GObject.Object.Notify;
+            'notify::message': GObject.Object.Notify;
+            'notify::time': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -18096,14 +18977,17 @@ export namespace TelepathyGLib {
             signal: K,
             callback: DebugMessage.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DebugMessage.SignalSignatures>(
             signal: K,
             callback: DebugMessage.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DebugMessage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DebugMessage.SignalSignatures[K]>
+            ...args: DebugMessage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -18136,7 +19020,51 @@ export namespace TelepathyGLib {
 
     namespace FileTransferChannel {
         // Signal signatures
-        interface SignalSignatures extends Channel.SignalSignatures {}
+        interface SignalSignatures extends Channel.SignalSignatures {
+            'notify::date': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::file': GObject.Object.Notify;
+            'notify::filename': GObject.Object.Notify;
+            'notify::initial-offset': GObject.Object.Notify;
+            'notify::initial-offset': GObject.Object.Notify;
+            'notify::mime-type': GObject.Object.Notify;
+            'notify::mime-type': GObject.Object.Notify;
+            'notify::service-name': GObject.Object.Notify;
+            'notify::service-name': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::transferred-bytes': GObject.Object.Notify;
+            'notify::transferred-bytes': GObject.Object.Notify;
+            'notify::channel-ready': GObject.Object.Notify;
+            'notify::channel-ready': GObject.Object.Notify;
+            'notify::connection': GObject.Object.Notify;
+            'notify::group-flags': GObject.Object.Notify;
+            'notify::group-flags': GObject.Object.Notify;
+            'notify::group-self-contact': GObject.Object.Notify;
+            'notify::group-self-contact': GObject.Object.Notify;
+            'notify::group-self-handle': GObject.Object.Notify;
+            'notify::group-self-handle': GObject.Object.Notify;
+            'notify::identifier': GObject.Object.Notify;
+            'notify::initiator-contact': GObject.Object.Notify;
+            'notify::initiator-contact': GObject.Object.Notify;
+            'notify::initiator-handle': GObject.Object.Notify;
+            'notify::initiator-handle': GObject.Object.Notify;
+            'notify::initiator-identifier': GObject.Object.Notify;
+            'notify::initiator-identifier': GObject.Object.Notify;
+            'notify::password-needed': GObject.Object.Notify;
+            'notify::password-needed': GObject.Object.Notify;
+            'notify::requested': GObject.Object.Notify;
+            'notify::target-contact': GObject.Object.Notify;
+            'notify::target-contact': GObject.Object.Notify;
+            'notify::bus-name': GObject.Object.Notify;
+            'notify::bus-name': GObject.Object.Notify;
+            'notify::dbus-daemon': GObject.Object.Notify;
+            'notify::dbus-daemon': GObject.Object.Notify;
+            'notify::factory': GObject.Object.Notify;
+            'notify::interfaces': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -18337,14 +19265,17 @@ export namespace TelepathyGLib {
             signal: K,
             callback: FileTransferChannel.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FileTransferChannel.SignalSignatures>(
             signal: K,
             callback: FileTransferChannel.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FileTransferChannel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileTransferChannel.SignalSignatures[K]>
+            ...args: FileTransferChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -18512,6 +19443,20 @@ export namespace TelepathyGLib {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             done: Done;
+            'notify::account': GObject.Object.Notify;
+            'notify::channels': GObject.Object.Notify;
+            'notify::connection': GObject.Object.Notify;
+            'notify::requests-satisfied': GObject.Object.Notify;
+            'notify::requests-satisfied': GObject.Object.Notify;
+            'notify::user-action-time': GObject.Object.Notify;
+            'notify::user-action-time': GObject.Object.Notify;
+            'done::account': Done;
+            'done::channels': Done;
+            'done::connection': Done;
+            'done::requests-satisfied': Done;
+            'done::requests-satisfied': Done;
+            'done::user-action-time': Done;
+            'done::user-action-time': Done;
         }
 
         // Constructor properties interface
@@ -18607,14 +19552,17 @@ export namespace TelepathyGLib {
             signal: K,
             callback: HandleChannelsContext.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof HandleChannelsContext.SignalSignatures>(
             signal: K,
             callback: HandleChannelsContext.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof HandleChannelsContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<HandleChannelsContext.SignalSignatures[K]>
+            ...args: HandleChannelsContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -18695,14 +19643,17 @@ export namespace TelepathyGLib {
         // Signals
 
         connect<K extends keyof Message.SignalSignatures>(signal: K, callback: Message.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Message.SignalSignatures>(
             signal: K,
             callback: Message.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Message.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Message.SignalSignatures[K]>
+            ...args: Message.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -18944,7 +19895,14 @@ export namespace TelepathyGLib {
 
     namespace ObserveChannelsContext {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::account': GObject.Object.Notify;
+            'notify::channels': GObject.Object.Notify;
+            'notify::connection': GObject.Object.Notify;
+            'notify::dispatch-operation': GObject.Object.Notify;
+            'notify::dispatch-operation': GObject.Object.Notify;
+            'notify::requests': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -19026,14 +19984,17 @@ export namespace TelepathyGLib {
             signal: K,
             callback: ObserveChannelsContext.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ObserveChannelsContext.SignalSignatures>(
             signal: K,
             callback: ObserveChannelsContext.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ObserveChannelsContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ObserveChannelsContext.SignalSignatures[K]>
+            ...args: ObserveChannelsContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -19074,7 +20035,39 @@ export namespace TelepathyGLib {
 
     namespace Protocol {
         // Signal signatures
-        interface SignalSignatures extends Proxy.SignalSignatures {}
+        interface SignalSignatures extends Proxy.SignalSignatures {
+            'notify::addressable-uri-schemes': GObject.Object.Notify;
+            'notify::addressable-uri-schemes': GObject.Object.Notify;
+            'notify::addressable-vcard-fields': GObject.Object.Notify;
+            'notify::addressable-vcard-fields': GObject.Object.Notify;
+            'notify::authentication-types': GObject.Object.Notify;
+            'notify::authentication-types': GObject.Object.Notify;
+            'notify::avatar-requirements': GObject.Object.Notify;
+            'notify::avatar-requirements': GObject.Object.Notify;
+            'notify::capabilities': GObject.Object.Notify;
+            'notify::cm-name': GObject.Object.Notify;
+            'notify::cm-name': GObject.Object.Notify;
+            'notify::english-name': GObject.Object.Notify;
+            'notify::english-name': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::param-names': GObject.Object.Notify;
+            'notify::param-names': GObject.Object.Notify;
+            'notify::protocol-name': GObject.Object.Notify;
+            'notify::protocol-name': GObject.Object.Notify;
+            'notify::protocol-properties-vardict': GObject.Object.Notify;
+            'notify::protocol-properties-vardict': GObject.Object.Notify;
+            'notify::vcard-field': GObject.Object.Notify;
+            'notify::vcard-field': GObject.Object.Notify;
+            'notify::bus-name': GObject.Object.Notify;
+            'notify::bus-name': GObject.Object.Notify;
+            'notify::dbus-daemon': GObject.Object.Notify;
+            'notify::dbus-daemon': GObject.Object.Notify;
+            'notify::factory': GObject.Object.Notify;
+            'notify::interfaces': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -19317,14 +20310,17 @@ export namespace TelepathyGLib {
         // Signals
 
         connect<K extends keyof Protocol.SignalSignatures>(signal: K, callback: Protocol.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Protocol.SignalSignatures>(
             signal: K,
             callback: Protocol.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Protocol.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Protocol.SignalSignatures[K]>
+            ...args: Protocol.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -19642,6 +20638,30 @@ export namespace TelepathyGLib {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'interface-added': InterfaceAdded;
             invalidated: Invalidated;
+            'notify::bus-name': GObject.Object.Notify;
+            'notify::bus-name': GObject.Object.Notify;
+            'notify::dbus-daemon': GObject.Object.Notify;
+            'notify::dbus-daemon': GObject.Object.Notify;
+            'notify::factory': GObject.Object.Notify;
+            'notify::interfaces': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'interface-added::bus-name': InterfaceAdded;
+            'interface-added::bus-name': InterfaceAdded;
+            'interface-added::dbus-daemon': InterfaceAdded;
+            'interface-added::dbus-daemon': InterfaceAdded;
+            'interface-added::factory': InterfaceAdded;
+            'interface-added::interfaces': InterfaceAdded;
+            'interface-added::object-path': InterfaceAdded;
+            'interface-added::object-path': InterfaceAdded;
+            'invalidated::bus-name': Invalidated;
+            'invalidated::bus-name': Invalidated;
+            'invalidated::dbus-daemon': Invalidated;
+            'invalidated::dbus-daemon': Invalidated;
+            'invalidated::factory': Invalidated;
+            'invalidated::interfaces': Invalidated;
+            'invalidated::object-path': Invalidated;
+            'invalidated::object-path': Invalidated;
         }
 
         // Constructor properties interface
@@ -19713,8 +20733,14 @@ export namespace TelepathyGLib {
         // Signals
 
         connect<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Proxy.SignalSignatures>(signal: K, callback: Proxy.SignalSignatures[K]): number;
-        emit<K extends keyof Proxy.SignalSignatures>(signal: K, ...args: Parameters<Proxy.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Proxy.SignalSignatures>(
+            signal: K,
+            ...args: Proxy.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -19987,14 +21013,17 @@ export namespace TelepathyGLib {
         // Signals
 
         connect<K extends keyof RoomInfo.SignalSignatures>(signal: K, callback: RoomInfo.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RoomInfo.SignalSignatures>(
             signal: K,
             callback: RoomInfo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RoomInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RoomInfo.SignalSignatures[K]>
+            ...args: RoomInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -20073,6 +21102,9 @@ export namespace TelepathyGLib {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             failed: Failed;
             'got-room': GotRoom;
+            'notify::account': GObject.Object.Notify;
+            'notify::listing': GObject.Object.Notify;
+            'notify::server': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -20123,14 +21155,17 @@ export namespace TelepathyGLib {
         // Signals
 
         connect<K extends keyof RoomList.SignalSignatures>(signal: K, callback: RoomList.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RoomList.SignalSignatures>(
             signal: K,
             callback: RoomList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RoomList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RoomList.SignalSignatures[K]>
+            ...args: RoomList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -20809,7 +21844,9 @@ export namespace TelepathyGLib {
 
     namespace SignalledMessage {
         // Signal signatures
-        interface SignalSignatures extends Message.SignalSignatures {}
+        interface SignalSignatures extends Message.SignalSignatures {
+            'notify::sender': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -20845,14 +21882,17 @@ export namespace TelepathyGLib {
             signal: K,
             callback: SignalledMessage.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SignalledMessage.SignalSignatures>(
             signal: K,
             callback: SignalledMessage.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SignalledMessage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SignalledMessage.SignalSignatures[K]>
+            ...args: SignalledMessage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -20866,7 +21906,22 @@ export namespace TelepathyGLib {
 
     namespace SimpleApprover {
         // Signal signatures
-        interface SignalSignatures extends BaseClient.SignalSignatures {}
+        interface SignalSignatures extends BaseClient.SignalSignatures {
+            'notify::callback': GObject.Object.Notify;
+            'notify::destroy': GObject.Object.Notify;
+            'notify::user-data': GObject.Object.Notify;
+            'notify::user-data': GObject.Object.Notify;
+            'notify::account-manager': GObject.Object.Notify;
+            'notify::account-manager': GObject.Object.Notify;
+            'notify::channel-factory': GObject.Object.Notify;
+            'notify::channel-factory': GObject.Object.Notify;
+            'notify::dbus-daemon': GObject.Object.Notify;
+            'notify::dbus-daemon': GObject.Object.Notify;
+            'notify::factory': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::uniquify-name': GObject.Object.Notify;
+            'notify::uniquify-name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -20940,19 +21995,25 @@ export namespace TelepathyGLib {
             signal: K,
             callback: SimpleApprover.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SimpleApprover.SignalSignatures>(
             signal: K,
             callback: SimpleApprover.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SimpleApprover.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SimpleApprover.SignalSignatures[K]>
+            ...args: SimpleApprover.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace SimpleClientFactory {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::dbus-daemon': GObject.Object.Notify;
+            'notify::dbus-daemon': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -20993,14 +22054,17 @@ export namespace TelepathyGLib {
             signal: K,
             callback: SimpleClientFactory.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SimpleClientFactory.SignalSignatures>(
             signal: K,
             callback: SimpleClientFactory.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SimpleClientFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SimpleClientFactory.SignalSignatures[K]>
+            ...args: SimpleClientFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -21278,7 +22342,25 @@ export namespace TelepathyGLib {
 
     namespace SimpleHandler {
         // Signal signatures
-        interface SignalSignatures extends BaseClient.SignalSignatures {}
+        interface SignalSignatures extends BaseClient.SignalSignatures {
+            'notify::bypass-approval': GObject.Object.Notify;
+            'notify::bypass-approval': GObject.Object.Notify;
+            'notify::callback': GObject.Object.Notify;
+            'notify::destroy': GObject.Object.Notify;
+            'notify::requests': GObject.Object.Notify;
+            'notify::user-data': GObject.Object.Notify;
+            'notify::user-data': GObject.Object.Notify;
+            'notify::account-manager': GObject.Object.Notify;
+            'notify::account-manager': GObject.Object.Notify;
+            'notify::channel-factory': GObject.Object.Notify;
+            'notify::channel-factory': GObject.Object.Notify;
+            'notify::dbus-daemon': GObject.Object.Notify;
+            'notify::dbus-daemon': GObject.Object.Notify;
+            'notify::factory': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::uniquify-name': GObject.Object.Notify;
+            'notify::uniquify-name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -21373,19 +22455,38 @@ export namespace TelepathyGLib {
             signal: K,
             callback: SimpleHandler.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SimpleHandler.SignalSignatures>(
             signal: K,
             callback: SimpleHandler.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SimpleHandler.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SimpleHandler.SignalSignatures[K]>
+            ...args: SimpleHandler.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace SimpleObserver {
         // Signal signatures
-        interface SignalSignatures extends BaseClient.SignalSignatures {}
+        interface SignalSignatures extends BaseClient.SignalSignatures {
+            'notify::callback': GObject.Object.Notify;
+            'notify::destroy': GObject.Object.Notify;
+            'notify::recover': GObject.Object.Notify;
+            'notify::user-data': GObject.Object.Notify;
+            'notify::user-data': GObject.Object.Notify;
+            'notify::account-manager': GObject.Object.Notify;
+            'notify::account-manager': GObject.Object.Notify;
+            'notify::channel-factory': GObject.Object.Notify;
+            'notify::channel-factory': GObject.Object.Notify;
+            'notify::dbus-daemon': GObject.Object.Notify;
+            'notify::dbus-daemon': GObject.Object.Notify;
+            'notify::factory': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::uniquify-name': GObject.Object.Notify;
+            'notify::uniquify-name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -21469,14 +22570,17 @@ export namespace TelepathyGLib {
             signal: K,
             callback: SimpleObserver.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SimpleObserver.SignalSignatures>(
             signal: K,
             callback: SimpleObserver.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SimpleObserver.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SimpleObserver.SignalSignatures[K]>
+            ...args: SimpleObserver.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace StreamTubeChannel {
@@ -21489,6 +22593,38 @@ export namespace TelepathyGLib {
         // Signal signatures
         interface SignalSignatures extends Channel.SignalSignatures {
             incoming: Incoming;
+            'notify::parameters-vardict': GObject.Object.Notify;
+            'notify::parameters-vardict': GObject.Object.Notify;
+            'notify::service': GObject.Object.Notify;
+            'notify::channel-ready': GObject.Object.Notify;
+            'notify::channel-ready': GObject.Object.Notify;
+            'notify::connection': GObject.Object.Notify;
+            'notify::group-flags': GObject.Object.Notify;
+            'notify::group-flags': GObject.Object.Notify;
+            'notify::group-self-contact': GObject.Object.Notify;
+            'notify::group-self-contact': GObject.Object.Notify;
+            'notify::group-self-handle': GObject.Object.Notify;
+            'notify::group-self-handle': GObject.Object.Notify;
+            'notify::identifier': GObject.Object.Notify;
+            'notify::initiator-contact': GObject.Object.Notify;
+            'notify::initiator-contact': GObject.Object.Notify;
+            'notify::initiator-handle': GObject.Object.Notify;
+            'notify::initiator-handle': GObject.Object.Notify;
+            'notify::initiator-identifier': GObject.Object.Notify;
+            'notify::initiator-identifier': GObject.Object.Notify;
+            'notify::password-needed': GObject.Object.Notify;
+            'notify::password-needed': GObject.Object.Notify;
+            'notify::requested': GObject.Object.Notify;
+            'notify::target-contact': GObject.Object.Notify;
+            'notify::target-contact': GObject.Object.Notify;
+            'notify::bus-name': GObject.Object.Notify;
+            'notify::bus-name': GObject.Object.Notify;
+            'notify::dbus-daemon': GObject.Object.Notify;
+            'notify::dbus-daemon': GObject.Object.Notify;
+            'notify::factory': GObject.Object.Notify;
+            'notify::interfaces': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -21546,14 +22682,17 @@ export namespace TelepathyGLib {
             signal: K,
             callback: StreamTubeChannel.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StreamTubeChannel.SignalSignatures>(
             signal: K,
             callback: StreamTubeChannel.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StreamTubeChannel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StreamTubeChannel.SignalSignatures[K]>
+            ...args: StreamTubeChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -21659,6 +22798,10 @@ export namespace TelepathyGLib {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             closed: Closed;
+            'notify::channel': GObject.Object.Notify;
+            'notify::contact': GObject.Object.Notify;
+            'notify::socket-connection': GObject.Object.Notify;
+            'notify::socket-connection': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -21721,14 +22864,17 @@ export namespace TelepathyGLib {
             signal: K,
             callback: StreamTubeConnection.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StreamTubeConnection.SignalSignatures>(
             signal: K,
             callback: StreamTubeConnection.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StreamTubeConnection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StreamTubeConnection.SignalSignatures[K]>
+            ...args: StreamTubeConnection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -21751,7 +22897,22 @@ export namespace TelepathyGLib {
 
     namespace TLSCertificate {
         // Signal signatures
-        interface SignalSignatures extends Proxy.SignalSignatures {}
+        interface SignalSignatures extends Proxy.SignalSignatures {
+            'notify::cert-data': GObject.Object.Notify;
+            'notify::cert-data': GObject.Object.Notify;
+            'notify::cert-type': GObject.Object.Notify;
+            'notify::cert-type': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::state': GObject.Object.Notify;
+            'notify::bus-name': GObject.Object.Notify;
+            'notify::bus-name': GObject.Object.Notify;
+            'notify::dbus-daemon': GObject.Object.Notify;
+            'notify::dbus-daemon': GObject.Object.Notify;
+            'notify::factory': GObject.Object.Notify;
+            'notify::interfaces': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -21838,14 +22999,17 @@ export namespace TelepathyGLib {
             signal: K,
             callback: TLSCertificate.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TLSCertificate.SignalSignatures>(
             signal: K,
             callback: TLSCertificate.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TLSCertificate.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TLSCertificate.SignalSignatures[K]>
+            ...args: TLSCertificate.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -22007,7 +23171,13 @@ export namespace TelepathyGLib {
 
     namespace TLSCertificateRejection {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::dbus-error': GObject.Object.Notify;
+            'notify::dbus-error': GObject.Object.Notify;
+            'notify::details': GObject.Object.Notify;
+            'notify::error': GObject.Object.Notify;
+            'notify::reason': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -22062,14 +23232,17 @@ export namespace TelepathyGLib {
             signal: K,
             callback: TLSCertificateRejection.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TLSCertificateRejection.SignalSignatures>(
             signal: K,
             callback: TLSCertificateRejection.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TLSCertificateRejection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TLSCertificateRejection.SignalSignatures[K]>
+            ...args: TLSCertificateRejection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -22126,6 +23299,84 @@ export namespace TelepathyGLib {
             'message-received': MessageReceived;
             'message-sent': MessageSent;
             'pending-message-removed': PendingMessageRemoved;
+            'notify::delivery-reporting-support': GObject.Object.Notify;
+            'notify::delivery-reporting-support': GObject.Object.Notify;
+            'notify::is-sms-channel': GObject.Object.Notify;
+            'notify::is-sms-channel': GObject.Object.Notify;
+            'notify::message-part-support-flags': GObject.Object.Notify;
+            'notify::message-part-support-flags': GObject.Object.Notify;
+            'notify::sms-flash': GObject.Object.Notify;
+            'notify::sms-flash': GObject.Object.Notify;
+            'notify::supported-content-types': GObject.Object.Notify;
+            'notify::supported-content-types': GObject.Object.Notify;
+            'notify::channel-ready': GObject.Object.Notify;
+            'notify::channel-ready': GObject.Object.Notify;
+            'notify::connection': GObject.Object.Notify;
+            'notify::group-flags': GObject.Object.Notify;
+            'notify::group-flags': GObject.Object.Notify;
+            'notify::group-self-contact': GObject.Object.Notify;
+            'notify::group-self-contact': GObject.Object.Notify;
+            'notify::group-self-handle': GObject.Object.Notify;
+            'notify::group-self-handle': GObject.Object.Notify;
+            'notify::identifier': GObject.Object.Notify;
+            'notify::initiator-contact': GObject.Object.Notify;
+            'notify::initiator-contact': GObject.Object.Notify;
+            'notify::initiator-handle': GObject.Object.Notify;
+            'notify::initiator-handle': GObject.Object.Notify;
+            'notify::initiator-identifier': GObject.Object.Notify;
+            'notify::initiator-identifier': GObject.Object.Notify;
+            'notify::password-needed': GObject.Object.Notify;
+            'notify::password-needed': GObject.Object.Notify;
+            'notify::requested': GObject.Object.Notify;
+            'notify::target-contact': GObject.Object.Notify;
+            'notify::target-contact': GObject.Object.Notify;
+            'notify::bus-name': GObject.Object.Notify;
+            'notify::bus-name': GObject.Object.Notify;
+            'notify::dbus-daemon': GObject.Object.Notify;
+            'notify::dbus-daemon': GObject.Object.Notify;
+            'notify::factory': GObject.Object.Notify;
+            'notify::interfaces': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'notify::object-path': GObject.Object.Notify;
+            'contact-chat-state-changed::delivery-reporting-support': ContactChatStateChanged;
+            'contact-chat-state-changed::delivery-reporting-support': ContactChatStateChanged;
+            'contact-chat-state-changed::is-sms-channel': ContactChatStateChanged;
+            'contact-chat-state-changed::is-sms-channel': ContactChatStateChanged;
+            'contact-chat-state-changed::message-part-support-flags': ContactChatStateChanged;
+            'contact-chat-state-changed::message-part-support-flags': ContactChatStateChanged;
+            'contact-chat-state-changed::sms-flash': ContactChatStateChanged;
+            'contact-chat-state-changed::sms-flash': ContactChatStateChanged;
+            'contact-chat-state-changed::supported-content-types': ContactChatStateChanged;
+            'contact-chat-state-changed::supported-content-types': ContactChatStateChanged;
+            'contact-chat-state-changed::channel-ready': ContactChatStateChanged;
+            'contact-chat-state-changed::channel-ready': ContactChatStateChanged;
+            'contact-chat-state-changed::connection': ContactChatStateChanged;
+            'contact-chat-state-changed::group-flags': ContactChatStateChanged;
+            'contact-chat-state-changed::group-flags': ContactChatStateChanged;
+            'contact-chat-state-changed::group-self-contact': ContactChatStateChanged;
+            'contact-chat-state-changed::group-self-contact': ContactChatStateChanged;
+            'contact-chat-state-changed::group-self-handle': ContactChatStateChanged;
+            'contact-chat-state-changed::group-self-handle': ContactChatStateChanged;
+            'contact-chat-state-changed::identifier': ContactChatStateChanged;
+            'contact-chat-state-changed::initiator-contact': ContactChatStateChanged;
+            'contact-chat-state-changed::initiator-contact': ContactChatStateChanged;
+            'contact-chat-state-changed::initiator-handle': ContactChatStateChanged;
+            'contact-chat-state-changed::initiator-handle': ContactChatStateChanged;
+            'contact-chat-state-changed::initiator-identifier': ContactChatStateChanged;
+            'contact-chat-state-changed::initiator-identifier': ContactChatStateChanged;
+            'contact-chat-state-changed::password-needed': ContactChatStateChanged;
+            'contact-chat-state-changed::password-needed': ContactChatStateChanged;
+            'contact-chat-state-changed::requested': ContactChatStateChanged;
+            'contact-chat-state-changed::target-contact': ContactChatStateChanged;
+            'contact-chat-state-changed::target-contact': ContactChatStateChanged;
+            'contact-chat-state-changed::bus-name': ContactChatStateChanged;
+            'contact-chat-state-changed::bus-name': ContactChatStateChanged;
+            'contact-chat-state-changed::dbus-daemon': ContactChatStateChanged;
+            'contact-chat-state-changed::dbus-daemon': ContactChatStateChanged;
+            'contact-chat-state-changed::factory': ContactChatStateChanged;
+            'contact-chat-state-changed::interfaces': ContactChatStateChanged;
+            'contact-chat-state-changed::object-path': ContactChatStateChanged;
+            'contact-chat-state-changed::object-path': ContactChatStateChanged;
         }
 
         // Constructor properties interface
@@ -22234,14 +23485,17 @@ export namespace TelepathyGLib {
             signal: K,
             callback: TextChannel.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TextChannel.SignalSignatures>(
             signal: K,
             callback: TextChannel.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TextChannel.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TextChannel.SignalSignatures[K]>
+            ...args: TextChannel.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 

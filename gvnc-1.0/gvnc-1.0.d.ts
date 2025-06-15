@@ -259,14 +259,17 @@ export namespace GVnc {
         // Signals
 
         connect<K extends keyof BaseAudio.SignalSignatures>(signal: K, callback: BaseAudio.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BaseAudio.SignalSignatures>(
             signal: K,
             callback: BaseAudio.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BaseAudio.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BaseAudio.SignalSignatures[K]>
+            ...args: BaseAudio.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -734,7 +737,18 @@ export namespace GVnc {
 
     namespace BaseFramebuffer {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::buffer': GObject.Object.Notify;
+            'notify::color-map': GObject.Object.Notify;
+            'notify::color-map': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::local-format': GObject.Object.Notify;
+            'notify::local-format': GObject.Object.Notify;
+            'notify::remote-format': GObject.Object.Notify;
+            'notify::remote-format': GObject.Object.Notify;
+            'notify::rowstride': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -791,14 +805,17 @@ export namespace GVnc {
             signal: K,
             callback: BaseFramebuffer.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BaseFramebuffer.SignalSignatures>(
             signal: K,
             callback: BaseFramebuffer.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BaseFramebuffer.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BaseFramebuffer.SignalSignatures[K]>
+            ...args: BaseFramebuffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         blt(src: number, rowstride: number, x: number, y: number, width: number, height: number): void;
@@ -1518,6 +1535,7 @@ export namespace GVnc {
             'vnc-power-control-failed': VncPowerControlFailed;
             'vnc-power-control-initialized': VncPowerControlInitialized;
             'vnc-server-cut-text': VncServerCutText;
+            'notify::framebuffer': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1549,14 +1567,17 @@ export namespace GVnc {
             signal: K,
             callback: Connection.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Connection.SignalSignatures>(
             signal: K,
             callback: Connection.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Connection.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Connection.SignalSignatures[K]>
+            ...args: Connection.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1864,7 +1885,13 @@ export namespace GVnc {
 
     namespace Cursor {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::data': GObject.Object.Notify;
+            'notify::height': GObject.Object.Notify;
+            'notify::hotx': GObject.Object.Notify;
+            'notify::hoty': GObject.Object.Notify;
+            'notify::width': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1904,8 +1931,14 @@ export namespace GVnc {
         // Signals
 
         connect<K extends keyof Cursor.SignalSignatures>(signal: K, callback: Cursor.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Cursor.SignalSignatures>(signal: K, callback: Cursor.SignalSignatures[K]): number;
-        emit<K extends keyof Cursor.SignalSignatures>(signal: K, ...args: Parameters<Cursor.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Cursor.SignalSignatures>(
+            signal: K,
+            ...args: Cursor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 

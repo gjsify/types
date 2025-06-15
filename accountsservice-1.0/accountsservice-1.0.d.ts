@@ -121,6 +121,43 @@ export namespace AccountsService {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             changed: Changed;
             'sessions-changed': SessionsChanged;
+            'notify::account-type': GObject.Object.Notify;
+            'notify::account-type': GObject.Object.Notify;
+            'notify::automatic-login': GObject.Object.Notify;
+            'notify::automatic-login': GObject.Object.Notify;
+            'notify::email': GObject.Object.Notify;
+            'notify::home-directory': GObject.Object.Notify;
+            'notify::home-directory': GObject.Object.Notify;
+            'notify::icon-file': GObject.Object.Notify;
+            'notify::icon-file': GObject.Object.Notify;
+            'notify::is-loaded': GObject.Object.Notify;
+            'notify::is-loaded': GObject.Object.Notify;
+            'notify::language': GObject.Object.Notify;
+            'notify::local-account': GObject.Object.Notify;
+            'notify::local-account': GObject.Object.Notify;
+            'notify::location': GObject.Object.Notify;
+            'notify::locked': GObject.Object.Notify;
+            'notify::login-frequency': GObject.Object.Notify;
+            'notify::login-frequency': GObject.Object.Notify;
+            'notify::login-history': GObject.Object.Notify;
+            'notify::login-history': GObject.Object.Notify;
+            'notify::login-time': GObject.Object.Notify;
+            'notify::login-time': GObject.Object.Notify;
+            'notify::nonexistent': GObject.Object.Notify;
+            'notify::password-hint': GObject.Object.Notify;
+            'notify::password-hint': GObject.Object.Notify;
+            'notify::password-mode': GObject.Object.Notify;
+            'notify::password-mode': GObject.Object.Notify;
+            'notify::real-name': GObject.Object.Notify;
+            'notify::real-name': GObject.Object.Notify;
+            'notify::shell': GObject.Object.Notify;
+            'notify::system-account': GObject.Object.Notify;
+            'notify::system-account': GObject.Object.Notify;
+            'notify::uid': GObject.Object.Notify;
+            'notify::user-name': GObject.Object.Notify;
+            'notify::user-name': GObject.Object.Notify;
+            'notify::x-session': GObject.Object.Notify;
+            'notify::x-session': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -234,8 +271,14 @@ export namespace AccountsService {
         // Signals
 
         connect<K extends keyof User.SignalSignatures>(signal: K, callback: User.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof User.SignalSignatures>(signal: K, callback: User.SignalSignatures[K]): number;
-        emit<K extends keyof User.SignalSignatures>(signal: K, ...args: Parameters<User.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof User.SignalSignatures>(
+            signal: K,
+            ...args: User.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -585,6 +628,14 @@ export namespace AccountsService {
             'user-changed': UserChanged;
             'user-is-logged-in-changed': UserIsLoggedInChanged;
             'user-removed': UserRemoved;
+            'notify::exclude-usernames-list': GObject.Object.Notify;
+            'notify::exclude-usernames-list': GObject.Object.Notify;
+            'notify::has-multiple-users': GObject.Object.Notify;
+            'notify::has-multiple-users': GObject.Object.Notify;
+            'notify::include-usernames-list': GObject.Object.Notify;
+            'notify::include-usernames-list': GObject.Object.Notify;
+            'notify::is-loaded': GObject.Object.Notify;
+            'notify::is-loaded': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -636,14 +687,17 @@ export namespace AccountsService {
             signal: K,
             callback: UserManager.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UserManager.SignalSignatures>(
             signal: K,
             callback: UserManager.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UserManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UserManager.SignalSignatures[K]>
+            ...args: UserManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 

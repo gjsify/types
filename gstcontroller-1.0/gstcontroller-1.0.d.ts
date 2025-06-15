@@ -98,7 +98,19 @@ export namespace GstController {
     }
     namespace ARGBControlBinding {
         // Signal signatures
-        interface SignalSignatures extends Gst.ControlBinding.SignalSignatures {}
+        interface SignalSignatures extends Gst.ControlBinding.SignalSignatures {
+            'notify::control-source-a': GObject.Object.Notify;
+            'notify::control-source-a': GObject.Object.Notify;
+            'notify::control-source-b': GObject.Object.Notify;
+            'notify::control-source-b': GObject.Object.Notify;
+            'notify::control-source-g': GObject.Object.Notify;
+            'notify::control-source-g': GObject.Object.Notify;
+            'notify::control-source-r': GObject.Object.Notify;
+            'notify::control-source-r': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::object': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -162,19 +174,29 @@ export namespace GstController {
             signal: K,
             callback: ARGBControlBinding.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ARGBControlBinding.SignalSignatures>(
             signal: K,
             callback: ARGBControlBinding.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ARGBControlBinding.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ARGBControlBinding.SignalSignatures[K]>
+            ...args: ARGBControlBinding.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace DirectControlBinding {
         // Signal signatures
-        interface SignalSignatures extends Gst.ControlBinding.SignalSignatures {}
+        interface SignalSignatures extends Gst.ControlBinding.SignalSignatures {
+            'notify::absolute': GObject.Object.Notify;
+            'notify::control-source': GObject.Object.Notify;
+            'notify::control-source': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::object': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -220,19 +242,26 @@ export namespace GstController {
             signal: K,
             callback: DirectControlBinding.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DirectControlBinding.SignalSignatures>(
             signal: K,
             callback: DirectControlBinding.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DirectControlBinding.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DirectControlBinding.SignalSignatures[K]>
+            ...args: DirectControlBinding.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace InterpolationControlSource {
         // Signal signatures
-        interface SignalSignatures extends TimedValueControlSource.SignalSignatures {}
+        interface SignalSignatures extends TimedValueControlSource.SignalSignatures {
+            'notify::mode': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -273,19 +302,30 @@ export namespace GstController {
             signal: K,
             callback: InterpolationControlSource.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof InterpolationControlSource.SignalSignatures>(
             signal: K,
             callback: InterpolationControlSource.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof InterpolationControlSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<InterpolationControlSource.SignalSignatures[K]>
+            ...args: InterpolationControlSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace LFOControlSource {
         // Signal signatures
-        interface SignalSignatures extends Gst.ControlSource.SignalSignatures {}
+        interface SignalSignatures extends Gst.ControlSource.SignalSignatures {
+            'notify::amplitude': GObject.Object.Notify;
+            'notify::frequency': GObject.Object.Notify;
+            'notify::offset': GObject.Object.Notify;
+            'notify::timeshift': GObject.Object.Notify;
+            'notify::waveform': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -359,19 +399,26 @@ export namespace GstController {
             signal: K,
             callback: LFOControlSource.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LFOControlSource.SignalSignatures>(
             signal: K,
             callback: LFOControlSource.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LFOControlSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LFOControlSource.SignalSignatures[K]>
+            ...args: LFOControlSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace ProxyControlBinding {
         // Signal signatures
-        interface SignalSignatures extends Gst.ControlBinding.SignalSignatures {}
+        interface SignalSignatures extends Gst.ControlBinding.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::object': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -403,14 +450,17 @@ export namespace GstController {
             signal: K,
             callback: ProxyControlBinding.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ProxyControlBinding.SignalSignatures>(
             signal: K,
             callback: ProxyControlBinding.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ProxyControlBinding.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ProxyControlBinding.SignalSignatures[K]>
+            ...args: ProxyControlBinding.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace TimedValueControlSource {
@@ -433,6 +483,8 @@ export namespace GstController {
             'value-added': ValueAdded;
             'value-changed': ValueChanged;
             'value-removed': ValueRemoved;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -468,14 +520,17 @@ export namespace GstController {
             signal: K,
             callback: TimedValueControlSource.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TimedValueControlSource.SignalSignatures>(
             signal: K,
             callback: TimedValueControlSource.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TimedValueControlSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TimedValueControlSource.SignalSignatures[K]>
+            ...args: TimedValueControlSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -530,7 +585,11 @@ export namespace GstController {
 
     namespace TriggerControlSource {
         // Signal signatures
-        interface SignalSignatures extends TimedValueControlSource.SignalSignatures {}
+        interface SignalSignatures extends TimedValueControlSource.SignalSignatures {
+            'notify::tolerance': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -571,14 +630,17 @@ export namespace GstController {
             signal: K,
             callback: TriggerControlSource.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof TriggerControlSource.SignalSignatures>(
             signal: K,
             callback: TriggerControlSource.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof TriggerControlSource.SignalSignatures>(
             signal: K,
-            ...args: Parameters<TriggerControlSource.SignalSignatures[K]>
+            ...args: TriggerControlSource.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     type ARGBControlBindingClass = typeof ARGBControlBinding;

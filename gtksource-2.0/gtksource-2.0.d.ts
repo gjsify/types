@@ -282,6 +282,32 @@ export namespace GtkSource {
             redo: Redo;
             'source-mark-updated': SourceMarkUpdated;
             undo: Undo;
+            'notify::can-redo': GObject.Object.Notify;
+            'notify::can-redo': GObject.Object.Notify;
+            'notify::can-undo': GObject.Object.Notify;
+            'notify::can-undo': GObject.Object.Notify;
+            'notify::highlight-matching-brackets': GObject.Object.Notify;
+            'notify::highlight-matching-brackets': GObject.Object.Notify;
+            'notify::highlight-syntax': GObject.Object.Notify;
+            'notify::highlight-syntax': GObject.Object.Notify;
+            'notify::language': GObject.Object.Notify;
+            'notify::max-undo-levels': GObject.Object.Notify;
+            'notify::max-undo-levels': GObject.Object.Notify;
+            'notify::style-scheme': GObject.Object.Notify;
+            'notify::style-scheme': GObject.Object.Notify;
+            'notify::undo-manager': GObject.Object.Notify;
+            'notify::undo-manager': GObject.Object.Notify;
+            'notify::copy-target-list': GObject.Object.Notify;
+            'notify::copy-target-list': GObject.Object.Notify;
+            'notify::cursor-position': GObject.Object.Notify;
+            'notify::cursor-position': GObject.Object.Notify;
+            'notify::has-selection': GObject.Object.Notify;
+            'notify::has-selection': GObject.Object.Notify;
+            'notify::paste-target-list': GObject.Object.Notify;
+            'notify::paste-target-list': GObject.Object.Notify;
+            'notify::tag-table': GObject.Object.Notify;
+            'notify::tag-table': GObject.Object.Notify;
+            'notify::text': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -380,8 +406,14 @@ export namespace GtkSource {
         // Signals
 
         connect<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Buffer.SignalSignatures>(signal: K, callback: Buffer.SignalSignatures[K]): number;
-        emit<K extends keyof Buffer.SignalSignatures>(signal: K, ...args: Parameters<Buffer.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Buffer.SignalSignatures>(
+            signal: K,
+            ...args: Buffer.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -661,6 +693,24 @@ export namespace GtkSource {
             'move-page': MovePage;
             'populate-context': PopulateContext;
             show: Show;
+            'notify::accelerators': GObject.Object.Notify;
+            'notify::auto-complete-delay': GObject.Object.Notify;
+            'notify::auto-complete-delay': GObject.Object.Notify;
+            'notify::proposal-page-size': GObject.Object.Notify;
+            'notify::proposal-page-size': GObject.Object.Notify;
+            'notify::provider-page-size': GObject.Object.Notify;
+            'notify::provider-page-size': GObject.Object.Notify;
+            'notify::remember-info-visibility': GObject.Object.Notify;
+            'notify::remember-info-visibility': GObject.Object.Notify;
+            'notify::select-on-show': GObject.Object.Notify;
+            'notify::select-on-show': GObject.Object.Notify;
+            'notify::show-headers': GObject.Object.Notify;
+            'notify::show-headers': GObject.Object.Notify;
+            'notify::show-icons': GObject.Object.Notify;
+            'notify::show-icons': GObject.Object.Notify;
+            'notify::view': GObject.Object.Notify;
+            'notify::user-data': GObject.Object.Notify;
+            'notify::user-data': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -794,14 +844,17 @@ export namespace GtkSource {
             signal: K,
             callback: Completion.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Completion.SignalSignatures>(
             signal: K,
             callback: Completion.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Completion.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Completion.SignalSignatures[K]>
+            ...args: Completion.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -881,6 +934,8 @@ export namespace GtkSource {
         // Signal signatures
         interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
             cancelled: Cancelled;
+            'notify::completion': GObject.Object.Notify;
+            'notify::iter': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -918,14 +973,17 @@ export namespace GtkSource {
             signal: K,
             callback: CompletionContext.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CompletionContext.SignalSignatures>(
             signal: K,
             callback: CompletionContext.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CompletionContext.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CompletionContext.SignalSignatures[K]>
+            ...args: CompletionContext.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -956,6 +1014,107 @@ export namespace GtkSource {
         // Signal signatures
         interface SignalSignatures extends Gtk.Window.SignalSignatures {
             'before-show': BeforeShow;
+            'notify::max-height': GObject.Object.Notify;
+            'notify::max-height': GObject.Object.Notify;
+            'notify::max-width': GObject.Object.Notify;
+            'notify::max-width': GObject.Object.Notify;
+            'notify::shrink-height': GObject.Object.Notify;
+            'notify::shrink-height': GObject.Object.Notify;
+            'notify::shrink-width': GObject.Object.Notify;
+            'notify::shrink-width': GObject.Object.Notify;
+            'notify::accept-focus': GObject.Object.Notify;
+            'notify::accept-focus': GObject.Object.Notify;
+            'notify::allow-grow': GObject.Object.Notify;
+            'notify::allow-grow': GObject.Object.Notify;
+            'notify::allow-shrink': GObject.Object.Notify;
+            'notify::allow-shrink': GObject.Object.Notify;
+            'notify::decorated': GObject.Object.Notify;
+            'notify::default-height': GObject.Object.Notify;
+            'notify::default-height': GObject.Object.Notify;
+            'notify::default-width': GObject.Object.Notify;
+            'notify::default-width': GObject.Object.Notify;
+            'notify::deletable': GObject.Object.Notify;
+            'notify::destroy-with-parent': GObject.Object.Notify;
+            'notify::destroy-with-parent': GObject.Object.Notify;
+            'notify::focus-on-map': GObject.Object.Notify;
+            'notify::focus-on-map': GObject.Object.Notify;
+            'notify::gravity': GObject.Object.Notify;
+            'notify::has-toplevel-focus': GObject.Object.Notify;
+            'notify::has-toplevel-focus': GObject.Object.Notify;
+            'notify::icon': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::icon-name': GObject.Object.Notify;
+            'notify::is-active': GObject.Object.Notify;
+            'notify::is-active': GObject.Object.Notify;
+            'notify::mnemonics-visible': GObject.Object.Notify;
+            'notify::mnemonics-visible': GObject.Object.Notify;
+            'notify::modal': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::resizable': GObject.Object.Notify;
+            'notify::role': GObject.Object.Notify;
+            'notify::screen': GObject.Object.Notify;
+            'notify::skip-pager-hint': GObject.Object.Notify;
+            'notify::skip-pager-hint': GObject.Object.Notify;
+            'notify::skip-taskbar-hint': GObject.Object.Notify;
+            'notify::skip-taskbar-hint': GObject.Object.Notify;
+            'notify::startup-id': GObject.Object.Notify;
+            'notify::startup-id': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::transient-for': GObject.Object.Notify;
+            'notify::transient-for': GObject.Object.Notify;
+            'notify::type': GObject.Object.Notify;
+            'notify::type-hint': GObject.Object.Notify;
+            'notify::type-hint': GObject.Object.Notify;
+            'notify::urgency-hint': GObject.Object.Notify;
+            'notify::urgency-hint': GObject.Object.Notify;
+            'notify::window-position': GObject.Object.Notify;
+            'notify::window-position': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::child': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::events': GObject.Object.Notify;
+            'notify::extension-events': GObject.Object.Notify;
+            'notify::extension-events': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::sensitive': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::window': GObject.Object.Notify;
+            'notify::user-data': GObject.Object.Notify;
+            'notify::user-data': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1011,14 +1170,17 @@ export namespace GtkSource {
             signal: K,
             callback: CompletionInfo.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CompletionInfo.SignalSignatures>(
             signal: K,
             callback: CompletionInfo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CompletionInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CompletionInfo.SignalSignatures[K]>
+            ...args: CompletionInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -1505,7 +1667,13 @@ export namespace GtkSource {
 
     namespace CompletionItem {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::icon': GObject.Object.Notify;
+            'notify::info': GObject.Object.Notify;
+            'notify::label': GObject.Object.Notify;
+            'notify::markup': GObject.Object.Notify;
+            'notify::text': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1577,14 +1745,17 @@ export namespace GtkSource {
             signal: K,
             callback: CompletionItem.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CompletionItem.SignalSignatures>(
             signal: K,
             callback: CompletionItem.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CompletionItem.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CompletionItem.SignalSignatures[K]>
+            ...args: CompletionItem.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         /**
@@ -2134,13 +2305,16 @@ export namespace GtkSource {
         }
 
         interface QueryTooltip {
-            (_source: Gutter, renderer: Gtk.CellRenderer, iter: Gtk.TextIter, tooltip: Gtk.Tooltip): boolean;
+            (_source: Gutter, renderer: Gtk.CellRenderer, iter: Gtk.TextIter, tooltip: Gtk.Tooltip): boolean | void;
         }
 
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'cell-activated': CellActivated;
             'query-tooltip': QueryTooltip;
+            'notify::view': GObject.Object.Notify;
+            'notify::window-type': GObject.Object.Notify;
+            'notify::window-type': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -2179,8 +2353,14 @@ export namespace GtkSource {
         // Signals
 
         connect<K extends keyof Gutter.SignalSignatures>(signal: K, callback: Gutter.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Gutter.SignalSignatures>(signal: K, callback: Gutter.SignalSignatures[K]): number;
-        emit<K extends keyof Gutter.SignalSignatures>(signal: K, ...args: Parameters<Gutter.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Gutter.SignalSignatures>(
+            signal: K,
+            ...args: Gutter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -2240,7 +2420,12 @@ export namespace GtkSource {
 
     namespace Language {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::hidden': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::section': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2271,14 +2456,17 @@ export namespace GtkSource {
         // Signals
 
         connect<K extends keyof Language.SignalSignatures>(signal: K, callback: Language.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Language.SignalSignatures>(
             signal: K,
             callback: Language.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Language.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Language.SignalSignatures[K]>
+            ...args: Language.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2321,7 +2509,12 @@ export namespace GtkSource {
 
     namespace LanguageManager {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::language-ids': GObject.Object.Notify;
+            'notify::language-ids': GObject.Object.Notify;
+            'notify::search-path': GObject.Object.Notify;
+            'notify::search-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2359,14 +2552,17 @@ export namespace GtkSource {
             signal: K,
             callback: LanguageManager.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LanguageManager.SignalSignatures>(
             signal: K,
             callback: LanguageManager.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LanguageManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LanguageManager.SignalSignatures[K]>
+            ...args: LanguageManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2445,7 +2641,12 @@ export namespace GtkSource {
 
     namespace Mark {
         // Signal signatures
-        interface SignalSignatures extends Gtk.TextMark.SignalSignatures {}
+        interface SignalSignatures extends Gtk.TextMark.SignalSignatures {
+            'notify::category': GObject.Object.Notify;
+            'notify::left-gravity': GObject.Object.Notify;
+            'notify::left-gravity': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2479,8 +2680,14 @@ export namespace GtkSource {
         // Signals
 
         connect<K extends keyof Mark.SignalSignatures>(signal: K, callback: Mark.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Mark.SignalSignatures>(signal: K, callback: Mark.SignalSignatures[K]): number;
-        emit<K extends keyof Mark.SignalSignatures>(signal: K, ...args: Parameters<Mark.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Mark.SignalSignatures>(
+            signal: K,
+            ...args: Mark.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2493,7 +2700,31 @@ export namespace GtkSource {
 
     namespace PrintCompositor {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::body-font-name': GObject.Object.Notify;
+            'notify::body-font-name': GObject.Object.Notify;
+            'notify::buffer': GObject.Object.Notify;
+            'notify::footer-font-name': GObject.Object.Notify;
+            'notify::footer-font-name': GObject.Object.Notify;
+            'notify::header-font-name': GObject.Object.Notify;
+            'notify::header-font-name': GObject.Object.Notify;
+            'notify::highlight-syntax': GObject.Object.Notify;
+            'notify::highlight-syntax': GObject.Object.Notify;
+            'notify::line-numbers-font-name': GObject.Object.Notify;
+            'notify::line-numbers-font-name': GObject.Object.Notify;
+            'notify::n-pages': GObject.Object.Notify;
+            'notify::n-pages': GObject.Object.Notify;
+            'notify::print-footer': GObject.Object.Notify;
+            'notify::print-footer': GObject.Object.Notify;
+            'notify::print-header': GObject.Object.Notify;
+            'notify::print-header': GObject.Object.Notify;
+            'notify::print-line-numbers': GObject.Object.Notify;
+            'notify::print-line-numbers': GObject.Object.Notify;
+            'notify::tab-width': GObject.Object.Notify;
+            'notify::tab-width': GObject.Object.Notify;
+            'notify::wrap-mode': GObject.Object.Notify;
+            'notify::wrap-mode': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2778,14 +3009,17 @@ export namespace GtkSource {
             signal: K,
             callback: PrintCompositor.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PrintCompositor.SignalSignatures>(
             signal: K,
             callback: PrintCompositor.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PrintCompositor.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PrintCompositor.SignalSignatures[K]>
+            ...args: PrintCompositor.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3199,7 +3433,30 @@ export namespace GtkSource {
 
     namespace Style {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::background': GObject.Object.Notify;
+            'notify::background-set': GObject.Object.Notify;
+            'notify::background-set': GObject.Object.Notify;
+            'notify::bold': GObject.Object.Notify;
+            'notify::bold-set': GObject.Object.Notify;
+            'notify::bold-set': GObject.Object.Notify;
+            'notify::foreground': GObject.Object.Notify;
+            'notify::foreground-set': GObject.Object.Notify;
+            'notify::foreground-set': GObject.Object.Notify;
+            'notify::italic': GObject.Object.Notify;
+            'notify::italic-set': GObject.Object.Notify;
+            'notify::italic-set': GObject.Object.Notify;
+            'notify::line-background': GObject.Object.Notify;
+            'notify::line-background': GObject.Object.Notify;
+            'notify::line-background-set': GObject.Object.Notify;
+            'notify::line-background-set': GObject.Object.Notify;
+            'notify::strikethrough': GObject.Object.Notify;
+            'notify::strikethrough-set': GObject.Object.Notify;
+            'notify::strikethrough-set': GObject.Object.Notify;
+            'notify::underline': GObject.Object.Notify;
+            'notify::underline-set': GObject.Object.Notify;
+            'notify::underline-set': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3266,13 +3523,24 @@ export namespace GtkSource {
         // Signals
 
         connect<K extends keyof Style.SignalSignatures>(signal: K, callback: Style.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Style.SignalSignatures>(signal: K, callback: Style.SignalSignatures[K]): number;
-        emit<K extends keyof Style.SignalSignatures>(signal: K, ...args: Parameters<Style.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Style.SignalSignatures>(
+            signal: K,
+            ...args: Style.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace StyleScheme {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::description': GObject.Object.Notify;
+            'notify::filename': GObject.Object.Notify;
+            'notify::id': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3320,14 +3588,17 @@ export namespace GtkSource {
             signal: K,
             callback: StyleScheme.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StyleScheme.SignalSignatures>(
             signal: K,
             callback: StyleScheme.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StyleScheme.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StyleScheme.SignalSignatures[K]>
+            ...args: StyleScheme.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3340,7 +3611,12 @@ export namespace GtkSource {
 
     namespace StyleSchemeManager {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::scheme-ids': GObject.Object.Notify;
+            'notify::scheme-ids': GObject.Object.Notify;
+            'notify::search-path': GObject.Object.Notify;
+            'notify::search-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -3378,14 +3654,17 @@ export namespace GtkSource {
             signal: K,
             callback: StyleSchemeManager.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof StyleSchemeManager.SignalSignatures>(
             signal: K,
             callback: StyleSchemeManager.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof StyleSchemeManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<StyleSchemeManager.SignalSignatures[K]>
+            ...args: StyleSchemeManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -3475,6 +3754,97 @@ export namespace GtkSource {
             'show-completion': ShowCompletion;
             'smart-home-end': SmartHomeEnd;
             undo: Undo;
+            'notify::auto-indent': GObject.Object.Notify;
+            'notify::auto-indent': GObject.Object.Notify;
+            'notify::completion': GObject.Object.Notify;
+            'notify::highlight-current-line': GObject.Object.Notify;
+            'notify::highlight-current-line': GObject.Object.Notify;
+            'notify::indent-on-tab': GObject.Object.Notify;
+            'notify::indent-on-tab': GObject.Object.Notify;
+            'notify::indent-width': GObject.Object.Notify;
+            'notify::indent-width': GObject.Object.Notify;
+            'notify::insert-spaces-instead-of-tabs': GObject.Object.Notify;
+            'notify::insert-spaces-instead-of-tabs': GObject.Object.Notify;
+            'notify::right-margin-position': GObject.Object.Notify;
+            'notify::right-margin-position': GObject.Object.Notify;
+            'notify::show-line-marks': GObject.Object.Notify;
+            'notify::show-line-marks': GObject.Object.Notify;
+            'notify::show-line-numbers': GObject.Object.Notify;
+            'notify::show-line-numbers': GObject.Object.Notify;
+            'notify::show-right-margin': GObject.Object.Notify;
+            'notify::show-right-margin': GObject.Object.Notify;
+            'notify::tab-width': GObject.Object.Notify;
+            'notify::tab-width': GObject.Object.Notify;
+            'notify::accepts-tab': GObject.Object.Notify;
+            'notify::accepts-tab': GObject.Object.Notify;
+            'notify::buffer': GObject.Object.Notify;
+            'notify::cursor-visible': GObject.Object.Notify;
+            'notify::cursor-visible': GObject.Object.Notify;
+            'notify::editable': GObject.Object.Notify;
+            'notify::im-module': GObject.Object.Notify;
+            'notify::im-module': GObject.Object.Notify;
+            'notify::indent': GObject.Object.Notify;
+            'notify::justification': GObject.Object.Notify;
+            'notify::left-margin': GObject.Object.Notify;
+            'notify::left-margin': GObject.Object.Notify;
+            'notify::overwrite': GObject.Object.Notify;
+            'notify::pixels-above-lines': GObject.Object.Notify;
+            'notify::pixels-above-lines': GObject.Object.Notify;
+            'notify::pixels-below-lines': GObject.Object.Notify;
+            'notify::pixels-below-lines': GObject.Object.Notify;
+            'notify::pixels-inside-wrap': GObject.Object.Notify;
+            'notify::pixels-inside-wrap': GObject.Object.Notify;
+            'notify::right-margin': GObject.Object.Notify;
+            'notify::right-margin': GObject.Object.Notify;
+            'notify::tabs': GObject.Object.Notify;
+            'notify::wrap-mode': GObject.Object.Notify;
+            'notify::wrap-mode': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::border-width': GObject.Object.Notify;
+            'notify::child': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::resize-mode': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::events': GObject.Object.Notify;
+            'notify::extension-events': GObject.Object.Notify;
+            'notify::extension-events': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::sensitive': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::window': GObject.Object.Notify;
+            'notify::user-data': GObject.Object.Notify;
+            'notify::user-data': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -3603,8 +3973,14 @@ export namespace GtkSource {
         // Signals
 
         connect<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof View.SignalSignatures>(signal: K, callback: View.SignalSignatures[K]): number;
-        emit<K extends keyof View.SignalSignatures>(signal: K, ...args: Parameters<View.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof View.SignalSignatures>(
+            signal: K,
+            ...args: View.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 

@@ -77,14 +77,17 @@ export namespace CMenu {
             signal: K,
             callback: DesktopAppInfo.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DesktopAppInfo.SignalSignatures>(
             signal: K,
             callback: DesktopAppInfo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DesktopAppInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DesktopAppInfo.SignalSignatures[K]>
+            ...args: DesktopAppInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1150,6 +1153,11 @@ export namespace CMenu {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             changed: Changed;
+            'notify::flags': GObject.Object.Notify;
+            'notify::menu-basename': GObject.Object.Notify;
+            'notify::menu-basename': GObject.Object.Notify;
+            'notify::menu-path': GObject.Object.Notify;
+            'notify::menu-path': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1208,8 +1216,14 @@ export namespace CMenu {
         // Signals
 
         connect<K extends keyof Tree.SignalSignatures>(signal: K, callback: Tree.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Tree.SignalSignatures>(signal: K, callback: Tree.SignalSignatures[K]): number;
-        emit<K extends keyof Tree.SignalSignatures>(signal: K, ...args: Parameters<Tree.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Tree.SignalSignatures>(
+            signal: K,
+            ...args: Tree.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 

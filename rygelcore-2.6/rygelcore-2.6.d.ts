@@ -110,7 +110,19 @@ export namespace RygelCore {
     }
     namespace ConnectionManager {
         // Signal signatures
-        interface SignalSignatures extends GUPnP.Service.SignalSignatures {}
+        interface SignalSignatures extends GUPnP.Service.SignalSignatures {
+            'notify::root-device': GObject.Object.Notify;
+            'notify::root-device': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
+            'notify::document': GObject.Object.Notify;
+            'notify::element': GObject.Object.Notify;
+            'notify::location': GObject.Object.Notify;
+            'notify::service-type': GObject.Object.Notify;
+            'notify::service-type': GObject.Object.Notify;
+            'notify::udn': GObject.Object.Notify;
+            'notify::url-base': GObject.Object.Notify;
+            'notify::url-base': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -143,14 +155,17 @@ export namespace RygelCore {
             signal: K,
             callback: ConnectionManager.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ConnectionManager.SignalSignatures>(
             signal: K,
             callback: ConnectionManager.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ConnectionManager.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ConnectionManager.SignalSignatures[K]>
+            ...args: ConnectionManager.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -163,7 +178,21 @@ export namespace RygelCore {
 
     namespace BasicManagement {
         // Signal signatures
-        interface SignalSignatures extends GUPnP.Service.SignalSignatures {}
+        interface SignalSignatures extends GUPnP.Service.SignalSignatures {
+            'notify::max-history-size': GObject.Object.Notify;
+            'notify::max-history-size': GObject.Object.Notify;
+            'notify::root-device': GObject.Object.Notify;
+            'notify::root-device': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
+            'notify::document': GObject.Object.Notify;
+            'notify::element': GObject.Object.Notify;
+            'notify::location': GObject.Object.Notify;
+            'notify::service-type': GObject.Object.Notify;
+            'notify::service-type': GObject.Object.Notify;
+            'notify::udn': GObject.Object.Notify;
+            'notify::url-base': GObject.Object.Notify;
+            'notify::url-base': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -201,14 +230,17 @@ export namespace RygelCore {
             signal: K,
             callback: BasicManagement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BasicManagement.SignalSignatures>(
             signal: K,
             callback: BasicManagement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BasicManagement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BasicManagement.SignalSignatures[K]>
+            ...args: BasicManagement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -244,14 +276,17 @@ export namespace RygelCore {
             signal: K,
             callback: DescriptionFile.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DescriptionFile.SignalSignatures>(
             signal: K,
             callback: DescriptionFile.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DescriptionFile.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DescriptionFile.SignalSignatures[K]>
+            ...args: DescriptionFile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -301,14 +336,17 @@ export namespace RygelCore {
             signal: K,
             callback: DLNAProfile.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof DLNAProfile.SignalSignatures>(
             signal: K,
             callback: DLNAProfile.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof DLNAProfile.SignalSignatures>(
             signal: K,
-            ...args: Parameters<DLNAProfile.SignalSignatures[K]>
+            ...args: DLNAProfile.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -317,7 +355,19 @@ export namespace RygelCore {
 
     namespace EnergyManagement {
         // Signal signatures
-        interface SignalSignatures extends GUPnP.Service.SignalSignatures {}
+        interface SignalSignatures extends GUPnP.Service.SignalSignatures {
+            'notify::root-device': GObject.Object.Notify;
+            'notify::root-device': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
+            'notify::document': GObject.Object.Notify;
+            'notify::element': GObject.Object.Notify;
+            'notify::location': GObject.Object.Notify;
+            'notify::service-type': GObject.Object.Notify;
+            'notify::service-type': GObject.Object.Notify;
+            'notify::udn': GObject.Object.Notify;
+            'notify::url-base': GObject.Object.Notify;
+            'notify::url-base': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -341,19 +391,44 @@ export namespace RygelCore {
             signal: K,
             callback: EnergyManagement.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof EnergyManagement.SignalSignatures>(
             signal: K,
             callback: EnergyManagement.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof EnergyManagement.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EnergyManagement.SignalSignatures[K]>
+            ...args: EnergyManagement.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace RootDevice {
         // Signal signatures
-        interface SignalSignatures extends GUPnP.RootDevice.SignalSignatures {}
+        interface SignalSignatures extends GUPnP.RootDevice.SignalSignatures {
+            'notify::services': GObject.Object.Notify;
+            'notify::available': GObject.Object.Notify;
+            'notify::description-dir': GObject.Object.Notify;
+            'notify::description-dir': GObject.Object.Notify;
+            'notify::description-doc': GObject.Object.Notify;
+            'notify::description-doc': GObject.Object.Notify;
+            'notify::description-path': GObject.Object.Notify;
+            'notify::description-path': GObject.Object.Notify;
+            'notify::root-device': GObject.Object.Notify;
+            'notify::root-device': GObject.Object.Notify;
+            'notify::context': GObject.Object.Notify;
+            'notify::device-type': GObject.Object.Notify;
+            'notify::device-type': GObject.Object.Notify;
+            'notify::document': GObject.Object.Notify;
+            'notify::element': GObject.Object.Notify;
+            'notify::location': GObject.Object.Notify;
+            'notify::resource-factory': GObject.Object.Notify;
+            'notify::resource-factory': GObject.Object.Notify;
+            'notify::udn': GObject.Object.Notify;
+            'notify::url-base': GObject.Object.Notify;
+            'notify::url-base': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -393,14 +468,17 @@ export namespace RygelCore {
             signal: K,
             callback: RootDevice.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RootDevice.SignalSignatures>(
             signal: K,
             callback: RootDevice.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RootDevice.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RootDevice.SignalSignatures[K]>
+            ...args: RootDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -935,7 +1013,9 @@ export namespace RygelCore {
 
     namespace RootDeviceFactory {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::context': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -965,14 +1045,17 @@ export namespace RygelCore {
             signal: K,
             callback: RootDeviceFactory.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RootDeviceFactory.SignalSignatures>(
             signal: K,
             callback: RootDeviceFactory.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RootDeviceFactory.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RootDeviceFactory.SignalSignatures[K]>
+            ...args: RootDeviceFactory.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1530,14 +1613,17 @@ export namespace RygelCore {
             signal: K,
             callback: LogHandler.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof LogHandler.SignalSignatures>(
             signal: K,
             callback: LogHandler.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof LogHandler.SignalSignatures>(
             signal: K,
-            ...args: Parameters<LogHandler.SignalSignatures[K]>
+            ...args: LogHandler.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1570,14 +1656,17 @@ export namespace RygelCore {
             signal: K,
             callback: MetaConfig.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MetaConfig.SignalSignatures>(
             signal: K,
             callback: MetaConfig.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MetaConfig.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MetaConfig.SignalSignatures[K]>
+            ...args: MetaConfig.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2077,6 +2166,8 @@ export namespace RygelCore {
         // Signal signatures
         interface SignalSignatures extends RecursiveModuleLoader.SignalSignatures {
             'plugin-available': PluginAvailable;
+            'notify::base-path': GObject.Object.Notify;
+            'notify::base-path': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -2101,14 +2192,17 @@ export namespace RygelCore {
             signal: K,
             callback: PluginLoader.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PluginLoader.SignalSignatures>(
             signal: K,
             callback: PluginLoader.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PluginLoader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PluginLoader.SignalSignatures[K]>
+            ...args: PluginLoader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2120,7 +2214,10 @@ export namespace RygelCore {
 
     namespace RecursiveModuleLoader {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::base-path': GObject.Object.Notify;
+            'notify::base-path': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2152,14 +2249,17 @@ export namespace RygelCore {
             signal: K,
             callback: RecursiveModuleLoader.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RecursiveModuleLoader.SignalSignatures>(
             signal: K,
             callback: RecursiveModuleLoader.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RecursiveModuleLoader.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RecursiveModuleLoader.SignalSignatures[K]>
+            ...args: RecursiveModuleLoader.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -2178,7 +2278,21 @@ export namespace RygelCore {
 
     namespace Plugin {
         // Signal signatures
-        interface SignalSignatures extends GUPnP.ResourceFactory.SignalSignatures {}
+        interface SignalSignatures extends GUPnP.ResourceFactory.SignalSignatures {
+            'notify::capabilities': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::description': GObject.Object.Notify;
+            'notify::desc-path': GObject.Object.Notify;
+            'notify::desc-path': GObject.Object.Notify;
+            'notify::active': GObject.Object.Notify;
+            'notify::resource-infos': GObject.Object.Notify;
+            'notify::resource-infos': GObject.Object.Notify;
+            'notify::icon-infos': GObject.Object.Notify;
+            'notify::icon-infos': GObject.Object.Notify;
+            'notify::default-icons': GObject.Object.Notify;
+            'notify::default-icons': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2247,8 +2361,14 @@ export namespace RygelCore {
         // Signals
 
         connect<K extends keyof Plugin.SignalSignatures>(signal: K, callback: Plugin.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Plugin.SignalSignatures>(signal: K, callback: Plugin.SignalSignatures[K]): number;
-        emit<K extends keyof Plugin.SignalSignatures>(signal: K, ...args: Parameters<Plugin.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Plugin.SignalSignatures>(
+            signal: K,
+            ...args: Plugin.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -2301,19 +2421,26 @@ export namespace RygelCore {
             signal: K,
             callback: ResourceInfo.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof ResourceInfo.SignalSignatures>(
             signal: K,
             callback: ResourceInfo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof ResourceInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<ResourceInfo.SignalSignatures[K]>
+            ...args: ResourceInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace MediaDevice {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::plugin': GObject.Object.Notify;
+            'notify::title': GObject.Object.Notify;
+            'notify::capabilities': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2346,14 +2473,17 @@ export namespace RygelCore {
             signal: K,
             callback: MediaDevice.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MediaDevice.SignalSignatures>(
             signal: K,
             callback: MediaDevice.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MediaDevice.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MediaDevice.SignalSignatures[K]>
+            ...args: MediaDevice.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2392,14 +2522,17 @@ export namespace RygelCore {
             signal: K,
             callback: BaseConfiguration.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof BaseConfiguration.SignalSignatures>(
             signal: K,
             callback: BaseConfiguration.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof BaseConfiguration.SignalSignatures>(
             signal: K,
-            ...args: Parameters<BaseConfiguration.SignalSignatures[K]>
+            ...args: BaseConfiguration.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -2915,14 +3048,17 @@ export namespace RygelCore {
             signal: K,
             callback: CmdlineConfig.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CmdlineConfig.SignalSignatures>(
             signal: K,
             callback: CmdlineConfig.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CmdlineConfig.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CmdlineConfig.SignalSignatures[K]>
+            ...args: CmdlineConfig.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -3441,14 +3577,17 @@ export namespace RygelCore {
             signal: K,
             callback: EnvironmentConfig.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof EnvironmentConfig.SignalSignatures>(
             signal: K,
             callback: EnvironmentConfig.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof EnvironmentConfig.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EnvironmentConfig.SignalSignatures[K]>
+            ...args: EnvironmentConfig.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -3969,14 +4108,17 @@ export namespace RygelCore {
             signal: K,
             callback: UserConfig.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UserConfig.SignalSignatures>(
             signal: K,
             callback: UserConfig.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UserConfig.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UserConfig.SignalSignatures[K]>
+            ...args: UserConfig.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -4466,7 +4608,12 @@ export namespace RygelCore {
 
     namespace V1Hacks {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::device-type': GObject.Object.Notify;
+            'notify::device-type': GObject.Object.Notify;
+            'notify::service-types': GObject.Object.Notify;
+            'notify::service-types': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4505,14 +4652,17 @@ export namespace RygelCore {
         // Signals
 
         connect<K extends keyof V1Hacks.SignalSignatures>(signal: K, callback: V1Hacks.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof V1Hacks.SignalSignatures>(
             signal: K,
             callback: V1Hacks.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof V1Hacks.SignalSignatures>(
             signal: K,
-            ...args: Parameters<V1Hacks.SignalSignatures[K]>
+            ...args: V1Hacks.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4550,14 +4700,17 @@ export namespace RygelCore {
         // Signals
 
         connect<K extends keyof IconInfo.SignalSignatures>(signal: K, callback: IconInfo.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof IconInfo.SignalSignatures>(
             signal: K,
             callback: IconInfo.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof IconInfo.SignalSignatures>(
             signal: K,
-            ...args: Parameters<IconInfo.SignalSignatures[K]>
+            ...args: IconInfo.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace XMLUtils {
@@ -4581,14 +4734,17 @@ export namespace RygelCore {
         // Signals
 
         connect<K extends keyof XMLUtils.SignalSignatures>(signal: K, callback: XMLUtils.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XMLUtils.SignalSignatures>(
             signal: K,
             callback: XMLUtils.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XMLUtils.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XMLUtils.SignalSignatures[K]>
+            ...args: XMLUtils.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace XMLUtilsIterator {
@@ -4615,14 +4771,17 @@ export namespace RygelCore {
             signal: K,
             callback: XMLUtilsIterator.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XMLUtilsIterator.SignalSignatures>(
             signal: K,
             callback: XMLUtilsIterator.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XMLUtilsIterator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XMLUtilsIterator.SignalSignatures[K]>
+            ...args: XMLUtilsIterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -4651,19 +4810,29 @@ export namespace RygelCore {
             signal: K,
             callback: XMLUtilsChildIterator.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof XMLUtilsChildIterator.SignalSignatures>(
             signal: K,
             callback: XMLUtilsChildIterator.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof XMLUtilsChildIterator.SignalSignatures>(
             signal: K,
-            ...args: Parameters<XMLUtilsChildIterator.SignalSignatures[K]>
+            ...args: XMLUtilsChildIterator.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace PluginInformation {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::module-path': GObject.Object.Notify;
+            'notify::module-path': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::conflicts': GObject.Object.Notify;
+            'notify::module-loaded': GObject.Object.Notify;
+            'notify::module-loaded': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -4703,14 +4872,17 @@ export namespace RygelCore {
             signal: K,
             callback: PluginInformation.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof PluginInformation.SignalSignatures>(
             signal: K,
             callback: PluginInformation.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof PluginInformation.SignalSignatures>(
             signal: K,
-            ...args: Parameters<PluginInformation.SignalSignatures[K]>
+            ...args: PluginInformation.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 

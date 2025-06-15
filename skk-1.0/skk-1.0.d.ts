@@ -2193,7 +2193,14 @@ export namespace Skk {
     }
     namespace RomKanaConverter {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::kana-mode': GObject.Object.Notify;
+            'notify::kana-mode': GObject.Object.Notify;
+            'notify::period-style': GObject.Object.Notify;
+            'notify::period-style': GObject.Object.Notify;
+            'notify::output': GObject.Object.Notify;
+            'notify::preedit': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2238,14 +2245,17 @@ export namespace Skk {
             signal: K,
             callback: RomKanaConverter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof RomKanaConverter.SignalSignatures>(
             signal: K,
             callback: RomKanaConverter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof RomKanaConverter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<RomKanaConverter.SignalSignatures[K]>
+            ...args: RomKanaConverter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2266,7 +2276,10 @@ export namespace Skk {
 
     namespace Dict {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2293,8 +2306,14 @@ export namespace Skk {
         // Signals
 
         connect<K extends keyof Dict.SignalSignatures>(signal: K, callback: Dict.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Dict.SignalSignatures>(signal: K, callback: Dict.SignalSignatures[K]): number;
-        emit<K extends keyof Dict.SignalSignatures>(signal: K, ...args: Parameters<Dict.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Dict.SignalSignatures>(
+            signal: K,
+            ...args: Dict.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -2321,7 +2340,10 @@ export namespace Skk {
 
     namespace EmptyDict {
         // Signal signatures
-        interface SignalSignatures extends Dict.SignalSignatures {}
+        interface SignalSignatures extends Dict.SignalSignatures {
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2342,19 +2364,25 @@ export namespace Skk {
         // Signals
 
         connect<K extends keyof EmptyDict.SignalSignatures>(signal: K, callback: EmptyDict.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof EmptyDict.SignalSignatures>(
             signal: K,
             callback: EmptyDict.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof EmptyDict.SignalSignatures>(
             signal: K,
-            ...args: Parameters<EmptyDict.SignalSignatures[K]>
+            ...args: EmptyDict.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace FileDict {
         // Signal signatures
-        interface SignalSignatures extends Dict.SignalSignatures {}
+        interface SignalSignatures extends Dict.SignalSignatures {
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2375,19 +2403,25 @@ export namespace Skk {
         // Signals
 
         connect<K extends keyof FileDict.SignalSignatures>(signal: K, callback: FileDict.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof FileDict.SignalSignatures>(
             signal: K,
             callback: FileDict.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof FileDict.SignalSignatures>(
             signal: K,
-            ...args: Parameters<FileDict.SignalSignatures[K]>
+            ...args: FileDict.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace CdbDict {
         // Signal signatures
-        interface SignalSignatures extends Dict.SignalSignatures {}
+        interface SignalSignatures extends Dict.SignalSignatures {
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2408,19 +2442,25 @@ export namespace Skk {
         // Signals
 
         connect<K extends keyof CdbDict.SignalSignatures>(signal: K, callback: CdbDict.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CdbDict.SignalSignatures>(
             signal: K,
             callback: CdbDict.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CdbDict.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CdbDict.SignalSignatures[K]>
+            ...args: CdbDict.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace UserDict {
         // Signal signatures
-        interface SignalSignatures extends Dict.SignalSignatures {}
+        interface SignalSignatures extends Dict.SignalSignatures {
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2441,19 +2481,25 @@ export namespace Skk {
         // Signals
 
         connect<K extends keyof UserDict.SignalSignatures>(signal: K, callback: UserDict.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof UserDict.SignalSignatures>(
             signal: K,
             callback: UserDict.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof UserDict.SignalSignatures>(
             signal: K,
-            ...args: Parameters<UserDict.SignalSignatures[K]>
+            ...args: UserDict.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace SkkServ {
         // Signal signatures
-        interface SignalSignatures extends Dict.SignalSignatures {}
+        interface SignalSignatures extends Dict.SignalSignatures {
+            'notify::read-only': GObject.Object.Notify;
+            'notify::read-only': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2474,19 +2520,26 @@ export namespace Skk {
         // Signals
 
         connect<K extends keyof SkkServ.SignalSignatures>(signal: K, callback: SkkServ.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof SkkServ.SignalSignatures>(
             signal: K,
             callback: SkkServ.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof SkkServ.SignalSignatures>(
             signal: K,
-            ...args: Parameters<SkkServ.SignalSignatures[K]>
+            ...args: SkkServ.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace KeyEvent {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::name': GObject.Object.Notify;
+            'notify::code': GObject.Object.Notify;
+            'notify::modifiers': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2524,14 +2577,17 @@ export namespace Skk {
         // Signals
 
         connect<K extends keyof KeyEvent.SignalSignatures>(signal: K, callback: KeyEvent.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof KeyEvent.SignalSignatures>(
             signal: K,
             callback: KeyEvent.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof KeyEvent.SignalSignatures>(
             signal: K,
-            ...args: Parameters<KeyEvent.SignalSignatures[K]>
+            ...args: KeyEvent.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2576,14 +2632,17 @@ export namespace Skk {
             signal: K,
             callback: KeyEventFilter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof KeyEventFilter.SignalSignatures>(
             signal: K,
             callback: KeyEventFilter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof KeyEventFilter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<KeyEventFilter.SignalSignatures[K]>
+            ...args: KeyEventFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -2598,7 +2657,9 @@ export namespace Skk {
 
     namespace Rule {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::metadata': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2632,8 +2693,14 @@ export namespace Skk {
         // Signals
 
         connect<K extends keyof Rule.SignalSignatures>(signal: K, callback: Rule.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Rule.SignalSignatures>(signal: K, callback: Rule.SignalSignatures[K]): number;
-        emit<K extends keyof Rule.SignalSignatures>(signal: K, ...args: Parameters<Rule.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Rule.SignalSignatures>(
+            signal: K,
+            ...args: Rule.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -2649,17 +2716,31 @@ export namespace Skk {
         // Signal callback interfaces
 
         interface RetrieveSurroundingText {
-            (_source: Context, text: string, cursor_pos: number): boolean;
+            (_source: Context, text: string, cursor_pos: number): boolean | void;
         }
 
         interface DeleteSurroundingText {
-            (_source: Context, offset: number, nchars: number): boolean;
+            (_source: Context, offset: number, nchars: number): boolean | void;
         }
 
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'retrieve-surrounding-text': RetrieveSurroundingText;
             'delete-surrounding-text': DeleteSurroundingText;
+            'notify::candidates': GObject.Object.Notify;
+            'notify::input-mode': GObject.Object.Notify;
+            'notify::input-mode': GObject.Object.Notify;
+            'notify::auto-start-henkan-keywords': GObject.Object.Notify;
+            'notify::auto-start-henkan-keywords': GObject.Object.Notify;
+            'notify::egg-like-newline': GObject.Object.Notify;
+            'notify::egg-like-newline': GObject.Object.Notify;
+            'notify::period-style': GObject.Object.Notify;
+            'notify::period-style': GObject.Object.Notify;
+            'notify::typing-rule': GObject.Object.Notify;
+            'notify::typing-rule': GObject.Object.Notify;
+            'notify::key-event-filter': GObject.Object.Notify;
+            'notify::key-event-filter': GObject.Object.Notify;
+            'notify::preedit': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -2724,14 +2805,17 @@ export namespace Skk {
         // Signals
 
         connect<K extends keyof Context.SignalSignatures>(signal: K, callback: Context.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Context.SignalSignatures>(
             signal: K,
             callback: Context.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Context.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Context.SignalSignatures[K]>
+            ...args: Context.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2765,7 +2849,13 @@ export namespace Skk {
 
     namespace Candidate {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::midasi': GObject.Object.Notify;
+            'notify::okuri': GObject.Object.Notify;
+            'notify::text': GObject.Object.Notify;
+            'notify::annotation': GObject.Object.Notify;
+            'notify::output': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -2811,14 +2901,17 @@ export namespace Skk {
         // Signals
 
         connect<K extends keyof Candidate.SignalSignatures>(signal: K, callback: Candidate.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Candidate.SignalSignatures>(
             signal: K,
             callback: Candidate.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof Candidate.SignalSignatures>(
             signal: K,
-            ...args: Parameters<Candidate.SignalSignatures[K]>
+            ...args: Candidate.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -2848,6 +2941,15 @@ export namespace Skk {
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             populated: Populated;
             selected: Selected;
+            'notify::cursor-pos': GObject.Object.Notify;
+            'notify::cursor-pos': GObject.Object.Notify;
+            'notify::size': GObject.Object.Notify;
+            'notify::page-start': GObject.Object.Notify;
+            'notify::page-start': GObject.Object.Notify;
+            'notify::page-size': GObject.Object.Notify;
+            'notify::page-size': GObject.Object.Notify;
+            'notify::page-visible': GObject.Object.Notify;
+            'notify::page-visible': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -2896,14 +2998,17 @@ export namespace Skk {
             signal: K,
             callback: CandidateList.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof CandidateList.SignalSignatures>(
             signal: K,
             callback: CandidateList.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof CandidateList.SignalSignatures>(
             signal: K,
-            ...args: Parameters<CandidateList.SignalSignatures[K]>
+            ...args: CandidateList.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Virtual methods
 
@@ -2988,14 +3093,17 @@ export namespace Skk {
             signal: K,
             callback: NicolaKeyEventFilter.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof NicolaKeyEventFilter.SignalSignatures>(
             signal: K,
             callback: NicolaKeyEventFilter.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof NicolaKeyEventFilter.SignalSignatures>(
             signal: K,
-            ...args: Parameters<NicolaKeyEventFilter.SignalSignatures[K]>
+            ...args: NicolaKeyEventFilter.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     type RomKanaConverterClass = typeof RomKanaConverter;

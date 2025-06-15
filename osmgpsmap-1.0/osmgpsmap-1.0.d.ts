@@ -79,6 +79,117 @@ export namespace OsmGpsMap {
         // Signal signatures
         interface SignalSignatures extends Gtk.DrawingArea.SignalSignatures {
             changed: Changed;
+            'notify::auto-center': GObject.Object.Notify;
+            'notify::auto-center': GObject.Object.Notify;
+            'notify::auto-center-threshold': GObject.Object.Notify;
+            'notify::auto-center-threshold': GObject.Object.Notify;
+            'notify::auto-download': GObject.Object.Notify;
+            'notify::auto-download': GObject.Object.Notify;
+            'notify::drag-limit': GObject.Object.Notify;
+            'notify::drag-limit': GObject.Object.Notify;
+            'notify::gps-track-highlight-radius': GObject.Object.Notify;
+            'notify::gps-track-highlight-radius': GObject.Object.Notify;
+            'notify::gps-track-point-radius': GObject.Object.Notify;
+            'notify::gps-track-point-radius': GObject.Object.Notify;
+            'notify::gps-track-width': GObject.Object.Notify;
+            'notify::gps-track-width': GObject.Object.Notify;
+            'notify::image-format': GObject.Object.Notify;
+            'notify::image-format': GObject.Object.Notify;
+            'notify::latitude': GObject.Object.Notify;
+            'notify::longitude': GObject.Object.Notify;
+            'notify::map-source': GObject.Object.Notify;
+            'notify::map-source': GObject.Object.Notify;
+            'notify::map-x': GObject.Object.Notify;
+            'notify::map-x': GObject.Object.Notify;
+            'notify::map-y': GObject.Object.Notify;
+            'notify::map-y': GObject.Object.Notify;
+            'notify::max-zoom': GObject.Object.Notify;
+            'notify::max-zoom': GObject.Object.Notify;
+            'notify::min-zoom': GObject.Object.Notify;
+            'notify::min-zoom': GObject.Object.Notify;
+            'notify::proxy-uri': GObject.Object.Notify;
+            'notify::proxy-uri': GObject.Object.Notify;
+            'notify::record-trip-history': GObject.Object.Notify;
+            'notify::record-trip-history': GObject.Object.Notify;
+            'notify::repo-uri': GObject.Object.Notify;
+            'notify::repo-uri': GObject.Object.Notify;
+            'notify::show-gps-point': GObject.Object.Notify;
+            'notify::show-gps-point': GObject.Object.Notify;
+            'notify::show-trip-history': GObject.Object.Notify;
+            'notify::show-trip-history': GObject.Object.Notify;
+            'notify::tile-cache': GObject.Object.Notify;
+            'notify::tile-cache': GObject.Object.Notify;
+            'notify::tile-cache-base': GObject.Object.Notify;
+            'notify::tile-cache-base': GObject.Object.Notify;
+            'notify::tile-zoom-offset': GObject.Object.Notify;
+            'notify::tile-zoom-offset': GObject.Object.Notify;
+            'notify::tiles-queued': GObject.Object.Notify;
+            'notify::tiles-queued': GObject.Object.Notify;
+            'notify::zoom': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::app-paintable': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-default': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::can-focus': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::composite-child': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::double-buffered': GObject.Object.Notify;
+            'notify::events': GObject.Object.Notify;
+            'notify::expand': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::focus-on-click': GObject.Object.Notify;
+            'notify::halign': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-default': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-focus': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::has-tooltip': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::height-request': GObject.Object.Notify;
+            'notify::hexpand': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::hexpand-set': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::is-focus': GObject.Object.Notify;
+            'notify::margin': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-bottom': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-end': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-left': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-right': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-start': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::margin-top': GObject.Object.Notify;
+            'notify::name': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::no-show-all': GObject.Object.Notify;
+            'notify::opacity': GObject.Object.Notify;
+            'notify::parent': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::receives-default': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::scale-factor': GObject.Object.Notify;
+            'notify::sensitive': GObject.Object.Notify;
+            'notify::style': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-markup': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::tooltip-text': GObject.Object.Notify;
+            'notify::valign': GObject.Object.Notify;
+            'notify::vexpand': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::vexpand-set': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::width-request': GObject.Object.Notify;
+            'notify::window': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -445,8 +556,14 @@ export namespace OsmGpsMap {
         // Signals
 
         connect<K extends keyof Map.SignalSignatures>(signal: K, callback: Map.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof Map.SignalSignatures>(signal: K, callback: Map.SignalSignatures[K]): number;
-        emit<K extends keyof Map.SignalSignatures>(signal: K, ...args: Parameters<Map.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof Map.SignalSignatures>(
+            signal: K,
+            ...args: Map.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Static methods
 
@@ -1011,7 +1128,17 @@ export namespace OsmGpsMap {
 
     namespace MapImage {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::pixbuf': GObject.Object.Notify;
+            'notify::point': GObject.Object.Notify;
+            'notify::rotation': GObject.Object.Notify;
+            'notify::x-align': GObject.Object.Notify;
+            'notify::x-align': GObject.Object.Notify;
+            'notify::y-align': GObject.Object.Notify;
+            'notify::y-align': GObject.Object.Notify;
+            'notify::z-order': GObject.Object.Notify;
+            'notify::z-order': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1063,14 +1190,17 @@ export namespace OsmGpsMap {
         // Signals
 
         connect<K extends keyof MapImage.SignalSignatures>(signal: K, callback: MapImage.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MapImage.SignalSignatures>(
             signal: K,
             callback: MapImage.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MapImage.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MapImage.SignalSignatures[K]>
+            ...args: MapImage.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
@@ -1083,7 +1213,28 @@ export namespace OsmGpsMap {
 
     namespace MapOsd {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::dpad-radius': GObject.Object.Notify;
+            'notify::dpad-radius': GObject.Object.Notify;
+            'notify::osd-x': GObject.Object.Notify;
+            'notify::osd-x': GObject.Object.Notify;
+            'notify::osd-y': GObject.Object.Notify;
+            'notify::osd-y': GObject.Object.Notify;
+            'notify::show-coordinates': GObject.Object.Notify;
+            'notify::show-coordinates': GObject.Object.Notify;
+            'notify::show-crosshair': GObject.Object.Notify;
+            'notify::show-crosshair': GObject.Object.Notify;
+            'notify::show-dpad': GObject.Object.Notify;
+            'notify::show-dpad': GObject.Object.Notify;
+            'notify::show-gps-in-dpad': GObject.Object.Notify;
+            'notify::show-gps-in-dpad': GObject.Object.Notify;
+            'notify::show-gps-in-zoom': GObject.Object.Notify;
+            'notify::show-gps-in-zoom': GObject.Object.Notify;
+            'notify::show-scale': GObject.Object.Notify;
+            'notify::show-scale': GObject.Object.Notify;
+            'notify::show-zoom': GObject.Object.Notify;
+            'notify::show-zoom': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1228,8 +1379,14 @@ export namespace OsmGpsMap {
         // Signals
 
         connect<K extends keyof MapOsd.SignalSignatures>(signal: K, callback: MapOsd.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MapOsd.SignalSignatures>(signal: K, callback: MapOsd.SignalSignatures[K]): number;
-        emit<K extends keyof MapOsd.SignalSignatures>(signal: K, ...args: Parameters<MapOsd.SignalSignatures[K]>): void;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        emit<K extends keyof MapOsd.SignalSignatures>(
+            signal: K,
+            ...args: MapOsd.SignalSignatures[K] extends (...args: infer P) => any ? P : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Inherited methods
         busy(): boolean;
@@ -1683,7 +1840,12 @@ export namespace OsmGpsMap {
 
     namespace MapPolygon {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::editable': GObject.Object.Notify;
+            'notify::shaded': GObject.Object.Notify;
+            'notify::track': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
+        }
 
         // Constructor properties interface
 
@@ -1723,14 +1885,17 @@ export namespace OsmGpsMap {
             signal: K,
             callback: MapPolygon.SignalSignatures[K],
         ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MapPolygon.SignalSignatures>(
             signal: K,
             callback: MapPolygon.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MapPolygon.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MapPolygon.SignalSignatures[K]>
+            ...args: MapPolygon.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
     }
 
     namespace MapTrack {
@@ -1758,6 +1923,13 @@ export namespace OsmGpsMap {
             'point-changed': PointChanged;
             'point-inserted': PointInserted;
             'point-removed': PointRemoved;
+            'notify::alpha': GObject.Object.Notify;
+            'notify::color': GObject.Object.Notify;
+            'notify::editable': GObject.Object.Notify;
+            'notify::line-width': GObject.Object.Notify;
+            'notify::line-width': GObject.Object.Notify;
+            'notify::track': GObject.Object.Notify;
+            'notify::visible': GObject.Object.Notify;
         }
 
         // Constructor properties interface
@@ -1803,14 +1975,17 @@ export namespace OsmGpsMap {
         // Signals
 
         connect<K extends keyof MapTrack.SignalSignatures>(signal: K, callback: MapTrack.SignalSignatures[K]): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
         connect_after<K extends keyof MapTrack.SignalSignatures>(
             signal: K,
             callback: MapTrack.SignalSignatures[K],
         ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
         emit<K extends keyof MapTrack.SignalSignatures>(
             signal: K,
-            ...args: Parameters<MapTrack.SignalSignatures[K]>
+            ...args: MapTrack.SignalSignatures[K] extends (...args: infer P) => any ? P : never
         ): void;
+        emit(signal: string, ...args: any[]): void;
 
         // Methods
 
